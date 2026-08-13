@@ -2330,7 +2330,7 @@ TRANSLATIONS.de = {
   foodAiManual: (name) => `„${name}" erkannt – bitte Lebensmittel manuell wählen.`,
   foodAiUnknown: 'Lebensmittel nicht sicher erkannt. Bitte erneut fotografieren oder suchen.',
   foodAiNoPhoto: 'Bitte zuerst ein Foto aufnehmen.',
-  foodAiModelError: 'KI-Modell nicht geladen. labplate_food.onnx auf Netlify hochladen.',
+  foodAiModelError: 'KI-Modell konnte nicht geladen werden. Bitte Internetverbindung prüfen und Seite neu laden.',
   foodAiAddBtn: 'Zum Teller hinzufügen',
   foodAiSearchBtn: 'Manuelle Suche',
   scannedFoodsLabel: 'Gescannte Produkte',
@@ -2842,7 +2842,7 @@ TRANSLATIONS.en = {
   foodAiManual: (name) => `„${name}" recognized – please pick food manually.`,
   foodAiUnknown: 'Food not recognized confidently. Try again or search manually.',
   foodAiNoPhoto: 'Please take a photo first.',
-  foodAiModelError: 'AI model not loaded. Upload labplate_food.onnx to Netlify.',
+  foodAiModelError: 'AI model could not be loaded. Please check your internet connection and reload the page.',
   foodAiAddBtn: 'Add to plate',
   foodAiSearchBtn: 'Manual search',
   scannedFoodsLabel: 'Scanned products',
@@ -3350,7 +3350,7 @@ TRANSLATIONS.es = {
   foodAiManual: (name) => `„${name}" reconocido – elige el alimento manualmente.`,
   foodAiUnknown: 'Alimento no reconocido con seguridad. Intenta de nuevo o busca.',
   foodAiNoPhoto: 'Primero toma una foto.',
-  foodAiModelError: 'Modelo IA no cargado. Sube labplate_food.onnx a Netlify.',
+  foodAiModelError: 'No se pudo cargar el modelo de IA. Comprueba tu conexión a internet y recarga la página.',
   foodAiAddBtn: 'Añadir al plato',
   foodAiSearchBtn: 'Búsqueda manual',
   scannedFoodsLabel: 'Productos escaneados',
@@ -3859,7 +3859,7 @@ TRANSLATIONS.it = {
   foodAiManual: (name) => `„${name}" riconosciuto – scegli il cibo manualmente.`,
   foodAiUnknown: 'Cibo non riconosciuto con certezza. Riprova o cerca manualmente.',
   foodAiNoPhoto: 'Scatta prima una foto.',
-  foodAiModelError: 'Modello IA non caricato. Carica labplate_food.onnx su Netlify.',
+  foodAiModelError: 'Impossibile caricare il modello IA. Controlla la connessione a internet e ricarica la pagina.',
   foodAiAddBtn: 'Aggiungi al piatto',
   foodAiSearchBtn: 'Ricerca manuale',
   scannedFoodsLabel: 'Prodotti scansionati',
@@ -8706,11 +8706,36 @@ async function analyzeFoodAiPhoto() {
     const out = await foodAiSession.run(feeds);
     const logits = out.output0.data;
     const probs = softmax(Array.from(logits));
-    let bestIdx = 0;
-    for (let i = 1; i < probs.length; i++) if (probs[i] > probs[bestIdx]) bestIdx = i;
-    const confidence = probs[bestIdx];
+
+    // WICHTIGER FIX (Foto-Erkennung war unzuverlaessig): Das Modell hat 260 sehr fein
+    // unterteilte technische Klassen (z.B. 30 verschiedene "Apple N"-Sorten, die alle auf
+    // den Anzeige-Namen "Apfel" abgebildet werden - siehe labplate_class_mapping.json).
+    // Bisher wurde nur die WAHRSCHEINLICHSTE EINZELKLASSE mit der 85%-Schwelle verglichen.
+    // Bei 30 Apfel-Unterklassen verteilt sich die Wahrscheinlichkeit aber zwangslaeufig auf
+    // alle 30 auf - selbst ein Foto, das eindeutig einen Apfel zeigt, erreicht dann pro
+    // Einzelklasse oft nur 10-15%, weit unter der Schwelle. Richtig ist es, die Wahrschein-
+    // lichkeiten aller technischen Klassen MIT DEMSELBEN ANZEIGE-NAMEN zu summieren und
+    // DIESE Summe mit der Schwelle zu vergleichen - das entspricht der eigentlichen Frage
+    // "Wie sicher ist sich das Modell, dass es sich um X handelt?", nicht "...um genau
+    // diese eine von 30 Sorten?".
+    const groupProbs = {}; // Anzeige-Name -> summierte Wahrscheinlichkeit
+    const groupBestClass = {}; // Anzeige-Name -> die staerkste Einzelklasse innerhalb der Gruppe (fuer .n/.m)
+    probs.forEach((p, i) => {
+      const cls = foodAiMapping.classes.find(c => c.i === i) || foodAiMapping.classes[i];
+      if (!cls) return;
+      groupProbs[cls.d] = (groupProbs[cls.d] || 0) + p;
+      if (!groupBestClass[cls.d] || p > groupBestClass[cls.d].p) {
+        groupBestClass[cls.d] = { p, cls };
+      }
+    });
+    let bestLabel = null;
+    let bestGroupProb = -1;
+    for (const [label, sumProb] of Object.entries(groupProbs)) {
+      if (sumProb > bestGroupProb) { bestGroupProb = sumProb; bestLabel = label; }
+    }
+    const confidence = bestGroupProb;
+    const cls = groupBestClass[bestLabel].cls;
     const threshold = foodAiMapping.confidence_threshold || 0.85;
-    const cls = foodAiMapping.classes.find(c => c.i === bestIdx) || foodAiMapping.classes[bestIdx];
     const pct = Math.round(confidence * 100);
     const result = document.getElementById('food-ai-result');
     const addBtn = document.getElementById('food-ai-add-btn');
