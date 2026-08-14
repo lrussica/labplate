@@ -104,7 +104,7 @@
   .food-ai-analyze-btn:disabled{ opacity:0.5; cursor:not-allowed; }
   .food-ai-result{
     margin-top:12px; padding:14px; border-radius:14px; background:var(--bg-2);
-    font-size:14px; font-weight:700; display:none;
+    font-size:14px; font-weight:700; display:none; white-space:pre-line;
   }
   .food-ai-result.show{ display:block; }
   .food-ai-result.success{ background:#e8f5e9; color:#1b5e20; }
@@ -8740,8 +8740,15 @@ async function analyzeFoodAiPhoto() {
     const addBtn = document.getElementById('food-ai-add-btn');
 
     if (confidence < threshold) {
+      // TEMPORAERE DIAGNOSE-ANZEIGE: zeigt die 3 wahrscheinlichsten Kandidaten mit echten
+      // Prozentwerten, damit sich das eigentliche Problem anhand echter Zahlen eingrenzen
+      // laesst (z.B. "5%" deutet auf ein Vorverarbeitungs-Problem hin, "60-84%" eher auf
+      // eine zu strenge Schwelle oder schwierige Fotobedingungen). Kann spaeter wieder
+      // entfernt werden, sobald die Ursache geklaert ist.
+      const top3 = Object.entries(groupProbs).sort((a, b) => b[1] - a[1]).slice(0, 3);
+      const debugLine = top3.map(([label, p]) => `${label}: ${Math.round(p * 100)}%`).join(' · ');
       result.className = 'food-ai-result show error';
-      result.textContent = L.foodAiUnknown;
+      result.textContent = L.foodAiUnknown + '\n[Diagnose] ' + debugLine;
       setFoodAiStatus('', false);
       return;
     }
