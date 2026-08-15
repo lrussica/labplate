@@ -1,3 +1,4 @@
 *.mlpackage filter=lfs diff=lfs merge=lfs -text
 /ML/labplate_dinov2_fruits.mlpackage/Data/com.apple.CoreML/weights/weight.bin filter=lfs diff=lfs merge=lfs -text
+/labplate_dinov2_fruits.mlpackage/Data/com.apple.CoreML/weights/weight.bin filter=lfs diff=lfs merge=lfs -text
 *.onnx filter=lfs diff=lfs merge=lfs -text
