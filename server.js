@@ -4,7 +4,7 @@
  * Zweck: Ein einziger Endpunkt (POST /api/nutri-recipe), der die bereits
  * datenminimierten Angaben aus der LabPlate-App entgegennimmt, sie erneut
  * serverseitig prueft/bereinigt, und dann stellvertretend fuer den Client
- * eine Rezeptidee bei der Groq API (Llama 3.3 70B) anfragt.
+ * eine Rezeptidee bei der Groq API anfragt.
  */
 
 require('dotenv').config();
@@ -29,6 +29,7 @@ function maskedPreview(s) {
   return s.slice(0, 4) + '…' + s.slice(-4) + ' (Laenge ' + s.length + ')';
 }
 
+// Aktuelles Standard-Modell von Groq
 const GROQ_MODEL = (process.env.GROQ_MODEL || 'llama-3.3-70b-versatile').trim();
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
@@ -269,8 +270,8 @@ async function requestRecipeFromGroq(payload) {
       } catch (e) {
         bodyPreview = '(Antworttext konnte nicht gelesen werden)';
       }
-      logEvent('groq_http_error', { status: res.status, body: bodyPreview });
-      return null;
+      logEvent('groq_http_error', { status: res.status, model: GROQ_MODEL, body: bodyPreview });
+      return { error: 'provider_error', status: res.status, message: bodyPreview };
     }
 
     const data = await res.json();
@@ -304,7 +305,8 @@ app.get('/health', (req, res) => {
     status: 'ok',
     configured: Boolean(GROQ_API_KEY),
     apiKeyLooksValid: GROQ_API_KEY ? GROQ_API_KEY_LOOKS_VALID : null,
-    provider: 'Groq (Llama 3.3 70B)'
+    model: GROQ_MODEL,
+    provider: 'Groq'
   });
 });
 
@@ -325,6 +327,16 @@ app.post('/api/nutri-recipe', nutriRecipeLimiter, async (req, res) => {
   logEvent('request_received', { mode: payload.mode });
 
   const candidate = await requestRecipeFromGroq(payload);
+
+  // Behandlung von spezifischen Provider-Fehlern (z.B. Modell abgetrennt / 404 / 400)
+  if (candidate && candidate.error === 'provider_error') {
+    logEvent('response_rejected', { reason: 'provider_error', status: candidate.status, ms: Date.now() - startedAt });
+    return res.status(502).json({
+      error: 'provider_error',
+      status: candidate.status,
+      message: 'Der KI-Anbieter meldete einen Fehler. Bitte ueberpruefe das eingestellte Modell.'
+    });
+  }
 
   if (!isValidRecipeShape(candidate)) {
     logEvent('response_rejected', { reason: 'invalid_or_missing_schema', ms: Date.now() - startedAt });
