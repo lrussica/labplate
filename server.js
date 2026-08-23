@@ -29,8 +29,14 @@ function maskedPreview(s) {
   return s.slice(0, 4) + '…' + s.slice(-4) + ' (Laenge ' + s.length + ')';
 }
 
-// Aktuelles Standard-Modell von Groq
-const GROQ_MODEL = (process.env.GROQ_MODEL || 'llama-3.3-70b-versatile').trim();
+// Aktuelles Standard-Modell von Groq. "llama-3.3-70b-versatile" wurde von
+// Groq am 16.08.2026 abgeschaltet (siehe console.groq.com/docs/deprecations)
+// - genau das war die Ursache fuer den 404 "model_not_found". Groqs eigene
+// Empfehlung als Ersatz ist "openai/gpt-oss-120b". Ueber die Umgebungsvariable
+// GROQ_MODEL kannst du jederzeit, ohne Code-Aenderung, ein anderes Modell
+// eintragen (z.B. in Render unter "Environment" - Dienst startet automatisch
+// neu, kein neuer Deploy noetig).
+const GROQ_MODEL = (process.env.GROQ_MODEL || 'openai/gpt-oss-120b').trim();
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
 // Kommagetrennte Liste erlaubter Origins
