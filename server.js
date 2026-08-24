@@ -263,7 +263,21 @@ async function requestRecipeFromGroq(payload) {
         ],
         response_format: { type: 'json_object' },
         temperature: 0.3,
-        max_tokens: 1024
+        // openai/gpt-oss-120b ist ein "reasoning"-Modell: es verbraucht einen Teil
+        // des Token-Budgets fuer internes Ueberlegen, BEVOR die eigentliche JSON-
+        // Antwort geschrieben wird. Ohne diese Einstellung frisst das oft so viel
+        // vom max_tokens-Limit, dass die eigentliche JSON-Antwort mitten im Satz
+        // abgeschnitten wird (-> "max completion tokens reached" ->
+        // invalid_or_missing_schema) UND unnoetig viele Tokens pro Anfrage
+        // verbraucht (-> schnelleres Erreichen des 8.000-Tokens-pro-Minute-Limits
+        // -> 429). "low" reicht fuer diese einfache Rezept-JSON-Aufgabe voellig.
+        reasoning_effort: 'low',
+        include_reasoning: false,
+        // Etwas hoeher als vorher (1024), da bei "low" reasoning effort fast das
+        // gesamte Budget der eigentlichen JSON-Antwort zugutekommt - so bleibt
+        // auch bei laengeren Zutatenlisten/Einkaufslisten genug Platz, ohne die
+        // TPM-Grenze unnoetig stark zu belasten.
+        max_tokens: 1200
       }),
       signal: controller.signal,
     });
