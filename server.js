@@ -53,6 +53,20 @@ const MAX_INPUT_LEN = 200;
 const MAX_INGREDIENTS = 15;
 const MAX_MICRO_GAPS = 20;
 
+// Feste Allowlist der tatsaechlich von LabPlate unterstuetzten Sprachcodes (siehe
+// LabPlate.html: die vier Sprachumschalter-Buttons data-lang="de|en|es|it"). Nur diese
+// vier Werte werden akzeptiert - alles andere (fehlend, leer, unbekannter Code, o.ae.)
+// faellt sicher auf Deutsch zurueck. NICHT eigenmaechtig erweitern, ohne dass die App
+// selbst die entsprechende Sprache tatsaechlich unterstuetzt.
+const SUPPORTED_LANGS = ['de', 'en', 'es', 'it'];
+const DEFAULT_LANG = 'de';
+const LANG_NAMES = {
+  de: 'Deutsch',
+  en: 'Englisch (English)',
+  es: 'Spanisch (Español)',
+  it: 'Italienisch (Italiano)',
+};
+
 if (!GROQ_API_KEY) {
   console.error('[Konfiguration] WARNUNG: GROQ_API_KEY ist nicht gesetzt.');
 } else if (!GROQ_API_KEY_LOOKS_VALID) {
@@ -130,6 +144,11 @@ function validateAndSanitizeIncomingPayload(body) {
   const mode = body.mode === 'pantry' ? 'pantry' : body.mode === 'shopping' ? 'shopping' : null;
   if (!mode) return null;
 
+  // Sprache des Rezeptinhalts: strikt gegen die feste Allowlist geprueft. Ein fehlender
+  // oder ungueltiger Wert fuehrt NICHT zu einem Fehler, sondern faellt sicher auf
+  // Deutsch zurueck (kein 400 nur wegen eines fehlenden/kaputten lang-Feldes).
+  const lang = typeof body.lang === 'string' && SUPPORTED_LANGS.includes(body.lang) ? body.lang : DEFAULT_LANG;
+
   const rawMacros = body.macros && typeof body.macros === 'object' ? body.macros : {};
   const macroKeys = ['kh_g', 'protein_g', 'fett_g', 'ballaststoffe_g', 'salz_g'];
   const macros = {};
@@ -160,7 +179,7 @@ function validateAndSanitizeIncomingPayload(body) {
     })
     .filter(Boolean);
 
-  const result = { mode, macros, micronutrient_gaps: micronutrientGaps };
+  const result = { mode, macros, micronutrient_gaps: micronutrientGaps, lang };
 
   if (mode === 'pantry') {
     const rawIngredients = Array.isArray(body.pantry_ingredients) ? body.pantry_ingredients : [];
@@ -205,7 +224,17 @@ function isValidRecipeShape(data) {
 // ---------------------------------------------------------------------
 // System-Prompt & Groq-API Request
 // ---------------------------------------------------------------------
-const SYSTEM_PROMPT = `Du bist ein Rezeptassistent innerhalb einer Ernaehrungs-App. Du erhaeltst anonyme, zusammengefasste Tageswerte sowie optional eine Liste vorhandener Zutaten.
+// Der System-Prompt haengt jetzt von der (bereits serverseitig gegen die Allowlist
+// geprueften) Zielsprache ab: das GESAMTE sichtbare Rezept (title, nutrition_note,
+// ingredients[].name, ingredients[].amount, shopping_list, steps) soll strikt in dieser
+// Sprache erstellt werden - die JSON-Feldnamen selbst UND der Wert des Feldes "status"
+// bleiben dabei IMMER die festen, technischen deutschen Werte "vorhanden"/"benoetigt"
+// (siehe isValidRecipeShape weiter unten, das genau diese zwei Werte weiterhin strikt
+// erzwingt - unveraendert, unabhaengig von "lang"). Schema, Validierung, Rate-Limits,
+// CORS und Fehlerbehandlung bleiben von dieser Aenderung komplett unberuehrt.
+function buildSystemPrompt(lang) {
+  const langName = LANG_NAMES[lang] || LANG_NAMES[DEFAULT_LANG];
+  return `Du bist ein Rezeptassistent innerhalb einer Ernaehrungs-App. Du erhaeltst anonyme, zusammengefasste Tageswerte sowie optional eine Liste vorhandener Zutaten.
 
 Deine einzige Aufgabe: Schlage EINE alltagstaugliche Rezeptidee vor und antworte AUSSCHLIESSLICH als ein einzelnes JSON-Objekt im exakten folgenden Schema:
 
@@ -226,8 +255,18 @@ Strikte Regeln:
 - "nutrition_note" ist eine kurze, sachliche Ernaehrungsbemerkung.
 - "steps" enthaelt genau 3 bis 5 kurze Zubereitungsschritte.
 - Nutze bei "status" ausschliesslich "vorhanden" oder "benoetigt".
-- Antworte auf Deutsch.
+- Sprache des Rezeptinhalts: Schreibe ALLE sichtbaren Textinhalte - also "title",
+  "nutrition_note", jedes "ingredients[].name", jedes "ingredients[].amount", jeden
+  Eintrag in "shopping_list" und jeden Eintrag in "steps" - ausschliesslich auf
+  ${langName}. Kein Mischen mit anderen Sprachen in diesen Feldern.
+- WICHTIGE AUSNAHME von der obigen Sprachregel: Die JSON-Feldnamen selbst (title,
+  servings, prep_time, nutrition_note, ingredients, name, amount, status,
+  shopping_list, steps) bleiben IMMER exakt diese englischen/technischen Bezeichner,
+  und der Wert des Feldes "status" bleibt IMMER exakt "vorhanden" oder "benoetigt" auf
+  Deutsch - unabhaengig von der oben gewaehlten Sprache. Diese technischen Werte NIEMALS
+  uebersetzen oder veraendern.
 - Antworte AUSSCHLIESSLICH mit dem puren JSON-Objekt. Keine Markdown-Codeblöcke (\`\`\`json ... \`\`\`), kein Text davor oder danach!`;
+}
 
 function buildUserMessage(payload) {
   const lines = [];
@@ -258,7 +297,7 @@ async function requestRecipeFromGroq(payload) {
       body: JSON.stringify({
         model: GROQ_MODEL,
         messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
+          { role: 'system', content: buildSystemPrompt(payload.lang) },
           { role: 'user', content: buildUserMessage(payload) }
         ],
         response_format: { type: 'json_object' },
@@ -344,7 +383,7 @@ app.post('/api/nutri-recipe', nutriRecipeLimiter, async (req, res) => {
     return res.status(400).json({ error: 'invalid_payload' });
   }
 
-  logEvent('request_received', { mode: payload.mode });
+  logEvent('request_received', { mode: payload.mode, lang: payload.lang });
 
   const candidate = await requestRecipeFromGroq(payload);
 
