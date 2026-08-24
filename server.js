@@ -211,8 +211,21 @@ function isValidRecipeShape(data) {
   if (typeof data.prep_time !== 'string') return false;
   if (typeof data.nutrition_note !== 'string') return false;
   if (!Array.isArray(data.ingredients) || !data.ingredients.length) return false;
+  // NEU: amount ist jetzt eine reine Zahl (statt freier Text wie "2 EL") plus eine feste
+  // Einheit ("g"/"ml") und strukturierte Naehrwerte pro 100g - noetig, damit der Client die
+  // Mengen lokal auf die individuellen Makro-Ziele des Nutzers skalieren kann (siehe
+  // LabPlate.html: calcRecipeMacrosPerServing/computeLocalRecipeScaleFactor/scaleLocalRecipe).
+  // Bei jeder Abweichung greift weiterhin ausschliesslich der feste Fehlerzustand im Client.
   for (const ing of data.ingredients) {
-    if (!ing || typeof ing.name !== 'string' || typeof ing.amount !== 'string') return false;
+    if (!ing || typeof ing.name !== 'string' || !ing.name.trim()) return false;
+    if (typeof ing.amount !== 'number' || !Number.isFinite(ing.amount) || ing.amount <= 0) return false;
+    if (ing.unit !== 'g' && ing.unit !== 'ml') return false;
+    const m = ing.macrosPer100g;
+    if (!m || typeof m !== 'object') return false;
+    if (typeof m.netCarbs !== 'number' || !Number.isFinite(m.netCarbs) || m.netCarbs < 0) return false;
+    if (typeof m.fat !== 'number' || !Number.isFinite(m.fat) || m.fat < 0) return false;
+    if (typeof m.protein !== 'number' || !Number.isFinite(m.protein) || m.protein < 0) return false;
+    if (typeof m.fiber !== 'number' || !Number.isFinite(m.fiber) || m.fiber < 0) return false;
     if (ing.status !== 'vorhanden' && ing.status !== 'benoetigt') return false;
   }
   if (!Array.isArray(data.shopping_list) || !data.shopping_list.every((s) => typeof s === 'string')) return false;
@@ -244,7 +257,13 @@ Deine einzige Aufgabe: Schlage EINE alltagstaugliche Rezeptidee vor und antworte
   "prep_time": "String (z.B. 20 Min.)",
   "nutrition_note": "String (kurzer sachlicher Hinweis)",
   "ingredients": [
-    { "name": "String", "amount": "String", "status": "vorhanden" oder "benoetigt" }
+    {
+      "name": "String",
+      "amount": Number,
+      "unit": "g" oder "ml",
+      "macrosPer100g": { "netCarbs": Number, "fat": Number, "protein": Number, "fiber": Number },
+      "status": "vorhanden" oder "benoetigt"
+    }
   ],
   "shopping_list": ["String"],
   "steps": ["String (genau 3 bis 5 Schritte)"]
@@ -255,16 +274,27 @@ Strikte Regeln:
 - "nutrition_note" ist eine kurze, sachliche Ernaehrungsbemerkung.
 - "steps" enthaelt genau 3 bis 5 kurze Zubereitungsschritte.
 - Nutze bei "status" ausschliesslich "vorhanden" oder "benoetigt".
+- "amount" ist IMMER eine reine Zahl (kein Text, keine Einheit im Wert selbst, z.B. 150
+  statt "150 g" oder "2 EL") - "unit" ist IMMER ausschliesslich "g" (fuer feste/koernige
+  Zutaten) oder "ml" (fuer Fluessigkeiten). Rechne uebliche Haushaltsmasse (EL, TL, Stueck,
+  Tasse, Prise, ...) selbst in ein realistisches Gramm-/Milliliter-Aequivalent um (z.B. 1 EL
+  Oel ≈ 10-15 ml, 1 Ei ≈ 55 g) - gib niemals ein Haushaltsmass direkt als "unit" oder im
+  "amount"-Wert aus.
+- "macrosPer100g" gibt realistische, geschaetzte Naehrwerte PRO 100 g bzw. 100 ml der
+  jeweiligen Zutat an (netCarbs = Netto-Kohlenhydrate in g, fat = Fett in g, protein =
+  Protein in g, fiber = Ballaststoffe in g - jeweils pro 100g/100ml). Alle vier Werte sind
+  Zahlen >= 0.
 - Sprache des Rezeptinhalts: Schreibe ALLE sichtbaren Textinhalte - also "title",
-  "nutrition_note", jedes "ingredients[].name", jedes "ingredients[].amount", jeden
-  Eintrag in "shopping_list" und jeden Eintrag in "steps" - ausschliesslich auf
-  ${langName}. Kein Mischen mit anderen Sprachen in diesen Feldern.
-- WICHTIGE AUSNAHME von der obigen Sprachregel: Die JSON-Feldnamen selbst (title,
-  servings, prep_time, nutrition_note, ingredients, name, amount, status,
-  shopping_list, steps) bleiben IMMER exakt diese englischen/technischen Bezeichner,
-  und der Wert des Feldes "status" bleibt IMMER exakt "vorhanden" oder "benoetigt" auf
-  Deutsch - unabhaengig von der oben gewaehlten Sprache. Diese technischen Werte NIEMALS
-  uebersetzen oder veraendern.
+  "nutrition_note", jedes "ingredients[].name", jeden Eintrag in "shopping_list" und jeden
+  Eintrag in "steps" - ausschliesslich auf ${langName}. Kein Mischen mit anderen Sprachen in
+  diesen Feldern.
+- WICHTIGE AUSNAHME von der obigen Sprachregel: Die JSON-Feldnamen selbst (title, servings,
+  prep_time, nutrition_note, ingredients, name, amount, unit, macrosPer100g, netCarbs, fat,
+  protein, fiber, status, shopping_list, steps) bleiben IMMER exakt diese
+  englischen/technischen Bezeichner, der Wert von "unit" bleibt IMMER exakt "g" oder "ml"
+  (niemals uebersetzt, z.B. nicht "gramos"/"grammi"), und der Wert des Feldes "status"
+  bleibt IMMER exakt "vorhanden" oder "benoetigt" auf Deutsch - unabhaengig von der oben
+  gewaehlten Sprache. Diese technischen Werte NIEMALS uebersetzen oder veraendern.
 - Antworte AUSSCHLIESSLICH mit dem puren JSON-Objekt. Keine Markdown-Codeblöcke (\`\`\`json ... \`\`\`), kein Text davor oder danach!`;
 }
 
@@ -407,7 +437,18 @@ app.post('/api/nutri-recipe', nutriRecipeLimiter, async (req, res) => {
     servings: candidate.servings,
     prep_time: candidate.prep_time,
     nutrition_note: candidate.nutrition_note,
-    ingredients: candidate.ingredients.map((i) => ({ name: i.name, amount: i.amount, status: i.status })),
+    ingredients: candidate.ingredients.map((i) => ({
+      name: i.name,
+      amount: i.amount,
+      unit: i.unit,
+      macrosPer100g: {
+        netCarbs: i.macrosPer100g.netCarbs,
+        fat: i.macrosPer100g.fat,
+        protein: i.macrosPer100g.protein,
+        fiber: i.macrosPer100g.fiber,
+      },
+      status: i.status,
+    })),
     shopping_list: candidate.shopping_list,
     steps: candidate.steps,
   };
