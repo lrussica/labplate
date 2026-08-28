@@ -457,6 +457,42 @@ app.post('/api/nutri-recipe', nutriRecipeLimiter, async (req, res) => {
   return res.status(200).json(safeResult);
 });
 
+// ============================================================
+// NEUE ROUTE /api/food-lookup für die KI-Lebensmittelsuche
+// ============================================================
+app.post('/api/food-lookup', async (req, res) => {
+  try {
+    const apiKey = process.env.GROQ_API_KEY;
+    if (!apiKey) {
+      console.error('/api/food-lookup: GROQ_API_KEY ist nicht gesetzt');
+      return res.status(500).json({ error: 'server_misconfigured' });
+    }
+
+    const { model, response_format, messages, temperature } = req.body || {};
+    if (!model || !Array.isArray(messages)) {
+      return res.status(400).json({ error: 'invalid_request' });
+    }
+
+    const groqRes = await fetch(GROQ_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({ model, response_format, messages, temperature }),
+    });
+
+    const groqBody = await groqRes.text();
+    res.status(groqRes.status);
+    res.setHeader('Content-Type', 'application/json');
+    res.send(groqBody);
+  } catch (err) {
+    console.error('/api/food-lookup: Fehler', err);
+    res.status(502).json({ error: 'upstream_error' });
+  }
+});
+// ============================================================
+
 app.use((req, res) => {
   res.status(404).json({ error: 'not_found' });
 });
