@@ -1,0 +1,109 @@
+import SwiftUI
+import AVFoundation
+
+// MARK: - Verwaltet AVCaptureSession, Berechtigung und Start/Stop
+final class CameraManager: NSObject, ObservableObject {
+    let session = AVCaptureSession()
+    private let sessionQueue = DispatchQueue(label: "camera.session.queue")
+
+    @Published var accessDenied = false
+
+    func start() {
+        sessionQueue.async {
+            switch AVCaptureDevice.authorizationStatus(for: .video) {
+            case .authorized:
+                self.configureAndRun()
+            case .notDetermined:
+                AVCaptureDevice.requestAccess(for: .video) { granted in
+                    if granted {
+                        self.sessionQueue.async { self.configureAndRun() }
+                    } else {
+                        DispatchQueue.main.async { self.accessDenied = true }
+                    }
+                }
+            default:
+                DispatchQueue.main.async { self.accessDenied = true }
+            }
+        }
+    }
+
+    func stop() {
+        sessionQueue.async {
+            if self.session.isRunning { self.session.stopRunning() }
+        }
+    }
+
+    private func configureAndRun() {
+        guard session.inputs.isEmpty else {
+            if !session.isRunning { session.startRunning() }
+            return
+        }
+        session.beginConfiguration()
+        session.sessionPreset = .photo
+
+        if let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back),
+           let input = try? AVCaptureDeviceInput(device: device),
+           session.canAddInput(input) {
+            session.addInput(input)
+        }
+        // Hier spaeter fuer die KI-Erkennung einhaengen:
+        // let output = AVCaptureVideoDataOutput()
+        // output.setSampleBufferDelegate(<dein Delegate>, queue: sessionQueue)
+        // if session.canAddOutput(output) { session.addOutput(output) }
+
+        session.commitConfiguration()
+        session.startRunning()
+    }
+}
+
+// MARK: - UIKit-Bruecke: eine UIView, deren Layer eine Live-Kamera-Vorschau ist
+final class CameraPreviewUIView: UIView {
+    override class var layerClass: AnyClass { AVCaptureVideoPreviewLayer.self }
+    var previewLayer: AVCaptureVideoPreviewLayer { layer as! AVCaptureVideoPreviewLayer }
+}
+
+struct CameraPreview: UIViewRepresentable {
+    let session: AVCaptureSession
+
+    func makeUIView(context: Context) -> CameraPreviewUIView {
+        let view = CameraPreviewUIView()
+        view.previewLayer.session = session
+        view.previewLayer.videoGravity = .resizeAspectFill
+        return view
+    }
+
+    func updateUIView(_ uiView: CameraPreviewUIView, context: Context) {}
+}
+
+// MARK: - Die eigentliche SwiftUI-Ansicht
+struct CameraLiveView: View {
+    @StateObject private var camera = CameraManager()
+
+    var body: some View {
+        ZStack {
+            CameraPreview(session: camera.session)
+                .ignoresSafeArea()
+
+            if camera.accessDenied {
+                VStack(spacing: 12) {
+                    Text("Kein Kamerazugriff")
+                        .font(.headline)
+                    Text("Bitte in den iPhone-Einstellungen unter LabPlate den Kamerazugriff erlauben.")
+                        .font(.subheadline)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 24)
+                }
+                .foregroundStyle(.white)
+                .padding()
+                .background(.black.opacity(0.6))
+                .cornerRadius(16)
+            }
+        }
+        .onAppear { camera.start() }
+        .onDisappear { camera.stop() }
+    }
+}
+
+#Preview {
+    CameraLiveView()
+}

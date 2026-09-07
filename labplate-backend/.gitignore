@@ -1,0 +1,16 @@
+# Niemals einchecken - enthaelt (lokal) echte Geheimnisse.
+.env
+.env.local
+.env.*.local
+
+node_modules/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.DS_Store
+
+# Editor-/OS-Artefakte
+.vscode/
+*.log
