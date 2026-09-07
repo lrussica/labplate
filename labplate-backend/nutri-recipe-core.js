@@ -1,6 +1,8 @@
 /**
  * LabPlate – Kernlogik /api/nutri-recipe (dependency-frei, testbar)
  * ==================================================================
+ * Kein Express-Router hier – nur reine Funktionen, die server.js importiert.
+ *
  * FIX Zutaten-Vollstaendigkeit:
  *  - Modell openai/gpt-oss-120b (statt 20b)
  *  - Strict JSON-Schema (json_schema, strict:true) mit DYNAMISCHEN Pflicht-Keys:
@@ -16,9 +18,8 @@
  *                    macrosPer100g:{ netCarbs, fat, protein, fiber } }],
  *     shopping_list:[string], steps:[string] }
  */
+
 'use strict';
-const express = require('express');
-const router = express.Router();
 
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const DEFAULT_MODEL = 'openai/gpt-oss-120b';
@@ -29,13 +30,13 @@ const MAX_LINE_LEN = 160;
 const ING_FIELDS = ['name', 'amount', 'unit', 'status', 'netCarbs', 'fat', 'protein', 'fiber'];
 
 // ---------------------------------------------------------------------------
-// Hilfsfunktionen (Sanitizing)
+// Sanitizing
 // ---------------------------------------------------------------------------
 function sanitizeLine(raw) {
   if (typeof raw !== 'string') return '';
   let t = raw.replace(/<[^>]*>/g, ' ');
   t = t.replace(/[\x00-\x1f\x7f]/g, ' ');
-  t = t.replace(/[^\p{L}\p{N}\s,.\-/&()]/gu, '');
+  t = t.replace(/[^\p{L}\p{N}\s,.\-/&()']/gu, '');
   t = t.replace(/\s+/g, ' ').trim();
   return t.slice(0, MAX_LINE_LEN);
 }
@@ -52,6 +53,10 @@ function ingKey(i) {
   return 'ing_' + String(i + 1).padStart(2, '0');
 }
 
+/**
+ * Eigenrezept-Erkennung: Client sendet bei strukturierter Eingabe jede Zutat als
+ * eigenen Array-Eintrag (>= 3) ODER einen Eintrag mit >= 3 Mengenangaben.
+ */
 function looksStructured(pantry) {
   if (!Array.isArray(pantry) || !pantry.length) return false;
   if (pantry.length >= 3) return true;
@@ -60,17 +65,14 @@ function looksStructured(pantry) {
   return Boolean(qty && qty.length >= 3);
 }
 
-function langName(lang) {
-  return lang === 'de' ? 'Deutsch' : 'Englisch';
-}
-
 // ---------------------------------------------------------------------------
-// Validierung des eingehenden Payloads
+// Payload-Validierung (Client -> Server)
 // ---------------------------------------------------------------------------
 function validateIncoming(body) {
   if (!body || typeof body !== 'object') return null;
   const mode = body.mode === 'pantry' ? 'pantry' : body.mode === 'shopping' ? 'shopping' : null;
   if (!mode) return null;
+
   const out = {
     mode,
     lang: typeof body.lang === 'string' && /^[a-z]{2}$/.test(body.lang) ? body.lang : 'de',
@@ -82,6 +84,7 @@ function validateIncoming(body) {
     allergens: Array.isArray(body.allergens) ? body.allergens.map((a) => sanitizeLine(a)).filter(Boolean).slice(0, 30) : [],
     pantry_ingredients: [],
   };
+
   if (mode === 'pantry') {
     const raw = Array.isArray(body.pantry_ingredients) ? body.pantry_ingredients : [];
     out.pantry_ingredients = raw.map(sanitizeLine).filter(Boolean).slice(0, MAX_INGREDIENTS);
@@ -92,7 +95,7 @@ function validateIncoming(body) {
 }
 
 // ---------------------------------------------------------------------------
-// JSON‑Schemas (strict)
+// Strict-Schemas
 // ---------------------------------------------------------------------------
 function ingredientObjectSchema(description) {
   return {
@@ -123,6 +126,7 @@ function baseRecipeProperties() {
   };
 }
 
+/** Anreicherung: ingredients = Objekt mit einem Pflicht-Key pro Nutzer-Zutat. */
 function buildEnrichmentSchema(lines) {
   const props = {};
   const required = [];
@@ -151,6 +155,7 @@ function buildEnrichmentSchema(lines) {
   };
 }
 
+/** Generativ (Shopping / freie Idee): ingredients = Array. */
 function buildGenerativeSchema() {
   const properties = baseRecipeProperties();
   properties.ingredients = { type: 'array', items: ingredientObjectSchema() };
@@ -187,97 +192,164 @@ function buildEnrichmentMessages(p) {
 
   const user = [
     'ANZAHL ZUTATEN: ' + lines.length + ' (genau so viele Keys ing_XX sind zu fuellen)',
-    'ZUTATEN-LISTE:',
+    'ZUTATEN-MAPPING (Key = Eingabezeile des Nutzers):',
     mapping,
-    '',
-    'Gib jetzt das vollstaendige JSON-Objekt mit allen Pflichtfeldern zurueck.'
-  ].join('\n');
+    p.ai_instruction ? 'ZUSATZ-INSTRUCTION DES CLIENTS (enthaelt ggf. Schritte/Portionen, 1:1 beachten):\n' + p.ai_instruction : '',
+    p.allergens.length ? 'ALLERGENE (nur Warnhinweis in nutrition_note, Zutaten NICHT entfernen): ' + p.allergens.join(', ') : '',
+    'Fuelle jetzt fuer jeden Key ing_01 … ing_' + String(lines.length).padStart(2, '0') + ' ein Objekt aus.',
+  ].filter(Boolean).join('\n\n');
 
   return [
     { role: 'system', content: system },
-    { role: 'user', content: user }
+    { role: 'user', content: user },
   ];
 }
 
 function buildGenerativeMessages(p) {
   const system = [
-    'Du bist ein kreativer Koch-Assistent. Erstelle ein Rezept basierend auf den vorhandenen Zutaten oder Einkaufswünschen.',
-    'Gib realistische Nährwerte pro 100 g/ml an. Verwende das vorgegebene JSON‑Schema.',
-    'Antworte auf ' + langName(p.lang) + '. Kein zusätzlicher Text, nur das JSON-Objekt.'
+    'Du bist ein Rezeptassistent in einer Ernaehrungs-App. Erstelle EINE alltagstaugliche Rezeptidee als JSON gemaess Schema.',
+    'Jede Zutat: name, amount (Zahl), unit (g|ml), status (vorhanden|benoetigt), netCarbs/fat/protein/fiber je 100 g/ml.',
+    'steps: 4-8 kurze Schritte. shopping_list: benoetigte Zutaten als "Name – Menge Einheit".',
+    'Keine medizinischen Diagnosen oder Heilversprechen. Antworte auf ' + langName(p.lang) + '.',
   ].join('\n');
   const user = [
-    'Mode: ' + p.mode,
-    'Verfügbare Zutaten / Wünsche:',
-    p.pantry_ingredients.join(', ') || 'Keine spezifischen Angaben',
-    p.ai_instruction ? 'Zusätzliche Anweisung: ' + p.ai_instruction : '',
-    'Erstelle ein vollständiges Rezept (Titel, Portionen, Zeit, Nährwert‑Hinweis, Zutatenliste mit Nährwerten, Einkaufsliste, Schritte).'
+    'Modus: ' + (p.mode === 'pantry' ? 'Rezept mit vorhandenen Zutaten / Suchbegriff' : 'Rezeptidee mit Einkaufsliste'),
+    p.pantry_ingredients.length ? 'Vorhandene Zutaten / Suchbegriff: ' + p.pantry_ingredients.join(', ') : '',
+    'Aggregierte Tages-Makrowerte (Wert / Ziel): ' + JSON.stringify(p.macros),
+    p.micronutrient_gaps.length ? 'Mikronaehrstoffe unter 70% des Tagesziels: ' + JSON.stringify(p.micronutrient_gaps) : '',
+    p.lab_guideline_constraints ? 'Leitlinien-Vorgaben: ' + JSON.stringify(p.lab_guideline_constraints) : '',
+    p.ai_instruction ? 'Zusatz-Instruction: ' + p.ai_instruction : '',
+    p.allergens.length ? 'Allergene strikt meiden: ' + p.allergens.join(', ') : '',
+    'Erstelle jetzt das JSON-Objekt.',
   ].filter(Boolean).join('\n');
   return [
     { role: 'system', content: system },
-    { role: 'user', content: user }
+    { role: 'user', content: user },
   ];
 }
 
-// ---------------------------------------------------------------------------
-// Hauptfunktion: Aufruf der Groq‑API
-// ---------------------------------------------------------------------------
-async function callGroq(messages, schema, apiKey) {
-  const response = await fetch(GROQ_API_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + apiKey
-    },
-    body: JSON.stringify({
-      model: process.env.GROQ_MODEL || DEFAULT_MODEL,
-      messages,
-      temperature: 0,
-      response_format: {
-        type: 'json_schema',
-        json_schema: schema
-      }
-    })
-  });
-  if (!response.ok) {
-    const errText = await response.text();
-    throw new Error('Groq API error: ' + response.status + ' ' + errText);
-  }
-  const data = await response.json();
-  const content = data.choices?.[0]?.message?.content;
-  if (!content) throw new Error('Leere Antwort von Groq');
-  return JSON.parse(content);
+function langName(code) {
+  return { de: 'Deutsch', en: 'Englisch', es: 'Spanisch', it: 'Italienisch', pt: 'Portugiesisch', fr: 'Franzoesisch', tr: 'Tuerkisch' }[code] || 'Deutsch';
 }
 
 // ---------------------------------------------------------------------------
-// Express‑Route
+// Groq-Request-Body
 // ---------------------------------------------------------------------------
-router.post('/api/nutri-recipe', async (req, res) => {
-  try {
-    const validated = validateIncoming(req.body);
-    if (!validated) {
-      return res.status(400).json({ error: 'Ungültige Eingabe' });
-    }
+function buildGroqRequest(p, model) {
+  const structured = p.structured;
+  return {
+    model: model || DEFAULT_MODEL,
+    temperature: 0,
+    reasoning_effort: 'low',
+    max_tokens: 8192,
+    response_format: {
+      type: 'json_schema',
+      json_schema: structured ? buildEnrichmentSchema(p.pantry_ingredients) : buildGenerativeSchema(),
+    },
+    messages: structured ? buildEnrichmentMessages(p) : buildGenerativeMessages(p),
+  };
+}
 
-    const apiKey = process.env.GROQ_API_KEY;
-    if (!apiKey) {
-      return res.status(500).json({ error: 'GROQ_API_KEY fehlt' });
-    }
+// ---------------------------------------------------------------------------
+// Antwort -> Client-Vertrag
+// ---------------------------------------------------------------------------
+function num(v, fallback) {
+  const n = Number(v);
+  return Number.isFinite(n) ? n : fallback;
+}
 
-    let messages, schema;
-    if (validated.mode === 'pantry' && validated.structured) {
-      messages = buildEnrichmentMessages(validated);
-      schema = buildEnrichmentSchema(validated.pantry_ingredients);
-    } else {
-      messages = buildGenerativeMessages(validated);
-      schema = buildGenerativeSchema();
-    }
+function normalizeIng(item, fallbackName) {
+  const src = item && typeof item === 'object' ? item : {};
+  const m = src.macrosPer100g && typeof src.macrosPer100g === 'object' ? src.macrosPer100g : src;
+  const amount = num(src.amount, 0);
+  return {
+    name: (typeof src.name === 'string' && src.name.trim()) ? src.name.trim().slice(0, 200) : (fallbackName || 'Zutat'),
+    amount: amount > 0 ? Math.round(amount * 10) / 10 : 1,
+    unit: src.unit === 'ml' ? 'ml' : 'g',
+    status: src.status === 'vorhanden' ? 'vorhanden' : 'benoetigt',
+    macrosPer100g: {
+      netCarbs: Math.max(0, num(m.netCarbs, 0)),
+      fat: Math.max(0, num(m.fat, 0)),
+      protein: Math.max(0, num(m.protein, 0)),
+      fiber: Math.max(0, num(m.fiber, 0)),
+    },
+  };
+}
 
-    const result = await callGroq(messages, schema, apiKey);
-    res.json(result);
-  } catch (err) {
-    console.error('Fehler in /api/nutri-recipe:', err);
-    res.status(500).json({ error: 'Interner Serverfehler', detail: err.message });
+function stripQty(line) {
+  return String(line || '').replace(/^\s*[\d.,/½¼¾-]+\s*(g|gr|kg|ml|l|el|tl|zehen?|stueck|stk|prise|bund)?\.?\s*/i, '').trim() || line;
+}
+
+function toClientRecipe(parsed, p) {
+  if (!parsed || typeof parsed !== 'object') return null;
+  let ingredients;
+  if (p.structured) {
+    const obj = parsed.ingredients && typeof parsed.ingredients === 'object' && !Array.isArray(parsed.ingredients)
+      ? parsed.ingredients : {};
+    ingredients = p.pantry_ingredients.map((line, i) => normalizeIng(obj[ingKey(i)], stripQty(line)));
+  } else {
+    ingredients = (Array.isArray(parsed.ingredients) ? parsed.ingredients : []).map((it) => normalizeIng(it)).slice(0, MAX_INGREDIENTS);
   }
-});
+  if (!ingredients.length) return null;
 
-module.exports = router;
+  let shopping = Array.isArray(parsed.shopping_list) ? parsed.shopping_list.map((s) => String(s || '')).filter(Boolean) : [];
+  if (shopping.length < ingredients.length) {
+    shopping = ingredients.map((ing) => ing.name + ' – ' + ing.amount + ' ' + ing.unit);
+  }
+  const steps = (Array.isArray(parsed.steps) ? parsed.steps : []).map((s) => String(s || '').trim()).filter(Boolean).slice(0, MAX_STEPS);
+  const servings = num(parsed.servings, 0);
+  return {
+    title: (typeof parsed.title === 'string' && parsed.title.trim()) ? parsed.title.trim().slice(0, 200) : 'Rezept',
+    servings: servings > 0 ? servings : 2,
+    prep_time: typeof parsed.prep_time === 'string' ? parsed.prep_time.slice(0, 60) : '',
+    nutrition_note: typeof parsed.nutrition_note === 'string' ? parsed.nutrition_note.slice(0, 600) : '',
+    ingredients,
+    shopping_list: shopping.slice(0, MAX_INGREDIENTS),
+    steps,
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Groq-Call (fetchImpl injizierbar fuer Tests)
+// ---------------------------------------------------------------------------
+async function callGroq(requestBody, opts) {
+  const o = opts || {};
+  const fetchImpl = o.fetchImpl || fetch;
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), o.timeoutMs || 55000);
+  try {
+    const res = await fetchImpl(GROQ_API_URL, {
+      method: 'POST',
+      headers: { Authorization: 'Bearer ' + o.apiKey, 'Content-Type': 'application/json' },
+      body: JSON.stringify(requestBody),
+      signal: controller.signal,
+    });
+    const text = await res.text();
+    if (!res.ok) return { error: 'provider_error', status: res.status, body: text.slice(0, 400) };
+    let data;
+    try { data = JSON.parse(text); } catch (e) { return { error: 'provider_error', status: 502, body: 'invalid provider json' }; }
+    const content = data && data.choices && data.choices[0] && data.choices[0].message ? data.choices[0].message.content : null;
+    if (typeof content !== 'string' || !content.trim()) return { error: 'empty_response' };
+    try { return { data: JSON.parse(content) }; } catch (e) { return { error: 'json_parse_failed', body: content.slice(0, 200) }; }
+  } catch (err) {
+    return { error: 'request_failed', reason: err && err.name ? err.name : 'unknown' };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+module.exports = {
+  GROQ_API_URL,
+  DEFAULT_MODEL,
+  MAX_INGREDIENTS,
+  validateIncoming,
+  looksStructured,
+  buildEnrichmentSchema,
+  buildGenerativeSchema,
+  buildEnrichmentMessages,
+  buildGenerativeMessages,
+  buildGroqRequest,
+  toClientRecipe,
+  callGroq,
+  ingKey,
+};
