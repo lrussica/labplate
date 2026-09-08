@@ -29,6 +29,10 @@ const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const core = require('./nutri-recipe-core');
+const strictPrompt = require('./strict-prompt');
+const coachRecipe = require('./coach-recipe');
+const nutriCoach = require('./nutri-coach');
+const recipeSuggestions = require('./recipe-suggestions');
 
 // ---------------------------------------------------------------------
 // Konfiguration
@@ -68,31 +72,34 @@ if (!GROQ_API_KEY) {
 }
 console.log('[Konfiguration] GROQ_MODEL=' + GROQ_MODEL + (GROQ_MODEL !== core.DEFAULT_MODEL ? '  (Hinweis: Standard waere ' + core.DEFAULT_MODEL + ')' : ''));
 
-// Structured-Prompt beim Start laden und verifizieren (kommt aus nutri-recipe-core.js).
-const STRUCTURED_PROMPT_VERSION = 'strict_v2_mengen_qb0_bls';
-const _promptProbePayload = {
-  lang: 'de',
-  pantry_ingredients: ['100 g Haferflocken', 'Salz q.b.', '1 EL Olivenoel'],
-  ai_instruction: '',
-  allergens: [],
-};
-const _promptProbe = core.buildEnrichmentMessages(_promptProbePayload);
-const _structuredSystem = (_promptProbe[0] && _promptProbe[0].content) || '';
-const _structuredUser = (_promptProbe[1] && _promptProbe[1].content) || '';
-const _structuredSchema = JSON.stringify(core.buildEnrichmentSchema(_promptProbePayload.pantry_ingredients));
-const STRUCTURED_PROMPT_CHECKS = {
-  system_eigenrezept: /MODUS: EIGENREZEPT \/ STRUCTURED/.test(_structuredSystem),
-  system_no_optimize: /gesünder oder kalorienreduzierter|Mengen an Tagesziele/.test(_structuredSystem),
-  system_vague_qb: /Vage Mengenangaben/.test(_structuredSystem) && /amount = 0/.test(_structuredSystem),
-  user_mengen_regel: /MENGEN-REGEL/.test(_structuredUser),
-  schema_bls_ref: /BLS\/USDA/.test(_structuredSchema),
-};
-const STRUCTURED_PROMPT_OK = Object.values(STRUCTURED_PROMPT_CHECKS).every(Boolean);
-if (!STRUCTURED_PROMPT_OK) {
-  console.error('[Konfiguration] FEHLER: Structured-Prompt unvollstaendig:', STRUCTURED_PROMPT_CHECKS);
-} else {
-  console.log('[Konfiguration] structured_prompt=' + STRUCTURED_PROMPT_VERSION +
-    ' markers_ok=true system_chars=' + _structuredSystem.length);
+const STRUCTURED_PROMPT_VERSION = strictPrompt.STRUCTURED_PROMPT_VERSION;
+const STRICT_CORE_OK = !!strictPrompt.getModuleStrictStatus('core').ok;
+const STRICT_COACH_OK = !!coachRecipe.isStrictActive() && !!nutriCoach.isStrictActive();
+const STRICT_SUGGESTIONS_OK = !!recipeSuggestions.isStrictActive();
+const STRUCTURED_PROMPT_OK = STRICT_CORE_OK && STRICT_COACH_OK && STRICT_SUGGESTIONS_OK;
+console.log('[Konfiguration] structured_prompt=' + STRUCTURED_PROMPT_VERSION +
+  ' markers_ok=' + STRUCTURED_PROMPT_OK +
+  ' core=' + STRICT_CORE_OK +
+  ' coach=' + STRICT_COACH_OK +
+  ' suggestions=' + STRICT_SUGGESTIONS_OK);
+
+/** Waehlt das Rezept-Modul: core | coach | nutri-coach | suggestions */
+function resolveRecipeFlow(reqBody, payload) {
+  const raw = (reqBody && (reqBody.flow || reqBody.module)) || '';
+  const flow = String(raw).toLowerCase().trim();
+  if (flow === 'core') return 'core';
+  if (flow === 'coach' || flow === 'coach-recipe') return 'coach';
+  if (flow === 'nutri-coach' || flow === 'nutricoach') return 'nutri-coach';
+  if (flow === 'suggestions' || flow === 'recipe-suggestions') return 'suggestions';
+  // Default: STRUCTURED → Coach (Strict), sonst Suggestions
+  return payload.structured ? 'coach' : 'suggestions';
+}
+
+function buildRecipeRequest(flow, payload) {
+  if (flow === 'coach') return coachRecipe.buildRequest(payload, GROQ_MODEL);
+  if (flow === 'nutri-coach') return nutriCoach.buildRequest(payload, GROQ_MODEL);
+  if (flow === 'suggestions') return recipeSuggestions.buildRequest(payload, GROQ_MODEL);
+  return core.buildGroqRequest(payload, GROQ_MODEL);
 }
 
 // ---------------------------------------------------------------------
@@ -160,6 +167,9 @@ app.get('/health', (req, res) => {
     maxIngredients: core.MAX_INGREDIENTS,
     structuredPromptVersion: STRUCTURED_PROMPT_VERSION,
     structuredPromptOk: STRUCTURED_PROMPT_OK,
+    strictPromptActiveInCore: STRICT_CORE_OK,
+    strictPromptActiveInCoach: STRICT_COACH_OK,
+    strictPromptActiveInSuggestions: STRICT_SUGGESTIONS_OK,
   });
 });
 
@@ -176,14 +186,15 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     return res.status(400).json({ error: 'invalid_payload' });
   }
 
+  const flow = resolveRecipeFlow(req.body, payload);
   const n = payload.pantry_ingredients.length;
-  if (payload.structured) {
-    console.log(`[nutri-recipe] ENRICH model=${GROQ_MODEL} ingredients=${n} lang=${payload.lang} instruction_chars=${payload.ai_instruction.length}`);
+  if (payload.structured || flow === 'coach' || flow === 'nutri-coach' || flow === 'core') {
+    console.log(`[nutri-recipe] ENRICH flow=${flow} model=${GROQ_MODEL} ingredients=${n} lang=${payload.lang} instruction_chars=${payload.ai_instruction.length}`);
   } else {
-    console.log(`[nutri-recipe] GENERATE model=${GROQ_MODEL} mode=${payload.mode} pantry=${n}`);
+    console.log(`[nutri-recipe] GENERATE flow=${flow} model=${GROQ_MODEL} mode=${payload.mode} pantry=${n}`);
   }
 
-  const requestBody = core.buildGroqRequest(payload, GROQ_MODEL);
+  const requestBody = buildRecipeRequest(flow, payload);
   const result = await core.callGroq(requestBody, { apiKey: GROQ_API_KEY, timeoutMs: REQUEST_TIMEOUT_MS });
 
   if (result.error === 'provider_error') {
@@ -191,7 +202,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     // Schema-/Validierungsfehler (HTTP 400): an Client als 400 durchreichen – kein 502,
     // damit Chat-Retries denselben kaputten Request nicht 3× wiederholen.
     const clientStatus = upstreamStatus === 400 ? 400 : 502;
-    logEvent('groq_http_error', { status: upstreamStatus, model: GROQ_MODEL, body: result.body, ms: Date.now() - startedAt, clientStatus });
+    logEvent('groq_http_error', { status: upstreamStatus, model: GROQ_MODEL, body: result.body, ms: Date.now() - startedAt, clientStatus, flow });
     return res.status(clientStatus).json({
       error: 'provider_error',
       status: upstreamStatus,
@@ -201,17 +212,20 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     });
   }
   if (result.error) {
-    logEvent('response_rejected', { reason: result.error, detail: result.reason || result.body || '', ms: Date.now() - startedAt });
+    logEvent('response_rejected', { reason: result.error, detail: result.reason || result.body || '', ms: Date.now() - startedAt, flow });
     return res.status(502).json({ error: 'recipe_unavailable' });
   }
 
-  const recipe = core.toClientRecipe(result.data, payload);
+  const effectivePayload = (flow === 'coach' || flow === 'nutri-coach')
+    ? Object.assign({}, payload, { structured: true })
+    : payload;
+  const recipe = core.toClientRecipe(result.data, effectivePayload);
   if (!recipe) {
-    logEvent('response_rejected', { reason: 'invalid_or_missing_schema', ms: Date.now() - startedAt });
+    logEvent('response_rejected', { reason: 'invalid_or_missing_schema', ms: Date.now() - startedAt, flow });
     return res.status(502).json({ error: 'recipe_unavailable' });
   }
 
-  console.log(`[nutri-recipe] OK ingredients=${recipe.ingredients.length} steps=${recipe.steps.length} ms=${Date.now() - startedAt}`);
+  console.log(`[nutri-recipe] OK flow=${flow} ingredients=${recipe.ingredients.length} steps=${recipe.steps.length} ms=${Date.now() - startedAt}`);
   return res.status(200).json(recipe);
 });
 

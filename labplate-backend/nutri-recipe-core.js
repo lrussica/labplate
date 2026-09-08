@@ -23,6 +23,8 @@
 
 'use strict';
 
+const strictPrompt = require('./strict-prompt');
+
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const DEFAULT_MODEL = 'openai/gpt-oss-120b';
 const MAX_INGREDIENTS = 100;
@@ -30,6 +32,7 @@ const MAX_STEPS = 50;
 const MAX_INSTRUCTION_LEN = 8000;
 const MAX_LINE_LEN = 160;
 const ING_FIELDS = ['name', 'amount', 'unit', 'status', 'netCarbs', 'fat', 'protein', 'fiber'];
+const STRUCTURED_UNIT_TABLE = strictPrompt.STRUCTURED_UNIT_TABLE;
 
 // ---------------------------------------------------------------------------
 // Sanitizing
@@ -52,7 +55,7 @@ function sanitizeText(raw, max) {
 }
 
 function ingKey(i) {
-  return 'ing_' + String(i + 1).padStart(2, '0');
+  return strictPrompt.ingKey(i);
 }
 
 /**
@@ -184,50 +187,16 @@ function buildGenerativeSchema() {
 }
 
 // ---------------------------------------------------------------------------
-// Prompts – STRUCTURED vs. GENERATIV strikt getrennt
+// Prompts – STRUCTURED nutzt zentrale strict-prompt.js Utility
 // ---------------------------------------------------------------------------
-/** Feste Umrechnungstabelle (Eigenrezept): nur diese Umrechnungen, keine freie Schaetzung. */
-const STRUCTURED_UNIT_TABLE =
-  'Feste Umrechnungstabelle (nur wenn der Nutzer EL/TL/Stueck OHNE g/ml angibt): ' +
-  '1 EL = 15 g/ml, 1 TL = 5 g/ml, 1 Zehe Knoblauch = 5 g, 1 Avocado = 200 g, 1/2 Salatgurke = 200 g, 1 Ei = 60 g. ' +
-  'Steht bereits eine g/ml/kg/l-Menge im Input, diese Zahl unveraendert uebernehmen (kg/l nur in g/ml umrechnen).';
 
 function buildEnrichmentMessages(p) {
   const lines = p.pantry_ingredients;
-  const mapping = lines.map((line, i) => ingKey(i) + ' = "' + line + '"').join('\n');
-  const system = [
-    'MODUS: EIGENREZEPT / STRUCTURED – nicht kreativ.',
-    'Du bist mein Rezept-Coach, der Rezepte klar strukturiert, ohne ihren Inhalt zu veraendern.',
-    'FIXIERE DIESE DATEN: Zutaten, Mengen und Zubereitungsschritte aus dem Input sind verbindlich.',
-    'AUFGABE: Strukturiere das Eigenrezept und berechne fuer JEDE uebergebene Zutat (Keys ing_01 … ing_' +
-      String(lines.length).padStart(2, '0') +
-      ') realistische Naehrwerte je 100 g/ml (netCarbs, fat, protein, fiber) NUR fuer die genannten Zutaten.',
-    'VERBOTEN: Zutaten hinzufuegen oder entfernen; bereits angegebene Mengen aendern; Schritte umstellen/kuerzen/zusammenfassen/umschreiben/optimieren; Ersatzprodukte erfinden; Zutaten als optional/wichtig einstufen; freie Mengenschaetzung; Rezept gesünder oder kalorienreduzierter machen; Mengen an Tagesziele, Leitlinien oder Makros anpassen.',
-    'ERLAUBT: Namen stilistisch vereinheitlichen (kurz, ohne Mengenangabe im name-Feld); Schritte NUR orthografisch/grammatisch korrigieren – KEIN inhaltliches Umschreiben, Kuerzen oder Zusammenfassen; Naehrwert-Anreicherung der tatsaechlich genannten Zutaten.',
-    STRUCTURED_UNIT_TABLE,
-    'Vage Mengenangaben (q.b., qb, nach Geschmack, nach Belieben, etwas, ein wenig, Prise, nach Bedarf, ad libitum, beliebig) haben KEINEN g/ml-Wert und greifen KEINE Tabellen-Regel → amount = 0. Kein Schatzen, kein Erfinden einer Grammzahl.',
-    'Fehlt eine Menge und greift KEINE Tabellen-Regel eindeutig: amount = 0 (= nicht angegeben). Schema verlangt eine Zahl – kein null.',
-    'Fluessigkeiten (Oel, Essig, Sosse, Bruehe, Dressing, Milch) in ml, sonst g. status: "benoetigt".',
-    'steps: Wenn der Input/die Client-Instruction Schritte enthaelt: 1:1 in derselben Reihenfolge uebernehmen. Wenn keine Schritte vorliegen: steps = [] (nichts erfinden).',
-    'shopping_list: eine Zeile pro Zutat "Name – Menge Einheit" (bei amount 0: "Name – nicht angegeben").',
-    'title: aus Input falls vorhanden, sonst knapper passender Name ohne Fantasie-Zutaten. servings: aus Input, sonst 2. prep_time: aus Input oder "". nutrition_note: 1-2 sachliche Saetze zu den genannten Zutaten, keine medizinischen Aussagen, keine neuen Zutaten.',
-    'Antworte auf ' + langName(p.lang) + '. Ausschliesslich JSON gemaess Schema – kein Begleittext.',
-  ].join('\n');
-
-  const user = [
-    'MENGEN-REGEL (oberste Prioritaet): Jede Menge aus den Eingabezeilen exakt unveraendert uebernehmen – kein Wert darf abweichen, angepasst oder geschaetzt werden.',
-    'ANZAHL ZUTATEN: ' + lines.length + ' (genau so viele Keys ing_XX sind zu fuellen – keine mehr, keine weniger)',
-    'ZUTATEN-MAPPING (Key = Eingabezeile des Nutzers):',
-    mapping,
-    p.ai_instruction
-      ? 'ZUSATZ-INSTRUCTION DES CLIENTS (Schritte/Portionen 1:1 beachten, Inhalt nicht aendern):\n' + p.ai_instruction
-      : '',
-    p.allergens.length
-      ? 'ALLERGENE (nur Warnhinweis in nutrition_note, Zutaten NICHT entfernen oder ersetzen): ' + p.allergens.join(', ')
-      : '',
-    'Fuelle jetzt fuer jeden Key ing_01 … ing_' + String(lines.length).padStart(2, '0') + ' ein Objekt aus.',
-  ].filter(Boolean).join('\n\n');
-
+  const system = strictPrompt.loadStrictPrompt({
+    lang: p.lang,
+    ingredientCount: lines.length,
+  });
+  const user = strictPrompt.buildStrictUserPrompt(p);
   return [
     { role: 'system', content: system },
     { role: 'user', content: user },
@@ -236,6 +205,7 @@ function buildEnrichmentMessages(p) {
 
 function buildGenerativeMessages(p) {
   const system = [
+    strictPrompt.loadStrictConstraintsForGenerative(),
     'MODUS: GENERATIV / FREISUCHE / SHOPPING – bewusst kreativ (NICHT Eigenrezept-Modus).',
     'Du bist ein kreativer Rezept-Coach in einer Ernaehrungs-App. Erstelle EINE alltagstaugliche Rezeptidee als JSON gemaess Schema.',
     'ERLAUBT: Zutaten vorschlagen, Mengen waehlen und an Tagesziele/Leitlinien anpassen, Schritte neu formulieren.',
@@ -244,7 +214,7 @@ function buildGenerativeMessages(p) {
     'Beispiel: 2 Eier -> {"name":"Ei","amount":120,"unit":"g"} – NICHT unit "Stueck". 1 EL Olivenoel -> {"name":"Olivenoel","amount":15,"unit":"ml"}.',
     'Jede Zutat: name, amount (Zahl > 0), unit ("g"|"ml"), status (vorhanden|benoetigt), netCarbs/fat/protein/fiber je 100 g/ml.',
     'steps: 4-8 kurze Schritte. shopping_list: benoetigte Zutaten als "Name – Menge g|ml".',
-    'Keine medizinischen Diagnosen oder Heilversprechen. Antworte auf ' + langName(p.lang) + '. Nur JSON.',
+    'Keine medizinischen Diagnosen oder Heilversprechen. Antworte auf ' + strictPrompt.langName(p.lang) + '. Nur JSON.',
   ].join('\n');
   const user = [
     'Modus: ' + (p.mode === 'pantry' ? 'Rezept mit vorhandenen Zutaten / Suchbegriff' : 'Rezeptidee mit Einkaufsliste'),
@@ -263,7 +233,7 @@ function buildGenerativeMessages(p) {
 }
 
 function langName(code) {
-  return { de: 'Deutsch', en: 'Englisch', es: 'Spanisch', it: 'Italienisch', pt: 'Portugiesisch', fr: 'Franzoesisch', tr: 'Tuerkisch' }[code] || 'Deutsch';
+  return strictPrompt.langName(code);
 }
 
 // ---------------------------------------------------------------------------
@@ -403,4 +373,21 @@ module.exports = {
   toClientRecipe,
   callGroq,
   ingKey,
+  STRUCTURED_PROMPT_VERSION: strictPrompt.STRUCTURED_PROMPT_VERSION,
 };
+
+// Startup-Check: Core nutzt denselben Strict-Prompt.
+(function registerCoreStrictPrompt() {
+  const probeLines = ['100 g Haferflocken', 'Salz q.b.', '1 EL Olivenoel'];
+  const msgs = buildEnrichmentMessages({
+    lang: 'de',
+    pantry_ingredients: probeLines,
+    ai_instruction: '',
+    allergens: [],
+  });
+  strictPrompt.registerStrictModule('core', {
+    system: msgs[0] && msgs[0].content,
+    user: msgs[1] && msgs[1].content,
+    schema: JSON.stringify(buildEnrichmentSchema(probeLines)),
+  });
+})();
