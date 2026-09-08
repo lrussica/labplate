@@ -22819,8 +22819,8 @@ initBarcodeEvents();
         });
         var dropped = aiList.filter(function (_, i) { return !used[i]; }).map(function (a) { return a && a.name; });
         if (parsed.steps.length >= 2) out.steps = parsed.steps.slice(0, NUTRI_RECIPE_MAX_STEPS);
-        // Portionen nur wenn im Nutzertext; sonst 0 = leer (nicht erfinden).
-        out.servings = parsed.servings ? parsed.servings : 0;
+        // Portionen aus Text, sonst 1 (Nutzer kann danach proportional aendern).
+        out.servings = parsed.servings ? parsed.servings : 1;
         out.shopping_list = out.ingredients.map(function (ing) {
           var q = formatIngredientQty(ing.amount, ing.unit);
           return q.unit ? (String(ing.name) + ' – ' + q.amount + ' ' + q.unit) : (String(ing.name) + ' – ' + q.amount);
@@ -23553,35 +23553,28 @@ initBarcodeEvents();
         // (nie aus einer bereits gerundeten Zwischenstufe) - so entstehen beim wiederholten Hoch-/
         // Runterschalten keine sich aufschaukelnden Rundungsfehler (siehe scaleRecipeToServings()).
         var rBase = nutriRecipeState.result;
-        // 0 / fehlend = Portionen leer (Eigenrezept ohne Angabe); Mengen bleiben 1:1 bis Nutzer wählt.
-        var recipeServingsCount = Number(nutriRecipeState.servings) || 0;
+        // rBase.servings = Original (z.B. 4). Anzeige (nutriRecipeState.servings) startet bei 1
+        // → Mengen/Makros werden proportional herunterskaliert; + erhöht wieder proportional.
+        var baseServings = Number(rBase.servings) > 0 ? Number(rBase.servings) : 1;
+        if (!(Number(rBase.servings) > 0)) rBase.servings = 1;
+        var recipeServingsCount = Math.max(1, Number(nutriRecipeState.servings) || 1);
         var recipeServingsMin = 1, recipeServingsMax = 8;
-        var r = recipeServingsCount > 0
-          ? scaleRecipeToServings(rBase, recipeServingsCount)
-          : (function () {
-              var copy = JSON.parse(JSON.stringify(rBase));
-              // calcRecipeMacrosPerServing: servings 0 → wie 1 (Batch wie geschrieben)
-              if (!(copy.servings > 0)) copy.servings = 1;
-              return copy;
-            })();
-        // rMacros bleibt rechnerisch Portions-invariant (Makros PRO PORTION aendern sich bei
-        // proportionaler Skalierung nicht) - wird hier trotzdem bei jedem Rendern live aus den
-        // aktuell skalierten Mengen neu berechnet, wie gefordert ("sofort ohne Reload anpassen").
+        var r = scaleRecipeToServings(
+          Object.assign({}, rBase, { servings: baseServings }),
+          recipeServingsCount
+        );
         var rMacros = calcRecipeMacrosPerServing(r);
         console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Anzahl der Ingredients:', r.ingredients ? r.ingredients.length : 0);
         console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Anzahl der Steps:', r.steps ? r.steps.length : 0);
         console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Ingredient-Namen:', (r.ingredients || []).map(function (ing) { return ing && ing.name; }));
         var rKcal = Math.round((rMacros.netCarbs || 0) * 4 + (rMacros.protein || 0) * 4 + (rMacros.fat || 0) * 9);
         var shoppingLines = buildNutriRecipeShoppingLines(r);
-        var servingsValueLabel = recipeServingsCount > 0
-          ? (recipeServingsCount + ' ' + escNutri(recipeServingsCount === 1 ? pick(LBL_RECIPE_SERVING_SINGULAR) : pick(LBL_RECIPE_SERVINGS_SUFFIX)))
-          : ('— ' + escNutri(pick(LBL_RECIPE_SERVINGS_SUFFIX)));
         var servingsStepperHtml =
           '<div class="nutri-recipe-servings-stepper" role="group" aria-label="' + escNutri(pick(LBL_RECIPE_SERVINGS_SUFFIX)) + '">' +
             '<button type="button" class="nrs-btn nrs-minus" id="nutri-recipe-servings-minus" aria-label="' + escNutri(pick(LBL_RECIPE_SERVINGS_MINUS_ARIA)) + '"' + (recipeServingsCount <= recipeServingsMin ? ' disabled' : '') + '>' +
               '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>' +
             '</button>' +
-            '<span class="nrs-value">' + servingsValueLabel + '</span>' +
+            '<span class="nrs-value">' + recipeServingsCount + ' ' + escNutri(recipeServingsCount === 1 ? pick(LBL_RECIPE_SERVING_SINGULAR) : pick(LBL_RECIPE_SERVINGS_SUFFIX)) + '</span>' +
             '<button type="button" class="nrs-btn nrs-plus" id="nutri-recipe-servings-plus" aria-label="' + escNutri(pick(LBL_RECIPE_SERVINGS_PLUS_ARIA)) + '"' + (recipeServingsCount >= recipeServingsMax ? ' disabled' : '') + '>' +
               '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>' +
             '</button>' +
@@ -23668,19 +23661,15 @@ initBarcodeEvents();
         // scaleRecipeToServings(rBase, ...), rBase selbst bleibt dabei immer unangetastet.
         var servingsMinusBtn = document.getElementById('nutri-recipe-servings-minus');
         if (servingsMinusBtn) servingsMinusBtn.onclick = function () {
-          var cur = Number(nutriRecipeState.servings) || 0;
-          if (cur > recipeServingsMin) {
-            nutriRecipeState.servings = cur - 1;
+          if (nutriRecipeState.servings > recipeServingsMin) {
+            nutriRecipeState.servings -= 1;
             renderNutriRecipeBody();
           }
         };
         var servingsPlusBtn = document.getElementById('nutri-recipe-servings-plus');
         if (servingsPlusBtn) servingsPlusBtn.onclick = function () {
-          var cur = Number(nutriRecipeState.servings) || 0;
-          if (cur < recipeServingsMax) {
-            // Leer (0) → erste Wahl startet bei 1; Mengen bleiben unveraendert (Basis = 1).
-            nutriRecipeState.servings = cur + 1;
-            if (!(rBase.servings > 0)) rBase.servings = 1;
+          if (nutriRecipeState.servings < recipeServingsMax) {
+            nutriRecipeState.servings += 1;
             renderNutriRecipeBody();
           }
         };
@@ -24056,6 +24045,7 @@ initBarcodeEvents();
           nutriScaledMacros = calcRecipeMacrosPerServing(nutriScaledData);
         }
         nutriScaledData.id = 'ai-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
+        if (!(nutriScaledData.servings > 0)) nutriScaledData.servings = 1;
         var replyTpl = isStructuredInput ? LBL_RECIPE_CHAT_REPLY_STRUCTURED : LBL_RECIPE_CHAT_REPLY;
         var replyText = pick(replyTpl).replace('{title}', nutriScaledData.title).replace('{time}', nutriScaledData.prep_time);
         nutriRecipeState.chatDraft = '';
@@ -24119,7 +24109,9 @@ initBarcodeEvents();
       nutriRecipeState.result = msg.recipe;
       nutriRecipeState.suggestions = msg.suggestions || [];
       // Portionen aus Rezept; 0/fehlend = leer (nicht auf 2 erzwingen).
-      nutriRecipeState.servings = (msg.recipe && msg.recipe.servings > 0) ? msg.recipe.servings : 0;
+      // Anzeige immer bei 1 Portion starten; rBase.servings bleibt die Rezept-Basis
+      // (z.B. 4) – Mengen/Makros werden auf 1 Portion herunterskaliert.
+      nutriRecipeState.servings = 1;
       nutriRecipeState.selectedCategory = 'none';
       nutriRecipeState.categoryDetailsOpen = false;
       nutriRecipeState.error = false;
@@ -24231,13 +24223,13 @@ initBarcodeEvents();
           nutriScaledMacros = calcRecipeMacrosPerServing(nutriScaledData);
         }
         nutriScaledData.id = 'ai-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
+        // Basis-Portionen am Rezept speichern (fehlend → 1); Anzeige startet immer bei 1.
+        if (!(nutriScaledData.servings > 0)) nutriScaledData.servings = 1;
         nutriRecipeState.result = nutriScaledData;
         nutriRecipeState.suggestions = isStructuredReq ? [] : suggestLocalRecipeAlternatives(nutriScaledMacros, nutriTargets);
         nutriRecipeState.error = false;
-        // Eigenrezept: Portionen aus Rezept oder leer (0). Sonst Standard 2.
-        nutriRecipeState.servings = isStructuredReq
-          ? ((nutriScaledData.servings > 0) ? nutriScaledData.servings : 0)
-          : 2;
+        // Immer 1 Portion anzeigen – bei Basis 4 wird auf 1 herunterskaliert.
+        nutriRecipeState.servings = 1;
         // NEU (Rezept-Kategorien): jedes neu geladene Rezept startet mit "Ohne Kategorie"
         // vorausgewaehlt ("Standardmaessig ist 'Ohne Kategorie' ausgewaehlt, falls der Nutzer
         // nichts auswaehlt") und dem Aufklappmenue eingeklappt.
@@ -24436,17 +24428,23 @@ initBarcodeEvents();
     // ---- Reine Berechnungsfunktionen (kein DOM-Zugriff) - leicht einzeln testbar. ----
 
     // Makros PRO PORTION fuer ein Rezept-Objekt (siehe LOCAL_RECIPE_DB fuer das exakte Format).
-    function calcRecipeMacrosPerServing(recipe) {
+    function calcRecipeMacrosTotal(recipe) {
       var totals = { netCarbs: 0, fat: 0, protein: 0, fiber: 0 };
+      if (!recipe || !Array.isArray(recipe.ingredients)) return totals;
       recipe.ingredients.forEach(function (ing) {
         var amt = Number(ing && ing.amount);
-        if (!isFinite(amt) || amt <= 0) return; // Menge nicht angegeben → kein Makro-Beitrag
+        if (!isFinite(amt) || amt <= 0) return;
         var factor = amt / 100;
-        totals.netCarbs += ing.macrosPer100g.netCarbs * factor;
-        totals.fat += ing.macrosPer100g.fat * factor;
-        totals.protein += ing.macrosPer100g.protein * factor;
-        totals.fiber += ing.macrosPer100g.fiber * factor;
+        var m = (ing && ing.macrosPer100g) || {};
+        totals.netCarbs += (Number(m.netCarbs) || 0) * factor;
+        totals.fat += (Number(m.fat) || 0) * factor;
+        totals.protein += (Number(m.protein) || 0) * factor;
+        totals.fiber += (Number(m.fiber) || 0) * factor;
       });
+      return totals;
+    }
+    function calcRecipeMacrosPerServing(recipe) {
+      var totals = calcRecipeMacrosTotal(recipe);
       var servings = recipe.servings || 1;
       return {
         netCarbs: totals.netCarbs / servings,
