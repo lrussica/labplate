@@ -83,7 +83,31 @@ assert.strictEqual(structOut.ingredients[1].amount, 20);
 assert.strictEqual(structOut.ingredients[1].unit, 'ml');
 assert.strictEqual(structOut.ingredients[2].amount, 0);
 assert.ok(structOut.shopping_list[0].includes('nicht angegeben'));
+assert.strictEqual(structOut.ingredients[0].macrosPer100g.netCarbs, 0, 'Structured: Makros immer 0 (App berechnet)');
+assert.strictEqual(structOut.ingredients[1].macrosPer100g.fat, 0, 'Structured: Makros immer 0');
 console.log('OK structured qb/missing amount=0');
+
+// 3b) Structured: servings 0 bleibt 0 (nicht auf 2 erzwingen); Prompt ohne Makro-Berechnung
+const structNoServings = core.toClientRecipe({
+  title: 'Ohne Portionen',
+  servings: 0,
+  prep_time: 'soll weg',
+  nutrition_note: 'soll weg',
+  ingredients: {
+    ing_01: { name: 'Basilikum', amount: 0, unit: 'g', status: 'benoetigt', netCarbs: 9, fat: 9, protein: 9, fiber: 9 },
+    ing_02: { name: 'Olivenoel', amount: 20, unit: 'ml', status: 'benoetigt', netCarbs: 0, fat: 100, protein: 0, fiber: 0 },
+    ing_03: { name: 'Salz', amount: 0, unit: 'g', status: 'benoetigt', netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
+  },
+  shopping_list: ['x'],
+  steps: ['Mischen'],
+}, structPayload);
+assert.strictEqual(structNoServings.servings, 0, 'servings 0 muss erhalten bleiben');
+assert.strictEqual(structNoServings.prep_time, '', 'prep_time leer bei structured');
+assert.strictEqual(structNoServings.nutrition_note, '', 'nutrition_note leer bei structured');
+assert.strictEqual(structNoServings.ingredients[0].macrosPer100g.protein, 0);
+assert(/MAKRO-REGEL|IMMER 0|Makros/i.test(enrichReq.messages[0].content), 'Structured-Prompt: keine Makro-Berechnung');
+assert(/servings.*0|sonst 0/i.test(enrichReq.messages[0].content), 'Structured-Prompt: servings 0 wenn fehlend');
+console.log('OK structured servings=0 + no macros');
 
 // 4) Retry-Policy
 assert.strictEqual(isNutriRecipeChatRetryableStatus(400), false);

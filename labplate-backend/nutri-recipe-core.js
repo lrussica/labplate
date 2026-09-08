@@ -6,8 +6,9 @@
  * eigenen Prompt-Regeln pflegen.
  *
  * Zwei getrennte KI-Modi (nicht vermischen!):
- *  1) STRUCTURED / Eigenrezept (looksStructured): Rezept-Coach – Inhalt fix,
- *     nur Struktur + Naehrwert-Anreicherung der genannten Zutaten.
+ *  1) STRUCTURED / Eigenrezept (looksStructured): reiner Passthrough –
+ *     title, servings (0 wenn nicht im Text), Zutaten + Schritte 1:1.
+ *     KEINE Makros (App: lookupNutriMacrosPer100g + Portions-Stepper).
  *  2) GENERATIV / Freisuche / Shopping: kreativ – Zutaten/Mengen duerfen
  *     vorgeschlagen und an Tagesziele angepasst werden.
  *
@@ -122,21 +123,27 @@ function ingredientObjectSchema(description, opts) {
         description: 'NUR "g" oder "ml". Keine anderen Einheiten.',
       },
       status: { type: 'string', enum: ['benoetigt', 'vorhanden'] },
-      netCarbs: { type: 'number', description: 'Netto-KH-Referenzwert (BLS/USDA) fuer dieses Lebensmittel je 100 g/ml – NICHT aus der Rezeptmenge hochrechnen, KEIN Fantansiewert' },
-      fat: { type: 'number', description: 'Fett-Referenzwert (BLS/USDA) fuer dieses Lebensmittel je 100 g/ml – NICHT aus der Rezeptmenge hochrechnen, KEIN Fantasiewert' },
-      protein: { type: 'number', description: 'Protein-Referenzwert (BLS/USDA) fuer dieses Lebensmittel je 100 g/ml – NICHT aus der Rezeptmenge hochrechnen, KEIN Fantasiewert' },
-      fiber: { type: 'number', description: 'Ballaststoff-Referenzwert (BLS/USDA) fuer dieses Lebensmittel je 100 g/ml – NICHT aus der Rezeptmenge hochrechnen, KEIN Fantasiewert' },
+      netCarbs: { type: 'number', description: strictAmounts ? 'Immer 0 – Makros berechnet die App, nicht die KI' : 'Netto-KH-Referenzwert je 100 g/ml' },
+      fat: { type: 'number', description: strictAmounts ? 'Immer 0 – Makros berechnet die App, nicht die KI' : 'Fett-Referenzwert je 100 g/ml' },
+      protein: { type: 'number', description: strictAmounts ? 'Immer 0 – Makros berechnet die App, nicht die KI' : 'Protein-Referenzwert je 100 g/ml' },
+      fiber: { type: 'number', description: strictAmounts ? 'Immer 0 – Makros berechnet die App, nicht die KI' : 'Ballaststoff-Referenzwert je 100 g/ml' },
     },
   };
 }
 
-function baseRecipeProperties() {
+function baseRecipeProperties(opts) {
+  const structured = !!(opts && opts.structured);
   return {
-    title: { type: 'string' },
-    servings: { type: 'number' },
-    prep_time: { type: 'string' },
-    nutrition_note: { type: 'string' },
-    shopping_list: { type: 'array', items: { type: 'string' } },
+    title: { type: 'string', description: structured ? 'Titel aus Input oder knapper Name' : undefined },
+    servings: {
+      type: 'number',
+      description: structured
+        ? 'Personen/Portionen aus dem Text, sonst 0 (= nicht angegeben, leer lassen)'
+        : undefined,
+    },
+    prep_time: { type: 'string', description: structured ? 'Immer leerer String ""' : undefined },
+    nutrition_note: { type: 'string', description: structured ? 'Immer leerer String ""' : undefined },
+    shopping_list: { type: 'array', items: { type: 'string' }, description: structured ? 'Immer [] – App baut die Liste' : undefined },
     steps: { type: 'array', items: { type: 'string' } },
   };
 }
@@ -150,13 +157,13 @@ function buildEnrichmentSchema(lines) {
     required.push(k);
     props[k] = ingredientObjectSchema('Zutat fuer Eingabe: "' + line + '"', { strictAmounts: true });
   });
-  const properties = baseRecipeProperties();
+  const properties = baseRecipeProperties({ structured: true });
   properties.ingredients = {
     type: 'object',
     additionalProperties: false,
     required,
     properties: props,
-    description: 'Genau ' + lines.length + ' Zutaten. Jeder Key ist PFLICHT.',
+    description: 'Genau ' + lines.length + ' Zutaten. Jeder Key ist PFLICHT. Makros immer 0.',
   };
   return {
     name: 'nutri_recipe_enrichment',
@@ -172,7 +179,7 @@ function buildEnrichmentSchema(lines) {
 
 /** Generativ (Shopping / freie Idee): ingredients = Array. */
 function buildGenerativeSchema() {
-  const properties = baseRecipeProperties();
+  const properties = baseRecipeProperties({ structured: false });
   properties.ingredients = { type: 'array', items: ingredientObjectSchema(undefined, { strictAmounts: false }) };
   return {
     name: 'nutri_recipe_generative',
@@ -269,6 +276,7 @@ function normalizeIng(item, fallbackName, opts) {
   // STRUCTURED: amount 0 = "nicht angegeben" (KI soll fehlende Mengen nicht erfinden).
   // GENERATIV: fehlende/ungueltige Menge weiterhin auf 1 setzen, damit Rezeptideen nutzbar bleiben.
   const preserveMissing = !!(opts && opts.preserveMissingAmount);
+  const zeroMacros = !!(opts && opts.zeroMacros);
   const normalizedAmount = amount > 0
     ? Math.round(amount * 10) / 10
     : (preserveMissing ? 0 : 1);
@@ -277,12 +285,14 @@ function normalizeIng(item, fallbackName, opts) {
     amount: normalizedAmount,
     unit: src.unit === 'ml' ? 'ml' : 'g',
     status: src.status === 'vorhanden' ? 'vorhanden' : 'benoetigt',
-    macrosPer100g: {
-      netCarbs: Math.max(0, num(m.netCarbs, 0)),
-      fat: Math.max(0, num(m.fat, 0)),
-      protein: Math.max(0, num(m.protein, 0)),
-      fiber: Math.max(0, num(m.fiber, 0)),
-    },
+    macrosPer100g: zeroMacros
+      ? { netCarbs: 0, fat: 0, protein: 0, fiber: 0 }
+      : {
+          netCarbs: Math.max(0, num(m.netCarbs, 0)),
+          fat: Math.max(0, num(m.fat, 0)),
+          protein: Math.max(0, num(m.protein, 0)),
+          fiber: Math.max(0, num(m.fiber, 0)),
+        },
   };
 }
 
@@ -300,12 +310,13 @@ function stripQty(line) {
 
 function toClientRecipe(parsed, p) {
   if (!parsed || typeof parsed !== 'object') return null;
+  const structured = !!(p && p.structured);
   let ingredients;
-  if (p.structured) {
+  if (structured) {
     const obj = parsed.ingredients && typeof parsed.ingredients === 'object' && !Array.isArray(parsed.ingredients)
       ? parsed.ingredients : {};
     ingredients = p.pantry_ingredients.map((line, i) =>
-      normalizeIng(obj[ingKey(i)], stripQty(line), { preserveMissingAmount: true }));
+      normalizeIng(obj[ingKey(i)], stripQty(line), { preserveMissingAmount: true, zeroMacros: true }));
   } else {
     ingredients = (Array.isArray(parsed.ingredients) ? parsed.ingredients : [])
       .map((it) => normalizeIng(it, undefined, { preserveMissingAmount: false }))
@@ -313,17 +324,20 @@ function toClientRecipe(parsed, p) {
   }
   if (!ingredients.length) return null;
 
-  let shopping = Array.isArray(parsed.shopping_list) ? parsed.shopping_list.map((s) => String(s || '')).filter(Boolean) : [];
-  if (shopping.length < ingredients.length) {
-    shopping = ingredients.map(formatClientAmountLine);
+  // STRUCTURED: shopping_list immer aus Zutaten; prep_time/nutrition_note leer.
+  let shopping = ingredients.map(formatClientAmountLine);
+  if (!structured) {
+    shopping = Array.isArray(parsed.shopping_list) ? parsed.shopping_list.map((s) => String(s || '')).filter(Boolean) : [];
+    if (shopping.length < ingredients.length) shopping = ingredients.map(formatClientAmountLine);
   }
   const steps = (Array.isArray(parsed.steps) ? parsed.steps : []).map((s) => String(s || '').trim()).filter(Boolean).slice(0, MAX_STEPS);
   const servings = num(parsed.servings, 0);
   return {
     title: (typeof parsed.title === 'string' && parsed.title.trim()) ? parsed.title.trim().slice(0, 200) : 'Rezept',
-    servings: servings > 0 ? servings : 2,
-    prep_time: typeof parsed.prep_time === 'string' ? parsed.prep_time.slice(0, 60) : '',
-    nutrition_note: typeof parsed.nutrition_note === 'string' ? parsed.nutrition_note.slice(0, 600) : '',
+    // STRUCTURED: 0 = Portionen nicht angegeben (App laesst leer). GENERATIV: Fallback 2.
+    servings: servings > 0 ? servings : (structured ? 0 : 2),
+    prep_time: structured ? '' : (typeof parsed.prep_time === 'string' ? parsed.prep_time.slice(0, 60) : ''),
+    nutrition_note: structured ? '' : (typeof parsed.nutrition_note === 'string' ? parsed.nutrition_note.slice(0, 600) : ''),
     ingredients,
     shopping_list: shopping.slice(0, MAX_INGREDIENTS),
     steps,
@@ -388,6 +402,5 @@ module.exports = {
   strictPrompt.registerStrictModule('core', {
     system: msgs[0] && msgs[0].content,
     user: msgs[1] && msgs[1].content,
-    schema: JSON.stringify(buildEnrichmentSchema(probeLines)),
   });
 })();

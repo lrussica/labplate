@@ -1,14 +1,16 @@
 /**
- * LabPlate – Zentraler Strict-System-Prompt (strict_v2_mengen_qb0_bls)
+ * LabPlate – Zentraler Strict-System-Prompt (Eigenrezept-Passthrough)
  * ==================================================================
- * EINZIGE Quelle fuer STRUCTURED/Eigenrezept-Prompt-Regeln.
- * Alle Rezept-Module (core, coach-recipe, nutri-coach, recipe-suggestions)
- * muessen loadStrictPrompt() / verifyStrictPrompt() nutzen.
+ * Version: strict_v3_passthrough_no_macros
+ *
+ * KI liefert NUR: title, servings (0 wenn nicht im Text), ingredients, steps.
+ * KEINE Makros, KEINE nutrition_note, KEINE erfundenen Mengen/Schritte.
+ * Makros berechnet die App lokal (lookupNutriMacrosPer100g) und skaliert bei Portionswechsel.
  */
 
 'use strict';
 
-const STRUCTURED_PROMPT_VERSION = 'strict_v2_mengen_qb0_bls';
+const STRUCTURED_PROMPT_VERSION = 'strict_v3_passthrough_no_macros';
 
 const STRUCTURED_UNIT_TABLE =
   'Feste Umrechnungstabelle (nur wenn der Nutzer EL/TL/Stueck OHNE g/ml angibt): ' +
@@ -17,15 +19,15 @@ const STRUCTURED_UNIT_TABLE =
 
 const STRICT_RULES_BLOCK = [
   'STRICT_PROMPT_VERSION=' + STRUCTURED_PROMPT_VERSION,
-  'VERBINDLICHE STRICT-REGELN (ueberall, keine Ausnahme):',
-  '- Keine Makro-Optimierung, keine Anpassung an Tagesziele/Leitlinien.',
-  '- Keine erfundenen Portionen (servings nur aus Input, sonst 2).',
-  '- Keinen Fantasie-Titel (title nur aus Input, sonst knapper Name OHNE neue Zutaten).',
-  '- Keine erfundenen Beschreibungen/Abschnitte; nutrition_note max. 1-2 sachliche Saetze ODER leer.',
-  '- Keine Interpretation, Optimierung oder Strukturänderung des Rezepts.',
-  '- q.b./nach Geschmack/Prise/etwas → amount = 0 (nie schaetzen).',
-  '- Keine erfundenen Mengen, keine Fantasie-Zutaten, keine zusaetzlichen Abschnitte.',
-  '- Bereits angegebene g/ml/kg/l-Mengen exakt unveraendert uebernehmen.',
+  'AUSGABE NUR: title, servings, ingredients, steps. Mehr nicht.',
+  'VERBINDLICHE STRICT-REGELN:',
+  '- Zutaten und Schritte 1:1 aus dem Input uebernehmen – nichts aendern, nichts erfinden, nichts weglassen.',
+  '- KEINE Makros berechnen: netCarbs/fat/protein/fiber IMMER 0 (die App berechnet spaeter).',
+  '- servings: nur wenn im Text klar angegeben (Personen/Portionen), sonst 0 (= leer / nicht angegeben). Nie erfinden.',
+  '- title: nur wenn im Text vorhanden, sonst knapper Name OHNE Fantasie-Zutaten.',
+  '- prep_time: immer "". nutrition_note: immer "". shopping_list: [] (App baut sie selbst).',
+  '- Keine Interpretation, Optimierung, Strukturänderung, keine zusaetzlichen Abschnitte.',
+  '- q.b./nach Geschmack/Prise/etwas → amount = 0.',
 ].join('\n');
 
 const _moduleStatus = Object.create(null);
@@ -42,84 +44,73 @@ function ingKey(i) {
 }
 
 /**
- * Baut den Strict-System-Prompt fuer STRUCTURED/Eigenrezept.
- * @param {{ lang?: string, ingredientCount: number }} opts
+ * Strict-System-Prompt fuer STRUCTURED/Eigenrezept (Passthrough, keine Makros).
  */
 function loadStrictPrompt(opts) {
   const o = opts || {};
   const n = Math.max(1, Number(o.ingredientCount) || 1);
   const last = String(n).padStart(2, '0');
   const system = [
-    'MODUS: EIGENREZEPT / STRUCTURED – nicht kreativ.',
+    'MODUS: EIGENREZEPT / STRUCTURED – reiner Passthrough, nicht kreativ.',
     STRICT_RULES_BLOCK,
-    'Du bist mein Rezept-Coach, der Rezepte klar strukturiert, ohne ihren Inhalt zu veraendern.',
-    'FIXIERE DIESE DATEN: Zutaten, Mengen und Zubereitungsschritte aus dem Input sind verbindlich.',
-    'AUFGABE: Strukturiere das Eigenrezept und berechne fuer JEDE uebergebene Zutat (Keys ing_01 … ing_' +
-      last +
-      ') realistische Naehrwerte je 100 g/ml (netCarbs, fat, protein, fiber) NUR fuer die genannten Zutaten – BLS/USDA-Referenzwerte, NICHT aus der Rezeptmenge hochrechnen, KEIN Fantasiewert.',
-    'VERBOTEN: Zutaten hinzufuegen oder entfernen; bereits angegebene Mengen aendern; Schritte umstellen/kuerzen/zusammenfassen/umschreiben/optimieren; Ersatzprodukte erfinden; Zutaten als optional/wichtig einstufen; freie Mengenschaetzung; Rezept gesünder oder kalorienreduzierter machen; Mengen an Tagesziele, Leitlinien oder Makros anpassen; Makros erfinden; Portionen erfinden; Titel erfinden wenn Input keinen hat (dann knapper Name ohne Fantasie-Zutaten); Beschreibungen ausschmuecken; Interpretationen; Strukturänderungen; zusaetzliche Abschnitte.',
-    'ERLAUBT: Namen stilistisch vereinheitlichen (kurz, ohne Mengenangabe im name-Feld); Schritte NUR orthografisch/grammatisch korrigieren – KEIN inhaltliches Umschreiben; Naehrwert-Anreicherung der tatsaechlich genannten Zutaten als BLS/USDA-Referenz je 100 g/ml.',
+    'Du strukturierst NUR das Eigenrezept. Inhalt unveraenderlich.',
+    'AUFGABE: Fuer JEDE Zutat (Keys ing_01 … ing_' + last + ') name/amount/unit/status setzen. netCarbs=fat=protein=fiber = 0.',
+    'VERBOTEN: Zutaten hinzufuegen/entfernen; Mengen aendern; Schritte umschreiben/kuerzen/erfinden; Makros berechnen oder schaetzen; Portionen erfinden; Beschreibungen; Optimierungen.',
+    'ERLAUBT: Namen kurz ohne Mengenangabe im name-Feld; Orthografie in Schritten ohne Sinnänderung.',
     STRUCTURED_UNIT_TABLE,
-    'Vage Mengenangaben (q.b., qb, nach Geschmack, nach Belieben, etwas, ein wenig, Prise, nach Bedarf, ad libitum, beliebig) haben KEINEN g/ml-Wert und greifen KEINE Tabellen-Regel → amount = 0. Kein Schatzen, kein Erfinden einer Grammzahl.',
-    'Fehlt eine Menge und greift KEINE Tabellen-Regel eindeutig: amount = 0 (= nicht angegeben). Schema verlangt eine Zahl – kein null.',
+    'Vage Mengenangaben (q.b., qb, nach Geschmack, nach Belieben, etwas, ein wenig, Prise, nach Bedarf) → amount = 0.',
+    'Fehlt eine Menge und greift KEINE Tabellen-Regel: amount = 0.',
     'Fluessigkeiten (Oel, Essig, Sosse, Bruehe, Dressing, Milch) in ml, sonst g. status: "benoetigt".',
-    'steps: Wenn der Input/die Client-Instruction Schritte enthaelt: 1:1 in derselben Reihenfolge uebernehmen. Wenn keine Schritte vorliegen: steps = [] (nichts erfinden).',
-    'shopping_list: eine Zeile pro Zutat "Name – Menge Einheit" (bei amount 0: "Name – nicht angegeben").',
-    'title: aus Input falls vorhanden, sonst knapper passender Name ohne Fantasie-Zutaten. servings: aus Input, sonst 2. prep_time: aus Input oder "". nutrition_note: 1-2 sachliche Saetze zu den genannten Zutaten ODER "", keine medizinischen Aussagen, keine neuen Zutaten.',
+    'steps: 1:1 aus Input in gleicher Reihenfolge. Keine Schritte im Input → steps = [].',
+    'servings: Zahl aus Input (Personen/Portionen) oder 0 wenn nicht angegeben.',
+    'title: aus Input oder knapper Name. prep_time "". nutrition_note "". shopping_list [].',
     'Antworte auf ' + langName(o.lang) + '. Ausschliesslich JSON gemaess Schema – kein Begleittext.',
   ].join('\n');
   return system;
 }
 
-/**
- * User-Prompt fuer STRUCTURED (Zutaten-Mapping).
- */
 function buildStrictUserPrompt(p) {
   const lines = (p && Array.isArray(p.pantry_ingredients)) ? p.pantry_ingredients : [];
   const mapping = lines.map((line, i) => ingKey(i) + ' = "' + line + '"').join('\n');
   return [
-    'MENGEN-REGEL (oberste Prioritaet): Jede Menge aus den Eingabezeilen exakt unveraendert uebernehmen – kein Wert darf abweichen, angepasst oder geschaetzt werden.',
-    'ANZAHL ZUTATEN: ' + lines.length + ' (genau so viele Keys ing_XX sind zu fuellen – keine mehr, keine weniger)',
+    'MENGEN-REGEL (oberste Prioritaet): Jede Menge aus den Eingabezeilen exakt unveraendert uebernehmen.',
+    'MAKRO-REGEL: netCarbs/fat/protein/fiber fuer jede Zutat = 0 (App berechnet spaeter).',
+    'PORTIONS-REGEL: servings nur wenn im Input klar, sonst 0.',
+    'ANZAHL ZUTATEN: ' + lines.length + ' (genau so viele Keys ing_XX)',
     'ZUTATEN-MAPPING (Key = Eingabezeile des Nutzers):',
     mapping,
     p && p.ai_instruction
-      ? 'ZUSATZ-INSTRUCTION DES CLIENTS (Schritte/Portionen 1:1 beachten, Inhalt nicht aendern):\n' + p.ai_instruction
+      ? 'ZUSATZ-INSTRUCTION DES CLIENTS (Schritte/Portionen 1:1, Inhalt nicht aendern):\n' + p.ai_instruction
       : '',
     p && Array.isArray(p.allergens) && p.allergens.length
-      ? 'ALLERGENE (nur Warnhinweis in nutrition_note, Zutaten NICHT entfernen oder ersetzen): ' + p.allergens.join(', ')
+      ? 'ALLERGENE (nur merken, Zutaten NICHT entfernen/ersetzen): ' + p.allergens.join(', ')
       : '',
-    'Fuelle jetzt fuer jeden Key ing_01 … ing_' + String(lines.length).padStart(2, '0') + ' ein Objekt aus.',
+    'Fuelle jetzt fuer jeden Key ing_01 … ing_' + String(lines.length).padStart(2, '0') + ' ein Objekt aus (Makros = 0).',
   ].filter(Boolean).join('\n\n');
 }
 
-/** Kurzer Strict-Block fuer generative Calls (Einheiten/Mengen-Disziplin, ohne Eigenrezept-Fix). */
 function loadStrictConstraintsForGenerative() {
   return [
     'STRICT_CONSTRAINTS (' + STRUCTURED_PROMPT_VERSION + '):',
-    'unit NUR g|ml; q.b./vage Mengen nicht erfinden wenn STRUCTURED – hier generativ Mengen > 0 erlaubt.',
-    'Keine medizinischen Heilversprechen. Keine Allergene vorschlagen die gemieden werden sollen.',
+    'unit NUR g|ml. Keine medizinischen Heilversprechen.',
   ].join(' ');
 }
 
-function verifyStrictPromptText(systemText, userText, schemaText) {
+function verifyStrictPromptText(systemText, userText) {
   const sys = String(systemText || '');
   const user = String(userText || '');
-  const schema = String(schemaText || '');
   const checks = {
-    version: sys.includes(STRUCTURED_PROMPT_VERSION) || sys.includes('MODUS: EIGENREZEPT / STRUCTURED'),
+    version: sys.includes(STRUCTURED_PROMPT_VERSION) || sys.includes('passthrough'),
     system_eigenrezept: /MODUS: EIGENREZEPT \/ STRUCTURED/.test(sys),
-    system_no_optimize: /gesünder oder kalorienreduzierter|Mengen an Tagesziele|STRICT-REGELN/.test(sys),
-    system_vague_qb: /Vage Mengenangaben/.test(sys) && /amount = 0/.test(sys),
+    system_no_macros: /Makros|netCarbs.*=.*0|IMMER 0/.test(sys),
+    system_servings_empty: /servings.*0|sonst 0/.test(sys),
+    system_passthrough: /1:1|Passthrough|unveränderlich|unveraenderlich/.test(sys),
     user_mengen_regel: /MENGEN-REGEL/.test(user),
-    schema_bls_ref: /BLS\/USDA/.test(schema) || /BLS\/USDA/.test(sys),
+    user_makro_regel: /MAKRO-REGEL/.test(user),
   };
   return { ok: Object.values(checks).every(Boolean), checks };
 }
 
-/**
- * Modul-Registrierung + Startup-Log.
- * @returns {{ version: string, ok: boolean, module: string }}
- */
 function registerStrictModule(moduleName, probe) {
   const name = String(moduleName || 'unknown');
   const p = probe || {};
@@ -129,8 +120,7 @@ function registerStrictModule(moduleName, probe) {
     ai_instruction: '',
     allergens: [],
   });
-  const schema = p.schema != null ? p.schema : 'BLS/USDA';
-  const verified = verifyStrictPromptText(system, user, schema);
+  const verified = verifyStrictPromptText(system, user);
   _moduleStatus[name] = {
     version: STRUCTURED_PROMPT_VERSION,
     ok: verified.ok,

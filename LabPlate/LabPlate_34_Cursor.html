@@ -22227,29 +22227,33 @@ initBarcodeEvents();
       var stepsList = parsedUserRecipe.steps.map(function (s, i) { return (i + 1) + '. ' + s; }).join(' ');
       var curLang = (typeof lang === 'function') ? lang() : 'de';
       var baseDe =
-        'MODUS EIGENREZEPT/STRUCTURED – Inhalt fix. Rezept-Coach: klar strukturieren, Inhalt nicht aendern. ' +
-        'MENGEN UNVERAENDERLICH: Jede Menge exakt aus dem Input uebernehmen – kein Wert anpassen, optimieren oder schaetzen. ' +
+        'MODUS EIGENREZEPT/STRUCTURED – reiner Passthrough. Nur title, servings, Zutaten, Schritte. ' +
+        'MENGEN UNVERAENDERLICH: Jede Menge exakt aus dem Input – nichts anpassen/optimieren/schaetzen. ' +
         'ALLE ' + ingCount + ' ZUTATEN PFLICHT: ' + numberedList +
-        ' — ingredients[] genau ' + ingCount + ' Objekte. Keine Zutat weglassen/hinzufuegen. ' +
-        'Bereits angegebene Mengen nie aendern. Vage Mengen (q.b., nach Geschmack, etwas, Prise) → amount=0. Fehlende Menge: nur feste Tabelle (1 EL=15, 1 TL=5, Zehe=5 g, Avocado=200 g, 1/2 Gurke=200 g, Ei=60 g) oder amount=0, keine freie Schaetzung. ' +
-        'unit nur g/ml, status benoetigt, macrosPer100g={netCarbs,fat,protein,fiber} = BLS/USDA-Referenzwerte je 100 g/ml (NICHT aus Rezeptmenge hochrechnen). ' +
+        ' — genau ' + ingCount + ' Zutaten. Keine weglassen/hinzufuegen. ' +
+        'Vage Mengen (q.b., nach Geschmack, etwas, Prise) → amount=0. Fehlende Menge: nur feste Tabelle (1 EL=15, 1 TL=5, Zehe=5 g, Avocado=200 g, 1/2 Gurke=200 g, Ei=60 g) oder amount=0. ' +
+        'unit nur g/ml, status benoetigt. MAKROS IMMER 0 (netCarbs/fat/protein/fiber=0) – App berechnet spaeter. ' +
         (stepsList
           ? 'SCHRITTE 1:1 in gleicher Reihenfolge in steps[] (' + parsedUserRecipe.steps.length + '): ' + stepsList
           : 'Keine Schritte im Input → steps=[].') +
-        (parsedUserRecipe.servings ? ' servings=' + parsedUserRecipe.servings + '.' : '') +
-        ' title, servings, prep_time, shopping_list, nutrition_note. Nur orthograf. Korrekturen erlaubt, kein Umschreiben.';
+        (parsedUserRecipe.servings
+          ? ' servings=' + parsedUserRecipe.servings + '.'
+          : ' servings=0 (nicht im Text, Portion leer lassen).') +
+        ' prep_time="", nutrition_note="", shopping_list=[]. Nur Orthografie, kein Umschreiben.';
       var baseEn =
-        'MODE OWN-RECIPE/STRUCTURED – content fixed. Recipe coach: structure clearly, do not change content. ' +
-        'AMOUNTS IMMUTABLE: Copy every amount exactly from input – no adjustment, optimization, or guessing. ' +
+        'MODE OWN-RECIPE/STRUCTURED – pure passthrough. Only title, servings, ingredients, steps. ' +
+        'AMOUNTS IMMUTABLE: Copy every amount exactly from input. ' +
         'ALL ' + ingCount + ' INGREDIENTS MANDATORY: ' + numberedList +
-        ' — ingredients[] exactly ' + ingCount + ' objects. Do not omit/add ingredients. ' +
-        'Never change stated amounts. Vague amounts (q.b., to taste, a little, pinch) → amount=0. Missing amount: fixed table only (1 tbsp=15, 1 tsp=5, garlic clove=5 g, avocado=200 g, 1/2 cucumber=200 g, egg=60 g) or amount=0, no free guessing. ' +
-        'unit only g/ml, status benoetigt, macrosPer100g={netCarbs,fat,protein,fiber} = BLS/USDA reference values per 100 g/ml (do NOT calculate from recipe amounts). ' +
+        ' — exactly ' + ingCount + ' ingredients. Do not omit/add. ' +
+        'Vague amounts (q.b., to taste, pinch) → amount=0. Missing: fixed table only (1 tbsp=15, 1 tsp=5, clove=5 g, avocado=200 g, 1/2 cucumber=200 g, egg=60 g) or amount=0. ' +
+        'unit only g/ml, status benoetigt. MACROS ALWAYS 0 – app calculates later. ' +
         (stepsList
-          ? 'Copy STEPS 1:1 in same order into steps[] (' + parsedUserRecipe.steps.length + '): ' + stepsList
+          ? 'Copy STEPS 1:1 into steps[] (' + parsedUserRecipe.steps.length + '): ' + stepsList
           : 'No steps in input → steps=[].') +
-        (parsedUserRecipe.servings ? ' servings=' + parsedUserRecipe.servings + '.' : '') +
-        ' title, servings, prep_time, shopping_list, nutrition_note. Orthographic corrections only, no rewriting.';
+        (parsedUserRecipe.servings
+          ? ' servings=' + parsedUserRecipe.servings + '.'
+          : ' servings=0 (not in text, leave portions empty).') +
+        ' prep_time="", nutrition_note="", shopping_list=[]. Orthography only, no rewriting.';
       return curLang === 'de' ? baseDe : baseEn;
     }
     // Schema: validateNutriRecipeSchema erlaubt bis 100 Zutaten, 50 Schritte, Strings bis 2000;
@@ -22795,6 +22799,12 @@ initBarcodeEvents();
               ai.amount = 0;
             }
             if (ai.status !== 'vorhanden' && ai.status !== 'benoetigt') ai.status = 'benoetigt';
+            // KI liefert Makros=0; App fuellt lokal nach.
+            var matchedMacros = lookupNutriMacrosPer100g(ai.name || u.name);
+            if (matchedMacros) ai.macrosPer100g = matchedMacros;
+            else if (!ai.macrosPer100g || typeof ai.macrosPer100g !== 'object') {
+              ai.macrosPer100g = { netCarbs: 0, fat: 0, protein: 0, fiber: 0 };
+            }
             return ai;
           }
           var macros = lookupNutriMacrosPer100g(u.name);
@@ -22809,7 +22819,8 @@ initBarcodeEvents();
         });
         var dropped = aiList.filter(function (_, i) { return !used[i]; }).map(function (a) { return a && a.name; });
         if (parsed.steps.length >= 2) out.steps = parsed.steps.slice(0, NUTRI_RECIPE_MAX_STEPS);
-        if (parsed.servings) out.servings = parsed.servings;
+        // Portionen nur wenn im Nutzertext; sonst 0 = leer (nicht erfinden).
+        out.servings = parsed.servings ? parsed.servings : 0;
         out.shopping_list = out.ingredients.map(function (ing) {
           var q = formatIngredientQty(ing.amount, ing.unit);
           return q.unit ? (String(ing.name) + ' – ' + q.amount + ' ' + q.unit) : (String(ing.name) + ' – ' + q.amount);
@@ -22824,6 +22835,22 @@ initBarcodeEvents();
         console.error('[NUTRI_RECIPE_DEBUG] ENFORCE-Fehler (KI-Antwort unveraendert):', e);
         return data;
       }
+    }
+
+    // Eigenrezept: KI liefert Makros=0 – App fuellt BLS/Lokal-Tabelle nach (Portionswechsel skaliert spaeter).
+    function enrichNutriRecipeMacrosLocally(data) {
+      if (!data || !Array.isArray(data.ingredients)) return data;
+      data.ingredients.forEach(function (ing) {
+        if (!ing || typeof ing !== 'object') return;
+        var m = ing.macrosPer100g;
+        var empty = !m || typeof m !== 'object' ||
+          (!(Number(m.netCarbs) > 0) && !(Number(m.fat) > 0) && !(Number(m.protein) > 0) && !(Number(m.fiber) > 0));
+        if (!empty) return;
+        var looked = lookupNutriMacrosPer100g(ing.name);
+        if (looked) ing.macrosPer100g = looked;
+        else if (!m || typeof m !== 'object') ing.macrosPer100g = { netCarbs: 0, fat: 0, protein: 0, fiber: 0 };
+      });
+      return data;
     }
 
     // ---- Datenminimierter Payload: NUR zusammengefasste Tageswerte - keine Namen,
@@ -23148,7 +23175,10 @@ initBarcodeEvents();
       if (typeof out.title !== 'string' && out.title != null) out.title = String(out.title);
       if (typeof out.servings !== 'number' || !isFinite(out.servings)) {
         var sv = parseFloat(out.servings);
-        out.servings = isFinite(sv) && sv > 0 ? sv : 2;
+        // 0 = Portionen nicht angegeben (Eigenrezept); fehlend/ungueltig → Fallback 2 (generativ).
+        out.servings = isFinite(sv) && sv >= 0 ? sv : 2;
+      } else if (out.servings < 0) {
+        out.servings = 0;
       }
       // Einkaufsliste 1:1 aus Zutaten auffuellen, falls KI sie kuerzt/weglaesst.
       if (!Array.isArray(out.shopping_list) || out.shopping_list.length < out.ingredients.length) {
@@ -23171,7 +23201,8 @@ initBarcodeEvents();
         return s.length <= NUTRI_RECIPE_MAX_STRING_LEN;
       }
       if (!okStr(data.title, false)) return false;
-      if (typeof data.servings !== 'number' || !isFinite(data.servings)) return false;
+      // servings >= 0: 0 = nicht angegeben (Eigenrezept laesst Portion leer)
+      if (typeof data.servings !== 'number' || !isFinite(data.servings) || data.servings < 0) return false;
       if (!okStr(data.prep_time, true)) return false;
       if (!okStr(data.nutrition_note, true)) return false;
       if (!Array.isArray(data.ingredients) || !data.ingredients.length) return false;
@@ -23522,9 +23553,17 @@ initBarcodeEvents();
         // (nie aus einer bereits gerundeten Zwischenstufe) - so entstehen beim wiederholten Hoch-/
         // Runterschalten keine sich aufschaukelnden Rundungsfehler (siehe scaleRecipeToServings()).
         var rBase = nutriRecipeState.result;
-        var recipeServingsCount = nutriRecipeState.servings || 2;
+        // 0 / fehlend = Portionen leer (Eigenrezept ohne Angabe); Mengen bleiben 1:1 bis Nutzer wählt.
+        var recipeServingsCount = Number(nutriRecipeState.servings) || 0;
         var recipeServingsMin = 1, recipeServingsMax = 8;
-        var r = scaleRecipeToServings(rBase, recipeServingsCount);
+        var r = recipeServingsCount > 0
+          ? scaleRecipeToServings(rBase, recipeServingsCount)
+          : (function () {
+              var copy = JSON.parse(JSON.stringify(rBase));
+              // calcRecipeMacrosPerServing: servings 0 → wie 1 (Batch wie geschrieben)
+              if (!(copy.servings > 0)) copy.servings = 1;
+              return copy;
+            })();
         // rMacros bleibt rechnerisch Portions-invariant (Makros PRO PORTION aendern sich bei
         // proportionaler Skalierung nicht) - wird hier trotzdem bei jedem Rendern live aus den
         // aktuell skalierten Mengen neu berechnet, wie gefordert ("sofort ohne Reload anpassen").
@@ -23534,12 +23573,15 @@ initBarcodeEvents();
         console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Ingredient-Namen:', (r.ingredients || []).map(function (ing) { return ing && ing.name; }));
         var rKcal = Math.round((rMacros.netCarbs || 0) * 4 + (rMacros.protein || 0) * 4 + (rMacros.fat || 0) * 9);
         var shoppingLines = buildNutriRecipeShoppingLines(r);
+        var servingsValueLabel = recipeServingsCount > 0
+          ? (recipeServingsCount + ' ' + escNutri(recipeServingsCount === 1 ? pick(LBL_RECIPE_SERVING_SINGULAR) : pick(LBL_RECIPE_SERVINGS_SUFFIX)))
+          : ('— ' + escNutri(pick(LBL_RECIPE_SERVINGS_SUFFIX)));
         var servingsStepperHtml =
           '<div class="nutri-recipe-servings-stepper" role="group" aria-label="' + escNutri(pick(LBL_RECIPE_SERVINGS_SUFFIX)) + '">' +
             '<button type="button" class="nrs-btn nrs-minus" id="nutri-recipe-servings-minus" aria-label="' + escNutri(pick(LBL_RECIPE_SERVINGS_MINUS_ARIA)) + '"' + (recipeServingsCount <= recipeServingsMin ? ' disabled' : '') + '>' +
               '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>' +
             '</button>' +
-            '<span class="nrs-value">' + recipeServingsCount + ' ' + escNutri(recipeServingsCount === 1 ? pick(LBL_RECIPE_SERVING_SINGULAR) : pick(LBL_RECIPE_SERVINGS_SUFFIX)) + '</span>' +
+            '<span class="nrs-value">' + servingsValueLabel + '</span>' +
             '<button type="button" class="nrs-btn nrs-plus" id="nutri-recipe-servings-plus" aria-label="' + escNutri(pick(LBL_RECIPE_SERVINGS_PLUS_ARIA)) + '"' + (recipeServingsCount >= recipeServingsMax ? ' disabled' : '') + '>' +
               '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>' +
             '</button>' +
@@ -23626,15 +23668,19 @@ initBarcodeEvents();
         // scaleRecipeToServings(rBase, ...), rBase selbst bleibt dabei immer unangetastet.
         var servingsMinusBtn = document.getElementById('nutri-recipe-servings-minus');
         if (servingsMinusBtn) servingsMinusBtn.onclick = function () {
-          if (nutriRecipeState.servings > recipeServingsMin) {
-            nutriRecipeState.servings -= 1;
+          var cur = Number(nutriRecipeState.servings) || 0;
+          if (cur > recipeServingsMin) {
+            nutriRecipeState.servings = cur - 1;
             renderNutriRecipeBody();
           }
         };
         var servingsPlusBtn = document.getElementById('nutri-recipe-servings-plus');
         if (servingsPlusBtn) servingsPlusBtn.onclick = function () {
-          if (nutriRecipeState.servings < recipeServingsMax) {
-            nutriRecipeState.servings += 1;
+          var cur = Number(nutriRecipeState.servings) || 0;
+          if (cur < recipeServingsMax) {
+            // Leer (0) → erste Wahl startet bei 1; Mengen bleiben unveraendert (Basis = 1).
+            nutriRecipeState.servings = cur + 1;
+            if (!(rBase.servings > 0)) rBase.servings = 1;
             renderNutriRecipeBody();
           }
         };
@@ -23953,6 +23999,7 @@ initBarcodeEvents();
           // unabhaengig davon, was die Server-KI weggelassen hat. Laeuft VOR dem Allergie-Gate.
           if (looksLikeNutriStructuredRecipeInput(sanitized)) {
             result.data = enforceNutriUserRecipe(result.data, sanitized);
+            result.data = enrichNutriRecipeMacrosLocally(result.data);
           }
         }
         var schemaOk = !!(result && result.ok && validateNutriRecipeSchema(result.data));
@@ -24071,7 +24118,8 @@ initBarcodeEvents();
       nutriRecipeState.chatLastQuery = msg.query || nutriRecipeState.chatLastQuery || '';
       nutriRecipeState.result = msg.recipe;
       nutriRecipeState.suggestions = msg.suggestions || [];
-      nutriRecipeState.servings = (msg.recipe && msg.recipe.servings) ? msg.recipe.servings : 2;
+      // Portionen aus Rezept; 0/fehlend = leer (nicht auf 2 erzwingen).
+      nutriRecipeState.servings = (msg.recipe && msg.recipe.servings > 0) ? msg.recipe.servings : 0;
       nutriRecipeState.selectedCategory = 'none';
       nutriRecipeState.categoryDetailsOpen = false;
       nutriRecipeState.error = false;
@@ -24153,6 +24201,7 @@ initBarcodeEvents();
       // FIX v3: Eigenrezept (Kachel "Freie Rezeptsuche") -> Nutzer-Zutaten/-Schritte 1:1 erzwingen.
       if (data && mode === 'freesearch' && freesearchQuery && looksLikeNutriStructuredRecipeInput(freesearchQuery)) {
         data = enforceNutriUserRecipe(data, freesearchQuery);
+        data = enrichNutriRecipeMacrosLocally(data);
       }
       if (validateNutriRecipeSchema(data)) {
         var reqRecipeAllergen = (typeof findNutriAllergenConflictInRecipe === 'function')
@@ -24167,33 +24216,28 @@ initBarcodeEvents();
           renderNutriRecipeBody();
           return;
         }
-        // NEU: die vom KI-Rezept gelieferten Mengen sind Durchschnittswerte, noch NICHT an
-        // die individuellen Makro-Ziele des Nutzers angepasst - hier laeuft exakt dieselbe
-        // lokale Skalierungslogik wie bei "Rezeptideen" (calcRecipeMacrosPerServing/
-        // computeLocalRecipeScaleFactor/scaleLocalRecipe/suggestLocalRecipeAlternatives,
-        // siehe weiter unten im Abschnitt "Rezeptideen") - komplett auf dem Geraet, ohne
-        // weitere Netzwerk-Anfrage. Das KI-Rezept selbst (title/steps/shopping_list/...)
-        // bleibt unveraendert, nur die Zutatenmengen werden ersetzt.
+        var isStructuredReq = mode === 'freesearch' && freesearchQuery && looksLikeNutriStructuredRecipeInput(freesearchQuery);
         var nutriTargets = getLocalRecipeTargets();
         var nutriMacrosPerServing = calcRecipeMacrosPerServing(data);
-        var nutriScale = computeLocalRecipeScaleFactor(nutriMacrosPerServing, nutriTargets);
-        var nutriScaledData = scaleLocalRecipe(data, nutriScale);
-        var nutriScaledMacros = calcRecipeMacrosPerServing(nutriScaledData);
-        // NEU: eigene, stabile ID fuer "Fuer spaeter speichern" (siehe saveRecipe()/
-        // isRecipeSaved() weiter unten) - KI-Rezepte kommen (anders als Rezeptideen aus
-        // LOCAL_RECIPE_DB) ohne feste ID vom Backend, brauchen also eine lokal erzeugte.
-        // "ai-"-Praefix verhindert Kollisionen mit den numerischen LOCAL_RECIPE_DB-IDs im
-        // gemeinsamen labplate_saved_recipes_v1-Speicher. Bleibt stabil ueber erneutes Rendern
-        // desselben Ergebnisses (Sprachwechsel/Schriftgroesse) - erst "Nochmal"/eine neue
-        // Anfrage erzeugt ein neues Ergebnisobjekt und damit eine neue ID.
+        var nutriScaledData;
+        var nutriScaledMacros;
+        // Eigenrezept: Mengen 1:1 behalten (keine Tagesziel-Skalierung). Chat-Ideen: wie bisher.
+        if (isStructuredReq) {
+          nutriScaledData = JSON.parse(JSON.stringify(data));
+          nutriScaledMacros = nutriMacrosPerServing;
+        } else {
+          var nutriScale = computeLocalRecipeScaleFactor(nutriMacrosPerServing, nutriTargets);
+          nutriScaledData = scaleLocalRecipe(data, nutriScale);
+          nutriScaledMacros = calcRecipeMacrosPerServing(nutriScaledData);
+        }
         nutriScaledData.id = 'ai-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
         nutriRecipeState.result = nutriScaledData;
-        nutriRecipeState.suggestions = suggestLocalRecipeAlternatives(nutriScaledMacros, nutriTargets);
+        nutriRecipeState.suggestions = isStructuredReq ? [] : suggestLocalRecipeAlternatives(nutriScaledMacros, nutriTargets);
         nutriRecipeState.error = false;
-        // NEU: jedes neu geladene Rezept startet die Portions-Anzeige wieder beim Standardwert
-        // 2 (siehe Portions-Stepper in renderNutriRecipeBody) - unabhaengig davon, wie viele
-        // Portionen das KI-/Basis-Rezept selbst urspruenglich angibt.
-        nutriRecipeState.servings = 2;
+        // Eigenrezept: Portionen aus Rezept oder leer (0). Sonst Standard 2.
+        nutriRecipeState.servings = isStructuredReq
+          ? ((nutriScaledData.servings > 0) ? nutriScaledData.servings : 0)
+          : 2;
         // NEU (Rezept-Kategorien): jedes neu geladene Rezept startet mit "Ohne Kategorie"
         // vorausgewaehlt ("Standardmaessig ist 'Ohne Kategorie' ausgewaehlt, falls der Nutzer
         // nichts auswaehlt") und dem Aufklappmenue eingeklappt.
