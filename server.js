@@ -67,6 +67,33 @@ if (!GROQ_API_KEY) {
 }
 console.log('[Konfiguration] GROQ_MODEL=' + GROQ_MODEL + (GROQ_MODEL !== core.DEFAULT_MODEL ? '  (Hinweis: Standard waere ' + core.DEFAULT_MODEL + ')' : ''));
 
+// Structured-Prompt beim Start laden und verifizieren (nutri-recipe-core -> labplate-backend).
+const STRUCTURED_PROMPT_VERSION = 'strict_v2_mengen_qb0_bls';
+const _promptProbePayload = {
+  lang: 'de',
+  pantry_ingredients: ['100 g Haferflocken', 'Salz q.b.', '1 EL Olivenoel'],
+  ai_instruction: '',
+  allergens: [],
+};
+const _promptProbe = core.buildEnrichmentMessages(_promptProbePayload);
+const _structuredSystem = (_promptProbe[0] && _promptProbe[0].content) || '';
+const _structuredUser = (_promptProbe[1] && _promptProbe[1].content) || '';
+const _structuredSchema = JSON.stringify(core.buildEnrichmentSchema(_promptProbePayload.pantry_ingredients));
+const STRUCTURED_PROMPT_CHECKS = {
+  system_eigenrezept: /MODUS: EIGENREZEPT \/ STRUCTURED/.test(_structuredSystem),
+  system_no_optimize: /gesünder oder kalorienreduzierter|Mengen an Tagesziele/.test(_structuredSystem),
+  system_vague_qb: /Vage Mengenangaben/.test(_structuredSystem) && /amount = 0/.test(_structuredSystem),
+  user_mengen_regel: /MENGEN-REGEL/.test(_structuredUser),
+  schema_bls_ref: /BLS\/USDA/.test(_structuredSchema),
+};
+const STRUCTURED_PROMPT_OK = Object.values(STRUCTURED_PROMPT_CHECKS).every(Boolean);
+if (!STRUCTURED_PROMPT_OK) {
+  console.error('[Konfiguration] FEHLER: Structured-Prompt unvollstaendig:', STRUCTURED_PROMPT_CHECKS);
+} else {
+  console.log('[Konfiguration] structured_prompt=' + STRUCTURED_PROMPT_VERSION +
+    ' markers_ok=true system_chars=' + _structuredSystem.length);
+}
+
 // ---------------------------------------------------------------------
 // App-Grundgeruest
 // ---------------------------------------------------------------------
@@ -118,6 +145,8 @@ app.get('/health', (req, res) => {
     provider: 'Groq',
     strictSchema: true,
     maxIngredients: core.MAX_INGREDIENTS,
+    structuredPromptVersion: STRUCTURED_PROMPT_VERSION,
+    structuredPromptOk: STRUCTURED_PROMPT_OK,
   });
 });
 
