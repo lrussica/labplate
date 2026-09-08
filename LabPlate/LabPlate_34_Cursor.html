@@ -23175,10 +23175,10 @@ initBarcodeEvents();
       if (typeof out.title !== 'string' && out.title != null) out.title = String(out.title);
       if (typeof out.servings !== 'number' || !isFinite(out.servings)) {
         var sv = parseFloat(out.servings);
-        // 0 = Portionen nicht angegeben (Eigenrezept); fehlend/ungueltig → Fallback 2 (generativ).
-        out.servings = isFinite(sv) && sv >= 0 ? sv : 2;
-      } else if (out.servings < 0) {
-        out.servings = 0;
+        // Fehlend/ungueltig → 1; 0 vom Server ebenfalls als 1 (Basis fuer Skalierung).
+        out.servings = isFinite(sv) && sv > 0 ? sv : 1;
+      } else if (out.servings <= 0) {
+        out.servings = 1;
       }
       // Einkaufsliste 1:1 aus Zutaten auffuellen, falls KI sie kuerzt/weglaesst.
       if (!Array.isArray(out.shopping_list) || out.shopping_list.length < out.ingredients.length) {
