@@ -22204,10 +22204,10 @@ initBarcodeEvents();
     // formuliert (statt als hoefliche Bitte) - zusaetzliche Absicherung neben dem eigentlichen
     // Traeger des Suchbegriffs (pantry_ingredients, siehe buildNutriRecipePayload).
     var LBL_RECIPE_FREESEARCH_AI_INSTRUCTION = {
-      de: 'MODUS GENERATIV / FREISUCHE (nicht Eigenrezept): VERBINDLICHE VORGABE, KEIN VORSCHLAG: Erstelle ausschließlich ein Rezept für genau folgendes Gericht: "{q}". Weiche unter keinen Umständen auf ein anderes Gericht aus. Du DARFST Mengen und Zutatendetails an die unten genannten Tagesziele anpassen – das ist hier erlaubt und gewollt.',
-      en: 'MODE GENERATIVE / FREE SEARCH (not own-recipe): BINDING REQUIREMENT, NOT A SUGGESTION: Create a recipe exclusively for the following dish: "{q}". Under no circumstances substitute a different dish. You MAY adjust amounts and ingredient details to match the daily targets listed below – that is allowed and intended in this mode.',
-      es: 'MODO GENERATIVO / BÚSQUEDA LIBRE (no receta propia): REQUISITO VINCULANTE: Crea una receta exclusivamente para el plato "{q}". No sustituyas por otro plato. SÍ puedes ajustar cantidades y detalles de ingredientes a los objetivos diarios – está permitido en este modo.',
-      it: 'MODALITÀ GENERATIVA / RICERCA LIBERA (non ricetta propria): REQUISITO VINCOLANTE: Crea una ricetta esclusivamente per il piatto "{q}". Non sostituirlo. PUOI adattare quantità e dettagli degli ingredienti agli obiettivi giornalieri – è consentito in questa modalità.',
+      de: 'MODUS GENERATIV / FREISUCHE (nicht Eigenrezept): VERBINDLICHE VORGABE, KEIN VORSCHLAG: Erstelle ausschließlich ein Rezept für genau folgendes Gericht: "{q}". Weiche unter keinen Umständen auf ein anderes Gericht aus. Du DARFST Mengen und Zutatendetails an die unten genannten Tagesziele anpassen – das ist hier erlaubt und gewollt. ingredients[].unit NUR "g" oder "ml" (Stueck/EL/TL vorher umrechnen: 1 Ei=60 g, 1 EL=15, 1 TL=5).',
+      en: 'MODE GENERATIVE / FREE SEARCH (not own-recipe): BINDING REQUIREMENT, NOT A SUGGESTION: Create a recipe exclusively for the following dish: "{q}". Under no circumstances substitute a different dish. You MAY adjust amounts and ingredient details to match the daily targets listed below – that is allowed and intended in this mode. ingredients[].unit ONLY "g" or "ml" (convert piece/tbsp/tsp first: 1 egg=60 g, 1 tbsp=15, 1 tsp=5).',
+      es: 'MODO GENERATIVO / BÚSQUEDA LIBRE (no receta propia): REQUISITO VINCULANTE: Crea una receta exclusivamente para el plato "{q}". No sustituyas por otro plato. SÍ puedes ajustar cantidades y detalles de ingredientes a los objetivos diarios – está permitido en este modo. ingredients[].unit SOLO "g" o "ml".',
+      it: 'MODALITÀ GENERATIVA / RICERCA LIBERA (non ricetta propria): REQUISITO VINCOLANTE: Crea una ricetta esclusivamente per il piatto "{q}". Non sostituirlo. PUOI adattare quantità e dettagli degli ingredienti agli obiettivi giornalieri – è consentito in questa modalità. ingredients[].unit SOLO "g" o "ml".',
     };
     // ---------------------------------------------------------------------------
     // EIGENREZEPT / STRUCTURED – Client-ai_instruction
@@ -23007,7 +23007,8 @@ initBarcodeEvents();
     // ---- KI-Rezept-Chat: Request mit Status/Retry-Metadaten (nur Chat-Pfad). ----
     var NUTRI_RECIPE_CHAT_MAX_ATTEMPTS = 3;
     function isNutriRecipeChatRetryableStatus(status) {
-      return status === 408 || status === 429 || status === 500 || status === 502 || status === 503 || status === 504;
+      // Nur temporaer: Timeout/Rate-Limit/Unavailable. Kein Retry bei 400 (Schema) oder 5xx-Providerfehlern.
+      return status === 408 || status === 429 || status === 503 || status === 504;
     }
     function parseNutriRecipeRetryAfterMs(res) {
       try {

@@ -111,9 +111,13 @@ function ingredientObjectSchema(description, opts) {
         type: 'number',
         description: strictAmounts
           ? 'Menge in g oder ml. Nur Nutzerangabe oder feste Umrechnungstabelle. Fehlt die Menge: 0 (= nicht angegeben). Keine freie Schaetzung.'
-          : 'Menge in g oder ml (realistisch waehlbar; EL=15, TL=5, Stueckgewichte ok)',
+          : 'Menge in g oder ml (Zahl > 0). Stueck/EL/TL vorher umrechnen: 1 Ei=60 g, 1 EL=15, 1 TL=5. Nie unit Stueck/EL/TL.',
       },
-      unit: { type: 'string', enum: ['g', 'ml'] },
+      unit: {
+        type: 'string',
+        enum: ['g', 'ml'],
+        description: 'NUR "g" oder "ml". Keine anderen Einheiten.',
+      },
       status: { type: 'string', enum: ['benoetigt', 'vorhanden'] },
       netCarbs: { type: 'number', description: 'Netto-Kohlenhydrate je 100 g/ml' },
       fat: { type: 'number', description: 'Fett je 100 g/ml' },
@@ -233,8 +237,11 @@ function buildGenerativeMessages(p) {
     'MODUS: GENERATIV / FREISUCHE / SHOPPING – bewusst kreativ (NICHT Eigenrezept-Modus).',
     'Du bist ein kreativer Rezept-Coach in einer Ernaehrungs-App. Erstelle EINE alltagstaugliche Rezeptidee als JSON gemaess Schema.',
     'ERLAUBT: Zutaten vorschlagen, Mengen waehlen und an Tagesziele/Leitlinien anpassen, Schritte neu formulieren.',
-    'Jede Zutat: name, amount (Zahl > 0), unit (g|ml), status (vorhanden|benoetigt), netCarbs/fat/protein/fiber je 100 g/ml.',
-    'steps: 4-8 kurze Schritte. shopping_list: benoetigte Zutaten als "Name – Menge Einheit".',
+    'KRITISCH – unit-Feld: NUR "g" oder "ml". VERBOTEN als unit: Stueck, stk, EL, TL, Portion, Zehe, Bund, Tasse, Dose, Prise oder andere Einheiten.',
+    'Mengen immer als Gramm/Milliliter ausgeben. Feste Umrechnung: 1 EL = 15 g/ml, 1 TL = 5 g/ml, 1 Ei = 60 g, 1 Zehe Knoblauch = 5 g, 1 Avocado = 200 g. Fluessigkeiten (Oel, Milch, Bruehe, Sosse) in ml, Festes in g.',
+    'Beispiel: 2 Eier -> {"name":"Ei","amount":120,"unit":"g"} – NICHT unit "Stueck". 1 EL Olivenoel -> {"name":"Olivenoel","amount":15,"unit":"ml"}.',
+    'Jede Zutat: name, amount (Zahl > 0), unit ("g"|"ml"), status (vorhanden|benoetigt), netCarbs/fat/protein/fiber je 100 g/ml.',
+    'steps: 4-8 kurze Schritte. shopping_list: benoetigte Zutaten als "Name – Menge g|ml".',
     'Keine medizinischen Diagnosen oder Heilversprechen. Antworte auf ' + langName(p.lang) + '. Nur JSON.',
   ].join('\n');
   const user = [
@@ -243,9 +250,9 @@ function buildGenerativeMessages(p) {
     'Aggregierte Tages-Makrowerte (Wert / Ziel): ' + JSON.stringify(p.macros),
     p.micronutrient_gaps.length ? 'Mikronaehrstoffe unter 70% des Tagesziels: ' + JSON.stringify(p.micronutrient_gaps) : '',
     p.lab_guideline_constraints ? 'Leitlinien-Vorgaben: ' + JSON.stringify(p.lab_guideline_constraints) : '',
-    p.ai_instruction ? 'Zusatz-Instruction (darf Mengen/Zutaten an Tagesziele anpassen): ' + p.ai_instruction : '',
+    p.ai_instruction ? 'Zusatz-Instruction (darf Mengen/Zutaten an Tagesziele anpassen; unit trotzdem nur g|ml): ' + p.ai_instruction : '',
     p.allergens.length ? 'Allergene strikt meiden: ' + p.allergens.join(', ') : '',
-    'Erstelle jetzt das JSON-Objekt.',
+    'Erstelle jetzt das JSON-Objekt. Jede ingredients[].unit MUSS "g" oder "ml" sein.',
   ].filter(Boolean).join('\n');
   return [
     { role: 'system', content: system },

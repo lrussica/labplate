@@ -158,11 +158,17 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   const result = await core.callGroq(requestBody, { apiKey: GROQ_API_KEY, timeoutMs: REQUEST_TIMEOUT_MS });
 
   if (result.error === 'provider_error') {
-    logEvent('groq_http_error', { status: result.status, model: GROQ_MODEL, body: result.body, ms: Date.now() - startedAt });
-    return res.status(502).json({
+    const upstreamStatus = Number(result.status) || 0;
+    // Schema-/Validierungsfehler (HTTP 400): an Client als 400 durchreichen – kein 502,
+    // damit Chat-Retries denselben kaputten Request nicht 3× wiederholen.
+    const clientStatus = upstreamStatus === 400 ? 400 : 502;
+    logEvent('groq_http_error', { status: upstreamStatus, model: GROQ_MODEL, body: result.body, ms: Date.now() - startedAt, clientStatus });
+    return res.status(clientStatus).json({
       error: 'provider_error',
-      status: result.status,
-      message: 'Der KI-Anbieter meldete einen Fehler. Bitte ueberpruefe das eingestellte Modell.',
+      status: upstreamStatus,
+      message: upstreamStatus === 400
+        ? 'Der KI-Anbieter hat die Antwort wegen Schema-/Validierungsfehler abgelehnt.'
+        : 'Der KI-Anbieter meldete einen Fehler. Bitte ueberpruefe das eingestellte Modell.',
     });
   }
   if (result.error) {
