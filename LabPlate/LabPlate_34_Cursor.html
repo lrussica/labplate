@@ -22369,6 +22369,14 @@ initBarcodeEvents();
       de:'Nährwerte pro Portion', en:'Nutrition per serving', es:'Nutrientes por porción', it:'Valori nutrizionali per porzione',
       pt:'Nutrientes por porção', fr:'Nutriments par portion', tr:'Porsiyon başına besin değerleri'
     };
+    var LBL_RECIPE_NUTRITION_FOR_N = {
+      de:'Nährwerte für {n} Portionen', en:'Nutrition for {n} servings', es:'Nutrientes para {n} porciones', it:'Valori nutrizionali per {n} porzioni',
+      pt:'Nutrientes para {n} porções', fr:'Nutriments pour {n} portions', tr:'{n} porsiyon için besin değerleri'
+    };
+    var LBL_RECIPE_NUTRITION_FOR_1 = {
+      de:'Nährwerte für 1 Portion', en:'Nutrition for 1 serving', es:'Nutrientes para 1 porción', it:'Valori nutrizionali per 1 porzione',
+      pt:'Nutrientes para 1 porção', fr:'Nutriments pour 1 portion', tr:'1 porsiyon için besin değerleri'
+    };
     var LBL_RECIPE_KCAL = {
       de:'Kalorien', en:'Calories', es:'Calorías', it:'Calorie',
       pt:'Calorias', fr:'Calories', tr:'Kalori'
@@ -23563,12 +23571,17 @@ initBarcodeEvents();
           Object.assign({}, rBase, { servings: baseServings }),
           recipeServingsCount
         );
-        var rMacros = calcRecipeMacrosPerServing(r);
+        // Naehrwerte fuer die AKTUELL gewaehlte Portionsanzahl (skalierte Mengen-Summe),
+        // nicht "pro Portion" (das bliebe beim Stepper konstant und wirkt wie ein Bug).
+        var rMacros = calcRecipeMacrosTotal(r);
         console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Anzahl der Ingredients:', r.ingredients ? r.ingredients.length : 0);
         console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Anzahl der Steps:', r.steps ? r.steps.length : 0);
         console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Ingredient-Namen:', (r.ingredients || []).map(function (ing) { return ing && ing.name; }));
         var rKcal = Math.round((rMacros.netCarbs || 0) * 4 + (rMacros.protein || 0) * 4 + (rMacros.fat || 0) * 9);
         var shoppingLines = buildNutriRecipeShoppingLines(r);
+        var nutritionHeading = recipeServingsCount === 1
+          ? pick(LBL_RECIPE_NUTRITION_FOR_1)
+          : pick(LBL_RECIPE_NUTRITION_FOR_N).replace('{n}', String(recipeServingsCount));
         var servingsStepperHtml =
           '<div class="nutri-recipe-servings-stepper" role="group" aria-label="' + escNutri(pick(LBL_RECIPE_SERVINGS_SUFFIX)) + '">' +
             '<button type="button" class="nrs-btn nrs-minus" id="nutri-recipe-servings-minus" aria-label="' + escNutri(pick(LBL_RECIPE_SERVINGS_MINUS_ARIA)) + '"' + (recipeServingsCount <= recipeServingsMin ? ' disabled' : '') + '>' +
@@ -23589,7 +23602,7 @@ initBarcodeEvents();
             (r.nutrition_note ? '<p class="nutri-recipe-match">' + escNutri(r.nutrition_note) + '</p>' : '') +
             '<p class="nutri-recipe-disclaimer">' + escNutri(pick(LBL_RECIPE_DISCLAIMER)) + '</p>' +
             '<div class="section">' +
-              '<h4 class="section-title">' + escNutri(pick(LBL_RECIPE_NUTRITION_PER_SERVING)) + '</h4>' +
+              '<h4 class="section-title">' + escNutri(nutritionHeading) + '</h4>' +
               '<div class="localrecipe-nutrient-grid">' +
                 '<div class="localrecipe-nutrient-item"><div class="localrecipe-nutrient-label">' + escNutri(pick(LBL_RECIPE_KCAL)) + '</div><div class="localrecipe-nutrient-value">' + rKcal + ' kcal</div></div>' +
                 '<div class="localrecipe-nutrient-item"><div class="localrecipe-nutrient-label">' + escNutri(pick(LBL_LOCALRECIPE_KH)) + '</div><div class="localrecipe-nutrient-value">' + Math.round(rMacros.netCarbs) + ' g</div></div>' +
