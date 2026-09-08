@@ -119,10 +119,10 @@ function ingredientObjectSchema(description, opts) {
         description: 'NUR "g" oder "ml". Keine anderen Einheiten.',
       },
       status: { type: 'string', enum: ['benoetigt', 'vorhanden'] },
-      netCarbs: { type: 'number', description: 'Netto-Kohlenhydrate je 100 g/ml' },
-      fat: { type: 'number', description: 'Fett je 100 g/ml' },
-      protein: { type: 'number', description: 'Protein je 100 g/ml' },
-      fiber: { type: 'number', description: 'Ballaststoffe je 100 g/ml' },
+      netCarbs: { type: 'number', description: 'Netto-KH-Referenzwert (BLS/USDA) fuer dieses Lebensmittel je 100 g/ml – NICHT aus der Rezeptmenge hochrechnen, KEIN Fantansiewert' },
+      fat: { type: 'number', description: 'Fett-Referenzwert (BLS/USDA) fuer dieses Lebensmittel je 100 g/ml – NICHT aus der Rezeptmenge hochrechnen, KEIN Fantasiewert' },
+      protein: { type: 'number', description: 'Protein-Referenzwert (BLS/USDA) fuer dieses Lebensmittel je 100 g/ml – NICHT aus der Rezeptmenge hochrechnen, KEIN Fantasiewert' },
+      fiber: { type: 'number', description: 'Ballaststoff-Referenzwert (BLS/USDA) fuer dieses Lebensmittel je 100 g/ml – NICHT aus der Rezeptmenge hochrechnen, KEIN Fantasiewert' },
     },
   };
 }
@@ -202,9 +202,10 @@ function buildEnrichmentMessages(p) {
     'AUFGABE: Strukturiere das Eigenrezept und berechne fuer JEDE uebergebene Zutat (Keys ing_01 … ing_' +
       String(lines.length).padStart(2, '0') +
       ') realistische Naehrwerte je 100 g/ml (netCarbs, fat, protein, fiber) NUR fuer die genannten Zutaten.',
-    'VERBOTEN: Zutaten hinzufuegen oder entfernen; bereits angegebene Mengen aendern; Schritte umstellen/kuerzen/zusammenfassen; Ersatzprodukte erfinden; Zutaten als optional/wichtig einstufen; freie Mengenschaetzung.',
-    'ERLAUBT: Namen stilistisch vereinheitlichen (kurz, ohne Mengenangabe im name-Feld); Inhalt der Schritte klarer formulieren, ohne Sinn zu aendern; Naehrwert-Anreicherung der tatsaechlich genannten Zutaten.',
+    'VERBOTEN: Zutaten hinzufuegen oder entfernen; bereits angegebene Mengen aendern; Schritte umstellen/kuerzen/zusammenfassen/umschreiben/optimieren; Ersatzprodukte erfinden; Zutaten als optional/wichtig einstufen; freie Mengenschaetzung; Rezept gesünder oder kalorienreduzierter machen; Mengen an Tagesziele, Leitlinien oder Makros anpassen.',
+    'ERLAUBT: Namen stilistisch vereinheitlichen (kurz, ohne Mengenangabe im name-Feld); Schritte NUR orthografisch/grammatisch korrigieren – KEIN inhaltliches Umschreiben, Kuerzen oder Zusammenfassen; Naehrwert-Anreicherung der tatsaechlich genannten Zutaten.',
     STRUCTURED_UNIT_TABLE,
+    'Vage Mengenangaben (q.b., qb, nach Geschmack, nach Belieben, etwas, ein wenig, Prise, nach Bedarf, ad libitum, beliebig) haben KEINEN g/ml-Wert und greifen KEINE Tabellen-Regel → amount = 0. Kein Schatzen, kein Erfinden einer Grammzahl.',
     'Fehlt eine Menge und greift KEINE Tabellen-Regel eindeutig: amount = 0 (= nicht angegeben). Schema verlangt eine Zahl – kein null.',
     'Fluessigkeiten (Oel, Essig, Sosse, Bruehe, Dressing, Milch) in ml, sonst g. status: "benoetigt".',
     'steps: Wenn der Input/die Client-Instruction Schritte enthaelt: 1:1 in derselben Reihenfolge uebernehmen. Wenn keine Schritte vorliegen: steps = [] (nichts erfinden).',
@@ -214,6 +215,7 @@ function buildEnrichmentMessages(p) {
   ].join('\n');
 
   const user = [
+    'MENGEN-REGEL (oberste Prioritaet): Jede Menge aus den Eingabezeilen exakt unveraendert uebernehmen – kein Wert darf abweichen, angepasst oder geschaetzt werden.',
     'ANZAHL ZUTATEN: ' + lines.length + ' (genau so viele Keys ing_XX sind zu fuellen – keine mehr, keine weniger)',
     'ZUTATEN-MAPPING (Key = Eingabezeile des Nutzers):',
     mapping,

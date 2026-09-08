@@ -22228,26 +22228,28 @@ initBarcodeEvents();
       var curLang = (typeof lang === 'function') ? lang() : 'de';
       var baseDe =
         'MODUS EIGENREZEPT/STRUCTURED – Inhalt fix. Rezept-Coach: klar strukturieren, Inhalt nicht aendern. ' +
+        'MENGEN UNVERAENDERLICH: Jede Menge exakt aus dem Input uebernehmen – kein Wert anpassen, optimieren oder schaetzen. ' +
         'ALLE ' + ingCount + ' ZUTATEN PFLICHT: ' + numberedList +
         ' — ingredients[] genau ' + ingCount + ' Objekte. Keine Zutat weglassen/hinzufuegen. ' +
-        'Bereits angegebene Mengen nie aendern. Fehlende Menge: nur feste Tabelle (1 EL=15, 1 TL=5, Zehe=5 g, Avocado=200 g, 1/2 Gurke=200 g, Ei=60 g) oder amount=0 (=nicht angegeben), keine freie Schaetzung. ' +
-        'unit nur g/ml, status benoetigt, macrosPer100g={netCarbs,fat,protein,fiber} nur fuer genannte Zutaten. ' +
+        'Bereits angegebene Mengen nie aendern. Vage Mengen (q.b., nach Geschmack, etwas, Prise) → amount=0. Fehlende Menge: nur feste Tabelle (1 EL=15, 1 TL=5, Zehe=5 g, Avocado=200 g, 1/2 Gurke=200 g, Ei=60 g) oder amount=0, keine freie Schaetzung. ' +
+        'unit nur g/ml, status benoetigt, macrosPer100g={netCarbs,fat,protein,fiber} = BLS/USDA-Referenzwerte je 100 g/ml (NICHT aus Rezeptmenge hochrechnen). ' +
         (stepsList
           ? 'SCHRITTE 1:1 in gleicher Reihenfolge in steps[] (' + parsedUserRecipe.steps.length + '): ' + stepsList
           : 'Keine Schritte im Input → steps=[].') +
         (parsedUserRecipe.servings ? ' servings=' + parsedUserRecipe.servings + '.' : '') +
-        ' title, servings, prep_time, shopping_list, nutrition_note (Hinweise). Stil ok, Inhalt fix.';
+        ' title, servings, prep_time, shopping_list, nutrition_note. Nur orthograf. Korrekturen erlaubt, kein Umschreiben.';
       var baseEn =
         'MODE OWN-RECIPE/STRUCTURED – content fixed. Recipe coach: structure clearly, do not change content. ' +
+        'AMOUNTS IMMUTABLE: Copy every amount exactly from input – no adjustment, optimization, or guessing. ' +
         'ALL ' + ingCount + ' INGREDIENTS MANDATORY: ' + numberedList +
         ' — ingredients[] exactly ' + ingCount + ' objects. Do not omit/add ingredients. ' +
-        'Never change stated amounts. Missing amount: fixed table only (1 tbsp=15, 1 tsp=5, garlic clove=5 g, avocado=200 g, 1/2 cucumber=200 g, egg=60 g) or amount=0 (=not specified), no free guessing. ' +
-        'unit only g/ml, status benoetigt, macrosPer100g only for listed ingredients. ' +
+        'Never change stated amounts. Vague amounts (q.b., to taste, a little, pinch) → amount=0. Missing amount: fixed table only (1 tbsp=15, 1 tsp=5, garlic clove=5 g, avocado=200 g, 1/2 cucumber=200 g, egg=60 g) or amount=0, no free guessing. ' +
+        'unit only g/ml, status benoetigt, macrosPer100g={netCarbs,fat,protein,fiber} = BLS/USDA reference values per 100 g/ml (do NOT calculate from recipe amounts). ' +
         (stepsList
           ? 'Copy STEPS 1:1 in same order into steps[] (' + parsedUserRecipe.steps.length + '): ' + stepsList
           : 'No steps in input → steps=[].') +
         (parsedUserRecipe.servings ? ' servings=' + parsedUserRecipe.servings + '.' : '') +
-        ' title, servings, prep_time, shopping_list, nutrition_note. Style ok, content fixed.';
+        ' title, servings, prep_time, shopping_list, nutrition_note. Orthographic corrections only, no rewriting.';
       return curLang === 'de' ? baseDe : baseEn;
     }
     // Schema: validateNutriRecipeSchema erlaubt bis 100 Zutaten, 50 Schritte, Strings bis 2000;
