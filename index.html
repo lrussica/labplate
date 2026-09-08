@@ -23561,12 +23561,13 @@ initBarcodeEvents();
         // (nie aus einer bereits gerundeten Zwischenstufe) - so entstehen beim wiederholten Hoch-/
         // Runterschalten keine sich aufschaukelnden Rundungsfehler (siehe scaleRecipeToServings()).
         var rBase = nutriRecipeState.result;
-        // rBase.servings = Original (z.B. 4). Anzeige (nutriRecipeState.servings) startet bei 1
-        // → Mengen/Makros werden proportional herunterskaliert; + erhöht wieder proportional.
+        // rBase.servings = Original (z.B. 2 oder 4). Anzeige startet bei genau dieser Basis;
+        // − skaliert herunter (bis 1), + nach oben – immer proportional zur Basis.
         var baseServings = Number(rBase.servings) > 0 ? Number(rBase.servings) : 1;
         if (!(Number(rBase.servings) > 0)) rBase.servings = 1;
-        var recipeServingsCount = Math.max(1, Number(nutriRecipeState.servings) || 1);
-        var recipeServingsMin = 1, recipeServingsMax = 8;
+        var recipeServingsCount = Math.max(1, Number(nutriRecipeState.servings) || baseServings);
+        var recipeServingsMin = 1;
+        var recipeServingsMax = Math.max(8, baseServings);
         var r = scaleRecipeToServings(
           Object.assign({}, rBase, { servings: baseServings }),
           recipeServingsCount
@@ -24121,10 +24122,8 @@ initBarcodeEvents();
       nutriRecipeState.chatLastQuery = msg.query || nutriRecipeState.chatLastQuery || '';
       nutriRecipeState.result = msg.recipe;
       nutriRecipeState.suggestions = msg.suggestions || [];
-      // Portionen aus Rezept; 0/fehlend = leer (nicht auf 2 erzwingen).
-      // Anzeige immer bei 1 Portion starten; rBase.servings bleibt die Rezept-Basis
-      // (z.B. 4) – Mengen/Makros werden auf 1 Portion herunterskaliert.
-      nutriRecipeState.servings = 1;
+      // Start bei der Rezept-Basis (z.B. 2) – Nutzer kann mit − auf 1 runter- und mit + hochskalieren.
+      nutriRecipeState.servings = (msg.recipe && msg.recipe.servings > 0) ? msg.recipe.servings : 1;
       nutriRecipeState.selectedCategory = 'none';
       nutriRecipeState.categoryDetailsOpen = false;
       nutriRecipeState.error = false;
