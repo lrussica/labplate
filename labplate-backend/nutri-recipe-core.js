@@ -1,16 +1,18 @@
 /**
  * LabPlate – Kernlogik /api/nutri-recipe (dependency-frei, testbar)
  * ==================================================================
- * Kein Express-Router hier – nur reine Funktionen, die server.js importiert.
+ * PRODUKTIVE Quelle fuer Render: dieses File (labplate-backend/nutri-recipe-core.js).
+ * Die Root-Datei ../nutri-recipe-core.js re-exportiert DIESES Modul – dort keine
+ * eigenen Prompt-Regeln pflegen.
  *
- * FIX Zutaten-Vollstaendigkeit:
- *  - Modell openai/gpt-oss-120b (statt 20b)
- *  - Strict JSON-Schema (json_schema, strict:true) mit DYNAMISCHEN Pflicht-Keys:
- *    jede Nutzer-Zutat = eigener required-Key (ing_01 … ing_N). Constrained Decoding
- *    kann dadurch keinen Eintrag weglassen.
- *  - Aufgabe als ANREICHERUNG formuliert ("fuer jede Zutat berechne Naehrwerte"),
- *    nicht als freie Rezept-Generierung.
- *  - temperature: 0, reasoning_effort: "low"
+ * Zwei getrennte KI-Modi (nicht vermischen!):
+ *  1) STRUCTURED / Eigenrezept (looksStructured): Rezept-Coach – Inhalt fix,
+ *     nur Struktur + Naehrwert-Anreicherung der genannten Zutaten.
+ *  2) GENERATIV / Freisuche / Shopping: kreativ – Zutaten/Mengen duerfen
+ *     vorgeschlagen und an Tagesziele angepasst werden.
+ *
+ * Strict JSON-Schema unveraendert (Feldnamen/API-Vertrag bleiben stabil).
+ * temperature: 0, reasoning_effort: "low"
  *
  * Client-Vertrag (LabPlate_34_Cursor.html, validateNutriRecipeSchema):
  *   { title, servings:number, prep_time, nutrition_note,
@@ -97,14 +99,20 @@ function validateIncoming(body) {
 // ---------------------------------------------------------------------------
 // Strict-Schemas
 // ---------------------------------------------------------------------------
-function ingredientObjectSchema(description) {
+function ingredientObjectSchema(description, opts) {
+  const strictAmounts = !!(opts && opts.strictAmounts);
   return {
     type: 'object',
     additionalProperties: false,
     required: ING_FIELDS.slice(),
     properties: {
       name: { type: 'string', description: description || 'Kurzname der Zutat' },
-      amount: { type: 'number', description: 'Menge in g oder ml (EL=15, TL=5, Zehe=5 g, Stueck realistisch in g)' },
+      amount: {
+        type: 'number',
+        description: strictAmounts
+          ? 'Menge in g oder ml. Nur Nutzerangabe oder feste Umrechnungstabelle. Fehlt die Menge: 0 (= nicht angegeben). Keine freie Schaetzung.'
+          : 'Menge in g oder ml (realistisch waehlbar; EL=15, TL=5, Stueckgewichte ok)',
+      },
       unit: { type: 'string', enum: ['g', 'ml'] },
       status: { type: 'string', enum: ['benoetigt', 'vorhanden'] },
       netCarbs: { type: 'number', description: 'Netto-Kohlenhydrate je 100 g/ml' },
@@ -133,7 +141,7 @@ function buildEnrichmentSchema(lines) {
   lines.forEach((line, i) => {
     const k = ingKey(i);
     required.push(k);
-    props[k] = ingredientObjectSchema('Zutat fuer Eingabe: "' + line + '"');
+    props[k] = ingredientObjectSchema('Zutat fuer Eingabe: "' + line + '"', { strictAmounts: true });
   });
   const properties = baseRecipeProperties();
   properties.ingredients = {
@@ -158,7 +166,7 @@ function buildEnrichmentSchema(lines) {
 /** Generativ (Shopping / freie Idee): ingredients = Array. */
 function buildGenerativeSchema() {
   const properties = baseRecipeProperties();
-  properties.ingredients = { type: 'array', items: ingredientObjectSchema() };
+  properties.ingredients = { type: 'array', items: ingredientObjectSchema(undefined, { strictAmounts: false }) };
   return {
     name: 'nutri_recipe_generative',
     strict: true,
@@ -172,30 +180,45 @@ function buildGenerativeSchema() {
 }
 
 // ---------------------------------------------------------------------------
-// Prompts
+// Prompts – STRUCTURED vs. GENERATIV strikt getrennt
 // ---------------------------------------------------------------------------
+/** Feste Umrechnungstabelle (Eigenrezept): nur diese Umrechnungen, keine freie Schaetzung. */
+const STRUCTURED_UNIT_TABLE =
+  'Feste Umrechnungstabelle (nur wenn der Nutzer EL/TL/Stueck OHNE g/ml angibt): ' +
+  '1 EL = 15 g/ml, 1 TL = 5 g/ml, 1 Zehe Knoblauch = 5 g, 1 Avocado = 200 g, 1/2 Salatgurke = 200 g, 1 Ei = 60 g. ' +
+  'Steht bereits eine g/ml/kg/l-Menge im Input, diese Zahl unveraendert uebernehmen (kg/l nur in g/ml umrechnen).';
+
 function buildEnrichmentMessages(p) {
   const lines = p.pantry_ingredients;
   const mapping = lines.map((line, i) => ingKey(i) + ' = "' + line + '"').join('\n');
   const system = [
-    'Du bist ein Naehrwert-Anreicherungsdienst in einer Ernaehrungs-App. Du bist KEIN Rezept-Generator.',
-    'AUFGABE: Fuer JEDE uebergebene Zutat (Keys ing_01 … ing_' + String(lines.length).padStart(2, '0') + ') berechne realistische Naehrwerte je 100 g/ml (netCarbs, fat, protein, fiber) und normalisiere die Menge auf g oder ml.',
-    'Du darfst KEINE Zutat weglassen, KEINE hinzufuegen, KEINE Mengen aendern, die im Input stehen. Fehlt eine Menge, schaetze realistisch.',
-    'Umrechnung: 1 EL = 15 g/ml, 1 TL = 5 g/ml, 1 Zehe Knoblauch = 5 g, 1 Avocado = 200 g, 1/2 Salatgurke = 200 g, 1 Ei = 60 g.',
-    'Fluessigkeiten (Oel, Essig, Soße, Bruehe, Dressing, Milch) in ml, alles andere in g. status: "benoetigt".',
-    'name: kurzer, sauberer Zutatenname ohne Mengenangabe.',
-    'steps: Falls im Input Zubereitungsschritte enthalten sind, 1:1 uebernehmen (kein Kuerzen, kein Zusammenfassen). Sonst 4-8 kurze Schritte nur aus den gegebenen Zutaten.',
-    'shopping_list: eine Zeile pro Zutat im Format "Name – Menge Einheit".',
-    'title: passender Rezeptname. servings: aus Input, sonst 2. prep_time: z.B. "25 Min.". nutrition_note: 1-2 sachliche Saetze, keine medizinischen Aussagen.',
-    'Antworte auf ' + langName(p.lang) + '. Antworte ausschliesslich mit dem JSON-Objekt gemaess Schema.',
+    'MODUS: EIGENREZEPT / STRUCTURED – nicht kreativ.',
+    'Du bist mein Rezept-Coach, der Rezepte klar strukturiert, ohne ihren Inhalt zu veraendern.',
+    'FIXIERE DIESE DATEN: Zutaten, Mengen und Zubereitungsschritte aus dem Input sind verbindlich.',
+    'AUFGABE: Strukturiere das Eigenrezept und berechne fuer JEDE uebergebene Zutat (Keys ing_01 … ing_' +
+      String(lines.length).padStart(2, '0') +
+      ') realistische Naehrwerte je 100 g/ml (netCarbs, fat, protein, fiber) NUR fuer die genannten Zutaten.',
+    'VERBOTEN: Zutaten hinzufuegen oder entfernen; bereits angegebene Mengen aendern; Schritte umstellen/kuerzen/zusammenfassen; Ersatzprodukte erfinden; Zutaten als optional/wichtig einstufen; freie Mengenschaetzung.',
+    'ERLAUBT: Namen stilistisch vereinheitlichen (kurz, ohne Mengenangabe im name-Feld); Inhalt der Schritte klarer formulieren, ohne Sinn zu aendern; Naehrwert-Anreicherung der tatsaechlich genannten Zutaten.',
+    STRUCTURED_UNIT_TABLE,
+    'Fehlt eine Menge und greift KEINE Tabellen-Regel eindeutig: amount = 0 (= nicht angegeben). Schema verlangt eine Zahl – kein null.',
+    'Fluessigkeiten (Oel, Essig, Sosse, Bruehe, Dressing, Milch) in ml, sonst g. status: "benoetigt".',
+    'steps: Wenn der Input/die Client-Instruction Schritte enthaelt: 1:1 in derselben Reihenfolge uebernehmen. Wenn keine Schritte vorliegen: steps = [] (nichts erfinden).',
+    'shopping_list: eine Zeile pro Zutat "Name – Menge Einheit" (bei amount 0: "Name – nicht angegeben").',
+    'title: aus Input falls vorhanden, sonst knapper passender Name ohne Fantasie-Zutaten. servings: aus Input, sonst 2. prep_time: aus Input oder "". nutrition_note: 1-2 sachliche Saetze zu den genannten Zutaten, keine medizinischen Aussagen, keine neuen Zutaten.',
+    'Antworte auf ' + langName(p.lang) + '. Ausschliesslich JSON gemaess Schema – kein Begleittext.',
   ].join('\n');
 
   const user = [
-    'ANZAHL ZUTATEN: ' + lines.length + ' (genau so viele Keys ing_XX sind zu fuellen)',
+    'ANZAHL ZUTATEN: ' + lines.length + ' (genau so viele Keys ing_XX sind zu fuellen – keine mehr, keine weniger)',
     'ZUTATEN-MAPPING (Key = Eingabezeile des Nutzers):',
     mapping,
-    p.ai_instruction ? 'ZUSATZ-INSTRUCTION DES CLIENTS (enthaelt ggf. Schritte/Portionen, 1:1 beachten):\n' + p.ai_instruction : '',
-    p.allergens.length ? 'ALLERGENE (nur Warnhinweis in nutrition_note, Zutaten NICHT entfernen): ' + p.allergens.join(', ') : '',
+    p.ai_instruction
+      ? 'ZUSATZ-INSTRUCTION DES CLIENTS (Schritte/Portionen 1:1 beachten, Inhalt nicht aendern):\n' + p.ai_instruction
+      : '',
+    p.allergens.length
+      ? 'ALLERGENE (nur Warnhinweis in nutrition_note, Zutaten NICHT entfernen oder ersetzen): ' + p.allergens.join(', ')
+      : '',
     'Fuelle jetzt fuer jeden Key ing_01 … ing_' + String(lines.length).padStart(2, '0') + ' ein Objekt aus.',
   ].filter(Boolean).join('\n\n');
 
@@ -207,10 +230,12 @@ function buildEnrichmentMessages(p) {
 
 function buildGenerativeMessages(p) {
   const system = [
-    'Du bist ein Rezeptassistent in einer Ernaehrungs-App. Erstelle EINE alltagstaugliche Rezeptidee als JSON gemaess Schema.',
-    'Jede Zutat: name, amount (Zahl), unit (g|ml), status (vorhanden|benoetigt), netCarbs/fat/protein/fiber je 100 g/ml.',
+    'MODUS: GENERATIV / FREISUCHE / SHOPPING – bewusst kreativ (NICHT Eigenrezept-Modus).',
+    'Du bist ein kreativer Rezept-Coach in einer Ernaehrungs-App. Erstelle EINE alltagstaugliche Rezeptidee als JSON gemaess Schema.',
+    'ERLAUBT: Zutaten vorschlagen, Mengen waehlen und an Tagesziele/Leitlinien anpassen, Schritte neu formulieren.',
+    'Jede Zutat: name, amount (Zahl > 0), unit (g|ml), status (vorhanden|benoetigt), netCarbs/fat/protein/fiber je 100 g/ml.',
     'steps: 4-8 kurze Schritte. shopping_list: benoetigte Zutaten als "Name – Menge Einheit".',
-    'Keine medizinischen Diagnosen oder Heilversprechen. Antworte auf ' + langName(p.lang) + '.',
+    'Keine medizinischen Diagnosen oder Heilversprechen. Antworte auf ' + langName(p.lang) + '. Nur JSON.',
   ].join('\n');
   const user = [
     'Modus: ' + (p.mode === 'pantry' ? 'Rezept mit vorhandenen Zutaten / Suchbegriff' : 'Rezeptidee mit Einkaufsliste'),
@@ -218,7 +243,7 @@ function buildGenerativeMessages(p) {
     'Aggregierte Tages-Makrowerte (Wert / Ziel): ' + JSON.stringify(p.macros),
     p.micronutrient_gaps.length ? 'Mikronaehrstoffe unter 70% des Tagesziels: ' + JSON.stringify(p.micronutrient_gaps) : '',
     p.lab_guideline_constraints ? 'Leitlinien-Vorgaben: ' + JSON.stringify(p.lab_guideline_constraints) : '',
-    p.ai_instruction ? 'Zusatz-Instruction: ' + p.ai_instruction : '',
+    p.ai_instruction ? 'Zusatz-Instruction (darf Mengen/Zutaten an Tagesziele anpassen): ' + p.ai_instruction : '',
     p.allergens.length ? 'Allergene strikt meiden: ' + p.allergens.join(', ') : '',
     'Erstelle jetzt das JSON-Objekt.',
   ].filter(Boolean).join('\n');
@@ -258,13 +283,19 @@ function num(v, fallback) {
   return Number.isFinite(n) ? n : fallback;
 }
 
-function normalizeIng(item, fallbackName) {
+function normalizeIng(item, fallbackName, opts) {
   const src = item && typeof item === 'object' ? item : {};
   const m = src.macrosPer100g && typeof src.macrosPer100g === 'object' ? src.macrosPer100g : src;
   const amount = num(src.amount, 0);
+  // STRUCTURED: amount 0 = "nicht angegeben" (KI soll fehlende Mengen nicht erfinden).
+  // GENERATIV: fehlende/ungueltige Menge weiterhin auf 1 setzen, damit Rezeptideen nutzbar bleiben.
+  const preserveMissing = !!(opts && opts.preserveMissingAmount);
+  const normalizedAmount = amount > 0
+    ? Math.round(amount * 10) / 10
+    : (preserveMissing ? 0 : 1);
   return {
     name: (typeof src.name === 'string' && src.name.trim()) ? src.name.trim().slice(0, 200) : (fallbackName || 'Zutat'),
-    amount: amount > 0 ? Math.round(amount * 10) / 10 : 1,
+    amount: normalizedAmount,
     unit: src.unit === 'ml' ? 'ml' : 'g',
     status: src.status === 'vorhanden' ? 'vorhanden' : 'benoetigt',
     macrosPer100g: {
@@ -274,6 +305,14 @@ function normalizeIng(item, fallbackName) {
       fiber: Math.max(0, num(m.fiber, 0)),
     },
   };
+}
+
+function formatClientAmountLine(ing) {
+  const name = ing && ing.name ? String(ing.name) : 'Zutat';
+  const amount = ing && Number(ing.amount);
+  if (!Number.isFinite(amount) || amount <= 0) return name + ' – nicht angegeben';
+  const unit = ing.unit === 'ml' ? 'ml' : 'g';
+  return name + ' – ' + amount + ' ' + unit;
 }
 
 function stripQty(line) {
@@ -286,15 +325,18 @@ function toClientRecipe(parsed, p) {
   if (p.structured) {
     const obj = parsed.ingredients && typeof parsed.ingredients === 'object' && !Array.isArray(parsed.ingredients)
       ? parsed.ingredients : {};
-    ingredients = p.pantry_ingredients.map((line, i) => normalizeIng(obj[ingKey(i)], stripQty(line)));
+    ingredients = p.pantry_ingredients.map((line, i) =>
+      normalizeIng(obj[ingKey(i)], stripQty(line), { preserveMissingAmount: true }));
   } else {
-    ingredients = (Array.isArray(parsed.ingredients) ? parsed.ingredients : []).map((it) => normalizeIng(it)).slice(0, MAX_INGREDIENTS);
+    ingredients = (Array.isArray(parsed.ingredients) ? parsed.ingredients : [])
+      .map((it) => normalizeIng(it, undefined, { preserveMissingAmount: false }))
+      .slice(0, MAX_INGREDIENTS);
   }
   if (!ingredients.length) return null;
 
   let shopping = Array.isArray(parsed.shopping_list) ? parsed.shopping_list.map((s) => String(s || '')).filter(Boolean) : [];
   if (shopping.length < ingredients.length) {
-    shopping = ingredients.map((ing) => ing.name + ' – ' + ing.amount + ' ' + ing.unit);
+    shopping = ingredients.map(formatClientAmountLine);
   }
   const steps = (Array.isArray(parsed.steps) ? parsed.steps : []).map((s) => String(s || '').trim()).filter(Boolean).slice(0, MAX_STEPS);
   const servings = num(parsed.servings, 0);

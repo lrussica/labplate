@@ -3,7 +3,9 @@
  * ==================================================================
  * Endpunkte:
  *   GET  /health
- *   POST /api/nutri-recipe   -> Strict-JSON-Schema-Anreicherung (siehe nutri-recipe-core.js)
+ *   POST /api/nutri-recipe   -> Strict-JSON-Schema (siehe nutri-recipe-core.js)
+ *      STRUCTURED/Eigenrezept: Inhalt fix, nur Struktur + Naehrwert-Anreicherung
+ *      GENERATIV/Freisuche/Shopping: kreativ, Mengen an Tagesziele anpassbar
  *   POST /api/food-lookup    -> 1:1-Weiterleitung eines Chat-Completion-Requests an Groq
  *
  * FIX "KI laesst Zutaten weg":
@@ -21,6 +23,7 @@
 
 require('dotenv').config();
 
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -70,7 +73,17 @@ console.log('[Konfiguration] GROQ_MODEL=' + GROQ_MODEL + (GROQ_MODEL !== core.DE
 // ---------------------------------------------------------------------
 const app = express();
 app.set('trust proxy', 1);
-app.use(helmet());
+// CSP erlaubt Inline-CSS/JS in index.html (Test-Frontend im gleichen Ordner).
+app.use(helmet({
+  contentSecurityPolicy: {
+    useDefaults: true,
+    directives: {
+      'script-src': ["'self'", "'unsafe-inline'"],
+      'style-src': ["'self'", "'unsafe-inline'"],
+      'connect-src': ["'self'", 'https://labplate.onrender.com'],
+    },
+  },
+}));
 // Eigenrezepte mit ai_instruction (bis 8 kB) + 100 Zutaten passen problemlos in 64 kB.
 app.use(express.json({ limit: '64kb' }));
 
@@ -80,12 +93,14 @@ function isLocalLoopbackOrigin(origin) {
 
 app.use(cors({
   origin(origin, callback) {
+    // Kein Origin-Header (z.B. curl, same-origin) immer erlauben.
     if (!origin) return callback(null, true);
     if (ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
+    // file:// und lokales Test-Frontend (localhost / 127.0.0.1)
     if (isLocalLoopbackOrigin(origin)) return callback(null, true);
     return callback(new Error('CORS: Origin nicht erlaubt'));
   },
-  methods: ['POST', 'OPTIONS'],
+  methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
   maxAge: 600,
 }));
@@ -204,6 +219,12 @@ app.post('/api/food-lookup', limiter, async (req, res) => {
   } finally {
     clearTimeout(timer);
   }
+});
+
+// Test-Frontend: nur index.html aus dem gleichen Ordner (kein static von __dirname,
+// damit server.js / .env / package.json nicht oeffentlich werden).
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.use((req, res) => {

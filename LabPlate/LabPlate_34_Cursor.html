@@ -2062,26 +2062,10 @@
   #lp-ov-recipes .nutri-recipe-hint{ font-size:calc(13px * var(--recipe-font-scale, 1)); color:var(--red); font-weight:500; margin:-6px 0 14px; transition: font-size 0.2s ease-out; }
 
   .nutri-recipe-result{ display:flex; flex-direction:column; }
-  /* Eigenes Rezept-Overlay: grosse, scrollbar Ansicht ohne Vorrats-/Benoetigt-Logik. */
-  #nutri-recipe-recipe-overlay{
-    max-height:85vh;
-    display:flex;
-    flex-direction:column;
-    min-height:0;
-  }
-  #nutri-recipe-recipe-overlay .overlay-content{
-    max-height:85vh;
-    display:flex;
-    flex-direction:column;
-    min-height:0;
-  }
-  #nutri-recipe-recipe-overlay .overlay-body{
-    flex:1 1 auto;
-    overflow-y:auto;
-    -webkit-overflow-scrolling:touch;
-    padding:16px;
-    min-height:0;
-  }
+  /* Pre-save recipe detail: one column inside parent .lp-ov-scroll-content
+     (same pattern as Meine Rezepte). Nested max-height + flex on .overlay-body
+     collapsed the ingredient/steps region on iOS WKWebView, so the recipe
+     looked missing until after save. */
   #nutri-recipe-recipe-overlay .section{
     margin-bottom:24px;
   }
@@ -2096,13 +2080,11 @@
   #nutri-recipe-recipe-overlay .instructions-list,
   #nutri-recipe-recipe-overlay .shopping-list{
     margin:0 0 16px;
-    padding-left:1.2em;
   }
   #nutri-recipe-recipe-overlay .instructions-list{
     white-space:pre-wrap;
   }
   #nutri-recipe-recipe-overlay .nutri-recipe-actions{
-    flex:0 0 auto;
     padding-top:8px;
   }
   .nutri-recipe-result-header{ display:flex; flex-wrap:wrap; align-items:baseline; gap:8px; margin:0 0 6px; }
@@ -2774,6 +2756,16 @@
   #ai-food-title{ font-size: calc(24px * var(--ai-food-font-scale, 1)); transition: font-size 0.2s ease-out, transform 0.2s ease-out; }
   #ai-food-readable .lab-intro, #ai-food-readable .cf-field label, #ai-food-readable .bmn-advanced summary{ font-size: calc(13px * var(--ai-food-font-scale, 1)); transition: font-size 0.2s ease-out, transform 0.2s ease-out; }
   #ai-food-readable .cf-error{ font-size: calc(14px * var(--ai-food-font-scale, 1)); transition: font-size 0.2s ease-out, transform 0.2s ease-out; }
+  #ai-food-readable .nutri-recipe-category-summary-label{
+    font-size: calc(14.5px * var(--ai-food-font-scale, 1)); font-weight:500; color:var(--ink);
+    transition: font-size 0.2s ease-out;
+  }
+  #ai-food-readable .nutri-recipe-category-radio-left span:last-child{
+    font-size: calc(14px * var(--ai-food-font-scale, 1)); font-weight:500; color:var(--ink);
+    transition: font-size 0.2s ease-out;
+  }
+  .ai-food-manual-prompt{ margin: 12px 0 4px; }
+  .ai-food-manual-prompt .lab-intro{ margin-bottom: 4px; }
   /* "Kurz gesagt": gleiche Vergroesserungsfunktion (A-/A+) wie im Wissen-Overlay, plus
      Vorlesen-Button - Werkzeugleiste sitzt INNERHALB der lila "Kurz gesagt"-Box (wie die
      A-/A+-Buttons im Wissen-Overlay innerhalb von .overlay-panel), direkt ueber dem Text,
@@ -7014,6 +7006,20 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
         </div>
       </details>
       <p id="ai-food-error" class="cf-error" style="display:none;"></p>
+      <div id="ai-food-manual-prompt" class="ai-food-manual-prompt" style="display:none" hidden>
+        <p id="ai-food-manual-prompt-text" class="lab-intro">Möchtest du es selbst eintragen?</p>
+        <button type="button" id="ai-food-manual-yes" class="search-ai-food-btn" style="width:100%; margin:8px 0 0;">Ja, selbst eintragen</button>
+      </div>
+      <details class="nutri-recipe-category-details" id="ai-food-category-details" style="display:none; margin-top:12px;">
+        <summary class="nutri-recipe-category-summary">
+          <span class="nutri-recipe-category-summary-left">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5h16l-1 4a7 7 0 0 1-14 0Z"/><path d="M9.3 10.5c0-2-1.2-2.3-1.2-4.3"/><path d="M13 10.5c0-2-1.2-2.3-1.2-4.3"/></svg>
+            <span class="nutri-recipe-category-summary-label" id="ai-food-category-summary-label">Kategorie wählen</span>
+          </span>
+          <svg class="nutri-recipe-category-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="nutri-recipe-category-radio-list" id="ai-food-category-list"></div>
+      </details>
       </div>
       <div class="bmn-actions" id="ai-food-actions" style="display:none">
         <button type="button" id="ai-food-save-only" class="cf-submit-btn bmn-save-only-btn">In Lebensmittelliste speichern</button>
@@ -7524,6 +7530,8 @@ TRANSLATIONS.de = {
   searchCloseLabel: 'Schließen',
   searchResultsLabel: 'Suchergebnisse für',
   noResults: 'Keine Lebensmittel gefunden. Bitte versuche es mit einem anderen Begriff.',
+  searchNoFoodAskAi: (q) => `Wir haben ‚${q}‘ nicht gefunden. Soll es von der KI für dich angelegt werden?`,
+  searchAiCreateBtn: 'Ja, von der KI anlegen',
   searchResultsFor: (q) => `Suchergebnisse für „${q}"`,
   searchResultsAria: (q) => `Suchergebnisse für ${q}`,
   searchNoFoodButCats: 'Kein Lebensmittel gefunden - vielleicht meinst du eine dieser Kategorien?',
@@ -8273,6 +8281,8 @@ TRANSLATIONS.en = {
   searchCloseLabel: 'Close',
   searchResultsLabel: 'Search results for',
   noResults: 'No foods found. Please try a different search term.',
+  searchNoFoodAskAi: (q) => `We couldn't find "${q}". Should AI create it for you?`,
+  searchAiCreateBtn: 'Yes, create with AI',
   searchResultsFor: (q) => `Search results for "${q}"`,
   searchResultsAria: (q) => `Search results for ${q}`,
   searchNoFoodButCats: 'No food found - maybe you meant one of these categories?',
@@ -9011,6 +9021,8 @@ TRANSLATIONS.es = {
   searchCloseLabel: 'Cerrar',
   searchResultsLabel: 'Resultados para',
   noResults: 'No se encontraron alimentos. Prueba con otro término de búsqueda.',
+  searchNoFoodAskAi: (q) => `No hemos encontrado «${q}». ¿Quieres que la IA lo cree por ti?`,
+  searchAiCreateBtn: 'Sí, crear con IA',
   searchResultsFor: (q) => `Resultados de búsqueda para "${q}"`,
   searchResultsAria: (q) => `Resultados de búsqueda para ${q}`,
   searchNoFoodButCats: 'No se encontró ningún alimento - ¿quizás te refieres a una de estas categorías?',
@@ -9750,6 +9762,8 @@ TRANSLATIONS.it = {
   searchCloseLabel: 'Chiudi',
   searchResultsLabel: 'Risultati per',
   noResults: 'Nessun alimento trovato. Prova con un altro termine di ricerca.',
+  searchNoFoodAskAi: (q) => `Non abbiamo trovato «${q}». Vuoi che l'IA lo crei per te?`,
+  searchAiCreateBtn: 'Sì, crea con l\'IA',
   searchResultsFor: (q) => `Risultati di ricerca per "${q}"`,
   searchResultsAria: (q) => `Risultati di ricerca per ${q}`,
   searchNoFoodButCats: 'Nessun alimento trovato - forse intendevi una di queste categorie?',
@@ -10412,6 +10426,8 @@ TRANSLATIONS.pt = Object.assign({}, TRANSLATIONS.en, {
   footnoteText: 'Os valores são médias arredondadas e não substituem um aconselhamento nutricional profissional.',
   searchCloseLabel: 'Fechar', searchResultsLabel: 'Resultados de pesquisa para',
   noResults: 'Nenhum alimento encontrado. Tenta outro termo.',
+  searchNoFoodAskAi: (q) => `Não encontrámos «${q}». Queres que a IA o crie para ti?`,
+  searchAiCreateBtn: 'Sim, criar com IA',
   searchResultsFor: (q) => `Resultados de pesquisa para "${q}"`,
   searchResultsAria: (q) => `Resultados de pesquisa para ${q}`,
   searchNoFoodButCats: 'Nenhum alimento encontrado - talvez queiras dizer uma destas categorias?',
@@ -10890,6 +10906,8 @@ TRANSLATIONS.fr = Object.assign({}, TRANSLATIONS.en, {
   footnoteText: 'Les valeurs sont des moyennes arrondies et ne remplacent pas un conseil nutritionnel professionnel.',
   searchCloseLabel: 'Fermer', searchResultsLabel: 'Résultats de recherche pour',
   noResults: 'Aucun aliment trouvé. Essaie avec un autre terme.',
+  searchNoFoodAskAi: (q) => `Nous n'avons pas trouvé « ${q} ». Souhaites-tu que l'IA le crée pour toi ?`,
+  searchAiCreateBtn: 'Oui, créer avec l\'IA',
   searchResultsFor: (q) => `Résultats de recherche pour « ${q} »`,
   searchResultsAria: (q) => `Résultats de recherche pour ${q}`,
   searchNoFoodButCats: 'Aucun aliment trouvé - tu veux peut-être dire l\'une de ces catégories ?',
@@ -11368,6 +11386,8 @@ TRANSLATIONS.tr = Object.assign({}, TRANSLATIONS.en, {
   footnoteText: 'Değerler yuvarlanmış ortalamalardır ve profesyonel beslenme danışmanlığının yerini tutmaz.',
   searchCloseLabel: 'Kapat', searchResultsLabel: 'Arama sonuçları:',
   noResults: 'Gıda bulunamadı. Lütfen başka bir terim dene.',
+  searchNoFoodAskAi: (q) => `"${q}" bulunamadı. Yapay zeka senin için oluştursun mu?`,
+  searchAiCreateBtn: 'Evet, yapay zeka ile oluştur',
   searchResultsFor: (q) => `"${q}" için arama sonuçları`,
   searchResultsAria: (q) => `${q} için arama sonuçları`,
   searchNoFoodButCats: 'Gıda bulunamadı - belki bu kategorilerden birini mi kastettin?',
@@ -11730,6 +11750,35 @@ function getFoodCategoryIcon(cat) {
   return tile || neutralFoodIconTile();
 }
 
+// Icon fuer ein konkretes Lebensmittel-Objekt - nutzt catIndex (sprachstabil, gesetzt beim
+// KI-/manuellen Anlegen mit Kategorie), sonst den sichtbaren cat-Namen.
+function foodCategoryIconForFood(f) {
+  if (!f) return neutralFoodIconTile();
+  if (typeof f.catIndex === 'number' && f.catIndex >= 0) {
+    const tile = catIconTile(f.catIndex);
+    if (tile) return tile;
+  }
+  return getFoodCategoryIcon(f.cat);
+}
+
+// true, wenn das Lebensmittel in CUSTOM_FOODS liegt (loeschbar, egal ob cat=__CUSTOM__
+// oder einer echten Kategorie zugeordnet).
+function isCustomFoodEntry(f) {
+  return !!(f && CUSTOM_FOODS.some(c => c.id === f.id));
+}
+
+// Liefert CUSTOM_FOODS, die zur aktuell sichtbaren (uebersetzten) Kategorie gehoeren -
+// bevorzugt ueber catIndex, sonst ueber den gespeicherten cat-Namen.
+function customFoodsForActiveCategory(catName) {
+  const order = CATEGORY_ORDER[currentLang] || CATEGORY_ORDER.de;
+  const idx = order.indexOf(catName);
+  return CUSTOM_FOODS.filter(f => {
+    if (!f || f.cat === '__CUSTOM__' || f.cat === '__SUPPLEMENT__' || f.cat === '__SCANNED__') return false;
+    if (typeof f.catIndex === 'number' && f.catIndex >= 0) return f.catIndex === idx;
+    return f.cat === catName;
+  });
+}
+
 // ---------------- Eigene Lebensmittel ----------------
 // Werden separat von FOODS gehalten, da FOODS pro Sprache ausgetauscht wird (siehe setLanguage),
 // eigene Lebensmittel aber sprachunabhaengig bestehen bleiben. Standardmaessig dauerhaft in
@@ -11866,6 +11915,15 @@ function foodCatLabel(cat) {
   if (cat === '__SCANNED__') return L.scannedFoodsLabel;
   if (cat === '__SUPPLEMENT__') return L.supplementsLabel;
   return cat;
+}
+
+function foodDisplayCatLabel(f) {
+  if (!f) return '';
+  if (typeof f.catIndex === 'number' && f.catIndex >= 0) {
+    const order = CATEGORY_ORDER[currentLang] || CATEGORY_ORDER.de;
+    if (order[f.catIndex]) return order[f.catIndex];
+  }
+  return foodCatLabel(f.cat);
 }
 
 // ---------------- Supplemente ----------------
@@ -15160,6 +15218,10 @@ function unitInputValueToGrams(value) {
 // umgerechnet - ml/mg/µg/IE (Fluessigkeiten, Nahrungsergaenzungs-Dosierungen) sind keine
 // Portionsgewichte und bleiben unangetastet.
 function formatIngredientQty(amount, unit) {
+  // amount 0 / null / ungueltig = "nicht angegeben" (Eigenrezept ohne Mengenangabe).
+  if (amount == null || amount === '' || (typeof amount === 'number' && (!isFinite(amount) || amount <= 0))) {
+    return { amount: 'nicht angegeben', unit: '' };
+  }
   if (unit === 'g' && PREFERRED_UNIT === 'oz' && typeof amount === 'number' && isFinite(amount)) {
     return { amount: +(amount / OZ_TO_G).toFixed(1), unit: 'oz' };
   }
@@ -16520,27 +16582,20 @@ function openSearchResults(query) {
         <div class="search-cat-suggest-row">
           ${categories.map(c => `<button type="button" class="search-cat-suggest-chip" data-cat="${c}">${c}</button>`).join('')}
         </div>`;
-    } else {
-      html += `<div class="no-results">${L.noResults}</div>`;
     }
-    // FEATURE (Smart Food Fallback): KI-Analyse-Button erscheint immer dann, wenn die
-    // Suche kein Lebensmittel gefunden hat (unabhaengig davon, ob Kategorie-Vorschlaege
-    // angezeigt werden) - siehe openAiFoodOverlay()/aiFoodTriggerLabel() weiter unten im
-    // Skript. Steht bewusst OBERHALB des bestehenden manuellen Schnell-Eintrags-Links, der
-    // unveraendert als Alternative erhalten bleibt.
-    html += `<button type="button" class="search-ai-food-btn" id="search-ai-food-btn">${escAiFoodText(aiFoodTriggerLabel(query))}</button>`;
-    html += `<button type="button" class="search-quickentry-link" id="search-quickentry-link">+ ${L.quickEntryLinkLabel(query)}</button>`;
+    // FEATURE (Smart Food Fallback, Text-Update): statt "Keine Lebensmittel gefunden …"
+    // direkte Frage, ob die KI das Lebensmittel anlegen soll - der manuelle Einstieg
+    // erscheint erst, wenn die KI ebenfalls nichts findet (siehe runAiFoodLookup()).
+    const askAi = (typeof L.searchNoFoodAskAi === 'function')
+      ? L.searchNoFoodAskAi(query)
+      : L.noResults;
+    html += `<div class="no-results">${escAiFoodText(askAi)}</div>`;
+    html += `<button type="button" class="search-ai-food-btn" id="search-ai-food-btn">${escAiFoodText(L.searchAiCreateBtn || aiFoodTriggerLabel(query))}</button>`;
     listEl.innerHTML = html;
     listEl.querySelectorAll('.search-cat-suggest-chip').forEach(chip => {
       chip.onclick = () => openCategoryOverlay(chip.dataset.cat);
     });
     document.getElementById('search-ai-food-btn').onclick = () => openAiFoodOverlay(query);
-    // FEATURE (Flow-Fix): "selbst eintragen" oeffnet jetzt dieselbe editierbare
-    // Eingabemaske wie die KI-Variante (statt der alten, separaten Mini-Eingabemaske
-    // #quickentry-overlay - deren Markup/Funktionen bleiben unangetastet im Code stehen,
-    // werden fuer diesen Einstiegspunkt aber nicht mehr aufgerufen) - siehe
-    // openManualFoodEntry() weiter unten im Skript.
-    document.getElementById('search-quickentry-link').onclick = () => openManualFoodEntry(query);
   }
 
   document.getElementById('category-food-close-label').textContent = L.backLabel;
@@ -16647,7 +16702,7 @@ function buildFoodListItems(el, items) {
       // jetzt einmalig links statt im Namenstext) - alle anderen suppIconInline()-Aufrufstellen
       // (Detailtitel/Mahlzeiten-Karte/Kindermodus) bleiben unveraendert.
       btn.innerHTML = `
-        <span class="food-cat-icon" aria-hidden="true">${getFoodCategoryIcon(f.cat)}</span>
+        <span class="food-cat-icon" aria-hidden="true">${foodCategoryIconForFood(f)}</span>
         <span class="fname">${f.name}${f.isPredefined ? ` <span class="supp-predefined-star" title="${L.supplementPredefinedLabel}">★</span>` : ''}${statusHtml}</span>
         <span class="supp-dose">${supplementDoseLabel(f)}</span>
         <button class="custom-food-delete" data-id="${f.id}" aria-label="${L.removeAria}">${suppTrashIcon()}</button>`;
@@ -16663,7 +16718,7 @@ function buildFoodListItems(el, items) {
       `<span class="dot-pip${i < filledCount ? ' filled' : ''}"></span>`
     ).join('');
     const stars = isKid ? (f.rating === '***' ? '😄' : f.rating === '**' ? '🙂' : '😐') : `<span class="dot-pips">${dotsHtml}</span>`;
-    const isCustom = f.cat === '__CUSTOM__';
+    const isCustom = f.cat === '__CUSTOM__' || isCustomFoodEntry(f);
     const isScanned = f.cat === '__SCANNED__';
     // KORREKTUR (Korrektur-Prompt "Favoriten-Stern aus Lebensmittel-Listenzeilen entfernen"):
     // der sichtbare Stern-Button (.fav-star, ☆/★) ist hier bewusst entfernt - links steht nur
@@ -16680,7 +16735,7 @@ function buildFoodListItems(el, items) {
         ? `<button class="custom-food-delete" data-id="${f.id}" aria-label="${L.removeAria}">✕</button>`
         : '';
     btn.innerHTML = `
-      <span class="food-cat-icon" aria-hidden="true">${getFoodCategoryIcon(f.cat)}</span>
+      <span class="food-cat-icon" aria-hidden="true">${foodCategoryIconForFood(f)}</span>
       <span class="fname">${f.name}</span>
       <span class="frating${isKid ? ' kid-emoji' : ` pro-stars ${ratingColor}`}">${stars}</span>
       ${deleteBtn}`;
@@ -16728,7 +16783,11 @@ function renderFoodGrid() {
     if (typeof window.applyCategoryFoodTextScale === 'function') window.applyCategoryFoodTextScale();
     return;
   } else {
-    items = FOODS.filter(f => f.cat === state.activeCat);
+    // Eingebaute FOODS der Kategorie + per KI/manuell angelegte CUSTOM_FOODS mit
+    // derselben Kategorie (cat bzw. catIndex) - damit neu angelegte Lebensmittel in der
+    // gewaehlten Kategorie sichtbar werden.
+    items = FOODS.filter(f => f.cat === state.activeCat)
+      .concat(customFoodsForActiveCategory(state.activeCat));
   }
   buildFoodListItems(el, items);
   // NEU (Korrektur-Prompt: Werkzeugleiste A-/A+/Audio nachgeruestet) - siehe
@@ -19255,18 +19314,20 @@ function renderSearchSuggestions() {
   const matches = foods.slice(0, 8);
 
   if (matches.length === 0 && meals.length === 0) {
-    let html = `<div class="search-sugg-empty">${L.noResults}</div>`;
+    // FEATURE (Smart Food Fallback, Text-Update): dieselbe KI-Frage wie in der vollen
+    // Ergebnisliste - manuelles Anlegen erst nach KI-Fehlschlag (nicht hier).
+    const askAi = (typeof L.searchNoFoodAskAi === 'function')
+      ? L.searchNoFoodAskAi(qRaw)
+      : (categories.length > 0 ? L.searchNoFoodButCats : L.noResults);
+    let html = `<div class="search-sugg-empty">${escAiFoodText(askAi)}</div>`;
     if (categories.length > 0) {
-      html = `<div class="search-sugg-empty">${L.searchNoFoodButCats}</div>`;
+      html += `<div class="search-sugg-empty" style="padding-top:0">${L.searchNoFoodButCats}</div>`;
     }
-    suggBox.innerHTML = html + `<button type="button" class="search-sugg-more" id="search-sugg-more-btn">${L.quickEntryLinkLabel(qRaw)} →</button>`;
+    suggBox.innerHTML = html + `<button type="button" class="search-sugg-more" id="search-sugg-more-btn">${escAiFoodText(L.searchAiCreateBtn || aiFoodTriggerLabel(qRaw))} →</button>`;
     document.getElementById('search-sugg-more-btn').onclick = () => {
       hideSuggestions();
-      // Wichtig: Vollbild-Suche IMMER explizit hier schliessen (statt sich auf das
-      // Blur-Event des Suchfelds zu verlassen) - siehe Kommentar bei den anderen drei
-      // onclick-Handlern unten fuer den ausfuehrlichen Grund.
       exitFullScreenSearch();
-      openSearchResults(qRaw);
+      openAiFoodOverlay(qRaw);
     };
   } else {
     // Punkt 4: Mahlzeiten-Treffer zuerst, deutlich als "ganze Mahlzeit" erkennbar,
@@ -20187,7 +20248,10 @@ const AI_FOOD_STRINGS = {
   titleManual: { de: 'Lebensmittel anlegen', en: 'Add food', es: 'Añadir alimento', it: 'Aggiungi alimento' },
   introManual: { de: 'Nährwerte pro 100 g/ml – bitte eintragen.', en: 'Nutritional values per 100 g/ml – please enter.', es: 'Valores nutricionales por 100 g/ml – introdúcelos.', it: 'Valori nutrizionali per 100 g/ml – inseriscili.' },
   loading: { de: 'Wird analysiert …', en: 'Analyzing …', es: 'Analizando …', it: 'Analisi in corso …' },
-  error: { de: 'Die KI-Analyse ist fehlgeschlagen. Bitte später erneut versuchen oder das Lebensmittel manuell anlegen.', en: 'The AI analysis failed. Please try again later or add the food manually.', es: 'El análisis de la IA ha fallado. Inténtalo de nuevo más tarde o añade el alimento manualmente.', it: 'L\'analisi IA non è riuscita. Riprova più tardi oppure aggiungi l\'alimento manualmente.' },
+  error: { de: 'Die KI hat das Lebensmittel nicht gefunden.', en: 'AI could not find this food.', es: 'La IA no ha encontrado este alimento.', it: 'L\'IA non ha trovato questo alimento.' },
+  manualPrompt: { de: 'Möchtest du es selbst eintragen?', en: 'Would you like to enter it yourself?', es: '¿Quieres introducirlo tú mismo?', it: 'Vuoi inserirlo tu stesso?' },
+  manualYesBtn: { de: 'Ja, selbst eintragen', en: 'Yes, enter manually', es: 'Sí, introducir manualmente', it: 'Sì, inserisci manualmente' },
+  categorySummary: { de: 'Kategorie wählen', en: 'Choose category', es: 'Elegir categoría', it: 'Scegli categoria' },
   labelName: { de: 'Name des Lebensmittels', en: 'Food name', es: 'Nombre del alimento', it: 'Nome dell\'alimento' },
   labelKcal: { de: 'Kalorien (kcal)', en: 'Calories (kcal)', es: 'Calorías (kcal)', it: 'Calorie (kcal)' },
   labelNettoKh: { de: 'Netto-Kohlenhydrate (g)', en: 'Net carbs (g)', es: 'Carbohidratos netos (g)', it: 'Carboidrati netti (g)' },
@@ -20207,10 +20271,10 @@ const AI_FOOD_STRINGS = {
   saveAddBtn: { de: 'Speichern & Zum Teller hinzufügen', en: 'Save & add to plate', es: 'Guardar y añadir al plato', it: 'Salva e aggiungi al piatto' },
 };
 const AI_FOOD_TRIGGER_LABEL = {
-  de: q => `„${q}“ mit KI analysieren & anlegen`,
-  en: q => `Analyze “${q}” with AI & add`,
-  es: q => `Analizar «${q}» con IA y añadir`,
-  it: q => `Analizza «${q}» con l'IA e aggiungi`,
+  de: q => `„${q}“ mit KI anlegen`,
+  en: q => `Create “${q}” with AI`,
+  es: q => `Crear «${q}» con IA`,
+  it: q => `Crea «${q}» con l'IA`,
 };
 function tAiFood(key) {
   const entry = AI_FOOD_STRINGS[key];
@@ -20268,10 +20332,16 @@ const AI_FOOD_SYSTEM_PROMPT =
   'Lebensmittels nach BLS-Standard ausschließlich als valides JSON-Objekt zurück. Keine ' +
   'Erklärungen, kein Begleittext.\n' +
   'JSON-Format:\n' +
-  '{"name": "...", "kcal": 0, "netto_kh": 0, "protein": 0, "fett": 0, "ballaststoffe": 0, ' +
+  '{"name": "...", "kategorie": "...", "kcal": 0, "netto_kh": 0, "protein": 0, "fett": 0, "ballaststoffe": 0, ' +
   '"gesaettigte_fett": 0, "omega3_mg": 0, "salz_g": 0, "kalium_mg": 0, "magnesium_mg": 0}\n' +
+  'Feld "kategorie" muss GENAU einer dieser deutschen Kategorienamen sein: ' +
+  '"Getreide & Beilagen", "Milchprodukte", "Obst", "Nüsse & Samen", "Süßungsmittel", ' +
+  '"Getränke", "Hülsenfrüchte", "Gemüse", "Fisch & Meeresfrüchte", "Fleisch & Eier", ' +
+  '"Öle & Fette", "Soßen & Gewürze", "Süßigkeiten & Snacks", "Fertiggerichte".\n' +
   'Alle Zahlenwerte sind realistische, wissenschaftlich fundierte Naehrwerte (>= 0). Fuege ' +
-  'keine weiteren Felder hinzu.';
+  'keine weiteren Felder hinzu. Wenn das Lebensmittel unbekannt ist, antworte mit ' +
+  '{"name":"","kategorie":"","kcal":-1,"netto_kh":-1,"protein":-1,"fett":-1,"ballaststoffe":-1,' +
+  '"gesaettigte_fett":-1,"omega3_mg":-1,"salz_g":-1,"kalium_mg":-1,"magnesium_mg":-1}.';
 function buildAiFoodUserPrompt(query) {
   return `Lebensmittel: "${query}". Gib die Nährwerte pro 100 g/ml als JSON zurück.`;
 }
@@ -20429,6 +20499,9 @@ function applyAiFoodLabels() {
   setText('afe-label-magnesium', 'labelMagnesium');
   setText('ai-food-save-only', 'saveOnlyBtn');
   setText('ai-food-save-add', 'saveAddBtn');
+  setText('ai-food-manual-prompt-text', 'manualPrompt');
+  setText('ai-food-manual-yes', 'manualYesBtn');
+  setText('ai-food-category-summary-label', 'categorySummary');
 }
 
 // FEATURE (Flow-Fix): Titel/Untertitel des (einen, gemeinsamen) Anlege-Modals haengen vom
@@ -20452,7 +20525,90 @@ function resetAiFoodFieldsToZero() {
   });
 }
 
-let aiFoodLookupState = { query: '', mode: 'ai' };
+let aiFoodLookupState = { query: '', mode: 'ai', category: '', categoryOpen: false };
+
+// Mappt den von der KI gelieferten deutschen Kategorienamen auf den Namen in der
+// aktuellen App-Sprache (ueber denselben Index in CATEGORY_ORDER). Unbekannte/
+// leere Werte liefern '' - der Nutzer waehlt dann selbst im Kategorie-Picker.
+function resolveAiFoodCategory(raw) {
+  if (!raw || typeof raw !== 'string') return '';
+  const deOrder = CATEGORY_ORDER.de || [];
+  const langOrder = CATEGORY_ORDER[currentLang] || deOrder;
+  const needle = raw.trim().toLowerCase();
+  let idx = deOrder.findIndex(n => n.toLowerCase() === needle);
+  if (idx < 0) idx = langOrder.findIndex(n => n.toLowerCase() === needle);
+  if (idx < 0) return '';
+  return langOrder[idx] || '';
+}
+
+function hideAiFoodManualPrompt() {
+  const el = document.getElementById('ai-food-manual-prompt');
+  if (!el) return;
+  el.style.display = 'none';
+  el.hidden = true;
+}
+
+function showAiFoodManualPrompt() {
+  const el = document.getElementById('ai-food-manual-prompt');
+  if (!el) return;
+  const textEl = document.getElementById('ai-food-manual-prompt-text');
+  const btnEl = document.getElementById('ai-food-manual-yes');
+  if (textEl) textEl.textContent = tAiFood('manualPrompt');
+  if (btnEl) btnEl.textContent = tAiFood('manualYesBtn');
+  el.hidden = false;
+  el.style.display = '';
+}
+
+function hideAiFoodCategoryPicker() {
+  const el = document.getElementById('ai-food-category-details');
+  if (!el) return;
+  el.style.display = 'none';
+  el.open = false;
+}
+
+function renderAiFoodCategoryPicker(selectedCat) {
+  const detailsEl = document.getElementById('ai-food-category-details');
+  const listEl = document.getElementById('ai-food-category-list');
+  const summaryLabel = document.getElementById('ai-food-category-summary-label');
+  if (!detailsEl || !listEl) return;
+  const order = CATEGORY_ORDER[currentLang] || CATEGORY_ORDER.de;
+  const selected = selectedCat || aiFoodLookupState.category || '';
+  aiFoodLookupState.category = selected;
+  if (summaryLabel) summaryLabel.textContent = tAiFood('categorySummary');
+  listEl.innerHTML = order.map(catName => {
+    const checked = catName === selected ? ' checked' : '';
+    const icon = (typeof getFoodCategoryIcon === 'function') ? getFoodCategoryIcon(catName) : '';
+    return `
+      <label class="nutri-recipe-category-radio-item">
+        <span class="nutri-recipe-category-radio-left">
+          <span class="nutri-recipe-category-radio-icon" aria-hidden="true">${icon}</span>
+          <span>${escAiFoodText(catName)}</span>
+        </span>
+        <input type="radio" name="ai-food-cat-choice" value="${escAiFoodText(catName)}" class="nutri-recipe-category-radio"${checked}>
+      </label>`;
+  }).join('');
+  detailsEl.style.display = '';
+  detailsEl.open = !!aiFoodLookupState.categoryOpen;
+  detailsEl.ontoggle = () => { aiFoodLookupState.categoryOpen = detailsEl.open; };
+  listEl.querySelectorAll('input[name="ai-food-cat-choice"]').forEach(radio => {
+    radio.onchange = () => {
+      if (radio.checked) aiFoodLookupState.category = radio.value;
+    };
+  });
+}
+
+function showAiFoodFormPanels() {
+  document.getElementById('ai-food-form').style.display = '';
+  document.getElementById('ai-food-advanced').style.display = '';
+  document.getElementById('ai-food-actions').style.display = '';
+}
+
+function hideAiFoodFormPanels() {
+  document.getElementById('ai-food-form').style.display = 'none';
+  document.getElementById('ai-food-advanced').style.display = 'none';
+  document.getElementById('ai-food-actions').style.display = 'none';
+  hideAiFoodCategoryPicker();
+}
 
 // FEATURE (Flow-Fix): schliesst das Suchergebnis-Overlay sofort und vollstaendig, BEVOR das
 // Anlege-Modal geoeffnet wird (statt wie zuvor gestapelt darueber) - gilt fuer beide
@@ -20465,13 +20621,12 @@ function openAiFoodOverlay(rawQuery) {
   const query = sanitizeAiFoodQuery(rawQuery);
   if (!query) return;
   closeSearchResultsForFoodEntry();
-  aiFoodLookupState = { query, mode: 'ai' };
+  aiFoodLookupState = { query, mode: 'ai', category: '', categoryOpen: false };
   applyAiFoodLabels();
   setAiFoodTitle('ai');
-  document.getElementById('ai-food-form').style.display = 'none';
-  document.getElementById('ai-food-advanced').style.display = 'none';
+  hideAiFoodFormPanels();
+  hideAiFoodManualPrompt();
   document.getElementById('ai-food-advanced').open = false;
-  document.getElementById('ai-food-actions').style.display = 'none';
   document.getElementById('ai-food-error').style.display = 'none';
   setAiFoodStatus(tAiFood('loading'), false);
   document.getElementById('ai-food-lookup-overlay').classList.add('show');
@@ -20484,10 +20639,15 @@ function openAiFoodOverlay(rawQuery) {
 // oeffnet aber sofort (keine KI-Anfrage/kein Ladezustand) mit vorausgefuelltem Namen und
 // leeren (0-)Naehrwert-Feldern, die der Nutzer direkt selbst ausfuellt.
 function openManualFoodEntry(rawQuery) {
-  const query = sanitizeAiFoodQuery(rawQuery);
+  const query = sanitizeAiFoodQuery(rawQuery || aiFoodLookupState.query);
   if (!query) return;
   closeSearchResultsForFoodEntry();
-  aiFoodLookupState = { query, mode: 'manual' };
+  aiFoodLookupState = {
+    query,
+    mode: 'manual',
+    category: aiFoodLookupState.category || '',
+    categoryOpen: !!aiFoodLookupState.categoryOpen,
+  };
   applyAiFoodLabels();
   setAiFoodTitle('manual');
   const nameEl = document.getElementById('afe-name');
@@ -20496,9 +20656,9 @@ function openManualFoodEntry(rawQuery) {
   setAiFoodStatus('', false);
   document.getElementById('ai-food-error').style.display = 'none';
   document.getElementById('ai-food-advanced').open = false;
-  document.getElementById('ai-food-form').style.display = '';
-  document.getElementById('ai-food-advanced').style.display = '';
-  document.getElementById('ai-food-actions').style.display = '';
+  hideAiFoodManualPrompt();
+  showAiFoodFormPanels();
+  renderAiFoodCategoryPicker(aiFoodLookupState.category);
   document.getElementById('ai-food-lookup-overlay').classList.add('show');
   document.getElementById('ai-food-lookup-overlay').setAttribute('aria-hidden', 'false');
   lockBodyScroll();
@@ -20525,46 +20685,39 @@ function populateAiFoodForm(data, query) {
   setVal('afe-magnesium', data.magnesium_mg);
 }
 
-// FIX (Nie mehr blockierender Fehlerzustand): Vorher endete eine fehlgeschlagene
-// KI-Analyse in einer Sackgasse - es wurde nur die Fehlermeldung angezeigt, das Formular
-// (Felder + Speichern-Buttons) blieb unsichtbar (display:none aus dem Lade-Zustand), der
-// Nutzer konnte nicht weiterarbeiten. Jetzt gilt: das Formular wird IMMER angezeigt -
-// entweder mit den KI-Werten befuellt (Erfolg) oder mit dem Suchbegriff als Name und
-// leeren/0-Feldern (jeder Fehlschlag: Netzwerk/Timeout/HTTP/Parse/Schema) - der Nutzer kann
-// dann exakt wie im manuellen Modus (openManualFoodEntry()) direkt selbst weiterschreiben
-// und speichern. Kein alert(), keine Sackgasse.
+// Bei erfolgreicher KI-Analyse: Formular + Kategorie-Picker. Bei Fehlschlag: nur die Frage
+// "Moechtest du es selbst eintragen?" mit Button (kein leeres Formular mehr als Sackgasse-
+// Ersatz - der manuelle Einstieg ist jetzt eine bewusste Nutzerentscheidung).
 async function runAiFoodLookup(query) {
   let data = null;
   try {
-    // FIX (Fehlerbehebung KI-Analyse): Rohdaten vor der Schema-Pruefung normalisieren
-    // (siehe normalizeAiFoodData()) - faengt u.a. Zahlenwerte ab, die das Modell trotz
-    // response_format:"json_object" gelegentlich als String liefert.
     data = normalizeAiFoodData(await postAiFoodLookupRequest(query));
   } catch (e) {
-    // postAiFoodLookupRequest() faengt bereits alle eigenen Fehler ab und gibt null
-    // zurueck - dieser catch ist ausschliesslich ein zusaetzliches Sicherheitsnetz, damit
-    // hier unter keinen Umstaenden eine unbehandelte Exception den Ablauf abbricht.
     console.warn('AI-Lebensmittelsuche: unerwarteter Fehler', e);
     data = null;
   }
-  // Schutz gegen veraltete Antworten: Nutzer koennte das Modal inzwischen geschlossen
-  // oder eine neue Suche gestartet haben, waehrend die Anfrage noch lief.
   if (!document.getElementById('ai-food-lookup-overlay').classList.contains('show')) return;
   if (aiFoodLookupState.query !== query) return;
 
   const ok = data && validateAiFoodSchema(data);
   if (!ok) {
-    console.warn('AI-Lebensmittelsuche fehlgeschlagen oder unvollstaendig - oeffne das Formular trotzdem (manueller Fallback), Nutzer wird nicht blockiert:', data);
+    console.warn('AI-Lebensmittelsuche fehlgeschlagen oder unvollstaendig - manueller Fallback-Prompt:', data);
+    hideAiFoodFormPanels();
+    setAiFoodStatus(tAiFood('error'), true);
+    showAiFoodManualPrompt();
+    return;
   }
-  // Erfolg: mit KI-Werten befuellen. Fehlschlag: leeres Formular mit dem Suchbegriff als
-  // Name (populateAiFoodForm() faellt bei fehlenden Feldern ohnehin automatisch auf 0
-  // zurueck, siehe fmtAiFoodNum()) - exakt derselbe nutzbare Zustand wie beim manuellen
-  // Anlegen.
-  populateAiFoodForm(ok ? data : {}, query);
-  setAiFoodStatus(ok ? '' : tAiFood('error'), !ok);
-  document.getElementById('ai-food-form').style.display = '';
-  document.getElementById('ai-food-advanced').style.display = '';
-  document.getElementById('ai-food-actions').style.display = '';
+
+  hideAiFoodManualPrompt();
+  const suggestedCat = resolveAiFoodCategory(data.kategorie);
+  aiFoodLookupState.category = suggestedCat;
+  // Bei erfolgreicher KI-Analyse Kategorie-Picker oeffnen, wenn die KI bereits
+  // eine Kategorie vorgeschlagen hat - sonst eingeklappt wie bei "Routine speichern".
+  aiFoodLookupState.categoryOpen = !!suggestedCat;
+  populateAiFoodForm(data, query);
+  setAiFoodStatus('', false);
+  showAiFoodFormPanels();
+  renderAiFoodCategoryPicker(suggestedCat);
 }
 
 // ---- Speichern (Punkt 4): "In Lebensmittelliste speichern" (addToPlate=false) bucht
@@ -20572,8 +20725,9 @@ async function runAiFoodLookup(query) {
 // im Anschluss die bestehende Mengen-Auswahl (openQuickAdd(), exakt dieselbe wie beim
 // Antippen eines normalen Lebensmittels), damit die gewuenschte Portionsmenge gewaehlt und
 // sofort gebucht werden kann - keine zweite, parallele Mengen-Logik noetig. Beide Optionen
-// speichern dauerhaft in CUSTOM_FOODS (sessionOnly:false) fuer Teller/Suche, erscheinen
-// aber NICHT in der Kategorie "Eigene Lebensmittel" (fromCustomForm:false). ----
+// speichern dauerhaft in CUSTOM_FOODS (sessionOnly:false) fuer Teller/Suche. Mit gewaehlter
+// Lebensmittel-Kategorie erscheint der Eintrag in dieser Kategorie (sonst __CUSTOM__, aber
+// weiterhin nicht in "Eigene Lebensmittel", fromCustomForm:false). ----
 function saveAiFoodEntry(addToPlate) {
   const errEl = document.getElementById('ai-food-error');
   const showErr = (msg) => { if (errEl) { errEl.textContent = msg; errEl.style.display = 'block'; } };
@@ -20612,15 +20766,18 @@ function saveAiFoodEntry(addToPlate) {
     return;
   }
 
-  // Gleiche einfache Sternebewertungs-Heuristik wie beim bestehenden Schnell-Eintrag
-  // (submitQuickEntry) - keine zweite, abweichende Regel fuer KI-Lebensmittel.
   let rating = '**';
   if (protein >= 15 && fat <= 20 && salt <= 1.5) rating = '***';
   else if (fat > 35 || salt > 3) rating = '*';
 
+  const order = CATEGORY_ORDER[currentLang] || CATEGORY_ORDER.de;
+  const chosenCat = aiFoodLookupState.category;
+  const cat = (chosenCat && order.includes(chosenCat)) ? chosenCat : '__CUSTOM__';
+  const catIndex = cat === '__CUSTOM__' ? -1 : order.indexOf(cat);
+
   const id = 900000 + customFoodCounter++;
   const food = {
-    id, cat: '__CUSTOM__', name,
+    id, cat, catIndex, name,
     kcal100: +kcal.toFixed(0),
     kh100: +(nettoKh + fiber).toFixed(1),
     ballast100: +fiber.toFixed(1),
@@ -20632,9 +20789,6 @@ function saveAiFoodEntry(addToPlate) {
     salt100: +salt.toFixed(2),
     defaultPortion: 100, portionLabel: '100 g',
     rating, fatQ: ['none'], tip: '',
-    // FEATURE (Flow-Fix): aiGenerated spiegelt den Modus (KI vs. manuell). Beide bleiben
-    // fuer Teller/Suche in CUSTOM_FOODS, aber fromCustomForm:false haelt sie aus der
-    // Kategorie "Eigene Lebensmittel" (nur Suche -> "+" -> Formular).
     sessionOnly: false, fromCustomForm: false, aiGenerated: aiFoodLookupState.mode === 'ai',
     micros: {
       omega3_mg: +omega3.toFixed(0),
@@ -20645,9 +20799,6 @@ function saveAiFoodEntry(addToPlate) {
   CUSTOM_FOODS.push(food);
   saveCustomFoods();
 
-  // FEATURE (Flow-Fix): das Suchergebnis-Overlay wurde beim Oeffnen dieses Modals bereits
-  // vollstaendig geschlossen (siehe closeSearchResultsForFoodEntry()) - nach dem Speichern
-  // wird es deshalb NICHT mehr automatisch neu geoeffnet, nur noch dieses Modal selbst.
   closeOverlay('ai-food-lookup');
   renderCats();
 
@@ -20657,6 +20808,10 @@ function saveAiFoodEntry(addToPlate) {
 }
 document.getElementById('ai-food-save-only').onclick = () => saveAiFoodEntry(false);
 document.getElementById('ai-food-save-add').onclick = () => saveAiFoodEntry(true);
+(function wireAiFoodManualYes() {
+  const btn = document.getElementById('ai-food-manual-yes');
+  if (btn) btn.onclick = () => openManualFoodEntry(aiFoodLookupState.query);
+})();
 
 // ---------------- Vorlagen & Rezepte (Punkte 6 + 9) ----------------
 function getBuiltInRecipes() {
@@ -21079,7 +21234,7 @@ function renderQuickAdd() {
 
   el.innerHTML = `
     <h2 id="qa-name" class="qa-name">${food.name}</h2>
-    <div class="qa-cat">${foodCatLabel(food.cat)}</div>
+    <div class="qa-cat">${foodDisplayCatLabel(food)}</div>
     ${scannedMeta}
     ${incompleteWarn}
     <div class="qa-size-row">${sizeButtonsHtml}</div>
@@ -22049,23 +22204,54 @@ initBarcodeEvents();
     // formuliert (statt als hoefliche Bitte) - zusaetzliche Absicherung neben dem eigentlichen
     // Traeger des Suchbegriffs (pantry_ingredients, siehe buildNutriRecipePayload).
     var LBL_RECIPE_FREESEARCH_AI_INSTRUCTION = {
-      de: 'VERBINDLICHE VORGABE, KEIN VORSCHLAG: Erstelle ausschließlich ein Rezept für genau folgendes Gericht: "{q}". Weiche unter keinen Umständen auf ein anderes Gericht aus, auch wenn die Tagesziele dadurch schwerer einzuhalten sind - passe stattdessen nur die Mengen/Zutatendetails dieses konkreten Gerichts so gut wie möglich an die unten genannten Tagesziele an.',
-      en: 'BINDING REQUIREMENT, NOT A SUGGESTION: Create a recipe exclusively for the following dish: "{q}". Under no circumstances substitute a different dish, even if that makes the daily targets harder to meet - instead only adjust the amounts/ingredient details of this specific dish to match the daily targets listed below as closely as possible.',
-      es: 'REQUISITO VINCULANTE, NO UNA SUGERENCIA: Crea una receta exclusivamente para el siguiente plato: "{q}". Bajo ninguna circunstancia sustituyas por otro plato, aunque eso dificulte cumplir los objetivos diarios - en su lugar, ajusta solo las cantidades/detalles de los ingredientes de este plato concreto para cumplir lo mejor posible los objetivos diarios indicados a continuación.',
-      it: 'REQUISITO VINCOLANTE, NON UN SUGGERIMENTO: Crea una ricetta esclusivamente per il seguente piatto: "{q}". Non sostituirlo in nessun caso con un piatto diverso, anche se ciò rende più difficile rispettare gli obiettivi giornalieri - adatta invece solo le quantità/i dettagli degli ingredienti di questo piatto specifico per rispettare il più possibile gli obiettivi giornalieri indicati di seguito.',
+      de: 'MODUS GENERATIV / FREISUCHE (nicht Eigenrezept): VERBINDLICHE VORGABE, KEIN VORSCHLAG: Erstelle ausschließlich ein Rezept für genau folgendes Gericht: "{q}". Weiche unter keinen Umständen auf ein anderes Gericht aus. Du DARFST Mengen und Zutatendetails an die unten genannten Tagesziele anpassen – das ist hier erlaubt und gewollt.',
+      en: 'MODE GENERATIVE / FREE SEARCH (not own-recipe): BINDING REQUIREMENT, NOT A SUGGESTION: Create a recipe exclusively for the following dish: "{q}". Under no circumstances substitute a different dish. You MAY adjust amounts and ingredient details to match the daily targets listed below – that is allowed and intended in this mode.',
+      es: 'MODO GENERATIVO / BÚSQUEDA LIBRE (no receta propia): REQUISITO VINCULANTE: Crea una receta exclusivamente para el plato "{q}". No sustituyas por otro plato. SÍ puedes ajustar cantidades y detalles de ingredientes a los objetivos diarios – está permitido en este modo.',
+      it: 'MODALITÀ GENERATIVA / RICERCA LIBERA (non ricetta propria): REQUISITO VINCOLANTE: Crea una ricetta esclusivamente per il piatto "{q}". Non sostituirlo. PUOI adattare quantità e dettagli degli ingredienti agli obiettivi giornalieri – è consentito in questa modalità.',
     };
-    // Strukturierte Nutzereingabe: 1:1-Zutaten + Einkaufsliste.
+    // ---------------------------------------------------------------------------
+    // EIGENREZEPT / STRUCTURED – Client-ai_instruction
+    // PRODUKTIV ist ausschliesslich buildStructuredNutriAiInstruction() unten
+    // (wird als payload.ai_instruction gesendet). Die fruehere Konstante
+    // LBL_RECIPE_STRUCTURED_INPUT_AI_INSTRUCTION (langer Beispiel-Block) ist ENTFERNT,
+    // weil sie tot war und nicht mehr an den Server ging – bitte dort nichts
+    // wieder einfuegen. Server-Systemprompt: labplate-backend/nutri-recipe-core.js
+    // buildEnrichmentMessages(). GENERATIV/Freisuche: LBL_RECIPE_FREESEARCH_* oben.
+    // ---------------------------------------------------------------------------
+    function buildStructuredNutriAiInstruction(parsedUserRecipe, freesearchQuery) {
+      var structIngLines = parsedUserRecipe.ingredients.length >= 3
+        ? parsedUserRecipe.ingredients.map(function (i) { return i.raw; })
+        : freesearchQuery.split(/[\r\n]+/).map(function (s) { return s.trim(); }).filter(function (s) { return s.length > 2; });
+      var ingCount = structIngLines.length;
+      var numberedList = structIngLines.map(function (s, i) { return (i + 1) + '. ' + s; }).join(' | ');
+      var stepsList = parsedUserRecipe.steps.map(function (s, i) { return (i + 1) + '. ' + s; }).join(' ');
+      var curLang = (typeof lang === 'function') ? lang() : 'de';
+      var baseDe =
+        'MODUS EIGENREZEPT/STRUCTURED – Inhalt fix. Rezept-Coach: klar strukturieren, Inhalt nicht aendern. ' +
+        'ALLE ' + ingCount + ' ZUTATEN PFLICHT: ' + numberedList +
+        ' — ingredients[] genau ' + ingCount + ' Objekte. Keine Zutat weglassen/hinzufuegen. ' +
+        'Bereits angegebene Mengen nie aendern. Fehlende Menge: nur feste Tabelle (1 EL=15, 1 TL=5, Zehe=5 g, Avocado=200 g, 1/2 Gurke=200 g, Ei=60 g) oder amount=0 (=nicht angegeben), keine freie Schaetzung. ' +
+        'unit nur g/ml, status benoetigt, macrosPer100g={netCarbs,fat,protein,fiber} nur fuer genannte Zutaten. ' +
+        (stepsList
+          ? 'SCHRITTE 1:1 in gleicher Reihenfolge in steps[] (' + parsedUserRecipe.steps.length + '): ' + stepsList
+          : 'Keine Schritte im Input → steps=[].') +
+        (parsedUserRecipe.servings ? ' servings=' + parsedUserRecipe.servings + '.' : '') +
+        ' title, servings, prep_time, shopping_list, nutrition_note (Hinweise). Stil ok, Inhalt fix.';
+      var baseEn =
+        'MODE OWN-RECIPE/STRUCTURED – content fixed. Recipe coach: structure clearly, do not change content. ' +
+        'ALL ' + ingCount + ' INGREDIENTS MANDATORY: ' + numberedList +
+        ' — ingredients[] exactly ' + ingCount + ' objects. Do not omit/add ingredients. ' +
+        'Never change stated amounts. Missing amount: fixed table only (1 tbsp=15, 1 tsp=5, garlic clove=5 g, avocado=200 g, 1/2 cucumber=200 g, egg=60 g) or amount=0 (=not specified), no free guessing. ' +
+        'unit only g/ml, status benoetigt, macrosPer100g only for listed ingredients. ' +
+        (stepsList
+          ? 'Copy STEPS 1:1 in same order into steps[] (' + parsedUserRecipe.steps.length + '): ' + stepsList
+          : 'No steps in input → steps=[].') +
+        (parsedUserRecipe.servings ? ' servings=' + parsedUserRecipe.servings + '.' : '') +
+        ' title, servings, prep_time, shopping_list, nutrition_note. Style ok, content fixed.';
+      return curLang === 'de' ? baseDe : baseEn;
+    }
     // Schema: validateNutriRecipeSchema erlaubt bis 100 Zutaten, 50 Schritte, Strings bis 2000;
     // unit bleibt g|ml wegen calcRecipeMacrosPerServing.
-    var LBL_RECIPE_STRUCTURED_INPUT_AI_INSTRUCTION = {
-      de: 'REZEPT-MODUS – EIGENREZEPT des Nutzers: "{q}". WICHTIG: Dies ist das EIGENREZEPT des Nutzers. Du darfst KEINE Zutaten weglassen, KEINE Mengen aendern und KEINE Schritte kuerzen. Du musst ALLE Zutaten aus dem Input 1:1 uebernehmen. Punkt. Wenn der Nutzer "Honig, Bruehe, Reisessig, Sojasosse, Sesam, Petersilie, Dressing" schreibt, musst du ALLE diese Zutaten uebernehmen. Wenn du Zutaten weglaesst, ist das Rezept fuer den Nutzer unbrauchbar. Du darfst NICHT entscheiden, welche Zutaten "wichtig" oder "optional" sind. Der Nutzer hat entschieden, was im Rezept ist. Wenn der Nutzer "2 Avocados" schreibt, musst du 400 g uebernehmen. Nicht weniger. Wenn der Nutzer "110 g Honig" schreibt, musst du 110 g Honig uebernehmen. Nicht weniger. Nicht weglassen. Wenn der Nutzer "80 ml Bruehe" schreibt, musst du 80 ml Bruehe uebernehmen. Nicht weniger. Nicht weglassen. Wenn der Nutzer "1 EL Reisessig, 1 EL Sojasosse, 2 EL Sesam" schreibt, musst du ALLE diese Zutaten uebernehmen. Nicht weglassen. Das Ingredient-Array muss genau so viele Eintraege haben wie der Nutzer Zutaten eingegeben hat. Wenn der Nutzer 19 Zutaten eingibt, muss das Array 19 Eintraege haben (bis zu 100 erlaubt). Das Steps-Array muss alle Schritte enthalten, die der Nutzer eingegeben hat. Wenn der Nutzer eine Sauce beschreibt (Honig, Bruehe, Reisessig, Sojasosse, Sesam), musst du diese Schritte uebernehmen. Wenn du Zutaten weglaesst oder Schritte kuerzt, machst du das Rezept fuer den Nutzer unbrauchbar. Mache KEINE Annahmen, was der Nutzer zu Hause hat. Generiere eine Einkaufsliste aus allen Zutaten (1:1). WENN DU ZUTATEN WEGLAESST: Honig, Bruehe, Reisessig, Sojasosse, Sesam, Petersilie, Dressing MUESSEN im Ingredient-Array sein. Wenn du eine dieser Zutaten weglaesst, ist das Rezept unbrauchbar. Der Nutzer hat sie explizit eingegeben. Sauce-Schritte: Alle Schritte zur Sauce (Honig, Bruehe, Reisessig, Sojasosse, Sesam) MUESSEN im Steps-Array sein. Wenn der Nutzer schreibt: "Honig, Bruehe, Reisessig und Sojasosse zum Fleisch geben. Die Hitze wieder erhoehen, damit alles fuer 4-5 Minuten einreduzieren und glasieren kann. Dabei immer wieder umruehren. Kurz vor Ende den Sesam dazu geben und gut unterruehren.", musst du diese Schritte 1:1 uebernehmen. Schema-Antwort: unit nur "g" oder "ml" (EL/TL in g/ml umrechnen); status bei jeder Zutat "benoetigt"; macrosPer100g (netCarbs, fat, protein, fiber); title, servings, prep_time, steps[], shopping_list[], nutrition_note. BEISPIELE: "2 Avocados" -> {"name":"Avocado","amount":400,"unit":"g"}; "110 g Honig" -> {"name":"Honig","amount":110,"unit":"g"} (MUSS); "80 ml Bruehe" -> {"name":"Gemuese- oder Gefluegelbruehe","amount":80,"unit":"ml"} (MUSS); "1 EL Reisessig" -> {"name":"Reisessig","amount":15,"unit":"ml"} (MUSS); "1 EL Sojasosse" -> {"name":"Sojasosse","amount":15,"unit":"ml"} (MUSS); "2 EL Sesam" -> {"name":"Sesam","amount":20,"unit":"g"} (MUSS); "glatte Petersilie" -> {"name":"Petersilie","amount":10,"unit":"g"} (MUSS); "Salatdressing Eurer Wahl" -> {"name":"Salatdressing","amount":30,"unit":"ml"} (MUSS).',
-      en: 'RECIPE MODE – USER\'S OWN RECIPE: "{q}". IMPORTANT: This is the user\'s OWN recipe. You must NOT omit ingredients, change amounts, or shorten steps. Take ALL ingredients from the input 1:1. Period. If the user writes "honey, broth, rice vinegar, soy sauce, sesame, parsley, dressing", you MUST include ALL of them. Omitting ingredients makes the recipe unusable. You may NOT decide which ingredients are "important" or "optional". If the user writes "2 avocados", use 400 g – not less. "110 g honey" → 110 g honey MUST be included. "80 ml broth" → 80 ml MUST be included. "1 tbsp rice vinegar, 1 tbsp soy sauce, 2 tbsp sesame" → ALL must be included. The ingredients array must have exactly as many entries as the user listed (up to 100). The steps array must include every user step; sauce steps (honey, broth, rice vinegar, soy sauce, sesame) MUST appear in steps[]. Do NOT assume what the user already has. Generate shopping_list 1:1 from all ingredients. IF YOU OMIT INGREDIENTS: honey, broth, rice vinegar, soy sauce, sesame, parsley, dressing MUST be in the ingredients array. Sauce steps MUST be copied 1:1 into steps[]. Schema: unit only "g" or "ml"; status "benoetigt"; macrosPer100g; title, servings, prep_time, steps[], shopping_list[], nutrition_note. EXAMPLES: 2 avocados=400 g; 110 g honey MUST; 80 ml broth MUST; 1 tbsp rice vinegar=15 ml MUST; 1 tbsp soy sauce=15 ml MUST; 2 tbsp sesame=20 g MUST; parsley=10 g MUST; salad dressing=30 ml MUST.',
-      es: 'MODO RECETA – RECETA PROPIA del usuario: "{q}". IMPORTANTE: No omitas ingredientes, no cambies cantidades, no acortes pasos. TODOS los ingredientes 1:1. Si escribe miel, caldo, vinagre de arroz, soja, sésamo, perejil, aderezo → TODOS deben estar. "2 aguacates"=400 g; "110 g miel"=110 g (OBLIGATORIO); "80 ml caldo" (OBLIGATORIO). Exactamente tantos ingredientes como el usuario (hasta 100). Todos los pasos de salsa en steps[]. shopping_list 1:1. status="benoetigt". unit solo "g"/"ml" + macrosPer100g. title, servings, prep_time, steps[], shopping_list[], nutrition_note. perejil≈10 g; aderezo≈30 ml (OBLIGATORIOS).',
-      it: 'MODALITÀ RICETTA – RICETTA PROPRIA dell\'utente: "{q}". IMPORTANTE: Non omettere ingredienti, non cambiare quantità, non accorciare passaggi. TUTTI gli ingredienti 1:1. Se scrive miele, brodo, aceto di riso, soia, sesamo, prezzemolo, condimento → TUTTI devono esserci. "2 avocado"=400 g; "110 g miele" OBBLIGATORIO; "80 ml brodo" OBBLIGATORIO. Esattamente tanti ingredienti quanti l\'utente (fino a 100). Tutti i passaggi della salsa in steps[]. shopping_list 1:1. status="benoetigt". unit solo "g"/"ml" + macrosPer100g. title, servings, prep_time, steps[], shopping_list[], nutrition_note. prezzemolo≈10 g; condimento≈30 ml (OBBLIGATORI).',
-      pt: 'MODO RECEITA – RECEITA PRÓPRIA do utilizador: "{q}". IMPORTANTE: Não omitas ingredientes, não alters quantidades, não encurtes passos. TODOS os ingredientes 1:1. Se escrever mel, caldo, vinagre de arroz, soja, sésamo, salsa, molho → TODOS têm de estar. "2 abacates"=400 g; "110 g mel" OBRIGATÓRIO; "80 ml caldo" OBRIGATÓRIO. Exatamente tantos ingredientes quanto o utilizador (até 100). Todos os passos do molho em steps[]. shopping_list 1:1. status="benoetigt". unit só "g"/"ml" + macrosPer100g. title, servings, prep_time, steps[], shopping_list[], nutrition_note. salsa≈10 g; molho≈30 ml (OBRIGATÓRIOS).',
-      fr: 'MODE RECETTE – RECETTE PERSONNELLE de l\'utilisateur: "{q}". IMPORTANT: N\'omets aucun ingrédient, ne change pas les quantités, n\'abrège pas les étapes. TOUS les ingrédients 1:1. S\'il écrit miel, bouillon, vinaigre de riz, soja, sésame, persil, vinaigrette → TOUS doivent être présents. "2 avocats"=400 g; "110 g miel" OBLIGATOIRE; "80 ml bouillon" OBLIGATOIRE. Exactement autant d\'ingrédients que l\'utilisateur (jusqu\'à 100). Toutes les étapes de sauce dans steps[]. shopping_list 1:1. status="benoetigt". unit uniquement "g"/"ml" + macrosPer100g. title, servings, prep_time, steps[], shopping_list[], nutrition_note. persil≈10 g; vinaigrette≈30 ml (OBLIGATOIRES).',
-      tr: 'TARİF MODU – Kullanıcının KENDİ tarifi: "{q}". ÖNEMLİ: Malzeme atlama, miktar değiştirme, adım kısaltma YOK. TÜM malzemeler 1:1. Bal, et suyu, pirinç sirkesi, soya sosu, susam, maydanoz, sos yazarsa HEPSİ olmalı. "2 avokado"=400 g; "110 g bal" ZORUNLU; "80 ml et suyu" ZORUNLU. Malzeme sayısı birebir (en fazla 100). Sos adımlarının tamamı steps[] içinde. shopping_list 1:1. status="benoetigt". unit yalnızca "g"/"ml" + macrosPer100g. title, servings, prep_time, steps[], shopping_list[], nutrition_note. maydanoz≈10 g; salata sosu≈30 ml (ZORUNLU).'
-    };
     var LBL_RECIPE_PANTRY_TITLE = { de:'Kochen mit Vorräten', en:'Cooking with what you have', es:'Cocinar con lo que tienes', it:'Cucinare con quello che hai' };
     var LBL_RECIPE_PANTRY_DESC = { de:'Gib an, welche Zutaten du zu Hause hast, und erhalte passende Rezeptideen, die möglichst ohne zusätzlichen Einkauf auskommen.', en:'Tell us which ingredients you have at home and get matching recipe ideas that need little to no extra shopping.', es:'Indica qué ingredientes tienes en casa y recibe ideas de recetas adecuadas que necesiten poca o ninguna compra adicional.', it:'Indica quali ingredienti hai in casa e ricevi idee di ricette adatte che richiedono pochi o nessun acquisto aggiuntivo.' };
     var LBL_RECIPE_PANTRY_PLACEHOLDER = { de:'Zutaten eingeben, z. B. Ei, Spinat …', en:'Enter ingredients, e.g. egg, spinach …', es:'Introduce ingredientes, p. ej. huevo, espinaca …', it:'Inserisci gli ingredienti, ad es. uovo, spinaci …' };
@@ -22234,6 +22420,7 @@ initBarcodeEvents();
     function buildNutriRecipeShoppingLines(recipe) {
       var fromIngredients = (recipe && recipe.ingredients ? recipe.ingredients : []).map(function (ing) {
         var q = formatIngredientQty(ing.amount, ing.unit);
+        if (!q.unit) return ing.name + ' – ' + q.amount;
         return ing.name + ' – ' + q.amount + ' ' + q.unit;
       });
       if (fromIngredients.length) return fromIngredients;
@@ -22396,12 +22583,9 @@ initBarcodeEvents();
         }
         return { amount: r(qty * per), unit: 'g', resolved: true };
       }
-      // Keine Menge angegeben ("glatte Petersilie", "Salatdressing Eurer Wahl") -> Schaetzung
-      if (NUTRI_HERB_RX.test(n)) return { amount: 10, unit: 'g', resolved: true };
-      if (/dressing|vinaigrette|so[ßs]+e|sauce/.test(n)) return { amount: 30, unit: 'ml', resolved: true };
-      if (NUTRI_SPICE_RX.test(n)) return { amount: 2, unit: 'g', resolved: true };
-      if (/[öoe]+l\b|\boil\b/.test(n)) return { amount: 10, unit: 'ml', resolved: true };
-      return { amount: 50, unit: lu, resolved: false };
+      // Keine Menge angegeben: NICHT frei schaetzen (Eigenrezept-Regel).
+      // amount 0 = "nicht angegeben"; resolved:false → Enforcer verwirft KI-Erfindungen.
+      return { amount: 0, unit: lu, resolved: false };
     }
     function nutriNormalizeIngName(s) {
       return String(s || '').toLowerCase()
@@ -22597,22 +22781,37 @@ initBarcodeEvents();
           if (bestIdx >= 0 && bestScore >= 2) {
             used[bestIdx] = true;
             var ai = Object.assign({}, aiList[bestIdx]);
-            if (q.resolved && (ai.amount !== q.amount || ai.unit !== q.unit)) { overridden.push(ai.name + ': ' + ai.amount + ' ' + ai.unit + ' -> ' + q.amount + ' ' + q.unit); ai.amount = q.amount; ai.unit = q.unit; }
+            if (q.resolved) {
+              if (ai.amount !== q.amount || ai.unit !== q.unit) {
+                overridden.push(ai.name + ': ' + ai.amount + ' ' + ai.unit + ' -> ' + q.amount + ' ' + q.unit);
+                ai.amount = q.amount;
+                ai.unit = q.unit;
+              }
+            } else {
+              // Nutzer hat keine Menge angegeben → erfundene KI-Menge verwerfen (0 = nicht angegeben).
+              if (ai.amount !== 0) overridden.push(ai.name + ': ' + ai.amount + ' ' + ai.unit + ' -> nicht angegeben');
+              ai.amount = 0;
+            }
             if (ai.status !== 'vorhanden' && ai.status !== 'benoetigt') ai.status = 'benoetigt';
             return ai;
           }
           var macros = lookupNutriMacrosPer100g(u.name);
-          added.push(u.name + ' (' + q.amount + ' ' + q.unit + (macros ? '' : ', ohne Naehrwerte') + ')');
+          added.push(u.name + (q.resolved ? (' (' + q.amount + ' ' + q.unit + ')') : ' (Menge nicht angegeben)') + (macros ? '' : ', ohne Naehrwerte'));
           return {
-            name: u.name + ((macros && q.resolved) ? '' : ' (Schaetzung)'),
-            amount: q.amount, unit: q.unit, status: 'benoetigt',
+            name: u.name,
+            amount: q.resolved ? q.amount : 0,
+            unit: q.unit || 'g',
+            status: 'benoetigt',
             macrosPer100g: macros || { netCarbs: 0, fat: 0, protein: 0, fiber: 0 }
           };
         });
         var dropped = aiList.filter(function (_, i) { return !used[i]; }).map(function (a) { return a && a.name; });
         if (parsed.steps.length >= 2) out.steps = parsed.steps.slice(0, NUTRI_RECIPE_MAX_STEPS);
         if (parsed.servings) out.servings = parsed.servings;
-        out.shopping_list = out.ingredients.map(function (ing) { return String(ing.name) + ' – ' + ing.amount + ' ' + ing.unit; });
+        out.shopping_list = out.ingredients.map(function (ing) {
+          var q = formatIngredientQty(ing.amount, ing.unit);
+          return q.unit ? (String(ing.name) + ' – ' + q.amount + ' ' + q.unit) : (String(ing.name) + ' – ' + q.amount);
+        });
         console.log('[NUTRI_RECIPE_DEBUG] ENFORCE: Ingredients', aiList.length, '->', out.ingredients.length, '| Steps', (data.steps || []).length, '->', out.steps.length);
         console.log('[NUTRI_RECIPE_DEBUG] ENFORCE: ergaenzt (von KI weggelassen):', added);
         console.log('[NUTRI_RECIPE_DEBUG] ENFORCE: Mengen korrigiert:', overridden);
@@ -22697,30 +22896,11 @@ initBarcodeEvents();
         payload.lab_guideline_constraints = computeLabRecipeConstraints();
       }
       if (isStructuredFreesearch) {
-        // FIX: Kurze, nummerierte Instruction statt 4428-Zeichen-Block.
-        // Die ersten ~500 Zeichen liest die KI IMMER zuverlaessig → Anzahl + Liste an den ANFANG.
-        // "Lost in the middle": lange Instructions werden in der Mitte ignoriert (Root Cause).
-        var structIngLines = parsedUserRecipe.ingredients.length >= 3
-          ? parsedUserRecipe.ingredients.map(function (i) { return i.raw; })
-          : freesearchQuery.split(/[\r\n]+/).map(function(s){ return s.trim(); }).filter(function(s){ return s.length > 2; });
-        var ingCount = structIngLines.length;
-        var numberedList = structIngLines.map(function(s, i){ return (i + 1) + '. ' + s; }).join(' | ');
-        var stepsList = parsedUserRecipe.steps.map(function(s, i){ return (i + 1) + '. ' + s; }).join(' ');
-        var curLang = (typeof lang === 'function') ? lang() : 'de';
-        var compactInstr;
-        if (curLang === 'de') {
-          compactInstr = 'EIGENREZEPT – ALLE ' + ingCount + ' ZUTATEN PFLICHT: ' + numberedList + ' — ingredients[] muss genau ' + ingCount + ' Objekte enthalten (eine pro Zutat oben). KEINE einzige weglassen, keine Menge aendern. unit nur g/ml, status benoetigt, macrosPer100g={netCarbs,fat,protein,fiber}.'
-            + (stepsList ? ' SCHRITTE 1:1 in steps[] uebernehmen (' + parsedUserRecipe.steps.length + ' Schritte): ' + stepsList : ' Alle Zubereitungsschritte inkl. Sauce in steps[].')
-            + (parsedUserRecipe.servings ? ' servings=' + parsedUserRecipe.servings + '.' : '')
-            + ' title, servings, prep_time, shopping_list, nutrition_note.';
-        } else {
-          compactInstr = 'OWN RECIPE – ALL ' + ingCount + ' INGREDIENTS MANDATORY: ' + numberedList + ' — ingredients[] must have exactly ' + ingCount + ' objects (one per ingredient above). Omit NONE, change no amounts. unit only g/ml, status benoetigt, macrosPer100g={netCarbs,fat,protein,fiber}.'
-            + (stepsList ? ' Copy STEPS 1:1 into steps[] (' + parsedUserRecipe.steps.length + ' steps): ' + stepsList : ' All preparation steps including sauce in steps[].')
-            + (parsedUserRecipe.servings ? ' servings=' + parsedUserRecipe.servings + '.' : '')
-            + ' title, servings, prep_time, shopping_list, nutrition_note.';
-        }
+        // PRODUKTIV: buildStructuredNutriAiInstruction() – Eigenrezept-Regeln (Inhalt fix).
+        // Nicht mit LBL_RECIPE_FREESEARCH_AI_INSTRUCTION (Generativ) vermischen.
+        var compactInstr = buildStructuredNutriAiInstruction(parsedUserRecipe, freesearchQuery);
         payload.ai_instruction = compactInstr;
-        console.log('[NUTRI_RECIPE_DEBUG] FIX: Kompakte ai_instruction (' + compactInstr.length + ' Zeichen, vorher 4428), ingCount=' + ingCount);
+        console.log('[NUTRI_RECIPE_DEBUG] FIX: Strukturierte ai_instruction (' + compactInstr.length + ' Zeichen), Eigenrezept-Modus');
       } else {
         payload.ai_instruction = (typeof L !== 'undefined' && L.aiInstructionMain) || null;
         if (mode === 'freesearch' && freesearchQuery) {
@@ -22908,8 +23088,13 @@ initBarcodeEvents();
         var unitRaw = String(next.unit == null ? '' : next.unit).trim();
         var unit = unitRaw.toLowerCase().replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ä/g, 'ae');
         var amount = Number(next.amount);
-        if (!isFinite(amount) || amount <= 0) amount = 1;
-        if (unit === 'g' || unit === 'ml') {
+        var amountMissing = !isFinite(amount) || amount <= 0;
+        // Fehlende Menge NICHT auf 1 erfinden (amount 0 = "nicht angegeben").
+        // Nur eindeutige Einheiten-Umrechnung, wenn eine positive Menge vorliegt.
+        if (amountMissing) {
+          next.amount = 0;
+          next.unit = (unit === 'ml') ? 'ml' : 'g';
+        } else if (unit === 'g' || unit === 'ml') {
           next.amount = amount;
           next.unit = unit;
         } else if (unit === 'el' || unit === 'tbsp' || unit === 'essloeffel' || unit === 'esslöffel') {
@@ -22931,9 +23116,9 @@ initBarcodeEvents();
           next.amount = Math.max(1, Math.round(amount * per));
           next.unit = 'g';
         } else if (!unit || /geschmack|taste|portion|prise|dash|nach belieben/.test(unit)) {
-          next.amount = amount > 0 ? amount : 15;
+          // Ohne klare Einheit und ohne gueltige Menge: nicht angegeben (keine 15g-Erfindung).
+          next.amount = amount;
           next.unit = 'g';
-          if (name && !/\(/.test(name)) next.name = name + ' (Schaetzung)';
         } else {
           // Unbekannte Einheit: als g behalten, damit Schema nicht verwirft.
           next.amount = amount;
@@ -22965,7 +23150,8 @@ initBarcodeEvents();
       // Einkaufsliste 1:1 aus Zutaten auffuellen, falls KI sie kuerzt/weglaesst.
       if (!Array.isArray(out.shopping_list) || out.shopping_list.length < out.ingredients.length) {
         out.shopping_list = out.ingredients.map(function (ing) {
-          return String(ing.name) + ' – ' + ing.amount + ' ' + ing.unit;
+          var q = formatIngredientQty(ing.amount, ing.unit);
+          return q.unit ? (String(ing.name) + ' – ' + q.amount + ' ' + q.unit) : (String(ing.name) + ' – ' + q.amount);
         });
       } else {
         out.shopping_list = out.shopping_list.map(function (s) { return s == null ? '' : String(s); });
@@ -22991,7 +23177,9 @@ initBarcodeEvents();
       for (var i = 0; i < data.ingredients.length; i++) {
         var ing = data.ingredients[i];
         if (!ing || !okStr(ing.name, false)) return false;
-        if (typeof ing.amount !== 'number' || !isFinite(ing.amount) || ing.amount <= 0) return false;
+        // amount >= 0: 0 = "nicht angegeben" (Eigenrezept ohne Mengenangabe).
+        // Positive Mengen bleiben Pflicht fuer Makro-Skalierung; 0 zaehlt in calcRecipeMacrosPerServing als 0.
+        if (typeof ing.amount !== 'number' || !isFinite(ing.amount) || ing.amount < 0) return false;
         // Nur g/ml: calcRecipeMacrosPerServing bleibt unveraendert nutzbar.
         if (ing.unit !== 'g' && ing.unit !== 'ml') return false;
         var m = ing.macrosPer100g;
@@ -23355,83 +23543,79 @@ initBarcodeEvents();
           '</div>';
         var html =
           '<div class="nutri-recipe-result" id="nutri-recipe-recipe-overlay">' +
-            '<div class="overlay-content">' +
-              '<div class="nutri-recipe-result-header">' +
-                '<h3 class="nutri-recipe-result-title">' + escNutri(r.title) + '</h3>' +
-                '<p class="nutri-recipe-match">' + escNutri(pick(LBL_RECIPE_PREP_TIME)) + ': ' + escNutri(r.prep_time) + '</p>' +
-                servingsStepperHtml +
-              '</div>' +
-              '<div class="overlay-body">' +
-                (r.nutrition_note ? '<p class="nutri-recipe-match">' + escNutri(r.nutrition_note) + '</p>' : '') +
-                '<p class="nutri-recipe-disclaimer">' + escNutri(pick(LBL_RECIPE_DISCLAIMER)) + '</p>' +
-                '<div class="section">' +
-                  '<h4 class="section-title">' + escNutri(pick(LBL_RECIPE_NUTRITION_PER_SERVING)) + '</h4>' +
-                  '<div class="localrecipe-nutrient-grid">' +
-                    '<div class="localrecipe-nutrient-item"><div class="localrecipe-nutrient-label">' + escNutri(pick(LBL_RECIPE_KCAL)) + '</div><div class="localrecipe-nutrient-value">' + rKcal + ' kcal</div></div>' +
-                    '<div class="localrecipe-nutrient-item"><div class="localrecipe-nutrient-label">' + escNutri(pick(LBL_LOCALRECIPE_KH)) + '</div><div class="localrecipe-nutrient-value">' + Math.round(rMacros.netCarbs) + ' g</div></div>' +
-                    '<div class="localrecipe-nutrient-item"><div class="localrecipe-nutrient-label">' + escNutri(pick(LBL_LOCALRECIPE_FAT)) + '</div><div class="localrecipe-nutrient-value">' + Math.round(rMacros.fat) + ' g</div></div>' +
-                    '<div class="localrecipe-nutrient-item"><div class="localrecipe-nutrient-label">' + escNutri(pick(LBL_LOCALRECIPE_PROTEIN)) + '</div><div class="localrecipe-nutrient-value">' + Math.round(rMacros.protein) + ' g</div></div>' +
-                    '<div class="localrecipe-nutrient-item"><div class="localrecipe-nutrient-label">' + escNutri(pick(LBL_LOCALRECIPE_FIBER)) + '</div><div class="localrecipe-nutrient-value">' + Math.round(rMacros.fiber) + ' g</div></div>' +
-                  '</div>' +
-                '</div>' +
-                '<div class="section">' +
-                  '<h4 class="section-title">' + escNutri(pick(LBL_RECIPE_INGREDIENTS_TITLE)) + '</h4>' +
-                  '<ul class="nutri-recipe-ing-list ingredients-list">' +
-                    (r.ingredients || []).map(function (i) {
-                      var q = formatIngredientQty(i.amount, i.unit);
-                      return '<li>' + escNutri(i.name) + ' <span class="nutri-recipe-ing-amount">' + escNutri(q.amount) + ' ' + escNutri(q.unit) + '</span></li>';
-                    }).join('') +
-                  '</ul>' +
-                '</div>' +
-                '<div class="section">' +
-                  '<h4 class="section-title">' + escNutri(pick(LBL_RECIPE_PREP_TITLE)) + '</h4>' +
-                  '<ol class="nutri-recipe-steps instructions-list">' +
-                    (r.steps || []).map(function (s) { return '<li>' + escNutri(s) + '</li>'; }).join('') +
-                  '</ol>' +
-                '</div>' +
-                '<div class="section">' +
-                  '<h4 class="section-title">' + escNutri(pick(LBL_RECIPE_SHOPPING_LIST)) + '</h4>' +
-                  '<ul class="nutri-recipe-ing-list shopping-list">' +
-                    shoppingLines.map(function (s) { return '<li>' + escNutri(s) + '</li>'; }).join('') +
-                  '</ul>' +
-                '</div>' +
-                (nutriRecipeState.suggestions && nutriRecipeState.suggestions.length
-                  ? '<div class="localrecipe-tip-box"><b>' + escNutri(pick(LBL_LOCALRECIPES_TIP_LABEL)) + ':</b> ' + nutriRecipeState.suggestions.map(function (t) { return escNutri(t); }).join(' ') + '</div>'
-                  : '') +
-              '</div>' +
-              '<div class="nutri-recipe-actions">' +
-                '<button type="button" class="nutri-recipe-btn" id="nutri-recipe-addplate-btn">' + escNutri(pick(LBL_RECIPE_ADD_TO_DAY_BTN)) + '</button>' +
-                '<details class="nutri-recipe-category-details"' + (nutriRecipeState.categoryDetailsOpen ? ' open' : '') + ' id="nutri-recipe-category-details">' +
-                  '<summary class="nutri-recipe-category-summary">' +
-                    '<span class="nutri-recipe-category-summary-left">' +
-                      '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>' +
-                      '<span class="nutri-recipe-category-summary-label">' + escNutri(pick(LBL_RECIPE_CATEGORY_SUMMARY)) + '</span>' +
-                    '</span>' +
-                    '<svg class="nutri-recipe-category-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>' +
-                  '</summary>' +
-                  '<div class="nutri-recipe-category-radio-list">' +
-                    RECIPE_CATEGORY_ORDER.map(function (catKey) {
-                      var checked = (nutriRecipeState.selectedCategory || 'none') === catKey;
-                      return (
-                        '<label class="nutri-recipe-category-radio-item">' +
-                          '<span class="nutri-recipe-category-radio-left">' +
-                            '<span class="nutri-recipe-category-radio-icon" aria-hidden="true">' + RECIPE_CATEGORY_ICONS[catKey] + '</span>' +
-                            '<span>' + escNutri(pick(RECIPE_CATEGORY_LABELS[catKey])) + '</span>' +
-                          '</span>' +
-                          '<input type="radio" name="nutri-recipe-cat-choice" value="' + catKey + '" class="nutri-recipe-category-radio"' + (checked ? ' checked' : '') + '>' +
-                        '</label>'
-                      );
-                    }).join('') +
-                  '</div>' +
-                '</details>' +
-                '<button type="button" class="nutri-recipe-secondary-btn" id="nutri-recipe-save-btn">' + escNutri(pick(LBL_NUTRI_SAVE_BTN)) + '</button>' +
-                '<button type="button" class="nutri-recipe-secondary-btn" id="nutri-recipe-save-shopping-btn">' + escNutri(pick(LBL_RECIPE_SAVE_SHOPPING_BTN)) + '</button>' +
-                '<button type="button" class="nutri-recipe-secondary-btn" id="nutri-recipe-edit-btn">' + escNutri(pick(LBL_RECIPE_EDIT_BTN)) + '</button>' +
-                '<button type="button" class="nutri-recipe-secondary-btn" id="nutri-recipe-share-btn">' + escNutri(pick(LBL_RECIPE_SHARE_BTN)) + '</button>' +
-                '<button type="button" class="nutri-recipe-secondary-btn" id="nutri-recipe-result-back-btn">' + escNutri(pick(LBL_RECIPE_BACK)) + '</button>' +
-              '</div>' +
-              '<p class="nutri-recipe-medical-note">' + escNutri(pick(LBL_RECIPE_MEDICAL_NOTE)) + '</p>' +
+            '<div class="nutri-recipe-result-header">' +
+              '<h3 class="nutri-recipe-result-title">' + escNutri(r.title) + '</h3>' +
+              '<p class="nutri-recipe-match">' + escNutri(pick(LBL_RECIPE_PREP_TIME)) + ': ' + escNutri(r.prep_time) + '</p>' +
+              servingsStepperHtml +
             '</div>' +
+            (r.nutrition_note ? '<p class="nutri-recipe-match">' + escNutri(r.nutrition_note) + '</p>' : '') +
+            '<p class="nutri-recipe-disclaimer">' + escNutri(pick(LBL_RECIPE_DISCLAIMER)) + '</p>' +
+            '<div class="section">' +
+              '<h4 class="section-title">' + escNutri(pick(LBL_RECIPE_NUTRITION_PER_SERVING)) + '</h4>' +
+              '<div class="localrecipe-nutrient-grid">' +
+                '<div class="localrecipe-nutrient-item"><div class="localrecipe-nutrient-label">' + escNutri(pick(LBL_RECIPE_KCAL)) + '</div><div class="localrecipe-nutrient-value">' + rKcal + ' kcal</div></div>' +
+                '<div class="localrecipe-nutrient-item"><div class="localrecipe-nutrient-label">' + escNutri(pick(LBL_LOCALRECIPE_KH)) + '</div><div class="localrecipe-nutrient-value">' + Math.round(rMacros.netCarbs) + ' g</div></div>' +
+                '<div class="localrecipe-nutrient-item"><div class="localrecipe-nutrient-label">' + escNutri(pick(LBL_LOCALRECIPE_FAT)) + '</div><div class="localrecipe-nutrient-value">' + Math.round(rMacros.fat) + ' g</div></div>' +
+                '<div class="localrecipe-nutrient-item"><div class="localrecipe-nutrient-label">' + escNutri(pick(LBL_LOCALRECIPE_PROTEIN)) + '</div><div class="localrecipe-nutrient-value">' + Math.round(rMacros.protein) + ' g</div></div>' +
+                '<div class="localrecipe-nutrient-item"><div class="localrecipe-nutrient-label">' + escNutri(pick(LBL_LOCALRECIPE_FIBER)) + '</div><div class="localrecipe-nutrient-value">' + Math.round(rMacros.fiber) + ' g</div></div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="section">' +
+              '<h4 class="section-title">' + escNutri(pick(LBL_RECIPE_INGREDIENTS_TITLE)) + '</h4>' +
+              '<ul class="nutri-recipe-ing-list ingredients-list">' +
+                (r.ingredients || []).map(function (i) {
+                  var q = formatIngredientQty(i.amount, i.unit);
+                  return '<li>' + escNutri(i.name) + ' <span class="nutri-recipe-ing-amount">' + escNutri(q.amount) + ' ' + escNutri(q.unit) + '</span></li>';
+                }).join('') +
+              '</ul>' +
+            '</div>' +
+            '<div class="section">' +
+              '<h4 class="section-title">' + escNutri(pick(LBL_RECIPE_PREP_TITLE)) + '</h4>' +
+              '<ol class="nutri-recipe-steps instructions-list">' +
+                (r.steps || []).map(function (s) { return '<li>' + escNutri(s) + '</li>'; }).join('') +
+              '</ol>' +
+            '</div>' +
+            '<div class="section">' +
+              '<h4 class="section-title">' + escNutri(pick(LBL_RECIPE_SHOPPING_LIST)) + '</h4>' +
+              '<ul class="nutri-recipe-ing-list shopping-list">' +
+                shoppingLines.map(function (s) { return '<li>' + escNutri(s) + '</li>'; }).join('') +
+              '</ul>' +
+            '</div>' +
+            (nutriRecipeState.suggestions && nutriRecipeState.suggestions.length
+              ? '<div class="localrecipe-tip-box"><b>' + escNutri(pick(LBL_LOCALRECIPES_TIP_LABEL)) + ':</b> ' + nutriRecipeState.suggestions.map(function (t) { return escNutri(t); }).join(' ') + '</div>'
+              : '') +
+            '<div class="nutri-recipe-actions">' +
+              '<button type="button" class="nutri-recipe-btn" id="nutri-recipe-addplate-btn">' + escNutri(pick(LBL_RECIPE_ADD_TO_DAY_BTN)) + '</button>' +
+              '<details class="nutri-recipe-category-details"' + (nutriRecipeState.categoryDetailsOpen ? ' open' : '') + ' id="nutri-recipe-category-details">' +
+                '<summary class="nutri-recipe-category-summary">' +
+                  '<span class="nutri-recipe-category-summary-left">' +
+                    '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>' +
+                    '<span class="nutri-recipe-category-summary-label">' + escNutri(pick(LBL_RECIPE_CATEGORY_SUMMARY)) + '</span>' +
+                  '</span>' +
+                  '<svg class="nutri-recipe-category-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>' +
+                '</summary>' +
+                '<div class="nutri-recipe-category-radio-list">' +
+                  RECIPE_CATEGORY_ORDER.map(function (catKey) {
+                    var checked = (nutriRecipeState.selectedCategory || 'none') === catKey;
+                    return (
+                      '<label class="nutri-recipe-category-radio-item">' +
+                        '<span class="nutri-recipe-category-radio-left">' +
+                          '<span class="nutri-recipe-category-radio-icon" aria-hidden="true">' + RECIPE_CATEGORY_ICONS[catKey] + '</span>' +
+                          '<span>' + escNutri(pick(RECIPE_CATEGORY_LABELS[catKey])) + '</span>' +
+                        '</span>' +
+                        '<input type="radio" name="nutri-recipe-cat-choice" value="' + catKey + '" class="nutri-recipe-category-radio"' + (checked ? ' checked' : '') + '>' +
+                      '</label>'
+                    );
+                  }).join('') +
+                '</div>' +
+              '</details>' +
+              '<button type="button" class="nutri-recipe-secondary-btn" id="nutri-recipe-save-btn">' + escNutri(pick(LBL_NUTRI_SAVE_BTN)) + '</button>' +
+              '<button type="button" class="nutri-recipe-secondary-btn" id="nutri-recipe-save-shopping-btn">' + escNutri(pick(LBL_RECIPE_SAVE_SHOPPING_BTN)) + '</button>' +
+              '<button type="button" class="nutri-recipe-secondary-btn" id="nutri-recipe-edit-btn">' + escNutri(pick(LBL_RECIPE_EDIT_BTN)) + '</button>' +
+              '<button type="button" class="nutri-recipe-secondary-btn" id="nutri-recipe-share-btn">' + escNutri(pick(LBL_RECIPE_SHARE_BTN)) + '</button>' +
+              '<button type="button" class="nutri-recipe-secondary-btn" id="nutri-recipe-result-back-btn">' + escNutri(pick(LBL_RECIPE_BACK)) + '</button>' +
+            '</div>' +
+            '<p class="nutri-recipe-medical-note">' + escNutri(pick(LBL_RECIPE_MEDICAL_NOTE)) + '</p>' +
           '</div>';
         body.innerHTML = html;
         // NEU: Portions-Stepper (-/+) - veraendert ausschliesslich nutriRecipeState.servings
@@ -24208,7 +24392,9 @@ initBarcodeEvents();
     function calcRecipeMacrosPerServing(recipe) {
       var totals = { netCarbs: 0, fat: 0, protein: 0, fiber: 0 };
       recipe.ingredients.forEach(function (ing) {
-        var factor = ing.amount / 100;
+        var amt = Number(ing && ing.amount);
+        if (!isFinite(amt) || amt <= 0) return; // Menge nicht angegeben → kein Makro-Beitrag
+        var factor = amt / 100;
         totals.netCarbs += ing.macrosPer100g.netCarbs * factor;
         totals.fat += ing.macrosPer100g.fat * factor;
         totals.protein += ing.macrosPer100g.protein * factor;
@@ -24242,9 +24428,10 @@ initBarcodeEvents();
       return scale;
     }
 
-    // 5g-Schritte fuer feste Zutaten, 1ml-Schritte fuer Fluessigkeiten - nie unter einem
-    // Mindestwert (0 g/ml waere kein sinnvoller Zutaten-Eintrag mehr).
+    // 5g-Schritte fuer feste Zutaten, 1ml-Schritte fuer Fluessigkeiten.
+    // amount 0 (= nicht angegeben) bleibt 0 und wird nicht auf den Mindest-Schritt angehoben.
     function roundLocalRecipeAmount(value, unit) {
+      if (!isFinite(value) || value <= 0) return 0;
       var step = unit === 'ml' ? 1 : 5;
       var rounded = Math.round(value / step) * step;
       return Math.max(step, rounded);

@@ -3,7 +3,9 @@
  * ==================================================================
  * Endpunkte:
  *   GET  /health
- *   POST /api/nutri-recipe   -> Strict-JSON-Schema-Anreicherung (siehe nutri-recipe-core.js)
+ *   POST /api/nutri-recipe   -> Strict-JSON-Schema (siehe nutri-recipe-core.js → labplate-backend/)
+ *      STRUCTURED/Eigenrezept: Inhalt fix, nur Struktur + Naehrwert-Anreicherung
+ *      GENERATIV/Freisuche/Shopping: kreativ, Mengen an Tagesziele anpassbar
  *   POST /api/food-lookup    -> 1:1-Weiterleitung eines Chat-Completion-Requests an Groq
  *
  * FIX "KI laesst Zutaten weg":
