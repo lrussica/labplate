@@ -4020,8 +4020,17 @@
   #history-section .history-toggle-btn{ font-size: calc(13px * var(--text-scale-factor, 1)) !important; transition: font-size 0.2s ease-out; }
   #history-section .reset-all-data-btn{ font-size: calc(13px * var(--text-scale-factor, 1)) !important; transition: font-size 0.2s ease-out; }
   .history-today-row{ background:var(--purple-soft); font-weight:600; }
-  .history-day-row{ cursor:pointer; transition: background .15s ease; }
-  .history-day-row:hover{ background:var(--blue-soft) !important; }
+  /* Hover: kein background-Wechsel. Nur echt hellgraue Texte (no-data) → Lila;
+     Labels (td::before) und weisse Werte bei Tagen mit Daten bleiben unveraendert. */
+  .history-day-row{ cursor:pointer; }
+  #lp-ov-verlauf .history-day-row:hover.history-no-data-row td,
+  #lp-ov-verlauf .history-day-row:hover.history-no-data-row td.num,
+  #lp-ov-verlauf .history-day-row:hover .history-no-data-label{
+    color:var(--purple);
+  }
+  #lp-ov-verlauf .history-day-row:hover.history-no-data-row td::before{
+    color:var(--ink);
+  }
   .history-row-selected{ background:var(--purple-soft) !important; box-shadow: inset 3px 0 0 var(--purple); }
   .history-no-data-row{ color:var(--ink-soft); }
   .history-no-data-row td.num{ color:var(--ink-soft); }
