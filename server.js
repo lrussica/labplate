@@ -6,6 +6,7 @@
  *   POST /api/nutri-recipe   -> Strict-JSON-Schema (siehe nutri-recipe-core.js → labplate-backend/)
  *      STRUCTURED/Eigenrezept: Inhalt fix, nur Struktur + Naehrwert-Anreicherung
  *      GENERATIV/Freisuche/Shopping: kreativ, Mengen an Tagesziele anpassbar
+ *   POST /api/photo/verify  -> Vision-Check: fertiges Gerichtsfoto vs. Rohzutaten/falsches Motiv
  *   POST /api/food-lookup    -> 1:1-Weiterleitung eines Chat-Completion-Requests an Groq
  *
  * FIX "KI laesst Zutaten weg":
@@ -14,6 +15,7 @@
  *   - Render-Log: "[nutri-recipe] ENRICH model=… ingredients=N" / "[nutri-recipe] OK ingredients=N steps=M"
  *
  * Render-Env: GROQ_API_KEY (Pflicht), GROQ_MODEL (optional, Standard openai/gpt-oss-120b),
+ *             GROQ_VISION_MODEL (optional, Standard meta-llama/llama-4-scout-17b-16e-instruct),
  *             ALLOWED_ORIGINS, RATE_LIMIT_WINDOW_MS, RATE_LIMIT_MAX, REQUEST_TIMEOUT_MS
  *   ACHTUNG: Ist GROQ_MODEL in Render noch auf "openai/gpt-oss-20b" gesetzt, muss der
  *   Eintrag geloescht oder auf "openai/gpt-oss-120b" gesetzt werden.
@@ -32,6 +34,7 @@ const strictPrompt = require('./labplate-backend/strict-prompt');
 const coachRecipe = require('./labplate-backend/coach-recipe');
 const nutriCoach = require('./labplate-backend/nutri-coach');
 const recipeSuggestions = require('./labplate-backend/recipe-suggestions');
+const { createPhotoVerifyHandlers } = require('./labplate-backend/api/photo-verify');
 
 // ---------------------------------------------------------------------
 // Konfiguration
@@ -55,6 +58,9 @@ const FOOD_LOOKUP_ALLOWED_MODELS = new Set([
   'llama-3.3-70b-versatile',
   'meta-llama/llama-4-scout-17b-16e-instruct',
 ]);
+
+const GROQ_VISION_MODEL = (process.env.GROQ_VISION_MODEL || 'meta-llama/llama-4-scout-17b-16e-instruct').trim();
+const PHOTO_VERIFY_TIMEOUT_MS = Math.min(REQUEST_TIMEOUT_MS, 25000);
 
 function maskedPreview(s) {
   if (!s) return '(leer)';
@@ -120,7 +126,7 @@ app.use(cors({
     if (isLocalLoopbackOrigin(origin)) return callback(null, true);
     return callback(new Error('CORS: Origin nicht erlaubt'));
   },
-  methods: ['POST', 'OPTIONS'],
+  methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
   maxAge: 600,
 }));
@@ -138,6 +144,14 @@ const limiter = rateLimit({
 function logEvent(event, fields) {
   console.log(JSON.stringify({ ts: new Date().toISOString(), event, ...(fields || {}) }));
 }
+
+const photoVerify = createPhotoVerifyHandlers({
+  groqApiKey: GROQ_API_KEY,
+  groqApiUrl: core.GROQ_API_URL,
+  visionModel: GROQ_VISION_MODEL,
+  timeoutMs: PHOTO_VERIFY_TIMEOUT_MS,
+  logEvent,
+});
 
 // ---------------------------------------------------------------------
 // Routen
@@ -215,6 +229,10 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   return res.status(200).json(recipe);
 });
 
+// Vision-Check (vor Catch-All). GET → kein 404; POST → { isValidDishPhoto, reason }.
+app.get('/api/photo/verify', photoVerify.handlePhotoVerifyGet);
+app.post('/api/photo/verify', limiter, photoVerify.handlePhotoVerify);
+
 // 1:1-Proxy fuer die KI-Lebensmittelsuche (Client baut den Chat-Completion-Request selbst).
 app.post('/api/food-lookup', limiter, async (req, res) => {
   const startedAt = Date.now();
@@ -279,3 +297,5 @@ if (require.main === module) {
 }
 
 module.exports = app;
+module.exports.handlePhotoVerify = photoVerify.handlePhotoVerify;
+module.exports.handlePhotoVerifyGet = photoVerify.handlePhotoVerifyGet;
