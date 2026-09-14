@@ -59,7 +59,7 @@ const FOOD_LOOKUP_ALLOWED_MODELS = new Set([
   'meta-llama/llama-4-scout-17b-16e-instruct',
 ]);
 
-const GROQ_VISION_MODEL = (process.env.GROQ_VISION_MODEL || 'meta-llama/llama-4-scout-17b-16e-instruct').trim();
+const GROQ_VISION_MODEL = (process.env.GROQ_VISION_MODEL || 'qwen/qwen3.6-27b').trim();
 const PHOTO_VERIFY_TIMEOUT_MS = Math.min(REQUEST_TIMEOUT_MS, 25000);
 
 function maskedPreview(s) {

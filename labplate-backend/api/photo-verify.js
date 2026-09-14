@@ -31,7 +31,7 @@ function failOpen(detail) {
 function createPhotoVerifyHandlers(opts) {
   const groqApiKey = (opts && opts.groqApiKey) || '';
   const groqApiUrl = (opts && opts.groqApiUrl) || 'https://api.groq.com/openai/v1/chat/completions';
-  const visionModel = (opts && opts.visionModel) || 'meta-llama/llama-4-scout-17b-16e-instruct';
+  const visionModel = (opts && opts.visionModel) || 'qwen/qwen3.6-27b';
   const timeoutMs = (opts && opts.timeoutMs) || 25000;
   const logEvent = typeof (opts && opts.logEvent) === 'function' ? opts.logEvent : function () {};
 
@@ -52,7 +52,7 @@ function createPhotoVerifyHandlers(opts) {
     const body = {
       model: visionModel,
       temperature: 0,
-      max_tokens: 200,
+      max_completion_tokens: 200,
       messages: [
         {
           role: 'user',
