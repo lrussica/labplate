@@ -46,8 +46,9 @@ function createPhotoVerifyHandlers(opts) {
     const prompt =
       'Zeigt dieses Bild ein fertig zubereitetes, serviertes Gericht namens "' + dishTitle +
       '" – oder zeigt es stattdessen rohe/unverarbeitete Zutaten, Verpackung, ein Logo, eine Landkarte, ' +
-      'Personen ohne Essen im Fokus, oder ein inhaltlich falsches Motiv? Antworte NUR mit einem JSON-Objekt: ' +
-      '{ "isValidDishPhoto": true|false, "reason": "kurzer Grund" }.';
+      'Personen ohne Essen im Fokus, oder ein inhaltlich falsches Motiv? ' +
+      'Antworte NUR mit einem JSON-Objekt ohne Markdown und ohne Thinking, exakt so: ' +
+      '{"isValidDishPhoto":true|false,"reason":"kurzer Grund"}.';
 
     const body = {
       model: visionModel,
@@ -86,14 +87,30 @@ function createPhotoVerifyHandlers(opts) {
 
   function parseVerdict(content) {
     if (typeof content !== 'string' || !content.trim()) return null;
+    // Qwen Thinking-Modus / Markdown um JSON herum entfernen
+    var cleaned = content
+      .replace(/<think>[\s\S]*?<\/think>/gi, '')
+      .replace(/```(?:json)?/gi, '')
+      .replace(/```/g, '')
+      .trim();
     let verdict = null;
-    try { verdict = JSON.parse(content); } catch (eJ) {
-      const m = content.match(/\{[\s\S]*\}/);
+    try { verdict = JSON.parse(cleaned); } catch (eJ) {
+      const m = cleaned.match(/\{[\s\S]*?"isValidDishPhoto"[\s\S]*?\}/);
       if (m) {
         try { verdict = JSON.parse(m[0]); } catch (e2) { verdict = null; }
       }
     }
-    if (!verdict || typeof verdict.isValidDishPhoto !== 'boolean') return null;
+    if (!verdict || typeof verdict.isValidDishPhoto !== 'boolean') {
+      // Fallback: booleans im Freitext
+      const trueHit = /\b"isValidDishPhoto"\s*:\s*true\b/i.test(cleaned);
+      const falseHit = /\b"isValidDishPhoto"\s*:\s*false\b/i.test(cleaned);
+      if (trueHit && !falseHit) return { isValidDishPhoto: true, reason: 'ok' };
+      if (falseHit && !trueHit) {
+        const rm = cleaned.match(/"reason"\s*:\s*"([^"]{1,200})"/i);
+        return { isValidDishPhoto: false, reason: rm ? rm[1] : 'rejected' };
+      }
+      return null;
+    }
     const reason = typeof verdict.reason === 'string'
       ? stripHtml(verdict.reason).slice(0, 240)
       : '';
@@ -156,7 +173,8 @@ function createPhotoVerifyHandlers(opts) {
 
       const verdict = parseVerdict(content);
       if (!verdict) {
-        logEvent('photo_verify_fail_open', { reason: 'invalid_model_json', ms: Date.now() - startedAt });
+        const snip = String(content || '').replace(/\s+/g, ' ').slice(0, 100);
+        logEvent('photo_verify_fail_open', { reason: 'invalid_model_json', snip, ms: Date.now() - startedAt });
         return res.status(200).json(failOpen('bad_model_json'));
       }
 
