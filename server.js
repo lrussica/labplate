@@ -15,7 +15,7 @@
  *   - Render-Log: "[nutri-recipe] ENRICH model=… ingredients=N" / "[nutri-recipe] OK ingredients=N steps=M"
  *
  * Render-Env: GROQ_API_KEY (Pflicht), GROQ_MODEL (optional, Standard openai/gpt-oss-120b),
- *             GROQ_VISION_MODEL (optional, Standard meta-llama/llama-4-scout-17b-16e-instruct),
+ *             GROQ_VISION_MODEL (optional, Standard qwen/qwen3.6-27b),
  *             ALLOWED_ORIGINS, RATE_LIMIT_WINDOW_MS, RATE_LIMIT_MAX, REQUEST_TIMEOUT_MS
  *   ACHTUNG: Ist GROQ_MODEL in Render noch auf "openai/gpt-oss-20b" gesetzt, muss der
  *   Eintrag geloescht oder auf "openai/gpt-oss-120b" gesetzt werden.

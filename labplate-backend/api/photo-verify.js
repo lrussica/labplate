@@ -53,7 +53,9 @@ function createPhotoVerifyHandlers(opts) {
     const body = {
       model: visionModel,
       temperature: 0,
-      max_completion_tokens: 200,
+      // Thinking braucht sonst alle Tokens → leerer content → bad_model_json
+      max_completion_tokens: 512,
+      reasoning_effort: 'none',
       messages: [
         {
           role: 'user',
@@ -120,6 +122,15 @@ function createPhotoVerifyHandlers(opts) {
     };
   }
 
+  function extractMessageText(message) {
+    if (!message || typeof message !== 'object') return '';
+    const parts = [];
+    if (typeof message.content === 'string' && message.content.trim()) parts.push(message.content);
+    // parsed reasoning_format legt Antwort manchmal nur in reasoning ab
+    if (typeof message.reasoning === 'string' && message.reasoning.trim()) parts.push(message.reasoning);
+    return parts.join('\n');
+  }
+
   async function handlePhotoVerify(req, res) {
     const startedAt = Date.now();
     const imageUrl = req.body && typeof req.body.imageUrl === 'string' ? req.body.imageUrl.trim() : '';
@@ -144,8 +155,8 @@ function createPhotoVerifyHandlers(opts) {
 
     try {
       let result = await callGroqVision(imageUrl, dishTitle, true);
-      if (!result.ok) {
-        // Retry ohne response_format (manche Vision-Modelle meckern)
+      // Nur bei Format-/Model-Fehlern erneut ohne response_format – nicht bei 429 (verdoppelt Rate-Limit)
+      if (!result.ok && result.status !== 429 && result.status !== 401 && result.status !== 403) {
         result = await callGroqVision(imageUrl, dishTitle, false);
       }
       if (!result.ok) {
@@ -166,16 +177,17 @@ function createPhotoVerifyHandlers(opts) {
         return res.status(200).json(failOpen('bad_provider_json'));
       }
 
-      const content = parsedOuter && parsedOuter.choices && parsedOuter.choices[0] &&
-        parsedOuter.choices[0].message
-        ? parsedOuter.choices[0].message.content
+      const message = parsedOuter && parsedOuter.choices && parsedOuter.choices[0]
+        ? parsedOuter.choices[0].message
         : null;
+      const content = extractMessageText(message);
 
       const verdict = parseVerdict(content);
       if (!verdict) {
         const snip = String(content || '').replace(/\s+/g, ' ').slice(0, 100);
+        const detail = content ? 'bad_model_json' : 'empty_content';
         logEvent('photo_verify_fail_open', { reason: 'invalid_model_json', snip, ms: Date.now() - startedAt });
-        return res.status(200).json(failOpen('bad_model_json'));
+        return res.status(200).json(failOpen(detail));
       }
 
       console.log(
