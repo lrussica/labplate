@@ -42,7 +42,99 @@ function createPhotoVerifyHandlers(opts) {
     });
   }
 
-  async function callGroqVision(imageUrl, dishTitle, useJsonFormat) {
+  // Groq Base64-Limit ~4MB; Wikimedia blockiert oft den Groq-Fetcher (http400).
+  const MAX_INLINE_BYTES = Math.floor(3.5 * 1024 * 1024);
+
+  function commonsFileNameFromUrl(url) {
+    try {
+      const u = new URL(url);
+      if (!/(^|\.)wikimedia\.org$/i.test(u.hostname) && !/(^|\.)wikipedia\.org$/i.test(u.hostname)) {
+        return null;
+      }
+      // .../commons/1/1e/Lasagne.png  oder  .../thumb/1/1e/Lasagne.png/800px-Lasagne.png
+      const m = u.pathname.match(/\/(?:commons\/(?:thumb\/)?[0-9a-f]\/[0-9a-f]{2}\/|FilePath\/)([^/?#]+)/i);
+      if (!m) return null;
+      let name = decodeURIComponent(m[1]);
+      // Thumb-Pfad endet mit 800px-Lasagne.png → Lasagne.png
+      const thumb = name.match(/^\d+px-(.+)$/i);
+      if (thumb) name = thumb[1];
+      if (!/\.(jpe?g|png|webp|gif)$/i.test(name)) return null;
+      return name;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async function fetchImageBytes(url, signal) {
+    const upstream = await fetch(url, {
+      method: 'GET',
+      redirect: 'follow',
+      signal: signal,
+      headers: {
+        'User-Agent': 'LabPlatePhotoVerify/1.0 (https://labplate.onrender.com; recipe photo check)',
+        Accept: 'image/*,*/*;q=0.8',
+      },
+    });
+    if (!upstream.ok) {
+      return { ok: false, status: upstream.status, bytes: null, contentType: '' };
+    }
+    const contentType = String(upstream.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
+    const buf = Buffer.from(await upstream.arrayBuffer());
+    return { ok: true, status: upstream.status, bytes: buf, contentType: contentType };
+  }
+
+  function toDataUrl(bytes, contentType, sourceUrl) {
+    let mime = contentType;
+    if (!/^image\//.test(mime)) {
+      const lower = String(sourceUrl || '').toLowerCase();
+      if (/\.png(\?|$)/.test(lower)) mime = 'image/png';
+      else if (/\.webp(\?|$)/.test(lower)) mime = 'image/webp';
+      else if (/\.gif(\?|$)/.test(lower)) mime = 'image/gif';
+      else mime = 'image/jpeg';
+    }
+    return 'data:' + mime + ';base64,' + bytes.toString('base64');
+  }
+
+  /**
+   * Liefert eine an Groq sendbare Image-URL (prefer data:… Base64).
+   * Fallback: Original-URL, falls Download fehlschlägt.
+   */
+  async function resolveImageForGroq(imageUrl) {
+    const controller = new AbortController();
+    const timer = setTimeout(function () { try { controller.abort(); } catch (e) {} }, Math.min(timeoutMs, 12000));
+    try {
+      let fetchUrl = imageUrl;
+      const commonsName = commonsFileNameFromUrl(imageUrl);
+      // Große Commons-Originale (oft >4–10MB) per Special:FilePath verkleinern
+      if (commonsName) {
+        fetchUrl = 'https://commons.wikimedia.org/wiki/Special:FilePath/' +
+          encodeURIComponent(commonsName) + '?width=960';
+      }
+
+      let got = await fetchImageBytes(fetchUrl, controller.signal);
+      if ((!got.ok || !got.bytes || got.bytes.length > MAX_INLINE_BYTES) && commonsName && fetchUrl !== imageUrl) {
+        // Fallback: Original versuchen (nur wenn klein genug)
+        got = await fetchImageBytes(imageUrl, controller.signal);
+      }
+      if (!got.ok || !got.bytes || !got.bytes.length) {
+        return { url: imageUrl, mode: 'remote' };
+      }
+      if (got.bytes.length > MAX_INLINE_BYTES) {
+        return { url: imageUrl, mode: 'remote_too_large', bytes: got.bytes.length };
+      }
+      return {
+        url: toDataUrl(got.bytes, got.contentType, fetchUrl),
+        mode: 'inline',
+        bytes: got.bytes.length,
+      };
+    } catch (e) {
+      return { url: imageUrl, mode: 'remote_fetch_failed' };
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  async function callGroqVision(imageRef, dishTitle, useJsonFormat) {
     const prompt =
       'Zeigt dieses Bild ein fertig zubereitetes, serviertes Gericht namens "' + dishTitle +
       '" – oder zeigt es stattdessen rohe/unverarbeitete Zutaten, Verpackung, ein Logo, eine Landkarte, ' +
@@ -61,7 +153,7 @@ function createPhotoVerifyHandlers(opts) {
           role: 'user',
           content: [
             { type: 'text', text: prompt },
-            { type: 'image_url', image_url: { url: imageUrl } },
+            { type: 'image_url', image_url: { url: imageRef } },
           ],
         },
       ],
@@ -154,10 +246,12 @@ function createPhotoVerifyHandlers(opts) {
     }
 
     try {
-      let result = await callGroqVision(imageUrl, dishTitle, true);
+      const resolved = await resolveImageForGroq(imageUrl);
+      const imageRef = resolved.url;
+      let result = await callGroqVision(imageRef, dishTitle, true);
       // Nur bei Format-/Model-Fehlern erneut ohne response_format – nicht bei 429 (verdoppelt Rate-Limit)
       if (!result.ok && result.status !== 429 && result.status !== 401 && result.status !== 403) {
-        result = await callGroqVision(imageUrl, dishTitle, false);
+        result = await callGroqVision(imageRef, dishTitle, false);
       }
       if (!result.ok) {
         const snippet = String(result.text || '').replace(/\s+/g, ' ').slice(0, 120);
