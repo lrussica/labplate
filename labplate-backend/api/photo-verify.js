@@ -4,17 +4,20 @@
  * → { isValidDishPhoto: boolean, reason: string }
  *
  * Technische Fehler (kein Key, Timeout, Provider, ungültiges Modell-JSON):
- * HTTP 200 + Fail-open { isValidDishPhoto: true, reason: "vision-check-failed-open" }
+ * HTTP 200 + Fail-open { isValidDishPhoto: true, reason: "vision-check-failed-open[…]" }
  */
 'use strict';
 
-const FAIL_OPEN = Object.freeze({
-  isValidDishPhoto: true,
-  reason: 'vision-check-failed-open',
-});
-
 function stripHtml(s) {
   return String(s || '').replace(/<[^>]+>/g, '').trim();
+}
+
+function failOpen(detail) {
+  const d = detail ? String(detail).replace(/\s+/g, ' ').trim().slice(0, 80) : '';
+  return {
+    isValidDishPhoto: true,
+    reason: d ? ('vision-check-failed-open:' + d) : 'vision-check-failed-open',
+  };
 }
 
 /**
@@ -33,11 +36,71 @@ function createPhotoVerifyHandlers(opts) {
   const logEvent = typeof (opts && opts.logEvent) === 'function' ? opts.logEvent : function () {};
 
   function handlePhotoVerifyGet(req, res) {
-    // Browser-Aufruf ohne Body: kein 404 (Route existiert), klarer Hinweis.
     return res.status(405).json({
       error: 'Method not allowed',
       hint: 'Use POST with JSON { imageUrl, dishTitle }',
     });
+  }
+
+  async function callGroqVision(imageUrl, dishTitle, useJsonFormat) {
+    const prompt =
+      'Zeigt dieses Bild ein fertig zubereitetes, serviertes Gericht namens "' + dishTitle +
+      '" – oder zeigt es stattdessen rohe/unverarbeitete Zutaten, Verpackung, ein Logo, eine Landkarte, ' +
+      'Personen ohne Essen im Fokus, oder ein inhaltlich falsches Motiv? Antworte NUR mit einem JSON-Objekt: ' +
+      '{ "isValidDishPhoto": true|false, "reason": "kurzer Grund" }.';
+
+    const body = {
+      model: visionModel,
+      temperature: 0,
+      max_tokens: 200,
+      messages: [
+        {
+          role: 'user',
+          content: [
+            { type: 'text', text: prompt },
+            { type: 'image_url', image_url: { url: imageUrl } },
+          ],
+        },
+      ],
+    };
+    if (useJsonFormat) body.response_format = { type: 'json_object' };
+
+    const controller = new AbortController();
+    const timer = setTimeout(function () { try { controller.abort(); } catch (e) {} }, timeoutMs);
+    try {
+      const upstream = await fetch(groqApiUrl, {
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + groqApiKey,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+        signal: controller.signal,
+      });
+      const text = await upstream.text();
+      return { ok: upstream.ok, status: upstream.status, text };
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  function parseVerdict(content) {
+    if (typeof content !== 'string' || !content.trim()) return null;
+    let verdict = null;
+    try { verdict = JSON.parse(content); } catch (eJ) {
+      const m = content.match(/\{[\s\S]*\}/);
+      if (m) {
+        try { verdict = JSON.parse(m[0]); } catch (e2) { verdict = null; }
+      }
+    }
+    if (!verdict || typeof verdict.isValidDishPhoto !== 'boolean') return null;
+    const reason = typeof verdict.reason === 'string'
+      ? stripHtml(verdict.reason).slice(0, 240)
+      : '';
+    return {
+      isValidDishPhoto: verdict.isValidDishPhoto,
+      reason: reason || (verdict.isValidDishPhoto ? 'ok' : 'rejected'),
+    };
   }
 
   async function handlePhotoVerify(req, res) {
@@ -59,53 +122,31 @@ function createPhotoVerifyHandlers(opts) {
 
     if (!groqApiKey) {
       logEvent('photo_verify_fail_open', { reason: 'server_not_configured', ms: Date.now() - startedAt });
-      return res.status(200).json(FAIL_OPEN);
+      return res.status(200).json(failOpen('no_key'));
     }
 
-    const prompt =
-      'Zeigt dieses Bild ein fertig zubereitetes, serviertes Gericht namens "' + dishTitle +
-      '" – oder zeigt es stattdessen rohe/unverarbeitete Zutaten, Verpackung, ein Logo, eine Landkarte, ' +
-      'Personen ohne Essen im Fokus, oder ein inhaltlich falsches Motiv? Antworte NUR mit einem JSON-Objekt: ' +
-      '{ "isValidDishPhoto": true|false, "reason": "kurzer Grund" }.';
-
-    const controller = new AbortController();
-    const timer = setTimeout(function () { try { controller.abort(); } catch (e) {} }, timeoutMs);
-
     try {
-      const upstream = await fetch(groqApiUrl, {
-        method: 'POST',
-        headers: {
-          Authorization: 'Bearer ' + groqApiKey,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+      let result = await callGroqVision(imageUrl, dishTitle, true);
+      if (!result.ok) {
+        // Retry ohne response_format (manche Vision-Modelle meckern)
+        result = await callGroqVision(imageUrl, dishTitle, false);
+      }
+      if (!result.ok) {
+        const snippet = String(result.text || '').replace(/\s+/g, ' ').slice(0, 120);
+        logEvent('photo_verify_fail_open', {
+          reason: 'provider_http',
+          status: result.status,
+          body: snippet,
           model: visionModel,
-          temperature: 0,
-          max_tokens: 200,
-          response_format: { type: 'json_object' },
-          messages: [
-            {
-              role: 'user',
-              content: [
-                { type: 'text', text: prompt },
-                { type: 'image_url', image_url: { url: imageUrl } },
-              ],
-            },
-          ],
-        }),
-        signal: controller.signal,
-      });
-
-      const text = await upstream.text();
-      if (!upstream.ok) {
-        logEvent('photo_verify_fail_open', { reason: 'provider_http', status: upstream.status, ms: Date.now() - startedAt });
-        return res.status(200).json(FAIL_OPEN);
+          ms: Date.now() - startedAt,
+        });
+        return res.status(200).json(failOpen('http' + result.status));
       }
 
       let parsedOuter = null;
-      try { parsedOuter = JSON.parse(text); } catch (eParse) {
+      try { parsedOuter = JSON.parse(result.text); } catch (eParse) {
         logEvent('photo_verify_fail_open', { reason: 'provider_json', ms: Date.now() - startedAt });
-        return res.status(200).json(FAIL_OPEN);
+        return res.status(200).json(failOpen('bad_provider_json'));
       }
 
       const content = parsedOuter && parsedOuter.choices && parsedOuter.choices[0] &&
@@ -113,57 +154,35 @@ function createPhotoVerifyHandlers(opts) {
         ? parsedOuter.choices[0].message.content
         : null;
 
-      if (typeof content !== 'string' || !content.trim()) {
-        logEvent('photo_verify_fail_open', { reason: 'empty_response', ms: Date.now() - startedAt });
-        return res.status(200).json(FAIL_OPEN);
-      }
-
-      let verdict = null;
-      try { verdict = JSON.parse(content); } catch (eJ) {
-        const m = content.match(/\{[\s\S]*\}/);
-        if (m) {
-          try { verdict = JSON.parse(m[0]); } catch (e2) { verdict = null; }
-        }
-      }
-
-      if (!verdict || typeof verdict.isValidDishPhoto !== 'boolean') {
+      const verdict = parseVerdict(content);
+      if (!verdict) {
         logEvent('photo_verify_fail_open', { reason: 'invalid_model_json', ms: Date.now() - startedAt });
-        return res.status(200).json(FAIL_OPEN);
+        return res.status(200).json(failOpen('bad_model_json'));
       }
-
-      const reason = typeof verdict.reason === 'string'
-        ? stripHtml(verdict.reason).slice(0, 240)
-        : '';
 
       console.log(
         '[photo/verify] OK dish="' + dishTitle.slice(0, 40) +
         '" valid=' + verdict.isValidDishPhoto +
+        ' model=' + visionModel +
         ' ms=' + (Date.now() - startedAt)
       );
 
-      return res.status(200).json({
-        isValidDishPhoto: verdict.isValidDishPhoto,
-        reason: reason || (verdict.isValidDishPhoto ? 'ok' : 'rejected'),
-      });
+      return res.status(200).json(verdict);
     } catch (err) {
-      logEvent('photo_verify_fail_open', {
-        reason: err && err.name ? err.name : 'unknown',
-        ms: Date.now() - startedAt,
-      });
-      return res.status(200).json(FAIL_OPEN);
-    } finally {
-      clearTimeout(timer);
+      const name = err && err.name ? err.name : 'unknown';
+      logEvent('photo_verify_fail_open', { reason: name, ms: Date.now() - startedAt });
+      return res.status(200).json(failOpen(name === 'AbortError' ? 'timeout' : name));
     }
   }
 
   return {
     handlePhotoVerify,
     handlePhotoVerifyGet,
-    FAIL_OPEN,
+    failOpen,
   };
 }
 
 module.exports = {
   createPhotoVerifyHandlers,
-  FAIL_OPEN,
+  failOpen,
 };
