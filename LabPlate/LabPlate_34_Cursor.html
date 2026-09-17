@@ -4404,6 +4404,96 @@
   }
   .lab-warning-item{ font-size:14px; font-weight:500; color:#9C3B2C; line-height:1.5; margin-bottom:4px; }
   .lab-applied-note{ font-size:12.5px; font-weight:500; color:#2E7D53; margin-top:6px; }
+
+  /* Erweiterte Stoffwechselwerte + nutzergesteuerter Ernaehrungsfokus (Meine Werte) */
+  .lab-disclaimer{
+    font-size:11px; font-weight:400; color:var(--ink-soft); opacity:0.7;
+    line-height:1.45; margin:-2px 0 12px; max-width:42rem;
+  }
+  .lab-help-text{
+    font-size:85%; font-weight:400; color:var(--ink-soft); line-height:1.4; margin:6px 0 10px;
+  }
+  .lab-extended-toggle-row{
+    display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+    margin:14px 0 6px; flex-wrap:wrap;
+  }
+  .lab-extended-toggle-copy{ flex:1 1 200px; min-width:0; }
+  .lab-extended-toggle-label{
+    display:block; font-size:14px; font-weight:600; color:var(--ink); margin:0 0 4px;
+  }
+  .lab-ext-switch.theme-segment{ margin-top:0; flex:0 0 auto; }
+  .lab-ext-switch button{ min-width:64px; flex:0 0 auto; transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+  .lab-extended-panel{
+    display:grid; grid-template-rows:0fr; transition: grid-template-rows .3s ease;
+    margin:0; overflow:hidden;
+  }
+  .lab-extended-panel.is-open{ grid-template-rows:1fr; margin-top:8px; }
+  .lab-extended-panel-inner{ min-height:0; overflow:hidden; }
+  .lab-block{
+    margin:12px 0 4px; padding:12px 12px 10px;
+    border:1px solid var(--bg-2); border-radius:12px; background:rgba(127,127,127,0.04);
+  }
+  .lab-block-title{
+    font-size:13px; font-weight:650; color:var(--ink); margin:0 0 8px; letter-spacing:-0.1px;
+  }
+  .lab-block-note{
+    font-size:85%; color:var(--ink-soft); line-height:1.4; margin:8px 0 0;
+  }
+  .lab-context-panel{
+    margin-top:14px; padding:14px 14px 12px; border-radius:12px;
+    border:1px solid var(--bg-2); background:rgba(127,127,127,0.04);
+  }
+  .lab-context-title{ font-size:15px; font-weight:700; color:var(--ink); margin:0 0 6px; }
+  .lab-context-text{ font-size:85%; color:var(--ink-soft); line-height:1.45; margin:0 0 12px; }
+  .lab-focus-list{ display:flex; flex-direction:column; gap:8px; margin:0 0 10px; }
+  .lab-focus-item{
+    display:flex; align-items:flex-start; gap:10px; font-size:13.5px; font-weight:500;
+    color:var(--ink); line-height:1.35; cursor:pointer;
+  }
+  .lab-focus-item input{ margin-top:2px; flex:0 0 auto; accent-color:var(--purple); width:16px; height:16px; }
+  .lab-focus-active{ display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 4px; }
+  .lab-focus-chip{
+    display:inline-flex; align-items:center; padding:6px 10px; border-radius:999px;
+    background:var(--purple-soft, rgba(124,92,191,.18)); color:var(--ink);
+    font-size:12px; font-weight:600; border:1px solid rgba(124,92,191,.28);
+  }
+  .lab-focus-active-title{ width:100%; font-size:12px; font-weight:600; color:var(--ink-soft); margin:0 0 2px; }
+  .lab-delete-extended-btn{
+    border:none; background:transparent; color:var(--ink-soft); font-size:12px; font-weight:500;
+    text-decoration:underline; cursor:pointer; padding:8px 0; font-family:var(--font-ui);
+  }
+  .lab-delete-extended-btn:hover{ color:#B23A2C; }
+  tr.goal-focus-priority td.goal-cell-name{ font-weight:700; color:var(--purple); }
+  .lab-focus-overview-badge{
+    display:inline-flex; align-items:center; max-width:100%;
+    margin:8px 0 10px; padding:5px 10px; border-radius:999px;
+    font-size:11.5px; font-weight:600; line-height:1.3;
+    color:var(--ink-soft); background:rgba(124,92,191,.12);
+    border:1px solid rgba(124,92,191,.22);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  html[data-theme="dark"] .lab-focus-overview-badge{
+    color:var(--ink); background:rgba(124,92,191,.18); border-color:rgba(124,92,191,.32);
+  }
+  @media (prefers-color-scheme: dark){
+    html:not([data-theme="light"]) .lab-focus-overview-badge{
+      color:var(--ink); background:rgba(124,92,191,.18); border-color:rgba(124,92,191,.32);
+    }
+  }
+  .history-card .lab-focus-overview-badge,
+  .protocol-app .lab-focus-overview-badge,
+  .dcard-goals .lab-focus-overview-badge{ margin-top:0; }
+  html[data-theme="dark"] .lab-block,
+  html[data-theme="dark"] .lab-context-panel{ border-color:rgba(245,243,248,0.18); background:rgba(255,255,255,0.03); }
+  @media (prefers-color-scheme: dark){
+    html:not([data-theme="light"]) .lab-block,
+    html:not([data-theme="light"]) .lab-context-panel{ border-color:rgba(245,243,248,0.18); background:rgba(255,255,255,0.03); }
+  }
+  #settings-overlay .lab-disclaimer{ font-size:calc(11px * var(--text-scale-factor, 1)); transition: font-size 0.2s ease-out; }
+  #settings-overlay .lab-help-text,
+  #settings-overlay .lab-block-note,
+  #settings-overlay .lab-context-text{ font-size:calc(11.05px * var(--text-scale-factor, 1)); transition: font-size 0.2s ease-out; }
+  #settings-overlay .lab-block-title{ font-size:calc(13px * var(--text-scale-factor, 1)); transition: font-size 0.2s ease-out; }
   /* NEU (Korrektur-Prompt: Werkzeugleiste A-/A+/Audio) - Schriftskalierung nur fuer
      Lesetext (Abschnitts-Titel, Feldbeschriftungen, Hinweistexte, Zusammenfassung),
      keine Skalierung von Buttons/Eingabefeldern - gleiche Konvention wie ueberall sonst. */
@@ -7476,25 +7566,52 @@ TRANSLATIONS.de = {
   confirmCancel: 'Abbrechen',
 
   labPanelTitle: 'Meine Werte (optional)',
-  labIntro: 'Trag deine aktuellen Laborwerte ein, um deine Tagesziele automatisch anzupassen.',
-  labTrig: 'Triglyceride (mg/dl)',
-  labLdl: 'LDL-Cholesterin (mg/dl)',
-  labHdl: 'HDL-Cholesterin (mg/dl)',
-  labChol: 'Gesamtcholesterin (mg/dl)',
-  labGlucose: 'Nüchternblutzucker (mg/dl)',
+  labIntro: 'Trag freiwillig aktuelle Werte ein und behalte sie als persönlichen Kontext in LabPlate im Blick.',
+  labDisclaimer: 'Diese Angaben dienen der persönlichen Orientierung. LabPlate stellt keine Diagnose und ersetzt keine ärztliche Beratung, Behandlung oder individuelle Therapieempfehlung.',
+  labTrig: 'Triglyceride (mg/dL)',
+  labLdl: 'LDL-Cholesterin (mg/dL)',
+  labHdl: 'HDL-Cholesterin (mg/dL)',
+  labChol: 'Gesamtcholesterin (mg/dL)',
+  labGlucose: 'Nüchternblutzucker (mg/dL)',
   labHba1c: 'HbA1c (%)',
-  labBpSys: 'Blutdruck systolisch (mmHg)',
-  labBpDia: 'Blutdruck diastolisch (mmHg)',
-  labEgfr: 'eGFR – Nierenfunktion (ml/min/1,73 m²)',
-  labApply: 'Werte übernehmen & Ziele anpassen',
+  labBpSys: 'Systolisch (mmHg)',
+  labBpDia: 'Diastolisch (mmHg)',
+  labEgfr: 'eGFR (ml/min/1,73 m²)',
+  labApply: 'Werte lokal speichern',
   labReset: 'Zurücksetzen auf Standardwerte',
-  labAppliedNote: 'Deine Tagesziele wurden automatisch an deine Werte angepasst.',
+  labAppliedNote: 'Deine Werte werden nur auf diesem Gerät gespeichert und dienen deinem persönlichen Überblick.',
+  labExtendedToggle: 'Erweiterte Stoffwechselwerte hinzufügen',
+  labExtendedHelp: 'Blutzucker, HbA1c, Blutdruck und Nierenfunktion. Optional, wenn dir diese Werte aus einem Laborbefund oder Arztbrief vorliegen.',
+  labToggleOn: 'An',
+  labToggleOff: 'Aus',
+  labBlockGlucose: 'Blutzucker und Langzeitwert',
+  labBlockBp: 'Blutdruck',
+  labBlockKidney: 'Nierenfunktion',
+  labEgfrHint: 'Bei bekannten Nierenerkrankungen sollten persönliche Ernährungsfragen mit einer Ärztin, einem Arzt oder einer qualifizierten Ernährungsfachkraft abgestimmt werden.',
+  labContextTitle: 'Dein persönlicher Kontext',
+  labContextText: 'Deine Werte werden nur auf diesem Gerät gespeichert und dienen deinem persönlichen Überblick. Unabhängig davon kannst du auswählen, welche allgemeinen Ernährungsaspekte du in LabPlate besonders im Blick behalten möchtest.',
+  labFocusFiber: 'Ballaststoffe im Blick behalten',
+  labFocusCarbs: 'Wenig stark verarbeitete Kohlenhydrate im Blick behalten',
+  labFocusFat: 'Fettqualität im Blick behalten',
+  labFocusSalt: 'Salz im Tagesüberblick hervorheben',
+  labFocusHelp: 'Diese Auswahl ist freiwillig und wird nicht automatisch aus deinen eingetragenen Werten abgeleitet.',
+  labFocusSave: 'Auswahl speichern',
+  labFocusEdit: 'Werte bearbeiten',
+  labFocusActiveTitle: 'Aktive Schwerpunkte',
+  labFocusBadgePrefix: 'Fokus',
+  labFocusBadgeFiber: 'Ballaststoffe',
+  labFocusBadgeCarbs: 'Kohlenhydrate',
+  labFocusBadgeFat: 'Fettqualität',
+  labFocusBadgeSalt: 'Salz',
+  labDeleteExtended: 'Erweiterte Werte auf diesem Gerät löschen',
+  labDeleteExtendedConfirm: 'Erweiterte Werte wirklich löschen? Basis-Blutfettwerte und andere App-Daten bleiben erhalten.',
+
   warnHdl: 'Dein HDL-Cholesterin ist zu niedrig – füge mehr Omega-3-reiche Lebensmittel hinzu (z. B. Lachs, Leinöl).',
   // NEU (leitlinienbasierte Berechnungslogik, siehe applyLabValues()): jede Meldung nennt
   // explizit die zugrunde liegende Leitlinie, den ausloesenden Schwellenwert UND das daraus
   // berechnete Ziel - Punkt E der Vorgabe ("zeige an, welche Leitlinie verantwortlich ist").
-  warnKhModerate: 'KH-Ziel gemäß DGE/ADA: 110 g Netto-KH/Tag (leichte Stoffwechselstörung – Triglyceride 150–500 mg/dl bzw. HbA1c 5,7–6,4 % bzw. Nüchternblutzucker 100–125 mg/dl).',
-  warnKhSevere: 'KH-Ziel gemäß AWMF/ADA: 80 g Netto-KH/Tag (schwere Stoffwechselstörung – Triglyceride 500–1000 mg/dl bzw. HbA1c ≥ 6,5 % bzw. Nüchternblutzucker ≥ 126 mg/dl).',
+  warnKhModerate: 'KH-Ziel gemäß DGE/ADA: 110 g Netto-KH/Tag (leichte Stoffwechselstörung – Triglyceride 150–500 mg/dl).',
+  warnKhSevere: 'KH-Ziel gemäß AWMF/ADA: 80 g Netto-KH/Tag (schwere Stoffwechselstörung – Triglyceride 500–1000 mg/dl).',
   warnKhEmergency: 'KH-Ziel gemäß AWMF (Pankreatitis-Prävention): < 50 g Netto-KH/Tag – Triglyceride > 1000 mg/dl (akutes Risiko).',
   // AKTUALISIERT (ESC/EAS 2025 - Optimierung gesättigte Fettsäuren): jetzt sauber prozentual
   // aus einem 2000-kcal-Referenzwert berechnet (< 7 % bzw. < 10 % der Gesamtenergie statt
@@ -8239,22 +8356,49 @@ TRANSLATIONS.en = {
   confirmCancel: 'Cancel',
 
   labPanelTitle: 'My values (optional)',
-  labIntro: 'Enter your current lab values to automatically adjust your daily targets.',
-  labTrig: 'Triglycerides (mg/dl)',
-  labLdl: 'LDL cholesterol (mg/dl)',
-  labHdl: 'HDL cholesterol (mg/dl)',
-  labChol: 'Total cholesterol (mg/dl)',
-  labGlucose: 'Fasting blood glucose (mg/dl)',
+  labIntro: 'Optionally enter current values and keep them as personal context in LabPlate.',
+  labDisclaimer: 'These entries are for personal orientation only. LabPlate does not provide a diagnosis and does not replace medical advice, treatment, or individual therapy recommendations.',
+  labTrig: 'Triglycerides (mg/dL)',
+  labLdl: 'LDL cholesterol (mg/dL)',
+  labHdl: 'HDL cholesterol (mg/dL)',
+  labChol: 'Total cholesterol (mg/dL)',
+  labGlucose: 'Fasting blood glucose (mg/dL)',
   labHba1c: 'HbA1c (%)',
-  labBpSys: 'Blood pressure systolic (mmHg)',
-  labBpDia: 'Blood pressure diastolic (mmHg)',
-  labEgfr: 'eGFR – kidney function (ml/min/1.73 m²)',
-  labApply: 'Apply values & adjust targets',
+  labBpSys: 'Systolic (mmHg)',
+  labBpDia: 'Diastolic (mmHg)',
+  labEgfr: 'eGFR (ml/min/1.73 m²)',
+  labApply: 'Save values locally',
   labReset: 'Reset to default values',
-  labAppliedNote: 'Your daily targets have been automatically adjusted to your values.',
+  labAppliedNote: 'Your values are stored only on this device and are for your personal overview.',
+  labExtendedToggle: 'Add extended metabolic values',
+  labExtendedHelp: 'Blood glucose, HbA1c, blood pressure, and kidney function. Optional if you have these values from a lab report or medical letter.',
+  labToggleOn: 'On',
+  labToggleOff: 'Off',
+  labBlockGlucose: 'Blood glucose and long-term value',
+  labBlockBp: 'Blood pressure',
+  labBlockKidney: 'Kidney function',
+  labEgfrHint: 'If you have a known kidney condition, personal nutrition questions should be aligned with a physician or a qualified nutrition professional.',
+  labContextTitle: 'Your personal context',
+  labContextText: 'Your values are stored only on this device and are for your personal overview. Independently, you can choose which general nutrition aspects you want to keep in focus in LabPlate.',
+  labFocusFiber: 'Keep fiber in focus',
+  labFocusCarbs: 'Keep highly processed carbohydrates in focus',
+  labFocusFat: 'Keep fat quality in focus',
+  labFocusSalt: 'Highlight salt in the daily overview',
+  labFocusHelp: 'This selection is optional and is not derived automatically from your entered values.',
+  labFocusSave: 'Save selection',
+  labFocusEdit: 'Edit values',
+  labFocusActiveTitle: 'Active focuses',
+  labFocusBadgePrefix: 'Focus',
+  labFocusBadgeFiber: 'Fiber',
+  labFocusBadgeCarbs: 'Carbs',
+  labFocusBadgeFat: 'Fat quality',
+  labFocusBadgeSalt: 'Salt',
+  labDeleteExtended: 'Delete extended values on this device',
+  labDeleteExtendedConfirm: 'Really delete extended values? Base blood lipid values and other app data remain.',
+
   warnHdl: 'Your HDL cholesterol is too low – add more omega-3-rich foods (e.g. salmon, flaxseed oil).',
-  warnKhModerate: 'Carb target per DGE/ADA: 110 g net carbs/day (mild metabolic disturbance – triglycerides 150–500 mg/dl or HbA1c 5.7–6.4% or fasting glucose 100–125 mg/dl).',
-  warnKhSevere: 'Carb target per AWMF/ADA: 80 g net carbs/day (severe metabolic disturbance – triglycerides 500–1000 mg/dl or HbA1c ≥ 6.5% or fasting glucose ≥ 126 mg/dl).',
+  warnKhModerate: 'Carb target per DGE/ADA: 110 g net carbs/day (mild metabolic disturbance – triglycerides 150–500 mg/dl).',
+  warnKhSevere: 'Carb target per AWMF/ADA: 80 g net carbs/day (severe metabolic disturbance – triglycerides 500–1000 mg/dl).',
   warnKhEmergency: 'Carb target per AWMF (pancreatitis prevention): < 50 g net carbs/day – triglycerides > 1000 mg/dl (acute risk).',
   warnLdlSevere: 'Fat target per ESC/EAS 2025: saturated fat < 7% of total calories (16 g/day at a 2000 kcal reference) – LDL cholesterol > 190 mg/dl or triglycerides > 1000 mg/dl. Favor mono-/polyunsaturated fats (MUFA/PUFA).',
   warnSatFatModerate: 'Fat target per ESC/EAS 2025: saturated fat < 10% of total calories (22 g/day at a 2000 kcal reference) – LDL cholesterol > 160 mg/dl or triglycerides > 500 mg/dl.',
@@ -8979,19 +9123,41 @@ TRANSLATIONS.es = {
   confirmCancel: 'Cancelar',
 
   labPanelTitle: 'Mis valores (opcional)',
-  labIntro: 'Introduce tus valores de laboratorio actuales para ajustar automáticamente tus objetivos diarios.',
+  labIntro: 'Introduce voluntariamente valores actuales y consérvalos como contexto personal en LabPlate.',
   labTrig: 'Triglicéridos (mg/dl)',
   labLdl: 'Colesterol LDL (mg/dl)',
   labHdl: 'Colesterol HDL (mg/dl)',
   labChol: 'Colesterol total (mg/dl)',
   labGlucose: 'Glucosa en ayunas (mg/dl)',
   labHba1c: 'HbA1c (%)',
-  labBpSys: 'Presión sistólica (mmHg)',
-  labBpDia: 'Presión diastólica (mmHg)',
-  labEgfr: 'eGFR – función renal (ml/min/1,73 m²)',
-  labApply: 'Aplicar valores y ajustar objetivos',
+  labBpSys: 'Sistólica (mmHg)',
+  labBpDia: 'Diastólica (mmHg)',
+  labEgfr: 'eGFR (ml/min/1,73 m²)',
+  labApply: 'Guardar valores localmente',
   labReset: 'Restablecer valores predeterminados',
-  labAppliedNote: 'Tus objetivos diarios se han ajustado automáticamente a tus valores.',
+  labAppliedNote: 'Tus valores se guardan solo en este dispositivo y sirven para tu visión personal.',
+  labDisclaimer: 'Estos datos son solo para orientación personal. LabPlate no diagnostica ni sustituye consejo médico, tratamiento o recomendaciones terapéuticas individuales.',
+  labExtendedToggle: 'Añadir valores metabólicos ampliados',
+  labExtendedHelp: 'Glucosa, HbA1c, presión arterial y función renal. Opcional si tienes estos valores de un informe de laboratorio o carta médica.',
+  labToggleOn: 'Sí',
+  labToggleOff: 'No',
+  labBlockGlucose: 'Glucosa y valor a largo plazo',
+  labBlockBp: 'Presión arterial',
+  labBlockKidney: 'Función renal',
+  labEgfrHint: 'Si hay enfermedad renal conocida, las preguntas personales de nutrición deben acordarse con un médico o un profesional cualificado de la nutrición.',
+  labContextTitle: 'Tu contexto personal',
+  labContextText: 'Tus valores se guardan solo en este dispositivo. Independientemente, puedes elegir qué aspectos generales de nutrición quieres seguir de cerca en LabPlate.',
+  labFocusFiber: 'Seguir de cerca la fibra',
+  labFocusCarbs: 'Seguir de cerca los carbohidratos muy procesados',
+  labFocusFat: 'Seguir de cerca la calidad de las grasas',
+  labFocusSalt: 'Destacar la sal en el resumen diario',
+  labFocusHelp: 'Esta selección es voluntaria y no se deriva automáticamente de tus valores introducidos.',
+  labFocusSave: 'Guardar selección',
+  labFocusEdit: 'Editar valores',
+  labFocusActiveTitle: 'Enfoques activos',
+  labDeleteExtended: 'Eliminar valores ampliados en este dispositivo',
+  labDeleteExtendedConfirm: '¿Eliminar realmente los valores ampliados? Los lípidos básicos y otros datos de la app se conservan.',
+
   warnHdl: 'Tu colesterol HDL es demasiado bajo – añade más alimentos ricos en omega-3 (p. ej. salmón, aceite de lino).',
   warnKhModerate: 'Objetivo de HC según DGE/ADA: 110 g de HC netos/día (alteración metabólica leve – triglicéridos 150–500 mg/dl o HbA1c 5,7–6,4 % o glucosa en ayunas 100–125 mg/dl).',
   warnKhSevere: 'Objetivo de HC según AWMF/ADA: 80 g de HC netos/día (alteración metabólica grave – triglicéridos 500–1000 mg/dl o HbA1c ≥ 6,5 % o glucosa en ayunas ≥ 126 mg/dl).',
@@ -9720,19 +9886,41 @@ TRANSLATIONS.it = {
   confirmCancel: 'Annulla',
 
   labPanelTitle: 'I miei valori (facoltativo)',
-  labIntro: 'Inserisci i tuoi valori di laboratorio attuali per adattare automaticamente i tuoi obiettivi giornalieri.',
+  labIntro: 'Inserisci volontariamente i valori attuali e tienili come contesto personale in LabPlate.',
   labTrig: 'Trigliceridi (mg/dl)',
   labLdl: 'Colesterolo LDL (mg/dl)',
   labHdl: 'Colesterolo HDL (mg/dl)',
   labChol: 'Colesterolo totale (mg/dl)',
   labGlucose: 'Glicemia a digiuno (mg/dl)',
   labHba1c: 'HbA1c (%)',
-  labBpSys: 'Pressione sistolica (mmHg)',
-  labBpDia: 'Pressione diastolica (mmHg)',
-  labEgfr: 'eGFR – funzione renale (ml/min/1,73 m²)',
-  labApply: 'Applica valori e adatta gli obiettivi',
+  labBpSys: 'Sistolica (mmHg)',
+  labBpDia: 'Diastolica (mmHg)',
+  labEgfr: 'eGFR (ml/min/1,73 m²)',
+  labApply: 'Salva i valori in locale',
   labReset: 'Ripristina valori predefiniti',
-  labAppliedNote: 'I tuoi obiettivi giornalieri sono stati adattati automaticamente ai tuoi valori.',
+  labAppliedNote: 'I tuoi valori sono salvati solo su questo dispositivo e servono al tuo panorama personale.',
+  labDisclaimer: "Questi dati servono solo all'orientamento personale. LabPlate non formula diagnosi e non sostituisce consulenza medica, trattamento o raccomandazioni terapeutiche individuali.",
+  labExtendedToggle: 'Aggiungi valori metabolici avanzati',
+  labExtendedHelp: 'Glicemia, HbA1c, pressione arteriosa e funzione renale. Opzionale se hai questi valori da un referto di laboratorio o da una lettera medica.',
+  labToggleOn: 'On',
+  labToggleOff: 'Off',
+  labBlockGlucose: 'Glicemia e valore a lungo termine',
+  labBlockBp: 'Pressione arteriosa',
+  labBlockKidney: 'Funzione renale',
+  labEgfrHint: "In caso di patologie renali note, le domande personali sull'alimentazione andrebbero concordate con un medico o un professionista qualificato della nutrizione.",
+  labContextTitle: 'Il tuo contesto personale',
+  labContextText: "I tuoi valori vengono salvati solo su questo dispositivo. Indipendentemente, puoi scegliere quali aspetti generali dell'alimentazione tenere particolarmente d'occhio in LabPlate.",
+  labFocusFiber: "Tenere d'occhio le fibre",
+  labFocusCarbs: "Tenere d'occhio i carboidrati molto processati",
+  labFocusFat: "Tenere d'occhio la qualità dei grassi",
+  labFocusSalt: 'Evidenziare il sale nella panoramica giornaliera',
+  labFocusHelp: 'Questa selezione è volontaria e non viene derivata automaticamente dai valori inseriti.',
+  labFocusSave: 'Salva selezione',
+  labFocusEdit: 'Modifica valori',
+  labFocusActiveTitle: 'Focus attivi',
+  labDeleteExtended: 'Elimina i valori avanzati su questo dispositivo',
+  labDeleteExtendedConfirm: "Eliminare davvero i valori avanzati? I lipidi di base e gli altri dati dell'app restano.",
+
   warnHdl: 'Il tuo colesterolo HDL è troppo basso – aggiungi più alimenti ricchi di omega-3 (es. salmone, olio di lino).',
   warnKhModerate: 'Obiettivo di carboidrati secondo DGE/ADA: 110 g di carboidrati netti/giorno (lieve alterazione metabolica – trigliceridi 150–500 mg/dl o HbA1c 5,7–6,4 % o glicemia a digiuno 100–125 mg/dl).',
   warnKhSevere: 'Obiettivo di carboidrati secondo AWMF/ADA: 80 g di carboidrati netti/giorno (grave alterazione metabolica – trigliceridi 500–1000 mg/dl o HbA1c ≥ 6,5 % o glicemia a digiuno ≥ 126 mg/dl).',
@@ -10397,12 +10585,34 @@ TRANSLATIONS.pt = Object.assign({}, TRANSLATIONS.en, {
   saltLabel: 'Sal', saltOk: 'está bem', saltHigh: 'já é bastante', saltDailyTarget: 'do valor de referência diário', saltWithinRange: 'dentro do previsto',
   removeAria: 'Remover', confirmClearAll: 'Eliminar mesmo tudo?', clearAllBtn: 'Eliminar tudo', confirmCancel: 'Cancelar',
   labPanelTitle: 'Os meus valores (opcional)',
-  labIntro: 'Regista os teus valores laboratoriais atuais para ajustar automaticamente as tuas metas diárias.',
+  labIntro: 'Regista voluntariamente valores atuais e mantém-nos como contexto pessoal no LabPlate.',
   labTrig: 'Triglicéridos (mg/dl)', labLdl: 'Colesterol LDL (mg/dl)', labHdl: 'Colesterol HDL (mg/dl)',
   labChol: 'Colesterol total (mg/dl)', labGlucose: 'Glicemia em jejum (mg/dl)', labHba1c: 'HbA1c (%)',
   labBpSys: 'Pressão arterial sistólica (mmHg)', labBpDia: 'Pressão arterial diastólica (mmHg)',
-  labEgfr: 'TFGe – função renal (ml/min/1,73 m²)', labApply: 'Aplicar valores e ajustar metas',
-  labReset: 'Repor valores padrão', labAppliedNote: 'As tuas metas diárias foram ajustadas automaticamente aos teus valores.',
+  labEgfr: 'TFGe (ml/min/1,73 m²)', labApply: 'Guardar valores localmente',
+  labReset: 'Repor valores padrão', labAppliedNote: 'Os teus valores são guardados apenas neste dispositivo e servem para a tua visão pessoal.',
+  labDisclaimer: 'Estes dados servem apenas para orientação pessoal. O LabPlate não faz diagnósticos nem substitui aconselhamento médico, tratamento ou recomendações terapêuticas individuais.',
+  labExtendedToggle: 'Adicionar valores metabólicos alargados',
+  labExtendedHelp: 'Glicemia, HbA1c, tensão arterial e função renal. Opcional se tiveres estes valores de um relatório laboratorial ou carta médica.',
+  labToggleOn: 'On',
+  labToggleOff: 'Off',
+  labBlockGlucose: 'Glicemia e valor a longo prazo',
+  labBlockBp: 'Tensão arterial',
+  labBlockKidney: 'Função renal',
+  labEgfrHint: 'Em caso de doença renal conhecida, questões pessoais de nutrição devem ser alinhadas com um médico ou um profissional qualificado de nutrição.',
+  labContextTitle: 'O teu contexto pessoal',
+  labContextText: 'Os teus valores são guardados apenas neste dispositivo. Independentemente disso, podes escolher que aspetos gerais de nutrição queres acompanhar de perto no LabPlate.',
+  labFocusFiber: 'Manter a fibra em foco',
+  labFocusCarbs: 'Manter hidratos de carbono muito processados em foco',
+  labFocusFat: 'Manter a qualidade das gorduras em foco',
+  labFocusSalt: 'Destacar o sal na visão diária',
+  labFocusHelp: 'Esta seleção é voluntária e não é derivada automaticamente dos valores introduzidos.',
+  labFocusSave: 'Guardar seleção',
+  labFocusEdit: 'Editar valores',
+  labFocusActiveTitle: 'Focos ativos',
+  labDeleteExtended: 'Apagar valores alargados neste dispositivo',
+  labDeleteExtendedConfirm: 'Apagar mesmo os valores alargados? Os lípidos base e outros dados da app mantêm-se.',
+
   warnHdl: 'O teu colesterol HDL está demasiado baixo – adiciona mais alimentos ricos em Ómega-3 (por exemplo, salmão, óleo de linhaça).',
   warnKhModerate: 'Meta de HC segundo a DGE/ADA: 110 g de HC líquidos/dia (distúrbio metabólico ligeiro – triglicéridos 150–500 mg/dl ou HbA1c 5,7–6,4% ou glicemia em jejum 100–125 mg/dl).',
   warnKhSevere: 'Meta de HC segundo a AWMF/ADA: 80 g de HC líquidos/dia (distúrbio metabólico grave – triglicéridos 500–1000 mg/dl ou HbA1c ≥ 6,5% ou glicemia em jejum ≥ 126 mg/dl).',
@@ -10877,12 +11087,34 @@ TRANSLATIONS.fr = Object.assign({}, TRANSLATIONS.en, {
   saltLabel: 'Sel', saltOk: 'ça va', saltHigh: 'déjà pas mal', saltDailyTarget: 'de la valeur de référence quotidienne', saltWithinRange: 'dans la norme',
   removeAria: 'Retirer', confirmClearAll: 'Vraiment tout supprimer ?', clearAllBtn: 'Tout supprimer', confirmCancel: 'Annuler',
   labPanelTitle: 'Mes valeurs (facultatif)',
-  labIntro: 'Renseigne tes valeurs de laboratoire actuelles pour ajuster automatiquement tes objectifs quotidiens.',
+  labIntro: 'Saisis volontairement des valeurs actuelles et garde-les comme contexte personnel dans LabPlate.',
   labTrig: 'Triglycérides (mg/dl)', labLdl: 'Cholestérol LDL (mg/dl)', labHdl: 'Cholestérol HDL (mg/dl)',
   labChol: 'Cholestérol total (mg/dl)', labGlucose: 'Glycémie à jeun (mg/dl)', labHba1c: 'HbA1c (%)',
   labBpSys: 'Tension artérielle systolique (mmHg)', labBpDia: 'Tension artérielle diastolique (mmHg)',
-  labEgfr: 'DFGe – fonction rénale (ml/min/1,73 m²)', labApply: 'Appliquer les valeurs et ajuster les objectifs',
-  labReset: 'Réinitialiser aux valeurs par défaut', labAppliedNote: 'Tes objectifs quotidiens ont été automatiquement adaptés à tes valeurs.',
+  labEgfr: 'DFGe (ml/min/1,73 m²)', labApply: 'Enregistrer les valeurs localement',
+  labReset: 'Réinitialiser aux valeurs par défaut', labAppliedNote: 'Tes valeurs sont enregistrées uniquement sur cet appareil et servent à ton aperçu personnel.',
+  labDisclaimer: 'Ces informations servent uniquement à une orientation personnelle. LabPlate ne pose aucun diagnostic et ne remplace pas un avis médical, un traitement ou des recommandations thérapeutiques individuelles.',
+  labExtendedToggle: 'Ajouter des valeurs métaboliques étendues',
+  labExtendedHelp: 'Glycémie, HbA1c, tension artérielle et fonction rénale. Optionnel si tu disposes de ces valeurs via un bilan de laboratoire ou un courrier médical.',
+  labToggleOn: 'On',
+  labToggleOff: 'Off',
+  labBlockGlucose: 'Glycémie et valeur à long terme',
+  labBlockBp: 'Tension artérielle',
+  labBlockKidney: 'Fonction rénale',
+  labEgfrHint: 'En cas de maladie rénale connue, les questions nutritionnelles personnelles devraient être harmonisées avec un médecin ou un professionnel qualifié de la nutrition.',
+  labContextTitle: 'Ton contexte personnel',
+  labContextText: 'Tes valeurs sont enregistrées uniquement sur cet appareil. Indépendamment, tu peux choisir quels aspects généraux de nutrition tu souhaites particulièrement suivre dans LabPlate.',
+  labFocusFiber: 'Garder les fibres en vue',
+  labFocusCarbs: 'Garder les glucides très transformés en vue',
+  labFocusFat: 'Garder la qualité des lipides en vue',
+  labFocusSalt: "Mettre le sel en avant dans l'aperçu du jour",
+  labFocusHelp: "Cette sélection est facultative et n'est pas dérivée automatiquement de tes valeurs saisies.",
+  labFocusSave: 'Enregistrer la sélection',
+  labFocusEdit: 'Modifier les valeurs',
+  labFocusActiveTitle: 'Focalisations actives',
+  labDeleteExtended: 'Supprimer les valeurs étendues sur cet appareil',
+  labDeleteExtendedConfirm: "Supprimer vraiment les valeurs étendues ? Les lipides de base et les autres données de l'app restent.",
+
   warnHdl: 'Ton cholestérol HDL est trop bas – ajoute davantage d\'aliments riches en Oméga-3 (par ex. saumon, huile de lin).',
   warnKhModerate: 'Objectif de glucides selon la DGE/ADA : 110 g de glucides nets/jour (trouble métabolique léger – triglycérides 150–500 mg/dl ou HbA1c 5,7–6,4 % ou glycémie à jeun 100–125 mg/dl).',
   warnKhSevere: 'Objectif de glucides selon l\'AWMF/ADA : 80 g de glucides nets/jour (trouble métabolique sévère – triglycérides 500–1000 mg/dl ou HbA1c ≥ 6,5 % ou glycémie à jeun ≥ 126 mg/dl).',
@@ -11357,12 +11589,34 @@ TRANSLATIONS.tr = Object.assign({}, TRANSLATIONS.en, {
   saltLabel: 'Tuz', saltOk: 'uygun', saltHigh: 'zaten oldukça fazla', saltDailyTarget: 'günlük referans değerin', saltWithinRange: 'uygun aralıkta',
   removeAria: 'Kaldır', confirmClearAll: 'Gerçekten hepsi silinsin mi?', clearAllBtn: 'Hepsini sil', confirmCancel: 'İptal',
   labPanelTitle: 'Değerlerim (opsiyonel)',
-  labIntro: 'Günlük hedeflerini otomatik olarak ayarlamak için güncel laboratuvar değerlerini gir.',
+  labIntro: 'İsteğe bağlı olarak güncel değerlerini gir ve bunları LabPlate’te kişisel bağlam olarak takip et.',
   labTrig: 'Trigliserit (mg/dl)', labLdl: 'LDL Kolesterol (mg/dl)', labHdl: 'HDL Kolesterol (mg/dl)',
   labChol: 'Toplam Kolesterol (mg/dl)', labGlucose: 'Açlık Kan Şekeri (mg/dl)', labHba1c: 'HbA1c (%)',
   labBpSys: 'Sistolik Kan Basıncı (mmHg)', labBpDia: 'Diyastolik Kan Basıncı (mmHg)',
-  labEgfr: 'eGFR – Böbrek Fonksiyonu (ml/dk/1,73 m²)', labApply: 'Değerleri uygula ve hedefleri ayarla',
-  labReset: 'Varsayılan değerlere sıfırla', labAppliedNote: 'Günlük hedeflerin değerlerine göre otomatik olarak ayarlandı.',
+  labEgfr: 'eGFR (ml/dk/1,73 m²)', labApply: 'Değerleri yerel olarak kaydet',
+  labReset: 'Varsayılan değerlere sıfırla', labAppliedNote: 'Değerlerin yalnızca bu cihazda saklanır ve kişisel genel bakışın içindir.',
+  labDisclaimer: 'Bu bilgiler yalnızca kişisel yönlendirme içindir. LabPlate tanı koymaz; tıbbi tavsiye, tedavi veya bireysel terapi önerisinin yerini almaz.',
+  labExtendedToggle: 'Gelişmiş metabolizma değerlerini ekle',
+  labExtendedHelp: 'Kan şekeri, HbA1c, kan basıncı ve böbrek fonksiyonu. Bunlar bir laboratuvar sonucu veya hekim mektubundan geliyorsa isteğe bağlı.',
+  labToggleOn: 'Açık',
+  labToggleOff: 'Kapalı',
+  labBlockGlucose: 'Kan şekeri ve uzun dönem değeri',
+  labBlockBp: 'Kan basıncı',
+  labBlockKidney: 'Böbrek fonksiyonu',
+  labEgfrHint: 'Bilinen böbrek hastalıklarında kişisel beslenme soruları bir hekim veya nitelikli bir beslenme uzmanıyla uyumlanmalıdır.',
+  labContextTitle: 'Kişisel bağlamın',
+  labContextText: 'Değerlerin yalnızca bu cihazda saklanır. Bundan bağımsız olarak LabPlate’te hangi genel beslenme yönlerini özellikle takip etmek istediğini seçebilirsin.',
+  labFocusFiber: 'Lifleri takip et',
+  labFocusCarbs: 'Çok işlenmiş karbonhidratları takip et',
+  labFocusFat: 'Yağ kalitesini takip et',
+  labFocusSalt: 'Günlük özetinde tuzu öne çıkar',
+  labFocusHelp: 'Bu seçim isteğe bağlıdır ve girilen değerlerinden otomatik türetilmez.',
+  labFocusSave: 'Seçimi kaydet',
+  labFocusEdit: 'Değerleri düzenle',
+  labFocusActiveTitle: 'Aktif odaklar',
+  labDeleteExtended: 'Bu cihazdaki gelişmiş değerleri sil',
+  labDeleteExtendedConfirm: 'Gelişmiş değerler gerçekten silinsin mi? Temel kan yağları ve diğer uygulama verileri kalır.',
+
   warnHdl: 'HDL kolesterolün çok düşük – Omega-3 açısından zengin daha fazla gıda ekle (örneğin somon, keten tohumu yağı).',
   warnKhModerate: 'DGE/ADA\'ya göre KH hedefi: 110 g net KH/gün (hafif metabolik bozukluk – trigliserit 150–500 mg/dl veya HbA1c %5,7–6,4 veya açlık kan şekeri 100–125 mg/dl).',
   warnKhSevere: 'AWMF/ADA\'ya göre KH hedefi: 80 g net KH/gün (ciddi metabolik bozukluk – trigliserit 500–1000 mg/dl veya HbA1c ≥ %6,5 veya açlık kan şekeri ≥ 126 mg/dl).',
@@ -12992,6 +13246,83 @@ function loadLabsFromStorage() {
 }
 function saveLabsToStorage() {
   try { localStorage.setItem(STORAGE_KEY_LABS, JSON.stringify(LABS)); } catch (e) {}
+}
+
+// Erweiterte Stoffwechselwerte: UI-Toggle, nutzergesteuerter Ernaehrungsfokus, Kontext-Ansicht.
+// Rohwerte bleiben in STORAGE_KEY_LABS; bei deaktiviertem Toggle werden sie weder angezeigt
+// noch fuer Berechnungen/KI genutzt (siehe getLabsForAppUse()).
+const STORAGE_KEY_LAB_EXTENDED_UI = 'labplate_lab_extended_ui_v1';
+const STORAGE_KEY_NUTRITION_FOCUS = 'labplate_nutrition_focus_v1';
+const STORAGE_KEY_LAB_CONTEXT_VIEW = 'labplate_lab_context_view_v1';
+const NUTRITION_FOCUS_DEFAULT = { fiber: false, processedCarbs: false, fatQuality: false, salt: false };
+const LAB_EXTENDED_FIELDS = ['glucose', 'hba1c', 'bpSys', 'bpDia', 'egfr'];
+
+function loadLabExtendedUiEnabled() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY_LAB_EXTENDED_UI);
+    if (raw === '1' || raw === 'true') return true;
+    if (raw === '0' || raw === 'false') return false;
+    if (raw) {
+      const o = JSON.parse(raw);
+      return !!(o && o.enabled);
+    }
+  } catch (e) {}
+  return false;
+}
+function saveLabExtendedUiEnabled(enabled) {
+  try { localStorage.setItem(STORAGE_KEY_LAB_EXTENDED_UI, enabled ? '1' : '0'); } catch (e) {}
+}
+let LAB_EXTENDED_UI_ENABLED = loadLabExtendedUiEnabled();
+let LAB_EXTENDED_SKIP_OPEN_CLASS = false;
+
+function loadNutritionFocus() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY_NUTRITION_FOCUS);
+    if (raw) return { ...NUTRITION_FOCUS_DEFAULT, ...JSON.parse(raw) };
+  } catch (e) {}
+  return { ...NUTRITION_FOCUS_DEFAULT };
+}
+function saveNutritionFocus() {
+  try { localStorage.setItem(STORAGE_KEY_NUTRITION_FOCUS, JSON.stringify(NUTRITION_FOCUS)); } catch (e) {}
+}
+let NUTRITION_FOCUS = loadNutritionFocus();
+
+function loadLabContextView() {
+  try { return localStorage.getItem(STORAGE_KEY_LAB_CONTEXT_VIEW) === '1'; } catch (e) { return false; }
+}
+function saveLabContextView(on) {
+  try {
+    if (on) localStorage.setItem(STORAGE_KEY_LAB_CONTEXT_VIEW, '1');
+    else localStorage.removeItem(STORAGE_KEY_LAB_CONTEXT_VIEW);
+  } catch (e) {}
+}
+let LAB_CONTEXT_VIEW = loadLabContextView();
+let LAB_PANEL_EDIT_MODE = !LAB_CONTEXT_VIEW;
+
+function hasAnyExtendedLabValues(labs) {
+  const l = labs || LABS;
+  return LAB_EXTENDED_FIELDS.some(k => l[k] != null && l[k] !== '');
+}
+function clearExtendedLabValuesOnly() {
+  LAB_EXTENDED_FIELDS.forEach(k => { LABS[k] = null; });
+  saveLabsToStorage();
+}
+/** Effektive Labwerte fuer Anzeige/Berechnung/KI: erweiterte Rohwerte nur bei aktivem Toggle. */
+function getLabsForAppUse() {
+  const out = { ...LABS };
+  if (!LAB_EXTENDED_UI_ENABLED) {
+    LAB_EXTENDED_FIELDS.forEach(k => { out[k] = null; });
+  }
+  return out;
+}
+function nutritionFocusActiveList(Lref) {
+  const Lx = Lref || L;
+  const items = [];
+  if (NUTRITION_FOCUS.fiber) items.push(Lx.labFocusFiber);
+  if (NUTRITION_FOCUS.processedCarbs) items.push(Lx.labFocusCarbs);
+  if (NUTRITION_FOCUS.fatQuality) items.push(Lx.labFocusFat);
+  if (NUTRITION_FOCUS.salt) items.push(Lx.labFocusSalt);
+  return items;
 }
 
 const MICRO_SUGGEST_IDS = {
@@ -15685,6 +16016,123 @@ function saveTargetsToStorage() {
 let TARGETS = loadTargetsFromStorage() || Object.assign({}, DEFAULT_TARGETS);
 let LABS = loadLabsFromStorage();
 let LAB_WARNINGS = [];
+
+/** Zentrale Quelle fuer aktuell gueltige Tagesziele (manuell gespeichert).
+ *  Keine Laborwerte, keine Schwellen, keine medizinischen Anpassungen. */
+function getEffectiveDailyTargets() {
+  const base = DEFAULT_TARGETS;
+  const src = (typeof TARGETS !== 'undefined' && TARGETS) ? TARGETS : {};
+  const num = (v, fallback) => {
+    const n = Number(v);
+    return (isFinite(n) && n > 0) ? n : fallback;
+  };
+  const proteinMin = num(src.proteinMin, base.proteinMin);
+  let proteinMax = num(src.proteinMax, base.proteinMax);
+  if (proteinMax < proteinMin) proteinMax = proteinMin;
+  return {
+    kh: num(src.kh, base.kh),
+    proteinMin: proteinMin,
+    proteinMax: proteinMax,
+    fat: num(src.fat, base.fat),
+    satFat: num(src.satFat, base.satFat),
+    salt: num(src.salt, base.salt),
+    fiber: num(src.fiber, base.fiber),
+    fructose: num(src.fructose, base.fructose),
+  };
+}
+
+/** Kurze Fokus-Zusammenfassung fuer dezentes Badge (keine Ziel-/Berechnungs-Aenderung). */
+function nutritionFocusBadgeSummary(Lref) {
+  const Lx = Lref || (typeof L !== 'undefined' ? L : {});
+  const focus = (typeof NUTRITION_FOCUS !== 'undefined' && NUTRITION_FOCUS) ? NUTRITION_FOCUS : {};
+  const parts = [];
+  if (focus.fiber) parts.push(Lx.labFocusBadgeFiber || 'Ballaststoffe');
+  if (focus.processedCarbs) parts.push(Lx.labFocusBadgeCarbs || 'Kohlenhydrate');
+  if (focus.fatQuality) parts.push(Lx.labFocusBadgeFat || 'Fettqualität');
+  if (focus.salt) parts.push(Lx.labFocusBadgeSalt || 'Salz');
+  if (!parts.length) return '';
+  const prefix = Lx.labFocusBadgePrefix || 'Fokus';
+  if (parts.length === 1) return prefix + ': ' + parts[0];
+  if (parts.length === 2) return prefix + ': ' + parts[0] + ' & ' + parts[1];
+  return prefix + ': ' + parts[0] + ' +' + (parts.length - 1);
+}
+
+function nutritionFocusBadgeHtml(Lref) {
+  const summary = nutritionFocusBadgeSummary(Lref);
+  if (!summary) return '';
+  return '<div class="lab-focus-overview-badge" aria-label="' + summary.replace(/"/g, '&quot;') + '">' + summary + '</div>';
+}
+
+/** Aktualisiert alle Ansichten, die Tagesziele anzeigen (ohne App-Neustart). */
+function refreshDailyTargetViews() {
+  try {
+    if (typeof renderDay === 'function') renderDay();
+  } catch (e) {}
+  try {
+    if (typeof renderHistory === 'function') renderHistory();
+  } catch (e) {}
+  try {
+    const ov = document.getElementById('protocol-overlay');
+    if (ov && ov.classList.contains('show') && typeof loadProtocol === 'function' && typeof renderProtocol === 'function') {
+      const p = loadProtocol();
+      if (p && p.active) {
+        const t = getEffectiveDailyTargets();
+        p.targetMax = t.kh;
+        p.targetMin = Math.max(0, t.kh - 30);
+        if (typeof saveProtocol === 'function') saveProtocol(p);
+      }
+      renderProtocol();
+    }
+  } catch (e) {}
+  try {
+    const nutri = document.getElementById('lp-ov-nutrioverview');
+    if (nutri && nutri.classList.contains('show') && typeof window.renderNutriOverviewBody === 'function') {
+      window.renderNutriOverviewBody();
+    }
+  } catch (e) {}
+  try {
+    if (typeof renderSettingsOverlay === 'function') {
+      const settings = document.getElementById('settings-overlay');
+      if (settings && settings.classList.contains('show')) renderSettingsOverlay();
+    }
+  } catch (e) {}
+}
+try {
+  window.getEffectiveDailyTargets = getEffectiveDailyTargets;
+  window.refreshDailyTargetViews = refreshDailyTargetViews;
+} catch (e) {}
+
+// Einmalige Migration: frueher wurden aus Laborwerten abgeleitete Tagesziele in
+// tellercheck_targets_v1 persistiert. Diese Ableitung entfaellt – bei vorhandenen
+// Laborwerten einmalig auf Standard-Tagesziele zuruecksetzen (manuelle Ziele danach
+// wieder einstellbar). Lebensmittel/Rezepte/Routinen/Tagebuch bleiben unangetastet.
+(function migrateClearLabDerivedTargetsOnce() {
+  const FLAG = 'labplate_lab_derived_targets_cleared_v1';
+  try {
+    if (localStorage.getItem(FLAG) === '1') return;
+    const hasLabs = !!(LABS && (
+      LABS.trig != null || LABS.ldl != null || LABS.hdl != null || LABS.chol != null ||
+      LABS.glucose != null || LABS.hba1c != null || LABS.bpSys != null || LABS.bpDia != null || LABS.egfr != null
+    ));
+    if (hasLabs) {
+      TARGETS = Object.assign({}, DEFAULT_TARGETS);
+      try { localStorage.setItem(STORAGE_KEY_TARGETS, JSON.stringify(TARGETS)); } catch (e1) {}
+    }
+    LAB_WARNINGS = [];
+    // Team-Context: laborwertbasierte labsFlags neutralisieren, falls vorhanden.
+    try {
+      const raw = localStorage.getItem('labplate_team_context_v1');
+      if (raw) {
+        const ctx = JSON.parse(raw);
+        if (ctx && ctx.user && ctx.user.labsFlags) {
+          ctx.user.labsFlags = { carbSensitive: false, preferFiberOils: false, omega3Focus: false, priority: null };
+          localStorage.setItem('labplate_team_context_v1', JSON.stringify(ctx));
+        }
+      }
+    } catch (e2) {}
+    localStorage.setItem(FLAG, '1');
+  } catch (e) {}
+})();
 let ACTIVITY = loadActivity();
 let PROFILE = loadProfile();
 
@@ -15943,157 +16391,66 @@ function clampLabValue(fieldId, value, min, max) {
 }
 
 function applyLabValues() {
-  // Physiologisch plausible Wertebereiche je Laborparameter (Einheiten siehe Eingabefelder-
-  // Labels) - dienen ausschliesslich der Fehlerbehandlung (clampLabValue), nicht der
-  // eigentlichen Leitlinien-Schwellenwert-Logik weiter unten.
+  // Lifestyle-Kontext: Rohwerte nur lokal speichern und neutral anzeigen.
+  // Keine Schwellenwerte, keine automatische Zielableitung, keine Warnungen.
   const read = (id, min, max) => {
-    const v = parseFloat(document.getElementById(id).value);
+    const el = document.getElementById(id);
+    if (!el) return null;
+    const raw = String(el.value == null ? "" : el.value).trim();
+    if (raw === "") return null;
+    const v = parseFloat(raw);
+    if (isNaN(v)) return null;
+    return clampLabValue(id, v, min, max);
+  };
+  const readOrKeep = (id, min, max, prev) => {
+    const el = document.getElementById(id);
+    if (!el) return prev;
+    const raw = String(el.value == null ? "" : el.value).trim();
+    if (raw === "") return null;
+    const v = parseFloat(raw);
     if (isNaN(v)) return null;
     return clampLabValue(id, v, min, max);
   };
   LABS = {
-    trig:    read('lab-trig', 30, 2000),
-    ldl:     read('lab-ldl', 20, 400),
-    hdl:     read('lab-hdl', 10, 120),
-    chol:    read('lab-chol', 50, 500),
-    glucose: read('lab-glucose', 40, 600),
-    hba1c:   read('lab-hba1c', 3, 15),
-    bpSys:   read('lab-bpsys', 70, 250),
-    bpDia:   read('lab-bpdia', 40, 150),
-    egfr:    read('lab-egfr', 5, 120),
+    trig:    read("lab-trig", 30, 2000),
+    ldl:     read("lab-ldl", 20, 400),
+    hdl:     read("lab-hdl", 10, 120),
+    chol:    read("lab-chol", 50, 500),
+    glucose: readOrKeep("lab-glucose", 40, 600, LABS.glucose),
+    hba1c:   readOrKeep("lab-hba1c", 3, 15, LABS.hba1c),
+    bpSys:   readOrKeep("lab-bpsys", 70, 250, LABS.bpSys),
+    bpDia:   readOrKeep("lab-bpdia", 40, 150, LABS.bpDia),
+    egfr:    readOrKeep("lab-egfr", 5, 120, LABS.egfr),
   };
-  const t = Object.assign({}, DEFAULT_TARGETS);
-  const warnings = [];
-
-  // ===================== A. NETTO-KOHLENHYDRATE (KH) - abhaengig von Triglyceriden (TG),
-  // HbA1c UND Nuechternblutzucker (ADA-Diagnosekriterien fuer Praediabetes/Diabetes werden
-  // hier als gleichwertige Ausloeser zu HbA1c behandelt). Schweregrad wird pro Kennwert
-  // einzeln bestimmt (0=normal, 1=leichte, 2=schwere Stoffwechselstoerung, 3=Notfall) - "bei
-  // gleichzeitiger Gueltigkeit mehrerer Bedingungen gilt die strengere Vorgabe" wird durch
-  // Math.max() der drei Einzel-Schweregrade umgesetzt (hoechster Schweregrad = niedrigstes,
-  // strengstes KH-Ziel gewinnt). =====
-  const tgSeverity = v => {
-    if (v === null) return 0;
-    if (v >= 1000) return 3; // AWMF: TG > 1000 mg/dl - akutes Pankreatitis-Risiko
-    if (v >= 500) return 2;  // ADA: schwere Hypertriglyzeridaemie
-    if (v >= 150) return 1;  // ADA: leichte/moderate Erhoehung
-    return 0;
-  };
-  const hba1cSeverity = v => {
-    if (v === null) return 0;
-    if (v >= 6.5) return 2; // ADA-Diagnosekriterium: manifester Diabetes
-    if (v >= 5.7) return 1; // ADA-Diagnosekriterium: Praediabetes
-    return 0;
-  };
-  const glucoseSeverity = v => {
-    if (v === null) return 0;
-    if (v >= 126) return 2; // ADA-Diagnosekriterium: manifester Diabetes (nuechtern)
-    if (v >= 100) return 1; // ADA-Diagnosekriterium: gestoerte Nuechternglukose (Praediabetes)
-    return 0;
-  };
-  const khSeverity = Math.max(tgSeverity(LABS.trig), hba1cSeverity(LABS.hba1c), glucoseSeverity(LABS.glucose));
-  if (khSeverity === 1) { t.kh = 110; warnings.push(L.warnKhModerate); }        // DGE/ADA: 100-120g
-  else if (khSeverity === 2) { t.kh = 80; warnings.push(L.warnKhSevere); }       // AWMF/ADA: 70-90g
-  else if (khSeverity === 3) { t.kh = 45; warnings.push(L.warnKhEmergency); }    // AWMF: < 50g (Notfall)
-  // khSeverity === 0: normale Stoffwechsellage - Standardziel (DEFAULT_TARGETS.kh, 45-50%
-  // des Energiebedarfs) bleibt unveraendert, keine Meldung noetig.
-
-  // ===================== B. FETT & GESAETTIGTE FETTSAEUREN - abhaengig von LDL und TG =====
-  // ADA (Pankreatitis-Praevention): TG >= 500 mg/dl -> Gesamtfett strikt < 30g/Tag.
-  if (LABS.trig !== null && LABS.trig >= 500) { t.fat = Math.min(t.fat, 28); warnings.push(L.warnTrigFatSevere); }
-  // ADA: TG >= 200 mg/dl -> kein zusaetzliches numerisches Ziel, aber klarer Hinweis auf
-  // Omega-3-Fokus (EPA/DHA, Leinoel, fetter Fisch) zur Triglycerid-Senkung.
-  if (LABS.trig !== null && LABS.trig >= 200) { warnings.push(L.warnTrigOmega3); }
-  // Kombination LDL >= 190 UND TG >= 500: die Gesamtfett-Vorgabe (< 30g/Tag) aus der TG-Regel
-  // oben gilt unveraendert weiter - hier nur noch der ergaenzende Hinweistext, die konkrete
-  // gesaettigte-Fette-Grenze selbst wird jetzt ausschliesslich ueber Abschnitt B1 unten
-  // (leitlinienbasierte Prozentrechnung) bestimmt.
-  if (LABS.ldl !== null && LABS.ldl >= 190 && LABS.trig !== null && LABS.trig >= 500) {
-    warnings.push(L.warnLdlTrigCombo);
+  if (LAB_EXTENDED_UI_ENABLED) {
+    LABS.glucose = read("lab-glucose", 40, 600);
+    LABS.hba1c = read("lab-hba1c", 3, 15);
+    LABS.bpSys = read("lab-bpsys", 70, 250);
+    LABS.bpDia = read("lab-bpdia", 40, 150);
+    LABS.egfr = read("lab-egfr", 5, 120);
   }
-
-  // ===================== B1. GESAETTIGTE FETTSAEUREN (ESC/EAS 2025) - OPTIMIERT: ersetzt den
-  // bisherigen starren Wert (22g) durch eine gestufte, prozentuale Berechnung auf Basis eines
-  // Referenzwerts von 2000 kcal/Tag (1g Fett = 9 kcal). "Kombinations-Schutz": bei extremen
-  // Triglyceriden (TG > 1000 mg/dl) ist das Gesamtfett zwar bereits ueber die TG>=500-Regel
-  // oben auf 28g begrenzt, die gesaettigten Fette darin muessen aber ZUSAETZLICH auf die
-  // strenge 7%-Grenze (nicht nur die 10%-Grenze) begrenzt werden. =====
-  const dailyCalories = 2000; // Standard-Referenzwert
-  if ((LABS.ldl !== null && LABS.ldl > 190) || (LABS.trig !== null && LABS.trig > 1000)) {
-    // ESC/EAS 2025: LDL > 190 mg/dl ODER TG > 1000 mg/dl -> streng limitieren auf < 7% der
-    // Gesamtenergie (1g Fett = 9 kcal).
-    const saturatedFatMax = (dailyCalories * 0.07) / 9;
-    t.satFat = Math.round(saturatedFatMax); // ergibt 16 g
-    warnings.push(L.warnLdlSevere);
-  } else if ((LABS.ldl !== null && LABS.ldl > 160) || (LABS.trig !== null && LABS.trig > 500)) {
-    // ESC/EAS 2025: LDL > 160 mg/dl ODER TG > 500 mg/dl -> moderate Begrenzung auf < 10%.
-    const saturatedFatModerate = (dailyCalories * 0.10) / 9;
-    t.satFat = Math.round(saturatedFatModerate); // ergibt 22 g
-    warnings.push(L.warnSatFatModerate);
-  }
-  // sonst: Normalwert / Standard - t.satFat bleibt beim Wert aus DEFAULT_TARGETS (22g), keine
-  // zusaetzliche Meldung noetig.
-
-  // ===================== C. PROTEIN - abhaengig von Nierenfunktion (eGFR) UND Koerpergewicht
-  // (Mein Profil, PROFILE.weight in kg). Ohne hinterlegtes Koerpergewicht ist keine
-  // individuelle g/kg-Berechnung moeglich - Fallback bleibt dann der Standardwert
-  // (DEFAULT_TARGETS.proteinMin/Max), mit erklaerendem Hinweis statt stillem Verhalten. =====
-  if (LABS.egfr !== null) {
-    const weight = (typeof PROFILE !== 'undefined' && PROFILE && PROFILE.weight > 0) ? PROFILE.weight : null;
-    if (weight) {
-      if (LABS.egfr < 60) {
-        // KDIGO-Leitlinie: eGFR < 60 ml/min/1,73 m² -> nierenschonende Reduktion auf
-        // 0,8 g Protein pro kg Koerpergewicht.
-        const proVal = Math.round(weight * 0.8);
-        t.proteinMin = proVal; t.proteinMax = proVal;
-        warnings.push(L.warnProteinRenal(proVal));
-      } else {
-        // Standard-Empfehlung fuer gesunde Nieren: 1,0-1,2 g Protein pro kg Koerpergewicht
-        // bei eGFR >= 60 ml/min/1,73 m².
-        t.proteinMin = Math.round(weight * 1.0);
-        t.proteinMax = Math.round(weight * 1.2);
-        warnings.push(L.warnProteinNormal(t.proteinMin, t.proteinMax));
-      }
-    } else {
-      warnings.push(L.warnProteinNoWeight);
-    }
-  }
-
-  // ===================== D. BALLASTSTOFFE & SALZ - abhaengig von Dyslipidaemie, Diabetes und
-  // Hypertonie =====
-  // FDA/EFSA (LDL-Senkung durch Ballaststoffe, wissenschaftlich gesichert): Dyslipidaemie
-  // (LDL >= 160 mg/dl) ODER Diabetes (HbA1c >= 6,5%) -> mind. 40g/Tag loesliche
-  // Ballaststoffe/Beta-Glucan.
-  if ((LABS.ldl !== null && LABS.ldl >= 160) || (LABS.hba1c !== null && LABS.hba1c >= 6.5)) {
-    t.fiber = 40; warnings.push(L.warnFiberGuideline);
-  }
-  // WHO-Empfehlung zur Blutdrucksenkung: Hypertonie (RR >= 140/90 mmHg) -> Salz < 5g/Tag.
-  if ((LABS.bpSys !== null && LABS.bpSys >= 140) || (LABS.bpDia !== null && LABS.bpDia >= 90)) {
-    t.salt = 4; warnings.push(L.warnSaltGuideline);
-  }
-
-  // HDL ist in der vorgegebenen Leitlinien-Tabelle kein eigenes numerisches Zielmass - bleibt
-  // bewusst als reiner Ernaehrungshinweis erhalten (aendert keine Tagesziele).
-  if (LABS.hdl !== null && LABS.hdl < 40) { warnings.push(L.warnHdl); }
-
-  // ===================== E. SPEICHERUNG & ANZEIGE =====
-  TARGETS = t;
-  LAB_WARNINGS = warnings;
+  LAB_WARNINGS = [];
   saveLabsToStorage();
-  saveTargetsToStorage();
-  // renderDay() ist weiter unten (Layout-Add-on) um sync() erweitert, das u.a. die
-  // Zielvergleich-Tabelle in das bereits geoeffnete "Ziel"-Overlay verschiebt - ein einziger
-  // Aufruf aktualisiert dadurch Rad, Zielvergleich-Tabelle UND "Ziel"-Overlay gleichzeitig
-  // (und damit sofort sichtbar, wie von Punkt E gefordert).
+  // TARGETS bleiben unveraendert (Standard oder manuell) – keine laborwertbasierte Anpassung.
+  LAB_CONTEXT_VIEW = true;
+  LAB_PANEL_EDIT_MODE = false;
+  saveLabContextView(true);
   renderDay();
 }
 
 function resetLabValues() {
   LABS = { trig: null, ldl: null, hdl: null, chol: null, glucose: null, hba1c: null, bpSys: null, bpDia: null, egfr: null };
-  TARGETS = Object.assign({}, DEFAULT_TARGETS);
   LAB_WARNINGS = [];
+  NUTRITION_FOCUS = { ...NUTRITION_FOCUS_DEFAULT };
+  saveNutritionFocus();
+  LAB_EXTENDED_UI_ENABLED = false;
+  saveLabExtendedUiEnabled(false);
+  LAB_CONTEXT_VIEW = false;
+  LAB_PANEL_EDIT_MODE = true;
+  saveLabContextView(false);
   saveLabsToStorage();
-  saveTargetsToStorage();
+  // Tagesziele bewusst NICHT zuruecksetzen: Reset betrifft nur Labor-/Fokus-Kontext.
+  // Manuelle Zielwerte bleiben erhalten.
   renderDay();
 }
 
@@ -16106,6 +16463,9 @@ function resetLabValues() {
 // aus der spaeteren "Layout-Add-on"-Closure heraus aufrufbar ist (siehe Datei-Kommentar zur
 // gemeinsamen <script>-Sichtbarkeit von top-level let/const/function). =====
 function computeLabRecipeConstraints() {
+  // Payload-Struktur bleibt aus Kompatibilitaetsgruenden erhalten.
+  // Inhalt ausschliesslich aus aktiver, nicht-medizinischer Nutzerwahl (Ernaehrungsfokus).
+  // Keine Schwellenwerte, keine Rohwerte, keine laborwertbasierten Regeln.
   const c = {
     max_net_carbs_per_serving_g: null,
     no_quick_carbs_or_sugar: false,
@@ -16114,40 +16474,45 @@ function computeLabRecipeConstraints() {
     priority: null,
     notes: [],
   };
-  const trig = LABS.trig, ldl = LABS.ldl, hba1c = LABS.hba1c, glucose = LABS.glucose;
-  // Rezept-Regel 1: TG >= 500 mg/dl ODER HbA1c >= 6,5 % ODER Nuechternblutzucker >= 126 mg/dl
-  // (identischer Schweregrad-Trigger wie fuer das Netto-KH-Tagesziel selbst, siehe
-  // applyLabValues() Abschnitt A) -> keine schnellen Kohlenhydrate, kein Zucker/Fruktose,
-  // Netto-KH pro Portion streng limitieren.
-  const khRestricted = (trig !== null && trig >= 500) || (hba1c !== null && hba1c >= 6.5) || (glucose !== null && glucose >= 126);
-  if (khRestricted) {
-    c.no_quick_carbs_or_sugar = true;
-    // 3 Mahlzeiten/Tag als konservative Annahme fuer die Portions-Obergrenze - massgeblich
-    // bleibt in jedem Fall das aktuelle Tages-KH-Ziel TARGETS.kh selbst.
-    c.max_net_carbs_per_serving_g = Math.max(10, Math.round(TARGETS.kh / 3));
-    c.notes.push(L.aiRuleNoQuickCarbs);
+  const focus = (typeof NUTRITION_FOCUS !== 'undefined' && NUTRITION_FOCUS) ? NUTRITION_FOCUS : {};
+  if (focus.fiber) {
+    c.prefer_ingredients.push('high-fiber foods');
+    c.notes.push('User focus: keep fiber in view (general lifestyle preference).');
   }
-  // Rezept-Regel 2: LDL >= 190 mg/dl (ESC/EAS) -> keine Butter/Sahne/fettes Fleisch,
-  // pflanzliche Oele und Ballaststoffe bevorzugen.
-  if (ldl !== null && ldl >= 190) {
-    c.avoid_ingredients.push('butter', 'cream', 'fatty meat');
-    c.prefer_ingredients.push('vegetable oils', 'high-fiber foods');
-    c.notes.push(L.aiRuleAvoidSatFat);
+  if (focus.processedCarbs) {
+    c.prefer_ingredients.push('minimally processed carbohydrate sources');
+    c.notes.push('User focus: keep highly processed carbohydrates in view (general lifestyle preference).');
   }
-  // Ergaenzender Omega-3-Fokus (ADA) - teilt sich denselben TG-Trigger wie das Fett-Ziel in
-  // applyLabValues() Abschnitt B.
-  if (trig !== null && trig >= 200) {
-    c.prefer_ingredients.push('omega-3-rich foods');
-    c.notes.push(L.aiRuleOmega3Focus);
+  if (focus.fatQuality) {
+    c.prefer_ingredients.push('vegetable oils');
+    c.notes.push('User focus: keep fat quality in view (general lifestyle preference).');
   }
-  // Rezept-Regel 3 (Prioritaet bei widerspruechlichen Zielen): LDL >= 190 UND TG >= 500
-  // gleichzeitig -> Triglycerid-Senkung hat Vorrang (Pankreatitis-Schutz) - exakt dieselbe
-  // Kombinationsbedingung wie in applyLabValues() Abschnitt B.
-  if (ldl !== null && ldl >= 190 && trig !== null && trig >= 500) {
-    c.priority = 'triglyceride_reduction';
-    c.notes.push(L.aiRulePriorityTrigOverLdl);
+  if (focus.salt) {
+    c.notes.push('User focus: highlight salt in the daily overview (general lifestyle preference).');
   }
+  // Deduplicate prefer_ingredients
+  c.prefer_ingredients = Array.from(new Set(c.prefer_ingredients));
   return c;
+}
+
+function buildTeamMacroPct() {
+  var out = { kh: null, protein: null, fett: null, fiber: null, salt: null };
+  try {
+    var totals = (typeof dayTotals === 'function') ? dayTotals() : {};
+    var t = (typeof getEffectiveDailyTargets === 'function')
+      ? getEffectiveDailyTargets()
+      : ((typeof TARGETS !== 'undefined') ? TARGETS : {});
+    function pct(val, goal) {
+      if (!(goal > 0)) return null;
+      return Math.round((Number(val) || 0) / goal * 100);
+    }
+    out.kh = pct(totals.kh, t.kh);
+    out.fett = pct(totals.fat, t.fat);
+    out.fiber = pct(totals.fiber, t.fiber);
+    out.salt = pct(totals.salt, t.salt);
+    if (t.proteinMin > 0) out.protein = pct(totals.protein, t.proteinMin);
+  } catch (e) {}
+  return out;
 }
 
 // ---------------- Helpers: Nährwert-Berechnung ----------------
@@ -16323,13 +16688,13 @@ function buildRecommendation(t, dayFoods, pro) {
     }
   });
 
-  if (t.fat > 0 && t.satFat / TARGETS.satFat > 1) {
+  if (t.fat > 0 && t.satFat / Math.max(((typeof getEffectiveDailyTargets === 'function') ? getEffectiveDailyTargets() : TARGETS).satFat, 0.0001) > 1) {
     partsBefore.push(pro ? L.recSatPro : L.recSatKid);
   }
 
-  if (pro && t.protein < TARGETS.proteinMin) {
+  if (pro && t.protein < ((typeof getEffectiveDailyTargets === 'function') ? getEffectiveDailyTargets() : TARGETS).proteinMin) {
     const suggestFood = FOODS.find(f => f.id === PROTEIN_SUGGESTION_ID);
-    const gapG = TARGETS.proteinMin - t.protein;
+    const gapG = ((typeof getEffectiveDailyTargets === 'function') ? getEffectiveDailyTargets() : TARGETS).proteinMin - t.protein;
     const neededGrams = Math.ceil((gapG / suggestFood.protein100 * 100) / 10) * 10;
     partsBefore.push(L.proteinSuggestion(neededGrams, suggestFood.name));
   }
@@ -16343,8 +16708,9 @@ function buildRecommendation(t, dayFoods, pro) {
     buildLabRecommendations().forEach(r => partsAfter.push(r));
   }
 
-  const pctKh = t.kh / TARGETS.kh, pctFat = t.fat / TARGETS.fat, pctSalt = t.salt / TARGETS.salt,
-        pctSat = t.satFat / TARGETS.satFat;
+  const tRec = (typeof getEffectiveDailyTargets === 'function') ? getEffectiveDailyTargets() : TARGETS;
+  const pctKh = t.kh / Math.max(tRec.kh, 0.0001), pctFat = t.fat / Math.max(tRec.fat, 0.0001), pctSalt = t.salt / Math.max(tRec.salt, 0.0001),
+        pctSat = t.satFat / Math.max(tRec.satFat, 0.0001);
   if (pctKh <= 0.8 && pctFat <= 0.8 && pctSalt <= 0.8 && pctSat <= 0.8) {
     partsAfter.push(pro ? L.recGoodPro : L.recGoodKid);
   } else if (pctKh > 1 || pctFat > 1 || pctSalt > 1 || pctSat > 1) {
@@ -17393,15 +17759,16 @@ function renderDay() {
   // Aktivitäts-Bonus: verbrannte aktive Kalorien schalten zusaetzliche Netto-Kohlenhydrate
   // frei (5g pro 100 verbrannte kcal, gedeckelt bei +40g) - transparent im Ring sichtbar,
   // ueberschreibt NICHT das manuell gesetzte Tagesziel selbst, nur die Anzeige/Berechnung.
+  const tEffDay = (typeof getEffectiveDailyTargets === 'function') ? getEffectiveDailyTargets() : TARGETS;
   const bonusKh = (pro && ACTIVITY.kcal !== null) ? Math.min(40, Math.round(ACTIVITY.kcal / 100) * 5) : 0;
-  const effectiveKhTarget = TARGETS.kh + bonusKh;
+  const effectiveKhTarget = tEffDay.kh + bonusKh;
   const activeKcalGoal = 400;
   const pctActivity = ACTIVITY.kcal !== null ? Math.min(1, ACTIVITY.kcal / activeKcalGoal) : 0;
 
   const pctKh = t.kh / effectiveKhTarget;
-  const pctProtein = t.protein / TARGETS.proteinMax;
-  const pctFat = t.fat / TARGETS.fat;
-  const pctSalt = Math.min(t.salt / TARGETS.salt, 1.3);
+  const pctProtein = t.protein / Math.max(tEffDay.proteinMax, 0.0001);
+  const pctFat = t.fat / Math.max(tEffDay.fat, 0.0001);
+  const pctSalt = Math.min(t.salt / Math.max(tEffDay.salt, 0.0001), 1.3);
 
   // NEU: Nährstoff-Rad-Beschriftung (Zentrum) - zeigt bewusst wertfrei den noch verfügbaren
   // Spielraum bei den Netto-Kohlenhydraten (der zentralen Stellschraube der App) statt eines
@@ -17434,28 +17801,31 @@ function renderDay() {
         </g>
       </svg>
       </button>
+      <div class="rings-side">
       <div class="ring-legend">
         <div class="li nutrient-row-tap" id="wheel-row-kh" role="button" tabindex="0" aria-label="${L.ringKh} · ${fmtDe(t.kh, 1)} / ${deComma(targetKhRounded)} g · ${Math.round(pctKh*100)}%">
           <span class="sw" style="background:var(--blue)"></span>
           <span>${L.ringKh} · ${fmtDe(t.kh, 1)} / ${deComma(targetKhRounded)} g · ${Math.round(pctKh*100)}%</span>
         </div>
-        <div class="li nutrient-row-tap" id="wheel-row-protein" role="button" tabindex="0" aria-label="${L.labelProtein} · ${fmtDe(t.protein, 1)} / ${deComma(TARGETS.proteinMax)} g · ${Math.round(pctProtein*100)}%">
+        <div class="li nutrient-row-tap" id="wheel-row-protein" role="button" tabindex="0" aria-label="${L.labelProtein} · ${fmtDe(t.protein, 1)} / ${deComma(tEffDay.proteinMax)} g · ${Math.round(pctProtein*100)}%">
           <span class="sw" style="background:var(--purple)"></span>
-          <span>${L.labelProtein} · ${fmtDe(t.protein, 1)} / ${deComma(TARGETS.proteinMax)} g · ${Math.round(pctProtein*100)}%</span>
+          <span>${L.labelProtein} · ${fmtDe(t.protein, 1)} / ${deComma(tEffDay.proteinMax)} g · ${Math.round(pctProtein*100)}%</span>
         </div>
-        <div class="li nutrient-row-tap" id="wheel-row-fat" role="button" tabindex="0" aria-label="${L.labelFat} · ${fmtDe(t.fat, 1)} / ${deComma(TARGETS.fat)} g · ${Math.round(pctFat*100)}%">
+        <div class="li nutrient-row-tap" id="wheel-row-fat" role="button" tabindex="0" aria-label="${L.labelFat} · ${fmtDe(t.fat, 1)} / ${deComma(tEffDay.fat)} g · ${Math.round(pctFat*100)}%">
           <span class="sw" style="background:var(--yellow)"></span>
-          <span>${L.labelFat} · ${fmtDe(t.fat, 1)} / ${deComma(TARGETS.fat)} g · ${Math.round(pctFat*100)}%</span>
+          <span>${L.labelFat} · ${fmtDe(t.fat, 1)} / ${deComma(tEffDay.fat)} g · ${Math.round(pctFat*100)}%</span>
         </div>
-        ${bonusKh > 0 ? `<div class="activity-bonus-card">${L.actBonusCardText(bonusKh)}</div>` : ''}
+        ${bonusKh > 0 ? `<div class="activity-bonus-card"><svg class="activity-bonus-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg><span>${L.actBonusCardText(bonusKh)}</span></div>` : ''}
+      </div>
+      <div class="salt-bar-wrap">
+        <div class="salt-bar-label">
+          <span class="sw" aria-hidden="true"></span>
+          <span>${L.saltLabel} · ${fmtDe(t.salt, 2)} / ${fmtDe(tEffDay.salt, 1)} g · ${Math.round((t.salt / Math.max(tEffDay.salt, 0.0001)) * 100)}%</span>
+        </div>
+        <div class="salt-progress-track" role="img" aria-label="${L.saltLabel} · ${fmtDe(t.salt, 2)} / ${fmtDe(tEffDay.salt, 1)} g · ${Math.round((t.salt / Math.max(tEffDay.salt, 0.0001)) * 100)}%"></div>
+      </div>
       </div>
     </div>
-    </div>
-    <div class="salt-bar-wrap">
-      <div class="salt-bar-label"><span>${L.saltLabel} · ${fmtDe(t.salt, 2)} / ${fmtDe(TARGETS.salt, 1)} g</span><span>${pctSalt <= 0.5 ? L.saltStatusOptimal : (pctSalt <= 1 ? L.saltStatusInRange : L.saltStatusHigh)}</span></div>
-      <div class="salt-progress-track">
-        <div class="salt-progress-marker" style="left:${Math.min(pctSalt, 1) * 100}%"></div>
-      </div>
     </div>
     </div>
   `;
@@ -17591,6 +17961,7 @@ function renderDay() {
     html += `
       <div class="dcard dcard-goals">
       <div class="section-label" style="margin-top:0;">${L.goalTitle}</div>
+      ${typeof nutritionFocusBadgeHtml === 'function' ? nutritionFocusBadgeHtml(L) : ''}
       <div class="table-scroll">
       <table class="data-table goal-table">
         <thead>
@@ -17600,12 +17971,12 @@ function renderDay() {
           ${(() => {
             const rows = [
               [L.labelNetCarbs, t.kh, effectiveKhTarget, 'kh', `${effectiveKhTarget} g${bonusKh > 0 ? ` <span class="kh-bonus-tag">${L.khBonusTag(bonusKh)}</span>` : ''}`],
-              [L.labelFiber, t.fiber, TARGETS.fiber, 'fiber', L.fiberGoal],
-              [L.labelProtein, t.protein, { min: TARGETS.proteinMin, max: TARGETS.proteinMax }, 'protein', `${TARGETS.proteinMin}–${TARGETS.proteinMax} g`],
-              [L.labelFat, t.fat, TARGETS.fat, 'fat', `${TARGETS.fat} g`],
-              [L.labelSatFat, t.satFat, TARGETS.satFat, 'sat', `${TARGETS.satFat} g`],
-              [L.labelSalt, t.salt, TARGETS.salt, 'salt', `${TARGETS.salt} g`],
-              [L.labelFructose, t.fructose, TARGETS.fructose, 'fructose', L.fructoseGoal],
+              [L.labelFiber, t.fiber, tEffDay.fiber, 'fiber', `${tEffDay.fiber} g`],
+              [L.labelProtein, t.protein, { min: tEffDay.proteinMin, max: tEffDay.proteinMax }, 'protein', `${tEffDay.proteinMin}–${tEffDay.proteinMax} g`],
+              [L.labelFat, t.fat, tEffDay.fat, 'fat', `${tEffDay.fat} g`],
+              [L.labelSatFat, t.satFat, tEffDay.satFat, 'sat', `${tEffDay.satFat} g`],
+              [L.labelSalt, t.salt, tEffDay.salt, 'salt', `${tEffDay.salt} g`],
+              [L.labelFructose, t.fructose, tEffDay.fructose, 'fructose', `max. ${tEffDay.fructose} g`],
               [L.labelGlucose, t.glucose, null, 'glucose-info', '–'],
             ];
             return rows.map(([label, val, target, kind, targetLabel]) => {
@@ -17636,14 +18007,15 @@ function renderDay() {
                 restText = rest >= 0 ? deComma(rest.toFixed(kind === 'salt' ? 2 : 1)) + ' g' : L.goalReached;
                 pct = Math.round((val / target) * 100); // echte %, ohne 100%-Deckel (Grammwerte unveraendert)
               }
-              // FIX (Informationshierarchie "Zielvergleich"-Karten): Ziel kann ein einzelner Wert
+              // FIX (Informationshierarchie "Tagesziel Vergleich"-Karten): Ziel kann ein einzelner Wert
               // ODER ein Bereich (aktuell nur Protein, {min,max}-Objekt) sein - generisch per
               // typeof erkannt statt auf kind==='protein' hartcodiert, damit ein spaeter
               // hinzugefuegter weiterer Bereichs-Nährstoff automatisch mitzieht. Steuert
               // ausschliesslich die sichtbare Zeilen-Bezeichnung (Ziel/Zielbereich), keine
               // Berechnung/kein Zielwert selbst aendert sich dadurch.
               const isRange = target !== null && typeof target === 'object';
-              return `<tr>
+              const focusPriority = (kind === 'fiber' && NUTRITION_FOCUS.fiber) || (kind === 'salt' && NUTRITION_FOCUS.salt);
+              return `<tr${focusPriority ? ' class="goal-focus-priority"' : ''}>
                 <td class="goal-cell-name" data-label="">${label}</td>
                 <td class="num" data-label="${isRange ? L.thGoalRange : L.thGoal}">${goalCellHtml(kind, targetLabel)}</td>
                 <td class="num" data-label="${L.thReached}">${deComma(val.toFixed(kind === 'salt' ? 2 : 1))} g</td>
@@ -17833,6 +18205,7 @@ function renderHistory() {
     el.innerHTML = `
       <div class="history-card">
         <div class="history-header"><h2>${L.historyTitle}</h2></div>
+        ${typeof nutritionFocusBadgeHtml === 'function' ? nutritionFocusBadgeHtml(L) : ''}
         <div class="history-empty">${L.historyEmpty}</div>
       </div>`;
     return;
@@ -17853,13 +18226,14 @@ function renderHistory() {
   // Baut die drei Kennzahlen-Zeilen (Netto-KH/Fett/Salz) - wiederverwendbar sowohl fuer
   // den 7-Tage-Schnitt als auch fuer einen einzeln ausgewaehlten Tag.
   function buildMetricRows(values, prefix) {
+    const tHist = (typeof getEffectiveDailyTargets === 'function') ? getEffectiveDailyTargets() : TARGETS;
     const defs = [
-      { label: L.labelNetCarbs, val: values.kh, target: TARGETS.kh, decimals: 0 },
-      { label: L.labelFat, val: values.fat, target: TARGETS.fat, decimals: 0 },
-      { label: L.saltLabel, val: values.salt, target: TARGETS.salt, decimals: 1 },
+      { label: L.labelNetCarbs, val: values.kh, target: tHist.kh, decimals: 0 },
+      { label: L.labelFat, val: values.fat, target: tHist.fat, decimals: 0 },
+      { label: L.saltLabel, val: values.salt, target: tHist.salt, decimals: 1 },
     ];
     return defs.map(r => {
-      const pct = Math.round((r.val / r.target) * 100);
+      const pct = Math.round((r.val / Math.max(r.target, 0.0001)) * 100);
       const color = pct <= 70 ? 'var(--green)' : pct <= 100 ? 'var(--yellow)' : 'var(--red)';
       return `
         <div class="trend-row">
@@ -17875,11 +18249,13 @@ function renderHistory() {
   // Status je Tag: der SCHLECHTESTE (hoechste) der drei Prozentwerte bestimmt die
   // Gesamtfarbe - ein einzelner roter Wert soll den Tag nicht "weggemittelt" gruen erscheinen lassen.
   function dayWorstPct(d) {
-    const worst = Math.max(d.kh / TARGETS.kh, d.fat / TARGETS.fat, d.salt / TARGETS.salt);
+    const tH = (typeof getEffectiveDailyTargets === 'function') ? getEffectiveDailyTargets() : TARGETS;
+    const worst = Math.max(d.kh / Math.max(tH.kh, 0.0001), d.fat / Math.max(tH.fat, 0.0001), d.salt / Math.max(tH.salt, 0.0001));
     return Math.round(Math.min(100, worst * 100));
   }
   function dayStatus(d) {
-    const worst = Math.max(d.kh / TARGETS.kh, d.fat / TARGETS.fat, d.salt / TARGETS.salt);
+    const tH = (typeof getEffectiveDailyTargets === 'function') ? getEffectiveDailyTargets() : TARGETS;
+    const worst = Math.max(d.kh / Math.max(tH.kh, 0.0001), d.fat / Math.max(tH.fat, 0.0001), d.salt / Math.max(tH.salt, 0.0001));
     return worst <= 0.7 ? 'green' : worst <= 1.0 ? 'yellow' : 'red';
   }
   // Ausreisser: mehr als 20% Abweichung vom 7-Tage-Durchschnitt bei KH, Fett ODER Salz.
@@ -17968,6 +18344,7 @@ function renderHistory() {
     <div class="history-card">
       <div class="history-header"><h2>${L.historyTitle}</h2></div>
       <div class="history-sub">${L.historySubtitle}</div>
+      ${typeof nutritionFocusBadgeHtml === 'function' ? nutritionFocusBadgeHtml(L) : ''}
 
       <div class="history-day-chips">${chipsHtml}</div>
 
@@ -18302,9 +18679,9 @@ function renderProtocolSetup() {
     <div class="protocol-setup-field">
       <label>${L.protocolSetupTargetLabel}</label>
       <div class="protocol-range-row">
-        <input type="number" id="pt-min" placeholder="${L.protocolSetupMin}" value="${TARGETS.kh - 30}" min="0">
+        <input type="number" id="pt-min" placeholder="${L.protocolSetupMin}" value="${((typeof getEffectiveDailyTargets === 'function' ? getEffectiveDailyTargets() : TARGETS).kh) - 30}" min="0">
         <span>–</span>
-        <input type="number" id="pt-max" placeholder="${L.protocolSetupMax}" value="${TARGETS.kh}" min="0">
+        <input type="number" id="pt-max" placeholder="${L.protocolSetupMax}" value="${(typeof getEffectiveDailyTargets === 'function' ? getEffectiveDailyTargets() : TARGETS).kh}" min="0">
         <span>g</span>
       </div>
     </div>
@@ -18366,14 +18743,14 @@ function renderProtocolTracking(p) {
   const viewDays = loadProtocolViewDays();
   const today = protocolTodayStr();
   const data = protocolDataForDate(today);
-  const inRangeKh = data && data.kh >= p.targetMin && data.kh <= p.targetMax;
-  // FIX (Statuslogik-Kopplung): inRangeKh wurde bisher berechnet, aber nirgends fuer die
-  // Balkenfarbe/das Badge verwendet - Anzeige war statisch "gruen"/"Im Ziel" unabhaengig vom
-  // echten Wert. Fett/Salz verglichen zudem gegen feste Literale (70/5) statt gegen die
-  // echten, vom Nutzer im Zieldialog editierbaren TARGETS.fat/TARGETS.salt (wie im Rest der
-  // App, siehe z.B. Tellerkarte/Zielwerte-Dialog). Beide Punkte werden hier korrigiert.
-  const inRangeFat = data && data.fat <= TARGETS.fat;
-  const inRangeSalt = data && data.salt <= TARGETS.salt;
+  // Live-Tagesziele (manuell gespeichert) – nicht der ggf. veraltete Protokoll-Snapshot.
+  const tEff = (typeof getEffectiveDailyTargets === 'function') ? getEffectiveDailyTargets() : TARGETS;
+  const khGoal = tEff.kh;
+  const fatGoal = tEff.fat;
+  const saltGoal = tEff.salt;
+  const inRangeKh = data && data.kh <= khGoal;
+  const inRangeFat = data && data.fat <= fatGoal;
+  const inRangeSalt = data && data.salt <= saltGoal;
   const moodVal = p.ratings[today];
 
   // NEU (Korrektur-Prompt: "Bemerkung hinzufuegen"/"Beschwerden auswaehlen" hatten keine
@@ -18399,7 +18776,7 @@ function renderProtocolTracking(p) {
     const d = new Date(p.startDate + 'T00:00:00'); d.setDate(d.getDate() + i - 1);
     const ds = protocolDateStr(d);
     const dayData = protocolDataForDate(ds);
-    if (dayData && dayData.kh >= p.targetMin && dayData.kh <= p.targetMax) {
+    if (dayData && dayData.kh <= khGoal) {
       inRangeCount++;
     }
   }
@@ -18445,36 +18822,37 @@ function renderProtocolTracking(p) {
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
           </a>
         </div>
+        ${typeof nutritionFocusBadgeHtml === 'function' ? nutritionFocusBadgeHtml(L) : ''}
         ${data ? `
           <div class="nutrient-rows-container">
             <div class="nutrient-item-row">
               <div class="nutrient-left">
                 <span class="nutrient-name">${L.protocolNutrientKh}</span>
                 <div class="nutrient-progress-bar">
-                  <div class="nutrient-progress-fill ${inRangeKh ? 'green' : 'orange'}" style="width:${Math.min(100, (data.kh / p.targetMax) * 100)}%"></div>
+                  <div class="nutrient-progress-fill ${inRangeKh ? 'green' : 'orange'}" style="width:${Math.min(100, (data.kh / Math.max(khGoal, 0.0001)) * 100)}%"></div>
                 </div>
               </div>
-              <div class="nutrient-value-container"><strong>${fmtDe(data.kh, 0)} g</strong> ${L.protocolOfLabel} ${p.targetMax} g</div>
+              <div class="nutrient-value-container"><strong>${fmtDe(data.kh, 0)} g</strong> ${L.protocolOfLabel} ${khGoal} g</div>
               <span class="status-badge ${inRangeKh ? 'green' : 'orange'}">${inRangeKh ? L.protocolBadgeOnTarget : L.protocolBadgeOverTarget} ${inRangeKh ? checkIconSvg : minusIconSvg}</span>
             </div>
             <div class="nutrient-item-row">
               <div class="nutrient-left">
                 <span class="nutrient-name">${L.protocolNutrientFat}</span>
                 <div class="nutrient-progress-bar">
-                  <div class="nutrient-progress-fill ${inRangeFat ? 'green' : 'orange'}" style="width:${Math.min(100, (data.fat / TARGETS.fat) * 100)}%"></div>
+                  <div class="nutrient-progress-fill ${inRangeFat ? 'green' : 'orange'}" style="width:${Math.min(100, (data.fat / Math.max(fatGoal, 0.0001)) * 100)}%"></div>
                 </div>
               </div>
-              <div class="nutrient-value-container"><strong>${fmtDe(data.fat, 0)} g</strong> ${L.protocolOfLabel} ${TARGETS.fat} g</div>
+              <div class="nutrient-value-container"><strong>${fmtDe(data.fat, 0)} g</strong> ${L.protocolOfLabel} ${fatGoal} g</div>
               <span class="status-badge ${inRangeFat ? 'green' : 'orange'}">${inRangeFat ? L.protocolBadgeOnTarget : L.protocolBadgeOverTarget} ${inRangeFat ? checkIconSvg : minusIconSvg}</span>
             </div>
             <div class="nutrient-item-row">
               <div class="nutrient-left">
                 <span class="nutrient-name">${L.protocolNutrientSalt}</span>
                 <div class="nutrient-progress-bar">
-                  <div class="nutrient-progress-fill ${inRangeSalt ? 'green' : 'orange'}" style="width:${Math.min(100, (data.salt / TARGETS.salt) * 100)}%"></div>
+                  <div class="nutrient-progress-fill ${inRangeSalt ? 'green' : 'orange'}" style="width:${Math.min(100, (data.salt / Math.max(saltGoal, 0.0001)) * 100)}%"></div>
                 </div>
               </div>
-              <div class="nutrient-value-container"><strong>${fmtDe(data.salt, 1)} g</strong> ${L.protocolOfLabel} ${fmtDe(TARGETS.salt, 1)} g</div>
+              <div class="nutrient-value-container"><strong>${fmtDe(data.salt, 1)} g</strong> ${L.protocolOfLabel} ${fmtDe(saltGoal, 1)} g</div>
               <span class="status-badge ${inRangeSalt ? 'green' : 'orange'}">${inRangeSalt ? L.protocolBadgeOnTarget : L.protocolBadgeOverTarget} ${inRangeSalt ? checkIconSvg : minusIconSvg}</span>
             </div>
           </div>
@@ -18665,7 +19043,8 @@ function renderProtocolComplete(p) {
   const days = protocolCollectDays(p);
   const withData = days.filter(d => d.data);
   const avgKh = withData.length ? withData.reduce((s, d) => s + d.data.kh, 0) / withData.length : 0;
-  const inRangeCount = withData.filter(d => d.data.kh >= p.targetMin && d.data.kh <= p.targetMax).length;
+  const tEffComplete = (typeof getEffectiveDailyTargets === 'function') ? getEffectiveDailyTargets() : TARGETS;
+  const inRangeCount = withData.filter(d => d.data.kh <= tEffComplete.kh).length;
 
   el.innerHTML = `
     <div class="protocol-complete-hero">
@@ -18706,14 +19085,17 @@ function renderProtocolComplete(p) {
 function protocolChartSvg(days, p, w, h) {
   const withData = days.filter(d => d.data);
   if (withData.length === 0) return `<div class="protocol-no-data">${L.protocolNoDataYet}</div>`;
+  const tChart = (typeof getEffectiveDailyTargets === 'function') ? getEffectiveDailyTargets() : TARGETS;
+  const chartMax = tChart.kh;
+  const chartMin = Math.max(0, tChart.kh - 30);
   const padL = 34, padR = 10, padT = 14, padB = 24;
-  const allVals = withData.map(d => d.data.kh).concat([p.targetMin, p.targetMax]);
+  const allVals = withData.map(d => d.data.kh).concat([chartMin, chartMax]);
   const yMax = Math.max(...allVals) * 1.15;
   const yMin = 0;
   const x = i => padL + (i / Math.max(1, p.durationDays - 1)) * (w - padL - padR);
   const y = v => h - padB - ((v - yMin) / (yMax - yMin)) * (h - padT - padB);
 
-  const corridorY1 = y(p.targetMax), corridorY2 = y(p.targetMin);
+  const corridorY1 = y(chartMax), corridorY2 = y(chartMin);
   const points = withData.map(d => `${x(d.index - 1)},${y(d.data.kh)}`).join(' ');
   const dots = withData.map(d => `<circle cx="${x(d.index - 1)}" cy="${y(d.data.kh)}" r="3.5" fill="#7C4DFF"/>`).join('');
 
@@ -18860,7 +19242,8 @@ function protocolAnalysisPagesHtml(p) {
 function protocolExportPdf(p, days) {
   const withData = days.filter(d => d.data);
   const avgKh = withData.length ? withData.reduce((s, d) => s + d.data.kh, 0) / withData.length : 0;
-  const inRangeCount = withData.filter(d => d.data.kh >= p.targetMin && d.data.kh <= p.targetMax).length;
+  const tPdf = (typeof getEffectiveDailyTargets === 'function') ? getEffectiveDailyTargets() : TARGETS;
+  const inRangeCount = withData.filter(d => d.data.kh <= tPdf.kh).length;
   const createdStr = new Date().toLocaleDateString(currentLang === 'de' ? 'de-DE' : currentLang === 'es' ? 'es-ES' : currentLang === 'it' ? 'it-IT' : 'en-US');
 
   const rows = days.map(d => {
@@ -18875,7 +19258,7 @@ function protocolExportPdf(p, days) {
       ? complaintKeys.map(k => (SYMPTOM_MAP[k] ? SYMPTOM_MAP[k].label() : k)).join(', ')
       : '–';
     if (!d.data) return `<tr><td>${d.index}</td><td>${dateLabel}</td><td colspan="4">${L.ppNoEntry}</td><td>${L.ppNoEntry}</td><td>${complaintTxt}</td><td>${moodEmoji}</td></tr>`;
-    const inRange = d.data.kh >= p.targetMin && d.data.kh <= p.targetMax;
+    const inRange = d.data.kh <= tPdf.kh;
     const microTxt = d.data.micros ? MICRO_DEFS.map(def => { const v = d.data.micros[def.key]; return v ? `${def.label()}: ${formatMicroValue(v, def.decimals, def.unit)}` : ''; }).filter(Boolean).join('; ') : '';
     return `<tr><td>${d.index}</td><td>${dateLabel}</td><td>${fmtDe(d.data.kh, 0)}</td><td>${fmtDe(d.data.fat, 0)}</td><td>${fmtDe(d.data.salt, 1)}</td><td>${microTxt || '–'}</td><td>${inRange ? L.ppYes : L.ppNo}</td><td>${complaintTxt}</td><td>${moodEmoji}</td></tr>`;
   }).join('');
@@ -18885,7 +19268,7 @@ function protocolExportPdf(p, days) {
       <h1>${L.ppTitle}</h1>
       <div class="pp-date">${L.ppCreated(createdStr)}</div>
     </div>
-    <p style="font-size:12.5px; font-weight:500; margin-bottom:16px;">${L.ppTargetCorridor(p.targetMin, p.targetMax)}</p>
+    <p style="font-size:12.5px; font-weight:500; margin-bottom:16px;">${L.ppTargetCorridor(Math.max(0, tPdf.kh - 30), tPdf.kh)}</p>
     <div class="pp-summary">
       <div class="pp-summary-box"><div class="v">${fmtDe(avgKh, 0)} g</div><div class="l">${L.protocolSummaryAvg}</div></div>
       <div class="pp-summary-box"><div class="v">${inRangeCount}/${withData.length}</div><div class="l">${L.protocolSummaryInRange}</div></div>
@@ -19014,37 +19397,111 @@ function renderSettingsOverlay() {
       <details class="settings-accordion lab-section" id="lab-section-details"${labSectionDetailsOpen ? ' open' : ''}>
       <summary class="settings-accordion-summary"><span class="section-label"><span class="settings-icon">${settingsIconSvg('lab')}</span>${L.labPanelTitle}</span></summary>
       <p class="lab-intro">${L.labIntro}</p>
+      <p class="lab-disclaimer">${L.labDisclaimer || ''}</p>
+      ${(() => {
+        const focusActive = nutritionFocusActiveList(L);
+        const focusChips = focusActive.length ? `<div class="lab-focus-active" aria-live="polite"><div class="lab-focus-active-title">${L.labFocusActiveTitle || ''}</div>${focusActive.map(t => `<span class="lab-focus-chip">${t}</span>`).join('')}</div>` : '';
+        const showContext = LAB_CONTEXT_VIEW && !LAB_PANEL_EDIT_MODE;
+        if (showContext) {
+          const fmt = (v, u) => (v == null || v === '') ? '–' : `${v} ${u}`;
+          const ext = LAB_EXTENDED_UI_ENABLED;
+          const overviewRows = [
+            `<div class="target-field"><label>${L.labTrig}</label><div>${fmt(LABS.trig, 'mg/dL')}</div></div>`,
+            `<div class="target-field"><label>${L.labLdl}</label><div>${fmt(LABS.ldl, 'mg/dL')}</div></div>`,
+            `<div class="target-field"><label>${L.labHdl}</label><div>${fmt(LABS.hdl, 'mg/dL')}</div></div>`,
+            `<div class="target-field"><label>${L.labChol}</label><div>${fmt(LABS.chol, 'mg/dL')}</div></div>`,
+          ];
+          if (ext) {
+            overviewRows.push(
+              `<div class="target-field"><label>${L.labGlucose}</label><div>${fmt(LABS.glucose, 'mg/dL')}</div></div>`,
+              `<div class="target-field"><label>${L.labHba1c}</label><div>${fmt(LABS.hba1c, '%')}</div></div>`,
+              `<div class="target-field"><label>${L.labBpSys}</label><div>${fmt(LABS.bpSys, 'mmHg')}</div></div>`,
+              `<div class="target-field"><label>${L.labBpDia}</label><div>${fmt(LABS.bpDia, 'mmHg')}</div></div>`,
+              `<div class="target-field"><label>${L.labEgfr}</label><div>${fmt(LABS.egfr, 'ml/min/1,73 m²')}</div></div>`
+            );
+          }
+          return `
+      <div class="lab-context-panel" id="lab-context-panel">
+        <div class="lab-context-title">${L.labContextTitle || ''}</div>
+        <p class="lab-context-text">${L.labContextText || ''}</p>
+        <div class="targets-row">${overviewRows.join('')}</div>
+        ${focusChips}
+        <div class="lab-focus-list">
+          <label class="lab-focus-item"><input type="checkbox" id="lab-focus-fiber"${NUTRITION_FOCUS.fiber ? ' checked' : ''}> ${L.labFocusFiber || ''}</label>
+          <label class="lab-focus-item"><input type="checkbox" id="lab-focus-carbs"${NUTRITION_FOCUS.processedCarbs ? ' checked' : ''}> ${L.labFocusCarbs || ''}</label>
+          <label class="lab-focus-item"><input type="checkbox" id="lab-focus-fat"${NUTRITION_FOCUS.fatQuality ? ' checked' : ''}> ${L.labFocusFat || ''}</label>
+          <label class="lab-focus-item"><input type="checkbox" id="lab-focus-salt"${NUTRITION_FOCUS.salt ? ' checked' : ''}> ${L.labFocusSalt || ''}</label>
+        </div>
+        <p class="lab-help-text">${L.labFocusHelp || ''}</p>
+        <div class="lab-btn-row">
+          <button type="button" class="lab-apply-btn" id="lab-focus-save">${L.labFocusSave || ''}</button>
+          <button type="button" class="lab-reset-btn" id="lab-focus-edit">${L.labFocusEdit || ''}</button>
+        </div>
+        <p class="lab-help-text">${L.labAppliedNote || ''}</p>
+      </div>`;
+        }
+        const extOn = LAB_EXTENDED_UI_ENABLED;
+        return `
       <div class="targets-row">
-        <div class="target-field"><label for="lab-trig">${L.labTrig}</label><input type="number" id="lab-trig" value="${LABS.trig ?? ''}"></div>
-        <div class="target-field"><label for="lab-ldl">${L.labLdl}</label><input type="number" id="lab-ldl" value="${LABS.ldl ?? ''}"></div>
-        <div class="target-field"><label for="lab-hdl">${L.labHdl}</label><input type="number" id="lab-hdl" value="${LABS.hdl ?? ''}"></div>
-        <div class="target-field"><label for="lab-chol">${L.labChol}</label><input type="number" id="lab-chol" value="${LABS.chol ?? ''}"></div>
-        <div class="target-field"><label for="lab-glucose">${L.labGlucose}</label><input type="number" id="lab-glucose" value="${LABS.glucose ?? ''}"></div>
-        <div class="target-field"><label for="lab-hba1c">${L.labHba1c}</label><input type="number" step="0.1" id="lab-hba1c" value="${LABS.hba1c ?? ''}"></div>
-        <div class="target-field"><label for="lab-bpsys">${L.labBpSys}</label><input type="number" id="lab-bpsys" value="${LABS.bpSys ?? ''}"></div>
-        <div class="target-field"><label for="lab-bpdia">${L.labBpDia}</label><input type="number" id="lab-bpdia" value="${LABS.bpDia ?? ''}"></div>
-        <div class="target-field"><label for="lab-egfr">${L.labEgfr}</label><input type="number" id="lab-egfr" value="${LABS.egfr ?? ''}"></div>
+        <div class="target-field"><label for="lab-trig">${L.labTrig}</label><input type="number" id="lab-trig" inputmode="decimal" value="${LABS.trig ?? ''}"></div>
+        <div class="target-field"><label for="lab-ldl">${L.labLdl}</label><input type="number" id="lab-ldl" inputmode="decimal" value="${LABS.ldl ?? ''}"></div>
+        <div class="target-field"><label for="lab-hdl">${L.labHdl}</label><input type="number" id="lab-hdl" inputmode="decimal" value="${LABS.hdl ?? ''}"></div>
+        <div class="target-field"><label for="lab-chol">${L.labChol}</label><input type="number" id="lab-chol" inputmode="decimal" value="${LABS.chol ?? ''}"></div>
       </div>
+      <div class="lab-extended-toggle-row">
+        <div class="lab-extended-toggle-copy">
+          <span class="lab-extended-toggle-label" id="lab-ext-toggle-label">${L.labExtendedToggle || ''}</span>
+          <p class="lab-help-text">${L.labExtendedHelp || ''}</p>
+        </div>
+        <div class="theme-segment lab-ext-switch" role="group" aria-labelledby="lab-ext-toggle-label">
+          <button type="button" id="lab-ext-off" data-lab-ext="0"${extOn ? '' : ' class="active"'}>${L.labToggleOff || 'Aus'}</button>
+          <button type="button" id="lab-ext-on" data-lab-ext="1"${extOn ? ' class="active"' : ''}>${L.labToggleOn || 'An'}</button>
+        </div>
+      </div>
+      <div class="lab-extended-panel${extOn && !LAB_EXTENDED_SKIP_OPEN_CLASS ? ' is-open' : ''}" id="lab-extended-panel" aria-hidden="${extOn ? 'false' : 'true'}">
+        <div class="lab-extended-panel-inner">
+          <div class="lab-block">
+            <div class="lab-block-title">${L.labBlockGlucose || ''}</div>
+            <div class="targets-row">
+              <div class="target-field"><label for="lab-glucose">${L.labGlucose}</label><input type="number" id="lab-glucose" inputmode="decimal" value="${LABS.glucose ?? ''}"></div>
+              <div class="target-field"><label for="lab-hba1c">${L.labHba1c}</label><input type="number" step="0.1" id="lab-hba1c" inputmode="decimal" value="${LABS.hba1c ?? ''}"></div>
+            </div>
+          </div>
+          <div class="lab-block">
+            <div class="lab-block-title">${L.labBlockBp || ''}</div>
+            <div class="targets-row">
+              <div class="target-field"><label for="lab-bpsys">${L.labBpSys}</label><input type="number" id="lab-bpsys" inputmode="numeric" value="${LABS.bpSys ?? ''}"></div>
+              <div class="target-field"><label for="lab-bpdia">${L.labBpDia}</label><input type="number" id="lab-bpdia" inputmode="numeric" value="${LABS.bpDia ?? ''}"></div>
+            </div>
+          </div>
+          <div class="lab-block">
+            <div class="lab-block-title">${L.labBlockKidney || ''}</div>
+            <div class="targets-row">
+              <div class="target-field"><label for="lab-egfr">${L.labEgfr}</label><input type="number" id="lab-egfr" inputmode="decimal" value="${LABS.egfr ?? ''}"></div>
+            </div>
+            <p class="lab-block-note">${L.labEgfrHint || ''}</p>
+          </div>
+        </div>
+      </div>
+      ${hasAnyExtendedLabValues(LABS) ? `<button type="button" class="lab-delete-extended-btn" id="lab-delete-extended">${L.labDeleteExtended || ''}</button>` : ''}
+      ${focusChips}
       <div class="lab-btn-row">
         <button class="lab-apply-btn" id="lab-apply">${L.labApply}</button>
         <button class="lab-reset-btn" id="lab-reset">${L.labReset}</button>
-      </div>
-      ${LAB_WARNINGS.length ? `
-        <div class="lab-warnings">
-          ${LAB_WARNINGS.map(w => `<div class="lab-warning-item">${w}</div>`).join('')}
-          <div class="lab-applied-note">${L.labAppliedNote}</div>
-        </div>` : ''}
+      </div>`;
+      })()}
       </details>
 
       <details class="settings-accordion targets-section" id="tagesziele-section-details"${targetsSectionDetailsOpen ? ' open' : ''}>
       <summary class="settings-accordion-summary"><span class="section-label"><span class="settings-icon">${settingsIconSvg('targets')}</span>${L.targetsTitle}</span></summary>
       <div class="targets-row">
-        <div class="target-field"><label for="tg-kh">${L.tgKhLabel}</label><input type="number" id="tg-kh" value="${TARGETS.kh}"> g</div>
-        <div class="target-field"><label for="tg-protein-min">${L.tgProMinLabel}</label><input type="number" id="tg-protein-min" value="${TARGETS.proteinMin}"> g</div>
-        <div class="target-field"><label for="tg-protein-max">${L.tgProMaxLabel}</label><input type="number" id="tg-protein-max" value="${TARGETS.proteinMax}"> g</div>
-        <div class="target-field"><label for="tg-fat">${L.tgFatLabel}</label><input type="number" id="tg-fat" value="${TARGETS.fat}"> g</div>
-        <div class="target-field"><label for="tg-satfat">${L.tgSatLabel}</label><input type="number" id="tg-satfat" value="${TARGETS.satFat}"> g</div>
-        <div class="target-field"><label for="tg-salt">${L.tgSaltLabel}</label><input type="number" id="tg-salt" value="${TARGETS.salt}"> g</div>
+        ${(() => { const tSet = (typeof getEffectiveDailyTargets === 'function') ? getEffectiveDailyTargets() : TARGETS; return `
+        <div class="target-field"><label for="tg-kh">${L.tgKhLabel}</label><input type="number" id="tg-kh" value="${tSet.kh}"> g</div>
+        <div class="target-field"><label for="tg-protein-min">${L.tgProMinLabel}</label><input type="number" id="tg-protein-min" value="${tSet.proteinMin}"> g</div>
+        <div class="target-field"><label for="tg-protein-max">${L.tgProMaxLabel}</label><input type="number" id="tg-protein-max" value="${tSet.proteinMax}"> g</div>
+        <div class="target-field"><label for="tg-fat">${L.tgFatLabel}</label><input type="number" id="tg-fat" value="${tSet.fat}"> g</div>
+        <div class="target-field"><label for="tg-satfat">${L.tgSatLabel}</label><input type="number" id="tg-satfat" value="${tSet.satFat}"> g</div>
+        <div class="target-field"><label for="tg-salt">${L.tgSaltLabel}</label><input type="number" id="tg-salt" value="${tSet.salt}"> g</div>`; })()}
       </div>
       </details>
 
@@ -19076,9 +19533,20 @@ function renderSettingsOverlay() {
 
   const bind = (id, key) => {
     const input = document.getElementById(id);
+    if (!input) return;
     input.onchange = () => {
-      const v = parseFloat(input.value);
-      if (!isNaN(v) && v > 0) { TARGETS[key] = v; saveTargetsToStorage(); renderSettingsOverlay(); renderDay(); }
+      const raw = String(input.value == null ? '' : input.value).trim();
+      const v = parseFloat(raw);
+      // Leer/ungueltig → Standardziel fuer dieses Feld (kein NaN, keine Division durch 0).
+      if (raw === '' || isNaN(v) || v <= 0) {
+        TARGETS[key] = DEFAULT_TARGETS[key];
+        input.value = DEFAULT_TARGETS[key];
+      } else {
+        TARGETS[key] = v;
+      }
+      saveTargetsToStorage();
+      if (typeof refreshDailyTargetViews === 'function') refreshDailyTargetViews();
+      else { renderSettingsOverlay(); renderDay(); }
     };
   };
   bind('tg-kh', 'kh'); bind('tg-protein-min', 'proteinMin'); bind('tg-protein-max', 'proteinMax');
@@ -19155,8 +19623,83 @@ function renderSettingsOverlay() {
       renderSettingsOverlay();
     };
 
-    document.getElementById('lab-apply').onclick = () => { applyLabValues(); renderSettingsOverlay(); };
-    document.getElementById('lab-reset').onclick = () => { resetLabValues(); renderSettingsOverlay(); };
+    const labApplyBtn = document.getElementById('lab-apply');
+    if (labApplyBtn) labApplyBtn.onclick = () => { applyLabValues(); renderSettingsOverlay(); };
+    const labResetBtn = document.getElementById('lab-reset');
+    if (labResetBtn) labResetBtn.onclick = () => { resetLabValues(); renderSettingsOverlay(); };
+
+    const setExtEnabled = (on) => {
+      const next = !!on;
+      if (next === LAB_EXTENDED_UI_ENABLED) return;
+      LAB_EXTENDED_UI_ENABLED = next;
+      saveLabExtendedUiEnabled(LAB_EXTENDED_UI_ENABLED);
+      if (LAB_EXTENDED_UI_ENABLED) {
+        // Re-render first (panel starts closed), then open with <=300ms animation.
+        LAB_EXTENDED_SKIP_OPEN_CLASS = true;
+        renderSettingsOverlay();
+        LAB_EXTENDED_SKIP_OPEN_CLASS = false;
+        window.requestAnimationFrame(() => {
+          const panel = document.getElementById('lab-extended-panel');
+          if (!panel) return;
+          panel.setAttribute('aria-hidden', 'false');
+          void panel.offsetHeight;
+          panel.classList.add('is-open');
+        });
+      } else {
+        const panel = document.getElementById('lab-extended-panel');
+        const btnOn = document.getElementById('lab-ext-on');
+        const btnOff = document.getElementById('lab-ext-off');
+        if (btnOn) btnOn.classList.toggle('active', false);
+        if (btnOff) btnOff.classList.toggle('active', true);
+        if (panel) {
+          panel.classList.remove('is-open');
+          panel.setAttribute('aria-hidden', 'true');
+          window.setTimeout(() => { renderSettingsOverlay(); }, 280);
+        } else {
+          renderSettingsOverlay();
+        }
+      }
+    };
+    const labExtOn = document.getElementById('lab-ext-on');
+    const labExtOff = document.getElementById('lab-ext-off');
+    if (labExtOn) labExtOn.onclick = () => setExtEnabled(true);
+    if (labExtOff) labExtOff.onclick = () => setExtEnabled(false);
+
+    const labDeleteExt = document.getElementById('lab-delete-extended');
+    if (labDeleteExt) {
+      labDeleteExt.onclick = () => {
+        const msg = L.labDeleteExtendedConfirm || L.labDeleteExtended || '';
+        if (!window.confirm(msg)) return;
+        clearExtendedLabValuesOnly();
+        renderSettingsOverlay();
+        renderDay();
+      };
+    }
+
+    const labFocusSave = document.getElementById('lab-focus-save');
+    if (labFocusSave) {
+      labFocusSave.onclick = () => {
+        NUTRITION_FOCUS = {
+          fiber: !!(document.getElementById('lab-focus-fiber') || {}).checked,
+          processedCarbs: !!(document.getElementById('lab-focus-carbs') || {}).checked,
+          fatQuality: !!(document.getElementById('lab-focus-fat') || {}).checked,
+          salt: !!(document.getElementById('lab-focus-salt') || {}).checked,
+        };
+        saveNutritionFocus();
+        LAB_CONTEXT_VIEW = true;
+        LAB_PANEL_EDIT_MODE = false;
+        saveLabContextView(true);
+        if (typeof refreshDailyTargetViews === 'function') refreshDailyTargetViews();
+        else { renderSettingsOverlay(); renderDay(); }
+      };
+    }
+    const labFocusEdit = document.getElementById('lab-focus-edit');
+    if (labFocusEdit) {
+      labFocusEdit.onclick = () => {
+        LAB_PANEL_EDIT_MODE = true;
+        renderSettingsOverlay();
+      };
+    }
 
     // NEU (UI-Modernisierung: Akkordeons) - merkt sich nur den Auf-/Zugeklappt-Zustand
     // (labSectionDetailsOpen/microGoalsDetailsOpen/allergenSectionDetailsOpen), exakt nach
@@ -22877,7 +23420,9 @@ initBarcodeEvents();
     function r1(n) { return Math.round((n || 0) * 10) / 10; }
     function buildNutriRecipePayload(mode, pantryIngredients, freesearchQuery) {
       var totals = (typeof dayTotals === 'function') ? dayTotals() : {};
-      var t = (typeof TARGETS !== 'undefined') ? TARGETS : {};
+      var t = (typeof getEffectiveDailyTargets === 'function')
+        ? getEffectiveDailyTargets()
+        : ((typeof TARGETS !== 'undefined') ? TARGETS : {});
       var macros = {
         kh_g:            { value: r1(totals.kh),      goal: t.kh },
         protein_g:       { value: r1(totals.protein), goal_min: t.proteinMin, goal_max: t.proteinMax },
@@ -25880,11 +26425,13 @@ initBarcodeEvents();
     // dayStatus() in renderHistory), hier unabhaengig nachgebildet, da renderHistory() ihre
     // internen Variablen nicht nach aussen freigibt. ----
     function computeWeekOnTrack() {
-      if (typeof loadHistory !== 'function' || typeof TARGETS === 'undefined') return null;
+      if (typeof loadHistory !== 'function') return null;
+      var tW = (typeof getEffectiveDailyTargets === 'function') ? getEffectiveDailyTargets() : (typeof TARGETS !== 'undefined' ? TARGETS : null);
+      if (!tW) return null;
       var hist = loadHistory().slice(-7);
       if (!hist.length) return null;
       var onTrack = hist.filter(function (d) {
-        var worst = Math.max(d.kh / TARGETS.kh, d.fat / TARGETS.fat, d.salt / TARGETS.salt);
+        var worst = Math.max(d.kh / Math.max(tW.kh, 0.0001), d.fat / Math.max(tW.fat, 0.0001), d.salt / Math.max(tW.salt, 0.0001));
         return worst <= 1.0;
       }).length;
       return { onTrack: onTrack, total: hist.length };
@@ -25979,7 +26526,10 @@ initBarcodeEvents();
       var pro = (typeof state !== 'undefined' && state.mode === 'pro');
       var bonusKh = (pro && typeof ACTIVITY !== 'undefined' && ACTIVITY.kcal !== null)
         ? Math.min(40, Math.round(ACTIVITY.kcal / 100) * 5) : 0;
-      return (typeof TARGETS !== 'undefined' ? TARGETS.kh : 150) + bonusKh;
+      var baseKh = (typeof getEffectiveDailyTargets === 'function')
+        ? getEffectiveDailyTargets().kh
+        : (typeof TARGETS !== 'undefined' ? TARGETS.kh : 150);
+      return baseKh + bonusKh;
     }
     function wheelMealBucket(ts) {
       var h = new Date(ts).getHours();
@@ -26720,11 +27270,13 @@ initBarcodeEvents();
       '</div>';
     }
     function nutriOvMacrosSectionHtml(agg) {
-      if (typeof TARGETS === 'undefined' || typeof L === 'undefined') return '';
+      if (typeof L === 'undefined') return '';
+      var tN = (typeof getEffectiveDailyTargets === 'function') ? getEffectiveDailyTargets() : (typeof TARGETS !== 'undefined' ? TARGETS : null);
+      if (!tN) return '';
       return '<div class="nutriov-cards">' +
-        nutriOvMacroCardHtml('kh', TARGETS.kh, L.ringKh, 'var(--blue)', agg) +
-        nutriOvMacroCardHtml('protein', TARGETS.proteinMax, L.labelProtein, 'var(--purple)', agg) +
-        nutriOvMacroCardHtml('fat', TARGETS.fat, L.labelFat, 'var(--yellow)', agg) +
+        nutriOvMacroCardHtml('kh', tN.kh, L.ringKh, 'var(--blue)', agg) +
+        nutriOvMacroCardHtml('protein', tN.proteinMax, L.labelProtein, 'var(--purple)', agg) +
+        nutriOvMacroCardHtml('fat', tN.fat, L.labelFat, 'var(--yellow)', agg) +
       '</div>';
     }
     // NEU: "Verlauf" - listet die im gewaehlten Zeitraum bereits erfassten Tage (agg.
