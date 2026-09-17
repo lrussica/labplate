@@ -36522,6 +36522,22 @@ initBarcodeEvents();
       }
       return pick(neutralIntro) + parts.join(', ') + '.';
     }
+    // Statische Impulsfragen fuer nicht-personalisierte Kapitel (personalized:false) - je
+    // Kapitel-ID eine passende Frage in allen App-Sprachen, generischer Fallback falls ein
+    // Kapitel ohne eigene Frage hinzukommt. Ohne diese Funktion werfen Detailansichten bei
+    // Ballaststoffe/GI/Bewegung/Tipps/Tricks/Mythen einen ReferenceError und oeffnen nicht.
+    var LEXIKON_REFLECTION_BY_ID = {
+      4: { de:'Wie könntest du heute noch mehr Ballaststoffe in eine deiner Mahlzeiten einbauen?', en:'How could you add more fiber to one of your meals today?', es:'¿Cómo podrías incorporar hoy más fibra en una de tus comidas?', it:'Come potresti aggiungere oggi più fibre a uno dei tuoi pasti?', pt:'Como poderias incluir hoje ainda mais fibra numa das tuas refeições?', fr:'Comment pourrais-tu intégrer aujourd\'hui encore plus de fibres dans l\'un de tes repas ?', tr:'Bugün öğünlerinden birine nasıl daha fazla lif ekleyebilirsin?' },
+      5: { de:'Welches Lebensmittel isst du oft, dessen glykämische Last du bisher nicht bedacht hast?', en:'Which food do you eat often whose glycemic load you hadn\'t considered before?', es:'¿Qué alimento comes a menudo cuya carga glucémica no habías tenido en cuenta hasta ahora?', it:'Quale alimento mangi spesso di cui non avevi considerato finora il carico glicemico?', pt:'Que alimento comes frequentemente cuja carga glicémica ainda não tinhas considerado?', fr:'Quel aliment manges-tu souvent dont tu n\'avais pas encore pris en compte la charge glycémique ?', tr:'Şimdiye kadar glisemik yükünü düşünmediğin, sık yediğin bir gıda hangisi?' },
+      7: { de:'Wann könntest du diese Woche einen 10- bis 15-minütigen Spaziergang nach dem Essen einplanen?', en:'When could you schedule a 10- to 15-minute walk after a meal this week?', es:'¿Cuándo podrías planificar esta semana un paseo de 10 a 15 minutos después de comer?', it:'Quando potresti programmare questa settimana una camminata di 10-15 minuti dopo un pasto?', pt:'Quando poderias planear esta semana uma caminhada de 10 a 15 minutos depois de comer?', fr:'Quand pourrais-tu planifier cette semaine une marche de 10 à 15 minutes après un repas ?', tr:'Bu hafta yemekten sonra 10-15 dakikalık bir yürüyüşü ne zaman planlayabilirsin?' },
+      8: { de:'Welcher der zehn Tipps fällt dir am leichtesten, ab morgen umzusetzen?', en:'Which of the ten tips would be easiest for you to start tomorrow?', es:'¿Cuál de los diez consejos te resultaría más fácil poner en práctica a partir de mañana?', it:'Quale dei dieci consigli ti risulterebbe più facile mettere in pratica da domani?', pt:'Qual das dez dicas te é mais fácil de aplicar a partir de amanhã?', fr:'Lequel des dix conseils te sera le plus facile à mettre en œuvre dès demain ?', tr:'On ipucundan hangisini yarından itibaren uygulamak sana en kolay gelir?' },
+      10: { de:'Schau dir das nächste Produkt, das du kaufst, genauer an: Findest du einen der genannten Tricks?', en:'Take a closer look at the next product you buy: can you spot one of the tricks mentioned?', es:'Fíjate bien en el próximo producto que compres: ¿encuentras alguno de los trucos mencionados?', it:'Osserva più da vicino il prossimo prodotto che acquisti: trovi uno dei trucchi citati?', pt:'Observa com mais atenção o próximo produto que compras: encontras algum dos truques mencionados?', fr:'Observe de plus près le prochain produit que tu achètes : retrouves-tu l\'une des astuces mentionnées ?', tr:'Bir sonraki satın alacağın ürünü daha yakından incele: bahsedilen hilelerden birini buluyor musun?' },
+      11: { de:'Welcher dieser Mythen hat dich bisher am meisten beeinflusst?', en:'Which of these myths has influenced you the most so far?', es:'¿Cuál de estos mitos te ha influido más hasta ahora?', it:'Quale di questi miti ti ha influenzato di più finora?', pt:'Qual destes mitos te influenciou mais até agora?', fr:'Lequel de ces mythes t\'a le plus influencé jusqu\'à présent ?', tr:'Bu mitlerden hangisi şimdiye kadar seni en çok etkiledi?' }
+    };
+    function lexikonReflectionQuestion(chapter) {
+      var q = LEXIKON_REFLECTION_BY_ID[chapter && chapter.id];
+      return q ? pick(q) : pick(LEXIKON_L.reflectFallback);
+    }
 
     function lexikonMissingDataHint(key) {
       var what;
