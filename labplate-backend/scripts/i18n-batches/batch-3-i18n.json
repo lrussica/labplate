@@ -1,0 +1,4143 @@
+[
+  {
+    "term_key": "Laktose",
+    "term": {
+      "de": "Laktose",
+      "en": "Lactose",
+      "es": "Lactosa",
+      "it": "Lattosio",
+      "pt": "Lactose",
+      "fr": "Lactose",
+      "tr": "Laktoz"
+    },
+    "synonyms": {
+      "de": [
+        "Milchzucker"
+      ],
+      "en": [
+        "Milk sugar"
+      ],
+      "es": [
+        "Azúcar de la leche"
+      ],
+      "it": [
+        "Zucchero del latte"
+      ],
+      "pt": [
+        "Açúcar do leite"
+      ],
+      "fr": [
+        "Sucre du lait"
+      ],
+      "tr": [
+        "Süt şekeri"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Laktose ist der Zweifachzucker der Milch und wird durch Laktase gespalten. Bei Laktoseintoleranz entstehen Blähungen und Durchfall. Fermentierte Milchprodukte sind oft besser verträglich.",
+      "en": "Lactose is the disaccharide in milk and is broken down by lactase. Lactose intolerance can cause bloating and diarrhea. Fermented dairy products are often better tolerated.",
+      "es": "La lactosa es el disacárido de la leche y se escinde mediante lactasa. En la intolerancia a la lactosa aparecen flatulencias y diarrea. Los lácteos fermentados suelen tolerarse mejor.",
+      "it": "Il lattosio è il disaccaride del latte e viene scisso dalla lattasi. L'intolleranza può causare gonfiore e diarrea. I latticini fermentati sono spesso meglio tollerati.",
+      "pt": "A lactose é o dissacarídeo do leite e é hidrolisada pela lactase. A intolerância pode causar inchaço e diarreia. Laticínios fermentados costumam ser melhor tolerados.",
+      "fr": "Le lactose est le disaccharide du lait, scindé par la lactase. L'intolérance peut provoquer ballonnements et diarrhée. Les produits laitiers fermentés sont souvent mieux tolérés.",
+      "tr": "Laktoz sütteki disakkarittir ve laktaz ile parçalanır. Laktoz intoleransında şişkinlik ve ishal oluşabilir. Fermente süt ürünleri genelde daha iyi tolere edilir."
+    },
+    "related_chapters": [
+      8,
+      11
+    ]
+  },
+  {
+    "term_key": "Stärke",
+    "term": {
+      "de": "Stärke",
+      "en": "Starch",
+      "es": "Almidón",
+      "it": "Amido",
+      "pt": "Amido",
+      "fr": "Amidon",
+      "tr": "Nişasta"
+    },
+    "synonyms": {
+      "de": [
+        "Amylum",
+        "Nahrungsstärke"
+      ],
+      "en": [
+        "Amylum",
+        "Dietary starch"
+      ],
+      "es": [
+        "Amylum",
+        "Almidón alimentario"
+      ],
+      "it": [
+        "Amylum",
+        "Amido alimentare"
+      ],
+      "pt": [
+        "Amylum",
+        "Amido alimentar"
+      ],
+      "fr": [
+        "Amylum",
+        "Amidon alimentaire"
+      ],
+      "tr": [
+        "Amylum",
+        "Besinsel nişasta"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Stärke ist das wichtigste pflanzliche Speicherkohlenhydrat und wird zu Glukose verdaut. Resistente Stärke verhält sich teilweise wie Ballaststoff. Abkühlen von Kartoffeln und Reis erhöht den resistenten Anteil.",
+      "en": "Starch is the main plant storage carbohydrate and is digested to glucose. Resistant starch partly behaves like fiber. Cooling cooked potatoes and rice increases the resistant fraction.",
+      "es": "El almidón es el principal hidrato de carbono de reserva vegetal y se digiere a glucosa. El almidón resistente se comporta en parte como fibra. Enfriar patatas y arroz aumenta la fracción resistente.",
+      "it": "L'amido è il principale carboidrato di riserva vegetale e viene digerito a glucosio. L'amido resistente si comporta in parte come fibra. Raffreddare patate e riso cotto aumenta la quota resistente.",
+      "pt": "O amido é o principal carboidrato de reserva vegetal e é digerido a glicose. O amido resistente comporta-se em parte como fibra. Arrefecer batatas e arroz cozidos aumenta a fração resistente.",
+      "fr": "L'amidon est le principal glucide de réserve végétal et est digéré en glucose. L'amidon résistant se comporte en partie comme une fibre. Refroidir pommes de terre et riz cuits augmente la fraction résistante.",
+      "tr": "Nişasta bitkilerdeki başlıca depo karbonhidrattır ve glikoza sindirilir. Dirençli nişasta kısmen lif gibi davranır. Pişmiş patates ve pirinci soğutmak dirençli oranı artırır."
+    },
+    "related_chapters": [
+      5,
+      4,
+      6
+    ]
+  },
+  {
+    "term_key": "Resistente Stärke",
+    "term": {
+      "de": "Resistente Stärke",
+      "en": "Resistant starch",
+      "es": "Almidón resistente",
+      "it": "Amido resistente",
+      "pt": "Amido resistente",
+      "fr": "Amidon résistant",
+      "tr": "Dirençli nişasta"
+    },
+    "synonyms": {
+      "de": [
+        "RS",
+        "resistente Staerke"
+      ],
+      "en": [
+        "RS",
+        "Resistant starch (RS)"
+      ],
+      "es": [
+        "RS",
+        "Almidón resistente"
+      ],
+      "it": [
+        "RS",
+        "Amido resistente (RS)"
+      ],
+      "pt": [
+        "RS",
+        "Amido resistente (RS)"
+      ],
+      "fr": [
+        "RS",
+        "Amidon résistant (RS)"
+      ],
+      "tr": [
+        "RS",
+        "Dirençli nişasta (RS)"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Resistente Stärke erreicht den Dickdarm und wird dort von Bakterien vergoren. Das kann Blutzuckerantworten abschwächen und kurzkettige Fettsäuren liefern. Grüne Bananen und erkaltete Kartoffeln sind Beispiele.",
+      "en": "Resistant starch reaches the colon and is fermented by bacteria there. This can blunt blood glucose responses and yield short-chain fatty acids. Green bananas and cooled potatoes are examples.",
+      "es": "El almidón resistente llega al colon y allí lo fermentan las bacterias. Puede atenuar las respuestas de glucemia y aportar ácidos grasos de cadena corta. Plátanos verdes y patatas enfriadas son ejemplos.",
+      "it": "L'amido resistente raggiunge il colon e viene fermentato dai batteri. Può attenuare la risposta glicemica e produrre acidi grassi a catena corta. Banane verdi e patate raffreddate sono esempi.",
+      "pt": "O amido resistente chega ao cólon e é fermentado por bactérias. Pode atenuar respostas glicémicas e fornecer ácidos gordos de cadeia curta. Bananas verdes e batatas arrefecidas são exemplos.",
+      "fr": "L'amidon résistant atteint le côlon où il est fermenté par les bactéries. Cela peut atténuer la réponse glycémique et fournir des acides gras à chaîne courte. Bananes vertes et pommes de terre refroidies en sont des exemples.",
+      "tr": "Dirençli nişasta kalın bağırsağa ulaşır ve orada bakterilerce fermente edilir. Kan şekeri yanıtını yumuşatabilir ve kısa zincirli yağ asitleri üretir. Yeşil muz ve soğutulmuş patates örnekleridir."
+    },
+    "related_chapters": [
+      4,
+      5,
+      6
+    ]
+  },
+  {
+    "term_key": "Gesättigte Fettsäuren",
+    "term": {
+      "de": "Gesättigte Fettsäuren",
+      "en": "Saturated fatty acids",
+      "es": "Ácidos grasos saturados",
+      "it": "Acidi grassi saturi",
+      "pt": "Ácidos gordos saturados",
+      "fr": "Acides gras saturés",
+      "tr": "Doymuş yağ asitleri"
+    },
+    "synonyms": {
+      "de": [
+        "SFA",
+        "gesättigte Fette"
+      ],
+      "en": [
+        "SFA",
+        "Saturated fats"
+      ],
+      "es": [
+        "SFA",
+        "Grasas saturadas"
+      ],
+      "it": [
+        "SFA",
+        "Grassi saturi"
+      ],
+      "pt": [
+        "SFA",
+        "Gorduras saturadas"
+      ],
+      "fr": [
+        "SFA",
+        "Graisses saturées"
+      ],
+      "tr": [
+        "SFA",
+        "Doymuş yağlar"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Gesättigte Fettsäuren kommen in Butter, Palmöl und fettem Fleisch vor und können LDL erhöhen. Der Austausch gegen ungesättigte Fette gilt als günstig. Die Gesamtkostqualität zählt mehr als einzelne Lebensmitteldämonisierung.",
+      "en": "Saturated fatty acids occur in butter, palm oil and fatty meat and can raise LDL. Replacing them with unsaturated fats is generally favorable. Overall diet quality matters more than demonizing single foods.",
+      "es": "Los ácidos grasos saturados se encuentran en mantequilla, aceite de palma y carne grasa y pueden elevar el LDL. Sustituirlos por grasas insaturadas se considera favorable. La calidad global de la dieta cuenta más que demonizar alimentos aislados.",
+      "it": "Gli acidi grassi saturi si trovano in burro, olio di palma e carne grassa e possono alzare l'LDL. Sostituirli con grassi insaturi è generalmente favorevole. La qualità complessiva della dieta conta più della demonizzazione di singoli alimenti.",
+      "pt": "Os ácidos gordos saturados estão na manteiga, óleo de palma e carne gorda e podem elevar o LDL. Substituí-los por gorduras insaturadas é geralmente favorável. A qualidade global da dieta importa mais do que demonizar um alimento.",
+      "fr": "Les acides gras saturés se trouvent dans le beurre, l'huile de palme et la viande grasse et peuvent élever le LDL. Les remplacer par des graisses insaturées est généralement favorable. La qualité globale de l'alimentation compte plus que la diabolisation d'un aliment.",
+      "tr": "Doymuş yağ asitleri tereyağı, palm yağı ve yağlı ette bulunur ve LDL'yi yükseltebilir. Doymamış yağlarla değiştirmek genelde olumludur. Tek yiyeceği şeytanlaştırmaktan çok genel beslenme kalitesi önemlidir."
+    },
+    "related_chapters": [
+      3,
+      8,
+      10
+    ]
+  },
+  {
+    "term_key": "Einfach ungesättigte Fettsäuren",
+    "term": {
+      "de": "Einfach ungesättigte Fettsäuren",
+      "en": "Monounsaturated fatty acids",
+      "es": "Ácidos grasos monoinsaturados",
+      "it": "Acidi grassi monoinsaturi",
+      "pt": "Ácidos gordos monoinsaturados",
+      "fr": "Acides gras monoinsaturés",
+      "tr": "Tekli doymamış yağ asitleri"
+    },
+    "synonyms": {
+      "de": [
+        "MUFA",
+        "Ölsäure"
+      ],
+      "en": [
+        "MUFA",
+        "Oleic acid"
+      ],
+      "es": [
+        "MUFA",
+        "Ácido oleico"
+      ],
+      "it": [
+        "MUFA",
+        "Acido oleico"
+      ],
+      "pt": [
+        "MUFA",
+        "Ácido oleico"
+      ],
+      "fr": [
+        "MUFA",
+        "Acide oléique"
+      ],
+      "tr": [
+        "MUFA",
+        "Oleik asit"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Einfach ungesättigte Fettsäuren stecken in Olivenöl, Avocado und Nüssen. Sie können das Lipidprofil günstig beeinflussen. Mediterrane Muster setzen stark auf diese Fettqualität.",
+      "en": "Monounsaturated fatty acids are found in olive oil, avocado and nuts. They can favorably influence the lipid profile. Mediterranean patterns rely heavily on this fat quality.",
+      "es": "Los ácidos grasos monoinsaturados se encuentran en aceite de oliva, aguacate y frutos secos. Pueden influir de forma favorable en el perfil lipídico. Los patrones mediterráneos apuestan con fuerza por esta calidad de grasa.",
+      "it": "Gli acidi grassi monoinsaturi si trovano in olio d'oliva, avocado e noci. Possono influenzare favorevolmente il profilo lipidico. I pattern mediterranei puntano molto su questa qualità di grassi.",
+      "pt": "Os ácidos gordos monoinsaturados estão no azeite, abacate e frutos secos. Podem influenciar favoravelmente o perfil lipídico. Padrões mediterrânicos assentam bastante nesta qualidade de gordura.",
+      "fr": "Les acides gras monoinsaturés se trouvent dans l'huile d'olive, l'avocat et les noix. Ils peuvent influencer favorablement le profil lipidique. Les modèles méditerranéens misent fortement sur cette qualité de lipides.",
+      "tr": "Tekli doymamış yağ asitleri zeytinyağı, avokado ve kuruyemişlerde bulunur. Lipid profilini olumlu etkileyebilir. Akdeniz tarzı beslenme bu yağ kalitesine güçlü dayanır."
+    },
+    "related_chapters": [
+      8,
+      3
+    ]
+  },
+  {
+    "term_key": "Mehrfach ungesättigte Fettsäuren",
+    "term": {
+      "de": "Mehrfach ungesättigte Fettsäuren",
+      "en": "Polyunsaturated fatty acids",
+      "es": "Ácidos grasos poliinsaturados",
+      "it": "Acidi grassi polinsaturi",
+      "pt": "Ácidos gordos poli-insaturados",
+      "fr": "Acides gras polyinsaturés",
+      "tr": "Çoklu doymamış yağ asitleri"
+    },
+    "synonyms": {
+      "de": [
+        "PUFA",
+        "Polyensäure"
+      ],
+      "en": [
+        "PUFA",
+        "Polyenoic acids"
+      ],
+      "es": [
+        "PUFA",
+        "Ácidos poliénicos"
+      ],
+      "it": [
+        "PUFA",
+        "Acidi polienici"
+      ],
+      "pt": [
+        "PUFA",
+        "Ácidos polienóicos"
+      ],
+      "fr": [
+        "PUFA",
+        "Acides polyéniques"
+      ],
+      "tr": [
+        "PUFA",
+        "Polienik asitler"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Mehrfach ungesättigte Fettsäuren umfassen Omega-3 und Omega-6 und sind essenziell. Sie stecken in Pflanzenölen, Samen und fettem Fisch. Das Verhältnis und die Gesamtmenge sollten ausgewogen bleiben.",
+      "en": "Polyunsaturated fatty acids include omega-3 and omega-6 and are essential. They occur in vegetable oils, seeds and fatty fish. Both the ratio and total amount should stay balanced.",
+      "es": "Los ácidos grasos poliinsaturados incluyen omega-3 y omega-6 y son esenciales. Se encuentran en aceites vegetales, semillas y pescado graso. La proporción y la cantidad total deben mantenerse equilibradas.",
+      "it": "Gli acidi grassi polinsaturi comprendono omega-3 e omega-6 e sono essenziali. Si trovano in oli vegetali, semi e pesce grasso. Rapporto e quantità totale dovrebbero restare equilibrati.",
+      "pt": "Os ácidos gordos poli-insaturados incluem ómega-3 e ómega-6 e são essenciais. Encontram-se em óleos vegetais, sementes e peixe gordo. A proporção e a quantidade total devem permanecer equilibradas.",
+      "fr": "Les acides gras polyinsaturés comprennent les oméga-3 et oméga-6 et sont essentiels. Ils se trouvent dans les huiles végétales, les graines et les poissons gras. Le ratio et la quantité totale doivent rester équilibrés.",
+      "tr": "Çoklu doymamış yağ asitleri omega-3 ve omega-6'yı kapsar ve esansiyeldir. Bitkisel yağlar, tohumlar ve yağlı balıkta bulunur. Oran ve toplam miktar dengeli kalmalıdır."
+    },
+    "related_chapters": [
+      8
+    ]
+  },
+  {
+    "term_key": "Omega-3-Fettsäuren",
+    "term": {
+      "de": "Omega-3-Fettsäuren",
+      "en": "Omega-3 fatty acids",
+      "es": "Ácidos grasos omega-3",
+      "it": "Acidi grassi omega-3",
+      "pt": "Ácidos gordos ómega-3",
+      "fr": "Acides gras oméga-3",
+      "tr": "Omega-3 yağ asitleri"
+    },
+    "synonyms": {
+      "de": [
+        "EPA",
+        "DHA",
+        "ALA"
+      ],
+      "en": [
+        "EPA",
+        "DHA",
+        "ALA"
+      ],
+      "es": [
+        "EPA",
+        "DHA",
+        "ALA"
+      ],
+      "it": [
+        "EPA",
+        "DHA",
+        "ALA"
+      ],
+      "pt": [
+        "EPA",
+        "DHA",
+        "ALA"
+      ],
+      "fr": [
+        "EPA",
+        "DHA",
+        "ALA"
+      ],
+      "tr": [
+        "EPA",
+        "DHA",
+        "ALA"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Omega-3-Fettsäuren wirken entzündungsmodulierend und unterstützen Herz und Gehirn. EPA und DHA kommen in Fettfisch vor, ALA in Leinöl und Walnüssen. Bei wenig Fisch kann Algenöl eine Option sein.",
+      "en": "Omega-3 fatty acids modulate inflammation and support heart and brain. EPA and DHA occur in fatty fish, ALA in flaxseed oil and walnuts. With little fish intake, algal oil can be an option.",
+      "es": "Los ácidos grasos omega-3 modulan la inflamación y favorecen corazón y cerebro. EPA y DHA se encuentran en pescado graso; ALA, en aceite de lino y nueces. Con poco pescado, el aceite de algas puede ser una opción.",
+      "it": "Gli acidi grassi omega-3 modulano l'infiammazione e supportano cuore e cervello. EPA e DHA sono nel pesce grasso; ALA in olio di lino e noci. Con poco pesce, l'olio di alghe può essere un'opzione.",
+      "pt": "Os ácidos gordos ómega-3 modulam a inflamação e apoiam coração e cérebro. EPA e DHA estão no peixe gordo; ALA no óleo de linhaça e nozes. Com pouco peixe, o óleo de algas pode ser uma opção.",
+      "fr": "Les acides gras oméga-3 modulent l'inflammation et soutiennent cœur et cerveau. EPA et DHA se trouvent dans les poissons gras; ALA dans l'huile de lin et les noix. Avec peu de poisson, l'huile d'algues peut être une option.",
+      "tr": "Omega-3 yağ asitleri iltihabı düzenler, kalp ve beyni destekler. EPA ve DHA yağlı balıkta, ALA keten yağı ve cevizde bulunur. Az balık tüketiminde alg yağı bir seçenek olabilir."
+    },
+    "related_chapters": [
+      3,
+      8
+    ]
+  },
+  {
+    "term_key": "Omega-6-Fettsäuren",
+    "term": {
+      "de": "Omega-6-Fettsäuren",
+      "en": "Omega-6 fatty acids",
+      "es": "Ácidos grasos omega-6",
+      "it": "Acidi grassi omega-6",
+      "pt": "Ácidos gordos ómega-6",
+      "fr": "Acides gras oméga-6",
+      "tr": "Omega-6 yağ asitleri"
+    },
+    "synonyms": {
+      "de": [
+        "Linolsäure",
+        "AA"
+      ],
+      "en": [
+        "Linoleic acid",
+        "AA"
+      ],
+      "es": [
+        "Ácido linoleico",
+        "AA"
+      ],
+      "it": [
+        "Acido linoleico",
+        "AA"
+      ],
+      "pt": [
+        "Ácido linoleico",
+        "AA"
+      ],
+      "fr": [
+        "Acide linoléique",
+        "AA"
+      ],
+      "tr": [
+        "Linoleik asit",
+        "AA"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Omega-6-Fettsäuren sind essenziell und in vielen Pflanzenölen reichlich vorhanden. Ein extremes Ungleichgewicht zu Omega-3 wird diskutiert, ist aber nicht der einzige Risikofaktor. Lebensmittelvielfalt schlägt Angst vor einzelnen Ölen.",
+      "en": "Omega-6 fatty acids are essential and abundant in many vegetable oils. An extreme imbalance versus omega-3 is debated but is not the only risk factor. Food variety beats fear of individual oils.",
+      "es": "Los ácidos grasos omega-6 son esenciales y abundan en muchos aceites vegetales. Se discute un desequilibrio extremo respecto a omega-3, pero no es el único factor de riesgo. La variedad alimentaria supera el miedo a aceites concretos.",
+      "it": "Gli acidi grassi omega-6 sono essenziali e abbondanti in molti oli vegetali. Uno squilibrio estremo rispetto agli omega-3 è dibattuto, ma non è l'unico fattore di rischio. La varietà alimentare batte la paura di singoli oli.",
+      "pt": "Os ácidos gordos ómega-6 são essenciais e abundam em muitos óleos vegetais. Um desequilíbrio extremo face ao ómega-3 é debatido, mas não é o único fator de risco. A variedade alimentar supera o medo de óleos isolados.",
+      "fr": "Les acides gras oméga-6 sont essentiels et abondants dans de nombreuses huiles végétales. Un déséquilibre extrême face aux oméga-3 est débattu, mais ce n'est pas le seul facteur de risque. La variété alimentaire vaut mieux que la peur d'huiles isolées.",
+      "tr": "Omega-6 yağ asitleri esansiyeldir ve birçok bitkisel yağda bol bulunur. Omega-3'e karşı aşırı dengesizlik tartışılır ama tek risk faktörü değildir. Besin çeşitliliği tek yağ korkusundan daha önemlidir."
+    },
+    "related_chapters": [
+      8,
+      11
+    ]
+  },
+  {
+    "term_key": "Transfettsäuren",
+    "term": {
+      "de": "Transfettsäuren",
+      "en": "Trans fatty acids",
+      "es": "Ácidos grasos trans",
+      "it": "Acidi grassi trans",
+      "pt": "Ácidos gordos trans",
+      "fr": "Acides gras trans",
+      "tr": "Trans yağ asitleri"
+    },
+    "synonyms": {
+      "de": [
+        "industrielle Transfette",
+        "TFA"
+      ],
+      "en": [
+        "Industrial trans fats",
+        "TFA"
+      ],
+      "es": [
+        "Grasas trans industriales",
+        "TFA"
+      ],
+      "it": [
+        "Grassi trans industriali",
+        "TFA"
+      ],
+      "pt": [
+        "Gorduras trans industriais",
+        "TFA"
+      ],
+      "fr": [
+        "Acides gras trans industriels",
+        "TFA"
+      ],
+      "tr": [
+        "Endüstriyel trans yağlar",
+        "TFA"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Industrielle Transfettsäuren entstehen bei teilweiser Härtung von Ölen und erhöhen das Herzrisiko. In der EU sind sie stark begrenzt, können aber noch in manchen Produkten vorkommen. Natürliche Spuren in Milchprodukten sind geringer relevant.",
+      "en": "Industrial trans fatty acids form during partial hydrogenation of oils and raise heart risk. In the EU they are tightly limited but may still appear in some products. Natural traces in dairy are less relevant.",
+      "es": "Los ácidos grasos trans industriales se forman en la hidrogenación parcial de aceites y elevan el riesgo cardiovascular. En la UE están muy limitados, pero aún pueden aparecer en algunos productos. Las trazas naturales en lácteos son menos relevantes.",
+      "it": "Gli acidi grassi trans industriali si formano nella idrogenazione parziale degli oli e aumentano il rischio cardiaco. Nell'UE sono fortemente limitati, ma possono ancora comparire in alcuni prodotti. Le tracce naturali nei latticini sono meno rilevanti.",
+      "pt": "Os ácidos gordos trans industriais formam-se na hidrogenação parcial de óleos e elevam o risco cardíaco. Na UE estão fortemente limitados, mas ainda podem surgir em alguns produtos. Traços naturais em laticínios são menos relevantes.",
+      "fr": "Les acides gras trans industriels se forment lors de l'hydrogénation partielle des huiles et élèvent le risque cardiaque. Dans l'UE ils sont fortement limités, mais peuvent encore figurer dans certains produits. Les traces naturelles des produits laitiers sont moins pertinentes.",
+      "tr": "Endüstriyel trans yağ asitleri yağların kısmi hidrojenasyonuyla oluşur ve kalp riskini artırır. AB'de sıkı sınırlıdır ama bazı ürünlerde hâlâ bulunabilir. Süt ürünlerindeki doğal izler daha az önemlidir."
+    },
+    "related_chapters": [
+      10,
+      3,
+      11
+    ]
+  },
+  {
+    "term_key": "Cholesterin Nahrung",
+    "term": {
+      "de": "Cholesterin Nahrung",
+      "en": "Dietary cholesterol",
+      "es": "Colesterol alimentario",
+      "it": "Colesterolo alimentare",
+      "pt": "Colesterol alimentar",
+      "fr": "Cholestérol alimentaire",
+      "tr": "Besinsel kolesterol"
+    },
+    "synonyms": {
+      "de": [
+        "Nahrungscholesterin"
+      ],
+      "en": [
+        "Food cholesterol"
+      ],
+      "es": [
+        "Colesterol de la dieta"
+      ],
+      "it": [
+        "Colesterolo della dieta"
+      ],
+      "pt": [
+        "Colesterol da dieta"
+      ],
+      "fr": [
+        "Cholestérol alimentaire"
+      ],
+      "tr": [
+        "Gıda kolesterolü"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Nahrungscholesterin aus Eiern und Fleisch beeinflusst den Blutspiegel bei den meisten Menschen nur mäßig. Gesättigte Fette und Gene spielen oft eine größere Rolle. Individuelle Reaktion und Gesamtbild zählen.",
+      "en": "Dietary cholesterol from eggs and meat only moderately affects blood levels in most people. Saturated fats and genetics often matter more. Individual response and the overall picture count.",
+      "es": "El colesterol alimentario de huevos y carne influye solo de forma moderada en el nivel sanguíneo de la mayoría de las personas. Grasas saturadas y genes suelen desempeñar un papel mayor. Cuentan la respuesta individual y el panorama global.",
+      "it": "Il colesterolo alimentare da uova e carne influenza solo moderatamente i livelli ematici nella maggior parte delle persone. Grassi saturi e geni spesso contano di più. Contano la risposta individuale e il quadro complessivo.",
+      "pt": "O colesterol alimentar de ovos e carne influencia o nível sanguíneo na maioria das pessoas apenas de forma moderada. Gorduras saturadas e genes têm muitas vezes um papel maior. Contam a resposta individual e o quadro global.",
+      "fr": "Le cholestérol alimentaire des œufs et de la viande n'influence que modérément la cholestérolémie chez la plupart des gens. Graisses saturées et gènes jouent souvent un plus grand rôle. La réponse individuelle et le tableau d'ensemble comptent.",
+      "tr": "Yumurta ve etteki besinsel kolesterol çoğu kişide kan düzeyini yalnızca orta düzeyde etkiler. Doymuş yağlar ve genler çoğu zaman daha rol oynar. Bireysel yanıt ve genel tablo önemlidir."
+    },
+    "related_chapters": [
+      3,
+      8,
+      11
+    ]
+  },
+  {
+    "term_key": "Zuckeralkohole",
+    "term": {
+      "de": "Zuckeralkohole",
+      "en": "Sugar alcohols",
+      "es": "Polioles",
+      "it": "Polialcoli",
+      "pt": "Álcoois de açúcar",
+      "fr": "Polyols",
+      "tr": "Şeker alkolleri"
+    },
+    "synonyms": {
+      "de": [
+        "Polyole",
+        "Xylit",
+        "Erythrit",
+        "Sorbit"
+      ],
+      "en": [
+        "Polyols",
+        "Xylitol",
+        "Erythritol",
+        "Sorbitol"
+      ],
+      "es": [
+        "Polialcoholes",
+        "Xilitol",
+        "Eritritol",
+        "Sorbitol"
+      ],
+      "it": [
+        "Polioli",
+        "Xilitolo",
+        "Eritritolo",
+        "Sorbitolo"
+      ],
+      "pt": [
+        "Polióis",
+        "Xilitol",
+        "Eritritol",
+        "Sorbitol"
+      ],
+      "fr": [
+        "Polyols",
+        "Xylitol",
+        "Érythritol",
+        "Sorbitol"
+      ],
+      "tr": [
+        "Polioller",
+        "Ksilitol",
+        "Eritritol",
+        "Sorbitol"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Zuckeralkohole süßen mit weniger Kalorien und oft geringerer Blutzuckerwirkung. In größeren Mengen können sie abführend wirken. Auf Etiketten erscheinen sie häufig in Zahngummis und Light-Produkten.",
+      "en": "Sugar alcohols sweeten with fewer calories and often less impact on blood glucose. In larger amounts they can have a laxative effect. On labels they often appear in chewing gum and light products.",
+      "es": "Los polioles endulzan con menos calorías y a menudo menor efecto sobre la glucemia. En cantidades mayores pueden actuar como laxantes. En las etiquetas aparecen con frecuencia en chicles y productos light.",
+      "it": "I polialcoli dolcificano con meno calorie e spesso minore impatto sulla glicemia. In quantità elevate possono avere effetto lassativo. In etichetta compaiono spesso in chewing gum e prodotti light.",
+      "pt": "Os álcoois de açúcar adoçam com menos calorias e muitas vezes menor impacto na glicemia. Em doses elevadas podem ter efeito laxante. Nos rótulos aparecem frequentemente em pastilhas elásticas e produtos light.",
+      "fr": "Les polyols sucrent avec moins de calories et souvent moins d'effet sur la glycémie. En grande quantité ils peuvent avoir un effet laxatif. Sur les étiquettes ils figurent souvent dans les chewing-gums et produits light.",
+      "tr": "Şeker alkolleri daha az kaloriyle tatlandırır ve genelde kan şekerini daha az etkiler. Yüksek miktarda müshil etkisi yapabilir. Etiketlerde sakız ve light ürünlerde sık görülür."
+    },
+    "related_chapters": [
+      6,
+      10,
+      8
+    ]
+  },
+  {
+    "term_key": "Süßstoffe",
+    "term": {
+      "de": "Süßstoffe",
+      "en": "Sweeteners",
+      "es": "Edulcorantes",
+      "it": "Dolcificanti",
+      "pt": "Adoçantes",
+      "fr": "Édulcorants",
+      "tr": "Tatlandırıcılar"
+    },
+    "synonyms": {
+      "de": [
+        "Aspartam",
+        "Sucralose",
+        "Stevia",
+        "künstliche Süßung"
+      ],
+      "en": [
+        "Aspartame",
+        "Sucralose",
+        "Stevia",
+        "Artificial sweeteners"
+      ],
+      "es": [
+        "Aspartamo",
+        "Sucralosa",
+        "Estevia",
+        "Endulzantes artificiales"
+      ],
+      "it": [
+        "Aspartame",
+        "Sucralosio",
+        "Stevia",
+        "Dolcificanti artificiali"
+      ],
+      "pt": [
+        "Aspartame",
+        "Sucralose",
+        "Stevia",
+        "Adoçantes artificiais"
+      ],
+      "fr": [
+        "Aspartame",
+        "Sucralose",
+        "Stévia",
+        "Édulcorants artificiels"
+      ],
+      "tr": [
+        "Aspartam",
+        "Sukraloz",
+        "Stevia",
+        "Yapay tatlandırıcılar"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Süßstoffe liefern Süße ohne klassischen Zucker und können die Energiezufuhr senken. Die Langzeiteffekte auf Appetit und Mikrobiom werden weiter erforscht. Wasser und ungesüßte Alternativen bleiben die einfachste Wahl.",
+      "en": "Sweeteners provide sweetness without classic sugar and can lower energy intake. Long-term effects on appetite and the microbiome are still being studied. Water and unsweetened options remain the simplest choice.",
+      "es": "Los edulcorantes aportan dulzor sin el azúcar clásico y pueden reducir el aporte energético. Los efectos a largo plazo sobre apetito y microbioma se siguen investigando. Agua y alternativas sin endulzar siguen siendo la opción más sencilla.",
+      "it": "I dolcificanti danno dolcezza senza zucchero classico e possono ridurre l'apporto energetico. Gli effetti a lungo termine su appetito e microbioma sono ancora in studio. Acqua e alternative non zuccherate restano la scelta più semplice.",
+      "pt": "Os adoçantes fornecem doçura sem açúcar clássico e podem reduzir a ingestão energética. Os efeitos a longo prazo no apetite e no microbioma continuam a ser estudados. Água e alternativas não adoçadas continuam a opção mais simples.",
+      "fr": "Les édulcorants apportent du goût sucré sans sucre classique et peuvent réduire l'apport énergétique. Les effets à long terme sur l'appétit et le microbiome sont encore étudiés. L'eau et les alternatives non sucrées restent le choix le plus simple.",
+      "tr": "Tatlandırıcılar klasik şeker olmadan tatlılık sağlar ve enerji alımını azaltabilir. İştah ve mikrobiyom üzerindeki uzun dönem etkiler araştırılmaya devam eder. Su ve şekersiz alternatifler en basit seçenek olmayı sürdürür."
+    },
+    "related_chapters": [
+      10,
+      8,
+      11
+    ]
+  },
+  {
+    "term_key": "Freie Zucker",
+    "term": {
+      "de": "Freie Zucker",
+      "en": "Free sugars",
+      "es": "Azúcares libres",
+      "it": "Zuccheri liberi",
+      "pt": "Açúcares livres",
+      "fr": "Sucres libres",
+      "tr": "Serbest şekerler"
+    },
+    "synonyms": {
+      "de": [
+        "Free Sugars",
+        "zugesetzter Zucker"
+      ],
+      "en": [
+        "Free sugars",
+        "Added sugar"
+      ],
+      "es": [
+        "Free sugars",
+        "Azúcar añadido"
+      ],
+      "it": [
+        "Free sugars",
+        "Zucchero aggiunto"
+      ],
+      "pt": [
+        "Free sugars",
+        "Açúcar adicionado"
+      ],
+      "fr": [
+        "Free sugars",
+        "Sucre ajouté"
+      ],
+      "tr": [
+        "Free sugars",
+        "Eklenen şeker"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Freie Zucker umfassen zugesetzten Zucker sowie Zucker in Honig, Sirupen und Fruchtsäften. Die WHO empfiehlt, sie stark zu begrenzen. Sie sind ein Haupttreiber leerer Kalorien und Blutzuckerspitzen.",
+      "en": "Free sugars include added sugar as well as sugars in honey, syrups and fruit juices. WHO recommends strongly limiting them. They are a major driver of empty calories and blood glucose spikes.",
+      "es": "Los azúcares libres incluyen el azúcar añadido y el de miel, jarabes y zumos de fruta. La OMS recomienda limitarlos con fuerza. Son un motor principal de calorías vacías y picos de glucemia.",
+      "it": "Gli zuccheri liberi includono lo zucchero aggiunto e quelli in miele, sciroppi e succhi di frutta. L'OMS raccomanda di limitarli fortemente. Sono un importante motore di calorie vuote e picchi glicemici.",
+      "pt": "Os açúcares livres incluem o açúcar adicionado e os do mel, xaropes e sumos de fruta. A OMS recomenda limitá-los fortemente. São um grande motor de calorias vazias e picos de glicemia.",
+      "fr": "Les sucres libres comprennent le sucre ajouté ainsi que ceux du miel, des sirops et des jus de fruits. L'OMS recommande de les limiter fortement. Ils sont un moteur majeur de calories vides et de pics glycémiques.",
+      "tr": "Serbest şekerler eklenen şekeri ve bal, şurup ile meyve sularındaki şekeri kapsar. DSÖ bunları güçlü biçimde sınırlamayı önerir. Boş kalori ve kan şekeri zirvelerinin başlıca sürücüsüdür."
+    },
+    "related_chapters": [
+      2,
+      1,
+      10,
+      8
+    ]
+  },
+  {
+    "term_key": "Glykämisches Lebensmittelprofil",
+    "term": {
+      "de": "Glykämisches Lebensmittelprofil",
+      "en": "Glycemic food profile",
+      "es": "Perfil alimentario glucémico",
+      "it": "Profilo glicemico alimentare",
+      "pt": "Perfil glicémico dos alimentos",
+      "fr": "Profil glycémique alimentaire",
+      "tr": "Glisemik gıda profili"
+    },
+    "synonyms": {
+      "de": [
+        "blutzuckerfreundliche Kost"
+      ],
+      "en": [
+        "Blood-sugar-friendly diet"
+      ],
+      "es": [
+        "Alimentación favorable a la glucemia"
+      ],
+      "it": [
+        "Alimentazione favorevole alla glicemia"
+      ],
+      "pt": [
+        "Alimentação amigável à glicemia"
+      ],
+      "fr": [
+        "Alimentation favorable à la glycémie"
+      ],
+      "tr": [
+        "Kan şekerine dost beslenme"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Ein blutzuckerfreundliches Lebensmittelprofil kombiniert Ballaststoffe, Protein und wenig rasch verfügbare Zucker. Die Reihenfolge Gemüse-Protein-Kohlenhydrate kann Spitzen dämpfen. Alltagsstrategien stehen in den LabPlate-Kapiteln zu Tipps und GI.",
+      "en": "A blood-sugar-friendly food profile combines fiber, protein and little rapidly available sugar. The order vegetables–protein–carbohydrates can blunt peaks. Everyday strategies are in the LabPlate chapters on tips and GI.",
+      "es": "Un perfil alimentario favorable a la glucemia combina fibra, proteína y pocos azúcares de rápida disponibilidad. El orden verdura-proteína-hidratos puede amortiguar los picos. Las estrategias cotidianas figuran en los capítulos de LabPlate sobre consejos e IG.",
+      "it": "Un profilo alimentare favorevole alla glicemia combina fibre, proteine e poco zucchero rapidamente disponibile. L'ordine verdure–proteine–carboidrati può attenuare i picchi. Le strategie quotidiane sono nei capitoli LabPlate su consigli e IG.",
+      "pt": "Um perfil alimentar amigável à glicemia combina fibra, proteína e pouco açúcar de rápida disponibilidade. A ordem vegetais–proteína–hidratos de carbono pode atenuar picos. Estratégias do dia a dia estão nos capítulos LabPlate sobre dicas e IG.",
+      "fr": "Un profil alimentaire favorable à la glycémie combine fibres, protéines et peu de sucres rapidement disponibles. L'ordre légumes–protéines–glucides peut atténuer les pics. Les stratégies du quotidien figurent dans les chapitres LabPlate sur les conseils et l'IG.",
+      "tr": "Kan şekerine dost bir gıda profili lif, protein ve az hızlı kullanılabilir şeker birleştirir. Sebze–protein–karbonhidrat sırası zirveleri yumuşatabilir. Günlük stratejiler LabPlate'in ipuçları ve GI bölümlerindedir."
+    },
+    "related_chapters": [
+      5,
+      4,
+      6,
+      8
+    ]
+  },
+  {
+    "term_key": "Mikronährstoffe",
+    "term": {
+      "de": "Mikronährstoffe",
+      "en": "Micronutrients",
+      "es": "Micronutrientes",
+      "it": "Micronutrienti",
+      "pt": "Micronutrientes",
+      "fr": "Micronutriments",
+      "tr": "Mikronutrientler"
+    },
+    "synonyms": {
+      "de": [
+        "Vitamine und Mineralstoffe"
+      ],
+      "en": [
+        "Vitamins and minerals"
+      ],
+      "es": [
+        "Vitaminas y minerales"
+      ],
+      "it": [
+        "Vitamine e minerali"
+      ],
+      "pt": [
+        "Vitaminas e minerais"
+      ],
+      "fr": [
+        "Vitamines et minéraux"
+      ],
+      "tr": [
+        "Vitaminler ve mineraller"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Mikronährstoffe sind Vitamine und Mineralstoffe, die keine Energie liefern, aber Stoffwechselwege ermöglichen. Mangel zeigt sich oft schleichend in Labor und Befinden. Bunte, wenig stark verarbeitete Kost ist die Basis.",
+      "en": "Micronutrients are vitamins and minerals that provide no energy but enable metabolic pathways. Deficiency often shows gradually in labs and how you feel. Colorful, minimally processed food is the foundation.",
+      "es": "Los micronutrientes son vitaminas y minerales que no aportan energía, pero permiten las vías metabólicas. La deficiencia se muestra a menudo de forma insidiosa en el laboratorio y el bienestar. Una dieta colorida y poco ultraprocesada es la base.",
+      "it": "I micronutrienti sono vitamine e minerali che non forniscono energia ma consentono vie metaboliche. La carenza spesso emerge gradualmente in laboratorio e nel benessere. Una dieta colorata e poco ultraprocessata è la base.",
+      "pt": "Os micronutrientes são vitaminas e minerais que não fornecem energia mas permitem vias metabólicas. A deficiência muitas vezes aparece gradualmente no laboratório e no bem-estar. Uma dieta colorida e pouco ultraprocessada é a base.",
+      "fr": "Les micronutriments sont des vitamines et minéraux qui n'apportent pas d'énergie mais permettent les voies métaboliques. La carence se manifeste souvent progressivement au laboratoire et dans le ressenti. Une alimentation colorée et peu ultra-transformée est la base.",
+      "tr": "Mikronutrientler enerji vermeyen ama metabolik yolları mümkün kılan vitamin ve minerallerdir. Eksiklik laboratuvar ve iyilik halinde çoğu zaman sinsi görülür. Renkli, az işlenmiş beslenme temeldir."
+    },
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term_key": "Makronährstoffe",
+    "term": {
+      "de": "Makronährstoffe",
+      "en": "Macronutrients",
+      "es": "Macronutrientes",
+      "it": "Macronutrienti",
+      "pt": "Macronutrientes",
+      "fr": "Macronutriments",
+      "tr": "Makronutrientler"
+    },
+    "synonyms": {
+      "de": [
+        "Makros",
+        "Energie-Nährstoffe"
+      ],
+      "en": [
+        "Macros",
+        "Energy nutrients"
+      ],
+      "es": [
+        "Macros",
+        "Nutrientes energéticos"
+      ],
+      "it": [
+        "Macro",
+        "Nutrienti energetici"
+      ],
+      "pt": [
+        "Macros",
+        "Nutrientes energéticos"
+      ],
+      "fr": [
+        "Macros",
+        "Nutriments énergétiques"
+      ],
+      "tr": [
+        "Makrolar",
+        "Enerji besin öğeleri"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Makronährstoffe sind Kohlenhydrate, Proteine und Fette und liefern die Kalorien. Ihre Verteilung beeinflusst Sättigung, Training und Blutzucker. Qualität bleibt wichtiger als starre Prozentziele.",
+      "en": "Macronutrients are carbohydrates, proteins and fats and provide the calories. Their distribution affects satiety, training and blood glucose. Quality remains more important than rigid percentage targets.",
+      "es": "Los macronutrientes son hidratos de carbono, proteínas y grasas y aportan las calorías. Su distribución influye en saciedad, entrenamiento y glucemia. La calidad sigue siendo más importante que objetivos porcentuales rígidos.",
+      "it": "I macronutrienti sono carboidrati, proteine e grassi e forniscono le calorie. La loro distribuzione influenza sazietà, allenamento e glicemia. La qualità resta più importante di target percentuali rigidi.",
+      "pt": "Os macronutrientes são hidratos de carbono, proteínas e gorduras e fornecem as calorias. A sua distribuição influencia saciedade, treino e glicemia. A qualidade continua mais importante do que metas percentuais rígidas.",
+      "fr": "Les macronutriments sont les glucides, protéines et lipides et apportent les calories. Leur répartition influence satiété, entraînement et glycémie. La qualité reste plus importante que des objectifs de pourcentages rigides.",
+      "tr": "Makronutrientler karbonhidrat, protein ve yağdır ve kaloriyi sağlar. Dağılımları tokluk, antrenman ve kan şekerini etkiler. Kalite katı yüzde hedeflerinden daha önemlidir."
+    },
+    "related_chapters": [
+      6,
+      7,
+      8
+    ]
+  },
+  {
+    "term_key": "Energiebilanz",
+    "term": {
+      "de": "Energiebilanz",
+      "en": "Energy balance",
+      "es": "Balance energético",
+      "it": "Bilancio energetico",
+      "pt": "Balanço energético",
+      "fr": "Bilan énergétique",
+      "tr": "Enerji dengesi"
+    },
+    "synonyms": {
+      "de": [
+        "Kalorienbilanz"
+      ],
+      "en": [
+        "Calorie balance"
+      ],
+      "es": [
+        "Balance calórico"
+      ],
+      "it": [
+        "Bilancio calorico"
+      ],
+      "pt": [
+        "Balanço calórico"
+      ],
+      "fr": [
+        "Bilan calorique"
+      ],
+      "tr": [
+        "Kalori dengesi"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Die Energiebilanz beschreibt das Verhältnis von Aufnahme und Verbrauch. Ein dauerhafter Überschuss führt zur Gewichtszunahme, ein Defizit zur Abnahme. Hormone und Lebensmittelqualität beeinflussen Hunger und Umsetzung.",
+      "en": "Energy balance describes the relationship of intake to expenditure. A lasting surplus leads to weight gain, a deficit to loss. Hormones and food quality influence hunger and how the body responds.",
+      "es": "El balance energético describe la relación entre aporte y gasto. Un exceso sostenido lleva a ganar peso; un déficit, a perderlo. Hormonas y calidad de los alimentos influyen en el hambre y la puesta en práctica.",
+      "it": "Il bilancio energetico descrive il rapporto tra apporto e dispendio. Un surplus prolungato porta ad aumento di peso, un deficit a dimagrimento. Ormoni e qualità degli alimenti influenzano fame e risposta.",
+      "pt": "O balanço energético descreve a relação entre ingestão e gasto. Um excedente prolongado leva a ganho de peso; um défice, a perda. Hormonas e qualidade dos alimentos influenciam a fome e a resposta.",
+      "fr": "Le bilan énergétique décrit le rapport entre apport et dépense. Un excédent durable conduit à une prise de poids, un déficit à une perte. Hormones et qualité des aliments influencent la faim et la réponse.",
+      "tr": "Enerji dengesi alım ile harcama oranını tanımlar. Kalıcı fazlalık kilo alımına, açık ise kayba yol açar. Hormonlar ve gıda kalitesi açlığı ve yanıtı etkiler."
+    },
+    "related_chapters": [
+      7,
+      8
+    ]
+  },
+  {
+    "term_key": "Nährstoffdichte",
+    "term": {
+      "de": "Nährstoffdichte",
+      "en": "Nutrient density",
+      "es": "Densidad nutricional",
+      "it": "Densità nutrizionale",
+      "pt": "Densidade nutricional",
+      "fr": "Densité nutritionnelle",
+      "tr": "Besin yoğunluğu"
+    },
+    "synonyms": {
+      "de": [
+        "Nutrient Density"
+      ],
+      "en": [
+        "Nutrient density"
+      ],
+      "es": [
+        "Nutrient density"
+      ],
+      "it": [
+        "Densità di nutrienti"
+      ],
+      "pt": [
+        "Densidade de nutrientes"
+      ],
+      "fr": [
+        "Densité en nutriments"
+      ],
+      "tr": [
+        "Nutrient density"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Nährstoffdichte meint viele Mikronährstoffe pro Kalorie. Gemüse, Hülsenfrüchte und Fisch schneiden typischerweise gut ab. Stark zuckerhaltige Produkte haben meist eine niedrige Dichte.",
+      "en": "Nutrient density means many micronutrients per calorie. Vegetables, legumes and fish typically score well. Highly sugary products usually have low density.",
+      "es": "La densidad nutricional significa muchos micronutrientes por caloría. Verduras, legumbres y pescado suelen puntuar bien. Los productos muy azucarados suelen tener una densidad baja.",
+      "it": "La densità nutrizionale significa molti micronutrienti per caloria. Verdure, legumi e pesce tipicamente ottengono buoni punteggi. I prodotti molto zuccherati hanno di solito bassa densità.",
+      "pt": "A densidade nutricional significa muitos micronutrientes por caloria. Legumes, leguminosas e peixe costumam pontuar bem. Produtos muito açucarados têm, em geral, densidade baixa.",
+      "fr": "La densité nutritionnelle signifie beaucoup de micronutriments par calorie. Légumes, légumineuses et poisson se classent typiquement bien. Les produits très sucrés ont généralement une faible densité.",
+      "tr": "Besin yoğunluğu kalori başına çok mikronutrient demektir. Sebze, baklagil ve balık tipik olarak iyi puan alır. Yüksek şekerli ürünlerin yoğunluğu çoğu zaman düşüktür."
+    },
+    "related_chapters": [
+      8,
+      10
+    ]
+  },
+  {
+    "term_key": "Bioverfügbarkeit",
+    "term": {
+      "de": "Bioverfügbarkeit",
+      "en": "Bioavailability",
+      "es": "Biodisponibilidad",
+      "it": "Biodisponibilità",
+      "pt": "Biodisponibilidade",
+      "fr": "Biodisponibilité",
+      "tr": "Biyoyararlanım"
+    },
+    "synonyms": {
+      "de": [
+        "Resorbierbarkeit",
+        "Aufnahmequote"
+      ],
+      "en": [
+        "Absorbability",
+        "Absorption rate"
+      ],
+      "es": [
+        "Absorbibilidad",
+        "Tasa de absorción"
+      ],
+      "it": [
+        "Assorbibilità",
+        "Tasso di assorbimento"
+      ],
+      "pt": [
+        "Absorvibilidade",
+        "Taxa de absorção"
+      ],
+      "fr": [
+        "Absorbabilité",
+        "Taux d'absorption"
+      ],
+      "tr": [
+        "Emilebilirlik",
+        "Emilim oranı"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Bioverfügbarkeit beschreibt, wie gut ein Nährstoff aus der Nahrung aufgenommen wird. Hämeisen, Fett zu fettlöslichen Vitaminen und Vitamin C zu pflanzlichem Eisen sind klassische Beispiele. Zubereitung und Kombination verändern die Quote.",
+      "en": "Bioavailability describes how well a nutrient from food is absorbed. Heme iron, fat with fat-soluble vitamins, and vitamin C with plant iron are classic examples. Preparation and food combinations change the rate.",
+      "es": "La biodisponibilidad describe cuán bien se absorbe un nutriente de la alimentación. Hierro hemo, grasa con vitaminas liposolubles y vitamina C con hierro vegetal son ejemplos clásicos. Preparación y combinación cambian la tasa.",
+      "it": "La biodisponibilità descrive quanto bene un nutriente del cibo viene assorbito. Ferro eme, grassi con vitamine liposolubili e vitamina C con ferro vegetale sono esempi classici. Preparazione e combinazioni modificano il tasso.",
+      "pt": "A biodisponibilidade descreve quão bem um nutriente dos alimentos é absorvido. Ferro heme, gordura com vitaminas lipossolúveis e vitamina C com ferro vegetal são exemplos clássicos. Preparação e combinações alteram a taxa.",
+      "fr": "La biodisponibilité décrit à quel point un nutriment des aliments est absorbé. Fer héminique, lipides avec vitamines liposolubles et vitamine C avec fer végétal sont des exemples classiques. Préparation et associations modifient le taux.",
+      "tr": "Biyoyararlanım bir besin öğesinin gıdadan ne kadar iyi emildiğini tanımlar. Hem demiri, yağda eriyen vitaminlerle yağ ve bitkisel demirle C vitamini klasik örneklerdir. Hazırlama ve kombinasyon oranı değiştirir."
+    },
+    "related_chapters": [
+      8
+    ]
+  },
+  {
+    "term_key": "Antinährstoffe",
+    "term": {
+      "de": "Antinährstoffe",
+      "en": "Antinutrients",
+      "es": "Antinutrientes",
+      "it": "Antinutrienti",
+      "pt": "Antinutrientes",
+      "fr": "Antinutriments",
+      "tr": "Antinutrientler"
+    },
+    "synonyms": {
+      "de": [
+        "Antinutriente",
+        "Phytate",
+        "Oxalate"
+      ],
+      "en": [
+        "Antinutrients",
+        "Phytates",
+        "Oxalates"
+      ],
+      "es": [
+        "Antinutrientes",
+        "Fitatos",
+        "Oxalatos"
+      ],
+      "it": [
+        "Antinutrienti",
+        "Fitati",
+        "Ossalati"
+      ],
+      "pt": [
+        "Antinutrientes",
+        "Fitatos",
+        "Oxalatos"
+      ],
+      "fr": [
+        "Antinutriments",
+        "Phytates",
+        "Oxalates"
+      ],
+      "tr": [
+        "Antinutrientler",
+        "Fitratlar",
+        "Oksalatlar"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Antinährstoffe wie Phytate und Oxalate können Mineralstoffe binden und die Aufnahme mindern. Einweichen, Fermentieren und Erhitzen reduzieren viele davon. In einer ausgewogenen Kost sind sie selten ein Grund, gesunde Lebensmittel zu meiden.",
+      "en": "Antinutrients such as phytates and oxalates can bind minerals and reduce absorption. Soaking, fermenting and heating reduce many of them. In a balanced diet they are rarely a reason to avoid healthy foods.",
+      "es": "Antinutrientes como fitatos y oxalatos pueden unir minerales y reducir la absorción. Remojo, fermentación y calor reducen muchos de ellos. En una dieta equilibrada rara vez son motivo para evitar alimentos saludables.",
+      "it": "Antinutrienti come fitati e ossalati possono legare minerali e ridurre l'assorbimento. Ammollo, fermentazione e riscaldamento ne riducono molti. In una dieta equilibrata raramente giustificano evitare alimenti sani.",
+      "pt": "Antinutrientes como fitatos e oxalatos podem ligar minerais e reduzir a absorção. Deitar de molho, fermentar e aquecer reduzem muitos deles. Numa alimentação equilibrada raramente justificam evitar alimentos saudáveis.",
+      "fr": "Les antinutriments comme phytates et oxalates peuvent lier des minéraux et réduire l'absorption. Trempage, fermentation et chauffage en réduisent beaucoup. Dans une alimentation équilibrée ils justifient rarement d'éviter des aliments sains.",
+      "tr": "Fitrat ve oksalat gibi antinutrientler mineralleri bağlayıp emilimi azaltabilir. Islatma, fermentasyon ve ısıtma çoğunu azaltır. Dengeli beslenmede sağlıklı gıdalardan kaçınmak için nadiren gerekçe olurlar."
+    },
+    "related_chapters": [
+      8,
+      11
+    ]
+  },
+  {
+    "term_key": "Polyphenole",
+    "term": {
+      "de": "Polyphenole",
+      "en": "Polyphenols",
+      "es": "Polifenoles",
+      "it": "Polifenoli",
+      "pt": "Polifenóis",
+      "fr": "Polyphénols",
+      "tr": "Polifenoller"
+    },
+    "synonyms": {
+      "de": [
+        "Pflanzenstoffe",
+        "Flavonoide"
+      ],
+      "en": [
+        "Plant compounds",
+        "Flavonoids"
+      ],
+      "es": [
+        "Compuestos vegetales",
+        "Flavonoides"
+      ],
+      "it": [
+        "Composti vegetali",
+        "Flavonoidi"
+      ],
+      "pt": [
+        "Compostos vegetais",
+        "Flavonoides"
+      ],
+      "fr": [
+        "Composés végétaux",
+        "Flavonoïdes"
+      ],
+      "tr": [
+        "Bitki bileşikleri",
+        "Flavonoidler"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Polyphenole sind sekundäre Pflanzenstoffe mit antioxidativer Wirkung in Beeren, Tee und Kakao. Sie können die Eisenaufnahme aus derselben Mahlzeit hemmen. Als Teil pflanzlicher Kost gelten sie als günstig.",
+      "en": "Polyphenols are secondary plant compounds with antioxidant effects in berries, tea and cocoa. They can inhibit iron absorption from the same meal. As part of a plant-rich diet they are considered beneficial.",
+      "es": "Los polifenoles son metabolitos secundarios vegetales con efecto antioxidante en bayas, té y cacao. Pueden inhibir la absorción de hierro de la misma comida. Como parte de una dieta vegetal se consideran favorables.",
+      "it": "I polifenoli sono metaboliti secondari vegetali con effetto antiossidante in bacche, tè e cacao. Possono inibire l'assorbimento del ferro dallo stesso pasto. Come parte di una dieta vegetale sono considerati favorevoli.",
+      "pt": "Os polifenóis são compostos vegetais secundários com efeito antioxidante em bagas, chá e cacau. Podem inibir a absorção de ferro da mesma refeição. Como parte de uma dieta vegetal consideram-se favoráveis.",
+      "fr": "Les polyphénols sont des composés végétaux secondaires à effet antioxydant dans baies, thé et cacao. Ils peuvent inhiber l'absorption du fer du même repas. Dans une alimentation végétale ils sont jugés favorables.",
+      "tr": "Polifenoller meyve, çay ve kakaoda antioksidan etkili ikincil bitki bileşikleridir. Aynı öğünden demir emilimini engelleyebilir. Bitkisel beslenmenin parçası olarak olumlu kabul edilirler."
+    },
+    "related_chapters": [
+      8
+    ]
+  },
+  {
+    "term_key": "Präbiotika",
+    "term": {
+      "de": "Präbiotika",
+      "en": "Prebiotics",
+      "es": "Prebióticos",
+      "it": "Prebiotici",
+      "pt": "Prebióticos",
+      "fr": "Prébiotiques",
+      "tr": "Prebiyotikler"
+    },
+    "synonyms": {
+      "de": [
+        "präbiotische Fasern",
+        "Inulin",
+        "FOS"
+      ],
+      "en": [
+        "Prebiotic fibers",
+        "Inulin",
+        "FOS"
+      ],
+      "es": [
+        "Fibras prebióticas",
+        "Inulina",
+        "FOS"
+      ],
+      "it": [
+        "Fibre prebiotiche",
+        "Inulina",
+        "FOS"
+      ],
+      "pt": [
+        "Fibras prebióticas",
+        "Inulina",
+        "FOS"
+      ],
+      "fr": [
+        "Fibres prébiotiques",
+        "Inuline",
+        "FOS"
+      ],
+      "tr": [
+        "Prebiyotik lifler",
+        "İnülin",
+        "FOS"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Präbiotika sind unverdauliche Fasern, die gezielt nützliche Darmbakterien ernähren. Inulin aus Chicorée und Zwiebeln ist ein Beispiel. Zu schnelle Steigerung kann Blähungen auslösen.",
+      "en": "Prebiotics are indigestible fibers that specifically feed beneficial gut bacteria. Inulin from chicory and onions is an example. Increasing too quickly can cause bloating.",
+      "es": "Los prebióticos son fibras indigestibles que alimentan de forma dirigida a bacterias intestinales útiles. La inulina de achicoria y cebolla es un ejemplo. Un aumento demasiado rápido puede provocar flatulencias.",
+      "it": "I prebiotici sono fibre indigeste che nutrono in modo mirato i batteri intestinali utili. L'inulina da cicoria e cipolle è un esempio. Un aumento troppo rapido può causare gonfiore.",
+      "pt": "Os prebióticos são fibras indigestíveis que alimentam de forma seletiva bactérias intestinais úteis. A inulina de chicória e cebolas é um exemplo. Aumentar demasiado depressa pode causar inchaço.",
+      "fr": "Les prébiotiques sont des fibres indigestes qui nourrissent de façon ciblée les bactéries intestinales utiles. L'inuline de chicorée et d'oignons en est un exemple. Une hausse trop rapide peut provoquer des ballonnements.",
+      "tr": "Prebiyotikler yararlı bağırsak bakterilerini hedefli besleyen sindirilemeyen liflerdir. Hindiba ve soğandan inülin bir örnektir. Çok hızlı artırmak şişkinliğe yol açabilir."
+    },
+    "related_chapters": [
+      4,
+      8
+    ]
+  },
+  {
+    "term_key": "Probiotika",
+    "term": {
+      "de": "Probiotika",
+      "en": "Probiotics",
+      "es": "Probióticos",
+      "it": "Probiotici",
+      "pt": "Probióticos",
+      "fr": "Probiotiques",
+      "tr": "Probiyotikler"
+    },
+    "synonyms": {
+      "de": [
+        "lebende Kulturen",
+        "Joghurtkulturen"
+      ],
+      "en": [
+        "Live cultures",
+        "Yogurt cultures"
+      ],
+      "es": [
+        "Cultivos vivos",
+        "Cultivos de yogur"
+      ],
+      "it": [
+        "Colture vive",
+        "Colture dello yogurt"
+      ],
+      "pt": [
+        "Culturas vivas",
+        "Culturas de iogurte"
+      ],
+      "fr": [
+        "Cultures vivantes",
+        "Ferments du yaourt"
+      ],
+      "tr": [
+        "Canlı kültürler",
+        "Yoğurt kültürleri"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Probiotika sind lebende Mikroorganismen, die in ausreichender Menge einen gesundheitlichen Nutzen haben können. Fermentierte Lebensmittel und spezielle Präparate sind Quellen. Wirkung ist stammspezifisch und kein Allheilmittel.",
+      "en": "Probiotics are live microorganisms that in adequate amounts may confer a health benefit. Fermented foods and specific preparations are sources. Effects are strain-specific and not a cure-all.",
+      "es": "Los probióticos son microorganismos vivos que, en cantidad suficiente, pueden aportar un beneficio para la salud. Alimentos fermentados y preparados específicos son fuentes. El efecto es específico de cepa y no es una panacea.",
+      "it": "I probiotici sono microrganismi vivi che, in quantità adeguata, possono avere un beneficio per la salute. Alimenti fermentati e preparati specifici sono fonti. L'effetto è ceppo-specifico e non è una panacea.",
+      "pt": "Os probióticos são microrganismos vivos que, em quantidade adequada, podem ter benefício para a saúde. Alimentos fermentados e preparados específicos são fontes. O efeito é cepa-específico e não é panaceia.",
+      "fr": "Les probiotiques sont des micro-organismes vivants qui, en quantité suffisante, peuvent procurer un bénéfice pour la santé. Aliments fermentés et préparations spécifiques en sont des sources. L'effet est souche-spécifique et n'est pas une panacée.",
+      "tr": "Probiyotikler yeterli miktarda sağlık yararı sağlayabilen canlı mikroorganizmalardır. Fermente gıdalar ve özel preparatlar kaynaklardır. Etki suşa özgüdür ve her derde deva değildir."
+    },
+    "related_chapters": [
+      4,
+      8,
+      11
+    ]
+  },
+  {
+    "term_key": "Kurzkettige Fettsäuren",
+    "term": {
+      "de": "Kurzkettige Fettsäuren",
+      "en": "Short-chain fatty acids",
+      "es": "Ácidos grasos de cadena corta",
+      "it": "Acidi grassi a catena corta",
+      "pt": "Ácidos gordos de cadeia curta",
+      "fr": "Acides gras à chaîne courte",
+      "tr": "Kısa zincirli yağ asitleri"
+    },
+    "synonyms": {
+      "de": [
+        "SCFA",
+        "Butyrat",
+        "Acetat",
+        "Propionat"
+      ],
+      "en": [
+        "SCFA",
+        "Butyrate",
+        "Acetate",
+        "Propionate"
+      ],
+      "es": [
+        "SCFA",
+        "Butirato",
+        "Acetato",
+        "Propionato"
+      ],
+      "it": [
+        "SCFA",
+        "Butirrato",
+        "Acetato",
+        "Propionato"
+      ],
+      "pt": [
+        "SCFA",
+        "Butirato",
+        "Acetato",
+        "Propionato"
+      ],
+      "fr": [
+        "SCFA",
+        "Butyrate",
+        "Acétate",
+        "Propionate"
+      ],
+      "tr": [
+        "SCFA",
+        "Bütirat",
+        "Asetat",
+        "Propiyonat"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Kurzkettige Fettsäuren entstehen bei der Fermentation von Ballaststoffen im Dickdarm. Butyrat ernährt Darmzellen und wirkt lokal entzündungshemmend. Eine faserreiche Kost fördert ihre Bildung.",
+      "en": "Short-chain fatty acids arise from fiber fermentation in the colon. Butyrate nourishes gut cells and has local anti-inflammatory effects. A fiber-rich diet promotes their formation.",
+      "es": "Los ácidos grasos de cadena corta se forman en la fermentación de fibras en el colon. El butirato nutre las células intestinales y actúa localmente de forma antiinflamatoria. Una dieta rica en fibra favorece su formación.",
+      "it": "Gli acidi grassi a catena corta derivano dalla fermentazione delle fibre nel colon. Il butirrato nutre le cellule intestinali e ha effetto antinfiammatorio locale. Una dieta ricca di fibre ne promuove la formazione.",
+      "pt": "Os ácidos gordos de cadeia curta surgem da fermentação de fibras no cólon. O butirato nutre as células intestinais e tem efeito anti-inflamatório local. Uma dieta rica em fibra promove a sua formação.",
+      "fr": "Les acides gras à chaîne courte naissent de la fermentation des fibres dans le côlon. Le butyrate nourrit les cellules intestinales et a un effet anti-inflammatoire local. Une alimentation riche en fibres favorise leur formation.",
+      "tr": "Kısa zincirli yağ asitleri kalın bağırsakta lif fermentasyonuyla oluşur. Bütirat bağırsak hücrelerini besler ve yerel antiinflamatuar etki gösterir. Lif açısından zengin beslenme oluşumlarını destekler."
+    },
+    "related_chapters": [
+      4,
+      1
+    ]
+  },
+  {
+    "term_key": "Wasserhaushalt",
+    "term": {
+      "de": "Wasserhaushalt",
+      "en": "Fluid balance",
+      "es": "Equilibrio hídrico",
+      "it": "Equilibrio idrico",
+      "pt": "Equilíbrio hídrico",
+      "fr": "Équilibre hydrique",
+      "tr": "Su dengesi"
+    },
+    "synonyms": {
+      "de": [
+        "Hydration",
+        "Flüssigkeitsbalance"
+      ],
+      "en": [
+        "Hydration",
+        "Fluid balance"
+      ],
+      "es": [
+        "Hidratación",
+        "Balance de líquidos"
+      ],
+      "it": [
+        "Idratazione",
+        "Bilancio dei liquidi"
+      ],
+      "pt": [
+        "Hidratação",
+        "Balanço de líquidos"
+      ],
+      "fr": [
+        "Hydratation",
+        "Balance hydrique"
+      ],
+      "tr": [
+        "Hidrasyon",
+        "Sıvı dengesi"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Ausreichend Flüssigkeit unterstützt Kreislauf, Niere und Konzentrationsfähigkeit. Bedarf steigt bei Hitze, Sport und Fieber. Elektrolyte werden vor allem bei starken Verlusten relevant.",
+      "en": "Adequate fluid supports circulation, kidneys and concentration. Needs rise with heat, exercise and fever. Electrolytes become especially relevant with heavy losses.",
+      "es": "Suficiente líquido favorece circulación, riñón y capacidad de concentración. La necesidad sube con calor, deporte y fiebre. Los electrolitos se vuelven relevantes sobre todo con pérdidas fuertes.",
+      "it": "Un'adeguata idratazione sostiene circolazione, reni e concentrazione. Il fabbisogno sale con caldo, sport e febbre. Gli elettroliti diventano rilevanti soprattutto con perdite elevate.",
+      "pt": "Hidratação adequada apoia circulação, rins e concentração. A necessidade sobe com calor, exercício e febre. Os eletrólitos tornam-se relevantes sobretudo com perdas fortes.",
+      "fr": "Une hydratation suffisante soutient circulation, reins et concentration. Les besoins augmentent avec chaleur, sport et fièvre. Les électrolytes deviennent surtout pertinents en cas de pertes importantes.",
+      "tr": "Yeterli sıvı dolaşım, böbrek ve konsantrasyonu destekler. İhtiyaç sıcak, spor ve ateşte artar. Elektrolitler özellikle yoğun kayıplarda önem kazanır."
+    },
+    "related_chapters": [
+      7,
+      8
+    ]
+  },
+  {
+    "term_key": "Alkohol Nährstoffkontext",
+    "term": {
+      "de": "Alkohol Nährstoffkontext",
+      "en": "Alcohol in nutrition context",
+      "es": "Alcohol (contexto nutricional)",
+      "it": "Alcol in contesto nutrizionale",
+      "pt": "Álcool no contexto nutricional",
+      "fr": "Alcool en contexte nutritionnel",
+      "tr": "Beslenme bağlamında alkol"
+    },
+    "synonyms": {
+      "de": [
+        "Ethanol Ernährung"
+      ],
+      "en": [
+        "Ethanol nutrition"
+      ],
+      "es": [
+        "Etanol en la alimentación"
+      ],
+      "it": [
+        "Etanolo nutrizione"
+      ],
+      "pt": [
+        "Etanol nutrição"
+      ],
+      "fr": [
+        "Éthanol nutrition"
+      ],
+      "tr": [
+        "Etanol beslenme"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Alkohol liefert Kalorien, hemmt Fettverbrennung und kann Triglyceride sowie Leberwerte erhöhen. Schon moderate Mengen beeinflussen Schlaf und Appetitregulation. Für Stoffwechselziele ist Reduktion oft ein Hebel mit großer Wirkung.",
+      "en": "Alcohol provides calories, inhibits fat burning and can raise triglycerides and liver values. Even moderate amounts affect sleep and appetite regulation. For metabolic goals, cutting back is often a high-impact lever.",
+      "es": "El alcohol aporta calorías, inhibe la quema de grasa y puede elevar triglicéridos y valores hepáticos. Incluso cantidades moderadas influyen en el sueño y la regulación del apetito. Para objetivos metabólicos, reducir suele ser una palanca de gran efecto.",
+      "it": "L'alcol fornisce calorie, inibisce il bruciagrassi e può alzare trigliceridi ed enzimi epatici. Anche quantità moderate influenzano sonno e regolazione dell'appetito. Per obiettivi metabolici, ridurlo è spesso una leva ad alto impatto.",
+      "pt": "O álcool fornece calorias, inibe a queima de gordura e pode elevar triglicéridos e enzimas hepáticas. Mesmo quantidades moderadas afetam sono e regulação do apetite. Para metas metabólicas, reduzir é muitas vezes uma alavanca de grande impacto.",
+      "fr": "L'alcool apporte des calories, inhibe la combustion des graisses et peut élever triglycérides et enzymes hépatiques. Même des quantités modérées affectent sommeil et régulation de l'appétit. Pour des objectifs métaboliques, réduire est souvent un levier à fort impact.",
+      "tr": "Alkol kalori verir, yağ yakımını engeller ve trigliserit ile karaciğer değerlerini yükseltebilir. Orta miktarlar bile uyku ve iştah düzenini etkiler. Metabolik hedeflerde azaltmak çoğu zaman yüksek etkili bir kaldıraçtır."
+    },
+    "related_chapters": [
+      1,
+      3,
+      8,
+      9
+    ]
+  },
+  {
+    "term_key": "Koffein",
+    "term": {
+      "de": "Koffein",
+      "en": "Caffeine",
+      "es": "Cafeína",
+      "it": "Caffeina",
+      "pt": "Cafeína",
+      "fr": "Caféine",
+      "tr": "Kafein"
+    },
+    "synonyms": {
+      "de": [
+        "Coffein",
+        "Tein"
+      ],
+      "en": [
+        "Caffeine",
+        "Theine"
+      ],
+      "es": [
+        "Cafeína",
+        "Teína"
+      ],
+      "it": [
+        "Caffeina",
+        "Teina"
+      ],
+      "pt": [
+        "Cafeína",
+        "Teína"
+      ],
+      "fr": [
+        "Caféine",
+        "Théine"
+      ],
+      "tr": [
+        "Kafein",
+        "Tein"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Koffein steigert vorübergehend Wachheit und kann die Leistung im Sport leicht verbessern. Empfindliche Personen reagieren mit Herzrasen oder Schlafproblemen. Die Eisenaufnahme aus pflanzlichen Speisen kann durch Kaffee zu den Mahlzeiten sinken.",
+      "en": "Caffeine temporarily increases alertness and can slightly improve athletic performance. Sensitive people may react with a racing heart or sleep problems. Coffee with meals can lower iron absorption from plant foods.",
+      "es": "La cafeína aumenta temporalmente la alerta y puede mejorar ligeramente el rendimiento deportivo. Las personas sensibles reaccionan con taquicardia o problemas de sueño. La absorción de hierro de comidas vegetales puede bajar con café en las comidas.",
+      "it": "La caffeina aumenta temporaneamente la vigilanza e può migliorare leggermente la prestazione sportiva. Le persone sensibili possono reagire con tachicardia o disturbi del sonno. Il caffè ai pasti può ridurre l'assorbimento del ferro vegetale.",
+      "pt": "A cafeína aumenta temporariamente o alerta e pode melhorar ligeiramente o desempenho desportivo. Pessoas sensíveis podem reagir com taquicardia ou problemas de sono. Café nas refeições pode reduzir a absorção de ferro vegetal.",
+      "fr": "La caféine augmente temporairement la vigilance et peut légèrement améliorer la performance sportive. Les personnes sensibles peuvent réagir par palpitations ou troubles du sommeil. Le café aux repas peut réduire l'absorption du fer végétal.",
+      "tr": "Kafein geçici olarak uyanıklığı artırır ve sporda performansı hafif iyileştirebilir. Hassas kişilerde çarpıntı veya uyku sorunları olabilir. Öğünlerde kahve bitkisel demir emilimini düşürebilir."
+    },
+    "related_chapters": [
+      7,
+      8
+    ]
+  },
+  {
+    "term_key": "Salz versteckt",
+    "term": {
+      "de": "Salz versteckt",
+      "en": "Hidden salt",
+      "es": "Sal oculta",
+      "it": "Sale nascosto",
+      "pt": "Sal escondido",
+      "fr": "Sel caché",
+      "tr": "Gizli tuz"
+    },
+    "synonyms": {
+      "de": [
+        "Hidden Salt",
+        "Natrium in Fertigprodukten"
+      ],
+      "en": [
+        "Hidden salt",
+        "Sodium in processed foods"
+      ],
+      "es": [
+        "Hidden salt",
+        "Sodio en productos elaborados"
+      ],
+      "it": [
+        "Hidden salt",
+        "Sodio nei prodotti pronti"
+      ],
+      "pt": [
+        "Hidden salt",
+        "Sódio em produtos prontos"
+      ],
+      "fr": [
+        "Hidden salt",
+        "Sodium dans les produits transformés"
+      ],
+      "tr": [
+        "Hidden salt",
+        "Hazır ürünlerde sodyum"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Verstecktes Salz steckt in Brot, Käse, Fertiggerichten und Saucen und übertrifft oft die Menge aus der Salzmühle. Etikettenlesen hilft, die Zufuhr zu senken. Weniger Fertigprodukte sind der wirksamste Schritt.",
+      "en": "Hidden salt is in bread, cheese, ready meals and sauces and often exceeds the amount from the salt shaker. Reading labels helps lower intake. Fewer processed products is the most effective step.",
+      "es": "La sal oculta está en pan, queso, platos preparados y salsas y suele superar la cantidad del salero. Leer etiquetas ayuda a bajar el aporte. Menos productos elaborados es el paso más eficaz.",
+      "it": "Il sale nascosto è in pane, formaggio, piatti pronti e salse e spesso supera quello del saliera. Leggere le etichette aiuta a ridurre l'apporto. Meno prodotti pronti è il passo più efficace.",
+      "pt": "O sal escondido está no pão, queijo, refeições prontas e molhos e muitas vezes supera o do saleiro. Ler rótulos ajuda a baixar a ingestão. Menos produtos prontos é o passo mais eficaz.",
+      "fr": "Le sel caché se trouve dans le pain, le fromage, les plats préparés et les sauces et dépasse souvent celui de la salière. Lire les étiquettes aide à réduire l'apport. Moins de produits transformés est l'étape la plus efficace.",
+      "tr": "Gizli tuz ekmek, peynir, hazır yemek ve soslarda bulunur ve çoğu zaman tuzluk miktarını aşar. Etiket okumak alımı düşürmeye yardım eder. Daha az hazır ürün en etkili adımdır."
+    },
+    "related_chapters": [
+      10,
+      8
+    ]
+  },
+  {
+    "term_key": "Lebensmittelmatrix",
+    "term": {
+      "de": "Lebensmittelmatrix",
+      "en": "Food matrix",
+      "es": "Matriz alimentaria",
+      "it": "Matrice alimentare",
+      "pt": "Matriz alimentar",
+      "fr": "Matrice alimentaire",
+      "tr": "Gıda matrisi"
+    },
+    "synonyms": {
+      "de": [
+        "Food Matrix"
+      ],
+      "en": [
+        "Food matrix"
+      ],
+      "es": [
+        "Food matrix"
+      ],
+      "it": [
+        "Food matrix"
+      ],
+      "pt": [
+        "Matriz dos alimentos"
+      ],
+      "fr": [
+        "Food matrix"
+      ],
+      "tr": [
+        "Food matrix"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Die Lebensmittelmatrix beschreibt, wie Nährstoffe im natürlichen Verbund von Fasern, Fetten und Strukturen wirken. Apfelsaft wirkt anders auf den Blutzucker als ein ganzer Apfel. Stark verarbeitete Produkte lösen diese Matrix häufig auf.",
+      "en": "The food matrix describes how nutrients act within the natural network of fibers, fats and structures. Apple juice affects blood glucose differently than a whole apple. Heavily processed products often break this matrix apart.",
+      "es": "La matriz alimentaria describe cómo actúan los nutrientes en el conjunto natural de fibras, grasas y estructuras. El zumo de manzana actúa de forma distinta sobre la glucemia que una manzana entera. Los productos muy procesados suelen disolver esa matriz.",
+      "it": "La matrice alimentare descrive come i nutrienti agiscono nel tessuto naturale di fibre, grassi e strutture. Il succo di mela influenza la glicemia diversamente da una mela intera. I prodotti molto processati spesso dissolvono questa matrice.",
+      "pt": "A matriz alimentar descreve como os nutrientes atuam no tecido natural de fibras, gorduras e estruturas. O sumo de maçã afeta a glicemia de forma diferente de uma maçã inteira. Produtos muito processados frequentemente desfazem esta matriz.",
+      "fr": "La matrice alimentaire décrit comment les nutriments agissent dans le réseau naturel de fibres, lipides et structures. Le jus de pomme agit autrement sur la glycémie qu'une pomme entière. Les produits très transformés dissolvent souvent cette matrice.",
+      "tr": "Gıda matrisi besin öğelerinin lif, yağ ve yapıların doğal birlikteliğinde nasıl etki ettiğini tanımlar. Elma suyu kan şekerini bütün elmadan farklı etkiler. Yoğun işlenmiş ürünler bu matrisi çoğu zaman bozar."
+    },
+    "related_chapters": [
+      5,
+      4,
+      10
+    ]
+  },
+  {
+    "term_key": "Ultraprozessierte Lebensmittel",
+    "term": {
+      "de": "Ultraprozessierte Lebensmittel",
+      "en": "Ultra-processed foods",
+      "es": "Alimentos ultraprocesados",
+      "it": "Alimenti ultraprocessati",
+      "pt": "Alimentos ultraprocessados",
+      "fr": "Aliments ultra-transformés",
+      "tr": "Ultra işlenmiş gıdalar"
+    },
+    "synonyms": {
+      "de": [
+        "UPF",
+        "hochverarbeitete Produkte"
+      ],
+      "en": [
+        "UPF",
+        "Highly processed products"
+      ],
+      "es": [
+        "UPF",
+        "Productos altamente procesados"
+      ],
+      "it": [
+        "UPF",
+        "Prodotti altamente processati"
+      ],
+      "pt": [
+        "UPF",
+        "Produtos altamente processados"
+      ],
+      "fr": [
+        "UPF",
+        "Produits hautement transformés"
+      ],
+      "tr": [
+        "UPF",
+        "Yoğun işlenmiş ürünler"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Ultraprozessierte Lebensmittel sind industriell stark verändert und oft reich an Zucker, Salz und Zusatzstoffen. Sie fördern Überessen und ungünstige Stoffwechselmarker. Der Anteil in der Alltagsernährung sollte möglichst sinken.",
+      "en": "Ultra-processed foods are heavily industrially altered and often rich in sugar, salt and additives. They promote overeating and unfavorable metabolic markers. Their share in everyday diets should preferably fall.",
+      "es": "Los alimentos ultraprocesados están muy modificados industrialmente y suelen ser ricos en azúcar, sal y aditivos. Favorecen el sobreconsumo y marcadores metabólicos desfavorables. Su proporción en la alimentación cotidiana debería bajar lo más posible.",
+      "it": "Gli alimenti ultraprocessati sono fortemente modificati industrialmente e spesso ricchi di zucchero, sale e additivi. Favoriscono il sovraconsumo e marcatori metabolici sfavorevoli. La loro quota nell'alimentazione quotidiana dovrebbe scendere il più possibile.",
+      "pt": "Os alimentos ultraprocessados são fortemente alterados industrialmente e muitas vezes ricos em açúcar, sal e aditivos. Favorecem o excesso de ingestão e marcadores metabólicos desfavoráveis. A sua quota na alimentação diária deve preferencialmente baixar.",
+      "fr": "Les aliments ultra-transformés sont fortement modifiés industriellement et souvent riches en sucre, sel et additifs. Ils favorisent la surconsommation et des marqueurs métaboliques défavorables. Leur part dans l'alimentation quotidienne devrait baisser autant que possible.",
+      "tr": "Ultra işlenmiş gıdalar endüstriyel olarak yoğun değiştirilmiştir ve çoğu zaman şeker, tuz ve katkı maddesi zengindir. Aşırı yemeyi ve olumsuz metabolik belirteçleri teşvik eder. Günlük beslenmedeki payı mümkün olduğunca düşmelidir."
+    },
+    "related_chapters": [
+      10,
+      2,
+      8
+    ]
+  },
+  {
+    "term_key": "Zusatzstoffe",
+    "term": {
+      "de": "Zusatzstoffe",
+      "en": "Food additives",
+      "es": "Aditivos alimentarios",
+      "it": "Additivi alimentari",
+      "pt": "Aditivos alimentares",
+      "fr": "Additifs alimentaires",
+      "tr": "Gıda katkı maddeleri"
+    },
+    "synonyms": {
+      "de": [
+        "E-Nummern",
+        "Food Additives"
+      ],
+      "en": [
+        "E numbers",
+        "Food additives"
+      ],
+      "es": [
+        "Números E",
+        "Food additives"
+      ],
+      "it": [
+        "Numeri E",
+        "Additivi alimentari"
+      ],
+      "pt": [
+        "Números E",
+        "Aditivos alimentares"
+      ],
+      "fr": [
+        "Numéros E",
+        "Additifs alimentaires"
+      ],
+      "tr": [
+        "E numaraları",
+        "Gıda katkı maddeleri"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Zusatzstoffe erfüllen technische Zwecke wie Haltbarkeit, Farbe oder Süße. Nicht jeder Zusatzstoff ist problematisch, aber die Produktkategorie ist oft nährstoffarm. Transparenz auf dem Etikett erleichtert bewusste Entscheidungen.",
+      "en": "Food additives serve technical purposes such as shelf life, color or sweetness. Not every additive is problematic, but the product category is often nutrient-poor. Label transparency makes conscious choices easier.",
+      "es": "Los aditivos cumplen fines técnicos como conservación, color o dulzor. No todo aditivo es problemático, pero la categoría de producto suele ser pobre en nutrientes. La transparencia en la etiqueta facilita decisiones conscientes.",
+      "it": "Gli additivi assolvono scopi tecnici come conservazione, colore o dolcezza. Non ogni additivo è problematico, ma la categoria di prodotto è spesso povera di nutrienti. La trasparenza in etichetta facilita scelte consapevoli.",
+      "pt": "Os aditivos cumprem fins técnicos como conservação, cor ou doçura. Nem todo aditivo é problemático, mas a categoria de produto é muitas vezes pobre em nutrientes. Transparência no rótulo facilita decisões conscientes.",
+      "fr": "Les additifs servent des buts techniques comme conservation, couleur ou sucrosité. Tout additif n'est pas problématique, mais la catégorie de produits est souvent pauvre en nutriments. La transparence de l'étiquette facilite des choix conscients.",
+      "tr": "Katkı maddeleri raf ömrü, renk veya tatlılık gibi teknik amaçlara hizmet eder. Her katkı sorunlu değildir ama ürün kategorisi çoğu zaman besin açısından fakirdir. Etikette şeffaflık bilinçli seçimi kolaylaştırır."
+    },
+    "related_chapters": [
+      10,
+      11
+    ]
+  },
+  {
+    "term_key": "Maissirup mit hohem Fruktosegehalt",
+    "term": {
+      "de": "Maissirup mit hohem Fruktosegehalt",
+      "en": "High-fructose corn syrup",
+      "es": "Jarabe de maíz de alta fructosa",
+      "it": "Sciroppo di mais ad alto contenuto di fruttosio",
+      "pt": "Xarope de milho com alto teor de frutose",
+      "fr": "Sirop de maïs à haute teneur en fructose",
+      "tr": "Yüksek fruktozlu mısır şurubu"
+    },
+    "synonyms": {
+      "de": [
+        "HFCS",
+        "High Fructose Corn Syrup",
+        "Isoglukose"
+      ],
+      "en": [
+        "HFCS",
+        "High fructose corn syrup",
+        "Isoglucose"
+      ],
+      "es": [
+        "HFCS",
+        "High Fructose Corn Syrup",
+        "Isoglucosa"
+      ],
+      "it": [
+        "HFCS",
+        "High Fructose Corn Syrup",
+        "Isoglucosio"
+      ],
+      "pt": [
+        "HFCS",
+        "High Fructose Corn Syrup",
+        "Isoglicose"
+      ],
+      "fr": [
+        "HFCS",
+        "High Fructose Corn Syrup",
+        "Isoglucose"
+      ],
+      "tr": [
+        "HFCS",
+        "High Fructose Corn Syrup",
+        "İzoglukoz"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "HFCS ist ein Industriezucker mit hohem Fruktoseanteil und steckt international in vielen Softdrinks. Stoffwechselisch ähnelt er anderen freien Zuckern mit Fruktoseanteil. In der EU ist Isoglukose verwandt und ebenfalls kritisch in Getränken.",
+      "en": "HFCS is an industrial sugar with a high fructose share and appears internationally in many soft drinks. Metabolically it resembles other free sugars containing fructose. In the EU, isoglucose is related and likewise concerning in beverages.",
+      "es": "El HFCS es un azúcar industrial con alto contenido de fructosa y figura internacionalmente en muchos refrescos. Metabólicamente se asemeja a otros azúcares libres con fructosa. En la UE la isoglucosa es afín y también crítica en bebidas.",
+      "it": "L'HFCS è uno zucchero industriale ad alto contenuto di fruttosio e compare internazionalmente in molte bibite. Metabolicamente assomiglia ad altri zuccheri liberi con fruttosio. Nell'UE l'isoglucosio è affine e altrettanto critico nelle bevande.",
+      "pt": "O HFCS é um açúcar industrial com elevado teor de frutose e aparece internacionalmente em muitos refrigerantes. Metabolicamente assemelha-se a outros açúcares livres com frutose. Na UE, a isoglicose é afim e igualmente crítica em bebidas.",
+      "fr": "Le HFCS est un sucre industriel à forte teneur en fructose et figure internationalement dans de nombreux sodas. Métaboliquement il ressemble à d'autres sucres libres contenant du fructose. Dans l'UE, l'isoglucose est apparenté et également critique dans les boissons.",
+      "tr": "HFCS yüksek fruktoz paylı bir endüstriyel şekerdir ve uluslararası birçok gazlı içecekte bulunur. Metabolik olarak fruktoz içeren diğer serbest şekerlere benzer. AB'de izoglukoz akrabadır ve içeceklerde aynı şekilde kritiktir."
+    },
+    "related_chapters": [
+      1,
+      2,
+      10
+    ]
+  },
+  {
+    "term_key": "Honig",
+    "term": {
+      "de": "Honig",
+      "en": "Honey",
+      "es": "Miel",
+      "it": "Miele",
+      "pt": "Mel",
+      "fr": "Miel",
+      "tr": "Bal"
+    },
+    "synonyms": {
+      "de": [
+        "Bienenhonig",
+        "Naturhonig"
+      ],
+      "en": [
+        "Bee honey",
+        "Natural honey"
+      ],
+      "es": [
+        "Miel de abeja",
+        "Miel natural"
+      ],
+      "it": [
+        "Miele d'api",
+        "Miele naturale"
+      ],
+      "pt": [
+        "Mel de abelha",
+        "Mel natural"
+      ],
+      "fr": [
+        "Miel d'abeille",
+        "Miel naturel"
+      ],
+      "tr": [
+        "Arı balı",
+        "Doğal bal"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Honig enthält vor allem Glukose und Fruktose und wirkt trotz natürlicher Herkunft als freier Zucker. Er liefert Spuren an Bioaktivstoffen, ersetzt aber keine Zuckerreduktion. Für Kinder unter einem Jahr ist Honig ungeeignet.",
+      "en": "Honey mainly contains glucose and fructose and still counts as free sugar despite its natural origin. It provides traces of bioactive compounds but does not replace sugar reduction. Honey is unsuitable for children under one year.",
+      "es": "La miel contiene sobre todo glucosa y fructosa y, pese a su origen natural, actúa como azúcar libre. Aporta trazas de bioactivos, pero no sustituye la reducción de azúcar. En menores de un año la miel no es adecuada.",
+      "it": "Il miele contiene soprattutto glucosio e fruttosio e, nonostante l'origine naturale, agisce come zucchero libero. Fornisce tracce di bioattivi, ma non sostituisce la riduzione dello zucchero. Non è adatto ai bambini sotto l'anno.",
+      "pt": "O mel contém sobretudo glicose e frutose e, apesar da origem natural, atua como açúcar livre. Fornece vestígios de bioativos, mas não substitui a redução de açúcar. Não é adequado para crianças com menos de um ano.",
+      "fr": "Le miel contient surtout du glucose et du fructose et, malgré son origine naturelle, agit comme sucre libre. Il apporte des traces de bioactifs, mais ne remplace pas la réduction du sucre. Il est déconseillé aux enfants de moins d'un an.",
+      "tr": "Bal başlıca glukoz ve fruktoz içerir ve doğal kökenine rağmen serbest şeker gibi davranır. Biyoaktif izler sağlar ama şeker azaltmanın yerini tutmaz. Bir yaşından küçük çocuklar için uygun değildir."
+    },
+    "related_chapters": [
+      2,
+      1,
+      11
+    ]
+  },
+  {
+    "term_key": "Vollkorn",
+    "term": {
+      "de": "Vollkorn",
+      "en": "Whole grain",
+      "es": "Integral",
+      "it": "Cereali integrali",
+      "pt": "Cereais integrais",
+      "fr": "Céréales complètes",
+      "tr": "Tam tahıl"
+    },
+    "synonyms": {
+      "de": [
+        "Vollkornprodukte",
+        "Whole Grain"
+      ],
+      "en": [
+        "Whole-grain products",
+        "Whole grain"
+      ],
+      "es": [
+        "Productos integrales",
+        "Whole grain"
+      ],
+      "it": [
+        "Prodotti integrali",
+        "Whole grain"
+      ],
+      "pt": [
+        "Produtos integrais",
+        "Whole grain"
+      ],
+      "fr": [
+        "Produits complets",
+        "Whole grain"
+      ],
+      "tr": [
+        "Tam tahıl ürünleri",
+        "Whole grain"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Vollkorn enthält Randschichten mit Ballaststoffen, Vitaminen und Mineralstoffen. Es dämpft oft den Blutzuckeranstieg im Vergleich zu Auszugsmehl. Der Umbau gelingt schrittweise über Brot, Reis und Pasta.",
+      "en": "Whole grain retains outer layers with fiber, vitamins and minerals. It often blunts the blood glucose rise compared with refined flour. Switching works stepwise via bread, rice and pasta.",
+      "es": "El grano integral conserva las capas externas con fibra, vitaminas y minerales. Suele amortiguar el aumento de glucemia frente a la harina refinada. El cambio se logra paso a paso con pan, arroz y pasta.",
+      "it": "I cereali integrali conservano gli strati esterni con fibre, vitamine e minerali. Spesso attenuano l'aumento glicemico rispetto alla farina raffinata. Il passaggio riesce per gradi con pane, riso e pasta.",
+      "pt": "Os cereais integrais conservam camadas externas com fibra, vitaminas e minerais. Muitas vezes atenuam a subida da glicemia face à farinha refinada. A transição funciona passo a passo com pão, arroz e massa.",
+      "fr": "Les céréales complètes conservent les couches externes riches en fibres, vitamines et minéraux. Elles atténuent souvent la hausse glycémique par rapport à la farine blanche. Le passage se fait progressivement via pain, riz et pâtes.",
+      "tr": "Tam tahıl lif, vitamin ve mineral içeren dış katmanları korur. Rafine una göre kan şekeri yükselişini çoğu zaman yumuşatır. Geçiş ekmek, pirinç ve makarna ile kademeli olur."
+    },
+    "related_chapters": [
+      4,
+      5,
+      8
+    ]
+  },
+  {
+    "term_key": "Hülsenfrüchte",
+    "term": {
+      "de": "Hülsenfrüchte",
+      "en": "Legumes",
+      "es": "Legumbres",
+      "it": "Legumi",
+      "pt": "Leguminosas",
+      "fr": "Légumineuses",
+      "tr": "Baklagiller"
+    },
+    "synonyms": {
+      "de": [
+        "Leguminosen",
+        "Linsen",
+        "Bohnen",
+        "Kichererbsen"
+      ],
+      "en": [
+        "Pulses",
+        "Lentils",
+        "Beans",
+        "Chickpeas"
+      ],
+      "es": [
+        "Leguminosas",
+        "Lentejas",
+        "Judías",
+        "Garbanzos"
+      ],
+      "it": [
+        "Leguminose",
+        "Lenticchie",
+        "Fagioli",
+        "Ceci"
+      ],
+      "pt": [
+        "Leguminosas",
+        "Lentilhas",
+        "Feijão",
+        "Grão-de-bico"
+      ],
+      "fr": [
+        "Légumineuses",
+        "Lentilles",
+        "Haricots",
+        "Pois chiches"
+      ],
+      "tr": [
+        "Baklagiller",
+        "Mercimek",
+        "Fasulye",
+        "Nohut"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Hülsenfrüchte liefern Protein, Ballaststoffe und langsam verfügbare Kohlenhydrate. Sie haben meist einen günstigen glykämischen Index. Einweichen und gründliches Garen verbessert Verträglichkeit und Mineralstoffaufnahme.",
+      "en": "Legumes provide protein, fiber and slowly available carbohydrates. They usually have a favorable glycemic index. Soaking and thorough cooking improve tolerance and mineral absorption.",
+      "es": "Las legumbres aportan proteína, fibra e hidratos de carbono de disponibilidad lenta. Suelen tener un índice glucémico favorable. Remojo y cocción cuidadosa mejoran la tolerancia y la absorción de minerales.",
+      "it": "I legumi forniscono proteine, fibre e carboidrati a lenta disponibilità. Hanno di solito un indice glicemico favorevole. Ammollo e cottura accurata migliorano tollerabilità e assorbimento dei minerali.",
+      "pt": "As leguminosas fornecem proteína, fibra e hidratos de carbono de disponibilidade lenta. Têm geralmente um índice glicémico favorável. Demolho e cozedura completa melhoram tolerância e absorção de minerais.",
+      "fr": "Les légumineuses apportent protéines, fibres et glucides à disponibilité lente. Elles ont souvent un index glycémique favorable. Trempage et cuisson complète améliorent tolérance et absorption des minéraux.",
+      "tr": "Baklagiller protein, lif ve yavaş kullanılabilir karbonhidrat sağlar. Çoğu zaman elverişli glisemik indekse sahiptir. Islatma ve iyice pişirme toleransı ve mineral emilimini iyileştirir."
+    },
+    "related_chapters": [
+      4,
+      5,
+      6,
+      8
+    ]
+  },
+  {
+    "term_key": "Neutrophile",
+    "term": {
+      "de": "Neutrophile",
+      "en": "Neutrophils",
+      "es": "Neutrófilos",
+      "it": "Neutrofili",
+      "pt": "Neutrófilos",
+      "fr": "Neutrophiles",
+      "tr": "Nötrofiller"
+    },
+    "synonyms": {
+      "de": [
+        "Neutrophile Granulozyten",
+        "Neutros"
+      ],
+      "en": [
+        "Neutrophil granulocytes",
+        "Neutros"
+      ],
+      "es": [
+        "Granulocitos neutrófilos",
+        "Neutros"
+      ],
+      "it": [
+        "Granulociti neutrofili",
+        "Neutros"
+      ],
+      "pt": [
+        "Granulócitos neutrófilos",
+        "Neutros"
+      ],
+      "fr": [
+        "Granulocytes neutrophiles",
+        "Neutros"
+      ],
+      "tr": [
+        "Nötrofil granülositler",
+        "Neutros"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Neutrophile sind die häufigsten weißen Blutkörperchen und reagieren rasch auf bakterielle Infekte. Erhöhte Werte finden sich bei Entzündungen, Stress und Rauchen. Sehr niedrige Werte erhöhen das Infektionsrisiko und brauchen Abklärung.",
+      "en": "Neutrophils are the most common white blood cells and respond quickly to bacterial infections. Elevated values occur with inflammation, stress and smoking. Very low values raise infection risk and need evaluation.",
+      "es": "Los neutrófilos son los glóbulos blancos más frecuentes y reaccionan con rapidez a infecciones bacterianas. Valores elevados se encuentran en inflamaciones, estrés y tabaquismo. Valores muy bajos aumentan el riesgo de infección y requieren aclaración.",
+      "it": "I neutrofili sono i leucociti più comuni e reagiscono rapidamente alle infezioni batteriche. Valori elevati si trovano in infiammazione, stress e fumo. Valori molto bassi aumentano il rischio di infezione e richiedono accertamenti.",
+      "pt": "Os neutrófilos são os glóbulos brancos mais comuns e respondem rapidamente a infeções bacterianas. Valores elevados surgem com inflamação, stress e tabagismo. Valores muito baixos aumentam o risco de infeção e precisam de avaliação.",
+      "fr": "Les neutrophiles sont les globules blancs les plus fréquents et réagissent rapidement aux infections bactériennes. Des valeurs élevées s'observent en inflammation, stress et tabagisme. Des valeurs très basses augmentent le risque infectieux et nécessitent un bilan.",
+      "tr": "Nötrofiller en sık görülen akyuvarlardır ve bakteriyel enfeksiyonlara hızla yanıt verir. Yüksek değerler inflamasyon, stres ve sigarada görülür. Çok düşük değerler enfeksiyon riskini artırır ve değerlendirme gerektirir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Lymphozyten",
+    "term": {
+      "de": "Lymphozyten",
+      "en": "Lymphocytes",
+      "es": "Linfocitos",
+      "it": "Linfociti",
+      "pt": "Linfócitos",
+      "fr": "Lymphocytes",
+      "tr": "Lenfositler"
+    },
+    "synonyms": {
+      "de": [
+        "Lymphos",
+        "Lymphocyte Count"
+      ],
+      "en": [
+        "Lymphos",
+        "Lymphocyte count"
+      ],
+      "es": [
+        "Linfos",
+        "Lymphocyte count"
+      ],
+      "it": [
+        "Linfos",
+        "Conta dei linfociti"
+      ],
+      "pt": [
+        "Linfos",
+        "Contagem de linfócitos"
+      ],
+      "fr": [
+        "Lymphos",
+        "Numération des lymphocytes"
+      ],
+      "tr": [
+        "Lenfos",
+        "Lenfosit sayısı"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Lymphozyten steuern die gezielte Immunabwehr und umfassen T- und B-Zellen. Viral bedingte Infekte können sie erhöhen, während Stress oder Cortison sie senken. Das Differenzialblutbild setzt sie in Relation zu anderen Leukozyten.",
+      "en": "Lymphocytes drive adaptive immunity and include T and B cells. Viral infections can raise them, while stress or cortisone can lower them. The differential blood count relates them to other leukocytes.",
+      "es": "Los linfocitos dirigen la defensa inmunitaria específica e incluyen células T y B. Las infecciones virales pueden elevarlos, mientras que el estrés o la cortisona los bajan. La fórmula leucocitaria los sitúa en relación con otros leucocitos.",
+      "it": "I linfociti guidano l'immunità adattativa e includono cellule T e B. Infezioni virali possono aumentarli; stress o cortisone possono ridurli. L'emocromo differenziale li mette in relazione con altri leucociti.",
+      "pt": "Os linfócitos dirigem a imunidade adaptativa e incluem células T e B. Infeções virais podem elevá-los; stress ou cortisona podem baixá-los. O hemograma diferencial relaciona-os com outros leucócitos.",
+      "fr": "Les lymphocytes pilotent l'immunité adaptative et comprennent les cellules T et B. Les infections virales peuvent les élever; stress ou cortisone peuvent les baisser. La formule leucocytaire les situe par rapport aux autres leucocytes.",
+      "tr": "Lenfositler adaptif bağışıklığı yönetir ve T ile B hücrelerini kapsar. Viral enfeksiyonlar yükseltebilir; stres veya kortizon düşürebilir. Diferansiyel kan sayımı onları diğer lökositlerle ilişkilendirir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Monozyten",
+    "term": {
+      "de": "Monozyten",
+      "en": "Monocytes",
+      "es": "Monocitos",
+      "it": "Monociti",
+      "pt": "Monócitos",
+      "fr": "Monocytes",
+      "tr": "Monositler"
+    },
+    "synonyms": {
+      "de": [
+        "Monos"
+      ],
+      "en": [
+        "Monos"
+      ],
+      "es": [
+        "Monos"
+      ],
+      "it": [
+        "Monos"
+      ],
+      "pt": [
+        "Monos"
+      ],
+      "fr": [
+        "Monos"
+      ],
+      "tr": [
+        "Monos"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Monozyten sind Vorläufer der Gewebemakrophagen und an chronischen Entzündungsprozessen beteiligt. Leichte Erhöhungen kommen bei Infekten und Erholung vor. Extreme Veränderungen gehören hämatologisch abgeklärt.",
+      "en": "Monocytes are precursors of tissue macrophages and take part in chronic inflammatory processes. Mild elevations occur with infections and recovery. Extreme changes warrant hematologic evaluation.",
+      "es": "Los monocitos son precursores de los macrófagos tisulares y participan en procesos inflamatorios crónicos. Elevaciones leves aparecen en infecciones y recuperación. Cambios extremos requieren valoración hematológica.",
+      "it": "I monociti sono precursori dei macrofagi tissutali e partecipano a processi infiammatori cronici. Aumenti lievi si osservano in infezioni e convalescenza. Variazioni estreme richiedono valutazione ematologica.",
+      "pt": "Os monócitos são precursores dos macrófagos tecidulares e participam em processos inflamatórios crónicos. Elevações ligeiras ocorrem em infeções e na recuperação. Alterações extremas exigem esclarecimento hematológico.",
+      "fr": "Les monocytes sont les précurseurs des macrophages tissulaires et participent aux processus inflammatoires chroniques. Des élévations légères surviennent en infection et convalescence. Des variations extrêmes appellent un bilan hématologique.",
+      "tr": "Monositler doku makrofajlarının öncüleridir ve kronik inflamatuar süreçlere katılır. Hafif yükselmeler enfeksiyon ve iyileşmede görülür. Aşırı değişiklikler hematolojik değerlendirme gerektirir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Eosinophile",
+    "term": {
+      "de": "Eosinophile",
+      "en": "Eosinophils",
+      "es": "Eosinófilos",
+      "it": "Eosinofili",
+      "pt": "Eosinófilos",
+      "fr": "Éosinophiles",
+      "tr": "Eozinofiller"
+    },
+    "synonyms": {
+      "de": [
+        "Eos",
+        "Eosinophile Granulozyten"
+      ],
+      "en": [
+        "Eos",
+        "Eosinophil granulocytes"
+      ],
+      "es": [
+        "Eos",
+        "Granulocitos eosinófilos"
+      ],
+      "it": [
+        "Eos",
+        "Granulociti eosinofili"
+      ],
+      "pt": [
+        "Eos",
+        "Granulócitos eosinófilos"
+      ],
+      "fr": [
+        "Eos",
+        "Granulocytes éosinophiles"
+      ],
+      "tr": [
+        "Eos",
+        "Eozinofil granülositler"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Eosinophile sind an Allergien und Parasitenabwehr beteiligt. Erhöhte Werte passen zu Asthma, Heuschnupfen oder Wurminfekten. Medikamente und seltene Erkrankungen können das Bild ebenfalls verändern.",
+      "en": "Eosinophils are involved in allergies and parasite defense. Elevated values fit asthma, hay fever or worm infections. Medications and rare diseases can also change the picture.",
+      "es": "Los eosinófilos participan en alergias y defensa frente a parásitos. Valores elevados encajan con asma, fiebre del heno o infecciones por vermes. Medicamentos y enfermedades raras también pueden cambiar el cuadro.",
+      "it": "Gli eosinofili partecipano ad allergie e difesa dai parassiti. Valori elevati si adattano ad asma, raffreddore da fieno o elmintiasi. Farmaci e malattie rare possono pure modificare il quadro.",
+      "pt": "Os eosinófilos participam em alergias e defesa contra parasitas. Valores elevados encaixam com asma, febre dos fenos ou helmintíases. Medicamentos e doenças raros também podem alterar o quadro.",
+      "fr": "Les éosinophiles participent aux allergies et à la défense antiparasitaire. Des valeurs élevées correspondent à l'asthme, au rhume des foins ou aux helminthiases. Médicaments et maladies rares peuvent aussi modifier le tableau.",
+      "tr": "Eozinofiller alerji ve parazit savunusunda rol alır. Yüksek değerler astım, saman nezlesi veya bağırsak kurtlarıyla uyumludur. İlaçlar ve nadir hastalıklar da tabloyu değiştirebilir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Basophile",
+    "term": {
+      "de": "Basophile",
+      "en": "Basophils",
+      "es": "Basófilos",
+      "it": "Basofili",
+      "pt": "Basófilos",
+      "fr": "Basophiles",
+      "tr": "Bazofiller"
+    },
+    "synonyms": {
+      "de": [
+        "Basos",
+        "Basophile Granulozyten"
+      ],
+      "en": [
+        "Basos",
+        "Basophil granulocytes"
+      ],
+      "es": [
+        "Basos",
+        "Granulocitos basófilos"
+      ],
+      "it": [
+        "Basos",
+        "Granulociti basofili"
+      ],
+      "pt": [
+        "Basos",
+        "Granulócitos basófilos"
+      ],
+      "fr": [
+        "Basos",
+        "Granulocytes basophiles"
+      ],
+      "tr": [
+        "Basos",
+        "Bazofil granülositler"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Basophile sind seltene Leukozyten und an allergischen Reaktionen beteiligt. Isolierte Veränderungen sind oft wenig spezifisch. Im Gesamtkontext des Differenzialblutbildes gewinnen sie an Aussagekraft.",
+      "en": "Basophils are rare leukocytes involved in allergic reactions. Isolated changes are often nonspecific. In the overall context of the differential blood count they gain interpretive value.",
+      "es": "Los basófilos son leucocitos raros y participan en reacciones alérgicas. Cambios aislados suelen ser poco específicos. En el contexto global de la fórmula leucocitaria ganan valor informativo.",
+      "it": "I basofili sono leucociti rari coinvolti nelle reazioni allergiche. Variazioni isolate sono spesso poco specifiche. Nel contesto complessivo dell'emocromo differenziale guadagnano valore interpretativo.",
+      "pt": "Os basófilos são leucócitos raros envolvidos em reações alérgicas. Alterações isoladas são muitas vezes pouco específicas. No contexto global do hemograma diferencial ganham valor interpretativo.",
+      "fr": "Les basophiles sont des leucocytes rares impliqués dans les réactions allergiques. Des variations isolées sont souvent peu spécifiques. Dans le contexte global de la formule leucocytaire ils gagnent en valeur interprétative.",
+      "tr": "Bazofiller alerjik reaksiyonlarda yer alan nadir lökositlerdir. İzole değişiklikler çoğu zaman az özgündür. Diferansiyel kan sayımının genel bağlamında yorum değeri kazanırlar."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Myeloperoxidase Antikörper",
+    "term": {
+      "de": "Myeloperoxidase Antikörper",
+      "en": "Myeloperoxidase antibodies",
+      "es": "Anticuerpos antimieloperoxidasa",
+      "it": "Anticorpi anti-mieloperossidasi",
+      "pt": "Anticorpos anti-mieloperoxidase",
+      "fr": "Anticorps anti-myéloperoxydase",
+      "tr": "Miyeloperoksidaz antikorları"
+    },
+    "synonyms": {
+      "de": [
+        "MPO-Ak",
+        "p-ANCA Kontext"
+      ],
+      "en": [
+        "MPO-Ab",
+        "p-ANCA context"
+      ],
+      "es": [
+        "Ac anti-MPO",
+        "Contexto p-ANCA"
+      ],
+      "it": [
+        "Ac anti-MPO",
+        "Contesto p-ANCA"
+      ],
+      "pt": [
+        "Ac anti-MPO",
+        "Contexto p-ANCA"
+      ],
+      "fr": [
+        "Ac anti-MPO",
+        "Contexte p-ANCA"
+      ],
+      "tr": [
+        "MPO-Ak",
+        "p-ANCA bağlamı"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "MPO-Antikörper gehören zu den ANCA und werden bei bestimmten Gefäßentzündungen bestimmt. Sie sind kein Ernährungsparameter, erscheinen aber in erweiterten Laborprofilen. Die Interpretation ist hochspezialisiert.",
+      "en": "MPO antibodies are among the ANCA and are measured in certain vasculitides. They are not a nutrition parameter but appear in extended lab panels. Interpretation is highly specialized.",
+      "es": "Los anticuerpos anti-MPO pertenecen a los ANCA y se determinan en ciertas vasculitis. No son un parámetro nutricional, pero aparecen en perfiles analíticos ampliados. La interpretación es altamente especializada.",
+      "it": "Gli anticorpi MPO rientrano tra gli ANCA e si dosano in certe vasculiti. Non sono un parametro nutrizionale, ma compaiono in profili di laboratorio estesi. L'interpretazione è altamente specialistica.",
+      "pt": "Os anticorpos MPO pertencem aos ANCA e são doseados em certas vasculites. Não são um parâmetro nutricional, mas aparecem em painéis laboratoriais alargados. A interpretação é altamente especializada.",
+      "fr": "Les anticorps MPO font partie des ANCA et sont dosés dans certaines vascularites. Ce n'est pas un paramètre nutritionnel, mais ils figurent dans des bilans élargis. L'interprétation est hautement spécialisée.",
+      "tr": "MPO antikorları ANCA grubundadır ve belirli vaskülitlerde ölçülür. Beslenme parametresi değildir ama genişletilmiş laboratuvar panellerinde görülür. Yorum yüksek uzmanlık ister."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Vitamin A Serum",
+    "term": {
+      "de": "Vitamin A Serum",
+      "en": "Serum vitamin A",
+      "es": "Vitamina A sérica",
+      "it": "Vitamina A sierica",
+      "pt": "Vitamina A sérica",
+      "fr": "Vitamine A sérique",
+      "tr": "Serum A vitamini"
+    },
+    "synonyms": {
+      "de": [
+        "Retinol Serum",
+        "Serum-Vitamin-A"
+      ],
+      "en": [
+        "Serum retinol",
+        "Serum vitamin A"
+      ],
+      "es": [
+        "Retinol sérico",
+        "Vitamina A en suero"
+      ],
+      "it": [
+        "Retinolo sierico",
+        "Vitamina A sierica"
+      ],
+      "pt": [
+        "Retinol sérico",
+        "Vitamina A no soro"
+      ],
+      "fr": [
+        "Rétinol sérique",
+        "Vitamine A sérique"
+      ],
+      "tr": [
+        "Serum retinol",
+        "Serum A vitamini"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Der Vitamin-A-Serumwert wird selten routinemäßig gemessen und spiegelt vor allem schwere Mangel- oder Überdosierungszustände. Die Leber speichert große Mengen Retinol. Klinische Zeichen und Ernährungsanamnese bleiben wichtig.",
+      "en": "Serum vitamin A is rarely measured routinely and mainly reflects severe deficiency or overdose. The liver stores large amounts of retinol. Clinical signs and dietary history remain important.",
+      "es": "El valor sérico de vitamina A rara vez se mide de forma rutinaria y refleja sobre todo estados graves de deficiencia o sobredosis. El hígado almacena grandes cantidades de retinol. Signos clínicos e historia alimentaria siguen siendo importantes.",
+      "it": "La vitamina A sierica si misura raramente di routine e riflette soprattutto carenza grave o sovradosaggio. Il fegato accumula grandi quantità di retinolo. Segni clinici e anamnesi alimentare restano importanti.",
+      "pt": "A vitamina A sérica raramente se doseia de rotina e reflecte sobretudo deficiência grave ou sobredosagem. O fígado armazena grandes quantidades de retinol. Sinais clínicos e história alimentar continuam importantes.",
+      "fr": "La vitamine A sérique est rarement dosée en routine et reflète surtout une carence sévère ou un surdosage. Le foie stocke de grandes quantités de rétinol. Signes cliniques et anamnèse alimentaire restent importants.",
+      "tr": "Serum A vitamini nadiren rutin ölçülür ve başlıca ağır eksiklik veya aşırı doz durumlarını yansıtır. Karaciğer büyük miktarda retinol depolar. Klinik bulgular ve beslenme öyküsü önemli kalır."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Vitamin E Serum",
+    "term": {
+      "de": "Vitamin E Serum",
+      "en": "Serum vitamin E",
+      "es": "Vitamina E sérica",
+      "it": "Vitamina E sierica",
+      "pt": "Vitamina E sérica",
+      "fr": "Vitamine E sérique",
+      "tr": "Serum E vitamini"
+    },
+    "synonyms": {
+      "de": [
+        "Alpha-Tocopherol Serum"
+      ],
+      "en": [
+        "Serum alpha-tocopherol"
+      ],
+      "es": [
+        "Alfa-tocoferol sérico"
+      ],
+      "it": [
+        "Alfa-tocoferolo sierico"
+      ],
+      "pt": [
+        "Alfa-tocoferol sérico"
+      ],
+      "fr": [
+        "Alpha-tocophérol sérique"
+      ],
+      "tr": [
+        "Serum alfa-tokoferol"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Serum-Vitamin-E wird bei Verdacht auf Mangel durch Fettmalabsorption bestimmt. Der Wert korreliert mit Blutfetten und sollte im Kontext interpretiert werden. Alimentäre Unterversorgung ist in Industrieländern selten.",
+      "en": "Serum vitamin E is measured when deficiency from fat malabsorption is suspected. The value correlates with blood lipids and should be interpreted in context. Dietary under-supply is rare in industrialized countries.",
+      "es": "La vitamina E sérica se determina ante sospecha de deficiencia por malabsorción de grasas. El valor se correlaciona con los lípidos sanguíneos y debe interpretarse en contexto. La insuficiencia alimentaria es rara en países industrializados.",
+      "it": "La vitamina E sierica si dosano in sospetto di carenza da malassorbimento dei grassi. Il valore correla con i lipidi ematici e va interpretato nel contesto. La carenza alimentare è rara nei Paesi industrializzati.",
+      "pt": "A vitamina E sérica doseia-se perante suspeita de deficiência por má absorção de gorduras. O valor correlaciona com os lípidos sanguíneos e deve interpretar-se no contexto. A suboferta alimentar é rara em países industrializados.",
+      "fr": "La vitamine E sérique se dose en cas de suspicion de carence par malabsorption des lipides. La valeur corrèle avec les lipides sanguins et doit s'interpréter en contexte. La sous-alimentation en est rare dans les pays industrialisés.",
+      "tr": "Serum E vitamini yağ malabsorpsiyonuna bağlı eksiklik şüphesinde ölçülür. Değer kan yağlarıyla ilişkilidir ve bağlamda yorumlanmalıdır. Endüstrileşmiş ülkelerde besinsel yetersizlik nadirdir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "PTH-related Peptide",
+    "term": {
+      "de": "PTH-related Peptide",
+      "en": "PTH-related peptide",
+      "es": "Péptido relacionado con la PTH",
+      "it": "Peptide correlato al PTH",
+      "pt": "Peptídeo relacionado com a PTH",
+      "fr": "Peptide apparenté à la PTH",
+      "tr": "PTH ilişkili peptid"
+    },
+    "synonyms": {
+      "de": [
+        "PTHrP"
+      ],
+      "en": [
+        "PTHrP"
+      ],
+      "es": [
+        "PTHrP"
+      ],
+      "it": [
+        "PTHrP"
+      ],
+      "pt": [
+        "PTHrP"
+      ],
+      "fr": [
+        "PTHrP"
+      ],
+      "tr": [
+        "PTHrP"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "PTHrP wird bei unklaren Hypercalcämien gemessen, insbesondere wenn ein Tumorverdacht besteht. Es ahmt Parathormon-Effekte nach. Für die Alltagsernährung spielt es keine Rolle.",
+      "en": "PTHrP is measured in unexplained hypercalcemia, especially when tumor is suspected. It mimics parathyroid hormone effects. It plays no role in everyday nutrition.",
+      "es": "El PTHrP se mide en hipercalcemias poco claras, en especial si hay sospecha de tumor. Imita efectos de la parathormona. Para la alimentación cotidiana no desempeña ningún papel.",
+      "it": "Il PTHrP si dosano nelle ipercalcemie poco chiare, soprattutto con sospetto di tumore. Imita gli effetti del paratormone. Non ha ruolo nell'alimentazione quotidiana.",
+      "pt": "O PTHrP doseia-se em hipercalcemias pouco claras, sobretudo com suspeita de tumor. Imita efeitos da paratormona. Não tem papel na nutrição do dia a dia.",
+      "fr": "Le PTHrP se dose dans les hypercalcémies non élucidées, surtout en cas de suspicion tumorale. Il mime les effets de la parathormone. Il n'a aucun rôle dans l'alimentation quotidienne.",
+      "tr": "PTHrP açıklanamayan hiperkalsemide, özellikle tümör şüphesinde ölçülür. Paratiroid hormonu etkilerini taklit eder. Günlük beslenmede rolü yoktur."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Osteocalcin",
+    "term": {
+      "de": "Osteocalcin",
+      "en": "Osteocalcin",
+      "es": "Osteocalcina",
+      "it": "Osteocalcina",
+      "pt": "Osteocalcina",
+      "fr": "Ostéocalcine",
+      "tr": "Osteokalsin"
+    },
+    "synonyms": {
+      "de": [
+        "Knochenumbaumarker OC"
+      ],
+      "en": [
+        "Bone turnover marker OC"
+      ],
+      "es": [
+        "Marcador de formación ósea OC"
+      ],
+      "it": [
+        "Marcatore di rimodellamento osseo OC"
+      ],
+      "pt": [
+        "Marcador de remodelação óssea OC"
+      ],
+      "fr": [
+        "Marqueur de remodelage osseux OC"
+      ],
+      "tr": [
+        "Kemik döngü belirteci OC"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Osteocalcin ist ein Marker des Knochenaufbaus und vitamin-K-abhängig carboxyliert. Es wird in der Osteoporosediagnostik ergänzend genutzt. Calcium, Vitamin D und Belastungstraining bleiben die Basis der Knochengesundheit.",
+      "en": "Osteocalcin is a marker of bone formation and is vitamin K–dependent carboxylated. It is used as an adjunct in osteoporosis diagnostics. Calcium, vitamin D and weight-bearing exercise remain the basis of bone health.",
+      "es": "La osteocalcina es un marcador de formación ósea y se carboxila de forma dependiente de la vitamina K. Se usa de forma complementaria en el diagnóstico de osteoporosis. Calcio, vitamina D y entrenamiento de carga siguen siendo la base de la salud ósea.",
+      "it": "L'osteocalcina è un marcatore di neoformazione ossea e viene carbossilata in modo vitamina K-dipendente. Si usa in modo complementare nella diagnostica dell'osteoporosi. Calcio, vitamina D e allenamento con carico restano la base della salute ossea.",
+      "pt": "A osteocalcina é um marcador de formação óssea e é carboxilada de forma dependente da vitamina K. Usa-se de forma complementar no diagnóstico da osteoporose. Cálcio, vitamina D e treino de carga continuam a base da saúde óssea.",
+      "fr": "L'ostéocalcine est un marqueur de formation osseuse et est carboxylée de façon vitamine K-dépendante. Elle est utilisée en complément alimentaire dans le diagnostic de l'ostéoporose. Calcium, vitamine D et entraînement en charge restent la base de la santé osseuse.",
+      "tr": "Osteokalsin kemik yapım belirtecidir ve K vitaminine bağlı karboksile edilir. Osteoporoz tanısında tamamlayıcı kullanılır. Kalsiyum, D vitamini ve yük bindiren egzersiz kemik sağlığının temelidir."
+    },
+    "related_chapters": [
+      7,
+      9
+    ]
+  },
+  {
+    "term_key": "CrossLaps",
+    "term": {
+      "de": "CrossLaps",
+      "en": "CrossLaps",
+      "es": "CrossLaps",
+      "it": "CrossLaps",
+      "pt": "CrossLaps",
+      "fr": "CrossLaps",
+      "tr": "CrossLaps"
+    },
+    "synonyms": {
+      "de": [
+        "CTX",
+        "Knochenabbau-Marker"
+      ],
+      "en": [
+        "CTX",
+        "Bone resorption marker"
+      ],
+      "es": [
+        "CTX",
+        "Marcador de resorción ósea"
+      ],
+      "it": [
+        "CTX",
+        "Marcatore di riassorbimento osseo"
+      ],
+      "pt": [
+        "CTX",
+        "Marcador de reabsorção óssea"
+      ],
+      "fr": [
+        "CTX",
+        "Marqueur de résorption osseuse"
+      ],
+      "tr": [
+        "CTX",
+        "Kemik yıkım belirteci"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "CrossLaps spiegeln den Knochenabbau wider und werden nüchtern bestimmt. Sie helfen bei der Verlaufskontrolle einer Osteoporosetherapie. Ernährung und Bewegung beeinflussen den Knochenumsatz langfristig.",
+      "en": "CrossLaps reflect bone resorption and are measured fasting. They help monitor osteoporosis therapy over time. Diet and exercise influence bone turnover in the long run.",
+      "es": "Los CrossLaps reflejan la resorción ósea y se determinan en ayunas. Ayudan en el seguimiento de un tratamiento de osteoporosis. Alimentación y ejercicio influyen a largo plazo en el recambio óseo.",
+      "it": "I CrossLaps riflettono il riassorbimento osseo e si dosano a digiuno. Aiutano nel monitoraggio della terapia dell'osteoporosi. Alimentazione e movimento influenzano a lungo termine il turnover osseo.",
+      "pt": "Os CrossLaps refletem a reabsorção óssea e doseiam-se em jejum. Ajudam no seguimento da terapêutica da osteoporose. Alimentação e exercício influenciam a longo prazo a renovação óssea.",
+      "fr": "Les CrossLaps reflètent la résorption osseuse et se dosent à jeun. Ils aident au suivi d'un traitement de l'ostéoporose. Alimentation et activité physique influencent à long terme le turnover osseux.",
+      "tr": "CrossLaps kemik yıkımını yansıtır ve açlıkta ölçülür. Osteoporoz tedavisinin izleminde yardımcı olur. Beslenme ve hareket uzun vadede kemik döngüsünü etkiler."
+    },
+    "related_chapters": [
+      7,
+      9
+    ]
+  },
+  {
+    "term_key": "Vitamin K Status",
+    "term": {
+      "de": "Vitamin K Status",
+      "en": "Vitamin K status",
+      "es": "Estado de vitamina K",
+      "it": "Stato della vitamina K",
+      "pt": "Estado da vitamina K",
+      "fr": "Statut en vitamine K",
+      "tr": "K vitamini durumu"
+    },
+    "synonyms": {
+      "de": [
+        "untercarboxyliertes Osteocalcin",
+        "ucOC"
+      ],
+      "en": [
+        "Undercarboxylated osteocalcin",
+        "ucOC"
+      ],
+      "es": [
+        "Osteocalcina subcarboxilada",
+        "ucOC"
+      ],
+      "it": [
+        "Osteocalcina sottocarbossilata",
+        "ucOC"
+      ],
+      "pt": [
+        "Osteocalcina subcarboxilada",
+        "ucOC"
+      ],
+      "fr": [
+        "Ostéocalcine sous-carboxylée",
+        "ucOC"
+      ],
+      "tr": [
+        "Yetersiz karboksile osteokalsin",
+        "ucOC"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Indirekte Marker wie untercarboxyliertes Osteocalcin können Hinweise auf die Vitamin-K-Versorgung geben. Routinemäßig werden sie selten bestimmt. Grünes Blattgemüse bleibt die wichtigste Quelle für Phyllochinon.",
+      "en": "Indirect markers such as undercarboxylated osteocalcin can hint at vitamin K supply. They are rarely measured routinely. Green leafy vegetables remain the main source of phylloquinone.",
+      "es": "Marcadores indirectos como la osteocalcina subcarboxilada pueden dar indicios del aporte de vitamina K. Rara vez se determinan de forma rutinaria. Las verduras de hoja verde siguen siendo la fuente principal de filoquinona.",
+      "it": "Marcatori indiretti come l'osteocalcina sottocarbossilata possono dare indicazioni sullo stato di vitamina K. Di routine si dosano raramente. Le verdure a foglia verde restano la fonte principale di fillochinone.",
+      "pt": "Marcadores indiretos como a osteocalcina subcarboxilada podem dar pistas sobre o aporte de vitamina K. Raramente se doseiam de rotina. Hortícolas de folha verde continuam a principal fonte de filoquinona.",
+      "fr": "Des marqueurs indirects comme l'ostéocalcine sous-carboxylée peuvent renseigner sur l'apport en vitamine K. Ils sont rarement dosés en routine. Les légumes verts à feuilles restent la principale source de phylloquinone.",
+      "tr": "Yetersiz karboksile osteokalsin gibi dolaylı belirteçler K vitamini durumuna ipucu verebilir. Rutin olarak nadiren ölçülür. Yeşil yapraklı sebzeler fillokinonun başlıca kaynağı olmayı sürdürür."
+    },
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term_key": "Selen im Serum",
+    "term": {
+      "de": "Selen im Serum",
+      "en": "Serum selenium",
+      "es": "Selenio sérico",
+      "it": "Selenio sierico",
+      "pt": "Selénio sérico",
+      "fr": "Sélénium sérique",
+      "tr": "Serum selenyum"
+    },
+    "synonyms": {
+      "de": [
+        "Serumselen",
+        "Se serum"
+      ],
+      "en": [
+        "Serum selenium",
+        "Se serum"
+      ],
+      "es": [
+        "Selenio en suero",
+        "Se sérico"
+      ],
+      "it": [
+        "Selenio sierico",
+        "Se serum"
+      ],
+      "pt": [
+        "Selénio no soro",
+        "Se serum"
+      ],
+      "fr": [
+        "Sélénium sérique",
+        "Se serum"
+      ],
+      "tr": [
+        "Serum selenyum",
+        "Se serum"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Serumselen zeigt die aktuelle Selenversorgung und schwankt mit der Ernährung. Sehr hohe Werte können auf Überdosierung durch Nahrungsergänzung hinweisen. Der optimale Bereich ist schmaler als bei vielen anderen Nährstoffen.",
+      "en": "Serum selenium reflects current selenium status and varies with diet. Very high values can indicate overdose from supplements. The optimal range is narrower than for many other nutrients.",
+      "es": "El selenio sérico muestra el aporte actual de selenio y varía con la alimentación. Valores muy altos pueden indicar sobredosis por suplementos alimenticios. El rango óptimo es más estrecho que en muchos otros nutrientes.",
+      "it": "Il selenio sierico riflette lo stato attuale di selenio e varia con l'alimentazione. Valori molto alti possono indicare sovradosaggio da integratori alimentari. L'intervallo ottimale è più stretto che per molti altri nutrienti.",
+      "pt": "O selénio sérico reflecte o aporte atual de selénio e varia com a alimentação. Valores muito altos podem indicar sobredosagem por suplementos alimentares. O intervalo ótimo é mais estreito do que para muitos outros nutrientes.",
+      "fr": "Le sélénium sérique reflète l'apport actuel en sélénium et varie avec l'alimentation. Des valeurs très élevées peuvent indiquer un surdosage par compléments alimentaires. La zone optimale est plus étroite que pour beaucoup d'autres nutriments.",
+      "tr": "Serum selenyum mevcut selenyum durumunu gösterir ve beslenmeyle dalgalanır. Çok yüksek değerler gıda takviyesi aşırı dozuna işaret edebilir. Optimal aralık birçok diğer besin öğesine göre daha dardır."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Zink im Serum",
+    "term": {
+      "de": "Zink im Serum",
+      "en": "Serum zinc",
+      "es": "Zinc sérico",
+      "it": "Zinco sierico",
+      "pt": "Zinco sérico",
+      "fr": "Zinc sérique",
+      "tr": "Serum çinko"
+    },
+    "synonyms": {
+      "de": [
+        "Serumzink",
+        "Zn serum"
+      ],
+      "en": [
+        "Serum zinc",
+        "Zn serum"
+      ],
+      "es": [
+        "Zinc en suero",
+        "Zn sérico"
+      ],
+      "it": [
+        "Zinco sierico",
+        "Zn serum"
+      ],
+      "pt": [
+        "Zinco no soro",
+        "Zn serum"
+      ],
+      "fr": [
+        "Zinc sérique",
+        "Zn serum"
+      ],
+      "tr": [
+        "Serum çinko",
+        "Zn serum"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Serumzink kann bei akutem Infekt sinken und spiegelt die Speicher nur begrenzt wider. Dennoch ist es der gängigste Laborwert bei Verdacht auf Zinkmangel. Klinische Zeichen und Ernährung gehören zur Bewertung.",
+      "en": "Serum zinc can fall during acute infection and only partly reflects stores. Still it is the most common lab value when zinc deficiency is suspected. Clinical signs and diet belong in the assessment.",
+      "es": "El zinc sérico puede bajar en una infección aguda y refleja los depósitos solo de forma limitada. Aun así es el valor de laboratorio más habitual ante sospecha de deficiencia de zinc. Signos clínicos y alimentación forman parte de la valoración.",
+      "it": "Lo zinco sierico può scendere in infezione acuta e riflette solo in parte le riserve. Resta comunque il valore di laboratorio più comune in sospetto di carenza di zinco. Segni clinici e alimentazione rientrano nella valutazione.",
+      "pt": "O zinco sérico pode baixar em infeção aguda e reflecte apenas em parte as reservas. Ainda assim é o valor laboratorial mais comum perante suspeita de deficiência de zinco. Sinais clínicos e alimentação fazem parte da avaliação.",
+      "fr": "Le zinc sérique peut baisser en infection aiguë et ne reflète que partiellement les réserves. C'est pourtant la valeur de laboratoire la plus courante en suspicion de carence en zinc. Signes cliniques et alimentation font partie de l'évaluation.",
+      "tr": "Serum çinko akut enfeksiyonda düşebilir ve depoları yalnızca sınırlı yansıtır. Yine de çinko eksikliği şüphesinde en yaygın laboratuvar değeridir. Klinik bulgular ve beslenme değerlendirmeye dahildir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Kupfer im Serum",
+    "term": {
+      "de": "Kupfer im Serum",
+      "en": "Serum copper",
+      "es": "Cobre sérico",
+      "it": "Rame sierico",
+      "pt": "Cobre sérico",
+      "fr": "Cuivre sérique",
+      "tr": "Serum bakır"
+    },
+    "synonyms": {
+      "de": [
+        "Serumkupfer",
+        "Cu serum"
+      ],
+      "en": [
+        "Serum copper",
+        "Cu serum"
+      ],
+      "es": [
+        "Cobre en suero",
+        "Cu sérico"
+      ],
+      "it": [
+        "Rame sierico",
+        "Cu serum"
+      ],
+      "pt": [
+        "Cobre no soro",
+        "Cu serum"
+      ],
+      "fr": [
+        "Cuivre sérique",
+        "Cu serum"
+      ],
+      "tr": [
+        "Serum bakır",
+        "Cu serum"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Serumkupfer und Coeruloplasmin helfen bei der Abklärung von Kupferstoffwechselstörungen. Erhöhte Werte treten auch als Akute-Phase-Reaktion auf. Zinküberschuss kann Kupfer sekundär senken.",
+      "en": "Serum copper and ceruloplasmin help evaluate copper metabolism disorders. Elevated values also occur as an acute-phase reaction. Excess zinc can secondarily lower copper.",
+      "es": "El cobre sérico y la ceruloplasmina ayudan a aclarar trastornos del metabolismo del cobre. Valores elevados también aparecen como reacción de fase aguda. El exceso de zinc puede bajar el cobre de forma secundaria.",
+      "it": "Rame sierico e ceruloplasmina aiutano a chiarire disturbi del metabolismo del rame. Valori elevati compaiono anche come reazione di fase acuta. L'eccesso di zinco può abbassare secondariamente il rame.",
+      "pt": "O cobre sérico e a ceruloplasmina ajudam a esclarecer perturbações do metabolismo do cobre. Valores elevados também surgem como reação de fase aguda. O excesso de zinco pode baixar secundariamente o cobre.",
+      "fr": "Le cuivre sérique et la céruloplasmine aident à préciser les troubles du métabolisme du cuivre. Des valeurs élevées surviennent aussi comme réaction de phase aiguë. Un excès de zinc peut abaisser secondairement le cuivre.",
+      "tr": "Serum bakır ve seruloplazmin bakır metabolizması bozukluklarının açıklığa kavuşturulmasına yardım eder. Yüksek değerler akut faz reaksiyonu olarak da görülür. Çinko fazlalığı bakırı ikincil düşürebilir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Coeruloplasmin",
+    "term": {
+      "de": "Coeruloplasmin",
+      "en": "Ceruloplasmin",
+      "es": "Ceruloplasmina",
+      "it": "Ceruloplasmina",
+      "pt": "Ceruloplasmina",
+      "fr": "Céruloplasmine",
+      "tr": "Seruloplazmin"
+    },
+    "synonyms": {
+      "de": [
+        "Ceruloplasmin",
+        "CP"
+      ],
+      "en": [
+        "Ceruloplasmin",
+        "CP"
+      ],
+      "es": [
+        "Ceruloplasmina",
+        "CP"
+      ],
+      "it": [
+        "Ceruloplasmina",
+        "CP"
+      ],
+      "pt": [
+        "Ceruloplasmina",
+        "CP"
+      ],
+      "fr": [
+        "Céruloplasmine",
+        "CP"
+      ],
+      "tr": [
+        "Ceruloplasmin",
+        "CP"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Coeruloplasmin ist das wichtigste Kupfertransportprotein und ein Akute-Phase-Protein. Niedrige Werte passen zu Morbus Wilson oder schwerem Kupfermangel. Die Interpretation erfolgt zusammen mit Serumkupfer und Klinik.",
+      "en": "Ceruloplasmin is the main copper transport protein and an acute-phase protein. Low values fit Wilson disease or severe copper deficiency. Interpretation is done with serum copper and clinical findings.",
+      "es": "La ceruloplasmina es la principal proteína transportadora de cobre y una proteína de fase aguda. Valores bajos encajan con enfermedad de Wilson o deficiencia grave de cobre. La interpretación se hace junto con cobre sérico y clínica.",
+      "it": "La ceruloplasmina è la principale proteina di trasporto del rame e una proteina di fase acuta. Valori bassi si adattano alla malattia di Wilson o a grave carenza di rame. L'interpretazione avviene con rame sierico e clinica.",
+      "pt": "A ceruloplasmina é a principal proteína de transporte do cobre e uma proteína de fase aguda. Valores baixos encaixam com doença de Wilson ou deficiência grave de cobre. A interpretação faz-se com cobre sérico e clínica.",
+      "fr": "La céruloplasmine est la principale protéine de transport du cuivre et une protéine de phase aiguë. Des valeurs basses correspondent à la maladie de Wilson ou à une carence sévère en cuivre. L'interprétation se fait avec le cuivre sérique et la clinique.",
+      "tr": "Seruloplazmin başlıca bakır taşıyıcı protein ve bir akut faz proteinidir. Düşük değerler Wilson hastalığı veya ağır bakır eksikliğiyle uyumludur. Yorum serum bakır ve klinik ile birlikte yapılır."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Jod im Urin",
+    "term": {
+      "de": "Jod im Urin",
+      "en": "Urinary iodine",
+      "es": "Yodo en orina",
+      "it": "Iodio urinario",
+      "pt": "Iodo urinário",
+      "fr": "Iode urinaire",
+      "tr": "İdrarda iyot"
+    },
+    "synonyms": {
+      "de": [
+        "Urinjod",
+        "UIC"
+      ],
+      "en": [
+        "Urine iodine",
+        "UIC"
+      ],
+      "es": [
+        "Yodo urinario",
+        "UIC"
+      ],
+      "it": [
+        "Iodio urinaria",
+        "UIC"
+      ],
+      "pt": [
+        "Iodo na urina",
+        "UIC"
+      ],
+      "fr": [
+        "Iode urinaire",
+        "UIC"
+      ],
+      "tr": [
+        "İdrar iyodu",
+        "UIC"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Die Jodausscheidung im Urin schätzt die aktuelle Jodzufuhr und wird vor allem in Populationsstudien genutzt. Einzelmessungen streuen stark. Für Individuen zählen oft Klinik und Schilddrüsenlabor stärker.",
+      "en": "Urinary iodine excretion estimates current iodine intake and is used mainly in population studies. Single measurements vary widely. For individuals, clinical findings and thyroid labs often matter more.",
+      "es": "La excreción urinaria de yodo estima el aporte actual de yodo y se usa sobre todo en estudios poblacionales. Las mediciones individuales varían mucho. En individuos suelen pesar más la clínica y el laboratorio tiroideo.",
+      "it": "L'escrezione urinaria di iodio stima l'apporto attuale di iodio e si usa soprattutto negli studi di popolazione. Le singole misure variano molto. Per gli individui contano spesso di più clinica e laboratorio tiroideo.",
+      "pt": "A excreção urinária de iodo estima a ingestão atual de iodo e usa-se sobretudo em estudos populacionais. Medições isoladas variam muito. Em indivíduos, clínica e laboratório da tiroide costumam importar mais.",
+      "fr": "L'excrétion urinaire d'iode estime l'apport actuel en iode et s'utilise surtout dans les études de population. Les mesures individuelles varient fortement. Pour les individus, clinique et bilan thyroïdien comptent souvent davantage.",
+      "tr": "İdrarda iyot atılımı güncel iyot alımını tahmin eder ve başlıca popülasyon çalışmalarında kullanılır. Tek ölçümler çok saçılır. Bireylerde klinik ve tiroid laboratuvarı çoğu zaman daha önemlidir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Beta-Hydroxybutyrat",
+    "term": {
+      "de": "Beta-Hydroxybutyrat",
+      "en": "Beta-hydroxybutyrate",
+      "es": "Betahidroxibutirato",
+      "it": "Beta-idrossibutirrato",
+      "pt": "Beta-hidroxibutirato",
+      "fr": "Bêta-hydroxybutyrate",
+      "tr": "Beta-hidroksibütirat"
+    },
+    "synonyms": {
+      "de": [
+        "BHB Keton",
+        "3-Hydroxybutyrat"
+      ],
+      "en": [
+        "BHB ketone",
+        "3-hydroxybutyrate"
+      ],
+      "es": [
+        "Cetona BHB",
+        "3-hidroxibutirato"
+      ],
+      "it": [
+        "Chetone BHB",
+        "3-idrossibutirrato"
+      ],
+      "pt": [
+        "Cetona BHB",
+        "3-hidroxibutirato"
+      ],
+      "fr": [
+        "Cétone BHB",
+        "3-hydroxybutyrate"
+      ],
+      "tr": [
+        "BHB keton",
+        "3-hidroksibütirat"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Beta-Hydroxybutyrat ist der wichtigste messbare Ketonkörper im Blut. Milde Erhöhungen treten bei Low-Carb und Fasten auf. Sehr hohe Werte mit Übelkeit und Azidose erfordern sofortige medizinische Hilfe.",
+      "en": "Beta-hydroxybutyrate is the main measurable ketone body in blood. Mild elevations occur with low-carb diets and fasting. Very high values with nausea and acidosis need immediate medical care.",
+      "es": "El betahidroxibutirato es el cuerpo cetónico mensurable más importante en sangre. Elevaciones leves aparecen en low-carb y ayuno. Valores muy altos con náuseas y acidosis requieren ayuda médica inmediata.",
+      "it": "Il beta-idrossibutirrato è il principale corpo chetonico misurabile nel sangue. Aumenti lievi si osservano con low-carb e digiuno. Valori molto alti con nausea e acidosi richiedono aiuto medico immediato.",
+      "pt": "O beta-hidroxibutirato é o principal corpo cetónico mensurável no sangue. Elevações ligeiras ocorrem com low-carb e jejum. Valores muito altos com náuseas e acidose exigem ajuda médica imediata.",
+      "fr": "Le bêta-hydroxybutyrate est le principal corps cétonique mesurable dans le sang. Des élévations légères surviennent en low-carb et jeûne. Des valeurs très élevées avec nausées et acidose nécessitent une aide médicale immédiate.",
+      "tr": "Beta-hidroksibütirat kanda ölçülebilen başlıca keton cisimidir. Hafif yükselmeler düşük karbonhidrat ve oruçta görülür. Bulantı ve asidozla çok yüksek değerler acil tıbbi yardım gerektirir."
+    },
+    "related_chapters": [
+      1,
+      6,
+      9
+    ]
+  },
+  {
+    "term_key": "Insulinsekretion",
+    "term": {
+      "de": "Insulinsekretion",
+      "en": "Insulin secretion",
+      "es": "Secreción de insulina",
+      "it": "Secrezione di insulina",
+      "pt": "Secreção de insulina",
+      "fr": "Sécrétion d'insuline",
+      "tr": "İnsülin salgısı"
+    },
+    "synonyms": {
+      "de": [
+        "Betazellfunktion",
+        "Insulinausschüttung"
+      ],
+      "en": [
+        "Beta-cell function",
+        "Insulin release"
+      ],
+      "es": [
+        "Función de células beta",
+        "Liberación de insulina"
+      ],
+      "it": [
+        "Funzione delle cellule beta",
+        "Rilascio di insulina"
+      ],
+      "pt": [
+        "Função das células beta",
+        "Libertação de insulina"
+      ],
+      "fr": [
+        "Fonction des cellules bêta",
+        "Libération d'insuline"
+      ],
+      "tr": [
+        "Beta hücre işlevi",
+        "İnsülin salınımı"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Die Insulinsekretion beschreibt, wie viel Insulin die Bauchspeicheldrüse freisetzt. C-Peptid hilft, die Eigenproduktion einzuschätzen. Überforderung der Betazellen kann langfristig in Typ-2-Diabetes münden.",
+      "en": "Insulin secretion describes how much insulin the pancreas releases. C-peptide helps estimate endogenous production. Overloading beta cells can long-term lead to type 2 diabetes.",
+      "es": "La secreción de insulina describe cuánta insulina libera el páncreas. El péptido C ayuda a estimar la producción propia. La sobrecarga de las células beta puede conducir a largo plazo a diabetes tipo 2.",
+      "it": "La secrezione di insulina descrive quanta insulina rilascia il pancreas. Il C-peptide aiuta a stimare la produzione endogena. Il sovraccarico delle cellule beta può portare a lungo termine al diabete di tipo 2.",
+      "pt": "A secreção de insulina descreve quanta insulina o pâncreas liberta. O peptídeo C ajuda a estimar a produção própria. A sobrecarga das células beta pode, a longo prazo, conduzir a diabetes tipo 2.",
+      "fr": "La sécrétion d'insuline décrit combien d'insuline le pancréas libère. Le peptide C aide à estimer la production endogène. La surcharge des cellules bêta peut à long terme aboutir au diabète de type 2.",
+      "tr": "İnsülin salgısı pankreasın ne kadar insülin saldığını tanımlar. C-peptid kendi üretimi tahmin etmeye yardım eder. Beta hücrelerinin aşırı yüklenmesi uzun vadede tip 2 diyabete yol açabilir."
+    },
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Glukosetoxizität",
+    "term": {
+      "de": "Glukosetoxizität",
+      "en": "Glucotoxicity",
+      "es": "Glucotoxicidad",
+      "it": "Glucotossicità",
+      "pt": "Glucotoxicidade",
+      "fr": "Glucotoxicité",
+      "tr": "Glukotoksisite"
+    },
+    "synonyms": {
+      "de": [
+        "Glucose Toxicity"
+      ],
+      "en": [
+        "Glucose toxicity"
+      ],
+      "es": [
+        "Glucose toxicity"
+      ],
+      "it": [
+        "Tossicità da glucosio"
+      ],
+      "pt": [
+        "Toxicidade da glicose"
+      ],
+      "fr": [
+        "Toxicité du glucose"
+      ],
+      "tr": [
+        "Glukoz toksisitesi"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Anhaltend hohe Glukosespiegel schädigen Betazellen und Insulinempfindlichkeit zusätzlich. Das verschlechtert die Blutzuckerkontrolle in einem Teufelskreis. Senkung der Glukoselast durch Kost und Bewegung durchbricht ihn.",
+      "en": "Persistently high glucose further damages beta cells and insulin sensitivity. That worsens blood glucose control in a vicious cycle. Lowering the glucose load via diet and exercise breaks it.",
+      "es": "Niveles de glucosa persistentemente altos dañan además las células beta y la sensibilidad a la insulina. Eso empeora el control glucémico en un círculo vicioso. Bajar la carga de glucosa con dieta y ejercicio lo rompe.",
+      "it": "La glicemia persistentemente alta danneggia ulteriormente cellule beta e sensibilità insulinica. Ciò peggiora il controllo glicemico in un circolo vizioso. Ridurre il carico di glucosio con dieta e movimento lo interrompe.",
+      "pt": "Níveis de glicose persistentemente altos danificam adicionalmente as células beta e a sensibilidade à insulina. Isso piora o controlo glicémico num círculo vicioso. Reduzir a carga de glicose com alimentação e exercício interrompe-o.",
+      "fr": "Une glycémie durablement élevée endommage encore cellules bêta et sensibilité à l'insuline. Cela aggrave le contrôle glycémique dans un cercle vicieux. Réduire la charge glucidique par alimentation et mouvement le brise.",
+      "tr": "Sürekli yüksek glukoz beta hücrelerini ve insülin duyarlılığını daha da bozar. Bu, kısır döngüde kan şekeri kontrolünü kötüleştirir. Beslenme ve hareketle glukoz yükünü düşürmek döngüyü kırar."
+    },
+    "related_chapters": [
+      1,
+      3,
+      5,
+      7
+    ]
+  },
+  {
+    "term_key": "Lipotoxizität",
+    "term": {
+      "de": "Lipotoxizität",
+      "en": "Lipotoxicity",
+      "es": "Lipotoxicidad",
+      "it": "Lipotossicità",
+      "pt": "Lipotoxicidade",
+      "fr": "Lipotoxicité",
+      "tr": "Lipotoksisite"
+    },
+    "synonyms": {
+      "de": [
+        "Lipotoxicity"
+      ],
+      "en": [
+        "Lipotoxicity"
+      ],
+      "es": [
+        "Lipotoxicity"
+      ],
+      "it": [
+        "Lipotossicità"
+      ],
+      "pt": [
+        "Lipotoxicidade"
+      ],
+      "fr": [
+        "Lipotoxicité"
+      ],
+      "tr": [
+        "Lipotoksisite"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Lipotoxizität beschreibt die Schädigung von Leber, Muskel und Betazellen durch überschüssige Fettmetabolite. Sie hängt eng mit Insulinresistenz zusammen. Gewichtsreduktion und weniger Zuckerüberschuss mindern die Last.",
+      "en": "Lipotoxicity describes damage to liver, muscle and beta cells by excess fat metabolites. It is closely linked to insulin resistance. Weight loss and less sugar excess reduce the load.",
+      "es": "La lipotoxicidad describe el daño de hígado, músculo y células beta por metabolitos grasos en exceso. Está estrechamente ligada a la resistencia a la insulina. La pérdida de peso y menos exceso de azúcar reducen la carga.",
+      "it": "La lipotossicità descrive il danno a fegato, muscolo e cellule beta da metaboliti lipidici in eccesso. È strettamente legata alla resistenza insulinica. Perdita di peso e meno eccesso di zucchero riducono il carico.",
+      "pt": "A lipotoxicidade descreve a lesão de fígado, músculo e células beta por metabolitos gordos em excesso. Liga-se estreitamente à resistência à insulina. Perda de peso e menos excesso de açúcar reduzem a carga.",
+      "fr": "La lipotoxicité décrit l'atteinte du foie, du muscle et des cellules bêta par des métabolites lipidiques en excès. Elle est étroitement liée à l'insulinorésistance. Perte de poids et moins d'excès de sucre réduisent la charge.",
+      "tr": "Lipotoksisite aşırı yağ metabolitlerinin karaciğer, kas ve beta hücrelerine zararını tanımlar. İnsülin direnciyle yakından bağlantılıdır. Kilo kaybı ve daha az şeker fazlalığı yükü azaltır."
+    },
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Second Meal Effect",
+    "term": {
+      "de": "Second Meal Effect",
+      "en": "Second meal effect",
+      "es": "Efecto de la segunda comida",
+      "it": "Effetto del secondo pasto",
+      "pt": "Efeito da segunda refeição",
+      "fr": "Effet du second repas",
+      "tr": "İkinci öğün etkisi"
+    },
+    "synonyms": {
+      "de": [
+        "Zweite-Mahlzeit-Effekt"
+      ],
+      "en": [
+        "Second-meal effect"
+      ],
+      "es": [
+        "Efecto second meal"
+      ],
+      "it": [
+        "Effetto del pasto successivo"
+      ],
+      "pt": [
+        "Efeito da refeição seguinte"
+      ],
+      "fr": [
+        "Effet du repas suivant"
+      ],
+      "tr": [
+        "Sonraki öğün etkisi"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Der Second Meal Effect beschreibt, dass eine ballaststoffreiche Vormahlzeit den Blutzuckeranstieg der nächsten Mahlzeit dämpfen kann. Resistente Stärke und Essig werden in diesem Zusammenhang diskutiert. Er erklärt, warum Frühstücksqualität den Tag mitprägt.",
+      "en": "The second meal effect describes how a fiber-rich prior meal can blunt the blood glucose rise of the next meal. Resistant starch and vinegar are discussed in this context. It helps explain why breakfast quality shapes the day.",
+      "es": "El efecto de la segunda comida describe que una comida previa rica en fibra puede amortiguar el aumento de glucemia de la siguiente. En este contexto se discuten el almidón resistente y el vinagre. Explica por qué la calidad del desayuno marca el día.",
+      "it": "L'effetto del secondo pasto descrive come un pasto precedente ricco di fibre possa attenuare l'aumento glicemico del pasto successivo. Amido resistente e aceto sono discussi in questo contesto. Spiega perché la qualità della colazione influenza la giornata.",
+      "pt": "O efeito da segunda refeição descreve como uma refeição prévia rica em fibra pode atenuar a subida da glicemia da refeição seguinte. Amido resistente e vinagre são discutidos neste contexto. Explica por que a qualidade do pequeno-almoço marca o dia.",
+      "fr": "L'effet du second repas décrit qu'un repas préalable riche en fibres peut atténuer la hausse glycémique du repas suivant. Amidon résistant et vinaigre sont discutés dans ce contexte. Il explique pourquoi la qualité du petit-déjeuner façonne la journée.",
+      "tr": "İkinci öğün etkisi lif açısından zengin önceki öğünün sonraki öğünün kan şekeri yükselişini yumuşatabileceğini tanımlar. Dirençli nişasta ve sirke bu bağlamda tartışılır. Kahvaltı kalitesinin günü neden şekillendirdiğini açıklar."
+    },
+    "related_chapters": [
+      4,
+      5,
+      8
+    ]
+  },
+  {
+    "term_key": "Essensreihenfolge",
+    "term": {
+      "de": "Essensreihenfolge",
+      "en": "Meal order",
+      "es": "Orden de la comida",
+      "it": "Ordine dei cibi",
+      "pt": "Ordem das refeições",
+      "fr": "Ordre des aliments",
+      "tr": "Yemek sırası"
+    },
+    "synonyms": {
+      "de": [
+        "Food Order",
+        "Gemüse zuerst"
+      ],
+      "en": [
+        "Food order",
+        "Vegetables first"
+      ],
+      "es": [
+        "Food order",
+        "Verdura primero"
+      ],
+      "it": [
+        "Food order",
+        "Verdure prima"
+      ],
+      "pt": [
+        "Food order",
+        "Vegetais primeiro"
+      ],
+      "fr": [
+        "Food order",
+        "Légumes d'abord"
+      ],
+      "tr": [
+        "Food order",
+        "Önce sebze"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Die Essensreihenfolge beeinflusst den postprandialen Blutzucker messbar. Wer zuerst Gemüse und Protein isst und Kohlenhydrate danach, dämpft oft die Spitze. Es ist ein einfacher Alltagstrick ohne Kalorienzählen.",
+      "en": "Meal order measurably affects postprandial blood glucose. Eating vegetables and protein first, then carbohydrates, often blunts the peak. It is a simple everyday trick without calorie counting.",
+      "es": "El orden de la comida influye de forma mensurable en la glucemia posprandial. Quien come primero verdura y proteína y después los hidratos suele amortiguar el pico. Es un truco cotidiano sencillo sin contar calorías.",
+      "it": "L'ordine dei cibi influenza in modo misurabile la glicemia postprandiale. Chi mangia prima verdure e proteine e poi i carboidrati spesso attenua il picco. È un semplice trucco quotidiano senza contare le calorie.",
+      "pt": "A ordem da refeição influencia de forma mensurável a glicemia pós-prandial. Quem come primeiro vegetais e proteína e depois hidratos de carbono muitas vezes atenua o pico. É um truque quotidiano simples sem contar calorias.",
+      "fr": "L'ordre des aliments influence de façon mesurable la glycémie postprandiale. Manger d'abord légumes et protéines puis les glucides atténue souvent le pic. C'est une astuce simple du quotidien sans compter les calories.",
+      "tr": "Yemek sırası tokluk kan şekerini ölçülebilir biçimde etkiler. Önce sebze ve protein, sonra karbonhidrat yemek çoğu zaman zirveyi yumuşatır. Kalori saymadan basit bir günlük hiledir."
+    },
+    "related_chapters": [
+      5,
+      8,
+      1
+    ]
+  },
+  {
+    "term_key": "Portionskontrolle",
+    "term": {
+      "de": "Portionskontrolle",
+      "en": "Portion control",
+      "es": "Control de porciones",
+      "it": "Controllo delle porzioni",
+      "pt": "Controlo de porções",
+      "fr": "Contrôle des portions",
+      "tr": "Porsiyon kontrolü"
+    },
+    "synonyms": {
+      "de": [
+        "Portionsgröße",
+        "Serving Size"
+      ],
+      "en": [
+        "Portion size",
+        "Serving size"
+      ],
+      "es": [
+        "Tamaño de porción",
+        "Serving size"
+      ],
+      "it": [
+        "Dimensione della porzione",
+        "Serving size"
+      ],
+      "pt": [
+        "Tamanho da porção",
+        "Serving size"
+      ],
+      "fr": [
+        "Taille de portion",
+        "Serving size"
+      ],
+      "tr": [
+        "Porsiyon boyutu",
+        "Serving size"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Portionskontrolle steuert Energie- und Kohlenhydratzufuhr unabhängig vom Lebensmittellabel. Große Teller und Packungsgrößen fördern Überessen. Bewusste Mengen helfen besonders bei energiedichten Produkten.",
+      "en": "Portion control manages energy and carbohydrate intake independent of the food label. Large plates and pack sizes promote overeating. Mindful amounts help especially with energy-dense products.",
+      "es": "El control de porciones regula el aporte de energía e hidratos de carbono con independencia de la etiqueta del alimento. Platos y envases grandes favorecen el sobreconsumo. Cantidades conscientes ayudan sobre todo en productos densos en energía.",
+      "it": "Il controllo delle porzioni regola l'apporto di energia e carboidrati indipendentemente dall'etichetta. Piatti e confezioni grandi favoriscono il sovraconsumo. Quantità consapevoli aiutano soprattutto con prodotti ad alta densità energetica.",
+      "pt": "O controlo de porções regula a ingestão de energia e hidratos de carbono independentemente do rótulo. Pratos e embalagens grandes favorecem o excesso. Quantidades conscientes ajudam sobretudo com produtos densos em energia.",
+      "fr": "Le contrôle des portions régule l'apport énergétique et glucidique indépendamment de l'étiquette. Grands assiettes et formats favorisent la surconsommation. Des quantités conscientes aident surtout pour les produits denses en énergie.",
+      "tr": "Porsiyon kontrolü gıda etiketinden bağımsız enerji ve karbonhidrat alımını yönetir. Büyük tabak ve paketler aşırı yemeyi teşvik eder. Bilinçli miktarlar özellikle enerji yoğun ürünlerde yardımcı olur."
+    },
+    "related_chapters": [
+      8,
+      10,
+      6
+    ]
+  },
+  {
+    "term_key": "Mahlzeitfrequenz",
+    "term": {
+      "de": "Mahlzeitfrequenz",
+      "en": "Meal frequency",
+      "es": "Frecuencia de comidas",
+      "it": "Frequenza dei pasti",
+      "pt": "Frequência das refeições",
+      "fr": "Fréquence des repas",
+      "tr": "Öğün sıklığı"
+    },
+    "synonyms": {
+      "de": [
+        "Essensfrequenz",
+        "Meal Timing"
+      ],
+      "en": [
+        "Eating frequency",
+        "Meal timing"
+      ],
+      "es": [
+        "Frecuencia alimentaria",
+        "Meal timing"
+      ],
+      "it": [
+        "Frequenza dei pasti",
+        "Tempistica dei pasti"
+      ],
+      "pt": [
+        "Frequência das refeições",
+        "Horário das refeições"
+      ],
+      "fr": [
+        "Fréquence des prises alimentaires",
+        "Horaires des repas"
+      ],
+      "tr": [
+        "Yemek sıklığı",
+        "Öğün zamanlaması"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Die Mahlzeitfrequenz ist individuell: Manche stabilisieren den Hunger mit drei Mahlzeiten, andere mit klaren Pausen. Spätes Nachtessen kann die Glukoseantwort verschlechtern. Qualität und Gesamtkalorien bleiben entscheidend.",
+      "en": "Meal frequency is individual: some stabilize hunger with three meals, others with clear gaps. Late-night eating can worsen the glucose response. Quality and total calories remain decisive.",
+      "es": "La frecuencia de comidas es individual: algunos estabilizan el hambre con tres comidas; otros, con pausas claras. Cenar tarde puede empeorar la respuesta glucémica. Calidad y calorías totales siguen siendo decisivas.",
+      "it": "La frequenza dei pasti è individuale: alcuni stabilizzano la fame con tre pasti, altri con pause chiare. Mangiare tardi la sera può peggiorare la risposta glicemica. Qualità e calorie totali restano decisive.",
+      "pt": "A frequência das refeições é individual: uns estabilizam a fome com três refeições, outros com pausas claras. Jantar tarde pode piorar a resposta glicémica. Qualidade e calorias totais continuam a ser decisivas.",
+      "fr": "La fréquence des repas est individuelle: certains stabilisent la faim avec trois repas, d'autres avec des pauses claires. Manger tard le soir peut aggraver la réponse glycémique. Qualité et calories totales restent décisives.",
+      "tr": "Öğün sıklığı bireyseldir: bazıları üç öğünle açlığı dengeler, bazıları net aralarla. Geç gece yemek glukoz yanıtını bozabilir. Kalite ve toplam kalori belirleyici kalır."
+    },
+    "related_chapters": [
+      8,
+      5
+    ]
+  },
+  {
+    "term_key": "Vitamin D2 vs D3",
+    "term": {
+      "de": "Vitamin D2 vs D3",
+      "en": "Vitamin D2 vs D3",
+      "es": "Vitamina D2 frente a D3",
+      "it": "Vitamina D2 vs D3",
+      "pt": "Vitamina D2 vs D3",
+      "fr": "Vitamine D2 vs D3",
+      "tr": "D2 vs D3 vitamini"
+    },
+    "synonyms": {
+      "de": [
+        "D2 und D3 Vergleich"
+      ],
+      "en": [
+        "D2 and D3 comparison"
+      ],
+      "es": [
+        "Comparación D2 y D3"
+      ],
+      "it": [
+        "Confronto D2 e D3"
+      ],
+      "pt": [
+        "Comparação D2 e D3"
+      ],
+      "fr": [
+        "Comparaison D2 et D3"
+      ],
+      "tr": [
+        "D2 ve D3 karşılaştırması"
+      ]
+    },
+    "category": {
+      "de": "Vitamin",
+      "en": "Vitamin",
+      "es": "Vitamina",
+      "it": "Vitamina",
+      "pt": "Vitamina",
+      "fr": "Vitamine",
+      "tr": "Vitamin"
+    },
+    "short_description": {
+      "de": "Vitamin D3 hebt den 25-OH-D-Spiegel in den meisten Studien effizienter an als D2. Beide Formen können einen Mangel korrigieren, wenn die Dosis stimmt. Laborkontrollen zeigen, welche Strategie greift.",
+      "en": "Vitamin D3 raises 25-OH-D levels more efficiently than D2 in most studies. Both forms can correct deficiency when the dose is right. Lab checks show which strategy works.",
+      "es": "La vitamina D3 eleva el nivel de 25-OH-D en la mayoría de los estudios de forma más eficiente que la D2. Ambas formas pueden corregir una deficiencia si la dosis es adecuada. Los controles de laboratorio muestran qué estrategia funciona.",
+      "it": "La vitamina D3 alza il 25-OH-D in modo più efficiente della D2 nella maggior parte degli studi. Entrambe le forme possono correggere una carenza se la dose è corretta. I controlli di laboratorio mostrano quale strategia funziona.",
+      "pt": "A vitamina D3 eleva o 25-OH-D de forma mais eficiente do que a D2 na maioria dos estudos. Ambas as formas podem corrigir uma deficiência se a dose for adequada. Controlos laboratoriais mostram qual estratégia funciona.",
+      "fr": "La vitamine D3 élève le 25-OH-D plus efficacement que la D2 dans la plupart des études. Les deux formes peuvent corriger une carence si la dose est adaptée. Les contrôles biologiques montrent quelle stratégie fonctionne.",
+      "tr": "D3 vitamini çoğu çalışmada 25-OH-D düzeyini D2'den daha verimli yükseltir. Doz doğruysa her iki form da eksikliği düzeltebilir. Laboratuvar kontrolleri hangi stratejinin işe yaradığını gösterir."
+    },
+    "related_chapters": [
+      9,
+      11
+    ]
+  },
+  {
+    "term_key": "Aktives Vitamin B6",
+    "term": {
+      "de": "Aktives Vitamin B6",
+      "en": "Active vitamin B6",
+      "es": "Vitamina B6 activa",
+      "it": "Vitamina B6 attiva",
+      "pt": "Vitamina B6 ativa",
+      "fr": "Vitamine B6 active",
+      "tr": "Aktif B6 vitamini"
+    },
+    "synonyms": {
+      "de": [
+        "P5P",
+        "Pyridoxal-5-phosphat"
+      ],
+      "en": [
+        "P5P",
+        "Pyridoxal 5-phosphate"
+      ],
+      "es": [
+        "P5P",
+        "Piridoxal-5-fosfato"
+      ],
+      "it": [
+        "P5P",
+        "Piridossal-5-fosfato"
+      ],
+      "pt": [
+        "P5P",
+        "Piridoxal-5-fosfato"
+      ],
+      "fr": [
+        "P5P",
+        "Pyridoxal-5-phosphate"
+      ],
+      "tr": [
+        "P5P",
+        "Piridoksal-5-fosfat"
+      ]
+    },
+    "category": {
+      "de": "Vitamin",
+      "en": "Vitamin",
+      "es": "Vitamina",
+      "it": "Vitamina",
+      "pt": "Vitamina",
+      "fr": "Vitamine",
+      "tr": "Vitamin"
+    },
+    "short_description": {
+      "de": "Pyridoxal-5-phosphat ist die coenzymatisch aktive Form von Vitamin B6. Manche Nahrungsergänzung liefern direkt P5P statt Pyridoxin. Für Gesunde ist der Vorteil gegenüber Standardformen nicht immer belegt.",
+      "en": "Pyridoxal 5-phosphate is the coenzymatically active form of vitamin B6. Some supplements provide P5P directly instead of pyridoxine. For healthy people the advantage over standard forms is not always proven.",
+      "es": "El piridoxal-5-fosfato es la forma coenzimáticamente activa de la vitamina B6. Algunos suplementos alimenticios aportan P5P directamente en lugar de piridoxina. En personas sanas la ventaja frente a las formas estándar no siempre está demostrada.",
+      "it": "Il piridossal-5-fosfato è la forma coenzimaticamente attiva della vitamina B6. Alcuni integratori alimentari forniscono direttamente P5P invece di piridossina. Nei sani il vantaggio rispetto alle forme standard non è sempre dimostrato.",
+      "pt": "O piridoxal-5-fosfato é a forma coenzimaticamente ativa da vitamina B6. Alguns suplementos alimentares fornecem P5P diretamente em vez de piridoxina. Em pessoas saudáveis a vantagem face às formas padrão nem sempre está comprovada.",
+      "fr": "Le pyridoxal-5-phosphate est la forme coenzymatiquement active de la vitamine B6. Certains compléments alimentaires apportent directement du P5P plutôt que de la pyridoxine. Chez les personnes en bonne santé l'avantage par rapport aux formes standard n'est pas toujours prouvé.",
+      "tr": "Piridoksal-5-fosfat B6 vitamininin koenzimatik aktif formudur. Bazı gıda takviyeleri piridoksin yerine doğrudan P5P sağlar. Sağlıklılarda standart formlara üstünlük her zaman kanıtlanmamıştır."
+    },
+    "related_chapters": [
+      9,
+      11
+    ]
+  },
+  {
+    "term_key": "Natriumfluorid",
+    "term": {
+      "de": "Natriumfluorid",
+      "en": "Sodium fluoride",
+      "es": "Fluoruro de sodio",
+      "it": "Fluoruro di sodio",
+      "pt": "Fluoreto de sódio",
+      "fr": "Fluorure de sodium",
+      "tr": "Sodyum florür"
+    },
+    "synonyms": {
+      "de": [
+        "NaF",
+        "Fluorid Salzform"
+      ],
+      "en": [
+        "NaF",
+        "Fluoride salt form"
+      ],
+      "es": [
+        "NaF",
+        "Forma salina de fluoruro"
+      ],
+      "it": [
+        "NaF",
+        "Forma salina del fluoruro"
+      ],
+      "pt": [
+        "NaF",
+        "Forma salina de fluoreto"
+      ],
+      "fr": [
+        "NaF",
+        "Forme sel du fluorure"
+      ],
+      "tr": [
+        "NaF",
+        "Florür tuz formu"
+      ]
+    },
+    "category": {
+      "de": "Spurenelement",
+      "en": "Trace element",
+      "es": "Oligoelemento",
+      "it": "Oligoelemento",
+      "pt": "Oligoelemento",
+      "fr": "Oligoélément",
+      "tr": "İz element"
+    },
+    "short_description": {
+      "de": "Natriumfluorid wurde historisch in der Kariesprophylaxe und Osteoporoseforschung eingesetzt. Heute dominiert die lokale Fluoridanwendung über Zahnpasta. Systemische Hochdosen gehören nicht in die Selbstmedikation.",
+      "en": "Sodium fluoride was historically used in caries prevention and osteoporosis research. Today local fluoride use via toothpaste dominates. Systemic high doses do not belong in self-medication.",
+      "es": "El fluoruro de sodio se usó históricamente en la prevención de caries y en investigación sobre osteoporosis. Hoy domina la aplicación local de fluoruro con pasta dental. Dosis sistémicas altas no corresponden a la automedicación.",
+      "it": "Il fluoruro di sodio è stato usato storicamente nella prevenzione della carie e nella ricerca sull'osteoporosi. Oggi prevale l'uso locale di fluoruro tramite dentifricio. Dosi sistemiche elevate non rientrano nell'automedicazione.",
+      "pt": "O fluoreto de sódio foi usado historicamente na prevenção da cárie e na investigação da osteoporose. Hoje domina o uso local de fluoreto via pasta dentífrica. Doses sistémicas elevadas não pertencem à automedicação.",
+      "fr": "Le fluorure de sodium a historiquement été utilisé en prophylaxie carieuse et recherche sur l'ostéoporose. Aujourd'hui l'usage local de fluorure via le dentifrice domine. Les fortes doses systémiques n'ont pas leur place en automédication.",
+      "tr": "Sodyum florür tarihsel olarak çürük önleme ve osteoporoz araştırmasında kullanıldı. Bugün diş macunuyla yerel florür uygulaması baskındır. Sistemik yüksek dozlar kendi kendine ilaçlamaya ait değildir."
+    },
+    "related_chapters": [
+      8,
+      11
+    ]
+  },
+  {
+    "term_key": "Eisenstoffwechsel",
+    "term": {
+      "de": "Eisenstoffwechsel",
+      "en": "Iron metabolism",
+      "es": "Metabolismo del hierro",
+      "it": "Metabolismo del ferro",
+      "pt": "Metabolismo do ferro",
+      "fr": "Métabolisme du fer",
+      "tr": "Demir metabolizması"
+    },
+    "synonyms": {
+      "de": [
+        "Eisenhomöostase",
+        "Iron Metabolism"
+      ],
+      "en": [
+        "Iron homeostasis",
+        "Iron metabolism"
+      ],
+      "es": [
+        "Homeostasis del hierro",
+        "Iron metabolism"
+      ],
+      "it": [
+        "Omeostasi del ferro",
+        "Metabolismo del ferro"
+      ],
+      "pt": [
+        "Homeostasia do ferro",
+        "Metabolismo do ferro"
+      ],
+      "fr": [
+        "Homéostasie du fer",
+        "Métabolisme du fer"
+      ],
+      "tr": [
+        "Demir homeostazı",
+        "Demir metabolizması"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Der Eisenstoffwechsel umfasst Aufnahme, Transport über Transferrin und Speicherung in Ferritin. Hepcidin bremst die Aufnahme bei Entzündung. Laborpanels aus Ferritin, TSAT und Hb machen Störungen sichtbar.",
+      "en": "Iron metabolism covers uptake, transferrin transport and storage in ferritin. Hepcidin brakes absorption during inflammation. Lab panels of ferritin, TSAT and Hb make disorders visible.",
+      "es": "El metabolismo del hierro abarca absorción, transporte por transferrina y almacenamiento en ferritina. La hepcidina frena la absorción en inflamación. Paneles de laboratorio con ferritina, TSAT y Hb hacen visibles los trastornos.",
+      "it": "Il metabolismo del ferro comprende assorbimento, trasporto tramite transferrina e deposito in ferritina. L'epcidina frena l'assorbimento in infiammazione. Pannelli con ferritina, TSAT e Hb rendono visibili i disturbi.",
+      "pt": "O metabolismo do ferro abrange absorção, transporte por transferrina e armazenamento em ferritina. A hepcidina trava a absorção na inflamação. Painéis com ferritina, TSAT e Hb tornam as perturbações visíveis.",
+      "fr": "Le métabolisme du fer comprend absorption, transport par la transferrine et stockage dans la ferritine. L'hepcidine freine l'absorption en inflammation. Des bilans avec ferritine, TSAT et Hb rendent les troubles visibles.",
+      "tr": "Demir metabolizması emilim, transferrinle taşıma ve ferritinde depolamayı kapsar. Hepcidin inflamasyonda emilimi frenler. Ferritin, TSAT ve Hb panelleri bozuklukları görünür kılar."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Hepcidin",
+    "term": {
+      "de": "Hepcidin",
+      "en": "Hepcidin",
+      "es": "Hepcidina",
+      "it": "Epcidina",
+      "pt": "Hepcidina",
+      "fr": "Hepcidine",
+      "tr": "Hepcidin"
+    },
+    "synonyms": {
+      "de": [
+        "Eisenhormon Hepcidin"
+      ],
+      "en": [
+        "Iron hormone hepcidin"
+      ],
+      "es": [
+        "Hormona del hierro hepcidina"
+      ],
+      "it": [
+        "Ormone del ferro epcidina"
+      ],
+      "pt": [
+        "Hormona do ferro hepcidina"
+      ],
+      "fr": [
+        "Hormone du fer hepcidine"
+      ],
+      "tr": [
+        "Demir hormonu hepcidin"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Hepcidin ist das Schlüsselhormon der Eisenregulation und steigt bei Entzündung. Dann bleibt Eisen in den Speichern gefangen, obwohl Ferritin hoch wirken kann. Das erklärt funktionellen Eisenmangel bei chronischer Krankheit.",
+      "en": "Hepcidin is the key hormone of iron regulation and rises with inflammation. Iron then stays trapped in stores even though ferritin may look high. That explains functional iron deficiency in chronic disease.",
+      "es": "La hepcidina es la hormona clave de la regulación del hierro y se eleva en inflamación. Entonces el hierro queda atrapado en los depósitos aunque la ferritina parezca alta. Eso explica la ferropenia funcional en enfermedad crónica.",
+      "it": "L'epcidina è l'ormone chiave della regolazione del ferro e sale nell'infiammazione. Il ferro resta allora imprigionato nei depositi anche se la ferritina può apparire alta. Ciò spiega la carenza funzionale di ferro nella malattia cronica.",
+      "pt": "A hepcidina é a hormona chave da regulação do ferro e sobe com a inflamação. O ferro fica então preso nas reservas embora a ferritina possa parecer alta. Isso explica a deficiência funcional de ferro na doença crónica.",
+      "fr": "L'hepcidine est l'hormone clé de la régulation du fer et augmente en inflammation. Le fer reste alors piégé dans les réserves même si la ferritine peut paraître élevée. Cela explique la carence fonctionnelle en fer dans la maladie chronique.",
+      "tr": "Hepcidin demir düzenlemesinin anahtar hormonudur ve inflamasyonda yükselir. O zaman ferritin yüksek görünse bile demir depolarda tutsak kalır. Bu, kronik hastalıkta fonksiyonel demir eksikliğini açıklar."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  }
+]

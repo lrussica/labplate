@@ -1,0 +1,909 @@
+[
+  {
+    "term": "Cobalt",
+    "synonyms": [
+      "Kobalt",
+      "Co"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Cobalt ist zentraler Bestandteil des Vitamin-B12-Moleküls. Eine separate Cobalt-Supplementierung ist für Gesunde nicht sinnvoll. Der Bedarf wird über B12-haltige Lebensmittel oder Nahrungsergänzung gedeckt.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "Hämeisen",
+    "synonyms": [
+      "Häm-Eisen",
+      "Eisen aus Fleisch"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Hämeisen stammt aus Hämoglobin und Myoglobin tierischer Lebensmittel und wird besonders gut aufgenommen. Es unterliegt weniger Hemmstoffen als pflanzliches Eisen. Dennoch sollte die Gesamtzufuhr an rotem Fleisch im Rahmen einer ausgewogenen Ernährung stehen.",
+    "related_chapters": [
+      8,
+      10
+    ]
+  },
+  {
+    "term": "Nicht-Hämeisen",
+    "synonyms": [
+      "pflanzliches Eisen",
+      "Nicht-Häm-Eisen"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Nicht-Hämeisen aus Hülsenfrüchten, Getreide und Gemüse wird schlechter aufgenommen als Hämeisen. Vitamin C und fleischhaltige Beilagen verbessern die Bioverfügbarkeit. Phytate und Polyphenole können sie verringern.",
+    "related_chapters": [
+      8
+    ]
+  },
+  {
+    "term": "Eisenbisglycinat",
+    "synonyms": [
+      "Eisen-Chelat",
+      "Ferrous Bisglycinate"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Eisenbisglycinat ist eine organische Nahrungsergänzungsform, die oft besser verträglich ist als klassisches Eisensulfat. Es kann den Ferritinspiegel bei Mangel anheben. Die Therapie sollte Laborkontrollen und ärztliche Begleitung einschließen.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "Zinkgluconat",
+    "synonyms": [
+      "Zn-Gluconat"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Zinkgluconat ist eine gängige Form in Lutschtabletten und Nahrungsergänzung. Es kann bei Erkältungen kurzfristig eingesetzt werden, wobei die Evidenz gemischt ist. Langfristig hohe Dosen können Kupfer verdrängen.",
+    "related_chapters": [
+      8,
+      11
+    ]
+  },
+  {
+    "term": "Natriumselenit",
+    "synonyms": [
+      "Selenit",
+      "Na-Selenit"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Natriumselenit ist eine anorganische Selenform in manchen Arzneimitteln und Nahrungsergänzung. Die Dosierung muss eng begrenzt bleiben, weil Selen eine geringe therapeutische Breite hat. Der Status lässt sich über Selen im Blut oder GPX-Aktivität einschätzen.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "Kaliumiodid",
+    "synonyms": [
+      "KI",
+      "Jodid"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Kaliumiodid liefert bioverfügbares Jod und steckt in jodiertem Speisesalz sowie in Tabletten. In Notfallszenarien wird es zum Schutz der Schilddrüse vor radioaktivem Jod eingesetzt. Im Alltag reicht meist die Verwendung von Jodsalz.",
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Kupfergluconat",
+    "synonyms": [
+      "Cu-Gluconat"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Kupfergluconat ist eine Nahrungsergänzungsform bei nachgewiesenem Kupfermangel. Eine unkritische Einnahme ist nicht sinnvoll, weil Kupfer im Überschuss oxidativen Stress fördern kann. Zink-Kupfer-Balance sollte beachtet werden.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "Silicium",
+    "synonyms": [
+      "Silizium",
+      "Si",
+      "Kieselsäure"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Silicium wird mit Bindegewebe, Haut und Knochen in Verbindung gebracht, gilt aber beim Menschen nicht als klar essenziell wie Eisen oder Zink. Es kommt in Vollkorn und manchen Mineralwässern vor. Die wissenschaftliche Lage zu Nahrungsergänzung ist zurückhaltend.",
+    "related_chapters": [
+      11
+    ]
+  },
+  {
+    "term": "Bor",
+    "synonyms": [
+      "B",
+      "Boron"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Bor kommt in Obst, Gemüse und Nüssen vor und wird in der Forschung mit Knochenstoffwechsel diskutiert. Ein klar definierter Mangelzustand beim Menschen ist nicht etabliert. Hochdosierte Bor-Nahrungsergänzung sind nicht allgemein empfohlen.",
+    "related_chapters": [
+      11
+    ]
+  },
+  {
+    "term": "Vanadium",
+    "synonyms": [
+      "V"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Vanadium wird experimentell mit Insulinsignalwegen in Verbindung gebracht. Für die normale Ernährung spielt es kaum eine Rolle. Nahrungsergänzung sind wegen möglicher Toxizität kritisch zu sehen.",
+    "related_chapters": [
+      11
+    ]
+  },
+  {
+    "term": "Nickel",
+    "synonyms": [
+      "Ni"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Nickel kommt in Spuren in der Nahrung vor; ein essenzieller Bedarf beim Menschen ist nicht eindeutig belegt. Wichtiger ist die Kontaktallergie gegen Nickel in Schmuck. Ernährungsbezogen ist es selten ein Thema.",
+    "related_chapters": [
+      11
+    ]
+  },
+  {
+    "term": "Zinn",
+    "synonyms": [
+      "Sn",
+      "Zinnspuren"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Zinn kann in Spuren aus Dosenlebensmitteln in die Nahrung übergehen. Ein physiologischer Bedarf ist nicht etabliert. Moderne Innenbeschichtungen haben die Belastung deutlich gesenkt.",
+    "related_chapters": [
+      10
+    ]
+  },
+  {
+    "term": "Lithium Spurenelement",
+    "synonyms": [
+      "Li Spuren"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Lithium kommt in manchen Mineralwässern in Spuren vor und wird pharmakologisch in viel höheren Dosen als Stimmungsstabilisator eingesetzt. Spurengehalte in der Ernährung sind nicht mit Medikamentendosen vergleichbar. Eine Selbstmedikation ist gefährlich.",
+    "related_chapters": [
+      11
+    ]
+  },
+  {
+    "term": "Hämoglobin",
+    "synonyms": [
+      "Hb",
+      "Hämoglobinwert"
+    ],
+    "category": "Blutwert",
+    "short_description": "Hämoglobin ist der rote Blutfarbstoff, der Sauerstoff in den Erythrozyten transportiert. Niedrige Werte sprechen für eine Anämie, hohe können auf Rauchen, Austrocknung oder seltene Erkrankungen hinweisen. Der Wert gehört zum kleinen Blutbild.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Hämatokrit",
+    "synonyms": [
+      "Hk",
+      "Hct",
+      "Hämatokritwert"
+    ],
+    "category": "Blutwert",
+    "short_description": "Der Hämatokrit gibt den Anteil der Blutzellen am Gesamtblutvolumen an. Er steigt bei Flüssigkeitsmangel und sinkt bei Anämie. Zusammen mit Hämoglobin und Erythrozytenzahl wird er interpretiert.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Erythrozyten",
+    "synonyms": [
+      "Ery",
+      "rote Blutkörperchen",
+      "RBC"
+    ],
+    "category": "Blutwert",
+    "short_description": "Erythrozyten transportieren Sauerstoff und werden im Knochenmark gebildet. Ihre Zahl, Größe und Hämoglobingehalt helfen, Anämieformen zu unterscheiden. Ein Mangel an Eisen, B12 oder Folat verändert typische Muster.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Leukozyten",
+    "synonyms": [
+      "Leuko",
+      "weiße Blutkörperchen",
+      "WBC"
+    ],
+    "category": "Blutwert",
+    "short_description": "Leukozyten sind Abwehrzellen und reagieren auf Infekte, Entzündungen und Stress. Erhöhte oder erniedrigte Werte brauchen Kontext wie Differenzialblutbild und Klinik. Allein sagen sie selten die genaue Ursache.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Thrombozyten",
+    "synonyms": [
+      "Thrombo",
+      "Blutplättchen",
+      "PLT"
+    ],
+    "category": "Blutwert",
+    "short_description": "Thrombozyten sind entscheidend für die primäre Blutstillung. Zu wenige erhöhen die Blutungsneigung, zu viele können das Thromboserisiko beeinflussen. Medikamente, Infekte und Knochenmarkerkrankungen verändern den Wert.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "MCV",
+    "synonyms": [
+      "mittleres korpuskuläres Volumen",
+      "Erythrozytenvolumen"
+    ],
+    "category": "Blutwert",
+    "short_description": "Das MCV beschreibt die durchschnittliche Größe der roten Blutkörperchen. Ein hohes MCV passt zu B12- oder Folatmangel, ein niedriges eher zu Eisenmangel. Es ist ein Schlüsselwert bei der Anämiedifferenzierung.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "MCH",
+    "synonyms": [
+      "mittlerer Hämoglobingehalt",
+      "HbE"
+    ],
+    "category": "Blutwert",
+    "short_description": "Das MCH gibt an, wie viel Hämoglobin durchschnittlich in einem Erythrozyten steckt. Niedrige Werte finden sich oft bei Eisenmangelanämie. Es wird zusammen mit MCV und MCHC gelesen.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "MCHC",
+    "synonyms": [
+      "mittlere Hämoglobinkonzentration",
+      "korpuskuläre Hb-Konzentration"
+    ],
+    "category": "Blutwert",
+    "short_description": "Das MCHC beschreibt die Hämoglobinkonzentration innerhalb der Erythrozyten. Stark erniedrigte Werte können auf Eisenmangel oder seltene Hämoglobinopathien hinweisen. Technische Messfehler sollten ausgeschlossen werden.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "RDW",
+    "synonyms": [
+      "Erythrozytenverteilungsbreite",
+      "Red Cell Distribution Width"
+    ],
+    "category": "Blutwert",
+    "short_description": "Die RDW misst, wie stark die Erythrozyten in ihrer Größe streuen. Eine erhöhte RDW tritt häufig bei Eisen-, B12- oder Folatmangel auf. Sie ergänzt MCV bei der Einordnung von Anämien.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Differenzialblutbild",
+    "synonyms": [
+      "Diff-BB",
+      "Leukozytendifferenzierung"
+    ],
+    "category": "Blutwert",
+    "short_description": "Das Differenzialblutbild zeigt die Anteile von Neutrophilen, Lymphozyten, Monozyten, Eosinophilen und Basophilen. Es hilft bei Infekt- und Allergieverdacht sowie bei Bluterkrankungen. Die Interpretation gehört in den klinischen Kontext.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "Retikulozyten",
+    "synonyms": [
+      "Retis",
+      "junge Erythrozyten"
+    ],
+    "category": "Blutwert",
+    "short_description": "Retikulozyten sind junge rote Blutkörperchen und spiegeln die Bildungsaktivität des Knochenmarks wider. Nach Blutverlust oder erfolgreicher Mangeltherapie steigen sie an. Bei Bildungsstörungen bleiben sie niedrig.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Kleines Blutbild",
+    "synonyms": [
+      "KBB",
+      "Blutbild klein"
+    ],
+    "category": "Blutwert",
+    "short_description": "Das kleine Blutbild umfasst Erythrozyten, Leukozyten, Thrombozyten, Hämoglobin, Hämatokrit und Indizes wie MCV. Es ist ein Basischeck bei Müdigkeit, Infekten und vor Operationen. Auffälligkeiten führen oft zu gezielten Folgeuntersuchungen.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "Großes Blutbild",
+    "synonyms": [
+      "GBB",
+      "Blutbild groß"
+    ],
+    "category": "Blutwert",
+    "short_description": "Das große Blutbild erweitert das kleine um die Leukozytendifferenzierung. Es liefert mehr Hinweise auf Infektart oder hämatologische Erkrankungen. Für Stoffwechselthemen bleibt es ein wichtiger Begleitbefund.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "Ferritin",
+    "synonyms": [
+      "Speichereisen",
+      "Ferritinwert"
+    ],
+    "category": "Blutwert",
+    "short_description": "Ferritin spiegelt die Eisenspeicher wider und ist der wichtigste Marker bei Verdacht auf Eisenmangel. Als Akute-Phase-Protein kann es bei Entzündungen falsch normal oder hoch erscheinen. Dann helfen Transferrinsättigung und sTfR weiter.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Transferrin",
+    "synonyms": [
+      "Eisentransportprotein"
+    ],
+    "category": "Blutwert",
+    "short_description": "Transferrin transportiert Eisen im Blut zur Knochenmark und zu anderen Geweben. Bei Eisenmangel steigt es typischerweise an, bei Entzündung oder Leberstörung kann es sinken. Zusammen mit Eisen und Ferritin ergibt sich das Gesamtbild.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Transferrinsättigung",
+    "synonyms": [
+      "TSAT",
+      "TfS"
+    ],
+    "category": "Blutwert",
+    "short_description": "Die Transferrinsättigung gibt an, wie viel Prozent des Transferrins mit Eisen beladen sind. Niedrige Werte sprechen für Eisenmangel, hohe für Überladung oder Entzündungseffekte. Sie wird aus Eisen und Transferrin berechnet.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Löslicher Transferrinrezeptor",
+    "synonyms": [
+      "sTfR",
+      "sTFR"
+    ],
+    "category": "Blutwert",
+    "short_description": "Der lösliche Transferrinrezeptor steigt bei Eisenmangel und erhöhter Erythrozytenbildung. Er wird weniger stark durch Entzündung beeinflusst als Ferritin. Deshalb ist er bei chronischen Erkrankungen besonders hilfreich.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Serum eisen",
+    "synonyms": [
+      "Eisen im Serum",
+      "Fe serum"
+    ],
+    "category": "Blutwert",
+    "short_description": "Das Serumeisen schwankt tageszeitlich und nach Mahlzeiten stark und ist allein wenig aussagekräftig. Aussagekräftiger sind Ferritin, TSAT und das Gesamtbild. Dennoch gehört es oft zum Eisenstatus-Panel.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "Hämoglobin A",
+    "synonyms": [
+      "HbA",
+      "adultes Hämoglobin"
+    ],
+    "category": "Blutwert",
+    "short_description": "Hämoglobin A ist die Hauptform des Hämoglobins bei Erwachsenen. Varianten und Thalassämien verändern das Muster in der Hämoglobin-Elektrophorese. Für den Alltag der LabPlate-Nutzer zählt vor allem der Gesamt-Hb-Wert.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "Cholesterin",
+    "synonyms": [
+      "Gesamtcholesterin",
+      "Chol"
+    ],
+    "category": "Blutwert",
+    "short_description": "Das Gesamtcholesterin fasst alle cholesterinhaltigen Lipoproteine zusammen. Es allein sagt wenig über das Risiko aus; LDL, HDL und non-HDL sind aussagekräftiger. Ernährung, Gene und Schilddrüse beeinflussen den Wert.",
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term": "LDL-Cholesterin",
+    "synonyms": [
+      "LDL",
+      "Low Density Lipoprotein"
+    ],
+    "category": "Blutwert",
+    "short_description": "LDL transportiert Cholesterin zu den Geweben und gilt als zentraler Risikomarker für Atherosklerose. Gesättigte Fette, Transfette und hohe Zuckermuster können ungünstig wirken. Zielwerte hängen vom persönlichen Risikoprofil ab.",
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term": "HDL-Cholesterin",
+    "synonyms": [
+      "HDL",
+      "High Density Lipoprotein"
+    ],
+    "category": "Blutwert",
+    "short_description": "HDL gilt als „gutes“ Cholesterin, weil es Cholesterin rücktransportieren kann. Sehr niedrige Werte gehen mit höherem Risiko einher, sehr hohe sind nicht automatisch schützend. Bewegung und Rauchstopp wirken oft günstig.",
+    "related_chapters": [
+      3,
+      7,
+      9
+    ]
+  },
+  {
+    "term": "Triglyceride",
+    "synonyms": [
+      "Triglyzeride",
+      "TG"
+    ],
+    "category": "Blutwert",
+    "short_description": "Triglyceride sind Blutfette, die stark auf Zucker, Alkohol und Übergewicht reagieren. Hohe Fruktosezufuhr und Insulinresistenz treiben sie häufig nach oben. Nüchternmessung und Lebensstiländerung sind zentrale Bausteine.",
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Non-HDL-Cholesterin",
+    "synonyms": [
+      "non-HDL",
+      "Nicht-HDL"
+    ],
+    "category": "Blutwert",
+    "short_description": "Non-HDL-Cholesterin ist Gesamtcholesterin minus HDL und umfasst alle atherogenen Partikel. Es ist auch bei erhöhten Triglyceriden nützlich. Manche Leitlinien nutzen es als Therapieziel neben LDL.",
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Apolipoprotein B",
+    "synonyms": [
+      "ApoB",
+      "Apo B"
+    ],
+    "category": "Blutwert",
+    "short_description": "ApoB gibt die Anzahl atherogener Lipoproteinpartikel wieder und kann LDL überlegen sein. Jedes LDL-, IDL- und VLDL-Partikel trägt ein ApoB. Hohe Werte bedeuten mehr Partikelbelastung der Gefäße.",
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Lipoprotein a",
+    "synonyms": [
+      "Lp(a)",
+      "Lp a"
+    ],
+    "category": "Blutwert",
+    "short_description": "Lp(a) ist ein genetisch stark bestimmter Risikomarker für Herz-Kreislauf-Erkrankungen. Lebensstil ändert ihn nur wenig. Einmal messen reicht oft, um das persönliche Risiko besser einzuordnen.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "VLDL",
+    "synonyms": [
+      "Very Low Density Lipoprotein"
+    ],
+    "category": "Blutwert",
+    "short_description": "VLDL transportiert vor allem Triglyceride aus der Leber ins Blut. Bei Insulinresistenz und hoher Zuckerzufuhr kann die VLDL-Produktion steigen. Daraus entstehen später LDL-Partikel.",
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Oxidiertes LDL",
+    "synonyms": [
+      "oxLDL"
+    ],
+    "category": "Blutwert",
+    "short_description": "Oxidiertes LDL gilt als besonders gefäßschädigend und wird in der Forschung untersucht. Routinemäßig wird es selten bestimmt. Antioxidantienreiche Ernährung kann oxidativen Stress mindern, ersetzt aber keine Risikokontrolle.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Glukose",
+    "synonyms": [
+      "Glucose",
+      "Blutzucker",
+      "Traubenzucker"
+    ],
+    "category": "Blutwert",
+    "short_description": "Glukose ist der zentrale Blutzucker und Energielieferant für Gehirn und Muskeln. Nüchtern- und Gelegenheitswerte helfen, Diabetes und Prädiabetes zu erkennen. Ernährung, Stress und Medikamente beeinflussen den Spiegel stark.",
+    "related_chapters": [
+      1,
+      3,
+      5,
+      6,
+      9
+    ]
+  },
+  {
+    "term": "Nüchternglukose",
+    "synonyms": [
+      "Nüchternblutzucker",
+      "FPG"
+    ],
+    "category": "Blutwert",
+    "short_description": "Die Nüchternglukose wird nach mindestens acht Stunden ohne Kalorienzufuhr gemessen. Werte im Grenzbereich weisen auf gestörte Glukosetoleranz hin. Sie wird oft mit HbA1c kombiniert interpretiert.",
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term": "HbA1c",
+    "synonyms": [
+      "glykiertes Hämoglobin",
+      "Langzeitblutzucker"
+    ],
+    "category": "Blutwert",
+    "short_description": "Der HbA1c spiegelt die durchschnittliche Glukosebelastung der letzten zwei bis drei Monate wider. Er ist ein Schlüsselwert für Diabetesdiagnose und -therapie. Bei bestimmten Anämien kann er verfälscht sein.",
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Insulin",
+    "synonyms": [
+      "Seruminsulin",
+      "Insulinspiegel"
+    ],
+    "category": "Blutwert",
+    "short_description": "Insulin senkt den Blutzucker, indem es Glukose in die Zellen schleust. Hohe Nüchterninsulinwerte können auf Insulinresistenz hinweisen. Der Wert wird oft zusammen mit Glukose zum HOMA-IR verrechnet.",
+    "related_chapters": [
+      1,
+      3,
+      5,
+      9
+    ]
+  },
+  {
+    "term": "C-Peptid",
+    "synonyms": [
+      "C Peptide"
+    ],
+    "category": "Blutwert",
+    "short_description": "C-Peptid entsteht bei der Insulinproduktion und zeigt die eigene Insulinsekretion an. Es hilft, Typ-1- von Typ-2-Mustern und Restfunktion der Bauchspeicheldrüse zu unterscheiden. Exogenes Insulin beeinflusst C-Peptid nicht direkt.",
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term": "HOMA-IR",
+    "synonyms": [
+      "HOMA Index",
+      "Insulinresistenz-Index"
+    ],
+    "category": "Blutwert",
+    "short_description": "HOMA-IR schätzt die Insulinresistenz aus Nüchternglukose und Nüchterninsulin. Höhere Werte sprechen für abnehmende Insulinempfindlichkeit. Der Index ist ein Orientierungswert, kein alleiniger Diagnoseschlüssel.",
+    "related_chapters": [
+      1,
+      3,
+      5,
+      9
+    ]
+  },
+  {
+    "term": "OGTT",
+    "synonyms": [
+      "oraler Glukosetoleranztest",
+      "Zuckerbelastungstest"
+    ],
+    "category": "Blutwert",
+    "short_description": "Beim OGTT wird Glukose getrunken und der Blutzuckerverlauf gemessen. Er erkennt gestörte Glukosetoleranz früher als ein einzelner Nüchternwert. In der Schwangerschaft ist er Standard zur Gestationsdiabetes-Diagnostik.",
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Fruktosamin",
+    "synonyms": [
+      "glykiertes Protein"
+    ],
+    "category": "Blutwert",
+    "short_description": "Fruktosamin spiegelt die Glukosekontrolle der letzten ein bis drei Wochen wider. Es wird genutzt, wenn HbA1c unzuverlässig ist, etwa bei Hämoglobinvarianten. Routinemäßig kommt es seltener zum Einsatz.",
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term": "ALT",
+    "synonyms": [
+      "ALAT",
+      "GPT",
+      "Alanin-Aminotransferase"
+    ],
+    "category": "Blutwert",
+    "short_description": "ALT ist ein leberspezifisches Enzym und steigt bei Leberzellschädigung. Ursachen reichen von Fettleber und Viren bis zu Medikamenten. Isoliert erhöhte Werte brauchen Verlauf und Kontext.",
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term": "AST",
+    "synonyms": [
+      "ASAT",
+      "GOT",
+      "Aspartat-Aminotransferase"
+    ],
+    "category": "Blutwert",
+    "short_description": "AST kommt in Leber, Muskel und Herz vor und ist weniger leberspezifisch als ALT. Ein AST/ALT-Muster kann Hinweise auf Alkohol oder Muskelbelastung geben. Zusammen mit GGT und CK wird es eingeordnet.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "GGT",
+    "synonyms": [
+      "Gamma-GT",
+      "γ-GT",
+      "Gamma-Glutamyltransferase"
+    ],
+    "category": "Blutwert",
+    "short_description": "GGT steigt bei Gallenstau, Alkoholbelastung und manchen Medikamenten. Zusammen mit ALP hilft sie, cholestatische Muster zu erkennen. Lebensstiländerungen senken den Wert oft spürbar.",
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Alkalische Phosphatase",
+    "synonyms": [
+      "AP",
+      "ALP"
+    ],
+    "category": "Blutwert",
+    "short_description": "Die alkalische Phosphatase stammt aus Leber, Knochen und anderen Geweben. Erhöhte Werte passen zu Gallenstau oder Knochenumbau. Isoenzyme oder Begleitwerte helfen bei der Herkunft.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Bilirubin",
+    "synonyms": [
+      "Gesamtbilirubin",
+      "Bili"
+    ],
+    "category": "Blutwert",
+    "short_description": "Bilirubin entsteht beim Abbau von Hämoglobin und wird von der Leber ausgeschieden. Erhöhte Werte führen zu Ikterus und können auf Leber-, Gallen- oder Hämolyseprobleme hinweisen. Direktes und indirektes Bilirubin differenzieren Ursachen.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Albumin",
+    "synonyms": [
+      "Serumalbumin"
+    ],
+    "category": "Blutwert",
+    "short_description": "Albumin ist das häufigste Plasmaeiweiß und hält den onkotischen Druck aufrecht. Niedrige Werte treten bei Leberinsuffizienz, Entzündung oder Verlust über Niere und Darm auf. Es beeinflusst auch die Interpretation von Calcium.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "INR",
+    "synonyms": [
+      "International Normalized Ratio"
+    ],
+    "category": "Blutwert",
+    "short_description": "Die INR standardisiert die Messung der extrinsischen Gerinnung und wird vor allem unter Vitamin-K-Antagonisten genutzt. Erhöhte Werte bedeuten längere Gerinnungszeit. Ernährung mit viel Vitamin K kann die Einstellung beeinflussen.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "Quick-Wert",
+    "synonyms": [
+      "Thromboplastinzeit",
+      "TPZ",
+      "Prothrombinzeit"
+    ],
+    "category": "Blutwert",
+    "short_description": "Der Quick-Wert beschreibt die Gerinnungsfähigkeit über den extrinsischen Weg und hängt von Vitamin-K-abhängigen Faktoren ab. Niedrige Quick-Werte entsprechen einer höheren INR. Leberstörungen können ihn senken.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "aPTT",
+    "synonyms": [
+      "PTT",
+      "aktivierte partielle Thromboplastinzeit"
+    ],
+    "category": "Blutwert",
+    "short_description": "Die aPTT prüft den intrinsischen Gerinnungsweg und wird unter Heparintherapie kontrolliert. Verlängerungen können auf Faktorenmangel oder Hemmkörper hinweisen. Zusammen mit Quick/INR ergibt sich das Gerinnungsprofil.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "Kreatinin",
+    "synonyms": [
+      "Serumkreatinin",
+      "Crea"
+    ],
+    "category": "Blutwert",
+    "short_description": "Kreatinin entsteht im Muskelstoffwechsel und wird über die Niere ausgeschieden. Steigende Werte können eine eingeschränkte Filterfunktion anzeigen. Muskelmasse und bestimmte Medikamente beeinflussen den Wert.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "eGFR",
+    "synonyms": [
+      "geschätzte glomeruläre Filtrationsrate",
+      "GFR"
+    ],
+    "category": "Blutwert",
+    "short_description": "Die eGFR schätzt die Nierenfilterleistung aus Kreatinin, Alter und Geschlecht. Sie ist der zentrale Marker zur Einteilung von Niereninsuffizienz. Cystatin C kann die Schätzung bei besonderer Muskelmasse verbessern.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Harnstoff",
+    "synonyms": [
+      "Urea",
+      "Harnstoff-N",
+      "BUN"
+    ],
+    "category": "Blutwert",
+    "short_description": "Harnstoff entsteht im Eiweißstoffwechsel und wird renal ausgeschieden. Erhöhte Werte passen zu Niereninsuffizienz, Dehydratation oder hoher Proteinlast. Allein ist er weniger spezifisch als Kreatinin und eGFR.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Harnsäure",
+    "synonyms": [
+      "UA",
+      "Urat",
+      "Harnsaeure"
+    ],
+    "category": "Blutwert",
+    "short_description": "Harnsäure ist Endprodukt des Purinstoffwechsels und kann Gichtanfälle auslösen. Fruktose, Alkohol und Übergewicht können den Spiegel erhöhen. Hydration und Ernährungsumstellung sind oft Teil der Strategie.",
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Cystatin C",
+    "synonyms": [
+      "CysC"
+    ],
+    "category": "Blutwert",
+    "short_description": "Cystatin C ist ein alternativer Nierenmarker, der weniger von Muskelmasse abhängt als Kreatinin. Er wird genutzt, wenn die Kreatinin-eGFR unsicher erscheint. Die Kombination beider Marker verbessert die Einschätzung.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "TSH",
+    "synonyms": [
+      "Thyreoidea-stimulierendes Hormon",
+      "Thyrotropin"
+    ],
+    "category": "Blutwert",
+    "short_description": "TSH steuert die Schilddrüse und ist der wichtigste Screeningparameter. Erhöhte Werte sprechen für Unterfunktion, erniedrigte für Überfunktion oder Überdosierung. Biotinsupplemente können Assays verfälschen.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Freies T3",
+    "synonyms": [
+      "fT3",
+      "Triiodthyronin frei"
+    ],
+    "category": "Blutwert",
+    "short_description": "Freies T3 ist das biologisch aktive Schilddrüsenhormon im Blut. Es wird gemessen, wenn die TSH-Lage unklar ist oder eine Überfunktion vermutet wird. Jod und Selen beeinflussen den Schilddrüsenstoffwechsel.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "Freies T4",
+    "synonyms": [
+      "fT4",
+      "Thyroxin frei"
+    ],
+    "category": "Blutwert",
+    "short_description": "Freies T4 ist das Speicher- und Vorläuferhormon der Schilddrüse. Zusammen mit TSH steuert es die Einstellung einer Schilddrüsentherapie. Abweichungen brauchen immer die Zusammenschau mit Klinik und TSH.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "TPO-Antikörper",
+    "synonyms": [
+      "TPO-Ak",
+      "Anti-TPO"
+    ],
+    "category": "Blutwert",
+    "short_description": "TPO-Antikörper weisen auf eine autoimmune Schilddrüsenerkrankung wie Hashimoto hin. Sie erklären viele Fälle einer schleichenden Unterfunktion. Ein positiver Befund bedeutet nicht automatisch Behandlungsbedarf, aber engmaschigere Kontrollen.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "TRAKs",
+    "synonyms": [
+      "TSH-Rezeptor-Antikörper",
+      "TRAb"
+    ],
+    "category": "Blutwert",
+    "short_description": "TSH-Rezeptor-Antikörper sind typisch für Morbus Basedow und können die Schilddrüse überstimulieren. Sie helfen bei der Differenzierung von Überfunktionsursachen. Verlaufskontrollen begleiten oft die Therapie.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "CRP",
+    "synonyms": [
+      "C-reaktives Protein",
+      "Entzündungswert"
+    ],
+    "category": "Blutwert",
+    "short_description": "CRP steigt rasch bei bakteriellen Infekten und Gewebeschäden. Es ist ein unspezifischer Entzündungsmarker und sagt allein keine Diagnose. Verlauf und Klinik sind entscheidend.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  }
+]

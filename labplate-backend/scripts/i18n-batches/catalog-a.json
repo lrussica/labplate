@@ -1,0 +1,1239 @@
+[
+  {
+    "term": "Vitamin A",
+    "synonyms": [
+      "Retinol",
+      "Beta-Carotin",
+      "Retinal"
+    ],
+    "short_description": "Vitamin A ist wichtig für Sehkraft, Haut und Immunabwehr. Der Körper kann es als Retinol aus tierischen Lebensmitteln oder als Vorstufe Beta-Carotin aus pflanzlichen Quellen aufnehmen. Ein Mangel zeigt sich oft zuerst als Nachtblindheit und trockene Schleimhäute.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Retinol",
+    "synonyms": [
+      "Vitamin A aktiv",
+      "all-trans-Retinol"
+    ],
+    "short_description": "Retinol ist die aktive Form von Vitamin A und kommt vor allem in Leber, Eiern und Milchprodukten vor. Der Körper speichert es in der Leber und setzt es bei Bedarf frei. Eine Überdosierung über Nahrungsergänzung kann toxisch wirken, während Beta-Carotin aus Gemüse als sicherer gilt.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Beta-Carotin",
+    "synonyms": [
+      "Provitamin A",
+      "β-Carotin"
+    ],
+    "short_description": "Beta-Carotin ist ein orangefarbener Pflanzenfarbstoff und eine Vorstufe von Vitamin A. Der Körper wandelt nur so viel um, wie er benötigt, weshalb eine Überdosierung über Lebensmittel selten problematisch ist. Gute Quellen sind Karotten, Süßkartoffeln und grünes Blattgemüse.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Vitamin D",
+    "synonyms": [
+      "Calciferol",
+      "Sonnenvitamin"
+    ],
+    "short_description": "Vitamin D unterstützt Knochenstoffwechsel, Immunsystem und Muskelkraft. Der Körper bildet es hauptsächlich unter UVB-Sonneneinstrahlung in der Haut. Viele Menschen in Mitteleuropa haben im Winter niedrige Spiegel und profitieren von gezielter Supplementierung nach Laborkontrolle.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Cholecalciferol",
+    "synonyms": [
+      "Vitamin D3",
+      "Colecalciferol"
+    ],
+    "short_description": "Cholecalciferol ist die Form von Vitamin D, die der menschliche Körper unter Sonnenlicht selbst bildet und die auch in fettem Fisch vorkommt. Nahrungsergänzung nutzen meist D3, weil es den Blutspiegel effizient anhebt. Im Körper wird es in der Leber und Niere zur aktiven Form umgewandelt.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Ergocalciferol",
+    "synonyms": [
+      "Vitamin D2"
+    ],
+    "short_description": "Ergocalciferol ist die pflanzliche Form von Vitamin D und wird in manchen Nahrungsergänzung und angereicherten Lebensmitteln verwendet. Es hebt den 25-OH-D-Spiegel etwas weniger effizient an als Cholecalciferol. Für die meisten Menschen ist D3 die bevorzugte Ergänzungsform.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Calcitriol",
+    "synonyms": [
+      "1,25-Dihydroxyvitamin D",
+      "aktives Vitamin D"
+    ],
+    "short_description": "Calcitriol ist die hormonell aktive Form von Vitamin D und entsteht in der Niere. Es steuert die Calciumaufnahme im Darm und den Knochenstoffwechsel. Im Labor wird meist der Speicherwert 25-OH-Vitamin D gemessen, nicht Calcitriol selbst.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Vitamin E",
+    "synonyms": [
+      "Tocopherol",
+      "Alpha-Tocopherol"
+    ],
+    "short_description": "Vitamin E wirkt als fettlösliches Antioxidans und schützt Zellmembranen vor oxidativem Stress. Gute Quellen sind Pflanzenöle, Nüsse und Samen. Ein klinischer Mangel ist selten, kann aber bei schweren Fettresorptionsstörungen auftreten.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Alpha-Tocopherol",
+    "synonyms": [
+      "α-Tocopherol",
+      "Vitamin E aktiv"
+    ],
+    "short_description": "Alpha-Tocopherol ist die biologisch wirksamste Form von Vitamin E beim Menschen. Es wird bevorzugt in Lipoproteinen transportiert und in Geweben gespeichert. Sehr hohe Dosen aus Nahrungsergänzung können die Blutgerinnung beeinflussen und sollten mit dem Arzt abgestimmt werden.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Vitamin K",
+    "synonyms": [
+      "Phyllochinon",
+      "Menachinon"
+    ],
+    "short_description": "Vitamin K ist unerlässlich für die Blutgerinnung und spielt auch eine Rolle im Knochenstoffwechsel. Es kommt als K1 in grünem Blattgemüse und als K2 in fermentierten Lebensmitteln vor. Menschen mit Vitamin-K-Antagonisten wie Marcumar müssen die Zufuhr besonders beachten.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Phyllochinon",
+    "synonyms": [
+      "Vitamin K1",
+      "Phytomenadion"
+    ],
+    "short_description": "Phyllochinon ist die pflanzliche Form von Vitamin K und steckt vor allem in Spinat, Grünkohl und Brokkoli. Es unterstützt die Bildung gerinnungsaktiver Proteine in der Leber. Eine ausgewogene Ernährung deckt den Bedarf bei Gesunden in der Regel ab.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Menachinon",
+    "synonyms": [
+      "Vitamin K2",
+      "MK-7",
+      "MK-4"
+    ],
+    "short_description": "Menachinon ist die Form von Vitamin K, die vor allem von Bakterien gebildet wird und in fermentierten Lebensmitteln wie Natto vorkommt. Manche Formen wie MK-7 haben eine längere Verweildauer im Blut. Es wird mit der Regulation der Calciumverteilung in Knochen und Gefäßen in Verbindung gebracht.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Vitamin C",
+    "synonyms": [
+      "Ascorbinsäure",
+      "Ascorbat"
+    ],
+    "short_description": "Vitamin C ist ein wasserlösliches Antioxidans und wichtig für Kollagenbildung, Immunabwehr und Eisenaufnahme. Der Körper speichert es nur begrenzt, daher ist eine regelmäßige Zufuhr über Obst und Gemüse sinnvoll. Ein schwerer Mangel führt zu Skorbut, der heute sehr selten ist.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Ascorbinsäure",
+    "synonyms": [
+      "L-Ascorbinsäure",
+      "Vitamin C Säureform"
+    ],
+    "short_description": "Ascorbinsäure ist die chemische Bezeichnung für Vitamin C. Sie unterstützt die Reduktion von Eisen und damit dessen Aufnahme aus pflanzlichen Lebensmitteln. Hohe Einzeldosen können bei empfindlichen Personen Magen-Darm-Beschwerden auslösen.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Vitamin B1",
+    "synonyms": [
+      "Thiamin",
+      "Aneurin"
+    ],
+    "short_description": "Vitamin B1 ist ein Coenzym im Kohlenhydratstoffwechsel und wichtig für Nerven und Energiegewinnung. Gute Quellen sind Vollkornprodukte, Hülsenfrüchte und Schweinefleisch. Ein Mangel kann bei Alkoholmissbrauch oder sehr einseitiger Ernährung auftreten.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Thiamin",
+    "synonyms": [
+      "Thiaminhydrochlorid",
+      "Thiaminpyrophosphat"
+    ],
+    "short_description": "Thiamin ist die aktive Bezeichnung für Vitamin B1 und wird im Körper zu Thiaminpyrophosphat umgewandelt. Dieses Coenzym ist zentral für den Abbau von Glukose. Bei intensivem Sport oder hohem Kohlenhydratanteil steigt der Bedarf leicht an.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Vitamin B2",
+    "synonyms": [
+      "Riboflavin"
+    ],
+    "short_description": "Vitamin B2 unterstützt Energiegewinnung, Hautgesundheit und den Stoffwechsel anderer B-Vitamine. Es kommt in Milchprodukten, Eiern, Innereien und Mandeln vor. Ein Mangel zeigt sich oft an rissigen Mundwinkeln und entzündeter Zunge.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Riboflavin",
+    "synonyms": [
+      "Lactoflavin",
+      "Vitamin B2"
+    ],
+    "short_description": "Riboflavin ist lichtempfindlich und wird in durchsichtigen Milchflaschen teilweise abgebaut. Als Bestandteil von FAD und FMN ist es an zahlreichen Redoxreaktionen beteiligt. Die typische Gelbfärbung des Urins nach Nahrungsergänzung ist harmlos.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Vitamin B3",
+    "synonyms": [
+      "Niacin",
+      "Nicotinsäure",
+      "Nicotinamid"
+    ],
+    "short_description": "Vitamin B3 ist essenziell für den Energiestoffwechsel und die DNA-Reparatur. Es kommt in Fleisch, Fisch, Erdnüssen und Vollkorn vor; der Körper kann es auch aus Tryptophan bilden. Sehr hohe Dosen Nicotinsäure können Flush und Leberbelastung verursachen.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Niacin",
+    "synonyms": [
+      "Niacinamid",
+      "Vitamin PP"
+    ],
+    "short_description": "Niacin umfasst Nicotinsäure und Nicotinamid und ist Bestandteil der Coenzyme NAD und NADP. Historisch verhinderte es die Mangelkrankheit Pellagra. In der Ernährungstherapie wird auf eine ausgewogene Zufuhr statt auf Megadosen gesetzt.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Vitamin B5",
+    "synonyms": [
+      "Pantothensäure",
+      "Pantothenat"
+    ],
+    "short_description": "Vitamin B5 ist Bestandteil von Coenzym A und damit zentral für Fett- und Energiestoffwechsel. Es kommt in fast allen Lebensmitteln vor, daher ist ein Mangel sehr selten. Der Name leitet sich vom griechischen „pantos“ für „überall“ ab.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Pantothensäure",
+    "synonyms": [
+      "Calcium-Pantothenat",
+      "Dexpanthenol"
+    ],
+    "short_description": "Pantothensäure unterstützt die Synthese von Fettsäuren, Cholesterin und Steroidhormonen. In der Hautpflege wird das verwandte Dexpanthenol lokal eingesetzt. Über die Ernährung ist der Bedarf bei abwechslungsreicher Kost gut zu decken.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Vitamin B6",
+    "synonyms": [
+      "Pyridoxin",
+      "Pyridoxal",
+      "Pyridoxamin"
+    ],
+    "short_description": "Vitamin B6 ist wichtig für den Aminosäurestoffwechsel, die Blutbildung und die Neurotransmittersynthese. Gute Quellen sind Fleisch, Fisch, Bananen und Vollkorn. Chronisch sehr hohe Nahrungsergänzungsdosen können Nervenschäden verursachen.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Pyridoxin",
+    "synonyms": [
+      "Pyridoxalphosphat",
+      "PLP"
+    ],
+    "short_description": "Pyridoxin ist eine Form von Vitamin B6; die aktive Coenzymform ist Pyridoxalphosphat. Es ist auch an der Umwandlung von Homocystein beteiligt. Laborwerte zu B6 werden seltener bestimmt als B12 oder Folat.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Biotin",
+    "synonyms": [
+      "Vitamin B7",
+      "Vitamin H"
+    ],
+    "short_description": "Biotin ist ein B-Vitamin für Haar, Haut und den Stoffwechsel von Fettsäuren und Glukose. Es steckt in Eiern, Nüssen und Innereien. Extrem hohe Biotindosen können bestimmte Labortests, etwa Schilddrüsenwerte, verfälschen.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Folsäure",
+    "synonyms": [
+      "Folat",
+      "Vitamin B9",
+      "Pteroylglutaminsäure",
+      "Folacin"
+    ],
+    "short_description": "Folsäure ist die synthetische Form von Vitamin B9 und entscheidend für Zellteilung, DNA-Synthese und Blutbildung. Folat bezeichnet die natürlich in Lebensmitteln vorkommenden Formen, etwa in Blattgemüse und Hülsenfrüchten. Ein Mangel kann zu megaloblastärer Anämie und erhöhtem Homocystein führen; in der Schwangerschaft ist eine ausreichende Versorgung besonders wichtig.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Folat Serum",
+    "synonyms": [
+      "Serumfolat",
+      "Folsäure Serum"
+    ],
+    "short_description": "Das Serumfolat spiegelt die aktuelle Folatversorgung der letzten Tage wider. Es schwankt stärker mit der aktuellen Ernährung als das Erythrozytenfolat. Niedrige Werte können auf unzureichende Zufuhr oder erhöhten Bedarf hinweisen.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Folat Erythrozyten",
+    "synonyms": [
+      "Erythrozytenfolat",
+      "RBC-Folat"
+    ],
+    "short_description": "Das Erythrozytenfolat zeigt die längerfristige Folatversorgung über etwa drei Monate. Es gilt als stabilerer Marker als das Serumfolat. Zusammen mit Vitamin B12 hilft es, Ursachen einer megaloblastären Anämie einzuordnen.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Vitamin B12",
+    "synonyms": [
+      "Cobalamin",
+      "Cyanocobalamin"
+    ],
+    "short_description": "Vitamin B12 ist essenziell für Blutbildung, Nervensystem und Homocysteinabbau. Es kommt praktisch nur in tierischen Lebensmitteln vor; Veganer benötigen meist eine Supplementierung. Ein Mangel kann sich schleichend mit Müdigkeit, Taubheitsgefühlen und Anämie zeigen.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Methylcobalamin",
+    "synonyms": [
+      "MeCbl",
+      "Methyl-B12"
+    ],
+    "short_description": "Methylcobalamin ist eine aktive Form von Vitamin B12 und wird häufig in Nahrungsergänzung verwendet. Im Körper dient sie unter anderem der Remethylierung von Homocystein zu Methionin. Ob sie klinisch klar besser wirkt als Cyanocobalamin, hängt von Situation und Dosierung ab.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Adenosylcobalamin",
+    "synonyms": [
+      "AdoCbl",
+      "Cobamamid"
+    ],
+    "short_description": "Adenosylcobalamin ist die mitochondriale aktive Form von Vitamin B12. Sie ist am Abbau bestimmter Aminosäuren und Fettsäuren beteiligt. Manche Kombipräparate enthalten Methyl- und Adenosylcobalamin gemeinsam.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Hydroxocobalamin",
+    "synonyms": [
+      "OH-Cbl",
+      "Vitamin B12 Depot"
+    ],
+    "short_description": "Hydroxocobalamin wird oft als Injektion bei B12-Mangel eingesetzt und hat eine längere Verweildauer im Körper. Es dient auch als Antidot bei Cyanidvergiftungen. Für die orale Versorgung sind andere Formen üblicher.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Cyanocobalamin",
+    "synonyms": [
+      "CN-Cbl",
+      "synthetisches B12"
+    ],
+    "short_description": "Cyanocobalamin ist eine stabile, synthetische Form von Vitamin B12 in vielen Tabletten. Der Körper wandelt sie in die aktiven Formen um. Sie ist gut untersucht, kostengünstig und für die meisten Menschen geeignet.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Cholin",
+    "synonyms": [
+      "Vitaminartig",
+      "Trimethylethanolamin"
+    ],
+    "short_description": "Cholin wird oft als vitaminartiger Nährstoff geführt und ist Baustein von Zellmembranen und Acetylcholin. Es unterstützt den Fetttransport aus der Leber. Gute Quellen sind Eier, Leber und Sojalecithin.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Inositol",
+    "synonyms": [
+      "Myo-Inositol",
+      "Vitamin B8 historisch"
+    ],
+    "short_description": "Inositol ist ein zuckerähnlicher Stoff, der an Signalwegen und Insulinempfindlichkeit beteiligt ist. Der Körper kann ihn selbst bilden, dennoch wird er in der Forschung zu Stoffwechsel und PCOS untersucht. In Lebensmitteln kommt er unter anderem in Obst und Getreide vor.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Calcium",
+    "synonyms": [
+      "Kalzium",
+      "Ca"
+    ],
+    "short_description": "Calcium ist der wichtigste Baustoff für Knochen und Zähne und spielt eine Rolle bei Muskelkontraktion und Blutgerinnung. Milchprodukte, angereicherte Pflanzenmilch und grünes Gemüse sind typische Quellen. Vitamin D und Bewegung unterstützen die Knochengesundheit maßgeblich.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Magnesium",
+    "synonyms": [
+      "Mg",
+      "Magnesiumcitrat"
+    ],
+    "short_description": "Magnesium ist an über 300 Enzymreaktionen beteiligt, darunter Energiestoffwechsel und Muskelentspannung. Gute Quellen sind Nüsse, Samen, Vollkorn und Blattgemüse. Ein Mangel kann sich mit Krämpfen, Unruhe und Müdigkeit bemerkbar machen.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Kalium",
+    "synonyms": [
+      "K",
+      "Potassium"
+    ],
+    "short_description": "Kalium reguliert Herzrhythmus, Blutdruck und den Flüssigkeitshaushalt in den Zellen. Obst, Gemüse und Hülsenfrüchte liefern reichlich davon. Sehr hohe oder niedrige Blutwerte können gefährlich sein und gehören ärztlich abgeklärt.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Natrium",
+    "synonyms": [
+      "Na",
+      "Kochsalz-Natrium"
+    ],
+    "short_description": "Natrium ist der zentrale Elektrolyt außerhalb der Zellen und steuert Blutdruck sowie Wasserhaushalt. Der Großteil der Zufuhr stammt aus verarbeiteten Lebensmitteln und Speisesalz. Eine Reduktion kann bei Bluthochdruck hilfreich sein.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Phosphor",
+    "synonyms": [
+      "Phosphat",
+      "P"
+    ],
+    "short_description": "Phosphor ist Bestandteil von Knochen, DNA und energiereichem ATP. Er kommt in Fleisch, Milch, Hülsenfrüchten und vielen Fertigprodukten als Zusatzstoff vor. Bei Nierenerkrankungen muss die Phosphatzufuhr oft begrenzt werden.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Chlorid",
+    "synonyms": [
+      "Cl",
+      "Chlorid-Ion"
+    ],
+    "short_description": "Chlorid ist zusammen mit Natrium der Hauptpartner im Speisesalz und wichtig für Säure-Basen-Haushalt sowie Magensäurebildung. Labormessungen erfolgen meist im Rahmen der Elektrolyte. Starke Verluste durch Erbrechen oder Durchfall können den Spiegel senken.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Schwefel",
+    "synonyms": [
+      "S",
+      "Schwefelhaltige Aminosäuren"
+    ],
+    "short_description": "Schwefel steckt vor allem in den Aminosäuren Methionin und Cystein und ist Baustein von Proteinen und manchen Vitaminen. Eine separate Supplementierung ist bei normaler Ernährung meist unnötig. Knoblauch und Kreuzblütler liefern ebenfalls schwefelhaltige Verbindungen.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Hydroxylapatit",
+    "synonyms": [
+      "Knochenmineral",
+      "Calciumphosphat Knochen"
+    ],
+    "short_description": "Hydroxylapatit ist das kristalline Calcium-Phosphat-Mineral, das Knochen und Zähnen Härte verleiht. Knochen sind lebendiges Gewebe und werden ständig umgebaut. Ausreichend Calcium, Vitamin D und Belastungstraining stützen diesen Prozess.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Natriumchlorid",
+    "synonyms": [
+      "Kochsalz",
+      "Speisesalz",
+      "NaCl"
+    ],
+    "short_description": "Natriumchlorid ist das klassische Speisesalz und liefert Natrium sowie Chlorid. Fertigprodukte, Brot und Wurst tragen oft mehr zur Zufuhr bei als die Salzmühle zu Hause. WHO und Fachgesellschaften empfehlen, die Gesamtsalzmenge zu begrenzen.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Calciumcarbonat",
+    "synonyms": [
+      "CaCO3",
+      "Kalk"
+    ],
+    "short_description": "Calciumcarbonat ist eine häufige Form in Calcium-Nahrungsergänzung und wird besser zu den Mahlzeiten aufgenommen. Bei niedriger Magensäure kann die Aufnahme eingeschränkt sein. Die Gesamtdosis sollte mit der Ernährung abgestimmt werden.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Calciumcitrat",
+    "synonyms": [
+      "Ca-Citrat"
+    ],
+    "short_description": "Calciumcitrat wird auch ohne Mahlzeit gut aufgenommen und eignet sich oft besser bei empfindlichem Magen. Es liefert pro Tablette meist weniger elementares Calcium als Carbonat. Die Wahl der Form hängt von Verträglichkeit und Bedarf ab.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Magnesiumoxid",
+    "synonyms": [
+      "MgO"
+    ],
+    "short_description": "Magnesiumoxid enthält viel elementares Magnesium, wird aber vergleichsweise schlechter aufgenommen. Es wirkt in höheren Dosen abführend. Für den Ausgleich eines Mangels werden oft organische Verbindungen wie Citrat bevorzugt.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Magnesiumcitrat",
+    "synonyms": [
+      "Mg-Citrat"
+    ],
+    "short_description": "Magnesiumcitrat ist eine gut bioverfügbare Nahrungsergänzungsform und wird häufig bei Krämpfen oder niedrigem Spiegel empfohlen. Zu hohe Dosen können Durchfall auslösen. Die Einnahme abends wird von manchen Menschen als entspannend empfunden.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Kaliumcitrat",
+    "synonyms": [
+      "K-Citrat"
+    ],
+    "short_description": "Kaliumcitrat wird medizinisch unter anderem zur Harnalkalisierung eingesetzt. Es kann den Kaliumspiegel anheben und ist daher bei Nierenproblemen oder bestimmten Medikamenten riskant. Die Anwendung gehört in ärztliche Hand.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Phosphat",
+    "synonyms": [
+      "anorganisches Phosphat",
+      "Pi"
+    ],
+    "short_description": "Phosphat im Blut wird laborchemisch als Marker für Knochen- und Nierenstoffwechsel gemessen. Erhöhte Werte treten häufig bei eingeschränkter Nierenfunktion auf. In der Ernährung tragen Zusatzstoffe in Cola und Fertiggerichten zur Last bei.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Bicarbonat",
+    "synonyms": [
+      "Hydrogencarbonat",
+      "HCO3"
+    ],
+    "short_description": "Bicarbonat ist ein wichtiger Puffer im Säure-Basen-Haushalt des Blutes. Im Labor gehört es zur Blutgasanalyse oder zum Elektrolytprofil. Abweichungen können auf Atem- oder Stoffwechselstörungen hinweisen.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Elektrolyte",
+    "synonyms": [
+      "Serumelektrolyte",
+      "Blutsalze"
+    ],
+    "short_description": "Elektrolyte sind geladene Mineralstoffe wie Natrium, Kalium, Calcium, Magnesium und Chlorid. Sie steuern Nervenimpulse, Muskelarbeit und Wasserverteilung. Das Elektrolytprofil gehört zu den Standardlaborchecks.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Mengenelemente",
+    "synonyms": [
+      "Makromineralstoffe",
+      "Hauptmineralstoffe"
+    ],
+    "short_description": "Mengenelemente werden in größeren Mengen benötigt als Spurenelemente und umfassen Calcium, Magnesium, Kalium, Natrium, Phosphor, Chlorid und Schwefel. Sie bilden Struktur und regulieren Flüssigkeit sowie Säure-Basen-Balance. Eine abwechslungsreiche Ernährung deckt den Bedarf meist ab.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Kristallwasser Mineralstoffe",
+    "synonyms": [
+      "hydratisierte Mineralsalze"
+    ],
+    "short_description": "Viele Mineralsalze in Nahrungsergänzung liegen als Hydrate vor und enthalten gebundenes Wasser. Das beeinflusst das Gewicht der Tablette, nicht aber zwingend die Wirksamkeit. Entscheidend ist der Anteil an elementarem Mineralstoff auf dem Etikett.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Spurenelemente Überblick",
+    "synonyms": [
+      "Mikromineralstoffe"
+    ],
+    "short_description": "Spurenelemente werden nur in sehr kleinen Mengen benötigt, sind aber für Enzyme und Hormone unverzichtbar. Dazu zählen unter anderem Eisen, Zink, Selen, Jod, Kupfer, Mangan, Chrom und Molybdän. Sowohl Mangel als auch Überdosierung können Probleme verursachen.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Knochenmineralisation",
+    "synonyms": [
+      "Mineralisierung Knochen"
+    ],
+    "short_description": "Knochenmineralisation beschreibt den Einbau von Calcium und Phosphat in die Knochenmatrix. Sie hängt von Vitamin D, K, Belastung und Hormonen ab. Laborwerte wie Calcium, Phosphat und Vitamin D helfen bei der Einschätzung.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Isotonische Elektrolyte",
+    "synonyms": [
+      "Elektrolytlösung",
+      "Sportgetränk-Elektrolyte"
+    ],
+    "short_description": "Isotonische Getränke ersetzen bei starkem Schwitzen Natrium, Kalium und Flüssigkeit. Für den Alltag reichen meist Wasser und eine normale Ernährung. Bei Ausdauereinheiten über längere Zeit können sie sinnvoll sein.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Kochsalzersatz",
+    "synonyms": [
+      "Kaliumchlorid Salz",
+      "Diätsalz"
+    ],
+    "short_description": "Kochsalzersatz auf Kaliumchlorid-Basis senkt die Natriumzufuhr, erhöht aber die Kaliumlast. Menschen mit Nierenerkrankungen oder bestimmten Medikamenten sollten ihn meiden. Eine Umstellung gehört besprochen, nicht nur ausprobiert.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Mineralstoffhaushalt",
+    "synonyms": [
+      "Elektrolythaushalt"
+    ],
+    "short_description": "Der Mineralstoffhaushalt beschreibt Aufnahme, Verteilung und Ausscheidung der Mengenelemente. Niere, Hormone und Ernährung halten ihn im Gleichgewicht. Laborkontrollen sind besonders bei Durchfall, Erbrechen, Diuretika oder Nierenleiden wichtig.",
+    "category": "Mineralstoff"
+  },
+  {
+    "term": "Serumcalcium",
+    "synonyms": [
+      "Gesamtcalcium Blut",
+      "Ca serum"
+    ],
+    "short_description": "Das Serumcalcium wird meist als Gesamtwert gemessen und hängt eng mit Albumin zusammen. Abweichungen können auf Nebenschilddrüse, Vitamin D oder Knochenstoffwechsel hinweisen. Ionisiertes Calcium ist der physiologisch aktive Anteil.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Serummagnesium",
+    "synonyms": [
+      "Mg serum",
+      "Magnesium Blut"
+    ],
+    "short_description": "Das Serummagnesium erfasst nur einen kleinen Teil der Körperspeicher, da viel Magnesium intrazellulär liegt. Dennoch ist es der Standardmarker im Labor. Niedrige Werte können Krämpfe und Herzrhythmusprobleme begünstigen.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Eisen",
+    "synonyms": [
+      "Fe",
+      "Ferrum"
+    ],
+    "short_description": "Eisen ist zentral für den Sauerstofftransport im Hämoglobin und für viele Enzyme. Hämeisen aus Fleisch wird besser aufgenommen als Nicht-Hämeisen aus Pflanzen. Vitamin C verbessert, Tee und Kaffee hemmen die Aufnahme aus pflanzlichen Quellen.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Zink",
+    "synonyms": [
+      "Zn",
+      "Zincum"
+    ],
+    "short_description": "Zink unterstützt Immunsystem, Wundheilung, Geschmackssinn und zahlreichen Enzymen. Fleisch, Schalentiere, Samen und Käse sind gute Quellen. Ein Mangel kann Infektanfälligkeit und Hautveränderungen fördern.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Selen",
+    "synonyms": [
+      "Se",
+      "Selenium"
+    ],
+    "short_description": "Selen ist Bestandteil antioxidativer Enzyme wie der Glutathionperoxidase und wichtig für die Schilddrüsenhormonaktivierung. Der Gehalt in Lebensmitteln hängt stark vom Boden ab. Brasilnüsse sind sehr selenreich und sollten sparsam konsumiert werden.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Jod",
+    "synonyms": [
+      "Iod",
+      "I"
+    ],
+    "short_description": "Jod ist essenziell für die Bildung der Schilddrüsenhormone T3 und T4. Jodiertes Speisesalz, Seefisch und Milchprodukte sind wichtige Quellen in Deutschland. Sowohl Mangel als auch deutliche Überschüsse belasten die Schilddrüse.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Kupfer",
+    "synonyms": [
+      "Cu",
+      "Cuprum"
+    ],
+    "short_description": "Kupfer ist an Eisenstoffwechsel, Bindegewebe und antioxidativen Enzymen beteiligt. Es kommt in Innereien, Nüssen und Kakao vor. Ein Ungleichgewicht mit Zink kann die Kupferversorgung beeinflussen.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Mangan",
+    "synonyms": [
+      "Mn"
+    ],
+    "short_description": "Mangan unterstützt Knochenbildung, Bindegewebe und antioxidative Enzyme in den Mitochondrien. Vollkorn, Nüsse und Tee liefern relevante Mengen. Ein alimentärer Mangel ist selten, Überdosierung eher durch kontaminiertes Wasser oder hohe Exposition möglich.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Chrom",
+    "synonyms": [
+      "Cr",
+      "Chrom III"
+    ],
+    "short_description": "Chrom wird mit dem Kohlenhydratstoffwechsel und der Insulinempfindlichkeit in Verbindung gebracht. Der Bedarf ist gering und über die normale Ernährung meist gedeckt. Hochdosierte Nahrungsergänzung sind nicht pauschal zu empfehlen.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Molybdän",
+    "synonyms": [
+      "Mo",
+      "Molybdenum"
+    ],
+    "short_description": "Molybdän ist Cofaktor für Enzyme des Schwefel- und Purinstoffwechsels. Hülsenfrüchte, Getreide und Nüsse enthalten es in ausreichenden Mengen. Klinische Mängel sind extrem selten.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Fluorid",
+    "synonyms": [
+      "Fluor",
+      "F"
+    ],
+    "short_description": "Fluorid härtet den Zahnschmelz und schützt vor Karies. Es wird über Zahnpasta und teilweise über Trinkwasser oder Salz aufgenommen. Zu hohe Mengen in der Kindheit können Zahnfluorose verursachen.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Cobalt",
+    "synonyms": [
+      "Kobalt",
+      "Co"
+    ],
+    "short_description": "Cobalt ist zentraler Bestandteil des Vitamin-B12-Moleküls. Eine separate Cobalt-Supplementierung ist für Gesunde nicht sinnvoll. Der Bedarf wird über B12-haltige Lebensmittel oder Nahrungsergänzung gedeckt.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Hämeisen",
+    "synonyms": [
+      "Häm-Eisen",
+      "Eisen aus Fleisch"
+    ],
+    "short_description": "Hämeisen stammt aus Hämoglobin und Myoglobin tierischer Lebensmittel und wird besonders gut aufgenommen. Es unterliegt weniger Hemmstoffen als pflanzliches Eisen. Dennoch sollte die Gesamtzufuhr an rotem Fleisch im Rahmen einer ausgewogenen Ernährung stehen.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Nicht-Hämeisen",
+    "synonyms": [
+      "pflanzliches Eisen",
+      "Nicht-Häm-Eisen"
+    ],
+    "short_description": "Nicht-Hämeisen aus Hülsenfrüchten, Getreide und Gemüse wird schlechter aufgenommen als Hämeisen. Vitamin C und fleischhaltige Beilagen verbessern die Bioverfügbarkeit. Phytate und Polyphenole können sie verringern.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Eisenbisglycinat",
+    "synonyms": [
+      "Eisen-Chelat",
+      "Ferrous Bisglycinate"
+    ],
+    "short_description": "Eisenbisglycinat ist eine organische Nahrungsergänzungsform, die oft besser verträglich ist als klassisches Eisensulfat. Es kann den Ferritinspiegel bei Mangel anheben. Die Therapie sollte Laborkontrollen und ärztliche Begleitung einschließen.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Zinkgluconat",
+    "synonyms": [
+      "Zn-Gluconat"
+    ],
+    "short_description": "Zinkgluconat ist eine gängige Form in Lutschtabletten und Nahrungsergänzung. Es kann bei Erkältungen kurzfristig eingesetzt werden, wobei die Evidenz gemischt ist. Langfristig hohe Dosen können Kupfer verdrängen.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Natriumselenit",
+    "synonyms": [
+      "Selenit",
+      "Na-Selenit"
+    ],
+    "short_description": "Natriumselenit ist eine anorganische Selenform in manchen Arzneimitteln und Nahrungsergänzung. Die Dosierung muss eng begrenzt bleiben, weil Selen eine geringe therapeutische Breite hat. Der Status lässt sich über Selen im Blut oder GPX-Aktivität einschätzen.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Kaliumiodid",
+    "synonyms": [
+      "KI",
+      "Jodid"
+    ],
+    "short_description": "Kaliumiodid liefert bioverfügbares Jod und steckt in jodiertem Speisesalz sowie in Tabletten. In Notfallszenarien wird es zum Schutz der Schilddrüse vor radioaktivem Jod eingesetzt. Im Alltag reicht meist die Verwendung von Jodsalz.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Kupfergluconat",
+    "synonyms": [
+      "Cu-Gluconat"
+    ],
+    "short_description": "Kupfergluconat ist eine Nahrungsergänzungsform bei nachgewiesenem Kupfermangel. Eine unkritische Einnahme ist nicht sinnvoll, weil Kupfer im Überschuss oxidativen Stress fördern kann. Zink-Kupfer-Balance sollte beachtet werden.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Silicium",
+    "synonyms": [
+      "Silizium",
+      "Si",
+      "Kieselsäure"
+    ],
+    "short_description": "Silicium wird mit Bindegewebe, Haut und Knochen in Verbindung gebracht, gilt aber beim Menschen nicht als klar essenziell wie Eisen oder Zink. Es kommt in Vollkorn und manchen Mineralwässern vor. Die wissenschaftliche Lage zu Nahrungsergänzung ist zurückhaltend.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Bor",
+    "synonyms": [
+      "B",
+      "Boron"
+    ],
+    "short_description": "Bor kommt in Obst, Gemüse und Nüssen vor und wird in der Forschung mit Knochenstoffwechsel diskutiert. Ein klar definierter Mangelzustand beim Menschen ist nicht etabliert. Hochdosierte Bor-Nahrungsergänzung sind nicht allgemein empfohlen.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Vanadium",
+    "synonyms": [
+      "V"
+    ],
+    "short_description": "Vanadium wird experimentell mit Insulinsignalwegen in Verbindung gebracht. Für die normale Ernährung spielt es kaum eine Rolle. Nahrungsergänzung sind wegen möglicher Toxizität kritisch zu sehen.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Nickel",
+    "synonyms": [
+      "Ni"
+    ],
+    "short_description": "Nickel kommt in Spuren in der Nahrung vor; ein essenzieller Bedarf beim Menschen ist nicht eindeutig belegt. Wichtiger ist die Kontaktallergie gegen Nickel in Schmuck. Ernährungsbezogen ist es selten ein Thema.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Zinn",
+    "synonyms": [
+      "Sn",
+      "Zinnspuren"
+    ],
+    "short_description": "Zinn kann in Spuren aus Dosenlebensmitteln in die Nahrung übergehen. Ein physiologischer Bedarf ist nicht etabliert. Moderne Innenbeschichtungen haben die Belastung deutlich gesenkt.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Lithium Spurenelement",
+    "synonyms": [
+      "Li Spuren"
+    ],
+    "short_description": "Lithium kommt in manchen Mineralwässern in Spuren vor und wird pharmakologisch in viel höheren Dosen als Stimmungsstabilisator eingesetzt. Spurengehalte in der Ernährung sind nicht mit Medikamentendosen vergleichbar. Eine Selbstmedikation ist gefährlich.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Hämoglobin",
+    "synonyms": [
+      "Hb",
+      "Hämoglobinwert"
+    ],
+    "short_description": "Hämoglobin ist der rote Blutfarbstoff, der Sauerstoff in den Erythrozyten transportiert. Niedrige Werte sprechen für eine Anämie, hohe können auf Rauchen, Austrocknung oder seltene Erkrankungen hinweisen. Der Wert gehört zum kleinen Blutbild.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Hämatokrit",
+    "synonyms": [
+      "Hk",
+      "Hct",
+      "Hämatokritwert"
+    ],
+    "short_description": "Der Hämatokrit gibt den Anteil der Blutzellen am Gesamtblutvolumen an. Er steigt bei Flüssigkeitsmangel und sinkt bei Anämie. Zusammen mit Hämoglobin und Erythrozytenzahl wird er interpretiert.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Erythrozyten",
+    "synonyms": [
+      "Ery",
+      "rote Blutkörperchen",
+      "RBC"
+    ],
+    "short_description": "Erythrozyten transportieren Sauerstoff und werden im Knochenmark gebildet. Ihre Zahl, Größe und Hämoglobingehalt helfen, Anämieformen zu unterscheiden. Ein Mangel an Eisen, B12 oder Folat verändert typische Muster.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Leukozyten",
+    "synonyms": [
+      "Leuko",
+      "weiße Blutkörperchen",
+      "WBC"
+    ],
+    "short_description": "Leukozyten sind Abwehrzellen und reagieren auf Infekte, Entzündungen und Stress. Erhöhte oder erniedrigte Werte brauchen Kontext wie Differenzialblutbild und Klinik. Allein sagen sie selten die genaue Ursache.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Thrombozyten",
+    "synonyms": [
+      "Thrombo",
+      "Blutplättchen",
+      "PLT"
+    ],
+    "short_description": "Thrombozyten sind entscheidend für die primäre Blutstillung. Zu wenige erhöhen die Blutungsneigung, zu viele können das Thromboserisiko beeinflussen. Medikamente, Infekte und Knochenmarkerkrankungen verändern den Wert.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "MCV",
+    "synonyms": [
+      "mittleres korpuskuläres Volumen",
+      "Erythrozytenvolumen"
+    ],
+    "short_description": "Das MCV beschreibt die durchschnittliche Größe der roten Blutkörperchen. Ein hohes MCV passt zu B12- oder Folatmangel, ein niedriges eher zu Eisenmangel. Es ist ein Schlüsselwert bei der Anämiedifferenzierung.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "MCH",
+    "synonyms": [
+      "mittlerer Hämoglobingehalt",
+      "HbE"
+    ],
+    "short_description": "Das MCH gibt an, wie viel Hämoglobin durchschnittlich in einem Erythrozyten steckt. Niedrige Werte finden sich oft bei Eisenmangelanämie. Es wird zusammen mit MCV und MCHC gelesen.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "MCHC",
+    "synonyms": [
+      "mittlere Hämoglobinkonzentration",
+      "korpuskuläre Hb-Konzentration"
+    ],
+    "short_description": "Das MCHC beschreibt die Hämoglobinkonzentration innerhalb der Erythrozyten. Stark erniedrigte Werte können auf Eisenmangel oder seltene Hämoglobinopathien hinweisen. Technische Messfehler sollten ausgeschlossen werden.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "RDW",
+    "synonyms": [
+      "Erythrozytenverteilungsbreite",
+      "Red Cell Distribution Width"
+    ],
+    "short_description": "Die RDW misst, wie stark die Erythrozyten in ihrer Größe streuen. Eine erhöhte RDW tritt häufig bei Eisen-, B12- oder Folatmangel auf. Sie ergänzt MCV bei der Einordnung von Anämien.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Differenzialblutbild",
+    "synonyms": [
+      "Diff-BB",
+      "Leukozytendifferenzierung"
+    ],
+    "short_description": "Das Differenzialblutbild zeigt die Anteile von Neutrophilen, Lymphozyten, Monozyten, Eosinophilen und Basophilen. Es hilft bei Infekt- und Allergieverdacht sowie bei Bluterkrankungen. Die Interpretation gehört in den klinischen Kontext.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Retikulozyten",
+    "synonyms": [
+      "Retis",
+      "junge Erythrozyten"
+    ],
+    "short_description": "Retikulozyten sind junge rote Blutkörperchen und spiegeln die Bildungsaktivität des Knochenmarks wider. Nach Blutverlust oder erfolgreicher Mangeltherapie steigen sie an. Bei Bildungsstörungen bleiben sie niedrig.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Kleines Blutbild",
+    "synonyms": [
+      "KBB",
+      "Blutbild klein"
+    ],
+    "short_description": "Das kleine Blutbild umfasst Erythrozyten, Leukozyten, Thrombozyten, Hämoglobin, Hämatokrit und Indizes wie MCV. Es ist ein Basischeck bei Müdigkeit, Infekten und vor Operationen. Auffälligkeiten führen oft zu gezielten Folgeuntersuchungen.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Großes Blutbild",
+    "synonyms": [
+      "GBB",
+      "Blutbild groß"
+    ],
+    "short_description": "Das große Blutbild erweitert das kleine um die Leukozytendifferenzierung. Es liefert mehr Hinweise auf Infektart oder hämatologische Erkrankungen. Für Stoffwechselthemen bleibt es ein wichtiger Begleitbefund.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Ferritin",
+    "synonyms": [
+      "Speichereisen",
+      "Ferritinwert"
+    ],
+    "short_description": "Ferritin spiegelt die Eisenspeicher wider und ist der wichtigste Marker bei Verdacht auf Eisenmangel. Als Akute-Phase-Protein kann es bei Entzündungen falsch normal oder hoch erscheinen. Dann helfen Transferrinsättigung und sTfR weiter.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Transferrin",
+    "synonyms": [
+      "Eisentransportprotein"
+    ],
+    "short_description": "Transferrin transportiert Eisen im Blut zur Knochenmark und zu anderen Geweben. Bei Eisenmangel steigt es typischerweise an, bei Entzündung oder Leberstörung kann es sinken. Zusammen mit Eisen und Ferritin ergibt sich das Gesamtbild.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Transferrinsättigung",
+    "synonyms": [
+      "TSAT",
+      "TfS"
+    ],
+    "short_description": "Die Transferrinsättigung gibt an, wie viel Prozent des Transferrins mit Eisen beladen sind. Niedrige Werte sprechen für Eisenmangel, hohe für Überladung oder Entzündungseffekte. Sie wird aus Eisen und Transferrin berechnet.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Löslicher Transferrinrezeptor",
+    "synonyms": [
+      "sTfR",
+      "sTFR"
+    ],
+    "short_description": "Der lösliche Transferrinrezeptor steigt bei Eisenmangel und erhöhter Erythrozytenbildung. Er wird weniger stark durch Entzündung beeinflusst als Ferritin. Deshalb ist er bei chronischen Erkrankungen besonders hilfreich.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Serum eisen",
+    "synonyms": [
+      "Eisen im Serum",
+      "Fe serum"
+    ],
+    "short_description": "Das Serumeisen schwankt tageszeitlich und nach Mahlzeiten stark und ist allein wenig aussagekräftig. Aussagekräftiger sind Ferritin, TSAT und das Gesamtbild. Dennoch gehört es oft zum Eisenstatus-Panel.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Hämoglobin A",
+    "synonyms": [
+      "HbA",
+      "adultes Hämoglobin"
+    ],
+    "short_description": "Hämoglobin A ist die Hauptform des Hämoglobins bei Erwachsenen. Varianten und Thalassämien verändern das Muster in der Hämoglobin-Elektrophorese. Für den Alltag der LabPlate-Nutzer zählt vor allem der Gesamt-Hb-Wert.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Cholesterin",
+    "synonyms": [
+      "Gesamtcholesterin",
+      "Chol"
+    ],
+    "short_description": "Das Gesamtcholesterin fasst alle cholesterinhaltigen Lipoproteine zusammen. Es allein sagt wenig über das Risiko aus; LDL, HDL und non-HDL sind aussagekräftiger. Ernährung, Gene und Schilddrüse beeinflussen den Wert.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "LDL-Cholesterin",
+    "synonyms": [
+      "LDL",
+      "Low Density Lipoprotein"
+    ],
+    "short_description": "LDL transportiert Cholesterin zu den Geweben und gilt als zentraler Risikomarker für Atherosklerose. Gesättigte Fette, Transfette und hohe Zuckermuster können ungünstig wirken. Zielwerte hängen vom persönlichen Risikoprofil ab.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "HDL-Cholesterin",
+    "synonyms": [
+      "HDL",
+      "High Density Lipoprotein"
+    ],
+    "short_description": "HDL gilt als „gutes“ Cholesterin, weil es Cholesterin rücktransportieren kann. Sehr niedrige Werte gehen mit höherem Risiko einher, sehr hohe sind nicht automatisch schützend. Bewegung und Rauchstopp wirken oft günstig.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Triglyceride",
+    "synonyms": [
+      "Triglyzeride",
+      "TG"
+    ],
+    "short_description": "Triglyceride sind Blutfette, die stark auf Zucker, Alkohol und Übergewicht reagieren. Hohe Fruktosezufuhr und Insulinresistenz treiben sie häufig nach oben. Nüchternmessung und Lebensstiländerung sind zentrale Bausteine.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Non-HDL-Cholesterin",
+    "synonyms": [
+      "non-HDL",
+      "Nicht-HDL"
+    ],
+    "short_description": "Non-HDL-Cholesterin ist Gesamtcholesterin minus HDL und umfasst alle atherogenen Partikel. Es ist auch bei erhöhten Triglyceriden nützlich. Manche Leitlinien nutzen es als Therapieziel neben LDL.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Apolipoprotein B",
+    "synonyms": [
+      "ApoB",
+      "Apo B"
+    ],
+    "short_description": "ApoB gibt die Anzahl atherogener Lipoproteinpartikel wieder und kann LDL überlegen sein. Jedes LDL-, IDL- und VLDL-Partikel trägt ein ApoB. Hohe Werte bedeuten mehr Partikelbelastung der Gefäße.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Lipoprotein a",
+    "synonyms": [
+      "Lp(a)",
+      "Lp a"
+    ],
+    "short_description": "Lp(a) ist ein genetisch stark bestimmter Risikomarker für Herz-Kreislauf-Erkrankungen. Lebensstil ändert ihn nur wenig. Einmal messen reicht oft, um das persönliche Risiko besser einzuordnen.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "VLDL",
+    "synonyms": [
+      "Very Low Density Lipoprotein"
+    ],
+    "short_description": "VLDL transportiert vor allem Triglyceride aus der Leber ins Blut. Bei Insulinresistenz und hoher Zuckerzufuhr kann die VLDL-Produktion steigen. Daraus entstehen später LDL-Partikel.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Oxidiertes LDL",
+    "synonyms": [
+      "oxLDL"
+    ],
+    "short_description": "Oxidiertes LDL gilt als besonders gefäßschädigend und wird in der Forschung untersucht. Routinemäßig wird es selten bestimmt. Antioxidantienreiche Ernährung kann oxidativen Stress mindern, ersetzt aber keine Risikokontrolle.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Glukose",
+    "synonyms": [
+      "Glucose",
+      "Blutzucker",
+      "Traubenzucker"
+    ],
+    "short_description": "Glukose ist der zentrale Blutzucker und Energielieferant für Gehirn und Muskeln. Nüchtern- und Gelegenheitswerte helfen, Diabetes und Prädiabetes zu erkennen. Ernährung, Stress und Medikamente beeinflussen den Spiegel stark.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Nüchternglukose",
+    "synonyms": [
+      "Nüchternblutzucker",
+      "FPG"
+    ],
+    "short_description": "Die Nüchternglukose wird nach mindestens acht Stunden ohne Kalorienzufuhr gemessen. Werte im Grenzbereich weisen auf gestörte Glukosetoleranz hin. Sie wird oft mit HbA1c kombiniert interpretiert.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "HbA1c",
+    "synonyms": [
+      "glykiertes Hämoglobin",
+      "Langzeitblutzucker"
+    ],
+    "short_description": "Der HbA1c spiegelt die durchschnittliche Glukosebelastung der letzten zwei bis drei Monate wider. Er ist ein Schlüsselwert für Diabetesdiagnose und -therapie. Bei bestimmten Anämien kann er verfälscht sein.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Insulin",
+    "synonyms": [
+      "Seruminsulin",
+      "Insulinspiegel"
+    ],
+    "short_description": "Insulin senkt den Blutzucker, indem es Glukose in die Zellen schleust. Hohe Nüchterninsulinwerte können auf Insulinresistenz hinweisen. Der Wert wird oft zusammen mit Glukose zum HOMA-IR verrechnet.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "C-Peptid",
+    "synonyms": [
+      "C Peptide"
+    ],
+    "short_description": "C-Peptid entsteht bei der Insulinproduktion und zeigt die eigene Insulinsekretion an. Es hilft, Typ-1- von Typ-2-Mustern und Restfunktion der Bauchspeicheldrüse zu unterscheiden. Exogenes Insulin beeinflusst C-Peptid nicht direkt.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "HOMA-IR",
+    "synonyms": [
+      "HOMA Index",
+      "Insulinresistenz-Index"
+    ],
+    "short_description": "HOMA-IR schätzt die Insulinresistenz aus Nüchternglukose und Nüchterninsulin. Höhere Werte sprechen für abnehmende Insulinempfindlichkeit. Der Index ist ein Orientierungswert, kein alleiniger Diagnoseschlüssel.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "OGTT",
+    "synonyms": [
+      "oraler Glukosetoleranztest",
+      "Zuckerbelastungstest"
+    ],
+    "short_description": "Beim OGTT wird Glukose getrunken und der Blutzuckerverlauf gemessen. Er erkennt gestörte Glukosetoleranz früher als ein einzelner Nüchternwert. In der Schwangerschaft ist er Standard zur Gestationsdiabetes-Diagnostik.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Fruktosamin",
+    "synonyms": [
+      "glykiertes Protein"
+    ],
+    "short_description": "Fruktosamin spiegelt die Glukosekontrolle der letzten ein bis drei Wochen wider. Es wird genutzt, wenn HbA1c unzuverlässig ist, etwa bei Hämoglobinvarianten. Routinemäßig kommt es seltener zum Einsatz.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "ALT",
+    "synonyms": [
+      "ALAT",
+      "GPT",
+      "Alanin-Aminotransferase"
+    ],
+    "short_description": "ALT ist ein leberspezifisches Enzym und steigt bei Leberzellschädigung. Ursachen reichen von Fettleber und Viren bis zu Medikamenten. Isoliert erhöhte Werte brauchen Verlauf und Kontext.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "AST",
+    "synonyms": [
+      "ASAT",
+      "GOT",
+      "Aspartat-Aminotransferase"
+    ],
+    "short_description": "AST kommt in Leber, Muskel und Herz vor und ist weniger leberspezifisch als ALT. Ein AST/ALT-Muster kann Hinweise auf Alkohol oder Muskelbelastung geben. Zusammen mit GGT und CK wird es eingeordnet.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "GGT",
+    "synonyms": [
+      "Gamma-GT",
+      "γ-GT",
+      "Gamma-Glutamyltransferase"
+    ],
+    "short_description": "GGT steigt bei Gallenstau, Alkoholbelastung und manchen Medikamenten. Zusammen mit ALP hilft sie, cholestatische Muster zu erkennen. Lebensstiländerungen senken den Wert oft spürbar.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Alkalische Phosphatase",
+    "synonyms": [
+      "AP",
+      "ALP"
+    ],
+    "short_description": "Die alkalische Phosphatase stammt aus Leber, Knochen und anderen Geweben. Erhöhte Werte passen zu Gallenstau oder Knochenumbau. Isoenzyme oder Begleitwerte helfen bei der Herkunft.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Bilirubin",
+    "synonyms": [
+      "Gesamtbilirubin",
+      "Bili"
+    ],
+    "short_description": "Bilirubin entsteht beim Abbau von Hämoglobin und wird von der Leber ausgeschieden. Erhöhte Werte führen zu Ikterus und können auf Leber-, Gallen- oder Hämolyseprobleme hinweisen. Direktes und indirektes Bilirubin differenzieren Ursachen.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Albumin",
+    "synonyms": [
+      "Serumalbumin"
+    ],
+    "short_description": "Albumin ist das häufigste Plasmaeiweiß und hält den onkotischen Druck aufrecht. Niedrige Werte treten bei Leberinsuffizienz, Entzündung oder Verlust über Niere und Darm auf. Es beeinflusst auch die Interpretation von Calcium.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "INR",
+    "synonyms": [
+      "International Normalized Ratio"
+    ],
+    "short_description": "Die INR standardisiert die Messung der extrinsischen Gerinnung und wird vor allem unter Vitamin-K-Antagonisten genutzt. Erhöhte Werte bedeuten längere Gerinnungszeit. Ernährung mit viel Vitamin K kann die Einstellung beeinflussen.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Quick-Wert",
+    "synonyms": [
+      "Thromboplastinzeit",
+      "TPZ",
+      "Prothrombinzeit"
+    ],
+    "short_description": "Der Quick-Wert beschreibt die Gerinnungsfähigkeit über den extrinsischen Weg und hängt von Vitamin-K-abhängigen Faktoren ab. Niedrige Quick-Werte entsprechen einer höheren INR. Leberstörungen können ihn senken.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "aPTT",
+    "synonyms": [
+      "PTT",
+      "aktivierte partielle Thromboplastinzeit"
+    ],
+    "short_description": "Die aPTT prüft den intrinsischen Gerinnungsweg und wird unter Heparintherapie kontrolliert. Verlängerungen können auf Faktorenmangel oder Hemmkörper hinweisen. Zusammen mit Quick/INR ergibt sich das Gerinnungsprofil.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Kreatinin",
+    "synonyms": [
+      "Serumkreatinin",
+      "Crea"
+    ],
+    "short_description": "Kreatinin entsteht im Muskelstoffwechsel und wird über die Niere ausgeschieden. Steigende Werte können eine eingeschränkte Filterfunktion anzeigen. Muskelmasse und bestimmte Medikamente beeinflussen den Wert.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "eGFR",
+    "synonyms": [
+      "geschätzte glomeruläre Filtrationsrate",
+      "GFR"
+    ],
+    "short_description": "Die eGFR schätzt die Nierenfilterleistung aus Kreatinin, Alter und Geschlecht. Sie ist der zentrale Marker zur Einteilung von Niereninsuffizienz. Cystatin C kann die Schätzung bei besonderer Muskelmasse verbessern.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Harnstoff",
+    "synonyms": [
+      "Urea",
+      "Harnstoff-N",
+      "BUN"
+    ],
+    "short_description": "Harnstoff entsteht im Eiweißstoffwechsel und wird renal ausgeschieden. Erhöhte Werte passen zu Niereninsuffizienz, Dehydratation oder hoher Proteinlast. Allein ist er weniger spezifisch als Kreatinin und eGFR.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Harnsäure",
+    "synonyms": [
+      "UA",
+      "Urat",
+      "Harnsaeure"
+    ],
+    "short_description": "Harnsäure ist Endprodukt des Purinstoffwechsels und kann Gichtanfälle auslösen. Fruktose, Alkohol und Übergewicht können den Spiegel erhöhen. Hydration und Ernährungsumstellung sind oft Teil der Strategie.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Cystatin C",
+    "synonyms": [
+      "CysC"
+    ],
+    "short_description": "Cystatin C ist ein alternativer Nierenmarker, der weniger von Muskelmasse abhängt als Kreatinin. Er wird genutzt, wenn die Kreatinin-eGFR unsicher erscheint. Die Kombination beider Marker verbessert die Einschätzung.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "TSH",
+    "synonyms": [
+      "Thyreoidea-stimulierendes Hormon",
+      "Thyrotropin"
+    ],
+    "short_description": "TSH steuert die Schilddrüse und ist der wichtigste Screeningparameter. Erhöhte Werte sprechen für Unterfunktion, erniedrigte für Überfunktion oder Überdosierung. Biotinsupplemente können Assays verfälschen.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Freies T3",
+    "synonyms": [
+      "fT3",
+      "Triiodthyronin frei"
+    ],
+    "short_description": "Freies T3 ist das biologisch aktive Schilddrüsenhormon im Blut. Es wird gemessen, wenn die TSH-Lage unklar ist oder eine Überfunktion vermutet wird. Jod und Selen beeinflussen den Schilddrüsenstoffwechsel.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Freies T4",
+    "synonyms": [
+      "fT4",
+      "Thyroxin frei"
+    ],
+    "short_description": "Freies T4 ist das Speicher- und Vorläuferhormon der Schilddrüse. Zusammen mit TSH steuert es die Einstellung einer Schilddrüsentherapie. Abweichungen brauchen immer die Zusammenschau mit Klinik und TSH.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "TPO-Antikörper",
+    "synonyms": [
+      "TPO-Ak",
+      "Anti-TPO"
+    ],
+    "short_description": "TPO-Antikörper weisen auf eine autoimmune Schilddrüsenerkrankung wie Hashimoto hin. Sie erklären viele Fälle einer schleichenden Unterfunktion. Ein positiver Befund bedeutet nicht automatisch Behandlungsbedarf, aber engmaschigere Kontrollen.",
+    "category": "Blutwert"
+  }
+]

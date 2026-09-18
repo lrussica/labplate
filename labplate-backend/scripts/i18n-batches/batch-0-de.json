@@ -1,0 +1,901 @@
+[
+  {
+    "term": "Vitamin A",
+    "synonyms": [
+      "Retinol",
+      "Beta-Carotin",
+      "Retinal"
+    ],
+    "category": "Vitamin",
+    "short_description": "Vitamin A ist wichtig für Sehkraft, Haut und Immunabwehr. Der Körper kann es als Retinol aus tierischen Lebensmitteln oder als Vorstufe Beta-Carotin aus pflanzlichen Quellen aufnehmen. Ein Mangel zeigt sich oft zuerst als Nachtblindheit und trockene Schleimhäute.",
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Retinol",
+    "synonyms": [
+      "Vitamin A aktiv",
+      "all-trans-Retinol"
+    ],
+    "category": "Vitamin",
+    "short_description": "Retinol ist die aktive Form von Vitamin A und kommt vor allem in Leber, Eiern und Milchprodukten vor. Der Körper speichert es in der Leber und setzt es bei Bedarf frei. Eine Überdosierung über Nahrungsergänzung kann toxisch wirken, während Beta-Carotin aus Gemüse als sicherer gilt.",
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Beta-Carotin",
+    "synonyms": [
+      "Provitamin A",
+      "β-Carotin"
+    ],
+    "category": "Vitamin",
+    "short_description": "Beta-Carotin ist ein orangefarbener Pflanzenfarbstoff und eine Vorstufe von Vitamin A. Der Körper wandelt nur so viel um, wie er benötigt, weshalb eine Überdosierung über Lebensmittel selten problematisch ist. Gute Quellen sind Karotten, Süßkartoffeln und grünes Blattgemüse.",
+    "related_chapters": [
+      8,
+      10
+    ]
+  },
+  {
+    "term": "Vitamin D",
+    "synonyms": [
+      "Calciferol",
+      "Sonnenvitamin"
+    ],
+    "category": "Vitamin",
+    "short_description": "Vitamin D unterstützt Knochenstoffwechsel, Immunsystem und Muskelkraft. Der Körper bildet es hauptsächlich unter UVB-Sonneneinstrahlung in der Haut. Viele Menschen in Mitteleuropa haben im Winter niedrige Spiegel und profitieren von gezielter Supplementierung nach Laborkontrolle.",
+    "related_chapters": [
+      3,
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Cholecalciferol",
+    "synonyms": [
+      "Vitamin D3",
+      "Colecalciferol"
+    ],
+    "category": "Vitamin",
+    "short_description": "Cholecalciferol ist die Form von Vitamin D, die der menschliche Körper unter Sonnenlicht selbst bildet und die auch in fettem Fisch vorkommt. Nahrungsergänzung nutzen meist D3, weil es den Blutspiegel effizient anhebt. Im Körper wird es in der Leber und Niere zur aktiven Form umgewandelt.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Ergocalciferol",
+    "synonyms": [
+      "Vitamin D2"
+    ],
+    "category": "Vitamin",
+    "short_description": "Ergocalciferol ist die pflanzliche Form von Vitamin D und wird in manchen Nahrungsergänzung und angereicherten Lebensmitteln verwendet. Es hebt den 25-OH-D-Spiegel etwas weniger effizient an als Cholecalciferol. Für die meisten Menschen ist D3 die bevorzugte Ergänzungsform.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "Calcitriol",
+    "synonyms": [
+      "1,25-Dihydroxyvitamin D",
+      "aktives Vitamin D"
+    ],
+    "category": "Vitamin",
+    "short_description": "Calcitriol ist die hormonell aktive Form von Vitamin D und entsteht in der Niere. Es steuert die Calciumaufnahme im Darm und den Knochenstoffwechsel. Im Labor wird meist der Speicherwert 25-OH-Vitamin D gemessen, nicht Calcitriol selbst.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Vitamin E",
+    "synonyms": [
+      "Tocopherol",
+      "Alpha-Tocopherol"
+    ],
+    "category": "Vitamin",
+    "short_description": "Vitamin E wirkt als fettlösliches Antioxidans und schützt Zellmembranen vor oxidativem Stress. Gute Quellen sind Pflanzenöle, Nüsse und Samen. Ein klinischer Mangel ist selten, kann aber bei schweren Fettresorptionsstörungen auftreten.",
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Alpha-Tocopherol",
+    "synonyms": [
+      "α-Tocopherol",
+      "Vitamin E aktiv"
+    ],
+    "category": "Vitamin",
+    "short_description": "Alpha-Tocopherol ist die biologisch wirksamste Form von Vitamin E beim Menschen. Es wird bevorzugt in Lipoproteinen transportiert und in Geweben gespeichert. Sehr hohe Dosen aus Nahrungsergänzung können die Blutgerinnung beeinflussen und sollten mit dem Arzt abgestimmt werden.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "Vitamin K",
+    "synonyms": [
+      "Phyllochinon",
+      "Menachinon"
+    ],
+    "category": "Vitamin",
+    "short_description": "Vitamin K ist unerlässlich für die Blutgerinnung und spielt auch eine Rolle im Knochenstoffwechsel. Es kommt als K1 in grünem Blattgemüse und als K2 in fermentierten Lebensmitteln vor. Menschen mit Vitamin-K-Antagonisten wie Marcumar müssen die Zufuhr besonders beachten.",
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Phyllochinon",
+    "synonyms": [
+      "Vitamin K1",
+      "Phytomenadion"
+    ],
+    "category": "Vitamin",
+    "short_description": "Phyllochinon ist die pflanzliche Form von Vitamin K und steckt vor allem in Spinat, Grünkohl und Brokkoli. Es unterstützt die Bildung gerinnungsaktiver Proteine in der Leber. Eine ausgewogene Ernährung deckt den Bedarf bei Gesunden in der Regel ab.",
+    "related_chapters": [
+      8
+    ]
+  },
+  {
+    "term": "Menachinon",
+    "synonyms": [
+      "Vitamin K2",
+      "MK-7",
+      "MK-4"
+    ],
+    "category": "Vitamin",
+    "short_description": "Menachinon ist die Form von Vitamin K, die vor allem von Bakterien gebildet wird und in fermentierten Lebensmitteln wie Natto vorkommt. Manche Formen wie MK-7 haben eine längere Verweildauer im Blut. Es wird mit der Regulation der Calciumverteilung in Knochen und Gefäßen in Verbindung gebracht.",
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Vitamin C",
+    "synonyms": [
+      "Ascorbinsäure",
+      "Ascorbat"
+    ],
+    "category": "Vitamin",
+    "short_description": "Vitamin C ist ein wasserlösliches Antioxidans und wichtig für Kollagenbildung, Immunabwehr und Eisenaufnahme. Der Körper speichert es nur begrenzt, daher ist eine regelmäßige Zufuhr über Obst und Gemüse sinnvoll. Ein schwerer Mangel führt zu Skorbut, der heute sehr selten ist.",
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Ascorbinsäure",
+    "synonyms": [
+      "L-Ascorbinsäure",
+      "Vitamin C Säureform"
+    ],
+    "category": "Vitamin",
+    "short_description": "Ascorbinsäure ist die chemische Bezeichnung für Vitamin C. Sie unterstützt die Reduktion von Eisen und damit dessen Aufnahme aus pflanzlichen Lebensmitteln. Hohe Einzeldosen können bei empfindlichen Personen Magen-Darm-Beschwerden auslösen.",
+    "related_chapters": [
+      8
+    ]
+  },
+  {
+    "term": "Vitamin B1",
+    "synonyms": [
+      "Thiamin",
+      "Aneurin"
+    ],
+    "category": "Vitamin",
+    "short_description": "Vitamin B1 ist ein Coenzym im Kohlenhydratstoffwechsel und wichtig für Nerven und Energiegewinnung. Gute Quellen sind Vollkornprodukte, Hülsenfrüchte und Schweinefleisch. Ein Mangel kann bei Alkoholmissbrauch oder sehr einseitiger Ernährung auftreten.",
+    "related_chapters": [
+      1,
+      7,
+      9
+    ]
+  },
+  {
+    "term": "Thiamin",
+    "synonyms": [
+      "Thiaminhydrochlorid",
+      "Thiaminpyrophosphat"
+    ],
+    "category": "Vitamin",
+    "short_description": "Thiamin ist die aktive Bezeichnung für Vitamin B1 und wird im Körper zu Thiaminpyrophosphat umgewandelt. Dieses Coenzym ist zentral für den Abbau von Glukose. Bei intensivem Sport oder hohem Kohlenhydratanteil steigt der Bedarf leicht an.",
+    "related_chapters": [
+      1,
+      7
+    ]
+  },
+  {
+    "term": "Vitamin B2",
+    "synonyms": [
+      "Riboflavin"
+    ],
+    "category": "Vitamin",
+    "short_description": "Vitamin B2 unterstützt Energiegewinnung, Hautgesundheit und den Stoffwechsel anderer B-Vitamine. Es kommt in Milchprodukten, Eiern, Innereien und Mandeln vor. Ein Mangel zeigt sich oft an rissigen Mundwinkeln und entzündeter Zunge.",
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Riboflavin",
+    "synonyms": [
+      "Lactoflavin",
+      "Vitamin B2"
+    ],
+    "category": "Vitamin",
+    "short_description": "Riboflavin ist lichtempfindlich und wird in durchsichtigen Milchflaschen teilweise abgebaut. Als Bestandteil von FAD und FMN ist es an zahlreichen Redoxreaktionen beteiligt. Die typische Gelbfärbung des Urins nach Nahrungsergänzung ist harmlos.",
+    "related_chapters": [
+      8
+    ]
+  },
+  {
+    "term": "Vitamin B3",
+    "synonyms": [
+      "Niacin",
+      "Nicotinsäure",
+      "Nicotinamid"
+    ],
+    "category": "Vitamin",
+    "short_description": "Vitamin B3 ist essenziell für den Energiestoffwechsel und die DNA-Reparatur. Es kommt in Fleisch, Fisch, Erdnüssen und Vollkorn vor; der Körper kann es auch aus Tryptophan bilden. Sehr hohe Dosen Nicotinsäure können Flush und Leberbelastung verursachen.",
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Niacin",
+    "synonyms": [
+      "Niacinamid",
+      "Vitamin PP"
+    ],
+    "category": "Vitamin",
+    "short_description": "Niacin umfasst Nicotinsäure und Nicotinamid und ist Bestandteil der Coenzyme NAD und NADP. Historisch verhinderte es die Mangelkrankheit Pellagra. In der Ernährungstherapie wird auf eine ausgewogene Zufuhr statt auf Megadosen gesetzt.",
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Vitamin B5",
+    "synonyms": [
+      "Pantothensäure",
+      "Pantothenat"
+    ],
+    "category": "Vitamin",
+    "short_description": "Vitamin B5 ist Bestandteil von Coenzym A und damit zentral für Fett- und Energiestoffwechsel. Es kommt in fast allen Lebensmitteln vor, daher ist ein Mangel sehr selten. Der Name leitet sich vom griechischen „pantos“ für „überall“ ab.",
+    "related_chapters": [
+      8
+    ]
+  },
+  {
+    "term": "Pantothensäure",
+    "synonyms": [
+      "Calcium-Pantothenat",
+      "Dexpanthenol"
+    ],
+    "category": "Vitamin",
+    "short_description": "Pantothensäure unterstützt die Synthese von Fettsäuren, Cholesterin und Steroidhormonen. In der Hautpflege wird das verwandte Dexpanthenol lokal eingesetzt. Über die Ernährung ist der Bedarf bei abwechslungsreicher Kost gut zu decken.",
+    "related_chapters": [
+      8
+    ]
+  },
+  {
+    "term": "Vitamin B6",
+    "synonyms": [
+      "Pyridoxin",
+      "Pyridoxal",
+      "Pyridoxamin"
+    ],
+    "category": "Vitamin",
+    "short_description": "Vitamin B6 ist wichtig für den Aminosäurestoffwechsel, die Blutbildung und die Neurotransmittersynthese. Gute Quellen sind Fleisch, Fisch, Bananen und Vollkorn. Chronisch sehr hohe Nahrungsergänzungsdosen können Nervenschäden verursachen.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Pyridoxin",
+    "synonyms": [
+      "Pyridoxalphosphat",
+      "PLP"
+    ],
+    "category": "Vitamin",
+    "short_description": "Pyridoxin ist eine Form von Vitamin B6; die aktive Coenzymform ist Pyridoxalphosphat. Es ist auch an der Umwandlung von Homocystein beteiligt. Laborwerte zu B6 werden seltener bestimmt als B12 oder Folat.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Biotin",
+    "synonyms": [
+      "Vitamin B7",
+      "Vitamin H"
+    ],
+    "category": "Vitamin",
+    "short_description": "Biotin ist ein B-Vitamin für Haar, Haut und den Stoffwechsel von Fettsäuren und Glukose. Es steckt in Eiern, Nüssen und Innereien. Extrem hohe Biotindosen können bestimmte Labortests, etwa Schilddrüsenwerte, verfälschen.",
+    "related_chapters": [
+      9,
+      11
+    ]
+  },
+  {
+    "term": "Folsäure",
+    "synonyms": [
+      "Folat",
+      "Vitamin B9",
+      "Pteroylglutaminsäure",
+      "Folacin"
+    ],
+    "category": "Vitamin",
+    "short_description": "Folsäure ist die synthetische Form von Vitamin B9 und entscheidend für Zellteilung, DNA-Synthese und Blutbildung. Folat bezeichnet die natürlich in Lebensmitteln vorkommenden Formen, etwa in Blattgemüse und Hülsenfrüchten. Ein Mangel kann zu megaloblastärer Anämie und erhöhtem Homocystein führen; in der Schwangerschaft ist eine ausreichende Versorgung besonders wichtig.",
+    "related_chapters": [
+      3,
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Folat Serum",
+    "synonyms": [
+      "Serumfolat",
+      "Folsäure Serum"
+    ],
+    "category": "Blutwert",
+    "short_description": "Das Serumfolat spiegelt die aktuelle Folatversorgung der letzten Tage wider. Es schwankt stärker mit der aktuellen Ernährung als das Erythrozytenfolat. Niedrige Werte können auf unzureichende Zufuhr oder erhöhten Bedarf hinweisen.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Folat Erythrozyten",
+    "synonyms": [
+      "Erythrozytenfolat",
+      "RBC-Folat"
+    ],
+    "category": "Blutwert",
+    "short_description": "Das Erythrozytenfolat zeigt die längerfristige Folatversorgung über etwa drei Monate. Es gilt als stabilerer Marker als das Serumfolat. Zusammen mit Vitamin B12 hilft es, Ursachen einer megaloblastären Anämie einzuordnen.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Vitamin B12",
+    "synonyms": [
+      "Cobalamin",
+      "Cyanocobalamin"
+    ],
+    "category": "Vitamin",
+    "short_description": "Vitamin B12 ist essenziell für Blutbildung, Nervensystem und Homocysteinabbau. Es kommt praktisch nur in tierischen Lebensmitteln vor; Veganer benötigen meist eine Supplementierung. Ein Mangel kann sich schleichend mit Müdigkeit, Taubheitsgefühlen und Anämie zeigen.",
+    "related_chapters": [
+      3,
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Methylcobalamin",
+    "synonyms": [
+      "MeCbl",
+      "Methyl-B12"
+    ],
+    "category": "Vitamin",
+    "short_description": "Methylcobalamin ist eine aktive Form von Vitamin B12 und wird häufig in Nahrungsergänzung verwendet. Im Körper dient sie unter anderem der Remethylierung von Homocystein zu Methionin. Ob sie klinisch klar besser wirkt als Cyanocobalamin, hängt von Situation und Dosierung ab.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Adenosylcobalamin",
+    "synonyms": [
+      "AdoCbl",
+      "Cobamamid"
+    ],
+    "category": "Vitamin",
+    "short_description": "Adenosylcobalamin ist die mitochondriale aktive Form von Vitamin B12. Sie ist am Abbau bestimmter Aminosäuren und Fettsäuren beteiligt. Manche Kombipräparate enthalten Methyl- und Adenosylcobalamin gemeinsam.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "Hydroxocobalamin",
+    "synonyms": [
+      "OH-Cbl",
+      "Vitamin B12 Depot"
+    ],
+    "category": "Vitamin",
+    "short_description": "Hydroxocobalamin wird oft als Injektion bei B12-Mangel eingesetzt und hat eine längere Verweildauer im Körper. Es dient auch als Antidot bei Cyanidvergiftungen. Für die orale Versorgung sind andere Formen üblicher.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "Cyanocobalamin",
+    "synonyms": [
+      "CN-Cbl",
+      "synthetisches B12"
+    ],
+    "category": "Vitamin",
+    "short_description": "Cyanocobalamin ist eine stabile, synthetische Form von Vitamin B12 in vielen Tabletten. Der Körper wandelt sie in die aktiven Formen um. Sie ist gut untersucht, kostengünstig und für die meisten Menschen geeignet.",
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Cholin",
+    "synonyms": [
+      "Vitaminartig",
+      "Trimethylethanolamin"
+    ],
+    "category": "Vitamin",
+    "short_description": "Cholin wird oft als vitaminartiger Nährstoff geführt und ist Baustein von Zellmembranen und Acetylcholin. Es unterstützt den Fetttransport aus der Leber. Gute Quellen sind Eier, Leber und Sojalecithin.",
+    "related_chapters": [
+      1,
+      8
+    ]
+  },
+  {
+    "term": "Inositol",
+    "synonyms": [
+      "Myo-Inositol",
+      "Vitamin B8 historisch"
+    ],
+    "category": "Vitamin",
+    "short_description": "Inositol ist ein zuckerähnlicher Stoff, der an Signalwegen und Insulinempfindlichkeit beteiligt ist. Der Körper kann ihn selbst bilden, dennoch wird er in der Forschung zu Stoffwechsel und PCOS untersucht. In Lebensmitteln kommt er unter anderem in Obst und Getreide vor.",
+    "related_chapters": [
+      1,
+      5,
+      11
+    ]
+  },
+  {
+    "term": "Calcium",
+    "synonyms": [
+      "Kalzium",
+      "Ca"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Calcium ist der wichtigste Baustoff für Knochen und Zähne und spielt eine Rolle bei Muskelkontraktion und Blutgerinnung. Milchprodukte, angereicherte Pflanzenmilch und grünes Gemüse sind typische Quellen. Vitamin D und Bewegung unterstützen die Knochengesundheit maßgeblich.",
+    "related_chapters": [
+      7,
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Magnesium",
+    "synonyms": [
+      "Mg",
+      "Magnesiumcitrat"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Magnesium ist an über 300 Enzymreaktionen beteiligt, darunter Energiestoffwechsel und Muskelentspannung. Gute Quellen sind Nüsse, Samen, Vollkorn und Blattgemüse. Ein Mangel kann sich mit Krämpfen, Unruhe und Müdigkeit bemerkbar machen.",
+    "related_chapters": [
+      7,
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Kalium",
+    "synonyms": [
+      "K",
+      "Potassium"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Kalium reguliert Herzrhythmus, Blutdruck und den Flüssigkeitshaushalt in den Zellen. Obst, Gemüse und Hülsenfrüchte liefern reichlich davon. Sehr hohe oder niedrige Blutwerte können gefährlich sein und gehören ärztlich abgeklärt.",
+    "related_chapters": [
+      3,
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Natrium",
+    "synonyms": [
+      "Na",
+      "Kochsalz-Natrium"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Natrium ist der zentrale Elektrolyt außerhalb der Zellen und steuert Blutdruck sowie Wasserhaushalt. Der Großteil der Zufuhr stammt aus verarbeiteten Lebensmitteln und Speisesalz. Eine Reduktion kann bei Bluthochdruck hilfreich sein.",
+    "related_chapters": [
+      8,
+      10,
+      9
+    ]
+  },
+  {
+    "term": "Phosphor",
+    "synonyms": [
+      "Phosphat",
+      "P"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Phosphor ist Bestandteil von Knochen, DNA und energiereichem ATP. Er kommt in Fleisch, Milch, Hülsenfrüchten und vielen Fertigprodukten als Zusatzstoff vor. Bei Nierenerkrankungen muss die Phosphatzufuhr oft begrenzt werden.",
+    "related_chapters": [
+      9,
+      10
+    ]
+  },
+  {
+    "term": "Chlorid",
+    "synonyms": [
+      "Cl",
+      "Chlorid-Ion"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Chlorid ist zusammen mit Natrium der Hauptpartner im Speisesalz und wichtig für Säure-Basen-Haushalt sowie Magensäurebildung. Labormessungen erfolgen meist im Rahmen der Elektrolyte. Starke Verluste durch Erbrechen oder Durchfall können den Spiegel senken.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "Schwefel",
+    "synonyms": [
+      "S",
+      "Schwefelhaltige Aminosäuren"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Schwefel steckt vor allem in den Aminosäuren Methionin und Cystein und ist Baustein von Proteinen und manchen Vitaminen. Eine separate Supplementierung ist bei normaler Ernährung meist unnötig. Knoblauch und Kreuzblütler liefern ebenfalls schwefelhaltige Verbindungen.",
+    "related_chapters": [
+      8
+    ]
+  },
+  {
+    "term": "Hydroxylapatit",
+    "synonyms": [
+      "Knochenmineral",
+      "Calciumphosphat Knochen"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Hydroxylapatit ist das kristalline Calcium-Phosphat-Mineral, das Knochen und Zähnen Härte verleiht. Knochen sind lebendiges Gewebe und werden ständig umgebaut. Ausreichend Calcium, Vitamin D und Belastungstraining stützen diesen Prozess.",
+    "related_chapters": [
+      7,
+      9
+    ]
+  },
+  {
+    "term": "Natriumchlorid",
+    "synonyms": [
+      "Kochsalz",
+      "Speisesalz",
+      "NaCl"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Natriumchlorid ist das klassische Speisesalz und liefert Natrium sowie Chlorid. Fertigprodukte, Brot und Wurst tragen oft mehr zur Zufuhr bei als die Salzmühle zu Hause. WHO und Fachgesellschaften empfehlen, die Gesamtsalzmenge zu begrenzen.",
+    "related_chapters": [
+      8,
+      10,
+      11
+    ]
+  },
+  {
+    "term": "Calciumcarbonat",
+    "synonyms": [
+      "CaCO3",
+      "Kalk"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Calciumcarbonat ist eine häufige Form in Calcium-Nahrungsergänzung und wird besser zu den Mahlzeiten aufgenommen. Bei niedriger Magensäure kann die Aufnahme eingeschränkt sein. Die Gesamtdosis sollte mit der Ernährung abgestimmt werden.",
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Calciumcitrat",
+    "synonyms": [
+      "Ca-Citrat"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Calciumcitrat wird auch ohne Mahlzeit gut aufgenommen und eignet sich oft besser bei empfindlichem Magen. Es liefert pro Tablette meist weniger elementares Calcium als Carbonat. Die Wahl der Form hängt von Verträglichkeit und Bedarf ab.",
+    "related_chapters": [
+      8
+    ]
+  },
+  {
+    "term": "Magnesiumoxid",
+    "synonyms": [
+      "MgO"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Magnesiumoxid enthält viel elementares Magnesium, wird aber vergleichsweise schlechter aufgenommen. Es wirkt in höheren Dosen abführend. Für den Ausgleich eines Mangels werden oft organische Verbindungen wie Citrat bevorzugt.",
+    "related_chapters": [
+      8,
+      11
+    ]
+  },
+  {
+    "term": "Magnesiumcitrat",
+    "synonyms": [
+      "Mg-Citrat"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Magnesiumcitrat ist eine gut bioverfügbare Nahrungsergänzungsform und wird häufig bei Krämpfen oder niedrigem Spiegel empfohlen. Zu hohe Dosen können Durchfall auslösen. Die Einnahme abends wird von manchen Menschen als entspannend empfunden.",
+    "related_chapters": [
+      7,
+      8
+    ]
+  },
+  {
+    "term": "Kaliumcitrat",
+    "synonyms": [
+      "K-Citrat"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Kaliumcitrat wird medizinisch unter anderem zur Harnalkalisierung eingesetzt. Es kann den Kaliumspiegel anheben und ist daher bei Nierenproblemen oder bestimmten Medikamenten riskant. Die Anwendung gehört in ärztliche Hand.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "Phosphat",
+    "synonyms": [
+      "anorganisches Phosphat",
+      "Pi"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Phosphat im Blut wird laborchemisch als Marker für Knochen- und Nierenstoffwechsel gemessen. Erhöhte Werte treten häufig bei eingeschränkter Nierenfunktion auf. In der Ernährung tragen Zusatzstoffe in Cola und Fertiggerichten zur Last bei.",
+    "related_chapters": [
+      9,
+      10
+    ]
+  },
+  {
+    "term": "Bicarbonat",
+    "synonyms": [
+      "Hydrogencarbonat",
+      "HCO3"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Bicarbonat ist ein wichtiger Puffer im Säure-Basen-Haushalt des Blutes. Im Labor gehört es zur Blutgasanalyse oder zum Elektrolytprofil. Abweichungen können auf Atem- oder Stoffwechselstörungen hinweisen.",
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term": "Elektrolyte",
+    "synonyms": [
+      "Serumelektrolyte",
+      "Blutsalze"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Elektrolyte sind geladene Mineralstoffe wie Natrium, Kalium, Calcium, Magnesium und Chlorid. Sie steuern Nervenimpulse, Muskelarbeit und Wasserverteilung. Das Elektrolytprofil gehört zu den Standardlaborchecks.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Mengenelemente",
+    "synonyms": [
+      "Makromineralstoffe",
+      "Hauptmineralstoffe"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Mengenelemente werden in größeren Mengen benötigt als Spurenelemente und umfassen Calcium, Magnesium, Kalium, Natrium, Phosphor, Chlorid und Schwefel. Sie bilden Struktur und regulieren Flüssigkeit sowie Säure-Basen-Balance. Eine abwechslungsreiche Ernährung deckt den Bedarf meist ab.",
+    "related_chapters": [
+      8
+    ]
+  },
+  {
+    "term": "Kristallwasser Mineralstoffe",
+    "synonyms": [
+      "hydratisierte Mineralsalze"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Viele Mineralsalze in Nahrungsergänzung liegen als Hydrate vor und enthalten gebundenes Wasser. Das beeinflusst das Gewicht der Tablette, nicht aber zwingend die Wirksamkeit. Entscheidend ist der Anteil an elementarem Mineralstoff auf dem Etikett.",
+    "related_chapters": [
+      11
+    ]
+  },
+  {
+    "term": "Spurenelemente Überblick",
+    "synonyms": [
+      "Mikromineralstoffe"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Spurenelemente werden nur in sehr kleinen Mengen benötigt, sind aber für Enzyme und Hormone unverzichtbar. Dazu zählen unter anderem Eisen, Zink, Selen, Jod, Kupfer, Mangan, Chrom und Molybdän. Sowohl Mangel als auch Überdosierung können Probleme verursachen.",
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Knochenmineralisation",
+    "synonyms": [
+      "Mineralisierung Knochen"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Knochenmineralisation beschreibt den Einbau von Calcium und Phosphat in die Knochenmatrix. Sie hängt von Vitamin D, K, Belastung und Hormonen ab. Laborwerte wie Calcium, Phosphat und Vitamin D helfen bei der Einschätzung.",
+    "related_chapters": [
+      7,
+      9
+    ]
+  },
+  {
+    "term": "Isotonische Elektrolyte",
+    "synonyms": [
+      "Elektrolytlösung",
+      "Sportgetränk-Elektrolyte"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Isotonische Getränke ersetzen bei starkem Schwitzen Natrium, Kalium und Flüssigkeit. Für den Alltag reichen meist Wasser und eine normale Ernährung. Bei Ausdauereinheiten über längere Zeit können sie sinnvoll sein.",
+    "related_chapters": [
+      7,
+      8
+    ]
+  },
+  {
+    "term": "Kochsalzersatz",
+    "synonyms": [
+      "Kaliumchlorid Salz",
+      "Diätsalz"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Kochsalzersatz auf Kaliumchlorid-Basis senkt die Natriumzufuhr, erhöht aber die Kaliumlast. Menschen mit Nierenerkrankungen oder bestimmten Medikamenten sollten ihn meiden. Eine Umstellung gehört besprochen, nicht nur ausprobiert.",
+    "related_chapters": [
+      8,
+      11
+    ]
+  },
+  {
+    "term": "Mineralstoffhaushalt",
+    "synonyms": [
+      "Elektrolythaushalt"
+    ],
+    "category": "Mineralstoff",
+    "short_description": "Der Mineralstoffhaushalt beschreibt Aufnahme, Verteilung und Ausscheidung der Mengenelemente. Niere, Hormone und Ernährung halten ihn im Gleichgewicht. Laborkontrollen sind besonders bei Durchfall, Erbrechen, Diuretika oder Nierenleiden wichtig.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Serumcalcium",
+    "synonyms": [
+      "Gesamtcalcium Blut",
+      "Ca serum"
+    ],
+    "category": "Blutwert",
+    "short_description": "Das Serumcalcium wird meist als Gesamtwert gemessen und hängt eng mit Albumin zusammen. Abweichungen können auf Nebenschilddrüse, Vitamin D oder Knochenstoffwechsel hinweisen. Ionisiertes Calcium ist der physiologisch aktive Anteil.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Serummagnesium",
+    "synonyms": [
+      "Mg serum",
+      "Magnesium Blut"
+    ],
+    "category": "Blutwert",
+    "short_description": "Das Serummagnesium erfasst nur einen kleinen Teil der Körperspeicher, da viel Magnesium intrazellulär liegt. Dennoch ist es der Standardmarker im Labor. Niedrige Werte können Krämpfe und Herzrhythmusprobleme begünstigen.",
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term": "Eisen",
+    "synonyms": [
+      "Fe",
+      "Ferrum"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Eisen ist zentral für den Sauerstofftransport im Hämoglobin und für viele Enzyme. Hämeisen aus Fleisch wird besser aufgenommen als Nicht-Hämeisen aus Pflanzen. Vitamin C verbessert, Tee und Kaffee hemmen die Aufnahme aus pflanzlichen Quellen.",
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Zink",
+    "synonyms": [
+      "Zn",
+      "Zincum"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Zink unterstützt Immunsystem, Wundheilung, Geschmackssinn und zahlreichen Enzymen. Fleisch, Schalentiere, Samen und Käse sind gute Quellen. Ein Mangel kann Infektanfälligkeit und Hautveränderungen fördern.",
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Selen",
+    "synonyms": [
+      "Se",
+      "Selenium"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Selen ist Bestandteil antioxidativer Enzyme wie der Glutathionperoxidase und wichtig für die Schilddrüsenhormonaktivierung. Der Gehalt in Lebensmitteln hängt stark vom Boden ab. Brasilnüsse sind sehr selenreich und sollten sparsam konsumiert werden.",
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Jod",
+    "synonyms": [
+      "Iod",
+      "I"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Jod ist essenziell für die Bildung der Schilddrüsenhormone T3 und T4. Jodiertes Speisesalz, Seefisch und Milchprodukte sind wichtige Quellen in Deutschland. Sowohl Mangel als auch deutliche Überschüsse belasten die Schilddrüse.",
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Kupfer",
+    "synonyms": [
+      "Cu",
+      "Cuprum"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Kupfer ist an Eisenstoffwechsel, Bindegewebe und antioxidativen Enzymen beteiligt. Es kommt in Innereien, Nüssen und Kakao vor. Ein Ungleichgewicht mit Zink kann die Kupferversorgung beeinflussen.",
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term": "Mangan",
+    "synonyms": [
+      "Mn"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Mangan unterstützt Knochenbildung, Bindegewebe und antioxidative Enzyme in den Mitochondrien. Vollkorn, Nüsse und Tee liefern relevante Mengen. Ein alimentärer Mangel ist selten, Überdosierung eher durch kontaminiertes Wasser oder hohe Exposition möglich.",
+    "related_chapters": [
+      8
+    ]
+  },
+  {
+    "term": "Chrom",
+    "synonyms": [
+      "Cr",
+      "Chrom III"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Chrom wird mit dem Kohlenhydratstoffwechsel und der Insulinempfindlichkeit in Verbindung gebracht. Der Bedarf ist gering und über die normale Ernährung meist gedeckt. Hochdosierte Nahrungsergänzung sind nicht pauschal zu empfehlen.",
+    "related_chapters": [
+      1,
+      5,
+      11
+    ]
+  },
+  {
+    "term": "Molybdän",
+    "synonyms": [
+      "Mo",
+      "Molybdenum"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Molybdän ist Cofaktor für Enzyme des Schwefel- und Purinstoffwechsels. Hülsenfrüchte, Getreide und Nüsse enthalten es in ausreichenden Mengen. Klinische Mängel sind extrem selten.",
+    "related_chapters": [
+      8
+    ]
+  },
+  {
+    "term": "Fluorid",
+    "synonyms": [
+      "Fluor",
+      "F"
+    ],
+    "category": "Spurenelement",
+    "short_description": "Fluorid härtet den Zahnschmelz und schützt vor Karies. Es wird über Zahnpasta und teilweise über Trinkwasser oder Salz aufgenommen. Zu hohe Mengen in der Kindheit können Zahnfluorose verursachen.",
+    "related_chapters": [
+      8,
+      11
+    ]
+  }
+]

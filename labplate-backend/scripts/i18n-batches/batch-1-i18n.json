@@ -1,0 +1,4473 @@
+[
+  {
+    "term_key": "Cobalt",
+    "term": {
+      "de": "Cobalt",
+      "en": "Cobalt",
+      "es": "Cobalto",
+      "it": "Cobalto",
+      "pt": "Cobalto",
+      "fr": "Cobalt",
+      "tr": "Kobalt"
+    },
+    "synonyms": {
+      "de": [
+        "Kobalt",
+        "Co"
+      ],
+      "en": [
+        "Cobalt",
+        "Co"
+      ],
+      "es": [
+        "Cobalto",
+        "Co"
+      ],
+      "it": [
+        "Cobalto elementare",
+        "Co"
+      ],
+      "pt": [
+        "Cobalto",
+        "Co"
+      ],
+      "fr": [
+        "Cobalt",
+        "Co"
+      ],
+      "tr": [
+        "Kobalt",
+        "Co"
+      ]
+    },
+    "category": {
+      "de": "Spurenelement",
+      "en": "Trace element",
+      "es": "Oligoelemento",
+      "it": "Oligoelemento",
+      "pt": "Oligoelemento",
+      "fr": "Oligoélément",
+      "tr": "İz element"
+    },
+    "short_description": {
+      "de": "Cobalt ist zentraler Bestandteil des Vitamin-B12-Moleküls. Eine separate Cobalt-Supplementierung ist für Gesunde nicht sinnvoll. Der Bedarf wird über B12-haltige Lebensmittel oder Nahrungsergänzung gedeckt.",
+      "en": "Cobalt is a central component of the vitamin B12 molecule. Separate cobalt supplementation is not useful for healthy people. Needs are met through B12-containing foods or supplements.",
+      "es": "El cobalto es el componente central de la molécula de vitamina B12. Una suplementación separada de cobalto no tiene sentido en personas sanas. La necesidad se cubre con alimentos o suplementos alimenticios que contengan B12.",
+      "it": "Il cobalto è il componente centrale della molecola della vitamina B12. Una integrazione separata di cobalto non ha senso per le persone sane. Il fabbisogno si copre con alimenti o integratori alimentari contenenti B12.",
+      "pt": "O cobalto é componente central da molécula de vitamina B12. A suplementação isolada de cobalto não faz sentido em pessoas saudáveis. As necessidades cobrem-se com alimentos ou suplementos alimentares que contenham B12.",
+      "fr": "Le cobalt est le composant central de la molécule de vitamine B12. Une supplémentation séparée en cobalt n'a pas de sens chez les personnes en bonne santé. Les besoins sont couverts par des aliments ou compléments alimentaires contenant de la B12.",
+      "tr": "Kobalt, B12 vitamini molekülünün merkezi bileşenidir. Sağlıklı kişiler için ayrı kobalt gıda takviyesi anlamlı değildir. İhtiyaç, B12 içeren gıdalar veya gıda takviyeleriyle karşılanır."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Hämeisen",
+    "term": {
+      "de": "Hämeisen",
+      "en": "Heme iron",
+      "es": "Hierro hemo",
+      "it": "Ferro eme",
+      "pt": "Ferro heme",
+      "fr": "Fer héminique",
+      "tr": "Hem demiri"
+    },
+    "synonyms": {
+      "de": [
+        "Häm-Eisen",
+        "Eisen aus Fleisch"
+      ],
+      "en": [
+        "Haem iron",
+        "Iron from meat"
+      ],
+      "es": [
+        "Hierro hémico",
+        "Hierro de la carne"
+      ],
+      "it": [
+        "Ferro eme",
+        "Ferro dalla carne"
+      ],
+      "pt": [
+        "Ferro heme",
+        "Ferro da carne"
+      ],
+      "fr": [
+        "Fer hémique",
+        "Fer de la viande"
+      ],
+      "tr": [
+        "Hem-demir",
+        "Et kaynaklı demir"
+      ]
+    },
+    "category": {
+      "de": "Spurenelement",
+      "en": "Trace element",
+      "es": "Oligoelemento",
+      "it": "Oligoelemento",
+      "pt": "Oligoelemento",
+      "fr": "Oligoélément",
+      "tr": "İz element"
+    },
+    "short_description": {
+      "de": "Hämeisen stammt aus Hämoglobin und Myoglobin tierischer Lebensmittel und wird besonders gut aufgenommen. Es unterliegt weniger Hemmstoffen als pflanzliches Eisen. Dennoch sollte die Gesamtzufuhr an rotem Fleisch im Rahmen einer ausgewogenen Ernährung stehen.",
+      "en": "Heme iron comes from hemoglobin and myoglobin in animal foods and is absorbed especially well. It is less affected by inhibitors than plant iron. Overall red meat intake should still fit within a balanced diet.",
+      "es": "El hierro hemo proviene de la hemoglobina y la mioglobina de alimentos animales y se absorbe especialmente bien. Está menos sujeto a inhibidores que el hierro vegetal. Aun así, el aporte total de carne roja debe situarse en el marco de una alimentación equilibrada.",
+      "it": "Il ferro eme proviene da emoglobina e mioglobina di alimenti animali e viene assorbito particolarmente bene. È meno soggetto a inibitori rispetto al ferro vegetale. L'apporto complessivo di carne rossa dovrebbe comunque restare in un'alimentazione equilibrata.",
+      "pt": "O ferro heme provém da hemoglobina e da mioglobina de alimentos de origem animal e absorve-se especialmente bem. Sofre menos inibição do que o ferro vegetal. Ainda assim, o aporte total de carne vermelha deve enquadrar-se numa alimentação equilibrada.",
+      "fr": "Le fer héminique provient de l'hémoglobine et de la myoglobine des aliments d'origine animale et est particulièrement bien absorbé. Il subit moins d'inhibiteurs que le fer végétal. L'apport total en viande rouge doit néanmoins rester dans le cadre d'une alimentation équilibrée.",
+      "tr": "Hem demiri, hayvansal gıdalardaki hemoglobin ve miyoglobinden gelir ve özellikle iyi emilir. Bitkisel demire göre inhibitörlerden daha az etkilenir. Yine de kırmızı et alımı dengeli bir beslenme çerçevesinde kalmalıdır."
+    },
+    "related_chapters": [
+      8,
+      10
+    ]
+  },
+  {
+    "term_key": "Nicht-Hämeisen",
+    "term": {
+      "de": "Nicht-Hämeisen",
+      "en": "Non-heme iron",
+      "es": "Hierro no hemo",
+      "it": "Ferro non eme",
+      "pt": "Ferro não heme",
+      "fr": "Fer non héminique",
+      "tr": "Hem olmayan demir"
+    },
+    "synonyms": {
+      "de": [
+        "pflanzliches Eisen",
+        "Nicht-Häm-Eisen"
+      ],
+      "en": [
+        "Plant iron",
+        "Non-haem iron"
+      ],
+      "es": [
+        "Hierro vegetal",
+        "Hierro no hémico"
+      ],
+      "it": [
+        "Ferro vegetale",
+        "Ferro non-eme"
+      ],
+      "pt": [
+        "Ferro vegetal",
+        "Ferro não-heme"
+      ],
+      "fr": [
+        "Fer végétal",
+        "Fer non hémique"
+      ],
+      "tr": [
+        "bitkisel demir",
+        "non-hem demir"
+      ]
+    },
+    "category": {
+      "de": "Spurenelement",
+      "en": "Trace element",
+      "es": "Oligoelemento",
+      "it": "Oligoelemento",
+      "pt": "Oligoelemento",
+      "fr": "Oligoélément",
+      "tr": "İz element"
+    },
+    "short_description": {
+      "de": "Nicht-Hämeisen aus Hülsenfrüchten, Getreide und Gemüse wird schlechter aufgenommen als Hämeisen. Vitamin C und fleischhaltige Beilagen verbessern die Bioverfügbarkeit. Phytate und Polyphenole können sie verringern.",
+      "en": "Non-heme iron from legumes, grains, and vegetables is absorbed less well than heme iron. Vitamin C and meat-containing meals improve bioavailability. Phytates and polyphenols can reduce it.",
+      "es": "El hierro no hemo de legumbres, cereales y verduras se absorbe peor que el hierro hemo. La vitamina C y acompañamientos con carne mejoran la biodisponibilidad. Los fitatos y los polifenoles pueden reducirla.",
+      "it": "Il ferro non eme da legumi, cereali e verdure viene assorbito peggio del ferro eme. La vitamina C e i contorni a base di carne migliorano la biodisponibilità. Fitati e polifenoli possono ridurla.",
+      "pt": "O ferro não heme de leguminosas, cereais e legumes absorve-se pior do que o ferro heme. A vitamina C e acompanhamentos com carne melhoram a biodisponibilidade. Fitatos e polifenóis podem reduzi-la.",
+      "fr": "Le fer non héminique des légumineuses, céréales et légumes est moins bien absorbé que le fer héminique. La vitamine C et les accompagnements carnés améliorent la biodisponibilité. Les phytates et polyphénols peuvent la réduire.",
+      "tr": "Baklagiller, tahıllar ve sebzelerdeki hem olmayan demir, hem demirinden daha kötü emilir. C vitamini ve et içeren yan ürünler biyoyararlanımı artırır. Fitratlar ve polifenoller ise azaltabilir."
+    },
+    "related_chapters": [
+      8
+    ]
+  },
+  {
+    "term_key": "Eisenbisglycinat",
+    "term": {
+      "de": "Eisenbisglycinat",
+      "en": "Iron bisglycinate",
+      "es": "Bisglicinato de hierro",
+      "it": "Bisglicinato di ferro",
+      "pt": "Bisglicinato de ferro",
+      "fr": "Bisglycinate de fer",
+      "tr": "Demir bisglisinat"
+    },
+    "synonyms": {
+      "de": [
+        "Eisen-Chelat",
+        "Ferrous Bisglycinate"
+      ],
+      "en": [
+        "Iron chelate",
+        "Ferrous bisglycinate"
+      ],
+      "es": [
+        "Quelato de hierro",
+        "Ferrous bisglycinate"
+      ],
+      "it": [
+        "Chelato di ferro",
+        "Ferrous Bisglycinate"
+      ],
+      "pt": [
+        "Quelato de ferro",
+        "Bisglicinato ferroso"
+      ],
+      "fr": [
+        "Chélate de fer",
+        "Ferrous Bisglycinate"
+      ],
+      "tr": [
+        "Demir şelatı",
+        "Ferrous Bisglycinate"
+      ]
+    },
+    "category": {
+      "de": "Spurenelement",
+      "en": "Trace element",
+      "es": "Oligoelemento",
+      "it": "Oligoelemento",
+      "pt": "Oligoelemento",
+      "fr": "Oligoélément",
+      "tr": "İz element"
+    },
+    "short_description": {
+      "de": "Eisenbisglycinat ist eine organische Nahrungsergänzungsform, die oft besser verträglich ist als klassisches Eisensulfat. Es kann den Ferritinspiegel bei Mangel anheben. Die Therapie sollte Laborkontrollen und ärztliche Begleitung einschließen.",
+      "en": "Iron bisglycinate is an organic supplement form that is often better tolerated than classic ferrous sulfate. It can raise ferritin in deficiency. Therapy should include lab monitoring and medical supervision.",
+      "es": "El bisglicinato de hierro es una forma orgánica de suplemento alimenticio que suele tolerarse mejor que el sulfato de hierro clásico. Puede elevar la ferritina en caso de deficiencia. El tratamiento debe incluir controles de laboratorio y seguimiento médico.",
+      "it": "Il bisglicinato di ferro è una forma organica di integratore alimentare, spesso meglio tollerata del solfato ferroso classico. Può aumentare la ferritina in caso di carenza. La terapia dovrebbe includere controlli di laboratorio e supervisione medica.",
+      "pt": "O bisglicinato de ferro é uma forma orgânica de suplemento alimentar, muitas vezes melhor tolerada do que o sulfato de ferro clássico. Pode elevar a ferritina na carência. A terapêutica deve incluir controlos laboratoriais e acompanhamento médico.",
+      "fr": "Le bisglycinate de fer est une forme organique de complément alimentaire, souvent mieux tolérée que le sulfate de fer classique. Il peut élever la ferritine en cas de carence. Le traitement doit inclure des contrôles biologiques et un suivi médical.",
+      "tr": "Demir bisglisinat, klasik demir sülfata göre genelde daha iyi tolere edilen organik bir gıda takviyesi formudur. Eksiklikte ferritin düzeyini yükseltebilir. Tedavi laboratuvar kontrolleri ve hekim takibi içermelidir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Zinkgluconat",
+    "term": {
+      "de": "Zinkgluconat",
+      "en": "Zinc gluconate",
+      "es": "Gluconato de zinc",
+      "it": "Gluconato di zinco",
+      "pt": "Gluconato de zinco",
+      "fr": "Gluconate de zinc",
+      "tr": "Çinko glukonat"
+    },
+    "synonyms": {
+      "de": [
+        "Zn-Gluconat"
+      ],
+      "en": [
+        "Zn gluconate"
+      ],
+      "es": [
+        "Zn-gluconato"
+      ],
+      "it": [
+        "Zn-gluconato"
+      ],
+      "pt": [
+        "Gluconato de Zn"
+      ],
+      "fr": [
+        "Zn-gluconate"
+      ],
+      "tr": [
+        "Zn-glukonat"
+      ]
+    },
+    "category": {
+      "de": "Spurenelement",
+      "en": "Trace element",
+      "es": "Oligoelemento",
+      "it": "Oligoelemento",
+      "pt": "Oligoelemento",
+      "fr": "Oligoélément",
+      "tr": "İz element"
+    },
+    "short_description": {
+      "de": "Zinkgluconat ist eine gängige Form in Lutschtabletten und Nahrungsergänzung. Es kann bei Erkältungen kurzfristig eingesetzt werden, wobei die Evidenz gemischt ist. Langfristig hohe Dosen können Kupfer verdrängen.",
+      "en": "Zinc gluconate is a common form in lozenges and supplements. It may be used short-term for colds, though evidence is mixed. Long-term high doses can displace copper.",
+      "es": "El gluconato de zinc es una forma habitual en pastillas para chupar y suplementos alimenticios. Puede usarse a corto plazo en resfriados, aunque la evidencia es mixta. Dosis altas a largo plazo pueden desplazar el cobre.",
+      "it": "Il gluconato di zinco è una forma comune in pastiglie e integratori alimentari. Può essere usato a breve termine per i raffreddori, anche se le evidenze sono miste. Dosi elevate prolungate possono spostare il rame.",
+      "pt": "O gluconato de zinco é uma forma frequente em pastilhas e suplementos alimentares. Pode usar-se a curto prazo em constipações, embora a evidência seja mista. Doses elevadas prolongadas podem deslocar o cobre.",
+      "fr": "Le gluconate de zinc est une forme courante dans les pastilles et compléments alimentaires. Il peut être utilisé à court terme en cas de rhume, avec une évidence mitigée. Des doses élevées prolongées peuvent déplacer le cuivre.",
+      "tr": "Çinko glukonat, pastillerde ve gıda takviyelerinde yaygın bir formdur. Soğuk algınlığında kısa süreli kullanılabilir; kanıtlar karışıktır. Uzun vadede yüksek dozlar bakırı baskılayabilir."
+    },
+    "related_chapters": [
+      8,
+      11
+    ]
+  },
+  {
+    "term_key": "Natriumselenit",
+    "term": {
+      "de": "Natriumselenit",
+      "en": "Sodium selenite",
+      "es": "Selenito de sodio",
+      "it": "Selenito di sodio",
+      "pt": "Selenito de sódio",
+      "fr": "Sélénite de sodium",
+      "tr": "Sodyum selenit"
+    },
+    "synonyms": {
+      "de": [
+        "Selenit",
+        "Na-Selenit"
+      ],
+      "en": [
+        "Selenite",
+        "Na selenite"
+      ],
+      "es": [
+        "Selenito",
+        "Na-selenito"
+      ],
+      "it": [
+        "Selenito",
+        "Na-selenito"
+      ],
+      "pt": [
+        "Selenito",
+        "Selenito de Na"
+      ],
+      "fr": [
+        "Sélénite",
+        "Na-sélénite"
+      ],
+      "tr": [
+        "Selenit",
+        "Na-selenit"
+      ]
+    },
+    "category": {
+      "de": "Spurenelement",
+      "en": "Trace element",
+      "es": "Oligoelemento",
+      "it": "Oligoelemento",
+      "pt": "Oligoelemento",
+      "fr": "Oligoélément",
+      "tr": "İz element"
+    },
+    "short_description": {
+      "de": "Natriumselenit ist eine anorganische Selenform in manchen Arzneimitteln und Nahrungsergänzung. Die Dosierung muss eng begrenzt bleiben, weil Selen eine geringe therapeutische Breite hat. Der Status lässt sich über Selen im Blut oder GPX-Aktivität einschätzen.",
+      "en": "Sodium selenite is an inorganic selenium form in some medicines and supplements. Dosing must stay tightly limited because selenium has a narrow therapeutic window. Status can be assessed via blood selenium or GPX activity.",
+      "es": "El selenito de sodio es una forma inorgánica de selenio en algunos medicamentos y suplementos alimenticios. La dosis debe mantenerse muy limitada porque el selenio tiene un margen terapéutico estrecho. El estado puede estimarse con selenio en sangre o actividad de GPX.",
+      "it": "Il selenito di sodio è una forma inorganica di selenio in alcuni farmaci e integratori alimentari. Il dosaggio deve restare strettamente limitato perché il selenio ha un margine terapeutico ristretto. Lo stato si valuta con il selenio nel sangue o l'attività della GPX.",
+      "pt": "O selenito de sódio é uma forma inorgânica de selénio em alguns medicamentos e suplementos alimentares. A dose tem de se manter bem limitada, porque o selénio tem margem terapêutica estreita. O estado avalia-se pelo selénio no sangue ou pela atividade da GPX.",
+      "fr": "Le sélénite de sodium est une forme inorganique de sélénium présente dans certains médicaments et compléments alimentaires. La posologie doit rester étroitement limitée, car le sélénium a une faible marge thérapeutique. Le statut peut être estimé via le sélénium sanguin ou l'activité GPX.",
+      "tr": "Sodyum selenit, bazı ilaç ve gıda takviyelerinde bulunan inorganik bir selenyum formudur. Selenyumun dar terapötik aralığı nedeniyle doz sıkı sınırlanmalıdır. Durum, kanda selenyum veya GPX aktivitesiyle değerlendirilebilir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Kaliumiodid",
+    "term": {
+      "de": "Kaliumiodid",
+      "en": "Potassium iodide",
+      "es": "Yoduro de potasio",
+      "it": "Ioduro di potassio",
+      "pt": "Iodeto de potássio",
+      "fr": "Iodure de potassium",
+      "tr": "Potasyum iyodür"
+    },
+    "synonyms": {
+      "de": [
+        "KI",
+        "Jodid"
+      ],
+      "en": [
+        "KI",
+        "Iodide"
+      ],
+      "es": [
+        "KI",
+        "Yoduro"
+      ],
+      "it": [
+        "KI",
+        "Ioduro"
+      ],
+      "pt": [
+        "KI",
+        "Iodeto"
+      ],
+      "fr": [
+        "KI",
+        "Iodure"
+      ],
+      "tr": [
+        "KI",
+        "İyodür"
+      ]
+    },
+    "category": {
+      "de": "Spurenelement",
+      "en": "Trace element",
+      "es": "Oligoelemento",
+      "it": "Oligoelemento",
+      "pt": "Oligoelemento",
+      "fr": "Oligoélément",
+      "tr": "İz element"
+    },
+    "short_description": {
+      "de": "Kaliumiodid liefert bioverfügbares Jod und steckt in jodiertem Speisesalz sowie in Tabletten. In Notfallszenarien wird es zum Schutz der Schilddrüse vor radioaktivem Jod eingesetzt. Im Alltag reicht meist die Verwendung von Jodsalz.",
+      "en": "Potassium iodide provides bioavailable iodine and is found in iodized table salt and tablets. In emergencies it is used to protect the thyroid from radioactive iodine. In everyday life, iodized salt is usually enough.",
+      "es": "El yoduro de potasio aporta yodo biodisponible y está en la sal yodada y en comprimidos. En escenarios de emergencia se usa para proteger la tiroides del yodo radiactivo. En la vida diaria suele bastar el uso de sal yodada.",
+      "it": "Lo ioduro di potassio fornisce iodio biodisponibile e si trova nel sale iodato e in compresse. In scenari di emergenza si usa per proteggere la tiroide dallo iodio radioattivo. Nella vita quotidiana di solito basta il sale iodato.",
+      "pt": "O iodeto de potássio fornece iodo biodisponível e encontra-se no sal iodado e em comprimidos. Em cenários de emergência usa-se para proteger a tiroide do iodo radioativo. No dia a dia, o sal iodado costuma bastar.",
+      "fr": "L'iodure de potassium apporte de l'iode biodisponible et se trouve dans le sel iodé ainsi que dans des comprimés. En situation d'urgence, il protège la thyroïde contre l'iode radioactif. Au quotidien, l'usage de sel iodé suffit généralement.",
+      "tr": "Potasyum iyodür biyoyararlanımlı iyot sağlar; iyotlu sofra tuzunda ve tabletlerde bulunur. Acil durumlarda tiroidi radyoaktif iyottan korumak için kullanılır. Günlük hayatta genellikle iyotlu tuz yeterlidir."
+    },
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term_key": "Kupfergluconat",
+    "term": {
+      "de": "Kupfergluconat",
+      "en": "Copper gluconate",
+      "es": "Gluconato de cobre",
+      "it": "Gluconato di rame",
+      "pt": "Gluconato de cobre",
+      "fr": "Gluconate de cuivre",
+      "tr": "Bakır glukonat"
+    },
+    "synonyms": {
+      "de": [
+        "Cu-Gluconat"
+      ],
+      "en": [
+        "Cu gluconate"
+      ],
+      "es": [
+        "Cu-gluconato"
+      ],
+      "it": [
+        "Cu-gluconato"
+      ],
+      "pt": [
+        "Gluconato de Cu"
+      ],
+      "fr": [
+        "Cu-gluconate"
+      ],
+      "tr": [
+        "Cu-glukonat"
+      ]
+    },
+    "category": {
+      "de": "Spurenelement",
+      "en": "Trace element",
+      "es": "Oligoelemento",
+      "it": "Oligoelemento",
+      "pt": "Oligoelemento",
+      "fr": "Oligoélément",
+      "tr": "İz element"
+    },
+    "short_description": {
+      "de": "Kupfergluconat ist eine Nahrungsergänzungsform bei nachgewiesenem Kupfermangel. Eine unkritische Einnahme ist nicht sinnvoll, weil Kupfer im Überschuss oxidativen Stress fördern kann. Zink-Kupfer-Balance sollte beachtet werden.",
+      "en": "Copper gluconate is a supplement form for confirmed copper deficiency. Uncritical intake is not advisable because excess copper can promote oxidative stress. Zinc–copper balance should be considered.",
+      "es": "El gluconato de cobre es una forma de suplemento alimenticio en deficiencia de cobre demostrada. Una toma indiscriminada no tiene sentido, porque el exceso de cobre puede favorecer el estrés oxidativo. Debe atenderse el equilibrio zinc-cobre.",
+      "it": "Il gluconato di rame è una forma di integratore alimentare in caso di carenza di rame documentata. Un'assunzione indiscriminata non ha senso, perché l'eccesso di rame può favorire lo stress ossidativo. Va rispettato l'equilibrio zinco-rame.",
+      "pt": "O gluconato de cobre é uma forma de suplemento alimentar na carência de cobre comprovada. A toma indiscriminada não é sensata, porque o excesso de cobre pode favorecer o stresse oxidativo. Deve atender-se ao equilíbrio zinco-cobre.",
+      "fr": "Le gluconate de cuivre est une forme de complément alimentaire en cas de carence en cuivre documentée. Une prise non critique n'a pas de sens, car un excès de cuivre peut favoriser le stress oxydatif. L'équilibre zinc-cuivre doit être pris en compte.",
+      "tr": "Bakır glukonat, kanıtlanmış bakır eksikliğinde kullanılan bir gıda takviyesi formudur. Aşırı bakır oksidatif stresi artırabileceğinden rastgele kullanım uygun değildir. Çinko-bakır dengesi gözetilmelidir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Silicium",
+    "term": {
+      "de": "Silicium",
+      "en": "Silicon",
+      "es": "Silicio",
+      "it": "Silicio",
+      "pt": "Silício",
+      "fr": "Silicium",
+      "tr": "Silisyum"
+    },
+    "synonyms": {
+      "de": [
+        "Silizium",
+        "Si",
+        "Kieselsäure"
+      ],
+      "en": [
+        "Silicium",
+        "Si",
+        "Silica"
+      ],
+      "es": [
+        "Silicio",
+        "Si",
+        "Ácido silícico"
+      ],
+      "it": [
+        "Silicio",
+        "Si",
+        "Acido silicico"
+      ],
+      "pt": [
+        "Silício",
+        "Si",
+        "Ácido silícico"
+      ],
+      "fr": [
+        "Silicium",
+        "Si",
+        "Acide silicique"
+      ],
+      "tr": [
+        "Silikon",
+        "Si",
+        "Silisik asit"
+      ]
+    },
+    "category": {
+      "de": "Spurenelement",
+      "en": "Trace element",
+      "es": "Oligoelemento",
+      "it": "Oligoelemento",
+      "pt": "Oligoelemento",
+      "fr": "Oligoélément",
+      "tr": "İz element"
+    },
+    "short_description": {
+      "de": "Silicium wird mit Bindegewebe, Haut und Knochen in Verbindung gebracht, gilt aber beim Menschen nicht als klar essenziell wie Eisen oder Zink. Es kommt in Vollkorn und manchen Mineralwässern vor. Die wissenschaftliche Lage zu Nahrungsergänzung ist zurückhaltend.",
+      "en": "Silicon is linked to connective tissue, skin, and bone, but is not clearly essential in humans like iron or zinc. It occurs in whole grains and some mineral waters. Evidence for supplements remains limited.",
+      "es": "El silicio se asocia al tejido conectivo, la piel y los huesos, pero en el ser humano no se considera claramente esencial como el hierro o el zinc. Se encuentra en cereales integrales y en algunas aguas minerales. La evidencia científica sobre suplementos alimenticios es cautelosa.",
+      "it": "Il silicio è associato a tessuto connettivo, pelle e ossa, ma nell'uomo non è chiaramente essenziale come ferro o zinco. Si trova nei cereali integrali e in alcune acque minerali. Le evidenze scientifiche sugli integratori alimentari restano caute.",
+      "pt": "O silício associa-se ao tecido conjuntivo, à pele e aos ossos, mas no ser humano não se considera claramente essencial como o ferro ou o zinco. Existe em cereais integrais e nalguns minerais. A evidência sobre suplementos alimentares é reservada.",
+      "fr": "Le silicium est associé au tissu conjonctif, à la peau et aux os, mais n'est pas clairement essentiel chez l'humain comme le fer ou le zinc. Il se trouve dans les céréales complètes et certaines eaux minérales. Les données scientifiques sur les compléments alimentaires restent prudentes.",
+      "tr": "Silisyum bağ dokusu, cilt ve kemiklerle ilişkilendirilir; ancak demir veya çinko kadar insan için net esansiyel kabul edilmez. Tam tahıl ve bazı maden sularında bulunur. Gıda takviyelerine dair bilimsel veri temkinlidir."
+    },
+    "related_chapters": [
+      11
+    ]
+  },
+  {
+    "term_key": "Bor",
+    "term": {
+      "de": "Bor",
+      "en": "Boron",
+      "es": "Boro",
+      "it": "Boro",
+      "pt": "Boro",
+      "fr": "Bore",
+      "tr": "Bor"
+    },
+    "synonyms": {
+      "de": [
+        "B",
+        "Boron"
+      ],
+      "en": [
+        "B",
+        "Boron"
+      ],
+      "es": [
+        "B",
+        "Boron"
+      ],
+      "it": [
+        "B",
+        "Boron"
+      ],
+      "pt": [
+        "B",
+        "Boro"
+      ],
+      "fr": [
+        "B",
+        "Boron"
+      ],
+      "tr": [
+        "B",
+        "Boron"
+      ]
+    },
+    "category": {
+      "de": "Spurenelement",
+      "en": "Trace element",
+      "es": "Oligoelemento",
+      "it": "Oligoelemento",
+      "pt": "Oligoelemento",
+      "fr": "Oligoélément",
+      "tr": "İz element"
+    },
+    "short_description": {
+      "de": "Bor kommt in Obst, Gemüse und Nüssen vor und wird in der Forschung mit Knochenstoffwechsel diskutiert. Ein klar definierter Mangelzustand beim Menschen ist nicht etabliert. Hochdosierte Bor-Nahrungsergänzung sind nicht allgemein empfohlen.",
+      "en": "Boron occurs in fruit, vegetables, and nuts and is discussed in research on bone metabolism. A clearly defined deficiency state in humans is not established. High-dose boron supplements are not generally recommended.",
+      "es": "El boro se encuentra en frutas, verduras y frutos secos y se discute en la investigación sobre el metabolismo óseo. No hay un estado carencial claramente definido en el ser humano. Los suplementos alimenticios de boro a dosis altas no se recomiendan de forma general.",
+      "it": "Il boro si trova in frutta, verdura e noci e nella ricerca è discusso in relazione al metabolismo osseo. Uno stato carenziale chiaramente definito nell'uomo non è stabilito. Integratori alimentari di boro ad alto dosaggio non sono generalmente raccomandati.",
+      "pt": "O boro ocorre em fruta, legumes e frutos secos e é discutido na investigação do metabolismo ósseo. Não está estabelecido um estado de carência claramente definido no ser humano. Suplementos alimentares de boro em dose elevada não são geralmente recomendados.",
+      "fr": "Le bore se trouve dans les fruits, légumes et noix et est discuté dans la recherche sur le métabolisme osseux. Un état de carence clairement défini chez l'humain n'est pas établi. Les compléments alimentaires de bore à haute dose ne sont pas recommandés de façon générale.",
+      "tr": "Bor meyve, sebze ve kuruyemişlerde bulunur ve araştırmalarda kemik metabolizmasıyla tartışılır. İnsanda net tanımlanmış bir eksiklik durumu yoktur. Yüksek doz bor gıda takviyeleri genel olarak önerilmez."
+    },
+    "related_chapters": [
+      11
+    ]
+  },
+  {
+    "term_key": "Vanadium",
+    "term": {
+      "de": "Vanadium",
+      "en": "Vanadium",
+      "es": "Vanadio",
+      "it": "Vanadio",
+      "pt": "Vanádio",
+      "fr": "Vanadium",
+      "tr": "Vanadyum"
+    },
+    "synonyms": {
+      "de": [
+        "V"
+      ],
+      "en": [
+        "V"
+      ],
+      "es": [
+        "V"
+      ],
+      "it": [
+        "V"
+      ],
+      "pt": [
+        "V"
+      ],
+      "fr": [
+        "V"
+      ],
+      "tr": [
+        "V"
+      ]
+    },
+    "category": {
+      "de": "Spurenelement",
+      "en": "Trace element",
+      "es": "Oligoelemento",
+      "it": "Oligoelemento",
+      "pt": "Oligoelemento",
+      "fr": "Oligoélément",
+      "tr": "İz element"
+    },
+    "short_description": {
+      "de": "Vanadium wird experimentell mit Insulinsignalwegen in Verbindung gebracht. Für die normale Ernährung spielt es kaum eine Rolle. Nahrungsergänzung sind wegen möglicher Toxizität kritisch zu sehen.",
+      "en": "Vanadium has been experimentally linked to insulin signaling pathways. It plays little role in a normal diet. Supplements are viewed critically because of possible toxicity.",
+      "es": "El vanadio se asocia experimentalmente a las vías de señalización de la insulina. En la alimentación normal apenas desempeña un papel. Los suplementos alimenticios deben valorarse con cautela por posible toxicidad.",
+      "it": "Il vanadio è collegato sperimentalmente alle vie di segnale dell'insulina. Nell'alimentazione normale ha un ruolo minimo. Gli integratori alimentari vanno considerati con cautela per possibile tossicità.",
+      "pt": "O vanádio é experimentalmente associado a vias de sinalização da insulina. Na alimentação normal quase não tem papel. Os suplementos alimentares são vistos com criticismo devido a possível toxicidade.",
+      "fr": "Le vanadium est expérimentalement associé aux voies de signalisation de l'insuline. Il joue à peine un rôle dans l'alimentation normale. Les compléments alimentaires sont à regarder avec prudence en raison d'une toxicité possible.",
+      "tr": "Vanadyum deneysel olarak insülin sinyal yollarıyla ilişkilendirilir. Normal beslenmede neredeyse rol oynamaz. Olası toksisite nedeniyle gıda takviyeleri eleştirel değerlendirilmelidir."
+    },
+    "related_chapters": [
+      11
+    ]
+  },
+  {
+    "term_key": "Nickel",
+    "term": {
+      "de": "Nickel",
+      "en": "Nickel",
+      "es": "Níquel",
+      "it": "Nichel",
+      "pt": "Níquel",
+      "fr": "Nickel",
+      "tr": "Nikel"
+    },
+    "synonyms": {
+      "de": [
+        "Ni"
+      ],
+      "en": [
+        "Ni"
+      ],
+      "es": [
+        "Ni"
+      ],
+      "it": [
+        "Ni"
+      ],
+      "pt": [
+        "Ni"
+      ],
+      "fr": [
+        "Ni"
+      ],
+      "tr": [
+        "Ni"
+      ]
+    },
+    "category": {
+      "de": "Spurenelement",
+      "en": "Trace element",
+      "es": "Oligoelemento",
+      "it": "Oligoelemento",
+      "pt": "Oligoelemento",
+      "fr": "Oligoélément",
+      "tr": "İz element"
+    },
+    "short_description": {
+      "de": "Nickel kommt in Spuren in der Nahrung vor; ein essenzieller Bedarf beim Menschen ist nicht eindeutig belegt. Wichtiger ist die Kontaktallergie gegen Nickel in Schmuck. Ernährungsbezogen ist es selten ein Thema.",
+      "en": "Nickel occurs in trace amounts in food; an essential human requirement is not clearly proven. More important is contact allergy to nickel in jewelry. It is rarely a dietary concern.",
+      "es": "El níquel aparece en trazas en la alimentación; una necesidad esencial en el ser humano no está claramente demostrada. Más relevante es la alergia de contacto al níquel en joyería. En nutrición rara vez es un tema.",
+      "it": "Il nichel è presente in tracce negli alimenti; un fabbisogno essenziale nell'uomo non è chiaramente dimostrato. Più rilevante è l'allergia da contatto al nichel nei gioielli. Sul piano nutrizionale è raramente un tema.",
+      "pt": "O níquel ocorre em vestígios na alimentação; uma necessidade essencial no ser humano não está claramente comprovada. Mais relevante é a alergia de contacto ao níquel em joias. Em termos nutricionais raramente é um tema.",
+      "fr": "Le nickel est présent à l'état de traces dans l'alimentation ; un besoin essentiel chez l'humain n'est pas clairement établi. Plus importante est l'allergie de contact au nickel dans les bijoux. Sur le plan nutritionnel, c'est rarement un sujet.",
+      "tr": "Nikel gıdada eser miktarda bulunur; insan için esansiyel ihtiyaç net değildir. Daha önemlisi takıdaki nikele karşı kontakt alerjisidir. Beslenme açısından nadiren konu olur."
+    },
+    "related_chapters": [
+      11
+    ]
+  },
+  {
+    "term_key": "Zinn",
+    "term": {
+      "de": "Zinn",
+      "en": "Tin",
+      "es": "Estaño",
+      "it": "Stagno",
+      "pt": "Estanho",
+      "fr": "Étain",
+      "tr": "Kalay"
+    },
+    "synonyms": {
+      "de": [
+        "Sn",
+        "Zinnspuren"
+      ],
+      "en": [
+        "Sn",
+        "Tin traces"
+      ],
+      "es": [
+        "Sn",
+        "Trazas de estaño"
+      ],
+      "it": [
+        "Sn",
+        "Tracce di stagno"
+      ],
+      "pt": [
+        "Sn",
+        "Estanho traço"
+      ],
+      "fr": [
+        "Sn",
+        "Traces d'étain"
+      ],
+      "tr": [
+        "Sn",
+        "Kalay eserleri"
+      ]
+    },
+    "category": {
+      "de": "Spurenelement",
+      "en": "Trace element",
+      "es": "Oligoelemento",
+      "it": "Oligoelemento",
+      "pt": "Oligoelemento",
+      "fr": "Oligoélément",
+      "tr": "İz element"
+    },
+    "short_description": {
+      "de": "Zinn kann in Spuren aus Dosenlebensmitteln in die Nahrung übergehen. Ein physiologischer Bedarf ist nicht etabliert. Moderne Innenbeschichtungen haben die Belastung deutlich gesenkt.",
+      "en": "Tin can enter food in trace amounts from canned goods. A physiological requirement is not established. Modern interior coatings have markedly reduced exposure.",
+      "es": "El estaño puede pasar en trazas a los alimentos desde envases en lata. No hay una necesidad fisiológica establecida. Los revestimientos interiores modernos han reducido claramente la exposición.",
+      "it": "Lo stagno può passare in tracce negli alimenti da conserve in latta. Un fabbisogno fisiologico non è stabilito. I rivestimenti interni moderni hanno ridotto nettamente l'esposizione.",
+      "pt": "O estanho pode passar em vestígios de alimentos em lata para a alimentação. Uma necessidade fisiológica não está estabelecida. Os revestimentos interiores modernos reduziram claramente a exposição.",
+      "fr": "L'étain peut passer en traces des aliments en conserve dans l'alimentation. Un besoin physiologique n'est pas établi. Les revêtements intérieurs modernes ont nettement réduit l'exposition.",
+      "tr": "Kalay, konserve gıdalardan eser miktarda besine geçebilir. Fizyolojik bir ihtiyaç tanımlanmamıştır. Modern iç kaplamalar maruziyeti belirgin azaltmıştır."
+    },
+    "related_chapters": [
+      10
+    ]
+  },
+  {
+    "term_key": "Lithium Spurenelement",
+    "term": {
+      "de": "Lithium Spurenelement",
+      "en": "Lithium (trace element)",
+      "es": "Litio (oligoelemento)",
+      "it": "Litio come oligoelemento",
+      "pt": "Lítio (oligoelemento)",
+      "fr": "Lithium (oligo-élément)",
+      "tr": "Lityum (eser element)"
+    },
+    "synonyms": {
+      "de": [
+        "Li Spuren"
+      ],
+      "en": [
+        "Li traces"
+      ],
+      "es": [
+        "Trazas de Li"
+      ],
+      "it": [
+        "Li in tracce"
+      ],
+      "pt": [
+        "Li traço"
+      ],
+      "fr": [
+        "Traces de Li"
+      ],
+      "tr": [
+        "Li eserleri"
+      ]
+    },
+    "category": {
+      "de": "Spurenelement",
+      "en": "Trace element",
+      "es": "Oligoelemento",
+      "it": "Oligoelemento",
+      "pt": "Oligoelemento",
+      "fr": "Oligoélément",
+      "tr": "İz element"
+    },
+    "short_description": {
+      "de": "Lithium kommt in manchen Mineralwässern in Spuren vor und wird pharmakologisch in viel höheren Dosen als Stimmungsstabilisator eingesetzt. Spurengehalte in der Ernährung sind nicht mit Medikamentendosen vergleichbar. Eine Selbstmedikation ist gefährlich.",
+      "en": "Lithium occurs in trace amounts in some mineral waters and is used pharmacologically at much higher doses as a mood stabilizer. Dietary trace levels are not comparable to drug doses. Self-medication is dangerous.",
+      "es": "El litio aparece en trazas en algunas aguas minerales y se usa farmacológicamente en dosis mucho más altas como estabilizador del ánimo. Los contenidos traza de la alimentación no son comparables a las dosis medicamentosas. La automedicación es peligrosa.",
+      "it": "Il litio è presente in tracce in alcune acque minerali e farmacologicamente si usa a dosi molto più alte come stabilizzatore dell'umore. I livelli in tracce nella dieta non sono paragonabili alle dosi farmacologiche. L'automedicazione è pericolosa.",
+      "pt": "O lítio ocorre em vestígios em alguns minerais e, em doses farmacológicas muito mais altas, usa-se como estabilizador do humor. Os teores vestigiais na alimentação não são comparáveis às doses medicamentosas. A automedicação é perigosa.",
+      "fr": "Le lithium est présent en traces dans certaines eaux minérales et est utilisé pharmacologiquement à des doses bien plus élevées comme thymorégulateur. Les teneurs alimentaires en traces ne sont pas comparables aux doses médicamenteuses. L'automédication est dangereuse.",
+      "tr": "Lityum bazı maden sularında eser miktarda bulunur; farmakolojik olarak çok daha yüksek dozlarda duygudurum dengeleyici olarak kullanılır. Beslenmedeki eser düzeyler ilaç dozlarıyla kıyaslanamaz. Kendi kendine ilaç kullanımı tehlikelidir."
+    },
+    "related_chapters": [
+      11
+    ]
+  },
+  {
+    "term_key": "Hämoglobin",
+    "term": {
+      "de": "Hämoglobin",
+      "en": "Hemoglobin",
+      "es": "Hemoglobina",
+      "it": "Emoglobina",
+      "pt": "Hemoglobina",
+      "fr": "Hémoglobine",
+      "tr": "Hemoglobin"
+    },
+    "synonyms": {
+      "de": [
+        "Hb",
+        "Hämoglobinwert"
+      ],
+      "en": [
+        "Hb",
+        "Haemoglobin"
+      ],
+      "es": [
+        "Hb",
+        "Valor de hemoglobina"
+      ],
+      "it": [
+        "Hb",
+        "Valore di emoglobina"
+      ],
+      "pt": [
+        "Hb",
+        "Valor de hemoglobina"
+      ],
+      "fr": [
+        "Hb",
+        "Taux d'hémoglobine"
+      ],
+      "tr": [
+        "Hb",
+        "Hemoglobin değeri"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Hämoglobin ist der rote Blutfarbstoff, der Sauerstoff in den Erythrozyten transportiert. Niedrige Werte sprechen für eine Anämie, hohe können auf Rauchen, Austrocknung oder seltene Erkrankungen hinweisen. Der Wert gehört zum kleinen Blutbild.",
+      "en": "Hemoglobin is the red blood pigment that carries oxygen in erythrocytes. Low values indicate anemia; high values can point to smoking, dehydration, or rare diseases. It is part of the complete blood count.",
+      "es": "La hemoglobina es el pigmento rojo de la sangre que transporta oxígeno en los eritrocitos. Valores bajos apuntan a anemia; valores altos pueden indicar tabaquismo, deshidratación o enfermedades raras. Forma parte del hemograma básico.",
+      "it": "L'emoglobina è il pigmento rosso del sangue che trasporta ossigeno negli eritrociti. Valori bassi indicano anemia; valori alti possono dipendere da fumo, disidratazione o malattie rare. Fa parte dell'emocromo completo di base.",
+      "pt": "A hemoglobina é o pigmento vermelho do sangue que transporta oxigénio nos eritrócitos. Valores baixos apontam para anemia; valores altos podem indicar tabagismo, desidratação ou doenças raras. Faz parte do hemograma básico.",
+      "fr": "L'hémoglobine est le pigment rouge du sang qui transporte l'oxygène dans les érythrocytes. Des valeurs basses évoquent une anémie, des valeurs élevées peuvent indiquer le tabagisme, la déshydratation ou des maladies rares. Ce paramètre fait partie de la NFS.",
+      "tr": "Hemoglobin, eritrositlerde oksijen taşıyan kırmızı kan pigmentidir. Düşük değerler anemiye, yüksekler sigara, dehidratasyon veya nadir hastalıklara işaret edebilir. Değer, tam kan sayımının bir parçasıdır."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Hämatokrit",
+    "term": {
+      "de": "Hämatokrit",
+      "en": "Hematocrit",
+      "es": "Hematocrito",
+      "it": "Ematocrito",
+      "pt": "Hematócrito",
+      "fr": "Hématocrite",
+      "tr": "Hematokrit"
+    },
+    "synonyms": {
+      "de": [
+        "Hk",
+        "Hct",
+        "Hämatokritwert"
+      ],
+      "en": [
+        "Hct",
+        "Hk",
+        "Packed cell volume"
+      ],
+      "es": [
+        "Hk",
+        "Hct",
+        "Valor de hematocrito"
+      ],
+      "it": [
+        "Hk",
+        "Hct",
+        "Valore di ematocrito"
+      ],
+      "pt": [
+        "Hk",
+        "Hct",
+        "Valor de hematócrito"
+      ],
+      "fr": [
+        "Hk",
+        "Hct",
+        "Valeur d'hématocrite"
+      ],
+      "tr": [
+        "Hk",
+        "Hct",
+        "Hematokrit değeri"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Der Hämatokrit gibt den Anteil der Blutzellen am Gesamtblutvolumen an. Er steigt bei Flüssigkeitsmangel und sinkt bei Anämie. Zusammen mit Hämoglobin und Erythrozytenzahl wird er interpretiert.",
+      "en": "Hematocrit is the proportion of blood cells in total blood volume. It rises with fluid loss and falls with anemia. It is interpreted together with hemoglobin and red blood cell count.",
+      "es": "El hematocrito indica la proporción de células sanguíneas respecto al volumen total de sangre. Sube con falta de líquidos y baja con anemia. Se interpreta junto con hemoglobina y recuento de eritrocitos.",
+      "it": "L'ematocrito indica la quota di cellule sul volume totale del sangue. Sale con la disidratazione e scende nell'anemia. Si interpreta insieme a emoglobina e conteggio degli eritrociti.",
+      "pt": "O hematócrito indica a fração das células sanguíneas no volume total de sangue. Sobe na desidratação e desce na anemia. Interpreta-se em conjunto com a hemoglobina e a contagem de eritrócitos.",
+      "fr": "L'hématocrite indique la part des cellules sanguines dans le volume sanguin total. Il augmente en cas de déshydratation et diminue en cas d'anémie. Il s'interprète avec l'hémoglobine et le nombre d'érythrocytes.",
+      "tr": "Hematokrit, kan hücrelerinin toplam kan hacmine oranını gösterir. Sıvı eksikliğinde yükselir, anemide düşer. Hemoglobin ve eritrosit sayısıyla birlikte yorumlanır."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Erythrozyten",
+    "term": {
+      "de": "Erythrozyten",
+      "en": "Erythrocytes",
+      "es": "Eritrocitos",
+      "it": "Eritrociti",
+      "pt": "Eritrócitos",
+      "fr": "Érythrocytes",
+      "tr": "Eritrositler"
+    },
+    "synonyms": {
+      "de": [
+        "Ery",
+        "rote Blutkörperchen",
+        "RBC"
+      ],
+      "en": [
+        "RBC",
+        "Red blood cells",
+        "Ery"
+      ],
+      "es": [
+        "Eri",
+        "Glóbulos rojos",
+        "RBC"
+      ],
+      "it": [
+        "Ery",
+        "Globuli rossi",
+        "RBC"
+      ],
+      "pt": [
+        "Ery",
+        "glóbulos vermelhos",
+        "RBC"
+      ],
+      "fr": [
+        "Éry",
+        "Globules rouges",
+        "RBC"
+      ],
+      "tr": [
+        "Eri",
+        "alyuvarlar",
+        "RBC"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Erythrozyten transportieren Sauerstoff und werden im Knochenmark gebildet. Ihre Zahl, Größe und Hämoglobingehalt helfen, Anämieformen zu unterscheiden. Ein Mangel an Eisen, B12 oder Folat verändert typische Muster.",
+      "en": "Erythrocytes transport oxygen and are formed in the bone marrow. Their count, size, and hemoglobin content help distinguish anemia types. Iron, B12, or folate deficiency produce typical patterns.",
+      "es": "Los eritrocitos transportan oxígeno y se forman en la médula ósea. Su número, tamaño y contenido de hemoglobina ayudan a distinguir formas de anemia. La falta de hierro, B12 o folato modifica patrones típicos.",
+      "it": "Gli eritrociti trasportano ossigeno e si formano nel midollo osseo. Numero, volume e contenuto di emoglobina aiutano a distinguere le forme di anemia. Carenze di ferro, B12 o folato modificano i pattern tipici.",
+      "pt": "Os eritrócitos transportam oxigénio e formam-se na medula óssea. O seu número, tamanho e teor de hemoglobina ajudam a distinguir formas de anemia. A carência de ferro, B12 ou folato altera padrões típicos.",
+      "fr": "Les érythrocytes transportent l'oxygène et sont formés dans la moelle osseuse. Leur nombre, taille et teneur en hémoglobine aident à distinguer les formes d'anémie. Une carence en fer, B12 ou folate modifie des profils typiques.",
+      "tr": "Eritrositler oksijen taşır ve kemik iliğinde üretilir. Sayı, boyut ve hemoglobin içeriği anemi tiplerini ayırt etmeye yardımcı olur. Demir, B12 veya folat eksikliği tipik örüntüleri değiştirir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Leukozyten",
+    "term": {
+      "de": "Leukozyten",
+      "en": "Leukocytes",
+      "es": "Leucocitos",
+      "it": "Leucociti",
+      "pt": "Leucócitos",
+      "fr": "Leucocytes",
+      "tr": "Lökositler"
+    },
+    "synonyms": {
+      "de": [
+        "Leuko",
+        "weiße Blutkörperchen",
+        "WBC"
+      ],
+      "en": [
+        "WBC",
+        "White blood cells",
+        "Leuko"
+      ],
+      "es": [
+        "Leuco",
+        "Glóbulos blancos",
+        "WBC"
+      ],
+      "it": [
+        "Leuco",
+        "Globuli bianchi",
+        "WBC"
+      ],
+      "pt": [
+        "Leuko",
+        "glóbulos brancos",
+        "WBC"
+      ],
+      "fr": [
+        "Leuco",
+        "Globules blancs",
+        "WBC"
+      ],
+      "tr": [
+        "Löko",
+        "akyuvarlar",
+        "WBC"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Leukozyten sind Abwehrzellen und reagieren auf Infekte, Entzündungen und Stress. Erhöhte oder erniedrigte Werte brauchen Kontext wie Differenzialblutbild und Klinik. Allein sagen sie selten die genaue Ursache.",
+      "en": "Leukocytes are immune cells that respond to infection, inflammation, and stress. High or low values need context such as a differential count and clinical findings. Alone they rarely identify the exact cause.",
+      "es": "Los leucocitos son células de defensa y reaccionan a infecciones, inflamaciones y estrés. Valores elevados o disminuidos necesitan contexto como fórmula leucocitaria y clínica. Por sí solos rara vez indican la causa exacta.",
+      "it": "I leucociti sono cellule di difesa e reagiscono a infezioni, infiammazioni e stress. Valori alti o bassi richiedono contesto come formula leucocitaria e quadro clinico. Da soli raramente indicano la causa esatta.",
+      "pt": "Os leucócitos são células de defesa e reagem a infeções, inflamação e stresse. Valores elevados ou baixos precisam de contexto, como a fórmula leucocitária e a clínica. Isolados raramente indicam a causa exacta.",
+      "fr": "Les leucocytes sont des cellules de défense et réagissent aux infections, inflammations et au stress. Des valeurs élevées ou basses nécessitent un contexte comme la formule leucocytaire et la clinique. Seules, elles indiquent rarement la cause exacte.",
+      "tr": "Lökositler savunma hücreleridir; enfeksiyon, enflamasyon ve strese yanıt verir. Yüksek veya düşük değerler periferik yayma ve klinik bağlam gerektirir. Tek başına nadiren kesin nedeni gösterir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Thrombozyten",
+    "term": {
+      "de": "Thrombozyten",
+      "en": "Platelets",
+      "es": "Trombocitos",
+      "it": "Piastrine",
+      "pt": "Trombócitos",
+      "fr": "Thrombocytes",
+      "tr": "Trombositler"
+    },
+    "synonyms": {
+      "de": [
+        "Thrombo",
+        "Blutplättchen",
+        "PLT"
+      ],
+      "en": [
+        "PLT",
+        "Thrombocytes",
+        "Blood platelets"
+      ],
+      "es": [
+        "Trombo",
+        "Plaquetas",
+        "PLT"
+      ],
+      "it": [
+        "Trombociti",
+        "Piastrine del sangue",
+        "PLT"
+      ],
+      "pt": [
+        "Thrombo",
+        "plaquetas",
+        "PLT"
+      ],
+      "fr": [
+        "Thrombo",
+        "Plaquettes",
+        "PLT"
+      ],
+      "tr": [
+        "Trombo",
+        "kan pulcukları",
+        "PLT"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Thrombozyten sind entscheidend für die primäre Blutstillung. Zu wenige erhöhen die Blutungsneigung, zu viele können das Thromboserisiko beeinflussen. Medikamente, Infekte und Knochenmarkerkrankungen verändern den Wert.",
+      "en": "Platelets are essential for primary hemostasis. Too few increase bleeding tendency; too many can affect thrombosis risk. Medications, infections, and bone marrow disorders change the value.",
+      "es": "Los trombocitos son decisivos para la hemostasia primaria. Demasiados pocos aumentan la tendencia al sangrado; demasiados pueden influir en el riesgo trombótico. Medicamentos, infecciones y enfermedades de la médula ósea modifican el valor.",
+      "it": "Le piastrine sono decisive per l'emostasi primaria. Troppo poche aumentano la tendenza al sanguinamento; troppe possono influenzare il rischio trombotico. Farmaci, infezioni e malattie del midollo modificano il valore.",
+      "pt": "Os trombócitos são decisivos na hemostase primária. Demasiado poucos aumentam a tendência hemorrágica; demasiado muitos podem influenciar o risco trombótico. Medicamentos, infeções e doenças da medula alteram o valor.",
+      "fr": "Les thrombocytes sont essentiels à l'hémostase primaire. Un nombre trop bas augmente le risque de saignement, un nombre trop élevé peut influencer le risque thrombotique. Médicaments, infections et maladies de la moelle osseuse modifient la valeur.",
+      "tr": "Trombositler birincil hemostaz için kritiktir. Az sayıda kanama eğilimini artırır, fazla sayıda tromboz riskini etkileyebilir. İlaçlar, enfeksiyonlar ve kemik iliği hastalıkları değeri değiştirir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "MCV",
+    "term": {
+      "de": "MCV",
+      "en": "MCV",
+      "es": "MCV",
+      "it": "MCV",
+      "pt": "MCV",
+      "fr": "MCV",
+      "tr": "MCV"
+    },
+    "synonyms": {
+      "de": [
+        "mittleres korpuskuläres Volumen",
+        "Erythrozytenvolumen"
+      ],
+      "en": [
+        "Mean corpuscular volume",
+        "Red cell volume"
+      ],
+      "es": [
+        "Volumen corpuscular medio",
+        "Volumen eritrocitario"
+      ],
+      "it": [
+        "Volume corpuscolare medio",
+        "Volume eritrocitario"
+      ],
+      "pt": [
+        "volume corpuscular médio",
+        "volume eritrocitário"
+      ],
+      "fr": [
+        "Volume globulaire moyen",
+        "Volume érythrocytaire"
+      ],
+      "tr": [
+        "ortalama korpüsküler hacim",
+        "eritrosit hacmi"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Das MCV beschreibt die durchschnittliche Größe der roten Blutkörperchen. Ein hohes MCV passt zu B12- oder Folatmangel, ein niedriges eher zu Eisenmangel. Es ist ein Schlüsselwert bei der Anämiedifferenzierung.",
+      "en": "MCV describes the average size of red blood cells. High MCV fits B12 or folate deficiency; low MCV more often fits iron deficiency. It is a key value in anemia differentiation.",
+      "es": "El MCV describe el tamaño medio de los glóbulos rojos. Un MCV alto encaja con deficiencia de B12 o folato; uno bajo, más bien con deficiencia de hierro. Es un valor clave en la diferenciación de anemias.",
+      "it": "L'MCV descrive la dimensione media dei globuli rossi. Un MCV alto si associa a carenza di B12 o folato; uno basso piuttosto a carenza di ferro. È un valore chiave nella differenziazione dell'anemia.",
+      "pt": "O MCV descreve o volume médio dos glóbulos vermelhos. Um MCV alto enquadra-se na carência de B12 ou folato; um baixo, sobretudo na carência de ferro. É um valor-chave na diferenciação das anemias.",
+      "fr": "Le MCV décrit la taille moyenne des globules rouges. Un MCV élevé évoque une carence en B12 ou folate, un MCV bas plutôt une carence en fer. C'est une valeur clé pour différencier les anémies.",
+      "tr": "MCV, kırmızı kan hücrelerinin ortalama boyutunu tanımlar. Yüksek MCV B12 veya folat eksikliğine, düşük MCV daha çok demir eksikliğine uyar. Anemi ayırıcı tanısında anahtar bir değerdir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "MCH",
+    "term": {
+      "de": "MCH",
+      "en": "MCH",
+      "es": "MCH",
+      "it": "MCH",
+      "pt": "MCH",
+      "fr": "MCH",
+      "tr": "MCH"
+    },
+    "synonyms": {
+      "de": [
+        "mittlerer Hämoglobingehalt",
+        "HbE"
+      ],
+      "en": [
+        "Mean corpuscular hemoglobin",
+        "HbE"
+      ],
+      "es": [
+        "Contenido medio de hemoglobina",
+        "HbE"
+      ],
+      "it": [
+        "Contenuto medio di emoglobina",
+        "HbE"
+      ],
+      "pt": [
+        "hemoglobina corpuscular média",
+        "HbE"
+      ],
+      "fr": [
+        "Teneur corpusculaire moyenne en hémoglobine",
+        "HbE"
+      ],
+      "tr": [
+        "ortalama hemoglobin içeriği",
+        "HbE"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Das MCH gibt an, wie viel Hämoglobin durchschnittlich in einem Erythrozyten steckt. Niedrige Werte finden sich oft bei Eisenmangelanämie. Es wird zusammen mit MCV und MCHC gelesen.",
+      "en": "MCH indicates how much hemoglobin is on average in one erythrocyte. Low values are often seen in iron deficiency anemia. It is read together with MCV and MCHC.",
+      "es": "El MCH indica cuánta hemoglobina hay de media en un eritrocito. Valores bajos se encuentran a menudo en anemia ferropénica. Se lee junto con MCV y MCHC.",
+      "it": "L'MCH indica quanta emoglobina c'è in media in un eritrocita. Valori bassi si trovano spesso nell'anemia da carenza di ferro. Si legge insieme a MCV e MCHC.",
+      "pt": "O MCH indica quanta hemoglobina há, em média, num eritrócito. Valores baixos encontram-se frequentemente na anemia por carência de ferro. Lê-se em conjunto com MCV e MCHC.",
+      "fr": "Le MCH indique combien d'hémoglobine contient en moyenne un érythrocyte. Des valeurs basses se trouvent souvent dans l'anémie ferriprive. Il se lit avec le MCV et le MCHC.",
+      "tr": "MCH, bir eritrositte ortalama ne kadar hemoglobin olduğunu gösterir. Düşük değerler sıklıkla demir eksikliği anemisinde görülür. MCV ve MCHC ile birlikte okunur."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "MCHC",
+    "term": {
+      "de": "MCHC",
+      "en": "MCHC",
+      "es": "MCHC",
+      "it": "MCHC",
+      "pt": "MCHC",
+      "fr": "MCHC",
+      "tr": "MCHC"
+    },
+    "synonyms": {
+      "de": [
+        "mittlere Hämoglobinkonzentration",
+        "korpuskuläre Hb-Konzentration"
+      ],
+      "en": [
+        "Mean corpuscular hemoglobin concentration",
+        "Corpuscular Hb concentration"
+      ],
+      "es": [
+        "Concentración media de hemoglobina",
+        "Concentración corpuscular de Hb"
+      ],
+      "it": [
+        "Concentrazione media di emoglobina",
+        "Concentrazione Hb corpuscolare"
+      ],
+      "pt": [
+        "concentração de hemoglobina corpuscular média",
+        "concentração corpuscular de Hb"
+      ],
+      "fr": [
+        "Concentration corpusculaire moyenne en hémoglobine",
+        "Concentration Hb corpusculaire"
+      ],
+      "tr": [
+        "ortalama hemoglobin konsantrasyonu",
+        "korpüsküler Hb konsantrasyonu"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Das MCHC beschreibt die Hämoglobinkonzentration innerhalb der Erythrozyten. Stark erniedrigte Werte können auf Eisenmangel oder seltene Hämoglobinopathien hinweisen. Technische Messfehler sollten ausgeschlossen werden.",
+      "en": "MCHC describes the hemoglobin concentration within erythrocytes. Markedly low values can point to iron deficiency or rare hemoglobinopathies. Technical measurement error should be ruled out.",
+      "es": "El MCHC describe la concentración de hemoglobina dentro de los eritrocitos. Valores muy bajos pueden apuntar a deficiencia de hierro o a hemoglobinopatías raras. Deben excluirse errores técnicos de medición.",
+      "it": "L'MCHC descrive la concentrazione di emoglobina all'interno degli eritrociti. Valori nettamente ridotti possono indicare carenza di ferro o rare emoglobinopatie. Vanno esclusi errori tecnici di misurazione.",
+      "pt": "O MCHC descreve a concentração de hemoglobina dentro dos eritrócitos. Valores muito baixos podem apontar para carência de ferro ou hemoglobinopatias raras. Devem excluir-se erros técnicos de medição.",
+      "fr": "Le MCHC décrit la concentration d'hémoglobine dans les érythrocytes. Des valeurs fortement abaissées peuvent indiquer une carence en fer ou de rares hémoglobinopathies. Les erreurs techniques de mesure doivent être exclues.",
+      "tr": "MCHC, eritrositler içindeki hemoglobin konsantrasyonunu tanımlar. Belirgin düşük değerler demir eksikliğine veya nadir hemoglobinopatiilere işaret edebilir. Teknik ölçüm hataları dışlanmalıdır."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "RDW",
+    "term": {
+      "de": "RDW",
+      "en": "RDW",
+      "es": "RDW",
+      "it": "RDW",
+      "pt": "RDW",
+      "fr": "RDW",
+      "tr": "RDW"
+    },
+    "synonyms": {
+      "de": [
+        "Erythrozytenverteilungsbreite",
+        "Red Cell Distribution Width"
+      ],
+      "en": [
+        "Red cell distribution width",
+        "Erythrocyte distribution width"
+      ],
+      "es": [
+        "Amplitud de distribución eritrocitaria",
+        "Red Cell Distribution Width"
+      ],
+      "it": [
+        "Ampiezza di distribuzione eritrocitaria",
+        "Red Cell Distribution Width"
+      ],
+      "pt": [
+        "amplitude de distribuição eritrocitária",
+        "red cell distribution width"
+      ],
+      "fr": [
+        "Indice de distribution des érythrocytes",
+        "Red Cell Distribution Width"
+      ],
+      "tr": [
+        "eritrosit dağılım genişliği",
+        "Red Cell Distribution Width"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Die RDW misst, wie stark die Erythrozyten in ihrer Größe streuen. Eine erhöhte RDW tritt häufig bei Eisen-, B12- oder Folatmangel auf. Sie ergänzt MCV bei der Einordnung von Anämien.",
+      "en": "RDW measures how much red blood cells vary in size. Elevated RDW often occurs with iron, B12, or folate deficiency. It complements MCV when classifying anemias.",
+      "es": "El RDW mide cuánto varían los eritrocitos en su tamaño. Un RDW elevado aparece con frecuencia en deficiencia de hierro, B12 o folato. Complementa el MCV en la clasificación de anemias.",
+      "it": "L'RDW misura quanto variano gli eritrociti per dimensione. Un RDW elevato compare spesso in carenza di ferro, B12 o folato. Integra l'MCV nella classificazione delle anemie.",
+      "pt": "O RDW mede quão variável é o tamanho dos eritrócitos. Um RDW elevado ocorre frequentemente na carência de ferro, B12 ou folato. Complementa o MCV na classificação das anemias.",
+      "fr": "Le RDW mesure l'hétérogénéité de taille des érythrocytes. Un RDW élevé survient souvent en cas de carence en fer, B12 ou folate. Il complète le MCV pour classer les anémies.",
+      "tr": "RDW, eritrositlerin boyutlarının ne kadar değişken olduğunu ölçer. Yüksek RDW sıklıkla demir, B12 veya folat eksikliğinde görülür. Anemilerin sınıflandırılmasında MCV'yi tamamlar."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Differenzialblutbild",
+    "term": {
+      "de": "Differenzialblutbild",
+      "en": "Differential blood count",
+      "es": "Fórmula leucocitaria",
+      "it": "Formula leucocitaria",
+      "pt": "Hemograma diferencial",
+      "fr": "Formule leucocytaire",
+      "tr": "Periferik yayma / lökosit formülü"
+    },
+    "synonyms": {
+      "de": [
+        "Diff-BB",
+        "Leukozytendifferenzierung"
+      ],
+      "en": [
+        "Diff CBC",
+        "Leukocyte differential"
+      ],
+      "es": [
+        "Hemograma diferencial",
+        "Diferenciación de leucocitos"
+      ],
+      "it": [
+        "Emocromo differenziale",
+        "Differenziale leucocitario"
+      ],
+      "pt": [
+        "Fórmula leucocitária",
+        "diferenciação de leucócitos"
+      ],
+      "fr": [
+        "NFS différentielle",
+        "Différenciation leucocytaire"
+      ],
+      "tr": [
+        "Diff-BB",
+        "lökosit diferansiyeli"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Das Differenzialblutbild zeigt die Anteile von Neutrophilen, Lymphozyten, Monozyten, Eosinophilen und Basophilen. Es hilft bei Infekt- und Allergieverdacht sowie bei Bluterkrankungen. Die Interpretation gehört in den klinischen Kontext.",
+      "en": "The differential blood count shows the proportions of neutrophils, lymphocytes, monocytes, eosinophils, and basophils. It helps when infection, allergy, or blood disorders are suspected. Interpretation belongs in the clinical context.",
+      "es": "La fórmula leucocitaria muestra las proporciones de neutrófilos, linfocitos, monocitos, eosinófilos y basófilos. Ayuda ante sospecha de infección o alergia y en enfermedades hematológicas. La interpretación pertenece al contexto clínico.",
+      "it": "La formula leucocitaria mostra le quote di neutrofili, linfociti, monociti, eosinofili e basofili. Aiuta in caso di sospetto di infezione o allergia e nelle malattie ematologiche. L'interpretazione richiede il contesto clinico.",
+      "pt": "O hemograma diferencial mostra as proporções de neutrófilos, linfócitos, monócitos, eosinófilos e basófilos. Ajuda na suspeita de infeção, alergia e doenças hematológicas. A interpretação exige contexto clínico.",
+      "fr": "La formule leucocytaire montre les proportions de neutrophiles, lymphocytes, monocytes, éosinophiles et basophiles. Elle aide en cas de suspicion d'infection ou d'allergie ainsi que dans les maladies du sang. L'interprétation appartient au contexte clinique.",
+      "tr": "Lökosit diferansiyeli nötrofil, lenfosit, monosit, eozinofil ve bazofil oranlarını gösterir. Enfeksiyon ve alerji şüphesinde ile kan hastalıklarında yardımcı olur. Yorum klinik bağlama aittir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Retikulozyten",
+    "term": {
+      "de": "Retikulozyten",
+      "en": "Reticulocytes",
+      "es": "Reticulocitos",
+      "it": "Reticolociti",
+      "pt": "Reticulócitos",
+      "fr": "Réticulocytes",
+      "tr": "Retikülositler"
+    },
+    "synonyms": {
+      "de": [
+        "Retis",
+        "junge Erythrozyten"
+      ],
+      "en": [
+        "Retics",
+        "Young erythrocytes"
+      ],
+      "es": [
+        "Retis",
+        "Eritrocitos jóvenes"
+      ],
+      "it": [
+        "Reti",
+        "Eritrociti giovani"
+      ],
+      "pt": [
+        "Retic",
+        "eritrócitos jovens"
+      ],
+      "fr": [
+        "Rétis",
+        "Jeunes érythrocytes"
+      ],
+      "tr": [
+        "Retis",
+        "genç eritrositler"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Retikulozyten sind junge rote Blutkörperchen und spiegeln die Bildungsaktivität des Knochenmarks wider. Nach Blutverlust oder erfolgreicher Mangeltherapie steigen sie an. Bei Bildungsstörungen bleiben sie niedrig.",
+      "en": "Reticulocytes are young red blood cells and reflect bone marrow production activity. They rise after blood loss or successful deficiency therapy. In production disorders they remain low.",
+      "es": "Los reticulocitos son glóbulos rojos jóvenes y reflejan la actividad formativa de la médula ósea. Tras una pérdida de sangre o un tratamiento eficaz de una deficiencia suben. En trastornos de la formación permanecen bajos.",
+      "it": "I reticolociti sono globuli rossi giovani e riflettono l'attività produttiva del midollo osseo. Aumentano dopo perdite ematiche o terapia efficace di una carenza. Nelle alterazioni della produzione restano bassi.",
+      "pt": "Os reticulócitos são glóbulos vermelhos jovens e reflectem a atividade formadora da medula óssea. Após hemorragia ou terapêutica bem-sucedida de uma carência sobem. Em perturbações da formação permanecem baixos.",
+      "fr": "Les réticulocytes sont de jeunes globules rouges et reflètent l'activité de production de la moelle osseuse. Après une perte sanguine ou un traitement réussi d'une carence, ils augmentent. En cas de trouble de production, ils restent bas.",
+      "tr": "Retikülositler genç kırmızı kan hücreleridir ve kemik iliğinin üretim aktivitesini yansıtır. Kan kaybı veya başarılı eksiklik tedavisinden sonra yükselirler. Üretim bozukluklarında düşük kalırlar."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Kleines Blutbild",
+    "term": {
+      "de": "Kleines Blutbild",
+      "en": "Complete blood count (basic)",
+      "es": "Hemograma básico",
+      "it": "Emocromo di base",
+      "pt": "Hemograma básico",
+      "fr": "NFS simple",
+      "tr": "Küçük kan sayımı"
+    },
+    "synonyms": {
+      "de": [
+        "KBB",
+        "Blutbild klein"
+      ],
+      "en": [
+        "CBC",
+        "Basic blood count"
+      ],
+      "es": [
+        "Hemograma pequeño",
+        "Hemograma completo básico"
+      ],
+      "it": [
+        "CBC",
+        "Emocromo senza formula"
+      ],
+      "pt": [
+        "Hemograma reduzido",
+        "hemograma pequeno"
+      ],
+      "fr": [
+        "Hémogramme de base",
+        "NFS"
+      ],
+      "tr": [
+        "KBB",
+        "basit hemogram"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Das kleine Blutbild umfasst Erythrozyten, Leukozyten, Thrombozyten, Hämoglobin, Hämatokrit und Indizes wie MCV. Es ist ein Basischeck bei Müdigkeit, Infekten und vor Operationen. Auffälligkeiten führen oft zu gezielten Folgeuntersuchungen.",
+      "en": "The basic blood count includes erythrocytes, leukocytes, platelets, hemoglobin, hematocrit, and indices such as MCV. It is a baseline check for fatigue, infections, and before surgery. Abnormalities often lead to targeted follow-up tests.",
+      "es": "El hemograma básico incluye eritrocitos, leucocitos, trombocitos, hemoglobina, hematocrito e índices como el MCV. Es un control de base ante fatiga, infecciones y antes de intervenciones. Las alteraciones suelen llevar a estudios dirigidos posteriores.",
+      "it": "L'emocromo di base comprende eritrociti, leucociti, piastrine, emoglobina, ematocrito e indici come l'MCV. È un controllo di base in caso di stanchezza, infezioni e prima di interventi. Le anomalie portano spesso a esami mirati successivi.",
+      "pt": "O hemograma básico inclui eritrócitos, leucócitos, trombócitos, hemoglobina, hematócrito e índices como o MCV. É um controlo de base na fadiga, nas infeções e antes de cirurgias. Alterações levam muitas vezes a exames dirigidos.",
+      "fr": "La NFS simple comprend érythrocytes, leucocytes, thrombocytes, hémoglobine, hématocrite et indices comme le MCV. C'est un bilan de base en cas de fatigue, d'infections et avant chirurgie. Les anomalies conduisent souvent à des examens complémentaires ciblés.",
+      "tr": "Küçük kan sayımı eritrosit, lökosit, trombosit, hemoglobin, hematokrit ve MCV gibi indeksleri kapsar. Yorgunluk, enfeksiyon ve ameliyat öncesi temel bir kontroldür. Anormallikler genellikle hedefli ileri tetkiklere yol açar."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Großes Blutbild",
+    "term": {
+      "de": "Großes Blutbild",
+      "en": "Complete blood count with differential",
+      "es": "Hemograma completo con fórmula",
+      "it": "Emocromo con formula",
+      "pt": "Hemograma completo",
+      "fr": "NFS complète",
+      "tr": "Geniş kan sayımı"
+    },
+    "synonyms": {
+      "de": [
+        "GBB",
+        "Blutbild groß"
+      ],
+      "en": [
+        "CBC with differential",
+        "Full blood count"
+      ],
+      "es": [
+        "Hemograma grande",
+        "Hemograma con diferencial"
+      ],
+      "it": [
+        "Emocromo esteso",
+        "Emocromo con differenziale"
+      ],
+      "pt": [
+        "Hemograma ampliado",
+        "hemograma completo"
+      ],
+      "fr": [
+        "Hémogramme complet",
+        "NFS avec formule"
+      ],
+      "tr": [
+        "GBB",
+        "tam hemogram"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Das große Blutbild erweitert das kleine um die Leukozytendifferenzierung. Es liefert mehr Hinweise auf Infektart oder hämatologische Erkrankungen. Für Stoffwechselthemen bleibt es ein wichtiger Begleitbefund.",
+      "en": "The extended blood count adds leukocyte differentiation to the basic panel. It provides more clues about infection type or hematologic disease. For metabolic topics it remains an important companion finding.",
+      "es": "El hemograma completo amplía el básico con la diferenciación de leucocitos. Aporta más indicios sobre el tipo de infección o enfermedades hematológicas. En temas metabólicos sigue siendo un hallazgo acompañante importante.",
+      "it": "L'emocromo con formula aggiunge il differenziale leucocitario all'emocromo di base. Offre più indizi sul tipo di infezione o su malattie ematologiche. Per i temi metabolici resta un referto di accompagnamento importante.",
+      "pt": "O hemograma completo alarga o básico com a diferenciação dos leucócitos. Dá mais pistas sobre o tipo de infeção ou doenças hematológicas. Em temas metabólicos continua a ser um achado acompanhante importante.",
+      "fr": "La NFS complète étend la NFS simple par la formule leucocytaire. Elle apporte plus d'indices sur le type d'infection ou les maladies hématologiques. Pour les questions métaboliques, elle reste un résultat d'accompagnement important.",
+      "tr": "Geniş kan sayımı, küçüğü lökosit diferansiyeliyle genişletir. Enfeksiyon tipi veya hematolojik hastalıklar hakkında daha fazla ipucu verir. Metabolizma konularında da önemli bir eşlik eden bulgudur."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Ferritin",
+    "term": {
+      "de": "Ferritin",
+      "en": "Ferritin",
+      "es": "Ferritina",
+      "it": "Ferritina",
+      "pt": "Ferritina",
+      "fr": "Ferritine",
+      "tr": "Ferritin"
+    },
+    "synonyms": {
+      "de": [
+        "Speichereisen",
+        "Ferritinwert"
+      ],
+      "en": [
+        "Storage iron",
+        "Ferritin level"
+      ],
+      "es": [
+        "Hierro de depósito",
+        "Valor de ferritina"
+      ],
+      "it": [
+        "Ferro di deposito",
+        "Valore di ferritina"
+      ],
+      "pt": [
+        "Ferro de reserva",
+        "valor de ferritina"
+      ],
+      "fr": [
+        "Fer de réserve",
+        "Taux de ferritine"
+      ],
+      "tr": [
+        "depo demiri",
+        "ferritin değeri"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Ferritin spiegelt die Eisenspeicher wider und ist der wichtigste Marker bei Verdacht auf Eisenmangel. Als Akute-Phase-Protein kann es bei Entzündungen falsch normal oder hoch erscheinen. Dann helfen Transferrinsättigung und sTfR weiter.",
+      "en": "Ferritin reflects iron stores and is the most important marker when iron deficiency is suspected. As an acute-phase protein it can appear falsely normal or high during inflammation. Transferrin saturation and sTfR then help further.",
+      "es": "La ferritina refleja los depósitos de hierro y es el marcador más importante ante sospecha de ferropenia. Como proteína de fase aguda puede aparecer falsamente normal o alta en inflamaciones. Entonces ayudan la saturación de transferrina y el sTfR.",
+      "it": "La ferritina riflette le riserve di ferro ed è il marcatore più importante in caso di sospetta carenza. Come proteina di fase acuta, nelle infiammazioni può apparire falsamente normale o alta. Allora aiutano saturazione della transferrina e sTfR.",
+      "pt": "A ferritina reflecte as reservas de ferro e é o marcador principal na suspeita de carência. Como proteína de fase aguda, pode parecer normal ou alta na inflamação. Nesse caso ajudam a saturação da transferrina e o sTfR.",
+      "fr": "La ferritine reflète les réserves de fer et est le marqueur le plus important en cas de suspicion de carence martiale. En tant que protéine de la phase aiguë, elle peut paraître faussement normale ou élevée en cas d'inflammation. Alors la saturation de la transferrine et le sTfR aident davantage.",
+      "tr": "Ferritin demir depolarını yansıtır ve demir eksikliği şüphesinde en önemli belirteçtir. Akut faz proteini olarak enflamasyonda yanlışlıkla normal veya yüksek görünebilir. O zaman transferrin satürasyonu ve sTfR yardımcı olur."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Transferrin",
+    "term": {
+      "de": "Transferrin",
+      "en": "Transferrin",
+      "es": "Transferrina",
+      "it": "Transferrina",
+      "pt": "Transferrina",
+      "fr": "Transferrine",
+      "tr": "Transferrin"
+    },
+    "synonyms": {
+      "de": [
+        "Eisentransportprotein"
+      ],
+      "en": [
+        "Iron transport protein"
+      ],
+      "es": [
+        "Proteína transportadora de hierro"
+      ],
+      "it": [
+        "Proteina di trasporto del ferro"
+      ],
+      "pt": [
+        "Proteína de transporte do ferro"
+      ],
+      "fr": [
+        "Protéine de transport du fer"
+      ],
+      "tr": [
+        "demir taşıyıcı protein"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Transferrin transportiert Eisen im Blut zur Knochenmark und zu anderen Geweben. Bei Eisenmangel steigt es typischerweise an, bei Entzündung oder Leberstörung kann es sinken. Zusammen mit Eisen und Ferritin ergibt sich das Gesamtbild.",
+      "en": "Transferrin carries iron in the blood to bone marrow and other tissues. In iron deficiency it typically rises; in inflammation or liver disease it can fall. Together with iron and ferritin it completes the picture.",
+      "es": "La transferrina transporta hierro en sangre hacia la médula ósea y otros tejidos. En ferropenia suele elevarse; en inflamación o trastorno hepático puede bajar. Junto con hierro y ferritina se obtiene el panorama completo.",
+      "it": "La transferrina trasporta il ferro nel sangue verso il midollo osseo e altri tessuti. Nella carenza di ferro tipicamente aumenta; in infiammazione o disturbo epatico può scendere. Insieme a ferro e ferritina dà il quadro complessivo.",
+      "pt": "A transferrina transporta ferro no sangue para a medula óssea e outros tecidos. Na carência de ferro sobe tipicamente; na inflamação ou disfunção hepática pode descer. Com ferro e ferritina forma o quadro global.",
+      "fr": "La transferrine transporte le fer dans le sang vers la moelle osseuse et d'autres tissus. En cas de carence en fer, elle augmente typiquement ; en cas d'inflammation ou de trouble hépatique, elle peut baisser. Avec le fer et la ferritine, on obtient le tableau d'ensemble.",
+      "tr": "Transferrin kanda demiri kemik iliğine ve diğer dokulara taşır. Demir eksikliğinde tipik olarak yükselir; enflamasyon veya karaciğer bozukluğunda düşebilir. Demir ve ferritinle birlikte genel tablo oluşur."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Transferrinsättigung",
+    "term": {
+      "de": "Transferrinsättigung",
+      "en": "Transferrin saturation",
+      "es": "Saturación de transferrina",
+      "it": "Saturazione della transferrina",
+      "pt": "Saturação da transferrina",
+      "fr": "Saturation de la transferrine",
+      "tr": "Transferrin satürasyonu"
+    },
+    "synonyms": {
+      "de": [
+        "TSAT",
+        "TfS"
+      ],
+      "en": [
+        "TSAT",
+        "TfS"
+      ],
+      "es": [
+        "TSAT",
+        "TfS"
+      ],
+      "it": [
+        "TSAT",
+        "TfS"
+      ],
+      "pt": [
+        "TSAT",
+        "TfS"
+      ],
+      "fr": [
+        "TSAT",
+        "TfS"
+      ],
+      "tr": [
+        "TSAT",
+        "TfS"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Die Transferrinsättigung gibt an, wie viel Prozent des Transferrins mit Eisen beladen sind. Niedrige Werte sprechen für Eisenmangel, hohe für Überladung oder Entzündungseffekte. Sie wird aus Eisen und Transferrin berechnet.",
+      "en": "Transferrin saturation indicates what percentage of transferrin is loaded with iron. Low values suggest iron deficiency; high values suggest overload or inflammation effects. It is calculated from iron and transferrin.",
+      "es": "La saturación de transferrina indica qué porcentaje de la transferrina está cargada de hierro. Valores bajos hablan de ferropenia; altos, de sobrecarga o efectos inflamatorios. Se calcula a partir del hierro y la transferrina.",
+      "it": "La saturazione della transferrina indica quale percentuale della transferrina è caricata di ferro. Valori bassi indicano carenza di ferro; alti sovraccarico o effetti infiammatori. Si calcola da ferro e transferrina.",
+      "pt": "A saturação da transferrina indica que percentagem da transferrina está carregada de ferro. Valores baixos apontam para carência; altos, para sobrecarga ou efeitos da inflamação. Calcula-se a partir do ferro e da transferrina.",
+      "fr": "La saturation de la transferrine indique quel pourcentage de la transferrine est chargé en fer. Des valeurs basses évoquent une carence en fer, des valeurs élevées une surcharge ou des effets inflammatoires. Elle se calcule à partir du fer et de la transferrine.",
+      "tr": "Transferrin satürasyonu, transferrinin yüzde kaçının demirle yüklü olduğunu gösterir. Düşük değerler demir eksikliğine, yüksekler aşırı yüklenmeye veya enflamasyon etkilerine işaret eder. Demir ve transferrinden hesaplanır."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Löslicher Transferrinrezeptor",
+    "term": {
+      "de": "Löslicher Transferrinrezeptor",
+      "en": "Soluble transferrin receptor",
+      "es": "Receptor soluble de transferrina",
+      "it": "Recettore solubile della transferrina",
+      "pt": "Receptor solúvel da transferrina",
+      "fr": "Récepteur soluble de la transferrine",
+      "tr": "Çözünür transferrin reseptörü"
+    },
+    "synonyms": {
+      "de": [
+        "sTfR",
+        "sTFR"
+      ],
+      "en": [
+        "sTfR",
+        "sTFR"
+      ],
+      "es": [
+        "sTfR",
+        "sTFR"
+      ],
+      "it": [
+        "sTfR",
+        "sTFR"
+      ],
+      "pt": [
+        "sTfR",
+        "sTFR"
+      ],
+      "fr": [
+        "sTfR",
+        "sTFR"
+      ],
+      "tr": [
+        "sTfR",
+        "sTFR"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Der lösliche Transferrinrezeptor steigt bei Eisenmangel und erhöhter Erythrozytenbildung. Er wird weniger stark durch Entzündung beeinflusst als Ferritin. Deshalb ist er bei chronischen Erkrankungen besonders hilfreich.",
+      "en": "Soluble transferrin receptor rises in iron deficiency and increased red cell production. It is less strongly affected by inflammation than ferritin. That makes it especially helpful in chronic disease.",
+      "es": "El receptor soluble de transferrina se eleva en ferropenia y en mayor formación eritrocitaria. Se ve menos influido por la inflamación que la ferritina. Por eso es especialmente útil en enfermedades crónicas.",
+      "it": "Il recettore solubile della transferrina aumenta nella carenza di ferro e con maggiore eritropoiesi. È meno influenzato dall'infiammazione rispetto alla ferritina. Per questo è particolarmente utile nelle malattie croniche.",
+      "pt": "O receptor solúvel da transferrina sobe na carência de ferro e na formação aumentada de eritrócitos. Sofre menos influência da inflamação do que a ferritina. Por isso é especialmente útil nas doenças crónicas.",
+      "fr": "Le récepteur soluble de la transferrine augmente en cas de carence en fer et d'érythropoïèse accrue. Il est moins influencé par l'inflammation que la ferritine. C'est pourquoi il est particulièrement utile dans les maladies chroniques.",
+      "tr": "Çözünür transferrin reseptörü demir eksikliğinde ve artmış eritrosit üretiminde yükselir. Ferritine göre enflamasyondan daha az etkilenir. Bu nedenle kronik hastalıklarda özellikle yararlıdır."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Serum eisen",
+    "term": {
+      "de": "Serum eisen",
+      "en": "Serum iron",
+      "es": "Hierro sérico",
+      "it": "Ferro sierico",
+      "pt": "Ferro sérico",
+      "fr": "Fer sérique",
+      "tr": "Serum demiri"
+    },
+    "synonyms": {
+      "de": [
+        "Eisen im Serum",
+        "Fe serum"
+      ],
+      "en": [
+        "Iron in serum",
+        "Fe serum"
+      ],
+      "es": [
+        "Hierro en suero",
+        "Fe sérico"
+      ],
+      "it": [
+        "Ferro nel siero",
+        "Fe siero"
+      ],
+      "pt": [
+        "Ferro no soro",
+        "Fe sérico"
+      ],
+      "fr": [
+        "Fer dans le sérum",
+        "Fe sérique"
+      ],
+      "tr": [
+        "Serumda demir",
+        "Fe serum"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Das Serumeisen schwankt tageszeitlich und nach Mahlzeiten stark und ist allein wenig aussagekräftig. Aussagekräftiger sind Ferritin, TSAT und das Gesamtbild. Dennoch gehört es oft zum Eisenstatus-Panel.",
+      "en": "Serum iron fluctuates strongly by time of day and after meals and is of limited value alone. Ferritin, TSAT, and the overall picture are more informative. It is still often part of an iron status panel.",
+      "es": "El hierro sérico varía mucho según la hora del día y tras las comidas, y por sí solo aporta poca información. Son más elocuentes la ferritina, el TSAT y el panorama conjunto. Aun así suele formar parte del panel de estado del hierro.",
+      "it": "Il ferro sierico varia molto durante il giorno e dopo i pasti ed è poco informativo da solo. Più utili sono ferritina, TSAT e il quadro complessivo. Ciononostante fa spesso parte del pannello dello stato del ferro.",
+      "pt": "O ferro sérico varia muito ao longo do dia e após as refeições e, isolado, tem pouca capacidade informativa. Mais úteis são a ferritina, a TSAT e o quadro global. Ainda assim, costuma integrar o painel do estado do ferro.",
+      "fr": "Le fer sérique varie fortement selon l'heure du jour et après les repas, et est peu informatif à lui seul. La ferritine, la TSAT et le tableau d'ensemble sont plus parlants. Il fait néanmoins souvent partie du panel du statut martial.",
+      "tr": "Serum demiri gün içinde ve öğünlerden sonra güçlü dalgalanır; tek başına az anlamlıdır. Daha bilgilendirici olanlar ferritin, TSAT ve genel tablodur. Yine de sıklıkla demir durumu paneline dahildir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Hämoglobin A",
+    "term": {
+      "de": "Hämoglobin A",
+      "en": "Hemoglobin A",
+      "es": "Hemoglobina A",
+      "it": "Emoglobina A",
+      "pt": "Hemoglobina A",
+      "fr": "Hémoglobine A",
+      "tr": "Hemoglobin A"
+    },
+    "synonyms": {
+      "de": [
+        "HbA",
+        "adultes Hämoglobin"
+      ],
+      "en": [
+        "HbA",
+        "Adult hemoglobin"
+      ],
+      "es": [
+        "HbA",
+        "Hemoglobina adulta"
+      ],
+      "it": [
+        "HbA",
+        "Emoglobina adulta"
+      ],
+      "pt": [
+        "HbA",
+        "hemoglobina adulta"
+      ],
+      "fr": [
+        "HbA",
+        "Hémoglobine adulte"
+      ],
+      "tr": [
+        "HbA",
+        "erişkin hemoglobini"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Hämoglobin A ist die Hauptform des Hämoglobins bei Erwachsenen. Varianten und Thalassämien verändern das Muster in der Hämoglobin-Elektrophorese. Für den Alltag der LabPlate-Nutzer zählt vor allem der Gesamt-Hb-Wert.",
+      "en": "Hemoglobin A is the main form of hemoglobin in adults. Variants and thalassemias change the pattern on hemoglobin electrophoresis. For everyday LabPlate users, the total Hb value matters most.",
+      "es": "La hemoglobina A es la forma principal de hemoglobina en adultos. Variantes y talasemias modifican el patrón en la electroforesis de hemoglobina. Para el uso cotidiano de LabPlate cuenta sobre todo el valor total de Hb.",
+      "it": "L'emoglobina A è la forma principale di emoglobina negli adulti. Varianti e talassemie modificano il pattern nell'elettroforesi dell'emoglobina. Per l'uso quotidiano di LabPlate conta soprattutto il valore complessivo di Hb.",
+      "pt": "A hemoglobina A é a forma principal de hemoglobina nos adultos. Variantes e talassemias alteram o padrão na eletroforese da hemoglobina. No uso quotidiano conta sobretudo o valor global de Hb.",
+      "fr": "L'hémoglobine A est la forme principale de l'hémoglobine chez l'adulte. Les variants et les thalassémies modifient le profil à l'électrophorèse de l'hémoglobine. Pour le quotidien des utilisateurs LabPlate, c'est surtout la valeur totale d'Hb qui compte.",
+      "tr": "Hemoglobin A, erişkinlerde hemoglobinın ana formudur. Varyantlar ve talasemiler hemoglobin elektroforezinde örüntüyü değiştirir. LabPlate kullanıcıları için günlük pratikte asıl önemli olan toplam Hb değeridir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Cholesterin",
+    "term": {
+      "de": "Cholesterin",
+      "en": "Cholesterol",
+      "es": "Colesterol",
+      "it": "Colesterolo",
+      "pt": "Colesterol",
+      "fr": "Cholestérol",
+      "tr": "Kolesterol"
+    },
+    "synonyms": {
+      "de": [
+        "Gesamtcholesterin",
+        "Chol"
+      ],
+      "en": [
+        "Total cholesterol",
+        "Chol"
+      ],
+      "es": [
+        "Colesterol total",
+        "Chol"
+      ],
+      "it": [
+        "Colesterolo totale",
+        "Chol"
+      ],
+      "pt": [
+        "Colesterol total",
+        "Chol"
+      ],
+      "fr": [
+        "Cholestérol total",
+        "Chol"
+      ],
+      "tr": [
+        "total kolesterol",
+        "Chol"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Das Gesamtcholesterin fasst alle cholesterinhaltigen Lipoproteine zusammen. Es allein sagt wenig über das Risiko aus; LDL, HDL und non-HDL sind aussagekräftiger. Ernährung, Gene und Schilddrüse beeinflussen den Wert.",
+      "en": "Total cholesterol summarizes all cholesterol-containing lipoproteins. Alone it says little about risk; LDL, HDL, and non-HDL are more informative. Diet, genes, and thyroid function influence the value.",
+      "es": "El colesterol total resume todas las lipoproteínas que contienen colesterol. Por sí solo dice poco sobre el riesgo; LDL, HDL y non-HDL son más informativos. Alimentación, genes y tiroides influyen en el valor.",
+      "it": "Il colesterolo totale somma tutte le lipoproteine contenenti colesterolo. Da solo dice poco sul rischio; LDL, HDL e non-HDL sono più informativi. Alimentazione, geni e tiroide influenzano il valore.",
+      "pt": "O colesterol total reúne todas as lipoproteínas que contêm colesterol. Isolado diz pouco sobre o risco; LDL, HDL e não HDL são mais informativos. Alimentação, genes e tiroide influenciam o valor.",
+      "fr": "Le cholestérol total regroupe toutes les lipoprotéines contenant du cholestérol. Seul, il dit peu sur le risque ; LDL, HDL et non-HDL sont plus informatifs. Alimentation, gènes et thyroïde influencent la valeur.",
+      "tr": "Total kolesterol, kolesterol içeren tüm lipoproteinleri özetler. Tek başına risk hakkında az şey söyler; LDL, HDL ve non-HDL daha bilgilendiricidir. Beslenme, genetik ve tiroid değeri etkiler."
+    },
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "LDL-Cholesterin",
+    "term": {
+      "de": "LDL-Cholesterin",
+      "en": "LDL cholesterol",
+      "es": "Colesterol LDL",
+      "it": "Colesterolo LDL",
+      "pt": "Colesterol LDL",
+      "fr": "Cholestérol LDL",
+      "tr": "LDL kolesterol"
+    },
+    "synonyms": {
+      "de": [
+        "LDL",
+        "Low Density Lipoprotein"
+      ],
+      "en": [
+        "LDL",
+        "Low-density lipoprotein"
+      ],
+      "es": [
+        "LDL",
+        "Low Density Lipoprotein"
+      ],
+      "it": [
+        "LDL",
+        "Low Density Lipoprotein"
+      ],
+      "pt": [
+        "LDL",
+        "lipoproteína de baixa densidade"
+      ],
+      "fr": [
+        "LDL",
+        "Low Density Lipoprotein"
+      ],
+      "tr": [
+        "LDL",
+        "Low Density Lipoprotein"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "LDL transportiert Cholesterin zu den Geweben und gilt als zentraler Risikomarker für Atherosklerose. Gesättigte Fette, Transfette und hohe Zuckermuster können ungünstig wirken. Zielwerte hängen vom persönlichen Risikoprofil ab.",
+      "en": "LDL carries cholesterol to tissues and is a central risk marker for atherosclerosis. Saturated fats, trans fats, and high-sugar patterns can act unfavorably. Target values depend on personal risk profile.",
+      "es": "El LDL transporta colesterol a los tejidos y se considera el marcador de riesgo central de aterosclerosis. Grasas saturadas, grasas trans y patrones altos en azúcar pueden actuar de forma desfavorable. Los objetivos dependen del perfil de riesgo personal.",
+      "it": "L'LDL trasporta colesterolo ai tessuti ed è il marcatore di rischio centrale per l'aterosclerosi. Grassi saturi, grassi trans e pattern ricchi di zuccheri possono agire sfavorevolmente. I valori obiettivo dipendono dal profilo di rischio personale.",
+      "pt": "O LDL transporta colesterol para os tecidos e é um marcador central de risco de aterosclerose. Gorduras saturadas, gorduras trans e padrões ricos em açúcar podem ser desfavoráveis. Os alvos dependem do perfil de risco individual.",
+      "fr": "Le LDL transporte le cholestérol vers les tissus et est un marqueur de risque central d'athérosclérose. Les graisses saturées, les acides gras trans et des profils riches en sucre peuvent être défavorables. Les cibles dépendent du profil de risque personnel.",
+      "tr": "LDL kolesterolü dokulara taşır ve ateroskleroz için merkezi bir risk belirtecidir. Doymuş yağlar, trans yağlar ve yüksek şeker örüntüleri olumsuz etki edebilir. Hedef değerler kişisel risk profiline bağlıdır."
+    },
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "HDL-Cholesterin",
+    "term": {
+      "de": "HDL-Cholesterin",
+      "en": "HDL cholesterol",
+      "es": "Colesterol HDL",
+      "it": "Colesterolo HDL",
+      "pt": "Colesterol HDL",
+      "fr": "Cholestérol HDL",
+      "tr": "HDL kolesterol"
+    },
+    "synonyms": {
+      "de": [
+        "HDL",
+        "High Density Lipoprotein"
+      ],
+      "en": [
+        "HDL",
+        "High-density lipoprotein"
+      ],
+      "es": [
+        "HDL",
+        "High Density Lipoprotein"
+      ],
+      "it": [
+        "HDL",
+        "High Density Lipoprotein"
+      ],
+      "pt": [
+        "HDL",
+        "lipoproteína de alta densidade"
+      ],
+      "fr": [
+        "HDL",
+        "High Density Lipoprotein"
+      ],
+      "tr": [
+        "HDL",
+        "High Density Lipoprotein"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "HDL gilt als „gutes“ Cholesterin, weil es Cholesterin rücktransportieren kann. Sehr niedrige Werte gehen mit höherem Risiko einher, sehr hohe sind nicht automatisch schützend. Bewegung und Rauchstopp wirken oft günstig.",
+      "en": "HDL is often called “good” cholesterol because it can reverse-transport cholesterol. Very low values go with higher risk; very high values are not automatically protective. Exercise and quitting smoking often help.",
+      "es": "El HDL se considera el colesterol «bueno» porque puede devolver colesterol. Valores muy bajos se asocian a mayor riesgo; valores muy altos no protegen automáticamente. El ejercicio y dejar de fumar suelen actuar de forma favorable.",
+      "it": "L'HDL è considerato il colesterolo «buono» perché può ritrasportare il colesterolo. Valori molto bassi si associano a rischio più alto; valori molto alti non sono automaticamente protettivi. Movimento e smettere di fumare spesso aiutano.",
+      "pt": "O HDL é visto como o «bom» colesterol porque pode fazer o transporte inverso do colesterol. Valores muito baixos associam-se a maior risco; valores muito altos não protegem automaticamente. Exercício e deixar de fumar ajudam frequentemente.",
+      "fr": "Le HDL est considéré comme le « bon » cholestérol car il peut transporter le cholestérol en retour. Des valeurs très basses s'accompagnent d'un risque plus élevé ; des valeurs très hautes ne sont pas automatiquement protectrices. L'activité physique et l'arrêt du tabac agissent souvent favorablement.",
+      "tr": "HDL, kolesterolü geri taşıyabildiği için \"iyi\" kolesterol kabul edilir. Çok düşük değerler daha yüksek riskle ilişkilidir; çok yüksekler otomatik koruma sağlamaz. Egzersiz ve sigarayı bırakmak genellikle olumlu etki eder."
+    },
+    "related_chapters": [
+      3,
+      7,
+      9
+    ]
+  },
+  {
+    "term_key": "Triglyceride",
+    "term": {
+      "de": "Triglyceride",
+      "en": "Triglycerides",
+      "es": "Triglicéridos",
+      "it": "Trigliceridi",
+      "pt": "Triglicerídeos",
+      "fr": "Triglycérides",
+      "tr": "Trigliseridler"
+    },
+    "synonyms": {
+      "de": [
+        "Triglyzeride",
+        "TG"
+      ],
+      "en": [
+        "Triacylglycerols",
+        "TG"
+      ],
+      "es": [
+        "Triglicéridos",
+        "TG"
+      ],
+      "it": [
+        "Trigliceridi",
+        "TG"
+      ],
+      "pt": [
+        "Triglicerídeos",
+        "TG"
+      ],
+      "fr": [
+        "Triglycérides",
+        "TG"
+      ],
+      "tr": [
+        "Trigliseritler",
+        "TG"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Triglyceride sind Blutfette, die stark auf Zucker, Alkohol und Übergewicht reagieren. Hohe Fruktosezufuhr und Insulinresistenz treiben sie häufig nach oben. Nüchternmessung und Lebensstiländerung sind zentrale Bausteine.",
+      "en": "Triglycerides are blood fats that respond strongly to sugar, alcohol, and excess weight. High fructose intake and insulin resistance often drive them up. Fasting measurement and lifestyle change are key steps.",
+      "es": "Los triglicéridos son grasas sanguíneas que reaccionan con fuerza al azúcar, el alcohol y el sobrepeso. Un alto aporte de fructosa y la resistencia a la insulina los elevan con frecuencia. La medición en ayunas y el cambio de estilo de vida son pilares centrales.",
+      "it": "I trigliceridi sono lipidi ematici che reagiscono fortemente a zuccheri, alcol e sovrappeso. Un alto apporto di fruttosio e l'insulinoresistenza li spingono spesso verso l'alto. Misurazione a digiuno e cambiamento dello stile di vita sono pilastri centrali.",
+      "pt": "Os triglicerídeos são gorduras sanguíneas que reagem fortemente a açúcar, álcool e excesso de peso. Alto aporte de frutose e resistência à insulina elevam-nos com frequência. A medição em jejum e a mudança de estilo de vida são pilares centrais.",
+      "fr": "Les triglycérides sont des lipides sanguins qui réagissent fortement au sucre, à l'alcool et au surpoids. Un apport élevé en fructose et la résistance à l'insuline les font souvent monter. Le dosage à jeun et le changement de mode de vie sont des piliers centraux.",
+      "tr": "Trigliseridler, şeker, alkol ve kiloya güçlü tepki veren kan yağlarıdır. Yüksek fruktoz alımı ve insülin direnci sıkça onları yükseltir. Açlık ölçümü ve yaşam tarzı değişikliği temel unsurlardır."
+    },
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Non-HDL-Cholesterin",
+    "term": {
+      "de": "Non-HDL-Cholesterin",
+      "en": "Non-HDL cholesterol",
+      "es": "Colesterol non-HDL",
+      "it": "Colesterolo non-HDL",
+      "pt": "Colesterol não HDL",
+      "fr": "Cholestérol non-HDL",
+      "tr": "Non-HDL kolesterol"
+    },
+    "synonyms": {
+      "de": [
+        "non-HDL",
+        "Nicht-HDL"
+      ],
+      "en": [
+        "non-HDL",
+        "Non-HDL"
+      ],
+      "es": [
+        "non-HDL",
+        "No-HDL"
+      ],
+      "it": [
+        "non-HDL",
+        "Non-HDL"
+      ],
+      "pt": [
+        "non-HDL",
+        "não HDL"
+      ],
+      "fr": [
+        "non-HDL",
+        "Non-HDL"
+      ],
+      "tr": [
+        "non-HDL",
+        "HDL dışı"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Non-HDL-Cholesterin ist Gesamtcholesterin minus HDL und umfasst alle atherogenen Partikel. Es ist auch bei erhöhten Triglyceriden nützlich. Manche Leitlinien nutzen es als Therapieziel neben LDL.",
+      "en": "Non-HDL cholesterol is total cholesterol minus HDL and includes all atherogenic particles. It is useful even when triglycerides are elevated. Some guidelines use it as a treatment target alongside LDL.",
+      "es": "El colesterol non-HDL es el colesterol total menos el HDL e incluye todas las partículas aterógenas. También es útil con triglicéridos elevados. Algunas guías lo usan como objetivo terapéutico junto al LDL.",
+      "it": "Il colesterolo non-HDL è il colesterolo totale meno l'HDL e comprende tutte le particelle aterogene. È utile anche con trigliceridi elevati. Alcune linee guida lo usano come obiettivo terapeutico insieme all'LDL.",
+      "pt": "O colesterol não HDL é o colesterol total menos o HDL e inclui todas as partículas aterogénicas. É útil também com triglicerídeos elevados. Algumas orientações usam-no como alvo terapêutico além do LDL.",
+      "fr": "Le cholestérol non-HDL est le cholestérol total moins le HDL et comprend toutes les particules athérogènes. Il est aussi utile en cas de triglycérides élevés. Certaines recommandations l'utilisent comme cible thérapeutique à côté du LDL.",
+      "tr": "Non-HDL kolesterol, total kolesterolden HDL çıkarılmış hali olup tüm aterojenik partikülleri kapsar. Yüksek trigliseridlerde de yararlıdır. Bazı kılavuzlar LDL yanında tedavi hedefi olarak kullanır."
+    },
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Apolipoprotein B",
+    "term": {
+      "de": "Apolipoprotein B",
+      "en": "Apolipoprotein B",
+      "es": "Apolipoproteína B",
+      "it": "Apolipoproteina B",
+      "pt": "Apolipoproteína B",
+      "fr": "Apolipoprotéine B",
+      "tr": "Apolipoprotein B"
+    },
+    "synonyms": {
+      "de": [
+        "ApoB",
+        "Apo B"
+      ],
+      "en": [
+        "ApoB",
+        "Apo B"
+      ],
+      "es": [
+        "ApoB",
+        "Apo B"
+      ],
+      "it": [
+        "ApoB",
+        "Apo B"
+      ],
+      "pt": [
+        "ApoB",
+        "Apo B"
+      ],
+      "fr": [
+        "ApoB",
+        "Apo B"
+      ],
+      "tr": [
+        "ApoB",
+        "Apo B"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "ApoB gibt die Anzahl atherogener Lipoproteinpartikel wieder und kann LDL überlegen sein. Jedes LDL-, IDL- und VLDL-Partikel trägt ein ApoB. Hohe Werte bedeuten mehr Partikelbelastung der Gefäße.",
+      "en": "ApoB reflects the number of atherogenic lipoprotein particles and can outperform LDL. Each LDL, IDL, and VLDL particle carries one ApoB. High values mean greater particle burden on the vessels.",
+      "es": "La ApoB refleja el número de partículas de lipoproteínas aterógenas y puede ser superior al LDL. Cada partícula de LDL, IDL y VLDL lleva una ApoB. Valores altos significan mayor carga de partículas en los vasos.",
+      "it": "L'ApoB riflette il numero di particelle lipoproteiche aterogene e può essere superiore all'LDL. Ogni particella LDL, IDL e VLDL porta un'ApoB. Valori alti significano maggiore carico particellare sui vasi.",
+      "pt": "A ApoB reflecte o número de partículas de lipoproteína aterogénicas e pode ser superior ao LDL. Cada partícula LDL, IDL e VLDL transporta uma ApoB. Valores altos significam maior carga de partículas nos vasos.",
+      "fr": "L'ApoB reflète le nombre de particules de lipoprotéines athérogènes et peut être supérieur au LDL. Chaque particule LDL, IDL et VLDL porte une ApoB. Des valeurs élevées signifient une charge particulaire plus importante pour les vaisseaux.",
+      "tr": "ApoB aterojenik lipoprotein partikül sayısını yansıtır ve LDL'den üstün olabilir. Her LDL, IDL ve VLDL partikülü bir ApoB taşır. Yüksek değerler damarlara daha fazla partikül yükü demektir."
+    },
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Lipoprotein a",
+    "term": {
+      "de": "Lipoprotein a",
+      "en": "Lipoprotein(a)",
+      "es": "Lipoproteína(a)",
+      "it": "Lipoproteina(a)",
+      "pt": "Lipoproteína(a)",
+      "fr": "Lipoprotéine(a)",
+      "tr": "Lipoprotein(a)"
+    },
+    "synonyms": {
+      "de": [
+        "Lp(a)",
+        "Lp a"
+      ],
+      "en": [
+        "Lp(a)",
+        "Lp a"
+      ],
+      "es": [
+        "Lp(a)",
+        "Lp a"
+      ],
+      "it": [
+        "Lp(a)",
+        "Lp a"
+      ],
+      "pt": [
+        "Lp(a)",
+        "Lp a"
+      ],
+      "fr": [
+        "Lp(a)",
+        "Lp a"
+      ],
+      "tr": [
+        "Lp(a)",
+        "Lp a"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Lp(a) ist ein genetisch stark bestimmter Risikomarker für Herz-Kreislauf-Erkrankungen. Lebensstil ändert ihn nur wenig. Einmal messen reicht oft, um das persönliche Risiko besser einzuordnen.",
+      "en": "Lp(a) is a strongly genetic risk marker for cardiovascular disease. Lifestyle changes it only slightly. Measuring once is often enough to better classify personal risk.",
+      "es": "La Lp(a) es un marcador de riesgo cardiovascular determinado en gran medida genéticamente. El estilo de vida apenas lo modifica. Medirlo una vez suele bastar para encuadrar mejor el riesgo personal.",
+      "it": "La Lp(a) è un marcatore di rischio cardiovascolare fortemente determinato geneticamente. Lo stile di vita lo modifica poco. Spesso basta misurarlo una volta per inquadrare meglio il rischio personale.",
+      "pt": "A Lp(a) é um marcador de risco cardiovascular fortemente determinado pela genética. O estilo de vida altera-o pouco. Medir uma vez basta muitas vezes para melhor enquadrar o risco pessoal.",
+      "fr": "La Lp(a) est un marqueur de risque cardiovasculaire fortement déterminé génétiquement. Le mode de vie ne le modifie que peu. Un dosage unique suffit souvent pour mieux classer le risque personnel.",
+      "tr": "Lp(a), kalp-damar hastalıkları için genetik olarak güçlü belirlenmiş bir risk belirtecidir. Yaşam tarzı onu yalnızca az değiştirir. Kişisel riski daha iyi konumlandırmak için çoğu zaman bir kez ölçmek yeterlidir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "VLDL",
+    "term": {
+      "de": "VLDL",
+      "en": "VLDL",
+      "es": "VLDL",
+      "it": "VLDL",
+      "pt": "VLDL",
+      "fr": "VLDL",
+      "tr": "VLDL"
+    },
+    "synonyms": {
+      "de": [
+        "Very Low Density Lipoprotein"
+      ],
+      "en": [
+        "Very-low-density lipoprotein"
+      ],
+      "es": [
+        "Very Low Density Lipoprotein"
+      ],
+      "it": [
+        "Very Low Density Lipoprotein"
+      ],
+      "pt": [
+        "lipoproteína de muito baixa densidade"
+      ],
+      "fr": [
+        "Very Low Density Lipoprotein"
+      ],
+      "tr": [
+        "Very Low Density Lipoprotein"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "VLDL transportiert vor allem Triglyceride aus der Leber ins Blut. Bei Insulinresistenz und hoher Zuckerzufuhr kann die VLDL-Produktion steigen. Daraus entstehen später LDL-Partikel.",
+      "en": "VLDL mainly transports triglycerides from the liver into the blood. In insulin resistance and high sugar intake, VLDL production can rise. LDL particles form from it later.",
+      "es": "La VLDL transporta sobre todo triglicéridos del hígado a la sangre. En resistencia a la insulina y alto aporte de azúcar puede aumentar la producción de VLDL. De ahí se forman más tarde partículas LDL.",
+      "it": "La VLDL trasporta soprattutto trigliceridi dal fegato al sangue. Nell'insulinoresistenza e con alto apporto di zuccheri la produzione di VLDL può aumentare. Da essa derivano poi particelle LDL.",
+      "pt": "A VLDL transporta sobretudo triglicerídeos do fígado para o sangue. Na resistência à insulina e com alto aporte de açúcar, a produção de VLDL pode aumentar. Delas formam-se depois partículas LDL.",
+      "fr": "Les VLDL transportent surtout des triglycérides du foie vers le sang. En cas de résistance à l'insuline et d'apport élevé en sucre, la production de VLDL peut augmenter. Des particules LDL en dérivent ensuite.",
+      "tr": "VLDL başlıca trigliseridleri karaciğerden kana taşır. İnsülin direnci ve yüksek şeker alımında VLDL üretimi artabilir. Daha sonra LDL partikülleri oluşur."
+    },
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Oxidiertes LDL",
+    "term": {
+      "de": "Oxidiertes LDL",
+      "en": "Oxidized LDL",
+      "es": "LDL oxidado",
+      "it": "LDL ossidato",
+      "pt": "LDL oxidado",
+      "fr": "LDL oxydé",
+      "tr": "Okside LDL"
+    },
+    "synonyms": {
+      "de": [
+        "oxLDL"
+      ],
+      "en": [
+        "oxLDL"
+      ],
+      "es": [
+        "oxLDL"
+      ],
+      "it": [
+        "oxLDL"
+      ],
+      "pt": [
+        "oxLDL"
+      ],
+      "fr": [
+        "oxLDL"
+      ],
+      "tr": [
+        "oxLDL"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Oxidiertes LDL gilt als besonders gefäßschädigend und wird in der Forschung untersucht. Routinemäßig wird es selten bestimmt. Antioxidantienreiche Ernährung kann oxidativen Stress mindern, ersetzt aber keine Risikokontrolle.",
+      "en": "Oxidized LDL is considered especially vessel-damaging and is studied in research. It is rarely measured routinely. An antioxidant-rich diet may reduce oxidative stress but does not replace risk control.",
+      "es": "El LDL oxidado se considera especialmente dañino para los vasos y se investiga en investigación. Rara vez se determina de forma rutinaria. Una alimentación rica en antioxidantes puede reducir el estrés oxidativo, pero no sustituye el control de riesgos.",
+      "it": "L'LDL ossidato è considerato particolarmente dannoso per i vasi ed è studiato nella ricerca. Di routine si misura raramente. Un'alimentazione ricca di antiossidanti può ridurre lo stress ossidativo, ma non sostituisce il controllo dei fattori di rischio.",
+      "pt": "O LDL oxidado considera-se especialmente lesivo para os vasos e é estudado na investigação. Rotineiramente raramente se determina. Uma alimentação rica em antioxidantes pode reduzir o stresse oxidativo, mas não substitui o controlo de risco.",
+      "fr": "Le LDL oxydé est considéré comme particulièrement délétère pour les vaisseaux et est étudié en recherche. Il est rarement dosé en routine. Une alimentation riche en antioxydants peut réduire le stress oxydatif, mais ne remplace pas le contrôle des risques.",
+      "tr": "Okside LDL özellikle damar hasarlayıcı kabul edilir ve araştırmalarda incelenir. Rutin olarak nadiren ölçülür. Antioksidan zengin beslenme oksidatif stresi azaltabilir ama risk kontrolünün yerini tutmaz."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Glukose",
+    "term": {
+      "de": "Glukose",
+      "en": "Glucose",
+      "es": "Glucosa",
+      "it": "Glucosio",
+      "pt": "Glicose",
+      "fr": "Glucose",
+      "tr": "Glukoz"
+    },
+    "synonyms": {
+      "de": [
+        "Glucose",
+        "Blutzucker",
+        "Traubenzucker"
+      ],
+      "en": [
+        "Blood sugar",
+        "Blood glucose",
+        "Dextrose"
+      ],
+      "es": [
+        "Glucosa",
+        "Glucemia",
+        "Dextrosa"
+      ],
+      "it": [
+        "Glucose",
+        "Glicemia",
+        "Destrosio"
+      ],
+      "pt": [
+        "Glicose",
+        "açúcar no sangue",
+        "dextrose"
+      ],
+      "fr": [
+        "Glucose",
+        "Glycémie",
+        "Sucre du sang"
+      ],
+      "tr": [
+        "Glikoz",
+        "kan şekeri",
+        "üzüm şekeri"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Glukose ist der zentrale Blutzucker und Energielieferant für Gehirn und Muskeln. Nüchtern- und Gelegenheitswerte helfen, Diabetes und Prädiabetes zu erkennen. Ernährung, Stress und Medikamente beeinflussen den Spiegel stark.",
+      "en": "Glucose is the central blood sugar and energy source for brain and muscle. Fasting and random values help detect diabetes and prediabetes. Diet, stress, and medications strongly influence the level.",
+      "es": "La glucosa es el azúcar sanguíneo central y el proveedor de energía para cerebro y músculos. Valores en ayunas y ocasionales ayudan a detectar diabetes y prediabetes. Alimentación, estrés y medicamentos influyen mucho en el nivel.",
+      "it": "Il glucosio è lo zucchero ematico centrale e fornitore di energia per cervello e muscoli. Valori a digiuno e occasionali aiutano a riconoscere diabete e prediabete. Alimentazione, stress e farmaci influenzano fortemente i livelli.",
+      "pt": "A glicose é o açúcar sanguíneo central e fornecedor de energia para o cérebro e os músculos. Valores em jejum e ocasionais ajudam a reconhecer diabetes e pré-diabetes. Alimentação, stresse e medicamentos influenciam fortemente o nível.",
+      "fr": "Le glucose est le sucre sanguin central et le fournisseur d'énergie pour le cerveau et les muscles. Les valeurs à jeun et occasionnelles aident à reconnaître le diabète et le prédiabète. Alimentation, stress et médicaments influencent fortement le taux.",
+      "tr": "Glukoz, beyin ve kaslar için merkezi kan şekeri ve enerji kaynağıdır. Açlık ve rastgele değerler diyabet ve prediyabeti tanımaya yardımcı olur. Beslenme, stres ve ilaçlar düzeyi güçlü etkiler."
+    },
+    "related_chapters": [
+      1,
+      3,
+      5,
+      6,
+      9
+    ]
+  },
+  {
+    "term_key": "Nüchternglukose",
+    "term": {
+      "de": "Nüchternglukose",
+      "en": "Fasting glucose",
+      "es": "Glucosa en ayunas",
+      "it": "Glucosio a digiuno",
+      "pt": "Glicose em jejum",
+      "fr": "Glycémie à jeun",
+      "tr": "Açlık glukozu"
+    },
+    "synonyms": {
+      "de": [
+        "Nüchternblutzucker",
+        "FPG"
+      ],
+      "en": [
+        "Fasting blood sugar",
+        "FPG"
+      ],
+      "es": [
+        "Glucemia en ayunas",
+        "FPG"
+      ],
+      "it": [
+        "Glicemia a digiuno",
+        "FPG"
+      ],
+      "pt": [
+        "Glicemia em jejum",
+        "FPG"
+      ],
+      "fr": [
+        "Glucose à jeun",
+        "FPG"
+      ],
+      "tr": [
+        "Açlık kan şekeri",
+        "FPG"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Die Nüchternglukose wird nach mindestens acht Stunden ohne Kalorienzufuhr gemessen. Werte im Grenzbereich weisen auf gestörte Glukosetoleranz hin. Sie wird oft mit HbA1c kombiniert interpretiert.",
+      "en": "Fasting glucose is measured after at least eight hours without calorie intake. Borderline values point to impaired glucose tolerance. It is often interpreted together with HbA1c.",
+      "es": "La glucosa en ayunas se mide tras al menos ocho horas sin aporte calórico. Valores en el rango limítrofe apuntan a intolerancia a la glucosa alterada. A menudo se interpreta junto con el HbA1c.",
+      "it": "Il glucosio a digiuno si misura dopo almeno otto ore senza apporto calorico. Valori borderline indicano tolleranza al glucosio alterata. Spesso si interpreta insieme all'HbA1c.",
+      "pt": "A glicose em jejum mede-se após pelo menos oito horas sem calorias. Valores limítrofes apontam para tolerância à glicose alterada. Interpreta-se frequentemente em combinação com o HbA1c.",
+      "fr": "La glycémie à jeun est mesurée après au moins huit heures sans apport calorique. Des valeurs limites indiquent une tolérance au glucose altérée. Elle est souvent interprétée avec l'HbA1c.",
+      "tr": "Açlık glukozu en az sekiz saat kalori alınmadan ölçülür. Sınırdaki değerler bozulmuş glukoz toleransına işaret eder. Genellikle HbA1c ile birlikte yorumlanır."
+    },
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "HbA1c",
+    "term": {
+      "de": "HbA1c",
+      "en": "HbA1c",
+      "es": "HbA1c",
+      "it": "HbA1c",
+      "pt": "HbA1c",
+      "fr": "HbA1c",
+      "tr": "HbA1c"
+    },
+    "synonyms": {
+      "de": [
+        "glykiertes Hämoglobin",
+        "Langzeitblutzucker"
+      ],
+      "en": [
+        "Glycated hemoglobin",
+        "Long-term blood sugar"
+      ],
+      "es": [
+        "Hemoglobina glucosilada",
+        "Glucemia a largo plazo"
+      ],
+      "it": [
+        "Emoglobina glicata",
+        "Glicemia a lungo termine"
+      ],
+      "pt": [
+        "hemoglobina glicada",
+        "glicemia de longo prazo"
+      ],
+      "fr": [
+        "Hémoglobine glyquée",
+        "Glycémie au long cours"
+      ],
+      "tr": [
+        "glike hemoglobin",
+        "uzun dönem kan şekeri"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Der HbA1c spiegelt die durchschnittliche Glukosebelastung der letzten zwei bis drei Monate wider. Er ist ein Schlüsselwert für Diabetesdiagnose und -therapie. Bei bestimmten Anämien kann er verfälscht sein.",
+      "en": "HbA1c reflects average glucose exposure over the past two to three months. It is a key value for diabetes diagnosis and therapy. In certain anemias it can be unreliable.",
+      "es": "El HbA1c refleja la carga media de glucosa de los últimos dos a tres meses. Es un valor clave para el diagnóstico y el tratamiento de la diabetes. En ciertas anemias puede falsearse.",
+      "it": "L'HbA1c riflette il carico medio di glucosio degli ultimi due-tre mesi. È un valore chiave per diagnosi e terapia del diabete. In alcune anemie può essere alterato.",
+      "pt": "O HbA1c reflecte a carga média de glicose dos últimos dois a três meses. É um valor-chave no diagnóstico e na terapêutica da diabetes. Em certas anemias pode estar falseado.",
+      "fr": "L'HbA1c reflète la charge glycémique moyenne des deux à trois derniers mois. C'est une valeur clé pour le diagnostic et le traitement du diabète. En cas de certaines anémies, elle peut être faussée.",
+      "tr": "HbA1c, son iki-üç ayın ortalama glukoz yükünü yansıtır. Diyabet tanısı ve tedavisi için anahtar bir değerdir. Bazı anemilerde yanıltıcı olabilir."
+    },
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Insulin",
+    "term": {
+      "de": "Insulin",
+      "en": "Insulin",
+      "es": "Insulina",
+      "it": "Insulina",
+      "pt": "Insulina",
+      "fr": "Insuline",
+      "tr": "İnsülin"
+    },
+    "synonyms": {
+      "de": [
+        "Seruminsulin",
+        "Insulinspiegel"
+      ],
+      "en": [
+        "Serum insulin",
+        "Insulin level"
+      ],
+      "es": [
+        "Insulina sérica",
+        "Nivel de insulina"
+      ],
+      "it": [
+        "Insulina sierica",
+        "Livello di insulina"
+      ],
+      "pt": [
+        "Insulina sérica",
+        "nível de insulina"
+      ],
+      "fr": [
+        "Insuline sérique",
+        "Taux d'insuline"
+      ],
+      "tr": [
+        "Serum insülini",
+        "insülin düzeyi"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Insulin senkt den Blutzucker, indem es Glukose in die Zellen schleust. Hohe Nüchterninsulinwerte können auf Insulinresistenz hinweisen. Der Wert wird oft zusammen mit Glukose zum HOMA-IR verrechnet.",
+      "en": "Insulin lowers blood sugar by moving glucose into cells. High fasting insulin can indicate insulin resistance. The value is often combined with glucose to calculate HOMA-IR.",
+      "es": "La insulina baja la glucemia al introducir glucosa en las células. Valores altos de insulina en ayunas pueden indicar resistencia a la insulina. El valor suele combinarse con la glucosa para calcular el HOMA-IR.",
+      "it": "L'insulina abbassa la glicemia facendo entrare il glucosio nelle cellule. Valori di insulina a digiuno elevati possono indicare insulinoresistenza. Spesso si combina con il glucosio per calcolare l'HOMA-IR.",
+      "pt": "A insulina baixa a glicemia ao fazer entrar a glicose nas células. Valores altos de insulina em jejum podem indicar resistência à insulina. O valor combina-se muitas vezes com a glicose no HOMA-IR.",
+      "fr": "L'insuline abaisse la glycémie en faisant entrer le glucose dans les cellules. Des valeurs d'insuline à jeun élevées peuvent indiquer une résistance à l'insuline. La valeur est souvent combinée avec le glucose pour calculer le HOMA-IR.",
+      "tr": "İnsülin, glukozu hücrelere alarak kan şekerini düşürür. Yüksek açlık insülini insülin direncine işaret edebilir. Değer sıklıkla glukozla birlikte HOMA-IR için kullanılır."
+    },
+    "related_chapters": [
+      1,
+      3,
+      5,
+      9
+    ]
+  },
+  {
+    "term_key": "C-Peptid",
+    "term": {
+      "de": "C-Peptid",
+      "en": "C-peptide",
+      "es": "Péptido C",
+      "it": "Peptide C",
+      "pt": "Peptídeo C",
+      "fr": "Peptide C",
+      "tr": "C-peptid"
+    },
+    "synonyms": {
+      "de": [
+        "C Peptide"
+      ],
+      "en": [
+        "C peptide"
+      ],
+      "es": [
+        "C Peptide"
+      ],
+      "it": [
+        "C Peptide"
+      ],
+      "pt": [
+        "Peptídeo C"
+      ],
+      "fr": [
+        "C Peptide"
+      ],
+      "tr": [
+        "C Peptide"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "C-Peptid entsteht bei der Insulinproduktion und zeigt die eigene Insulinsekretion an. Es hilft, Typ-1- von Typ-2-Mustern und Restfunktion der Bauchspeicheldrüse zu unterscheiden. Exogenes Insulin beeinflusst C-Peptid nicht direkt.",
+      "en": "C-peptide is produced during insulin synthesis and indicates endogenous insulin secretion. It helps distinguish type 1 from type 2 patterns and residual pancreatic function. Exogenous insulin does not directly affect C-peptide.",
+      "es": "El péptido C se forma en la producción de insulina y muestra la secreción propia de insulina. Ayuda a distinguir patrones de tipo 1 y tipo 2 y la función residual del páncreas. La insulina exógena no influye directamente en el péptido C.",
+      "it": "Il peptide C si forma con la produzione di insulina e indica la secrezione insulinica propria. Aiuta a distinguere pattern di tipo 1 e tipo 2 e la funzione residua del pancreas. L'insulina esogena non influenza direttamente il peptide C.",
+      "pt": "O peptídeo C forma-se na produção de insulina e mostra a secreção própria de insulina. Ajuda a distinguir padrões de tipo 1 e tipo 2 e a função residual do pâncreas. A insulina exógena não influencia diretamente o peptídeo C.",
+      "fr": "Le peptide C se forme lors de la production d'insuline et indique la sécrétion d'insuline propre. Il aide à distinguer les profils de type 1 et de type 2 et la fonction résiduelle du pancréas. L'insuline exogène n'influence pas directement le peptide C.",
+      "tr": "C-peptid insülin üretiminde oluşur ve kendi insülin salgısını gösterir. Tip 1 ile tip 2 örüntülerini ve pankreasın kalan işlevini ayırt etmeye yardımcı olur. Dışarıdan verilen insülin C-peptidi doğrudan etkilemez."
+    },
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "HOMA-IR",
+    "term": {
+      "de": "HOMA-IR",
+      "en": "HOMA-IR",
+      "es": "HOMA-IR",
+      "it": "HOMA-IR",
+      "pt": "HOMA-IR",
+      "fr": "HOMA-IR",
+      "tr": "HOMA-IR"
+    },
+    "synonyms": {
+      "de": [
+        "HOMA Index",
+        "Insulinresistenz-Index"
+      ],
+      "en": [
+        "HOMA index",
+        "Insulin resistance index"
+      ],
+      "es": [
+        "Índice HOMA",
+        "Índice de resistencia a la insulina"
+      ],
+      "it": [
+        "Indice HOMA",
+        "Indice di insulinoresistenza"
+      ],
+      "pt": [
+        "Índice HOMA",
+        "índice de resistência à insulina"
+      ],
+      "fr": [
+        "Index HOMA",
+        "Index de résistance à l'insuline"
+      ],
+      "tr": [
+        "HOMA indeksi",
+        "insülin direnci indeksi"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "HOMA-IR schätzt die Insulinresistenz aus Nüchternglukose und Nüchterninsulin. Höhere Werte sprechen für abnehmende Insulinempfindlichkeit. Der Index ist ein Orientierungswert, kein alleiniger Diagnoseschlüssel.",
+      "en": "HOMA-IR estimates insulin resistance from fasting glucose and fasting insulin. Higher values indicate declining insulin sensitivity. The index is a guide, not a standalone diagnostic key.",
+      "es": "El HOMA-IR estima la resistencia a la insulina a partir de la glucosa y la insulina en ayunas. Valores más altos indican menor sensibilidad a la insulina. El índice es orientativo, no una clave diagnóstica aislada.",
+      "it": "L'HOMA-IR stima l'insulinoresistenza da glucosio e insulina a digiuno. Valori più alti indicano sensibilità all'insulina in calo. È un orientamento, non una chiave diagnostica isolata.",
+      "pt": "O HOMA-IR estima a resistência à insulina a partir da glicose e da insulina em jejum. Valores mais altos apontam para menor sensibilidade à insulina. É um valor de orientação, não uma chave diagnóstica isolada.",
+      "fr": "Le HOMA-IR estime la résistance à l'insuline à partir de la glycémie et de l'insuline à jeun. Des valeurs plus élevées évoquent une sensibilité à l'insuline diminuée. L'index est une orientation, pas une clé diagnostique à lui seul.",
+      "tr": "HOMA-IR, açlık glukozu ve açlık insülininden insülin direncini tahmin eder. Daha yüksek değerler azalan insülin duyarlılığına işaret eder. Yönlendirici bir değerdir; tek başına tanı anahtarı değildir."
+    },
+    "related_chapters": [
+      1,
+      3,
+      5,
+      9
+    ]
+  },
+  {
+    "term_key": "OGTT",
+    "term": {
+      "de": "OGTT",
+      "en": "OGTT",
+      "es": "SOG",
+      "it": "OGTT",
+      "pt": "TOTG",
+      "fr": "HGPO",
+      "tr": "OGTT"
+    },
+    "synonyms": {
+      "de": [
+        "oraler Glukosetoleranztest",
+        "Zuckerbelastungstest"
+      ],
+      "en": [
+        "Oral glucose tolerance test",
+        "Glucose challenge test"
+      ],
+      "es": [
+        "Prueba de tolerancia oral a la glucosa",
+        "Curva de glucosa"
+      ],
+      "it": [
+        "Test orale di tolleranza al glucosio",
+        "Carico di glucosio"
+      ],
+      "pt": [
+        "teste oral de tolerância à glicose",
+        "teste de sobrecarga de glicose"
+      ],
+      "fr": [
+        "Hyperglycémie provoquée par voie orale",
+        "Test de charge en glucose"
+      ],
+      "tr": [
+        "oral glukoz tolerans testi",
+        "şeker yükleme testi"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Beim OGTT wird Glukose getrunken und der Blutzuckerverlauf gemessen. Er erkennt gestörte Glukosetoleranz früher als ein einzelner Nüchternwert. In der Schwangerschaft ist er Standard zur Gestationsdiabetes-Diagnostik.",
+      "en": "In an OGTT, glucose is drunk and the blood sugar course is measured. It detects impaired glucose tolerance earlier than a single fasting value. In pregnancy it is standard for gestational diabetes diagnosis.",
+      "es": "En la SOG se bebe glucosa y se mide la evolución de la glucemia. Detecta la intolerancia a la glucosa antes que un solo valor en ayunas. En el embarazo es estándar para diagnosticar diabetes gestacional.",
+      "it": "Nell'OGTT si beve glucosio e si misura l'andamento della glicemia. Rileva una tolleranza alterata prima di un singolo valore a digiuno. In gravidanza è lo standard per diagnosticare il diabete gestazionale.",
+      "pt": "No TOTG bebe-se glicose e mede-se a evolução da glicemia. Detecta a tolerância à glicose alterada mais cedo do que um único valor em jejum. Na gravidez é o padrão para diagnosticar diabetes gestacional.",
+      "fr": "Lors de l'HGPO, on boit du glucose et on mesure l'évolution de la glycémie. Elle détecte une tolérance au glucose altérée plus tôt qu'une seule valeur à jeun. Pendant la grossesse, c'est le standard pour diagnostiquer le diabète gestationnel.",
+      "tr": "OGTT'de glukoz içilir ve kan şekeri seyri ölçülür. Bozulmuş glukoz toleransını tek bir açlık değerinden daha erken saptar. Gebelikte gestasyonel diyabet tanısı için standarttır."
+    },
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Fruktosamin",
+    "term": {
+      "de": "Fruktosamin",
+      "en": "Fructosamine",
+      "es": "Fructosamina",
+      "it": "Fruttosamina",
+      "pt": "Frutosamina",
+      "fr": "Fructosamine",
+      "tr": "Fruktozamin"
+    },
+    "synonyms": {
+      "de": [
+        "glykiertes Protein"
+      ],
+      "en": [
+        "Glycated protein"
+      ],
+      "es": [
+        "Proteína glucosilada"
+      ],
+      "it": [
+        "Proteina glicata"
+      ],
+      "pt": [
+        "proteína glicada"
+      ],
+      "fr": [
+        "Protéine glyquée"
+      ],
+      "tr": [
+        "glike protein"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Fruktosamin spiegelt die Glukosekontrolle der letzten ein bis drei Wochen wider. Es wird genutzt, wenn HbA1c unzuverlässig ist, etwa bei Hämoglobinvarianten. Routinemäßig kommt es seltener zum Einsatz.",
+      "en": "Fructosamine reflects glucose control over the past one to three weeks. It is used when HbA1c is unreliable, for example with hemoglobin variants. Routine use is less common.",
+      "es": "La fructosamina refleja el control de la glucosa de las últimas una a tres semanas. Se usa cuando el HbA1c no es fiable, por ejemplo con variantes de hemoglobina. De forma rutinaria se emplea con menos frecuencia.",
+      "it": "La fruttosamina riflette il controllo glicemico delle ultime una-tre settimane. Si usa quando l'HbA1c è inaffidabile, ad esempio con varianti dell'emoglobina. Di routine si impiega più raramente.",
+      "pt": "A frutosamina reflecte o controlo da glicose das últimas uma a três semanas. Usa-se quando o HbA1c é pouco fiável, por exemplo com variantes de hemoglobina. Rotineiramente emprega-se com menos frequência.",
+      "fr": "La fructosamine reflète le contrôle glycémique des une à trois dernières semaines. Elle est utilisée lorsque l'HbA1c est peu fiable, par exemple en cas de variants d'hémoglobine. En routine, elle est moins souvent employée.",
+      "tr": "Fruktozamin, son bir-üç haftanın glukoz kontrolünü yansıtır. HbA1c güvenilir olmadığında, örneğin hemoglobin varyantlarında kullanılır. Rutin kullanımda daha seyrektir."
+    },
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "ALT",
+    "term": {
+      "de": "ALT",
+      "en": "ALT",
+      "es": "ALT",
+      "it": "ALT",
+      "pt": "ALT",
+      "fr": "ALT",
+      "tr": "ALT"
+    },
+    "synonyms": {
+      "de": [
+        "ALAT",
+        "GPT",
+        "Alanin-Aminotransferase"
+      ],
+      "en": [
+        "ALAT",
+        "GPT",
+        "Alanine aminotransferase"
+      ],
+      "es": [
+        "ALAT",
+        "GPT",
+        "Alanina aminotransferasa"
+      ],
+      "it": [
+        "ALAT",
+        "GPT",
+        "Alanina aminotransferasi"
+      ],
+      "pt": [
+        "ALAT",
+        "GPT",
+        "alanina aminotransferase"
+      ],
+      "fr": [
+        "ALAT",
+        "TGP",
+        "Alanine aminotransférase"
+      ],
+      "tr": [
+        "ALAT",
+        "GPT",
+        "Alanin aminotransferaz"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "ALT ist ein leberspezifisches Enzym und steigt bei Leberzellschädigung. Ursachen reichen von Fettleber und Viren bis zu Medikamenten. Isoliert erhöhte Werte brauchen Verlauf und Kontext.",
+      "en": "ALT is a liver-specific enzyme and rises with hepatocyte injury. Causes range from fatty liver and viruses to medications. Isolated elevations need follow-up and clinical context.",
+      "es": "La ALT es una enzima relativamente específica del hígado y se eleva en daño de hepatocitos. Las causas van desde esteatosis y virus hasta medicamentos. Valores aislados elevados necesitan evolución y contexto.",
+      "it": "L'ALT è un enzima relativamente specifico del fegato e sale in caso di danno epatocellulare. Le cause vanno dalla steatosi e dai virus ai farmaci. Valori isolati elevati richiedono andamento e contesto.",
+      "pt": "A ALT é uma enzima relativamente específica do fígado e sobe na lesão hepatocelular. As causas vão da esteatose e vírus até medicamentos. Valores isoladamente elevados precisam de evolução e contexto.",
+      "fr": "L'ALT est une enzyme assez spécifique du foie et augmente en cas de lésion hépatocytaire. Les causes vont de la stéatose et des virus aux médicaments. Des valeurs isolément élevées nécessitent un suivi et un contexte.",
+      "tr": "ALT karaciğere özgü bir enzimdir ve karaciğer hücre hasarında yükselir. Nedenler yağlı karaciğer ve virüslerden ilaçlara kadar uzanır. İzole yüksek değerler seyir ve bağlam gerektirir."
+    },
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "AST",
+    "term": {
+      "de": "AST",
+      "en": "AST",
+      "es": "AST",
+      "it": "AST",
+      "pt": "AST",
+      "fr": "AST",
+      "tr": "AST"
+    },
+    "synonyms": {
+      "de": [
+        "ASAT",
+        "GOT",
+        "Aspartat-Aminotransferase"
+      ],
+      "en": [
+        "ASAT",
+        "GOT",
+        "Aspartate aminotransferase"
+      ],
+      "es": [
+        "ASAT",
+        "GOT",
+        "Aspartato aminotransferasa"
+      ],
+      "it": [
+        "ASAT",
+        "GOT",
+        "Aspartato aminotransferasi"
+      ],
+      "pt": [
+        "ASAT",
+        "GOT",
+        "aspartato aminotransferase"
+      ],
+      "fr": [
+        "ASAT",
+        "TGO",
+        "Aspartate aminotransférase"
+      ],
+      "tr": [
+        "ASAT",
+        "GOT",
+        "Aspartat aminotransferaz"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "AST kommt in Leber, Muskel und Herz vor und ist weniger leberspezifisch als ALT. Ein AST/ALT-Muster kann Hinweise auf Alkohol oder Muskelbelastung geben. Zusammen mit GGT und CK wird es eingeordnet.",
+      "en": "AST occurs in liver, muscle, and heart and is less liver-specific than ALT. An AST/ALT pattern can hint at alcohol use or muscle strain. It is interpreted with GGT and CK.",
+      "es": "La AST se encuentra en hígado, músculo y corazón y es menos específica del hígado que la ALT. Un patrón AST/ALT puede dar indicios de alcohol o carga muscular. Se encuadra junto con GGT y CK.",
+      "it": "L'AST è presente in fegato, muscolo e cuore ed è meno specifica del fegato rispetto all'ALT. Un pattern AST/ALT può suggerire alcol o carico muscolare. Si colloca insieme a GGT e CK.",
+      "pt": "A AST ocorre no fígado, músculo e coração e é menos específica do fígado do que a ALT. Um padrão AST/ALT pode sugerir álcool ou sobrecarga muscular. Interpreta-se com GGT e CK.",
+      "fr": "L'AST se trouve dans le foie, le muscle et le cœur et est moins spécifique du foie que l'ALT. Un profil AST/ALT peut donner des indices sur l'alcool ou une charge musculaire. Elle s'interprète avec la GGT et la CK.",
+      "tr": "AST karaciğer, kas ve kalpte bulunur; ALT kadar karaciğere özgü değildir. AST/ALT örüntüsü alkol veya kas yüküne ipucu verebilir. GGT ve CK ile birlikte değerlendirilir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "GGT",
+    "term": {
+      "de": "GGT",
+      "en": "GGT",
+      "es": "GGT",
+      "it": "GGT",
+      "pt": "GGT",
+      "fr": "GGT",
+      "tr": "GGT"
+    },
+    "synonyms": {
+      "de": [
+        "Gamma-GT",
+        "γ-GT",
+        "Gamma-Glutamyltransferase"
+      ],
+      "en": [
+        "Gamma-GT",
+        "γ-GT",
+        "Gamma-glutamyltransferase"
+      ],
+      "es": [
+        "Gamma-GT",
+        "γ-GT",
+        "Gamma-glutamiltransferasa"
+      ],
+      "it": [
+        "Gamma-GT",
+        "γ-GT",
+        "Gamma-glutamiltransferasi"
+      ],
+      "pt": [
+        "Gamma-GT",
+        "γ-GT",
+        "gama-glutamiltransferase"
+      ],
+      "fr": [
+        "Gamma-GT",
+        "γ-GT",
+        "Gamma-glutamyltransférase"
+      ],
+      "tr": [
+        "Gama-GT",
+        "γ-GT",
+        "Gama-glutamiltransferaz"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "GGT steigt bei Gallenstau, Alkoholbelastung und manchen Medikamenten. Zusammen mit ALP hilft sie, cholestatische Muster zu erkennen. Lebensstiländerungen senken den Wert oft spürbar.",
+      "en": "GGT rises with cholestasis, alcohol load, and some medications. Together with ALP it helps recognize cholestatic patterns. Lifestyle changes often lower the value noticeably.",
+      "es": "La GGT se eleva en colestasis, carga alcohólica y con algunos medicamentos. Junto con la ALP ayuda a reconocer patrones colestásicos. Los cambios de estilo de vida suelen bajar el valor de forma notable.",
+      "it": "La GGT sale in colestasi, carico alcolico e con alcuni farmaci. Insieme all'ALP aiuta a riconoscere pattern colestatici. Cambiamenti dello stile di vita spesso abbassano il valore in modo tangibile.",
+      "pt": "A GGT sobe na colestase, na carga alcoólica e com alguns medicamentos. Com a ALP ajuda a reconhecer padrões colestáticos. Mudanças de estilo de vida baixam o valor com frequência de forma notória.",
+      "fr": "La GGT augmente en cas de cholestase, de charge alcoolique et de certains médicaments. Avec l'ALP, elle aide à reconnaître des profils cholestatiques. Les changements de mode de vie baissent souvent nettement la valeur.",
+      "tr": "GGT safra stazı, alkol yükü ve bazı ilaçlarda yükselir. ALP ile birlikte kolestatik örüntüleri tanımaya yardımcı olur. Yaşam tarzı değişiklikleri değeri çoğu zaman belirgin düşürür."
+    },
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Alkalische Phosphatase",
+    "term": {
+      "de": "Alkalische Phosphatase",
+      "en": "Alkaline phosphatase",
+      "es": "Fosfatasa alcalina",
+      "it": "Fosfatasi alcalina",
+      "pt": "Fosfatase alcalina",
+      "fr": "Phosphatase alcaline",
+      "tr": "Alkalen fosfataz"
+    },
+    "synonyms": {
+      "de": [
+        "AP",
+        "ALP"
+      ],
+      "en": [
+        "AP",
+        "ALP"
+      ],
+      "es": [
+        "FA",
+        "ALP"
+      ],
+      "it": [
+        "AP",
+        "ALP"
+      ],
+      "pt": [
+        "AP",
+        "ALP"
+      ],
+      "fr": [
+        "PAL",
+        "ALP"
+      ],
+      "tr": [
+        "AP",
+        "ALP"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Die alkalische Phosphatase stammt aus Leber, Knochen und anderen Geweben. Erhöhte Werte passen zu Gallenstau oder Knochenumbau. Isoenzyme oder Begleitwerte helfen bei der Herkunft.",
+      "en": "Alkaline phosphatase comes from liver, bone, and other tissues. Elevated values fit cholestasis or bone turnover. Isoenzymes or companion values help identify the source.",
+      "es": "La fosfatasa alcalina procede del hígado, el hueso y otros tejidos. Valores elevados encajan con colestasis o remodelado óseo. Isoenzimas o valores acompañantes ayudan a precisar el origen.",
+      "it": "La fosfatasi alcalina proviene da fegato, osso e altri tessuti. Valori elevati si adattano a colestasi o rimodellamento osseo. Isoenzimi o valori di accompagnamento aiutano a individuarne l'origine.",
+      "pt": "A fosfatase alcalina provém do fígado, do osso e de outros tecidos. Valores elevados enquadram-se na colestase ou na remodelação óssea. Isoenzimas ou valores associados ajudam a identificar a origem.",
+      "fr": "La phosphatase alcaline provient du foie, des os et d'autres tissus. Des valeurs élevées évoquent une cholestase ou un remodelage osseux. Les isoenzymes ou les paramètres associés aident à en déterminer l'origine.",
+      "tr": "Alkalen fosfataz karaciğer, kemik ve diğer dokulardan kaynaklanır. Yüksek değerler safra stazı veya kemik döngüsüne uyar. İzoenzimler veya eşlik eden değerler kaynağı netleştirmeye yardım eder."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Bilirubin",
+    "term": {
+      "de": "Bilirubin",
+      "en": "Bilirubin",
+      "es": "Bilirrubina",
+      "it": "Bilirubina",
+      "pt": "Bilirrubina",
+      "fr": "Bilirubine",
+      "tr": "Bilirubin"
+    },
+    "synonyms": {
+      "de": [
+        "Gesamtbilirubin",
+        "Bili"
+      ],
+      "en": [
+        "Total bilirubin",
+        "Bili"
+      ],
+      "es": [
+        "Bilirrubina total",
+        "Bili"
+      ],
+      "it": [
+        "Bilirubina totale",
+        "Bili"
+      ],
+      "pt": [
+        "Bilirrubina total",
+        "Bili"
+      ],
+      "fr": [
+        "Bilirubine totale",
+        "Bili"
+      ],
+      "tr": [
+        "total bilirubin",
+        "Bili"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Bilirubin entsteht beim Abbau von Hämoglobin und wird von der Leber ausgeschieden. Erhöhte Werte führen zu Ikterus und können auf Leber-, Gallen- oder Hämolyseprobleme hinweisen. Direktes und indirektes Bilirubin differenzieren Ursachen.",
+      "en": "Bilirubin forms during hemoglobin breakdown and is excreted by the liver. Elevated values cause jaundice and can point to liver, bile, or hemolysis problems. Direct and indirect bilirubin help differentiate causes.",
+      "es": "La bilirrubina se forma en la degradación de la hemoglobina y la elimina el hígado. Valores elevados provocan ictericia y pueden indicar problemas hepáticos, biliares o de hemólisis. La bilirrubina directa e indirecta diferencian causas.",
+      "it": "La bilirubina nasce dalla degradazione dell'emoglobina e viene eliminata dal fegato. Valori elevati causano ittero e possono indicare problemi epatici, biliari o emolisi. Bilirubina diretta e indiretta differenziano le cause.",
+      "pt": "A bilirrubina forma-se na degradação da hemoglobina e é eliminada pelo fígado. Valores elevados causam icterícia e podem apontar para problemas hepáticos, biliares ou hemolíticos. Bilirrubina direta e indireta diferenciam causas.",
+      "fr": "La bilirubine se forme lors de la dégradation de l'hémoglobine et est éliminée par le foie. Des valeurs élevées entraînent un ictère et peuvent indiquer des problèmes hépatiques, biliaires ou d'hémolyse. La bilirubine directe et indirecte différencie les causes.",
+      "tr": "Bilirubin hemoglobin yıkımında oluşur ve karaciğer tarafından atılır. Yüksek değerler sarılığa yol açar; karaciğer, safra veya hemoliz sorunlarına işaret edebilir. Direkt ve indirekt bilirubin nedenleri ayırt eder."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Albumin",
+    "term": {
+      "de": "Albumin",
+      "en": "Albumin",
+      "es": "Albúmina",
+      "it": "Albumina",
+      "pt": "Albumina",
+      "fr": "Albumine",
+      "tr": "Albümin"
+    },
+    "synonyms": {
+      "de": [
+        "Serumalbumin"
+      ],
+      "en": [
+        "Serum albumin"
+      ],
+      "es": [
+        "Albúmina sérica"
+      ],
+      "it": [
+        "Albumina sierica"
+      ],
+      "pt": [
+        "Albumina sérica"
+      ],
+      "fr": [
+        "Albumine sérique"
+      ],
+      "tr": [
+        "Serum albümini"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Albumin ist das häufigste Plasmaeiweiß und hält den onkotischen Druck aufrecht. Niedrige Werte treten bei Leberinsuffizienz, Entzündung oder Verlust über Niere und Darm auf. Es beeinflusst auch die Interpretation von Calcium.",
+      "en": "Albumin is the most abundant plasma protein and maintains oncotic pressure. Low values occur with liver failure, inflammation, or loss via kidney and gut. It also affects interpretation of calcium.",
+      "es": "La albúmina es la proteína plasmática más abundante y mantiene la presión oncótica. Valores bajos aparecen en insuficiencia hepática, inflamación o pérdidas por riñón e intestino. También influye en la interpretación del calcio.",
+      "it": "L'albumina è la proteina plasmatica più abbondante e mantiene la pressione oncotica. Valori bassi compaiono in insufficienza epatica, infiammazione o perdite da rene e intestino. Influenza anche l'interpretazione del calcio.",
+      "pt": "A albumina é a proteína plasmática mais abundante e mantém a pressão oncótica. Valores baixos ocorrem na insuficiência hepática, inflamação ou perda por rim e intestino. Influencia também a interpretação do cálcio.",
+      "fr": "L'albumine est la protéine plasmatique la plus abondante et maintient la pression oncotique. Des valeurs basses surviennent en cas d'insuffisance hépatique, d'inflammation ou de pertes rénales et intestinales. Elle influence aussi l'interprétation du calcium.",
+      "tr": "Albümin en sık plazma proteinidir ve onkotik basıncı korur. Düşük değerler karaciğer yetmezliği, enflamasyon veya böbrek ve bağırsaktan kayıpta görülür. Kalsiyum yorumunu da etkiler."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "INR",
+    "term": {
+      "de": "INR",
+      "en": "INR",
+      "es": "INR",
+      "it": "INR",
+      "pt": "INR",
+      "fr": "INR",
+      "tr": "INR"
+    },
+    "synonyms": {
+      "de": [
+        "International Normalized Ratio"
+      ],
+      "en": [
+        "International Normalized Ratio"
+      ],
+      "es": [
+        "International Normalized Ratio"
+      ],
+      "it": [
+        "International Normalized Ratio"
+      ],
+      "pt": [
+        "International Normalized Ratio"
+      ],
+      "fr": [
+        "International Normalized Ratio"
+      ],
+      "tr": [
+        "International Normalized Ratio"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Die INR standardisiert die Messung der extrinsischen Gerinnung und wird vor allem unter Vitamin-K-Antagonisten genutzt. Erhöhte Werte bedeuten längere Gerinnungszeit. Ernährung mit viel Vitamin K kann die Einstellung beeinflussen.",
+      "en": "INR standardizes measurement of the extrinsic coagulation pathway and is mainly used on vitamin K antagonists. Elevated values mean longer clotting time. A diet high in vitamin K can affect dosing.",
+      "es": "El INR estandariza la medición de la coagulación extrínseca y se usa sobre todo con antagonistas de la vitamina K. Valores elevados significan un tiempo de coagulación más largo. Una alimentación rica en vitamina K puede influir en el ajuste.",
+      "it": "L'INR standardizza la misura della coagulazione estrinseca e si usa soprattutto sotto antagonisti della vitamina K. Valori elevati significano tempo di coagulazione più lungo. Un'alimentazione ricca di vitamina K può influenzare l'assetto terapeutico.",
+      "pt": "O INR padroniza a medição da coagulação extrínseca e usa-se sobretudo sob antagonistas da vitamina K. Valores elevados significam tempo de coagulação mais longo. Alimentação rica em vitamina K pode influenciar o ajuste.",
+      "fr": "L'INR standardise la mesure de la coagulation extrinsèque et est surtout utilisé sous antagonistes de la vitamine K. Des valeurs élevées signifient un temps de coagulation plus long. Une alimentation riche en vitamine K peut influencer l'équilibre thérapeutique.",
+      "tr": "INR ekstrensek pıhtılaşma ölçümünü standardize eder ve özellikle K vitamini antagonistleri altında kullanılır. Yüksek değerler daha uzun pıhtılaşma süresi demektir. K vitamini zengin beslenme ayarı etkileyebilir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Quick-Wert",
+    "term": {
+      "de": "Quick-Wert",
+      "en": "Prothrombin time (Quick)",
+      "es": "Tiempo de protrombina (Quick)",
+      "it": "Tempo di protrombina",
+      "pt": "Tempo de Quick",
+      "fr": "Taux de Quick",
+      "tr": "Quick değeri"
+    },
+    "synonyms": {
+      "de": [
+        "Thromboplastinzeit",
+        "TPZ",
+        "Prothrombinzeit"
+      ],
+      "en": [
+        "Prothrombin time",
+        "PT",
+        "Thromboplastin time"
+      ],
+      "es": [
+        "Tiempo de tromboplastina",
+        "TP",
+        "Tiempo de protrombina"
+      ],
+      "it": [
+        "Tempo di tromboplastina",
+        "TP",
+        "Prothrombin time"
+      ],
+      "pt": [
+        "tempo de tromboplastina",
+        "TP",
+        "tempo de protrombina"
+      ],
+      "fr": [
+        "Temps de thromboplastine",
+        "TP",
+        "Temps de prothrombine"
+      ],
+      "tr": [
+        "Tromboplastin zamanı",
+        "TPZ",
+        "Protrombin zamanı"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Der Quick-Wert beschreibt die Gerinnungsfähigkeit über den extrinsischen Weg und hängt von Vitamin-K-abhängigen Faktoren ab. Niedrige Quick-Werte entsprechen einer höheren INR. Leberstörungen können ihn senken.",
+      "en": "The Quick value describes clotting ability via the extrinsic pathway and depends on vitamin K–dependent factors. Low Quick values correspond to a higher INR. Liver disorders can lower it.",
+      "es": "El valor de Quick describe la capacidad coagulante por la vía extrínseca y depende de factores vitamina K-dependientes. Valores bajos de Quick corresponden a un INR más alto. Los trastornos hepáticos pueden bajarlo.",
+      "it": "Il tempo di protrombina (Quick) descrive la capacità coagulativa della via estrinseca e dipende da fattori vitamina K-dipendenti. Valori Quick bassi corrispondono a un INR più alto. Disturbi epatici possono abbassarlo.",
+      "pt": "O tempo de Quick descreve a capacidade de coagulação pela via extrínseca e depende de fatores dependentes da vitamina K. Valores de Quick baixos correspondem a um INR mais alto. Distúrbios hepáticos podem baixá-lo.",
+      "fr": "Le taux de Quick décrit la capacité de coagulation via la voie extrinsèque et dépend des facteurs vitamine K-dépendants. Des taux de Quick bas correspondent à un INR plus élevé. Les troubles hépatiques peuvent l'abaisser.",
+      "tr": "Quick değeri ekstrensek yolla pıhtılaşma yeteneğini tanımlar ve K vitaminine bağımlı faktörlere bağlıdır. Düşük Quick değerleri daha yüksek INR'ye karşılık gelir. Karaciğer bozuklukları onu düşürebilir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "aPTT",
+    "term": {
+      "de": "aPTT",
+      "en": "aPTT",
+      "es": "aPTT",
+      "it": "aPTT",
+      "pt": "aPTT",
+      "fr": "aPTT",
+      "tr": "aPTT"
+    },
+    "synonyms": {
+      "de": [
+        "PTT",
+        "aktivierte partielle Thromboplastinzeit"
+      ],
+      "en": [
+        "PTT",
+        "Activated partial thromboplastin time"
+      ],
+      "es": [
+        "PTT",
+        "Tiempo de tromboplastina parcial activada"
+      ],
+      "it": [
+        "PTT",
+        "Tempo di tromboplastina parziale attivata"
+      ],
+      "pt": [
+        "PTT",
+        "tempo de tromboplastina parcial ativada"
+      ],
+      "fr": [
+        "TCA",
+        "Temps de céphaline activée"
+      ],
+      "tr": [
+        "PTT",
+        "aktive parsiyel tromboplastin zamanı"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Die aPTT prüft den intrinsischen Gerinnungsweg und wird unter Heparintherapie kontrolliert. Verlängerungen können auf Faktorenmangel oder Hemmkörper hinweisen. Zusammen mit Quick/INR ergibt sich das Gerinnungsprofil.",
+      "en": "aPTT checks the intrinsic coagulation pathway and is monitored during heparin therapy. Prolongation can indicate factor deficiency or inhibitors. Together with Quick/INR it forms the coagulation profile.",
+      "es": "El aPTT evalúa la vía intrínseca de la coagulación y se controla bajo terapia con heparina. Las prolongaciones pueden indicar déficit de factores o inhibidores. Junto con Quick/INR se obtiene el perfil de coagulación.",
+      "it": "L'aPTT valuta la via coagulativa intrinseca e si controlla sotto terapia con eparina. Allungamenti possono indicare carenza di fattori o inibitori. Insieme a Quick/INR forma il profilo coagulativo.",
+      "pt": "O aPTT avalia a via intrínseca da coagulação e controla-se sob terapêutica com heparina. Prolongamentos podem apontar para carência de fatores ou inibidores. Com Quick/INR forma o perfil de coagulação.",
+      "fr": "L'aPTT explore la voie intrinsèque de la coagulation et est contrôlée sous héparinothérapie. Des allongements peuvent indiquer un déficit en facteurs ou un inhibiteur. Avec le Quick/INR, on obtient le profil de coagulation.",
+      "tr": "aPTT intrinsik pıhtılaşma yolunu kontrol eder ve heparin tedavisinde izlenir. Uzatmalar faktör eksikliği veya inhibitörlere işaret edebilir. Quick/INR ile birlikte pıhtılaşma profili oluşur."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Kreatinin",
+    "term": {
+      "de": "Kreatinin",
+      "en": "Creatinine",
+      "es": "Creatinina",
+      "it": "Creatinina",
+      "pt": "Creatinina",
+      "fr": "Créatinine",
+      "tr": "Kreatinin"
+    },
+    "synonyms": {
+      "de": [
+        "Serumkreatinin",
+        "Crea"
+      ],
+      "en": [
+        "Serum creatinine",
+        "Crea"
+      ],
+      "es": [
+        "Creatinina sérica",
+        "Crea"
+      ],
+      "it": [
+        "Creatinina sierica",
+        "Crea"
+      ],
+      "pt": [
+        "Creatinina sérica",
+        "Crea"
+      ],
+      "fr": [
+        "Créatinine sérique",
+        "Créa"
+      ],
+      "tr": [
+        "Serum kreatinini",
+        "Crea"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Kreatinin entsteht im Muskelstoffwechsel und wird über die Niere ausgeschieden. Steigende Werte können eine eingeschränkte Filterfunktion anzeigen. Muskelmasse und bestimmte Medikamente beeinflussen den Wert.",
+      "en": "Creatinine arises from muscle metabolism and is excreted by the kidney. Rising values can indicate reduced filtration. Muscle mass and certain medications influence the value.",
+      "es": "La creatinina se forma en el metabolismo muscular y se elimina por el riñón. Valores crecientes pueden indicar una función de filtración reducida. La masa muscular y ciertos medicamentos influyen en el valor.",
+      "it": "La creatinina nasce dal metabolismo muscolare e viene eliminata dal rene. Valori in aumento possono indicare una funzione filtrante ridotta. Massa muscolare e alcuni farmaci influenzano il valore.",
+      "pt": "A creatinina forma-se no metabolismo muscular e é eliminada pelo rim. Valores crescentes podem indicar função filtrante reduzida. A massa muscular e certos medicamentos influenciam o valor.",
+      "fr": "La créatinine se forme dans le métabolisme musculaire et est éliminée par le rein. Des valeurs croissantes peuvent indiquer une fonction de filtration réduite. La masse musculaire et certains médicaments influencent la valeur.",
+      "tr": "Kreatinin kas metabolizmasında oluşur ve böbrekten atılır. Yükselen değerler azalmış filtre işlevine işaret edebilir. Kas kütlesi ve bazı ilaçlar değeri etkiler."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "eGFR",
+    "term": {
+      "de": "eGFR",
+      "en": "eGFR",
+      "es": "eGFR",
+      "it": "eGFR",
+      "pt": "eGFR",
+      "fr": "DFGe",
+      "tr": "eGFR"
+    },
+    "synonyms": {
+      "de": [
+        "geschätzte glomeruläre Filtrationsrate",
+        "GFR"
+      ],
+      "en": [
+        "Estimated glomerular filtration rate",
+        "GFR"
+      ],
+      "es": [
+        "Tasa de filtración glomerular estimada",
+        "TFG"
+      ],
+      "it": [
+        "Velocità di filtrazione glomerulare stimata",
+        "GFR"
+      ],
+      "pt": [
+        "taxa de filtração glomerular estimada",
+        "TFG"
+      ],
+      "fr": [
+        "Débit de filtration glomérulaire estimé",
+        "DFG"
+      ],
+      "tr": [
+        "tahmini glomerüler filtrasyon hızı",
+        "GFR"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Die eGFR schätzt die Nierenfilterleistung aus Kreatinin, Alter und Geschlecht. Sie ist der zentrale Marker zur Einteilung von Niereninsuffizienz. Cystatin C kann die Schätzung bei besonderer Muskelmasse verbessern.",
+      "en": "eGFR estimates kidney filtration from creatinine, age, and sex. It is the central marker for staging kidney insufficiency. Cystatin C can improve the estimate when muscle mass is unusual.",
+      "es": "La eGFR estima la capacidad de filtración renal a partir de creatinina, edad y sexo. Es el marcador central para clasificar la insuficiencia renal. La cistatina C puede mejorar la estimación con masa muscular particular.",
+      "it": "L'eGFR stima la capacità di filtrazione renale da creatinina, età e sesso. È il marcatore centrale per classificare l'insufficienza renale. La cistatina C può migliorare la stima con massa muscolare particolare.",
+      "pt": "A eGFR estima a capacidade de filtração renal a partir da creatinina, idade e sexo. É o marcador central para classificar a insuficiência renal. A cistatina C pode melhorar a estimativa com massa muscular atípica.",
+      "fr": "Le DFGe estime la capacité de filtration rénale à partir de la créatinine, de l'âge et du sexe. C'est le marqueur central pour classer l'insuffisance rénale. La cystatine C peut améliorer l'estimation en cas de masse musculaire particulière.",
+      "tr": "eGFR, kreatinin, yaş ve cinsiyetten böbrek filtre performansını tahmin eder. Böbrek yetmezliğini sınıflandırmada merkezi belirteçtir. Özel kas kütlesinde sisteatin C tahmini iyileştirebilir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Harnstoff",
+    "term": {
+      "de": "Harnstoff",
+      "en": "Urea",
+      "es": "Urea",
+      "it": "Urea",
+      "pt": "Ureia",
+      "fr": "Urée",
+      "tr": "Üre"
+    },
+    "synonyms": {
+      "de": [
+        "Urea",
+        "Harnstoff-N",
+        "BUN"
+      ],
+      "en": [
+        "Blood urea",
+        "Blood urea nitrogen",
+        "BUN"
+      ],
+      "es": [
+        "Urea",
+        "Nitrógeno ureico",
+        "BUN"
+      ],
+      "it": [
+        "Urea",
+        "Azoto ureico",
+        "BUN"
+      ],
+      "pt": [
+        "Ureia",
+        "nitrogênio ureico",
+        "BUN"
+      ],
+      "fr": [
+        "Urea",
+        "Azote uréique",
+        "BUN"
+      ],
+      "tr": [
+        "Urea",
+        "üre-N",
+        "BUN"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Harnstoff entsteht im Eiweißstoffwechsel und wird renal ausgeschieden. Erhöhte Werte passen zu Niereninsuffizienz, Dehydratation oder hoher Proteinlast. Allein ist er weniger spezifisch als Kreatinin und eGFR.",
+      "en": "Urea arises from protein metabolism and is excreted renally. Elevated values fit kidney insufficiency, dehydration, or high protein load. Alone it is less specific than creatinine and eGFR.",
+      "es": "La urea se forma en el metabolismo proteico y se elimina por vía renal. Valores elevados encajan con insuficiencia renal, deshidratación o alta carga proteica. Por sí sola es menos específica que creatinina y eGFR.",
+      "it": "L'urea nasce dal metabolismo proteico e viene eliminata per via renale. Valori elevati si adattano a insufficienza renale, disidratazione o alto carico proteico. Da sola è meno specifica di creatinina ed eGFR.",
+      "pt": "A ureia forma-se no metabolismo proteico e é eliminada pelo rim. Valores elevados enquadram-se na insuficiência renal, desidratação ou carga proteica elevada. Isolada é menos específica do que creatinina e eGFR.",
+      "fr": "L'urée se forme dans le métabolisme des protéines et est éliminée par voie rénale. Des valeurs élevées évoquent une insuffisance rénale, une déshydratation ou une charge protéique élevée. Seule, elle est moins spécifique que la créatinine et le DFGe.",
+      "tr": "Üre protein metabolizmasında oluşur ve böbrekten atılır. Yüksek değerler böbrek yetmezliği, dehidratasyon veya yüksek protein yüküne uyar. Tek başına kreatinin ve eGFR kadar spesifik değildir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Harnsäure",
+    "term": {
+      "de": "Harnsäure",
+      "en": "Uric acid",
+      "es": "Ácido úrico",
+      "it": "Acido urico",
+      "pt": "Ácido úrico",
+      "fr": "Acide urique",
+      "tr": "Ürik asit"
+    },
+    "synonyms": {
+      "de": [
+        "UA",
+        "Urat",
+        "Harnsaeure"
+      ],
+      "en": [
+        "UA",
+        "Urate",
+        "Uric acid"
+      ],
+      "es": [
+        "UA",
+        "Urato",
+        "Ácido urico"
+      ],
+      "it": [
+        "UA",
+        "Urato",
+        "Acido urico"
+      ],
+      "pt": [
+        "UA",
+        "urato",
+        "ácido úrico"
+      ],
+      "fr": [
+        "UA",
+        "Urate",
+        "Acide urique"
+      ],
+      "tr": [
+        "UA",
+        "Urat",
+        "ürik asit"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Harnsäure ist Endprodukt des Purinstoffwechsels und kann Gichtanfälle auslösen. Fruktose, Alkohol und Übergewicht können den Spiegel erhöhen. Hydration und Ernährungsumstellung sind oft Teil der Strategie.",
+      "en": "Uric acid is the end product of purine metabolism and can trigger gout attacks. Fructose, alcohol, and excess weight can raise the level. Hydration and dietary change are often part of the strategy.",
+      "es": "El ácido úrico es el producto final del metabolismo de las purinas y puede desencadenar crisis de gota. Fructosa, alcohol y sobrepeso pueden elevar el nivel. Hidratación y cambios alimentarios suelen formar parte de la estrategia.",
+      "it": "L'acido urico è il prodotto finale del metabolismo delle purine e può scatenare attacchi di gotta. Fruttosio, alcol e sovrappeso possono alzarne i livelli. Idratazione e cambiamento alimentare sono spesso parte della strategia.",
+      "pt": "O ácido úrico é o produto final do metabolismo das purinas e pode desencadear crises de gota. Frutose, álcool e excesso de peso podem elevar o nível. Hidratação e mudança alimentar fazem muitas vezes parte da estratégia.",
+      "fr": "L'acide urique est le produit final du métabolisme des purines et peut déclencher des crises de goutte. Le fructose, l'alcool et le surpoids peuvent élever le taux. L'hydratation et l'adaptation alimentaire font souvent partie de la stratégie.",
+      "tr": "Ürik asit pürin metabolizmasının son ürünüdür ve gut ataklarını tetikleyebilir. Fruktoz, alkol ve fazla kilo düzeyi yükseltebilir. Hidrasyon ve beslenme değişikliği sıklıkla stratejinin parçasıdır."
+    },
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Cystatin C",
+    "term": {
+      "de": "Cystatin C",
+      "en": "Cystatin C",
+      "es": "Cistatina C",
+      "it": "Cistatina C",
+      "pt": "Cistatina C",
+      "fr": "Cystatine C",
+      "tr": "Sisteatin C"
+    },
+    "synonyms": {
+      "de": [
+        "CysC"
+      ],
+      "en": [
+        "CysC"
+      ],
+      "es": [
+        "CysC"
+      ],
+      "it": [
+        "CysC"
+      ],
+      "pt": [
+        "CysC"
+      ],
+      "fr": [
+        "CysC"
+      ],
+      "tr": [
+        "CysC"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Cystatin C ist ein alternativer Nierenmarker, der weniger von Muskelmasse abhängt als Kreatinin. Er wird genutzt, wenn die Kreatinin-eGFR unsicher erscheint. Die Kombination beider Marker verbessert die Einschätzung.",
+      "en": "Cystatin C is an alternative kidney marker that depends less on muscle mass than creatinine. It is used when creatinine-based eGFR seems uncertain. Combining both markers improves assessment.",
+      "es": "La cistatina C es un marcador renal alternativo que depende menos de la masa muscular que la creatinina. Se usa cuando la eGFR por creatinina parece incierta. La combinación de ambos marcadores mejora la valoración.",
+      "it": "La cistatina C è un marcatore renale alternativo, meno dipendente dalla massa muscolare rispetto alla creatinina. Si usa quando l'eGFR da creatinina appare incerto. La combinazione dei due marcatori migliora la valutazione.",
+      "pt": "A cistatina C é um marcador renal alternativo, menos dependente da massa muscular do que a creatinina. Usa-se quando a eGFR baseada na creatinina parece insegura. A combinação dos dois marcadores melhora a avaliação.",
+      "fr": "La cystatine C est un marqueur rénal alternatif qui dépend moins de la masse musculaire que la créatinine. Elle est utilisée lorsque le DFGe basé sur la créatinine paraît incertain. La combinaison des deux marqueurs améliore l'appréciation.",
+      "tr": "Sisteatin C, kreatinine göre kas kütlesinden daha az etkilenen alternatif bir böbrek belirtecidir. Kreatinin-eGFR belirsiz göründüğünde kullanılır. İki belirtecin birleşimi değerlendirmeyi iyileştirir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "TSH",
+    "term": {
+      "de": "TSH",
+      "en": "TSH",
+      "es": "TSH",
+      "it": "TSH",
+      "pt": "TSH",
+      "fr": "TSH",
+      "tr": "TSH"
+    },
+    "synonyms": {
+      "de": [
+        "Thyreoidea-stimulierendes Hormon",
+        "Thyrotropin"
+      ],
+      "en": [
+        "Thyroid-stimulating hormone",
+        "Thyrotropin"
+      ],
+      "es": [
+        "Hormona estimulante del tiroides",
+        "Tirotropina"
+      ],
+      "it": [
+        "Ormone tireostimolante",
+        "Tireotropina"
+      ],
+      "pt": [
+        "hormona estimulante da tiroide",
+        "tirotropina"
+      ],
+      "fr": [
+        "Hormone thyréostimulante",
+        "Thyrotropine"
+      ],
+      "tr": [
+        "tiroid uyarıcı hormon",
+        "Tirotropin"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "TSH steuert die Schilddrüse und ist der wichtigste Screeningparameter. Erhöhte Werte sprechen für Unterfunktion, erniedrigte für Überfunktion oder Überdosierung. Biotinsupplemente können Assays verfälschen.",
+      "en": "TSH controls the thyroid and is the most important screening parameter. High values suggest underactivity; low values suggest overactivity or overdosing. Biotin supplements can interfere with assays.",
+      "es": "La TSH regula la tiroides y es el parámetro de cribado más importante. Valores elevados hablan de hipofunción; bajos, de hiperfunción o sobredosis. Los suplementos alimenticios de biotina pueden falsear los ensayos.",
+      "it": "Il TSH regola la tiroide ed è il parametro di screening più importante. Valori elevati indicano ipofunzione; ridotti iperfunzione o sovradosaggio. Gli integratori alimentari di biotina possono alterare i dosaggi di laboratorio.",
+      "pt": "A TSH regula a tiroide e é o parâmetro de rastreio mais importante. Valores elevados apontam para hipofunção; baixos, para hiperfunção ou sobredosagem. Suplementos alimentares de biotina podem falsear os ensaios.",
+      "fr": "La TSH contrôle la thyroïde et est le paramètre de dépistage le plus important. Des valeurs élevées évoquent une hypofonction, des valeurs basses une hyperfonction ou un surdosage. Les compléments alimentaires de biotine peuvent fausser les dosages.",
+      "tr": "TSH tiroidi yönetir ve en önemli tarama parametresidir. Yüksek değerler hipofonksiyona, düşükler hiperfonksiyon veya aşırı doza işaret eder. Biotin gıda takviyeleri testleri bozabilir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Freies T3",
+    "term": {
+      "de": "Freies T3",
+      "en": "Free T3",
+      "es": "T3 libre",
+      "it": "T3 libero",
+      "pt": "T3 livre",
+      "fr": "T3 libre",
+      "tr": "Serbest T3"
+    },
+    "synonyms": {
+      "de": [
+        "fT3",
+        "Triiodthyronin frei"
+      ],
+      "en": [
+        "fT3",
+        "Free triiodothyronine"
+      ],
+      "es": [
+        "fT3",
+        "Triyodotironina libre"
+      ],
+      "it": [
+        "fT3",
+        "Triiodotironina libera"
+      ],
+      "pt": [
+        "fT3",
+        "tri-iodotironina livre"
+      ],
+      "fr": [
+        "fT3",
+        "Triiodothyronine libre"
+      ],
+      "tr": [
+        "fT3",
+        "serbest triiyodotironin"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Freies T3 ist das biologisch aktive Schilddrüsenhormon im Blut. Es wird gemessen, wenn die TSH-Lage unklar ist oder eine Überfunktion vermutet wird. Jod und Selen beeinflussen den Schilddrüsenstoffwechsel.",
+      "en": "Free T3 is the biologically active thyroid hormone in blood. It is measured when TSH is unclear or hyperthyroidism is suspected. Iodine and selenium influence thyroid metabolism.",
+      "es": "La T3 libre es la hormona tiroidea biológicamente activa en sangre. Se mide cuando el panorama de TSH no está claro o se sospecha hiperfunción. Yodo y selenio influyen en el metabolismo tiroideo.",
+      "it": "Il T3 libero è l'ormone tiroideo biologicamente attivo nel sangue. Si misura quando il quadro TSH è poco chiaro o si sospetta un'iperfunzione. Iodio e selenio influenzano il metabolismo tiroideo.",
+      "pt": "A T3 livre é a hormona tiroideia biologicamente ativa no sangue. Mede-se quando o quadro da TSH é pouco claro ou se suspeita de hiperfunção. Iodo e selénio influenciam o metabolismo da tiroide.",
+      "fr": "La T3 libre est l'hormone thyroïdienne biologiquement active dans le sang. Elle est dosée lorsque le profil TSH est peu clair ou qu'une hyperfonction est suspectée. L'iode et le sélénium influencent le métabolisme thyroïdien.",
+      "tr": "Serbest T3, kandaki biyolojik olarak aktif tiroid hormonudur. TSH durumu belirsizse veya hiperfonksiyon şüphesinde ölçülür. İyot ve selenyum tiroid metabolizmasını etkiler."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Freies T4",
+    "term": {
+      "de": "Freies T4",
+      "en": "Free T4",
+      "es": "T4 libre",
+      "it": "T4 libero",
+      "pt": "T4 livre",
+      "fr": "T4 libre",
+      "tr": "Serbest T4"
+    },
+    "synonyms": {
+      "de": [
+        "fT4",
+        "Thyroxin frei"
+      ],
+      "en": [
+        "fT4",
+        "Free thyroxine"
+      ],
+      "es": [
+        "fT4",
+        "Tiroxina libre"
+      ],
+      "it": [
+        "fT4",
+        "Tiroxina libera"
+      ],
+      "pt": [
+        "fT4",
+        "tiroxina livre"
+      ],
+      "fr": [
+        "fT4",
+        "Thyroxine libre"
+      ],
+      "tr": [
+        "fT4",
+        "serbest tiroksin"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Freies T4 ist das Speicher- und Vorläuferhormon der Schilddrüse. Zusammen mit TSH steuert es die Einstellung einer Schilddrüsentherapie. Abweichungen brauchen immer die Zusammenschau mit Klinik und TSH.",
+      "en": "Free T4 is the storage and precursor hormone of the thyroid. Together with TSH it guides thyroid therapy adjustment. Deviations always need clinical context and TSH.",
+      "es": "La T4 libre es la hormona de reserva y precursora de la tiroides. Junto con la TSH guía el ajuste de un tratamiento tiroideo. Las desviaciones siempre requieren la visión conjunta con clínica y TSH.",
+      "it": "Il T4 libero è l'ormone di riserva e precursore della tiroide. Insieme al TSH guida l'assetto di una terapia tiroidea. Le deviazioni richiedono sempre la visione d'insieme con clinica e TSH.",
+      "pt": "A T4 livre é a hormona de reserva e precursora da tiroide. Com a TSH orienta o ajuste de uma terapêutica tiroideia. Desvios exigem sempre a leitura conjunta com a clínica e a TSH.",
+      "fr": "La T4 libre est l'hormone de réserve et précurseur de la thyroïde. Avec la TSH, elle guide l'ajustement d'un traitement thyroïdien. Les écarts nécessitent toujours la synthèse avec la clinique et la TSH.",
+      "tr": "Serbest T4, tiroidin depo ve öncü hormonudur. TSH ile birlikte tiroid tedavisinin ayarını yönlendirir. Sapmalar her zaman klinik ve TSH ile birlikte değerlendirilmelidir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "TPO-Antikörper",
+    "term": {
+      "de": "TPO-Antikörper",
+      "en": "TPO antibodies",
+      "es": "Anticuerpos anti-TPO",
+      "it": "Anticorpi anti-TPO",
+      "pt": "Anticorpos anti-TPO",
+      "fr": "Anticorps anti-TPO",
+      "tr": "TPO antikorları"
+    },
+    "synonyms": {
+      "de": [
+        "TPO-Ak",
+        "Anti-TPO"
+      ],
+      "en": [
+        "TPO-Ab",
+        "Anti-TPO"
+      ],
+      "es": [
+        "Ac anti-TPO",
+        "Anti-TPO"
+      ],
+      "it": [
+        "Ab anti-TPO",
+        "Anti-TPO"
+      ],
+      "pt": [
+        "Ac anti-TPO",
+        "Anti-TPO"
+      ],
+      "fr": [
+        "Ac anti-TPO",
+        "Anti-TPO"
+      ],
+      "tr": [
+        "TPO-Ak",
+        "Anti-TPO"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "TPO-Antikörper weisen auf eine autoimmune Schilddrüsenerkrankung wie Hashimoto hin. Sie erklären viele Fälle einer schleichenden Unterfunktion. Ein positiver Befund bedeutet nicht automatisch Behandlungsbedarf, aber engmaschigere Kontrollen.",
+      "en": "TPO antibodies point to autoimmune thyroid disease such as Hashimoto’s. They explain many cases of gradual underactivity. A positive result does not automatically mean treatment, but closer monitoring.",
+      "es": "Los anticuerpos anti-TPO apuntan a una enfermedad tiroidea autoinmune como Hashimoto. Explican muchos casos de hipofunción insidiosa. Un resultado positivo no implica automáticamente necesidad de tratamiento, pero sí controles más estrechos.",
+      "it": "Gli anticorpi anti-TPO indicano una malattia tiroidea autoimmune come la tiroidite di Hashimoto. Spiegano molti casi di ipofunzione insidiosa. Un risultato positivo non significa automaticamente bisogno di trattamento, ma controlli più stretti.",
+      "pt": "Os anticorpos anti-TPO apontam para doença autoimune da tiroide, como a tiroidite de Hashimoto. Explicam muitos casos de hipofunção gradual. Um resultado positivo não implica automaticamente tratamento, mas controlos mais apertados.",
+      "fr": "Les anticorps anti-TPO indiquent une maladie auto-immune de la thyroïde comme la thyroïdite de Hashimoto. Ils expliquent de nombreux cas d'hypofonction progressive. Un résultat positif ne signifie pas automatiquement un besoin de traitement, mais un suivi plus rapproché.",
+      "tr": "TPO antikorları Hashimoto gibi otoimmün tiroid hastalığına işaret eder. Sinsi hipofonksiyonun birçok nedenini açıklar. Pozitif bulgu otomatik tedavi ihtiyacı demek değildir; daha sıkı kontroller gerekir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "TRAKs",
+    "term": {
+      "de": "TRAKs",
+      "en": "TRAbs",
+      "es": "TRAb",
+      "it": "TRAb",
+      "pt": "TRAb",
+      "fr": "TRAKs",
+      "tr": "TRAK'lar"
+    },
+    "synonyms": {
+      "de": [
+        "TSH-Rezeptor-Antikörper",
+        "TRAb"
+      ],
+      "en": [
+        "TSH receptor antibodies",
+        "TRAb"
+      ],
+      "es": [
+        "Anticuerpos del receptor de TSH",
+        "TRAb"
+      ],
+      "it": [
+        "Anticorpi anti-recettore del TSH",
+        "TRAb"
+      ],
+      "pt": [
+        "anticorpos do receptor de TSH",
+        "TRAb"
+      ],
+      "fr": [
+        "Anticorps anti-récepteur de la TSH",
+        "TRAb"
+      ],
+      "tr": [
+        "TSH reseptör antikorları",
+        "TRAb"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "TSH-Rezeptor-Antikörper sind typisch für Morbus Basedow und können die Schilddrüse überstimulieren. Sie helfen bei der Differenzierung von Überfunktionsursachen. Verlaufskontrollen begleiten oft die Therapie.",
+      "en": "TSH receptor antibodies are typical of Graves’ disease and can overstimulate the thyroid. They help differentiate causes of hyperthyroidism. Serial checks often accompany therapy.",
+      "es": "Los anticuerpos del receptor de TSH son típicos de la enfermedad de Graves-Basedow y pueden sobreestimular la tiroides. Ayudan a diferenciar las causas de hiperfunción. Los controles evolutivos suelen acompañar el tratamiento.",
+      "it": "Gli anticorpi anti-recettore del TSH sono tipici del morbo di Basedow/Graves e possono sovrastimolare la tiroide. Aiutano a differenziare le cause di iperfunzione. I controlli di decorso spesso accompagnano la terapia.",
+      "pt": "Os anticorpos do receptor da TSH são típicos da doença de Basedow/Graves e podem sobrestimular a tiroide. Ajudam a diferenciar causas de hiperfunção. Controlos evolutivos acompanham muitas vezes a terapêutica.",
+      "fr": "Les anticorps anti-récepteur de la TSH sont typiques de la maladie de Basedow et peuvent stimuler excessivement la thyroïde. Ils aident à différencier les causes d'hyperfonction. Les contrôles évolutifs accompagnent souvent le traitement.",
+      "tr": "TSH reseptör antikorları Graves hastalığı için tipiktir ve tiroidi aşırı uyarabilir. Hiperfonksiyon nedenlerini ayırt etmeye yardımcı olur. Seyir kontrolleri sıklıkla tedaviye eşlik eder."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "CRP",
+    "term": {
+      "de": "CRP",
+      "en": "CRP",
+      "es": "PCR",
+      "it": "PCR",
+      "pt": "PCR",
+      "fr": "CRP",
+      "tr": "CRP"
+    },
+    "synonyms": {
+      "de": [
+        "C-reaktives Protein",
+        "Entzündungswert"
+      ],
+      "en": [
+        "C-reactive protein",
+        "Inflammation marker"
+      ],
+      "es": [
+        "Proteína C reactiva",
+        "Marcador de inflamación"
+      ],
+      "it": [
+        "Proteina C-reattiva",
+        "Indice di infiammazione"
+      ],
+      "pt": [
+        "proteína C-reativa",
+        "marcador de inflamação"
+      ],
+      "fr": [
+        "Protéine C-réactive",
+        "Marqueur d'inflammation"
+      ],
+      "tr": [
+        "C-reaktif protein",
+        "enflamasyon değeri"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "CRP steigt rasch bei bakteriellen Infekten und Gewebeschäden. Es ist ein unspezifischer Entzündungsmarker und sagt allein keine Diagnose. Verlauf und Klinik sind entscheidend.",
+      "en": "CRP rises quickly with bacterial infections and tissue injury. It is a nonspecific inflammation marker and alone does not make a diagnosis. Course and clinical findings are decisive.",
+      "es": "La PCR sube con rapidez en infecciones bacterianas y daños tisulares. Es un marcador inflamatorio inespecífico y por sí sola no da un diagnóstico. Evolución y clínica son decisivas.",
+      "it": "La PCR sale rapidamente in infezioni batteriche e danni tissutali. È un marcatore infiammatorio aspecifico e da sola non pone una diagnosi. Decorso e quadro clinico sono decisivi.",
+      "pt": "A PCR sobe rapidamente em infeções bacterianas e lesões tecidulares. É um marcador inespecífico de inflamação e, isolada, não faz diagnóstico. Evolução e clínica são decisivas.",
+      "fr": "La CRP augmente rapidement en cas d'infections bactériennes et de lésions tissulaires. C'est un marqueur d'inflammation non spécifique et ne pose pas à elle seule de diagnostic. L'évolution et la clinique sont décisives.",
+      "tr": "CRP bakteriyel enfeksiyonlarda ve doku hasarında hızla yükselir. Spesifik olmayan bir enflamasyon belirtecidir; tek başına tanı koymaz. Seyir ve klinik belirleyicidir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  }
+]

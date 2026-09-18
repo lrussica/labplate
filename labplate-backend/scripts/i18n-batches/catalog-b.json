@@ -1,0 +1,1204 @@
+[
+  {
+    "term": "TRAKs",
+    "synonyms": [
+      "TSH-Rezeptor-Antikörper",
+      "TRAb"
+    ],
+    "short_description": "TSH-Rezeptor-Antikörper sind typisch für Morbus Basedow und können die Schilddrüse überstimulieren. Sie helfen bei der Differenzierung von Überfunktionsursachen. Verlaufskontrollen begleiten oft die Therapie.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "CRP",
+    "synonyms": [
+      "C-reaktives Protein",
+      "Entzündungswert"
+    ],
+    "short_description": "CRP steigt rasch bei bakteriellen Infekten und Gewebeschäden. Es ist ein unspezifischer Entzündungsmarker und sagt allein keine Diagnose. Verlauf und Klinik sind entscheidend.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "hs-CRP",
+    "synonyms": [
+      "hochsensitives CRP",
+      "high-sensitivity CRP"
+    ],
+    "short_description": "hs-CRP erfasst niedrige Entzündungsgrade und wird als zusätzlicher Herz-Kreislauf-Risikomarker genutzt. Es ist nicht spezifisch für Arteriosklerose. Akute Infekte machen die Interpretation unbrauchbar.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "BSG",
+    "synonyms": [
+      "Blutsenkung",
+      "Blutkörperchensenkungsgeschwindigkeit",
+      "ESR"
+    ],
+    "short_description": "Die BSG steigt bei Entzündungen, Anämien und Paraproteinen langsamer an als CRP. Sie ist unspezifisch, aber in manchen Verläufen weiterhin nützlich. Heute wird oft CRP bevorzugt.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Interleukin-6",
+    "synonyms": [
+      "IL-6"
+    ],
+    "short_description": "Interleukin-6 ist ein Botenstoff der Entzündungsreaktion und treibt unter anderem die CRP-Bildung an. Es wird eher in speziellen Fragestellungen gemessen. Chronisch erhöhte Entzündung hängt mit Stoffwechselrisiko zusammen.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "25-OH-Vitamin D",
+    "synonyms": [
+      "25-Hydroxyvitamin D",
+      "Calcidiol",
+      "Vitamin-D-Spiegel"
+    ],
+    "short_description": "25-OH-Vitamin D ist der beste Speicherwert für die Vitamin-D-Versorgung. Zielbereiche werden je nach Fachgesellschaft etwas unterschiedlich angegeben. Supplementierung sollte nach Ausgangswert und Jahreszeit gesteuert werden.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Vitamin B12 Serum",
+    "synonyms": [
+      "Cobalamin Serum",
+      "B12-Spiegel"
+    ],
+    "short_description": "Der B12-Serumwert erfasst die Versorgung, kann aber im Graubereich unklar sein. Dann helfen Holotranscobalamin, Methylmalonsäure oder Homocystein weiter. Vegetarische und vegane Ernährung erhöht das Risiko für niedrige Werte.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Holotranscobalamin",
+    "synonyms": [
+      "aktives B12",
+      "Holo-TC"
+    ],
+    "short_description": "Holotranscobalamin misst den biologisch verfügbaren Anteil von Vitamin B12. Es kann einen Mangel früher anzeigen als der Gesamt-B12-Wert. Nicht jedes Labor bietet den Test routinemäßig an.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Homocystein",
+    "synonyms": [
+      "Hcy",
+      "Homocysteinspiegel"
+    ],
+    "short_description": "Homocystein steigt bei Mangel an Folat, Vitamin B12 oder B6 und gilt als Risikomarker für Gefäße. Eine Senkung über Vitamine verbessert nicht immer automatisch Outcomes. Dennoch lohnt die Ursachensuche bei erhöhten Werten.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Methylmalonsäure",
+    "synonyms": [
+      "MMA"
+    ],
+    "short_description": "Methylmalonsäure steigt spezifisch bei funktionellem Vitamin-B12-Mangel. Der Wert hilft, Grenzfälle des Serum-B12 zu klären. Niereninsuffizienz kann MMA ebenfalls erhöhen.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Natrium im Serum",
+    "synonyms": [
+      "Na serum",
+      "Serumnatrium"
+    ],
+    "short_description": "Serumnatrium spiegelt das Verhältnis von Natrium zu Körperwasser wider. Hyponatriämie und Hypernatriämie können neurologische Symptome verursachen. Ursachen sind vielfältig und brauchen ärztliche Abklärung.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Kalium im Serum",
+    "synonyms": [
+      "K serum",
+      "Serumkalium"
+    ],
+    "short_description": "Serumkalium ist kritisch für Herzrhythmus und Muskelfunktion. Schon kleine Abweichungen können gefährlich sein. Diuretika, Niere und Säure-Basen-Lage sind häufige Einflussfaktoren.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Chlorid im Serum",
+    "synonyms": [
+      "Cl serum"
+    ],
+    "short_description": "Serumchlorid wird zusammen mit Natrium und Bicarbonat im Elektrolytstatus betrachtet. Verschiebungen passen zu Erbrechen, Durchfall oder Säure-Basen-Störungen. Der Wert allein erklärt selten das Gesamtbild.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Ionisiertes Calcium",
+    "synonyms": [
+      "freies Calcium",
+      "Ca++"
+    ],
+    "short_description": "Ionisiertes Calcium ist der physiologisch aktive Anteil und unabhängig vom Albumin interpretierbar. Es ist relevant bei Tetanie, Intensivmedizin und Nebenschilddrüsenstörungen. Die Messung erfordert spezielle Probenbedingungen.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Cortisol",
+    "synonyms": [
+      "Serumcortisol",
+      "Stresshormon"
+    ],
+    "short_description": "Cortisol folgt einer Tagesrhythmik und beeinflusst Zucker, Blutdruck und Entzündung. Morgenwerte und Funktionstests dienen der Abklärung von Über- oder Unterfunktion. Chronischer Stress ist nicht gleichbedeutend mit krankhaft hohen Werten.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Nüchterninsulin Quotient",
+    "synonyms": [
+      "Insulin-Glukose-Verhältnis"
+    ],
+    "short_description": "Das Verhältnis von Insulin zu Glukose ergänzt HOMA-IR bei der Einschätzung der Insulinempfindlichkeit. Hohe Insulinspiegel bei noch normalen Glukosewerten können früh warnen. Lebensstilmaßnahmen greifen hier besonders gut.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "SHBG",
+    "synonyms": [
+      "Sexualhormon-bindendes Globulin"
+    ],
+    "short_description": "SHBG bindet Sexualhormone und wird von Insulin, Schilddrüse und Leber beeinflusst. Niedrige Werte finden sich häufig bei Insulinresistenz. Es ist ein ergänzender Stoffwechselmarker, kein Routinescreening für alle.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "DHEAS",
+    "synonyms": [
+      "DHEA-S",
+      "Dehydroepiandrosteronsulfat"
+    ],
+    "short_description": "DHEAS ist ein Nebennierenhormon und wird bei bestimmten hormonellen Fragestellungen gemessen. Extreme Werte können auf Nebennierenprobleme hinweisen. Für die Alltagsernährung spielt es eine untergeordnete Rolle.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Prolactin",
+    "synonyms": [
+      "PRL",
+      "Prolaktin"
+    ],
+    "short_description": "Prolactin steuert Milchbildung und kann bei Stress, Medikamenten oder Hypophysenstörungen steigen. Stark erhöhte Werte gehören fachärztlich abgeklärt. Es ist kein klassischer Ernährungsparameter.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Testosteron",
+    "synonyms": [
+      "Gesamttestosteron"
+    ],
+    "short_description": "Testosteron beeinflusst Muskelmasse, Energie und Stoffwechsel. Niedrige Werte bei Männern können mit Adipositas und Insulinresistenz zusammenhängen. Die Abklärung umfasst SHBG und freie Anteile.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Östradiol",
+    "synonyms": [
+      "Estradiol",
+      "E2"
+    ],
+    "short_description": "Östradiol ist das wichtigste Östrogen und relevant im Zyklus sowie im Knochenstoffwechsel. Messungen erfolgen gezielt, nicht als Breitenscreening. Hormonelle Lage und Laborzeitpunkt müssen zusammenpassen.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Parathormon",
+    "synonyms": [
+      "PTH",
+      "Parathyrin"
+    ],
+    "short_description": "Parathormon reguliert Calcium und Phosphat und reagiert auf Vitamin-D-Mangel. Erhöhte Werte können sekundär bei niedrigem Vitamin D auftreten. Knochen- und Nierenkontext sind wichtig.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "CK",
+    "synonyms": [
+      "Creatinkinase",
+      "CPK"
+    ],
+    "short_description": "CK steigt bei Muskelbelastung, Verletzung oder seltenen Muskelerkrankungen. Nach intensivem Training kann sie harmlos erhöht sein. Zusammen mit AST hilft sie, Leber- von Muskelursachen zu trennen.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "LDH",
+    "synonyms": [
+      "Laktatdehydrogenase"
+    ],
+    "short_description": "LDH ist ein unspezifisches Enzym aus vielen Geweben und steigt bei Zellzerfall. Es dient eher als Verlaufs- denn als Screeningsparameter. Isoliert erhöhte LDH braucht weitere Abklärung.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Harnsäure Klarance",
+    "synonyms": [
+      "Urat-Clearance"
+    ],
+    "short_description": "Die Harnsäure-Clearance schätzt, wie gut die Niere Urat ausscheidet. Sie wird bei speziellen Gicht- oder Stoffwechselfragen genutzt. Für die meisten Alltagsbefunde reicht der Serumwert.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Blutzucker postprandial",
+    "synonyms": [
+      "pp Glukose",
+      "Glukose nach dem Essen"
+    ],
+    "short_description": "Postprandiale Glukose zeigt, wie stark der Blutzucker nach einer Mahlzeit ansteigt. Hohe Spitzen hängen mit glykämischem Index, Portionsgröße und Insulinempfindlichkeit zusammen. CGM-Systeme machen diese Kurven sichtbar.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Ketone Blut",
+    "synonyms": [
+      "Betahydroxybutyrat",
+      "BHB"
+    ],
+    "short_description": "Ketonkörper entstehen bei Kohlenhydratmangel oder unkontrolliertem Diabetes. Im therapeutischen Fasten oder bei Low-Carb sind milde Erhöhungen möglich. Sehr hohe Werte mit Krankheitssymptomen sind ein Notfall.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Laktat",
+    "synonyms": [
+      "Lactat",
+      "Milchsäure Blut"
+    ],
+    "short_description": "Laktat steigt bei Sauerstoffmangel, intensivem Sport oder Schockzuständen. Im Sport spiegelt es anaerobe Belastung wider. Klinisch ist es ein wichtiger Marker der Gewebedurchblutung.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Ammoniak",
+    "synonyms": [
+      "NH3 Blut"
+    ],
+    "short_description": "Ammoniak wird bei schwerer Leberfunktionsstörung gemessen und kann Hirnfunktion beeinflussen. Für die normale Ernährungsberatung ist er selten relevant. Die Probe muss streng gekühlt und schnell verarbeitet werden.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Ferritin Index",
+    "synonyms": [
+      "sTfR/log Ferritin"
+    ],
+    "short_description": "Der Ferritin-Index aus sTfR und Ferritin hilft, Eisenmangel trotz Entzündung zu erkennen. Er wird in speziellen Labors berechnet. Für komplexe Anämien ist er ein wertvolles Werkzeug.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Blutgruppe",
+    "synonyms": [
+      "AB0",
+      "ABO-System"
+    ],
+    "short_description": "Die Blutgruppe ist genetisch festgelegt und vor Transfusionen unverzichtbar. Ernährungsmythen zu Blutgruppendiäten sind wissenschaftlich nicht haltbar. Für LabPlate zählt sie als Kontextwissen, nicht als Stoffwechselmarker.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Blutdruck labornahe",
+    "synonyms": [
+      "Hypertonie Kontext"
+    ],
+    "short_description": "Blutdruck ist kein klassischer Laborwert aus der Vene, gehört aber eng zu Stoffwechsel und Elektrolyten. Salz, Gewicht und Bewegung beeinflussen ihn stark. Laborwerte wie Kalium und Kreatinin ergänzen die Abklärung.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Glykämischer Index",
+    "synonyms": [
+      "GI",
+      "Glykämische Last verwandt"
+    ],
+    "short_description": "Der glykämische Index beschreibt, wie schnell ein kohlenhydrathaltiges Lebensmittel den Blutzucker ansteigen lässt. Weißbrot und glukosereiche Getränke liegen hoch, Hülsenfrüchte eher niedrig. Er hilft bei der Auswahl, ersetzt aber nicht Portionsmaß und Gesamternährung.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Glykämische Last",
+    "synonyms": [
+      "GL",
+      "Glycemic Load"
+    ],
+    "short_description": "Die glykämische Last verknüpft den glykämischen Index mit der Kohlenhydratmenge pro Portion. Dadurch wird eine kleine Menge eines hochglykämischen Lebensmittels realistischer bewertet. Für den Alltag ist GL oft praxisnäher als GI allein.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Netto-Kohlenhydrate",
+    "synonyms": [
+      "Net Carbs",
+      "verfügbare Kohlenhydrate"
+    ],
+    "short_description": "Netto-Kohlenhydrate sind Gesamtkohlenhydrate minus Ballaststoffe und manchmal Zuckeralkohole. Sie schätzen den blutzuckerwirksamen Anteil besser ab. Etikettenangaben können je nach Land unterschiedlich berechnet sein.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Insulinresistenz",
+    "synonyms": [
+      "verminderte Insulinempfindlichkeit"
+    ],
+    "short_description": "Bei Insulinresistenz reagieren Zellen weniger empfindlich auf Insulin, wodurch Blutzucker und Insulinspiegel steigen. Bewegung, Schlaf und weniger Zuckerüberschuss verbessern die Empfindlichkeit oft spürbar. HOMA-IR und Taillenumfang sind Orientierungshilfen.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Insulinsensitivität",
+    "synonyms": [
+      "Insulinempfindlichkeit"
+    ],
+    "short_description": "Eine hohe Insulinsensitivität bedeutet, dass wenig Insulin reicht, um Glukose aufzunehmen. Ausdauer- und Krafttraining sind besonders wirksame Hebel. Auch Ballaststoffe und gewichtsneutrale Ernährungsmuster unterstützen sie.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "De-novo-Lipogenese",
+    "synonyms": [
+      "DNL",
+      "Fettneubildung"
+    ],
+    "short_description": "De-novo-Lipogenese ist die Neubildung von Fett aus Kohlenhydraten, vor allem in der Leber. Hohe Fruktose- und Kalorienüberschüsse fördern diesen Weg. Erhöhte Triglyceride können ein Hinweis sein.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Fruktose-Stoffwechsel",
+    "synonyms": [
+      "Fruchtzucker-Stoffwechsel"
+    ],
+    "short_description": "Fruktose wird überwiegend in der Leber verstoffwechselt und unterliegt keiner engen Sättigungsbremse wie Glukose. In Übermaß kann sie Harnsäure und Triglyceride anheben. Obst in üblichen Mengen ist nicht mit zuckergesüßten Getränken gleichzusetzen.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Glukoneogenese",
+    "synonyms": [
+      "Zuckerneubildung"
+    ],
+    "short_description": "Glukoneogenese erzeugt Glukose aus Aminosäuren und anderen Vorstufen, wenn die Nahrung wenig Kohlenhydrate liefert. Sie hält den Blutzucker für das Gehirn stabil. In Fastenphasen und bei Low-Carb ist sie physiologisch wichtig.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Glykogen",
+    "synonyms": [
+      "Leberglykogen",
+      "Muskelglykogen"
+    ],
+    "short_description": "Glykogen ist die Speicherform von Glukose in Leber und Muskel. Leberglykogen stabilisiert den Blutzucker, Muskelglykogen treibt die Arbeit. Nach Training und kohlenhydratreichen Mahlzeiten werden die Speicher wieder gefüllt.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Ketose",
+    "synonyms": [
+      "alimentäre Ketose",
+      "ketogener Zustand"
+    ],
+    "short_description": "Ketose beschreibt einen Stoffwechsellage mit erhöhten Ketonkörpern bei geringer Kohlenhydratzufuhr. Sie ist vom lebensbedrohlichen ketoazidotischen Zustand bei Insulinmangel zu unterscheiden. Medizinische Indikationen gehören ärztlich begleitet.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Stoffwechselrate",
+    "synonyms": [
+      "Grundumsatz",
+      "metabolische Rate"
+    ],
+    "short_description": "Die Stoffwechselrate beschreibt den Energieverbrauch in Ruhe und bei Aktivität. Muskelmasse, Alter, Hormone und Bewegung beeinflussen sie. Extreme Restriktion kann den Verbrauch vorübergehend senken.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Postprandiale Antwort",
+    "synonyms": [
+      "Reaktion nach dem Essen"
+    ],
+    "short_description": "Die postprandiale Antwort umfasst Blutzucker-, Insulin- und Triglyceridanstieg nach Mahlzeiten. Zusammensetzung, Reihenfolge der Makronährstoffe und Bewegung danach prägen die Kurve. Wer Spitzen dämpft, entlastet oft den Stoffwechsel.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Sättigungsregulation",
+    "synonyms": [
+      "Appetitregulation",
+      "Hunger-Sättigung"
+    ],
+    "short_description": "Sättigung wird über Hormone wie Ghrelin, GLP-1 und Leptin sowie über Magenfüllung gesteuert. Protein und Ballaststoffe erhöhen oft die Sättigung. Stark verarbeitete Lebensmittel können diese Signale umgehen.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "GLP-1",
+    "synonyms": [
+      "Glucagon-like Peptide-1"
+    ],
+    "short_description": "GLP-1 ist ein Darmhormon, das Insulin freisetzt, Magenentleerung verlangsamt und Appetit mindert. Medikamente nutzen diesen Weg therapeutisch. Ballaststoffreiche Mahlzeiten können die natürliche Ausschüttung unterstützen.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Glukagon",
+    "synonyms": [
+      "Glucagon"
+    ],
+    "short_description": "Glukagon ist der Gegenspieler von Insulin und hebt den Blutzucker über Glykogenabbau und Glukoneogenese an. Im Fasten hält es die Versorgung aufrecht. Ein Ungleichgewicht spielt bei Diabetes eine Rolle.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Metabolisches Syndrom",
+    "synonyms": [
+      "Wohlstandssyndrom"
+    ],
+    "short_description": "Das metabolische Syndrom bündelt Bauchfett, Bluthochdruck, gestörte Glukosewerte und ungünstige Blutfette. Es erhöht das Risiko für Typ-2-Diabetes und Herzkrankheiten. Lebensstiländerung ist die Basistherapie.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Nicht-alkoholische Fettleber",
+    "synonyms": [
+      "NAFLD",
+      "MASLD",
+      "Leberverfettung"
+    ],
+    "short_description": "Die nicht-alkoholische Fettleber hängt eng mit Insulinresistenz und Kalorienüberschuss zusammen. Fruktose und zuckerreiche Getränke gelten als Treiber. Gewichtsreduktion und Bewegung können die Leberwerte verbessern.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Oxidativer Stress",
+    "synonyms": [
+      "freie Radikale Belastung"
+    ],
+    "short_description": "Oxidativer Stress entsteht, wenn freie Radikale die Abwehrkapazität übersteigen. Rauchen, chronische Entzündung und unausgewogene Ernährung verstärken ihn. Antioxidantien aus Lebensmitteln sind sinnvoller als hochdosierte Einzelpräparate ohne Indikation.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Chronische Entzündung low grade",
+    "synonyms": [
+      "stille Entzündung",
+      "Low-grade Inflammation"
+    ],
+    "short_description": "Low-grade-Entzündung begleitet oft Adipositas und Insulinresistenz und zeigt sich in leicht erhöhten hs-CRP-Werten. Bauchfett setzt entzündungsfördernde Botenstoffe frei. Bewegung und bessere Kostqualität senken die Last.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Lipogenese",
+    "synonyms": [
+      "Fettaufbau"
+    ],
+    "short_description": "Lipogenese beschreibt den Aufbau von Fettspeichern aus Nahrungsfett oder neu gebildetem Fett. Ein anhaltender Energieüberschuss ist der Haupttreiber. Verteilung und Leberbeteiligung hängen vom hormonellen Milieu ab.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Lipolyse",
+    "synonyms": [
+      "Fettabbau"
+    ],
+    "short_description": "Lipolyse setzt Fettsäuren aus dem Fettgewebe frei, etwa bei Fasten oder Sport. Insulin hemmt diesen Prozess. Ein gesundes Wechselspiel aus Speicherung und Freisetzung ist physiologisch.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Beta-Oxidation",
+    "synonyms": [
+      "Fettsäureoxidation"
+    ],
+    "short_description": "Die Beta-Oxidation baut Fettsäuren in den Mitochondrien zu Energie ab. Gute Trainingszustände und ausreichende Mikronährstoffe unterstützen sie. Sehr niedrige Kohlenhydratzufuhr verschiebt den Energiemix stärker Richtung Fett.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Atmungskette",
+    "synonyms": [
+      "oxidative Phosphorylierung",
+      "ETC"
+    ],
+    "short_description": "Die Atmungskette in den Mitochondrien erzeugt den Großteil des ATP aus Nährstoffen. B-Vitamine und Spurenelemente sind wichtige Cofaktoren. Training verbessert die mitochondriale Kapazität.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Glykolyse",
+    "synonyms": [
+      "Zuckerabbau"
+    ],
+    "short_description": "Die Glykolyse spaltet Glukose zu Pyruvat und liefert schnell Energie. Bei intensiver Belastung entsteht daraus Laktat. Sie ist der Startpunkt vieler Stoffwechselwege.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Pentosephosphatweg",
+    "synonyms": [
+      "PPP",
+      "Hexosemonophosphat-Shunt"
+    ],
+    "short_description": "Der Pentosephosphatweg erzeugt NADPH und Bausteine für Nukleotide. NADPH wird für antioxidative Systeme und Fettsäuresynthese gebraucht. Er verknüpft Kohlenhydrat- und Redoxstoffwechsel.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Harnstoffzyklus",
+    "synonyms": [
+      "Ornithinzyklus"
+    ],
+    "short_description": "Der Harnstoffzyklus entsorgt Stickstoff aus dem Aminosäureabbau als Harnstoff. Die Leber ist das zentrale Organ dafür. Bei schwerer Leberinsuffizienz kann Ammoniak ansteigen.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Purinstoffwechsel",
+    "synonyms": [
+      "Purinabbau"
+    ],
+    "short_description": "Im Purinstoffwechsel entstehen aus Nukleinsäuren Purine und schließlich Harnsäure. Innereien, manche Fische und Fruktose beeinflussen die Last. Gichtpatienten profitieren oft von angepasster Ernährung und Gewichtskontrolle.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Schilddrüsenstoffwechsel",
+    "synonyms": [
+      "Thyroidmetabolismus"
+    ],
+    "short_description": "Der Schilddrüsenstoffwechsel steuert Grundumsatz, Temperatur und Energie. Jod, Selen und Eisen sind kritische Cofaktoren. Laborwerte TSH, fT3 und fT4 bilden die diagnostische Basis.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Circadianer Stoffwechsel",
+    "synonyms": [
+      "innere Uhr Stoffwechsel"
+    ],
+    "short_description": "Viele Stoffwechselprozesse folgen der inneren Uhr, darunter Insulinempfindlichkeit und Cortisol. Späte schwere Mahlzeiten können die Glukoseantwort verschlechtern. Regelmäßige Schlafzeiten unterstützen die Regulation.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Trainingsadaption Kohlenhydrate",
+    "synonyms": [
+      "KH und Bewegung"
+    ],
+    "short_description": "Bewegung erhöht die Glukoseaufnahme in den Muskel auch ohne viel Insulin. Nach dem Training sind Speicher aufnahmebereit. Deshalb wirken Spaziergänge nach dem Essen oft blutzuckerfreundlich.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Ballaststoffe",
+    "synonyms": [
+      "Nahrungsfasern",
+      "Dietary Fiber"
+    ],
+    "short_description": "Ballaststoffe sind unverdauliche Kohlenhydrate, die Sättigung, Darmflora und Blutzuckerkurven günstig beeinflussen. Lösliche Fasern dämpfen oft den Glukoseanstieg, unlösliche fördern die Verdauung. Vollkorn, Hülsenfrüchte, Obst und Gemüse sind die besten Quellen.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Lösliche Ballaststoffe",
+    "synonyms": [
+      "viskose Fasern",
+      "Pektin",
+      "Beta-Glucan"
+    ],
+    "short_description": "Lösliche Ballaststoffe bilden im Darm gelartige Strukturen und verlangsamen die Glucoseaufnahme. Hafer, Äpfel und Flohsamen sind typische Quellen. Sie können auch LDL-Cholesterin leicht senken.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Unlösliche Ballaststoffe",
+    "synonyms": [
+      "Cellulose",
+      "Weizenkleie"
+    ],
+    "short_description": "Unlösliche Ballaststoffe erhöhen das Stuhlvolumen und beschleunigen die Passage. Vollkornprodukte und viele Gemüsearten liefern sie. Ausreichend Flüssigkeit gehört dazu, sonst droht Verstopfung.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Proteine",
+    "synonyms": [
+      "Eiweiß",
+      "Aminosäuren Nahrung"
+    ],
+    "short_description": "Proteine liefern Aminosäuren für Muskel, Enzyme und Immunsystem und sättigen stark. Tierische und pflanzliche Quellen lassen sich gut kombinieren. Die Bedarfsspanne steigt bei Sport und höherem Alter.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Essenzielle Aminosäuren",
+    "synonyms": [
+      "EAA",
+      "unentbehrliche Aminosäuren"
+    ],
+    "short_description": "Essenzielle Aminosäuren kann der Körper nicht selbst herstellen und muss sie über die Nahrung aufnehmen. Lysin, Leucin und Methionin sind Beispiele. Abwechslungsreiche Proteinquellen decken das Spektrum ab.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Kohlenhydrate",
+    "synonyms": [
+      "KH",
+      "Carbohydrates"
+    ],
+    "short_description": "Kohlenhydrate sind die bevorzugte Energiequelle für Gehirn und intensive Muskelarbeit. Qualität und Menge entscheiden über Blutzuckerwirkung. Vollkorn und Hülsenfrüchte sind meist günstiger als Zucker und Weißmehl.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Komplexe Kohlenhydrate",
+    "synonyms": [
+      "Vielfachzucker Nahrung",
+      "Stärke"
+    ],
+    "short_description": "Komplexe Kohlenhydrate bestehen aus langen Zuckerketten und stecken in Getreide, Kartoffeln und Hülsenfrüchten. Mit intakten Ballaststoffen steigen sie oft langsamer in den Blutzucker. Der Verarbeitungsgrad verändert die Wirkung stark.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Einfache Kohlenhydrate",
+    "synonyms": [
+      "Einfach- und Zweifachzucker"
+    ],
+    "short_description": "Einfache Kohlenhydrate umfassen Glukose, Fruktose und Saccharose und wirken oft schnell auf den Blutzucker. In Obst kommen sie zusammen mit Fasern und Mikronährstoffen vor. In Softdrinks fehlen diese Bremsen.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Saccharose",
+    "synonyms": [
+      "Haushaltszucker",
+      "Sucrose"
+    ],
+    "short_description": "Saccharose besteht je zur Hälfte aus Glukose und Fruktose und ist der klassische Haushaltszucker. Sie steckt offen in Süßigkeiten und versteckt in vielen Fertigprodukten. Weniger freie Zucker zu essen ist ein zentraler LabPlate-Alltagstipp.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Fruktose",
+    "synonyms": [
+      "Fruchtzucker",
+      "Fruit sugar"
+    ],
+    "short_description": "Fruktose ist ein Einfachzucker aus Obst, Honig und Maissirup. In hohen Mengen aus Getränken belastet sie die Leber und kann Triglyceride erhöhen. Fruktose aus ganzem Obst ist in üblichen Portionen unproblematischer.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Laktose",
+    "synonyms": [
+      "Milchzucker"
+    ],
+    "short_description": "Laktose ist der Zweifachzucker der Milch und wird durch Laktase gespalten. Bei Laktoseintoleranz entstehen Blähungen und Durchfall. Fermentierte Milchprodukte sind oft besser verträglich.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Stärke",
+    "synonyms": [
+      "Amylum",
+      "Nahrungsstärke"
+    ],
+    "short_description": "Stärke ist das wichtigste pflanzliche Speicherkohlenhydrat und wird zu Glukose verdaut. Resistente Stärke verhält sich teilweise wie Ballaststoff. Abkühlen von Kartoffeln und Reis erhöht den resistenten Anteil.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Resistente Stärke",
+    "synonyms": [
+      "RS",
+      "resistente Staerke"
+    ],
+    "short_description": "Resistente Stärke erreicht den Dickdarm und wird dort von Bakterien vergoren. Das kann Blutzuckerantworten abschwächen und kurzkettige Fettsäuren liefern. Grüne Bananen und erkaltete Kartoffeln sind Beispiele.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Gesättigte Fettsäuren",
+    "synonyms": [
+      "SFA",
+      "gesättigte Fette"
+    ],
+    "short_description": "Gesättigte Fettsäuren kommen in Butter, Palmöl und fettem Fleisch vor und können LDL erhöhen. Der Austausch gegen ungesättigte Fette gilt als günstig. Die Gesamtkostqualität zählt mehr als einzelne Lebensmitteldämonisierung.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Einfach ungesättigte Fettsäuren",
+    "synonyms": [
+      "MUFA",
+      "Ölsäure"
+    ],
+    "short_description": "Einfach ungesättigte Fettsäuren stecken in Olivenöl, Avocado und Nüssen. Sie können das Lipidprofil günstig beeinflussen. Mediterrane Muster setzen stark auf diese Fettqualität.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Mehrfach ungesättigte Fettsäuren",
+    "synonyms": [
+      "PUFA",
+      "Polyensäure"
+    ],
+    "short_description": "Mehrfach ungesättigte Fettsäuren umfassen Omega-3 und Omega-6 und sind essenziell. Sie stecken in Pflanzenölen, Samen und fettem Fisch. Das Verhältnis und die Gesamtmenge sollten ausgewogen bleiben.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Omega-3-Fettsäuren",
+    "synonyms": [
+      "EPA",
+      "DHA",
+      "ALA"
+    ],
+    "short_description": "Omega-3-Fettsäuren wirken entzündungsmodulierend und unterstützen Herz und Gehirn. EPA und DHA kommen in Fettfisch vor, ALA in Leinöl und Walnüssen. Bei wenig Fisch kann Algenöl eine Option sein.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Omega-6-Fettsäuren",
+    "synonyms": [
+      "Linolsäure",
+      "AA"
+    ],
+    "short_description": "Omega-6-Fettsäuren sind essenziell und in vielen Pflanzenölen reichlich vorhanden. Ein extremes Ungleichgewicht zu Omega-3 wird diskutiert, ist aber nicht der einzige Risikofaktor. Lebensmittelvielfalt schlägt Angst vor einzelnen Ölen.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Transfettsäuren",
+    "synonyms": [
+      "industrielle Transfette",
+      "TFA"
+    ],
+    "short_description": "Industrielle Transfettsäuren entstehen bei teilweiser Härtung von Ölen und erhöhen das Herzrisiko. In der EU sind sie stark begrenzt, können aber noch in manchen Produkten vorkommen. Natürliche Spuren in Milchprodukten sind geringer relevant.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Cholesterin Nahrung",
+    "synonyms": [
+      "Nahrungscholesterin"
+    ],
+    "short_description": "Nahrungscholesterin aus Eiern und Fleisch beeinflusst den Blutspiegel bei den meisten Menschen nur mäßig. Gesättigte Fette und Gene spielen oft eine größere Rolle. Individuelle Reaktion und Gesamtbild zählen.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Zuckeralkohole",
+    "synonyms": [
+      "Polyole",
+      "Xylit",
+      "Erythrit",
+      "Sorbit"
+    ],
+    "short_description": "Zuckeralkohole süßen mit weniger Kalorien und oft geringerer Blutzuckerwirkung. In größeren Mengen können sie abführend wirken. Auf Etiketten erscheinen sie häufig in Zahngummis und Light-Produkten.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Süßstoffe",
+    "synonyms": [
+      "Aspartam",
+      "Sucralose",
+      "Stevia",
+      "künstliche Süßung"
+    ],
+    "short_description": "Süßstoffe liefern Süße ohne klassischen Zucker und können die Energiezufuhr senken. Die Langzeiteffekte auf Appetit und Mikrobiom werden weiter erforscht. Wasser und ungesüßte Alternativen bleiben die einfachste Wahl.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Freie Zucker",
+    "synonyms": [
+      "Free Sugars",
+      "zugesetzter Zucker"
+    ],
+    "short_description": "Freie Zucker umfassen zugesetzten Zucker sowie Zucker in Honig, Sirupen und Fruchtsäften. Die WHO empfiehlt, sie stark zu begrenzen. Sie sind ein Haupttreiber leerer Kalorien und Blutzuckerspitzen.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Glykämisches Lebensmittelprofil",
+    "synonyms": [
+      "blutzuckerfreundliche Kost"
+    ],
+    "short_description": "Ein blutzuckerfreundliches Lebensmittelprofil kombiniert Ballaststoffe, Protein und wenig rasch verfügbare Zucker. Die Reihenfolge Gemüse-Protein-Kohlenhydrate kann Spitzen dämpfen. Alltagsstrategien stehen in den LabPlate-Kapiteln zu Tipps und GI.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Mikronährstoffe",
+    "synonyms": [
+      "Vitamine und Mineralstoffe"
+    ],
+    "short_description": "Mikronährstoffe sind Vitamine und Mineralstoffe, die keine Energie liefern, aber Stoffwechselwege ermöglichen. Mangel zeigt sich oft schleichend in Labor und Befinden. Bunte, wenig stark verarbeitete Kost ist die Basis.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Makronährstoffe",
+    "synonyms": [
+      "Makros",
+      "Energie-Nährstoffe"
+    ],
+    "short_description": "Makronährstoffe sind Kohlenhydrate, Proteine und Fette und liefern die Kalorien. Ihre Verteilung beeinflusst Sättigung, Training und Blutzucker. Qualität bleibt wichtiger als starre Prozentziele.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Energiebilanz",
+    "synonyms": [
+      "Kalorienbilanz"
+    ],
+    "short_description": "Die Energiebilanz beschreibt das Verhältnis von Aufnahme und Verbrauch. Ein dauerhafter Überschuss führt zur Gewichtszunahme, ein Defizit zur Abnahme. Hormone und Lebensmittelqualität beeinflussen Hunger und Umsetzung.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Nährstoffdichte",
+    "synonyms": [
+      "Nutrient Density"
+    ],
+    "short_description": "Nährstoffdichte meint viele Mikronährstoffe pro Kalorie. Gemüse, Hülsenfrüchte und Fisch schneiden typischerweise gut ab. Stark zuckerhaltige Produkte haben meist eine niedrige Dichte.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Bioverfügbarkeit",
+    "synonyms": [
+      "Resorbierbarkeit",
+      "Aufnahmequote"
+    ],
+    "short_description": "Bioverfügbarkeit beschreibt, wie gut ein Nährstoff aus der Nahrung aufgenommen wird. Hämeisen, Fett zu fettlöslichen Vitaminen und Vitamin C zu pflanzlichem Eisen sind klassische Beispiele. Zubereitung und Kombination verändern die Quote.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Antinährstoffe",
+    "synonyms": [
+      "Antinutriente",
+      "Phytate",
+      "Oxalate"
+    ],
+    "short_description": "Antinährstoffe wie Phytate und Oxalate können Mineralstoffe binden und die Aufnahme mindern. Einweichen, Fermentieren und Erhitzen reduzieren viele davon. In einer ausgewogenen Kost sind sie selten ein Grund, gesunde Lebensmittel zu meiden.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Polyphenole",
+    "synonyms": [
+      "Pflanzenstoffe",
+      "Flavonoide"
+    ],
+    "short_description": "Polyphenole sind sekundäre Pflanzenstoffe mit antioxidativer Wirkung in Beeren, Tee und Kakao. Sie können die Eisenaufnahme aus derselben Mahlzeit hemmen. Als Teil pflanzlicher Kost gelten sie als günstig.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Präbiotika",
+    "synonyms": [
+      "präbiotische Fasern",
+      "Inulin",
+      "FOS"
+    ],
+    "short_description": "Präbiotika sind unverdauliche Fasern, die gezielt nützliche Darmbakterien ernähren. Inulin aus Chicorée und Zwiebeln ist ein Beispiel. Zu schnelle Steigerung kann Blähungen auslösen.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Probiotika",
+    "synonyms": [
+      "lebende Kulturen",
+      "Joghurtkulturen"
+    ],
+    "short_description": "Probiotika sind lebende Mikroorganismen, die in ausreichender Menge einen gesundheitlichen Nutzen haben können. Fermentierte Lebensmittel und spezielle Präparate sind Quellen. Wirkung ist stammspezifisch und kein Allheilmittel.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Kurzkettige Fettsäuren",
+    "synonyms": [
+      "SCFA",
+      "Butyrat",
+      "Acetat",
+      "Propionat"
+    ],
+    "short_description": "Kurzkettige Fettsäuren entstehen bei der Fermentation von Ballaststoffen im Dickdarm. Butyrat ernährt Darmzellen und wirkt lokal entzündungshemmend. Eine faserreiche Kost fördert ihre Bildung.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Wasserhaushalt",
+    "synonyms": [
+      "Hydration",
+      "Flüssigkeitsbalance"
+    ],
+    "short_description": "Ausreichend Flüssigkeit unterstützt Kreislauf, Niere und Konzentrationsfähigkeit. Bedarf steigt bei Hitze, Sport und Fieber. Elektrolyte werden vor allem bei starken Verlusten relevant.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Alkohol Nährstoffkontext",
+    "synonyms": [
+      "Ethanol Ernährung"
+    ],
+    "short_description": "Alkohol liefert Kalorien, hemmt Fettverbrennung und kann Triglyceride sowie Leberwerte erhöhen. Schon moderate Mengen beeinflussen Schlaf und Appetitregulation. Für Stoffwechselziele ist Reduktion oft ein Hebel mit großer Wirkung.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Koffein",
+    "synonyms": [
+      "Coffein",
+      "Tein"
+    ],
+    "short_description": "Koffein steigert vorübergehend Wachheit und kann die Leistung im Sport leicht verbessern. Empfindliche Personen reagieren mit Herzrasen oder Schlafproblemen. Die Eisenaufnahme aus pflanzlichen Speisen kann durch Kaffee zu den Mahlzeiten sinken.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Salz versteckt",
+    "synonyms": [
+      "Hidden Salt",
+      "Natrium in Fertigprodukten"
+    ],
+    "short_description": "Verstecktes Salz steckt in Brot, Käse, Fertiggerichten und Saucen und übertrifft oft die Menge aus der Salzmühle. Etikettenlesen hilft, die Zufuhr zu senken. Weniger Fertigprodukte sind der wirksamste Schritt.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Lebensmittelmatrix",
+    "synonyms": [
+      "Food Matrix"
+    ],
+    "short_description": "Die Lebensmittelmatrix beschreibt, wie Nährstoffe im natürlichen Verbund von Fasern, Fetten und Strukturen wirken. Apfelsaft wirkt anders auf den Blutzucker als ein ganzer Apfel. Stark verarbeitete Produkte lösen diese Matrix häufig auf.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Ultraprozessierte Lebensmittel",
+    "synonyms": [
+      "UPF",
+      "hochverarbeitete Produkte"
+    ],
+    "short_description": "Ultraprozessierte Lebensmittel sind industriell stark verändert und oft reich an Zucker, Salz und Zusatzstoffen. Sie fördern Überessen und ungünstige Stoffwechselmarker. Der Anteil in der Alltagsernährung sollte möglichst sinken.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Zusatzstoffe",
+    "synonyms": [
+      "E-Nummern",
+      "Food Additives"
+    ],
+    "short_description": "Zusatzstoffe erfüllen technische Zwecke wie Haltbarkeit, Farbe oder Süße. Nicht jeder Zusatzstoff ist problematisch, aber die Produktkategorie ist oft nährstoffarm. Transparenz auf dem Etikett erleichtert bewusste Entscheidungen.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Maissirup mit hohem Fruktosegehalt",
+    "synonyms": [
+      "HFCS",
+      "High Fructose Corn Syrup",
+      "Isoglukose"
+    ],
+    "short_description": "HFCS ist ein Industriezucker mit hohem Fruktoseanteil und steckt international in vielen Softdrinks. Stoffwechselisch ähnelt er anderen freien Zuckern mit Fruktoseanteil. In der EU ist Isoglukose verwandt und ebenfalls kritisch in Getränken.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Honig",
+    "synonyms": [
+      "Bienenhonig",
+      "Naturhonig"
+    ],
+    "short_description": "Honig enthält vor allem Glukose und Fruktose und wirkt trotz natürlicher Herkunft als freier Zucker. Er liefert Spuren an Bioaktivstoffen, ersetzt aber keine Zuckerreduktion. Für Kinder unter einem Jahr ist Honig ungeeignet.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Vollkorn",
+    "synonyms": [
+      "Vollkornprodukte",
+      "Whole Grain"
+    ],
+    "short_description": "Vollkorn enthält Randschichten mit Ballaststoffen, Vitaminen und Mineralstoffen. Es dämpft oft den Blutzuckeranstieg im Vergleich zu Auszugsmehl. Der Umbau gelingt schrittweise über Brot, Reis und Pasta.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Hülsenfrüchte",
+    "synonyms": [
+      "Leguminosen",
+      "Linsen",
+      "Bohnen",
+      "Kichererbsen"
+    ],
+    "short_description": "Hülsenfrüchte liefern Protein, Ballaststoffe und langsam verfügbare Kohlenhydrate. Sie haben meist einen günstigen glykämischen Index. Einweichen und gründliches Garen verbessert Verträglichkeit und Mineralstoffaufnahme.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Neutrophile",
+    "synonyms": [
+      "Neutrophile Granulozyten",
+      "Neutros"
+    ],
+    "short_description": "Neutrophile sind die häufigsten weißen Blutkörperchen und reagieren rasch auf bakterielle Infekte. Erhöhte Werte finden sich bei Entzündungen, Stress und Rauchen. Sehr niedrige Werte erhöhen das Infektionsrisiko und brauchen Abklärung.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Lymphozyten",
+    "synonyms": [
+      "Lymphos",
+      "Lymphocyte Count"
+    ],
+    "short_description": "Lymphozyten steuern die gezielte Immunabwehr und umfassen T- und B-Zellen. Viral bedingte Infekte können sie erhöhen, während Stress oder Cortison sie senken. Das Differenzialblutbild setzt sie in Relation zu anderen Leukozyten.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Monozyten",
+    "synonyms": [
+      "Monos"
+    ],
+    "short_description": "Monozyten sind Vorläufer der Gewebemakrophagen und an chronischen Entzündungsprozessen beteiligt. Leichte Erhöhungen kommen bei Infekten und Erholung vor. Extreme Veränderungen gehören hämatologisch abgeklärt.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Eosinophile",
+    "synonyms": [
+      "Eos",
+      "Eosinophile Granulozyten"
+    ],
+    "short_description": "Eosinophile sind an Allergien und Parasitenabwehr beteiligt. Erhöhte Werte passen zu Asthma, Heuschnupfen oder Wurminfekten. Medikamente und seltene Erkrankungen können das Bild ebenfalls verändern.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Basophile",
+    "synonyms": [
+      "Basos",
+      "Basophile Granulozyten"
+    ],
+    "short_description": "Basophile sind seltene Leukozyten und an allergischen Reaktionen beteiligt. Isolierte Veränderungen sind oft wenig spezifisch. Im Gesamtkontext des Differenzialblutbildes gewinnen sie an Aussagekraft.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Myeloperoxidase Antikörper",
+    "synonyms": [
+      "MPO-Ak",
+      "p-ANCA Kontext"
+    ],
+    "short_description": "MPO-Antikörper gehören zu den ANCA und werden bei bestimmten Gefäßentzündungen bestimmt. Sie sind kein Ernährungsparameter, erscheinen aber in erweiterten Laborprofilen. Die Interpretation ist hochspezialisiert.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Vitamin A Serum",
+    "synonyms": [
+      "Retinol Serum",
+      "Serum-Vitamin-A"
+    ],
+    "short_description": "Der Vitamin-A-Serumwert wird selten routinemäßig gemessen und spiegelt vor allem schwere Mangel- oder Überdosierungszustände. Die Leber speichert große Mengen Retinol. Klinische Zeichen und Ernährungsanamnese bleiben wichtig.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Vitamin E Serum",
+    "synonyms": [
+      "Alpha-Tocopherol Serum"
+    ],
+    "short_description": "Serum-Vitamin-E wird bei Verdacht auf Mangel durch Fettmalabsorption bestimmt. Der Wert korreliert mit Blutfetten und sollte im Kontext interpretiert werden. Alimentäre Unterversorgung ist in Industrieländern selten.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "PTH-related Peptide",
+    "synonyms": [
+      "PTHrP"
+    ],
+    "short_description": "PTHrP wird bei unklaren Hypercalcämien gemessen, insbesondere wenn ein Tumorverdacht besteht. Es ahmt Parathormon-Effekte nach. Für die Alltagsernährung spielt es keine Rolle.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Osteocalcin",
+    "synonyms": [
+      "Knochenumbaumarker OC"
+    ],
+    "short_description": "Osteocalcin ist ein Marker des Knochenaufbaus und vitamin-K-abhängig carboxyliert. Es wird in der Osteoporosediagnostik ergänzend genutzt. Calcium, Vitamin D und Belastungstraining bleiben die Basis der Knochengesundheit.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "CrossLaps",
+    "synonyms": [
+      "CTX",
+      "Knochenabbau-Marker"
+    ],
+    "short_description": "CrossLaps spiegeln den Knochenabbau wider und werden nüchtern bestimmt. Sie helfen bei der Verlaufskontrolle einer Osteoporosetherapie. Ernährung und Bewegung beeinflussen den Knochenumsatz langfristig.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Vitamin K Status",
+    "synonyms": [
+      "untercarboxyliertes Osteocalcin",
+      "ucOC"
+    ],
+    "short_description": "Indirekte Marker wie untercarboxyliertes Osteocalcin können Hinweise auf die Vitamin-K-Versorgung geben. Routinemäßig werden sie selten bestimmt. Grünes Blattgemüse bleibt die wichtigste Quelle für Phyllochinon.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Selen im Serum",
+    "synonyms": [
+      "Serumselen",
+      "Se serum"
+    ],
+    "short_description": "Serumselen zeigt die aktuelle Selenversorgung und schwankt mit der Ernährung. Sehr hohe Werte können auf Überdosierung durch Nahrungsergänzung hinweisen. Der optimale Bereich ist schmaler als bei vielen anderen Nährstoffen.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Zink im Serum",
+    "synonyms": [
+      "Serumzink",
+      "Zn serum"
+    ],
+    "short_description": "Serumzink kann bei akutem Infekt sinken und spiegelt die Speicher nur begrenzt wider. Dennoch ist es der gängigste Laborwert bei Verdacht auf Zinkmangel. Klinische Zeichen und Ernährung gehören zur Bewertung.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Kupfer im Serum",
+    "synonyms": [
+      "Serumkupfer",
+      "Cu serum"
+    ],
+    "short_description": "Serumkupfer und Coeruloplasmin helfen bei der Abklärung von Kupferstoffwechselstörungen. Erhöhte Werte treten auch als Akute-Phase-Reaktion auf. Zinküberschuss kann Kupfer sekundär senken.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Coeruloplasmin",
+    "synonyms": [
+      "Ceruloplasmin",
+      "CP"
+    ],
+    "short_description": "Coeruloplasmin ist das wichtigste Kupfertransportprotein und ein Akute-Phase-Protein. Niedrige Werte passen zu Morbus Wilson oder schwerem Kupfermangel. Die Interpretation erfolgt zusammen mit Serumkupfer und Klinik.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Jod im Urin",
+    "synonyms": [
+      "Urinjod",
+      "UIC"
+    ],
+    "short_description": "Die Jodausscheidung im Urin schätzt die aktuelle Jodzufuhr und wird vor allem in Populationsstudien genutzt. Einzelmessungen streuen stark. Für Individuen zählen oft Klinik und Schilddrüsenlabor stärker.",
+    "category": "Blutwert"
+  },
+  {
+    "term": "Beta-Hydroxybutyrat",
+    "synonyms": [
+      "BHB Keton",
+      "3-Hydroxybutyrat"
+    ],
+    "short_description": "Beta-Hydroxybutyrat ist der wichtigste messbare Ketonkörper im Blut. Milde Erhöhungen treten bei Low-Carb und Fasten auf. Sehr hohe Werte mit Übelkeit und Azidose erfordern sofortige medizinische Hilfe.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Insulinsekretion",
+    "synonyms": [
+      "Betazellfunktion",
+      "Insulinausschüttung"
+    ],
+    "short_description": "Die Insulinsekretion beschreibt, wie viel Insulin die Bauchspeicheldrüse freisetzt. C-Peptid hilft, die Eigenproduktion einzuschätzen. Überforderung der Betazellen kann langfristig in Typ-2-Diabetes münden.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Glukosetoxizität",
+    "synonyms": [
+      "Glucose Toxicity"
+    ],
+    "short_description": "Anhaltend hohe Glukosespiegel schädigen Betazellen und Insulinempfindlichkeit zusätzlich. Das verschlechtert die Blutzuckerkontrolle in einem Teufelskreis. Senkung der Glukoselast durch Kost und Bewegung durchbricht ihn.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Lipotoxizität",
+    "synonyms": [
+      "Lipotoxicity"
+    ],
+    "short_description": "Lipotoxizität beschreibt die Schädigung von Leber, Muskel und Betazellen durch überschüssige Fettmetabolite. Sie hängt eng mit Insulinresistenz zusammen. Gewichtsreduktion und weniger Zuckerüberschuss mindern die Last.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Second Meal Effect",
+    "synonyms": [
+      "Zweite-Mahlzeit-Effekt"
+    ],
+    "short_description": "Der Second Meal Effect beschreibt, dass eine ballaststoffreiche Vormahlzeit den Blutzuckeranstieg der nächsten Mahlzeit dämpfen kann. Resistente Stärke und Essig werden in diesem Zusammenhang diskutiert. Er erklärt, warum Frühstücksqualität den Tag mitprägt.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Essensreihenfolge",
+    "synonyms": [
+      "Food Order",
+      "Gemüse zuerst"
+    ],
+    "short_description": "Die Essensreihenfolge beeinflusst den postprandialen Blutzucker messbar. Wer zuerst Gemüse und Protein isst und Kohlenhydrate danach, dämpft oft die Spitze. Es ist ein einfacher Alltagstrick ohne Kalorienzählen.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Portionskontrolle",
+    "synonyms": [
+      "Portionsgröße",
+      "Serving Size"
+    ],
+    "short_description": "Portionskontrolle steuert Energie- und Kohlenhydratzufuhr unabhängig vom Lebensmittellabel. Große Teller und Packungsgrößen fördern Überessen. Bewusste Mengen helfen besonders bei energiedichten Produkten.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Mahlzeitfrequenz",
+    "synonyms": [
+      "Essensfrequenz",
+      "Meal Timing"
+    ],
+    "short_description": "Die Mahlzeitfrequenz ist individuell: Manche stabilisieren den Hunger mit drei Mahlzeiten, andere mit klaren Pausen. Spätes Nachtessen kann die Glukoseantwort verschlechtern. Qualität und Gesamtkalorien bleiben entscheidend.",
+    "category": "Nährstoff"
+  },
+  {
+    "term": "Vitamin D2 vs D3",
+    "synonyms": [
+      "D2 und D3 Vergleich"
+    ],
+    "short_description": "Vitamin D3 hebt den 25-OH-D-Spiegel in den meisten Studien effizienter an als D2. Beide Formen können einen Mangel korrigieren, wenn die Dosis stimmt. Laborkontrollen zeigen, welche Strategie greift.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Aktives Vitamin B6",
+    "synonyms": [
+      "P5P",
+      "Pyridoxal-5-phosphat"
+    ],
+    "short_description": "Pyridoxal-5-phosphat ist die coenzymatisch aktive Form von Vitamin B6. Manche Nahrungsergänzung liefern direkt P5P statt Pyridoxin. Für Gesunde ist der Vorteil gegenüber Standardformen nicht immer belegt.",
+    "category": "Vitamin"
+  },
+  {
+    "term": "Natriumfluorid",
+    "synonyms": [
+      "NaF",
+      "Fluorid Salzform"
+    ],
+    "short_description": "Natriumfluorid wurde historisch in der Kariesprophylaxe und Osteoporoseforschung eingesetzt. Heute dominiert die lokale Fluoridanwendung über Zahnpasta. Systemische Hochdosen gehören nicht in die Selbstmedikation.",
+    "category": "Spurenelement"
+  },
+  {
+    "term": "Eisenstoffwechsel",
+    "synonyms": [
+      "Eisenhomöostase",
+      "Iron Metabolism"
+    ],
+    "short_description": "Der Eisenstoffwechsel umfasst Aufnahme, Transport über Transferrin und Speicherung in Ferritin. Hepcidin bremst die Aufnahme bei Entzündung. Laborpanels aus Ferritin, TSAT und Hb machen Störungen sichtbar.",
+    "category": "Stoffwechsel"
+  },
+  {
+    "term": "Hepcidin",
+    "synonyms": [
+      "Eisenhormon Hepcidin"
+    ],
+    "short_description": "Hepcidin ist das Schlüsselhormon der Eisenregulation und steigt bei Entzündung. Dann bleibt Eisen in den Speichern gefangen, obwohl Ferritin hoch wirken kann. Das erklärt funktionellen Eisenmangel bei chronischer Krankheit.",
+    "category": "Stoffwechsel"
+  }
+]

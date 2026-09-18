@@ -1,0 +1,4344 @@
+[
+  {
+    "term_key": "hs-CRP",
+    "term": {
+      "de": "hs-CRP",
+      "en": "hs-CRP",
+      "es": "hs-CRP",
+      "it": "hs-CRP",
+      "pt": "hs-CRP",
+      "fr": "hs-CRP",
+      "tr": "hs-CRP"
+    },
+    "synonyms": {
+      "de": [
+        "hochsensitives CRP",
+        "high-sensitivity CRP"
+      ],
+      "en": [
+        "high-sensitivity CRP",
+        "highly sensitive CRP"
+      ],
+      "es": [
+        "PCR ultrasensible",
+        "high-sensitivity CRP"
+      ],
+      "it": [
+        "PCR ad alta sensibilità",
+        "CRP altamente sensibile"
+      ],
+      "pt": [
+        "PCR ultrassensível",
+        "PCR de alta sensibilidade"
+      ],
+      "fr": [
+        "CRP ultrasensible",
+        "CRP haute sensibilité"
+      ],
+      "tr": [
+        "yüksek duyarlı CRP",
+        "hsCRP"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "hs-CRP erfasst niedrige Entzündungsgrade und wird als zusätzlicher Herz-Kreislauf-Risikomarker genutzt. Es ist nicht spezifisch für Arteriosklerose. Akute Infekte machen die Interpretation unbrauchbar.",
+      "en": "hs-CRP detects low-grade inflammation and is used as an additional cardiovascular risk marker. It is not specific for atherosclerosis. Acute infections make interpretation unreliable.",
+      "es": "La hs-CRP capta grados bajos de inflamación y se usa como marcador adicional de riesgo cardiovascular. No es específica de aterosclerosis. Las infecciones agudas hacen inutilizable la interpretación.",
+      "it": "La hs-CRP rileva gradi bassi di infiammazione e si usa come marcatore aggiuntivo di rischio cardiovascolare. Non è specifica per l'aterosclerosi. Le infezioni acute rendono l'interpretazione inutilizzabile.",
+      "pt": "A hs-CRP deteta graus baixos de inflamação e é usada como marcador adicional de risco cardiovascular. Não é específica para aterosclerose. Infeções agudas tornam a interpretação inviável.",
+      "fr": "La hs-CRP détecte des degrés faibles d'inflammation et sert de marqueur additionnel de risque cardiovasculaire. Elle n'est pas spécifique de l'artériosclérose. Les infections aiguës rendent l'interprétation inutilisable.",
+      "tr": "hs-CRP düşük düzeyli iltihabı saptar ve ek bir kardiyovasküler risk belirteci olarak kullanılır. Ateroskleroza özgü değildir. Akut enfeksiyonlar yorumu geçersiz kılar."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "BSG",
+    "term": {
+      "de": "BSG",
+      "en": "ESR",
+      "es": "VSG",
+      "it": "VES",
+      "pt": "VS",
+      "fr": "VS",
+      "tr": "ESH"
+    },
+    "synonyms": {
+      "de": [
+        "Blutsenkung",
+        "Blutkörperchensenkungsgeschwindigkeit",
+        "ESR"
+      ],
+      "en": [
+        "erythrocyte sedimentation rate",
+        "sed rate",
+        "ESR"
+      ],
+      "es": [
+        "Sedimentación",
+        "Velocidad de sedimentación globular",
+        "ESR"
+      ],
+      "it": [
+        "velocità di eritrosedimentazione",
+        "VES",
+        "ESR"
+      ],
+      "pt": [
+        "velocidade de sedimentação",
+        "VS",
+        "ESR"
+      ],
+      "fr": [
+        "vitesse de sédimentation",
+        "VS",
+        "ESR"
+      ],
+      "tr": [
+        "eritrosit sedimentasyon hızı",
+        "sedimentasyon",
+        "ESR"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Die BSG steigt bei Entzündungen, Anämien und Paraproteinen langsamer an als CRP. Sie ist unspezifisch, aber in manchen Verläufen weiterhin nützlich. Heute wird oft CRP bevorzugt.",
+      "en": "ESR rises more slowly than CRP in inflammation, anemia, and paraproteins. It is nonspecific but still useful in some courses. CRP is often preferred today.",
+      "es": "La VSG sube en inflamaciones, anemias y paraproteínas de forma más lenta que la PCR. Es inespecífica, pero en algunos cursos sigue siendo útil. Hoy suele preferirse la PCR.",
+      "it": "La VES sale più lentamente della PCR in infiammazioni, anemie e paraproteine. È aspecifica, ma resta utile in alcuni decorsi. Oggi si preferisce spesso la PCR.",
+      "pt": "A VS sobe mais lentamente do que a PCR em inflamação, anemias e paraproteínas. É inespecífica, mas ainda útil em alguns cursos. Hoje prefere-se frequentemente a PCR.",
+      "fr": "La VS monte plus lentement que la CRP dans les inflammations, anémies et paraprotéines. Elle est non spécifique, mais reste utile dans certains parcours. Aujourd'hui, la CRP est souvent préférée.",
+      "tr": "ESH, inflamasyon, anemi ve paraproteinlerde CRP'den daha yavaş yükselir. Spesifik değildir ama bazı seyirlerde hâlâ yararlıdır. Günümüzde çoğu zaman CRP tercih edilir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Interleukin-6",
+    "term": {
+      "de": "Interleukin-6",
+      "en": "Interleukin-6",
+      "es": "Interleucina-6",
+      "it": "Interleuchina-6",
+      "pt": "Interleucina-6",
+      "fr": "Interleukine-6",
+      "tr": "İnterlökin-6"
+    },
+    "synonyms": {
+      "de": [
+        "IL-6"
+      ],
+      "en": [
+        "IL-6"
+      ],
+      "es": [
+        "IL-6"
+      ],
+      "it": [
+        "IL-6"
+      ],
+      "pt": [
+        "IL-6"
+      ],
+      "fr": [
+        "IL-6"
+      ],
+      "tr": [
+        "IL-6"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Interleukin-6 ist ein Botenstoff der Entzündungsreaktion und treibt unter anderem die CRP-Bildung an. Es wird eher in speziellen Fragestellungen gemessen. Chronisch erhöhte Entzündung hängt mit Stoffwechselrisiko zusammen.",
+      "en": "Interleukin-6 is an inflammatory messenger that among other things drives CRP production. It is measured mainly in special clinical questions. Chronically elevated inflammation is linked to metabolic risk.",
+      "es": "La interleucina-6 es un mensajero de la reacción inflamatoria e impulsa, entre otras cosas, la formación de PCR. Se mide más bien en cuestiones especiales. La inflamación crónicamente elevada se asocia al riesgo metabólico.",
+      "it": "L'interleuchina-6 è un messaggero della risposta infiammatoria e stimola tra l'altro la formazione di PCR. Si misura soprattutto in quesiti speciali. L'infiammazione cronicamente elevata si collega al rischio metabolico.",
+      "pt": "A interleucina-6 é um mensageiro da resposta inflamatória e impulsiona, entre outros, a formação de PCR. Mede-se sobretudo em questões especiais. A inflamação cronicamente elevada associa-se a risco metabólico.",
+      "fr": "L'interleukine-6 est un messager de la réaction inflammatoire et stimule notamment la formation de CRP. Elle se mesure plutôt dans des questions spécialisées. Une inflammation chroniquement élevée est liée au risque métabolique.",
+      "tr": "İnterlökin-6, inflamatuar yanıtın bir habercisidir ve diğerlerinin yanı sıra CRP oluşumunu tetikler. Daha çok özel sorularda ölçülür. Kronik yüksek inflamasyon metabolik riskle ilişkilidir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "25-OH-Vitamin D",
+    "term": {
+      "de": "25-OH-Vitamin D",
+      "en": "25-OH vitamin D",
+      "es": "25-OH-vitamina D",
+      "it": "25-OH vitamina D",
+      "pt": "25-OH vitamina D",
+      "fr": "25-OH vitamine D",
+      "tr": "25-OH D vitamini"
+    },
+    "synonyms": {
+      "de": [
+        "25-Hydroxyvitamin D",
+        "Calcidiol",
+        "Vitamin-D-Spiegel"
+      ],
+      "en": [
+        "25-hydroxyvitamin D",
+        "calcidiol",
+        "vitamin D level"
+      ],
+      "es": [
+        "25-hidroxivitamina D",
+        "Calcidiol",
+        "Nivel de vitamina D"
+      ],
+      "it": [
+        "25-idrossivitamina D",
+        "calcidiolo",
+        "livello di vitamina D"
+      ],
+      "pt": [
+        "25-hidroxivitamina D",
+        "calcidiol",
+        "nível de vitamina D"
+      ],
+      "fr": [
+        "25-hydroxyvitamine D",
+        "calcidiol",
+        "taux de vitamine D"
+      ],
+      "tr": [
+        "25-hidroksi D vitamini",
+        "kalsidiol",
+        "D vitamini düzeyi"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "25-OH-Vitamin D ist der beste Speicherwert für die Vitamin-D-Versorgung. Zielbereiche werden je nach Fachgesellschaft etwas unterschiedlich angegeben. Supplementierung sollte nach Ausgangswert und Jahreszeit gesteuert werden.",
+      "en": "25-OH vitamin D is the best storage marker of vitamin D status. Target ranges differ slightly by medical society. Supplementation should be guided by baseline level and season.",
+      "es": "La 25-OH-vitamina D es el mejor valor de reserva del aporte de vitamina D. Los rangos objetivo varían algo según la sociedad científica. La suplementación debe guiarse por el valor basal y la estación del año.",
+      "it": "La 25-OH vitamina D è il miglior marker di deposito dello stato vitaminico D. I range target variano un po' secondo le società scientifiche. L'integrazione va modulata in base al valore basale e alla stagione.",
+      "pt": "A 25-OH vitamina D é o melhor marcador de reserva do estado de vitamina D. Os intervalos-alvo variam um pouco conforme a sociedade científica. A suplementação deve ser guiada pelo valor basal e pela estação.",
+      "fr": "La 25-OH vitamine D est le meilleur marqueur de réserve du statut en vitamine D. Les cibles varient un peu selon les sociétés savantes. La supplémentation doit être pilotée selon le taux de départ et la saison.",
+      "tr": "25-OH D vitamini, D vitamini durumunun en iyi depo göstergesidir. Hedef aralıklar bilimsel derneklere göre biraz farklılık gösterir. Gıda takviyesi başlangıç değeri ve mevsime göre yönlendirilmelidir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Vitamin B12 Serum",
+    "term": {
+      "de": "Vitamin B12 Serum",
+      "en": "Serum vitamin B12",
+      "es": "Vitamina B12 sérica",
+      "it": "Vitamina B12 sierica",
+      "pt": "Vitamina B12 sérica",
+      "fr": "Vitamine B12 sérique",
+      "tr": "Serum B12 vitamini"
+    },
+    "synonyms": {
+      "de": [
+        "Cobalamin Serum",
+        "B12-Spiegel"
+      ],
+      "en": [
+        "serum cobalamin",
+        "B12 level"
+      ],
+      "es": [
+        "Cobalamina sérica",
+        "Nivel de B12"
+      ],
+      "it": [
+        "cobalamina sierica",
+        "livello di B12"
+      ],
+      "pt": [
+        "cobalamina sérica",
+        "nível de B12"
+      ],
+      "fr": [
+        "cobalamine sérique",
+        "taux de B12"
+      ],
+      "tr": [
+        "serum kobalamin",
+        "B12 düzeyi"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Der B12-Serumwert erfasst die Versorgung, kann aber im Graubereich unklar sein. Dann helfen Holotranscobalamin, Methylmalonsäure oder Homocystein weiter. Vegetarische und vegane Ernährung erhöht das Risiko für niedrige Werte.",
+      "en": "Serum B12 reflects status but can be unclear in the gray zone. Then holotranscobalamin, methylmalonic acid, or homocysteine help further. Vegetarian and vegan diets raise the risk of low values.",
+      "es": "El valor sérico de B12 captura el aporte, pero en el rango gris puede ser poco claro. Entonces ayudan holotranscobalamina, ácido metilmalónico u homocisteína. La alimentación vegetariana y vegana eleva el riesgo de valores bajos.",
+      "it": "Il valore sierico di B12 riflette lo stato, ma può essere poco chiaro nella zona grigia. Allora aiutano olotranscobalamina, acido metilmalonico o omocisteina. Diete vegetariane e vegane aumentano il rischio di valori bassi.",
+      "pt": "O valor sérico de B12 reflecte o estado, mas pode ser dúbio na zona cinzenta. Então ajudam holotranscobalamina, ácido metilmalónico ou homocisteína. Dietas vegetarianas e vegan aumentam o risco de valores baixos.",
+      "fr": "Le taux sérique de B12 reflète le statut, mais peut être ambigu dans la zone grise. Alors holotranscobalamine, acide méthylmalonique ou homocystéine aident. Les régimes végétariens et véganes augmentent le risque de valeurs basses.",
+      "tr": "Serum B12 düzeyi durumu yansıtır ancak gri bölgede belirsiz olabilir. O zaman holotranskobalamin, metilmalonik asit veya homosistein yardımcı olur. Vejetaryen ve vegan beslenme düşük değer riskini artırır."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Holotranscobalamin",
+    "term": {
+      "de": "Holotranscobalamin",
+      "en": "Holotranscobalamin",
+      "es": "Holotranscobalamina",
+      "it": "Olotranscobalamina",
+      "pt": "Holotranscobalamina",
+      "fr": "Holotranscobalamine",
+      "tr": "Holotranskobalamin"
+    },
+    "synonyms": {
+      "de": [
+        "aktives B12",
+        "Holo-TC"
+      ],
+      "en": [
+        "active B12",
+        "Holo-TC"
+      ],
+      "es": [
+        "B12 activa",
+        "Holo-TC"
+      ],
+      "it": [
+        "B12 attiva",
+        "Holo-TC"
+      ],
+      "pt": [
+        "B12 ativa",
+        "Holo-TC"
+      ],
+      "fr": [
+        "B12 active",
+        "Holo-TC"
+      ],
+      "tr": [
+        "aktif B12",
+        "Holo-TC"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Holotranscobalamin misst den biologisch verfügbaren Anteil von Vitamin B12. Es kann einen Mangel früher anzeigen als der Gesamt-B12-Wert. Nicht jedes Labor bietet den Test routinemäßig an.",
+      "en": "Holotranscobalamin measures the biologically available fraction of vitamin B12. It can indicate deficiency earlier than total B12. Not every lab offers the test routinely.",
+      "es": "La holotranscobalamina mide la fracción biológicamente disponible de la vitamina B12. Puede indicar una deficiencia antes que el valor total de B12. No todos los laboratorios ofrecen la prueba de forma rutinaria.",
+      "it": "L'olotranscobalamina misura la frazione biologicamente disponibile di vitamina B12. Può segnalare carenza prima della B12 totale. Non tutti i laboratori offrono il test di routine.",
+      "pt": "A holotranscobalamina mede a fração biologicamente disponível de vitamina B12. Pode indicar deficiência mais cedo do que a B12 total. Nem todos os laboratórios oferecem o teste de rotina.",
+      "fr": "L'holotranscobalamine mesure la fraction biologiquement disponible de vitamine B12. Elle peut indiquer une carence plus tôt que la B12 totale. Tous les laboratoires ne proposent pas le test en routine.",
+      "tr": "Holotranskobalamin, B12 vitamininin biyolojik olarak kullanılabilir kısmını ölçer. Toplam B12'den daha erken eksikliği gösterebilir. Her laboratuvar testi rutin olarak sunmaz."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Homocystein",
+    "term": {
+      "de": "Homocystein",
+      "en": "Homocysteine",
+      "es": "Homocisteína",
+      "it": "Omocisteina",
+      "pt": "Homocisteína",
+      "fr": "Homocystéine",
+      "tr": "Homosistein"
+    },
+    "synonyms": {
+      "de": [
+        "Hcy",
+        "Homocysteinspiegel"
+      ],
+      "en": [
+        "Hcy",
+        "homocysteine level"
+      ],
+      "es": [
+        "Hcy",
+        "Nivel de homocisteína"
+      ],
+      "it": [
+        "Hcy",
+        "livello di omocisteina"
+      ],
+      "pt": [
+        "Hcy",
+        "nível de homocisteína"
+      ],
+      "fr": [
+        "Hcy",
+        "taux d'homocystéine"
+      ],
+      "tr": [
+        "Hcy",
+        "homosistein düzeyi"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Homocystein steigt bei Mangel an Folat, Vitamin B12 oder B6 und gilt als Risikomarker für Gefäße. Eine Senkung über Vitamine verbessert nicht immer automatisch Outcomes. Dennoch lohnt die Ursachensuche bei erhöhten Werten.",
+      "en": "Homocysteine rises with folate, vitamin B12, or B6 deficiency and is considered a vascular risk marker. Lowering it with vitamins does not always automatically improve outcomes. Still, searching for causes of elevated values is worthwhile.",
+      "es": "La homocisteína se eleva en deficiencia de folato, vitamina B12 o B6 y se considera marcador de riesgo vascular. Bajarla con vitaminas no siempre mejora automáticamente los resultados clínicos. Aun así merece buscar la causa si los valores están altos.",
+      "it": "L'omocisteina sale con carenza di folato, vitamina B12 o B6 e si considera un marcatore di rischio vascolare. Ridurla con vitamine non migliora sempre automaticamente gli esiti. Cercare le cause di valori elevati resta comunque utile.",
+      "pt": "A homocisteína sobe com défice de folato, vitamina B12 ou B6 e é considerada marcador de risco vascular. Reduzi-la com vitaminas nem sempre melhora automaticamente os desfechos. Ainda assim, vale procurar causas em valores elevados.",
+      "fr": "L'homocystéine monte en cas de carence en folate, vitamine B12 ou B6 et est un marqueur de risque vasculaire. La baisser avec des vitamines n'améliore pas toujours automatiquement les issues. Chercher les causes d'élévation reste néanmoins utile.",
+      "tr": "Homosistein, folat, B12 veya B6 eksikliğinde yükselir ve damar risk belirteci sayılır. Vitaminlerle düşürmek sonuçları her zaman otomatik iyileştirmez. Yine de yüksek değerlerde neden aramak değerlidir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Methylmalonsäure",
+    "term": {
+      "de": "Methylmalonsäure",
+      "en": "Methylmalonic acid",
+      "es": "Ácido metilmalónico",
+      "it": "Acido metilmalonico",
+      "pt": "Ácido metilmalónico",
+      "fr": "Acide méthylmalonique",
+      "tr": "Metilmalonik asit"
+    },
+    "synonyms": {
+      "de": [
+        "MMA"
+      ],
+      "en": [
+        "MMA"
+      ],
+      "es": [
+        "MMA"
+      ],
+      "it": [
+        "MMA"
+      ],
+      "pt": [
+        "MMA"
+      ],
+      "fr": [
+        "MMA"
+      ],
+      "tr": [
+        "MMA"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Methylmalonsäure steigt spezifisch bei funktionellem Vitamin-B12-Mangel. Der Wert hilft, Grenzfälle des Serum-B12 zu klären. Niereninsuffizienz kann MMA ebenfalls erhöhen.",
+      "en": "Methylmalonic acid rises specifically in functional vitamin B12 deficiency. The value helps clarify borderline serum B12 cases. Kidney failure can also raise MMA.",
+      "es": "El ácido metilmalónico se eleva de forma específica en deficiencia funcional de vitamina B12. El valor ayuda a aclarar casos límite de B12 sérica. La insuficiencia renal también puede elevar el MMA.",
+      "it": "L'acido metilmalonico sale in modo specifico nella carenza funzionale di vitamina B12. Il valore aiuta a chiarire i casi borderline di B12 sierica. L'insufficienza renale può elevare anch'essa l'MMA.",
+      "pt": "O ácido metilmalónico sobe de forma específica na deficiência funcional de vitamina B12. O valor ajuda a esclarecer casos limítrofes de B12 sérica. A insuficiência renal também pode elevar o MMA.",
+      "fr": "L'acide méthylmalonique monte de façon spécifique en cas de carence fonctionnelle en vitamine B12. La valeur aide à clarifier les cas limites de B12 sérique. L'insuffisance rénale peut aussi élever le MMA.",
+      "tr": "Metilmalonik asit, işlevsel B12 vitamini eksikliğinde özgül olarak yükselir. Değer, sınırda serum B12 olgularını netleştirmeye yardım eder. Böbrek yetmezliği de MMA'yı yükseltebilir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Natrium im Serum",
+    "term": {
+      "de": "Natrium im Serum",
+      "en": "Serum sodium",
+      "es": "Sodio sérico",
+      "it": "Sodio sierico",
+      "pt": "Sódio sérico",
+      "fr": "Sodium sérique",
+      "tr": "Serum sodyum"
+    },
+    "synonyms": {
+      "de": [
+        "Na serum",
+        "Serumnatrium"
+      ],
+      "en": [
+        "Na serum",
+        "serum Na"
+      ],
+      "es": [
+        "Na sérico",
+        "Sodio en suero"
+      ],
+      "it": [
+        "Na sierico",
+        "sodio nel siero"
+      ],
+      "pt": [
+        "Na sérico",
+        "sódio no soro"
+      ],
+      "fr": [
+        "Na sérique",
+        "sodium sérique"
+      ],
+      "tr": [
+        "serum Na",
+        "serumnatrium"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Serumnatrium spiegelt das Verhältnis von Natrium zu Körperwasser wider. Hyponatriämie und Hypernatriämie können neurologische Symptome verursachen. Ursachen sind vielfältig und brauchen ärztliche Abklärung.",
+      "en": "Serum sodium reflects the balance of sodium to body water. Hyponatremia and hypernatremia can cause neurological symptoms. Causes are many and need medical evaluation.",
+      "es": "El sodio sérico refleja la relación entre sodio y agua corporal. La hiponatremia y la hipernatremia pueden causar síntomas neurológicos. Las causas son diversas y requieren valoración médica.",
+      "it": "Il sodio sierico riflette il rapporto tra sodio e acqua corporea. Iponatriemia e ipernatriemia possono causare sintomi neurologici. Le cause sono molteplici e richiedono valutazione medica.",
+      "pt": "O sódio sérico reflecte a relação entre sódio e água corporal. Hiponatremia e hipernatremia podem causar sintomas neurológicos. As causas são diversas e exigem esclarecimento médico.",
+      "fr": "Le sodium sérique reflète le rapport sodium/eau corporelle. Hyponatrémie et hypernatrémie peuvent causer des symptômes neurologiques. Les causes sont multiples et demandent une évaluation médicale.",
+      "tr": "Serum sodyum, sodyum ile vücut suyu oranını yansıtır. Hiponatremi ve hipernatremi nörolojik belirtilere yol açabilir. Nedenler çeşitlidir ve tıbbi değerlendirme gerektirir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Kalium im Serum",
+    "term": {
+      "de": "Kalium im Serum",
+      "en": "Serum potassium",
+      "es": "Potasio sérico",
+      "it": "Potassio sierico",
+      "pt": "Potássio sérico",
+      "fr": "Potassium sérique",
+      "tr": "Serum potasyum"
+    },
+    "synonyms": {
+      "de": [
+        "K serum",
+        "Serumkalium"
+      ],
+      "en": [
+        "K serum",
+        "serum K"
+      ],
+      "es": [
+        "K sérico",
+        "Potasio en suero"
+      ],
+      "it": [
+        "K sierico",
+        "potassio nel siero"
+      ],
+      "pt": [
+        "K sérico",
+        "potássio no soro"
+      ],
+      "fr": [
+        "K sérique",
+        "potassium sérique"
+      ],
+      "tr": [
+        "serum K",
+        "serum potasyum"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Serumkalium ist kritisch für Herzrhythmus und Muskelfunktion. Schon kleine Abweichungen können gefährlich sein. Diuretika, Niere und Säure-Basen-Lage sind häufige Einflussfaktoren.",
+      "en": "Serum potassium is critical for heart rhythm and muscle function. Even small deviations can be dangerous. Diuretics, the kidney, and acid–base status are common influences.",
+      "es": "El potasio sérico es crítico para el ritmo cardíaco y la función muscular. Incluso pequeñas desviaciones pueden ser peligrosas. Diuréticos, riñón y equilibrio ácido-base son factores de influencia frecuentes.",
+      "it": "Il potassio sierico è critico per ritmo cardiaco e funzione muscolare. Anche piccole variazioni possono essere pericolose. Diuretici, rene ed equilibrio acido-base sono fattori frequenti.",
+      "pt": "O potássio sérico é crítico para o ritmo cardíaco e a função muscular. Mesmo pequenos desvios podem ser perigosos. Diuréticos, rim e equilíbrio ácido-base são influências frequentes.",
+      "fr": "Le potassium sérique est critique pour le rythme cardiaque et la fonction musculaire. Même de petits écarts peuvent être dangereux. Diurétiques, rein et équilibre acido-basique sont des influences fréquentes.",
+      "tr": "Serum potasyum, kalp ritmi ve kas işlevi için kritiktir. Küçük sapmalar bile tehlikeli olabilir. Diüretikler, böbrek ve asit-baz durumu sık etki faktörleridir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Chlorid im Serum",
+    "term": {
+      "de": "Chlorid im Serum",
+      "en": "Serum chloride",
+      "es": "Cloruro sérico",
+      "it": "Cloruro sierico",
+      "pt": "Cloreto sérico",
+      "fr": "Chlorure sérique",
+      "tr": "Serum klorür"
+    },
+    "synonyms": {
+      "de": [
+        "Cl serum"
+      ],
+      "en": [
+        "Cl serum"
+      ],
+      "es": [
+        "Cl sérico"
+      ],
+      "it": [
+        "Cl sierico"
+      ],
+      "pt": [
+        "Cl sérico"
+      ],
+      "fr": [
+        "Cl sérique"
+      ],
+      "tr": [
+        "serum Cl"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Serumchlorid wird zusammen mit Natrium und Bicarbonat im Elektrolytstatus betrachtet. Verschiebungen passen zu Erbrechen, Durchfall oder Säure-Basen-Störungen. Der Wert allein erklärt selten das Gesamtbild.",
+      "en": "Serum chloride is interpreted with sodium and bicarbonate in the electrolyte panel. Shifts fit vomiting, diarrhea, or acid–base disorders. The value alone rarely explains the full picture.",
+      "es": "El cloruro sérico se valora junto con sodio y bicarbonato en el estado electrolítico. Los desplazamientos encajan con vómitos, diarrea o trastornos ácido-base. El valor solo rara vez explica el panorama completo.",
+      "it": "Il cloruro sierico si valuta con sodio e bicarbonato nello stato elettrolitico. Gli scostamenti si adattano a vomito, diarrea o disturbi acido-base. Il valore da solo raramente spiega il quadro complessivo.",
+      "pt": "O cloreto sérico interpreta-se com sódio e bicarbonato no estado eletrolítico. Desvios encaixam em vómitos, diarreia ou perturbações ácido-base. O valor isolado raramente explica o quadro completo.",
+      "fr": "Le chlorure sérique s'interprète avec sodium et bicarbonate dans le bilan électrolytique. Les décalages correspondent à vomissements, diarrhée ou troubles acido-basiques. La valeur seule explique rarement le tableau global.",
+      "tr": "Serum klorür, elektrolit durumunda sodyum ve bikarbonatla birlikte değerlendirilir. Kaymalar kusma, ishal veya asit-baz bozukluklarına uyar. Değer tek başına nadiren tüm tabloyu açıklar."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Ionisiertes Calcium",
+    "term": {
+      "de": "Ionisiertes Calcium",
+      "en": "Ionized calcium",
+      "es": "Calcio ionizado",
+      "it": "Calcio ionizzato",
+      "pt": "Cálcio ionizado",
+      "fr": "Calcium ionisé",
+      "tr": "İyonize kalsiyum"
+    },
+    "synonyms": {
+      "de": [
+        "freies Calcium",
+        "Ca++"
+      ],
+      "en": [
+        "free calcium",
+        "Ca++"
+      ],
+      "es": [
+        "Calcio libre",
+        "Ca++"
+      ],
+      "it": [
+        "calcio libero",
+        "Ca++"
+      ],
+      "pt": [
+        "cálcio livre",
+        "Ca++"
+      ],
+      "fr": [
+        "calcium libre",
+        "Ca++"
+      ],
+      "tr": [
+        "serbest kalsiyum",
+        "Ca++"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Ionisiertes Calcium ist der physiologisch aktive Anteil und unabhängig vom Albumin interpretierbar. Es ist relevant bei Tetanie, Intensivmedizin und Nebenschilddrüsenstörungen. Die Messung erfordert spezielle Probenbedingungen.",
+      "en": "Ionized calcium is the physiologically active fraction and can be interpreted independently of albumin. It matters in tetany, intensive care, and parathyroid disorders. Measurement needs special sample conditions.",
+      "es": "El calcio ionizado es la fracción fisiológicamente activa e interpretable con independencia de la albúmina. Es relevante en tetania, medicina intensiva y trastornos paratiroideos. La medición requiere condiciones especiales de muestra.",
+      "it": "Il calcio ionizzato è la frazione fisiologicamente attiva e si interpreta indipendentemente dall'albumina. È rilevante in tetania, terapia intensiva e disturbi paratiroidei. La misura richiede condizioni particolari del campione.",
+      "pt": "O cálcio ionizado é a fração fisiologicamente ativa e interpreta-se independentemente da albumina. É relevante em tetania, cuidados intensivos e perturbações da paratiroide. A medição exige condições especiais da amostra.",
+      "fr": "Le calcium ionisé est la fraction physiologiquement active et s'interprète indépendamment de l'albumine. Il est pertinent en tétanie, réanimation et troubles parathyroïdiens. La mesure exige des conditions d'échantillon particulières.",
+      "tr": "İyonize kalsiyum, fizyolojik olarak aktif kısımdır ve albuminden bağımsız yorumlanabilir. Tetani, yoğun bakım ve paratiroit bozukluklarında önemlidir. Ölçüm özel numune koşulları gerektirir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Cortisol",
+    "term": {
+      "de": "Cortisol",
+      "en": "Cortisol",
+      "es": "Cortisol",
+      "it": "Cortisolo",
+      "pt": "Cortisol",
+      "fr": "Cortisol",
+      "tr": "Kortizol"
+    },
+    "synonyms": {
+      "de": [
+        "Serumcortisol",
+        "Stresshormon"
+      ],
+      "en": [
+        "serum cortisol",
+        "stress hormone"
+      ],
+      "es": [
+        "Cortisol sérico",
+        "Hormona del estrés"
+      ],
+      "it": [
+        "cortisolo sierico",
+        "ormone dello stress"
+      ],
+      "pt": [
+        "cortisol sérico",
+        "hormona do stresse"
+      ],
+      "fr": [
+        "cortisol sérique",
+        "hormone du stress"
+      ],
+      "tr": [
+        "serum kortizol",
+        "stres hormonu"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Cortisol folgt einer Tagesrhythmik und beeinflusst Zucker, Blutdruck und Entzündung. Morgenwerte und Funktionstests dienen der Abklärung von Über- oder Unterfunktion. Chronischer Stress ist nicht gleichbedeutend mit krankhaft hohen Werten.",
+      "en": "Cortisol follows a daily rhythm and affects sugar, blood pressure, and inflammation. Morning values and function tests help evaluate over- or underactivity. Chronic stress is not the same as pathologically high levels.",
+      "es": "El cortisol sigue un ritmo diario e influye en azúcar, presión arterial e inflamación. Valores matutinos y pruebas funcionales sirven para aclarar hiper- o hipofunción. El estrés crónico no equivale a valores patológicamente altos.",
+      "it": "Il cortisolo segue un ritmo giornaliero e influenza zucchero, pressione e infiammazione. Valori mattutini e test funzionali servono a chiarire iper o ipofunzione. Lo stress cronico non equivale a valori patologicamente alti.",
+      "pt": "O cortisol segue um ritmo diário e influencia açúcar, pressão arterial e inflamação. Valores matinais e testes funcionais servem para esclarecer hiper ou hipofunção. O stresse crónico não equivale a valores patologicamente altos.",
+      "fr": "Le cortisol suit un rythme journalier et influence sucre, tension et inflammation. Valeurs du matin et tests fonctionnels servent à clarifier hyper- ou hypofonction. Le stress chronique n'équivaut pas à des taux pathologiquement élevés.",
+      "tr": "Kortizol günlük ritmi izler; şeker, kan basıncı ve inflamasyonu etkiler. Sabah değerleri ve işlev testleri aşırı veya yetersiz işlevi aydınlatır. Kronik stres, patolojik yüksek değerlerle aynı değildir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Nüchterninsulin Quotient",
+    "term": {
+      "de": "Nüchterninsulin Quotient",
+      "en": "Fasting insulin ratio",
+      "es": "Cociente insulina en ayunas",
+      "it": "Quoziente insulina a digiuno",
+      "pt": "Quociente de insulina em jejum",
+      "fr": "Quotient d'insuline à jeun",
+      "tr": "Açlık insülin oranı"
+    },
+    "synonyms": {
+      "de": [
+        "Insulin-Glukose-Verhältnis"
+      ],
+      "en": [
+        "insulin-to-glucose ratio"
+      ],
+      "es": [
+        "Relación insulina-glucosa"
+      ],
+      "it": [
+        "Rapporto insulina-glucosio"
+      ],
+      "pt": [
+        "relação insulina-glicose"
+      ],
+      "fr": [
+        "rapport insuline-glucose"
+      ],
+      "tr": [
+        "insülin-glukoz oranı"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Das Verhältnis von Insulin zu Glukose ergänzt HOMA-IR bei der Einschätzung der Insulinempfindlichkeit. Hohe Insulinspiegel bei noch normalen Glukosewerten können früh warnen. Lebensstilmaßnahmen greifen hier besonders gut.",
+      "en": "The insulin-to-glucose ratio complements HOMA-IR in assessing insulin sensitivity. High insulin with still-normal glucose can warn early. Lifestyle measures work especially well here.",
+      "es": "La relación entre insulina y glucosa complementa el HOMA-IR en la valoración de la sensibilidad a la insulina. Niveles altos de insulina con glucosa aún normal pueden alertar de forma temprana. Aquí las medidas de estilo de vida suelen ser especialmente eficaces.",
+      "it": "Il rapporto insulina-glucosio integra l'HOMA-IR nella stima della sensibilità insulinica. Insulina alta con glucosio ancora normale può allertare precocemente. Le misure di stile di vita funzionano particolarmente bene qui.",
+      "pt": "A relação insulina-glicose complementa o HOMA-IR na avaliação da sensibilidade à insulina. Insulina elevada com glicose ainda normal pode alertar cedo. Medidas de estilo de vida funcionam especialmente bem aqui.",
+      "fr": "Le rapport insuline-glucose complète le HOMA-IR pour estimer la sensibilité à l'insuline. Une insuline élevée avec une glycémie encore normale peut alerter tôt. Les mesures de mode de vie agissent particulièrement bien ici.",
+      "tr": "İnsülin-glukoz oranı, insülin duyarlılığını değerlendirmede HOMA-IR'yi tamamlar. Hâlâ normal glukozda yüksek insülin erken uyarı olabilir. Yaşam tarzı önlemleri burada özellikle iyi işe yarar."
+    },
+    "related_chapters": [
+      1,
+      3,
+      5,
+      9
+    ]
+  },
+  {
+    "term_key": "SHBG",
+    "term": {
+      "de": "SHBG",
+      "en": "SHBG",
+      "es": "SHBG",
+      "it": "SHBG",
+      "pt": "SHBG",
+      "fr": "SHBG",
+      "tr": "SHBG"
+    },
+    "synonyms": {
+      "de": [
+        "Sexualhormon-bindendes Globulin"
+      ],
+      "en": [
+        "sex hormone-binding globulin"
+      ],
+      "es": [
+        "Globulina fijadora de hormonas sexuales"
+      ],
+      "it": [
+        "globulina legante gli ormoni sessuali"
+      ],
+      "pt": [
+        "globulina ligadora de hormonas sexuais"
+      ],
+      "fr": [
+        "globuline liant les hormones sexuelles"
+      ],
+      "tr": [
+        "cinsiyet hormonu bağlayıcı globulin"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "SHBG bindet Sexualhormone und wird von Insulin, Schilddrüse und Leber beeinflusst. Niedrige Werte finden sich häufig bei Insulinresistenz. Es ist ein ergänzender Stoffwechselmarker, kein Routinescreening für alle.",
+      "en": "SHBG binds sex hormones and is influenced by insulin, thyroid, and liver. Low values are common in insulin resistance. It is a complementary metabolic marker, not routine screening for everyone.",
+      "es": "La SHBG une hormonas sexuales y se ve influida por insulina, tiroides e hígado. Valores bajos se encuentran con frecuencia en resistencia a la insulina. Es un marcador metabólico complementario, no un cribado rutinario para todos.",
+      "it": "La SHBG lega gli ormoni sessuali ed è influenzata da insulina, tiroide e fegato. Valori bassi sono frequenti nell'insulinoresistenza. È un marcatore metabolico complementare, non uno screening di routine per tutti.",
+      "pt": "A SHBG liga hormonas sexuais e é influenciada por insulina, tiroide e fígado. Valores baixos são frequentes na resistência à insulina. É um marcador metabólico complementar, não um rastreio de rotina para todos.",
+      "fr": "La SHBG lie les hormones sexuelles et est influencée par l'insuline, la thyroïde et le foie. Des valeurs basses sont fréquentes en résistance à l'insuline. C'est un marqueur métabolique complémentaire, pas un dépistage de routine pour tous.",
+      "tr": "SHBG cinsiyet hormonlarını bağlar; insülin, tiroit ve karaciğerden etkilenir. Düşük değerler insülin direncinde sıktır. Herkes için rutin tarama değil, tamamlayıcı bir metabolizma belirtecidir."
+    },
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "DHEAS",
+    "term": {
+      "de": "DHEAS",
+      "en": "DHEAS",
+      "es": "DHEAS",
+      "it": "DHEAS",
+      "pt": "DHEAS",
+      "fr": "DHEAS",
+      "tr": "DHEAS"
+    },
+    "synonyms": {
+      "de": [
+        "DHEA-S",
+        "Dehydroepiandrosteronsulfat"
+      ],
+      "en": [
+        "DHEA-S",
+        "dehydroepiandrosterone sulfate"
+      ],
+      "es": [
+        "DHEA-S",
+        "Sulfato de dehidroepiandrosterona"
+      ],
+      "it": [
+        "DHEA-S",
+        "solfato di deidroepiandrosterone"
+      ],
+      "pt": [
+        "DHEA-S",
+        "sulfato de desidroepiandrosterona"
+      ],
+      "fr": [
+        "DHEA-S",
+        "sulfate de déhydroépiandrostérone"
+      ],
+      "tr": [
+        "DHEA-S",
+        "dehidroepiandrosteron sülfat"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "DHEAS ist ein Nebennierenhormon und wird bei bestimmten hormonellen Fragestellungen gemessen. Extreme Werte können auf Nebennierenprobleme hinweisen. Für die Alltagsernährung spielt es eine untergeordnete Rolle.",
+      "en": "DHEAS is an adrenal hormone measured in certain hormonal questions. Extreme values can point to adrenal problems. It plays a minor role in everyday nutrition.",
+      "es": "El DHEAS es una hormona suprarrenal y se mide en ciertas cuestiones hormonales. Valores extremos pueden apuntar a problemas de las glándulas suprarrenales. Para la alimentación cotidiana desempeña un papel secundario.",
+      "it": "Il DHEAS è un ormone surrenalico misurato in certi quesiti ormonali. Valori estremi possono indicare problemi surrenalici. Nell'alimentazione quotidiana ha un ruolo secondario.",
+      "pt": "A DHEAS é uma hormona adrenal medida em certas questões hormonais. Valores extremos podem apontar problemas adrenais. Na nutrição do dia a dia tem um papel secundário.",
+      "fr": "La DHEAS est une hormone surrénalienne mesurée dans certaines questions hormonales. Des valeurs extrêmes peuvent indiquer des problèmes surrénaliens. Pour l'alimentation quotidienne, son rôle est secondaire.",
+      "tr": "DHEAS, belirli hormonal sorularda ölçülen bir adrenal hormondur. Aşırı değerler adrenal sorunlara işaret edebilir. Günlük beslenmede ikincil bir rol oynar."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Prolactin",
+    "term": {
+      "de": "Prolactin",
+      "en": "Prolactin",
+      "es": "Prolactina",
+      "it": "Prolattina",
+      "pt": "Prolactina",
+      "fr": "Prolactine",
+      "tr": "Prolaktin"
+    },
+    "synonyms": {
+      "de": [
+        "PRL",
+        "Prolaktin"
+      ],
+      "en": [
+        "PRL",
+        "Prolactin"
+      ],
+      "es": [
+        "PRL",
+        "Prolactina"
+      ],
+      "it": [
+        "PRL",
+        "Prolattina"
+      ],
+      "pt": [
+        "PRL",
+        "Prolactina"
+      ],
+      "fr": [
+        "PRL",
+        "Prolactine"
+      ],
+      "tr": [
+        "PRL",
+        "prolaktin"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Prolactin steuert Milchbildung und kann bei Stress, Medikamenten oder Hypophysenstörungen steigen. Stark erhöhte Werte gehören fachärztlich abgeklärt. Es ist kein klassischer Ernährungsparameter.",
+      "en": "Prolactin controls milk production and can rise with stress, medications, or pituitary disorders. Markedly elevated values need specialist evaluation. It is not a classic nutrition parameter.",
+      "es": "La prolactina regula la producción de leche y puede elevarse con estrés, medicamentos o trastornos hipofisarios. Valores muy altos requieren valoración especializada. No es un parámetro nutricional clásico.",
+      "it": "La prolattina regola la produzione di latte e può salire con stress, farmaci o disturbi ipofisari. Valori molto elevati vanno chiariti dallo specialista. Non è un parametro nutrizionale classico.",
+      "pt": "A prolactina controla a produção de leite e pode subir com stresse, medicamentos ou perturbações da hipófise. Valores muito elevados pedem avaliação especializada. Não é um parâmetro nutricional clássico.",
+      "fr": "La prolactine régule la production de lait et peut monter avec stress, médicaments ou troubles hypophysaires. Des valeurs fortement élevées demandent une évaluation spécialisée. Ce n'est pas un paramètre nutritionnel classique.",
+      "tr": "Prolaktin süt üretimini yönetir; stres, ilaçlar veya hipofiz bozukluklarında yükselebilir. Belirgin yüksek değerler uzman değerlendirmesi gerektirir. Klasik bir beslenme parametresi değildir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Testosteron",
+    "term": {
+      "de": "Testosteron",
+      "en": "Testosterone",
+      "es": "Testosterona",
+      "it": "Testosterone",
+      "pt": "Testosterona",
+      "fr": "Testostérone",
+      "tr": "Testosteron"
+    },
+    "synonyms": {
+      "de": [
+        "Gesamttestosteron"
+      ],
+      "en": [
+        "total testosterone"
+      ],
+      "es": [
+        "Testosterona total"
+      ],
+      "it": [
+        "testosterone totale"
+      ],
+      "pt": [
+        "testosterona total"
+      ],
+      "fr": [
+        "testostérone totale"
+      ],
+      "tr": [
+        "total testosteron"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Testosteron beeinflusst Muskelmasse, Energie und Stoffwechsel. Niedrige Werte bei Männern können mit Adipositas und Insulinresistenz zusammenhängen. Die Abklärung umfasst SHBG und freie Anteile.",
+      "en": "Testosterone influences muscle mass, energy, and metabolism. Low values in men can relate to obesity and insulin resistance. Workup includes SHBG and free fractions.",
+      "es": "La testosterona influye en masa muscular, energía y metabolismo. Valores bajos en hombres pueden asociarse a obesidad y resistencia a la insulina. La evaluación incluye SHBG y fracciones libres.",
+      "it": "Il testosterone influenza massa muscolare, energia e metabolismo. Valori bassi negli uomini possono collegarsi a obesità e insulinoresistenza. L'accertamento include SHBG e frazioni libere.",
+      "pt": "A testosterona influencia a massa muscular, a energia e o metabolismo. Valores baixos nos homens podem associar-se a obesidade e resistência à insulina. O esclarecimento inclui SHBG e frações livres.",
+      "fr": "La testostérone influence masse musculaire, énergie et métabolisme. Des valeurs basses chez l'homme peuvent se lier à obésité et résistance à l'insuline. Le bilan inclut SHBG et fractions libres.",
+      "tr": "Testosteron kas kütlesi, enerji ve metabolizmayı etkiler. Erkeklerde düşük değerler obezite ve insülin direnciyle ilişkili olabilir. Değerlendirme SHBG ve serbest fraksiyonları içerir."
+    },
+    "related_chapters": [
+      3,
+      7,
+      9
+    ]
+  },
+  {
+    "term_key": "Östradiol",
+    "term": {
+      "de": "Östradiol",
+      "en": "Estradiol",
+      "es": "Estradiol",
+      "it": "Estradiolo",
+      "pt": "Estradiol",
+      "fr": "Estradiol",
+      "tr": "Östradiol"
+    },
+    "synonyms": {
+      "de": [
+        "Estradiol",
+        "E2"
+      ],
+      "en": [
+        "E2",
+        "oestradiol"
+      ],
+      "es": [
+        "Estradiol",
+        "E2"
+      ],
+      "it": [
+        "Estradiolo",
+        "E2"
+      ],
+      "pt": [
+        "Estradiol",
+        "E2"
+      ],
+      "fr": [
+        "E2",
+        "œstradiol"
+      ],
+      "tr": [
+        "E2",
+        "estradiol"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Östradiol ist das wichtigste Östrogen und relevant im Zyklus sowie im Knochenstoffwechsel. Messungen erfolgen gezielt, nicht als Breitenscreening. Hormonelle Lage und Laborzeitpunkt müssen zusammenpassen.",
+      "en": "Estradiol is the main estrogen, relevant in the cycle and bone metabolism. Measurements are targeted, not broad screening. Hormonal context and sampling time must match.",
+      "es": "El estradiol es el estrógeno más importante y es relevante en el ciclo y en el metabolismo óseo. Las mediciones se hacen de forma dirigida, no como cribado amplio. El momento hormonal y el momento del laboratorio deben coincidir.",
+      "it": "L'estradiolo è l'estrogeno principale, rilevante nel ciclo e nel metabolismo osseo. Le misure sono mirate, non uno screening ampio. Contesto ormonale e momento del prelievo devono coincidere.",
+      "pt": "O estradiol é o principal estrogénio, relevante no ciclo e no metabolismo ósseo. As medições são dirigidas, não um rastreio amplo. Contexto hormonal e momento da colheita devem coincidir.",
+      "fr": "L'estradiol est le principal œstrogène, pertinent pour le cycle et le métabolisme osseux. Les dosages sont ciblés, pas un dépistage large. Contexte hormonal et moment du prélèvement doivent correspondre.",
+      "tr": "Östradiol en önemli östrojendir; döngü ve kemik metabolizmasında önemlidir. Ölçümler hedeflidir, geniş tarama değildir. Hormonal durum ile laboratuvar zamanı uyumlu olmalıdır."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Parathormon",
+    "term": {
+      "de": "Parathormon",
+      "en": "Parathyroid hormone",
+      "es": "Parathormona",
+      "it": "Ormone paratiroideo",
+      "pt": "Hormona paratiroideia",
+      "fr": "Hormone parathyroïdienne",
+      "tr": "Paratiroit hormonu"
+    },
+    "synonyms": {
+      "de": [
+        "PTH",
+        "Parathyrin"
+      ],
+      "en": [
+        "PTH",
+        "parathyrin"
+      ],
+      "es": [
+        "PTH",
+        "Paratirina"
+      ],
+      "it": [
+        "PTH",
+        "paratirina"
+      ],
+      "pt": [
+        "PTH",
+        "paratirina"
+      ],
+      "fr": [
+        "PTH",
+        "parathyrine"
+      ],
+      "tr": [
+        "PTH",
+        "paratirin"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Parathormon reguliert Calcium und Phosphat und reagiert auf Vitamin-D-Mangel. Erhöhte Werte können sekundär bei niedrigem Vitamin D auftreten. Knochen- und Nierenkontext sind wichtig.",
+      "en": "Parathyroid hormone regulates calcium and phosphate and responds to vitamin D deficiency. Elevated values can occur secondarily with low vitamin D. Bone and kidney context matter.",
+      "es": "La parathormona regula calcio y fosfato y reacciona a la deficiencia de vitamina D. Valores elevados pueden ser secundarios a vitamina D baja. El contexto óseo y renal es importante.",
+      "it": "L'ormone paratiroideo regola calcio e fosfato e risponde alla carenza di vitamina D. Valori elevati possono comparire secondariamente con vitamina D bassa. Contesto osseo e renale sono importanti.",
+      "pt": "A hormona paratiroideia regula cálcio e fosfato e responde à deficiência de vitamina D. Valores elevados podem surgir secundariamente com vitamina D baixa. O contexto ósseo e renal é importante.",
+      "fr": "L'hormone parathyroïdienne régule calcium et phosphate et réagit à la carence en vitamine D. Des valeurs élevées peuvent survenir secondairement avec une vitamine D basse. Le contexte osseux et rénal compte.",
+      "tr": "Paratiroit hormonu kalsiyum ve fosfatı düzenler ve D vitamini eksikliğine yanıt verir. Yüksek değerler düşük D vitamininde ikincil görülebilir. Kemik ve böbrek bağlamı önemlidir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "CK",
+    "term": {
+      "de": "CK",
+      "en": "CK",
+      "es": "CK",
+      "it": "CK",
+      "pt": "CK",
+      "fr": "CK",
+      "tr": "CK"
+    },
+    "synonyms": {
+      "de": [
+        "Creatinkinase",
+        "CPK"
+      ],
+      "en": [
+        "creatine kinase",
+        "CPK"
+      ],
+      "es": [
+        "Creatina cinasa",
+        "CPK"
+      ],
+      "it": [
+        "creatina chinasi",
+        "CPK"
+      ],
+      "pt": [
+        "creatina quinase",
+        "CPK"
+      ],
+      "fr": [
+        "créatine kinase",
+        "CPK"
+      ],
+      "tr": [
+        "kreatin kinaz",
+        "CPK"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "CK steigt bei Muskelbelastung, Verletzung oder seltenen Muskelerkrankungen. Nach intensivem Training kann sie harmlos erhöht sein. Zusammen mit AST hilft sie, Leber- von Muskelursachen zu trennen.",
+      "en": "CK rises with muscle strain, injury, or rare muscle diseases. After intense training it can be harmlessly elevated. Together with AST it helps separate liver from muscle causes.",
+      "es": "La CK se eleva con carga muscular, lesión o enfermedades musculares raras. Tras entrenamiento intenso puede estar elevada de forma inofensiva. Junto con la AST ayuda a separar causas hepáticas de musculares.",
+      "it": "La CK sale con carico muscolare, trauma o rare miopatie. Dopo allenamento intenso può essere elevata in modo innocuo. Insieme all'AST aiuta a distinguere cause epatiche da muscolari.",
+      "pt": "A CK sobe com sobrecarga muscular, lesão ou doenças musculares raras. Após treino intenso pode elevar-se de forma benigna. Junto com a AST ajuda a separar causas hepáticas das musculares.",
+      "fr": "La CK monte avec charge musculaire, blessure ou rares myopathies. Après un entraînement intense, elle peut s'élever sans gravité. Avec l'AST, elle aide à séparer causes hépatiques et musculaires.",
+      "tr": "CK kas yüklenmesi, yaralanma veya nadir kas hastalıklarında yükselir. Yoğun antrenmandan sonra zararsız yüksek olabilir. AST ile birlikte karaciğer ve kas kaynaklarını ayırmaya yardım eder."
+    },
+    "related_chapters": [
+      7,
+      9
+    ]
+  },
+  {
+    "term_key": "LDH",
+    "term": {
+      "de": "LDH",
+      "en": "LDH",
+      "es": "LDH",
+      "it": "LDH",
+      "pt": "LDH",
+      "fr": "LDH",
+      "tr": "LDH"
+    },
+    "synonyms": {
+      "de": [
+        "Laktatdehydrogenase"
+      ],
+      "en": [
+        "lactate dehydrogenase"
+      ],
+      "es": [
+        "Lactato deshidrogenasa"
+      ],
+      "it": [
+        "lattato deidrogenasi"
+      ],
+      "pt": [
+        "lactato desidrogenase"
+      ],
+      "fr": [
+        "lactate déshydrogénase"
+      ],
+      "tr": [
+        "laktat dehidrojenaz"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "LDH ist ein unspezifisches Enzym aus vielen Geweben und steigt bei Zellzerfall. Es dient eher als Verlaufs- denn als Screeningsparameter. Isoliert erhöhte LDH braucht weitere Abklärung.",
+      "en": "LDH is a nonspecific enzyme from many tissues and rises with cell breakdown. It serves more as a follow-up than a screening parameter. Isolated elevated LDH needs further workup.",
+      "es": "La LDH es una enzima inespecífica de muchos tejidos y se eleva con destrucción celular. Sirve más como parámetro evolutivo que de cribado. Una LDH aisladamente elevada requiere más aclaración.",
+      "it": "La LDH è un enzima aspecifico di molti tessuti e sale con il danno cellulare. Serve più come parametro di follow-up che di screening. Una LDH isolatamente elevata richiede ulteriori accertamenti.",
+      "pt": "A LDH é uma enzima inespecífica de muitos tecidos e sobe com destruição celular. Serve mais como parâmetro de seguimento do que de rastreio. LDH isoladamente elevada pede mais avaliação.",
+      "fr": "La LDH est une enzyme non spécifique de nombreux tissus et monte lors de destruction cellulaire. Elle sert plutôt de suivi que de dépistage. Une LDH isolément élevée demande un bilan complémentaire.",
+      "tr": "LDH birçok dokudan gelen spesifik olmayan bir enzimdir ve hücre yıkımında yükselir. Tarama değil, daha çok izlem parametresidir. İzole yüksek LDH ileri değerlendirme gerektirir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Harnsäure Klarance",
+    "term": {
+      "de": "Harnsäure Klarance",
+      "en": "Uric acid clearance",
+      "es": "Aclaramiento de ácido úrico",
+      "it": "Clearance dell'acido urico",
+      "pt": "Clearance de ácido úrico",
+      "fr": "Clairance de l'acide urique",
+      "tr": "Ürik asit klirensi"
+    },
+    "synonyms": {
+      "de": [
+        "Urat-Clearance"
+      ],
+      "en": [
+        "urate clearance"
+      ],
+      "es": [
+        "Aclaramiento de urato"
+      ],
+      "it": [
+        "clearance dell'urato"
+      ],
+      "pt": [
+        "clearance de urato"
+      ],
+      "fr": [
+        "clairance de l'urate"
+      ],
+      "tr": [
+        "ürat klirensi"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Die Harnsäure-Clearance schätzt, wie gut die Niere Urat ausscheidet. Sie wird bei speziellen Gicht- oder Stoffwechselfragen genutzt. Für die meisten Alltagsbefunde reicht der Serumwert.",
+      "en": "Uric acid clearance estimates how well the kidney excretes urate. It is used in special gout or metabolic questions. For most everyday findings, the serum value suffices.",
+      "es": "El aclaramiento de ácido úrico estima cuán bien el riñón elimina urato. Se usa en cuestiones especiales de gota o metabolismo. Para la mayoría de los hallazgos cotidianos basta el valor sérico.",
+      "it": "La clearance dell'acido urico stima quanto bene il rene elimina l'urato. Si usa in quesiti speciali su gotta o metabolismo. Per la maggior parte dei reperti quotidiani basta il valore sierico.",
+      "pt": "A clearance de ácido úrico estima quão bem o rim elimina urato. Usa-se em questões especiais de gota ou metabolismo. Para a maioria dos achados do dia a dia basta o valor sérico.",
+      "fr": "La clairance de l'acide urique estime combien le rein élimine bien l'urate. Elle sert dans des questions spéciales de goutte ou de métabolisme. Pour la plupart des bilans courants, le taux sérique suffit.",
+      "tr": "Ürik asit klirensi, böbreğin üratı ne kadar iyi attığını tahmin eder. Özel gut veya metabolizma sorularında kullanılır. Çoğu günlük bulgu için serum değeri yeterlidir."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Blutzucker postprandial",
+    "term": {
+      "de": "Blutzucker postprandial",
+      "en": "Postprandial blood glucose",
+      "es": "Glucemia posprandial",
+      "it": "Glicemia postprandiale",
+      "pt": "Glicemia pós-prandial",
+      "fr": "Glycémie postprandiale",
+      "tr": "Postprandiyal kan şekeri"
+    },
+    "synonyms": {
+      "de": [
+        "pp Glukose",
+        "Glukose nach dem Essen"
+      ],
+      "en": [
+        "pp glucose",
+        "glucose after meals"
+      ],
+      "es": [
+        "Glucosa pp",
+        "Glucosa tras la comida"
+      ],
+      "it": [
+        "glucosio pp",
+        "glucosio dopo i pasti"
+      ],
+      "pt": [
+        "glicose pp",
+        "glicose após as refeições"
+      ],
+      "fr": [
+        "glucose pp",
+        "glucose après repas"
+      ],
+      "tr": [
+        "pp glukoz",
+        "yemek sonrası glukoz"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Postprandiale Glukose zeigt, wie stark der Blutzucker nach einer Mahlzeit ansteigt. Hohe Spitzen hängen mit glykämischem Index, Portionsgröße und Insulinempfindlichkeit zusammen. CGM-Systeme machen diese Kurven sichtbar.",
+      "en": "Postprandial glucose shows how much blood sugar rises after a meal. High peaks relate to glycemic index, portion size, and insulin sensitivity. CGM systems make these curves visible.",
+      "es": "La glucosa posprandial muestra cuánto sube la glucemia tras una comida. Los picos altos se relacionan con el índice glucémico, el tamaño de la porción y la sensibilidad a la insulina. Los sistemas CGM hacen visibles estas curvas.",
+      "it": "Il glucosio postprandiale mostra quanto sale la glicemia dopo un pasto. Picchi alti si legano a indice glicemico, porzione e sensibilità insulinica. I sistemi CGM rendono visibili queste curve.",
+      "pt": "A glicose pós-prandial mostra quão forte sobe a glicemia após uma refeição. Picos altos ligam-se ao índice glicémico, ao tamanho da porção e à sensibilidade à insulina. Sistemas CGM tornam essas curvas visíveis.",
+      "fr": "Le glucose postprandial montre combien la glycémie monte après un repas. Des pics élevés se lient à index glycémique, taille de portion et sensibilité à l'insuline. Les CGM rendent ces courbes visibles.",
+      "tr": "Postprandiyal glukoz, yemek sonrası kan şekerinin ne kadar yükseldiğini gösterir. Yüksek zirveler glisemik indeks, porsiyon ve insülin duyarlılığıyla ilişkilidir. CGM sistemleri bu eğrileri görünür kılar."
+    },
+    "related_chapters": [
+      1,
+      3,
+      5,
+      6,
+      9
+    ]
+  },
+  {
+    "term_key": "Ketone Blut",
+    "term": {
+      "de": "Ketone Blut",
+      "en": "Blood ketones",
+      "es": "Cetonas en sangre",
+      "it": "Chetoni ematici",
+      "pt": "Cetonas no sangue",
+      "fr": "Cétones sanguines",
+      "tr": "Kan ketonları"
+    },
+    "synonyms": {
+      "de": [
+        "Betahydroxybutyrat",
+        "BHB"
+      ],
+      "en": [
+        "beta-hydroxybutyrate",
+        "BHB"
+      ],
+      "es": [
+        "Betahidroxibutirato",
+        "BHB"
+      ],
+      "it": [
+        "beta-idrossibutirrato",
+        "BHB"
+      ],
+      "pt": [
+        "beta-hidroxibutirato",
+        "BHB"
+      ],
+      "fr": [
+        "bêta-hydroxybutyrate",
+        "BHB"
+      ],
+      "tr": [
+        "beta-hidroksibutirat",
+        "BHB"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Ketonkörper entstehen bei Kohlenhydratmangel oder unkontrolliertem Diabetes. Im therapeutischen Fasten oder bei Low-Carb sind milde Erhöhungen möglich. Sehr hohe Werte mit Krankheitssymptomen sind ein Notfall.",
+      "en": "Ketone bodies form in carbohydrate shortage or uncontrolled diabetes. Mild elevations can occur in therapeutic fasting or low-carb diets. Very high values with illness symptoms are an emergency.",
+      "es": "Los cuerpos cetónicos se forman en falta de hidratos de carbono o diabetes descontrolada. En ayuno terapéutico o low-carb son posibles elevaciones leves. Valores muy altos con síntomas de enfermedad son una urgencia.",
+      "it": "I corpi chetonici si formano in carenza di carboidrati o diabete non controllato. Nel digiuno terapeutico o low-carb sono possibili lievi aumenti. Valori molto alti con sintomi di malattia sono un'emergenza.",
+      "pt": "Os corpos cetónicos formam-se na falta de hidratos de carbono ou diabetes descontrolada. No jejum terapêutico ou low-carb são possíveis elevações ligeiras. Valores muito altos com sintomas de doença são uma emergência.",
+      "fr": "Les corps cétoniques se forment en manque de glucides ou diabète non contrôlé. En jeûne thérapeutique ou low-carb, de légères élévations sont possibles. Des valeurs très hautes avec symptômes de maladie sont une urgence.",
+      "tr": "Keton cisimleri karbonhidrat eksikliğinde veya kontrolsüz diyabette oluşur. Terapötik oruç veya düşük karbonhidrattta hafif yükselmeler olabilir. Hastalık belirtileriyle çok yüksek değerler acildir."
+    },
+    "related_chapters": [
+      1,
+      6,
+      9
+    ]
+  },
+  {
+    "term_key": "Laktat",
+    "term": {
+      "de": "Laktat",
+      "en": "Lactate",
+      "es": "Lactato",
+      "it": "Lattato",
+      "pt": "Lactato",
+      "fr": "Lactate",
+      "tr": "Laktat"
+    },
+    "synonyms": {
+      "de": [
+        "Lactat",
+        "Milchsäure Blut"
+      ],
+      "en": [
+        "lactic acid blood",
+        "blood lactate"
+      ],
+      "es": [
+        "Lactato",
+        "Ácido láctico en sangre"
+      ],
+      "it": [
+        "acido lattico ematico",
+        "lattato nel sangue"
+      ],
+      "pt": [
+        "ácido láctico no sangue",
+        "lactato sanguíneo"
+      ],
+      "fr": [
+        "acide lactique sanguin",
+        "lactate sanguin"
+      ],
+      "tr": [
+        "kanda laktik asit",
+        "kan laktatı"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Laktat steigt bei Sauerstoffmangel, intensivem Sport oder Schockzuständen. Im Sport spiegelt es anaerobe Belastung wider. Klinisch ist es ein wichtiger Marker der Gewebedurchblutung.",
+      "en": "Lactate rises with oxygen shortage, intense exercise, or shock. In sport it reflects anaerobic load. Clinically it is an important marker of tissue perfusion.",
+      "es": "El lactato se eleva con falta de oxígeno, deporte intenso o estados de shock. En el deporte refleja la carga anaeróbica. Clínicamente es un marcador importante de la perfusión tisular.",
+      "it": "Il lattato sale con mancanza di ossigeno, sport intenso o stati di shock. Nello sport riflette il carico anaerobico. Clinicamente è un importante marcatore di perfusione tissutale.",
+      "pt": "O lactato sobe com falta de oxigénio, desporto intenso ou estados de choque. No desporto reflecte carga anaeróbica. Clinicamente é um marcador importante da perfusão tecidual.",
+      "fr": "Le lactate monte en manque d'oxygène, sport intense ou états de choc. En sport, il reflète la charge anaérobie. Cliniquement, c'est un marqueur important de perfusion tissulaire.",
+      "tr": "Laktat oksijen eksikliği, yoğun spor veya şok durumlarında yükselir. Sporda anaerobik yükü yansıtır. Klinik olarak doku perfüzyonunun önemli bir belirtecidir."
+    },
+    "related_chapters": [
+      7,
+      9
+    ]
+  },
+  {
+    "term_key": "Ammoniak",
+    "term": {
+      "de": "Ammoniak",
+      "en": "Ammonia",
+      "es": "Amoníaco",
+      "it": "Ammoniaca",
+      "pt": "Amónia",
+      "fr": "Ammoniac",
+      "tr": "Amonyak"
+    },
+    "synonyms": {
+      "de": [
+        "NH3 Blut"
+      ],
+      "en": [
+        "NH3 blood"
+      ],
+      "es": [
+        "NH3 en sangre"
+      ],
+      "it": [
+        "NH3 ematico"
+      ],
+      "pt": [
+        "NH3 no sangue"
+      ],
+      "fr": [
+        "NH3 sanguin"
+      ],
+      "tr": [
+        "kanda NH3"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Ammoniak wird bei schwerer Leberfunktionsstörung gemessen und kann Hirnfunktion beeinflussen. Für die normale Ernährungsberatung ist er selten relevant. Die Probe muss streng gekühlt und schnell verarbeitet werden.",
+      "en": "Ammonia is measured in severe liver dysfunction and can affect brain function. It is rarely relevant in routine nutrition counseling. The sample must be strictly cooled and processed quickly.",
+      "es": "El amoníaco se mide en trastornos graves de la función hepática y puede afectar la función cerebral. Para el consejo nutricional habitual rara vez es relevante. La muestra debe refrigerarse estrictamente y procesarse con rapidez.",
+      "it": "L'ammoniaca si misura in grave disfunzione epatica e può influenzare la funzione cerebrale. Raramente è rilevante nella consulenza nutrizionale ordinaria. Il campione va raffreddato rigorosamente e processato in fretta.",
+      "pt": "A amónia mede-se na disfunção hepática grave e pode afetar a função cerebral. No aconselhamento nutricional habitual raramente é relevante. A amostra tem de ser bem refrigerada e processada depressa.",
+      "fr": "L'ammoniac se mesure en dysfonction hépatique sévère et peut affecter la fonction cérébrale. Il est rarement pertinent en conseil nutritionnel courant. L'échantillon doit être strictement refroidi et traité vite.",
+      "tr": "Amonyak ağır karaciğer işlev bozukluğunda ölçülür ve beyin işlevini etkileyebilir. Normal beslenme danışmanlığında nadiren önemlidir. Numune sıkı soğutulmalı ve hızla işlenmelidir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Ferritin Index",
+    "term": {
+      "de": "Ferritin Index",
+      "en": "Ferritin index",
+      "es": "Índice de ferritina",
+      "it": "Indice di ferritina",
+      "pt": "Índice de ferritina",
+      "fr": "Index de ferritine",
+      "tr": "Ferritin indeksi"
+    },
+    "synonyms": {
+      "de": [
+        "sTfR/log Ferritin"
+      ],
+      "en": [
+        "sTfR/log ferritin"
+      ],
+      "es": [
+        "sTfR/log ferritina"
+      ],
+      "it": [
+        "sTfR/log ferritina"
+      ],
+      "pt": [
+        "sTfR/log ferritina"
+      ],
+      "fr": [
+        "sTfR/log ferritine"
+      ],
+      "tr": [
+        "sTfR/log ferritin"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Der Ferritin-Index aus sTfR und Ferritin hilft, Eisenmangel trotz Entzündung zu erkennen. Er wird in speziellen Labors berechnet. Für komplexe Anämien ist er ein wertvolles Werkzeug.",
+      "en": "The ferritin index from sTfR and ferritin helps detect iron deficiency despite inflammation. It is calculated in specialized labs. For complex anemias it is a valuable tool.",
+      "es": "El índice de ferritina a partir de sTfR y ferritina ayuda a reconocer ferropenia a pesar de inflamación. Se calcula en laboratorios especializados. En anemias complejas es una herramienta valiosa.",
+      "it": "L'indice di ferritina da sTfR e ferritina aiuta a rilevare carenza di ferro nonostante l'infiammazione. Si calcola in laboratori specializzati. Nelle anemie complesse è uno strumento prezioso.",
+      "pt": "O índice de ferritina a partir de sTfR e ferritina ajuda a detetar deficiência de ferro apesar da inflamação. Calcula-se em laboratórios especializados. Em anemias complexas é uma ferramenta valiosa.",
+      "fr": "L'index de ferritine à partir de sTfR et ferritine aide à détecter une carence en fer malgré l'inflammation. Il se calcule dans des laboratoires spécialisés. Pour les anémies complexes, c'est un outil précieux.",
+      "tr": "sTfR ve ferritinden ferritin indeksi, inflamasyona rağmen demir eksikliğini tanımaya yardım eder. Özel laboratuvarlarda hesaplanır. Karmaşık anemilerde değerli bir araçtır."
+    },
+    "related_chapters": [
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Blutgruppe",
+    "term": {
+      "de": "Blutgruppe",
+      "en": "Blood group",
+      "es": "Grupo sanguíneo",
+      "it": "Gruppo sanguigno",
+      "pt": "Grupo sanguíneo",
+      "fr": "Groupe sanguin",
+      "tr": "Kan grubu"
+    },
+    "synonyms": {
+      "de": [
+        "AB0",
+        "ABO-System"
+      ],
+      "en": [
+        "ABO",
+        "ABO system"
+      ],
+      "es": [
+        "AB0",
+        "Sistema ABO"
+      ],
+      "it": [
+        "ABO",
+        "sistema ABO"
+      ],
+      "pt": [
+        "ABO",
+        "sistema ABO"
+      ],
+      "fr": [
+        "ABO",
+        "système ABO"
+      ],
+      "tr": [
+        "ABO",
+        "ABO sistemi"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Die Blutgruppe ist genetisch festgelegt und vor Transfusionen unverzichtbar. Ernährungsmythen zu Blutgruppendiäten sind wissenschaftlich nicht haltbar. Für LabPlate zählt sie als Kontextwissen, nicht als Stoffwechselmarker.",
+      "en": "Blood group is genetically fixed and essential before transfusions. Nutrition myths about blood-type diets are not scientifically supported. For LabPlate it is context knowledge, not a metabolic marker.",
+      "es": "El grupo sanguíneo está determinado genéticamente y es imprescindible antes de transfusiones. Los mitos nutricionales sobre dietas según grupo sanguíneo no son científicamente sostenibles. Para LabPlate cuenta como conocimiento de contexto, no como marcador metabólico.",
+      "it": "Il gruppo sanguigno è geneticamente determinato e indispensabile prima delle trasfusioni. I miti nutrizionali sulle diete per gruppo sanguigno non sono scientificamente sostenibili. Per LabPlate è contesto, non un marcatore metabolico.",
+      "pt": "O grupo sanguíneo é geneticamente fixo e indispensável antes de transfusões. Mitos nutricionais sobre dietas por grupo sanguíneo não têm suporte científico. Para o LabPlate é conhecimento de contexto, não um marcador metabólico.",
+      "fr": "Le groupe sanguin est génétiquement fixé et indispensable avant transfusion. Les mythes nutritionnels des régimes selon le groupe sanguin ne sont pas fondés. Pour LabPlate, c'est un contexte, pas un marqueur métabolique.",
+      "tr": "Kan grubu genetik olarak sabittir ve transfüzyon öncesi vazgeçilmezdir. Kan grubu diyetlerine dair beslenme mitleri bilimsel olarak geçersizdir. LabPlate için metabolizma belirteci değil, bağlam bilgisidir."
+    },
+    "related_chapters": [
+      11
+    ]
+  },
+  {
+    "term_key": "Blutdruck labornahe",
+    "term": {
+      "de": "Blutdruck labornahe",
+      "en": "Blood pressure (lab context)",
+      "es": "Presión arterial (contexto analítico)",
+      "it": "Pressione arteriosa (contesto lab)",
+      "pt": "Pressão arterial (contexto lab)",
+      "fr": "Tension artérielle (contexte lab)",
+      "tr": "Kan basıncı (lab bağlamı)"
+    },
+    "synonyms": {
+      "de": [
+        "Hypertonie Kontext"
+      ],
+      "en": [
+        "hypertension context"
+      ],
+      "es": [
+        "Contexto de hipertensión"
+      ],
+      "it": [
+        "contesto di ipertensione"
+      ],
+      "pt": [
+        "contexto de hipertensão"
+      ],
+      "fr": [
+        "contexte d'hypertension"
+      ],
+      "tr": [
+        "hipertansiyon bağlamı"
+      ]
+    },
+    "category": {
+      "de": "Blutwert",
+      "en": "Blood value",
+      "es": "Valor sanguíneo",
+      "it": "Valore ematico",
+      "pt": "Valor sanguíneo",
+      "fr": "Valeur sanguine",
+      "tr": "Kan değeri"
+    },
+    "short_description": {
+      "de": "Blutdruck ist kein klassischer Laborwert aus der Vene, gehört aber eng zu Stoffwechsel und Elektrolyten. Salz, Gewicht und Bewegung beeinflussen ihn stark. Laborwerte wie Kalium und Kreatinin ergänzen die Abklärung.",
+      "en": "Blood pressure is not a classic venous lab value but closely relates to metabolism and electrolytes. Salt, weight, and exercise strongly influence it. Lab values like potassium and creatinine complement the workup.",
+      "es": "La presión arterial no es un valor clásico de laboratorio venoso, pero está estrechamente ligada al metabolismo y a los electrolitos. Sal, peso y ejercicio la influyen mucho. Valores de laboratorio como potasio y creatinina complementan la evaluación.",
+      "it": "La pressione arteriosa non è un classico valore venoso di laboratorio, ma si lega strettamente a metabolismo ed elettroliti. Sale, peso e movimento la influenzano molto. Valori come potassio e creatinina integrano l'accertamento.",
+      "pt": "A pressão arterial não é um valor venoso clássico de laboratório, mas liga-se de perto a metabolismo e eletrólitos. Sal, peso e exercício influenciam-na fortemente. Valores como potássio e creatinina complementam a avaliação.",
+      "fr": "La tension n'est pas une valeur veineuse classique de labo, mais se lie étroitement au métabolisme et aux électrolytes. Sel, poids et activité l'influencent fortement. Des valeurs comme potassium et créatinine complètent le bilan.",
+      "tr": "Kan basıncı klasik venöz lab değeri değildir ama metabolizma ve elektrolitlerle yakından ilişkilidir. Tuz, kilo ve hareket onu güçlü etkiler. Potasyum ve kreatinin gibi lab değerleri değerlendirmeyi tamamlar."
+    },
+    "related_chapters": [
+      3,
+      7,
+      8,
+      9
+    ]
+  },
+  {
+    "term_key": "Glykämischer Index",
+    "term": {
+      "de": "Glykämischer Index",
+      "en": "Glycemic index",
+      "es": "Índice glucémico",
+      "it": "Indice glicemico",
+      "pt": "Índice glicémico",
+      "fr": "Index glycémique",
+      "tr": "Glisemik indeks"
+    },
+    "synonyms": {
+      "de": [
+        "GI",
+        "Glykämische Last verwandt"
+      ],
+      "en": [
+        "GI",
+        "related to glycemic load"
+      ],
+      "es": [
+        "IG",
+        "Relacionado con la carga glucémica"
+      ],
+      "it": [
+        "IG",
+        "correlato al carico glicemico"
+      ],
+      "pt": [
+        "IG",
+        "relacionado com carga glicémica"
+      ],
+      "fr": [
+        "IG",
+        "lié à la charge glycémique"
+      ],
+      "tr": [
+        "GI",
+        "glisemik yükle ilgili"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Der glykämische Index beschreibt, wie schnell ein kohlenhydrathaltiges Lebensmittel den Blutzucker ansteigen lässt. Weißbrot und glukosereiche Getränke liegen hoch, Hülsenfrüchte eher niedrig. Er hilft bei der Auswahl, ersetzt aber nicht Portionsmaß und Gesamternährung.",
+      "en": "The glycemic index describes how quickly a carbohydrate food raises blood sugar. White bread and glucose-rich drinks rank high; legumes tend to be low. It aids food choice but does not replace portion size and overall diet.",
+      "es": "El índice glucémico describe con qué rapidez un alimento rico en hidratos de carbono eleva la glucemia. El pan blanco y las bebidas ricas en glucosa están altos; las legumbres, más bien bajas. Ayuda en la elección, pero no sustituye el tamaño de porción ni la alimentación global.",
+      "it": "L'indice glicemico descrive quanto velocemente un alimento ricco di carboidrati alza la glicemia. Pane bianco e bevande ricche di glucosio sono alti; i legumi tendono a essere bassi. Aiuta nella scelta, ma non sostituisce porzione e dieta complessiva.",
+      "pt": "O índice glicémico descreve quão depressa um alimento com hidratos eleva o açúcar no sangue. Pão branco e bebidas ricas em glicose estão altos; leguminosas tendem a ser baixas. Ajuda na escolha, mas não substitui a porção nem a alimentação global.",
+      "fr": "L'index glycémique décrit à quelle vitesse un aliment glucidique fait monter la glycémie. Pain blanc et boissons riches en glucose sont élevés; les légumineuses tendent à être basses. Il aide au choix, sans remplacer portion et alimentation globale.",
+      "tr": "Glisemik indeks, karbonhidratlı bir yiyeceğin kan şekerini ne kadar hızlı yükselttiğini tanımlar. Beyaz ekmek ve glukozlu içecekler yüksektir; baklagiller daha düşüktür. Seçime yardım eder ama porsiyon ve genel beslenmenin yerini tutmaz."
+    },
+    "related_chapters": [
+      5,
+      1,
+      3,
+      6
+    ]
+  },
+  {
+    "term_key": "Glykämische Last",
+    "term": {
+      "de": "Glykämische Last",
+      "en": "Glycemic load",
+      "es": "Carga glucémica",
+      "it": "Carico glicemico",
+      "pt": "Carga glicémica",
+      "fr": "Charge glycémique",
+      "tr": "Glisemik yük"
+    },
+    "synonyms": {
+      "de": [
+        "GL",
+        "Glycemic Load"
+      ],
+      "en": [
+        "GL",
+        "glycemic load"
+      ],
+      "es": [
+        "CG",
+        "Glycemic Load"
+      ],
+      "it": [
+        "CG",
+        "carico glicemico"
+      ],
+      "pt": [
+        "CG",
+        "carga glicémica"
+      ],
+      "fr": [
+        "CG",
+        "charge glycémique"
+      ],
+      "tr": [
+        "GL",
+        "glisemik yük"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Die glykämische Last verknüpft den glykämischen Index mit der Kohlenhydratmenge pro Portion. Dadurch wird eine kleine Menge eines hochglykämischen Lebensmittels realistischer bewertet. Für den Alltag ist GL oft praxisnäher als GI allein.",
+      "en": "Glycemic load links glycemic index to carbohydrate amount per portion. Thus a small amount of a high-GI food is judged more realistically. In daily life GL is often more practical than GI alone.",
+      "es": "La carga glucémica vincula el índice glucémico con la cantidad de hidratos de carbono por porción. Así una pequeña cantidad de un alimento de alto IG se valora de forma más realista. En la práctica diaria, la CG suele ser más útil que el IG solo.",
+      "it": "Il carico glicemico collega l'indice glicemico alla quantità di carboidrati per porzione. Così una piccola quantità di un alimento ad alto IG si valuta in modo più realistico. Nella vita quotidiana il CG è spesso più pratico dell'IG da solo.",
+      "pt": "A carga glicémica liga o índice glicémico à quantidade de hidratos por porção. Assim uma pequena quantidade de um alimento de IG alto avalia-se de forma mais realista. No dia a dia a CG é muitas vezes mais prática do que o IG sozinho.",
+      "fr": "La charge glycémique relie l'index glycémique à la quantité de glucides par portion. Ainsi une petite quantité d'un aliment à IG élevé est jugée plus réalistement. Au quotidien, la CG est souvent plus pratique que l'IG seul.",
+      "tr": "Glisemik yük, glisemik indeksi porsiyondaki karbonhidrat miktarıyla birleştirir. Böylece yüksek GI'li bir yiyeceğin küçük miktarı daha gerçekçi değerlendirilir. Günlük hayatta GL çoğu zaman yalnızca GI'den daha pratiktir."
+    },
+    "related_chapters": [
+      5,
+      6,
+      1,
+      3
+    ]
+  },
+  {
+    "term_key": "Netto-Kohlenhydrate",
+    "term": {
+      "de": "Netto-Kohlenhydrate",
+      "en": "Net carbs",
+      "es": "Hidratos de carbono netos",
+      "it": "Carboidrati netti",
+      "pt": "Hidratos de carbono líquidos",
+      "fr": "Glucides nets",
+      "tr": "Net karbonhidrat"
+    },
+    "synonyms": {
+      "de": [
+        "Net Carbs",
+        "verfügbare Kohlenhydrate"
+      ],
+      "en": [
+        "available carbohydrates",
+        "digestible carbs"
+      ],
+      "es": [
+        "Net carbs",
+        "Hidratos disponibles"
+      ],
+      "it": [
+        "carboidrati disponibili",
+        "CHO netti"
+      ],
+      "pt": [
+        "hidratos disponíveis",
+        "carbs líquidos"
+      ],
+      "fr": [
+        "glucides disponibles",
+        "carbs nets"
+      ],
+      "tr": [
+        "kullanılabilir karbonhidrat",
+        "net carbs"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Netto-Kohlenhydrate sind Gesamtkohlenhydrate minus Ballaststoffe und manchmal Zuckeralkohole. Sie schätzen den blutzuckerwirksamen Anteil besser ab. Etikettenangaben können je nach Land unterschiedlich berechnet sein.",
+      "en": "Net carbs are total carbohydrates minus fiber and sometimes sugar alcohols. They better estimate the blood-sugar-active share. Label figures can be calculated differently by country.",
+      "es": "Los hidratos de carbono netos son los hidratos totales menos la fibra y a veces los polioles. Estiman mejor la fracción con efecto sobre la glucemia. Las menciones en etiquetas pueden calcularse de forma distinta según el país.",
+      "it": "I carboidrati netti sono i totali meno fibre e a volte polioli. Stimano meglio la quota attiva sulla glicemia. Le etichette possono essere calcolate diversamente a seconda del Paese.",
+      "pt": "Os hidratos líquidos são o total menos fibra e por vezes álcoois de açúcar. Estimam melhor a fração ativa na glicemia. Os rótulos podem calcular-se de forma diferente conforme o país.",
+      "fr": "Les glucides nets sont les totaux moins fibres et parfois polyols. Ils estiment mieux la part active sur la glycémie. Les étiquettes peuvent être calculées différemment selon le pays.",
+      "tr": "Net karbonhidrat, toplam karbonhidrattan lif ve bazen şeker alkollerinin çıkarılmasıdır. Kan şekerini etkileyen payı daha iyi tahmin eder. Etiket değerleri ülkeye göre farklı hesaplanabilir."
+    },
+    "related_chapters": [
+      6,
+      4,
+      5,
+      1
+    ]
+  },
+  {
+    "term_key": "Insulinresistenz",
+    "term": {
+      "de": "Insulinresistenz",
+      "en": "Insulin resistance",
+      "es": "Resistencia a la insulina",
+      "it": "Insulinoresistenza",
+      "pt": "Resistência à insulina",
+      "fr": "Résistance à l'insuline",
+      "tr": "İnsülin direnci"
+    },
+    "synonyms": {
+      "de": [
+        "verminderte Insulinempfindlichkeit"
+      ],
+      "en": [
+        "reduced insulin sensitivity"
+      ],
+      "es": [
+        "Sensibilidad a la insulina disminuida"
+      ],
+      "it": [
+        "ridotta sensibilità insulinica"
+      ],
+      "pt": [
+        "sensibilidade à insulina reduzida"
+      ],
+      "fr": [
+        "sensibilité à l'insuline réduite"
+      ],
+      "tr": [
+        "azalmış insülin duyarlılığı"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Bei Insulinresistenz reagieren Zellen weniger empfindlich auf Insulin, wodurch Blutzucker und Insulinspiegel steigen. Bewegung, Schlaf und weniger Zuckerüberschuss verbessern die Empfindlichkeit oft spürbar. HOMA-IR und Taillenumfang sind Orientierungshilfen.",
+      "en": "In insulin resistance, cells respond less to insulin, so blood sugar and insulin levels rise. Exercise, sleep, and less excess sugar often improve sensitivity noticeably. HOMA-IR and waist circumference are useful guides.",
+      "es": "En la resistencia a la insulina las células reaccionan con menos sensibilidad a la insulina, por lo que suben glucemia e insulina. Ejercicio, sueño y menos exceso de azúcar suelen mejorar la sensibilidad de forma notable. HOMA-IR y perímetro de cintura son ayudas orientativas.",
+      "it": "Nell'insulinoresistenza le cellule rispondono meno all'insulina e salgono glicemia e insulina. Movimento, sonno e meno eccesso di zucchero spesso migliorano sensibilmente la sensibilità. HOMA-IR e circonferenza vita orientano.",
+      "pt": "Na resistência à insulina, as células respondem menos à insulina e sobem glicemia e insulina. Exercício, sono e menos excesso de açúcar melhoram muitas vezes a sensibilidade. HOMA-IR e perímetro da cintura orientam.",
+      "fr": "En résistance à l'insuline, les cellules répondent moins à l'insuline et glycémie et insuline montent. Activité, sommeil et moins d'excès de sucre améliorent souvent nettement la sensibilité. HOMA-IR et tour de taille orientent.",
+      "tr": "İnsülin direncinde hücreler insüline daha az yanıt verir; kan şekeri ve insülin yükselir. Hareket, uyku ve daha az şeker fazlası duyarlılığı çoğu zaman belirgin iyileştirir. HOMA-IR ve bel çevresi yönlendiricidir."
+    },
+    "related_chapters": [
+      1,
+      3,
+      5,
+      7,
+      9
+    ]
+  },
+  {
+    "term_key": "Insulinsensitivität",
+    "term": {
+      "de": "Insulinsensitivität",
+      "en": "Insulin sensitivity",
+      "es": "Sensibilidad a la insulina",
+      "it": "Sensibilità insulinica",
+      "pt": "Sensibilidade à insulina",
+      "fr": "Sensibilité à l'insuline",
+      "tr": "İnsülin duyarlılığı"
+    },
+    "synonyms": {
+      "de": [
+        "Insulinempfindlichkeit"
+      ],
+      "en": [
+        "insulin responsiveness"
+      ],
+      "es": [
+        "Sensibilidad insulínica"
+      ],
+      "it": [
+        "risposta all'insulina"
+      ],
+      "pt": [
+        "resposta à insulina"
+      ],
+      "fr": [
+        "réponse à l'insuline"
+      ],
+      "tr": [
+        "insülin yanıtı"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Eine hohe Insulinsensitivität bedeutet, dass wenig Insulin reicht, um Glukose aufzunehmen. Ausdauer- und Krafttraining sind besonders wirksame Hebel. Auch Ballaststoffe und gewichtsneutrale Ernährungsmuster unterstützen sie.",
+      "en": "High insulin sensitivity means little insulin is enough to take up glucose. Endurance and strength training are especially effective levers. Fiber and weight-stable eating patterns also support it.",
+      "es": "Una alta sensibilidad a la insulina significa que poca insulina basta para absorber glucosa. El entrenamiento de resistencia y de fuerza son palancas especialmente eficaces. También la fibra y patrones alimentarios con peso estable la favorecen.",
+      "it": "Un'alta sensibilità insulinica significa che poca insulina basta per captare glucosio. Allenamento di resistenza e di forza sono leve particolarmente efficaci. Fibre e schemi alimentari neutri sul peso la supportano.",
+      "pt": "Uma elevada sensibilidade à insulina significa que pouca insulina basta para captar glicose. Treino de resistência e de força são alavancas especialmente eficazes. Fibra e padrões alimentares estáveis no peso também a apoiam.",
+      "fr": "Une haute sensibilité à l'insuline signifie que peu d'insuline suffit pour capter le glucose. Endurance et musculation sont des leviers particulièrement efficaces. Fibres et modes alimentaires stables en poids la soutiennent aussi.",
+      "tr": "Yüksek insülin duyarlılığı, glukoz alımı için az insülinin yetmesi demektir. Dayanıklılık ve kuvvet antrenmanı özellikle etkili kaldıraçlardır. Lif ve kilo dengeli beslenme kalıpları da destekler."
+    },
+    "related_chapters": [
+      5,
+      7,
+      4,
+      1
+    ]
+  },
+  {
+    "term_key": "De-novo-Lipogenese",
+    "term": {
+      "de": "De-novo-Lipogenese",
+      "en": "De novo lipogenesis",
+      "es": "Lipogénesis de novo",
+      "it": "Lipogenesi de novo",
+      "pt": "Lipogénese de novo",
+      "fr": "Lipogenèse de novo",
+      "tr": "De novo lipogenez"
+    },
+    "synonyms": {
+      "de": [
+        "DNL",
+        "Fettneubildung"
+      ],
+      "en": [
+        "DNL",
+        "new fat formation"
+      ],
+      "es": [
+        "DNL",
+        "Nueva formación de grasa"
+      ],
+      "it": [
+        "DNL",
+        "neogenesi di grasso"
+      ],
+      "pt": [
+        "DNL",
+        "nova formação de gordura"
+      ],
+      "fr": [
+        "DNL",
+        "néoformation de graisse"
+      ],
+      "tr": [
+        "DNL",
+        "yağ yeniden oluşumu"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "De-novo-Lipogenese ist die Neubildung von Fett aus Kohlenhydraten, vor allem in der Leber. Hohe Fruktose- und Kalorienüberschüsse fördern diesen Weg. Erhöhte Triglyceride können ein Hinweis sein.",
+      "en": "De novo lipogenesis is the making of new fat from carbohydrates, mainly in the liver. High fructose and calorie surplus favor this pathway. Elevated triglycerides can be a clue.",
+      "es": "La lipogénesis de novo es la formación nueva de grasa a partir de hidratos de carbono, sobre todo en el hígado. Excesos altos de fructosa y calorías favorecen esta vía. Triglicéridos elevados pueden ser un indicio.",
+      "it": "La lipogenesi de novo è la neoformazione di grasso da carboidrati, soprattutto nel fegato. Elevati eccessi di fruttosio e calorie favoriscono questa via. Trigliceridi alti possono essere un indizio.",
+      "pt": "A lipogénese de novo é a formação de gordura nova a partir de hidratos, sobretudo no fígado. Excessos elevados de frutose e calorias favorecem esta via. Triglicéridos elevados podem ser um indício.",
+      "fr": "La lipogenèse de novo est la formation de graisse nouvelle à partir de glucides, surtout dans le foie. De forts excès de fructose et de calories favorisent cette voie. Des triglycérides élevés peuvent être un indice.",
+      "tr": "De novo lipogenez, özellikle karaciğerde karbonhidratlardan yeni yağ oluşumudur. Yüksek fruktoz ve kalori fazlası bu yolu destekler. Yüksek trigliserit ipucu olabilir."
+    },
+    "related_chapters": [
+      1,
+      2,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Fruktose-Stoffwechsel",
+    "term": {
+      "de": "Fruktose-Stoffwechsel",
+      "en": "Fructose metabolism",
+      "es": "Metabolismo de la fructosa",
+      "it": "Metabolismo del fruttosio",
+      "pt": "Metabolismo da frutose",
+      "fr": "Métabolisme du fructose",
+      "tr": "Fruktoz metabolizması"
+    },
+    "synonyms": {
+      "de": [
+        "Fruchtzucker-Stoffwechsel"
+      ],
+      "en": [
+        "fruit sugar metabolism"
+      ],
+      "es": [
+        "Metabolismo del azúcar de la fruta"
+      ],
+      "it": [
+        "metabolismo dello zucchero della frutta"
+      ],
+      "pt": [
+        "metabolismo do açúcar da fruta"
+      ],
+      "fr": [
+        "métabolisme du sucre de fruit"
+      ],
+      "tr": [
+        "meyve şekeri metabolizması"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Fruktose wird überwiegend in der Leber verstoffwechselt und unterliegt keiner engen Sättigungsbremse wie Glukose. In Übermaß kann sie Harnsäure und Triglyceride anheben. Obst in üblichen Mengen ist nicht mit zuckergesüßten Getränken gleichzusetzen.",
+      "en": "Fructose is mainly metabolized in the liver and lacks glucose's tight satiety brake. In excess it can raise uric acid and triglycerides. Usual amounts of fruit are not the same as sugar-sweetened drinks.",
+      "es": "La fructosa se metaboliza sobre todo en el hígado y no está sujeta a un freno de saciedad tan estrecho como la glucosa. En exceso puede elevar el ácido úrico y los triglicéridos. La fruta en cantidades habituales no equivale a bebidas azucaradas.",
+      "it": "Il fruttosio si metabolizza soprattutto nel fegato e non ha il freno di sazietà stretto del glucosio. In eccesso può alzare acido urico e trigliceridi. La frutta in quantità usuali non equivale alle bevande zuccherate.",
+      "pt": "A frutose metaboliza-se sobretudo no fígado e não tem o travão de saciedade tão apertado da glicose. Em excesso pode elevar ácido úrico e triglicéridos. Fruta em quantidades habituais não equivale a bebidas açucaradas.",
+      "fr": "Le fructose se métabolise surtout dans le foie et n'a pas le frein de satiété serré du glucose. En excès, il peut élever acide urique et triglycérides. Les fruits en quantités habituelles ne valent pas les boissons sucrées.",
+      "tr": "Fruktoz çoğunlukla karaciğerde metabolize edilir ve glukoz gibi sıkı bir tokluk frenine tabi değildir. Fazlası ürik asit ve trigliseriti yükseltebilir. Olağan miktarda meyve, şekerli içeceklerle aynı değildir."
+    },
+    "related_chapters": [
+      1,
+      2,
+      3,
+      10
+    ]
+  },
+  {
+    "term_key": "Glukoneogenese",
+    "term": {
+      "de": "Glukoneogenese",
+      "en": "Gluconeogenesis",
+      "es": "Gluconeogénesis",
+      "it": "Gluconeogenesi",
+      "pt": "Gluconeogénese",
+      "fr": "Néoglucogenèse",
+      "tr": "Glukoneogenez"
+    },
+    "synonyms": {
+      "de": [
+        "Zuckerneubildung"
+      ],
+      "en": [
+        "new glucose formation"
+      ],
+      "es": [
+        "Nueva formación de azúcar"
+      ],
+      "it": [
+        "neoformazione di glucosio"
+      ],
+      "pt": [
+        "nova formação de glicose"
+      ],
+      "fr": [
+        "néoformation de glucose"
+      ],
+      "tr": [
+        "şeker yeniden oluşumu"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Glukoneogenese erzeugt Glukose aus Aminosäuren und anderen Vorstufen, wenn die Nahrung wenig Kohlenhydrate liefert. Sie hält den Blutzucker für das Gehirn stabil. In Fastenphasen und bei Low-Carb ist sie physiologisch wichtig.",
+      "en": "Gluconeogenesis makes glucose from amino acids and other precursors when food provides little carbohydrate. It keeps blood sugar stable for the brain. In fasting and low-carb it is physiologically important.",
+      "es": "La gluconeogénesis genera glucosa a partir de aminoácidos y otros precursores cuando la alimentación aporta pocos hidratos de carbono. Mantiene estable la glucemia para el cerebro. En fases de ayuno y en low-carb es fisiológicamente importante.",
+      "it": "La gluconeogenesi produce glucosio da aminoacidi e altri precursori quando il cibo fornisce pochi carboidrati. Stabilizza la glicemia per il cervello. Nel digiuno e low-carb è fisiologicamente importante.",
+      "pt": "A gluconeogénese produz glicose a partir de aminoácidos e outros precursores quando a comida fornece poucos hidratos. Mantém o açúcar estável para o cérebro. No jejum e low-carb é fisiologicamente importante.",
+      "fr": "La néoglucogenèse produit du glucose à partir d'acides aminés et d'autres précurseurs quand l'alimentation fournit peu de glucides. Elle stabilise la glycémie pour le cerveau. En jeûne et low-carb, elle est physiologiquement importante.",
+      "tr": "Glukoneogenez, besin az karbonhidrat verdiğinde amino asitler ve diğer öncüllerden glukoz üretir. Beyin için kan şekerini stabil tutar. Oruç ve düşük karbonhidrattta fizyolojik olarak önemlidir."
+    },
+    "related_chapters": [
+      1,
+      6,
+      7
+    ]
+  },
+  {
+    "term_key": "Glykogen",
+    "term": {
+      "de": "Glykogen",
+      "en": "Glycogen",
+      "es": "Glucógeno",
+      "it": "Glicogeno",
+      "pt": "Glicogénio",
+      "fr": "Glycogène",
+      "tr": "Glikojen"
+    },
+    "synonyms": {
+      "de": [
+        "Leberglykogen",
+        "Muskelglykogen"
+      ],
+      "en": [
+        "liver glycogen",
+        "muscle glycogen"
+      ],
+      "es": [
+        "Glucógeno hepático",
+        "Glucógeno muscular"
+      ],
+      "it": [
+        "glicogeno epatico",
+        "glicogeno muscolare"
+      ],
+      "pt": [
+        "glicogénio hepático",
+        "glicogénio muscular"
+      ],
+      "fr": [
+        "glycogène hépatique",
+        "glycogène musculaire"
+      ],
+      "tr": [
+        "karaciğer glikojeni",
+        "kas glikojeni"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Glykogen ist die Speicherform von Glukose in Leber und Muskel. Leberglykogen stabilisiert den Blutzucker, Muskelglykogen treibt die Arbeit. Nach Training und kohlenhydratreichen Mahlzeiten werden die Speicher wieder gefüllt.",
+      "en": "Glycogen is the storage form of glucose in liver and muscle. Liver glycogen stabilizes blood sugar; muscle glycogen fuels work. After training and carb-rich meals stores are refilled.",
+      "es": "El glucógeno es la forma de almacenamiento de la glucosa en hígado y músculo. El glucógeno hepático estabiliza la glucemia; el muscular impulsa el trabajo. Tras el entrenamiento y comidas ricas en hidratos de carbono se rellenan los depósitos.",
+      "it": "Il glicogeno è la forma di deposito del glucosio in fegato e muscolo. Il glicogeno epatico stabilizza la glicemia; quello muscolare alimenta il lavoro. Dopo allenamento e pasti ricchi di carboidrati i depositi si riempiono di nuovo.",
+      "pt": "O glicogénio é a forma de armazenamento de glicose no fígado e no músculo. O hepático estabiliza o açúcar; o muscular impulsiona o trabalho. Após treino e refeições ricas em hidratos os depósitos voltam a encher-se.",
+      "fr": "Le glycogène est la forme de stockage du glucose dans foie et muscle. Le glycogène hépatique stabilise la glycémie; le musculaire alimente le travail. Après entraînement et repas riches en glucides, les réserves se remplissent.",
+      "tr": "Glikojen, karaciğer ve kasta glukozun depo biçimidir. Karaciğer glikojeni kan şekerini dengeler; kas glikojeni işi yürütür. Antrenman ve karbonhidratlı öğünlerden sonra depolar yeniden dolar."
+    },
+    "related_chapters": [
+      1,
+      7,
+      5
+    ]
+  },
+  {
+    "term_key": "Ketose",
+    "term": {
+      "de": "Ketose",
+      "en": "Ketosis",
+      "es": "Cetosis",
+      "it": "Chetosi",
+      "pt": "Cetose",
+      "fr": "Cétose",
+      "tr": "Ketoz"
+    },
+    "synonyms": {
+      "de": [
+        "alimentäre Ketose",
+        "ketogener Zustand"
+      ],
+      "en": [
+        "nutritional ketosis",
+        "ketogenic state"
+      ],
+      "es": [
+        "Cetosis alimentaria",
+        "Estado cetogénico"
+      ],
+      "it": [
+        "chetosi nutrizionale",
+        "stato chetogenico"
+      ],
+      "pt": [
+        "cetose nutricional",
+        "estado cetogénico"
+      ],
+      "fr": [
+        "cétose nutritionnelle",
+        "état cétogène"
+      ],
+      "tr": [
+        "besinsel ketoz",
+        "ketojenik durum"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Ketose beschreibt einen Stoffwechsellage mit erhöhten Ketonkörpern bei geringer Kohlenhydratzufuhr. Sie ist vom lebensbedrohlichen ketoazidotischen Zustand bei Insulinmangel zu unterscheiden. Medizinische Indikationen gehören ärztlich begleitet.",
+      "en": "Ketosis describes a metabolic state with elevated ketones at low carbohydrate intake. It differs from life-threatening ketoacidosis in insulin deficiency. Medical indications need physician supervision.",
+      "es": "La cetosis describe un estado metabólico con cuerpos cetónicos elevados ante bajo aporte de hidratos de carbono. Debe distinguirse del estado cetoacidótico potencialmente mortal por falta de insulina. Las indicaciones médicas deben acompañarse médicamente.",
+      "it": "La chetosi descrive uno stato metabolico con corpi chetonici elevati a basso apporto di carboidrati. Va distinta dalla chetoacidosi potenzialmente letale da carenza di insulina. Le indicazioni mediche richiedono accompagnamento medico.",
+      "pt": "A cetose descreve um estado metabólico com corpos cetónicos elevados com baixa ingestão de hidratos. Distingue-se da cetoacidose potencialmente mortal por défice de insulina. Indicações médicas pedem acompanhamento médico.",
+      "fr": "La cétose décrit un état métabolique avec corps cétoniques élevés à faible apport glucidique. Elle se distingue de la cétoacidose potentiellement mortelle en carence d'insuline. Les indications médicales demandent un suivi médical.",
+      "tr": "Ketoz, düşük karbonhidrat alımında yüksek keton cisimli bir metabolizma durumunu tanımlar. İnsülin eksikliğindeki yaşamı tehdit eden ketoasidozdan ayrılmalıdır. Tıbbi endikasyonlar hekim eşliğinde olmalıdır."
+    },
+    "related_chapters": [
+      1,
+      6,
+      11
+    ]
+  },
+  {
+    "term_key": "Stoffwechselrate",
+    "term": {
+      "de": "Stoffwechselrate",
+      "en": "Metabolic rate",
+      "es": "Tasa metabólica",
+      "it": "Tasso metabolico",
+      "pt": "Taxa metabólica",
+      "fr": "Taux métabolique",
+      "tr": "Metabolizma hızı"
+    },
+    "synonyms": {
+      "de": [
+        "Grundumsatz",
+        "metabolische Rate"
+      ],
+      "en": [
+        "basal metabolic rate",
+        "BMR"
+      ],
+      "es": [
+        "Metabolismo basal",
+        "Tasa metabólica"
+      ],
+      "it": [
+        "metabolismo basale",
+        "tasso metabolico basale"
+      ],
+      "pt": [
+        "metabolismo basal",
+        "taxa metabólica basal"
+      ],
+      "fr": [
+        "métabolisme de base",
+        "taux métabolique de base"
+      ],
+      "tr": [
+        "bazal metabolizma",
+        "metabolik hız"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Die Stoffwechselrate beschreibt den Energieverbrauch in Ruhe und bei Aktivität. Muskelmasse, Alter, Hormone und Bewegung beeinflussen sie. Extreme Restriktion kann den Verbrauch vorübergehend senken.",
+      "en": "Metabolic rate describes energy use at rest and in activity. Muscle mass, age, hormones, and exercise influence it. Extreme restriction can temporarily lower expenditure.",
+      "es": "La tasa metabólica describe el gasto energético en reposo y en actividad. Masa muscular, edad, hormonas y ejercicio la influyen. Una restricción extrema puede bajar temporalmente el gasto.",
+      "it": "Il tasso metabolico descrive il consumo energetico a riposo e in attività. Massa muscolare, età, ormoni e movimento lo influenzano. Una restrizione estrema può abbassare temporaneamente il consumo.",
+      "pt": "A taxa metabólica descreve o gasto energético em repouso e na atividade. Massa muscular, idade, hormonas e exercício influenciam-na. Restrição extrema pode baixar temporariamente o gasto.",
+      "fr": "Le taux métabolique décrit la dépense énergétique au repos et en activité. Masse musculaire, âge, hormones et activité l'influencent. Une restriction extrême peut baisser temporairement la dépense.",
+      "tr": "Metabolizma hızı, dinlenme ve aktivitede enerji tüketimini tanımlar. Kas kütlesi, yaş, hormonlar ve hareket onu etkiler. Aşırı kısıtlama tüketimi geçici düşürebilir."
+    },
+    "related_chapters": [
+      7,
+      8
+    ]
+  },
+  {
+    "term_key": "Postprandiale Antwort",
+    "term": {
+      "de": "Postprandiale Antwort",
+      "en": "Postprandial response",
+      "es": "Respuesta posprandial",
+      "it": "Risposta postprandiale",
+      "pt": "Resposta pós-prandial",
+      "fr": "Réponse postprandiale",
+      "tr": "Postprandiyal yanıt"
+    },
+    "synonyms": {
+      "de": [
+        "Reaktion nach dem Essen"
+      ],
+      "en": [
+        "response after eating"
+      ],
+      "es": [
+        "Reacción tras la comida"
+      ],
+      "it": [
+        "reazione dopo i pasti"
+      ],
+      "pt": [
+        "reação após comer"
+      ],
+      "fr": [
+        "réaction après repas"
+      ],
+      "tr": [
+        "yemek sonrası tepki"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Die postprandiale Antwort umfasst Blutzucker-, Insulin- und Triglyceridanstieg nach Mahlzeiten. Zusammensetzung, Reihenfolge der Makronährstoffe und Bewegung danach prägen die Kurve. Wer Spitzen dämpft, entlastet oft den Stoffwechsel.",
+      "en": "The postprandial response includes rises in blood sugar, insulin, and triglycerides after meals. Composition, macronutrient order, and movement afterward shape the curve. Dampening peaks often eases metabolic load.",
+      "es": "La respuesta posprandial abarca el aumento de glucemia, insulina y triglicéridos tras las comidas. Composición, orden de macronutrientes y movimiento posterior moldean la curva. Quien amortigua los picos suele aliviar el metabolismo.",
+      "it": "La risposta postprandiale include l'aumento di glicemia, insulina e trigliceridi dopo i pasti. Composizione, ordine dei macronutrienti e movimento dopo modellano la curva. Smorzare i picchi spesso alleggerisce il metabolismo.",
+      "pt": "A resposta pós-prandial inclui a subida de glicemia, insulina e triglicéridos após as refeições. Composição, ordem dos macronutrientes e movimento depois moldam a curva. Amortecer picos alivia muitas vezes o metabolismo.",
+      "fr": "La réponse postprandiale inclut la hausse de glycémie, d'insuline et de triglycérides après les repas. Composition, ordre des macronutriments et activité ensuite façonnent la courbe. Atténuer les pics soulage souvent le métabolisme.",
+      "tr": "Postprandiyal yanıt, öğün sonrası kan şekeri, insülin ve trigliserit yükselişini kapsar. Bileşim, makronutrient sırası ve sonrasındaki hareket eğriyi şekillendirir. Zirveleri bastırmak çoğu zaman metabolizmayı rahatlatır."
+    },
+    "related_chapters": [
+      1,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  {
+    "term_key": "Sättigungsregulation",
+    "term": {
+      "de": "Sättigungsregulation",
+      "en": "Satiety regulation",
+      "es": "Regulación de la saciedad",
+      "it": "Regolazione della sazietà",
+      "pt": "Regulação da saciedade",
+      "fr": "Régulation de la satiété",
+      "tr": "Tokluk düzenlemesi"
+    },
+    "synonyms": {
+      "de": [
+        "Appetitregulation",
+        "Hunger-Sättigung"
+      ],
+      "en": [
+        "appetite regulation",
+        "hunger-satiety"
+      ],
+      "es": [
+        "Regulación del apetito",
+        "Hambre-saciedad"
+      ],
+      "it": [
+        "regolazione dell'appetito",
+        "fame-sazietà"
+      ],
+      "pt": [
+        "regulação do apetite",
+        "fome-saciedade"
+      ],
+      "fr": [
+        "régulation de l'appétit",
+        "faim-satiété"
+      ],
+      "tr": [
+        "iştah düzenlemesi",
+        "açlık-tokluk"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Sättigung wird über Hormone wie Ghrelin, GLP-1 und Leptin sowie über Magenfüllung gesteuert. Protein und Ballaststoffe erhöhen oft die Sättigung. Stark verarbeitete Lebensmittel können diese Signale umgehen.",
+      "en": "Satiety is driven by hormones such as ghrelin, GLP-1, and leptin plus stomach fill. Protein and fiber often increase satiety. Highly processed foods can bypass these signals.",
+      "es": "La saciedad se controla mediante hormonas como grelina, GLP-1 y leptina, y mediante el llenado gástrico. Proteína y fibra suelen aumentar la saciedad. Los alimentos ultraprocesados pueden eludir estas señales.",
+      "it": "La sazietà è regolata da ormoni come grelina, GLP-1 e leptina e dal riempimento gastrico. Proteine e fibre spesso aumentano la sazietà. Gli alimenti ultraprocessati possono aggirare questi segnali.",
+      "pt": "A saciedade é regulada por hormonas como a grelina, o GLP-1 e a leptina, bem como pelo enchimento gástrico. Proteína e fibra aumentam muitas vezes a saciedade. Alimentos muito processados podem contornar estes sinais.",
+      "fr": "La satiété est régulée par des hormones comme ghréline, GLP-1 et leptine ainsi que le remplissage gastrique. Protéines et fibres augmentent souvent la satiété. Les aliments ultra-transformés peuvent contourner ces signaux.",
+      "tr": "Tokluk; ghrelin, GLP-1 ve leptin gibi hormonlar ile mide doluluğu üzerinden yönetilir. Protein ve lif çoğu zaman tokluğu artırır. Aşırı işlenmiş gıdalar bu sinyalleri atlatabilir."
+    },
+    "related_chapters": [
+      4,
+      8,
+      10
+    ]
+  },
+  {
+    "term_key": "GLP-1",
+    "term": {
+      "de": "GLP-1",
+      "en": "GLP-1",
+      "es": "GLP-1",
+      "it": "GLP-1",
+      "pt": "GLP-1",
+      "fr": "GLP-1",
+      "tr": "GLP-1"
+    },
+    "synonyms": {
+      "de": [
+        "Glucagon-like Peptide-1"
+      ],
+      "en": [
+        "glucagon-like peptide-1"
+      ],
+      "es": [
+        "Péptido similar al glucagón tipo 1"
+      ],
+      "it": [
+        "peptide glucagone-simile 1"
+      ],
+      "pt": [
+        "péptido semelhante ao glucagon-1"
+      ],
+      "fr": [
+        "peptide glucagon-like 1"
+      ],
+      "tr": [
+        "glukagon benzeri peptid-1"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "GLP-1 ist ein Darmhormon, das Insulin freisetzt, Magenentleerung verlangsamt und Appetit mindert. Medikamente nutzen diesen Weg therapeutisch. Ballaststoffreiche Mahlzeiten können die natürliche Ausschüttung unterstützen.",
+      "en": "GLP-1 is a gut hormone that releases insulin, slows gastric emptying, and reduces appetite. Medications use this pathway therapeutically. Fiber-rich meals can support natural release.",
+      "es": "El GLP-1 es una hormona intestinal que libera insulina, ralentiza el vaciamiento gástrico y reduce el apetito. Los medicamentos aprovechan esta vía terapéuticamente. Las comidas ricas en fibra pueden favorecer la liberación natural.",
+      "it": "Il GLP-1 è un ormone intestinale che rilascia insulina, rallenta lo svuotamento gastrico e riduce l'appetito. I farmaci usano questa via a scopo terapeutico. Pasti ricchi di fibre possono sostenere il rilascio naturale.",
+      "pt": "O GLP-1 é uma hormona intestinal que liberta insulina, abranda o esvaziamento gástrico e reduz o apetite. Medicamentos usam esta via terapeuticamente. Refeições ricas em fibra podem apoiar a libertação natural.",
+      "fr": "Le GLP-1 est une hormone intestinale qui libère de l'insuline, ralentit la vidange gastrique et réduit l'appétit. Les médicaments utilisent cette voie thérapeutiquement. Des repas riches en fibres peuvent soutenir la sécrétion naturelle.",
+      "tr": "GLP-1, insülin salan, mide boşalmasını yavaşlatan ve iştahı azaltan bir bağırsak hormonudur. İlaçlar bu yolu terapötik kullanır. Lifli öğünler doğal salınımı destekleyebilir."
+    },
+    "related_chapters": [
+      1,
+      4,
+      8
+    ]
+  },
+  {
+    "term_key": "Glukagon",
+    "term": {
+      "de": "Glukagon",
+      "en": "Glucagon",
+      "es": "Glucagón",
+      "it": "Glucagone",
+      "pt": "Glucagon",
+      "fr": "Glucagon",
+      "tr": "Glukagon"
+    },
+    "synonyms": {
+      "de": [
+        "Glucagon"
+      ],
+      "en": [
+        "glucagon"
+      ],
+      "es": [
+        "Glucagón"
+      ],
+      "it": [
+        "glucagone"
+      ],
+      "pt": [
+        "glucagon"
+      ],
+      "fr": [
+        "glucagon"
+      ],
+      "tr": [
+        "glucagon"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Glukagon ist der Gegenspieler von Insulin und hebt den Blutzucker über Glykogenabbau und Glukoneogenese an. Im Fasten hält es die Versorgung aufrecht. Ein Ungleichgewicht spielt bei Diabetes eine Rolle.",
+      "en": "Glucagon is insulin's counterpart and raises blood sugar via glycogen breakdown and gluconeogenesis. In fasting it maintains supply. Imbalance plays a role in diabetes.",
+      "es": "El glucagón es el antagonista de la insulina y eleva la glucemia mediante degradación de glucógeno y gluconeogénesis. En el ayuno mantiene el suministro. Un desequilibrio desempeña un papel en la diabetes.",
+      "it": "Il glucagone è l'antagonista dell'insulina e alza la glicemia tramite degradazione del glicogeno e gluconeogenesi. Nel digiuno mantiene l'apporto. Uno squilibrio gioca un ruolo nel diabete.",
+      "pt": "O glucagon é o antagonista da insulina e eleva o açúcar via degradação do glicogénio e gluconeogénese. No jejum mantém o fornecimento. Um desequilíbrio tem papel na diabetes.",
+      "fr": "Le glucagon est l'antagoniste de l'insuline et élève la glycémie via dégradation du glycogène et néoglucogenèse. En jeûne, il maintient l'approvisionnement. Un déséquilibre joue un rôle dans le diabète.",
+      "tr": "Glukagon, insülinin karşıtıdır ve glikojen yıkımı ile glukoneogenez yoluyla kan şekerini yükseltir. Oruçta tedariki sürdürür. Dengesizlik diyabette rol oynar."
+    },
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Metabolisches Syndrom",
+    "term": {
+      "de": "Metabolisches Syndrom",
+      "en": "Metabolic syndrome",
+      "es": "Síndrome metabólico",
+      "it": "Sindrome metabolica",
+      "pt": "Síndrome metabólica",
+      "fr": "Syndrome métabolique",
+      "tr": "Metabolik sendrom"
+    },
+    "synonyms": {
+      "de": [
+        "Wohlstandssyndrom"
+      ],
+      "en": [
+        "syndrome X"
+      ],
+      "es": [
+        "Síndrome de la abundancia"
+      ],
+      "it": [
+        "sindrome X"
+      ],
+      "pt": [
+        "síndrome X"
+      ],
+      "fr": [
+        "syndrome X"
+      ],
+      "tr": [
+        "zenginlik sendromu"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Das metabolische Syndrom bündelt Bauchfett, Bluthochdruck, gestörte Glukosewerte und ungünstige Blutfette. Es erhöht das Risiko für Typ-2-Diabetes und Herzkrankheiten. Lebensstiländerung ist die Basistherapie.",
+      "en": "Metabolic syndrome clusters abdominal fat, high blood pressure, impaired glucose, and unfavorable blood lipids. It raises risk of type 2 diabetes and heart disease. Lifestyle change is the foundation of therapy.",
+      "es": "El síndrome metabólico agrupa grasa abdominal, hipertensión, valores de glucosa alterados y lípidos desfavorables. Eleva el riesgo de diabetes tipo 2 y enfermedades cardíacas. El cambio de estilo de vida es la terapia de base.",
+      "it": "La sindrome metabolica raggruppa grasso addominale, ipertensione, glucosio alterato e lipidi sfavorevoli. Aumenta il rischio di diabete di tipo 2 e malattie cardiache. Il cambiamento di stile di vita è la terapia di base.",
+      "pt": "A síndrome metabólica agrupa gordura abdominal, hipertensão, glicose alterada e lípidos desfavoráveis. Eleva o risco de diabetes tipo 2 e doenças cardíacas. A mudança de estilo de vida é a terapia de base.",
+      "fr": "Le syndrome métabolique regroupe graisse abdominale, hypertension, glucose altéré et lipides défavorables. Il élève le risque de diabète de type 2 et de maladies cardiaques. Le changement de mode de vie est la thérapie de base.",
+      "tr": "Metabolik sendrom karın yağı, hipertansiyon, bozulmuş glukoz ve olumsuz kan yağlarını bir araya getirir. Tip 2 diyabet ve kalp hastalığı riskini artırır. Yaşam tarzı değişikliği temel tedavidir."
+    },
+    "related_chapters": [
+      1,
+      3,
+      7,
+      8,
+      9
+    ]
+  },
+  {
+    "term_key": "Nicht-alkoholische Fettleber",
+    "term": {
+      "de": "Nicht-alkoholische Fettleber",
+      "en": "Non-alcoholic fatty liver",
+      "es": "Hígado graso no alcohólico",
+      "it": "Fegato grasso non alcolico",
+      "pt": "Fígado gordo não alcoólico",
+      "fr": "Stéatose hépatique non alcoolique",
+      "tr": "Alkol dışı yağlı karaciğer"
+    },
+    "synonyms": {
+      "de": [
+        "NAFLD",
+        "MASLD",
+        "Leberverfettung"
+      ],
+      "en": [
+        "NAFLD",
+        "MASLD",
+        "hepatic steatosis"
+      ],
+      "es": [
+        "NAFLD",
+        "MASLD",
+        "Esteatosis hepática"
+      ],
+      "it": [
+        "NAFLD",
+        "MASLD",
+        "steatosi epatica"
+      ],
+      "pt": [
+        "NAFLD",
+        "MASLD",
+        "esteatose hepática"
+      ],
+      "fr": [
+        "NAFLD",
+        "MASLD",
+        "stéatose hépatique"
+      ],
+      "tr": [
+        "NAFLD",
+        "MASLD",
+        "karaciğer yağlanması"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Die nicht-alkoholische Fettleber hängt eng mit Insulinresistenz und Kalorienüberschuss zusammen. Fruktose und zuckerreiche Getränke gelten als Treiber. Gewichtsreduktion und Bewegung können die Leberwerte verbessern.",
+      "en": "Non-alcoholic fatty liver is closely tied to insulin resistance and calorie surplus. Fructose and sugary drinks are considered drivers. Weight loss and exercise can improve liver values.",
+      "es": "El hígado graso no alcohólico está estrechamente ligado a la resistencia a la insulina y al exceso calórico. La fructosa y las bebidas azucaradas se consideran impulsores. La pérdida de peso y el ejercicio pueden mejorar los valores hepáticos.",
+      "it": "Il fegato grasso non alcolico si lega strettamente a insulinoresistenza ed eccesso calorico. Fruttosio e bevande zuccherate sono considerati driver. Perdita di peso e movimento possono migliorare i valori epatici.",
+      "pt": "O fígado gordo não alcoólico liga-se de perto a resistência à insulina e excesso calórico. Frutose e bebidas açucaradas são considerados impulsionadores. Perda de peso e exercício podem melhorar os valores hepáticos.",
+      "fr": "La stéatose hépatique non alcoolique se lie étroitement à résistance à l'insuline et excès calorique. Fructose et boissons sucrées sont considérés comme moteurs. Perte de poids et activité peuvent améliorer les valeurs hépatiques.",
+      "tr": "Alkol dışı yağlı karaciğer, insülin direnci ve kalori fazlasıyla yakından ilişkilidir. Fruktoz ve şekerli içecekler sürücü sayılır. Kilo kaybı ve hareket karaciğer değerlerini iyileştirebilir."
+    },
+    "related_chapters": [
+      1,
+      3,
+      7,
+      9
+    ]
+  },
+  {
+    "term_key": "Oxidativer Stress",
+    "term": {
+      "de": "Oxidativer Stress",
+      "en": "Oxidative stress",
+      "es": "Estrés oxidativo",
+      "it": "Stress ossidativo",
+      "pt": "Stresse oxidativo",
+      "fr": "Stress oxydatif",
+      "tr": "Oksidatif stres"
+    },
+    "synonyms": {
+      "de": [
+        "freie Radikale Belastung"
+      ],
+      "en": [
+        "free radical burden"
+      ],
+      "es": [
+        "Carga de radicales libres"
+      ],
+      "it": [
+        "carico di radicali liberi"
+      ],
+      "pt": [
+        "carga de radicais livres"
+      ],
+      "fr": [
+        "charge en radicaux libres"
+      ],
+      "tr": [
+        "serbest radikal yükü"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Oxidativer Stress entsteht, wenn freie Radikale die Abwehrkapazität übersteigen. Rauchen, chronische Entzündung und unausgewogene Ernährung verstärken ihn. Antioxidantien aus Lebensmitteln sind sinnvoller als hochdosierte Einzelpräparate ohne Indikation.",
+      "en": "Oxidative stress arises when free radicals exceed defense capacity. Smoking, chronic inflammation, and unbalanced diet amplify it. Food antioxidants are wiser than high-dose single supplements without indication.",
+      "es": "El estrés oxidativo surge cuando los radicales libres superan la capacidad de defensa. Tabaco, inflamación crónica y alimentación desequilibrada lo refuerzan. Los antioxidantes de los alimentos son más sensatos que preparados aislados a dosis altas sin indicación.",
+      "it": "Lo stress ossidativo nasce quando i radicali liberi superano la capacità di difesa. Fumo, infiammazione cronica e dieta squilibrata lo amplificano. Gli antiossidanti dagli alimenti sono più sensati di integratori alimentari singoli ad alte dosi senza indicazione.",
+      "pt": "O stresse oxidativo surge quando os radicais livres excedem a capacidade de defesa. Fumar, inflamação crónica e alimentação desequilibrada reforçam-no. Antioxidantes dos alimentos são mais sensatos do que suplementos alimentares isolados em alta dose sem indicação.",
+      "fr": "Le stress oxydatif naît lorsque les radicaux libres dépassent la capacité de défense. Tabac, inflammation chronique et alimentation déséquilibrée l'amplifient. Les antioxydants alimentaires sont plus sages que des compléments alimentaires isolés à haute dose sans indication.",
+      "tr": "Oksidatif stres, serbest radikaller savunma kapasitesini aştığında oluşur. Sigara, kronik inflamasyon ve dengesiz beslenme onu güçlendirir. Gıdadan antioksidanlar, endikasyonsuz yüksek doz tek preparatlardan daha anlamlıdır."
+    },
+    "related_chapters": [
+      3,
+      8,
+      11
+    ]
+  },
+  {
+    "term_key": "Chronische Entzündung low grade",
+    "term": {
+      "de": "Chronische Entzündung low grade",
+      "en": "Low-grade chronic inflammation",
+      "es": "Inflamación crónica de bajo grado",
+      "it": "Infiammazione cronica low-grade",
+      "pt": "Inflamação crónica de baixo grau",
+      "fr": "Inflammation chronique de bas grade",
+      "tr": "Düşük dereceli kronik inflamasyon"
+    },
+    "synonyms": {
+      "de": [
+        "stille Entzündung",
+        "Low-grade Inflammation"
+      ],
+      "en": [
+        "silent inflammation",
+        "low-grade inflammation"
+      ],
+      "es": [
+        "Inflamación silenciosa",
+        "Low-grade inflammation"
+      ],
+      "it": [
+        "infiammazione silente",
+        "infiammazione low-grade"
+      ],
+      "pt": [
+        "inflamação silenciosa",
+        "inflamação de baixo grau"
+      ],
+      "fr": [
+        "inflammation silencieuse",
+        "inflammation de bas grade"
+      ],
+      "tr": [
+        "sessiz inflamasyon",
+        "low-grade inflamasyon"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Low-grade-Entzündung begleitet oft Adipositas und Insulinresistenz und zeigt sich in leicht erhöhten hs-CRP-Werten. Bauchfett setzt entzündungsfördernde Botenstoffe frei. Bewegung und bessere Kostqualität senken die Last.",
+      "en": "Low-grade inflammation often accompanies obesity and insulin resistance and shows as mildly elevated hs-CRP. Abdominal fat releases pro-inflammatory messengers. Exercise and better diet quality reduce the load.",
+      "es": "La inflamación de bajo grado acompaña a menudo a obesidad y resistencia a la insulina y se muestra en valores de hs-CRP ligeramente elevados. La grasa abdominal libera mensajeros proinflamatorios. El ejercicio y una mejor calidad de la dieta reducen la carga.",
+      "it": "L'infiammazione low-grade accompagna spesso obesità e insulinoresistenza e si vede in hs-CRP lievemente elevata. Il grasso addominale rilascia messaggeri proinfiammatori. Movimento e migliore qualità della dieta riducono il carico.",
+      "pt": "A inflamação de baixo grau acompanha frequentemente obesidade e resistência à insulina e aparece em valores ligeiramente elevados de hs-CRP. A gordura abdominal liberta mediadores pró-inflamatórios. Exercício e melhor qualidade alimentar reduzem a carga.",
+      "fr": "L'inflammation de bas grade accompagne souvent obésité et résistance à l'insuline et se voit en hs-CRP légèrement élevée. La graisse abdominale libère des messagers pro-inflammatoires. Activité et meilleure qualité alimentaire baissent la charge.",
+      "tr": "Düşük dereceli inflamasyon çoğu zaman obezite ve insülin direncine eşlik eder ve hafif yüksek hs-CRP'de görülür. Karın yağı inflamasyon artırıcı haberciler salar. Hareket ve daha iyi beslenme kalitesi yükü azaltır."
+    },
+    "related_chapters": [
+      3,
+      7,
+      9
+    ]
+  },
+  {
+    "term_key": "Lipogenese",
+    "term": {
+      "de": "Lipogenese",
+      "en": "Lipogenesis",
+      "es": "Lipogénesis",
+      "it": "Lipogenesi",
+      "pt": "Lipogénese",
+      "fr": "Lipogenèse",
+      "tr": "Lipogenez"
+    },
+    "synonyms": {
+      "de": [
+        "Fettaufbau"
+      ],
+      "en": [
+        "fat build-up"
+      ],
+      "es": [
+        "Formación de grasa"
+      ],
+      "it": [
+        "accumulo di grasso"
+      ],
+      "pt": [
+        "formação de gordura"
+      ],
+      "fr": [
+        "formation de graisse"
+      ],
+      "tr": [
+        "yağ oluşumu"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Lipogenese beschreibt den Aufbau von Fettspeichern aus Nahrungsfett oder neu gebildetem Fett. Ein anhaltender Energieüberschuss ist der Haupttreiber. Verteilung und Leberbeteiligung hängen vom hormonellen Milieu ab.",
+      "en": "Lipogenesis describes building fat stores from dietary fat or newly made fat. Sustained energy surplus is the main driver. Distribution and liver involvement depend on the hormonal milieu.",
+      "es": "La lipogénesis describe la formación de depósitos grasos a partir de grasa alimentaria o grasa de nueva síntesis. Un exceso energético sostenido es el principal impulsor. Distribución y participación hepática dependen del medio hormonal.",
+      "it": "La lipogenesi descrive la formazione di depositi di grasso da grasso alimentare o neoformato. Un eccesso energetico prolungato è il driver principale. Distribuzione e coinvolgimento epatico dipendono dal milieu ormonale.",
+      "pt": "A lipogénese descreve a formação de reservas de gordura a partir de gordura alimentar ou gordura neoformada. Um excedente energético sustentado é o principal motor. Distribuição e envolvimento hepático dependem do meio hormonal.",
+      "fr": "La lipogenèse décrit la constitution de réserves de graisse à partir de graisse alimentaire ou néoformée. Un excès énergétique durable est le moteur principal. Distribution et implication hépatique dépendent du milieu hormonal.",
+      "tr": "Lipogenez, besinsel yağ veya yeni oluşan yağdan yağ depolarının kurulmasını tanımlar. Sürekli enerji fazlası ana sürücüdür. Dağılım ve karaciğer katılımı hormonal ortama bağlıdır."
+    },
+    "related_chapters": [
+      1,
+      3
+    ]
+  },
+  {
+    "term_key": "Lipolyse",
+    "term": {
+      "de": "Lipolyse",
+      "en": "Lipolysis",
+      "es": "Lipólisis",
+      "it": "Lipolisi",
+      "pt": "Lipólise",
+      "fr": "Lipolyse",
+      "tr": "Lipoliz"
+    },
+    "synonyms": {
+      "de": [
+        "Fettabbau"
+      ],
+      "en": [
+        "fat breakdown"
+      ],
+      "es": [
+        "Movilización de grasa"
+      ],
+      "it": [
+        "degradazione del grasso"
+      ],
+      "pt": [
+        "degradação da gordura"
+      ],
+      "fr": [
+        "dégradation des graisses"
+      ],
+      "tr": [
+        "yağ yıkımı"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Lipolyse setzt Fettsäuren aus dem Fettgewebe frei, etwa bei Fasten oder Sport. Insulin hemmt diesen Prozess. Ein gesundes Wechselspiel aus Speicherung und Freisetzung ist physiologisch.",
+      "en": "Lipolysis releases fatty acids from adipose tissue, for example in fasting or exercise. Insulin inhibits this process. A healthy interplay of storage and release is physiological.",
+      "es": "La lipólisis libera ácidos grasos del tejido adiposo, por ejemplo en ayuno o deporte. La insulina inhibe este proceso. Un juego sano entre almacenamiento y liberación es fisiológico.",
+      "it": "La lipolisi libera acidi grassi dal tessuto adiposo, ad esempio nel digiuno o nello sport. L'insulina inibisce questo processo. Un sano gioco di deposito e rilascio è fisiologico.",
+      "pt": "A lipólise liberta ácidos gordos do tecido adiposo, por exemplo no jejum ou no desporto. A insulina inibe este processo. Um intercâmbio saudável de armazenamento e libertação é fisiológico.",
+      "fr": "La lipolyse libère des acides gras du tissu adipeux, par exemple en jeûne ou en sport. L'insuline inhibe ce processus. Un sain va-et-vient stockage/libération est physiologique.",
+      "tr": "Lipoliz, örneğin oruç veya sporda yağ dokusundan yağ asitlerini serbest bırakır. İnsülin bu süreci engeller. Depolama ve salımın sağlıklı etkileşimi fizyolojiktir."
+    },
+    "related_chapters": [
+      7,
+      1
+    ]
+  },
+  {
+    "term_key": "Beta-Oxidation",
+    "term": {
+      "de": "Beta-Oxidation",
+      "en": "Beta-oxidation",
+      "es": "Betaoxidación",
+      "it": "Beta-ossidazione",
+      "pt": "Beta-oxidação",
+      "fr": "Bêta-oxydation",
+      "tr": "Beta-oksidasyon"
+    },
+    "synonyms": {
+      "de": [
+        "Fettsäureoxidation"
+      ],
+      "en": [
+        "fatty acid oxidation"
+      ],
+      "es": [
+        "Oxidación de ácidos grasos"
+      ],
+      "it": [
+        "ossidazione degli acidi grassi"
+      ],
+      "pt": [
+        "oxidação de ácidos gordos"
+      ],
+      "fr": [
+        "oxydation des acides gras"
+      ],
+      "tr": [
+        "yağ asidi oksidasyonu"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Die Beta-Oxidation baut Fettsäuren in den Mitochondrien zu Energie ab. Gute Trainingszustände und ausreichende Mikronährstoffe unterstützen sie. Sehr niedrige Kohlenhydratzufuhr verschiebt den Energiemix stärker Richtung Fett.",
+      "en": "Beta-oxidation breaks down fatty acids in mitochondria for energy. Good training status and adequate micronutrients support it. Very low carbohydrate intake shifts the energy mix more toward fat.",
+      "es": "La betaoxidación degrada ácidos grasos en las mitocondrias para obtener energía. Buen estado de entrenamiento y micronutrientes suficientes la favorecen. Un aporte muy bajo de hidratos de carbono desplaza más la mezcla energética hacia la grasa.",
+      "it": "La beta-ossidazione degrada gli acidi grassi nei mitocondri per energia. Buono stato di allenamento e micronutrienti adeguati la supportano. Un apporto molto basso di carboidrati sposta il mix energetico verso il grasso.",
+      "pt": "A beta-oxidação degrada ácidos gordos nas mitocôndrias para energia. Bom estado de treino e micronutrientes adequados apoiam-na. Ingestão muito baixa de hidratos desloca a mistura energética para a gordura.",
+      "fr": "La bêta-oxydation dégrade les acides gras dans les mitochondries pour l'énergie. Bon état d'entraînement et micronutriments suffisants la soutiennent. Un apport glucidique très bas décale le mix énergétique vers la graisse.",
+      "tr": "Beta-oksidasyon, mitokondride yağ asitlerini enerjiye parçalar. İyi antrenman durumu ve yeterli mikrobesinler destekler. Çok düşük karbonhidrat alımı enerji karışımını yağa kaydırır."
+    },
+    "related_chapters": [
+      6,
+      7
+    ]
+  },
+  {
+    "term_key": "Atmungskette",
+    "term": {
+      "de": "Atmungskette",
+      "en": "Electron transport chain",
+      "es": "Cadena respiratoria",
+      "it": "Catena respiratoria",
+      "pt": "Cadeia respiratória",
+      "fr": "Chaîne respiratoire",
+      "tr": "Solunum zinciri"
+    },
+    "synonyms": {
+      "de": [
+        "oxidative Phosphorylierung",
+        "ETC"
+      ],
+      "en": [
+        "oxidative phosphorylation",
+        "ETC"
+      ],
+      "es": [
+        "Fosforilación oxidativa",
+        "ETC"
+      ],
+      "it": [
+        "fosforilazione ossidativa",
+        "ETC"
+      ],
+      "pt": [
+        "fosforilação oxidativa",
+        "ETC"
+      ],
+      "fr": [
+        "phosphorylation oxydative",
+        "ETC"
+      ],
+      "tr": [
+        "oksidatif fosforilasyon",
+        "ETC"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Die Atmungskette in den Mitochondrien erzeugt den Großteil des ATP aus Nährstoffen. B-Vitamine und Spurenelemente sind wichtige Cofaktoren. Training verbessert die mitochondriale Kapazität.",
+      "en": "The electron transport chain in mitochondria makes most ATP from nutrients. B vitamins and trace elements are important cofactors. Training improves mitochondrial capacity.",
+      "es": "La cadena respiratoria en las mitocondrias genera la mayor parte del ATP a partir de nutrientes. Las vitaminas B y los oligoelementos son cofactores importantes. El entrenamiento mejora la capacidad mitocondrial.",
+      "it": "La catena respiratoria nei mitocondri genera la maggior parte dell'ATP dai nutrienti. Vitamine B e oligoelementi sono cofattori importanti. L'allenamento migliora la capacità mitocondriale.",
+      "pt": "A cadeia respiratória nas mitocôndrias gera a maior parte do ATP a partir dos nutrientes. Vitaminas do complexo B e oligoelementos são cofatores importantes. O treino melhora a capacidade mitocondrial.",
+      "fr": "La chaîne respiratoire dans les mitochondries produit l'essentiel de l'ATP à partir des nutriments. Vitamines B et oligoéléments sont des cofacteurs importants. L'entraînement améliore la capacité mitochondriale.",
+      "tr": "Mitokondrideki solunum zinciri, besinlerden ATP'nin çoğunu üretir. B vitaminleri ve iz elementler önemli kofaktörlerdir. Antrenman mitokondriyal kapasiteyi artırır."
+    },
+    "related_chapters": [
+      7,
+      8
+    ]
+  },
+  {
+    "term_key": "Glykolyse",
+    "term": {
+      "de": "Glykolyse",
+      "en": "Glycolysis",
+      "es": "Glucólisis",
+      "it": "Glicolisi",
+      "pt": "Glicólise",
+      "fr": "Glycolyse",
+      "tr": "Glikoliz"
+    },
+    "synonyms": {
+      "de": [
+        "Zuckerabbau"
+      ],
+      "en": [
+        "sugar breakdown"
+      ],
+      "es": [
+        "Degradación del azúcar"
+      ],
+      "it": [
+        "degradazione dello zucchero"
+      ],
+      "pt": [
+        "degradação do açúcar"
+      ],
+      "fr": [
+        "dégradation du sucre"
+      ],
+      "tr": [
+        "şeker yıkımı"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Die Glykolyse spaltet Glukose zu Pyruvat und liefert schnell Energie. Bei intensiver Belastung entsteht daraus Laktat. Sie ist der Startpunkt vieler Stoffwechselwege.",
+      "en": "Glycolysis splits glucose to pyruvate and supplies energy quickly. Under intense load this yields lactate. It is the starting point of many metabolic pathways.",
+      "es": "La glucólisis escinde la glucosa a piruvato y aporta energía con rapidez. Con carga intensa de ahí surge lactato. Es el punto de partida de muchas vías metabólicas.",
+      "it": "La glicolisi scinde il glucosio in piruvato e fornisce energia in fretta. Sotto carico intenso ne deriva lattato. È il punto di partenza di molte vie metaboliche.",
+      "pt": "A glicólise divide a glicose em piruvato e fornece energia depressa. Sob carga intensa daí surge lactato. É o ponto de partida de muitas vias metabólicas.",
+      "fr": "La glycolyse scinde le glucose en pyruvate et fournit de l'énergie rapidement. Sous charge intense, du lactate en résulte. C'est le point de départ de nombreuses voies métaboliques.",
+      "tr": "Glikoliz, glukozu pirüvata parçalar ve hızlı enerji sağlar. Yoğun yükte bundan laktat oluşur. Birçok metabolizma yolunun başlangıç noktasıdır."
+    },
+    "related_chapters": [
+      1,
+      7
+    ]
+  },
+  {
+    "term_key": "Pentosephosphatweg",
+    "term": {
+      "de": "Pentosephosphatweg",
+      "en": "Pentose phosphate pathway",
+      "es": "Vía de las pentosas fosfato",
+      "it": "Via dei pentoso fosfati",
+      "pt": "Via das pentoses-fosfato",
+      "fr": "Voie des pentoses phosphates",
+      "tr": "Pentoz fosfat yolu"
+    },
+    "synonyms": {
+      "de": [
+        "PPP",
+        "Hexosemonophosphat-Shunt"
+      ],
+      "en": [
+        "PPP",
+        "hexose monophosphate shunt"
+      ],
+      "es": [
+        "PPP",
+        "Derivación de hexosa monofosfato"
+      ],
+      "it": [
+        "PPP",
+        "shunt dell'esoso monofosfato"
+      ],
+      "pt": [
+        "PPP",
+        "shunt da hexose monofosfato"
+      ],
+      "fr": [
+        "PPP",
+        "shunt des hexoses monophosphates"
+      ],
+      "tr": [
+        "PPP",
+        "heksoz monofosfat şantı"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Der Pentosephosphatweg erzeugt NADPH und Bausteine für Nukleotide. NADPH wird für antioxidative Systeme und Fettsäuresynthese gebraucht. Er verknüpft Kohlenhydrat- und Redoxstoffwechsel.",
+      "en": "The pentose phosphate pathway makes NADPH and building blocks for nucleotides. NADPH is needed for antioxidant systems and fatty acid synthesis. It links carbohydrate and redox metabolism.",
+      "es": "La vía de las pentosas fosfato genera NADPH y bloques para nucleótidos. El NADPH se necesita para sistemas antioxidantes y síntesis de ácidos grasos. Vincula el metabolismo de hidratos de carbono y el redox.",
+      "it": "La via dei pentoso fosfati genera NADPH e mattoni per nucleotidi. Il NADPH serve per sistemi antiossidanti e sintesi di acidi grassi. Collega metabolismo dei carboidrati e redox.",
+      "pt": "A via das pentoses-fosfato gera NADPH e blocos para nucleótidos. O NADPH é preciso para sistemas antioxidantes e síntese de ácidos gordos. Liga metabolismo dos hidratos e redox.",
+      "fr": "La voie des pentoses phosphates produit du NADPH et des briques pour nucléotides. Le NADPH sert aux systèmes antioxydants et à la synthèse d'acides gras. Elle lie métabolisme glucidique et redox.",
+      "tr": "Pentoz fosfat yolu NADPH ve nükleotid yapı taşları üretir. NADPH antioksidan sistemler ve yağ asidi sentezi için gerekir. Karbonhidrat ve redoks metabolizmasını bağlar."
+    },
+    "related_chapters": [
+      1
+    ]
+  },
+  {
+    "term_key": "Harnstoffzyklus",
+    "term": {
+      "de": "Harnstoffzyklus",
+      "en": "Urea cycle",
+      "es": "Ciclo de la urea",
+      "it": "Ciclo dell'urea",
+      "pt": "Ciclo da ureia",
+      "fr": "Cycle de l'urée",
+      "tr": "Üre döngüsü"
+    },
+    "synonyms": {
+      "de": [
+        "Ornithinzyklus"
+      ],
+      "en": [
+        "ornithine cycle"
+      ],
+      "es": [
+        "Ciclo de la ornitina"
+      ],
+      "it": [
+        "ciclo dell'ornitina"
+      ],
+      "pt": [
+        "ciclo da ornitina"
+      ],
+      "fr": [
+        "cycle de l'ornithine"
+      ],
+      "tr": [
+        "ornitin döngüsü"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Der Harnstoffzyklus entsorgt Stickstoff aus dem Aminosäureabbau als Harnstoff. Die Leber ist das zentrale Organ dafür. Bei schwerer Leberinsuffizienz kann Ammoniak ansteigen.",
+      "en": "The urea cycle disposes of nitrogen from amino acid breakdown as urea. The liver is the central organ for this. In severe liver failure ammonia can rise.",
+      "es": "El ciclo de la urea elimina el nitrógeno del catabolismo de aminoácidos como urea. El hígado es el órgano central para ello. En insuficiencia hepática grave puede elevarse el amoníaco.",
+      "it": "Il ciclo dell'urea smaltisce l'azoto dal catabolismo degli aminoacidi come urea. Il fegato è l'organo centrale. Nella grave insufficienza epatica può salire l'ammoniaca.",
+      "pt": "O ciclo da ureia elimina o azoto do catabolismo dos aminoácidos como ureia. O fígado é o órgão central. Na insuficiência hepática grave a amónia pode subir.",
+      "fr": "Le cycle de l'urée évacue l'azote du catabolisme des acides aminés sous forme d'urée. Le foie est l'organe central. En insuffisance hépatique sévère, l'ammoniac peut monter.",
+      "tr": "Üre döngüsü, amino asit yıkımından azotu üre olarak uzaklaştırır. Karaciğer bunun merkezi organıdır. Ağır karaciğer yetmezliğinde amonyak yükselebilir."
+    },
+    "related_chapters": [
+      9
+    ]
+  },
+  {
+    "term_key": "Purinstoffwechsel",
+    "term": {
+      "de": "Purinstoffwechsel",
+      "en": "Purine metabolism",
+      "es": "Metabolismo de las purinas",
+      "it": "Metabolismo delle purine",
+      "pt": "Metabolismo das purinas",
+      "fr": "Métabolisme des purines",
+      "tr": "Pürin metabolizması"
+    },
+    "synonyms": {
+      "de": [
+        "Purinabbau"
+      ],
+      "en": [
+        "purine breakdown"
+      ],
+      "es": [
+        "Degradación de purinas"
+      ],
+      "it": [
+        "degradazione delle purine"
+      ],
+      "pt": [
+        "degradação das purinas"
+      ],
+      "fr": [
+        "dégradation des purines"
+      ],
+      "tr": [
+        "pürin yıkımı"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Im Purinstoffwechsel entstehen aus Nukleinsäuren Purine und schließlich Harnsäure. Innereien, manche Fische und Fruktose beeinflussen die Last. Gichtpatienten profitieren oft von angepasster Ernährung und Gewichtskontrolle.",
+      "en": "In purine metabolism, nucleic acids yield purines and finally uric acid. Offal, some fish, and fructose influence the load. Gout patients often benefit from adapted diet and weight control.",
+      "es": "En el metabolismo de las purinas se forman purinas a partir de ácidos nucleicos y finalmente ácido úrico. Vísceras, algunos pescados y la fructosa influyen en la carga. Los pacientes con gota suelen beneficiarse de una alimentación adaptada y control del peso.",
+      "it": "Nel metabolismo delle purine, dagli acidi nucleici nascono purine e infine acido urico. Frattaglie, alcuni pesci e fruttosio influenzano il carico. I pazienti con gotta spesso beneficiano di dieta adattata e controllo del peso.",
+      "pt": "No metabolismo das purinas, os ácidos nucleicos dão purinas e por fim ácido úrico. Miudezas, alguns peixes e frutose influenciam a carga. Doentes com gota beneficiam muitas vezes de alimentação adaptada e controlo de peso.",
+      "fr": "Dans le métabolisme des purines, les acides nucléiques donnent des purines puis de l'acide urique. Abats, certains poissons et fructose influencent la charge. Les patients goutteux bénéficient souvent d'une alimentation adaptée et du contrôle du poids.",
+      "tr": "Pürin metabolizmasında nükleik asitlerden pürinler ve sonunda ürik asit oluşur. Sakatat, bazı balıklar ve fruktoz yükü etkiler. Gut hastaları çoğu zaman uyarlanmış beslenme ve kilo kontrolünden yararlanır."
+    },
+    "related_chapters": [
+      1,
+      3,
+      9
+    ]
+  },
+  {
+    "term_key": "Schilddrüsenstoffwechsel",
+    "term": {
+      "de": "Schilddrüsenstoffwechsel",
+      "en": "Thyroid metabolism",
+      "es": "Metabolismo tiroideo",
+      "it": "Metabolismo tiroideo",
+      "pt": "Metabolismo da tiroide",
+      "fr": "Métabolisme thyroïdien",
+      "tr": "Tiroit metabolizması"
+    },
+    "synonyms": {
+      "de": [
+        "Thyroidmetabolismus"
+      ],
+      "en": [
+        "thyroid metabolism"
+      ],
+      "es": [
+        "Metabolismo de la tiroides"
+      ],
+      "it": [
+        "metabolismo della tiroide"
+      ],
+      "pt": [
+        "metabolismo tiroideu"
+      ],
+      "fr": [
+        "métabolisme de la thyroïde"
+      ],
+      "tr": [
+        "tiroid metabolizması"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Der Schilddrüsenstoffwechsel steuert Grundumsatz, Temperatur und Energie. Jod, Selen und Eisen sind kritische Cofaktoren. Laborwerte TSH, fT3 und fT4 bilden die diagnostische Basis.",
+      "en": "Thyroid metabolism controls basal rate, temperature, and energy. Iodine, selenium, and iron are critical cofactors. Lab values TSH, fT3, and fT4 form the diagnostic basis.",
+      "es": "El metabolismo tiroideo regula el metabolismo basal, la temperatura y la energía. Yodo, selenio y hierro son cofactores críticos. Los valores de laboratorio TSH, fT3 y fT4 forman la base diagnóstica.",
+      "it": "Il metabolismo tiroideo regola metabolismo basale, temperatura ed energia. Iodio, selenio e ferro sono cofattori critici. I valori TSH, fT3 e fT4 formano la base diagnostica.",
+      "pt": "O metabolismo da tiroide regula o metabolismo basal, a temperatura e a energia. Iodo, selénio e ferro são cofatores críticos. Os valores laboratoriais TSH, fT3 e fT4 formam a base diagnóstica.",
+      "fr": "Le métabolisme thyroïdien régit métabolisme de base, température et énergie. Iode, sélénium et fer sont des cofacteurs critiques. Les valeurs TSH, fT3 et fT4 forment la base diagnostique.",
+      "tr": "Tiroit metabolizması bazal metabolizma, sıcaklık ve enerjiyi yönetir. İyot, selenyum ve demir kritik kofaktörlerdir. TSH, fT3 ve fT4 lab değerleri tanı temelini oluşturur."
+    },
+    "related_chapters": [
+      8,
+      9
+    ]
+  },
+  {
+    "term_key": "Circadianer Stoffwechsel",
+    "term": {
+      "de": "Circadianer Stoffwechsel",
+      "en": "Circadian metabolism",
+      "es": "Metabolismo circadiano",
+      "it": "Metabolismo circadiano",
+      "pt": "Metabolismo circadiano",
+      "fr": "Métabolisme circadien",
+      "tr": "Sirkadiyen metabolizma"
+    },
+    "synonyms": {
+      "de": [
+        "innere Uhr Stoffwechsel"
+      ],
+      "en": [
+        "body clock metabolism"
+      ],
+      "es": [
+        "Reloj interno metabólico"
+      ],
+      "it": [
+        "metabolismo dell'orologio interno"
+      ],
+      "pt": [
+        "metabolismo do relógio interno"
+      ],
+      "fr": [
+        "métabolisme de l'horloge interne"
+      ],
+      "tr": [
+        "iç saat metabolizması"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Viele Stoffwechselprozesse folgen der inneren Uhr, darunter Insulinempfindlichkeit und Cortisol. Späte schwere Mahlzeiten können die Glukoseantwort verschlechtern. Regelmäßige Schlafzeiten unterstützen die Regulation.",
+      "en": "Many metabolic processes follow the body clock, including insulin sensitivity and cortisol. Late heavy meals can worsen the glucose response. Regular sleep times support regulation.",
+      "es": "Muchos procesos metabólicos siguen el reloj interno, entre ellos la sensibilidad a la insulina y el cortisol. Comidas pesadas tardías pueden empeorar la respuesta glucémica. Horarios de sueño regulares favorecen la regulación.",
+      "it": "Molti processi metabolici seguono l'orologio interno, tra cui sensibilità insulinica e cortisolo. Pasti pesanti tardi possono peggiorare la risposta glicemica. Orari di sonno regolari supportano la regolazione.",
+      "pt": "Muitos processos metabólicos seguem o relógio interno, incluindo a sensibilidade à insulina e o cortisol. Refeições pesadas tardias podem piorar a resposta glicémica. Horários de sono regulares apoiam a regulação.",
+      "fr": "De nombreux processus métaboliques suivent l'horloge interne, dont sensibilité à l'insuline et cortisol. Des repas lourds tardifs peuvent aggraver la réponse glycémique. Des horaires de sommeil réguliers soutiennent la régulation.",
+      "tr": "Birçok metabolizma süreci iç saati izler; insülin duyarlılığı ve kortizol buna dahildir. Geç ağır öğünler glukoz yanıtını kötüleştirebilir. Düzenli uyku saatleri düzenlemeyi destekler."
+    },
+    "related_chapters": [
+      8,
+      5
+    ]
+  },
+  {
+    "term_key": "Trainingsadaption Kohlenhydrate",
+    "term": {
+      "de": "Trainingsadaption Kohlenhydrate",
+      "en": "Exercise adaptation to carbohydrates",
+      "es": "Adaptación al entrenamiento y hidratos",
+      "it": "Adattamento all'allenamento e carboidrati",
+      "pt": "Adaptação ao treino e hidratos",
+      "fr": "Adaptation à l'exercice et glucides",
+      "tr": "Antrenman-karbonhidrat adaptasyonu"
+    },
+    "synonyms": {
+      "de": [
+        "KH und Bewegung"
+      ],
+      "en": [
+        "carbs and exercise"
+      ],
+      "es": [
+        "HC y ejercicio"
+      ],
+      "it": [
+        "CHO e movimento"
+      ],
+      "pt": [
+        "hidratos e exercício"
+      ],
+      "fr": [
+        "glucides et activité"
+      ],
+      "tr": [
+        "KH ve hareket"
+      ]
+    },
+    "category": {
+      "de": "Stoffwechsel",
+      "en": "Metabolism",
+      "es": "Metabolismo",
+      "it": "Metabolismo",
+      "pt": "Metabolismo",
+      "fr": "Métabolisme",
+      "tr": "Metabolizma"
+    },
+    "short_description": {
+      "de": "Bewegung erhöht die Glukoseaufnahme in den Muskel auch ohne viel Insulin. Nach dem Training sind Speicher aufnahmebereit. Deshalb wirken Spaziergänge nach dem Essen oft blutzuckerfreundlich.",
+      "en": "Exercise raises muscle glucose uptake even without much insulin. After training, stores are ready to refill. That is why walks after meals are often blood-sugar-friendly.",
+      "es": "El ejercicio aumenta la captación de glucosa en el músculo también sin mucha insulina. Tras el entrenamiento los depósitos están listos para absorber. Por eso los paseos tras comer suelen ser favorables para la glucemia.",
+      "it": "Il movimento aumenta la captazione muscolare di glucosio anche senza molta insulina. Dopo l'allenamento i depositi sono pronti a riempirsi. Per questo le passeggiate dopo i pasti sono spesso favorevoli alla glicemia.",
+      "pt": "O exercício eleva a captação muscular de glicose mesmo sem muita insulina. Após o treino, os depósitos estão prontos a encher. Por isso caminhadas após as refeições são muitas vezes amigáveis à glicemia.",
+      "fr": "L'activité augmente la captation musculaire de glucose même sans beaucoup d'insuline. Après l'entraînement, les réserves sont prêtes à se remplir. D'où l'effet souvent favorable des promenades après repas sur la glycémie.",
+      "tr": "Hareket, az insülinle bile kasta glukoz alımını artırır. Antrenman sonrası depolar dolmaya hazırdır. Bu yüzden yemek sonrası yürüyüşler çoğu zaman kan şekerine dosttur."
+    },
+    "related_chapters": [
+      7,
+      1,
+      5,
+      6
+    ]
+  },
+  {
+    "term_key": "Ballaststoffe",
+    "term": {
+      "de": "Ballaststoffe",
+      "en": "Dietary fiber",
+      "es": "Fibra alimentaria",
+      "it": "Fibre alimentari",
+      "pt": "Fibra alimentar",
+      "fr": "Fibres alimentaires",
+      "tr": "Lif"
+    },
+    "synonyms": {
+      "de": [
+        "Nahrungsfasern",
+        "Dietary Fiber"
+      ],
+      "en": [
+        "fibre",
+        "roughage"
+      ],
+      "es": [
+        "Fibra dietética",
+        "Dietary fiber"
+      ],
+      "it": [
+        "fibre dietetiche",
+        "fibra"
+      ],
+      "pt": [
+        "fibras alimentares",
+        "fibra"
+      ],
+      "fr": [
+        "fibres",
+        "fibre alimentaire"
+      ],
+      "tr": [
+        "diyet lifi",
+        "besinsel lif"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Ballaststoffe sind unverdauliche Kohlenhydrate, die Sättigung, Darmflora und Blutzuckerkurven günstig beeinflussen. Lösliche Fasern dämpfen oft den Glukoseanstieg, unlösliche fördern die Verdauung. Vollkorn, Hülsenfrüchte, Obst und Gemüse sind die besten Quellen.",
+      "en": "Dietary fiber is indigestible carbohydrate that favorably affects satiety, gut flora, and blood sugar curves. Soluble fiber often dampens the glucose rise; insoluble aids digestion. Whole grains, legumes, fruit, and vegetables are the best sources.",
+      "es": "Las fibras son hidratos de carbono indigestibles que favorecen la saciedad, la microbiota intestinal y las curvas de glucemia. Las fibras solubles suelen amortiguar el aumento de glucosa; las insolubles favorecen la digestión. Cereales integrales, legumbres, frutas y verduras son las mejores fuentes.",
+      "it": "Le fibre alimentari sono carboidrati indigestibili che favoriscono sazietà, flora intestinale e curve glicemiche. Le fibre solubili spesso smorzano l'aumento di glucosio; le insolubili aiutano la digestione. Cereali integrali, legumi, frutta e verdura sono le migliori fonti.",
+      "pt": "A fibra alimentar são hidratos indigestíveis que favorecem saciedade, flora intestinal e curvas de glicemia. A fibra solúvel amortece muitas vezes a subida de glicose; a insolúvel favorece a digestão. Cereais integrais, leguminosas, fruta e legumes são as melhores fontes.",
+      "fr": "Les fibres alimentaires sont des glucides indigestibles qui favorisent satiété, flore intestinale et courbes glycémiques. Les fibres solubles atténuent souvent la hausse de glucose; les insolubles aident la digestion. Céréales complètes, légumineuses, fruits et légumes sont les meilleures sources.",
+      "tr": "Lif, tokluk, bağırsak florası ve kan şekeri eğrilerini olumlu etkileyen sindirilemeyen karbonhidratlardır. Çözünür lif çoğu zaman glukoz yükselişini bastırır; çözünmez lif sindirimi destekler. Tam tahıl, baklagiller, meyve ve sebze en iyi kaynaklardır."
+    },
+    "related_chapters": [
+      4,
+      5,
+      6,
+      8
+    ]
+  },
+  {
+    "term_key": "Lösliche Ballaststoffe",
+    "term": {
+      "de": "Lösliche Ballaststoffe",
+      "en": "Soluble fiber",
+      "es": "Fibra soluble",
+      "it": "Fibre solubili",
+      "pt": "Fibra solúvel",
+      "fr": "Fibres solubles",
+      "tr": "Çözünür lif"
+    },
+    "synonyms": {
+      "de": [
+        "viskose Fasern",
+        "Pektin",
+        "Beta-Glucan"
+      ],
+      "en": [
+        "viscous fiber",
+        "pectin",
+        "beta-glucan"
+      ],
+      "es": [
+        "Fibras viscosas",
+        "Pectina",
+        "Betaglucano"
+      ],
+      "it": [
+        "fibre viscose",
+        "pectina",
+        "beta-glucano"
+      ],
+      "pt": [
+        "fibras viscosas",
+        "pectina",
+        "beta-glucano"
+      ],
+      "fr": [
+        "fibres visqueuses",
+        "pectine",
+        "bêta-glucane"
+      ],
+      "tr": [
+        "viskoz lif",
+        "pektin",
+        "beta-glukan"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Lösliche Ballaststoffe bilden im Darm gelartige Strukturen und verlangsamen die Glucoseaufnahme. Hafer, Äpfel und Flohsamen sind typische Quellen. Sie können auch LDL-Cholesterin leicht senken.",
+      "en": "Soluble fiber forms gel-like structures in the gut and slows glucose uptake. Oats, apples, and psyllium are typical sources. They can also mildly lower LDL cholesterol.",
+      "es": "Las fibras solubles forman estructuras gelificadas en el intestino y ralentizan la absorción de glucosa. Avena, manzanas y psilio son fuentes típicas. También pueden bajar ligeramente el colesterol LDL.",
+      "it": "Le fibre solubili formano strutture gelificanti nell'intestino e rallentano la captazione di glucosio. Avena, mele e psyllium sono fonti tipiche. Possono anche abbassare lievemente il colesterolo LDL.",
+      "pt": "A fibra solúvel forma estruturas gelatinosas no intestino e abranda a captação de glicose. Aveia, maçãs e psílio são fontes típicas. Também podem baixar ligeiramente o colesterol LDL.",
+      "fr": "Les fibres solubles forment des structures gélifiantes dans l'intestin et ralentissent la captation de glucose. Avoine, pommes et psyllium sont des sources typiques. Elles peuvent aussi baisser légèrement le LDL-cholestérol.",
+      "tr": "Çözünür lif bağırsakta jelleşir ve glukoz emilimini yavaşlatır. Yulaf, elma ve psyllium tipik kaynaklardır. LDL kolesterolü de hafif düşürebilir."
+    },
+    "related_chapters": [
+      4,
+      5,
+      1
+    ]
+  },
+  {
+    "term_key": "Unlösliche Ballaststoffe",
+    "term": {
+      "de": "Unlösliche Ballaststoffe",
+      "en": "Insoluble fiber",
+      "es": "Fibra insoluble",
+      "it": "Fibre insolubili",
+      "pt": "Fibra insolúvel",
+      "fr": "Fibres insolubles",
+      "tr": "Çözünmez lif"
+    },
+    "synonyms": {
+      "de": [
+        "Cellulose",
+        "Weizenkleie"
+      ],
+      "en": [
+        "cellulose",
+        "wheat bran"
+      ],
+      "es": [
+        "Celulosa",
+        "Salvado de trigo"
+      ],
+      "it": [
+        "cellulosa",
+        "crusca di frumento"
+      ],
+      "pt": [
+        "celulose",
+        "farelo de trigo"
+      ],
+      "fr": [
+        "cellulose",
+        "son de blé"
+      ],
+      "tr": [
+        "selüloz",
+        "buğday kepeği"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Unlösliche Ballaststoffe erhöhen das Stuhlvolumen und beschleunigen die Passage. Vollkornprodukte und viele Gemüsearten liefern sie. Ausreichend Flüssigkeit gehört dazu, sonst droht Verstopfung.",
+      "en": "Insoluble fiber increases stool bulk and speeds transit. Whole-grain products and many vegetables provide it. Adequate fluid is needed, or constipation may follow.",
+      "es": "Las fibras insolubles aumentan el volumen fecal y aceleran el tránsito. Los productos integrales y muchas verduras las aportan. Debe acompañarse de suficiente líquido; de lo contrario puede haber estreñimiento.",
+      "it": "Le fibre insolubili aumentano il volume fecale e accelerano il transito. Prodotti integrali e molte verdure le forniscono. Serve abbastanza liquido, altrimenti rischia stitichezza.",
+      "pt": "As fibras insolúveis aumentam o volume fecal e aceleram o trânsito. Produtos integrais e muitos legumes fornecem-nas. É preciso líquido suficiente; caso contrário pode surgir obstipação.",
+      "fr": "Les fibres insolubles augmentent le volume des selles et accélèrent le transit. Produits complets et de nombreux légumes en apportent. Il faut assez de liquide, sinon risque de constipation.",
+      "tr": "Çözünmez lif dışkı hacmini artırır ve geçişi hızlandırır. Tam tahıl ürünleri ve birçok sebze sağlar. Yeterli sıvı gerekir; yoksa kabızlık riski doğar."
+    },
+    "related_chapters": [
+      4,
+      8
+    ]
+  },
+  {
+    "term_key": "Proteine",
+    "term": {
+      "de": "Proteine",
+      "en": "Protein",
+      "es": "Proteínas",
+      "it": "Proteine",
+      "pt": "Proteínas",
+      "fr": "Protéines",
+      "tr": "Proteinler"
+    },
+    "synonyms": {
+      "de": [
+        "Eiweiß",
+        "Aminosäuren Nahrung"
+      ],
+      "en": [
+        "protein",
+        "dietary amino acids"
+      ],
+      "es": [
+        "Proteína",
+        "Aminoácidos alimentarios"
+      ],
+      "it": [
+        "proteina",
+        "aminoacidi alimentari"
+      ],
+      "pt": [
+        "proteína",
+        "aminoácidos alimentares"
+      ],
+      "fr": [
+        "protéine",
+        "acides aminés alimentaires"
+      ],
+      "tr": [
+        "protein",
+        "besinsel amino asitler"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Proteine liefern Aminosäuren für Muskel, Enzyme und Immunsystem und sättigen stark. Tierische und pflanzliche Quellen lassen sich gut kombinieren. Die Bedarfsspanne steigt bei Sport und höherem Alter.",
+      "en": "Protein supplies amino acids for muscle, enzymes, and the immune system and is highly satiating. Animal and plant sources combine well. Needs rise with sport and older age.",
+      "es": "Las proteínas aportan aminoácidos para músculo, enzimas el sistema inmunitario y sacian con fuerza. Fuentes animales y vegetales se combinan bien. El rango de necesidad sube con el deporte y la edad avanzada.",
+      "it": "Le proteine forniscono aminoacidi per muscolo, enzimi e sistema immunitario e saziano molto. Fonti animali e vegetali si combinano bene. Il fabbisogno sale con sport e età avanzata.",
+      "pt": "As proteínas fornecem aminoácidos para músculo, enzimas e imunidade e saciam muito. Fontes animais e vegetais combinam-se bem. A necessidade sobe com desporto e idade mais avançada.",
+      "fr": "Les protéines fournissent des acides aminés pour muscle, enzymes et immunité et rassasient fortement. Sources animales et végétales se combinent bien. Les besoins montent avec sport et âge avancé.",
+      "tr": "Proteinler kas, enzim ve bağışıklık için amino asit sağlar ve güçlü doyurur. Hayvansal ve bitkisel kaynaklar iyi birleşir. İhtiyaç spor ve ileri yaşta artar."
+    },
+    "related_chapters": [
+      7,
+      8
+    ]
+  },
+  {
+    "term_key": "Essenzielle Aminosäuren",
+    "term": {
+      "de": "Essenzielle Aminosäuren",
+      "en": "Essential amino acids",
+      "es": "Aminoácidos esenciales",
+      "it": "Aminoacidi essenziali",
+      "pt": "Aminoácidos essenciais",
+      "fr": "Acides aminés essentiels",
+      "tr": "Esansiyel amino asitler"
+    },
+    "synonyms": {
+      "de": [
+        "EAA",
+        "unentbehrliche Aminosäuren"
+      ],
+      "en": [
+        "EAA",
+        "indispensable amino acids"
+      ],
+      "es": [
+        "EAA",
+        "Aminoácidos indispensables"
+      ],
+      "it": [
+        "EAA",
+        "aminoacidi indispensabili"
+      ],
+      "pt": [
+        "EAA",
+        "aminoácidos indispensáveis"
+      ],
+      "fr": [
+        "EAA",
+        "acides aminés indispensables"
+      ],
+      "tr": [
+        "EAA",
+        "zorunlu amino asitler"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Essenzielle Aminosäuren kann der Körper nicht selbst herstellen und muss sie über die Nahrung aufnehmen. Lysin, Leucin und Methionin sind Beispiele. Abwechslungsreiche Proteinquellen decken das Spektrum ab.",
+      "en": "Essential amino acids cannot be made by the body and must come from food. Lysine, leucine, and methionine are examples. Varied protein sources cover the spectrum.",
+      "es": "Los aminoácidos esenciales no puede sintetizarlos el cuerpo y debe obtenerlos de la alimentación. Lisina, leucina y metionina son ejemplos. Fuentes proteicas variadas cubren el espectro.",
+      "it": "Gli aminoacidi essenziali non possono essere prodotti dal corpo e devono venire dal cibo. Lisina, leucina e metionina sono esempi. Fonti proteiche varie coprono lo spettro.",
+      "pt": "Os aminoácidos essenciais o corpo não consegue sintetizar e têm de vir da alimentação. Lisina, leucina e metionina são exemplos. Fontes proteicas variadas cobrem o espetro.",
+      "fr": "Les acides aminés essentiels ne peuvent pas être synthétisés par le corps et doivent venir de l'alimentation. Lysine, leucine et méthionine en sont des exemples. Des sources protéiques variées couvrent le spectre.",
+      "tr": "Esansiyel amino asitleri vücut üretemez; besinle alınmalıdır. Lizin, lösin ve metiyonin örneklerdir. Çeşitli protein kaynakları spektrumu karşılar."
+    },
+    "related_chapters": [
+      8
+    ]
+  },
+  {
+    "term_key": "Kohlenhydrate",
+    "term": {
+      "de": "Kohlenhydrate",
+      "en": "Carbohydrates",
+      "es": "Hidratos de carbono",
+      "it": "Carboidrati",
+      "pt": "Hidratos de carbono",
+      "fr": "Glucides",
+      "tr": "Karbonhidratlar"
+    },
+    "synonyms": {
+      "de": [
+        "KH",
+        "Carbohydrates"
+      ],
+      "en": [
+        "carbs",
+        "CHO"
+      ],
+      "es": [
+        "HC",
+        "Carbohydrates"
+      ],
+      "it": [
+        "CHO",
+        "glucidi"
+      ],
+      "pt": [
+        "hidratos",
+        "CHO"
+      ],
+      "fr": [
+        "glucides",
+        "sucres lents/rapides"
+      ],
+      "tr": [
+        "KH",
+        "karbonhidrat"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Kohlenhydrate sind die bevorzugte Energiequelle für Gehirn und intensive Muskelarbeit. Qualität und Menge entscheiden über Blutzuckerwirkung. Vollkorn und Hülsenfrüchte sind meist günstiger als Zucker und Weißmehl.",
+      "en": "Carbohydrates are the preferred energy source for the brain and intense muscle work. Quality and amount determine blood sugar impact. Whole grains and legumes are usually better than sugar and white flour.",
+      "es": "Los hidratos de carbono son la fuente energética preferida del cerebro y del trabajo muscular intensivo. Calidad y cantidad deciden el efecto sobre la glucemia. Integrales y legumbres suelen ser más favorables que azúcar y harina blanca.",
+      "it": "I carboidrati sono la fonte energetica preferita per cervello e lavoro muscolare intenso. Qualità e quantità decidono l'effetto sulla glicemia. Integrali e legumi sono di solito più favorevoli di zucchero e farina bianca.",
+      "pt": "Os hidratos de carbono são a fonte energética preferida do cérebro e do trabalho muscular intenso. Qualidade e quantidade decidem o efeito na glicemia. Integrais e leguminosas são geralmente mais favoráveis do que açúcar e farinha branca.",
+      "fr": "Les glucides sont la source d'énergie préférée du cerveau et du travail musculaire intense. Qualité et quantité décident de l'effet sur la glycémie. Complets et légumineuses sont souvent plus favorables que sucre et farine blanche.",
+      "tr": "Karbonhidratlar beyin ve yoğun kas çalışması için tercih edilen enerji kaynağıdır. Kalite ve miktar kan şekeri etkisini belirler. Tam tahıl ve baklagiller çoğu zaman şeker ve beyaz undan daha elverişlidir."
+    },
+    "related_chapters": [
+      1,
+      5,
+      6,
+      4
+    ]
+  },
+  {
+    "term_key": "Komplexe Kohlenhydrate",
+    "term": {
+      "de": "Komplexe Kohlenhydrate",
+      "en": "Complex carbohydrates",
+      "es": "Hidratos de carbono complejos",
+      "it": "Carboidrati complessi",
+      "pt": "Hidratos de carbono complexos",
+      "fr": "Glucides complexes",
+      "tr": "Kompleks karbonhidratlar"
+    },
+    "synonyms": {
+      "de": [
+        "Vielfachzucker Nahrung",
+        "Stärke"
+      ],
+      "en": [
+        "polysaccharides in food",
+        "starch"
+      ],
+      "es": [
+        "Polisacáridos alimentarios",
+        "Almidón"
+      ],
+      "it": [
+        "polisaccaridi alimentari",
+        "amido"
+      ],
+      "pt": [
+        "polissacarídeos alimentares",
+        "amido"
+      ],
+      "fr": [
+        "polysaccharides alimentaires",
+        "amidon"
+      ],
+      "tr": [
+        "besinsel çoklu şeker",
+        "nişasta"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Komplexe Kohlenhydrate bestehen aus langen Zuckerketten und stecken in Getreide, Kartoffeln und Hülsenfrüchten. Mit intakten Ballaststoffen steigen sie oft langsamer in den Blutzucker. Der Verarbeitungsgrad verändert die Wirkung stark.",
+      "en": "Complex carbohydrates are long sugar chains found in grains, potatoes, and legumes. With intact fiber they often raise blood sugar more slowly. Degree of processing strongly changes the effect.",
+      "es": "Los hidratos complejos constan de largas cadenas de azúcar y se encuentran en cereales, patatas y legumbres. Con fibra intacta suelen subir más despacio la glucemia. El grado de procesamiento cambia mucho el efecto.",
+      "it": "I carboidrati complessi sono lunghe catene di zucchero in cereali, patate e legumi. Con fibre intatte spesso alzano più lentamente la glicemia. Il grado di lavorazione cambia molto l'effetto.",
+      "pt": "Os hidratos complexos são cadeias longas de açúcar em cereais, batatas e leguminosas. Com fibra intacta sobem muitas vezes mais devagar a glicemia. O grau de processamento altera muito o efeito.",
+      "fr": "Les glucides complexes sont de longues chaînes de sucre dans céréales, pommes de terre et légumineuses. Avec fibres intactes, ils montent souvent plus lentement la glycémie. Le degré de transformation change fortement l'effet.",
+      "tr": "Kompleks karbonhidratlar uzun şeker zincirleridir; tahıl, patates ve baklagillerde bulunur. Bozulmamış lifle çoğu zaman kan şekerini daha yavaş yükseltir. İşlenme derecesi etkiyi güçlü değiştirir."
+    },
+    "related_chapters": [
+      5,
+      6,
+      4
+    ]
+  },
+  {
+    "term_key": "Einfache Kohlenhydrate",
+    "term": {
+      "de": "Einfache Kohlenhydrate",
+      "en": "Simple carbohydrates",
+      "es": "Hidratos de carbono simples",
+      "it": "Carboidrati semplici",
+      "pt": "Hidratos de carbono simples",
+      "fr": "Glucides simples",
+      "tr": "Basit karbonhidratlar"
+    },
+    "synonyms": {
+      "de": [
+        "Einfach- und Zweifachzucker"
+      ],
+      "en": [
+        "mono- and disaccharides"
+      ],
+      "es": [
+        "Mono- y disacáridos"
+      ],
+      "it": [
+        "mono- e disaccaridi"
+      ],
+      "pt": [
+        "mono e dissacarídeos"
+      ],
+      "fr": [
+        "mono- et disaccharides"
+      ],
+      "tr": [
+        "tekli ve çiftli şekerler"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Einfache Kohlenhydrate umfassen Glukose, Fruktose und Saccharose und wirken oft schnell auf den Blutzucker. In Obst kommen sie zusammen mit Fasern und Mikronährstoffen vor. In Softdrinks fehlen diese Bremsen.",
+      "en": "Simple carbohydrates include glucose, fructose, and sucrose and often act quickly on blood sugar. In fruit they come with fiber and micronutrients. Soft drinks lack these brakes.",
+      "es": "Los hidratos simples incluyen glucosa, fructosa y sacarosa y suelen actuar con rapidez sobre la glucemia. En la fruta vienen junto con fibra y micronutrientes. En los refrescos faltan esos frenos.",
+      "it": "I carboidrati semplici includono glucosio, fruttosio e saccarosio e agiscono spesso in fretta sulla glicemia. Nella frutta arrivano con fibre e micronutrienti. Nelle bibite mancano questi freni.",
+      "pt": "Os hidratos simples incluem glicose, frutose e sacarose e atuam muitas vezes depressa na glicemia. Na fruta vêm com fibra e micronutrientes. Nos refrigerantes faltam estes travões.",
+      "fr": "Les glucides simples incluent glucose, fructose et saccharose et agissent souvent vite sur la glycémie. Dans les fruits, ils viennent avec fibres et micronutriments. Dans les sodas, ces freins manquent.",
+      "tr": "Basit karbonhidratlar glukoz, fruktoz ve sakkarozu kapsar ve çoğu zaman kan şekerine hızlı etki eder. Meyvede lif ve mikrobesinlerle gelir. Soft içeceklerde bu frenler yoktur."
+    },
+    "related_chapters": [
+      1,
+      2,
+      5,
+      10
+    ]
+  },
+  {
+    "term_key": "Saccharose",
+    "term": {
+      "de": "Saccharose",
+      "en": "Sucrose",
+      "es": "Sacarosa",
+      "it": "Saccarosio",
+      "pt": "Sacarose",
+      "fr": "Saccharose",
+      "tr": "Sakkaroz"
+    },
+    "synonyms": {
+      "de": [
+        "Haushaltszucker",
+        "Sucrose"
+      ],
+      "en": [
+        "table sugar",
+        "sucrose"
+      ],
+      "es": [
+        "Azúcar de mesa",
+        "Sucrose"
+      ],
+      "it": [
+        "zucchero da tavola",
+        "sucrose"
+      ],
+      "pt": [
+        "açúcar de mesa",
+        "sucrose"
+      ],
+      "fr": [
+        "sucre de table",
+        "sucrose"
+      ],
+      "tr": [
+        "sofra şekeri",
+        "sukroz"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Saccharose besteht je zur Hälfte aus Glukose und Fruktose und ist der klassische Haushaltszucker. Sie steckt offen in Süßigkeiten und versteckt in vielen Fertigprodukten. Weniger freie Zucker zu essen ist ein zentraler LabPlate-Alltagstipp.",
+      "en": "Sucrose is half glucose and half fructose and is classic table sugar. It is open in sweets and hidden in many processed foods. Eating fewer free sugars is a core LabPlate everyday tip.",
+      "es": "La sacarosa consta a partes iguales de glucosa y fructosa y es el azúcar de mesa clásico. Está de forma abierta en dulces y oculta en muchos productos elaborados. Comer menos azúcares libres es un consejo cotidiano central de LabPlate.",
+      "it": "Il saccarosio è metà glucosio e metà fruttosio ed è lo zucchero da tavola classico. È evidente nei dolci e nascosto in molti prodotti pronti. Mangiare meno zuccheri liberi è un consiglio quotidiano centrale di LabPlate.",
+      "pt": "A sacarose é metade glicose e metade frutose e é o açúcar de mesa clássico. Está aberta em doces e escondida em muitos produtos processados. Comer menos açúcares livres é uma dica quotidiana central do LabPlate.",
+      "fr": "Le saccharose est moitié glucose et moitié fructose et est le sucre de table classique. Il est visible dans les sucreries et caché dans de nombreux produits transformés. Moins de sucres libres est un conseil quotidien central de LabPlate.",
+      "tr": "Sakkaroz yarı glukoz yarı fruktozdur ve klasik sofra şekeridir. Tatlılarda açıktır; birçok hazır üründe gizlidir. Daha az serbest şeker yemek LabPlate'in temel günlük önerisidir."
+    },
+    "related_chapters": [
+      2,
+      1,
+      10,
+      8
+    ]
+  },
+  {
+    "term_key": "Fruktose",
+    "term": {
+      "de": "Fruktose",
+      "en": "Fructose",
+      "es": "Fructosa",
+      "it": "Fruttosio",
+      "pt": "Frutose",
+      "fr": "Fructose",
+      "tr": "Fruktoz"
+    },
+    "synonyms": {
+      "de": [
+        "Fruchtzucker",
+        "Fruit sugar"
+      ],
+      "en": [
+        "Fruit sugar",
+        "D-fructose"
+      ],
+      "es": [
+        "Azúcar de la fruta",
+        "Fruit sugar"
+      ],
+      "it": [
+        "Fruttosio",
+        "Zucchero della frutta"
+      ],
+      "pt": [
+        "Açúcar da fruta",
+        "Fruit sugar"
+      ],
+      "fr": [
+        "Sucre de fruit",
+        "Fruit sugar"
+      ],
+      "tr": [
+        "meyve şekeri",
+        "Fruit sugar"
+      ]
+    },
+    "category": {
+      "de": "Nährstoff",
+      "en": "Nutrient",
+      "es": "Nutriente",
+      "it": "Nutriente",
+      "pt": "Nutriente",
+      "fr": "Nutriment",
+      "tr": "Besin öğesi"
+    },
+    "short_description": {
+      "de": "Fruktose ist ein Einfachzucker aus Obst, Honig und Maissirup. In hohen Mengen aus Getränken belastet sie die Leber und kann Triglyceride erhöhen. Fruktose aus ganzem Obst ist in üblichen Portionen unproblematischer.",
+      "en": "Fructose is a simple sugar from fruit, honey, and corn syrup. In high amounts from drinks it burdens the liver and can raise triglycerides. Fructose from whole fruit in usual portions is less problematic.",
+      "es": "La fructosa es un monosacárido de fruta, miel y jarabe de maíz. En cantidades altas procedentes de bebidas sobrecarga el hígado y puede elevar los triglicéridos. La fructosa de la fruta entera en porciones habituales es menos problemática.",
+      "it": "Il fruttosio è uno zucchero semplice da frutta, miele e sciroppo di mais. In alte quantità da bevande carica il fegato e può alzare i trigliceridi. Il fruttosio da frutta intera in porzioni usuali è meno problematico.",
+      "pt": "A frutose é um açúcar simples de fruta, mel e xarope de milho. Em altas quantidades de bebidas sobrecarrega o fígado e pode elevar triglicéridos. A frutose de fruta inteira em porções habituais é menos problemática.",
+      "fr": "Le fructose est un sucre simple du fruit, du miel et du sirop de maïs. En fortes quantités via les boissons, il charge le foie et peut élever les triglycérides. Le fructose du fruit entier en portions habituelles est moins problématique.",
+      "tr": "Fruktoz; meyve, bal ve mısır şurubundan bir basit şekerdir. İçeceklerden yüksek miktarda karaciğeri yükler ve trigliseriti yükseltebilir. Bütün meyveden olağan porsiyonlarda fruktoz daha az sorundur."
+    },
+    "related_chapters": [
+      1,
+      2,
+      3,
+      10
+    ]
+  }
+]

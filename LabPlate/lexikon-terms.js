@@ -68,7 +68,7 @@ window.lexikonTerms = [
       "it": "La 25-OH vitamina D è il miglior marker di deposito dello stato vitaminico D. I range target variano un po' secondo le società scientifiche. L'integrazione va modulata in base al valore basale e alla stagione.",
       "pt": "A 25-OH vitamina D é o melhor marcador de reserva do estado de vitamina D. Os intervalos-alvo variam um pouco conforme a sociedade científica. A suplementação deve ser guiada pelo valor basal e pela estação.",
       "fr": "La 25-OH vitamine D est le meilleur marqueur de réserve du statut en vitamine D. Les cibles varient un peu selon les sociétés savantes. La supplémentation doit être pilotée selon le taux de départ et la saison.",
-      "tr": "25-OH D vitamini, D vitamini durumunun en iyi depo göstergesidir. Hedef aralıklar bilimsel derneklere göre biraz farklılık gösterir. Takviye başlangıç değeri ve mevsime göre yönlendirilmelidir."
+      "tr": "25-OH D vitamini, D vitamini durumunun en iyi depo göstergesidir. Hedef aralıklar bilimsel derneklere göre biraz farklılık gösterir. Gıda takviyesi başlangıç değeri ve mevsime göre yönlendirilmelidir."
     },
     "related_chapters": [
       3,
@@ -191,13 +191,13 @@ window.lexikonTerms = [
       "tr": "Vitamin"
     },
     "short_description": {
-      "de": "Pyridoxal-5-phosphat ist die coenzymatisch aktive Form von Vitamin B6. Manche Supplemente liefern direkt P5P statt Pyridoxin. Für Gesunde ist der Vorteil gegenüber Standardformen nicht immer belegt.",
+      "de": "Pyridoxal-5-phosphat ist die coenzymatisch aktive Form von Vitamin B6. Manche Nahrungsergänzung liefern direkt P5P statt Pyridoxin. Für Gesunde ist der Vorteil gegenüber Standardformen nicht immer belegt.",
       "en": "Pyridoxal 5-phosphate is the coenzymatically active form of vitamin B6. Some supplements provide P5P directly instead of pyridoxine. For healthy people the advantage over standard forms is not always proven.",
-      "es": "El piridoxal-5-fosfato es la forma coenzimáticamente activa de la vitamina B6. Algunos suplementos aportan P5P directamente en lugar de piridoxina. En personas sanas la ventaja frente a las formas estándar no siempre está demostrada.",
-      "it": "Il piridossal-5-fosfato è la forma coenzimaticamente attiva della vitamina B6. Alcuni integratori forniscono direttamente P5P invece di piridossina. Nei sani il vantaggio rispetto alle forme standard non è sempre dimostrato.",
-      "pt": "O piridoxal-5-fosfato é a forma coenzimaticamente ativa da vitamina B6. Alguns suplementos fornecem P5P diretamente em vez de piridoxina. Em pessoas saudáveis a vantagem face às formas padrão nem sempre está comprovada.",
-      "fr": "Le pyridoxal-5-phosphate est la forme coenzymatiquement active de la vitamine B6. Certains compléments apportent directement du P5P plutôt que de la pyridoxine. Chez les personnes en bonne santé l'avantage par rapport aux formes standard n'est pas toujours prouvé.",
-      "tr": "Piridoksal-5-fosfat B6 vitamininin koenzimatik aktif formudur. Bazı takviyeler piridoksin yerine doğrudan P5P sağlar. Sağlıklılarda standart formlara üstünlük her zaman kanıtlanmamıştır."
+      "es": "El piridoxal-5-fosfato es la forma coenzimáticamente activa de la vitamina B6. Algunos suplementos alimenticios aportan P5P directamente en lugar de piridoxina. En personas sanas la ventaja frente a las formas estándar no siempre está demostrada.",
+      "it": "Il piridossal-5-fosfato è la forma coenzimaticamente attiva della vitamina B6. Alcuni integratori alimentari forniscono direttamente P5P invece di piridossina. Nei sani il vantaggio rispetto alle forme standard non è sempre dimostrato.",
+      "pt": "O piridoxal-5-fosfato é a forma coenzimaticamente ativa da vitamina B6. Alguns suplementos alimentares fornecem P5P diretamente em vez de piridoxina. Em pessoas saudáveis a vantagem face às formas padrão nem sempre está comprovada.",
+      "fr": "Le pyridoxal-5-phosphate est la forme coenzymatiquement active de la vitamine B6. Certains compléments alimentaires apportent directement du P5P plutôt que de la pyridoxine. Chez les personnes en bonne santé l'avantage par rapport aux formes standard n'est pas toujours prouvé.",
+      "tr": "Piridoksal-5-fosfat B6 vitamininin koenzimatik aktif formudur. Bazı gıda takviyeleri piridoksin yerine doğrudan P5P sağlar. Sağlıklılarda standart formlara üstünlük her zaman kanıtlanmamıştır."
     },
     "related_chapters": [
       9,
@@ -439,13 +439,13 @@ window.lexikonTerms = [
       "tr": "Vitamin"
     },
     "short_description": {
-      "de": "Alpha-Tocopherol ist die biologisch wirksamste Form von Vitamin E beim Menschen. Es wird bevorzugt in Lipoproteinen transportiert und in Geweben gespeichert. Sehr hohe Dosen aus Supplementen können die Blutgerinnung beeinflussen und sollten mit dem Arzt abgestimmt werden.",
+      "de": "Alpha-Tocopherol ist die biologisch wirksamste Form von Vitamin E beim Menschen. Es wird bevorzugt in Lipoproteinen transportiert und in Geweben gespeichert. Sehr hohe Dosen aus Nahrungsergänzung können die Blutgerinnung beeinflussen und sollten mit dem Arzt abgestimmt werden.",
       "en": "Alpha-tocopherol is the biologically most effective form of vitamin E in humans. It is preferentially transported in lipoproteins and stored in tissues. Very high doses from supplements can affect blood clotting and should be discussed with a physician.",
-      "es": "El alfa-tocoferol es la forma biológicamente más activa de la vitamina E en el ser humano. Se transporta preferentemente en lipoproteínas y se almacena en los tejidos. Dosis muy altas de suplementos pueden afectar la coagulación y deben acordarse con el médico.",
-      "it": "L'alfa-tocoferolo è la forma biologicamente più efficace della vitamina E nell'uomo. Viene trasportata preferenzialmente nelle lipoproteine e immagazzinata nei tessuti. Dosi molto elevate da integratori possono influenzare la coagulazione e vanno concordate con il medico.",
-      "pt": "O alfa-tocoferol é a forma biologicamente mais eficaz da vitamina E no ser humano. É transportado preferencialmente em lipoproteínas e armazenado nos tecidos. Doses muito elevadas de suplementos podem afetar a coagulação e devem ser alinhadas com o médico.",
-      "fr": "L'alpha-tocophérol est la forme biologiquement la plus efficace de la vitamine E chez l'humain. Il est transporté de préférence dans les lipoprotéines et stocké dans les tissus. De très fortes doses de compléments peuvent influencer la coagulation et doivent être discutées avec le médecin.",
-      "tr": "Alfa-tokoferol, insanlarda E vitamininin biyolojik olarak en etkili formudur. Tercihen lipoproteinlerde taşınır ve dokularda depolanır. Takviyelerden çok yüksek dozlar kan pıhtılaşmasını etkileyebilir ve hekimle birlikte planlanmalıdır."
+      "es": "El alfa-tocoferol es la forma biológicamente más activa de la vitamina E en el ser humano. Se transporta preferentemente en lipoproteínas y se almacena en los tejidos. Dosis muy altas de suplementos alimenticios pueden afectar la coagulación y deben acordarse con el médico.",
+      "it": "L'alfa-tocoferolo è la forma biologicamente più efficace della vitamina E nell'uomo. Viene trasportata preferenzialmente nelle lipoproteine e immagazzinata nei tessuti. Dosi molto elevate da integratori alimentari possono influenzare la coagulazione e vanno concordate con il medico.",
+      "pt": "O alfa-tocoferol é a forma biologicamente mais eficaz da vitamina E no ser humano. É transportado preferencialmente em lipoproteínas e armazenado nos tecidos. Doses muito elevadas de suplementos alimentares podem afetar a coagulação e devem ser alinhadas com o médico.",
+      "fr": "L'alpha-tocophérol est la forme biologiquement la plus efficace de la vitamine E chez l'humain. Il est transporté de préférence dans les lipoprotéines et stocké dans les tissus. De très fortes doses de compléments alimentaires peuvent influencer la coagulation et doivent être discutées avec le médecin.",
+      "tr": "Alfa-tokoferol, insanlarda E vitamininin biyolojik olarak en etkili formudur. Tercihen lipoproteinlerde taşınır ve dokularda depolanır. Gıda takviyelerinden çok yüksek dozlar kan pıhtılaşmasını etkileyebilir ve hekimle birlikte planlanmalıdır."
     },
     "related_chapters": [
       9
@@ -1806,13 +1806,13 @@ window.lexikonTerms = [
       "tr": "İz element"
     },
     "short_description": {
-      "de": "Bor kommt in Obst, Gemüse und Nüssen vor und wird in der Forschung mit Knochenstoffwechsel diskutiert. Ein klar definierter Mangelzustand beim Menschen ist nicht etabliert. Hochdosierte Bor-Supplemente sind nicht allgemein empfohlen.",
+      "de": "Bor kommt in Obst, Gemüse und Nüssen vor und wird in der Forschung mit Knochenstoffwechsel diskutiert. Ein klar definierter Mangelzustand beim Menschen ist nicht etabliert. Hochdosierte Bor-Nahrungsergänzung sind nicht allgemein empfohlen.",
       "en": "Boron occurs in fruit, vegetables, and nuts and is discussed in research on bone metabolism. A clearly defined deficiency state in humans is not established. High-dose boron supplements are not generally recommended.",
-      "es": "El boro se encuentra en frutas, verduras y frutos secos y se discute en la investigación sobre el metabolismo óseo. No hay un estado carencial claramente definido en el ser humano. Los suplementos de boro a dosis altas no se recomiendan de forma general.",
-      "it": "Il boro si trova in frutta, verdura e noci e nella ricerca è discusso in relazione al metabolismo osseo. Uno stato carenziale chiaramente definito nell'uomo non è stabilito. Integratori di boro ad alto dosaggio non sono generalmente raccomandati.",
-      "pt": "O boro ocorre em fruta, legumes e frutos secos e é discutido na investigação do metabolismo ósseo. Não está estabelecido um estado de carência claramente definido no ser humano. Suplementos de boro em dose elevada não são geralmente recomendados.",
-      "fr": "Le bore se trouve dans les fruits, légumes et noix et est discuté dans la recherche sur le métabolisme osseux. Un état de carence clairement défini chez l'humain n'est pas établi. Les compléments de bore à haute dose ne sont pas recommandés de façon générale.",
-      "tr": "Bor meyve, sebze ve kuruyemişlerde bulunur ve araştırmalarda kemik metabolizmasıyla tartışılır. İnsanda net tanımlanmış bir eksiklik durumu yoktur. Yüksek doz bor takviyeleri genel olarak önerilmez."
+      "es": "El boro se encuentra en frutas, verduras y frutos secos y se discute en la investigación sobre el metabolismo óseo. No hay un estado carencial claramente definido en el ser humano. Los suplementos alimenticios de boro a dosis altas no se recomiendan de forma general.",
+      "it": "Il boro si trova in frutta, verdura e noci e nella ricerca è discusso in relazione al metabolismo osseo. Uno stato carenziale chiaramente definito nell'uomo non è stabilito. Integratori alimentari di boro ad alto dosaggio non sono generalmente raccomandati.",
+      "pt": "O boro ocorre em fruta, legumes e frutos secos e é discutido na investigação do metabolismo ósseo. Não está estabelecido um estado de carência claramente definido no ser humano. Suplementos alimentares de boro em dose elevada não são geralmente recomendados.",
+      "fr": "Le bore se trouve dans les fruits, légumes et noix et est discuté dans la recherche sur le métabolisme osseux. Un état de carence clairement défini chez l'humain n'est pas établi. Les compléments alimentaires de bore à haute dose ne sont pas recommandés de façon générale.",
+      "tr": "Bor meyve, sebze ve kuruyemişlerde bulunur ve araştırmalarda kemik metabolizmasıyla tartışılır. İnsanda net tanımlanmış bir eksiklik durumu yoktur. Yüksek doz bor gıda takviyeleri genel olarak önerilmez."
     },
     "related_chapters": [
       11
@@ -2131,13 +2131,13 @@ window.lexikonTerms = [
       "tr": "Mineral"
     },
     "short_description": {
-      "de": "Calciumcarbonat ist eine häufige Form in Calciumsupplementen und wird besser zu den Mahlzeiten aufgenommen. Bei niedriger Magensäure kann die Aufnahme eingeschränkt sein. Die Gesamtdosis sollte mit der Ernährung abgestimmt werden.",
+      "de": "Calciumcarbonat ist eine häufige Form in Calcium-Nahrungsergänzung und wird besser zu den Mahlzeiten aufgenommen. Bei niedriger Magensäure kann die Aufnahme eingeschränkt sein. Die Gesamtdosis sollte mit der Ernährung abgestimmt werden.",
       "en": "Calcium carbonate is a common form in calcium supplements and is better absorbed with meals. With low stomach acid, absorption may be limited. The total dose should be aligned with dietary intake.",
-      "es": "El carbonato de calcio es una forma frecuente en suplementos de calcio y se absorbe mejor con las comidas. Con poca acidez gástrica la absorción puede estar limitada. La dosis total debe armonizarse con la alimentación.",
-      "it": "Il carbonato di calcio è una forma frequente negli integratori di calcio e si assorbe meglio ai pasti. Con poco acido gastrico l'assorbimento può essere limitato. La dose totale va coordinata con l'alimentazione.",
-      "pt": "O carbonato de cálcio é uma forma frequente em suplementos de cálcio e absorve-se melhor às refeições. Com pouco ácido gástrico a absorção pode estar limitada. A dose total deve alinhar-se com a alimentação.",
-      "fr": "Le carbonate de calcium est une forme fréquente dans les compléments de calcium et s'absorbe mieux aux repas. En cas de faible acidité gastrique, l'absorption peut être limitée. La dose totale doit être harmonisée avec l'alimentation.",
-      "tr": "Kalsiyum karbonat, kalsiyum takviyelerinde sık bir formdur ve yemeklerle daha iyi emilir. Düşük mide asidinde emilim kısıtlı olabilir. Toplam doz beslenmeyle uyumlu olmalıdır."
+      "es": "El carbonato de calcio es una forma frecuente en suplementos alimenticios de calcio y se absorbe mejor con las comidas. Con poca acidez gástrica la absorción puede estar limitada. La dosis total debe armonizarse con la alimentación.",
+      "it": "Il carbonato di calcio è una forma frequente negli integratori alimentari di calcio e si assorbe meglio ai pasti. Con poco acido gastrico l'assorbimento può essere limitato. La dose totale va coordinata con l'alimentazione.",
+      "pt": "O carbonato de cálcio é uma forma frequente em suplementos alimentares de cálcio e absorve-se melhor às refeições. Com pouco ácido gástrico a absorção pode estar limitada. A dose total deve alinhar-se com a alimentação.",
+      "fr": "Le carbonate de calcium est une forme fréquente dans les compléments alimentaires de calcium et s'absorbe mieux aux repas. En cas de faible acidité gastrique, l'absorption peut être limitée. La dose totale doit être harmonisée avec l'alimentation.",
+      "tr": "Kalsiyum karbonat, kalsiyum gıda takviyelerinde sık bir formdur ve yemeklerle daha iyi emilir. Düşük mide asidinde emilim kısıtlı olabilir. Toplam doz beslenmeyle uyumlu olmalıdır."
     },
     "related_chapters": [
       8,
@@ -2374,13 +2374,13 @@ window.lexikonTerms = [
       "tr": "Vitamin"
     },
     "short_description": {
-      "de": "Cholecalciferol ist die Form von Vitamin D, die der menschliche Körper unter Sonnenlicht selbst bildet und die auch in fettem Fisch vorkommt. Supplemente nutzen meist D3, weil es den Blutspiegel effizient anhebt. Im Körper wird es in der Leber und Niere zur aktiven Form umgewandelt.",
+      "de": "Cholecalciferol ist die Form von Vitamin D, die der menschliche Körper unter Sonnenlicht selbst bildet und die auch in fettem Fisch vorkommt. Nahrungsergänzung nutzen meist D3, weil es den Blutspiegel effizient anhebt. Im Körper wird es in der Leber und Niere zur aktiven Form umgewandelt.",
       "en": "Cholecalciferol is the form of vitamin D that the human body makes under sunlight and that also occurs in fatty fish. Supplements usually use D3 because it raises blood levels efficiently. In the body it is converted in the liver and kidney to the active form.",
-      "es": "El colecalciferol es la forma de vitamina D que el cuerpo humano forma con la luz solar y que también está presente en pescados grasos. Los suplementos suelen usar D3 porque eleva con eficiencia el nivel en sangre. En el organismo se convierte en la forma activa en el hígado y el riñón.",
-      "it": "Il colecalciferolo è la forma di vitamina D che l'organismo umano produce sotto la luce solare e che si trova anche nel pesce grasso. Gli integratori usano di solito D3 perché alza in modo efficiente i livelli ematici. Nell'organismo viene convertita in fegato e rene nella forma attiva.",
-      "pt": "O colecalciferol é a forma de vitamina D que o corpo humano forma sob a luz solar e que também ocorre em peixe gordo. Os suplementos usam geralmente D3 porque eleva de forma eficiente os níveis sanguíneos. No organismo é convertida no fígado e rim na forma ativa.",
-      "fr": "Le cholécalciférol est la forme de vitamine D que le corps humain forme sous la lumière solaire et qui se trouve aussi dans les poissons gras. Les compléments utilisent surtout la D3 car elle élève efficacement le taux sanguin. Dans l'organisme, elle est convertie dans le foie et le rein en forme active.",
-      "tr": "Kolekalsiferol, insan vücudunun güneş ışığında kendi ürettiği ve yağlı balıkta da bulunan D vitamini formudur. Takviyeler genellikle D3 kullanır çünkü kan seviyesini verimli yükseltir. Vücutta karaciğer ve böbrekte aktif forma dönüştürülür."
+      "es": "El colecalciferol es la forma de vitamina D que el cuerpo humano forma con la luz solar y que también está presente en pescados grasos. Los suplementos alimenticios suelen usar D3 porque eleva con eficiencia el nivel en sangre. En el organismo se convierte en la forma activa en el hígado y el riñón.",
+      "it": "Il colecalciferolo è la forma di vitamina D che l'organismo umano produce sotto la luce solare e che si trova anche nel pesce grasso. Gli integratori alimentari usano di solito D3 perché alza in modo efficiente i livelli ematici. Nell'organismo viene convertita in fegato e rene nella forma attiva.",
+      "pt": "O colecalciferol é a forma de vitamina D que o corpo humano forma sob a luz solar e que também ocorre em peixe gordo. Os suplementos alimentares usam geralmente D3 porque eleva de forma eficiente os níveis sanguíneos. No organismo é convertida no fígado e rim na forma ativa.",
+      "fr": "Le cholécalciférol est la forme de vitamine D que le corps humain forme sous la lumière solaire et qui se trouve aussi dans les poissons gras. Les compléments alimentaires utilisent surtout la D3 car elle élève efficacement le taux sanguin. Dans l'organisme, elle est convertie dans le foie et le rein en forme active.",
+      "tr": "Kolekalsiferol, insan vücudunun güneş ışığında kendi ürettiği ve yağlı balıkta da bulunan D vitamini formudur. Gıda takviyeleri genellikle D3 kullanır çünkü kan seviyesini verimli yükseltir. Vücutta karaciğer ve böbrekte aktif forma dönüştürülür."
     },
     "related_chapters": [
       3,
@@ -2630,13 +2630,13 @@ window.lexikonTerms = [
       "tr": "İz element"
     },
     "short_description": {
-      "de": "Chrom wird mit dem Kohlenhydratstoffwechsel und der Insulinempfindlichkeit in Verbindung gebracht. Der Bedarf ist gering und über die normale Ernährung meist gedeckt. Hochdosierte Supplemente sind nicht pauschal zu empfehlen.",
+      "de": "Chrom wird mit dem Kohlenhydratstoffwechsel und der Insulinempfindlichkeit in Verbindung gebracht. Der Bedarf ist gering und über die normale Ernährung meist gedeckt. Hochdosierte Nahrungsergänzung sind nicht pauschal zu empfehlen.",
       "en": "Chromium is linked to carbohydrate metabolism and insulin sensitivity. Needs are low and usually met by a normal diet. High-dose supplements are not generally recommended.",
-      "es": "El cromo se asocia al metabolismo de los hidratos de carbono y a la sensibilidad a la insulina. La necesidad es baja y suele cubrirse con la alimentación normal. Los suplementos a dosis altas no se recomiendan de forma general.",
-      "it": "Il cromo si associa al metabolismo dei carboidrati e alla sensibilità insulinica. Il fabbisogno è basso e di solito coperto da un'alimentazione normale. Integratori ad alto dosaggio non sono raccomandati in modo generale.",
-      "pt": "O crómio associa-se ao metabolismo dos hidratos de carbono e à sensibilidade à insulina. A necessidade é baixa e geralmente coberta por uma alimentação normal. Suplementos em dose elevada não são recomendados de forma geral.",
-      "fr": "Le chrome est associé au métabolisme des glucides et à la sensibilité à l'insuline. Les besoins sont faibles et généralement couverts par une alimentation normale. Les compléments à forte dose ne sont pas recommandés de façon générale.",
-      "tr": "Krom, karbonhidrat metabolizması ve insülin duyarlılığıyla ilişkilendirilir. İhtiyaç düşüktür ve normal beslenmeyle çoğu zaman karşılanır. Yüksek doz takviyeler genel olarak önerilmez."
+      "es": "El cromo se asocia al metabolismo de los hidratos de carbono y a la sensibilidad a la insulina. La necesidad es baja y suele cubrirse con la alimentación normal. Los suplementos alimenticios a dosis altas no se recomiendan de forma general.",
+      "it": "Il cromo si associa al metabolismo dei carboidrati e alla sensibilità insulinica. Il fabbisogno è basso e di solito coperto da un'alimentazione normale. Integratori alimentari ad alto dosaggio non sono raccomandati in modo generale.",
+      "pt": "O crómio associa-se ao metabolismo dos hidratos de carbono e à sensibilidade à insulina. A necessidade é baixa e geralmente coberta por uma alimentação normal. Suplementos alimentares em dose elevada não são recomendados de forma geral.",
+      "fr": "Le chrome est associé au métabolisme des glucides et à la sensibilité à l'insuline. Les besoins sont faibles et généralement couverts par une alimentation normale. Les compléments alimentaires à forte dose ne sont pas recommandés de façon générale.",
+      "tr": "Krom, karbonhidrat metabolizması ve insülin duyarlılığıyla ilişkilendirilir. İhtiyaç düşüktür ve normal beslenmeyle çoğu zaman karşılanır. Yüksek doz gıda takviyeleri genel olarak önerilmez."
     },
     "related_chapters": [
       1,
@@ -2885,13 +2885,13 @@ window.lexikonTerms = [
       "tr": "İz element"
     },
     "short_description": {
-      "de": "Cobalt ist zentraler Bestandteil des Vitamin-B12-Moleküls. Eine separate Cobalt-Supplementierung ist für Gesunde nicht sinnvoll. Der Bedarf wird über B12-haltige Lebensmittel oder Supplemente gedeckt.",
+      "de": "Cobalt ist zentraler Bestandteil des Vitamin-B12-Moleküls. Eine separate Cobalt-Supplementierung ist für Gesunde nicht sinnvoll. Der Bedarf wird über B12-haltige Lebensmittel oder Nahrungsergänzung gedeckt.",
       "en": "Cobalt is a central component of the vitamin B12 molecule. Separate cobalt supplementation is not useful for healthy people. Needs are met through B12-containing foods or supplements.",
-      "es": "El cobalto es el componente central de la molécula de vitamina B12. Una suplementación separada de cobalto no tiene sentido en personas sanas. La necesidad se cubre con alimentos o suplementos que contengan B12.",
-      "it": "Il cobalto è il componente centrale della molecola della vitamina B12. Una integrazione separata di cobalto non ha senso per le persone sane. Il fabbisogno si copre con alimenti o integratori contenenti B12.",
-      "pt": "O cobalto é componente central da molécula de vitamina B12. A suplementação isolada de cobalto não faz sentido em pessoas saudáveis. As necessidades cobrem-se com alimentos ou suplementos que contenham B12.",
-      "fr": "Le cobalt est le composant central de la molécule de vitamine B12. Une supplémentation séparée en cobalt n'a pas de sens chez les personnes en bonne santé. Les besoins sont couverts par des aliments ou compléments contenant de la B12.",
-      "tr": "Kobalt, B12 vitamini molekülünün merkezi bileşenidir. Sağlıklı kişiler için ayrı kobalt takviyesi anlamlı değildir. İhtiyaç, B12 içeren gıdalar veya takviyelerle karşılanır."
+      "es": "El cobalto es el componente central de la molécula de vitamina B12. Una suplementación separada de cobalto no tiene sentido en personas sanas. La necesidad se cubre con alimentos o suplementos alimenticios que contengan B12.",
+      "it": "Il cobalto è il componente centrale della molecola della vitamina B12. Una integrazione separata di cobalto non ha senso per le persone sane. Il fabbisogno si copre con alimenti o integratori alimentari contenenti B12.",
+      "pt": "O cobalto é componente central da molécula de vitamina B12. A suplementação isolada de cobalto não faz sentido em pessoas saudáveis. As necessidades cobrem-se com alimentos ou suplementos alimentares que contenham B12.",
+      "fr": "Le cobalt est le composant central de la molécule de vitamine B12. Une supplémentation séparée en cobalt n'a pas de sens chez les personnes en bonne santé. Les besoins sont couverts par des aliments ou compléments alimentaires contenant de la B12.",
+      "tr": "Kobalt, B12 vitamini molekülünün merkezi bileşenidir. Sağlıklı kişiler için ayrı kobalt gıda takviyesi anlamlı değildir. İhtiyaç, B12 içeren gıdalar veya gıda takviyeleriyle karşılanır."
     },
     "related_chapters": [
       9
@@ -3781,13 +3781,13 @@ window.lexikonTerms = [
       "tr": "İz element"
     },
     "short_description": {
-      "de": "Eisenbisglycinat ist eine organische Supplementform, die oft besser verträglich ist als klassisches Eisensulfat. Es kann den Ferritinspiegel bei Mangel anheben. Die Therapie sollte Laborkontrollen und ärztliche Begleitung einschließen.",
+      "de": "Eisenbisglycinat ist eine organische Nahrungsergänzungsform, die oft besser verträglich ist als klassisches Eisensulfat. Es kann den Ferritinspiegel bei Mangel anheben. Die Therapie sollte Laborkontrollen und ärztliche Begleitung einschließen.",
       "en": "Iron bisglycinate is an organic supplement form that is often better tolerated than classic ferrous sulfate. It can raise ferritin in deficiency. Therapy should include lab monitoring and medical supervision.",
-      "es": "El bisglicinato de hierro es una forma orgánica de suplemento que suele tolerarse mejor que el sulfato de hierro clásico. Puede elevar la ferritina en caso de deficiencia. El tratamiento debe incluir controles de laboratorio y seguimiento médico.",
-      "it": "Il bisglicinato di ferro è una forma organica di integratore, spesso meglio tollerata del solfato ferroso classico. Può aumentare la ferritina in caso di carenza. La terapia dovrebbe includere controlli di laboratorio e supervisione medica.",
-      "pt": "O bisglicinato de ferro é uma forma orgânica de suplemento, muitas vezes melhor tolerada do que o sulfato de ferro clássico. Pode elevar a ferritina na carência. A terapêutica deve incluir controlos laboratoriais e acompanhamento médico.",
-      "fr": "Le bisglycinate de fer est une forme organique de complément, souvent mieux tolérée que le sulfate de fer classique. Il peut élever la ferritine en cas de carence. Le traitement doit inclure des contrôles biologiques et un suivi médical.",
-      "tr": "Demir bisglisinat, klasik demir sülfata göre genelde daha iyi tolere edilen organik bir takviye formudur. Eksiklikte ferritin düzeyini yükseltebilir. Tedavi laboratuvar kontrolleri ve hekim takibi içermelidir."
+      "es": "El bisglicinato de hierro es una forma orgánica de suplemento alimenticio que suele tolerarse mejor que el sulfato de hierro clásico. Puede elevar la ferritina en caso de deficiencia. El tratamiento debe incluir controles de laboratorio y seguimiento médico.",
+      "it": "Il bisglicinato di ferro è una forma organica di integratore alimentare, spesso meglio tollerata del solfato ferroso classico. Può aumentare la ferritina in caso di carenza. La terapia dovrebbe includere controlli di laboratorio e supervisione medica.",
+      "pt": "O bisglicinato de ferro é uma forma orgânica de suplemento alimentar, muitas vezes melhor tolerada do que o sulfato de ferro clássico. Pode elevar a ferritina na carência. A terapêutica deve incluir controlos laboratoriais e acompanhamento médico.",
+      "fr": "Le bisglycinate de fer est une forme organique de complément alimentaire, souvent mieux tolérée que le sulfate de fer classique. Il peut élever la ferritine en cas de carence. Le traitement doit inclure des contrôles biologiques et un suivi médical.",
+      "tr": "Demir bisglisinat, klasik demir sülfata göre genelde daha iyi tolere edilen organik bir gıda takviyesi formudur. Eksiklikte ferritin düzeyini yükseltebilir. Tedavi laboratuvar kontrolleri ve hekim takibi içermelidir."
     },
     "related_chapters": [
       9
@@ -4090,13 +4090,13 @@ window.lexikonTerms = [
       "tr": "Vitamin"
     },
     "short_description": {
-      "de": "Ergocalciferol ist die pflanzliche Form von Vitamin D und wird in manchen Supplementen und angereicherten Lebensmitteln verwendet. Es hebt den 25-OH-D-Spiegel etwas weniger effizient an als Cholecalciferol. Für die meisten Menschen ist D3 die bevorzugte Ergänzungsform.",
+      "de": "Ergocalciferol ist die pflanzliche Form von Vitamin D und wird in manchen Nahrungsergänzung und angereicherten Lebensmitteln verwendet. Es hebt den 25-OH-D-Spiegel etwas weniger effizient an als Cholecalciferol. Für die meisten Menschen ist D3 die bevorzugte Ergänzungsform.",
       "en": "Ergocalciferol is the plant form of vitamin D and is used in some supplements and fortified foods. It raises 25-OH-D levels somewhat less efficiently than cholecalciferol. For most people, D3 is the preferred form of supplementation.",
-      "es": "El ergocalciferol es la forma vegetal de la vitamina D y se usa en algunos suplementos y alimentos enriquecidos. Eleva el nivel de 25-OH-D algo menos eficientemente que el colecalciferol. Para la mayoría de las personas, D3 es la forma preferida de suplementación.",
-      "it": "L'ergocalciferolo è la forma vegetale della vitamina D e si usa in alcuni integratori e alimenti arricchiti. Alza il livello di 25-OH-D un po' meno efficientemente del colecalciferolo. Per la maggior parte delle persone, la D3 è la forma di integrazione preferita.",
-      "pt": "O ergocalciferol é a forma vegetal da vitamina D e usa-se nalguns suplementos e alimentos fortificados. Eleva os níveis de 25-OH-D de forma ligeiramente menos eficiente do que o colecalciferol. Para a maioria das pessoas, o D3 é a forma de suplementação preferida.",
-      "fr": "L'ergocalciférol est la forme végétale de la vitamine D et est utilisé dans certains compléments et aliments enrichis. Il élève le taux de 25-OH-D un peu moins efficacement que le cholécalciférol. Pour la plupart des gens, la D3 est la forme de supplémentation préférée.",
-      "tr": "Ergokalsiferol, D vitamininin bitkisel formudur ve bazı takviyelerde ve zenginleştirilmiş gıdalarda kullanılır. 25-OH-D düzeyini kolekalsiferolden biraz daha az verimli yükseltir. Çoğu insan için tercih edilen takviye formu D3'tür."
+      "es": "El ergocalciferol es la forma vegetal de la vitamina D y se usa en algunos suplementos alimenticios y alimentos enriquecidos. Eleva el nivel de 25-OH-D algo menos eficientemente que el colecalciferol. Para la mayoría de las personas, D3 es la forma preferida de suplementación.",
+      "it": "L'ergocalciferolo è la forma vegetale della vitamina D e si usa in alcuni integratori alimentari e alimenti arricchiti. Alza il livello di 25-OH-D un po' meno efficientemente del colecalciferolo. Per la maggior parte delle persone, la D3 è la forma di integrazione preferita.",
+      "pt": "O ergocalciferol é a forma vegetal da vitamina D e usa-se nalguns suplementos alimentares e alimentos fortificados. Eleva os níveis de 25-OH-D de forma ligeiramente menos eficiente do que o colecalciferol. Para a maioria das pessoas, o D3 é a forma de suplementação preferida.",
+      "fr": "L'ergocalciférol est la forme végétale de la vitamine D et est utilisé dans certains compléments alimentaires et aliments enrichis. Il élève le taux de 25-OH-D un peu moins efficacement que le cholécalciférol. Pour la plupart des gens, la D3 est la forme de supplémentation préférée.",
+      "tr": "Ergokalsiferol, D vitamininin bitkisel formudur ve bazı gıda takviyelerinde ve zenginleştirilmiş gıdalarda kullanılır. 25-OH-D düzeyini kolekalsiferolden biraz daha az verimli yükseltir. Çoğu insan için tercih edilen gıda takviyesi formu D3'tür."
     },
     "related_chapters": [
       9
@@ -8743,13 +8743,13 @@ window.lexikonTerms = [
       "tr": "Mineral"
     },
     "short_description": {
-      "de": "Viele Mineralsalze in Supplementen liegen als Hydrate vor und enthalten gebundenes Wasser. Das beeinflusst das Gewicht der Tablette, nicht aber zwingend die Wirksamkeit. Entscheidend ist der Anteil an elementarem Mineralstoff auf dem Etikett.",
+      "de": "Viele Mineralsalze in Nahrungsergänzung liegen als Hydrate vor und enthalten gebundenes Wasser. Das beeinflusst das Gewicht der Tablette, nicht aber zwingend die Wirksamkeit. Entscheidend ist der Anteil an elementarem Mineralstoff auf dem Etikett.",
       "en": "Many mineral salts in supplements are present as hydrates and contain bound water. That affects tablet weight, but not necessarily efficacy. What matters is the elemental mineral amount on the label.",
-      "es": "Muchas sales minerales de los suplementos se presentan como hidratos y contienen agua unida. Eso influye en el peso del comprimido, no necesariamente en la eficacia. Lo decisivo es la proporción de mineral elemental en la etiqueta.",
-      "it": "Molti sali minerali negli integratori si presentano come idrati e contengono acqua legata. Ciò influisce sul peso della compressa, non necessariamente sull'efficacia. È decisivo il contenuto di minerale elementare sull'etichetta.",
-      "pt": "Muitos sais minerais em suplementos apresentam-se como hidratos e contêm água ligada. Isso afeta o peso do comprimido, não necessariamente a eficácia. O decisivo é a quantidade de mineral elementar no rótulo.",
-      "fr": "De nombreux sels minéraux dans les compléments se présentent sous forme d'hydrates et contiennent de l'eau liée. Cela influence le poids du comprimé, pas forcément l'efficacité. Ce qui compte est la quantité de minéral élémentaire sur l'étiquette.",
-      "tr": "Takviyelerdeki birçok mineral tuzu hidrat olarak bulunur ve bağlı su içerir. Bu tabletin ağırlığını etkiler, etkinliği zorunlu olarak değil. Etiketteki elemental mineral miktarı belirleyicidir."
+      "es": "Muchas sales minerales de los suplementos alimenticios se presentan como hidratos y contienen agua unida. Eso influye en el peso del comprimido, no necesariamente en la eficacia. Lo decisivo es la proporción de mineral elemental en la etiqueta.",
+      "it": "Molti sali minerali negli integratori alimentari si presentano come idrati e contengono acqua legata. Ciò influisce sul peso della compressa, non necessariamente sull'efficacia. È decisivo il contenuto di minerale elementare sull'etichetta.",
+      "pt": "Muitos sais minerais em suplementos alimentares apresentam-se como hidratos e contêm água ligada. Isso afeta o peso do comprimido, não necessariamente a eficácia. O decisivo é a quantidade de mineral elementar no rótulo.",
+      "fr": "De nombreux sels minéraux dans les compléments alimentaires se présentent sous forme d'hydrates et contiennent de l'eau liée. Cela influence le poids du comprimé, pas forcément l'efficacité. Ce qui compte est la quantité de minéral élémentaire sur l'étiquette.",
+      "tr": "Gıda takviyelerindeki birçok mineral tuzu hidrat olarak bulunur ve bağlı su içerir. Bu tabletin ağırlığını etkiler, etkinliği zorunlu olarak değil. Etiketteki elemental mineral miktarı belirleyicidir."
     },
     "related_chapters": [
       11
@@ -8929,13 +8929,13 @@ window.lexikonTerms = [
       "tr": "İz element"
     },
     "short_description": {
-      "de": "Kupfergluconat ist eine Supplementform bei nachgewiesenem Kupfermangel. Eine unkritische Einnahme ist nicht sinnvoll, weil Kupfer im Überschuss oxidativen Stress fördern kann. Zink-Kupfer-Balance sollte beachtet werden.",
+      "de": "Kupfergluconat ist eine Nahrungsergänzungsform bei nachgewiesenem Kupfermangel. Eine unkritische Einnahme ist nicht sinnvoll, weil Kupfer im Überschuss oxidativen Stress fördern kann. Zink-Kupfer-Balance sollte beachtet werden.",
       "en": "Copper gluconate is a supplement form for confirmed copper deficiency. Uncritical intake is not advisable because excess copper can promote oxidative stress. Zinc–copper balance should be considered.",
-      "es": "El gluconato de cobre es una forma de suplemento en deficiencia de cobre demostrada. Una toma indiscriminada no tiene sentido, porque el exceso de cobre puede favorecer el estrés oxidativo. Debe atenderse el equilibrio zinc-cobre.",
-      "it": "Il gluconato di rame è una forma di integratore in caso di carenza di rame documentata. Un'assunzione indiscriminata non ha senso, perché l'eccesso di rame può favorire lo stress ossidativo. Va rispettato l'equilibrio zinco-rame.",
-      "pt": "O gluconato de cobre é uma forma de suplemento na carência de cobre comprovada. A toma indiscriminada não é sensata, porque o excesso de cobre pode favorecer o stresse oxidativo. Deve atender-se ao equilíbrio zinco-cobre.",
-      "fr": "Le gluconate de cuivre est une forme de complément en cas de carence en cuivre documentée. Une prise non critique n'a pas de sens, car un excès de cuivre peut favoriser le stress oxydatif. L'équilibre zinc-cuivre doit être pris en compte.",
-      "tr": "Bakır glukonat, kanıtlanmış bakır eksikliğinde kullanılan bir takviye formudur. Aşırı bakır oksidatif stresi artırabileceğinden rastgele kullanım uygun değildir. Çinko-bakır dengesi gözetilmelidir."
+      "es": "El gluconato de cobre es una forma de suplemento alimenticio en deficiencia de cobre demostrada. Una toma indiscriminada no tiene sentido, porque el exceso de cobre puede favorecer el estrés oxidativo. Debe atenderse el equilibrio zinc-cobre.",
+      "it": "Il gluconato di rame è una forma di integratore alimentare in caso di carenza di rame documentata. Un'assunzione indiscriminata non ha senso, perché l'eccesso di rame può favorire lo stress ossidativo. Va rispettato l'equilibrio zinco-rame.",
+      "pt": "O gluconato de cobre é uma forma de suplemento alimentar na carência de cobre comprovada. A toma indiscriminada não é sensata, porque o excesso de cobre pode favorecer o stresse oxidativo. Deve atender-se ao equilíbrio zinco-cobre.",
+      "fr": "Le gluconate de cuivre est une forme de complément alimentaire en cas de carence en cuivre documentée. Une prise non critique n'a pas de sens, car un excès de cuivre peut favoriser le stress oxydatif. L'équilibre zinc-cuivre doit être pris en compte.",
+      "tr": "Bakır glukonat, kanıtlanmış bakır eksikliğinde kullanılan bir gıda takviyesi formudur. Aşırı bakır oksidatif stresi artırabileceğinden rastgele kullanım uygun değildir. Çinko-bakır dengesi gözetilmelidir."
     },
     "related_chapters": [
       9
@@ -10007,13 +10007,13 @@ window.lexikonTerms = [
       "tr": "Mineral"
     },
     "short_description": {
-      "de": "Magnesiumcitrat ist eine gut bioverfügbare Supplementform und wird häufig bei Krämpfen oder niedrigem Spiegel empfohlen. Zu hohe Dosen können Durchfall auslösen. Die Einnahme abends wird von manchen Menschen als entspannend empfunden.",
+      "de": "Magnesiumcitrat ist eine gut bioverfügbare Nahrungsergänzungsform und wird häufig bei Krämpfen oder niedrigem Spiegel empfohlen. Zu hohe Dosen können Durchfall auslösen. Die Einnahme abends wird von manchen Menschen als entspannend empfunden.",
       "en": "Magnesium citrate is a well-bioavailable supplement form and is often recommended for cramps or low levels. Excessively high doses can cause diarrhea. Evening intake is perceived as relaxing by some people.",
-      "es": "El citrato de magnesio es una forma de suplemento bien biodisponible y se recomienda con frecuencia en calambres o niveles bajos. Dosis demasiado altas pueden provocar diarrea. Algunas personas perciben la toma nocturna como relajante.",
-      "it": "Il citrato di magnesio è una forma di integratore ben biodisponibile e si raccomanda spesso in caso di crampi o livelli bassi. Dosi troppo elevate possono causare diarrea. L'assunzione serale è percepita da alcuni come rilassante.",
-      "pt": "O citrato de magnésio é uma forma de suplemento bem biodisponível e recomenda-se muitas vezes em cãibras ou níveis baixos. Doses demasiado elevadas podem causar diarreia. A toma à noite é sentida por alguns como relaxante.",
-      "fr": "Le citrate de magnésium est une forme de complément bien biodisponible et est souvent recommandé en cas de crampes ou de taux bas. Des doses trop élevées peuvent provoquer une diarrhée. La prise le soir est ressentie comme relaxante par certaines personnes.",
-      "tr": "Magnezyum sitrat iyi biyoyararlanımlı bir takviye formudur ve kramp veya düşük seviyede sık önerilir. Aşırı yüksek dozlar ishale yol açabilir. Akşam alımı bazı kişilerce rahatlatıcı algılanır."
+      "es": "El citrato de magnesio es una forma de suplemento alimenticio bien biodisponible y se recomienda con frecuencia en calambres o niveles bajos. Dosis demasiado altas pueden provocar diarrea. Algunas personas perciben la toma nocturna como relajante.",
+      "it": "Il citrato di magnesio è una forma di integratore alimentare ben biodisponibile e si raccomanda spesso in caso di crampi o livelli bassi. Dosi troppo elevate possono causare diarrea. L'assunzione serale è percepita da alcuni come rilassante.",
+      "pt": "O citrato de magnésio é uma forma de suplemento alimentar bem biodisponível e recomenda-se muitas vezes em cãibras ou níveis baixos. Doses demasiado elevadas podem causar diarreia. A toma à noite é sentida por alguns como relaxante.",
+      "fr": "Le citrate de magnésium est une forme de complément alimentaire bien biodisponible et est souvent recommandé en cas de crampes ou de taux bas. Des doses trop élevées peuvent provoquer une diarrhée. La prise le soir est ressentie comme relaxante par certaines personnes.",
+      "tr": "Magnezyum sitrat iyi biyoyararlanımlı bir gıda takviyesi formudur ve kramp veya düşük seviyede sık önerilir. Aşırı yüksek dozlar ishale yol açabilir. Akşam alımı bazı kişilerce rahatlatıcı algılanır."
     },
     "related_chapters": [
       7,
@@ -10846,13 +10846,13 @@ window.lexikonTerms = [
       "tr": "Vitamin"
     },
     "short_description": {
-      "de": "Methylcobalamin ist eine aktive Form von Vitamin B12 und wird häufig in Supplementen verwendet. Im Körper dient sie unter anderem der Remethylierung von Homocystein zu Methionin. Ob sie klinisch klar besser wirkt als Cyanocobalamin, hängt von Situation und Dosierung ab.",
+      "de": "Methylcobalamin ist eine aktive Form von Vitamin B12 und wird häufig in Nahrungsergänzung verwendet. Im Körper dient sie unter anderem der Remethylierung von Homocystein zu Methionin. Ob sie klinisch klar besser wirkt als Cyanocobalamin, hängt von Situation und Dosierung ab.",
       "en": "Methylcobalamin is an active form of vitamin B12 and is often used in supplements. In the body it serves among other things for remethylation of homocysteine to methionine. Whether it is clinically clearly superior to cyanocobalamin depends on situation and dosage.",
-      "es": "La metilcobalamina es una forma activa de la vitamina B12 y se usa con frecuencia en suplementos. En el organismo sirve, entre otras cosas, a la remetilación de homocisteína a metionina. Si actúa claramente mejor que la cianocobalamina depende de la situación y la dosis.",
-      "it": "La metilcobalamina è una forma attiva di vitamina B12 e si usa spesso negli integratori. Nell'organismo serve tra l'altro alla rimetilazione dell'omocisteina a metionina. Se sia clinicamente chiaramente superiore alla cianocobalamina dipende da situazione e dosaggio.",
-      "pt": "A metilcobalamina é uma forma ativa de vitamina B12 e é frequentemente usada em suplementos. No organismo serve entre outras coisas para a remetilação da homocisteína a metionina. Se é clinicamente claramente superior à cianocobalamina depende da situação e da dosagem.",
-      "fr": "La méthylcobalamine est une forme active de vitamine B12 et est souvent utilisée dans les compléments. Dans l'organisme, elle sert notamment à la reméthylation de l'homocystéine en méthionine. Sa supériorité clinique claire sur la cyanocobalamine dépend de la situation et de la posologie.",
-      "tr": "Metilkobalamin, B12 vitamininin aktif bir formudur ve takviyelerde sık kullanılır. Vücutta diğerlerinin yanı sıra homosisteinin metiyonine remetilasyonuna hizmet eder. Siyanokobalamine klinik olarak net üstünlüğü duruma ve doza bağlıdır."
+      "es": "La metilcobalamina es una forma activa de la vitamina B12 y se usa con frecuencia en suplementos alimenticios. En el organismo sirve, entre otras cosas, a la remetilación de homocisteína a metionina. Si actúa claramente mejor que la cianocobalamina depende de la situación y la dosis.",
+      "it": "La metilcobalamina è una forma attiva di vitamina B12 e si usa spesso negli integratori alimentari. Nell'organismo serve tra l'altro alla rimetilazione dell'omocisteina a metionina. Se sia clinicamente chiaramente superiore alla cianocobalamina dipende da situazione e dosaggio.",
+      "pt": "A metilcobalamina é uma forma ativa de vitamina B12 e é frequentemente usada em suplementos alimentares. No organismo serve entre outras coisas para a remetilação da homocisteína a metionina. Se é clinicamente claramente superior à cianocobalamina depende da situação e da dosagem.",
+      "fr": "La méthylcobalamine est une forme active de vitamine B12 et est souvent utilisée dans les compléments alimentaires. Dans l'organisme, elle sert notamment à la reméthylation de l'homocystéine en méthionine. Sa supériorité clinique claire sur la cyanocobalamine dépend de la situation et de la posologie.",
+      "tr": "Metilkobalamin, B12 vitamininin aktif bir formudur ve gıda takviyelerinde sık kullanılır. Vücutta diğerlerinin yanı sıra homosisteinin metiyonine remetilasyonuna hizmet eder. Siyanokobalamine klinik olarak net üstünlüğü duruma ve doza bağlıdır."
     },
     "related_chapters": [
       3,
@@ -11540,13 +11540,13 @@ window.lexikonTerms = [
       "tr": "İz element"
     },
     "short_description": {
-      "de": "Natriumselenit ist eine anorganische Selenform in manchen Arzneimitteln und Supplementen. Die Dosierung muss eng begrenzt bleiben, weil Selen eine geringe therapeutische Breite hat. Der Status lässt sich über Selen im Blut oder GPX-Aktivität einschätzen.",
+      "de": "Natriumselenit ist eine anorganische Selenform in manchen Arzneimitteln und Nahrungsergänzung. Die Dosierung muss eng begrenzt bleiben, weil Selen eine geringe therapeutische Breite hat. Der Status lässt sich über Selen im Blut oder GPX-Aktivität einschätzen.",
       "en": "Sodium selenite is an inorganic selenium form in some medicines and supplements. Dosing must stay tightly limited because selenium has a narrow therapeutic window. Status can be assessed via blood selenium or GPX activity.",
-      "es": "El selenito de sodio es una forma inorgánica de selenio en algunos medicamentos y suplementos. La dosis debe mantenerse muy limitada porque el selenio tiene un margen terapéutico estrecho. El estado puede estimarse con selenio en sangre o actividad de GPX.",
-      "it": "Il selenito di sodio è una forma inorganica di selenio in alcuni farmaci e integratori. Il dosaggio deve restare strettamente limitato perché il selenio ha un margine terapeutico ristretto. Lo stato si valuta con il selenio nel sangue o l'attività della GPX.",
-      "pt": "O selenito de sódio é uma forma inorgânica de selénio em alguns medicamentos e suplementos. A dose tem de se manter bem limitada, porque o selénio tem margem terapêutica estreita. O estado avalia-se pelo selénio no sangue ou pela atividade da GPX.",
-      "fr": "Le sélénite de sodium est une forme inorganique de sélénium présente dans certains médicaments et compléments. La posologie doit rester étroitement limitée, car le sélénium a une faible marge thérapeutique. Le statut peut être estimé via le sélénium sanguin ou l'activité GPX.",
-      "tr": "Sodyum selenit, bazı ilaç ve takviyelerde bulunan inorganik bir selenyum formudur. Selenyumun dar terapötik aralığı nedeniyle doz sıkı sınırlanmalıdır. Durum, kanda selenyum veya GPX aktivitesiyle değerlendirilebilir."
+      "es": "El selenito de sodio es una forma inorgánica de selenio en algunos medicamentos y suplementos alimenticios. La dosis debe mantenerse muy limitada porque el selenio tiene un margen terapéutico estrecho. El estado puede estimarse con selenio en sangre o actividad de GPX.",
+      "it": "Il selenito di sodio è una forma inorganica di selenio in alcuni farmaci e integratori alimentari. Il dosaggio deve restare strettamente limitato perché il selenio ha un margine terapeutico ristretto. Lo stato si valuta con il selenio nel sangue o l'attività della GPX.",
+      "pt": "O selenito de sódio é uma forma inorgânica de selénio em alguns medicamentos e suplementos alimentares. A dose tem de se manter bem limitada, porque o selénio tem margem terapêutica estreita. O estado avalia-se pelo selénio no sangue ou pela atividade da GPX.",
+      "fr": "Le sélénite de sodium est une forme inorganique de sélénium présente dans certains médicaments et compléments alimentaires. La posologie doit rester étroitement limitée, car le sélénium a une faible marge thérapeutique. Le statut peut être estimé via le sélénium sanguin ou l'activité GPX.",
+      "tr": "Sodyum selenit, bazı ilaç ve gıda takviyelerinde bulunan inorganik bir selenyum formudur. Selenyumun dar terapötik aralığı nedeniyle doz sıkı sınırlanmalıdır. Durum, kanda selenyum veya GPX aktivitesiyle değerlendirilebilir."
     },
     "related_chapters": [
       9
@@ -12446,7 +12446,7 @@ window.lexikonTerms = [
       "es": "La osteocalcina es un marcador de formación ósea y se carboxila de forma dependiente de la vitamina K. Se usa de forma complementaria en el diagnóstico de osteoporosis. Calcio, vitamina D y entrenamiento de carga siguen siendo la base de la salud ósea.",
       "it": "L'osteocalcina è un marcatore di neoformazione ossea e viene carbossilata in modo vitamina K-dipendente. Si usa in modo complementare nella diagnostica dell'osteoporosi. Calcio, vitamina D e allenamento con carico restano la base della salute ossea.",
       "pt": "A osteocalcina é um marcador de formação óssea e é carboxilada de forma dependente da vitamina K. Usa-se de forma complementar no diagnóstico da osteoporose. Cálcio, vitamina D e treino de carga continuam a base da saúde óssea.",
-      "fr": "L'ostéocalcine est un marqueur de formation osseuse et est carboxylée de façon vitamine K-dépendante. Elle est utilisée en complément dans le diagnostic de l'ostéoporose. Calcium, vitamine D et entraînement en charge restent la base de la santé osseuse.",
+      "fr": "L'ostéocalcine est un marqueur de formation osseuse et est carboxylée de façon vitamine K-dépendante. Elle est utilisée en complément alimentaire dans le diagnostic de l'ostéoporose. Calcium, vitamine D et entraînement en charge restent la base de la santé osseuse.",
       "tr": "Osteokalsin kemik yapım belirtecidir ve K vitaminine bağlı karboksile edilir. Osteoporoz tanısında tamamlayıcı kullanılır. Kalsiyum, D vitamini ve yük bindiren egzersiz kemik sağlığının temelidir."
     },
     "related_chapters": [
@@ -12502,9 +12502,9 @@ window.lexikonTerms = [
       "de": "Oxidativer Stress entsteht, wenn freie Radikale die Abwehrkapazität übersteigen. Rauchen, chronische Entzündung und unausgewogene Ernährung verstärken ihn. Antioxidantien aus Lebensmitteln sind sinnvoller als hochdosierte Einzelpräparate ohne Indikation.",
       "en": "Oxidative stress arises when free radicals exceed defense capacity. Smoking, chronic inflammation, and unbalanced diet amplify it. Food antioxidants are wiser than high-dose single supplements without indication.",
       "es": "El estrés oxidativo surge cuando los radicales libres superan la capacidad de defensa. Tabaco, inflamación crónica y alimentación desequilibrada lo refuerzan. Los antioxidantes de los alimentos son más sensatos que preparados aislados a dosis altas sin indicación.",
-      "it": "Lo stress ossidativo nasce quando i radicali liberi superano la capacità di difesa. Fumo, infiammazione cronica e dieta squilibrata lo amplificano. Gli antiossidanti dagli alimenti sono più sensati di integratori singoli ad alte dosi senza indicazione.",
-      "pt": "O stresse oxidativo surge quando os radicais livres excedem a capacidade de defesa. Fumar, inflamação crónica e alimentação desequilibrada reforçam-no. Antioxidantes dos alimentos são mais sensatos do que suplementos isolados em alta dose sem indicação.",
-      "fr": "Le stress oxydatif naît lorsque les radicaux libres dépassent la capacité de défense. Tabac, inflammation chronique et alimentation déséquilibrée l'amplifient. Les antioxydants alimentaires sont plus sages que des compléments isolés à haute dose sans indication.",
+      "it": "Lo stress ossidativo nasce quando i radicali liberi superano la capacità di difesa. Fumo, infiammazione cronica e dieta squilibrata lo amplificano. Gli antiossidanti dagli alimenti sono più sensati di integratori alimentari singoli ad alte dosi senza indicazione.",
+      "pt": "O stresse oxidativo surge quando os radicais livres excedem a capacidade de defesa. Fumar, inflamação crónica e alimentação desequilibrada reforçam-no. Antioxidantes dos alimentos são mais sensatos do que suplementos alimentares isolados em alta dose sem indicação.",
+      "fr": "Le stress oxydatif naît lorsque les radicaux libres dépassent la capacité de défense. Tabac, inflammation chronique et alimentation déséquilibrée l'amplifient. Les antioxydants alimentaires sont plus sages que des compléments alimentaires isolés à haute dose sans indication.",
       "tr": "Oksidatif stres, serbest radikaller savunma kapasitesini aştığında oluşur. Sigara, kronik inflamasyon ve dengesiz beslenme onu güçlendirir. Gıdadan antioksidanlar, endikasyonsuz yüksek doz tek preparatlardan daha anlamlıdır."
     },
     "related_chapters": [
@@ -13916,13 +13916,13 @@ window.lexikonTerms = [
       "tr": "Vitamin"
     },
     "short_description": {
-      "de": "Retinol ist die aktive Form von Vitamin A und kommt vor allem in Leber, Eiern und Milchprodukten vor. Der Körper speichert es in der Leber und setzt es bei Bedarf frei. Eine Überdosierung über Supplemente kann toxisch wirken, während Beta-Carotin aus Gemüse als sicherer gilt.",
+      "de": "Retinol ist die aktive Form von Vitamin A und kommt vor allem in Leber, Eiern und Milchprodukten vor. Der Körper speichert es in der Leber und setzt es bei Bedarf frei. Eine Überdosierung über Nahrungsergänzung kann toxisch wirken, während Beta-Carotin aus Gemüse als sicherer gilt.",
       "en": "Retinol is the active form of vitamin A and occurs mainly in liver, eggs, and dairy products. The body stores it in the liver and releases it when needed. Overdosing via supplements can be toxic, whereas beta-carotene from vegetables is considered safer.",
-      "es": "El retinol es la forma activa de la vitamina A y se encuentra sobre todo en hígado, huevos y lácteos. El cuerpo lo almacena en el hígado y lo libera según necesidad. Una sobredosis por suplementos puede ser tóxica, mientras que el betacaroteno de las verduras se considera más seguro.",
-      "it": "Il retinolo è la forma attiva della vitamina A e si trova soprattutto in fegato, uova e latticini. L'organismo lo immagazzina nel fegato e lo rilascia quando serve. Un sovradosaggio da integratori può essere tossico, mentre il beta-carotene dalle verdure è considerato più sicuro.",
-      "pt": "O retinol é a forma ativa da vitamina A e é encontrado principalmente no fígado, ovos e produtos lácteos. O corpo armazena-o no fígado e liberta-o quando necessário. A sobredosagem com suplementos pode ser tóxica, enquanto o beta-caroteno de vegetais é considerado mais seguro.",
-      "fr": "Le rétinol est la forme active de la vitamine A et se trouve surtout dans le foie, les œufs et les produits laitiers. L'organisme le stocke dans le foie et le libère selon les besoins. Un surdosage par compléments peut être toxique, alors que le bêta-carotène des légumes est jugé plus sûr.",
-      "tr": "Retinol, A vitamininin aktif formudur ve başlıca karaciğer, yumurta ve süt ürünlerinde bulunur. Vücut onu karaciğerde depolar ve gerektiğinde serbest bırakır. Takviyelerle aşırı doz toksik olabilir; sebzelerdeki beta-karoten ise daha güvenli kabul edilir."
+      "es": "El retinol es la forma activa de la vitamina A y se encuentra sobre todo en hígado, huevos y lácteos. El cuerpo lo almacena en el hígado y lo libera según necesidad. Una sobredosis por suplementos alimenticios puede ser tóxica, mientras que el betacaroteno de las verduras se considera más seguro.",
+      "it": "Il retinolo è la forma attiva della vitamina A e si trova soprattutto in fegato, uova e latticini. L'organismo lo immagazzina nel fegato e lo rilascia quando serve. Un sovradosaggio da integratori alimentari può essere tossico, mentre il beta-carotene dalle verdure è considerato più sicuro.",
+      "pt": "O retinol é a forma ativa da vitamina A e é encontrado principalmente no fígado, ovos e produtos lácteos. O corpo armazena-o no fígado e liberta-o quando necessário. A sobredosagem com suplementos alimentares pode ser tóxica, enquanto o beta-caroteno de vegetais é considerado mais seguro.",
+      "fr": "Le rétinol est la forme active de la vitamine A et se trouve surtout dans le foie, les œufs et les produits laitiers. L'organisme le stocke dans le foie et le libère selon les besoins. Un surdosage par compléments alimentaires peut être toxique, alors que le bêta-carotène des légumes est jugé plus sûr.",
+      "tr": "Retinol, A vitamininin aktif formudur ve başlıca karaciğer, yumurta ve süt ürünlerinde bulunur. Vücut onu karaciğerde depolar ve gerektiğinde serbest bırakır. Gıda takviyeleriyle aşırı doz toksik olabilir; sebzelerdeki beta-karoten ise daha güvenli kabul edilir."
     },
     "related_chapters": [
       8,
@@ -13981,13 +13981,13 @@ window.lexikonTerms = [
       "tr": "Vitamin"
     },
     "short_description": {
-      "de": "Riboflavin ist lichtempfindlich und wird in durchsichtigen Milchflaschen teilweise abgebaut. Als Bestandteil von FAD und FMN ist es an zahlreichen Redoxreaktionen beteiligt. Die typische Gelbfärbung des Urins nach Supplementen ist harmlos.",
+      "de": "Riboflavin ist lichtempfindlich und wird in durchsichtigen Milchflaschen teilweise abgebaut. Als Bestandteil von FAD und FMN ist es an zahlreichen Redoxreaktionen beteiligt. Die typische Gelbfärbung des Urins nach Nahrungsergänzung ist harmlos.",
       "en": "Riboflavin is light-sensitive and is partly broken down in clear milk bottles. As a component of FAD and FMN it is involved in numerous redox reactions. The typical yellow urine color after supplements is harmless.",
-      "es": "La riboflavina es sensible a la luz y se degrada en parte en botellas de leche transparentes. Como componente de FAD y FMN participa en numerosas reacciones redox. El típico color amarillo de la orina tras suplementos es inofensivo.",
-      "it": "La riboflavina è fotosensibile e viene in parte degradata nelle bottiglie di latte trasparenti. Come componente di FAD e FMN partecipa a numerose reazioni redox. La tipica colorazione gialla delle urine dopo gli integratori è innocua.",
-      "pt": "A riboflavina é sensível à luz e é parcialmente degradada em garrafas de leite transparentes. Como componente de FAD e FMN participa em numerosas reações redox. A típica coloração amarela da urina após suplementos é inofensiva.",
-      "fr": "La riboflavine est photosensible et est en partie dégradée dans les bouteilles de lait transparentes. En tant que composant de FAD et FMN, elle participe à de nombreuses réactions redox. La coloration jaune typique des urines après compléments est sans danger.",
-      "tr": "Riboflavin ışığa duyarlıdır ve şeffaf süt şişelerinde kısmen parçalanır. FAD ve FMN bileşeni olarak birçok redoks tepkimesinde yer alır. Takviyelerden sonra idrarın tipik sarı rengi zararsızdır."
+      "es": "La riboflavina es sensible a la luz y se degrada en parte en botellas de leche transparentes. Como componente de FAD y FMN participa en numerosas reacciones redox. El típico color amarillo de la orina tras suplementos alimenticios es inofensivo.",
+      "it": "La riboflavina è fotosensibile e viene in parte degradata nelle bottiglie di latte trasparenti. Come componente di FAD e FMN partecipa a numerose reazioni redox. La tipica colorazione gialla delle urine dopo gli integratori alimentari è innocua.",
+      "pt": "A riboflavina é sensível à luz e é parcialmente degradada em garrafas de leite transparentes. Como componente de FAD e FMN participa em numerosas reações redox. A típica coloração amarela da urina após suplementos alimentares é inofensiva.",
+      "fr": "La riboflavine est photosensible et est en partie dégradée dans les bouteilles de lait transparentes. En tant que composant de FAD et FMN, elle participe à de nombreuses réactions redox. La coloration jaune typique des urines après compléments alimentaires est sans danger.",
+      "tr": "Riboflavin ışığa duyarlıdır ve şeffaf süt şişelerinde kısmen parçalanır. FAD ve FMN bileşeni olarak birçok redoks tepkimesinde yer alır. Gıda takviyelerinden sonra idrarın tipik sarı rengi zararsızdır."
     },
     "related_chapters": [
       8
@@ -14241,7 +14241,7 @@ window.lexikonTerms = [
       "it": "Lo zolfo si trova soprattutto negli amminoacidi metionina e cisteina ed è componente di proteine e alcune vitamine. Con un'alimentazione normale un'integrazione separata è di solito inutile. Aglio e crucifere forniscono anche composti solforati.",
       "pt": "O enxofre encontra-se sobretudo nos aminoácidos metionina e cisteína e é componente de proteínas e algumas vitaminas. Com uma alimentação normal, uma suplementação separada é geralmente desnecessária. Alho e crucíferas também fornecem compostos com enxofre.",
       "fr": "Le soufre se trouve surtout dans les acides aminés méthionine et cystéine et entre dans les protéines et certaines vitamines. Avec une alimentation normale, une supplémentation séparée est généralement inutile. L'ail et les crucifères apportent aussi des composés soufrés.",
-      "tr": "Kükürt başlıca metiyonin ve sistein amino asitlerinde bulunur; proteinlerin ve bazı vitaminlerin yapı taşıdır. Normal beslenmede ayrı takviye genellikle gereksizdir. Sarımsak ve turpgiller de kükürt içeren bileşikler sağlar."
+      "tr": "Kükürt başlıca metiyonin ve sistein amino asitlerinde bulunur; proteinlerin ve bazı vitaminlerin yapı taşıdır. Normal beslenmede ayrı gıda takviyesi genellikle gereksizdir. Sarımsak ve turpgiller de kükürt içeren bileşikler sağlar."
     },
     "related_chapters": [
       8
@@ -14423,13 +14423,13 @@ window.lexikonTerms = [
       "tr": "Kan değeri"
     },
     "short_description": {
-      "de": "Serumselen zeigt die aktuelle Selenversorgung und schwankt mit der Ernährung. Sehr hohe Werte können auf Überdosierung durch Supplemente hinweisen. Der optimale Bereich ist schmaler als bei vielen anderen Nährstoffen.",
+      "de": "Serumselen zeigt die aktuelle Selenversorgung und schwankt mit der Ernährung. Sehr hohe Werte können auf Überdosierung durch Nahrungsergänzung hinweisen. Der optimale Bereich ist schmaler als bei vielen anderen Nährstoffen.",
       "en": "Serum selenium reflects current selenium status and varies with diet. Very high values can indicate overdose from supplements. The optimal range is narrower than for many other nutrients.",
-      "es": "El selenio sérico muestra el aporte actual de selenio y varía con la alimentación. Valores muy altos pueden indicar sobredosis por suplementos. El rango óptimo es más estrecho que en muchos otros nutrientes.",
-      "it": "Il selenio sierico riflette lo stato attuale di selenio e varia con l'alimentazione. Valori molto alti possono indicare sovradosaggio da integratori. L'intervallo ottimale è più stretto che per molti altri nutrienti.",
-      "pt": "O selénio sérico reflecte o aporte atual de selénio e varia com a alimentação. Valores muito altos podem indicar sobredosagem por suplementos. O intervalo ótimo é mais estreito do que para muitos outros nutrientes.",
-      "fr": "Le sélénium sérique reflète l'apport actuel en sélénium et varie avec l'alimentation. Des valeurs très élevées peuvent indiquer un surdosage par compléments. La zone optimale est plus étroite que pour beaucoup d'autres nutriments.",
-      "tr": "Serum selenyum mevcut selenyum durumunu gösterir ve beslenmeyle dalgalanır. Çok yüksek değerler takviye aşırı dozuna işaret edebilir. Optimal aralık birçok diğer besin öğesine göre daha dardır."
+      "es": "El selenio sérico muestra el aporte actual de selenio y varía con la alimentación. Valores muy altos pueden indicar sobredosis por suplementos alimenticios. El rango óptimo es más estrecho que en muchos otros nutrientes.",
+      "it": "Il selenio sierico riflette lo stato attuale di selenio e varia con l'alimentazione. Valori molto alti possono indicare sovradosaggio da integratori alimentari. L'intervallo ottimale è più stretto che per molti altri nutrienti.",
+      "pt": "O selénio sérico reflecte o aporte atual de selénio e varia com a alimentação. Valores muito altos podem indicar sobredosagem por suplementos alimentares. O intervalo ótimo é mais estreito do que para muitos outros nutrientes.",
+      "fr": "Le sélénium sérique reflète l'apport actuel en sélénium et varie avec l'alimentation. Des valeurs très élevées peuvent indiquer un surdosage par compléments alimentaires. La zone optimale est plus étroite que pour beaucoup d'autres nutriments.",
+      "tr": "Serum selenyum mevcut selenyum durumunu gösterir ve beslenmeyle dalgalanır. Çok yüksek değerler gıda takviyesi aşırı dozuna işaret edebilir. Optimal aralık birçok diğer besin öğesine göre daha dardır."
     },
     "related_chapters": [
       3,
@@ -14748,13 +14748,13 @@ window.lexikonTerms = [
       "tr": "İz element"
     },
     "short_description": {
-      "de": "Silicium wird mit Bindegewebe, Haut und Knochen in Verbindung gebracht, gilt aber beim Menschen nicht als klar essenziell wie Eisen oder Zink. Es kommt in Vollkorn und manchen Mineralwässern vor. Die wissenschaftliche Lage zu Supplementen ist zurückhaltend.",
+      "de": "Silicium wird mit Bindegewebe, Haut und Knochen in Verbindung gebracht, gilt aber beim Menschen nicht als klar essenziell wie Eisen oder Zink. Es kommt in Vollkorn und manchen Mineralwässern vor. Die wissenschaftliche Lage zu Nahrungsergänzung ist zurückhaltend.",
       "en": "Silicon is linked to connective tissue, skin, and bone, but is not clearly essential in humans like iron or zinc. It occurs in whole grains and some mineral waters. Evidence for supplements remains limited.",
-      "es": "El silicio se asocia al tejido conectivo, la piel y los huesos, pero en el ser humano no se considera claramente esencial como el hierro o el zinc. Se encuentra en cereales integrales y en algunas aguas minerales. La evidencia científica sobre suplementos es cautelosa.",
-      "it": "Il silicio è associato a tessuto connettivo, pelle e ossa, ma nell'uomo non è chiaramente essenziale come ferro o zinco. Si trova nei cereali integrali e in alcune acque minerali. Le evidenze scientifiche sugli integratori restano caute.",
-      "pt": "O silício associa-se ao tecido conjuntivo, à pele e aos ossos, mas no ser humano não se considera claramente essencial como o ferro ou o zinco. Existe em cereais integrais e nalguns minerais. A evidência sobre suplementos é reservada.",
-      "fr": "Le silicium est associé au tissu conjonctif, à la peau et aux os, mais n'est pas clairement essentiel chez l'humain comme le fer ou le zinc. Il se trouve dans les céréales complètes et certaines eaux minérales. Les données scientifiques sur les compléments restent prudentes.",
-      "tr": "Silisyum bağ dokusu, cilt ve kemiklerle ilişkilendirilir; ancak demir veya çinko kadar insan için net esansiyel kabul edilmez. Tam tahıl ve bazı maden sularında bulunur. Takviyelere dair bilimsel veri temkinlidir."
+      "es": "El silicio se asocia al tejido conectivo, la piel y los huesos, pero en el ser humano no se considera claramente esencial como el hierro o el zinc. Se encuentra en cereales integrales y en algunas aguas minerales. La evidencia científica sobre suplementos alimenticios es cautelosa.",
+      "it": "Il silicio è associato a tessuto connettivo, pelle e ossa, ma nell'uomo non è chiaramente essenziale come ferro o zinco. Si trova nei cereali integrali e in alcune acque minerali. Le evidenze scientifiche sugli integratori alimentari restano caute.",
+      "pt": "O silício associa-se ao tecido conjuntivo, à pele e aos ossos, mas no ser humano não se considera claramente essencial como o ferro ou o zinco. Existe em cereais integrais e nalguns minerais. A evidência sobre suplementos alimentares é reservada.",
+      "fr": "Le silicium est associé au tissu conjonctif, à la peau et aux os, mais n'est pas clairement essentiel chez l'humain comme le fer ou le zinc. Il se trouve dans les céréales complètes et certaines eaux minérales. Les données scientifiques sur les compléments alimentaires restent prudentes.",
+      "tr": "Silisyum bağ dokusu, cilt ve kemiklerle ilişkilendirilir; ancak demir veya çinko kadar insan için net esansiyel kabul edilmez. Tam tahıl ve bazı maden sularında bulunur. Gıda takviyelerine dair bilimsel veri temkinlidir."
     },
     "related_chapters": [
       11
@@ -15788,11 +15788,11 @@ window.lexikonTerms = [
     "short_description": {
       "de": "TSH steuert die Schilddrüse und ist der wichtigste Screeningparameter. Erhöhte Werte sprechen für Unterfunktion, erniedrigte für Überfunktion oder Überdosierung. Biotinsupplemente können Assays verfälschen.",
       "en": "TSH controls the thyroid and is the most important screening parameter. High values suggest underactivity; low values suggest overactivity or overdosing. Biotin supplements can interfere with assays.",
-      "es": "La TSH regula la tiroides y es el parámetro de cribado más importante. Valores elevados hablan de hipofunción; bajos, de hiperfunción o sobredosis. Los suplementos de biotina pueden falsear los ensayos.",
-      "it": "Il TSH regola la tiroide ed è il parametro di screening più importante. Valori elevati indicano ipofunzione; ridotti iperfunzione o sovradosaggio. Gli integratori di biotina possono alterare i dosaggi di laboratorio.",
-      "pt": "A TSH regula a tiroide e é o parâmetro de rastreio mais importante. Valores elevados apontam para hipofunção; baixos, para hiperfunção ou sobredosagem. Suplementos de biotina podem falsear os ensaios.",
-      "fr": "La TSH contrôle la thyroïde et est le paramètre de dépistage le plus important. Des valeurs élevées évoquent une hypofonction, des valeurs basses une hyperfonction ou un surdosage. Les compléments de biotine peuvent fausser les dosages.",
-      "tr": "TSH tiroidi yönetir ve en önemli tarama parametresidir. Yüksek değerler hipofonksiyona, düşükler hiperfonksiyon veya aşırı doza işaret eder. Biotin takviyeleri testleri bozabilir."
+      "es": "La TSH regula la tiroides y es el parámetro de cribado más importante. Valores elevados hablan de hipofunción; bajos, de hiperfunción o sobredosis. Los suplementos alimenticios de biotina pueden falsear los ensayos.",
+      "it": "Il TSH regola la tiroide ed è il parametro di screening più importante. Valori elevati indicano ipofunzione; ridotti iperfunzione o sovradosaggio. Gli integratori alimentari di biotina possono alterare i dosaggi di laboratorio.",
+      "pt": "A TSH regula a tiroide e é o parâmetro de rastreio mais importante. Valores elevados apontam para hipofunção; baixos, para hiperfunção ou sobredosagem. Suplementos alimentares de biotina podem falsear os ensaios.",
+      "fr": "La TSH contrôle la thyroïde et est le paramètre de dépistage le plus important. Des valeurs élevées évoquent une hypofonction, des valeurs basses une hyperfonction ou un surdosage. Les compléments alimentaires de biotine peuvent fausser les dosages.",
+      "tr": "TSH tiroidi yönetir ve en önemli tarama parametresidir. Yüksek değerler hipofonksiyona, düşükler hiperfonksiyon veya aşırı doza işaret eder. Biotin gıda takviyeleri testleri bozabilir."
     },
     "related_chapters": [
       3,
@@ -15975,13 +15975,13 @@ window.lexikonTerms = [
       "tr": "İz element"
     },
     "short_description": {
-      "de": "Vanadium wird experimentell mit Insulinsignalwegen in Verbindung gebracht. Für die normale Ernährung spielt es kaum eine Rolle. Supplemente sind wegen möglicher Toxizität kritisch zu sehen.",
+      "de": "Vanadium wird experimentell mit Insulinsignalwegen in Verbindung gebracht. Für die normale Ernährung spielt es kaum eine Rolle. Nahrungsergänzung sind wegen möglicher Toxizität kritisch zu sehen.",
       "en": "Vanadium has been experimentally linked to insulin signaling pathways. It plays little role in a normal diet. Supplements are viewed critically because of possible toxicity.",
-      "es": "El vanadio se asocia experimentalmente a las vías de señalización de la insulina. En la alimentación normal apenas desempeña un papel. Los suplementos deben valorarse con cautela por posible toxicidad.",
-      "it": "Il vanadio è collegato sperimentalmente alle vie di segnale dell'insulina. Nell'alimentazione normale ha un ruolo minimo. Gli integratori vanno considerati con cautela per possibile tossicità.",
-      "pt": "O vanádio é experimentalmente associado a vias de sinalização da insulina. Na alimentação normal quase não tem papel. Os suplementos são vistos com criticismo devido a possível toxicidade.",
-      "fr": "Le vanadium est expérimentalement associé aux voies de signalisation de l'insuline. Il joue à peine un rôle dans l'alimentation normale. Les compléments sont à regarder avec prudence en raison d'une toxicité possible.",
-      "tr": "Vanadyum deneysel olarak insülin sinyal yollarıyla ilişkilendirilir. Normal beslenmede neredeyse rol oynamaz. Olası toksisite nedeniyle takviyeler eleştirel değerlendirilmelidir."
+      "es": "El vanadio se asocia experimentalmente a las vías de señalización de la insulina. En la alimentación normal apenas desempeña un papel. Los suplementos alimenticios deben valorarse con cautela por posible toxicidad.",
+      "it": "Il vanadio è collegato sperimentalmente alle vie di segnale dell'insulina. Nell'alimentazione normale ha un ruolo minimo. Gli integratori alimentari vanno considerati con cautela per possibile tossicità.",
+      "pt": "O vanádio é experimentalmente associado a vias de sinalização da insulina. Na alimentação normal quase não tem papel. Os suplementos alimentares são vistos com criticismo devido a possível toxicidade.",
+      "fr": "Le vanadium est expérimentalement associé aux voies de signalisation de l'insuline. Il joue à peine un rôle dans l'alimentation normale. Les compléments alimentaires sont à regarder avec prudence en raison d'une toxicité possible.",
+      "tr": "Vanadyum deneysel olarak insülin sinyal yollarıyla ilişkilendirilir. Normal beslenmede neredeyse rol oynamaz. Olası toksisite nedeniyle gıda takviyeleri eleştirel değerlendirilmelidir."
     },
     "related_chapters": [
       11
@@ -16247,7 +16247,7 @@ window.lexikonTerms = [
       "it": "La vitamina B12 è essenziale per la formazione del sangue, il sistema nervioso e la degradazione dell'omocisteina. Si trova praticamente solo in alimenti animali; i vegani di solito necessitano di integrazione. Una carenza può svilupparsi lentamente con stanchezza, formicolii e anemia.",
       "pt": "A vitamina B12 é essencial para a formação do sangue, o sistema nervoso e a degradação da homocisteína. Ocorre praticamente só em alimentos de origem animal; os veganos precisam geralmente de suplementação. A deficiência pode surgir de forma insidiosa com fadiga, dormências e anemia.",
       "fr": "La vitamine B12 est essentielle à la formation du sang, au système nerveux et à la dégradation de l'homocystéine. Elle se trouve pratiquement uniquement dans les aliments animaux ; les végétaliens ont souvent besoin d'une supplémentation. Une carence peut s'installer insidieusement avec fatigue, engourdissements et anémie.",
-      "tr": "B12 vitamini kan oluşumu, sinir sistemi ve homosistein yıkımı için esastır. Pratikte yalnızca hayvansal gıdalarda bulunur; veganlar genellikle takviye gerektirir. Eksiklik yorgunluk, uyuşma ve anemiyle sinsi gelişebilir."
+      "tr": "B12 vitamini kan oluşumu, sinir sistemi ve homosistein yıkımı için esastır. Pratikte yalnızca hayvansal gıdalarda bulunur; veganlar genellikle gıda takviyesi gerektirir. Eksiklik yorgunluk, uyuşma ve anemiyle sinsi gelişebilir."
     },
     "related_chapters": [
       3,
@@ -16573,13 +16573,13 @@ window.lexikonTerms = [
       "tr": "Vitamin"
     },
     "short_description": {
-      "de": "Vitamin B6 ist wichtig für den Aminosäurestoffwechsel, die Blutbildung und die Neurotransmittersynthese. Gute Quellen sind Fleisch, Fisch, Bananen und Vollkorn. Chronisch sehr hohe Supplementdosen können Nervenschäden verursachen.",
+      "de": "Vitamin B6 ist wichtig für den Aminosäurestoffwechsel, die Blutbildung und die Neurotransmittersynthese. Gute Quellen sind Fleisch, Fisch, Bananen und Vollkorn. Chronisch sehr hohe Nahrungsergänzungsdosen können Nervenschäden verursachen.",
       "en": "Vitamin B6 is important for amino acid metabolism, blood formation, and neurotransmitter synthesis. Good sources include meat, fish, bananas, and whole grains. Chronically very high supplement doses can cause nerve damage.",
-      "es": "La vitamina B6 es importante para el metabolismo de aminoácidos, la hematopoyesis y la síntesis de neurotransmisores. Buenas fuentes son carne, pescado, plátanos y cereales integrales. Dosis crónicamente muy altas de suplementos pueden causar daño nervioso.",
-      "it": "La vitamina B6 è importante per il metabolismo degli amminoacidi, la formazione del sangue e la sintesi dei neurotrasmettitori. Buone fonti sono carne, pesce, banane e cereali integrali. Dosi cronicamente molto elevate di integratori possono causare danni nervosi.",
-      "pt": "A vitamina B6 é importante para o metabolismo dos aminoácidos, a formação do sangue e a síntese de neurotransmissores. Boas fontes são carne, peixe, bananas e cereais integrais. Doses cronicamente muito elevadas de suplementos podem causar lesão nervosa.",
-      "fr": "La vitamine B6 est importante pour le métabolisme des acides aminés, la formation du sang et la synthèse des neurotransmetteurs. De bonnes sources sont la viande, le poisson, les bananes et les céréales complètes. Des doses chroniquement très élevées de compléments peuvent causer des lésions nerveuses.",
-      "tr": "B6 vitamini amino asit metabolizması, kan oluşumu ve nörotransmitter sentezi için önemlidir. İyi kaynaklar et, balık, muz ve tam tahıldır. Kronik çok yüksek takviye dozları sinir hasarına yol açabilir."
+      "es": "La vitamina B6 es importante para el metabolismo de aminoácidos, la hematopoyesis y la síntesis de neurotransmisores. Buenas fuentes son carne, pescado, plátanos y cereales integrales. Dosis crónicamente muy altas de suplementos alimenticios pueden causar daño nervioso.",
+      "it": "La vitamina B6 è importante per il metabolismo degli amminoacidi, la formazione del sangue e la sintesi dei neurotrasmettitori. Buone fonti sono carne, pesce, banane e cereali integrali. Dosi cronicamente molto elevate di integratori alimentari possono causare danni nervosi.",
+      "pt": "A vitamina B6 é importante para o metabolismo dos aminoácidos, a formação do sangue e a síntese de neurotransmissores. Boas fontes são carne, peixe, bananas e cereais integrais. Doses cronicamente muito elevadas de suplementos alimentares podem causar lesão nervosa.",
+      "fr": "La vitamine B6 est importante pour le métabolisme des acides aminés, la formation du sang et la synthèse des neurotransmetteurs. De bonnes sources sont la viande, le poisson, les bananes et les céréales complètes. Des doses chroniquement très élevées de compléments alimentaires peuvent causer des lésions nerveuses.",
+      "tr": "B6 vitamini amino asit metabolizması, kan oluşumu ve nörotransmitter sentezi için önemlidir. İyi kaynaklar et, balık, muz ve tam tahıldır. Kronik çok yüksek gıda takviyesi dozları sinir hasarına yol açabilir."
     },
     "related_chapters": [
       3,
@@ -16709,7 +16709,7 @@ window.lexikonTerms = [
       "it": "La vitamina D sostiene il metabolismo osseo, il sistema immunitario e la forza muscolare. L'organismo la forma soprattutto nella pelle sotto raggi UVB solari. Molte persone nell'Europa centrale hanno livelli bassi in inverno e traggono beneficio da un'integrazione mirata dopo controllo di laboratorio.",
       "pt": "A vitamina D apoia o metabolismo ósseo, o sistema imunitário e a força muscular. O organismo forma-a sobretudo sob radiação solar UVB na pele. Muitas pessoas na Europa Central têm níveis baixos no inverno e beneficiam de suplementação dirigida após controlo laboratorial.",
       "fr": "La vitamine D soutient le métabolisme osseux, le système immunitaire et la force musculaire. L'organisme la forme surtout dans la peau sous rayonnement UVB solaire. Beaucoup de personnes en Europe centrale ont des taux bas en hiver et bénéficient d'une supplémentation ciblée après contrôle biologique.",
-      "tr": "D vitamini kemik metabolizmasını, bağışıklık sistemini ve kas gücünü destekler. Vücut onu esas olarak UVB güneş ışığı altında deride üretir. Orta Avrupa'da birçok insanın kışın seviyeleri düşüktür ve laboratuvar kontrolünden sonra hedefli takviyeden yararlanır."
+      "tr": "D vitamini kemik metabolizmasını, bağışıklık sistemini ve kas gücünü destekler. Vücut onu esas olarak UVB güneş ışığı altında deride üretir. Orta Avrupa'da birçok insanın kışın seviyeleri düşüktür ve laboratuvar kontrolünden sonra hedefli gıda takviyesinden yararlanır."
     },
     "related_chapters": [
       3,
@@ -17392,13 +17392,13 @@ window.lexikonTerms = [
       "tr": "İz element"
     },
     "short_description": {
-      "de": "Zinkgluconat ist eine gängige Form in Lutschtabletten und Supplementen. Es kann bei Erkältungen kurzfristig eingesetzt werden, wobei die Evidenz gemischt ist. Langfristig hohe Dosen können Kupfer verdrängen.",
+      "de": "Zinkgluconat ist eine gängige Form in Lutschtabletten und Nahrungsergänzung. Es kann bei Erkältungen kurzfristig eingesetzt werden, wobei die Evidenz gemischt ist. Langfristig hohe Dosen können Kupfer verdrängen.",
       "en": "Zinc gluconate is a common form in lozenges and supplements. It may be used short-term for colds, though evidence is mixed. Long-term high doses can displace copper.",
-      "es": "El gluconato de zinc es una forma habitual en pastillas para chupar y suplementos. Puede usarse a corto plazo en resfriados, aunque la evidencia es mixta. Dosis altas a largo plazo pueden desplazar el cobre.",
-      "it": "Il gluconato di zinco è una forma comune in pastiglie e integratori. Può essere usato a breve termine per i raffreddori, anche se le evidenze sono miste. Dosi elevate prolungate possono spostare il rame.",
-      "pt": "O gluconato de zinco é uma forma frequente em pastilhas e suplementos. Pode usar-se a curto prazo em constipações, embora a evidência seja mista. Doses elevadas prolongadas podem deslocar o cobre.",
-      "fr": "Le gluconate de zinc est une forme courante dans les pastilles et compléments. Il peut être utilisé à court terme en cas de rhume, avec une évidence mitigée. Des doses élevées prolongées peuvent déplacer le cuivre.",
-      "tr": "Çinko glukonat, pastillerde ve takviyelerde yaygın bir formdur. Soğuk algınlığında kısa süreli kullanılabilir; kanıtlar karışıktır. Uzun vadede yüksek dozlar bakırı baskılayabilir."
+      "es": "El gluconato de zinc es una forma habitual en pastillas para chupar y suplementos alimenticios. Puede usarse a corto plazo en resfriados, aunque la evidencia es mixta. Dosis altas a largo plazo pueden desplazar el cobre.",
+      "it": "Il gluconato di zinco è una forma comune in pastiglie e integratori alimentari. Può essere usato a breve termine per i raffreddori, anche se le evidenze sono miste. Dosi elevate prolungate possono spostare il rame.",
+      "pt": "O gluconato de zinco é uma forma frequente em pastilhas e suplementos alimentares. Pode usar-se a curto prazo em constipações, embora a evidência seja mista. Doses elevadas prolongadas podem deslocar o cobre.",
+      "fr": "Le gluconate de zinc est une forme courante dans les pastilles et compléments alimentaires. Il peut être utilisé à court terme en cas de rhume, avec une évidence mitigée. Des doses élevées prolongées peuvent déplacer le cuivre.",
+      "tr": "Çinko glukonat, pastillerde ve gıda takviyelerinde yaygın bir formdur. Soğuk algınlığında kısa süreli kullanılabilir; kanıtlar karışıktır. Uzun vadede yüksek dozlar bakırı baskılayabilir."
     },
     "related_chapters": [
       8,
