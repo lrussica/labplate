@@ -144,19 +144,21 @@ function validateRecipeV2(recipe) {
   if (!kw.ok) {
     result.addError('Mehr als 2 Proteinquellen (Keyword-Heuristik): ' + kw.found.join(', '));
   }
-  // Flag vs. Keyword-Mismatch (Modell hat protein_source möglicherweise falsch gesetzt)
+  // Flag vs. Keyword-Mismatch (Modell hat protein_source falsch gesetzt)
   const flagSet = {};
   flagSources.forEach(function (n) { flagSet[String(n)] = true; });
   const mislabeled = kw.found.filter(function (n) { return !flagSet[n]; });
   if (mislabeled.length) {
-    const msg = 'Modell hat protein_source möglicherweise falsch gesetzt für: [' + mislabeled.join(', ') + ']' +
+    const logMsg = 'Modell hat protein_source möglicherweise falsch gesetzt für: [' + mislabeled.join(', ') + ']' +
       ' (Flags=' + flagSources.length + ', Keywords=' + kw.found.length + ')';
-    console.log('[recipe-v92] protein_source_mismatch ' + msg);
+    // LLM-Feedback / validation.errors: ohne „möglicherweise“ — unmissverständlich
+    const errMsg = 'Modell hat protein_source falsch gesetzt für: [' + mislabeled.join(', ') + ']' +
+      ' (Flags=' + flagSources.length + ', Keywords=' + kw.found.length + ')';
+    console.log('[recipe-v92] protein_source_mismatch ' + logMsg);
     if (kw.found.length > 2 || flagSources.length > 2) {
-      // bereits als Error oben; Mismatch-Text zusätzlich
-      if (result.errors.indexOf(msg) < 0) result.addError(msg);
+      if (result.errors.indexOf(errMsg) < 0) result.addError(errMsg);
     } else if (kw.found.length !== flagSources.length) {
-      result.addError(msg);
+      result.addError(errMsg);
     }
   }
 

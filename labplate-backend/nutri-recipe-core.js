@@ -55,7 +55,15 @@ const CHEF_FRAMEWORK_RULES = [
   '1) Naehrwert-Verbindlichkeit: chef_analysis ohne eigene Zahlen; siehe nutrition.',
   '2) GERINNUNGSSCHUTZ: Quark/Joghurt/Huettenkaese/Creme fraiche/Frischkaese/Mascarpone/Schmand/Kokosjoghurt → stove_level 0 beim Einruehren, Herd vorher AUS.',
   '3) Mengen nur {ingredient_id} in content/garnish – nie "15 ml Olivenoel" als Freitext.',
-  '4) MAXIMUM 2 protein_source:true (PROTEIN-HARMONIE / kein Zutaten-Salat).',
+  '4) MAXIMUM 2 protein_source:true (PROTEIN-HARMONIE / kein Zutaten-Salat). ' +
+  'VERBOTEN: Haehnchen + Tofu + Ei gleichzeitig (3 Proteinquellen), auch wenn eine davon ' +
+  'protein_source:false gesetzt wird — das Flag aendert nichts an der tatsaechlichen ' +
+  'Zusammensetzung des Gerichts. Waehle stattdessen NUR 2 der 3 Zutaten aus und erhoehe ' +
+  'die Menge der gewaehlten Hauptzutat, um das Proteinziel zu erreichen ' +
+  '(z. B. 220g Haehnchen + 1 Ei statt 150g Haehnchen + 100g Tofu + 2 Eier). ' +
+  'Jede Zutat mit protein_source:true UND jede Zutat, die de facto eine Proteinquelle ' +
+  'ist (Fleisch, Fisch, Ei, Tofu, Huelsenfruechte, Milchprodukte mit >10g Protein/100g), ' +
+  'zaehlt in die 2er-Grenze — unabhaengig vom gesetzten Flag.',
   '5) DIÄT- & KETO-EHRLEICHKEIT: diet_labels keto nur bei netto_kh_g <10; high_protein nur ab protein_g ≥25; vegan ohne Ei/Milch.',
   '6) Eier: unit "stk", amount Stueckzahl, name "Ei (Groesse M, ca. 60 g)". Inhalt nur via {id}.',
   '7) VOLLSTAENDIGKEIT: jede {id} in steps/garnish existiert in ingredients; jede Zutat mind. 1x referenziert. Auch Fluessigkeiten (Wasser).',

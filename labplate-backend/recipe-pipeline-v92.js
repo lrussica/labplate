@@ -284,6 +284,59 @@ function logValidationFailure(meta) {
 }
 
 /**
+ * Übersetzt validation.errors in konkrete LLM-Handlungsanweisungen (Retry-Feedback).
+ * @param {string[]} errors
+ * @returns {string[]}
+ */
+function errorsToDirectives(errors) {
+  const list = Array.isArray(errors) ? errors : [];
+  const directives = [];
+  const seenProtein = {};
+
+  list.forEach(function (err) {
+    const e = String(err || '');
+    const mKw = e.match(/Mehr als 2 Proteinquellen \(Keyword-Heuristik\):\s*(.+)$/i);
+    const mFlag = e.match(/Mehr als 2 Proteinquellen \(protein_source=true\):\s*(.+)$/i);
+    const namesRaw = (mKw && mKw[1]) || (mFlag && mFlag[1]) || '';
+    if (namesRaw && !seenProtein.done) {
+      seenProtein.done = true;
+      const names = namesRaw.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+      directives.push(
+        'KONKRETE KORREKTUR: Du hast 3 Proteinquellen verwendet (' + names.join(', ') + '). ' +
+        'Entferne EINE davon komplett aus den ingredients und erhöhe die Menge einer der ' +
+        'verbleibenden zwei, um das ursprüngliche Proteinziel zu erreichen. ' +
+        'Setze protein_source NICHT auf false, um eine Zutat zu "verstecken" — ' +
+        'entferne sie stattdessen ganz aus dem Rezept.'
+      );
+    }
+    if (/protein_source falsch gesetzt/i.test(e) && !seenProtein.flagHint) {
+      seenProtein.flagHint = true;
+      // Nur ergänzen, wenn die Keyword-Korrektur noch nicht da ist
+      if (!seenProtein.done) {
+        directives.push(
+          'KONKRETE KORREKTUR: protein_source-Flags stimmen nicht mit den tatsächlichen ' +
+          'Proteinquellen überein. Setze Flags ehrlich; bei >2 echten Proteinquellen ' +
+          'entferne eine Zutat komplett statt das Flag zu fälschen.'
+        );
+      }
+    }
+  });
+
+  return directives;
+}
+
+function buildRetryFeedbackMessage(lastErrors) {
+  const errors = Array.isArray(lastErrors) ? lastErrors : [];
+  const directives = errorsToDirectives(errors);
+  let content = 'Deine letzte Ausgabe hatte folgende Fehler, korrigiere sie und gib erneut NUR valides v9.2-JSON aus:\n- ' +
+    errors.join('\n- ');
+  if (directives.length) {
+    content += '\n\n' + directives.join('\n');
+  }
+  return content;
+}
+
+/**
  * generateValidatedRecipe — LLM → parse → validate_recipe_v2 → retry ≤3 → render.
  * @param {object} opts
  * @param {function} opts.buildRequestBody (payload, attempt, previousErrors?) => groq body
@@ -307,8 +360,7 @@ async function generateValidatedRecipe(opts) {
     if (attempt > 1 && lastErrors.length && requestBody && Array.isArray(requestBody.messages)) {
       requestBody.messages = requestBody.messages.concat([{
         role: 'user',
-        content: 'Deine letzte Ausgabe hatte folgende Fehler, korrigiere sie und gib erneut NUR valides v9.2-JSON aus:\n- ' +
-          lastErrors.join('\n- '),
+        content: buildRetryFeedbackMessage(lastErrors),
       }]);
     }
 
@@ -397,4 +449,6 @@ module.exports = {
   buildV92GenerativeSchema: buildV92GenerativeSchema,
   renderRecipeForDisplay: renderRecipeForDisplay,
   generateValidatedRecipe: generateValidatedRecipe,
+  errorsToDirectives: errorsToDirectives,
+  buildRetryFeedbackMessage: buildRetryFeedbackMessage,
 };

@@ -36,7 +36,7 @@ assert(/CHEF-FRAMEWORK v9\.2|v9\.2/i.test(sys), 'Generativ-Prompt braucht Chef-F
 assert(/\{0001\}|ingredient_id|Platzhalter/i.test(sys), 'Generativ-Prompt: Platzhalter-Zwang');
 assert(/KEIN self_check|kein Self-Check|KEIN \[SELF-CHECK\]/i.test(sys), 'Generativ-Prompt: kein Self-Check-Freitext');
 assert(/BOTTOM-UP|Regel 0|0a/i.test(sys), 'Generativ-Prompt: Bottom-Up / 0a');
-assert(/protein_source|MAXIMUM 2|PROTEIN-HARMONIE|Zutaten-Salat/i.test(sys), 'Generativ-Prompt: max 2 Proteine');
+assert(/protein_source|MAXIMUM 2|PROTEIN-HARMONIE|Zutaten-Salat|VERBOTEN: Haehnchen \+ Tofu \+ Ei/i.test(sys), 'Generativ-Prompt: max 2 Proteine inkl. Beispiel');
 assert(/KETO-EHRLEICHKEIT|netto_kh_g <10|<10/i.test(sys), 'Generativ-Prompt: Keto-Ehrlichkeit');
 assert(/GERINNUNGSSCHUTZ|Mascarpone|Schmand|Creme fraiche/i.test(sys), 'Generativ-Prompt: Gerinnungsschutz');
 assert(/prise|ABSOLUTES GRAMM-VERBOT|GEWUERZ/i.test(sys), 'Generativ-Prompt: Gewuerz ohne Gramm');
