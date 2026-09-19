@@ -762,6 +762,39 @@ function toClientRecipe(parsed, p) {
 // ---------------------------------------------------------------------------
 // Groq-Call (fetchImpl injizierbar fuer Tests)
 // ---------------------------------------------------------------------------
+const GROQ_RATE_LIMIT_HEADER_KEYS = [
+  'retry-after',
+  'x-ratelimit-limit-requests',
+  'x-ratelimit-remaining-requests',
+  'x-ratelimit-reset-requests',
+  'x-ratelimit-limit-tokens',
+  'x-ratelimit-remaining-tokens',
+  'x-ratelimit-reset-tokens',
+  'x-ratelimit-limit-requests-day',
+  'x-ratelimit-remaining-requests-day',
+  'x-ratelimit-limit-tokens-day',
+  'x-ratelimit-remaining-tokens-day',
+];
+
+function collectGroqResponseHeaders(res) {
+  const out = {};
+  if (!res || !res.headers || typeof res.headers.get !== 'function') return out;
+  GROQ_RATE_LIMIT_HEADER_KEYS.forEach(function (key) {
+    const v = res.headers.get(key);
+    if (v != null && v !== '') out[key] = v;
+  });
+  // Alle x-ratelimit-* / retry-after mitschneiden (falls Groq neue Namen nutzt)
+  if (typeof res.headers.forEach === 'function') {
+    res.headers.forEach(function (value, key) {
+      const k = String(key || '').toLowerCase();
+      if (k === 'retry-after' || k.indexOf('ratelimit') >= 0 || k.indexOf('rate-limit') >= 0) {
+        out[k] = value;
+      }
+    });
+  }
+  return out;
+}
+
 async function callGroq(requestBody, opts) {
   const o = opts || {};
   const fetchImpl = o.fetchImpl || fetch;
@@ -775,7 +808,19 @@ async function callGroq(requestBody, opts) {
       signal: controller.signal,
     });
     const text = await res.text();
-    if (!res.ok) return { error: 'provider_error', status: res.status, body: text.slice(0, 400) };
+    if (!res.ok) {
+      const headers = collectGroqResponseHeaders(res);
+      const bodyFull = text.slice(0, 4000);
+      console.log('[groq] provider_error status=' + res.status +
+        ' headers=' + JSON.stringify(headers) +
+        ' body=' + bodyFull);
+      return {
+        error: 'provider_error',
+        status: res.status,
+        body: bodyFull,
+        headers: headers,
+      };
+    }
     let data;
     try { data = JSON.parse(text); } catch (e) { return { error: 'provider_error', status: 502, body: 'invalid provider json' }; }
     const content = data && data.choices && data.choices[0] && data.choices[0].message ? data.choices[0].message.content : null;
@@ -814,6 +859,7 @@ module.exports = {
   buildGenerativeMessages,
   buildGroqRequest,
   toClientRecipe,
+  collectGroqResponseHeaders,
   callGroq,
   recipePipeline,
   recipeValidator,

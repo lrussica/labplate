@@ -173,6 +173,7 @@ app.get('/health', (req, res) => {
     // Deploy-Marker: Root-Entry hat v9.2-Validierung+Retry (nicht nur Render-Display)
     v92PipelineWired: typeof core.generateValidatedRecipe === 'function',
     recipeSchemaVersion: 'v9.2',
+    groq429Diagnostics: true,
   });
 });
 
@@ -223,14 +224,32 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     if (pipelineResult.error === 'provider_error') {
       const upstreamStatus = Number(pipelineResult.status) || 0;
       const clientStatus = upstreamStatus === 400 ? 400 : 502;
-      logEvent('groq_http_error', { status: upstreamStatus, model: GROQ_MODEL, body: pipelineResult.body, ms: Date.now() - startedAt, clientStatus, flow, v92: true });
-      return res.status(clientStatus).json({
+      logEvent('groq_http_error', {
+        status: upstreamStatus,
+        model: GROQ_MODEL,
+        body: pipelineResult.body,
+        headers: pipelineResult.headers || null,
+        ms: Date.now() - startedAt,
+        clientStatus,
+        flow,
+        v92: true,
+      });
+      const errPayload = {
         error: 'provider_error',
         status: upstreamStatus,
         message: upstreamStatus === 400
           ? 'Der KI-Anbieter hat die Antwort wegen Schema-/Validierungsfehler abgelehnt.'
           : 'Der KI-Anbieter meldete einen Fehler. Bitte ueberpruefe das eingestellte Modell.',
-      });
+      };
+      // Bei 429: voller Groq-Header-/Body-Dump an den Client (Diagnose RPM vs. Tageslimit)
+      if (upstreamStatus === 429) {
+        errPayload.provider_headers = pipelineResult.headers || {};
+        errPayload.provider_body = pipelineResult.body || '';
+        try {
+          errPayload.provider_body_json = JSON.parse(pipelineResult.body);
+        } catch (e) { /* raw string bleibt in provider_body */ }
+      }
+      return res.status(clientStatus).json(errPayload);
     }
     if (pipelineResult.error === 'validation_exhausted') {
       logEvent('response_rejected', {
@@ -325,14 +344,30 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     // Schema-/Validierungsfehler (HTTP 400): an Client als 400 durchreichen – kein 502,
     // damit Chat-Retries denselben kaputten Request nicht 3× wiederholen.
     const clientStatus = upstreamStatus === 400 ? 400 : 502;
-    logEvent('groq_http_error', { status: upstreamStatus, model: GROQ_MODEL, body: result.body, ms: Date.now() - startedAt, clientStatus, flow });
-    return res.status(clientStatus).json({
+    logEvent('groq_http_error', {
+      status: upstreamStatus,
+      model: GROQ_MODEL,
+      body: result.body,
+      headers: result.headers || null,
+      ms: Date.now() - startedAt,
+      clientStatus,
+      flow,
+    });
+    const errPayload = {
       error: 'provider_error',
       status: upstreamStatus,
       message: upstreamStatus === 400
         ? 'Der KI-Anbieter hat die Antwort wegen Schema-/Validierungsfehler abgelehnt.'
         : 'Der KI-Anbieter meldete einen Fehler. Bitte ueberpruefe das eingestellte Modell.',
-    });
+    };
+    if (upstreamStatus === 429) {
+      errPayload.provider_headers = result.headers || {};
+      errPayload.provider_body = result.body || '';
+      try {
+        errPayload.provider_body_json = JSON.parse(result.body);
+      } catch (e) { /* raw */ }
+    }
+    return res.status(clientStatus).json(errPayload);
   }
   if (result.error) {
     logEvent('response_rejected', { reason: result.error, detail: result.reason || result.body || '', ms: Date.now() - startedAt, flow });

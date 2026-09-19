@@ -370,6 +370,7 @@ async function generateValidatedRecipe(opts) {
         error: result.error,
         status: result.status,
         body: result.body,
+        headers: result.headers || null,
         reason: result.reason,
         attempts: attempt,
       };
