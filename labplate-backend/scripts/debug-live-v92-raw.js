@@ -48,24 +48,46 @@ const payload = {
     },
   });
 
+  const attemptRaws = out.attempt_raws || [];
   const dumpPath = path.join(__dirname, 'debug-raw-haehnchen-tofu-ei.json');
   fs.writeFileSync(dumpPath, JSON.stringify({
     ok: !!out.ok,
     error: out.error || null,
     attempts: out.attempts,
     errors: out.errors || null,
+    flow: 'suggestions',
+    useV92Pipeline: true,
+    attempt_raws: attemptRaws,
     raw: out.raw || out.last_raw || null,
     recipe_title: out.recipe && out.recipe.title,
     recipe_steps_preview: out.recipe && out.recipe.steps,
     recipe_ingredients_preview: out.recipe && out.recipe.ingredients && out.recipe.ingredients.map(function (i) {
-      return { name: i.name, amount: i.amount, unit: i.unit };
+      return { name: i.name, amount: i.amount, unit: i.unit, protein_source: i._protein_source };
     }),
   }, null, 2));
   console.log('Wrote', dumpPath);
 
-  if (out.raw || out.last_raw) {
+  console.log('\n=== ATTEMPT RAWS (kompakt) count=' + attemptRaws.length + ' ===');
+  attemptRaws.forEach(function (a) {
+    const raw = a.raw || {};
+    console.log('\n--- attempt', a.attempt, '---');
+    console.log('ingredients:', JSON.stringify((raw.ingredients || []).map(function (ing) {
+      return {
+        id: ing && ing.id,
+        name: ing && ing.name,
+        amount: ing && ing.amount,
+        unit: ing && ing.unit,
+        protein_source: !!(ing && ing.protein_source),
+      };
+    }), null, 2));
+    console.log('step_contents:', JSON.stringify((raw.steps || []).map(function (s, i) {
+      return { i: i + 1, title: s && s.title, content: s && s.content };
+    }), null, 2));
+  });
+
+  if (!attemptRaws.length && (out.raw || out.last_raw)) {
     const raw = out.raw || out.last_raw;
-    console.log('\n=== STEP CONTENTS (RAW) ===');
+    console.log('\n=== STEP CONTENTS (RAW, fallback) ===');
     (raw.steps || []).forEach(function (s, i) {
       console.log('--- step', i + 1, s.title || '', '---');
       console.log(s.content);

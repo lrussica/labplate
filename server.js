@@ -170,6 +170,9 @@ app.get('/health', (req, res) => {
     strictPromptActiveInCore: STRICT_CORE_OK,
     strictPromptActiveInCoach: STRICT_COACH_OK,
     strictPromptActiveInSuggestions: STRICT_SUGGESTIONS_OK,
+    // Deploy-Marker: Root-Entry hat v9.2-Validierung+Retry (nicht nur Render-Display)
+    v92PipelineWired: typeof core.generateValidatedRecipe === 'function',
+    recipeSchemaVersion: 'v9.2',
   });
 });
 
@@ -186,6 +189,13 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     return res.status(400).json({ error: 'invalid_payload' });
   }
 
+  // Phase 2 KI-Team: emotionale Blockade → Handoff an Coach (String-Match, kein Groq).
+  const earlyHandoff = core.tryEmotionalHandoffEarly(payload);
+  if (earlyHandoff && earlyHandoff.handoff) {
+    console.log(`[nutri-recipe] HANDOFF_COACH early reason=${earlyHandoff.handoff.reason} ms=${Date.now() - startedAt}`);
+    return res.status(200).json(earlyHandoff);
+  }
+
   const flow = resolveRecipeFlow(req.body, payload);
   const n = payload.pantry_ingredients.length;
   if (payload.structured || flow === 'coach' || flow === 'nutri-coach' || flow === 'core') {
@@ -195,6 +205,119 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   }
 
   const requestBody = buildRecipeRequest(flow, payload);
+
+  // Generativ (nicht structured/coach): v9.2 Validierung + Retry (max 3).
+  // Wichtig: Root-Entry muss dieselbe Pipeline wie labplate-backend/server.js nutzen —
+  // sonst nur Render-Display (recipe_schema_version) ohne validate/retry/debug_v92_raw.
+  const useV92Pipeline = !payload.structured && flow !== 'coach' && flow !== 'nutri-coach' && flow !== 'core';
+  if (useV92Pipeline) {
+    const pipelineResult = await core.generateValidatedRecipe({
+      payload: payload,
+      groqOpts: { apiKey: GROQ_API_KEY, timeoutMs: REQUEST_TIMEOUT_MS },
+      callGroq: core.callGroq,
+      buildRequestBody: function (p) {
+        return buildRecipeRequest(flow, p);
+      },
+    });
+
+    if (pipelineResult.error === 'provider_error') {
+      const upstreamStatus = Number(pipelineResult.status) || 0;
+      const clientStatus = upstreamStatus === 400 ? 400 : 502;
+      logEvent('groq_http_error', { status: upstreamStatus, model: GROQ_MODEL, body: pipelineResult.body, ms: Date.now() - startedAt, clientStatus, flow, v92: true });
+      return res.status(clientStatus).json({
+        error: 'provider_error',
+        status: upstreamStatus,
+        message: upstreamStatus === 400
+          ? 'Der KI-Anbieter hat die Antwort wegen Schema-/Validierungsfehler abgelehnt.'
+          : 'Der KI-Anbieter meldete einen Fehler. Bitte ueberpruefe das eingestellte Modell.',
+      });
+    }
+    if (pipelineResult.error === 'validation_exhausted') {
+      logEvent('response_rejected', {
+        reason: 'validation_exhausted',
+        errors: pipelineResult.errors,
+        attempts: pipelineResult.attempts,
+        ms: Date.now() - startedAt,
+        flow,
+      });
+      const exhaustedBody = {
+        error: 'recipe_validation_failed',
+        attempts: pipelineResult.attempts,
+        errors: pipelineResult.errors || [],
+        flow: flow,
+        useV92Pipeline: true,
+      };
+      if (req.body && req.body.debug_v92_raw === true) {
+        exhaustedBody.debug_v92 = {
+          attempt_raws: (pipelineResult.attempt_raws || []).map(function (a) {
+            return {
+              attempt: a.attempt,
+              step_contents: (a.raw && a.raw.steps || []).map(function (s, i) {
+                return { i: i + 1, title: s && s.title, content: s && s.content };
+              }),
+              ingredients: (a.raw && a.raw.ingredients || []).map(function (ing) {
+                return {
+                  id: ing && ing.id,
+                  name: ing && ing.name,
+                  amount: ing && ing.amount,
+                  unit: ing && ing.unit,
+                  protein_source: !!(ing && ing.protein_source),
+                };
+              }),
+            };
+          }),
+        };
+      }
+      return res.status(422).json(exhaustedBody);
+    }
+    if (pipelineResult.error) {
+      logEvent('response_rejected', { reason: pipelineResult.error, detail: pipelineResult.reason || pipelineResult.body || '', ms: Date.now() - startedAt, flow });
+      return res.status(502).json({ error: 'recipe_unavailable' });
+    }
+
+    if (!payload.structured && payload.team_ai !== false && pipelineResult.raw) {
+      const userText = (payload.pantry_ingredients || []).join(' ');
+      const modelHandoff = core.extractHandoffFromParsed(pipelineResult.raw, userText);
+      if (modelHandoff) {
+        console.log(`[nutri-recipe] HANDOFF_COACH model reason=${modelHandoff.reason} ms=${Date.now() - startedAt}`);
+        return res.status(200).json({ handoff: modelHandoff });
+      }
+    }
+
+    if (!pipelineResult.recipe) {
+      logEvent('response_rejected', { reason: 'invalid_or_missing_schema', ms: Date.now() - startedAt, flow });
+      return res.status(502).json({ error: 'recipe_unavailable' });
+    }
+
+    const recipe = pipelineResult.recipe;
+    console.log(`[nutri-recipe] OK flow=${flow} v92 attempts=${pipelineResult.attempts} ingredients=${recipe.ingredients.length} steps=${recipe.steps.length} ms=${Date.now() - startedAt}`);
+    if (req.body && req.body.debug_v92_raw === true) {
+      recipe._debug_v92 = {
+        flow: flow,
+        useV92Pipeline: true,
+        attempts: pipelineResult.attempts,
+        attempt_raws: (pipelineResult.attempt_raws || []).map(function (a) {
+          return {
+            attempt: a.attempt,
+            step_contents: (a.raw && a.raw.steps || []).map(function (s, i) {
+              return { i: i + 1, title: s && s.title, content: s && s.content };
+            }),
+            ingredients: (a.raw && a.raw.ingredients || []).map(function (ing) {
+              return {
+                id: ing && ing.id,
+                name: ing && ing.name,
+                amount: ing && ing.amount,
+                unit: ing && ing.unit,
+                protein_source: !!(ing && ing.protein_source),
+              };
+            }),
+          };
+        }),
+      };
+    }
+    return res.status(200).json(recipe);
+  }
+
   const result = await core.callGroq(requestBody, { apiKey: GROQ_API_KEY, timeoutMs: REQUEST_TIMEOUT_MS });
 
   if (result.error === 'provider_error') {

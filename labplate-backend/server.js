@@ -228,6 +228,8 @@ app.get('/health', (req, res) => {
     strictPromptActiveInCore: STRICT_CORE_OK,
     strictPromptActiveInCoach: STRICT_COACH_OK,
     strictPromptActiveInSuggestions: STRICT_SUGGESTIONS_OK,
+    v92PipelineWired: typeof core.generateValidatedRecipe === 'function',
+    recipeSchemaVersion: 'v9.2',
   });
 });
 
