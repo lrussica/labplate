@@ -23647,7 +23647,7 @@ initBarcodeEvents();
     // formuliert (statt als hoefliche Bitte) - zusaetzliche Absicherung neben dem eigentlichen
     // Traeger des Suchbegriffs (pantry_ingredients, siehe buildNutriRecipePayload).
     var LBL_RECIPE_FREESEARCH_AI_INSTRUCTION = {
-      de: 'MODUS GENERATIV / FREISUCHE (nicht Eigenrezept): VERBINDLICHE VORGABE, KEIN VORSCHLAG: Erstelle ausschließlich ein Rezept für genau folgendes Gericht: "{q}". Weiche unter keinen Umständen auf ein anderes Gericht aus. Du DARFST Mengen und Zutatendetails an die unten genannten Tagesziele anpassen – das ist hier erlaubt und gewollt. ingredients[].unit NUR "g" oder "ml" (Stueck/EL/TL vorher umrechnen: 1 Ei=60 g, 1 EL=15, 1 TL=5).',
+      de: 'MODUS GENERATIV / FREISUCHE (nicht Eigenrezept): VERBINDLICHE VORGABE, KEIN VORSCHLAG: Erstelle ausschließlich ein Rezept für genau folgendes Gericht: "{q}". Weiche unter keinen Umständen auf ein anderes Gericht aus. Du DARFST Mengen und Zutatendetails an die unten genannten Tagesziele anpassen – das ist hier erlaubt und gewollt. ingredients[].unit NUR "g" oder "ml" (Stueck/EL/TL vorher umrechnen: 1 Ei=60 g, 1 EL=15, 1 TL=5). Wende das CHEF-FRAMEWORK an (5-Geschmäcker, Textur, garnish-Feld, Reifezeichen, Chef-Analyse in nutrition_note).',
       en: 'MODE GENERATIVE / FREE SEARCH (not own-recipe): BINDING REQUIREMENT, NOT A SUGGESTION: Create a recipe exclusively for the following dish: "{q}". Under no circumstances substitute a different dish. You MAY adjust amounts and ingredient details to match the daily targets listed below – that is allowed and intended in this mode. ingredients[].unit ONLY "g" or "ml" (convert piece/tbsp/tsp first: 1 egg=60 g, 1 tbsp=15, 1 tsp=5).',
       es: 'MODO GENERATIVO / BÚSQUEDA LIBRE (no receta propia): REQUISITO VINCULANTE: Crea una receta exclusivamente para el plato "{q}". No sustituyas por otro plato. SÍ puedes ajustar cantidades y detalles de ingredientes a los objetivos diarios – está permitido en este modo. ingredients[].unit SOLO "g" o "ml".',
       it: 'MODALITÀ GENERATIVA / RICERCA LIBERA (non ricetta propria): REQUISITO VINCOLANTE: Crea una ricetta esclusivamente per il piatto "{q}". Non sostituirlo. PUOI adattare quantità e dettagli degli ingredienti agli obiettivi giornalieri – è consentito in questa modalità. ingredients[].unit SOLO "g" o "ml".',
@@ -23850,7 +23850,29 @@ initBarcodeEvents();
       de:'Kalorien', en:'Calories', es:'Calorías', it:'Calorie',
       pt:'Calorias', fr:'Calories', tr:'Kalori'
     };
-    var LBL_RECIPE_CHAT_RULES = { de:'Erstelle Rezepte mit Fokus auf die anonymisierten Ernährungsregeln und Makro-Ziele des Nutzers (z. B. Ballaststoffe, moderate Kohlenhydrate, passendes Protein). Keine echten Laborwerte, Namen oder personenbezogenen Daten erwähnen. Formuliere nutrition_note kurz und freundlich (1–2 Sätze).', en:'Create recipes focused on the user\'s anonymized nutrition rules and macro goals (e.g. fiber, moderate carbs, adequate protein). Do not mention real lab values, names or personal data. Keep nutrition_note short and friendly (1–2 sentences).', es:'Crea recetas centradas en las reglas nutricionales anonimizadas y los objetivos de macros del usuario (p. ej. fibra, hidratos moderados, proteína adecuada). No menciones valores de laboratorio reales, nombres ni datos personales. Mantén nutrition_note breve y amable (1–2 frases).', it:'Crea ricette incentrate sulle regole nutrizionali anonimizzate e sugli obiettivi macro dell\'utente (es. fibre, carboidrati moderati, proteine adeguate). Non menzionare valori di laboratorio reali, nomi o dati personali. Tieni nutrition_note breve e amichevole (1–2 frasi).' };
+    // Chef-Framework (GENERATIV) – Spiegel von labplate-backend/nutri-recipe-core.js
+    // (CHEF_FRAMEWORK_RULES). Eigenrezept/STRUCTURED/Original: nicht anhaengen.
+    var LBL_RECIPE_CULINARY_RULES = {
+      de: 'CHEF-FRAMEWORK: (1) 5-Geschmacks-Prinzip – herzhaft: Salz/Umami/Saeure/Fett-Sueße; suess/Shake: Sueße + Saeure/Frische + Prise Salz. (2) Textur: Weich/Cremig trifft Knusprig; Feld garnish PFLICHT (Topping/Garnitur). (3) Shake: 200 ml Fluessigkeit / 30 g Pulver; quellend +100 ml / 10 g; mind. 300 ml; Fluessigkeit zuerst in Mixer. Hauptgerichte nie trocken (Sosse/Dressing/Finish). Suess: keine Speiseoele (Oliven-/Raps-/Sesamoel) – Nussmus/Kakaobutter/Kokosoel/Milchfette. (4) Schritte: Mise en Place zuerst; Hitzestufe, Zeit, Reifezeichen; Anrichten mit garnish. (5) Gerundete g|ml-Mengen, schlanke Zutatenliste. (6) nutrition_note = Chef-Analyse: IMMER inspirierende 2–3 Saetze zu Geschmack + gesundheitlichem Mehrwert – nie leer.',
+      en: 'CHEF FRAMEWORK: (1) 5-taste balance – savory: salt/umami/acid/fat-sweet; sweet/shake: sweetness + acid/freshness + pinch of salt. (2) Texture: soft/creamy meets crunch; garnish field REQUIRED (topping). (3) Shake: 200 ml liquid / 30 g powder; swelling +100 ml / 10 g; min 300 ml; liquid first in blender. Mains never dry (sauce/dressing/finish). Sweet: no cooking oils – nut butter/cocoa butter/coconut oil/dairy fats. (4) Steps: mise en place first; heat, time, doneness cues; finish with garnish. (5) Rounded g|ml amounts, lean ingredient list. (6) nutrition_note = Chef analysis: ALWAYS inspiring 2–3 sentences on flavor + health benefit – never empty.',
+      es: 'CHEF-FRAMEWORK: (1) Equilibrio de 5 sabores con acidez. (2) Textura cremoso+crujiente; campo garnish OBLIGATORIO. (3) Batido: 200 ml / 30 g; +100 ml / 10 g hinchables; min 300 ml; liquido primero. Platos nunca secos. Dulce: sin aceites de cocina. (4) Mise en place; calor, tiempo, senales de punto; emplatar con garnish. (5) Cantidades redondeadas g|ml. (6) nutrition_note = analisis chef: SIEMPRE 2–3 frases – nunca vacio.',
+      it: 'CHEF-FRAMEWORK: (1) Equilibrio 5 sapori con acidita. (2) Texture cremoso+croccante; campo garnish OBBLIGATORIO. (3) Shake: 200 ml / 30 g; +100 ml / 10 g; min 300 ml; liquido prima. Piatti mai asciutti. Dolce: niente oli da cucina. (4) Mise en place; calore, tempo, segnali di cottura; impiattare con garnish. (5) Quantita arrotondate g|ml. (6) nutrition_note = analisi chef: SEMPRE 2–3 frasi – mai vuoto.'
+    };
+    var LBL_RECIPE_CHAT_RULES = {
+      de: 'Erstelle Rezepte mit Fokus auf die anonymisierten Ernährungsregeln und Makro-Ziele des Nutzers (z. B. Ballaststoffe, moderate Kohlenhydrate, passendes Protein). Keine echten Laborwerte, Namen oder personenbezogenen Daten erwähnen. ' + LBL_RECIPE_CULINARY_RULES.de,
+      en: 'Create recipes focused on the user\'s anonymized nutrition rules and macro goals (e.g. fiber, moderate carbs, adequate protein). Do not mention real lab values, names or personal data. ' + LBL_RECIPE_CULINARY_RULES.en,
+      es: 'Crea recetas centradas en las reglas nutricionales anonimizadas y los objetivos de macros del usuario (p. ej. fibra, hidratos moderados, proteína adecuada). No menciones valores de laboratorio reales, nombres ni datos personales. ' + LBL_RECIPE_CULINARY_RULES.es,
+      it: 'Crea ricette incentrate sulle regole nutrizionali anonimizzate e sugli obiettivi macro dell\'utente (es. fibre, carboidrati moderati, proteine adeguate). Non menzionare valori di laboratorio reali, nomi o dati personali. ' + LBL_RECIPE_CULINARY_RULES.it
+    };
+    var LBL_RECIPE_CHEF_ANALYSIS = {
+      de: 'Chef-Analyse', en: 'Chef analysis', es: 'Análisis del chef', it: 'Analisi chef',
+      pt: 'Análise do chef', fr: 'Analyse chef', tr: 'Şef analizi'
+    };
+    var LBL_RECIPE_GARNISH = {
+      de: 'Garnitur', en: 'Garnish', es: 'Guarnición', it: 'Guarnizione',
+      pt: 'Guarnição', fr: 'Garniture', tr: 'Süsleme'
+    };
+
     var ovRecipes = makeOverlay('lp-ov-recipes', true);
 
     // ---- Sicherer Server-Endpunkt (KEIN API-Schluessel im Client!) ----
@@ -24698,6 +24720,7 @@ initBarcodeEvents();
       out.steps = out.steps.map(function (s) { return s == null ? '' : String(s); });
       if (typeof out.prep_time !== 'string') out.prep_time = out.prep_time == null ? '' : String(out.prep_time);
       if (typeof out.nutrition_note !== 'string') out.nutrition_note = out.nutrition_note == null ? '' : String(out.nutrition_note);
+      if (typeof out.garnish !== 'string') out.garnish = out.garnish == null ? '' : String(out.garnish);
       if (typeof out.title !== 'string' && out.title != null) out.title = String(out.title);
       if (typeof out.servings !== 'number' || !isFinite(out.servings)) {
         var sv = parseFloat(out.servings);
@@ -24731,6 +24754,7 @@ initBarcodeEvents();
       if (typeof data.servings !== 'number' || !isFinite(data.servings) || data.servings < 0) return false;
       if (!okStr(data.prep_time, true)) return false;
       if (!okStr(data.nutrition_note, true)) return false;
+      if (data.garnish != null && !okStr(data.garnish, true)) return false;
       if (!Array.isArray(data.ingredients) || !data.ingredients.length) return false;
       if (data.ingredients.length > NUTRI_RECIPE_MAX_INGREDIENTS) return false;
       // amount/unit/macrosPer100g noetig fuer calcRecipeMacrosPerServing/scaleLocalRecipe.
@@ -25185,7 +25209,12 @@ initBarcodeEvents();
               '<p class="nutri-recipe-match">' + escNutri(pick(LBL_RECIPE_PREP_TIME)) + ': ' + escNutri(r.prep_time) + '</p>' +
               servingsStepperHtml +
             '</div>' +
-            (r.nutrition_note ? '<p class="nutri-recipe-match">' + escNutri(r.nutrition_note) + '</p>' : '') +
+            (r.garnish
+                ? ('<p class="nutri-recipe-match"><strong>' + escNutri(pick(LBL_RECIPE_GARNISH)) + ':</strong> ' + escNutri(r.garnish) + '</p>')
+                : '') +
+            (r.nutrition_note
+                ? ('<p class="nutri-recipe-match"><strong>' + escNutri(pick(LBL_RECIPE_CHEF_ANALYSIS)) + ':</strong> ' + escNutri(r.nutrition_note) + '</p>')
+                : '') +
             '<p class="nutri-recipe-disclaimer">' + escNutri(pick(LBL_RECIPE_DISCLAIMER)) + '</p>' +
             '<div class="section">' +
               '<h4 class="section-title">' + escNutri(nutritionHeading) + '</h4>' +

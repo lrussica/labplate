@@ -1,16 +1,22 @@
 /**
  * LabPlate – Zentraler Strict-System-Prompt (Eigenrezept-Passthrough)
  * ==================================================================
- * Version: strict_v3_passthrough_no_macros
+ * Version: strict_v4_exact_input
  *
  * KI liefert NUR: title, servings (0 wenn nicht im Text), ingredients, steps.
  * KEINE Makros, KEINE nutrition_note, KEINE erfundenen Mengen/Schritte.
  * Makros berechnet die App lokal (lookupNutriMacrosPer100g) und skaliert bei Portionswechsel.
+ *
+ * v4-Neuerungen (gegenueber v3):
+ *   - Wort- und zeichengenaue Uebernahme aller Zutaten und Schritte (kein Umformulieren, kein Kuerzen).
+ *   - Unleserliche/unsichere Scan-Fragmente als "[unleserlich]" markieren statt erraten.
+ *   - Portionen ausschliesslich aus expliziter Angabe im Text; nie aus Kontext ableiten.
+ *   - ERLAUBT-Zeile (Orthografie-Korrekturen) vollstaendig entfernt.
  */
 
 'use strict';
 
-const STRUCTURED_PROMPT_VERSION = 'strict_v3_passthrough_no_macros';
+const STRUCTURED_PROMPT_VERSION = 'strict_v4_exact_input';
 
 const STRUCTURED_UNIT_TABLE =
   'Feste Umrechnungstabelle (nur wenn der Nutzer EL/TL/Stueck OHNE g/ml angibt): ' +
@@ -21,13 +27,15 @@ const STRICT_RULES_BLOCK = [
   'STRICT_PROMPT_VERSION=' + STRUCTURED_PROMPT_VERSION,
   'AUSGABE NUR: title, servings, ingredients, steps. Mehr nicht.',
   'VERBINDLICHE STRICT-REGELN:',
-  '- Zutaten und Schritte 1:1 aus dem Input uebernehmen – nichts aendern, nichts erfinden, nichts weglassen.',
+  '- Zutaten und Schritte wort- und zeichengetreu uebernehmen. Kein Umformulieren, kein Kuerzen, kein Zusammenfassen, keine Neusortierung.',
+  '- Nichts hinzufuegen, nichts weglassen, nichts aendern – auch keine Rechtschreib- oder Interpunktionskorrekturen.',
   '- KEINE Makros berechnen: netCarbs/fat/protein/fiber IMMER 0 (die App berechnet spaeter).',
-  '- servings: nur wenn im Text klar angegeben (Personen/Portionen), sonst 0 (= leer / nicht angegeben). Nie erfinden.',
-  '- title: nur wenn im Text vorhanden, sonst knapper Name OHNE Fantasie-Zutaten.',
-  '- prep_time: immer "". nutrition_note: immer "". shopping_list: [] (App baut sie selbst).',
-  '- Keine Interpretation, Optimierung, Strukturänderung, keine zusaetzlichen Abschnitte.',
-  '- q.b./nach Geschmack/Prise/etwas → amount = 0.',
+  '- servings: AUSSCHLIESSLICH wenn eine Zahl fuer Personen/Portionen explizit im Text steht. Nicht aus Kontext ableiten, nicht schaetzen. Sonst exakt 0.',
+  '- title: nur wenn im Text vorhanden, sonst knapper Name – kein Erfinden von Zutaten oder Merkmalen.',
+  '- prep_time: immer "". nutrition_note: immer "". garnish: immer "". shopping_list: [] (App baut sie selbst).',
+  '- Unleserlicher oder unsicherer Text (z.B. aus Scan oder Foto): Inhalt NICHT raten oder erganzen. Stattdessen "[unleserlich]" als Platzhalter eintragen.',
+  '- Keine Interpretation, Optimierung, Strukturaenderung, keine zusaetzlichen Abschnitte oder Erklaerungen.',
+  '- q.b./nach Geschmack/Prise/etwas/ein wenig/nach Bedarf → amount = 0.',
 ].join('\n');
 
 const _moduleStatus = Object.create(null);
@@ -53,17 +61,18 @@ function loadStrictPrompt(opts) {
   const system = [
     'MODUS: EIGENREZEPT / STRUCTURED – reiner Passthrough, nicht kreativ.',
     STRICT_RULES_BLOCK,
-    'Du strukturierst NUR das Eigenrezept. Inhalt unveraenderlich.',
+    'Du strukturierst NUR das Eigenrezept. Inhalt absolut unveraenderlich.',
     'AUFGABE: Fuer JEDE Zutat (Keys ing_01 … ing_' + last + ') name/amount/unit/status setzen. netCarbs=fat=protein=fiber = 0.',
-    'VERBOTEN: Zutaten hinzufuegen/entfernen; Mengen aendern; Schritte umschreiben/kuerzen/erfinden; Makros berechnen oder schaetzen; Portionen erfinden; Beschreibungen; Optimierungen.',
-    'ERLAUBT: Namen kurz ohne Mengenangabe im name-Feld; Orthografie in Schritten ohne Sinnänderung.',
+    'ABSOLUT VERBOTEN: Zutaten hinzufuegen oder entfernen; Mengen aendern, schaetzen oder erfinden; Schritte umformulieren, kuerzen, zusammenfassen, neusortieren oder erfinden; Rechtschreibung oder Interpunktion korrigieren; Makros berechnen oder schaetzen; Portionen aus Kontext ableiten oder erfinden; Erlaeuterungen, Hinweise oder Begleittext ausgeben.',
+    'name-Feld: Zutatennamen exakt aus dem Input uebernehmen (ohne Mengenangabe). Wortlaut unveraendert.',
     STRUCTURED_UNIT_TABLE,
     'Vage Mengenangaben (q.b., qb, nach Geschmack, nach Belieben, etwas, ein wenig, Prise, nach Bedarf) → amount = 0.',
     'Fehlt eine Menge und greift KEINE Tabellen-Regel: amount = 0.',
+    'Unleserliche oder unsichere Fragmente → "[unleserlich]" als name oder im steps-Eintrag eintragen.',
     'Fluessigkeiten (Oel, Essig, Sosse, Bruehe, Dressing, Milch) in ml, sonst g. status: "benoetigt".',
-    'steps: 1:1 aus Input in gleicher Reihenfolge. Keine Schritte im Input → steps = [].',
-    'servings: Zahl aus Input (Personen/Portionen) oder 0 wenn nicht angegeben.',
-    'title: aus Input oder knapper Name. prep_time "". nutrition_note "". shopping_list [].',
+    'steps: zeichengetreu aus Input in exakt gleicher Reihenfolge. Keine Schritte im Input → steps = [].',
+    'servings: Zahl aus Input (Personen/Portionen) oder 0 wenn nicht angegeben. Nie aus Kontext ableiten.',
+    'title: aus Input oder knapper Name ohne Erfindungen. prep_time "". nutrition_note "". garnish "". shopping_list [].',
     'Antworte auf ' + langName(o.lang) + '. Ausschliesslich JSON gemaess Schema – kein Begleittext.',
   ].join('\n');
   return system;
@@ -100,11 +109,13 @@ function verifyStrictPromptText(systemText, userText) {
   const sys = String(systemText || '');
   const user = String(userText || '');
   const checks = {
-    version: sys.includes(STRUCTURED_PROMPT_VERSION) || sys.includes('passthrough'),
+    version: sys.includes(STRUCTURED_PROMPT_VERSION),
     system_eigenrezept: /MODUS: EIGENREZEPT \/ STRUCTURED/.test(sys),
     system_no_macros: /Makros|netCarbs.*=.*0|IMMER 0/.test(sys),
-    system_servings_empty: /servings.*0|sonst 0/.test(sys),
-    system_passthrough: /1:1|Passthrough|unveränderlich|unveraenderlich/.test(sys),
+    system_servings_empty: /servings.*0|sonst 0|Nie aus Kontext/.test(sys),
+    system_passthrough: /zeichengetreu|Passthrough|unveraenderlich/.test(sys),
+    system_unleserlich: /unleserlich/.test(sys),
+    system_no_rewrite: /ABSOLUT VERBOTEN|umformulieren/.test(sys),
     user_mengen_regel: /MENGEN-REGEL/.test(user),
     user_makro_regel: /MAKRO-REGEL/.test(user),
   };
