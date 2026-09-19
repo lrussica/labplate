@@ -49,7 +49,7 @@ assert(/BEZEICHNUNGS-KONSISTENZ|Namensgleichheit/i.test(sys), 'Generativ-Prompt:
 assert(/SELF-CHECK|nach dem AUSSCHALTEN|AUSSCHALTEN der Herdplatte/i.test(sys), 'Generativ-Prompt: Self-Check/Hitze');
 assert(/KETO-EHRLEICHKEIT|Fake-Labels|<10 g/i.test(sys), 'Generativ-Prompt: Keto-Ehrlichkeit');
 assert(/MAXIMUM 2 HAUPT-PROTEIN|Hoechstens 2 primaere/i.test(sys), 'Generativ-Prompt: max 2 Proteine');
-assert(/VOLLSTAENDIGKEIT VON FLUESSIGKEITEN|auch Wasser/i.test(sys), 'Generativ-Prompt: Fluessigkeiten vollstaendig');
+assert(/VOLLSTAENDIGKEIT VON FLUESSIGKEITEN|VOLLSTAENDIGKEIT ALLER|auch Wasser/i.test(sys), 'Generativ-Prompt: Fluessigkeiten vollstaendig');
 assert(/MENGEN-SYNCHRONISATION|100% mit ingredients|ABSOLUTE ZUTATEN/i.test(sys), 'Generativ-Prompt: Mengen-Sync');
 assert(/HERD-STUFEN-LOGIK|kalten Schritten|Herd-Stufe STRIKT VERBOTEN/i.test(sys), 'Generativ-Prompt: Herd-Stufen-Logik');
 assert(/EIERS?-STUECKZAHL|1 Ei \(Groesse M|das Ei/i.test(sys), 'Generativ-Prompt: Ei-Stueckzahl-Regel');
@@ -74,7 +74,11 @@ assert(/GERINNUNGSSCHUTZ|Creme fraiche|Mascarpone|Schmand|VOLLSTAENDIG AUSGESCHA
 assert(/Kalorien-Plausibilitaet|Protein×4|Ballaststoffe×2|P×4/i.test(sys), 'Generativ-Prompt: Kalorien-Plausibilitaet');
 assert(/Zeit-Realismus|Zeit-Summe/i.test(sys), 'Generativ-Prompt: Zeit-Realismus');
 assert(/high-protein|≥25|>=25/i.test(sys), 'Generativ-Prompt: high-protein Ehrlichkeit');
-assert(/PFLICHT-FELD self_check|self_check: sichtbarer/i.test(sys), 'Generativ-Prompt: sichtbarer self_check');
+assert(/PFLICHT-FELD self_check|self_check: KOPIER|KOPIER-Pruefung|KOPIER-PRUEFUNG/i.test(sys), 'Generativ-Prompt: sichtbarer self_check');
+assert(/REGEL 0a|Zielwert-Rueckwaerts|kein Zielwert/i.test(sys), 'Generativ-Prompt: Regel 0a Anti-Halluzination');
+assert(/NUMERUS-KONSISTENZ|das Ei.*Singular|1 Ei.*das Ei/i.test(sys), 'Generativ-Prompt: Ei-Numerus');
+assert(/Vollstaendigkeit aller Zutaten|VOLLSTAENDIGKEIT ALLER|garnish\/Topping/i.test(sys), 'Generativ-Prompt: Vollstaendigkeit aller Zutaten');
+assert(/NEGATIV-VERBOT|kein zweiter Rechenvorgang|wortwoertlich/i.test(sys), 'Generativ-Prompt: Self-Check Kopier-Pflicht');
 assert.strictEqual(
   genReq.response_format.json_schema.schema.required.includes('self_check'),
   true,

@@ -39,52 +39,61 @@ const ING_FIELDS = ['name', 'amount', 'unit', 'status', 'netCarbs', 'fat', 'prot
 const STRUCTURED_UNIT_TABLE = strictPrompt.STRUCTURED_UNIT_TABLE;
 
 /**
- * Chef-Framework v9.0 – Bottom-Up-Naehrwerte, sichtbarer Self-Check, Gerinnungsschutz (nur GENERATIV).
+ * Chef-Framework v9.1 – Anti-Halluzination: Bottom-Up, Self-Check = Kopier-Pruefung (nur GENERATIV).
  * Eigenrezept/STRUCTURED und Originalmodus: NICHT einbinden.
  * unit bleibt strikt g|ml; Gewuerze amount=0; Eier name "1 Ei (Groesse M, ca. 60 g)", amount=n*60.
  */
 const CHEF_FRAMEWORK_RULES = [
-  'CHEF-FRAMEWORK v9.0 (verbindlich – Bottom-Up-Naehrwerte, sichtbarer SELF-CHECK, kulinarische Physik):',
+  'CHEF-FRAMEWORK v9.1 (verbindlich – Anti-Halluzination, Bottom-Up, Self-Check = KOPIER-Pruefung):',
   'Rolle: System-Chefkoch + Ernaehrungs-Wissenschaftler. Food-Pairing, Sensorik, molekulare Hitzebestaendigkeit, exakte Naehrwert-Mathematik. Keine Schaetzungen, keine Halluzinationen.',
   'REGEL 0 — BOTTOM-UP (wichtigste Regel, IMMER zuerst):',
   '   - Naehrwerte IMMER zuerst pro Zutat (Menge × Referenz/100g), dann Summe. NIEMALS Top-Down (Zielprotein rueckwaerts auf erfundene Mengen).',
   '   - Muster: 180 g Haehnchen × (31/100) = 55,8 g Protein; 1 Ei 60 g × (13/100) = 7,8 g; SUMME runden (#16).',
+  'REGEL 0a — Kein Zielwert-Rueckwaertsdenken (auch nicht implizit):',
+  '   - Nutzerziel ("hohes Protein","Keto","unter 400 kcal") darf NIEMALS zuerst eine Wunschzahl (z.B. 80 g Protein) erzeugen, die danach Zutaten/self_check verbiegt.',
+  '   - Einzige Reihenfolge: Zutaten waehlen → Mengen festlegen → TATSAECHLICH rechnen → Ergebnis = Tabelle (auch wenn Wunsch verfehlt). Sonst ehrlich sagen (Regel 15).',
   '1) Naehrwert-Verbindlichkeit / MENGEN-SYNCHRONISATION:',
-  '   - Mengen, kcal und Protein in steps, self_check und nutrition_note (Chef-Analyse) = 100% Zutatenliste + aufsummierte Tabelle.',
-  '   - Steht "8 ml Olivenoel" in ingredients, darf die Summe aller Oelmengen im Text NIEMALS darueber liegen.',
+  '   - Mengen, kcal und Protein in steps, garnish, self_check und nutrition_note = 100% Zutatenliste + aufsummierte Tabelle.',
+  '   - Steht "8 ml Olivenoel" in ingredients, darf die Text-Summe NIEMALS darueber liegen (nicht 1 EL=15 ml wenn Liste 8 ml).',
   '2) GERINNUNGSSCHUTZ (empfindliche Milchprodukte / MOLEKULARE HITZE):',
   '   - Magerquark, Magerjoghurt, Huettenkaese, Creme fraiche, Frischkaese, Mascarpone, Schmand, Kokosjoghurt, Proteinpulver:',
-  '     NIEMALS auf eingeschalteter Herdplatte (auch nicht Stufe 2) erwaermen/mitkochen. Nur bei VOLLSTAENDIG AUSGESCHALTETEM Herd oder kalt einruehren.',
+  '     NIEMALS auf eingeschalteter Herdplatte (auch nicht Stufe 2 / Restwaerme). Nur bei VOLLSTAENDIG AUSGESCHALTETEM Herd oder kalt.',
   '   - Warme Saucen: nur Sahne, Kokosmilch, Nussmus (nicht Schmand/Frischkaese).',
   '3) MAXIMUM 2 HAUPT-PROTEINQUELLEN (kein Zutaten-Salat / PROTEIN-HARMONIE):',
   '   - Hoechstens 2 primaere Proteintraeger. Proteinziel >40 g: Menge der Hauptzutat erhoehen, keine Mini-Protein-Fragmente.',
   '4) DIÄT- & KETO-EHRLEICHKEIT (keine Fake-Labels):',
   '   - "Keto"/"Low-Carb" NUR bei <10 g Netto-KH; VERBOTEN in Keto: Linsen, Kichererbsen, Bohnen, Haferflocken.',
-  '   - "vegan": keine Ei-/Milchprodukte (auch nicht versteckt). "vegetarisch" ehrlich. "high-protein" nur ab ≥25–30 g Protein/Portion.',
-  '5) EIER-STUECKZAHL-PFLICHT + HYGIENE:',
-  '   - name: "1 Ei (Groesse M, ca. 60 g)" / "2 Eier (Groesse M, ca. 60 g je)" – amount = n*60 (Makro-Calc). In steps: "das Ei"/"die Eier" – nie Gramm im Fliesstext.',
+  '   - "vegan": keine Ei-/Milchprodukte. "vegetarisch" ehrlich. "high-protein" nur ab ≥25–30 g Protein/Portion.',
+  '5) EIER-STUECKZAHL-PFLICHT + NUMERUS-KONSISTENZ + HYGIENE:',
+  '   - name: "1 Ei (Groesse M, ca. 60 g)" / "2 Eier (Groesse M, ca. 60 g je)" – amount = n*60. Nie Gramm im Fliesstext.',
+  '   - Numerus: Liste "1 Ei" → Text nur "das Ei" (Singular). Plural "die Eier" NUR wenn Liste >1 Ei und Stueckzahl exakt passt.',
   '   - Rohes Ei NIEMALS in kalte Saucen/Quark-Dressings (Salmonellen). Eier IMMER thermisch verarbeiten.',
-  '6) VOLLSTAENDIGKEIT VON FLUESSIGKEITEN & QUELL-DYNAMIK:',
-  '   - Jede Fluessigkeit im Text (auch Koch-/Quellwasser) mit Menge in ingredients. Trocken nur anroesten (quellen NICHT in trockener Pfanne).',
-  '   - Shakes: Minimum 300 ml (pro 30 g Proteinpulver 200 ml, +100 ml/10 g quellend; Fluessigkeit zuerst). Eintoepfe: 250–350 ml/Portion.',
-  '7) HERD-STUFEN-LOGIK:',
-  '   - "Stufe X von 9" NUR bei Koch/Brat/Roest. Bei kalten Schritten Herd-Stufe STRIKT VERBOTEN.',
+  '6) VOLLSTAENDIGKEIT ALLER erwaehnten Zutaten (inkl. Fluessigkeiten & garnish):',
+  '   - Jede Zutat IRGENDWO im Output (steps, garnish/Topping/Deko, z.B. Pinienkerne) MUSS mit Menge in ingredients stehen – nichts aus dem Nichts.',
+  '   - Auch Koch-/Quellwasser (auch Wasser zum Quellen). Trocken nur anroesten (quellen NICHT in trockener Pfanne).',
+  '   - Shakes: Minimum 300 ml (pro 30 g Proteinpulver 200 ml, +100 ml/10 g quellend). Eintoepfe: 250–350 ml/Portion.',
+  '7) HERD-STUFEN-LOGIK: "Stufe X von 9" NUR bei Koch/Brat/Roest. Bei kalten Schritten Herd-Stufe STRIKT VERBOTEN.',
   '8) GEWUERZ-DOSIERUNG (ABSOLUTES GRAMM-VERBOT): amount=0, name "1 Prise"/"Messerspitze"/"nach Geschmack".',
-  '9) Kalorien-Plausibilitaet: kcal ≈ Protein×4 + Netto-KH×4 + Fett×9 + Ballaststoffe×2 (±10 %). Bei staerkerer Abweichung Tabelle korrigieren.',
+  '9) Kalorien-Plausibilitaet: kcal ≈ Protein×4 + Netto-KH×4 + Fett×9 + Ballaststoffe×2 (±10 %). Sonst Tabelle korrigieren.',
   '10) Zeit-Realismus: prep_time ≈ Summe der Schrittzeiten (inkl. Back-/Gar-/Ruhezeiten).',
-  '11) Einheiten-Konsistenz: pro Zutat eine Einheit durchgaengig (keine Tasse↔g Mischungen im Text).',
-  '12) Allergen- & Ersatz-Konsistenz: deklarierte Einschraenkungen (laktose-/glutenfrei) inkl. Saucen/Fette einzeln pruefen.',
-  '13) Portionsskalierung: bei "fuer n Personen" Zutaten+Naehrwerte mitskalieren; Zeit meist gleich, ggf. Pfannenhinweis.',
-  '14) Grenzfälle explizit: widerspruechliche Wuensche (Keto+Reis) benennen + Alternative; physikalisch unmoegliche Ziele ehrlich sagen.',
-  '15) Rundungsregel: kcal auf 5er-Schritte, Gramm auf ganze Zahlen – keine Schein-Praezision (23,7 g).',
-  '16) TEXTUR & FOOD PAIRING: mind. 3 Texturen (cremig + bissfest + crunchy); garnish PFLICHT; herzhaft immer Saeure; molekulares Food-Pairing.',
+  '11) Einheiten-Konsistenz: pro Zutat eine Einheit durchgaengig (keine Tasse↔g Mischungen).',
+  '12) Allergen- & Ersatz-Konsistenz: Einschraenkungen inkl. Saucen/Fette einzeln pruefen.',
+  '13) Portionsskalierung: Zutaten+Naehrwerte mitskalieren; Zeit meist gleich.',
+  '14) Grenzfälle explizit: Konflikte (Keto+Reis) benennen + Alternative; unmoegliche Ziele ehrlich sagen – Zahlen nicht schoenen.',
+  '15) Rundungsregel: kcal auf 5er-Schritte, Gramm ganzzahlig – keine Schein-Praezision.',
+  '16) TEXTUR & FOOD PAIRING: mind. 3 Texturen (cremig + bissfest + crunchy); garnish PFLICHT; herzhaft immer Saeure.',
   '17) BEZEICHNUNGS-KONSISTENZ / Namensgleichheit: Zutat ↔ steps ↔ Titel ↔ garnish ↔ self_check ↔ nutrition_note.',
   '18) SCHRITTE: Mise en Place zuerst; bei Hitze Stufe + Zeit + Sensorik; Anrichten inkl. garnish.',
-  '19) PFLICHT-FELD self_check (SICHTBAR, mit echter Rechnung – kein blosses "passt"):',
-  '   - Format exakt mit Zeilen: Kalorien-Rechnung: … ✓/✗ | Oel-/Fluessigkeits-Summe Text: … ✓/✗ | Proteinquellen: […] = X von max. 2 ✓/✗ |',
-  '     Herd-Status bei empfindlichen Milchprodukten: AUS/n/a ✓/✗ | Keto-/Diät-Label: … g Netto-KH → [gueltig/ungueltig] | Zeit-Summe: … = prep_time ✓/✗',
-  '   - Bei ✗: Werte KORRIGIEREN bevor finales Rezept. Block immer ausgeben.',
-  '20) nutrition_note = Chef-Analyse: 2–3 Saetze; Zahlen 1:1 aus der aufsummierten Tabelle (nach Bottom-Up + Rundung).',
+  '19) PFLICHT-FELD self_check = KOPIER-PRUEFUNG (Anti-Halluzination):',
+  '   - Position im logischen Output: NACH garnish, DIREKT VOR nutrition_note (Chef-Analyse). Nie an den Anfang.',
+  '   - JEDE Zahl in self_check MUSS wortwoertlich aus der bereits berechneten Naehrwert-Summe und ingredients[] KOPIERT sein – kein zweiter Rechenvorgang mit eigenen Werten.',
+  '   - VERBOTEN: self_check/Chef-Analyse mit anderen Protein/kcal/ml als Tabelle/Liste (auch nicht "wissenschaftlich klingend").',
+  '   - Pflichtzeilen: Kalorien-Rechnung (Werte aus Tabelle)×4/9/2 ✓/✗ | Zutaten-Mengen-Abgleich Text↔Liste (jede Fluessigkeit/Hauptmenge) ✓/✗ |',
+  '     Vollstaendigkeit aller Zutaten (steps+garnish in Liste) ✓/✗ | Proteinquellen max 2 ✓/✗ | Herd AUS bei Milchprodukten ✓/✗ |',
+  '     Numerus-Konsistenz Ei ✓/✗ | Keto-/Diät-Label | Zeit-Summe = prep_time ✓/✗',
+  '   - Nutzerziel verfehlt: ✗ setzen und Zutaten/Tabelle korrigieren – NICHT Behauptung mit ✓ schoenen.',
+  '   - NEGATIV-VERBOT: self_check "80 g Protein" bei Tabelle "40 g"; Text 15 ml Oel bei Liste 8 ml trotzdem ✓; garnish-Pinienkerne ohne Liste; "die Eier" bei 1 Ei.',
+  '20) nutrition_note = Chef-Analyse: 2–3 Saetze; Zahlen 1:1 aus Tabelle (nach Bottom-Up + Rundung).',
 ].join('\n');
 
 /** @deprecated Alias – gleicher Inhalt wie CHEF_FRAMEWORK_RULES (Export-Kompatibilitaet). */
@@ -352,7 +361,7 @@ function baseRecipeProperties(opts) {
       type: 'string',
       description: structured
         ? 'Immer leerer String ""'
-        : 'SICHTBARER SELF-CHECK mit echten Rechnungen (Kalorien P×4+KH×4+F×9+B×2, Oel-Summe, Proteinquellen max 2, Herd AUS bei Milchprodukten, Keto-Label, Zeit-Summe). Nie leer bei normalen Rezepten.',
+        : 'KOPIER-Pruefung (Anti-Halluzination): Zahlen wortwoertlich aus Tabelle+ingredients. Zeilen: Kalorien (Tabelle), Mengen-Abgleich Text↔Liste, Vollstaendigkeit (inkl. garnish), Proteinquellen, Herd AUS, Numerus Ei, Diät-Label, Zeit-Summe. Nie leer.',
     },
     shopping_list: { type: 'array', items: { type: 'string' }, description: structured ? 'Immer [] – App baut die Liste' : undefined },
     steps: { type: 'array', items: { type: 'string' } },
@@ -624,8 +633,8 @@ function buildGenerativeMessages(p) {
     'Jede Zutat: name, amount (Zahl > 0), unit ("g"|"ml"), status (vorhanden|benoetigt), netCarbs/fat/protein/fiber je 100 g/ml.',
     'steps: 5-10 strukturierte Schritte (Mise en Place zuerst; Hitzestufe, Zeit, Reifezeichen; Anrichten mit garnish). shopping_list: benoetigte Zutaten als "Name – Menge g|ml".',
     'garnish: kurze Garnitur/Topping-Angabe (String, nie leer bei normalen Rezepten).',
-    'self_check: sichtbarer Rechenblock mit Kalorien-Formel, Oel-Summe, Proteinquellen, Herd-Status, Diät-Label, Zeit-Summe (✓/✗). Nie leer bei normalen Rezepten.',
-    'nutrition_note: Chef-Analyse 2–3 Saetze; Zahlen 1:1 aus Bottom-Up-Summe.',
+    'self_check: KOPIER-Pruefung nach garnish / vor Chef-Analyse. Zahlen nur aus Tabelle+Liste (kein zweites Rechnen). Mengen-Abgleich, Vollstaendigkeit inkl. garnish, Numerus Ei, Proteinquellen, Herd, Label, Zeit (✓/✗). Nie leer.',
+    'nutrition_note: Chef-Analyse 2–3 Saetze NACH self_check; Zahlen 1:1 aus derselben Tabelle – keine Alternativzahlen.',
     isOriginalMode ? '' : CHEF_FRAMEWORK_RULES,
     emotionRules,
     themeRules,
@@ -758,7 +767,7 @@ function toClientRecipe(parsed, p) {
     : (typeof parsed.garnish === 'string' ? parsed.garnish.trim().slice(0, 200) : '');
   const selfCheck = structured
     ? ''
-    : (typeof parsed.self_check === 'string' ? parsed.self_check.trim().slice(0, 1200) : '');
+    : (typeof parsed.self_check === 'string' ? parsed.self_check.trim().slice(0, 2000) : '');
   return {
     title: (typeof parsed.title === 'string' && parsed.title.trim()) ? parsed.title.trim().slice(0, 200) : 'Rezept',
     // STRUCTURED: 0 = Portionen nicht angegeben (App laesst leer). GENERATIV: Fallback 2.
