@@ -2214,7 +2214,12 @@
   /* AKTUALISIERT (LabPlate-Lila, exakte Referenzfarben): Nutzer-Bubble in sanftem Hell-Lila,
      KI-Bubble in Weiss mit feinem Rand - wie vorgegeben, unabhaengig vom App-Farbschema. */
   .nutri-recipe-chat-bubble.user{
-    background:var(--purple-soft); color:#4C1D95; border-bottom-right-radius:6px;
+    background:var(--purple-soft); color:var(--icon-on-purple-soft); border-bottom-right-radius:6px;
+  }
+  /* Dark: User-Bubble-Text muss hell sein (#4C1D95 war auf --purple-soft/#21183D unleserlich). */
+  html[data-theme="dark"] .nutri-recipe-chat-bubble.user,
+  html:not([data-theme="light"]) .nutri-recipe-chat-bubble.user{
+    color:var(--ink);
   }
   .nutri-recipe-chat-bubble.ai{
     background:var(--card); color:var(--ink); border:1px solid var(--bg-2);
@@ -29386,10 +29391,10 @@ initBarcodeEvents();
     // Chef-Framework (GENERATIV) – Spiegel von labplate-backend/nutri-recipe-core.js
     // (CHEF_FRAMEWORK_RULES). Eigenrezept/STRUCTURED/Original: nicht anhaengen.
     var LBL_RECIPE_CULINARY_RULES = {
-      de: 'CHEF-FRAMEWORK v2: (1) Food-Pairing: Saeure+Fett+Umami+Bitternote/Sueße; herzhaft immer Saeure-Quelle; suess immer Prise Meersalz + Frische. (2) 3-Texturen-Standard: cremig + bissfest + crunchy; garnish PFLICHT. (3) Praxis/Thermik: Eintoepfe 250–350 ml/Portion; Shake mind. 300 ml (200 ml/30 g Pulver, +100 ml/10 g quellend, Fluessigkeit zuerst); Gewuerze max. 0.5 g; Quark/Joghurt/Proteinpulver nie in kochende Fluessigkeit (>70 C) – nur Finish <60 C oder kalt; Eier ganz (≈55–60 g); keine Lueckenbuesser-Zutaten; suess ohne Speiseoele. (4) Schritte: Mise en Place; Stufe/Zeit/sensorische Signale; Anrichten mit garnish. (5) nutrition_note = Chef-Analyse: IMMER 2–3 Saetze WARUM Aromen+Textur + physiologischer Vorteil – nie leer.',
-      en: 'CHEF FRAMEWORK v2: (1) Food pairing: acid+fat+umami+bitter/sweet; savory always needs acid; sweet always pinch of sea salt + freshness. (2) 3-texture standard: creamy + tender + crunchy; garnish REQUIRED. (3) Practice/heat: stews 250–350 ml/serving; shake min 300 ml (200 ml/30 g powder, +100 ml/10 g swelling, liquid first); spices max 0.5 g; quark/yogurt/protein powder never into boiling liquid (>70 C) – finish <60 C or cold; whole eggs (≈55–60 g); no filler ingredients; sweet without cooking oils. (4) Steps: mise en place; heat level/time/sensory cues; plate with garnish. (5) nutrition_note = chef analysis: ALWAYS 2–3 sentences WHY flavors+texture + physiological benefit – never empty.',
-      es: 'CHEF-FRAMEWORK v2: (1) Food pairing con acidez; dulce con pizca de sal + frescura. (2) 3 texturas; garnish OBLIGATORIO. (3) Guisos 250–350 ml; batido min 300 ml; especias max 0.5 g; quark/yogur/proteina nunca en liquido hirviendo; huevos enteros; sin relleno. (4) Mise en place; calor/tiempo/senales. (5) nutrition_note = analisis chef: SIEMPRE 2–3 frases – nunca vacio.',
-      it: 'CHEF-FRAMEWORK v2: (1) Food pairing con acidita; dolce con pizzico di sale + freschezza. (2) 3 texture; garnish OBBLIGATORIO. (3) Stufati 250–350 ml; shake min 300 ml; spezie max 0.5 g; quark/yogurt/proteine mai in liquido bollente; uova intere; senza riempitivi. (4) Mise en place; calore/tempo/segnali. (5) nutrition_note = analisi chef: SEMPRE 2–3 frasi – mai vuoto.'
+      de: 'CHEF-FRAMEWORK v2.1: (1) PROTEIN-HARMONIE: keine Mini-Zweitproteine – Hauptzutat erhoehen. (2) Gewuerze: Salz/Pfeffer/Schaerfe NIE in Gramm; amount=0 + Name "1 Prise"/"Messerspitze"/"nach Geschmack". (3) Food-Pairing: Saeure+Fett+Umami; herzhaft immer Saeure; suess Prise Meersalz + Frische. (4) 3-Texturen; garnish PFLICHT. (5) Eintoepfe 250–350 ml; Shake mind. 300 ml; Quark/Joghurt/Proteinpulver nie >70 C in Fluessigkeit; Eier ganz. (6) Mise en Place; Stufe/Zeit/Signale. (7) nutrition_note = Chef-Analyse 2–3 Saetze – nie leer.',
+      en: 'CHEF FRAMEWORK v2.1: (1) PROTEIN HARMONY: never tiny second proteins – scale the main one. (2) Spices: salt/pepper/heat NEVER in grams; amount=0 + name "pinch"/"to taste". (3) Food pairing with acid; sweet needs pinch of salt + freshness. (4) 3 textures; garnish REQUIRED. (5) Stews 250–350 ml; shake min 300 ml; quark/yogurt/protein never into boiling liquid; whole eggs. (6) Mise en place; heat/time/cues. (7) nutrition_note = chef analysis 2–3 sentences – never empty.',
+      es: 'CHEF-FRAMEWORK v2.1: (1) Armonia proteica: no mini-proteinas extra. (2) Especias: NUNCA en gramos; amount=0 + "pizca"/"al gusto". (3) Food pairing con acidez. (4) 3 texturas; garnish obligatorio. (5) Termica y liquidos. (6) Mise en place. (7) nutrition_note = analisis chef 2–3 frases.',
+      it: 'CHEF-FRAMEWORK v2.1: (1) Armonia proteica: niente mini-proteine extra. (2) Spezie: MAI in grammi; amount=0 + "pizzico"/"q.b.". (3) Food pairing con acidita. (4) 3 texture; garnish obbligatorio. (5) Termica e liquidi. (6) Mise en place. (7) nutrition_note = analisi chef 2–3 frasi.'
     };
     var LBL_RECIPE_CHAT_RULES = {
       de: 'Erstelle Rezepte mit Fokus auf die anonymisierten Ernährungsregeln und Makro-Ziele des Nutzers (z. B. Ballaststoffe, moderate Kohlenhydrate, passendes Protein). Keine echten Laborwerte, Namen oder personenbezogenen Daten erwähnen. ' + LBL_RECIPE_CULINARY_RULES.de,

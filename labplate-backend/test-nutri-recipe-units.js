@@ -41,7 +41,8 @@ assert(/3-TEXTUREN|DREI Texturen/i.test(sys), 'Generativ-Prompt: 3-Texturen-Stan
 assert(/pro 30 g Proteinpulver 200 ml|200 ml.*30 g Proteinpulver/i.test(sys), 'Generativ-Prompt: Proteinpulver-Fluessigkeitsregel');
 assert(/Minimum 300 ml/i.test(sys), 'Generativ-Prompt: Shake Mindestfluessigkeit');
 assert(/MOLEKULARE HITZE|gerinnen |>70/i.test(sys), 'Generativ-Prompt: molekulare Hitze-Regel');
-assert(/max\. 0\.5 g|nie > 1 g/i.test(sys), 'Generativ-Prompt: Gewuerz-Dosierung');
+assert(/PROTEIN-HARMONIE|Mini-Protein|Zutaten-Salat/i.test(sys), 'Generativ-Prompt: Protein-Harmonie');
+assert(/ABSOLUTES GRAMM-VERBOT|amount = 0.*Prise|1 Prise/i.test(sys), 'Generativ-Prompt: Gewuerz ohne Gramm');
 assert(/Mise en Place/i.test(sys), 'Generativ-Prompt: Mise en Place');
 assert(/sensorische Signale|goldbraun/i.test(sys), 'Generativ-Prompt: sensorische Signale');
 assert(/Chef-Analyse/i.test(sys), 'Generativ-Prompt: Chef-Analyse in nutrition_note');
@@ -86,6 +87,24 @@ assert.strictEqual(eggOil.ingredients[1].unit, 'ml');
 assert.strictEqual(eggOil.ingredients[1].amount, 15);
 assert.strictEqual(eggOil.garnish, 'gerostete Mandeln');
 console.log('OK generative egg/g + oil/ml');
+
+// 2b) Generativ: Gewuerz amount=0 bleibt 0 (Prise)
+const spiceZero = core.toClientRecipe({
+  title: 'Test',
+  servings: 1,
+  prep_time: '5 Min',
+  nutrition_note: 'x',
+  garnish: 'Kraeuter',
+  ingredients: [
+    { name: 'Salz (1 Prise)', amount: 0, unit: 'g', status: 'benoetigt', netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
+    { name: 'Tofu', amount: 200, unit: 'g', status: 'benoetigt', netCarbs: 1, fat: 5, protein: 12, fiber: 1 },
+  ],
+  shopping_list: [],
+  steps: ['Wuerzen'],
+}, genPayload());
+assert.strictEqual(spiceZero.ingredients[0].amount, 0, 'Gewuerz amount 0 muss bleiben');
+assert.strictEqual(spiceZero.ingredients[1].amount, 200);
+console.log('OK generative spice amount=0');
 
 // 3) Structured: q.b. / fehlende Menge = 0 bleibt 0
 const structLines = ['Basilikum q.b.', 'Olivenoel 20 ml', 'Salz'];

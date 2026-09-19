@@ -39,36 +39,36 @@ const ING_FIELDS = ['name', 'amount', 'unit', 'status', 'netCarbs', 'fat', 'prot
 const STRUCTURED_UNIT_TABLE = strictPrompt.STRUCTURED_UNIT_TABLE;
 
 /**
- * Chef-Framework v2 – System-Chef / Food Science (nur GENERATIV).
+ * Chef-Framework v2.1 – System-Chef / Food Science (nur GENERATIV).
  * Eigenrezept/STRUCTURED und Originalmodus: NICHT einbinden.
- * unit bleibt strikt g|ml; "Prise"/EL/TL/Ei nur als Denkhilfe, dann in g|ml.
+ * unit bleibt strikt g|ml; Gewuerze mit amount=0 + Name "1 Prise"/"nach Geschmack".
  */
 const CHEF_FRAMEWORK_RULES = [
-  'CHEF-FRAMEWORK v2 (verbindlich – hyper-praezise, food-science, gelingsicher):',
+  'CHEF-FRAMEWORK v2.1 (verbindlich – hyper-praezise, food-science, gelingsicher):',
   'Rolle: System-Chefkoch + Ernaehrungs-Wissenschaftler. Food-Pairing, Sensorik, Konsistenz und Makro-Mathematik vereinen. Keine Halluzinationen, keine sinnlosen Lueckenbuesser-Zutaten.',
-  '1) SCIENTIFIC FOOD PAIRING & AROMEN-BALANCE:',
-  '   - Molekulares Food-Pairing: Zutaten chemisch harmonisieren (Saeure + Fett + Umami + feine Bitternote/Sueße).',
-  '   - Herzhaft: IMMER gezielte Saeure-Quelle (Zitrone, feiner Essig, Sumach, Kefir/Joghurt, Tomaten-Acids) – Fett/Protein lebendig machen.',
-  '   - Suess/Shake: IMMER feine Prise Meersalz (Aromenverstaerker) + Frische-Komponente (Beeren/Zitrone/Joghurt).',
-  '2) TEXTUR-ARCHITEKTUR (3-TEXTUREN-STANDARD):',
-  '   - Mindestens DREI Texturen pro Gericht: Cremig/Saemig + Bissfest/Zart + Knusprig/Crunchy.',
-  '   - Feld "garnish" PFLICHT liefert die Crunchy-Ebene (gerostete Saaten, Kakaonibs, Nuesse, krosse Tofu-Crumbles, Kraeuter+Zeste). Nie leer.',
-  '3) PHYSIKALISCHE KUECHEN-PRAXIS & THERMIK:',
-  '   - KONSISTENZ: Hafer/Proteinpulver/Chia/Huelsenfruechte saugen Fluessigkeit.',
-  '     * Eintoepfe/Suppen mit Bindemitteln: 250–350 ml Fluessigkeit pro Portion.',
-  '     * Shakes: Minimum 300 ml; pro 30 g Proteinpulver 200 ml; pro 10 g quellender Zutat +100 ml; Fluessigkeit IMMER zuerst in den Mixer.',
-  '   - Hauptgerichte nie trocken (Sosse/Reduktion/Dressing/Schmand/Olivenoel-Finish).',
-  '   - Suess: KEINE herzhaften Speiseoele (Oliven-/Raps-/Sesamoel) – Nussmus, Kakaobutter, Kokosoel oder Milchfette.',
-  '   - GEWUERZ-DOSIERUNG: Salz/Pfeffer/Schaerfe nie > 1 g. Max. 0.5 g (Prise) – name darf "Prise" enthalten, unit bleibt "g".',
-  '   - MOLEKULARE HITZE: Magerquark, Magerjoghurt, Proteinpulver gerinnen >70 C. NIEMALS in kochende Fluessigkeit ruehren – nur kalter Finish-Klecks, Topping oder sanft <60 C.',
-  '   - Eier in ganzen Stueckzahlen (1 Ei ≈ 55–60 g). Keine unpraktischen Bruchteile, keine geschmacklich stoerenden Makro-Lueckenbuesser.',
-  '4) ULTRA-PRAEZISE SCHRITTE:',
-  '   - Start IMMER mit Mise en Place (Schneidtechnik, Temperieren, abmessen).',
-  '   - Exakte Parameter: Hitzestufe (z.B. "mittlere Stufe, Stufe 6 von 9"), Zeitspannen UND sensorische Signale ("anbraten bis die Raender goldbraun sind und ein nussiger Duft aufsteigt").',
-  '   - Letzter Schritt: Anrichten inkl. garnish.',
-  '5) CHEF-ANALYSE (nutrition_note):',
-  '   - nutrition_note = mitreissende Chef-Analyse: IMMER 2–3 Saetze, nie leer/fehlerhaft.',
-  '   - Erklaere wissenschaftlich-kulinarisch WARUM Aromen+Texturen funktionieren UND den physiologischen Vorteil (ohne Laborwerte, Namen, Diagnosen).',
+  '1) PROTEIN-HARMONIE (kein Zutaten-Salat):',
+  '   - NIEMALS winzige Mengen einer zweiten Hauptprotein-Quelle dazuwerfen (z.B. KEIN 25 g Haehnchen in einer Tofu-Eier-Pfanne).',
+  '   - Proteinziel erreichen, indem du die GEWAEHLTE Hauptzutat erhoehst (mehr Tofu, zweites Ei, mehr Kichererbsen) – nicht durch Mini-Protein-Zutaten.',
+  '2) GEWUERZ-DOSIERUNG (ABSOLUTES GRAMM-VERBOT fuer Salz/Pfeffer/Schaerfe):',
+  '   - Salz, Pfeffer, Chili und scharfe Gewuerze NIEMALS als Gramm-Menge (kein "5 g Salz", kein "1 g Pfeffer").',
+  '   - Stattdessen: amount = 0, unit = "g", name z.B. "Salz (1 Prise)", "Pfeffer (1 Messerspitze)", "Chili nach Geschmack".',
+  '3) SCIENTIFIC FOOD PAIRING & AROMEN-BALANCE:',
+  '   - Molekulares Food-Pairing: Saeure + Fett + Umami + feine Bitternote/Sueße.',
+  '   - Herzhaft: IMMER gezielte Saeure-Quelle (Zitrone, feiner Essig, Sumach, Kefir/Joghurt, Tomaten-Acids).',
+  '   - Suess/Shake: IMMER feine Prise Meersalz (als amount=0-Zutat "Meersalz (1 Prise)") + Frische-Komponente.',
+  '4) TEXTUR-ARCHITEKTUR (3-TEXTUREN-STANDARD):',
+  '   - Mindestens DREI Texturen: Cremig/Saemig + Bissfest/Zart + Knusprig/Crunchy.',
+  '   - Feld "garnish" PFLICHT liefert die Crunchy-Ebene. Nie leer.',
+  '5) PHYSIKALISCHE KUECHEN-PRAXIS & THERMIK:',
+  '   - Eintoepfe/Suppen mit Bindemitteln: 250–350 ml Fluessigkeit pro Portion.',
+  '   - Shakes: Minimum 300 ml; pro 30 g Proteinpulver 200 ml; pro 10 g quellender Zutat +100 ml; Fluessigkeit IMMER zuerst in den Mixer.',
+  '   - Hauptgerichte nie trocken (Sosse/Reduktion/Dressing/Finish). Suess: keine Speiseoele – Nussmus/Kakaobutter/Kokosoel/Milchfette.',
+  '   - MOLEKULARE HITZE: Magerquark, Magerjoghurt, Proteinpulver NIEMALS in kochende Fluessigkeit (>70 C) – nur Finish <60 C, kalter Klecks oder Topping.',
+  '   - EIER: nur ganze Stueckzahlen (1 Ei ≈ 55–60 g). Keine Bruchteile.',
+  '6) ULTRA-PRAEZISE SCHRITTE:',
+  '   - Start IMMER mit Mise en Place. Hitzestufe (z.B. "Stufe 5 von 9"), Zeitspannen UND sensorische Signale ("goldbraun, nussiger Duft"). Anrichten inkl. garnish.',
+  '7) CHEF-ANALYSE (nutrition_note):',
+  '   - IMMER 2–3 Saetze, vollstaendig: WARUM Aromen+Textur funktionieren + physiologischer Vorteil (ohne Laborwerte/Namen/Diagnosen).',
 ].join('\n');
 
 /** @deprecated Alias – gleicher Inhalt wie CHEF_FRAMEWORK_RULES (Export-Kompatibilitaet). */
@@ -293,7 +293,7 @@ function ingredientObjectSchema(description, opts) {
         type: 'number',
         description: strictAmounts
           ? 'Menge in g oder ml. Nur Nutzerangabe oder feste Umrechnungstabelle. Fehlt die Menge: 0 (= nicht angegeben). Keine freie Schaetzung.'
-          : 'Menge in g oder ml (Zahl > 0). Stueck/EL/TL vorher umrechnen: 1 Ei=60 g, 1 EL=15, 1 TL=5. Nie unit Stueck/EL/TL.',
+          : 'Menge in g oder ml. Stueck/EL/TL vorher umrechnen. Gewuerze (Salz/Pfeffer/Schaerfe): amount=0 mit Name "1 Prise"/"nach Geschmack". Sonst Zahl > 0.',
       },
       unit: {
         type: 'string',
@@ -666,14 +666,17 @@ function num(v, fallback) {
 function normalizeIng(item, fallbackName, opts) {
   const src = item && typeof item === 'object' ? item : {};
   const m = src.macrosPer100g && typeof src.macrosPer100g === 'object' ? src.macrosPer100g : src;
-  const amount = num(src.amount, 0);
-  // STRUCTURED: amount 0 = "nicht angegeben" (KI soll fehlende Mengen nicht erfinden).
-  // GENERATIV: fehlende/ungueltige Menge weiterhin auf 1 setzen, damit Rezeptideen nutzbar bleiben.
   const preserveMissing = !!(opts && opts.preserveMissingAmount);
   const zeroMacros = !!(opts && opts.zeroMacros);
-  const normalizedAmount = amount > 0
-    ? Math.round(amount * 10) / 10
-    : (preserveMissing ? 0 : 1);
+  // Explizite Menge 0 (Gewuerz "1 Prise"/"nach Geschmack") nicht auf 1 erzwingen.
+  const hasExplicitAmount = src.amount != null && src.amount !== '' && Number.isFinite(Number(src.amount));
+  const amount = hasExplicitAmount ? num(src.amount, 0) : NaN;
+  let normalizedAmount;
+  if (hasExplicitAmount) {
+    normalizedAmount = amount > 0 ? Math.round(amount * 10) / 10 : 0;
+  } else {
+    normalizedAmount = preserveMissing ? 0 : 1;
+  }
   return {
     name: (typeof src.name === 'string' && src.name.trim()) ? src.name.trim().slice(0, 200) : (fallbackName || 'Zutat'),
     amount: normalizedAmount,

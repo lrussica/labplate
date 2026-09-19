@@ -1995,7 +1995,11 @@
   /* AKTUALISIERT (LabPlate-Lila, exakte Referenzfarben): Nutzer-Bubble in sanftem Hell-Lila,
      KI-Bubble in Weiss mit feinem Rand - wie vorgegeben, unabhaengig vom App-Farbschema. */
   .nutri-recipe-chat-bubble.user{
-    background:var(--purple-soft); color:#4C1D95; border-bottom-right-radius:6px;
+    background:var(--purple-soft); color:var(--icon-on-purple-soft); border-bottom-right-radius:6px;
+  }
+  html[data-theme="dark"] .nutri-recipe-chat-bubble.user,
+  html:not([data-theme="light"]) .nutri-recipe-chat-bubble.user{
+    color:var(--ink);
   }
   .nutri-recipe-chat-bubble.ai{
     background:var(--card); color:var(--ink); border:1px solid var(--bg-2);
