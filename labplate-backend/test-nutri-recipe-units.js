@@ -27,100 +27,64 @@ function genPayload(extra) {
   }, extra || {});
 }
 
-// 1) Generativ-Schema + Prompt
+// 1) Generativ-Schema v9.2 + Prompt
 const genReq = core.buildGroqRequest(genPayload(), 'test-model');
 const unitEnum = genReq.response_format.json_schema.schema.properties.ingredients.items.properties.unit.enum;
-assert.deepStrictEqual(unitEnum, ['g', 'ml'], 'Generativ-Schema unit enum muss g|ml sein');
+assert.deepStrictEqual(unitEnum, ['g', 'ml', 'prise', 'messerspitze', 'stk'], 'Generativ-Schema unit enum v9.2');
 const sys = genReq.messages[0].content;
-assert(/NUR "g" oder "ml"/i.test(sys) || /unit-Feld: NUR/i.test(sys), 'Generativ-Prompt muss g|ml erzwingen');
-assert(/VERBOTEN.*Stueck|Stueck.*VERBOTEN|Nie unit Stueck/i.test(sys) || /VERBOTEN als unit/i.test(sys), 'Generativ-Prompt muss Stueck verbieten');
-assert(/1 Ei = 60 g/i.test(sys), 'Generativ-Prompt braucht Ei->g Tabelle');
-assert(/CHEF-FRAMEWORK/i.test(sys), 'Generativ-Prompt braucht Chef-Framework');
-assert(/FOOD PAIRING|Food-Pairing|molekulares Food-Pairing/i.test(sys), 'Generativ-Prompt: Food Pairing');
-assert(/3-TEXTUREN|3 Texturen|Mindestens 3 Texturen|cremig \+ bissfest \+ crunchy/i.test(sys), 'Generativ-Prompt: 3-Texturen-Standard');
-assert(/pro 30 g Proteinpulver 200 ml|200 ml.*30 g Proteinpulver/i.test(sys), 'Generativ-Prompt: Proteinpulver-Fluessigkeitsregel');
-assert(/Minimum 300 ml/i.test(sys), 'Generativ-Prompt: Shake Mindestfluessigkeit');
-assert(/MOLEKULARE HITZE|gerinnen |>70/i.test(sys), 'Generativ-Prompt: molekulare Hitze-Regel');
-assert(/PROTEIN-HARMONIE|Mini-Protein|Zutaten-Salat/i.test(sys), 'Generativ-Prompt: Protein-Harmonie');
-assert(/ABSOLUTES GRAMM-VERBOT|amount = 0.*Prise|1 Prise|GEWUERZ-DOSIERUNG/i.test(sys), 'Generativ-Prompt: Gewuerz ohne Gramm');
-assert(/Salmonellen|rohes Ei NIEMALS|HYGIENE & EIER/i.test(sys), 'Generativ-Prompt: Ei-Hygiene');
-assert(/anroesten|quellen NICHT|QUELL- UND FLUESSIGKEITS/i.test(sys), 'Generativ-Prompt: Quell-Dynamik');
-assert(/BEZEICHNUNGS-KONSISTENZ|Namensgleichheit/i.test(sys), 'Generativ-Prompt: Namensgleichheit');
-assert(/SELF-CHECK|nach dem AUSSCHALTEN|AUSSCHALTEN der Herdplatte/i.test(sys), 'Generativ-Prompt: Self-Check/Hitze');
-assert(/KETO-EHRLEICHKEIT|Fake-Labels|<10 g/i.test(sys), 'Generativ-Prompt: Keto-Ehrlichkeit');
-assert(/MAXIMUM 2 HAUPT-PROTEIN|Hoechstens 2 primaere/i.test(sys), 'Generativ-Prompt: max 2 Proteine');
-assert(/VOLLSTAENDIGKEIT VON FLUESSIGKEITEN|VOLLSTAENDIGKEIT ALLER|auch Wasser/i.test(sys), 'Generativ-Prompt: Fluessigkeiten vollstaendig');
-assert(/MENGEN-SYNCHRONISATION|100% mit ingredients|ABSOLUTE ZUTATEN/i.test(sys), 'Generativ-Prompt: Mengen-Sync');
-assert(/HERD-STUFEN-LOGIK|kalten Schritten|Herd-Stufe STRIKT VERBOTEN/i.test(sys), 'Generativ-Prompt: Herd-Stufen-Logik');
-assert(/EIERS?-STUECKZAHL|1 Ei \(Groesse M|das Ei/i.test(sys), 'Generativ-Prompt: Ei-Stueckzahl-Regel');
-assert(/Mise en Place/i.test(sys), 'Generativ-Prompt: Mise en Place');
-assert(/sensorische Signale|Sensorik|Zeit \+ Sensorik/i.test(sys), 'Generativ-Prompt: sensorische Signale');
-assert(/Chef-Analyse/i.test(sys), 'Generativ-Prompt: Chef-Analyse in nutrition_note');
+assert(/CHEF-FRAMEWORK v9\.2|v9\.2/i.test(sys), 'Generativ-Prompt braucht Chef-Framework v9.2');
+assert(/\{0001\}|ingredient_id|Platzhalter/i.test(sys), 'Generativ-Prompt: Platzhalter-Zwang');
+assert(/KEIN self_check|kein Self-Check|KEIN \[SELF-CHECK\]/i.test(sys), 'Generativ-Prompt: kein Self-Check-Freitext');
+assert(/BOTTOM-UP|Regel 0|0a/i.test(sys), 'Generativ-Prompt: Bottom-Up / 0a');
+assert(/protein_source|MAXIMUM 2|PROTEIN-HARMONIE|Zutaten-Salat/i.test(sys), 'Generativ-Prompt: max 2 Proteine');
+assert(/KETO-EHRLEICHKEIT|netto_kh_g <10|<10/i.test(sys), 'Generativ-Prompt: Keto-Ehrlichkeit');
+assert(/GERINNUNGSSCHUTZ|Mascarpone|Schmand|Creme fraiche/i.test(sys), 'Generativ-Prompt: Gerinnungsschutz');
+assert(/prise|ABSOLUTES GRAMM-VERBOT|GEWUERZ/i.test(sys), 'Generativ-Prompt: Gewuerz ohne Gramm');
+assert(/Kalorien-Plausibilitaet|Protein×4|Ballaststoffe×2/i.test(sys), 'Generativ-Prompt: Kalorien-Plausibilitaet');
+assert(/Food-Pairing|FOOD PAIRING|3 Texturen|cremig \+ bissfest/i.test(sys), 'Generativ-Prompt: Food Pairing / Textur');
 assert(/System-Chefkoch|Ernaehrungs-Wissenschaftler/i.test(sys), 'Generativ-Prompt: System-Chef-Rolle');
 assert(/garnish/i.test(sys), 'Generativ-Prompt erwaehnt garnish');
+assert(/chef_analysis/i.test(sys), 'Generativ-Prompt: chef_analysis');
 assert(/SPRACHE \(verbindlich\)|komplett auf/i.test(sys), 'Generativ-Prompt: verbindliche Ausgabesprache');
-assert.strictEqual(
-  genReq.response_format.json_schema.schema.required.includes('garnish'),
-  true,
-  'Generativ-Schema muss garnish require'
-);
-assert.strictEqual(
-  !!genReq.response_format.json_schema.schema.properties.garnish,
-  true,
-  'Generativ-Schema braucht garnish property'
-);
-assert(/BOTTOM-UP|Regel 0|NIEMALS Top-Down/i.test(sys), 'Generativ-Prompt: Bottom-Up Regel 0');
-assert(/GERINNUNGSSCHUTZ|Creme fraiche|Mascarpone|Schmand|VOLLSTAENDIG AUSGESCHALTET/i.test(sys), 'Generativ-Prompt: erweiterter Gerinnungsschutz');
-assert(/Kalorien-Plausibilitaet|Protein×4|Ballaststoffe×2|P×4/i.test(sys), 'Generativ-Prompt: Kalorien-Plausibilitaet');
-assert(/Zeit-Realismus|Zeit-Summe/i.test(sys), 'Generativ-Prompt: Zeit-Realismus');
-assert(/high-protein|≥25|>=25/i.test(sys), 'Generativ-Prompt: high-protein Ehrlichkeit');
-assert(/PFLICHT-FELD self_check|self_check: KOPIER|KOPIER-Pruefung|KOPIER-PRUEFUNG/i.test(sys), 'Generativ-Prompt: sichtbarer self_check');
-assert(/REGEL 0a|Zielwert-Rueckwaerts|kein Zielwert/i.test(sys), 'Generativ-Prompt: Regel 0a Anti-Halluzination');
-assert(/NUMERUS-KONSISTENZ|das Ei.*Singular|1 Ei.*das Ei/i.test(sys), 'Generativ-Prompt: Ei-Numerus');
-assert(/Vollstaendigkeit aller Zutaten|VOLLSTAENDIGKEIT ALLER|garnish\/Topping/i.test(sys), 'Generativ-Prompt: Vollstaendigkeit aller Zutaten');
-assert(/NEGATIV-VERBOT|kein zweiter Rechenvorgang|wortwoertlich/i.test(sys), 'Generativ-Prompt: Self-Check Kopier-Pflicht');
-assert.strictEqual(
-  genReq.response_format.json_schema.schema.required.includes('self_check'),
-  true,
-  'Generativ-Schema muss self_check require'
-);
-assert.strictEqual(
-  !!genReq.response_format.json_schema.schema.properties.self_check,
-  true,
-  'Generativ-Schema braucht self_check property'
-);
+assert.strictEqual(genReq.response_format.json_schema.schema.required.includes('garnish'), true);
+assert.strictEqual(genReq.response_format.json_schema.schema.required.includes('chef_analysis'), true);
+assert.strictEqual(genReq.response_format.json_schema.schema.required.includes('nutrition'), true);
+assert.strictEqual(!!genReq.response_format.json_schema.schema.properties.self_check, false, 'kein self_check im Schema');
+assert.strictEqual(genReq.response_format.json_schema.name, 'nutri_recipe_v92');
 // Originalmodus: kein Chef-Framework
 const origReq = core.buildGroqRequest(genPayload({
   ai_instruction: 'MODUS ORIGINALREZEPT (Italien): Gib die klassische Version von "Bolognese" zurück.',
 }), 'test-model');
 assert(!/CHEF-FRAMEWORK/i.test(origReq.messages[0].content), 'Originalmodus ohne Chef-Framework');
-assert(!/3-TEXTUREN|DREI Texturen|Mindestens 3 Texturen/i.test(origReq.messages[0].content), 'Originalmodus ohne 3-Texturen-Standard');
-console.log('OK generative schema+prompt');
+console.log('OK generative schema+prompt v9.2');
 
-// 2) Generativ: Ei als g, Oel als ml (simulierte Modell-Antwort nach korrekter Umrechnung)
+// 2) Generativ v9.2 → Client via toClientRecipe (Placeholder-Resolve)
 const eggOil = core.toClientRecipe({
   title: 'Spinat-Omelett',
-  servings: 1,
-  prep_time: '10 Min',
-  nutrition_note: 'Test',
-  garnish: 'gerostete Mandeln',
-  self_check: 'Kalorien-Rechnung: ok ✓',
+  prep_time_min: 10,
+  nutrition: { kcal: 300, protein_g: 20, fat_g: 20, netto_kh_g: 2, ballaststoffe_g: 1 },
+  diet_labels: [],
+  target_deviation_note: '',
   ingredients: [
-    { name: 'Ei', amount: 120, unit: 'g', status: 'vorhanden', netCarbs: 0.7, fat: 10, protein: 13, fiber: 0 },
-    { name: 'Olivenoel', amount: 15, unit: 'ml', status: 'vorhanden', netCarbs: 0, fat: 100, protein: 0, fiber: 0 },
+    { id: '0001', name: 'Ei (Größe M, ca. 60 g)', amount: 2, unit: 'stk', protein_source: true, netCarbs: 0.7, fat: 10, protein: 13, fiber: 0 },
+    { id: '0002', name: 'Olivenoel', amount: 15, unit: 'ml', protein_source: false, netCarbs: 0, fat: 100, protein: 0, fiber: 0 },
   ],
-  shopping_list: [],
-  steps: ['Eier verquirlen', 'Braten'],
+  steps: [
+    { title: 'Mix', content: '{0001} verquirlen, mit {0002} braten.', stove_level: 5, time_min: 5 },
+  ],
+  garnish: 'Ohne Extra',
+  chef_analysis: 'Siehe nutrition – hohe Proteinmenge aus {0001}.',
 }, genPayload());
 assert.strictEqual(eggOil.ingredients[0].unit, 'g');
 assert.strictEqual(eggOil.ingredients[0].amount, 120);
 assert.strictEqual(eggOil.ingredients[1].unit, 'ml');
 assert.strictEqual(eggOil.ingredients[1].amount, 15);
-assert.strictEqual(eggOil.garnish, 'gerostete Mandeln');
-assert.strictEqual(eggOil.self_check, 'Kalorien-Rechnung: ok ✓');
-console.log('OK generative egg/g + oil/ml');
+assert.ok(eggOil.steps[0].indexOf('Olivenoel') >= 0 || eggOil.steps[0].indexOf('15') >= 0);
+assert.strictEqual(eggOil.self_check, '');
+assert.strictEqual(eggOil.recipe_schema_version, 'v9.2');
+console.log('OK generative egg/g + oil/ml via v9.2 render');
 
-// 2b) Generativ: Gewuerz amount=0 bleibt 0 (Prise)
+// 2b) Generativ: Gewuerz amount=0 bleibt 0 (Prise) — Legacy-Pfad ohne prep_time_min
 const spiceZero = core.toClientRecipe({
   title: 'Test',
   servings: 1,

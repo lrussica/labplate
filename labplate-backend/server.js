@@ -722,6 +722,70 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   }
 
   const requestBody = buildRecipeRequest(flow, payload);
+
+  // Generativ (nicht structured/coach): v9.2 Validierung + Retry (max 3)
+  const useV92Pipeline = !payload.structured && flow !== 'coach' && flow !== 'nutri-coach' && flow !== 'core';
+  if (useV92Pipeline) {
+    const pipelineResult = await core.generateValidatedRecipe({
+      payload: payload,
+      groqOpts: { apiKey: GROQ_API_KEY, timeoutMs: REQUEST_TIMEOUT_MS },
+      callGroq: core.callGroq,
+      buildRequestBody: function (p) {
+        return buildRecipeRequest(flow, p);
+      },
+    });
+
+    if (pipelineResult.error === 'provider_error') {
+      const upstreamStatus = Number(pipelineResult.status) || 0;
+      const clientStatus = upstreamStatus === 400 ? 400 : 502;
+      logEvent('groq_http_error', { status: upstreamStatus, model: GROQ_MODEL, body: pipelineResult.body, ms: Date.now() - startedAt, clientStatus, flow, v92: true });
+      return res.status(clientStatus).json({
+        error: 'provider_error',
+        status: upstreamStatus,
+        message: upstreamStatus === 400
+          ? 'Der KI-Anbieter hat die Antwort wegen Schema-/Validierungsfehler abgelehnt.'
+          : 'Der KI-Anbieter meldete einen Fehler. Bitte ueberpruefe das eingestellte Modell.',
+      });
+    }
+    if (pipelineResult.error === 'validation_exhausted') {
+      logEvent('response_rejected', {
+        reason: 'validation_exhausted',
+        errors: pipelineResult.errors,
+        attempts: pipelineResult.attempts,
+        ms: Date.now() - startedAt,
+        flow,
+      });
+      return res.status(422).json({
+        error: 'recipe_validation_failed',
+        attempts: pipelineResult.attempts,
+        errors: pipelineResult.errors || [],
+      });
+    }
+    if (pipelineResult.error) {
+      logEvent('response_rejected', { reason: pipelineResult.error, detail: pipelineResult.reason || pipelineResult.body || '', ms: Date.now() - startedAt, flow });
+      return res.status(502).json({ error: 'recipe_unavailable' });
+    }
+
+    // Handoff-Sentinel in Raw-JSON?
+    if (!payload.structured && payload.team_ai !== false && pipelineResult.raw) {
+      const userText = (payload.pantry_ingredients || []).join(' ');
+      const modelHandoff = core.extractHandoffFromParsed(pipelineResult.raw, userText);
+      if (modelHandoff) {
+        console.log(`[nutri-recipe] HANDOFF_COACH model reason=${modelHandoff.reason} ms=${Date.now() - startedAt}`);
+        return res.status(200).json({ handoff: modelHandoff });
+      }
+    }
+
+    if (!pipelineResult.recipe) {
+      logEvent('response_rejected', { reason: 'invalid_or_missing_schema', ms: Date.now() - startedAt, flow });
+      return res.status(502).json({ error: 'recipe_unavailable' });
+    }
+
+    const recipe = pipelineResult.recipe;
+    console.log(`[nutri-recipe] OK flow=${flow} v92 attempts=${pipelineResult.attempts} ingredients=${recipe.ingredients.length} steps=${recipe.steps.length} ms=${Date.now() - startedAt}`);
+    return res.status(200).json(recipe);
+  }
+
   const result = await core.callGroq(requestBody, { apiKey: GROQ_API_KEY, timeoutMs: REQUEST_TIMEOUT_MS });
 
   if (result.error === 'provider_error') {

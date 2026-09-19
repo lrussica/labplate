@@ -16,16 +16,19 @@
  * reasoning_effort: "low"
  *
  * Client-Vertrag (LabPlate_34_Cursor.html, validateNutriRecipeSchema):
- *   { title, servings:number, prep_time, nutrition_note, garnish?, self_check?,
+ *   { title, servings:number, prep_time, nutrition_note, garnish?,
  *     ingredients:[{ name, amount:number, unit:'g'|'ml', status:'benoetigt'|'vorhanden',
  *                    macrosPer100g:{ netCarbs, fat, protein, fiber } }],
  *     shopping_list:[string], steps:[string] }
- * garnish + self_check: nur GENERATIV; STRUCTURED immer "".
+ * Generativ intern: v9.2 JSON (Platzhalter) → renderRecipeForDisplay → Client-Vertrag.
+ * garnish: nur GENERATIV; STRUCTURED immer "". self_check entfernt (v9.2).
  */
 
 'use strict';
 
 const strictPrompt = require('./strict-prompt');
+const recipePipeline = require('./recipe-pipeline-v92');
+const recipeValidator = require('./recipe-validator');
 
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const DEFAULT_MODEL = 'openai/gpt-oss-120b';
@@ -39,61 +42,32 @@ const ING_FIELDS = ['name', 'amount', 'unit', 'status', 'netCarbs', 'fat', 'prot
 const STRUCTURED_UNIT_TABLE = strictPrompt.STRUCTURED_UNIT_TABLE;
 
 /**
- * Chef-Framework v9.1 – Anti-Halluzination: Bottom-Up, Self-Check = Kopier-Pruefung (nur GENERATIV).
+ * Chef-Framework v9.2 – Struktur-Zwang: Mengen nur als {ingredient_id}-Platzhalter (nur GENERATIV).
+ * Self-Check-Freitext ENTFERNT. Validierung: recipe-validator.validateRecipeV2 (deterministisch).
  * Eigenrezept/STRUCTURED und Originalmodus: NICHT einbinden.
- * unit bleibt strikt g|ml; Gewuerze amount=0; Eier name "1 Ei (Groesse M, ca. 60 g)", amount=n*60.
+ * Docs: docs/Chef-KI-System-Prompt-v9.2.md
  */
 const CHEF_FRAMEWORK_RULES = [
-  'CHEF-FRAMEWORK v9.1 (verbindlich – Anti-Halluzination, Bottom-Up, Self-Check = KOPIER-Pruefung):',
-  'Rolle: System-Chefkoch + Ernaehrungs-Wissenschaftler. Food-Pairing, Sensorik, molekulare Hitzebestaendigkeit, exakte Naehrwert-Mathematik. Keine Schaetzungen, keine Halluzinationen.',
-  'REGEL 0 — BOTTOM-UP (wichtigste Regel, IMMER zuerst):',
-  '   - Naehrwerte IMMER zuerst pro Zutat (Menge × Referenz/100g), dann Summe. NIEMALS Top-Down (Zielprotein rueckwaerts auf erfundene Mengen).',
-  '   - Muster: 180 g Haehnchen × (31/100) = 55,8 g Protein; 1 Ei 60 g × (13/100) = 7,8 g; SUMME runden (#16).',
-  'REGEL 0a — Kein Zielwert-Rueckwaertsdenken (auch nicht implizit):',
-  '   - Nutzerziel ("hohes Protein","Keto","unter 400 kcal") darf NIEMALS zuerst eine Wunschzahl (z.B. 80 g Protein) erzeugen, die danach Zutaten/self_check verbiegt.',
-  '   - Einzige Reihenfolge: Zutaten waehlen → Mengen festlegen → TATSAECHLICH rechnen → Ergebnis = Tabelle (auch wenn Wunsch verfehlt). Sonst ehrlich sagen (Regel 15).',
-  '1) Naehrwert-Verbindlichkeit / MENGEN-SYNCHRONISATION:',
-  '   - Mengen, kcal und Protein in steps, garnish, self_check und nutrition_note = 100% Zutatenliste + aufsummierte Tabelle.',
-  '   - Steht "8 ml Olivenoel" in ingredients, darf die Text-Summe NIEMALS darueber liegen (nicht 1 EL=15 ml wenn Liste 8 ml).',
-  '2) GERINNUNGSSCHUTZ (empfindliche Milchprodukte / MOLEKULARE HITZE):',
-  '   - Magerquark, Magerjoghurt, Huettenkaese, Creme fraiche, Frischkaese, Mascarpone, Schmand, Kokosjoghurt, Proteinpulver:',
-  '     NIEMALS auf eingeschalteter Herdplatte (auch nicht Stufe 2 / Restwaerme). Nur bei VOLLSTAENDIG AUSGESCHALTETEM Herd oder kalt.',
-  '   - Warme Saucen: nur Sahne, Kokosmilch, Nussmus (nicht Schmand/Frischkaese).',
-  '3) MAXIMUM 2 HAUPT-PROTEINQUELLEN (kein Zutaten-Salat / PROTEIN-HARMONIE):',
-  '   - Hoechstens 2 primaere Proteintraeger. Proteinziel >40 g: Menge der Hauptzutat erhoehen, keine Mini-Protein-Fragmente.',
-  '4) DIÄT- & KETO-EHRLEICHKEIT (keine Fake-Labels):',
-  '   - "Keto"/"Low-Carb" NUR bei <10 g Netto-KH; VERBOTEN in Keto: Linsen, Kichererbsen, Bohnen, Haferflocken.',
-  '   - "vegan": keine Ei-/Milchprodukte. "vegetarisch" ehrlich. "high-protein" nur ab ≥25–30 g Protein/Portion.',
-  '5) EIER-STUECKZAHL-PFLICHT + NUMERUS-KONSISTENZ + HYGIENE:',
-  '   - name: "1 Ei (Groesse M, ca. 60 g)" / "2 Eier (Groesse M, ca. 60 g je)" – amount = n*60. Nie Gramm im Fliesstext.',
-  '   - Numerus: Liste "1 Ei" → Text nur "das Ei" (Singular). Plural "die Eier" NUR wenn Liste >1 Ei und Stueckzahl exakt passt.',
-  '   - Rohes Ei NIEMALS in kalte Saucen/Quark-Dressings (Salmonellen). Eier IMMER thermisch verarbeiten.',
-  '6) VOLLSTAENDIGKEIT ALLER erwaehnten Zutaten (inkl. Fluessigkeiten & garnish):',
-  '   - Jede Zutat IRGENDWO im Output (steps, garnish/Topping/Deko, z.B. Pinienkerne) MUSS mit Menge in ingredients stehen – nichts aus dem Nichts.',
-  '   - Auch Koch-/Quellwasser (auch Wasser zum Quellen). Trocken nur anroesten (quellen NICHT in trockener Pfanne).',
-  '   - Shakes: Minimum 300 ml (pro 30 g Proteinpulver 200 ml, +100 ml/10 g quellend). Eintoepfe: 250–350 ml/Portion.',
-  '7) HERD-STUFEN-LOGIK: "Stufe X von 9" NUR bei Koch/Brat/Roest. Bei kalten Schritten Herd-Stufe STRIKT VERBOTEN.',
-  '8) GEWUERZ-DOSIERUNG (ABSOLUTES GRAMM-VERBOT): amount=0, name "1 Prise"/"Messerspitze"/"nach Geschmack".',
-  '9) Kalorien-Plausibilitaet: kcal ≈ Protein×4 + Netto-KH×4 + Fett×9 + Ballaststoffe×2 (±10 %). Sonst Tabelle korrigieren.',
-  '10) Zeit-Realismus: prep_time ≈ Summe der Schrittzeiten (inkl. Back-/Gar-/Ruhezeiten).',
-  '11) Einheiten-Konsistenz: pro Zutat eine Einheit durchgaengig (keine Tasse↔g Mischungen).',
-  '12) Allergen- & Ersatz-Konsistenz: Einschraenkungen inkl. Saucen/Fette einzeln pruefen.',
-  '13) Portionsskalierung: Zutaten+Naehrwerte mitskalieren; Zeit meist gleich.',
-  '14) Grenzfälle explizit: Konflikte (Keto+Reis) benennen + Alternative; unmoegliche Ziele ehrlich sagen – Zahlen nicht schoenen.',
-  '15) Rundungsregel: kcal auf 5er-Schritte, Gramm ganzzahlig – keine Schein-Praezision.',
-  '16) TEXTUR & FOOD PAIRING: mind. 3 Texturen (cremig + bissfest + crunchy); garnish PFLICHT; herzhaft immer Saeure.',
-  '17) BEZEICHNUNGS-KONSISTENZ / Namensgleichheit: Zutat ↔ steps ↔ Titel ↔ garnish ↔ self_check ↔ nutrition_note.',
-  '18) SCHRITTE: Mise en Place zuerst; bei Hitze Stufe + Zeit + Sensorik; Anrichten inkl. garnish.',
-  '19) PFLICHT-FELD self_check = KOPIER-PRUEFUNG (Anti-Halluzination):',
-  '   - Position im logischen Output: NACH garnish, DIREKT VOR nutrition_note (Chef-Analyse). Nie an den Anfang.',
-  '   - JEDE Zahl in self_check MUSS wortwoertlich aus der bereits berechneten Naehrwert-Summe und ingredients[] KOPIERT sein – kein zweiter Rechenvorgang mit eigenen Werten.',
-  '   - VERBOTEN: self_check/Chef-Analyse mit anderen Protein/kcal/ml als Tabelle/Liste (auch nicht "wissenschaftlich klingend").',
-  '   - Pflichtzeilen: Kalorien-Rechnung (Werte aus Tabelle)×4/9/2 ✓/✗ | Zutaten-Mengen-Abgleich Text↔Liste (jede Fluessigkeit/Hauptmenge) ✓/✗ |',
-  '     Vollstaendigkeit aller Zutaten (steps+garnish in Liste) ✓/✗ | Proteinquellen max 2 ✓/✗ | Herd AUS bei Milchprodukten ✓/✗ |',
-  '     Numerus-Konsistenz Ei ✓/✗ | Keto-/Diät-Label | Zeit-Summe = prep_time ✓/✗',
-  '   - Nutzerziel verfehlt: ✗ setzen und Zutaten/Tabelle korrigieren – NICHT Behauptung mit ✓ schoenen.',
-  '   - NEGATIV-VERBOT: self_check "80 g Protein" bei Tabelle "40 g"; Text 15 ml Oel bei Liste 8 ml trotzdem ✓; garnish-Pinienkerne ohne Liste; "die Eier" bei 1 Ei.',
-  '20) nutrition_note = Chef-Analyse: 2–3 Saetze; Zahlen 1:1 aus Tabelle (nach Bottom-Up + Rundung).',
+  'CHEF-FRAMEWORK v9.2 (verbindlich – Struktur-Zwang, KEIN Self-Check-Freitext):',
+  'Rolle: System-Chefkoch + Ernaehrungs-Wissenschaftler. Food-Pairing, Sensorik, molekulare Hitzebestaendigkeit, exakte Naehrwert-Mathematik.',
+  'WARUM: Fruehere Self-Check-Bloecke halluzinierten Zahlen. Jetzt existiert jede Zahl genau EINMAL (nutrition / ingredients.amount). content/garnish/chef_analysis nur {0001}-Platzhalter – keine freien g/ml/kcal.',
+  'REGEL 0 / 0a — BOTTOM-UP, kein Zielwert-Rueckwaertsdenken. Ziel verfehlt → target_deviation_note ehrlich, Zahlen nicht erfinden.',
+  '1) Naehrwert-Verbindlichkeit: chef_analysis ohne eigene Zahlen; siehe nutrition.',
+  '2) GERINNUNGSSCHUTZ: Quark/Joghurt/Huettenkaese/Creme fraiche/Frischkaese/Mascarpone/Schmand/Kokosjoghurt → stove_level 0 beim Einruehren, Herd vorher AUS.',
+  '3) Mengen nur {ingredient_id} in content/garnish – nie "15 ml Olivenoel" als Freitext.',
+  '4) MAXIMUM 2 protein_source:true (PROTEIN-HARMONIE / kein Zutaten-Salat).',
+  '5) DIÄT- & KETO-EHRLEICHKEIT: diet_labels keto nur bei netto_kh_g <10; high_protein nur ab protein_g ≥25; vegan ohne Ei/Milch.',
+  '6) Eier: unit "stk", amount Stueckzahl, name "Ei (Groesse M, ca. 60 g)". Inhalt nur via {id}.',
+  '7) VOLLSTAENDIGKEIT: jede {id} in steps/garnish existiert in ingredients; jede Zutat mind. 1x referenziert. Auch Fluessigkeiten (Wasser).',
+  '8) HERD-STUFEN: stove_level 1-9 nur bei Hitze; kalt = 0. Mise en Place zuerst; Zeit + Sensorik.',
+  '9) GEWUERZE: unit prise|messerspitze, amount 0 – nie unit g fuer Salz/Pfeffer (ABSOLUTES GRAMM-VERBOT).',
+  '10) Kalorien-Plausibilitaet: kcal ≈ Protein×4 + Netto-KH×4 + Fett×9 + Ballaststoffe×2 (±10 %).',
+  '11) Zeit-Realismus: prep_time_min ≈ Summe steps[].time_min.',
+  '12–16) Einheiten/Allergene/Skalierung/Grenzfaelle/Rundung (kcal 5er, Gramm ganz).',
+  '17) TEXTUR & FOOD PAIRING: mind. 3 Texturen (cremig + bissfest + crunchy); garnish Pflicht; herzhaft Saeure.',
+  '18) BEZEICHNUNGS-KONSISTENZ / Namensgleichheit. garnish + chef_analysis Pflicht.',
+  '19) KEIN [SELF-CHECK]-Block. Backend validiert deterministisch (validateRecipeV2).',
+  '20) NEGATIV-VERBOT: freie Mengen in content; eigene g/kcal in chef_analysis; ungelistete garnish-Zutaten; >2 protein_source.',
 ].join('\n');
 
 /** @deprecated Alias – gleicher Inhalt wie CHEF_FRAMEWORK_RULES (Export-Kompatibilitaet). */
@@ -207,7 +181,8 @@ function extractHandoffFromParsed(parsed, userText) {
   }
   const title = typeof parsed.title === 'string' ? parsed.title.trim() : '';
   if (title !== HANDOFF_SENTINEL_TITLE) return null;
-  const note = typeof parsed.nutrition_note === 'string' ? parsed.nutrition_note.trim() : '';
+  const note = typeof parsed.nutrition_note === 'string' ? parsed.nutrition_note.trim()
+    : (typeof parsed.chef_analysis === 'string' ? parsed.chef_analysis.trim() : '');
   const brief = truncateTeamBrief(note || ('Nutzer emotional blockiert. Rezept abgelehnt. Kontext: ' + String(userText || '')), TEAM_HANDOFF_BRIEF_MAX);
   return {
     from: 'koch',
@@ -391,26 +366,15 @@ function buildEnrichmentSchema(lines) {
     schema: {
       type: 'object',
       additionalProperties: false,
-      required: ['title', 'servings', 'prep_time', 'nutrition_note', 'garnish', 'self_check', 'ingredients', 'shopping_list', 'steps'],
+      required: ['title', 'servings', 'prep_time', 'nutrition_note', 'garnish', 'ingredients', 'shopping_list', 'steps'],
       properties,
     },
   };
 }
 
-/** Generativ (Shopping / freie Idee): ingredients = Array. */
+/** Generativ (Shopping / freie Idee): v9.2 JSON-Schema mit Platzhaltern. */
 function buildGenerativeSchema() {
-  const properties = baseRecipeProperties({ structured: false });
-  properties.ingredients = { type: 'array', items: ingredientObjectSchema(undefined, { strictAmounts: false }) };
-  return {
-    name: 'nutri_recipe_generative',
-    strict: true,
-    schema: {
-      type: 'object',
-      additionalProperties: false,
-      required: ['title', 'servings', 'prep_time', 'nutrition_note', 'garnish', 'self_check', 'ingredients', 'shopping_list', 'steps'],
-      properties,
-    },
-  };
+  return recipePipeline.buildV92GenerativeSchema();
 }
 
 // ---------------------------------------------------------------------------
@@ -605,8 +569,8 @@ function buildGenerativeMessages(p) {
     'TEAM-HANDOFF AN DEN MENTAL-COACH (Phase 2): Wenn der Nutzer klar resigniert, ueberfordert, frustriert oder emotional blockiert ist',
     '(z.B. "schaff ich eh nicht", "zu kompliziert", "nervt", "keine Energie") UND kein konkretes Rezept/Gericht verlangt:',
     'KEIN Coaching, KEINE Motivation, KEINE Tipps, KEIN Rezept.',
-    'Dann setze title exakt auf "' + HANDOFF_SENTINEL_TITLE + '", nutrition_note = kurzer Handoff-Brief (max ' + TEAM_HANDOFF_BRIEF_MAX + ' Zeichen, z.B. "Nutzer frustriert: \'…\'. Rezept abgelehnt."),',
-    'garnish="", self_check="", servings=0, prep_time="", ingredients=[], shopping_list=[], steps=[].',
+    'Dann setze title exakt auf "' + HANDOFF_SENTINEL_TITLE + '", chef_analysis = kurzer Handoff-Brief (max ' + TEAM_HANDOFF_BRIEF_MAX + ' Zeichen),',
+    'garnish="", prep_time_min=0, ingredients=[], steps=[], nutrition alle 0, diet_labels=[].',
     'Sonst normales Rezept wie unten. Bei gemischter Anfrage (Emotion + klares Gericht) → normales Rezept.',
   ].join(' ') : '';
   const themeRules = themeGuide
@@ -627,20 +591,20 @@ function buildGenerativeMessages(p) {
       : 'Du bist ein hyper-intelligenter System-Chefkoch und Ernaehrungs-Wissenschaftler der Spitzenklasse. Rezepte vereinen Food-Pairing, Sensorik, makellose Konsistenz und exakte Naehrwert-Mathematik – an Tages-Makros angepasst, ohne Halluzinationen. JSON gemaess Schema.',
     'VARIATION: Liefere bei gleichen Suchbegriffen bewusst unterschiedliche Gerichte (andere Hauptzutat, Kueche oder Zubereitung). Wiederhole keine frueheren Titel aus der Zusatz-Instruction.',
     'ERLAUBT: Zutaten vorschlagen, Mengen waehlen und an Tagesziele/Leitlinien anpassen, Schritte neu formulieren.',
-    'KRITISCH – unit-Feld: NUR "g" oder "ml". VERBOTEN als unit: Stueck, stk, EL, TL, Portion, Zehe, Bund, Tasse, Dose, Prise oder andere Einheiten.',
-    'Mengen immer als gerundete Gramm/Milliliter ausgeben. Feste Umrechnung: 1 EL = 15 g/ml, 1 TL = 5 g/ml, 1 Ei = 60 g, 1 Zehe Knoblauch = 5 g, 1 Avocado = 200 g. Fluessigkeiten (Oel, Milch, Bruehe, Sosse) in ml, Festes in g.',
-    'Beispiel: 2 Eier -> {"name":"2 Eier (Groesse M, ca. 60 g je)","amount":120,"unit":"g"} – NICHT unit "Stueck". 1 EL Olivenoel -> {"name":"Olivenoel","amount":15,"unit":"ml"}.',
-    'Jede Zutat: name, amount (Zahl > 0), unit ("g"|"ml"), status (vorhanden|benoetigt), netCarbs/fat/protein/fiber je 100 g/ml.',
-    'steps: 5-10 strukturierte Schritte (Mise en Place zuerst; Hitzestufe, Zeit, Reifezeichen; Anrichten mit garnish). shopping_list: benoetigte Zutaten als "Name – Menge g|ml".',
-    'garnish: kurze Garnitur/Topping-Angabe (String, nie leer bei normalen Rezepten).',
-    'self_check: KOPIER-Pruefung nach garnish / vor Chef-Analyse. Zahlen nur aus Tabelle+Liste (kein zweites Rechnen). Mengen-Abgleich, Vollstaendigkeit inkl. garnish, Numerus Ei, Proteinquellen, Herd, Label, Zeit (✓/✗). Nie leer.',
-    'nutrition_note: Chef-Analyse 2–3 Saetze NACH self_check; Zahlen 1:1 aus derselben Tabelle – keine Alternativzahlen.',
+    'KRITISCH – Schema v9.2: ingredients[].unit NUR "g"|"ml"|"stk"|"prise"|"messerspitze". content/garnish ohne freie Mengen-Zahlen – nur {0001}-Platzhalter.',
+    'Mengen in ingredients: Eier unit=stk; Gewuerze amount=0 unit=prise|messerspitze; Fluessigkeiten ml; Festes g. netCarbs/fat/protein/fiber je 100 g/ml.',
+    'Beispiel Ei: {"id":"0002","name":"Ei (Groesse M, ca. 60 g)","amount":2,"unit":"stk","protein_source":true}. Olivenoel: unit ml. Salz: unit prise, amount 0.',
+    'steps: Objekte {title, content mit {id}-Platzhaltern, stove_level 0|1-9, time_min}. garnish + chef_analysis Pflicht.',
+    'Schema v9.2: nutrition{kcal,protein_g,fat_g,netto_kh_g,ballaststoffe_g}, ingredients[{id,name,amount,unit,protein_source,macros}], steps[{title,content,stove_level,time_min}], garnish, chef_analysis, diet_labels, target_deviation_note, prep_time_min.',
+    'content/garnish/chef_analysis: Mengen NUR als {0001}-Platzhalter – KEINE freien g/ml/kcal-Zahlen. KEIN self_check-Feld.',
+    'Eier unit=stk; Gewuerze unit=prise|messerspitze amount=0; sonst g|ml. stove_level 0=kalt, 1-9=Hitze.',
+    'chef_analysis: qualitativ / Platzhalter, Verweis auf nutrition – keine eigenen Gramm-/kcal-Zahlen.',
     isOriginalMode ? '' : CHEF_FRAMEWORK_RULES,
     emotionRules,
     themeRules,
     'HANDOFF: Lies brief.theme (z.B. eisen, vitamin_b) aus dem Supplement-Handoff aktiv. Wenn ai_instruction mit "HANDOFF VOM MENTAL-COACH" oder "HANDOFF VOM SUPPLEMENT-COACH" beginnt, priorisiere passende Lebensmittel – trotzdem nur Rezept-JSON, kein Coaching.',
     'Keine medizinischen Diagnosen oder Heilversprechen. Antworte auf ' + strictPrompt.langName(p.lang) + '. Nur JSON.',
-    'SPRACHE (verbindlich): title, prep_time, garnish, self_check, nutrition_note, ingredients[].name, steps und shopping_list komplett auf ' +
+    'SPRACHE (verbindlich): title, garnish, chef_analysis, ingredients[].name, steps[].title/content komplett auf ' +
       strictPrompt.langName(p.lang) + ' – keine Mischsprache, keine deutschen Restworte wenn die App-Sprache eine andere ist.',
   ].filter(Boolean).join('\n');
   const user = [
@@ -649,15 +613,15 @@ function buildGenerativeMessages(p) {
     'Aggregierte Tages-Makrowerte (Wert / Ziel): ' + JSON.stringify(p.macros),
     p.micronutrient_gaps.length ? 'Mikronaehrstoffe unter 70% des Tagesziels: ' + JSON.stringify(p.micronutrient_gaps) : '',
     p.lab_guideline_constraints ? 'Leitlinien-Vorgaben: ' + JSON.stringify(p.lab_guideline_constraints) : '',
-    p.ai_instruction ? 'Zusatz-Instruction (darf Mengen/Zutaten an Tagesziele anpassen; unit trotzdem nur g|ml): ' + p.ai_instruction : '',
+    p.ai_instruction ? 'Zusatz-Instruction (Mengen/Zutaten an Tagesziele anpassen; Schema v9.2 mit Platzhaltern): ' + p.ai_instruction : '',
     themeGuide
       ? ('THEMEN-HINWEIS: Baue ein einfaches 30-Minuten-Rezept (1 Portion) mit Fokus auf ' + themeGuide.label +
         ' unter Nutzung von: ' + themeGuide.foods.slice(0, 6).join(', ') + '.')
       : '',
     p.allergens.length ? 'Allergene strikt meiden: ' + p.allergens.join(', ') : '',
     teamOn
-      ? 'Wenn emotionale Blockade (siehe System): Sentinel-Titel + kurzer nutrition_note-Brief. Sonst normales Rezept-JSON (ingredients[].unit nur g|ml).'
-      : 'Erstelle jetzt das JSON-Objekt. Jede ingredients[].unit MUSS "g" oder "ml" sein.',
+      ? 'Wenn emotionale Blockade (siehe System): Sentinel-Titel + kurzer chef_analysis-Brief. Sonst normales v9.2-JSON.'
+      : 'Erstelle jetzt ausschliesslich das v9.2-JSON-Objekt (keine Markdown-Fences, kein Self-Check).',
   ].filter(Boolean).join('\n');
   return [
     { role: 'system', content: system },
@@ -740,6 +704,11 @@ function stripQty(line) {
 
 function toClientRecipe(parsed, p) {
   if (!parsed || typeof parsed !== 'object') return null;
+  // v9.2 generatives JSON → Client-Vertrag via Placeholder-Resolve
+  if (!(p && p.structured) && parsed.prep_time_min != null && parsed.nutrition && Array.isArray(parsed.steps)
+      && parsed.steps[0] && typeof parsed.steps[0] === 'object') {
+    return recipePipeline.renderRecipeForDisplay(parsed);
+  }
   const structured = !!(p && p.structured);
   let ingredients;
   if (structured) {
@@ -838,6 +807,11 @@ module.exports = {
   buildGroqRequest,
   toClientRecipe,
   callGroq,
+  recipePipeline,
+  recipeValidator,
+  generateValidatedRecipe: recipePipeline.generateValidatedRecipe,
+  renderRecipeForDisplay: recipePipeline.renderRecipeForDisplay,
+  validateRecipeV2: recipeValidator.validateRecipeV2,
   ingKey,
   STRUCTURED_PROMPT_VERSION: strictPrompt.STRUCTURED_PROMPT_VERSION,
 };
