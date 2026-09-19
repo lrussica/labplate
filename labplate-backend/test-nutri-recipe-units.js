@@ -36,14 +36,16 @@ assert(/NUR "g" oder "ml"/i.test(sys) || /unit-Feld: NUR/i.test(sys), 'Generativ
 assert(/VERBOTEN.*Stueck|Stueck.*VERBOTEN|Nie unit Stueck/i.test(sys) || /VERBOTEN als unit/i.test(sys), 'Generativ-Prompt muss Stueck verbieten');
 assert(/1 Ei = 60 g/i.test(sys), 'Generativ-Prompt braucht Ei->g Tabelle');
 assert(/CHEF-FRAMEWORK/i.test(sys), 'Generativ-Prompt braucht Chef-Framework');
-assert(/5-GESCHMACKS-PRINZIP|5-Geschmacks/i.test(sys), 'Generativ-Prompt: 5-Geschmacks-Prinzip');
-assert(/mind\. 200 ml Fluessigkeit pro 30 g|200 ml Fluessigkeit pro 30 g/i.test(sys), 'Generativ-Prompt: Proteinpulver-Fluessigkeitsregel');
-assert(/absolutes Minimum 300 ml|Minimum 300 ml/i.test(sys), 'Generativ-Prompt: Shake Mindestfluessigkeit');
-assert(/TEXTUR-DYNAMIK|Knusprig/i.test(sys), 'Generativ-Prompt: Textur-Dynamik');
+assert(/FOOD PAIRING|Food-Pairing|molekulares Food-Pairing/i.test(sys), 'Generativ-Prompt: Food Pairing');
+assert(/3-TEXTUREN|DREI Texturen/i.test(sys), 'Generativ-Prompt: 3-Texturen-Standard');
+assert(/pro 30 g Proteinpulver 200 ml|200 ml.*30 g Proteinpulver/i.test(sys), 'Generativ-Prompt: Proteinpulver-Fluessigkeitsregel');
+assert(/Minimum 300 ml/i.test(sys), 'Generativ-Prompt: Shake Mindestfluessigkeit');
+assert(/MOLEKULARE HITZE|gerinnen |>70/i.test(sys), 'Generativ-Prompt: molekulare Hitze-Regel');
+assert(/max\. 0\.5 g|nie > 1 g/i.test(sys), 'Generativ-Prompt: Gewuerz-Dosierung');
 assert(/Mise en Place/i.test(sys), 'Generativ-Prompt: Mise en Place');
-assert(/Reifezeichen/i.test(sys), 'Generativ-Prompt: visuelle/akustische Reifezeichen');
+assert(/sensorische Signale|goldbraun/i.test(sys), 'Generativ-Prompt: sensorische Signale');
 assert(/Chef-Analyse/i.test(sys), 'Generativ-Prompt: Chef-Analyse in nutrition_note');
-assert(/Sterne-Gastronomie|Profi-Chefkoch/i.test(sys), 'Generativ-Prompt: Sterne-Chef-Rolle');
+assert(/System-Chefkoch|Ernaehrungs-Wissenschaftler/i.test(sys), 'Generativ-Prompt: System-Chef-Rolle');
 assert(/garnish/i.test(sys), 'Generativ-Prompt erwaehnt garnish');
 assert(/SPRACHE \(verbindlich\)|komplett auf/i.test(sys), 'Generativ-Prompt: verbindliche Ausgabesprache');
 assert.strictEqual(
@@ -61,7 +63,7 @@ const origReq = core.buildGroqRequest(genPayload({
   ai_instruction: 'MODUS ORIGINALREZEPT (Italien): Gib die klassische Version von "Bolognese" zurück.',
 }), 'test-model');
 assert(!/CHEF-FRAMEWORK/i.test(origReq.messages[0].content), 'Originalmodus ohne Chef-Framework');
-assert(!/5-GESCHMACKS-PRINZIP/i.test(origReq.messages[0].content), 'Originalmodus ohne 5-Geschmacks-Prinzip');
+assert(!/3-TEXTUREN|DREI Texturen/i.test(origReq.messages[0].content), 'Originalmodus ohne 3-Texturen-Standard');
 console.log('OK generative schema+prompt');
 
 // 2) Generativ: Ei als g, Oel als ml (simulierte Modell-Antwort nach korrekter Umrechnung)
@@ -95,7 +97,7 @@ const structPayload = Object.assign(genPayload({
 const enrichReq = core.buildGroqRequest(structPayload, 'test-model');
 assert(/amount = 0/i.test(enrichReq.messages[0].content), 'Structured-Prompt muss amount=0 fuer fehlende Menge fordern');
 assert(!/CHEF-FRAMEWORK/i.test(enrichReq.messages[0].content), 'Structured/Eigenrezept darf kein Chef-Framework haben');
-assert(!/5-GESCHMACKS-PRINZIP/i.test(enrichReq.messages[0].content), 'Structured: kein 5-Geschmacks-Prinzip');
+assert(!/3-TEXTUREN|DREI Texturen/i.test(enrichReq.messages[0].content), 'Structured: kein 3-Texturen-Standard');
 assert.strictEqual(
   enrichReq.response_format.json_schema.schema.required.includes('garnish'),
   true,

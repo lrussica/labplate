@@ -39,33 +39,36 @@ const ING_FIELDS = ['name', 'amount', 'unit', 'status', 'netCarbs', 'fat', 'prot
 const STRUCTURED_UNIT_TABLE = strictPrompt.STRUCTURED_UNIT_TABLE;
 
 /**
- * Chef-Framework (nur GENERATIV / Freisuche / Shopping).
- * Eigenrezept/STRUCTURED bleibt Passthrough – hier NICHT einbinden.
- * Originalmodus: ebenfalls nicht einbinden (Tradition vor Optimierung).
- * unit bleibt strikt g|ml; EL/TL/Zehe nur als Denkhilfe, dann umrechnen.
+ * Chef-Framework v2 – System-Chef / Food Science (nur GENERATIV).
+ * Eigenrezept/STRUCTURED und Originalmodus: NICHT einbinden.
+ * unit bleibt strikt g|ml; "Prise"/EL/TL/Ei nur als Denkhilfe, dann in g|ml.
  */
 const CHEF_FRAMEWORK_RULES = [
-  'CHEF-FRAMEWORK (verbindlich – Sterne-Niveau, gelingsicher):',
-  '1) SENSORIK & 5-GESCHMACKS-PRINZIP:',
-  '   - Herzhaft: Balance aus Salzig, Umami, Saeure (Zitrone/Essig/Joghurt) und leichtem Fett/Sueße – nie flach/fad.',
-  '   - Suess/Shake: Balance aus Sueße, feiner Saeure/Frische (Beeren/Zitrone/Joghurt) und einer Prise Salz (Aromenverstaerker).',
-  '2) TEXTUR-DYNAMIK:',
-  '   - Nach Moeglichkeit Weich/Cremig trifft Knusprig/Bissfest (z.B. Puree + gerostete Nuesse; cremiger Shake + Kakaonibs/Topping).',
-  '   - Feld "garnish" PFLICHT: kurze Garnitur/Topping-Angabe (z.B. "gerostete Mandelsplitter", "Kakaonibs", "frische Kraeuter + Zitronenzeste"). Nie leer bei normalen Rezepten.',
-  '3) KONSISTENZ-GARANTIE:',
-  '   - Shakes/Drinks: mind. 200 ml Fluessigkeit pro 30 g Proteinpulver; quellende Zutaten (Chia, Haferflocken, Sojaprotein) +100 ml pro 10 g; absolutes Minimum 300 ml Fluessigkeit; IMMER zuerst Fluessigkeit in den Mixer.',
-  '   - Hauptgerichte: nie trocken – immer eine feuchte Komponente (Sosse, Reduktion, Dressing, Schmand, Olivenoel-Finish).',
-  '   - Fett-Matching: in suessen Gerichten/Shakes KEINE herzhaften Speiseoele (Oliven-/Raps-/Sesamoel); stattdessen Nussmus, Kakaobutter, Kokosoel oder Milchfette.',
-  '4) PROFESSIONELLE SCHRITTE:',
-  '   - Start immer mit Mise en Place (schneiden, abmessen, bereitstellen).',
-  '   - Exakte Parameter: Hitzestufe (z.B. mittlere Hitze), Zeitspannen UND visuelle/akustische Reifezeichen (z.B. "3–4 Min. anbraten, bis die Zwiebeln glasig sind und duften").',
+  'CHEF-FRAMEWORK v2 (verbindlich – hyper-praezise, food-science, gelingsicher):',
+  'Rolle: System-Chefkoch + Ernaehrungs-Wissenschaftler. Food-Pairing, Sensorik, Konsistenz und Makro-Mathematik vereinen. Keine Halluzinationen, keine sinnlosen Lueckenbuesser-Zutaten.',
+  '1) SCIENTIFIC FOOD PAIRING & AROMEN-BALANCE:',
+  '   - Molekulares Food-Pairing: Zutaten chemisch harmonisieren (Saeure + Fett + Umami + feine Bitternote/Sueße).',
+  '   - Herzhaft: IMMER gezielte Saeure-Quelle (Zitrone, feiner Essig, Sumach, Kefir/Joghurt, Tomaten-Acids) – Fett/Protein lebendig machen.',
+  '   - Suess/Shake: IMMER feine Prise Meersalz (Aromenverstaerker) + Frische-Komponente (Beeren/Zitrone/Joghurt).',
+  '2) TEXTUR-ARCHITEKTUR (3-TEXTUREN-STANDARD):',
+  '   - Mindestens DREI Texturen pro Gericht: Cremig/Saemig + Bissfest/Zart + Knusprig/Crunchy.',
+  '   - Feld "garnish" PFLICHT liefert die Crunchy-Ebene (gerostete Saaten, Kakaonibs, Nuesse, krosse Tofu-Crumbles, Kraeuter+Zeste). Nie leer.',
+  '3) PHYSIKALISCHE KUECHEN-PRAXIS & THERMIK:',
+  '   - KONSISTENZ: Hafer/Proteinpulver/Chia/Huelsenfruechte saugen Fluessigkeit.',
+  '     * Eintoepfe/Suppen mit Bindemitteln: 250–350 ml Fluessigkeit pro Portion.',
+  '     * Shakes: Minimum 300 ml; pro 30 g Proteinpulver 200 ml; pro 10 g quellender Zutat +100 ml; Fluessigkeit IMMER zuerst in den Mixer.',
+  '   - Hauptgerichte nie trocken (Sosse/Reduktion/Dressing/Schmand/Olivenoel-Finish).',
+  '   - Suess: KEINE herzhaften Speiseoele (Oliven-/Raps-/Sesamoel) – Nussmus, Kakaobutter, Kokosoel oder Milchfette.',
+  '   - GEWUERZ-DOSIERUNG: Salz/Pfeffer/Schaerfe nie > 1 g. Max. 0.5 g (Prise) – name darf "Prise" enthalten, unit bleibt "g".',
+  '   - MOLEKULARE HITZE: Magerquark, Magerjoghurt, Proteinpulver gerinnen >70 C. NIEMALS in kochende Fluessigkeit ruehren – nur kalter Finish-Klecks, Topping oder sanft <60 C.',
+  '   - Eier in ganzen Stueckzahlen (1 Ei ≈ 55–60 g). Keine unpraktischen Bruchteile, keine geschmacklich stoerenden Makro-Lueckenbuesser.',
+  '4) ULTRA-PRAEZISE SCHRITTE:',
+  '   - Start IMMER mit Mise en Place (Schneidtechnik, Temperieren, abmessen).',
+  '   - Exakte Parameter: Hitzestufe (z.B. "mittlere Stufe, Stufe 6 von 9"), Zeitspannen UND sensorische Signale ("anbraten bis die Raender goldbraun sind und ein nussiger Duft aufsteigt").',
   '   - Letzter Schritt: Anrichten inkl. garnish.',
-  '5) REALISMUS & EFFIZIENZ:',
-  '   - Haushaltsuebliche, gerundete Mengen in g|ml (z.B. 15 ml, 100 g, 5 g Knoblauch) – keine unpraktischen Kommastellen (nicht 12,3 g).',
-  '   - Zutatenliste auf das Wesentliche beschraenken (keine Verschwendung).',
-  '6) CHEF-ANALYSE (nutrition_note):',
-  '   - nutrition_note = inspirierende Chef-Analyse: IMMER 2–3 Saetze, nie leer.',
-  '   - Erklaere, warum die Geschmackskombination funktioniert UND welchen gesundheitlichen Mehrwert sie bietet (ohne Laborwerte, Namen, Diagnosen).',
+  '5) CHEF-ANALYSE (nutrition_note):',
+  '   - nutrition_note = mitreissende Chef-Analyse: IMMER 2–3 Saetze, nie leer/fehlerhaft.',
+  '   - Erklaere wissenschaftlich-kulinarisch WARUM Aromen+Texturen funktionieren UND den physiologischen Vorteil (ohne Laborwerte, Namen, Diagnosen).',
 ].join('\n');
 
 /** @deprecated Alias – gleicher Inhalt wie CHEF_FRAMEWORK_RULES (Export-Kompatibilitaet). */
@@ -321,7 +324,7 @@ function baseRecipeProperties(opts) {
       type: 'string',
       description: structured
         ? 'Immer leerer String ""'
-        : 'Chef-Analyse: inspirierende 2–3 Saetze zu Geschmacksbalance und gesundheitlichem Mehrwert. Nie leer.',
+        : 'Chef-Analyse: mitreissende 2–3 Saetze zu Food-Pairing, Textur und physiologischem Vorteil. Nie leer.',
     },
     garnish: {
       type: 'string',
@@ -590,7 +593,7 @@ function buildGenerativeMessages(p) {
     'MODUS: GENERATIV / FREISUCHE / SHOPPING – bewusst kreativ (NICHT Eigenrezept-Modus).',
     isOriginalMode
       ? 'Du bist ein Rezept-Koch fuer klassische Originalrezepte. Erstelle EINE landestypische Rezeptidee als JSON gemaess Schema.'
-      : 'Du bist ein erstklassiger Profi-Chefkoch (Sterne-Gastronomie) und erfahrener Ernaehrungsberater. Behandle jedes Rezept wie eine Kreation fuer ein gehobenes Restaurant: kulinarisch meisterhaft, sensorisch ausbalanciert, absolut gelingsicher – und an die Tages-Makros angepasst. JSON gemaess Schema.',
+      : 'Du bist ein hyper-intelligenter System-Chefkoch und Ernaehrungs-Wissenschaftler der Spitzenklasse. Rezepte vereinen Food-Pairing, Sensorik, makellose Konsistenz und exakte Naehrwert-Mathematik – an Tages-Makros angepasst, ohne Halluzinationen. JSON gemaess Schema.',
     'VARIATION: Liefere bei gleichen Suchbegriffen bewusst unterschiedliche Gerichte (andere Hauptzutat, Kueche oder Zubereitung). Wiederhole keine frueheren Titel aus der Zusatz-Instruction.',
     'ERLAUBT: Zutaten vorschlagen, Mengen waehlen und an Tagesziele/Leitlinien anpassen, Schritte neu formulieren.',
     'KRITISCH – unit-Feld: NUR "g" oder "ml". VERBOTEN als unit: Stueck, stk, EL, TL, Portion, Zehe, Bund, Tasse, Dose, Prise oder andere Einheiten.',
