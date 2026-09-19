@@ -59,6 +59,19 @@ const FOOD_LOOKUP_ALLOWED_MODELS = new Set([
   'meta-llama/llama-4-scout-17b-16e-instruct',
 ]);
 
+/** Nur mit debug_v92_raw:true — temporärer Modell-Override für TPD-schonende Debug-Läufe. */
+const DEBUG_V92_ALLOWED_MODELS = new Set([
+  'openai/gpt-oss-20b',
+  'openai/gpt-oss-120b',
+]);
+
+function resolveRecipeModel(reqBody) {
+  const requested = reqBody && typeof reqBody.groq_model === 'string' ? reqBody.groq_model.trim() : '';
+  if (reqBody && reqBody.debug_v92_raw === true && requested && DEBUG_V92_ALLOWED_MODELS.has(requested)) {
+    return requested;
+  }
+  return GROQ_MODEL;
+}
 const GROQ_VISION_MODEL = (process.env.GROQ_VISION_MODEL || 'qwen/qwen3.6-27b').trim();
 const PHOTO_VERIFY_TIMEOUT_MS = Math.min(REQUEST_TIMEOUT_MS, 25000);
 
@@ -99,11 +112,12 @@ function resolveRecipeFlow(reqBody, payload) {
   return payload.structured ? 'coach' : 'suggestions';
 }
 
-function buildRecipeRequest(flow, payload) {
-  if (flow === 'coach') return coachRecipe.buildRequest(payload, GROQ_MODEL);
-  if (flow === 'nutri-coach') return nutriCoach.buildRequest(payload, GROQ_MODEL);
-  if (flow === 'suggestions') return recipeSuggestions.buildRequest(payload, GROQ_MODEL);
-  return core.buildGroqRequest(payload, GROQ_MODEL);
+function buildRecipeRequest(flow, payload, model) {
+  const m = model || GROQ_MODEL;
+  if (flow === 'coach') return coachRecipe.buildRequest(payload, m);
+  if (flow === 'nutri-coach') return nutriCoach.buildRequest(payload, m);
+  if (flow === 'suggestions') return recipeSuggestions.buildRequest(payload, m);
+  return core.buildGroqRequest(payload, m);
 }
 
 // ---------------------------------------------------------------------
@@ -198,14 +212,15 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   }
 
   const flow = resolveRecipeFlow(req.body, payload);
+  const recipeModel = resolveRecipeModel(req.body);
   const n = payload.pantry_ingredients.length;
   if (payload.structured || flow === 'coach' || flow === 'nutri-coach' || flow === 'core') {
-    console.log(`[nutri-recipe] ENRICH flow=${flow} model=${GROQ_MODEL} ingredients=${n} lang=${payload.lang} instruction_chars=${payload.ai_instruction.length}`);
+    console.log(`[nutri-recipe] ENRICH flow=${flow} model=${recipeModel} ingredients=${n} lang=${payload.lang} instruction_chars=${payload.ai_instruction.length}`);
   } else {
-    console.log(`[nutri-recipe] GENERATE flow=${flow} model=${GROQ_MODEL} mode=${payload.mode} pantry=${n}`);
+    console.log(`[nutri-recipe] GENERATE flow=${flow} model=${recipeModel} mode=${payload.mode} pantry=${n}`);
   }
 
-  const requestBody = buildRecipeRequest(flow, payload);
+  const requestBody = buildRecipeRequest(flow, payload, recipeModel);
 
   // Generativ (nicht structured/coach): v9.2 Validierung + Retry (max 3).
   // Wichtig: Root-Entry muss dieselbe Pipeline wie labplate-backend/server.js nutzen —
@@ -217,7 +232,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
       groqOpts: { apiKey: GROQ_API_KEY, timeoutMs: REQUEST_TIMEOUT_MS },
       callGroq: core.callGroq,
       buildRequestBody: function (p) {
-        return buildRecipeRequest(flow, p);
+        return buildRecipeRequest(flow, p, recipeModel);
       },
     });
 
@@ -226,7 +241,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
       const clientStatus = upstreamStatus === 400 ? 400 : 502;
       logEvent('groq_http_error', {
         status: upstreamStatus,
-        model: GROQ_MODEL,
+        model: recipeModel,
         body: pipelineResult.body,
         headers: pipelineResult.headers || null,
         ms: Date.now() - startedAt,
@@ -240,6 +255,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
         message: upstreamStatus === 400
           ? 'Der KI-Anbieter hat die Antwort wegen Schema-/Validierungsfehler abgelehnt.'
           : 'Der KI-Anbieter meldete einen Fehler. Bitte ueberpruefe das eingestellte Modell.',
+        model: recipeModel,
       };
       // Bei 429: voller Groq-Header-/Body-Dump an den Client (Diagnose RPM vs. Tageslimit)
       if (upstreamStatus === 429) {
@@ -265,9 +281,11 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
         errors: pipelineResult.errors || [],
         flow: flow,
         useV92Pipeline: true,
+        model: recipeModel,
       };
       if (req.body && req.body.debug_v92_raw === true) {
         exhaustedBody.debug_v92 = {
+          model: recipeModel,
           attempt_raws: (pipelineResult.attempt_raws || []).map(function (a) {
             return {
               attempt: a.attempt,
@@ -309,11 +327,12 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     }
 
     const recipe = pipelineResult.recipe;
-    console.log(`[nutri-recipe] OK flow=${flow} v92 attempts=${pipelineResult.attempts} ingredients=${recipe.ingredients.length} steps=${recipe.steps.length} ms=${Date.now() - startedAt}`);
+    console.log(`[nutri-recipe] OK flow=${flow} v92 attempts=${pipelineResult.attempts} model=${recipeModel} ingredients=${recipe.ingredients.length} steps=${recipe.steps.length} ms=${Date.now() - startedAt}`);
     if (req.body && req.body.debug_v92_raw === true) {
       recipe._debug_v92 = {
         flow: flow,
         useV92Pipeline: true,
+        model: recipeModel,
         attempts: pipelineResult.attempts,
         attempt_raws: (pipelineResult.attempt_raws || []).map(function (a) {
           return {
@@ -346,7 +365,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     const clientStatus = upstreamStatus === 400 ? 400 : 502;
     logEvent('groq_http_error', {
       status: upstreamStatus,
-      model: GROQ_MODEL,
+      model: recipeModel,
       body: result.body,
       headers: result.headers || null,
       ms: Date.now() - startedAt,
@@ -359,6 +378,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
       message: upstreamStatus === 400
         ? 'Der KI-Anbieter hat die Antwort wegen Schema-/Validierungsfehler abgelehnt.'
         : 'Der KI-Anbieter meldete einen Fehler. Bitte ueberpruefe das eingestellte Modell.',
+      model: recipeModel,
     };
     if (upstreamStatus === 429) {
       errPayload.provider_headers = result.headers || {};
