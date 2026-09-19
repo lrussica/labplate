@@ -300,6 +300,7 @@ async function generateValidatedRecipe(opts) {
   let lastErrors = [];
   let lastWarnings = [];
   let lastRaw = null;
+  const attemptRaws = [];
 
   for (let attempt = 1; attempt <= MAX_VALIDATION_ATTEMPTS; attempt++) {
     const requestBody = buildRequestBody(payload, attempt, lastErrors);
@@ -335,6 +336,7 @@ async function generateValidatedRecipe(opts) {
       parsed = p.data;
     }
     lastRaw = parsed;
+    attemptRaws.push({ attempt: attempt, raw: parsed });
 
     // Diagnose: Raw-JSON VOR Validierung und VOR renderRecipeForDisplay (jeder Versuch)
     logRawLlmJson({ attempt: attempt, parsed: parsed });
@@ -347,6 +349,7 @@ async function generateValidatedRecipe(opts) {
         raw: parsed,
         handoff_sentinel: true,
         attempts: attempt,
+        attempt_raws: attemptRaws,
       };
     }
 
@@ -373,6 +376,7 @@ async function generateValidatedRecipe(opts) {
       raw: parsed,
       warnings: validation.warnings,
       attempts: attempt,
+      attempt_raws: attemptRaws,
     };
   }
 
@@ -382,6 +386,7 @@ async function generateValidatedRecipe(opts) {
     errors: lastErrors,
     warnings: lastWarnings,
     last_raw: lastRaw,
+    attempt_raws: attemptRaws,
   };
 }
 

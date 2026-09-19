@@ -81,6 +81,34 @@ function validateNoFreeNumbersInProse(steps, garnish, chefAnalysis, ingredients)
   return { ok: problems.length === 0, problems: problems };
 }
 
+function validateMaxProteinSourcesByKeywords(ingredients, proteinSourceKeywords) {
+  const defaultKeywords = [
+    'hähnchen', 'haehnchen', 'huhn', 'pute', 'rind', 'schwein', 'lachs', 'thunfisch', 'fisch',
+    'ei', 'eier', 'tofu', 'quark', 'hüttenkäse', 'huettenkaese', 'linsen', 'kichererbsen',
+    'bohnen', 'protein', 'whey', 'seitan', 'tempeh', 'garnelen', 'krabben', 'truthahn',
+  ];
+  const keywords = proteinSourceKeywords || defaultKeywords;
+  const found = [];
+  (ingredients || []).forEach(function (ing) {
+    const name = String((ing && ing.name) || '');
+    const nameLower = name.toLowerCase();
+    if (nameLower.indexOf('eiweiss') >= 0 || nameLower.indexOf('eiweiß') >= 0) return;
+    for (let i = 0; i < keywords.length; i++) {
+      const kw = keywords[i];
+      // Substring wie Python-v1 (Compound: "Hähnchenbrustfilet" enthält "hähnchen")
+      if (nameLower.indexOf(kw) >= 0 && found.indexOf(name) < 0) {
+        // "ei" nicht in "speiseöl"/"protein" falsch treffen: kurze Keywords mit Wortanfang
+        if (kw === 'ei' || kw === 'eier') {
+          if (!/(?:^|[^a-zäöüß])ei(?:er)?(?:[^a-zäöüß]|$)/i.test(nameLower)) continue;
+        }
+        found.push(name);
+        break;
+      }
+    }
+  });
+  return { ok: found.length <= 2, found: found };
+}
+
 function validateRecipeV2(recipe) {
   const result = new ValidationResult();
   const r = recipe && typeof recipe === 'object' ? recipe : {};
@@ -104,11 +132,32 @@ function validateRecipeV2(recipe) {
     );
   }
 
-  const proteinSources = ingredients
+  const flagSources = ingredients
     .filter(function (ing) { return ing && ing.protein_source; })
     .map(function (ing) { return ing.name; });
-  if (proteinSources.length > 2) {
-    result.addError('Mehr als 2 Proteinquellen (protein_source=true): ' + proteinSources.join(', '));
+  if (flagSources.length > 2) {
+    result.addError('Mehr als 2 Proteinquellen (protein_source=true): ' + flagSources.join(', '));
+  }
+
+  // Gegenprobe: Keyword-Heuristik unabhängig vom Modell-Flag
+  const kw = validateMaxProteinSourcesByKeywords(ingredients);
+  if (!kw.ok) {
+    result.addError('Mehr als 2 Proteinquellen (Keyword-Heuristik): ' + kw.found.join(', '));
+  }
+  // Flag vs. Keyword-Mismatch (Modell hat protein_source möglicherweise falsch gesetzt)
+  const flagSet = {};
+  flagSources.forEach(function (n) { flagSet[String(n)] = true; });
+  const mislabeled = kw.found.filter(function (n) { return !flagSet[n]; });
+  if (mislabeled.length) {
+    const msg = 'Modell hat protein_source möglicherweise falsch gesetzt für: [' + mislabeled.join(', ') + ']' +
+      ' (Flags=' + flagSources.length + ', Keywords=' + kw.found.length + ')';
+    console.log('[recipe-v92] protein_source_mismatch ' + msg);
+    if (kw.found.length > 2 || flagSources.length > 2) {
+      // bereits als Error oben; Mismatch-Text zusätzlich
+      if (result.errors.indexOf(msg) < 0) result.addError(msg);
+    } else if (kw.found.length !== flagSources.length) {
+      result.addError(msg);
+    }
   }
 
   const prose = validateNoFreeNumbersInProse(steps, garnish, chefAnalysis, ingredients);
@@ -152,6 +201,7 @@ module.exports = {
   ValidationResult: ValidationResult,
   validateKcalFormula: validateKcalFormula,
   validateRecipeV2: validateRecipeV2,
+  validateMaxProteinSourcesByKeywords: validateMaxProteinSourcesByKeywords,
   resolvePlaceholders: resolvePlaceholders,
   validateNoFreeNumbersInProse: validateNoFreeNumbersInProse,
 };

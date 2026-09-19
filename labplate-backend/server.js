@@ -755,11 +755,35 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
         ms: Date.now() - startedAt,
         flow,
       });
-      return res.status(422).json({
+      const exhaustedBody = {
         error: 'recipe_validation_failed',
         attempts: pipelineResult.attempts,
         errors: pipelineResult.errors || [],
-      });
+        flow: flow,
+        useV92Pipeline: true,
+      };
+      if (req.body && req.body.debug_v92_raw === true) {
+        exhaustedBody.debug_v92 = {
+          attempt_raws: (pipelineResult.attempt_raws || []).map(function (a) {
+            return {
+              attempt: a.attempt,
+              step_contents: (a.raw && a.raw.steps || []).map(function (s, i) {
+                return { i: i + 1, title: s && s.title, content: s && s.content };
+              }),
+              ingredients: (a.raw && a.raw.ingredients || []).map(function (ing) {
+                return {
+                  id: ing && ing.id,
+                  name: ing && ing.name,
+                  amount: ing && ing.amount,
+                  unit: ing && ing.unit,
+                  protein_source: !!(ing && ing.protein_source),
+                };
+              }),
+            };
+          }),
+        };
+      }
+      return res.status(422).json(exhaustedBody);
     }
     if (pipelineResult.error) {
       logEvent('response_rejected', { reason: pipelineResult.error, detail: pipelineResult.reason || pipelineResult.body || '', ms: Date.now() - startedAt, flow });
@@ -783,6 +807,30 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
 
     const recipe = pipelineResult.recipe;
     console.log(`[nutri-recipe] OK flow=${flow} v92 attempts=${pipelineResult.attempts} ingredients=${recipe.ingredients.length} steps=${recipe.steps.length} ms=${Date.now() - startedAt}`);
+    if (req.body && req.body.debug_v92_raw === true) {
+      recipe._debug_v92 = {
+        flow: flow,
+        useV92Pipeline: true,
+        attempts: pipelineResult.attempts,
+        attempt_raws: (pipelineResult.attempt_raws || []).map(function (a) {
+          return {
+            attempt: a.attempt,
+            step_contents: (a.raw && a.raw.steps || []).map(function (s, i) {
+              return { i: i + 1, title: s && s.title, content: s && s.content };
+            }),
+            ingredients: (a.raw && a.raw.ingredients || []).map(function (ing) {
+              return {
+                id: ing && ing.id,
+                name: ing && ing.name,
+                amount: ing && ing.amount,
+                unit: ing && ing.unit,
+                protein_source: !!(ing && ing.protein_source),
+              };
+            }),
+          };
+        }),
+      };
+    }
     return res.status(200).json(recipe);
   }
 
