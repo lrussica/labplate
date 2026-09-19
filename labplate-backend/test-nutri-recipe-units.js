@@ -45,6 +45,7 @@ assert(/Reifezeichen/i.test(sys), 'Generativ-Prompt: visuelle/akustische Reifeze
 assert(/Chef-Analyse/i.test(sys), 'Generativ-Prompt: Chef-Analyse in nutrition_note');
 assert(/Sterne-Gastronomie|Profi-Chefkoch/i.test(sys), 'Generativ-Prompt: Sterne-Chef-Rolle');
 assert(/garnish/i.test(sys), 'Generativ-Prompt erwaehnt garnish');
+assert(/SPRACHE \(verbindlich\)|komplett auf/i.test(sys), 'Generativ-Prompt: verbindliche Ausgabesprache');
 assert.strictEqual(
   genReq.response_format.json_schema.schema.required.includes('garnish'),
   true,

@@ -2605,8 +2605,14 @@
   .nrs-btn:focus-visible{ outline:2px solid var(--ink-soft); outline-offset:2px; }
   .nrs-btn:disabled{ opacity:0.4; pointer-events:none; cursor:default; }
   .nrs-value{ font-size:13px; font-weight:500; color:var(--ink); padding:0 10px; min-width:76px; text-align:center; white-space:nowrap; }
-  #lp-ov-recipes .nutri-recipe-match{ font-size:calc(13.5px * var(--recipe-font-scale, 1)); color:var(--ink-soft); line-height:1.5; margin:0 0 4px; transition: font-size 0.2s ease-out; }
+  #lp-ov-recipes .nutri-recipe-match{ font-size:calc(13.5px * var(--recipe-font-scale, 1)); color:var(--ink); line-height:1.5; margin:0 0 4px; transition: font-size 0.2s ease-out; }
   #lp-ov-recipes .nutri-recipe-disclaimer{ font-size:calc(11.5px * var(--recipe-font-scale, 1)); color:var(--ink-soft); line-height:1.5; margin:0 0 16px; transition: font-size 0.2s ease-out; }
+  /* KI-Rezept: Schritte/Listen gleiche Lesbarkeit wie Titel (nicht soft-grau). */
+  #lp-ov-recipes .nutri-recipe-steps li,
+  #lp-ov-recipes .nutri-recipe-ing-list li{
+    color:var(--ink);
+  }
+  #lp-ov-recipes .nutri-recipe-steps li{ font-weight:500; }
   #lp-ov-recipes .nutri-recipe-medical-note{
     font-size:calc(11.5px * var(--recipe-font-scale, 1)); color:var(--ink-soft); line-height:1.5; margin:14px 0 0;
     padding-top:14px; border-top:1px solid var(--bg-2); transition: font-size 0.2s ease-out;
@@ -29108,10 +29114,17 @@ initBarcodeEvents();
     // "Original"/klassisch/traditionell-Freisuche: KI-Fallback OHNE Ziel-/Theme-Anpassung
     // (wenn TheMealDB keinen Treffer liefert). Siehe resolveNutriOriginalMode().
     var LBL_RECIPE_ORIGINAL_AI_INSTRUCTION = {
-      de: 'MODUS ORIGINALREZEPT ({cuisine}): Gib die klassische, landestypische Originalversion von "{q}" zurück. Antworte AUSSCHLIESSLICH auf Deutsch (title, ingredients[].name, steps). KEINE Optimierung, KEINE Zutatenänderung, KEINE Modernisierung, KEINE internationalen Varianten, KEINE „gesunden“ Zutaten, KEINE Makro-/Tagesziel-Anpassung. VERBOTEN: Linsen, Haferflocken, Chiasamen, Leinsamen, Psyllium, Kidneybohnen, Quinoa. Nur traditionelle Zutaten des Herkunftslandes. ingredients[].unit NUR "g" oder "ml".',
-      en: 'MODE ORIGINAL RECIPE ({cuisine}): Return the classic traditional version of "{q}". Reply EXCLUSIVELY in German (title, ingredients[].name, steps). NO optimization, NO ingredient swaps, NO modernization, NO international variants, NO “healthy” substitutes, NO macro/daily-target adjustment. FORBIDDEN: lentils, oats, chia, flax, psyllium, kidney beans, quinoa. Only traditional ingredients. ingredients[].unit ONLY "g" or "ml".',
-      es: 'MODO RECETA ORIGINAL ({cuisine}): Devuelve la versión clásica de "{q}". Responde EXCLUSIVAMENTE en alemán (title, ingredients, steps). Sin optimización. ingredients[].unit SOLO "g" o "ml".',
-      it: 'MODALITÀ RICETTA ORIGINALE ({cuisine}): Restituisci la versione classica di "{q}". Rispondi ESCLUSIVAMENTE in tedesco (title, ingredients, steps). Nessuna ottimizzazione. ingredients[].unit SOLO "g" o "ml".',
+      de: 'MODUS ORIGINALREZEPT ({cuisine}): Gib die klassische, landestypische Originalversion von "{q}" zurück. Antworte AUSSCHLIESSLICH auf {langName} (title, ingredients[].name, steps, garnish, nutrition_note, prep_time). KEINE Optimierung, KEINE Zutatenänderung, KEINE Modernisierung, KEINE internationalen Varianten, KEINE „gesunden“ Zutaten, KEINE Makro-/Tagesziel-Anpassung. VERBOTEN: Linsen, Haferflocken, Chiasamen, Leinsamen, Psyllium, Kidneybohnen, Quinoa. Nur traditionelle Zutaten des Herkunftslandes. ingredients[].unit NUR "g" oder "ml".',
+      en: 'MODE ORIGINAL RECIPE ({cuisine}): Return the classic traditional version of "{q}". Reply EXCLUSIVELY in {langName} (title, ingredients[].name, steps, garnish, nutrition_note, prep_time). NO optimization, NO ingredient swaps, NO modernization, NO international variants, NO “healthy” substitutes, NO macro/daily-target adjustment. FORBIDDEN: lentils, oats, chia, flax, psyllium, kidney beans, quinoa. Only traditional ingredients. ingredients[].unit ONLY "g" or "ml".',
+      es: 'MODO RECETA ORIGINAL ({cuisine}): Devuelve la versión clásica de "{q}". Responde EXCLUSIVAMENTE en {langName} (title, ingredients[].name, steps, garnish, nutrition_note, prep_time). Sin optimización, sin cambios de ingredientes, sin modernización. PROHIBIDO: lentejas, avena, chía, linaza, psyllium, alubias, quinoa. Solo ingredientes tradicionales. ingredients[].unit SOLO "g" o "ml".',
+      it: 'MODALITÀ RICETTA ORIGINALE ({cuisine}): Restituisci la versione classica di "{q}". Rispondi ESCLUSIVAMENTE in {langName} (title, ingredients[].name, steps, garnish, nutrition_note, prep_time). Nessuna ottimizzazione. VIETATO: lenticchie, avena, chia, lino, psyllium, fagioli, quinoa. Solo ingredienti tradizionali. ingredients[].unit SOLO "g" o "ml".',
+      pt: 'MODO RECEITA ORIGINAL ({cuisine}): Devolve a versão clássica de "{q}". Responde EXCLUSIVAMENTE em {langName} (title, ingredients[].name, steps, garnish, nutrition_note, prep_time). Sem otimização. PROIBIDO: lentilhas, aveia, chia, linhaça, psyllium, feijão, quinoa. Apenas ingredientes tradicionais. ingredients[].unit SÓ "g" ou "ml".',
+      fr: 'MODE RECETTE ORIGINALE ({cuisine}): Renvoie la version classique de "{q}". Réponds EXCLUSIVEMENT en {langName} (title, ingredients[].name, steps, garnish, nutrition_note, prep_time). Aucune optimisation. INTERDIT: lentilles, avoine, chia, lin, psyllium, haricots, quinoa. Uniquement des ingrédients traditionnels. ingredients[].unit UNIQUEMENT "g" ou "ml".',
+      tr: 'ORİJİNAL TARİF MODU ({cuisine}): "{q}" için klasik versiyonu döndür. YALNIZCA {langName} dilinde yanıt ver (title, ingredients[].name, steps, garnish, nutrition_note, prep_time). Optimizasyon yok. YASAK: mercimek, yulaf, chia, keten, psyllium, fasulye, quinoa. Yalnızca geleneksel malzemeler. ingredients[].unit SADECE "g" veya "ml".',
+    };
+    var NUTRI_RECIPE_LANG_NAMES = {
+      de: 'Deutsch', en: 'English', es: 'Español', it: 'Italiano',
+      pt: 'Português', fr: 'Français', tr: 'Türkçe'
     };
     // Speziell Ragù alla Bolognese (klassische italienische Version / Accademia-Orientierung).
     var LBL_RECIPE_ORIGINAL_BOLOGNESE_RULES = {
@@ -30291,6 +30304,20 @@ initBarcodeEvents();
         return String(text == null ? '' : text);
       }
     }
+    /** Heuristik: Rezepttext wirkt noch deutsch (Fallback für MT nach Original-Generierung). */
+    function nutriRecipeContentLooksGerman(recipe) {
+      if (!recipe || typeof recipe !== 'object') return false;
+      var sample = [
+        recipe.title,
+        recipe.garnish,
+        recipe.nutrition_note,
+        recipe.prep_time,
+        Array.isArray(recipe.steps) ? recipe.steps.slice(0, 2).join(' ') : '',
+        Array.isArray(recipe.ingredients) && recipe.ingredients[0] ? recipe.ingredients[0].name : ''
+      ].join(' ');
+      return /\b(und|mit|der|die|das|für|oder|Zwiebeln|Minuten|Prise|frisch|geröstete|cremig)\b/i.test(sample);
+    }
+
     /** Übersetzt Original-Rezeptfelder; Foto-/Quellen-Metadaten unverändert. */
     async function translateRecipe(recipe, targetLang) {
       if (!recipe || typeof recipe !== 'object') return recipe;
@@ -30311,6 +30338,9 @@ initBarcodeEvents();
           if (out.steps[s]) out.steps[s] = await translateText(String(out.steps[s]), to);
         }
       }
+      if (out.garnish) out.garnish = await translateText(out.garnish, to);
+      if (out.nutrition_note) out.nutrition_note = await translateText(out.nutrition_note, to);
+      if (out.prep_time) out.prep_time = await translateText(out.prep_time, to);
       // Einkaufsliste aus übersetzten Zutaten neu aufbauen (Mengen/Einheiten unverändert).
       if (Array.isArray(out.ingredients) && typeof formatShoppingListLine === 'function') {
         out.shopping_list = out.ingredients.map(function (ing) { return formatShoppingListLine(ing); });
@@ -30358,8 +30388,10 @@ initBarcodeEvents();
       var originalSearchQuery = String(options.originalSearchQuery || freesearchQuery || '').trim();
       var originalCuisine = String(options.originalCuisine || '').trim() || 'klassisch';
       var originalDishKey = String(options.originalDishKey || options.originalSearchQuery || freesearchQuery || '').trim();
-      // Originalmodus: Rezepttext immer Deutsch (unabhängig von App-Sprache).
-      var appLang = isOriginalRequest ? 'de' : ((typeof lang === 'function') ? lang() : 'de');
+      // Originalmodus: gleiche App-Sprache wie UI (nicht mehr fest auf Deutsch erzwingen).
+      var appLang = (typeof lang === 'function') ? lang() : 'de';
+      appLang = String(appLang || 'de').toLowerCase().slice(0, 2) || 'de';
+      var appLangName = (NUTRI_RECIPE_LANG_NAMES && NUTRI_RECIPE_LANG_NAMES[appLang]) || 'Deutsch';
       var totals = (typeof dayTotals === 'function') ? dayTotals() : {};
       var t = (typeof getEffectiveDailyTargets === 'function')
         ? getEffectiveDailyTargets()
@@ -30457,18 +30489,24 @@ initBarcodeEvents();
         payload.ai_instruction = compactInstr;
         console.log('[NUTRI_RECIPE_DEBUG] FIX: Strukturierte ai_instruction (' + compactInstr.length + ' Zeichen), Eigenrezept-Modus');
       } else if (isOriginalRequest) {
-        // Klassische Original-Rekonstruktion (Deutsch), ohne TheMealDB-Rezepttext.
+        // Klassische Original-Rekonstruktion in der gewählten App-Sprache.
         var origQ = originalSearchQuery || freesearchQuery || '';
-        var origInstrTpl = LBL_RECIPE_ORIGINAL_AI_INSTRUCTION.de || pick(LBL_RECIPE_ORIGINAL_AI_INSTRUCTION);
+        var origInstrTpl = (LBL_RECIPE_ORIGINAL_AI_INSTRUCTION[appLang]
+          || LBL_RECIPE_ORIGINAL_AI_INSTRUCTION.de
+          || pick(LBL_RECIPE_ORIGINAL_AI_INSTRUCTION));
         payload.ai_instruction = origInstrTpl
           .replace(/\{q\}/g, origQ)
           .replace(/\{cuisine\}/g, originalCuisine)
-          .replace(/\{lang\}/g, 'de');
+          .replace(/\{langName\}/g, appLangName)
+          .replace(/\{lang\}/g, appLang);
         if (isNutriOriginalBologneseDish(options.originalMeta || originalDishKey || origQ)) {
-          payload.ai_instruction += (LBL_RECIPE_ORIGINAL_BOLOGNESE_RULES.de || pick(LBL_RECIPE_ORIGINAL_BOLOGNESE_RULES));
+          payload.ai_instruction += (
+            (LBL_RECIPE_ORIGINAL_BOLOGNESE_RULES[appLang] || LBL_RECIPE_ORIGINAL_BOLOGNESE_RULES.de)
+            || pick(LBL_RECIPE_ORIGINAL_BOLOGNESE_RULES)
+          );
           payload.pantry_ingredients = ['Ragù alla Bolognese'];
         }
-        console.log('[NUTRI_RECIPE_DEBUG] Original-Rekonstruktion (de) für', origQ, originalCuisine);
+        console.log('[NUTRI_RECIPE_DEBUG] Original-Rekonstruktion (' + appLang + ') für', origQ, originalCuisine);
       } else {
         payload.ai_instruction = (typeof L !== 'undefined' && L.aiInstructionMain) || null;
         if (mode === 'freesearch' && freesearchQuery) {
@@ -31987,15 +32025,16 @@ initBarcodeEvents();
         data = enforceNutriUserRecipe(data, freesearchQuery);
         data = enrichNutriRecipeMacrosLocally(data);
       }
-      // Originalmodus: erst DE erzeugen, dann Rezepttext + Meta-UI in App-Sprache.
+      // Originalmodus: KI liefert in App-Sprache (payload.lang). MT nur als Fallback,
+      // falls der Text noch auf Deutsch wirkt (z. B. altes Prompt-Verhalten).
       if (data && isOriginalRequest) {
         var userLang = getNutriOriginalUserLang();
-        if (userLang !== 'de') {
+        if (userLang !== 'de' && nutriRecipeContentLooksGerman(data)) {
           try {
             data = await translateRecipe(data, userLang);
-            console.log('[NUTRI_RECIPE_DEBUG] Original-Rezept übersetzt nach', userLang);
+            console.log('[NUTRI_RECIPE_DEBUG] Original-Rezept Fallback-Übersetzung nach', userLang);
           } catch (eTr) {
-            console.warn('[NUTRI_RECIPE_DEBUG] Übersetzung fehlgeschlagen, behalte Deutsch');
+            console.warn('[NUTRI_RECIPE_DEBUG] Übersetzung fehlgeschlagen, behalte Server-Text');
           }
         }
         try {
