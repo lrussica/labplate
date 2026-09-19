@@ -20305,6 +20305,11 @@ function unitInputValueToGrams(value) {
 // Rezept-Zutaten/Einkaufsliste: nur Mengen mit unit === 'g' sind Gewichtsangaben und werden
 // umgerechnet - ml/mg/µg/IE (Fluessigkeiten, Nahrungsergaenzungs-Dosierungen) sind keine
 // Portionsgewichte und bleiben unangetastet.
+function isNutriEggPieceIngredient(name) {
+  var n = String(name == null ? '' : name).trim();
+  // "1 Ei (Größe M)", "2 Eier (Groesse M)", "1 egg (size M)" – Stueckzahl im Namen, Gramm nur intern.
+  return /^\d+\s*(ei(er)?|egg(s)?)\b/i.test(n);
+}
 function formatIngredientQty(amount, unit) {
   // amount 0 / null / ungueltig = "nicht angegeben" (Eigenrezept ohne Mengenangabe).
   if (amount == null || amount === '' || (typeof amount === 'number' && (!isFinite(amount) || amount <= 0))) {
@@ -29345,6 +29350,12 @@ initBarcodeEvents();
     var LBL_RECIPE_CHAT_HINT = { de:'Bitte gib Zutaten mit Mengen ein – optional Portionen und eine kurze Zubereitung.', en:'Please enter ingredients with amounts – optional servings and a short prep.', es:'Introduce ingredientes con cantidades – opcionalmente raciones y una preparación breve.', it:'Inserisci ingredienti con quantità – opzionale porzioni e una breve preparazione.' };
     var LBL_RECIPE_CHAT_CARD_PROTEIN = { de:'Schnelles High-Protein Gericht', en:'Quick high-protein dish', es:'Plato rápido alto en proteína', it:'Piatto veloce high-protein' };
     var LBL_RECIPE_CHAT_CARD_KETO = { de:'Low-Carb / Keto Idee', en:'Low-carb / keto idea', es:'Idea low-carb / keto', it:'Idea low-carb / keto' };
+    var LBL_RECIPE_CHAT_CARD_KETO_QUERY = {
+      de: 'Echtes Keto-Gericht unter 10 g Netto-Kohlenhydrate, ohne Linsen/Kichererbsen/Bohnen/Haferflocken. Max. 2 Proteinquellen.',
+      en: 'True keto dish under 10 g net carbs, no lentils/chickpeas/beans/oats. Max 2 protein sources.',
+      es: 'Plato keto real con menos de 10 g de carbohidratos netos, sin lentejas/garbanzos/frijoles/avena. Max. 2 proteinas.',
+      it: 'Piatto keto vero sotto 10 g di carboidrati netti, senza lenticchie/ceci/fagioli/avena. Max 2 proteine.'
+    };
     var LBL_RECIPE_CHAT_CARD_SNACK = { de:'Süßer Snack unter 200 kcal', en:'Sweet snack under 200 kcal', es:'Snack dulce de menos de 200 kcal', it:'Snack dolce sotto le 200 kcal' };
     var LBL_RECIPE_CHAT_REPLY = { de:'Hier eine Idee für dich: {title} ({time}).', en:'Here\'s an idea for you: {title} ({time}).', es:'Aquí tienes una idea: {title} ({time}).', it:'Ecco un\'idea per te: {title} ({time}).' };
     var LBL_RECIPE_CHAT_REPLY_STRUCTURED = {
@@ -29391,10 +29402,10 @@ initBarcodeEvents();
     // Chef-Framework (GENERATIV) – Spiegel von labplate-backend/nutri-recipe-core.js
     // (CHEF_FRAMEWORK_RULES). Eigenrezept/STRUCTURED/Original: nicht anhaengen.
     var LBL_RECIPE_CULINARY_RULES = {
-      de: 'CHEF-FRAMEWORK v2.3: (1) Mengen in steps/Chef-Analyse = 100% Zutatenliste (keine ca./abweichenden Gramm). (2) "Stufe X von 9" NUR bei Herd-Hitze – VERBOTEN bei kaltem Ruehren/Schichten/Dressing. (3) Quark/Joghurt/Huettenkaese/Proteinpulver erst nach Ausschalten oder kalt; warme Saucen nur Sahne/Schmand/Frischkaese/Kokos/Nussmus. (4) Eier immer garen; name "1 Ei (Groesse M / ca. 60 g)", amount 60; in steps "das Ei" nicht Gramm. (5) Trocken nur anroesten; Shake ≥300 ml; Eintoepfe 250–350 ml. (6) Gewuerze amount=0 + Prise. (7) Protein-Harmonie + Namensgleichheit. (8) 3 Texturen + Saeure; garnish Pflicht. Self-Check vor Output.',
-      en: 'CHEF FRAMEWORK v2.3: amounts in steps must match ingredient list exactly; stove level only for real heat steps never cold mixing; protein heat chemistry; cooked eggs only with name "1 egg (size M / ca. 60 g)"; dry toast not swell; spices amount=0; protein harmony; naming consistency; 3 textures + acid; self-check.',
-      es: 'CHEF-FRAMEWORK v2.3: sync de cantidades; nivel de fuego solo con calor; queso fresco/proteina nunca >70C; huevos cocidos; especias amount=0; self-check.',
-      it: 'CHEF-FRAMEWORK v2.3: sync quantita; livello fornello solo con calore; proteine fredde >70C; uova cotte; spezie amount=0; self-check.'
+      de: 'CHEF-FRAMEWORK v2.4: (1) "Keto"/"Low-Carb" nur bei <10 g Netto-KH; keine Linsen/Kichererbsen/Bohnen/Hafer in Keto. (2) Max. 2 Hauptproteine; kein Zutaten-Salat; Zielmenge ueber Hauptzutat. (3) Eier nur "1 Ei (Groesse M)" / "2 Eier (Groesse M)", amount n*60; steps: "das Ei". (4) Jede Fluessigkeit inkl. Wasser in der Liste. (5) Mengen/Titel = Liste (Namensgleichheit). (6) Herd-Stufe nur bei Hitze. (7) Quark/Joghurt/Proteinpulver erst nach Ausschalten (>70 C gerinnen). (8) Trocken = anroesten; Shakes Minimum 300 ml (200 ml/30 g Proteinpulver). (9) Gewuerze amount=0 (1 Prise). (10) 3 Texturen + garnish + Food-Pairing; nutrition_note = Chef-Analyse. Self-Check vor Output.',
+      en: 'CHEF FRAMEWORK v2.4: keto honesty (<10g net carbs; no legumes/oats in keto); max 2 proteins; eggs as piece names only; all liquids listed; amount sync; stove level heat-only; protein heat chemistry; shakes min 300 ml; toast not swell; spices amount=0; 3 textures + garnish + food pairing; chef analysis; self-check.',
+      es: 'CHEF-FRAMEWORK v2.4: honestidad keto; max 2 proteinas; huevos por unidades; liquidos listados; sync; 3 texturas + garnish; self-check.',
+      it: 'CHEF-FRAMEWORK v2.4: onesta keto; max 2 proteine; uova a pezzi; liquidi in lista; sync; 3 texture + garnish; self-check.'
     };
     var LBL_RECIPE_CHAT_RULES = {
       de: 'Erstelle Rezepte mit Fokus auf die anonymisierten Ernährungsregeln und Makro-Ziele des Nutzers (z. B. Ballaststoffe, moderate Kohlenhydrate, passendes Protein). Keine echten Laborwerte, Namen oder personenbezogenen Daten erwähnen. ' + LBL_RECIPE_CULINARY_RULES.de,
@@ -31103,9 +31114,10 @@ initBarcodeEvents();
       '</div>';
     }
 
-    function nutriRecipeChatCardHtml(pill, emoji, labelObj) {
+    function nutriRecipeChatCardHtml(pill, emoji, labelObj, queryObj) {
       var label = pick(labelObj);
-      return '<button type="button" class="nutri-recipe-chat-card" data-pill="' + pill + '" data-query="' + escNutri(label) + '">' +
+      var query = queryObj ? pick(queryObj) : label;
+      return '<button type="button" class="nutri-recipe-chat-card" data-pill="' + pill + '" data-query="' + escNutri(query) + '">' +
         '<span class="nutri-recipe-chat-card-emoji" aria-hidden="true">' + emoji + '</span>' +
         '<span class="nutri-recipe-chat-card-label">' + escNutri(label) + '</span>' +
         '<svg class="nutri-recipe-chat-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>' +
@@ -31408,6 +31420,10 @@ initBarcodeEvents();
               '<h4 class="section-title">' + escNutri(pick(LBL_RECIPE_INGREDIENTS_TITLE)) + '</h4>' +
               '<ul class="nutri-recipe-ing-list ingredients-list">' +
                 (r.ingredients || []).map(function (i) {
+                  // Eier: nur Stueckzahl im Namen anzeigen (kein "60 g").
+                  if (typeof isNutriEggPieceIngredient === 'function' && isNutriEggPieceIngredient(i.name)) {
+                    return '<li>' + escNutri(i.name) + '</li>';
+                  }
                   var q = formatIngredientQty(i.amount, i.unit);
                   // Format: "Rinderhackfleisch 205 g" (Name, dann Menge + Einheit mit Leerzeichen).
                   if (q.amount === 'nicht angegeben') {
@@ -31520,7 +31536,7 @@ initBarcodeEvents();
         chatLogHtml +=
           '<div class="nutri-recipe-chat-cards">' +
             nutriRecipeChatCardHtml('protein', '⚡', LBL_RECIPE_CHAT_CARD_PROTEIN) +
-            nutriRecipeChatCardHtml('keto', '🥑', LBL_RECIPE_CHAT_CARD_KETO) +
+            nutriRecipeChatCardHtml('keto', '🥑', LBL_RECIPE_CHAT_CARD_KETO, LBL_RECIPE_CHAT_CARD_KETO_QUERY) +
             nutriRecipeChatCardHtml('snack', '🍓', LBL_RECIPE_CHAT_CARD_SNACK) +
           '</div>';
       } else {

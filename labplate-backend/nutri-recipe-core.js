@@ -39,42 +39,51 @@ const ING_FIELDS = ['name', 'amount', 'unit', 'status', 'netCarbs', 'fat', 'prot
 const STRUCTURED_UNIT_TABLE = strictPrompt.STRUCTURED_UNIT_TABLE;
 
 /**
- * Chef-Framework v2.3 – Mengen-Sync & Herd-Stufen-Logik (nur GENERATIV).
+ * Chef-Framework v2.4 – Keto-Ehrlichkeit, max. 2 Proteine, Ei-Stueckzahl, Fluessigkeiten (nur GENERATIV).
  * Eigenrezept/STRUCTURED und Originalmodus: NICHT einbinden.
- * unit bleibt strikt g|ml; Gewuerze amount=0; Eier name "1 Ei (Groesse M / ca. 60 g)".
+ * unit bleibt strikt g|ml; Gewuerze amount=0; Eier name "1 Ei (Groesse M)", amount=n*60 (nur Makro-Calc).
  */
 const CHEF_FRAMEWORK_RULES = [
-  'CHEF-FRAMEWORK v2.3 (verbindlich – Mengen-Sync, Herd-Stufen-Logik, kulinarische Physik):',
+  'CHEF-FRAMEWORK v2.4 (verbindlich – Keto-Ehrlichkeit, Protein-Limit, Mengen-Sync, kulinarische Physik):',
   'Rolle: System-Chefkoch + Ernaehrungs-Wissenschaftler. Food-Pairing, Sensorik, molekulare Hitzebestaendigkeit, exakte Naehrwert-Mathematik. Keine Schaetzungen, keine Halluzinationen.',
-  '1) ABSOLUTE ZUTATEN- UND MENGEN-SYNCHRONISATION:',
+  '1) DIÄT- & KETO-EHRLEICHKEIT (keine Fake-Labels):',
+  '   - "Keto"/"Low-Carb" im Titel/Beschreibung NUR wenn Netto-KH wirklich <10 g (aus ingredients[].macros).',
+  '   - In echten Keto-Gerichten VERBOTEN: Linsen, Kichererbsen, Bohnen, Haferflocken. Carb-Gerichte NIEMALS "Keto" nennen.',
+  '2) MAXIMUM 2 HAUPT-PROTEINQUELLEN (kein Zutaten-Salat):',
+  '   - Hoechstens 2 primaere Proteintraeger (z.B. Haehnchen+Ei ODER Tofu+Quark). Nie drei+ mischen.',
+  '   - Proteinziel >40 g: Menge der Hauptzutat erhoehen (z.B. 180 g Haehnchen), keine Mini-Fragmente Tofu+Ei+Quark+Linsen.',
+  '3) ABSOLUTE ZUTATEN- UND MENGEN-SYNCHRONISATION:',
   '   - Jede Mengenangabe in steps und nutrition_note MUSS 100% mit ingredients[].amount uebereinstimmen.',
   '   - Steht "90 g Tofu" / amount 90 in der Liste, darfst du im Text NIEMALS "ca. 100 g Tofu" oder "120 g" schreiben.',
-  '   - Chef-Analyse: KEINE erfundenen Makro-/Gramm-Zahlen, die von der Liste abweichen.',
-  '2) HERD-STUFEN-LOGIK (Stufe X von 9):',
+  '   - Chef-Analyse: KEINE erfundenen Makro-/Gramm-Zahlen, die von der Liste abweichen. Titel-Zutaten muessen in der Liste vorkommen.',
+  '4) HERD-STUFEN-LOGIK (Stufe X von 9):',
   '   - "Stufe X von 9" NUR bei echten Koch-/Brat-/Roestvorgangen auf dem Herd.',
   '   - Bei kalten Schritten (Ruehren in Schuessel, Schichten im Glas, Dressing anruehren) ist jede Herd-Stufe STRIKT VERBOTEN.',
-  '3) HITZE & PROTEIN-CHEMIE (Emulsion vs. Gerinnung):',
-  '   - Magerquark, Magerjoghurt, Huettenkaese, Proteinpulver flocken bei >70 C.',
-  '   - NIEMALS in der kochenden Pfanne mitkochen. ERST NACH DEM AUSSCHALTEN einruehren ODER kalter Finish/Dressing.',
+  '5) HITZE & PROTEIN-CHEMIE (Emulsion vs. Gerinnung / MOLEKULARE HITZE):',
+  '   - Magerquark, Magerjoghurt, Huettenkaese, Proteinpulver flocken/gerinnen bei >70 C.',
+  '   - NIEMALS in der kochenden Pfanne mitkochen. ERST NACH DEM AUSSCHALTEN der Herdplatte einruehren ODER kalter Finish/Dressing.',
   '   - Warme Saucen: nur Sahne, Schmand, Frischkaese, Kokosmilch, Nussmus.',
-  '4) HYGIENE & EIER-PHYSIK:',
-  '   - Rohes Ei NIEMALS in kalte Saucen/Quark-Dressings. Eier IMMER thermisch verarbeiten.',
-  '   - Zutatenname z.B. "1 Ei (Groesse M / ca. 60 g)" mit amount=60 (oder n×60). In steps: "das Ei"/"die Eier" – KEINE Grammzahlen fuer Eier im Fliesstext.',
-  '5) QUELL- UND FLUESSIGKEITS-DYNAMIK:',
+  '6) HYGIENE & EIER-PHYSIK / EIER-STUECKZAHL-PFLICHT:',
+  '   - Rohes Ei NIEMALS in kalte Saucen/Quark-Dressings (Salmonellen-Risiko). Eier IMMER thermisch verarbeiten.',
+  '   - Zutatenname AUSSCHLIESSLICH "1 Ei (Groesse M)" / "2 Eier (Groesse M)" usw. – KEIN Gramm im Namen. amount = n*60 (nur Makro-Calc; 1 Ei = 60 g intern).',
+  '   - In steps: "das Ei"/"die Eier" – KEINE Grammzahlen fuer Eier im Fliesstext. Nie "30 g Ei" oder "60 g Ei" als name.',
+  '7) VOLLSTAENDIGKEIT VON FLUESSIGKEITEN & QUELL-DYNAMIK:',
+  '   - Jede Fluessigkeit im Zubereitungstext (auch Wasser zum Kochen/Quellen) MUSS mit Menge in ingredients stehen.',
   '   - Trockene Zutaten quellen NICHT in der trockenen Pfanne – nur "anroesten/knusprig". Quellen braucht Wasser/Bruehe/Milch.',
-  '   - Shakes: Minimum 300 ml (200 ml/30 g Proteinpulver, +100 ml/10 g quellend; Fluessigkeit zuerst). Eintoepfe: 250–350 ml/Portion.',
+  '   - Shakes: Minimum 300 ml (pro 30 g Proteinpulver 200 ml, +100 ml/10 g quellend; Fluessigkeit zuerst). Eintoepfe: 250–350 ml/Portion.',
   '   - Suess: keine Speiseoele – Nussmus/Kakaobutter/Kokosoel/Milchfette.',
-  '6) GEWUERZ-DOSIERUNG:',
+  '8) GEWUERZ-DOSIERUNG (ABSOLUTES GRAMM-VERBOT):',
   '   - Salz/Pfeffer/Schaerfe NIE in Gramm. amount=0, name "Salz (1 Prise)" / "Pfeffer (1 Messerspitze)" / "nach Geschmack".',
-  '7) PROTEIN-HARMONIE & KONSISTENTE NAMEN:',
-  '   - Keine Mini-Zweitproteine. Proteinziel = mehr von der Hauptquelle.',
+  '9) PROTEIN-HARMONIE & BEZEICHNUNGS-KONSISTENZ:',
+  '   - Keine Mini-Protein-Zweitquellen / kein Zutaten-Salat. Proteinziel = mehr von der Hauptquelle (max. 2 Hauptproteine).',
   '   - Exakte Namensgleichheit Zutat ↔ steps ↔ Titel ↔ garnish ↔ nutrition_note.',
-  '8) TEXTUR & FOOD PAIRING:',
+  '10) TEXTUR & FOOD PAIRING:',
   '   - Mindestens 3 Texturen (cremig + bissfest + crunchy). garnish PFLICHT.',
-  '   - Herzhaft immer Saeure (Zitrone, Essig).',
-  '9) SCHRITTE:',
+  '   - Herzhaft immer Saeure (Zitrone, Essig). molekulares Food-Pairing nutzen.',
+  '11) SCHRITTE:',
   '   - Mise en Place zuerst. Bei Hitze: Stufe X von 9 + Zeit + Sensorik. Kalte Schritte ohne Herd-Stufe. Anrichten inkl. garnish.',
-  'SELF-CHECK vor Output: Mengen in steps = Zutatenliste? Herd-Stufe bei kaltem Ruehren (entfernen!)? Eier im Text als Gramm statt "das Ei"? Quark/Joghurt >70 C? Bezeichnung inkonsistent?',
+  '   - nutrition_note = Chef-Analyse: 2–3 Saetze zu Food-Pairing, Textur und physiologischem Vorteil.',
+  'SELF-CHECK vor Output: Fake-Keto-Label? >2 Proteine? Mengen in steps = Zutatenliste? Wasser fehlt in Liste? Herd-Stufe bei kaltem Ruehren (entfernen!)? Eier im Text als Gramm statt "das Ei"? Quark/Joghurt >70 C? Bezeichnung inkonsistent?',
 ].join('\n');
 
 /** @deprecated Alias – gleicher Inhalt wie CHEF_FRAMEWORK_RULES (Export-Kompatibilitaet). */

@@ -15778,6 +15778,11 @@ function unitInputValueToGrams(value) {
 // Rezept-Zutaten/Einkaufsliste: nur Mengen mit unit === 'g' sind Gewichtsangaben und werden
 // umgerechnet - ml/mg/µg/IE (Fluessigkeiten, Nahrungsergaenzungs-Dosierungen) sind keine
 // Portionsgewichte und bleiben unangetastet.
+function isNutriEggPieceIngredient(name) {
+  var n = String(name == null ? '' : name).trim();
+  // "1 Ei (Größe M)", "2 Eier (Groesse M)", "1 egg (size M)" – Stueckzahl im Namen, Gramm nur intern.
+  return /^\d+\s*(ei(er)?|egg(s)?)\b/i.test(n);
+}
 function formatIngredientQty(amount, unit) {
   // amount 0 / null / ungueltig = "nicht angegeben" (Eigenrezept ohne Mengenangabe).
   if (amount == null || amount === '' || (typeof amount === 'number' && (!isFinite(amount) || amount <= 0))) {
@@ -23816,6 +23821,12 @@ initBarcodeEvents();
     var LBL_RECIPE_CHAT_CARD_LEFTOVERS = { de:'Reste im Kühlschrank verwerten', en:'Use up fridge leftovers', es:'Aprovechar sobras del frigorífico', it:'Usare gli avanzi in frigo' };
     var LBL_RECIPE_CHAT_CARD_PROTEIN = { de:'Schnelles High-Protein Gericht', en:'Quick high-protein dish', es:'Plato rápido alto en proteína', it:'Piatto veloce high-protein' };
     var LBL_RECIPE_CHAT_CARD_KETO = { de:'Low-Carb / Keto Idee', en:'Low-carb / keto idea', es:'Idea low-carb / keto', it:'Idea low-carb / keto' };
+    var LBL_RECIPE_CHAT_CARD_KETO_QUERY = {
+      de: 'Echtes Keto-Gericht unter 10 g Netto-Kohlenhydrate, ohne Linsen/Kichererbsen/Bohnen/Haferflocken. Max. 2 Proteinquellen.',
+      en: 'True keto dish under 10 g net carbs, no lentils/chickpeas/beans/oats. Max 2 protein sources.',
+      es: 'Plato keto real con menos de 10 g de carbohidratos netos, sin lentejas/garbanzos/frijoles/avena. Max. 2 proteinas.',
+      it: 'Piatto keto vero sotto 10 g di carboidrati netti, senza lenticchie/ceci/fagioli/avena. Max 2 proteine.'
+    };
     var LBL_RECIPE_CHAT_CARD_SNACK = { de:'Süßer Snack unter 200 kcal', en:'Sweet snack under 200 kcal', es:'Snack dulce de menos de 200 kcal', it:'Snack dolce sotto le 200 kcal' };
     var LBL_RECIPE_CHAT_REPLY = { de:'Hier eine Idee für dich: {title} ({time}).', en:'Here\'s an idea for you: {title} ({time}).', es:'Aquí tienes una idea: {title} ({time}).', it:'Ecco un\'idea per te: {title} ({time}).' };
     var LBL_RECIPE_CHAT_REPLY_STRUCTURED = {
@@ -23862,10 +23873,10 @@ initBarcodeEvents();
     // Chef-Framework (GENERATIV) – Spiegel von labplate-backend/nutri-recipe-core.js
     // (CHEF_FRAMEWORK_RULES). Eigenrezept/STRUCTURED/Original: nicht anhaengen.
     var LBL_RECIPE_CULINARY_RULES = {
-      de: 'CHEF-FRAMEWORK v2: (1) Food-Pairing: Saeure+Fett+Umami+Bitternote/Sueße; herzhaft immer Saeure-Quelle; suess immer Prise Meersalz + Frische. (2) 3-Texturen-Standard: cremig + bissfest + crunchy; garnish PFLICHT. (3) Praxis/Thermik: Eintoepfe 250–350 ml/Portion; Shake mind. 300 ml (200 ml/30 g Pulver, +100 ml/10 g quellend, Fluessigkeit zuerst); Gewuerze max. 0.5 g; Quark/Joghurt/Proteinpulver nie in kochende Fluessigkeit (>70 C) – nur Finish <60 C oder kalt; Eier ganz (≈55–60 g); keine Lueckenbuesser-Zutaten; suess ohne Speiseoele. (4) Schritte: Mise en Place; Stufe/Zeit/sensorische Signale; Anrichten mit garnish. (5) nutrition_note = Chef-Analyse: IMMER 2–3 Saetze WARUM Aromen+Textur + physiologischer Vorteil – nie leer.',
-      en: 'CHEF FRAMEWORK: (1) 5-taste balance – savory: salt/umami/acid/fat-sweet; sweet/shake: sweetness + acid/freshness + pinch of salt. (2) Texture: soft/creamy meets crunch; garnish field REQUIRED (topping). (3) Shake: 200 ml liquid / 30 g powder; swelling +100 ml / 10 g; min 300 ml; liquid first in blender. Mains never dry (sauce/dressing/finish). Sweet: no cooking oils – nut butter/cocoa butter/coconut oil/dairy fats. (4) Steps: mise en place first; heat, time, doneness cues; finish with garnish. (5) Rounded g|ml amounts, lean ingredient list. (6) nutrition_note = Chef analysis: ALWAYS inspiring 2–3 sentences on flavor + health benefit – never empty.',
-      es: 'CHEF-FRAMEWORK: (1) Equilibrio de 5 sabores con acidez. (2) Textura cremoso+crujiente; campo garnish OBLIGATORIO. (3) Batido: 200 ml / 30 g; +100 ml / 10 g hinchables; min 300 ml; liquido primero. Platos nunca secos. Dulce: sin aceites de cocina. (4) Mise en place; calor, tiempo, senales de punto; emplatar con garnish. (5) Cantidades redondeadas g|ml. (6) nutrition_note = analisis chef: SIEMPRE 2–3 frases – nunca vacio.',
-      it: 'CHEF-FRAMEWORK: (1) Equilibrio 5 sapori con acidita. (2) Texture cremoso+croccante; campo garnish OBBLIGATORIO. (3) Shake: 200 ml / 30 g; +100 ml / 10 g; min 300 ml; liquido prima. Piatti mai asciutti. Dolce: niente oli da cucina. (4) Mise en place; calore, tempo, segnali di cottura; impiattare con garnish. (5) Quantita arrotondate g|ml. (6) nutrition_note = analisi chef: SEMPRE 2–3 frasi – mai vuoto.'
+      de: 'CHEF-FRAMEWORK v2.4: (1) "Keto"/"Low-Carb" nur bei <10 g Netto-KH; keine Linsen/Kichererbsen/Bohnen/Hafer in Keto. (2) Max. 2 Hauptproteine; kein Zutaten-Salat; Zielmenge ueber Hauptzutat. (3) Eier nur "1 Ei (Groesse M)" / "2 Eier (Groesse M)", amount n*60; steps: "das Ei". (4) Jede Fluessigkeit inkl. Wasser in der Liste. (5) Mengen/Titel = Liste (Namensgleichheit). (6) Herd-Stufe nur bei Hitze. (7) Quark/Joghurt/Proteinpulver erst nach Ausschalten (>70 C gerinnen). (8) Trocken = anroesten; Shakes Minimum 300 ml (200 ml/30 g Proteinpulver). (9) Gewuerze amount=0 (1 Prise). (10) 3 Texturen + garnish + Food-Pairing; nutrition_note = Chef-Analyse. Self-Check vor Output.',
+      en: 'CHEF FRAMEWORK v2.4: keto honesty (<10g net carbs; no legumes/oats in keto); max 2 proteins; eggs as piece names only; all liquids listed; amount sync; stove level heat-only; protein heat chemistry; shakes min 300 ml; toast not swell; spices amount=0; 3 textures + garnish + food pairing; chef analysis; self-check.',
+      es: 'CHEF-FRAMEWORK v2.4: honestidad keto; max 2 proteinas; huevos por unidades; liquidos listados; sync; 3 texturas + garnish; self-check.',
+      it: 'CHEF-FRAMEWORK v2.4: onesta keto; max 2 proteine; uova a pezzi; liquidi in lista; sync; 3 texture + garnish; self-check.'
     };
     var LBL_RECIPE_CHAT_RULES = {
       de: 'Erstelle Rezepte mit Fokus auf die anonymisierten Ernährungsregeln und Makro-Ziele des Nutzers (z. B. Ballaststoffe, moderate Kohlenhydrate, passendes Protein). Keine echten Laborwerte, Namen oder personenbezogenen Daten erwähnen. ' + LBL_RECIPE_CULINARY_RULES.de,
@@ -25036,9 +25047,10 @@ initBarcodeEvents();
       '</div>';
     }
 
-    function nutriRecipeChatCardHtml(pill, emoji, labelObj) {
+    function nutriRecipeChatCardHtml(pill, emoji, labelObj, queryObj) {
       var label = pick(labelObj);
-      return '<button type="button" class="nutri-recipe-chat-card" data-pill="' + pill + '" data-query="' + escNutri(label) + '">' +
+      var query = queryObj ? pick(queryObj) : label;
+      return '<button type="button" class="nutri-recipe-chat-card" data-pill="' + pill + '" data-query="' + escNutri(query) + '">' +
         '<span class="nutri-recipe-chat-card-emoji" aria-hidden="true">' + emoji + '</span>' +
         '<span class="nutri-recipe-chat-card-label">' + escNutri(label) + '</span>' +
         '<svg class="nutri-recipe-chat-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>' +
@@ -25480,7 +25492,7 @@ initBarcodeEvents();
           '<div class="nutri-recipe-chat-cards">' +
             nutriRecipeChatCardHtml('leftovers', '🍳', LBL_RECIPE_CHAT_CARD_LEFTOVERS) +
             nutriRecipeChatCardHtml('protein', '⚡', LBL_RECIPE_CHAT_CARD_PROTEIN) +
-            nutriRecipeChatCardHtml('keto', '🥑', LBL_RECIPE_CHAT_CARD_KETO) +
+            nutriRecipeChatCardHtml('keto', '🥑', LBL_RECIPE_CHAT_CARD_KETO, LBL_RECIPE_CHAT_CARD_KETO_QUERY) +
             nutriRecipeChatCardHtml('snack', '🍓', LBL_RECIPE_CHAT_CARD_SNACK) +
           '</div>';
       } else {
