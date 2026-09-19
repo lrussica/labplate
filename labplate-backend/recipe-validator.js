@@ -31,7 +31,7 @@ function resolvePlaceholders(text, ingredientsById) {
     if (!ing) return '{' + id + '}';
     const amount = ing.amount;
     const unit = ing.unit || '';
-    if (amount == null) return String(ing.name || '');
+    if (amount == null || amount === 0) return String(ing.name || '');
     return String(amount) + (unit ? unit : '') + ' ' + String(ing.name || '');
   }).replace(/\s+/g, ' ').trim();
 }

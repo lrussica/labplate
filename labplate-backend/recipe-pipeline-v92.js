@@ -228,6 +228,50 @@ function renderRecipeForDisplay(recipe) {
   };
 }
 
+function logRawLlmJson(meta) {
+  try {
+    const parsed = meta.parsed;
+    const stepContents = Array.isArray(parsed && parsed.steps)
+      ? parsed.steps.map(function (s, i) {
+          return {
+            i: i + 1,
+            title: s && s.title,
+            content: s && s.content,
+            stove_level: s && s.stove_level,
+            time_min: s && s.time_min,
+          };
+        })
+      : [];
+    const ingSummary = Array.isArray(parsed && parsed.ingredients)
+      ? parsed.ingredients.map(function (ing) {
+          return {
+            id: ing && ing.id,
+            name: ing && ing.name,
+            amount: ing && ing.amount,
+            unit: ing && ing.unit,
+            protein_source: !!(ing && ing.protein_source),
+          };
+        })
+      : [];
+    console.log('[recipe-v92] raw_llm_json ' + JSON.stringify({
+      prompt_version: 'v9.2',
+      attempt: meta.attempt,
+      validation_pending: true,
+      title: parsed && parsed.title,
+      ingredients: ingSummary,
+      step_contents: stepContents,
+      garnish: parsed && parsed.garnish,
+      chef_analysis: parsed && parsed.chef_analysis,
+      nutrition: parsed && parsed.nutrition,
+      diet_labels: parsed && parsed.diet_labels,
+    }));
+    // Vollständiges Raw-JSON (kann groß sein) – separates Log für Debug-Pipelines
+    console.log('[recipe-v92] raw_llm_json_full attempt=' + meta.attempt + ' ' + JSON.stringify(parsed));
+  } catch (e) {
+    console.log('[recipe-v92] raw_llm_json_log_failed ' + (e && e.message ? e.message : String(e)));
+  }
+}
+
 function logValidationFailure(meta) {
   try {
     console.log('[recipe-v92] validation_failed ' + JSON.stringify({
@@ -291,6 +335,9 @@ async function generateValidatedRecipe(opts) {
       parsed = p.data;
     }
     lastRaw = parsed;
+
+    // Diagnose: Raw-JSON VOR Validierung und VOR renderRecipeForDisplay (jeder Versuch)
+    logRawLlmJson({ attempt: attempt, parsed: parsed });
 
     // Emotion-Handoff-Sentinel: nicht validieren, an Caller durchreichen
     if (parsed && parsed.title === '__TEAM_HANDOFF_COACH__') {
