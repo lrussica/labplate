@@ -25251,6 +25251,10 @@ initBarcodeEvents();
               '<h4 class="section-title">' + escNutri(pick(LBL_RECIPE_INGREDIENTS_TITLE)) + '</h4>' +
               '<ul class="nutri-recipe-ing-list ingredients-list">' +
                 (r.ingredients || []).map(function (i) {
+                  // Eier: nur Stueckzahl im Namen anzeigen (kein "60 g").
+                  if (typeof isNutriEggPieceIngredient === 'function' && isNutriEggPieceIngredient(i.name)) {
+                    return '<li>' + escNutri(i.name) + '</li>';
+                  }
                   var q = formatIngredientQty(i.amount, i.unit);
                   return '<li>' + escNutri(i.name) + ' <span class="nutri-recipe-ing-amount">' + escNutri(q.amount) + ' ' + escNutri(q.unit) + '</span></li>';
                 }).join('') +
