@@ -66,7 +66,10 @@ const CHEF_FRAMEWORK_RULES = [
   'zaehlt in die 2er-Grenze — unabhaengig vom gesetzten Flag.',
   '5) DIÄT- & KETO-EHRLEICHKEIT: diet_labels keto nur bei netto_kh_g <10; high_protein nur ab protein_g ≥25; vegan ohne Ei/Milch.',
   '6) Eier: unit "stk", amount Stueckzahl, name "Ei (Groesse M, ca. 60 g)". Inhalt nur via {id}.',
-  '7) VOLLSTAENDIGKEIT: jede {id} in steps/garnish existiert in ingredients; jede Zutat mind. 1x referenziert. Auch Fluessigkeiten (Wasser).',
+  '7) VOLLSTAENDIGKEIT: jede {id} in steps/garnish existiert in ingredients; jede Zutat mind. 1x referenziert. ' +
+  'Auch Basis-Zutaten (Oel, Butter, Wasser, Salz, Mehl, Zucker, Ei) MUESSEN in ingredients stehen und per {id} ' +
+  'referenziert werden — VERBOTEN: "in etwas Oel anbraten" ohne Oel-Eintrag in ingredients. Keine Klartext-Zutat ' +
+  'ohne Listen-Eintrag (Allergie-/Sicherheitsrisiko).',
   '8) HERD-STUFEN: stove_level 1-9 nur bei Hitze; kalt = 0. Mise en Place zuerst; Zeit + Sensorik.',
   '9) GEWUERZE: unit prise|messerspitze, amount 0 – nie unit g fuer Salz/Pfeffer (ABSOLUTES GRAMM-VERBOT).',
   '10) Kalorien-Plausibilitaet: kcal ≈ Protein×4 + Netto-KH×4 + Fett×9 + Ballaststoffe×2 (±10 %).',
@@ -75,7 +78,8 @@ const CHEF_FRAMEWORK_RULES = [
   '17) TEXTUR & FOOD PAIRING: mind. 3 Texturen (cremig + bissfest + crunchy); garnish Pflicht; herzhaft Saeure.',
   '18) BEZEICHNUNGS-KONSISTENZ / Namensgleichheit. garnish + chef_analysis Pflicht.',
   '19) KEIN [SELF-CHECK]-Block. Backend validiert deterministisch (validateRecipeV2).',
-  '20) NEGATIV-VERBOT: freie Mengen in content; eigene g/kcal in chef_analysis; ungelistete garnish-Zutaten; >2 protein_source.',
+  '20) NEGATIV-VERBOT: freie Mengen in content; eigene g/kcal in chef_analysis; ungelistete garnish-Zutaten; ' +
+  '>2 protein_source; Klartext-Basiszutaten ohne ingredients-Eintrag (z. B. "etwas Oel anbraten").',
 ].join('\n');
 
 /** @deprecated Alias – gleicher Inhalt wie CHEF_FRAMEWORK_RULES (Export-Kompatibilitaet). */

@@ -320,6 +320,15 @@ function errorsToDirectives(errors) {
         );
       }
     }
+    const mStaple = e.match(/Zutat '([^']+)' im Text erwähnt, aber nicht in ingredients gelistet/i);
+    if (mStaple && !seenProtein['staple_' + mStaple[1]]) {
+      seenProtein['staple_' + mStaple[1]] = true;
+      directives.push(
+        "KONKRETE KORREKTUR: Du hast '" + mStaple[1] + "' im Step-Text genannt, ohne sie in ingredients " +
+        'zu listen. Fuege die Zutat mit eigener id in ingredients hinzu und referenziere sie per {id} ' +
+        '(nie "etwas ' + mStaple[1] + '" als Klartext ohne Listen-Eintrag).'
+      );
+    }
   });
 
   return directives;

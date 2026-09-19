@@ -81,6 +81,91 @@ function validateNoFreeNumbersInProse(steps, garnish, chefAnalysis, ingredients)
   return { ok: problems.length === 0, problems: problems };
 }
 
+/**
+ * Fehlerklasse 3: Klartext-Grundzutat im Prosa-Text, aber kein ingredients-Eintrag.
+ * Whitelist häufiger Koch-Staples; Treffer nur wenn kein Zutatenname den Stem abdeckt.
+ */
+const STAPLE_WHITELIST = [
+  { label: 'Öl', stems: ['olivenöl', 'olivenoel', 'rapsöl', 'rapsoel', 'sonnenblumenöl', 'sonnenblumenoel', 'speiseöl', 'speiseoel', 'öl', 'oel'] },
+  { label: 'Butter', stems: ['butter', 'margarine', 'ghee'] },
+  { label: 'Wasser', stems: ['wasser', 'brühe', 'bruehe', 'fond'] },
+  { label: 'Mehl', stems: ['mehl', 'stärke', 'staerke'] },
+  { label: 'Zucker', stems: ['zucker', 'honig', 'sirup'] },
+  { label: 'Ei', stems: ['eier', 'ei'] },
+  { label: 'Salz', stems: ['meersalz', 'salz'] },
+  { label: 'Pfeffer', stems: ['pfeffer'] },
+  { label: 'Essig', stems: ['essig', 'balsamico'] },
+  { label: 'Knoblauch', stems: ['knoblauch'] },
+  { label: 'Zwiebel', stems: ['zwiebeln', 'zwiebel', 'schalotten', 'schalotte'] },
+  { label: 'Milch', stems: ['milch', 'sahne', 'rahm'] },
+];
+
+function normalizeDeAscii(s) {
+  return String(s || '')
+    .toLowerCase()
+    .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
+}
+
+function ingredientCoversStem(ingName, stem) {
+  const n = normalizeDeAscii(ingName);
+  const st = normalizeDeAscii(stem);
+  if (!st) return false;
+  if (st === 'ei' || st === 'eier') {
+    return /(?:^|[^a-z])ei(?:er)?(?:[^a-z]|$)/.test(n) && n.indexOf('eiweiss') < 0 && n.indexOf('eiweis') < 0;
+  }
+  return n.indexOf(st) >= 0;
+}
+
+function textMentionsStem(text, stem) {
+  const t = normalizeDeAscii(text);
+  const st = normalizeDeAscii(stem);
+  if (!st) return false;
+  if (st === 'ei' || st === 'eier') {
+    // "Rührei"/"Speiseöl" nicht als freies Ei werten: Wortgrenze
+    return /(?:^|[^a-z])ei(?:er)?(?:[^a-z]|$)/.test(t) && t.indexOf('eiweiss') < 0;
+  }
+  if (st.length <= 3) {
+    return new RegExp('(?:^|[^a-z])' + st.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?:[^a-z]|$)').test(t);
+  }
+  return t.indexOf(st) >= 0;
+}
+
+function validateUnlistedStaplesInProse(steps, garnish, ingredients) {
+  const problems = [];
+  const ings = Array.isArray(ingredients) ? ingredients : [];
+  const list = Array.isArray(steps) ? steps : [];
+  const blobs = list.map(function (s) { return String((s && s.content) || ''); });
+  if (garnish) blobs.push(String(garnish));
+
+  const coveredLabels = {};
+  STAPLE_WHITELIST.forEach(function (staple) {
+    const covered = ings.some(function (ing) {
+      return staple.stems.some(function (stem) {
+        return ingredientCoversStem((ing && ing.name) || '', stem);
+      });
+    });
+    if (covered) coveredLabels[staple.label] = true;
+  });
+
+  const flagged = {};
+  blobs.forEach(function (text, bi) {
+    STAPLE_WHITELIST.forEach(function (staple) {
+      if (coveredLabels[staple.label] || flagged[staple.label]) return;
+      const hit = staple.stems.some(function (stem) { return textMentionsStem(text, stem); });
+      if (!hit) return;
+      flagged[staple.label] = true;
+      const where = bi < list.length
+        ? ("Step " + (bi + 1) + " ('" + ((list[bi] && list[bi].title) || '') + "')")
+        : 'garnish';
+      problems.push(
+        "Zutat '" + staple.label + "' im Text erwähnt, aber nicht in ingredients gelistet (" + where + ")"
+      );
+    });
+  });
+
+  return { ok: problems.length === 0, problems: problems };
+}
+
 function validateMaxProteinSourcesByKeywords(ingredients, proteinSourceKeywords) {
   const defaultKeywords = [
     'hähnchen', 'haehnchen', 'huhn', 'pute', 'rind', 'schwein', 'lachs', 'thunfisch', 'fisch',
@@ -165,6 +250,9 @@ function validateRecipeV2(recipe) {
   const prose = validateNoFreeNumbersInProse(steps, garnish, chefAnalysis, ingredients);
   prose.problems.forEach(function (p) { result.addError(p); });
 
+  const staples = validateUnlistedStaplesInProse(steps, garnish, ingredients);
+  staples.problems.forEach(function (p) { result.addError(p); });
+
   const stepTimeSum = steps.reduce(function (acc, s) {
     return acc + (Number(s && s.time_min) || 0);
   }, 0);
@@ -206,4 +294,6 @@ module.exports = {
   validateMaxProteinSourcesByKeywords: validateMaxProteinSourcesByKeywords,
   resolvePlaceholders: resolvePlaceholders,
   validateNoFreeNumbersInProse: validateNoFreeNumbersInProse,
+  validateUnlistedStaplesInProse: validateUnlistedStaplesInProse,
+  STAPLE_WHITELIST: STAPLE_WHITELIST,
 };

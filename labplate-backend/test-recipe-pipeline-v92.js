@@ -56,6 +56,34 @@ assert.ok(result3.errors.some(function (e) { return /freie Mengen-Zahl|15 ml/i.t
 assert.ok(result3.errors.some(function (e) { return /chef_analysis|64 g|Protein/i.test(e); }), 'erwartet chef_analysis number error');
 console.log('OK validate broken v9.2');
 
+// TEST 3b: Klartext-Basiszutat ohne ingredients-Eintrag ("etwas Öl")
+const ohneOel = JSON.parse(JSON.stringify(gutesBeispiel));
+ohneOel.ingredients = ohneOel.ingredients.filter(function (i) { return !/öl|oel/i.test(i.name); });
+ohneOel.steps = [
+  { title: 'Anbraten', content: 'Brate {0001} in etwas Öl bei mittlerer Hitze.', stove_level: 6, time_min: 6 },
+  { title: 'Ei', content: '{0002} dazugeben, mit {0006} würzen.', stove_level: 4, time_min: 3 },
+];
+ohneOel.garnish = 'Mit gerösteten {0005} bestreuen.';
+const resultOel = validator.validateRecipeV2(ohneOel);
+assert.strictEqual(resultOel.ok, false, 'etwas Öl ohne Listen-Eintrag muss failen');
+assert.ok(resultOel.errors.some(function (e) {
+  return /Zutat 'Öl' im Text erwähnt, aber nicht in ingredients/i.test(e);
+}), 'erwartet unlisted staple Öl: ' + resultOel.errors.join('; '));
+console.log('OK unlisted staple Öl');
+
+// TEST 3c: Fix B errorsToDirectives Protein
+const fb = pipeline.buildRetryFeedbackMessage([
+  'Mehr als 2 Proteinquellen (Keyword-Heuristik): Hähnchen, Tofu, Ei',
+  'Modell hat protein_source falsch gesetzt für: [Tofu]',
+]);
+assert.ok(/KONKRETE KORREKTUR: Du hast 3 Proteinquellen/i.test(fb), 'Fix B Protein-Directive');
+assert.ok(/entferne sie stattdessen ganz/i.test(fb), 'Fix B remove-not-hide');
+const fb2 = pipeline.buildRetryFeedbackMessage([
+  "Zutat 'Öl' im Text erwähnt, aber nicht in ingredients gelistet (Step 1 ('Anbraten'))",
+]);
+assert.ok(/KONKRETE KORREKTUR:.*Öl/i.test(fb2), 'Fix B staple directive');
+console.log('OK errorsToDirectives Fix B + staple');
+
 // Retry: first fail, second ok
 let calls = 0;
 async function mockCallGroq() {

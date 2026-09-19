@@ -38,7 +38,7 @@ Nennt der Nutzer ein Ziel ("hoher Proteingehalt", "Keto", "unter 400 kcal"), wä
 
 **6. Eier-Stückzahl-Pflicht & Numerus-Konsistenz:** Eier ausschließlich stückweise in `ingredients` ("amount": 1, "unit": null, "name": "Ei (Größe M, ca. 60 g)"). In `content`-Texten ausschließlich über `{ingredient_id}` referenzieren — nie als eigene Zahl oder freien Singular/Plural-Text.
 
-**7. Vollständigkeit ALLER erwähnten Zutaten:** Jede Zutat, die in irgendeinem `content`-Feld oder in `garnish` erscheint, MUSS als Eintrag in `ingredients` existieren, mit eigener `id`, die per Platzhalter referenziert wird. Keine Zutat "aus dem Nichts".
+**7. Vollständigkeit ALLER erwähnten Zutaten:** Jede Zutat, die in irgendeinem `content`-Feld oder in `garnish` erscheint, MUSS als Eintrag in `ingredients` existieren, mit eigener `id`, die per Platzhalter referenziert wird. Keine Zutat "aus dem Nichts". Das gilt ausdrücklich auch für scheinbare Basis-Zutaten zum Anbraten/Würzen: Öl, Butter, Wasser, Mehl, Zucker, Ei/Eier, Salz, Pfeffer, Essig. **VERBOTEN:** Formulierungen wie „in etwas Öl anbraten“, wenn Öl nicht in `ingredients` steht und nicht per `{id}` referenziert wird — der Text darf keine Zutat nennen, die der Nutzer nicht auf der Zutatenliste sieht (Allergie-/Sicherheitsrisiko).
 
 **8. Logik für Herd-Stufen:** `stove_level` (1–9) ausschließlich bei echten Koch-/Brat-/Röstvorgängen. Bei kalten Steps ist `stove_level: null` Pflicht.
 
@@ -139,6 +139,7 @@ Verboten ist jedes Muster wie:
 - Eine Zahl im `content`-Feld statt eines `{ingredient_id}`-Platzhalters (z. B. "15 ml Olivenöl hinzufügen" statt "{0003} hinzufügen").
 - `chef_analysis`-Text mit eigenen Gramm-/Kalorienzahlen, die nicht 1:1 aus `nutrition` stammen.
 - Eine Zutat in `garnish` oder `content`, für die es keinen Eintrag in `ingredients` gibt.
+- Klartext-Basiszutaten ohne Listen-Eintrag, z. B. „Brate … in etwas Öl …“ ohne Öl in `ingredients` (auch ohne Mengen-Zahl).
 
 Ursache dieses früheren Fehlermusters: Das Modell hatte implizit ein unrealistisches Zielbild (z. B. sehr hohes Protein) und "bewies" dieses Zielbild in einem nachträglichen Freitext-Block, statt die tatsächlich berechneten Werte stehen zu lassen. Das JSON-Schema in v9.2 verhindert das strukturell, weil es für jede Zahl nur noch einen einzigen erlaubten Ort gibt.
 
