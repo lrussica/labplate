@@ -29116,7 +29116,7 @@ initBarcodeEvents();
     // formuliert (statt als hoefliche Bitte) - zusaetzliche Absicherung neben dem eigentlichen
     // Traeger des Suchbegriffs (pantry_ingredients, siehe buildNutriRecipePayload).
     var LBL_RECIPE_FREESEARCH_AI_INSTRUCTION = {
-      de: 'MODUS GENERATIV / FREISUCHE (nicht Eigenrezept): VERBINDLICHE VORGABE, KEIN VORSCHLAG: Erstelle ausschließlich ein Rezept für genau folgendes Gericht: "{q}". Weiche unter keinen Umständen auf ein anderes Gericht aus. Du DARFST Mengen und Zutatendetails an die unten genannten Tagesziele anpassen – das ist hier erlaubt und gewollt. ingredients[].unit NUR "g" oder "ml" (Stueck/EL/TL vorher umrechnen: 1 Ei=60 g, 1 EL=15, 1 TL=5). Wende das CHEF-FRAMEWORK an (5-Geschmäcker, Textur, garnish-Feld, Reifezeichen, Chef-Analyse in nutrition_note).',
+      de: 'MODUS GENERATIV / FREISUCHE (nicht Eigenrezept): VERBINDLICHE VORGABE, KEIN VORSCHLAG: Erstelle ausschließlich ein Rezept für genau folgendes Gericht: "{q}". Weiche unter keinen Umständen auf ein anderes Gericht aus. Du DARFST Mengen und Zutatendetails an die unten genannten Tagesziele anpassen – das ist hier erlaubt und gewollt. ingredients[].unit NUR "g" oder "ml" (Stueck/EL/TL vorher umrechnen: 1 Ei=60 g, 1 EL=15, 1 TL=5). Wende das CHEF-FRAMEWORK v9.0 an (Bottom-Up-Nährwerte, garnish, self_check mit Rechnung, Chef-Analyse in nutrition_note).',
       en: 'MODE GENERATIVE / FREE SEARCH (not own-recipe): BINDING REQUIREMENT, NOT A SUGGESTION: Create a recipe exclusively for the following dish: "{q}". Under no circumstances substitute a different dish. You MAY adjust amounts and ingredient details to match the daily targets listed below – that is allowed and intended in this mode. ingredients[].unit ONLY "g" or "ml" (convert piece/tbsp/tsp first: 1 egg=60 g, 1 tbsp=15, 1 tsp=5). Apply the CHEF FRAMEWORK (5 tastes, texture, garnish field, doneness cues, chef analysis in nutrition_note).',
       es: 'MODO GENERATIVO / BÚSQUEDA LIBRE (no receta propia): REQUISITO VINCULANTE: Crea una receta exclusivamente para el plato "{q}". No sustituyas por otro plato. SÍ puedes ajustar cantidades y detalles de ingredientes a los objetivos diarios – está permitido en este modo. ingredients[].unit SOLO "g" o "ml". Aplica el CHEF-FRAMEWORK (5 sabores, textura, garnish, análisis chef).',
       it: 'MODALITÀ GENERATIVA / RICERCA LIBERA (non ricetta propria): REQUISITO VINCOLANTE: Crea una ricetta esclusivamente per il piatto "{q}". Non sostituirlo. PUOI adattare quantità e dettagli degli ingredienti agli obiettivi giornalieri – è consentito in questa modalità. ingredients[].unit SOLO "g" o "ml". Applica il CHEF-FRAMEWORK (5 sapori, texture, garnish, analisi chef).',
@@ -29229,7 +29229,7 @@ initBarcodeEvents();
         (parsedUserRecipe.servings
           ? ' servings=' + parsedUserRecipe.servings + '.'
           : ' servings=0 (nicht im Text, Portion leer lassen).') +
-        ' prep_time="", nutrition_note="", garnish="", shopping_list=[]. Nur Orthografie, kein Umschreiben.';
+        ' prep_time="", nutrition_note="", garnish="", self_check="", shopping_list=[]. Nur Orthografie, kein Umschreiben.';
       var baseEn =
         titleHintEn +
         'MODE OWN-RECIPE/STRUCTURED – pure passthrough. Only title, servings, ingredients, steps. ' +
@@ -29246,7 +29246,7 @@ initBarcodeEvents();
         (parsedUserRecipe.servings
           ? ' servings=' + parsedUserRecipe.servings + '.'
           : ' servings=0 (not in text, leave portions empty).') +
-        ' prep_time="", nutrition_note="", garnish="", shopping_list=[]. Orthography only, no rewriting.';
+        ' prep_time="", nutrition_note="", garnish="", self_check="", shopping_list=[]. Orthography only, no rewriting.';
       return curLang === 'de' ? baseDe : baseEn;
     }
     // Schema: validateNutriRecipeSchema erlaubt bis 100 Zutaten, 50 Schritte, Strings bis 2000;
@@ -29402,16 +29402,20 @@ initBarcodeEvents();
     // Chef-Framework (GENERATIV) – Spiegel von labplate-backend/nutri-recipe-core.js
     // (CHEF_FRAMEWORK_RULES). Eigenrezept/STRUCTURED/Original: nicht anhaengen.
     var LBL_RECIPE_CULINARY_RULES = {
-      de: 'CHEF-FRAMEWORK v2.4: (1) "Keto"/"Low-Carb" nur bei <10 g Netto-KH; keine Linsen/Kichererbsen/Bohnen/Hafer in Keto. (2) Max. 2 Hauptproteine; kein Zutaten-Salat; Zielmenge ueber Hauptzutat. (3) Eier nur "1 Ei (Groesse M)" / "2 Eier (Groesse M)", amount n*60; steps: "das Ei". (4) Jede Fluessigkeit inkl. Wasser in der Liste. (5) Mengen/Titel = Liste (Namensgleichheit). (6) Herd-Stufe nur bei Hitze. (7) Quark/Joghurt/Proteinpulver erst nach Ausschalten (>70 C gerinnen). (8) Trocken = anroesten; Shakes Minimum 300 ml (200 ml/30 g Proteinpulver). (9) Gewuerze amount=0 (1 Prise). (10) 3 Texturen + garnish + Food-Pairing; nutrition_note = Chef-Analyse. Self-Check vor Output.',
-      en: 'CHEF FRAMEWORK v2.4: keto honesty (<10g net carbs; no legumes/oats in keto); max 2 proteins; eggs as piece names only; all liquids listed; amount sync; stove level heat-only; protein heat chemistry; shakes min 300 ml; toast not swell; spices amount=0; 3 textures + garnish + food pairing; chef analysis; self-check.',
-      es: 'CHEF-FRAMEWORK v2.4: honestidad keto; max 2 proteinas; huevos por unidades; liquidos listados; sync; 3 texturas + garnish; self-check.',
-      it: 'CHEF-FRAMEWORK v2.4: onesta keto; max 2 proteine; uova a pezzi; liquidi in lista; sync; 3 texture + garnish; self-check.'
+      de: 'CHEF-FRAMEWORK v9.0: (0) Bottom-Up-Naehrwerte: erst Zutat×Ref/100g, dann Summe – nie Top-Down. (1) Mengen/kcal/Protein in Text+Analyse = Tabelle. (2) Quark/Joghurt/Huettenkaese/Creme fraiche/Frischkaese/Mascarpone/Schmand/Kokosjoghurt/Proteinpulver nur bei AUS-Herd. (3) Max. 2 Proteine. (4) Keto nur <10 g Netto-KH; vegan/vegetarisch/high-protein ehrlich (≥25–30 g). (5) Eier "1 Ei (Groesse M, ca. 60 g)", steps: "das Ei". (6) Alle Fluessigkeiten listen. (7) Herd-Stufe nur bei Hitze. (8) Gewuerze amount=0. (9) kcal≈P×4+KH×4+F×9+B×2 ±10%. (10) Zeit-Summe=prep_time. (11–15) Einheiten/Allergene/Skalierung/Grenzfaelle/Rundung. (16) 3 Texturen+garnish+Food-Pairing. Pflichtfeld self_check mit echter Rechnung; nutrition_note=Chef-Analyse.',
+      en: 'CHEF FRAMEWORK v9.0: bottom-up nutrition; amount sync; dairy heat lock (stove OFF); max 2 proteins; keto honesty; eggs as pieces; liquids listed; stove levels heat-only; spices amount=0; calorie plausibility ±10%; time realism; self_check field with real math; chef analysis.',
+      es: 'CHEF-FRAMEWORK v9.0: nutricion bottom-up; sync; lacteos solo con fuego APAGADO; max 2 proteinas; honestidad keto; huevos por unidades; self_check con calculo; analisis chef.',
+      it: 'CHEF-FRAMEWORK v9.0: nutrizione bottom-up; sync; latticini solo a fuoco SPENTO; max 2 proteine; onesta keto; uova a pezzi; self_check con calcolo; analisi chef.'
     };
     var LBL_RECIPE_CHAT_RULES = {
       de: 'Erstelle Rezepte mit Fokus auf die anonymisierten Ernährungsregeln und Makro-Ziele des Nutzers (z. B. Ballaststoffe, moderate Kohlenhydrate, passendes Protein). Keine echten Laborwerte, Namen oder personenbezogenen Daten erwähnen. ' + LBL_RECIPE_CULINARY_RULES.de,
       en: 'Create recipes focused on the user\'s anonymized nutrition rules and macro goals (e.g. fiber, moderate carbs, adequate protein). Do not mention real lab values, names or personal data. ' + LBL_RECIPE_CULINARY_RULES.en,
       es: 'Crea recetas centradas en las reglas nutricionales anonimizadas y los objetivos de macros del usuario (p. ej. fibra, hidratos moderados, proteína adecuada). No menciones valores de laboratorio reales, nombres ni datos personales. ' + LBL_RECIPE_CULINARY_RULES.es,
       it: 'Crea ricette incentrate sulle regole nutrizionali anonimizzate e sugli obiettivi macro dell\'utente (es. fibre, carboidrati moderati, proteine adeguate). Non menzionare valori di laboratorio reali, nomi o dati personali. ' + LBL_RECIPE_CULINARY_RULES.it
+    };
+    var LBL_RECIPE_SELF_CHECK = {
+      de: 'Self-Check', en: 'Self-check', es: 'Autocomprobación', it: 'Self-check',
+      pt: 'Self-check', fr: 'Auto-contrôle', tr: 'Öz kontrol'
     };
     var LBL_RECIPE_CHEF_ANALYSIS = {
       de: 'Chef-Analyse', en: 'Chef analysis', es: 'Análisis del chef', it: 'Analisi chef',
@@ -30105,6 +30109,7 @@ initBarcodeEvents();
         // Eigenrezept: keine KI-Optimierungs-Notizen im Rezept (Hinweise nur im Coach-Analyse-Block).
         out.nutrition_note = '';
         out.garnish = '';
+        out.self_check = '';
         out.prep_time = typeof out.prep_time === 'string' ? out.prep_time : '';
         console.log('[NUTRI_RECIPE_DEBUG] ENFORCE: Ingredients', aiList.length, '->', out.ingredients.length, '| Steps', (data.steps || []).length, '->', out.steps.length);
         console.log('[NUTRI_RECIPE_DEBUG] ENFORCE: ergaenzt (von KI weggelassen):', added);
@@ -30326,6 +30331,7 @@ initBarcodeEvents();
       var sample = [
         recipe.title,
         recipe.garnish,
+        recipe.self_check,
         recipe.nutrition_note,
         recipe.prep_time,
         Array.isArray(recipe.steps) ? recipe.steps.slice(0, 2).join(' ') : '',
@@ -30355,6 +30361,7 @@ initBarcodeEvents();
         }
       }
       if (out.garnish) out.garnish = await translateText(out.garnish, to);
+      if (out.self_check) out.self_check = await translateText(out.self_check, to);
       if (out.nutrition_note) out.nutrition_note = await translateText(out.nutrition_note, to);
       if (out.prep_time) out.prep_time = await translateText(out.prep_time, to);
       // Einkaufsliste aus übersetzten Zutaten neu aufbauen (Mengen/Einheiten unverändert).
@@ -30807,6 +30814,7 @@ initBarcodeEvents();
       if (typeof out.prep_time !== 'string') out.prep_time = out.prep_time == null ? '' : String(out.prep_time);
       if (typeof out.nutrition_note !== 'string') out.nutrition_note = out.nutrition_note == null ? '' : String(out.nutrition_note);
       if (typeof out.garnish !== 'string') out.garnish = out.garnish == null ? '' : String(out.garnish);
+      if (typeof out.self_check !== 'string') out.self_check = out.self_check == null ? '' : String(out.self_check);
       if (typeof out.title !== 'string' && out.title != null) out.title = String(out.title);
       if (typeof out.servings !== 'number' || !isFinite(out.servings)) {
         var sv = parseFloat(out.servings);
@@ -30842,6 +30850,8 @@ initBarcodeEvents();
       if (!okStr(data.nutrition_note, true)) return false;
       // garnish optional (aeltere Server-Antworten) – wenn vorhanden, muss String sein.
       if (data.garnish != null && !okStr(data.garnish, true)) return false;
+      // self_check optional (aeltere Server-Antworten)
+      if (data.self_check != null && !okStr(data.self_check, true)) return false;
       if (!Array.isArray(data.ingredients) || !data.ingredients.length) return false;
       if (data.ingredients.length > NUTRI_RECIPE_MAX_INGREDIENTS) return false;
       // amount/unit/macrosPer100g noetig fuer calcRecipeMacrosPerServing/scaleLocalRecipe.
@@ -31390,6 +31400,9 @@ initBarcodeEvents();
               '<p class="nutri-recipe-match">' + escNutri(prepTimeLabel) + ': ' + escNutri(r.prep_time) + '</p>' +
               (r.garnish
                 ? ('<p class="nutri-recipe-match"><strong>' + escNutri(pick(LBL_RECIPE_GARNISH)) + ':</strong> ' + escNutri(r.garnish) + '</p>')
+                : '') +
+              (r.self_check
+                ? ('<div class="nutri-recipe-match nutri-recipe-self-check" style="white-space:pre-wrap"><strong>' + escNutri(pick(LBL_RECIPE_SELF_CHECK)) + ':</strong>\n' + escNutri(r.self_check) + '</div>')
                 : '') +
               (r.nutrition_note
                 ? ('<p class="nutri-recipe-match"><strong>' + escNutri(pick(LBL_RECIPE_CHEF_ANALYSIS)) + ':</strong> ' + escNutri(r.nutrition_note) + '</p>')

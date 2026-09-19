@@ -52,7 +52,7 @@ assert(/MAXIMUM 2 HAUPT-PROTEIN|Hoechstens 2 primaere/i.test(sys), 'Generativ-Pr
 assert(/VOLLSTAENDIGKEIT VON FLUESSIGKEITEN|auch Wasser/i.test(sys), 'Generativ-Prompt: Fluessigkeiten vollstaendig');
 assert(/MENGEN-SYNCHRONISATION|100% mit ingredients|ABSOLUTE ZUTATEN/i.test(sys), 'Generativ-Prompt: Mengen-Sync');
 assert(/HERD-STUFEN-LOGIK|kalten Schritten|Herd-Stufe STRIKT VERBOTEN/i.test(sys), 'Generativ-Prompt: Herd-Stufen-Logik');
-assert(/EIERS?-STUECKZAHL|1 Ei \(Groesse M\)|das Ei/i.test(sys), 'Generativ-Prompt: Ei-Stueckzahl-Regel');
+assert(/EIERS?-STUECKZAHL|1 Ei \(Groesse M|das Ei/i.test(sys), 'Generativ-Prompt: Ei-Stueckzahl-Regel');
 assert(/Mise en Place/i.test(sys), 'Generativ-Prompt: Mise en Place');
 assert(/sensorische Signale|Sensorik|Zeit \+ Sensorik/i.test(sys), 'Generativ-Prompt: sensorische Signale');
 assert(/Chef-Analyse/i.test(sys), 'Generativ-Prompt: Chef-Analyse in nutrition_note');
@@ -69,6 +69,22 @@ assert.strictEqual(
   true,
   'Generativ-Schema braucht garnish property'
 );
+assert(/BOTTOM-UP|Regel 0|NIEMALS Top-Down/i.test(sys), 'Generativ-Prompt: Bottom-Up Regel 0');
+assert(/GERINNUNGSSCHUTZ|Creme fraiche|Mascarpone|Schmand|VOLLSTAENDIG AUSGESCHALTET/i.test(sys), 'Generativ-Prompt: erweiterter Gerinnungsschutz');
+assert(/Kalorien-Plausibilitaet|Protein×4|Ballaststoffe×2|P×4/i.test(sys), 'Generativ-Prompt: Kalorien-Plausibilitaet');
+assert(/Zeit-Realismus|Zeit-Summe/i.test(sys), 'Generativ-Prompt: Zeit-Realismus');
+assert(/high-protein|≥25|>=25/i.test(sys), 'Generativ-Prompt: high-protein Ehrlichkeit');
+assert(/PFLICHT-FELD self_check|self_check: sichtbarer/i.test(sys), 'Generativ-Prompt: sichtbarer self_check');
+assert.strictEqual(
+  genReq.response_format.json_schema.schema.required.includes('self_check'),
+  true,
+  'Generativ-Schema muss self_check require'
+);
+assert.strictEqual(
+  !!genReq.response_format.json_schema.schema.properties.self_check,
+  true,
+  'Generativ-Schema braucht self_check property'
+);
 // Originalmodus: kein Chef-Framework
 const origReq = core.buildGroqRequest(genPayload({
   ai_instruction: 'MODUS ORIGINALREZEPT (Italien): Gib die klassische Version von "Bolognese" zurück.',
@@ -84,6 +100,7 @@ const eggOil = core.toClientRecipe({
   prep_time: '10 Min',
   nutrition_note: 'Test',
   garnish: 'gerostete Mandeln',
+  self_check: 'Kalorien-Rechnung: ok ✓',
   ingredients: [
     { name: 'Ei', amount: 120, unit: 'g', status: 'vorhanden', netCarbs: 0.7, fat: 10, protein: 13, fiber: 0 },
     { name: 'Olivenoel', amount: 15, unit: 'ml', status: 'vorhanden', netCarbs: 0, fat: 100, protein: 0, fiber: 0 },
@@ -96,6 +113,7 @@ assert.strictEqual(eggOil.ingredients[0].amount, 120);
 assert.strictEqual(eggOil.ingredients[1].unit, 'ml');
 assert.strictEqual(eggOil.ingredients[1].amount, 15);
 assert.strictEqual(eggOil.garnish, 'gerostete Mandeln');
+assert.strictEqual(eggOil.self_check, 'Kalorien-Rechnung: ok ✓');
 console.log('OK generative egg/g + oil/ml');
 
 // 2b) Generativ: Gewuerz amount=0 bleibt 0 (Prise)

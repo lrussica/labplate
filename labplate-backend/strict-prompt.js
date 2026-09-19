@@ -32,7 +32,7 @@ const STRICT_RULES_BLOCK = [
   '- KEINE Makros berechnen: netCarbs/fat/protein/fiber IMMER 0 (die App berechnet spaeter).',
   '- servings: AUSSCHLIESSLICH wenn eine Zahl fuer Personen/Portionen explizit im Text steht. Nicht aus Kontext ableiten, nicht schaetzen. Sonst exakt 0.',
   '- title: nur wenn im Text vorhanden, sonst knapper Name – kein Erfinden von Zutaten oder Merkmalen.',
-  '- prep_time: immer "". nutrition_note: immer "". garnish: immer "". shopping_list: [] (App baut sie selbst).',
+  '- prep_time: immer "". nutrition_note: immer "". garnish: immer "". self_check: immer "". shopping_list: [] (App baut sie selbst).',
   '- Unleserlicher oder unsicherer Text (z.B. aus Scan oder Foto): Inhalt NICHT raten oder erganzen. Stattdessen "[unleserlich]" als Platzhalter eintragen.',
   '- Keine Interpretation, Optimierung, Strukturaenderung, keine zusaetzlichen Abschnitte oder Erklaerungen.',
   '- q.b./nach Geschmack/Prise/etwas/ein wenig/nach Bedarf → amount = 0.',
@@ -72,7 +72,7 @@ function loadStrictPrompt(opts) {
     'Fluessigkeiten (Oel, Essig, Sosse, Bruehe, Dressing, Milch) in ml, sonst g. status: "benoetigt".',
     'steps: zeichengetreu aus Input in exakt gleicher Reihenfolge. Keine Schritte im Input → steps = [].',
     'servings: Zahl aus Input (Personen/Portionen) oder 0 wenn nicht angegeben. Nie aus Kontext ableiten.',
-    'title: aus Input oder knapper Name ohne Erfindungen. prep_time "". nutrition_note "". garnish "". shopping_list [].',
+    'title: aus Input oder knapper Name ohne Erfindungen. prep_time "". nutrition_note "". garnish "". self_check "". shopping_list [].',
     'Antworte auf ' + langName(o.lang) + '. Ausschliesslich JSON gemaess Schema – kein Begleittext.',
   ].join('\n');
   return system;
