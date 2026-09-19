@@ -47,9 +47,11 @@ assert(/Salmonellen|rohes Ei NIEMALS|HYGIENE & EIER/i.test(sys), 'Generativ-Prom
 assert(/anroesten|quellen NICHT|QUELL- UND FLUESSIGKEITS/i.test(sys), 'Generativ-Prompt: Quell-Dynamik');
 assert(/BEZEICHNUNGS-KONSISTENZ|Namensgleichheit/i.test(sys), 'Generativ-Prompt: Namensgleichheit');
 assert(/SELF-CHECK|nach dem AUSSCHALTEN|AUSSCHALTEN der Herdplatte/i.test(sys), 'Generativ-Prompt: Self-Check/Hitze');
-assert(/ZAHLEN-DISZIPLIN|erfundenen Makro|keine konkreten g-Protein/i.test(sys), 'Generativ-Prompt: Zahlen-Disziplin');
+assert(/MENGEN-SYNCHRONISATION|100% mit ingredients|ABSOLUTE ZUTATEN/i.test(sys), 'Generativ-Prompt: Mengen-Sync');
+assert(/HERD-STUFEN-LOGIK|kalten Schritten|Herd-Stufe STRIKT VERBOTEN/i.test(sys), 'Generativ-Prompt: Herd-Stufen-Logik');
+assert(/das Ei|Groesse M \/ ca\. 60|1 Ei \(Groesse M/i.test(sys), 'Generativ-Prompt: Ei-Stueckzahl-Regel');
 assert(/Mise en Place/i.test(sys), 'Generativ-Prompt: Mise en Place');
-assert(/sensorische Signale|goldbraun/i.test(sys), 'Generativ-Prompt: sensorische Signale');
+assert(/sensorische Signale|Sensorik|Zeit \+ Sensorik/i.test(sys), 'Generativ-Prompt: sensorische Signale');
 assert(/Chef-Analyse/i.test(sys), 'Generativ-Prompt: Chef-Analyse in nutrition_note');
 assert(/System-Chefkoch|Ernaehrungs-Wissenschaftler/i.test(sys), 'Generativ-Prompt: System-Chef-Rolle');
 assert(/garnish/i.test(sys), 'Generativ-Prompt erwaehnt garnish');

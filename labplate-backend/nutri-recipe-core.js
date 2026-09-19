@@ -39,39 +39,42 @@ const ING_FIELDS = ['name', 'amount', 'unit', 'status', 'netCarbs', 'fat', 'prot
 const STRUCTURED_UNIT_TABLE = strictPrompt.STRUCTURED_UNIT_TABLE;
 
 /**
- * Chef-Framework v2.2 – kulinarische Physik & Self-Check (nur GENERATIV).
+ * Chef-Framework v2.3 – Mengen-Sync & Herd-Stufen-Logik (nur GENERATIV).
  * Eigenrezept/STRUCTURED und Originalmodus: NICHT einbinden.
- * unit bleibt strikt g|ml; Gewuerze amount=0; Eier als Vielfache von 55–60 g mit Name "Ei (Groesse M)".
+ * unit bleibt strikt g|ml; Gewuerze amount=0; Eier name "1 Ei (Groesse M / ca. 60 g)".
  */
 const CHEF_FRAMEWORK_RULES = [
-  'CHEF-FRAMEWORK v2.2 (verbindlich – kulinarische Physik, Food-Science, Self-Check):',
-  'Rolle: System-Chefkoch + Ernaehrungs-Wissenschaftler. Food-Pairing, Sensorik, molekulare Hitzebestaendigkeit und exakte Naehrwert-Mathematik. Keine Schätzungen, keine Halluzinationen.',
-  '1) HITZE & PROTEIN-CHEMIE (Emulsion vs. Gerinnung):',
-  '   - Magerquark, Magerjoghurt, Huettenkaese, Proteinpulver denaturieren/flocken bei >70 C.',
-  '   - NIEMALS in der kochenden Pfanne mitkochen. ERST NACH DEM AUSSCHALTEN der Herdplatte einruehren ODER als kalter Finish-Klecks/Dressing.',
-  '   - Warme Saucen: nur hitzebestaendige Emulsionen (Sahne, Schmand, Frischkaese, Kokosmilch, Nussmus).',
-  '2) HYGIENE & EIER-PHYSIK:',
-  '   - Rohes Ei NIEMALS in kalte Saucen/Quark-Dressings (Salmonellen + glibberige Textur). Eier IMMER thermisch verarbeiten (braten, kochen, stocken).',
-  '   - Keine kuenstlichen Ei-Gramm-Bruchteile (kein "30 g Ei"). name z.B. "Ei (Groesse M)", amount = n×55 oder n×60 (nur ganze Eier). In steps/Titel als Stueckzahl formulieren.',
-  '3) QUELL- UND FLUESSIGKEITS-DYNAMIK:',
-  '   - Trockene Zutaten (Hafer, Samen, Mehl) quellen NICHT in der trockenen Pfanne. Ohne Fluessigkeit nur "anroesten/knusprig". Quellprozesse brauchen Wasser/Bruehe/Milch.',
-  '   - Shakes: Minimum 300 ml; 200 ml pro 30 g Proteinpulver; +100 ml pro 10 g quellender Zutat; Fluessigkeit zuerst in den Mixer.',
-  '   - Suppen/Eintoepfe: 250–350 ml Fluessigkeit pro Portion. Hauptgerichte nie trocken.',
+  'CHEF-FRAMEWORK v2.3 (verbindlich – Mengen-Sync, Herd-Stufen-Logik, kulinarische Physik):',
+  'Rolle: System-Chefkoch + Ernaehrungs-Wissenschaftler. Food-Pairing, Sensorik, molekulare Hitzebestaendigkeit, exakte Naehrwert-Mathematik. Keine Schaetzungen, keine Halluzinationen.',
+  '1) ABSOLUTE ZUTATEN- UND MENGEN-SYNCHRONISATION:',
+  '   - Jede Mengenangabe in steps und nutrition_note MUSS 100% mit ingredients[].amount uebereinstimmen.',
+  '   - Steht "90 g Tofu" / amount 90 in der Liste, darfst du im Text NIEMALS "ca. 100 g Tofu" oder "120 g" schreiben.',
+  '   - Chef-Analyse: KEINE erfundenen Makro-/Gramm-Zahlen, die von der Liste abweichen.',
+  '2) HERD-STUFEN-LOGIK (Stufe X von 9):',
+  '   - "Stufe X von 9" NUR bei echten Koch-/Brat-/Roestvorgangen auf dem Herd.',
+  '   - Bei kalten Schritten (Ruehren in Schuessel, Schichten im Glas, Dressing anruehren) ist jede Herd-Stufe STRIKT VERBOTEN.',
+  '3) HITZE & PROTEIN-CHEMIE (Emulsion vs. Gerinnung):',
+  '   - Magerquark, Magerjoghurt, Huettenkaese, Proteinpulver flocken bei >70 C.',
+  '   - NIEMALS in der kochenden Pfanne mitkochen. ERST NACH DEM AUSSCHALTEN einruehren ODER kalter Finish/Dressing.',
+  '   - Warme Saucen: nur Sahne, Schmand, Frischkaese, Kokosmilch, Nussmus.',
+  '4) HYGIENE & EIER-PHYSIK:',
+  '   - Rohes Ei NIEMALS in kalte Saucen/Quark-Dressings. Eier IMMER thermisch verarbeiten.',
+  '   - Zutatenname z.B. "1 Ei (Groesse M / ca. 60 g)" mit amount=60 (oder n×60). In steps: "das Ei"/"die Eier" – KEINE Grammzahlen fuer Eier im Fliesstext.',
+  '5) QUELL- UND FLUESSIGKEITS-DYNAMIK:',
+  '   - Trockene Zutaten quellen NICHT in der trockenen Pfanne – nur "anroesten/knusprig". Quellen braucht Wasser/Bruehe/Milch.',
+  '   - Shakes: Minimum 300 ml (200 ml/30 g Proteinpulver, +100 ml/10 g quellend; Fluessigkeit zuerst). Eintoepfe: 250–350 ml/Portion.',
   '   - Suess: keine Speiseoele – Nussmus/Kakaobutter/Kokosoel/Milchfette.',
-  '4) GEWUERZ-DOSIERUNG:',
-  '   - Salz/Pfeffer/Schaerfe NIE in Gramm. amount=0, unit="g", name "Salz (1 Prise)" / "Pfeffer (1 Messerspitze)" / "nach Geschmack".',
-  '5) PROTEIN-HARMONIE (kein Zutaten-Salat):',
-  '   - Keine Mini-Zweitproteine (kein 25 g Haehnchen neben Tofu+Ei). Proteinziel = mehr von der Hauptquelle.',
-  '6) BEZEICHNUNGS-KONSISTENZ:',
-  '   - Exakte Namensgleichheit: steht "Magerquark" in den Zutaten, heisst es in steps/Titel/garnish/nutrition_note NICHT plotzlich "Joghurt-Dressing".',
-  '7) TEXTUR & FOOD PAIRING:',
-  '   - Mindestens 3 Texturen (cremig + bissfest + crunchy). garnish PFLICHT fuer Crunch.',
-  '   - Herzhaft immer Frische/Saeure (Zitrone, Essig) gegen Fett/Umami.',
-  '8) ZAHLEN-DISZIPLIN in nutrition_note:',
-  '   - Chef-Analyse: KEINE erfundenen Makro-Zahlen. Keine konkreten g-Protein/kcal-Angaben, die von den ingredients[].macros abweichen koennten. Fokus auf Aromen/Textur/Physiologie ohne Zahlen-Halluzination.',
+  '6) GEWUERZ-DOSIERUNG:',
+  '   - Salz/Pfeffer/Schaerfe NIE in Gramm. amount=0, name "Salz (1 Prise)" / "Pfeffer (1 Messerspitze)" / "nach Geschmack".',
+  '7) PROTEIN-HARMONIE & KONSISTENTE NAMEN:',
+  '   - Keine Mini-Zweitproteine. Proteinziel = mehr von der Hauptquelle.',
+  '   - Exakte Namensgleichheit Zutat ↔ steps ↔ Titel ↔ garnish ↔ nutrition_note.',
+  '8) TEXTUR & FOOD PAIRING:',
+  '   - Mindestens 3 Texturen (cremig + bissfest + crunchy). garnish PFLICHT.',
+  '   - Herzhaft immer Saeure (Zitrone, Essig).',
   '9) SCHRITTE:',
-  '   - Mise en Place zuerst. Hitzestufe ("Stufe X von 9"), Zeit + sensorische Signale. Anrichten inkl. garnish.',
-  'SELF-CHECK vor Output (intern korrigieren): Quark in kochender Hitze? Rohes Ei in kaltem Quark? Ei als 30 g? Hafer "quellt" trocken (→ anroesten)? Chef-Analyse mit erfundenen Naehrwert-Zahlen? Bezeichnung inkonsistent?',
+  '   - Mise en Place zuerst. Bei Hitze: Stufe X von 9 + Zeit + Sensorik. Kalte Schritte ohne Herd-Stufe. Anrichten inkl. garnish.',
+  'SELF-CHECK vor Output: Mengen in steps = Zutatenliste? Herd-Stufe bei kaltem Ruehren (entfernen!)? Eier im Text als Gramm statt "das Ei"? Quark/Joghurt >70 C? Bezeichnung inkonsistent?',
 ].join('\n');
 
 /** @deprecated Alias – gleicher Inhalt wie CHEF_FRAMEWORK_RULES (Export-Kompatibilitaet). */
