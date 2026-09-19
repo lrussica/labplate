@@ -63,7 +63,11 @@ const { createPhotoVerifyHandlers } = require('./api/photo-verify');
 // ---------------------------------------------------------------------
 const PORT = parseInt(process.env.PORT, 10) || 3000;
 const GROQ_API_KEY = (process.env.GROQ_API_KEY || '').trim();
+const GROQ_API_KEY_DEBUG = (process.env.GROQ_API_KEY_DEBUG || '').trim();
 const GROQ_API_KEY_LOOKS_VALID = /^gsk_[A-Za-z0-9]+$/.test(GROQ_API_KEY) || GROQ_API_KEY.length > 20;
+const GROQ_API_KEY_DEBUG_LOOKS_VALID = !GROQ_API_KEY_DEBUG
+  ? false
+  : (/^gsk_[A-Za-z0-9]+$/.test(GROQ_API_KEY_DEBUG) || GROQ_API_KEY_DEBUG.length > 20);
 const GROQ_MODEL = (process.env.GROQ_MODEL || core.DEFAULT_MODEL).trim();
 const SPOONACULAR_CONFIGURED = spoonacular.isConfigured();
 const THEMEALDB_CONFIGURED = themealdb.isConfigured();
@@ -90,13 +94,6 @@ const DEBUG_V92_ALLOWED_MODELS = new Set([
   'openai/gpt-oss-120b',
 ]);
 
-function resolveRecipeModel(reqBody) {
-  const requested = reqBody && typeof reqBody.groq_model === 'string' ? reqBody.groq_model.trim() : '';
-  if (reqBody && reqBody.debug_v92_raw === true && requested && DEBUG_V92_ALLOWED_MODELS.has(requested)) {
-    return requested;
-  }
-  return GROQ_MODEL;
-}
 // Vision-Modell für /api/photo/verify (multimodal); per Env überschreibbar.
 const GROQ_VISION_MODEL = (process.env.GROQ_VISION_MODEL || 'qwen/qwen3.6-27b').trim();
 const PHOTO_VERIFY_TIMEOUT_MS = Math.min(REQUEST_TIMEOUT_MS, 25000);
@@ -107,12 +104,57 @@ function maskedPreview(s) {
   return s.slice(0, 4) + '…' + s.slice(-4) + ' (Laenge ' + s.length + ')';
 }
 
+function isDebugRecipeRequest(reqBody) {
+  if (!reqBody || typeof reqBody !== 'object') return false;
+  if (reqBody.debug_v92_raw === true) return true;
+  const requested = typeof reqBody.groq_model === 'string' ? reqBody.groq_model.trim() : '';
+  return !!(requested && DEBUG_V92_ALLOWED_MODELS.has(requested));
+}
+
+function resolveRecipeModel(reqBody) {
+  const requested = reqBody && typeof reqBody.groq_model === 'string' ? reqBody.groq_model.trim() : '';
+  if (reqBody && reqBody.debug_v92_raw === true && requested && DEBUG_V92_ALLOWED_MODELS.has(requested)) {
+    return requested;
+  }
+  return GROQ_MODEL;
+}
+
+function resolveGroqAuth(reqBody) {
+  const debug = isDebugRecipeRequest(reqBody);
+  if (!debug) {
+    return {
+      apiKey: GROQ_API_KEY,
+      keyType: 'prod',
+      keyConfigured: !!GROQ_API_KEY,
+      keyLooksValid: GROQ_API_KEY_LOOKS_VALID,
+      keyFingerprint: GROQ_API_KEY ? maskedPreview(GROQ_API_KEY) : null,
+    };
+  }
+  return {
+    apiKey: GROQ_API_KEY_DEBUG,
+    keyType: 'debug',
+    keyConfigured: !!GROQ_API_KEY_DEBUG,
+    keyLooksValid: GROQ_API_KEY_DEBUG_LOOKS_VALID,
+    keyFingerprint: GROQ_API_KEY_DEBUG ? maskedPreview(GROQ_API_KEY_DEBUG) : null,
+  };
+}
+
 if (!GROQ_API_KEY) {
   console.error('[Konfiguration] WARNUNG: GROQ_API_KEY ist nicht gesetzt.');
 } else if (!GROQ_API_KEY_LOOKS_VALID) {
   console.error('[Konfiguration] WARNUNG: GROQ_API_KEY hat ein ungewoehnliches Format.');
 } else {
-  console.log('[Konfiguration] GROQ_API_KEY sieht gueltig aus: ' + maskedPreview(GROQ_API_KEY));
+  console.log('[Konfiguration] GROQ_API_KEY (prod) sieht gueltig aus: ' + maskedPreview(GROQ_API_KEY));
+}
+if (!GROQ_API_KEY_DEBUG) {
+  console.error('[Konfiguration] HINWEIS: GROQ_API_KEY_DEBUG ist nicht gesetzt – Debug-Requests mit debug_v92_raw werden abgelehnt.');
+} else if (!GROQ_API_KEY_DEBUG_LOOKS_VALID) {
+  console.error('[Konfiguration] WARNUNG: GROQ_API_KEY_DEBUG hat ein ungewoehnliches Format.');
+} else {
+  console.log('[Konfiguration] GROQ_API_KEY_DEBUG sieht gueltig aus: ' + maskedPreview(GROQ_API_KEY_DEBUG));
+  if (GROQ_API_KEY && GROQ_API_KEY_DEBUG === GROQ_API_KEY) {
+    console.error('[Konfiguration] WARNUNG: GROQ_API_KEY_DEBUG ist identisch mit GROQ_API_KEY – TPD-Trennung wirkungslos.');
+  }
 }
 console.log('[Konfiguration] GROQ_MODEL=' + GROQ_MODEL + (GROQ_MODEL !== core.DEFAULT_MODEL ? '  (Hinweis: Standard waere ' + core.DEFAULT_MODEL + ')' : ''));
 
@@ -230,6 +272,11 @@ app.get('/health', (req, res) => {
     status: 'ok',
     configured: Boolean(GROQ_API_KEY),
     apiKeyLooksValid: GROQ_API_KEY ? GROQ_API_KEY_LOOKS_VALID : null,
+    debugKeyConfigured: Boolean(GROQ_API_KEY_DEBUG),
+    debugKeyLooksValid: GROQ_API_KEY_DEBUG ? GROQ_API_KEY_DEBUG_LOOKS_VALID : null,
+    debugKeyDistinctFromProd: Boolean(
+      GROQ_API_KEY && GROQ_API_KEY_DEBUG && GROQ_API_KEY !== GROQ_API_KEY_DEBUG
+    ),
     model: GROQ_MODEL,
     provider: 'Groq',
     spoonacularConfigured: SPOONACULAR_CONFIGURED,
@@ -245,6 +292,7 @@ app.get('/health', (req, res) => {
     v92PipelineWired: typeof core.generateValidatedRecipe === 'function',
     recipeSchemaVersion: 'v9.2',
     groq429Diagnostics: true,
+    groqDebugKeyRouting: true,
   });
 });
 
@@ -712,9 +760,18 @@ app.post('/api/photo/verify', limiter, photoVerify.handlePhotoVerify);
 
 app.post('/api/nutri-recipe', limiter, async (req, res) => {
   const startedAt = Date.now();
-  if (!GROQ_API_KEY) {
-    logEvent('request_rejected', { reason: 'server_not_configured' });
+  const auth = resolveGroqAuth(req.body);
+  if (auth.keyType === 'prod' && !GROQ_API_KEY) {
+    logEvent('request_rejected', { reason: 'server_not_configured', keyType: 'prod' });
     return res.status(500).json({ error: 'server_not_configured' });
+  }
+  if (auth.keyType === 'debug' && !auth.keyConfigured) {
+    logEvent('request_rejected', { reason: 'debug_key_not_configured', keyType: 'debug' });
+    return res.status(503).json({
+      error: 'debug_key_not_configured',
+      message: 'GROQ_API_KEY_DEBUG ist nicht gesetzt. Debug-Requests verbrauchen absichtlich nicht den Prod-Key.',
+      key_type: 'debug',
+    });
   }
 
   const payload = core.validateIncoming(req.body);
@@ -734,9 +791,9 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   const recipeModel = resolveRecipeModel(req.body);
   const n = payload.pantry_ingredients.length;
   if (payload.structured || flow === 'coach' || flow === 'nutri-coach' || flow === 'core') {
-    console.log(`[nutri-recipe] ENRICH flow=${flow} model=${recipeModel} ingredients=${n} lang=${payload.lang} instruction_chars=${payload.ai_instruction.length}`);
+    console.log(`[nutri-recipe] ENRICH flow=${flow} model=${recipeModel} key=${auth.keyType} ingredients=${n} lang=${payload.lang} instruction_chars=${payload.ai_instruction.length}`);
   } else {
-    console.log(`[nutri-recipe] GENERATE flow=${flow} model=${recipeModel} mode=${payload.mode} pantry=${n}`);
+    console.log(`[nutri-recipe] GENERATE flow=${flow} model=${recipeModel} key=${auth.keyType} mode=${payload.mode} pantry=${n}`);
   }
 
   const requestBody = buildRecipeRequest(flow, payload, recipeModel);
@@ -746,7 +803,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   if (useV92Pipeline) {
     const pipelineResult = await core.generateValidatedRecipe({
       payload: payload,
-      groqOpts: { apiKey: GROQ_API_KEY, timeoutMs: REQUEST_TIMEOUT_MS },
+      groqOpts: { apiKey: auth.apiKey, timeoutMs: REQUEST_TIMEOUT_MS },
       callGroq: core.callGroq,
       buildRequestBody: function (p) {
         return buildRecipeRequest(flow, p, recipeModel);
@@ -759,6 +816,8 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
       logEvent('groq_http_error', {
         status: upstreamStatus,
         model: recipeModel,
+        keyType: auth.keyType,
+        keyFingerprint: auth.keyFingerprint,
         body: pipelineResult.body,
         headers: pipelineResult.headers || null,
         ms: Date.now() - startedAt,
@@ -773,6 +832,8 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
           ? 'Der KI-Anbieter hat die Antwort wegen Schema-/Validierungsfehler abgelehnt.'
           : 'Der KI-Anbieter meldete einen Fehler. Bitte ueberpruefe das eingestellte Modell.',
         model: recipeModel,
+        key_type: auth.keyType,
+        key_fingerprint: auth.keyFingerprint,
       };
       if (upstreamStatus === 429) {
         errPayload.provider_headers = pipelineResult.headers || {};
@@ -790,6 +851,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
         attempts: pipelineResult.attempts,
         ms: Date.now() - startedAt,
         flow,
+        keyType: auth.keyType,
       });
       const exhaustedBody = {
         error: 'recipe_validation_failed',
@@ -798,10 +860,14 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
         flow: flow,
         useV92Pipeline: true,
         model: recipeModel,
+        key_type: auth.keyType,
+        key_fingerprint: auth.keyFingerprint,
       };
       if (req.body && req.body.debug_v92_raw === true) {
         exhaustedBody.debug_v92 = {
           model: recipeModel,
+          key_type: auth.keyType,
+          key_fingerprint: auth.keyFingerprint,
           attempt_raws: (pipelineResult.attempt_raws || []).map(function (a) {
             return {
               attempt: a.attempt,
@@ -824,8 +890,8 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
       return res.status(422).json(exhaustedBody);
     }
     if (pipelineResult.error) {
-      logEvent('response_rejected', { reason: pipelineResult.error, detail: pipelineResult.reason || pipelineResult.body || '', ms: Date.now() - startedAt, flow });
-      return res.status(502).json({ error: 'recipe_unavailable' });
+      logEvent('response_rejected', { reason: pipelineResult.error, detail: pipelineResult.reason || pipelineResult.body || '', ms: Date.now() - startedAt, flow, keyType: auth.keyType });
+      return res.status(502).json({ error: 'recipe_unavailable', key_type: auth.keyType });
     }
 
     // Handoff-Sentinel in Raw-JSON?
@@ -844,12 +910,14 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     }
 
     const recipe = pipelineResult.recipe;
-    console.log(`[nutri-recipe] OK flow=${flow} v92 attempts=${pipelineResult.attempts} model=${recipeModel} ingredients=${recipe.ingredients.length} steps=${recipe.steps.length} ms=${Date.now() - startedAt}`);
+    console.log(`[nutri-recipe] OK flow=${flow} v92 attempts=${pipelineResult.attempts} model=${recipeModel} key=${auth.keyType} ingredients=${recipe.ingredients.length} steps=${recipe.steps.length} ms=${Date.now() - startedAt}`);
     if (req.body && req.body.debug_v92_raw === true) {
       recipe._debug_v92 = {
         flow: flow,
         useV92Pipeline: true,
         model: recipeModel,
+        key_type: auth.keyType,
+        key_fingerprint: auth.keyFingerprint,
         attempts: pipelineResult.attempts,
         attempt_raws: (pipelineResult.attempt_raws || []).map(function (a) {
           return {
@@ -873,7 +941,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     return res.status(200).json(recipe);
   }
 
-  const result = await core.callGroq(requestBody, { apiKey: GROQ_API_KEY, timeoutMs: REQUEST_TIMEOUT_MS });
+  const result = await core.callGroq(requestBody, { apiKey: auth.apiKey, timeoutMs: REQUEST_TIMEOUT_MS });
 
   if (result.error === 'provider_error') {
     const upstreamStatus = Number(result.status) || 0;
@@ -883,6 +951,8 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     logEvent('groq_http_error', {
       status: upstreamStatus,
       model: recipeModel,
+      keyType: auth.keyType,
+      keyFingerprint: auth.keyFingerprint,
       body: result.body,
       headers: result.headers || null,
       ms: Date.now() - startedAt,
@@ -896,6 +966,8 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
         ? 'Der KI-Anbieter hat die Antwort wegen Schema-/Validierungsfehler abgelehnt.'
         : 'Der KI-Anbieter meldete einen Fehler. Bitte ueberpruefe das eingestellte Modell.',
       model: recipeModel,
+      key_type: auth.keyType,
+      key_fingerprint: auth.keyFingerprint,
     };
     if (upstreamStatus === 429) {
       errPayload.provider_headers = result.headers || {};
@@ -930,7 +1002,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     return res.status(502).json({ error: 'recipe_unavailable' });
   }
 
-  console.log(`[nutri-recipe] OK flow=${flow} ingredients=${recipe.ingredients.length} steps=${recipe.steps.length} ms=${Date.now() - startedAt}`);
+  console.log(`[nutri-recipe] OK flow=${flow} ingredients=${recipe.ingredients.length} steps=${recipe.steps.length} key=${auth.keyType} ms=${Date.now() - startedAt}`);
   return res.status(200).json(recipe);
 });
 
