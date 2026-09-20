@@ -329,6 +329,16 @@ function errorsToDirectives(errors) {
         '(nie "etwas ' + mStaple[1] + '" als Klartext ohne Listen-Eintrag).'
       );
     }
+    const mCold = e.match(/Gerinnungsschutz:\s*'([^']+)'/i);
+    if (mCold && !seenProtein['cold_' + mCold[1]]) {
+      seenProtein['cold_' + mCold[1]] = true;
+      directives.push(
+        "KONKRETE KORREKTUR: Verschiebe das Einrühren von '" + mCold[1] + "' an das Ende, nachdem der Herd " +
+        'ausgeschaltet wurde (stove_level 0). VERBOTEN: sensible Milchprodukte zuerst in Eier/Masse ' +
+        'mischen und danach die Mischung zu erhitzen — auch wenn die Zutat im Hitze-Step nur noch als ' +
+        '"Mischung" vorkommt. Gare zuerst (Herd AUS), dann ' + mCold[1] + ' unterheben.'
+      );
+    }
   });
 
   return directives;

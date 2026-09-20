@@ -166,6 +166,111 @@ function validateUnlistedStaplesInProse(steps, garnish, ingredients) {
   return { ok: problems.length === 0, problems: problems };
 }
 
+/** Gerinnungsempfindliche Milchprodukte (Regel 2) — Name-Heuristik. */
+const COLD_SENSITIVE_STEMS = [
+  'frischkäse', 'frischkaese', 'frischkase',
+  'quark', 'joghurt', 'yogurt',
+  'hüttenkäse', 'huettenkaese', 'huttenkase', 'cottage',
+  'crème fraîche', 'creme fraiche', 'crème fraiche', 'creme fraîche',
+  'mascarpone', 'schmand',
+  'kokosjoghurt', 'kokos-joghurt',
+];
+
+function isColdSensitiveIngredientName(name) {
+  const nl = String(name || '').toLowerCase();
+  if (!nl) return false;
+  // "Eiweisspulver" / "Proteinjoghurt-Ersatz" nicht pauschal — nur echte Stems
+  for (let i = 0; i < COLD_SENSITIVE_STEMS.length; i++) {
+    if (nl.indexOf(COLD_SENSITIVE_STEMS[i]) >= 0) return true;
+  }
+  return false;
+}
+
+function stepStoveLevel(step) {
+  const n = Number(step && step.stove_level);
+  if (!Number.isFinite(n) || n <= 0) return 0;
+  return n;
+}
+
+function stepMentionsIngredientId(step, id) {
+  const content = String((step && step.content) || '');
+  const re = new RegExp('\\{' + String(id) + '\\}');
+  return re.test(content);
+}
+
+/**
+ * Mise-en-Place / Abwiegen: {id} nur gelistet, noch nicht eingearbeitet.
+ * Zählt nicht als "Einführung" der sensiblen Zutat (sonst False Positive vor Hitze-Steps).
+ */
+function isMiseEnPlaceOnlyMention(step, id) {
+  if (!stepMentionsIngredientId(step, id)) return false;
+  if (stepStoveLevel(step) > 0) return false;
+  const title = String((step && step.title) || '').toLowerCase();
+  const content = String((step && step.content) || '').toLowerCase();
+  const incorporate = /einrühr|unterheb|untermisch|vermeng|verrühr|dazugeb|hinzufüg|einarbeit|mischen|verquirl|unterrühr|geben|rühren|einarbeiten/.test(content);
+  if (incorporate) return false;
+  if (/mise|vorbereit|abwieg|bereitstell/.test(title)) return true;
+  if (/abwieg|bereitstell|mise en place|alle zutaten/.test(content)) return true;
+  return false;
+}
+
+/**
+ * Ansatz B (verstärkt, ohne Schema-Änderung):
+ * Nach der ersten *aktiven* {id}-Erwähnung einer gerinnungsempfindlichen Zutat
+ * (nicht nur Mise-en-Place) dürfen weder dieser Step noch spätere Steps stove_level > 0 haben.
+ *
+ * Reine „letzte Erwähnung“-B hätte Lücken (Garnitur-Nacherwähnung nach Hitze).
+ * Ansatz A (Topf-Zustand im Schema) wäre robuster, braucht aber Schema-Felder — hier vermieden.
+ *
+ * @returns {{ ok: boolean, problems: string[] }}
+ */
+function validateColdIngredientHeatSequence(recipe) {
+  const problems = [];
+  const r = recipe && typeof recipe === 'object' ? recipe : {};
+  const ingredients = Array.isArray(r.ingredients) ? r.ingredients : [];
+  const steps = Array.isArray(r.steps) ? r.steps : [];
+
+  const sensitive = ingredients.filter(function (ing) {
+    return ing && ing.id && isColdSensitiveIngredientName(ing.name);
+  });
+  if (!sensitive.length || !steps.length) {
+    return { ok: true, problems: problems };
+  }
+
+  sensitive.forEach(function (ing) {
+    const id = String(ing.id);
+    const name = String(ing.name || id);
+    let firstActive = -1;
+    for (let i = 0; i < steps.length; i++) {
+      if (!stepMentionsIngredientId(steps[i], id)) continue;
+      if (isMiseEnPlaceOnlyMention(steps[i], id)) continue;
+      firstActive = i;
+      break;
+    }
+    if (firstActive < 0) return;
+
+    for (let j = firstActive; j < steps.length; j++) {
+      const stove = stepStoveLevel(steps[j]);
+      if (stove <= 0) continue;
+      const title = (steps[j] && steps[j].title) || '';
+      if (j === firstActive && stepMentionsIngredientId(steps[j], id)) {
+        problems.push(
+          "Gerinnungsschutz: '" + name + "' ({" + id + "}) wird in Step " + (j + 1) +
+          " ('" + title + "') bei stove_level=" + stove + " erhitzt — nur stove_level 0 und Herd AUS erlaubt"
+        );
+      } else {
+        problems.push(
+          "Gerinnungsschutz: '" + name + "' ({" + id + "}) wurde in Step " + (firstActive + 1) +
+          " eingearbeitet; danach folgt Step " + (j + 1) + " ('" + title + "') mit stove_level=" +
+          stove + " — Hitze nach Einrühren verboten (auch wenn die Zutat nur noch als 'Mischung' vorkommt)"
+        );
+      }
+    }
+  });
+
+  return { ok: problems.length === 0, problems: problems };
+}
+
 function validateMaxProteinSourcesByKeywords(ingredients, proteinSourceKeywords) {
   const defaultKeywords = [
     'hähnchen', 'haehnchen', 'huhn', 'pute', 'rind', 'schwein', 'lachs', 'thunfisch', 'fisch',
@@ -253,6 +358,9 @@ function validateRecipeV2(recipe) {
   const staples = validateUnlistedStaplesInProse(steps, garnish, ingredients);
   staples.problems.forEach(function (p) { result.addError(p); });
 
+  const coldHeat = validateColdIngredientHeatSequence(r);
+  coldHeat.problems.forEach(function (p) { result.addError(p); });
+
   const stepTimeSum = steps.reduce(function (acc, s) {
     return acc + (Number(s && s.time_min) || 0);
   }, 0);
@@ -292,8 +400,11 @@ module.exports = {
   validateKcalFormula: validateKcalFormula,
   validateRecipeV2: validateRecipeV2,
   validateMaxProteinSourcesByKeywords: validateMaxProteinSourcesByKeywords,
+  validateColdIngredientHeatSequence: validateColdIngredientHeatSequence,
+  isColdSensitiveIngredientName: isColdSensitiveIngredientName,
   resolvePlaceholders: resolvePlaceholders,
   validateNoFreeNumbersInProse: validateNoFreeNumbersInProse,
   validateUnlistedStaplesInProse: validateUnlistedStaplesInProse,
   STAPLE_WHITELIST: STAPLE_WHITELIST,
+  COLD_SENSITIVE_STEMS: COLD_SENSITIVE_STEMS,
 };

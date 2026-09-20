@@ -82,8 +82,71 @@ const fb2 = pipeline.buildRetryFeedbackMessage([
   "Zutat 'Öl' im Text erwähnt, aber nicht in ingredients gelistet (Step 1 ('Anbraten'))",
 ]);
 assert.ok(/KONKRETE KORREKTUR:.*Öl/i.test(fb2), 'Fix B staple directive');
-console.log('OK errorsToDirectives Fix B + staple');
+const fbCold = pipeline.buildRetryFeedbackMessage([
+  "Gerinnungsschutz: 'Frischkäse' ({0003}) wurde in Step 3 eingearbeitet; danach folgt Step 4 ('Rührei kochen') mit stove_level=5 — Hitze nach Einrühren verboten (auch wenn die Zutat nur noch als 'Mischung' vorkommt)",
+]);
+assert.ok(/Verschiebe das Einrühren von 'Frischkäse'/i.test(fbCold), 'Gerinnung directive: ' + fbCold);
+assert.ok(/Herd ausgeschaltet|stove_level 0/i.test(fbCold), 'Gerinnung directive Herd AUS');
+console.log('OK errorsToDirectives Fix B + staple + Gerinnung');
 
+// TEST 3d: Fall 9 — Frischkäse kalt einrühren, danach Hitze (muss failen)
+const fall9 = {
+  title: 'Schnelles Rührei mit Räucherlachs und Frischkäse',
+  prep_time_min: 14,
+  nutrition: { kcal: 579, protein_g: 47, fat_g: 42, netto_kh_g: 3, ballaststoffe_g: 0 },
+  diet_labels: ['keto', 'high_protein'],
+  target_deviation_note: '',
+  ingredients: [
+    { id: '0001', name: 'Ei (Größe M, ca. 60 g)', amount: 3, unit: 'stk', protein_source: true, netCarbs: 1, fat: 10, protein: 13, fiber: 0 },
+    { id: '0002', name: 'Räucherlachs', amount: 100, unit: 'g', protein_source: true, netCarbs: 0, fat: 5, protein: 20, fiber: 0 },
+    { id: '0003', name: 'Frischkäse', amount: 50, unit: 'g', protein_source: false, netCarbs: 2, fat: 20, protein: 8, fiber: 0 },
+    { id: '0004', name: 'Olivenöl', amount: 10, unit: 'ml', protein_source: false, netCarbs: 0, fat: 100, protein: 0, fiber: 0 },
+    { id: '0005', name: 'Salz', amount: 0, unit: 'prise', protein_source: false, netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
+    { id: '0006', name: 'Pfeffer', amount: 0, unit: 'prise', protein_source: false, netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
+    { id: '0007', name: 'Frischer Dill', amount: 5, unit: 'g', protein_source: false, netCarbs: 2, fat: 0, protein: 1, fiber: 2 },
+  ],
+  steps: [
+    { title: 'Zutaten vorbereiten', content: 'Alle Zutaten abwiegen: {0001}, {0002}, {0003}, {0004}, {0005}, {0006}, {0007}.', stove_level: 0, time_min: 5 },
+    { title: 'Pfanne erhitzen', content: 'Pfanne auf mittlere Hitze stellen und {0004} hinzufügen.', stove_level: 6, time_min: 1 },
+    { title: 'Eier verquirlen', content: '{0001} in einer Schüssel verquirlen, {0003} einrühren bis eine homogene Masse entsteht.', stove_level: 0, time_min: 2 },
+    { title: 'Rührei kochen', content: 'Verquirlte Mischung in die Pfanne geben, kurz stocken lassen, dann {0002} hinzufügen und mit {0005} und {0006} abschmecken.', stove_level: 5, time_min: 4 },
+    { title: 'Fertigstellen', content: 'Sorgfältig rühren bis das Rührei cremig-bissfest ist.', stove_level: 5, time_min: 2 },
+  ],
+  garnish: 'Mit {0007} bestreuen und sofort servieren.',
+  chef_analysis: 'Siehe nutrition — cremige Textur und keto-Profil.',
+};
+const resultFall9 = validator.validateRecipeV2(fall9);
+assert.strictEqual(resultFall9.ok, false, 'Fall 9 muss Gerinnung failen');
+assert.ok(resultFall9.errors.some(function (e) {
+  return /Gerinnungsschutz/i.test(e) && /Frischkäse/i.test(e) && /stove_level=5/i.test(e);
+}), 'erwartet Gerinnung nach Einrühren: ' + resultFall9.errors.join('; '));
+console.log('OK Fall 9 Gerinnung fail');
+
+// TEST 3e: korrekt — Hitze zuerst, Frischkäse erst nach Herd AUS
+const fall9ok = JSON.parse(JSON.stringify(fall9));
+fall9ok.steps = [
+  { title: 'Zutaten vorbereiten', content: 'Alle Zutaten abwiegen: {0001}, {0002}, {0003}, {0004}, {0005}, {0006}, {0007}.', stove_level: 0, time_min: 5 },
+  { title: 'Pfanne erhitzen', content: 'Pfanne auf mittlere Hitze stellen und {0004} hinzufügen.', stove_level: 6, time_min: 1 },
+  { title: 'Eier stocken', content: '{0001} in die Pfanne geben, stocken lassen, {0002} unterheben, mit {0005} und {0006} würzen.', stove_level: 5, time_min: 4 },
+  { title: 'Herd aus', content: 'Herd vollständig ausschalten, Pfanne vom Herd nehmen.', stove_level: 0, time_min: 1 },
+  { title: 'Frischkäse unterheben', content: '{0003} unter das Rührei heben bis cremig.', stove_level: 0, time_min: 1 },
+];
+fall9ok.garnish = 'Mit {0007} bestreuen.';
+const resultFall9ok = validator.validateRecipeV2(fall9ok);
+assert.strictEqual(resultFall9ok.ok, true, 'korrektes Rührei muss ok sein: ' + resultFall9ok.errors.join('; '));
+console.log('OK Fall 9 Gegentest (Frischkäse nach Herd AUS)');
+
+// TEST 3f: direkte Hitze mit {id} im selben Step
+const directHeat = JSON.parse(JSON.stringify(fall9));
+directHeat.steps = [
+  { title: 'Mise', content: '{0001} verquirlen.', stove_level: 0, time_min: 2 },
+  { title: 'Garen', content: '{0001} stocken lassen, {0003} bei Hitze unterrühren.', stove_level: 4, time_min: 3 },
+];
+const resultDirect = validator.validateColdIngredientHeatSequence(directHeat);
+assert.strictEqual(resultDirect.ok, false, 'direkte Hitze mit Frischkäse muss failen');
+console.log('OK direkte Gerinnung Hitze+id');
+
+console.log('OK errorsToDirectives Fix B + staple');
 // Retry: first fail, second ok
 let calls = 0;
 async function mockCallGroq() {

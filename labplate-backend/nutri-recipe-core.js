@@ -53,7 +53,10 @@ const CHEF_FRAMEWORK_RULES = [
   'WARUM: Fruehere Self-Check-Bloecke halluzinierten Zahlen. Jetzt existiert jede Zahl genau EINMAL (nutrition / ingredients.amount). content/garnish/chef_analysis nur {0001}-Platzhalter – keine freien g/ml/kcal.',
   'REGEL 0 / 0a — BOTTOM-UP, kein Zielwert-Rueckwaertsdenken. Ziel verfehlt → target_deviation_note ehrlich, Zahlen nicht erfinden.',
   '1) Naehrwert-Verbindlichkeit: chef_analysis ohne eigene Zahlen; siehe nutrition.',
-  '2) GERINNUNGSSCHUTZ: Quark/Joghurt/Huettenkaese/Creme fraiche/Frischkaese/Mascarpone/Schmand/Kokosjoghurt → stove_level 0 beim Einruehren, Herd vorher AUS.',
+  '2) GERINNUNGSSCHUTZ: Quark/Joghurt/Huettenkaese/Creme fraiche/Frischkaese/Mascarpone/Schmand/Kokosjoghurt ' +
+  '→ stove_level 0 beim Einruehren, Herd vorher AUS. VERBOTEN: Eier mit Frischkaese verquirlen und dann ' +
+  '"die Mischung" in die heisse Pfanne geben — auch wenn die sensible Zutat im Hitze-Step nicht mehr ' +
+  'namentlich/{id} genannt wird. Stattdessen: erst garen (Herd AUS), DANN sensible Zutat unterruehren.',
   '3) Mengen nur {ingredient_id} in content/garnish – nie "15 ml Olivenoel" als Freitext.',
   '4) MAXIMUM 2 protein_source:true (PROTEIN-HARMONIE / kein Zutaten-Salat). ' +
   'VERBOTEN: Haehnchen + Tofu + Ei gleichzeitig (3 Proteinquellen), auch wenn eine davon ' +
