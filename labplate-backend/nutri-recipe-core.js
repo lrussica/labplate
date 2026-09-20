@@ -12,7 +12,7 @@
  *  2) GENERATIV / Freisuche / Shopping: kreativ – Zutaten/Mengen duerfen
  *     vorgeschlagen und an Tagesziele angepasst werden (Chef-Framework).
  *
- * Generativ: temperature 0.85 (Variation); Eigenrezept/structured: temperature 0.
+ * Generativ: temperature 0.2 (Anti-Drift); Eigenrezept/structured: temperature 0.
  * reasoning_effort: "low"
  *
  * Client-Vertrag (LabPlate_34_Cursor.html, validateNutriRecipeSchema):
