@@ -271,31 +271,92 @@ function validateColdIngredientHeatSequence(recipe) {
   return { ok: problems.length === 0, problems: problems };
 }
 
+/** Hauptprotein-Keywords (Fleisch, Ei, Hülsenfrüchte, …) — immer zählen. */
+const PROTEIN_KEYWORDS_CORE = [
+  'hähnchen', 'haehnchen', 'huhn', 'pute', 'rind', 'schwein', 'lachs', 'thunfisch', 'fisch',
+  'ei', 'eier', 'tofu', 'quark', 'hüttenkäse', 'huettenkaese', 'linsen', 'kichererbsen',
+  'bohnen', 'protein', 'whey', 'seitan', 'tempeh', 'garnelen', 'krabben', 'truthahn',
+  'speck', 'joghurt', 'yogurt',
+];
+
+/**
+ * Käse / Nüsse / Samen — nur bei nennenswerter Menge (≥ PROTEIN_SUBSTANTIAL_G).
+ * Ein Spritzer Parmesan oder 5 g Topping zählt nicht als Hauptproteinquelle (Regel 4).
+ */
+const PROTEIN_KEYWORDS_SUBSTANTIAL = [
+  // Käse (inkl. Oberbegriff + Sorten)
+  'käse', 'kaese', 'gouda', 'cheddar', 'mozzarella', 'parmesan', 'feta', 'ricotta',
+  'camembert', 'frischkäse', 'frischkaese', 'frischkase', 'mascarpone', 'schmand',
+  // Nüsse / Samen
+  'nüsse', 'nusse', 'nuss', 'mandeln', 'mandel', 'cashew', 'walnüsse', 'walnusse', 'walnuss',
+  'erdnüsse', 'erdnusse', 'erdnuss', 'haselnuss', 'haselnüsse',
+  'sonnenblumenkerne', 'kürbiskerne', 'kuerbiskerne', 'chiasamen', 'chia-samen',
+  'leinsamen', 'leinsaat', 'pistazie', 'pistazien', 'pecan',
+];
+
+const PROTEIN_SUBSTANTIAL_G = 30;
+
+function ingredientAmountGrams(ing) {
+  const amount = Number(ing && ing.amount);
+  if (!Number.isFinite(amount) || amount <= 0) return 0;
+  const unit = String((ing && ing.unit) || '').toLowerCase();
+  if (unit === 'prise' || unit === 'messerspitze') return 0;
+  if (unit === 'stk') return amount * 60;
+  // g / ml näherungsweise 1:1 fuer Heuristik
+  return amount;
+}
+
+function isFatOrOilLikeName(nameLower) {
+  return /[oö]l\b|oel\b|milch\b|butter\b|sauce\b|soße\b|sosse\b|dressing\b/.test(nameLower);
+}
+
+function nameMatchesProteinKeyword(nameLower, kw) {
+  if (nameLower.indexOf(kw) < 0) return false;
+  if (kw === 'ei' || kw === 'eier') {
+    if (!/(?:^|[^a-zäöüß])ei(?:er)?(?:[^a-zäöüß]|$)/i.test(nameLower)) return false;
+  }
+  // Nuss-/Samen-Stems nicht in Ölen/Milch (Erdnussöl, Haselnussmilch, …)
+  if (/nuss|nüsse|nusse|mandel|cashew|erdnuss|haselnuss|walnuss|chia|lein/.test(kw) && isFatOrOilLikeName(nameLower)) {
+    return false;
+  }
+  return true;
+}
+
+/**
+ * Regel 4 Gegenprobe: Keyword-Heuristik unabhängig vom Modell-Flag.
+ * Käse/Nüsse/Samen nur ab PROTEIN_SUBSTANTIAL_G (default 30 g).
+ * @returns {{ ok: boolean, found: string[] }}
+ */
 function validateMaxProteinSourcesByKeywords(ingredients, proteinSourceKeywords) {
-  const defaultKeywords = [
-    'hähnchen', 'haehnchen', 'huhn', 'pute', 'rind', 'schwein', 'lachs', 'thunfisch', 'fisch',
-    'ei', 'eier', 'tofu', 'quark', 'hüttenkäse', 'huettenkaese', 'linsen', 'kichererbsen',
-    'bohnen', 'protein', 'whey', 'seitan', 'tempeh', 'garnelen', 'krabben', 'truthahn',
-  ];
-  const keywords = proteinSourceKeywords || defaultKeywords;
+  const useCustom = Array.isArray(proteinSourceKeywords) && proteinSourceKeywords.length;
+  const core = useCustom ? proteinSourceKeywords : PROTEIN_KEYWORDS_CORE;
+  const substantial = useCustom ? [] : PROTEIN_KEYWORDS_SUBSTANTIAL;
   const found = [];
+
   (ingredients || []).forEach(function (ing) {
     const name = String((ing && ing.name) || '');
     const nameLower = name.toLowerCase();
+    if (!nameLower) return;
     if (nameLower.indexOf('eiweiss') >= 0 || nameLower.indexOf('eiweiß') >= 0) return;
-    for (let i = 0; i < keywords.length; i++) {
-      const kw = keywords[i];
-      // Substring wie Python-v1 (Compound: "Hähnchenbrustfilet" enthält "hähnchen")
-      if (nameLower.indexOf(kw) >= 0 && found.indexOf(name) < 0) {
-        // "ei" nicht in "speiseöl"/"protein" falsch treffen: kurze Keywords mit Wortanfang
-        if (kw === 'ei' || kw === 'eier') {
-          if (!/(?:^|[^a-zäöüß])ei(?:er)?(?:[^a-zäöüß]|$)/i.test(nameLower)) continue;
-        }
-        found.push(name);
+
+    let matched = false;
+    for (let i = 0; i < core.length; i++) {
+      if (nameMatchesProteinKeyword(nameLower, core[i])) {
+        matched = true;
         break;
       }
     }
+    if (!matched) {
+      for (let i = 0; i < substantial.length; i++) {
+        if (!nameMatchesProteinKeyword(nameLower, substantial[i])) continue;
+        if (ingredientAmountGrams(ing) < PROTEIN_SUBSTANTIAL_G) continue;
+        matched = true;
+        break;
+      }
+    }
+    if (matched && found.indexOf(name) < 0) found.push(name);
   });
+
   return { ok: found.length <= 2, found: found };
 }
 
@@ -407,4 +468,7 @@ module.exports = {
   validateUnlistedStaplesInProse: validateUnlistedStaplesInProse,
   STAPLE_WHITELIST: STAPLE_WHITELIST,
   COLD_SENSITIVE_STEMS: COLD_SENSITIVE_STEMS,
+  PROTEIN_KEYWORDS_CORE: PROTEIN_KEYWORDS_CORE,
+  PROTEIN_KEYWORDS_SUBSTANTIAL: PROTEIN_KEYWORDS_SUBSTANTIAL,
+  PROTEIN_SUBSTANTIAL_G: PROTEIN_SUBSTANTIAL_G,
 };

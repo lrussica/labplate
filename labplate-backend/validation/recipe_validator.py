@@ -44,20 +44,71 @@ def validate_kcal_formula(protein_g: float, fat_g: float, netto_kh_g: float,
 
 
 def validate_max_protein_sources(ingredients: list, protein_source_keywords: list = None) -> tuple[bool, list]:
-    """Regel 4: max. 2 Haupt-Proteinquellen."""
-    default_keywords = [
-        "hähnchen", "huhn", "pute", "rind", "lachs", "thunfisch", "fisch",
-        "ei", "eier", "tofu", "quark", "hüttenkäse", "linsen", "kichererbsen",
-        "bohnen", "protein", "whey", "seitan", "tempeh", "garnelen", "krabben"
+    """Regel 4: max. 2 Haupt-Proteinquellen (Keyword-Gegenprobe).
+
+    Käse/Nüsse/Samen zählen nur ab ≥30 g — Topping-Parmesan o. Ä. nicht.
+    """
+    core = [
+        "hähnchen", "haehnchen", "huhn", "pute", "rind", "schwein", "lachs", "thunfisch", "fisch",
+        "ei", "eier", "tofu", "quark", "hüttenkäse", "huettenkaese", "linsen", "kichererbsen",
+        "bohnen", "protein", "whey", "seitan", "tempeh", "garnelen", "krabben", "truthahn",
+        "speck", "joghurt", "yogurt",
     ]
-    keywords = protein_source_keywords or default_keywords
+    substantial = [
+        "käse", "kaese", "gouda", "cheddar", "mozzarella", "parmesan", "feta", "ricotta",
+        "camembert", "frischkäse", "frischkaese", "mascarpone", "schmand",
+        "nüsse", "nusse", "nuss", "mandeln", "mandel", "cashew", "walnüsse", "walnuss",
+        "erdnüsse", "erdnuss", "haselnuss",
+        "sonnenblumenkerne", "kürbiskerne", "kuerbiskerne", "chiasamen", "leinsamen",
+        "pistazie", "pistazien", "pecan",
+    ]
+    substantial_g = 30
+    if protein_source_keywords is not None:
+        keywords_core = protein_source_keywords
+        keywords_sub = []
+    else:
+        keywords_core = core
+        keywords_sub = substantial
+
+    def amount_g(ing: dict) -> float:
+        try:
+            amount = float(ing.get("amount") or 0)
+        except (TypeError, ValueError):
+            return 0.0
+        unit = str(ing.get("unit") or "").lower()
+        if unit in ("prise", "messerspitze"):
+            return 0.0
+        if unit == "stk":
+            return amount * 60.0
+        return amount
+
+    def fat_like(name_lower: str) -> bool:
+        return bool(re.search(r"[oö]l\b|oel\b|milch\b|butter\b|sauce\b|soße\b|sosse\b|dressing\b", name_lower))
+
+    def matches(name_lower: str, kw: str) -> bool:
+        if kw not in name_lower:
+            return False
+        if kw in ("ei", "eier"):
+            if not re.search(r"(?:^|[^a-zäöüß])ei(?:er)?(?:[^a-zäöüß]|$)", name_lower):
+                return False
+        if re.search(r"nuss|nüsse|nusse|mandel|cashew|erdnuss|haselnuss|walnuss|chia|lein", kw) and fat_like(name_lower):
+            return False
+        return True
+
     found = []
     for ing in ingredients:
-        name_lower = ing.get("name", "").lower()
-        for kw in keywords:
-            if kw in name_lower and ing.get("name") not in found:
-                found.append(ing.get("name"))
-                break
+        name = ing.get("name") or ""
+        name_lower = name.lower()
+        if "eiweiss" in name_lower or "eiweiß" in name_lower:
+            continue
+        hit = any(matches(name_lower, kw) for kw in keywords_core)
+        if not hit:
+            for kw in keywords_sub:
+                if matches(name_lower, kw) and amount_g(ing) >= substantial_g:
+                    hit = True
+                    break
+        if hit and name not in found:
+            found.append(name)
     return len(found) <= 2, found
 
 

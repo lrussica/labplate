@@ -123,11 +123,17 @@ assert.ok(resultFall9.errors.some(function (e) {
 console.log('OK Fall 9 Gerinnung fail');
 
 // TEST 3e: korrekt — Hitze zuerst, Frischkäse erst nach Herd AUS
+// (nur 2 Keyword-Proteine: Ei + Frischkäse; Lachs weggelassen, sonst ≥30g Frischkäse = 3.)
 const fall9ok = JSON.parse(JSON.stringify(fall9));
+fall9ok.ingredients = fall9ok.ingredients.filter(function (i) { return i.id !== '0002'; });
+fall9ok.ingredients.forEach(function (i) {
+  if (i.id === '0003') i.protein_source = true;
+});
+fall9ok.title = 'Schnelles Rührei mit Frischkäse';
 fall9ok.steps = [
-  { title: 'Zutaten vorbereiten', content: 'Alle Zutaten abwiegen: {0001}, {0002}, {0003}, {0004}, {0005}, {0006}, {0007}.', stove_level: 0, time_min: 5 },
+  { title: 'Zutaten vorbereiten', content: 'Alle Zutaten abwiegen: {0001}, {0003}, {0004}, {0005}, {0006}, {0007}.', stove_level: 0, time_min: 5 },
   { title: 'Pfanne erhitzen', content: 'Pfanne auf mittlere Hitze stellen und {0004} hinzufügen.', stove_level: 6, time_min: 1 },
-  { title: 'Eier stocken', content: '{0001} in die Pfanne geben, stocken lassen, {0002} unterheben, mit {0005} und {0006} würzen.', stove_level: 5, time_min: 4 },
+  { title: 'Eier stocken', content: '{0001} in die Pfanne geben, stocken lassen, mit {0005} und {0006} würzen.', stove_level: 5, time_min: 4 },
   { title: 'Herd aus', content: 'Herd vollständig ausschalten, Pfanne vom Herd nehmen.', stove_level: 0, time_min: 1 },
   { title: 'Frischkäse unterheben', content: '{0003} unter das Rührei heben bis cremig.', stove_level: 0, time_min: 1 },
 ];
@@ -146,7 +152,52 @@ const resultDirect = validator.validateColdIngredientHeatSequence(directHeat);
 assert.strictEqual(resultDirect.ok, false, 'direkte Hitze mit Frischkäse muss failen');
 console.log('OK direkte Gerinnung Hitze+id');
 
-console.log('OK errorsToDirectives Fix B + staple');
+// TEST 3g: Fall 6 — Joghurt + Nüsse (≥30 g) als Keyword-Proteine erkannt, ≤2 → ok
+const fall6 = [
+  { name: 'Griechischer Joghurt (10% Fett)', amount: 200, unit: 'g', protein_source: true },
+  { name: 'Gemischte Nüsse (z. B. Mandeln, Walnüsse)', amount: 30, unit: 'g', protein_source: true },
+  { name: 'Zimt', amount: 0, unit: 'prise', protein_source: false },
+];
+const kw6 = validator.validateMaxProteinSourcesByKeywords(fall6);
+assert.ok(kw6.found.some(function (n) { return /joghurt/i.test(n); }), 'Fall 6: Joghurt erkannt: ' + kw6.found.join(', '));
+assert.ok(kw6.found.some(function (n) { return /nüss|nuss|mandel|walnuss/i.test(n); }), 'Fall 6: Nüsse erkannt: ' + kw6.found.join(', '));
+assert.strictEqual(kw6.ok, true, 'Fall 6: genau 2 → ok');
+console.log('OK Fall 6 Keyword Joghurt+Nüsse');
+
+// TEST 3h: Fall 7 — Eier + Gouda (≥30 g)
+const fall7 = [
+  { name: '3 Eier (Größe M, ca. 60 g je)', amount: 180, unit: 'g', protein_source: true },
+  { name: 'Gouda (gerieben)', amount: 50, unit: 'g', protein_source: true },
+  { name: 'Paprika (rot, gewürfelt)', amount: 80, unit: 'g', protein_source: false },
+  { name: 'Spinat (frisch, grob gehackt)', amount: 50, unit: 'g', protein_source: false },
+  { name: 'Olivenöl', amount: 10, unit: 'ml', protein_source: false },
+];
+const kw7 = validator.validateMaxProteinSourcesByKeywords(fall7);
+assert.ok(kw7.found.some(function (n) { return /\bei/i.test(n); }), 'Fall 7: Ei erkannt');
+assert.ok(kw7.found.some(function (n) { return /gouda|käse|kaese/i.test(n); }), 'Fall 7: Gouda erkannt: ' + kw7.found.join(', '));
+assert.strictEqual(kw7.ok, true, 'Fall 7: genau 2 → ok');
+console.log('OK Fall 7 Keyword Ei+Gouda');
+
+// Parmesan-Topping <30 g zählt nicht; 3. Hauptkäse ≥30 g schon
+const topParmesan = [
+  { name: 'Hähnchenbrust', amount: 150, unit: 'g' },
+  { name: 'Ei (Größe M)', amount: 1, unit: 'stk' },
+  { name: 'Parmesan', amount: 5, unit: 'g' },
+];
+assert.strictEqual(validator.validateMaxProteinSourcesByKeywords(topParmesan).ok, true, '5g Parmesan kein 3. Protein');
+const thirdCheese = [
+  { name: 'Hähnchenbrust', amount: 150, unit: 'g' },
+  { name: 'Ei (Größe M)', amount: 1, unit: 'stk' },
+  { name: 'Gouda', amount: 50, unit: 'g' },
+];
+assert.strictEqual(validator.validateMaxProteinSourcesByKeywords(thirdCheese).ok, false, '50g Gouda als 3. Protein');
+assert.strictEqual(
+  validator.validateMaxProteinSourcesByKeywords([{ name: 'Erdnussöl', amount: 15, unit: 'ml' }]).found.length,
+  0,
+  'Erdnussöl nicht als Nuss-Protein'
+);
+console.log('OK Käse-Mengenschwelle + Nussöl-Ausschluss');
+
 // Retry: first fail, second ok
 let calls = 0;
 async function mockCallGroq() {
