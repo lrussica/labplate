@@ -284,21 +284,55 @@ assert.ok(!resultBrothKcal.errors.some(function (e) {
 }), 'Brühe 0 kcal darf keinen kcal-Fehler erzeugen: ' + resultBrothKcal.errors.join('; '));
 console.log('OK kcal near-zero Sonderregel (0 vs 0)');
 
-// TEST 3l: kcal-Formel-Abweichung → Auto-Korrektur (Warning), kein Hard-Fail
+// TEST 3l: nutrition wird aus Zutaten berechnet (LLM-kcal irrelevant)
 const kcalOff = JSON.parse(JSON.stringify(gutesBeispiel));
-const p = Number(kcalOff.nutrition.protein_g) || 0;
-const f = Number(kcalOff.nutrition.fat_g) || 0;
-const kh = Number(kcalOff.nutrition.netto_kh_g) || 0;
-const bal = Number(kcalOff.nutrition.ballaststoffe_g) || 0;
-const calc = Math.round(p * 4 + f * 9 + kh * 4 + bal * 2);
-kcalOff.nutrition.kcal = calc + Math.max(80, Math.round(calc * 0.2)); // >10% daneben
+const computedOff = validator.computeNutritionFromIngredients(kcalOff.ingredients);
+kcalOff.nutrition.kcal = computedOff.kcal + 200;
+kcalOff.nutrition.protein_g = computedOff.protein_g + 40;
 const resultKcalFix = validator.validateRecipeV2(kcalOff);
-assert.strictEqual(resultKcalFix.ok, true, 'kcal-Abweichung darf nicht failen: ' + resultKcalFix.errors.join('; '));
-assert.strictEqual(kcalOff.nutrition.kcal, calc, 'kcal muss auf Formel gerundet werden');
-assert.ok(resultKcalFix.warnings.some(function (w) {
-  return /Kalorien-Formel korrigiert/i.test(w);
-}), 'Warnung erwartet: ' + resultKcalFix.warnings.join('; '));
-console.log('OK kcal Auto-Korrektur bei Formel-Abweichung');
+assert.strictEqual(resultKcalFix.ok, true, 'inventierte nutrition darf nicht failen: ' + resultKcalFix.errors.join('; '));
+assert.strictEqual(kcalOff.nutrition.protein_g, computedOff.protein_g, 'protein muss aus Zutaten kommen');
+assert.strictEqual(kcalOff.nutrition.kcal, computedOff.kcal, 'kcal muss aus Zutaten kommen');
+console.log('OK nutrition Bottom-up aus Zutaten');
+
+// TEST 3m: Doppel-String-Fix resolvePlaceholders
+const byIdDbl = {
+  '0004': { id: '0004', name: 'Olivenöl', amount: 10, unit: 'ml' },
+  '0005': { id: '0005', name: 'Salz', amount: 0, unit: 'prise' },
+  '0007': { id: '0007', name: 'Wasser', amount: 1000, unit: 'ml' },
+};
+assert.strictEqual(
+  validator.resolvePlaceholders('{0005} Salz', byIdDbl),
+  'Salz',
+  'Salz Salz vermeiden'
+);
+assert.strictEqual(
+  validator.resolvePlaceholders('Olivenöl {0004}', byIdDbl),
+  '10ml Olivenöl',
+  'Olivenöl Doppler vermeiden'
+);
+assert.strictEqual(
+  validator.resolvePlaceholders('Wasser {0007} ml', byIdDbl),
+  '1000ml Wasser',
+  'Wasser ml Doppler vermeiden'
+);
+assert.strictEqual(
+  validator.resolvePlaceholders('Die Kombi aus {0004} und {0005}', byIdDbl, { nameOnly: true }),
+  'Die Kombi aus Olivenöl und Salz',
+  'chef_analysis nameOnly'
+);
+console.log('OK resolvePlaceholders Anti-Doppel');
+
+// TEST 3n: Eier nur stk ganze Zahlen; kein Garnitur-Step
+const badEgg = JSON.parse(JSON.stringify(gutesBeispiel));
+badEgg.ingredients[1] = { id: '0002', name: 'Ei', amount: 30, unit: 'g', protein_source: true, netCarbs: 0.7, fat: 10, protein: 13, fiber: 0 };
+const resultBadEgg = validator.validateRecipeV2(badEgg);
+assert.ok(resultBadEgg.errors.some(function (e) { return /Eier müssen unit="stk"/i.test(e); }), '30g Ei muss failen');
+const garnishStep = JSON.parse(JSON.stringify(gutesBeispiel));
+garnishStep.steps.push({ title: 'Garnitur', content: 'Mit {0005} bestreuen.', stove_level: 0, time_min: 1 });
+const resultGarn = validator.validateRecipeV2(garnishStep);
+assert.ok(resultGarn.errors.some(function (e) { return /kein separater Garnitur-Schritt/i.test(e); }), 'Garnitur-Step muss failen');
+console.log('OK Eier-stk + Garnitur-Step-Verbot');
 
 // Retry: first fail, second ok
 let calls = 0;

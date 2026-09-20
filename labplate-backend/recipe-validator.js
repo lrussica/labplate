@@ -36,15 +36,132 @@ function validateKcalFormula(proteinG, fatG, nettoKhG, ballaststoffeG, kcalDecla
   return { ok: abweichungPct <= tol, kcalCalc: kcalCalc, abweichungPct: abweichungPct };
 }
 
-function resolvePlaceholders(text, ingredientsById) {
-  return String(text == null ? '' : text).replace(/\{(\d{4})\}/g, function (_m, id) {
+function escapeRegExp(s) {
+  return String(s || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/**
+ * Entfernt redundante Namen/Einheiten neben {id}-Platzhaltern, bevor das Backend
+ * amount+unit+name einsetzt — verhindert "Salz Salz", "10ml Öl Öl", "Wasser 1000ml Wasser ml".
+ */
+function stripRedundantBesidePlaceholders(text, ingredientsById) {
+  let out = String(text == null ? '' : text);
+  const ids = Object.keys(ingredientsById || {});
+  ids.forEach(function (id) {
     const ing = ingredientsById[id];
+    if (!ing) return;
+    const name = String(ing.name || '').trim();
+    if (!name) return;
+    const ph = '\\{' + id + '\\}';
+    const nameRe = escapeRegExp(name);
+    const unit = String(ing.unit || '').trim();
+    const shortName = name.split(/[\s(,]/)[0];
+    const aliases = [name];
+    if (shortName && shortName.length >= 2 && shortName.toLowerCase() !== name.toLowerCase()) {
+      aliases.push(shortName);
+    }
+    // Ei / Eier neben Ei-Platzhalter
+    if (/\bei\b/i.test(name) || String(ing.unit || '') === 'stk') {
+      aliases.push('Ei', 'Eier', 'egg', 'eggs');
+    }
+    aliases.forEach(function (alias) {
+      if (!alias) return;
+      const aRe = escapeRegExp(alias);
+      out = out.replace(new RegExp(ph + '\\s+' + aRe + '\\b', 'gi'), '{' + id + '}');
+      out = out.replace(new RegExp('\\b' + aRe + '\\s+' + ph, 'gi'), '{' + id + '}');
+      if (unit && /^(ml|g|stk|l)$/i.test(unit)) {
+        const uRe = escapeRegExp(unit);
+        out = out.replace(new RegExp(ph + '\\s*' + uRe + '\\b', 'gi'), '{' + id + '}');
+        out = out.replace(new RegExp('\\b' + aRe + '\\s+' + ph + '\\s*' + uRe + '\\b', 'gi'), '{' + id + '}');
+      }
+    });
+  });
+  return out;
+}
+
+/**
+ * Ersetzt {0001} durch Anzeige-Token aus der Zutatenliste.
+ * @param {string} text
+ * @param {object} ingredientsById
+ * @param {{ nameOnly?: boolean }} [opts] nameOnly=true → nur Zutatname (chef_analysis)
+ */
+function resolvePlaceholders(text, ingredientsById, opts) {
+  const nameOnly = !!(opts && opts.nameOnly);
+  const byId = ingredientsById || {};
+  let out = stripRedundantBesidePlaceholders(text, byId);
+  out = out.replace(/\{(\d{4})\}/g, function (_m, id) {
+    const ing = byId[id];
     if (!ing) return '{' + id + '}';
+    const name = String(ing.name || '').trim();
+    if (nameOnly) return name || '{' + id + '}';
     const amount = ing.amount;
     const unit = ing.unit || '';
-    if (amount == null || amount === 0) return String(ing.name || '');
-    return String(amount) + (unit ? unit : '') + ' ' + String(ing.name || '');
-  }).replace(/\s+/g, ' ').trim();
+    if (amount == null || amount === 0) return name;
+    return String(amount) + (unit ? unit : '') + ' ' + name;
+  });
+  // Nach Expansion: doppelte Namen / hängende Einheiten glätten
+  Object.keys(byId).forEach(function (id) {
+    const ing = byId[id];
+    if (!ing) return;
+    const name = String(ing.name || '').trim();
+    if (!name) return;
+    const nameRe = escapeRegExp(name);
+    out = out.replace(new RegExp('(' + nameRe + ')(\\s+\\1)+\\b', 'gi'), '$1');
+    const amount = ing.amount;
+    const unit = String(ing.unit || '');
+    if (amount != null && amount !== 0 && unit) {
+      const token = String(amount) + unit + ' ' + name;
+      const tokenRe = escapeRegExp(token);
+      out = out.replace(new RegExp(tokenRe + '\\s+' + nameRe + '\\b', 'gi'), token);
+      out = out.replace(new RegExp('\\b' + nameRe + '\\s+' + tokenRe, 'gi'), token);
+      out = out.replace(new RegExp(tokenRe + '\\s*' + escapeRegExp(unit) + '\\b', 'gi'), token);
+      out = out.replace(
+        new RegExp('\\b' + nameRe + '\\s+' + escapeRegExp(String(amount) + unit) + '\\s+' + nameRe +
+          '(?:\\s*' + escapeRegExp(unit) + ')?\\b', 'gi'),
+        token
+      );
+    }
+  });
+  return out.replace(/\s+/g, ' ').trim();
+}
+
+/**
+ * Bottom-up: nutrition aus ingredients (amount × Makros/100g).
+ * stk → 60 g/Stück; prise/messerspitze → 0 g.
+ */
+function computeNutritionFromIngredients(ingredients) {
+  let protein = 0;
+  let fat = 0;
+  let nettoKh = 0;
+  let fiber = 0;
+  (Array.isArray(ingredients) ? ingredients : []).forEach(function (ing) {
+    if (!ing) return;
+    let grams = Number(ing.amount);
+    if (!Number.isFinite(grams) || grams < 0) grams = 0;
+    const unit = String(ing.unit || '');
+    if (unit === 'prise' || unit === 'messerspitze') grams = 0;
+    else if (unit === 'stk') grams = grams * 60;
+    const factor = grams / 100;
+    protein += factor * Math.max(0, Number(ing.protein) || 0);
+    fat += factor * Math.max(0, Number(ing.fat) || 0);
+    nettoKh += factor * Math.max(0, Number(ing.netCarbs) || 0);
+    fiber += factor * Math.max(0, Number(ing.fiber) || 0);
+  });
+  const kcalRaw = protein * 4 + nettoKh * 4 + fat * 9 + fiber * 2;
+  return {
+    protein_g: Math.round(protein * 10) / 10,
+    fat_g: Math.round(fat * 10) / 10,
+    netto_kh_g: Math.round(nettoKh * 10) / 10,
+    ballaststoffe_g: Math.round(fiber * 10) / 10,
+    kcal: Math.round(kcalRaw / 5) * 5,
+  };
+}
+
+function isEggIngredientName(name) {
+  const n = String(name || '').toLowerCase();
+  if (!n) return false;
+  if (n.indexOf('eiweiss') >= 0 || n.indexOf('eiweiß') >= 0 || n.indexOf('eiweis') >= 0) return false;
+  return /(?:^|[^a-z])ei(?:er)?(?:[^a-z]|$)/.test(n);
 }
 
 function validateNoFreeNumbersInProse(steps, garnish, chefAnalysis, ingredients) {
@@ -417,25 +534,73 @@ function validateRecipeV2(recipe) {
   const garnish = typeof r.garnish === 'string' ? r.garnish : '';
   const chefAnalysis = typeof r.chef_analysis === 'string' ? r.chef_analysis : '';
 
-  const kcal = validateKcalFormula(
-    Number(nutrition.protein_g) || 0,
-    Number(nutrition.fat_g) || 0,
-    Number(nutrition.netto_kh_g) || 0,
-    Number(nutrition.ballaststoffe_g) || 0,
-    Number(nutrition.kcal) || 0
-  );
-  // Makros sind Source of Truth: bei Formel-Abweichung kcal deterministisch korrigieren
-  // statt das ganze Rezept an LLM-Arithmetik scheitern zu lassen.
-  if (!kcal.ok) {
-    const declared = Number(nutrition.kcal) || 0;
-    const corrected = Math.round(kcal.kcalCalc);
-    if (!r.nutrition || typeof r.nutrition !== 'object') r.nutrition = nutrition;
-    r.nutrition.kcal = corrected;
-    result.addWarning(
-      'Kalorien-Formel korrigiert: deklariert ' + declared + ' kcal → ' + corrected +
-      ' kcal (4×P + 9×F + 4×KH + 2×Ballast, war ' + kcal.abweichungPct.toFixed(1) + '% Abweichung)'
-    );
+  // Bottom-up: nutrition aus Zutaten erzwingen (kein freies Erfinden von Makros)
+  const computed = computeNutritionFromIngredients(ingredients);
+  if (!r.nutrition || typeof r.nutrition !== 'object') r.nutrition = {};
+  const declaredP = Number(nutrition.protein_g);
+  if (Number.isFinite(declaredP) && computed.protein_g > 0) {
+    const driftPct = Math.abs(declaredP - computed.protein_g) / Math.max(computed.protein_g, 1) * 100;
+    if (driftPct > 20) {
+      result.addWarning(
+        'Nährwerte aus Zutaten neu berechnet (Protein deklariert ' + declaredP +
+        ' g vs. berechnet ' + computed.protein_g + ' g)'
+      );
+    }
   }
+  r.nutrition.protein_g = computed.protein_g;
+  r.nutrition.fat_g = computed.fat_g;
+  r.nutrition.netto_kh_g = computed.netto_kh_g;
+  r.nutrition.ballaststoffe_g = computed.ballaststoffe_g;
+  r.nutrition.kcal = computed.kcal;
+
+  const kcal = validateKcalFormula(
+    Number(r.nutrition.protein_g) || 0,
+    Number(r.nutrition.fat_g) || 0,
+    Number(r.nutrition.netto_kh_g) || 0,
+    Number(r.nutrition.ballaststoffe_g) || 0,
+    Number(r.nutrition.kcal) || 0
+  );
+  if (!kcal.ok) {
+    r.nutrition.kcal = Math.round(kcal.kcalCalc);
+    result.addWarning('Kalorien-Formel korrigiert → ' + r.nutrition.kcal + ' kcal');
+  }
+
+  // Eier / Stückware: nur ganze stk-Zahlen, nie "30g Ei"
+  ingredients.forEach(function (ing) {
+    if (!ing) return;
+    const name = String(ing.name || '');
+    const unit = String(ing.unit || '');
+    const amount = Number(ing.amount);
+    if (isEggIngredientName(name)) {
+      if (unit !== 'stk') {
+        result.addError(
+          "Eier müssen unit=\"stk\" mit ganzer Stückzahl haben (nicht \"" + unit +
+          "\" / keine Gramm-Angabe wie \"30g Ei\"): '" + name + "'"
+        );
+      } else if (!Number.isFinite(amount) || amount < 1 || Math.round(amount) !== amount) {
+        result.addError(
+          "Eier-amount muss ganze Zahl ≥1 sein (stk), gefunden: " + ing.amount + " bei '" + name + "'"
+        );
+      }
+    } else if (unit === 'stk') {
+      if (!Number.isFinite(amount) || amount < 1 || Math.round(amount) !== amount) {
+        result.addError(
+          "Stückware (unit=stk) nur als ganze Zahl ≥1: '" + name + "' amount=" + ing.amount
+        );
+      }
+    }
+  });
+
+  // Kein separater Garnitur-Schritt
+  steps.forEach(function (s, i) {
+    const title = String((s && s.title) || '').trim();
+    if (/^(garnitur|garnish)\b/i.test(title)) {
+      result.addError(
+        "Step " + (i + 1) + " ('" + title + "'): kein separater Garnitur-Schritt — " +
+        "Garnieren im Anrichte-Schritt integrieren und im Feld garnish belassen"
+      );
+    }
+  });
 
   const flagSources = ingredients
     .filter(function (ing) { return ing && ing.protein_source; })
@@ -488,13 +653,13 @@ function validateRecipeV2(recipe) {
   }
 
   const labels = (r.diet_labels || []).map(function (d) { return String(d || '').toLowerCase(); });
-  if (labels.indexOf('keto') >= 0 && (Number(nutrition.netto_kh_g) || 999) >= 10) {
+  if (labels.indexOf('keto') >= 0 && (Number(r.nutrition.netto_kh_g) || 999) >= 10) {
     result.addError(
-      'Keto-Label vergeben, aber Netto-KH=' + nutrition.netto_kh_g + 'g >= 10g'
+      'Keto-Label vergeben, aber Netto-KH=' + r.nutrition.netto_kh_g + 'g >= 10g'
     );
   }
   if (labels.indexOf('high_protein') >= 0 || labels.indexOf('high-protein') >= 0) {
-    if ((Number(nutrition.protein_g) || 0) < 25) {
+    if ((Number(r.nutrition.protein_g) || 0) < 25) {
       result.addError('high_protein-Label, aber protein_g < 25');
     }
   }
@@ -518,6 +683,9 @@ module.exports = {
   validateColdIngredientHeatSequence: validateColdIngredientHeatSequence,
   isColdSensitiveIngredientName: isColdSensitiveIngredientName,
   resolvePlaceholders: resolvePlaceholders,
+  stripRedundantBesidePlaceholders: stripRedundantBesidePlaceholders,
+  computeNutritionFromIngredients: computeNutritionFromIngredients,
+  isEggIngredientName: isEggIngredientName,
   validateNoFreeNumbersInProse: validateNoFreeNumbersInProse,
   validateChefAnalysisPlaceholderMisuse: validateChefAnalysisPlaceholderMisuse,
   validateUnlistedStaplesInProse: validateUnlistedStaplesInProse,

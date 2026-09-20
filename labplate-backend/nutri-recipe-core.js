@@ -52,16 +52,21 @@ const CHEF_FRAMEWORK_RULES = [
   'Rolle: System-Chefkoch + Ernaehrungs-Wissenschaftler. Food-Pairing, Sensorik, molekulare Hitzebestaendigkeit, exakte Naehrwert-Mathematik.',
   'WARUM: Fruehere Self-Check-Bloecke halluzinierten Zahlen. Jetzt existiert jede Zahl genau EINMAL (nutrition / ingredients.amount). content/garnish: Mengen nur {0001}-Platzhalter. chef_analysis: Platzhalter nur fuer Zutatennamen, nie fuer Naehrwerte.',
   'REGEL 0 / 0a — BOTTOM-UP, kein Zielwert-Rueckwaertsdenken. Ziel verfehlt → target_deviation_note ehrlich, Zahlen nicht erfinden.',
+  '0b) MENGEN-SYNC / ANTI-DRIFT: Die einzigen Mengen-Wahrheiten stehen in ingredients[].amount (+ unit). ' +
+  'In steps/garnish steht AUSSCHLIESSLICH der nackte Platzhalter {0001} — VERBOTEN: "{0004} Olivenöl", "Olivenöl {0004}", ' +
+  '"Wasser {0007} ml", "{0005} Salz", "100g Speck" als Freitext. Das Backend setzt amount+unit+name ein. ' +
+  'chef_analysis: nur {id} als Zutatname, keine Mengen.',
   '1) Naehrwert-Verbindlichkeit / chef_analysis: {ingredient_id}-Platzhalter AUSSCHLIESSLICH zur Benennung von Zutaten ' +
   '(z. B. "Die Kombination aus {0001} und {0002} liefert..."). NIEMALS Naehrwerte referenzieren — weder als Zahl ' +
   '("48 g Protein") noch fälschlich als {id}-Platzhalter ("liefert rund {0001} g Protein" ist FALSCH, weil Platzhalter ' +
   'nur Zutaten kennen). Stattdessen qualitativ: "liefert eine hohe Proteinmenge", "bleibt weit unter dem Keto-Grenzwert". ' +
-  'Alle exakten Zahlen leben ausschliesslich im nutrition-Objekt.',
+  'Alle exakten Zahlen leben ausschliesslich im nutrition-Objekt und MUESSEN der Summe amount×(Makros/100g) entsprechen. ' +
+  'VERBOTEN: Protein/Fett/KH/kcal frei zu erfinden (z. B. 74g Protein bei 125g Lachs).',
   '2) GERINNUNGSSCHUTZ: Quark/Joghurt/Huettenkaese/Creme fraiche/Frischkaese/Mascarpone/Schmand/Kokosjoghurt ' +
   '→ stove_level 0 beim Einruehren, Herd vorher AUS. VERBOTEN: Eier mit Frischkaese verquirlen und dann ' +
   '"die Mischung" in die heisse Pfanne geben — auch wenn die sensible Zutat im Hitze-Step nicht mehr ' +
   'namentlich/{id} genannt wird. Stattdessen: erst garen (Herd AUS), DANN sensible Zutat unterruehren.',
-  '3) Mengen nur {ingredient_id} in content/garnish – nie "15 ml Olivenoel" als Freitext.',
+  '3) Mengen nur nacktes {ingredient_id} in content/garnish – nie freie g/ml und nie Name/Einheit neben dem Platzhalter.',
   '4) MAXIMUM 2 protein_source:true (PROTEIN-HARMONIE / kein Zutaten-Salat). ' +
   'VERBOTEN: Haehnchen + Tofu + Ei gleichzeitig (3 Proteinquellen), auch wenn eine davon ' +
   'protein_source:false gesetzt wird — das Flag aendert nichts an der tatsaechlichen ' +
@@ -72,22 +77,25 @@ const CHEF_FRAMEWORK_RULES = [
   'ist (Fleisch, Fisch, Ei, Tofu, Huelsenfruechte, Milchprodukte mit >10g Protein/100g), ' +
   'zaehlt in die 2er-Grenze — unabhaengig vom gesetzten Flag.',
   '5) DIÄT- & KETO-EHRLEICHKEIT: diet_labels keto nur bei netto_kh_g <10; high_protein nur ab protein_g ≥25; vegan ohne Ei/Milch.',
-  '6) Eier: unit "stk", amount Stueckzahl, name "Ei (Groesse M, ca. 60 g)". Inhalt nur via {id}.',
+  '6) Eier & Stueckware: unit "stk", amount GANZE Zahl ≥1 (1, 2, 3…), name "Ei (Groesse M, ca. 60 g)". ' +
+  'VERBOTEN: Kommastellen, "0.5 Ei", "30g Ei", unit g fuer Eier. Inhalt nur via {id}.',
   '7) VOLLSTAENDIGKEIT: jede {id} in steps/garnish existiert in ingredients; jede Zutat mind. 1x referenziert. ' +
   'Auch Basis-Zutaten (Oel, Butter, Wasser, Salz, Mehl, Zucker, Ei) MUESSEN in ingredients stehen und per {id} ' +
   'referenziert werden — VERBOTEN: "in etwas Oel anbraten" ohne Oel-Eintrag in ingredients. Keine Klartext-Zutat ' +
   'ohne Listen-Eintrag (Allergie-/Sicherheitsrisiko).',
   '8) HERD-STUFEN: stove_level 1-9 nur bei Hitze; kalt = 0. Mise en Place zuerst; Zeit + Sensorik.',
   '9) GEWUERZE: unit prise|messerspitze, amount 0 – nie unit g fuer Salz/Pfeffer (ABSOLUTES GRAMM-VERBOT).',
-  '10) Kalorien-Plausibilitaet: kcal ≈ Protein×4 + Netto-KH×4 + Fett×9 + Ballaststoffe×2 (±10 %).',
+  '10) Kalorien-Plausibilitaet: kcal = Summe aus Zutaten (Protein×4 + Netto-KH×4 + Fett×9 + Ballaststoffe×2).',
   '11) Zeit-Realismus: prep_time_min ≈ Summe steps[].time_min.',
   '12–16) Einheiten/Allergene/Skalierung/Grenzfaelle/Rundung (kcal 5er, Gramm ganz).',
-  '17) TEXTUR & FOOD PAIRING: mind. 3 Texturen (cremig + bissfest + crunchy); garnish Pflicht; herzhaft Saeure.',
+  '17) TEXTUR & FOOD PAIRING: mind. 3 Texturen (cremig + bissfest + crunchy); garnish-Feld Pflicht; herzhaft Saeure. ' +
+  'VERBOTEN: separater Step mit Titel „Garnitur“/„Garnish“. Wenn Anrichten schon ein Step ist, Garnieren DORT integrieren; ' +
+  'zusaetzlich Feld garnish befuellen — kein Step 6 nur fuer Garnitur.',
   '18) BEZEICHNUNGS-KONSISTENZ / Namensgleichheit. garnish + chef_analysis Pflicht.',
-  '19) KEIN [SELF-CHECK]-Block. Backend validiert deterministisch (validateRecipeV2).',
-  '20) NEGATIV-VERBOT: freie Mengen in content; eigene g/kcal ODER missbrauchte {id}-Platzhalter als Naehrwert-Ersatz ' +
-  'in chef_analysis (z. B. "{0001} g Protein"); ungelistete garnish-Zutaten; >2 protein_source; ' +
-  'Klartext-Basiszutaten ohne ingredients-Eintrag (z. B. "etwas Oel anbraten").',
+  '19) KEIN [SELF-CHECK]-Block. Backend validiert deterministisch (validateRecipeV2) und rechnet nutrition aus ingredients.',
+  '20) NEGATIV-VERBOT: freie Mengen in content; Name/Einheit neben {id}; eigene g/kcal ODER missbrauchte {id}-Platzhalter als Naehrwert-Ersatz ' +
+  'in chef_analysis; ungelistete garnish-Zutaten; >2 protein_source; Klartext-Basiszutaten ohne ingredients-Eintrag; ' +
+  'separater Garnitur-Schritt; erfundene nutrition-Werte.',
   '21) ORIGINALITAETS-ABSICHERUNG: Formuliere Titel, Zubereitungsschritte (content) und Chef-Analyse IMMER in ' +
   'eigenen, originalen Worten — auch bei bekannten Standardgerichten (z. B. "klassische Bolognese", "Caesar Salad"). ' +
   'Orientiere dich an der allgemeinen, weit verbreiteten Zubereitungsart eines Gerichts, nicht an der spezifischen ' +
@@ -666,8 +674,8 @@ function buildGroqRequest(p, model) {
   const structured = p.structured;
   return {
     model: model || DEFAULT_MODEL,
-    // Eigenrezept: deterministisch (0). Generativ: hoehere Temperatur fuer unendliche Variationen.
-    temperature: structured ? 0 : 0.85,
+    // Eigenrezept: deterministisch (0). Generativ: niedrig (0.2) gegen Mengen-Drift/Halluzination.
+    temperature: structured ? 0 : 0.2,
     reasoning_effort: 'low',
     max_tokens: 8192,
     response_format: {

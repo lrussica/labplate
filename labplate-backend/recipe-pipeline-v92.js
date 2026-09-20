@@ -58,7 +58,9 @@ function buildV92GenerativeSchema() {
       title: { type: 'string' },
       content: {
         type: 'string',
-        description: 'Nur {0001}-Platzhalter fuer Mengen – keine freien g/ml-Zahlen.',
+        description:
+          'Nur nackte {0001}-Platzhalter als Mengentoken — VERBOTEN: "{0004} Olivenöl", "Wasser {0007} ml", "{0005} Salz". ' +
+          'Kein separater Step „Garnitur“; Anrichten inkl. Garnitur im letzten Step, Feld garnish parallel.',
       },
       stove_level: {
         type: 'number',
@@ -202,7 +204,8 @@ function renderRecipeForDisplay(recipe) {
   const prepMin = Number(recipe.prep_time_min) || 0;
   const prep_time = prepMin > 0 ? (prepMin + ' Minuten') : '';
   const garnish = validator.resolvePlaceholders(recipe.garnish || '', byId).slice(0, 400);
-  let note = validator.resolvePlaceholders(recipe.chef_analysis || '', byId);
+  // chef_analysis: Platzhalter = nur Zutatnamen (kein amount+unit-Drift)
+  let note = validator.resolvePlaceholders(recipe.chef_analysis || '', byId, { nameOnly: true });
   if (recipe.target_deviation_note) {
     note = (note ? note + ' ' : '') + String(recipe.target_deviation_note);
   }
