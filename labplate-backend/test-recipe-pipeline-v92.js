@@ -198,6 +198,78 @@ assert.strictEqual(
 );
 console.log('OK Käse-Mengenschwelle + Nussöl-Ausschluss');
 
+// TEST 3i: Platzhalter-Missbrauch in chef_analysis ({id} als Nährwert-Ersatz)
+const ketoHuehnchen = JSON.parse(JSON.stringify(gutesBeispiel));
+ketoHuehnchen.title = 'Keto-Hähnchen-Rührei mit Zucchini';
+ketoHuehnchen.ingredients = [
+  { id: '0001', name: 'Hähnchenbrustfilet (roh)', amount: 150, unit: 'g', protein_source: true, netCarbs: 0, fat: 3.6, protein: 31, fiber: 0 },
+  { id: '0002', name: 'Ei (Größe M, ca. 60 g)', amount: 2, unit: 'stk', protein_source: true, netCarbs: 0.7, fat: 10, protein: 13, fiber: 0 },
+  { id: '0003', name: 'Zucchini', amount: 100, unit: 'g', protein_source: false, netCarbs: 2, fat: 0.3, protein: 1.2, fiber: 1 },
+  { id: '0004', name: 'Olivenöl', amount: 8, unit: 'ml', protein_source: false, netCarbs: 0, fat: 100, protein: 0, fiber: 0 },
+  { id: '0005', name: 'Salz', amount: 0, unit: 'prise', protein_source: false, netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
+];
+ketoHuehnchen.steps = [
+  { title: 'Mise', content: '{0001} würfeln, {0003} in Scheiben, {0002} verquirlen.', stove_level: 0, time_min: 5 },
+  { title: 'Braten', content: '{0004} erhitzen, {0001} und {0003} anbraten, {0002} stocken lassen, mit {0005} würzen.', stove_level: 5, time_min: 8 },
+];
+ketoHuehnchen.garnish = '';
+ketoHuehnchen.chef_analysis =
+  'Die Zubereitung liefert rund {0001} g Protein und bleibt mit {0003} g Netto-KH ' +
+  'deutlich unter 10 g, ideal für eine ketogene Ernährung.';
+ketoHuehnchen.diet_labels = ['keto', 'high_protein'];
+ketoHuehnchen.nutrition = { kcal: 420, protein_g: 48, fat_g: 22, netto_kh_g: 3, ballaststoffe_g: 1 };
+const resultPhMisuse = validator.validateRecipeV2(ketoHuehnchen);
+assert.strictEqual(resultPhMisuse.ok, false, 'Platzhalter-Missbrauch muss failen');
+assert.ok(resultPhMisuse.errors.some(function (e) {
+  return /chef_analysis missbraucht Zutat-Platzhalter \{0001\} als Nährwert-Referenz/i.test(e);
+}), 'erwartet spezifischen Missbrauch-Fehler für {0001}: ' + resultPhMisuse.errors.join('; '));
+assert.ok(resultPhMisuse.errors.some(function (e) {
+  return /chef_analysis missbraucht Zutat-Platzhalter \{0003\} als Nährwert-Referenz/i.test(e);
+}), 'erwartet spezifischen Missbrauch-Fehler für {0003}: ' + resultPhMisuse.errors.join('; '));
+// Isolierter Fall ohne freie Zahl "10 g" — nur {id} g Protein
+const onlyPh = JSON.parse(JSON.stringify(gutesBeispiel));
+onlyPh.chef_analysis = 'Die Zubereitung liefert rund {0001} g Protein bei ausgewogener Sensorik.';
+const resultOnlyPh = validator.validateRecipeV2(onlyPh);
+assert.strictEqual(resultOnlyPh.ok, false, 'isolierter Platzhalter-Missbrauch muss failen');
+assert.ok(resultOnlyPh.errors.some(function (e) {
+  return /missbraucht Zutat-Platzhalter \{0001\}/i.test(e);
+}), 'isoliert: spezifischer Fehlertyp: ' + resultOnlyPh.errors.join('; '));
+assert.ok(!resultOnlyPh.errors.some(function (e) {
+  return /eigene Zahl statt Verweis/i.test(e);
+}), 'isoliert: nicht nur über freie-Zahl-Regex: ' + resultOnlyPh.errors.join('; '));
+const fbPh = pipeline.buildRetryFeedbackMessage([
+  'chef_analysis missbraucht Zutat-Platzhalter {0001} als Nährwert-Referenz — Platzhalter sind nur für Zutatennamen zulässig, nicht für Zahlen.',
+]);
+assert.ok(/Zutat-Platzhalter \(\{0001\}\).*fälschlich für eine Nährwert-Zahl/i.test(fbPh), 'Retry-Directive Platzhalter: ' + fbPh);
+assert.ok(/rein qualitative Aussage/i.test(fbPh), 'Retry-Directive qualitativ');
+console.log('OK chef_analysis Platzhalter-Missbrauch + Retry-Directive');
+
+// TEST 3j: Gegentest — korrekte Zutat-Platzhalter ohne Nährwertzahlen
+const chefOk = JSON.parse(JSON.stringify(gutesBeispiel));
+chefOk.chef_analysis =
+  'Die Kombination aus {0001} und {0002} liefert eine hohe Proteinmenge bei wenig Kohlenhydraten.';
+const resultChefOk = validator.validateRecipeV2(chefOk);
+assert.strictEqual(resultChefOk.ok, true, 'korrekte chef_analysis muss ok sein: ' + resultChefOk.errors.join('; '));
+console.log('OK chef_analysis Gegentest (Platzhalter nur für Namen)');
+
+// TEST 3k: Bug A — 0 vs 0 kcal darf nicht als 100% Abweichung failen (magere Brühe)
+const kcal00 = validator.validateKcalFormula(0, 0, 0, 0, 0);
+assert.strictEqual(kcal00.ok, true, '0 vs 0 kcal muss ok sein');
+assert.strictEqual(kcal00.kcalCalc, 0);
+const kcalNear = validator.validateKcalFormula(1, 0, 1, 0, 5); // calc=8, decl=5, beide <20
+assert.strictEqual(kcalNear.ok, true, 'nahe 0 mit ±15 absolut muss ok sein');
+const kcalMismatch = validator.validateKcalFormula(0, 0, 0, 0, 100);
+assert.strictEqual(kcalMismatch.ok, false, '0 calc vs 100 decl muss failen');
+const brothZero = JSON.parse(JSON.stringify(gutesBeispiel));
+brothZero.title = 'Klare Rinderbrühe (Test)';
+brothZero.nutrition = { kcal: 0, protein_g: 0, fat_g: 0, netto_kh_g: 0, ballaststoffe_g: 0 };
+brothZero.diet_labels = [];
+const resultBrothKcal = validator.validateRecipeV2(brothZero);
+assert.ok(!resultBrothKcal.errors.some(function (e) {
+  return /Kalorien-Formel-Abweichung/i.test(e);
+}), 'Brühe 0 kcal darf keinen kcal-Fehler erzeugen: ' + resultBrothKcal.errors.join('; '));
+console.log('OK kcal near-zero Sonderregel (0 vs 0)');
+
 // Retry: first fail, second ok
 let calls = 0;
 async function mockCallGroq() {

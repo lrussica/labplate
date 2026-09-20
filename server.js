@@ -17,8 +17,8 @@
  * Render-Env: GROQ_API_KEY (Pflicht), GROQ_MODEL (optional, Standard openai/gpt-oss-120b),
  *             GROQ_VISION_MODEL (optional, Standard qwen/qwen3.6-27b),
  *             ALLOWED_ORIGINS, RATE_LIMIT_WINDOW_MS, RATE_LIMIT_MAX, REQUEST_TIMEOUT_MS
- *   ACHTUNG: Ist GROQ_MODEL in Render noch auf "openai/gpt-oss-20b" gesetzt, muss der
- *   Eintrag geloescht oder auf "openai/gpt-oss-120b" gesetzt werden.
+ *   TEMP 2026-09-20: TEMPORARY_GROQ_MODEL_OVERRIDE erzwingt gpt-oss-20b (Groq TPD-Sync-Bug auf 120b).
+ *   Rueckbau: Override auf null + Render GROQ_MODEL wieder openai/gpt-oss-120b.
  */
 
 'use strict';
@@ -46,7 +46,14 @@ const GROQ_API_KEY_LOOKS_VALID = /^gsk_[A-Za-z0-9]+$/.test(GROQ_API_KEY) || GROQ
 const GROQ_API_KEY_DEBUG_LOOKS_VALID = !GROQ_API_KEY_DEBUG
   ? false
   : (/^gsk_[A-Za-z0-9]+$/.test(GROQ_API_KEY_DEBUG) || GROQ_API_KEY_DEBUG.length > 20);
-const GROQ_MODEL = (process.env.GROQ_MODEL || core.DEFAULT_MODEL).trim();
+// TEMP (2026-09-20): Groq Developer-Limits zeigen TPD "No limit" fuer gpt-oss-120b,
+// API enforced aber weiter Free-Tier TPD 200k (Support-Ticket offen).
+// Rueckbau: auf null setzen → wieder process.env.GROQ_MODEL / DEFAULT_MODEL (120b).
+const TEMPORARY_GROQ_MODEL_OVERRIDE = 'openai/gpt-oss-20b';
+const GROQ_MODEL = (TEMPORARY_GROQ_MODEL_OVERRIDE || process.env.GROQ_MODEL || core.DEFAULT_MODEL).trim();
+const MODEL_OVERRIDE_REASON = TEMPORARY_GROQ_MODEL_OVERRIDE
+  ? 'temporary — groq_120b_tpd_sync_issue, see Groq support ticket; revert to openai/gpt-oss-120b when fixed'
+  : null;
 
 const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || 'null').split(',').map((s) => s.trim()).filter(Boolean);
 const RATE_LIMIT_WINDOW_MS = parseInt(process.env.RATE_LIMIT_WINDOW_MS, 10) || 15 * 60 * 1000;
@@ -227,6 +234,7 @@ app.get('/health', (req, res) => {
       GROQ_API_KEY && GROQ_API_KEY_DEBUG && GROQ_API_KEY !== GROQ_API_KEY_DEBUG
     ),
     model: GROQ_MODEL,
+    model_override_reason: MODEL_OVERRIDE_REASON,
     provider: 'Groq',
     strictSchema: true,
     maxIngredients: core.MAX_INGREDIENTS,

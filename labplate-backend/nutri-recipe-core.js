@@ -50,9 +50,13 @@ const STRUCTURED_UNIT_TABLE = strictPrompt.STRUCTURED_UNIT_TABLE;
 const CHEF_FRAMEWORK_RULES = [
   'CHEF-FRAMEWORK v9.2 (verbindlich – Struktur-Zwang, KEIN Self-Check-Freitext):',
   'Rolle: System-Chefkoch + Ernaehrungs-Wissenschaftler. Food-Pairing, Sensorik, molekulare Hitzebestaendigkeit, exakte Naehrwert-Mathematik.',
-  'WARUM: Fruehere Self-Check-Bloecke halluzinierten Zahlen. Jetzt existiert jede Zahl genau EINMAL (nutrition / ingredients.amount). content/garnish/chef_analysis nur {0001}-Platzhalter – keine freien g/ml/kcal.',
+  'WARUM: Fruehere Self-Check-Bloecke halluzinierten Zahlen. Jetzt existiert jede Zahl genau EINMAL (nutrition / ingredients.amount). content/garnish: Mengen nur {0001}-Platzhalter. chef_analysis: Platzhalter nur fuer Zutatennamen, nie fuer Naehrwerte.',
   'REGEL 0 / 0a — BOTTOM-UP, kein Zielwert-Rueckwaertsdenken. Ziel verfehlt → target_deviation_note ehrlich, Zahlen nicht erfinden.',
-  '1) Naehrwert-Verbindlichkeit: chef_analysis ohne eigene Zahlen; siehe nutrition.',
+  '1) Naehrwert-Verbindlichkeit / chef_analysis: {ingredient_id}-Platzhalter AUSSCHLIESSLICH zur Benennung von Zutaten ' +
+  '(z. B. "Die Kombination aus {0001} und {0002} liefert..."). NIEMALS Naehrwerte referenzieren — weder als Zahl ' +
+  '("48 g Protein") noch fälschlich als {id}-Platzhalter ("liefert rund {0001} g Protein" ist FALSCH, weil Platzhalter ' +
+  'nur Zutaten kennen). Stattdessen qualitativ: "liefert eine hohe Proteinmenge", "bleibt weit unter dem Keto-Grenzwert". ' +
+  'Alle exakten Zahlen leben ausschliesslich im nutrition-Objekt.',
   '2) GERINNUNGSSCHUTZ: Quark/Joghurt/Huettenkaese/Creme fraiche/Frischkaese/Mascarpone/Schmand/Kokosjoghurt ' +
   '→ stove_level 0 beim Einruehren, Herd vorher AUS. VERBOTEN: Eier mit Frischkaese verquirlen und dann ' +
   '"die Mischung" in die heisse Pfanne geben — auch wenn die sensible Zutat im Hitze-Step nicht mehr ' +
@@ -81,8 +85,9 @@ const CHEF_FRAMEWORK_RULES = [
   '17) TEXTUR & FOOD PAIRING: mind. 3 Texturen (cremig + bissfest + crunchy); garnish Pflicht; herzhaft Saeure.',
   '18) BEZEICHNUNGS-KONSISTENZ / Namensgleichheit. garnish + chef_analysis Pflicht.',
   '19) KEIN [SELF-CHECK]-Block. Backend validiert deterministisch (validateRecipeV2).',
-  '20) NEGATIV-VERBOT: freie Mengen in content; eigene g/kcal in chef_analysis; ungelistete garnish-Zutaten; ' +
-  '>2 protein_source; Klartext-Basiszutaten ohne ingredients-Eintrag (z. B. "etwas Oel anbraten").',
+  '20) NEGATIV-VERBOT: freie Mengen in content; eigene g/kcal ODER missbrauchte {id}-Platzhalter als Naehrwert-Ersatz ' +
+  'in chef_analysis (z. B. "{0001} g Protein"); ungelistete garnish-Zutaten; >2 protein_source; ' +
+  'Klartext-Basiszutaten ohne ingredients-Eintrag (z. B. "etwas Oel anbraten").',
   '21) ORIGINALITAETS-ABSICHERUNG: Formuliere Titel, Zubereitungsschritte (content) und Chef-Analyse IMMER in ' +
   'eigenen, originalen Worten — auch bei bekannten Standardgerichten (z. B. "klassische Bolognese", "Caesar Salad"). ' +
   'Orientiere dich an der allgemeinen, weit verbreiteten Zubereitungsart eines Gerichts, nicht an der spezifischen ' +
@@ -617,9 +622,9 @@ function buildGenerativeMessages(p) {
     'Beispiel Ei: {"id":"0002","name":"Ei (Groesse M, ca. 60 g)","amount":2,"unit":"stk","protein_source":true}. Olivenoel: unit ml. Salz: unit prise, amount 0.',
     'steps: Objekte {title, content mit {id}-Platzhaltern, stove_level 0|1-9, time_min}. garnish + chef_analysis Pflicht.',
     'Schema v9.2: nutrition{kcal,protein_g,fat_g,netto_kh_g,ballaststoffe_g}, ingredients[{id,name,amount,unit,protein_source,macros}], steps[{title,content,stove_level,time_min}], garnish, chef_analysis, diet_labels, target_deviation_note, prep_time_min.',
-    'content/garnish/chef_analysis: Mengen NUR als {0001}-Platzhalter – KEINE freien g/ml/kcal-Zahlen. KEIN self_check-Feld.',
+    'content/garnish: Mengen NUR als {0001}-Platzhalter – KEINE freien g/ml/kcal-Zahlen. KEIN self_check-Feld.',
     'Eier unit=stk; Gewuerze unit=prise|messerspitze amount=0; sonst g|ml. stove_level 0=kalt, 1-9=Hitze.',
-    'chef_analysis: qualitativ / Platzhalter, Verweis auf nutrition – keine eigenen Gramm-/kcal-Zahlen.',
+    'chef_analysis: {id} NUR fuer Zutatennamen; Naehrwerte nur qualitativ (nie Zahl, nie "{0001} g Protein"). Zahlen nur in nutrition.',
     isOriginalMode ? '' : CHEF_FRAMEWORK_RULES,
     emotionRules,
     themeRules,

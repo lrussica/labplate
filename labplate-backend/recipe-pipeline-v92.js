@@ -102,7 +102,9 @@ function buildV92GenerativeSchema() {
         garnish: { type: 'string' },
         chef_analysis: {
           type: 'string',
-          description: 'Qualitativ / Platzhalter – keine eigenen g/kcal-Zahlen.',
+          description:
+            'Qualitativ; {id}-Platzhalter NUR fuer Zutatennamen. ' +
+            'KEINE Naehrwerte als Zahl oder als {id} (z.B. verboten: "{0001} g Protein").',
         },
       },
     },
@@ -339,6 +341,15 @@ function errorsToDirectives(errors) {
         '"Mischung" vorkommt. Gare zuerst (Herd AUS), dann ' + mCold[1] + ' unterheben.'
       );
     }
+    const mPh = e.match(/chef_analysis missbraucht Zutat-Platzhalter \{(\d{4})\}/i);
+    if (mPh && !seenProtein['ph_' + mPh[1]]) {
+      seenProtein['ph_' + mPh[1]] = true;
+      directives.push(
+        'KONKRETE KORREKTUR: Du hast einen Zutat-Platzhalter ({' + mPh[1] + '}) fälschlich für eine ' +
+        'Nährwert-Zahl verwendet. Entferne die Zahl/den Platzhalter komplett aus chef_analysis und ' +
+        'ersetze sie durch eine rein qualitative Aussage ohne jede Zahl.'
+      );
+    }
   });
 
   return directives;
@@ -391,6 +402,7 @@ async function generateValidatedRecipe(opts) {
         body: result.body,
         headers: result.headers || null,
         reason: result.reason,
+        rateLimitKind: result.rateLimitKind || null,
         attempts: attempt,
       };
     }

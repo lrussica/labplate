@@ -35,8 +35,17 @@ class ValidationResult:
 def validate_kcal_formula(protein_g: float, fat_g: float, netto_kh_g: float,
                            ballaststoffe_g: float, kcal_declared: float,
                            tolerance_pct: float = 10.0) -> tuple[bool, float, float]:
-    """Regel 10: Kalorien-Plausibilität. 4-4-9-2 kcal/g Formel."""
+    """Regel 10: Kalorien-Plausibilität. 4-4-9-2 kcal/g Formel.
+
+    Near-zero Sonderregel: relative %-Abweichung ist bei kcal_calc≈0 instabil
+    (Division durch 0 → fälschlich 100%, z. B. 0 vs. 0 bei magere Brühe).
+    Wenn BEIDE Seiten <20 kcal liegen, absolut ±15 kcal statt ±10% relativ.
+    """
     kcal_calc = protein_g * 4 + netto_kh_g * 4 + fat_g * 9 + ballaststoffe_g * 2
+    if kcal_calc < 20 and float(kcal_declared) < 20:
+        abs_diff = abs(kcal_calc - float(kcal_declared))
+        abweichung_pct = 0.0 if kcal_calc == 0 else (abs_diff / kcal_calc) * 100
+        return abs_diff <= 15, kcal_calc, abweichung_pct
     if kcal_calc == 0:
         return False, kcal_calc, 100.0
     abweichung_pct = abs(kcal_calc - kcal_declared) / kcal_calc * 100

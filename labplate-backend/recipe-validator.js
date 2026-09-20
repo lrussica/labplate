@@ -20,6 +20,17 @@ ValidationResult.prototype.addWarning = function (msg) {
 function validateKcalFormula(proteinG, fatG, nettoKhG, ballaststoffeG, kcalDeclared, tolerancePct) {
   const tol = tolerancePct == null ? 10.0 : tolerancePct;
   const kcalCalc = proteinG * 4 + nettoKhG * 4 + fatG * 9 + ballaststoffeG * 2;
+  // Near-zero Sonderregel: relative %-Abweichung ist bei kcal_calc≈0 instabil
+  // (Division durch 0 → fälschlich 100%, z. B. 0 vs. 0 bei magere Brühe).
+  // Wenn BEIDE Seiten <20 kcal liegen, absolut ±15 kcal statt ±10% relativ.
+  if (kcalCalc < 20 && Number(kcalDeclared) < 20) {
+    const absDiff = Math.abs(kcalCalc - Number(kcalDeclared));
+    return {
+      ok: absDiff <= 15,
+      kcalCalc: kcalCalc,
+      abweichungPct: kcalCalc === 0 ? 0 : (absDiff / kcalCalc) * 100,
+    };
+  }
   if (kcalCalc === 0) return { ok: false, kcalCalc: 0, abweichungPct: 100 };
   const abweichungPct = (Math.abs(kcalCalc - kcalDeclared) / kcalCalc) * 100;
   return { ok: abweichungPct <= tol, kcalCalc: kcalCalc, abweichungPct: abweichungPct };
@@ -62,6 +73,10 @@ function validateNoFreeNumbersInProse(steps, garnish, chefAnalysis, ingredients)
     );
   }
 
+  validateChefAnalysisPlaceholderMisuse(chefAnalysis).problems.forEach(function (p) {
+    problems.push(p);
+  });
+
   const validIds = {};
   (ingredients || []).forEach(function (ing) {
     if (ing && ing.id) validIds[String(ing.id)] = true;
@@ -77,6 +92,39 @@ function validateNoFreeNumbersInProse(steps, garnish, chefAnalysis, ingredients)
 
   const unused = Object.keys(validIds).filter(function (id) { return !usedIds[id]; });
   if (unused.length) problems.push('Zutaten nie referenziert (evtl. überflüssig): ' + unused.join(', '));
+
+  return { ok: problems.length === 0, problems: problems };
+}
+
+/**
+ * chef_analysis: {ingredient_id}-Platzhalter nur zur Benennung von Zutaten —
+ * niemals als Ersatz für Nährwert-Zahlen ("{0001} g Protein").
+ */
+function validateChefAnalysisPlaceholderMisuse(chefAnalysis) {
+  const problems = [];
+  const text = String(chefAnalysis || '');
+  if (!text) return { ok: true, problems: problems };
+
+  const nutrientToken = '(?:Protein|Fett|kcal|Kohlenhydrate|Kalorien|Netto-?KH|\\bKH\\b)';
+  const patterns = [
+    /\{(\d{4})\}\s*(?:g|kcal|kg)\b/gi,
+    new RegExp('\\{(\\d{4})\\}.{0,15}' + nutrientToken, 'gi'),
+    new RegExp(nutrientToken + '.{0,15}\\{(\\d{4})\\}', 'gi'),
+  ];
+  const seen = {};
+  patterns.forEach(function (re) {
+    let m;
+    re.lastIndex = 0;
+    while ((m = re.exec(text))) {
+      const id = m[1];
+      if (!id || seen[id]) continue;
+      seen[id] = true;
+      problems.push(
+        'chef_analysis missbraucht Zutat-Platzhalter {' + id + '} als Nährwert-Referenz — ' +
+        'Platzhalter sind nur für Zutatennamen zulässig, nicht für Zahlen.'
+      );
+    }
+  });
 
   return { ok: problems.length === 0, problems: problems };
 }
@@ -465,6 +513,7 @@ module.exports = {
   isColdSensitiveIngredientName: isColdSensitiveIngredientName,
   resolvePlaceholders: resolvePlaceholders,
   validateNoFreeNumbersInProse: validateNoFreeNumbersInProse,
+  validateChefAnalysisPlaceholderMisuse: validateChefAnalysisPlaceholderMisuse,
   validateUnlistedStaplesInProse: validateUnlistedStaplesInProse,
   STAPLE_WHITELIST: STAPLE_WHITELIST,
   COLD_SENSITIVE_STEMS: COLD_SENSITIVE_STEMS,
