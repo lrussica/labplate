@@ -325,10 +325,32 @@ function errorsToDirectives(errors) {
     const mStaple = e.match(/Zutat '([^']+)' im Text erwähnt, aber nicht in ingredients gelistet/i);
     if (mStaple && !seenProtein['staple_' + mStaple[1]]) {
       seenProtein['staple_' + mStaple[1]] = true;
+      const stapleName = mStaple[1];
+      const isLiquid = /wasser|brühe|bruehe|fond|öl|oel|milch|essig/i.test(stapleName);
       directives.push(
-        "KONKRETE KORREKTUR: Du hast '" + mStaple[1] + "' im Step-Text genannt, ohne sie in ingredients " +
-        'zu listen. Fuege die Zutat mit eigener id in ingredients hinzu und referenziere sie per {id} ' +
-        '(nie "etwas ' + mStaple[1] + '" als Klartext ohne Listen-Eintrag).'
+        "KONKRETE KORREKTUR: Du hast '" + stapleName + "' im Step-Text genannt, ohne sie in ingredients " +
+        'zu listen. Fuege "' + stapleName + '" mit eigener id in ingredients hinzu' +
+        (isLiquid ? ' (unit ml, realistische Koch-/Bratmenge)' : '') +
+        ' und ersetze jedes Klartext-Vorkommen im Step durch den {id}-Platzhalter ' +
+        '(nie "etwas ' + stapleName + '" / nie nur das Wort "' + stapleName + '" ohne Listen-Eintrag).'
+      );
+    }
+    if (/Kalorien-Formel-Abweichung/i.test(e) && !seenProtein.kcal) {
+      seenProtein.kcal = true;
+      directives.push(
+        'KONKRETE KORREKTUR: nutrition.kcal muss der Formel ' +
+        '4×protein_g + 9×fat_g + 4×netto_kh_g + 2×ballaststoffe_g entsprechen (±10 %). ' +
+        'Passe nutrition.kcal ODER die Makros an, bis die Formel stimmt — erfinde keine ' +
+        'unabhängige kcal-Zahl.'
+      );
+    }
+    const mUnused = e.match(/Zutaten nie referenziert \(evtl\. überflüssig\):\s*(.+)$/i);
+    if (mUnused && !seenProtein.unused) {
+      seenProtein.unused = true;
+      directives.push(
+        'KONKRETE KORREKTUR: Die Zutaten-IDs ' + mUnused[1].trim() + ' kommen in keinem Step/garnish vor. ' +
+        'Referenziere JEDE gelistete Zutat mindestens einmal per {id} ODER entferne ungenutzte ' +
+        'Einträge komplett aus ingredients.'
       );
     }
     const mCold = e.match(/Gerinnungsschutz:\s*'([^']+)'/i);

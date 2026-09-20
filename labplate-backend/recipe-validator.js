@@ -424,10 +424,16 @@ function validateRecipeV2(recipe) {
     Number(nutrition.ballaststoffe_g) || 0,
     Number(nutrition.kcal) || 0
   );
+  // Makros sind Source of Truth: bei Formel-Abweichung kcal deterministisch korrigieren
+  // statt das ganze Rezept an LLM-Arithmetik scheitern zu lassen.
   if (!kcal.ok) {
-    result.addError(
-      'Kalorien-Formel-Abweichung: berechnet ' + Math.round(kcal.kcalCalc) + ' kcal vs. ' +
-      'deklariert ' + (nutrition.kcal || 0) + ' kcal (' + kcal.abweichungPct.toFixed(1) + '% Abweichung, Limit 10%)'
+    const declared = Number(nutrition.kcal) || 0;
+    const corrected = Math.round(kcal.kcalCalc);
+    if (!r.nutrition || typeof r.nutrition !== 'object') r.nutrition = nutrition;
+    r.nutrition.kcal = corrected;
+    result.addWarning(
+      'Kalorien-Formel korrigiert: deklariert ' + declared + ' kcal → ' + corrected +
+      ' kcal (4×P + 9×F + 4×KH + 2×Ballast, war ' + kcal.abweichungPct.toFixed(1) + '% Abweichung)'
     );
   }
 

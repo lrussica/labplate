@@ -82,12 +82,26 @@ const fb2 = pipeline.buildRetryFeedbackMessage([
   "Zutat 'Öl' im Text erwähnt, aber nicht in ingredients gelistet (Step 1 ('Anbraten'))",
 ]);
 assert.ok(/KONKRETE KORREKTUR:.*Öl/i.test(fb2), 'Fix B staple directive');
+assert.ok(/unit ml/i.test(fb2), 'Liquid staple soll ml erwähnen: ' + fb2);
+const fbWater = pipeline.buildRetryFeedbackMessage([
+  "Zutat 'Wasser' im Text erwähnt, aber nicht in ingredients gelistet (Step 1 ('Linsen kochen'))",
+]);
+assert.ok(/Wasser/i.test(fbWater) && /unit ml/i.test(fbWater), 'Wasser-Staple-Directive: ' + fbWater);
+const fbKcal = pipeline.buildRetryFeedbackMessage([
+  'Kalorien-Formel-Abweichung: berechnet 1114 kcal vs. deklariert 820 kcal (26.4% Abweichung, Limit 10%)',
+]);
+assert.ok(/4×protein_g|4\*protein/i.test(fbKcal) || /4×protein_g/.test(fbKcal), 'kcal directive: ' + fbKcal);
+assert.ok(/±10|10 %/i.test(fbKcal), 'kcal tolerance in directive');
+const fbUnused = pipeline.buildRetryFeedbackMessage([
+  'Zutaten nie referenziert (evtl. überflüssig): 0001, 0002',
+]);
+assert.ok(/0001, 0002/.test(fbUnused) && /entferne ungenutzte|Referenziere JEDE/i.test(fbUnused), 'unused directive: ' + fbUnused);
 const fbCold = pipeline.buildRetryFeedbackMessage([
   "Gerinnungsschutz: 'Frischkäse' ({0003}) wurde in Step 3 eingearbeitet; danach folgt Step 4 ('Rührei kochen') mit stove_level=5 — Hitze nach Einrühren verboten (auch wenn die Zutat nur noch als 'Mischung' vorkommt)",
 ]);
 assert.ok(/Verschiebe das Einrühren von 'Frischkäse'/i.test(fbCold), 'Gerinnung directive: ' + fbCold);
 assert.ok(/Herd ausgeschaltet|stove_level 0/i.test(fbCold), 'Gerinnung directive Herd AUS');
-console.log('OK errorsToDirectives Fix B + staple + Gerinnung');
+console.log('OK errorsToDirectives Fix B + staple + kcal + unused + Gerinnung');
 
 // TEST 3d: Fall 9 — Frischkäse kalt einrühren, danach Hitze (muss failen)
 const fall9 = {
@@ -269,6 +283,22 @@ assert.ok(!resultBrothKcal.errors.some(function (e) {
   return /Kalorien-Formel-Abweichung/i.test(e);
 }), 'Brühe 0 kcal darf keinen kcal-Fehler erzeugen: ' + resultBrothKcal.errors.join('; '));
 console.log('OK kcal near-zero Sonderregel (0 vs 0)');
+
+// TEST 3l: kcal-Formel-Abweichung → Auto-Korrektur (Warning), kein Hard-Fail
+const kcalOff = JSON.parse(JSON.stringify(gutesBeispiel));
+const p = Number(kcalOff.nutrition.protein_g) || 0;
+const f = Number(kcalOff.nutrition.fat_g) || 0;
+const kh = Number(kcalOff.nutrition.netto_kh_g) || 0;
+const bal = Number(kcalOff.nutrition.ballaststoffe_g) || 0;
+const calc = Math.round(p * 4 + f * 9 + kh * 4 + bal * 2);
+kcalOff.nutrition.kcal = calc + Math.max(80, Math.round(calc * 0.2)); // >10% daneben
+const resultKcalFix = validator.validateRecipeV2(kcalOff);
+assert.strictEqual(resultKcalFix.ok, true, 'kcal-Abweichung darf nicht failen: ' + resultKcalFix.errors.join('; '));
+assert.strictEqual(kcalOff.nutrition.kcal, calc, 'kcal muss auf Formel gerundet werden');
+assert.ok(resultKcalFix.warnings.some(function (w) {
+  return /Kalorien-Formel korrigiert/i.test(w);
+}), 'Warnung erwartet: ' + resultKcalFix.warnings.join('; '));
+console.log('OK kcal Auto-Korrektur bei Formel-Abweichung');
 
 // Retry: first fail, second ok
 let calls = 0;
