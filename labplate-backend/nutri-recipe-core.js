@@ -83,6 +83,12 @@ const CHEF_FRAMEWORK_RULES = [
   '19) KEIN [SELF-CHECK]-Block. Backend validiert deterministisch (validateRecipeV2).',
   '20) NEGATIV-VERBOT: freie Mengen in content; eigene g/kcal in chef_analysis; ungelistete garnish-Zutaten; ' +
   '>2 protein_source; Klartext-Basiszutaten ohne ingredients-Eintrag (z. B. "etwas Oel anbraten").',
+  '21) ORIGINALITAETS-ABSICHERUNG: Formuliere Titel, Zubereitungsschritte (content) und Chef-Analyse IMMER in ' +
+  'eigenen, originalen Worten — auch bei bekannten Standardgerichten (z. B. "klassische Bolognese", "Caesar Salad"). ' +
+  'Orientiere dich an der allgemeinen, weit verbreiteten Zubereitungsart eines Gerichts, nicht an der spezifischen ' +
+  'Formulierung eines einzelnen Kochbuchs, Blogs oder einer bestimmten Foodseite. Vermeide auffaellig literarische, ' +
+  'persoenliche oder stilistisch sehr individuelle Formulierungen, die nach einem Zitat aus einer konkreten Quelle ' +
+  'klingen koennten — bleibe bei klarer, funktionaler Kochanleitungssprache.',
 ].join('\n');
 
 /** @deprecated Alias – gleicher Inhalt wie CHEF_FRAMEWORK_RULES (Export-Kompatibilitaet). */
@@ -802,11 +808,75 @@ function collectGroqResponseHeaders(res) {
   return out;
 }
 
-async function callGroq(requestBody, opts) {
+/** Max. Wartezeit (s) für serverseitigen Auto-Retry bei TPM/RPM-429. Env: TPM_AUTO_RETRY_MAX_WAIT_SECONDS */
+const TPM_AUTO_RETRY_MAX_WAIT_SECONDS = Math.max(
+  0,
+  parseInt(process.env.TPM_AUTO_RETRY_MAX_WAIT_SECONDS, 10) || 15
+);
+/** Extra-Puffer (s) nach retry-after. Env: TPM_AUTO_RETRY_BUFFER_SECONDS */
+const TPM_AUTO_RETRY_BUFFER_SECONDS = Math.max(
+  0,
+  parseInt(process.env.TPM_AUTO_RETRY_BUFFER_SECONDS, 10) || 2
+);
+
+function extractGroqErrorMessage(bodyText) {
+  const raw = String(bodyText == null ? '' : bodyText);
+  try {
+    const j = JSON.parse(raw);
+    if (j && j.error && j.error.message) return String(j.error.message);
+    if (j && j.message) return String(j.message);
+  } catch (e) { /* raw */ }
+  return raw;
+}
+
+function parseRetryAfterSeconds(headers) {
+  if (!headers || typeof headers !== 'object') return null;
+  const raw = headers['retry-after'] != null ? headers['retry-after'] : headers['Retry-After'];
+  if (raw == null || raw === '') return null;
+  const n = parseFloat(String(raw).trim());
+  if (!Number.isFinite(n) || n < 0) return null;
+  return n;
+}
+
+/**
+ * Klassifiziert Groq-429: 'minute' (TPM/RPM), 'daily' (TPD/RPD), sonst 'unknown'.
+ */
+function classifyGroqRateLimit(bodyText, headers) {
+  const msg = extractGroqErrorMessage(bodyText).toLowerCase();
+  if (/tokens per day|\(tpd\)|requests per day|\(rpd\)/.test(msg)) return 'daily';
+  if (/tokens per minute|\(tpm\)|requests per minute|\(rpm\)/.test(msg)) return 'minute';
+  const ra = parseRetryAfterSeconds(headers);
+  if (ra != null && ra <= TPM_AUTO_RETRY_MAX_WAIT_SECONDS) return 'minute';
+  if (ra != null && ra > 60) return 'daily';
+  return 'unknown';
+}
+
+function providerErrorClientMessage(status, bodyText, headers) {
+  const st = Number(status) || 0;
+  if (st === 400) {
+    return 'Der KI-Anbieter hat die Antwort wegen Schema-/Validierungsfehler abgelehnt.';
+  }
+  if (st === 429) {
+    const kind = classifyGroqRateLimit(bodyText, headers);
+    if (kind === 'daily') {
+      return 'Tageskontingent des KI-Anbieters erreicht. Bitte spaeter erneut versuchen.';
+    }
+    return 'Der KI-Anbieter ist kurzzeitig ausgelastet. Bitte in wenigen Sekunden erneut versuchen.';
+  }
+  return 'Der KI-Anbieter meldete einen Fehler. Bitte ueberpruefe das eingestellte Modell.';
+}
+
+function sleepMs(ms, sleepFn) {
+  const wait = Math.max(0, Number(ms) || 0);
+  if (typeof sleepFn === 'function') return Promise.resolve(sleepFn(wait));
+  return new Promise(function (resolve) { setTimeout(resolve, wait); });
+}
+
+async function callGroqOnce(requestBody, opts) {
   const o = opts || {};
   const fetchImpl = o.fetchImpl || fetch;
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), o.timeoutMs || 55000);
+  const timer = setTimeout(function () { controller.abort(); }, o.timeoutMs || 55000);
   try {
     const res = await fetchImpl(GROQ_API_URL, {
       method: 'POST',
@@ -826,6 +896,7 @@ async function callGroq(requestBody, opts) {
         status: res.status,
         body: bodyFull,
         headers: headers,
+        rateLimitKind: res.status === 429 ? classifyGroqRateLimit(bodyFull, headers) : null,
       };
     }
     let data;
@@ -840,6 +911,56 @@ async function callGroq(requestBody, opts) {
   }
 }
 
+/**
+ * Groq-Call mit optionalem Auto-Retry bei kurzfristigem TPM/RPM-429.
+ * TPD/RPD-429 wird nicht automatisch wiederholt.
+ */
+async function callGroq(requestBody, opts) {
+  const o = opts || {};
+  const first = await callGroqOnce(requestBody, o);
+  if (!(first && first.error === 'provider_error' && Number(first.status) === 429)) {
+    return first;
+  }
+
+  const kind = first.rateLimitKind || classifyGroqRateLimit(first.body, first.headers);
+  first.rateLimitKind = kind;
+  if (kind !== 'minute') {
+    return first;
+  }
+
+  const retryAfter = parseRetryAfterSeconds(first.headers);
+  const waitSec = retryAfter != null ? retryAfter : TPM_AUTO_RETRY_MAX_WAIT_SECONDS;
+  if (waitSec > TPM_AUTO_RETRY_MAX_WAIT_SECONDS) {
+    console.log('[groq] tpm_auto_retry_skipped waitSec=' + waitSec +
+      ' max=' + TPM_AUTO_RETRY_MAX_WAIT_SECONDS + ' (retry-after zu gross)');
+    return first;
+  }
+
+  const sleepSec = waitSec + TPM_AUTO_RETRY_BUFFER_SECONDS;
+  console.log('[groq] tpm_auto_retry_wait waitSec=' + sleepSec +
+    ' retryAfter=' + (retryAfter != null ? retryAfter : 'n/a') +
+    ' at=' + new Date().toISOString());
+  await sleepMs(sleepSec * 1000, o.sleepFn);
+
+  const second = await callGroqOnce(requestBody, o);
+  const ok = !!(second && second.data && !second.error);
+  console.log('[groq] tpm_auto_retry_done success=' + ok +
+    ' waitedSec=' + sleepSec +
+    ' secondStatus=' + (second && (second.status || (second.data ? 200 : second.error))) +
+    ' at=' + new Date().toISOString());
+  if (ok) {
+    second.tpmAutoRetried = true;
+    second.tpmAutoRetryWaitSec = sleepSec;
+    return second;
+  }
+  if (second && second.error === 'provider_error') {
+    second.rateLimitKind = second.rateLimitKind || classifyGroqRateLimit(second.body, second.headers);
+    second.tpmAutoRetried = true;
+    second.tpmAutoRetryWaitSec = sleepSec;
+  }
+  return second;
+}
+
 module.exports = {
   GROQ_API_URL,
   DEFAULT_MODEL,
@@ -848,6 +969,8 @@ module.exports = {
   HANDOFF_SENTINEL_TITLE,
   CULINARY_KITCHEN_RULES,
   CHEF_FRAMEWORK_RULES,
+  TPM_AUTO_RETRY_MAX_WAIT_SECONDS,
+  TPM_AUTO_RETRY_BUFFER_SECONDS,
   validateIncoming,
   looksStructured,
   detectEmotionalBlockade,
@@ -867,6 +990,11 @@ module.exports = {
   buildGroqRequest,
   toClientRecipe,
   collectGroqResponseHeaders,
+  extractGroqErrorMessage,
+  parseRetryAfterSeconds,
+  classifyGroqRateLimit,
+  providerErrorClientMessage,
+  callGroqOnce,
   callGroq,
   recipePipeline,
   recipeValidator,

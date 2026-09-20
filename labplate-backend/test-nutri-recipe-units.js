@@ -174,4 +174,110 @@ assert.strictEqual(isNutriRecipeChatRetryableStatus(429), true);
 assert.strictEqual(isNutriRecipeChatRetryableStatus(503), true);
 console.log('OK retry policy (no 400/502 auto-retry)');
 
-console.log('\nAll nutri-recipe unit tests passed.');
+// 5) TPM-Auto-Retry: erster Call 429 TPM retry-after:10, zweiter Call OK — Client sieht Erfolg
+(async function testTpmAutoRetry() {
+  let calls = 0;
+  const sleeps = [];
+  const tpmBody = JSON.stringify({
+    error: {
+      message: 'Rate limit reached for model x on tokens per minute (TPM): Limit 8000. Please try again in 10s.',
+      type: 'tokens',
+      code: 'rate_limit_exceeded',
+    },
+  });
+  const okRecipe = {
+    choices: [{
+      message: {
+        content: JSON.stringify({
+          title: 'Test',
+          prep_time_min: 5,
+          nutrition: { kcal: 100, protein_g: 10, fat_g: 5, netto_kh_g: 5, ballaststoffe_g: 1 },
+          diet_labels: [],
+          target_deviation_note: '',
+          ingredients: [{ id: '0001', name: 'Ei', amount: 1, unit: 'stk', protein_source: true, netCarbs: 0, fat: 10, protein: 13, fiber: 0 }],
+          steps: [{ title: 'Mix', content: '{0001} ruehren', stove_level: 0, time_min: 1 }],
+          garnish: '',
+          chef_analysis: 'ok',
+        }),
+      },
+    }],
+  };
+  const fetchImpl = async function () {
+    calls += 1;
+    if (calls === 1) {
+      return {
+        ok: false,
+        status: 429,
+        headers: {
+          get: function (k) {
+            const key = String(k || '').toLowerCase();
+            if (key === 'retry-after') return '10';
+            return null;
+          },
+          forEach: function (cb) { cb('10', 'retry-after'); },
+        },
+        text: async function () { return tpmBody; },
+      };
+    }
+    return {
+      ok: true,
+      status: 200,
+      headers: { get: function () { return null; }, forEach: function () {} },
+      text: async function () { return JSON.stringify(okRecipe); },
+    };
+  };
+  const result = await core.callGroq({ model: 'test' }, {
+    apiKey: 'gsk_test',
+    fetchImpl: fetchImpl,
+    sleepFn: function (ms) { sleeps.push(ms); return Promise.resolve(); },
+    timeoutMs: 5000,
+  });
+  assert.strictEqual(calls, 2, 'TPM-429 muss genau 1 Auto-Retry ausloesen');
+  assert.ok(result && result.data && result.data.title === 'Test', 'nach Retry Erfolg erwartet');
+  assert.strictEqual(result.tpmAutoRetried, true);
+  assert.ok(sleeps.length === 1 && sleeps[0] === (10 + core.TPM_AUTO_RETRY_BUFFER_SECONDS) * 1000,
+    'Wartezeit = retry-after + Puffer: ' + sleeps.join(','));
+  assert.strictEqual(core.classifyGroqRateLimit(tpmBody, { 'retry-after': '10' }), 'minute');
+  assert.strictEqual(
+    core.classifyGroqRateLimit(
+      JSON.stringify({ error: { message: 'Rate limit on tokens per day (TPD): Limit 200000' } }),
+      { 'retry-after': '900' }
+    ),
+    'daily'
+  );
+  assert(/Tageskontingent/i.test(core.providerErrorClientMessage(429, JSON.stringify({
+    error: { message: 'tokens per day (TPD)' },
+  }), {})));
+  console.log('OK TPM auto-retry (429 minute → wait → success)');
+
+  // TPD: kein Auto-Retry
+  calls = 0;
+  const tpdBody = JSON.stringify({
+    error: { message: 'Rate limit on tokens per day (TPD): Limit 200000, Used 200000', code: 'rate_limit_exceeded' },
+  });
+  const tpdResult = await core.callGroq({ model: 'test' }, {
+    apiKey: 'gsk_test',
+    fetchImpl: async function () {
+      calls += 1;
+      return {
+        ok: false,
+        status: 429,
+        headers: {
+          get: function (k) { return String(k).toLowerCase() === 'retry-after' ? '900' : null; },
+          forEach: function (cb) { cb('900', 'retry-after'); },
+        },
+        text: async function () { return tpdBody; },
+      };
+    },
+    sleepFn: function () { throw new Error('TPD darf nicht sleepen'); },
+  });
+  assert.strictEqual(calls, 1, 'TPD: kein zweiter Call');
+  assert.strictEqual(tpdResult.error, 'provider_error');
+  assert.strictEqual(tpdResult.rateLimitKind, 'daily');
+  console.log('OK TPD 429 ohne Auto-Retry');
+
+  console.log('\nAll nutri-recipe unit tests passed.');
+})().catch(function (err) {
+  console.error(err);
+  process.exit(1);
+});

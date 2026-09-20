@@ -315,9 +315,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
       const errPayload = {
         error: 'provider_error',
         status: upstreamStatus,
-        message: upstreamStatus === 400
-          ? 'Der KI-Anbieter hat die Antwort wegen Schema-/Validierungsfehler abgelehnt.'
-          : 'Der KI-Anbieter meldete einen Fehler. Bitte ueberpruefe das eingestellte Modell.',
+        message: core.providerErrorClientMessage(upstreamStatus, pipelineResult.body, pipelineResult.headers),
         model: recipeModel,
         key_type: auth.keyType,
         key_fingerprint: auth.keyFingerprint,
@@ -326,6 +324,8 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
       if (upstreamStatus === 429) {
         errPayload.provider_headers = pipelineResult.headers || {};
         errPayload.provider_body = pipelineResult.body || '';
+        errPayload.rate_limit_kind = pipelineResult.rateLimitKind ||
+          core.classifyGroqRateLimit(pipelineResult.body, pipelineResult.headers);
         try {
           errPayload.provider_body_json = JSON.parse(pipelineResult.body);
         } catch (e) { /* raw string bleibt in provider_body */ }
@@ -449,9 +449,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     const errPayload = {
       error: 'provider_error',
       status: upstreamStatus,
-      message: upstreamStatus === 400
-        ? 'Der KI-Anbieter hat die Antwort wegen Schema-/Validierungsfehler abgelehnt.'
-        : 'Der KI-Anbieter meldete einen Fehler. Bitte ueberpruefe das eingestellte Modell.',
+      message: core.providerErrorClientMessage(upstreamStatus, result.body, result.headers),
       model: recipeModel,
       key_type: auth.keyType,
       key_fingerprint: auth.keyFingerprint,
@@ -459,6 +457,8 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     if (upstreamStatus === 429) {
       errPayload.provider_headers = result.headers || {};
       errPayload.provider_body = result.body || '';
+      errPayload.rate_limit_kind = result.rateLimitKind ||
+        core.classifyGroqRateLimit(result.body, result.headers);
       try {
         errPayload.provider_body_json = JSON.parse(result.body);
       } catch (e) { /* raw */ }
