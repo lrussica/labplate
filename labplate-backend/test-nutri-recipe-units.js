@@ -99,22 +99,22 @@ assert.strictEqual(eggOil.self_check, '');
 assert.strictEqual(eggOil.recipe_schema_version, 'v9.2');
 console.log('OK generative egg/g + oil/ml via v9.2 render');
 
-// 2b) Generativ: Gewuerz amount=0 bleibt 0 (Prise) — Legacy-Pfad ohne prep_time_min
+// 2b) Generativ: Gewuerz amount=0 bleibt 0 (Prise); 4-Portions-Basis → Ziel 1 skaliert
 const spiceZero = core.toClientRecipe({
   title: 'Test',
-  servings: 1,
+  servings: 4,
   prep_time: '5 Min',
   nutrition_note: 'x',
   garnish: 'Kraeuter',
   ingredients: [
     { name: 'Salz (1 Prise)', amount: 0, unit: 'g', status: 'benoetigt', netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
-    { name: 'Tofu', amount: 200, unit: 'g', status: 'benoetigt', netCarbs: 1, fat: 5, protein: 12, fiber: 1 },
+    { name: 'Tofu', amount: 600, unit: 'g', status: 'benoetigt', netCarbs: 1, fat: 5, protein: 12, fiber: 1 },
   ],
   shopping_list: [],
   steps: ['Wuerzen'],
 }, genPayload());
 assert.strictEqual(spiceZero.ingredients[0].amount, 0, 'Gewuerz amount 0 muss bleiben');
-assert.strictEqual(spiceZero.ingredients[1].amount, 200);
+assert.strictEqual(spiceZero.ingredients[1].amount, 150, '600g / 4 Portionen → 150g pro Zielportion');
 console.log('OK generative spice amount=0');
 
 // 3) Structured: q.b. / fehlende Menge = 0 bleibt 0
@@ -135,7 +135,7 @@ assert.strictEqual(
 );
 const structOut = core.toClientRecipe({
   title: 'Pesto-Test',
-  servings: 2,
+  servings: 1,
   prep_time: '',
   nutrition_note: '',
   garnish: 'soll weg',

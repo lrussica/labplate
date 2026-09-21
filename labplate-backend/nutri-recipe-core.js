@@ -57,6 +57,21 @@ const CHEF_FRAMEWORK_RULES = [
   'Rolle: System-Chefkoch + Ernaehrungs-Wissenschaftler. Food-Pairing, Sensorik, molekulare Hitzebestaendigkeit, exakte Naehrwert-Mathematik.',
   'WARUM: Fruehere Self-Check-Bloecke halluzinierten Zahlen. Jetzt existiert jede Zahl genau EINMAL (nutrition / ingredients.amount). content/garnish: Mengen nur {0001}-Platzhalter. chef_analysis: Platzhalter nur fuer Zutatennamen, nie fuer Naehrwerte.',
   'REGEL 0 / 0a — BOTTOM-UP, kein Zielwert-Rueckwaertsdenken. Ziel verfehlt → target_deviation_note ehrlich, Zahlen nicht erfinden.',
+  '0p) PORTIONS-BASIS 4 PERSONEN (STRIKT): servings MUSS immer exakt 4 sein. ' +
+  'Alle ingredients[].amount und nutrition gelten fuer genau 4 Portionen. ' +
+  'WARUM: Vermeidung von Kleinstmengen, Rundungsfehlern und absurd hohen Einzelportionen. ' +
+  'Backend/Frontend skalieren danach auf die Nutzer-Portionszahl. ' +
+  'VERBOTEN: servings=1 oder Einzelportions-Planung; VERBOTEN: Meal-Prep/Vorratsmengen jenseits der 4-Portions-Richtwerte.',
+  '0p-MENGEN (4 Portionen gesamt): ' +
+  'Trockene Pasta/Reis/Getreide 300–400 g (75–100 g p.P.); ' +
+  'Pancetta/Speck/Bacon MAX 120–150 g (max. 30–35 g p.P.); ' +
+  'Hart-/Reibekäse (Pecorino/Parmesan) MAX 60–80 g (max. 15–20 g p.P.); ' +
+  'Fleisch/Lachs/Hauptprotein 400–600 g (100–150 g p.P.); ' +
+  'Eier: glatte Stückzahl 3–4 stk fuer 4 Personen (unit MUSS stk); ' +
+  'Kochfluessigkeit/Bruehe/Sahne 200–300 ml — MUSS in ingredients stehen und per {id} in steps referenziert werden.',
+  '0g) DEUTSCHE GRAMMATIK in steps/garnish/chef_analysis: ' +
+  'Artikelkorrekturen bei Fluessigkeiten — IMMER „Das Wasser“ / „das Wasser“ (niemals „Den Wasser“). ' +
+  'Korrekte Dativ-/Akkusativbeugung: „mit schwarzem Pfeffer würzen“, „die Eier verquirlen“, „den Käse unterrühren“.',
   '0b) MENGEN-SYNC / ANTI-DRIFT: Die einzigen Mengen-Wahrheiten stehen in ingredients[].amount (+ unit). ' +
   'In steps/garnish steht AUSSCHLIESSLICH der nackte Platzhalter {0001} — VERBOTEN: "{0004} Olivenöl", "Olivenöl {0004}", ' +
   '"Wasser {0007} ml", "{0005} Salz", "100g Speck" als Freitext. Das Backend setzt amount+unit+name ein. ' +
@@ -83,11 +98,11 @@ const CHEF_FRAMEWORK_RULES = [
   'Stattdessen: Menge der im Titel genannten Zutat(en) erhoehen. ' +
   'Ziel auch mit maximal sinnvoller Menge unerreichbar → target_deviation_note ehrlich, KEINE unerlaubte Zutat. ' +
   'Beispiel VERBOTEN: Titel „Curry mit Kichererbsen und Kokosmilch“ + zusaetzlich Tofu und/oder Ei. ' +
-  'Beispiel RICHTIG: nur Kichererbsen als Proteinquelle, Menge erhoeht (z. B. 300 g statt 150 g). ' +
+  'Beispiel RICHTIG: nur Kichererbsen als Proteinquelle, Menge erhoeht (z. B. 600–800 g gekocht fuer 4 Portionen). ' +
   'Traegt der Titel ein Diaet-Label (vegetarisch/vegan): keine widersprechenden Zutaten ' +
   '(kein Ei bei vegan; kein Fleisch/Fisch bei vegetarisch) — zusaetzlich zu Regel 5.',
   '5) DIÄT- & KETO-EHRLEICHKEIT: diet_labels keto nur bei netto_kh_g <10; high_protein nur ab protein_g ≥25; vegan ohne Ei/Milch.',
-  '6) Eier & Stueckware: unit "stk", amount GANZE Zahl ≥1 (1, 2, 3…), name "Ei (Groesse M, ca. 60 g)". ' +
+  '6) Eier & Stueckware: unit "stk", amount GANZE Zahl (fuer 4 Portionen typisch 3–4), name "Ei (Groesse M, ca. 60 g)". ' +
   'VERBOTEN: Kommastellen, "0.5 Ei", "30g Ei", unit g fuer Eier. Inhalt nur via {id}.',
   '7) VOLLSTAENDIGKEIT: jede {id} in steps/garnish/chef_analysis existiert in ingredients; ' +
   'Hauptzutaten mind. 1x in steps/garnish referenziert. Gewuerze (prise) und optionale Zutaten duerfen unreferenziert bleiben. ' +
@@ -590,8 +605,8 @@ function themeGuidanceFromTheme(theme) {
     instruction: truncateTeamBrief(
       'THEMEN-REZEPT: Brief/Kontext nennt ' + theme.label + '. ' +
       'Erstelle ein einfaches Alltaggericht (ca. 30 Minuten). ' +
-      'servings MUSS immer exakt 1 sein (Einzelportion). Alle Mengen nur für 1 Person. ' +
-      'VERBOTEN: Batch/Meal-Prep/Mehrportionen-Planung. ' +
+      'servings MUSS immer exakt 4 sein (4-Portions-Basis). Alle Mengen fuer genau 4 Personen. ' +
+      'Backend/App skaliert danach. VERBOTEN: Einzelportions-Planung (servings=1) und Mengen jenseits der 4-Portions-Richtwerte. ' +
       'Nutze passende Lebensmittel aus: ' + foodList + '. ' +
       'Keine Dosierungen, keine Diagnosen, keine medizinischen Aussagen – nur Rezept.',
       TEAM_HANDOFF_BRIEF_MAX
@@ -648,8 +663,8 @@ function buildGenerativeMessages(p) {
       'THEMEN-REZEPT (vom Kollegen-Brief / Suchkontext):',
       'Thema erkannt: ' + themeGuide.label + '.',
       'Waehle alltagstaugliche Zutaten aus dieser Liste (mind. 2-3 davon zentral nutzen): ' + themeGuide.foods.join(', ') + '.',
-      'Ziel: einfaches Gericht, ca. 30 Minuten. servings=1 mit Einzelportions-Mengen ' +
-      '(Fleisch/Fisch ~120–180 g, Öl ~10–15 ml, Eier max. 2–3; nie Batch wie 500g Hack).',
+      'Ziel: einfaches Gericht, ca. 30 Minuten. servings=4 mit 4-Portions-Mengen ' +
+      '(Fleisch/Fisch/Hauptprotein 400–600 g gesamt, Pasta/Reis 300–400 g trocken, Eier 3–4 stk; Speck max. 120–150 g).',
       'VERBOTEN: medizinische Aussagen, Dosierungen (mg/IE), Diagnosen, Heilversprechen, Supplement-Empfehlungen.',
       'Kein Coaching-Text – nur Rezept-JSON.',
     ].join(' ')
@@ -664,17 +679,18 @@ function buildGenerativeMessages(p) {
     'ERLAUBT: Zutaten vorschlagen, Mengen waehlen und an Tagesziele/Leitlinien anpassen, Schritte neu formulieren.',
     'KRITISCH – Schema v9.2: ingredients[].unit NUR "g"|"ml"|"stk"|"prise"|"messerspitze". content/garnish ohne freie Mengen-Zahlen – nur {0001}-Platzhalter.',
     'Mengen in ingredients: Eier unit=stk; Gewuerze amount=0 unit=prise|messerspitze; Fluessigkeiten ml; Festes g. netCarbs/fat/protein/fiber je 100 g/ml.',
-    'Beispiel Ei: {"id":"0002","name":"Ei (Groesse M, ca. 60 g)","amount":2,"unit":"stk","protein_source":true}. Olivenoel: unit ml. Salz: unit prise, amount 0.',
+    'Beispiel Ei (4 Portionen): {"id":"0002","name":"Ei (Groesse M, ca. 60 g)","amount":4,"unit":"stk","protein_source":true}. Olivenoel: unit ml. Salz: unit prise, amount 0.',
     'steps: Objekte {title, content mit {id}-Platzhaltern, stove_level 0|1-9, time_min}. garnish + chef_analysis Pflicht.',
-    'Schema v9.2: servings MUSS immer exakt 1 sein (1-Portions-Basis für eine Einzelperson). ' +
+    'Schema v9.2: servings MUSS immer exakt 4 sein (4-Portions-Basis). ' +
     'nutrition{kcal,protein_g,fat_g,netto_kh_g,ballaststoffe_g}, ingredients[{id,name,amount,unit,protein_source,macros}], ' +
     'steps[{title,content,stove_level,time_min}], garnish, chef_analysis, diet_labels, target_deviation_note, prep_time_min.',
-    'PORTIONEN (STRIKT – 1-PORTIONS-BASIS):',
-    'servings = 1. Alle Zutatennamen, Gramm-/ml-Angaben, Nährwerte und KE/BE beziehen sich AUSSCHLIESSLICH auf 1 Einzelportion.',
-    'VERBOTEN: Meal-Prep, Vorratskochen, Familien-/Batch-Mengen (z.B. 400–500g Hack), servings>1.',
-    'REALISTISCHE MENGEN (1 Portion): Eier max. 2–3 Stück; Fleisch/Fisch ca. 120–180 g; Öl/Butter/Fett ca. 10–15 g/ml (≈1 EL);',
-    'Standard-Kalorienrahmen ca. 400–700 kcal (außer der Nutzer verlangt explizit eine Extrem-Diät).',
-    'Mehrportionen erzeugt ausschließlich die App durch Multiplikation der 1-Portions-Basismengen – die KI plant nie auf Vorrat.',
+    'PORTIONEN (STRIKT – 4-PORTIONS-BASIS):',
+    'servings = 4. Alle Zutatennamen, Gramm-/ml-/stk-Angaben und Nährwerte beziehen sich auf genau 4 Portionen.',
+    'Backend/Frontend skalieren auf die vom Nutzer gewünschte Portionszahl. VERBOTEN: servings≠4; VERBOTEN: Einzelportions-Kleinstmengen.',
+    'STANDARD-VERHÄLTNISSE (4 Portionen gesamt): Pasta/Reis/Getreide trocken 300–400 g; Speck/Pancetta MAX 120–150 g; ' +
+    'Hartkäse MAX 60–80 g; Fleisch/Lachs/Hauptprotein 400–600 g; Eier 3–4 stk; Kochflüssigkeit/Brühe/Sahne 200–300 ml ' +
+    '(Fluessigkeit in ingredients + {id} in steps).',
+    'GRAMMATIK (DE): „Das Wasser“ nie „Den Wasser“; korrekte Beugung in Steps (mit schwarzem Pfeffer, die Eier, den Käse).',
     'content/garnish: Mengen NUR als {0001}-Platzhalter – KEINE freien g/ml/kcal-Zahlen. KEIN self_check-Feld.',
     'Eier unit=stk; Gewuerze unit=prise|messerspitze amount=0; sonst g|ml. stove_level 0=kalt, 1-9=Hitze.',
     'chef_analysis: {id} als Zutatreferenz erlaubt; VERBOTEN "{0001} g Protein" / "{0001} kcal". Zahlen nur in nutrition.',
@@ -694,7 +710,7 @@ function buildGenerativeMessages(p) {
     p.lab_guideline_constraints ? 'Leitlinien-Vorgaben: ' + JSON.stringify(p.lab_guideline_constraints) : '',
     p.ai_instruction ? 'Zusatz-Instruction (Mengen/Zutaten an Tagesziele anpassen; Schema v9.2 mit Platzhaltern): ' + p.ai_instruction : '',
     themeGuide
-      ? ('THEMEN-HINWEIS: Baue ein einfaches 30-Minuten-Rezept (1 Portion) mit Fokus auf ' + themeGuide.label +
+      ? ('THEMEN-HINWEIS: Baue ein einfaches 30-Minuten-Rezept (4 Portionen, servings=4) mit Fokus auf ' + themeGuide.label +
         ' unter Nutzung von: ' + themeGuide.foods.slice(0, 6).join(', ') + '.')
       : '',
     p.allergens.length ? 'Allergene strikt meiden: ' + p.allergens.join(', ') : '',
@@ -851,10 +867,10 @@ function toClientRecipe(parsed, p) {
 
   let client = {
     title: (typeof parsed.title === 'string' && parsed.title.trim()) ? parsed.title.trim().slice(0, 200) : 'Rezept',
-    // STRUCTURED: 0 = Portionen nicht angegeben. GENERATIV: immer 1-Portions-Basis.
+    // STRUCTURED: 0 = Portionen nicht angegeben. GENERATIV: immer 4-Portions-Basis (App skaliert).
     servings: structured
       ? (servings > 0 ? servings : 0)
-      : 1,
+      : (servings > 0 ? servings : 4),
     prep_time: structured ? '' : (typeof parsed.prep_time === 'string' ? parsed.prep_time.slice(0, 60) : ''),
     nutrition_note: nutritionNote,
     garnish,
@@ -864,17 +880,17 @@ function toClientRecipe(parsed, p) {
     steps,
   };
 
-  // Live-Pflicht: generativ immer auf 1-Portions-Basis portionieren.
+  // Live-Pflicht: generativ auf 4-Portions-Basis erzeugt → auf Nutzerziel (hier 1) skalieren.
   console.log('LIVE_RECIPE_PATH_NORMALIZE');
   const targetServings = 1;
   if (!structured) {
-    // KI kann trotzdem Batch-Mengen liefern → resolveSourceServings + Enforce auf 1 Portion
-    if (servings > 1) {
+    // KI liefert servings=4 mit 4-Portions-Mengen → resolveSourceServings + Enforce auf Zielportion
+    if (servings > 0) {
       client.servings = servings;
       client.sourceServings = servings;
     } else {
-      client.servings = 1;
-      client.sourceServings = 1;
+      client.servings = 4;
+      client.sourceServings = 4;
     }
     client = recipePortions.normalizeRecipeToFinalModel(client, { targetServings: targetServings });
   } else if (servings > 1 || recipePortions.looksLikeBatchAmounts(client.ingredients, servings || 1)) {

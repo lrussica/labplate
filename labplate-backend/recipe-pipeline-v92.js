@@ -114,8 +114,8 @@ function buildV92GenerativeSchema() {
         servings: {
           type: 'number',
           description:
-            'IMMER exakt 1. Alle ingredients[].amount und nutrition gelten NUR für 1 Einzelportion. ' +
-            'VERBOTEN: Batch/Meal-Prep/Familienmengen. Mehrportionen skaliert nur die App.',
+            'IMMER exakt 4. Alle ingredients[].amount und nutrition gelten fuer genau 4 Portionen. ' +
+            'Backend/Frontend skalieren auf die Nutzer-Portionszahl. VERBOTEN: servings≠4 oder Einzelportions-Kleinstmengen.',
         },
         prep_time_min: { type: 'number' },
         nutrition: {
