@@ -65,8 +65,9 @@ const raguRaw = {
     { id: '0009', name: 'Milch', amount: 100, unit: 'ml', protein_source: false, netCarbs: 5, fat: 3.5, protein: 3.5, fiber: 0 },
   ],
   steps: [
-    { title: 'Anbraten', content: '{0001} krümelig anbraten.', stove_level: 6, time_min: 10 },
+    { title: 'Anbraten', content: '{0005} erhitzen, {0001} krümelig anbraten.', stove_level: 6, time_min: 10 },
     { title: 'Gemüse', content: '{0002}, {0003} und {0004} andünsten.', stove_level: 4, time_min: 8 },
+    { title: 'Sauce', content: '{0006}, {0007}, {0008} und {0009} einrühren und köcheln.', stove_level: 3, time_min: 20 },
   ],
   garnish: '',
   chef_analysis: 'Klassisches Ragù mit {0001}.',
@@ -75,12 +76,13 @@ const rendered = pipeline.renderRecipeForDisplay(raguRaw);
 assert.ok(rendered, 'render ok');
 assert.ok(rendered.sourceServings >= 4, 'sourceServings inferiert ≥4: ' + rendered.sourceServings);
 assert.strictEqual(rendered.sourceServingsStatus, 'inferred');
-assert.strictEqual(rendered.requiresReview, true);
+// Nach erfolgreicher 1-Portions-Normierung: kein Review-/Schätz-Banner mehr
 assert.strictEqual(rendered.finalServings, 1);
 assert.strictEqual(rendered.servings, 1);
-assert.strictEqual(rendered.portionSafe, false);
-assert.ok(/geschätzt/i.test(rendered.portionDisplayHint || '') ||
-  (rendered.portionWarnings || []).some(function (w) { return /geschätzt/i.test(w); }));
+assert.ok(rendered.singlePortionNormalized === true, 'singlePortionNormalized');
+assert.strictEqual(rendered.requiresReview, false);
+assert.strictEqual(rendered.portionSafe, true);
+assert.ok(!rendered.portionDisplayHint || !/geschätzt/i.test(rendered.portionDisplayHint));
 const beef = rendered.ingredients.find(function (i) { return /hack|rind/i.test(i.name); });
 assert.ok(beef && beef.amount < 200, 'Hack nach Skalierung <200g: ' + (beef && beef.amount));
 assert.ok(beef.amount > 50, 'Hack nach Skalierung >50g: ' + beef.amount);
@@ -90,7 +92,7 @@ assert.ok(rendered.nutritionBasis === 'finalIngredients');
 assert.ok(rendered.servingsStatus === 'inferred');
 assert.ok(rendered.yield && rendered.yield.yieldStatus === 'unknown');
 assert.ok(rendered.yield.rawBatchWeight > 0);
-console.log('OK TEST4 Ragù inferred: source=' + rendered.sourceServings +
+console.log('OK TEST4 Ragù inferred→normalized: source=' + rendered.sourceServings +
   ' beef=' + beef.amount + 'g kcal=' + rendered.finalNutrition.kcal);
 
 // ---------- TEST 5–8: consistency ----------
@@ -130,7 +132,7 @@ const plaus = portions.validatePortionPlausibility({
   servingsStatus: 'validated',
   finalIngredients: plausIng,
 });
-assert.ok(plaus.warnings.some(function (w) { return /Fleischmenge/i.test(w); }));
+assert.ok(plaus.warnings.some(function (w) { return /Fleisch|Einzelportions-Maximum/i.test(w); }));
 assert.strictEqual(plausIng[0].amount, 500, 'Plausibilität darf Mengen nicht ändern');
 console.log('OK TEST9 Plausibilität ohne Mutation');
 
@@ -226,10 +228,11 @@ console.log('OK TEST12 Stepper MODEL B 1/2/0.5');
   assert.strictEqual(coachUnknown.error, 'coach_unavailable');
 
   const coachInferred = await coach.analyzeRecipe(portions.buildCoachInput(rendered), { enrichUsda: false });
-  assert.ok(coachInferred.data, 'inferred darf mit Review-Hinweis analysiert werden');
-  assert.ok((coachInferred.data.warnings || []).some(function (w) {
-    return w && /geschätzt/i.test(w.message || '');
-  }));
+  assert.ok(coachInferred.data, 'inferred darf nach 1-Portions-Normierung analysiert werden');
+  // Kein Portions-Schätz-Banner mehr, wenn finalServings=1 / singlePortionNormalized
+  assert.ok(!(coachInferred.data.warnings || []).some(function (w) {
+    return w && (w.code === 'portion_estimated' || /Portionsgröße geschätzt/i.test(w.message || ''));
+  }), 'kein Portions-Schätz-Hinweis nach Normierung');
 
   // resolveSourceServings: Heuristik nie explicit
   const resolvedInfer = portions.resolveSourceServings({

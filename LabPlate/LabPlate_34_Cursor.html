@@ -30740,12 +30740,27 @@ initBarcodeEvents();
       }
       addCheck('timing', 'pass', []);
 
-      // Server-Gate respektieren (Portions-Schätz-Hinweise ausfiltern – servings=1-Normierung)
+      // Server-Gate respektieren — aber Portions-Unknown-Fails verwerfen, wenn die Frontend-
+      // 1-Portions-Normierung bereits erfolgreich war (sonst: portionSafe true → Gate blocked →
+      // portionSafe false ohne dass sich Mengen geändert hätten).
       function isPortionEstimateWarn(msg) {
         return /Portionsgröße geschätzt|Portionsangabe prüfen/i.test(String(msg || ''));
       }
+      function isStalePortionUnknownFail(msg) {
+        return /Ausgangsportionszahl ist nicht bekannt|sourceServings fehlt|sichere Skalierung ist nicht möglich/i.test(String(msg || ''));
+      }
+      var singlePortionOk = recipe.singlePortionNormalized === true ||
+        (Number(recipe.finalServings) === 1 && String(recipe.sourceServingsStatus || '') === 'explicit');
       if (recipe.qualityStatus === 'blocked') {
-        errors.push.apply(errors, recipe.qualityErrors || ['Server Quality Gate: blocked']);
+        var serverErrs = Array.isArray(recipe.qualityErrors) ? recipe.qualityErrors.slice() : [];
+        if (singlePortionOk) {
+          serverErrs = serverErrs.filter(function (e) { return !isStalePortionUnknownFail(e); });
+        }
+        if (serverErrs.length) {
+          errors.push.apply(errors, serverErrs);
+        } else if (!singlePortionOk) {
+          errors.push('Server Quality Gate: blocked');
+        }
       } else if (recipe.qualityStatus === 'review') {
         (recipe.qualityWarnings || []).forEach(function (w) {
           if (!isPortionEstimateWarn(w)) warnings.push(w);
@@ -30765,12 +30780,30 @@ initBarcodeEvents();
       recipe.qualityErrors = errors;
       recipe.qualityWarnings = warnings;
       recipe.requiresReview = status !== 'ready';
-      if (status === 'blocked') recipe.portionSafe = false;
-      console.log('[NUTRI_RECIPE_DEBUG] QUALITY_GATE', {
+      if (status === 'blocked') {
+        recipe.portionSafe = false;
+      } else if (singlePortionOk) {
+        // Nach erfolgreicher 1-Portions-Normierung nicht wieder auf false kippen
+        recipe.portionSafe = true;
+        recipe.requiresReview = status === 'review';
+      }
+      console.log('[NUTRI_RECIPE_DEBUG] QUALITY_GATE ' + JSON.stringify({
         qualityStatus: status,
-        errors: errors.slice(0, 5),
-        warnings: warnings.slice(0, 5)
-      });
+        errors: errors,
+        warnings: warnings,
+        checks: Object.keys(checks).reduce(function (acc, key) {
+          var c = checks[key];
+          if (c && c.status && c.status !== 'pass') {
+            acc[key] = { status: c.status, issues: c.issues || [] };
+          }
+          return acc;
+        }, {}),
+        portionSafe: recipe.portionSafe,
+        sourceServingsStatus: recipe.sourceServingsStatus,
+        servingsStatus: recipe.servingsStatus,
+        finalServings: recipe.finalServings,
+        singlePortionNormalized: !!recipe.singlePortionNormalized
+      }));
       return recipe;
     }
 
@@ -32297,7 +32330,7 @@ initBarcodeEvents();
           };
         }).filter(Boolean);
       };
-      console.log('[NUTRI_RECIPE_DEBUG] ' + label, {
+      var payload = {
         sourceServings: r.sourceServings,
         sourceServingsStatus: r.sourceServingsStatus,
         targetServings: r.targetServings,
@@ -32310,6 +32343,8 @@ initBarcodeEvents();
         nutritionSource: r.nutritionSource || r.nutritionBasis,
         nutritionServings: r.nutritionServings,
         livePathNormalized: r.livePathNormalized,
+        qualityStatus: r.qualityStatus || null,
+        qualityErrors: Array.isArray(r.qualityErrors) ? r.qualityErrors : null,
         ingredients: mapIng(r.ingredients),
         finalIngredients: mapIng(r.finalIngredients),
         nutrition: r.nutrition,
@@ -32325,7 +32360,9 @@ initBarcodeEvents();
             instruction: step && (step.instruction || step.text || step.content) || String(step || '')
           };
         })
-      });
+      };
+      // JSON.stringify: Browser klappt sonst arrays/objekte zu „(1) […]“ zusammen
+      console.log('[NUTRI_RECIPE_DEBUG] ' + label + ' ' + JSON.stringify(payload));
     }
 
     function recipeAmountsLookLikeBatch(ings, claimedServings) {

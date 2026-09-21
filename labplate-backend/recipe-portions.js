@@ -34,6 +34,226 @@ const UNKNOWN_WARNING =
 const ESTIMATED_UI_HINT = 'Portionsgröße geschätzt – bitte prüfen';
 
 /**
+ * Strikte 1-Portions-Basis (Einzelperson). KI und finalIngredients beziehen sich darauf.
+ * Mehrportionen nur via Frontend-Multiplikation dieser Basis.
+ */
+const SINGLE_PORTION_BASE = {
+  eggMaxPieces: 3,
+  meatMinG: 120,
+  meatMaxG: 180,
+  fatMinG: 10,
+  fatMaxG: 15,
+  kcalMin: 400,
+  kcalMax: 700,
+};
+
+function isCookingFatName(name) {
+  const n = String(name || '').toLowerCase();
+  return /öl|oel|oil|olio|butter|schmalz|ghee|margarine/.test(n);
+}
+
+function isEggPieceIngredient(name, unit) {
+  const n = String(name || '').toLowerCase();
+  if (!n || /eiweiss|eiweiß|eiweis/.test(n)) return false;
+  if (!/\bei(er)?\b/.test(n)) return false;
+  return true;
+}
+
+/**
+ * Ermittelt Eier-Stückzahl aus Name, unit=stk oder Gramm (≈60 g/Stück).
+ */
+function resolveEggPieceCount(ing) {
+  if (!ing) return null;
+  const name = String(ing.displayName || ing.name || '');
+  if (!isEggPieceIngredient(name, ing.unit)) return null;
+
+  if (ing._culinary_amount != null && Number.isFinite(Number(ing._culinary_amount))) {
+    return Math.max(1, Math.round(Number(ing._culinary_amount)));
+  }
+
+  const unit = String(ing.unit || '').toLowerCase();
+  const amount = Number(ing.amount);
+  const fromName = name.match(/^\s*(\d+)\s*eier?\b/i);
+  if (fromName) {
+    return Math.max(1, Math.round(Number(fromName[1])));
+  }
+
+  if (unit === 'stk' || unit === 'stück' || unit === 'stueck') {
+    if (Number.isFinite(amount) && amount > 0) return Math.max(1, Math.round(amount));
+    return 1;
+  }
+
+  if ((unit === 'g' || unit === 'kg') && Number.isFinite(amount) && amount > 0) {
+    const grams = unit === 'kg' ? amount * 1000 : amount;
+    if (grams >= 40) return Math.max(1, Math.round(grams / 60));
+  }
+
+  // Name ohne Zahl, aber klar Ei → 1
+  if (/\bei\b/i.test(name)) return 1;
+  return null;
+}
+
+function formatEggDisplayName(pieces) {
+  const p = Math.max(1, Math.round(Number(pieces) || 1));
+  if (p === 1) return '1 Ei (Größe M, ca. 60 g)';
+  return p + ' Eier (Größe M, ca. 60 g je)';
+}
+
+function isSpecialDietKcalExempt(dietLabels, aiInstruction) {
+  const blob = [
+    Array.isArray(dietLabels) ? dietLabels.join(' ') : '',
+    String(aiInstruction || ''),
+  ].join(' ').toLowerCase();
+  return /extrem|extreme|keto\s*ultra|bulk|hyperkalor|sehr\s*hochkalor|sehr\s*niedrigkalor|crash|fasting\s*day/.test(blob);
+}
+
+/**
+ * Klemmt Mengen einer 1-Portions-Basis auf realistische Alltagsgrenzen.
+ * Ändert nur finale 1-Portions-Mengen; Listen-Skalierung danach bleibt Multiplikation.
+ */
+function enforceSinglePortionBaseAmounts(ingredients, opts) {
+  const o = opts || {};
+  const warnings = [];
+  const clamps = [];
+  const list = Array.isArray(ingredients) ? ingredients : [];
+
+  const out = list.map(function (ing) {
+    if (!ing) return ing;
+    const next = Object.assign({}, ing);
+    const name = String(next.displayName || next.name || '');
+    let amount = Number(next.amount);
+    let unit = String(next.unit || '').toLowerCase();
+    if (!Number.isFinite(amount) || amount < 0) return next;
+
+    // Eier – unabhängig von unit (stk ODER g mit „10 Eier“ im Namen)
+    const eggPieces = resolveEggPieceCount(next);
+    if (eggPieces != null) {
+      let pieces = eggPieces;
+      if (pieces > SINGLE_PORTION_BASE.eggMaxPieces) {
+        clamps.push({
+          kind: 'egg',
+          name: name,
+          from: pieces,
+          to: SINGLE_PORTION_BASE.eggMaxPieces,
+        });
+        warnings.push(
+          'Eier auf max. ' + SINGLE_PORTION_BASE.eggMaxPieces +
+            ' Stück pro Einzelportion begrenzt (vorher ' + pieces + ').'
+        );
+        pieces = SINGLE_PORTION_BASE.eggMaxPieces;
+      }
+      // Standard-Rührei: mehr als Soft-Max ohne expliziten Extremwunsch → Soft-Cap 2
+      // (Hart-Cap bleibt eggMaxPieces=3)
+      next._culinary_amount = pieces;
+      next._culinary_unit = 'stk';
+      next._discrete = true;
+      const eggLabel = formatEggDisplayName(pieces);
+      if (next.displayName) next.displayName = eggLabel;
+      if (next.name) next.name = eggLabel;
+      // Interne Makro-Basis weiter in g; Listen-unit kann stk oder g sein
+      if (unit === 'stk' || unit === 'stück' || unit === 'stueck' || unit === '') {
+        next.amount = pieces;
+        next.unit = 'stk';
+      } else {
+        next.amount = pieces * 60;
+        next.unit = 'g';
+      }
+      return next;
+    }
+
+    // Fleisch / Fisch
+    if (isMeatOrFishName(name) && (unit === 'g' || unit === 'kg' || unit === 'ml')) {
+      // ml bei flüssigem Eiweiß etc. überspringen – Fleisch ist i.d.R. g
+      if (unit === 'ml') return next;
+      let g = unit === 'kg' ? amount * 1000 : amount;
+      if (g > SINGLE_PORTION_BASE.meatMaxG) {
+        clamps.push({
+          kind: 'meat',
+          name: name,
+          from: g,
+          to: SINGLE_PORTION_BASE.meatMaxG,
+        });
+        warnings.push(
+          'Fleisch/Fisch auf max. ' + SINGLE_PORTION_BASE.meatMaxG +
+            ' g pro Einzelportion begrenzt (' + name + ': ' + Math.round(g) + ' g → ' +
+            SINGLE_PORTION_BASE.meatMaxG + ' g).'
+        );
+        g = SINGLE_PORTION_BASE.meatMaxG;
+        next.amount = g;
+        next.unit = 'g';
+      } else if (
+        g > 0 &&
+        g < SINGLE_PORTION_BASE.meatMinG &&
+        g >= 80 &&
+        !/speck|bacon|schinken|wurst|pancetta/i.test(name)
+      ) {
+        // Untergrenze nur für klare Hauptportionen (≥80 g), nicht für Garnitur-Speck
+        warnings.push(
+          'Fleisch/Fisch unter typischer Einzelportion (~' + SINGLE_PORTION_BASE.meatMinG +
+            '–' + SINGLE_PORTION_BASE.meatMaxG + ' g): ' + Math.round(g) + ' g ' + name
+        );
+      }
+      return next;
+    }
+
+    // Öle / Butter / Speisefette zum Anbraten
+    if (isCookingFatName(name) && (unit === 'g' || unit === 'ml' || unit === 'l')) {
+      let vol = unit === 'l' ? amount * 1000 : amount;
+      if (vol > SINGLE_PORTION_BASE.fatMaxG) {
+        clamps.push({
+          kind: 'fat',
+          name: name,
+          from: vol,
+          to: SINGLE_PORTION_BASE.fatMaxG,
+        });
+        warnings.push(
+          'Fett/Öl auf max. ' + SINGLE_PORTION_BASE.fatMaxG +
+            ' g/ml pro Einzelportion begrenzt (' + name + ').'
+        );
+        vol = SINGLE_PORTION_BASE.fatMaxG;
+        next.amount = vol;
+        next.unit = unit === 'g' ? 'g' : 'ml';
+      }
+      return next;
+    }
+
+    return next;
+  });
+
+  return {
+    ingredients: applyPracticalRounding(out),
+    warnings: warnings,
+    clamps: clamps,
+  };
+}
+
+/**
+ * Prüft den kcal-Rahmen einer 1-Portions-Basis (Warnung, keine stille kcal-Invention).
+ */
+function validateSinglePortionKcal(nutrition, opts) {
+  const o = opts || {};
+  const warnings = [];
+  if (isSpecialDietKcalExempt(o.dietLabels, o.aiInstruction)) {
+    return { warnings: warnings, status: 'exempt' };
+  }
+  const kcal = Number(
+    nutrition && (nutrition.kcal != null ? nutrition.kcal : nutrition.calories)
+  );
+  if (!Number.isFinite(kcal) || kcal <= 0) {
+    return { warnings: warnings, status: 'unknown' };
+  }
+  if (kcal < SINGLE_PORTION_BASE.kcalMin - 25 || kcal > SINGLE_PORTION_BASE.kcalMax + 25) {
+    warnings.push(
+      'Kalorien der Einzelportion (' + Math.round(kcal) +
+        ' kcal) außerhalb des Alltagsrahmens ca. ' +
+        SINGLE_PORTION_BASE.kcalMin + '–' + SINGLE_PORTION_BASE.kcalMax + ' kcal.'
+    );
+    return { warnings: warnings, status: 'out_of_range' };
+  }
+  return { warnings: warnings, status: 'ok' };
+}
+
+/**
  * Deterministische Skalierung (genau einmal pro Rezept verwenden).
  * scaledAmount = sourceAmount * (targetServings / sourceServings)
  */
@@ -195,10 +415,17 @@ function looksLikeBatchAmounts(ingredients, declaredServings) {
     const unit = String(ing.unit || '').toLowerCase();
     if (!Number.isFinite(amount) || amount <= 0) return;
     if (unit === 'prise' || unit === 'messerspitze') return;
+    // Kochwasser / Brühe nicht als Batch-Gesamtmasse (Pasta-Gerichte sonst falsch)
+    if (/^(das\s+)?(wasser|trinkwasser|leitungs?wasser|kochwasser)\b/i.test(String(name)) ||
+        /\b(brühe|bruehe|fond|stock)\b/i.test(String(name))) {
+      return;
+    }
     if (unit === 'ml' || unit === 'l') {
       const ml = unit === 'l' ? amount * 1000 : amount;
-      massTotal += ml;
-      if (isRichLiquidName(name)) maxRichMl = Math.max(maxRichMl, ml);
+      if (isRichLiquidName(name)) {
+        maxRichMl = Math.max(maxRichMl, ml);
+        massTotal += ml;
+      }
       return;
     }
     if (unit === 'stk') return;
@@ -356,6 +583,32 @@ function resolveSourceServings(recipe, opts) {
     }
   }
 
+  // Mengen sehen bereits wie 1 Portion aus (kein Batch) → nicht unknown blocken.
+  // Sonst: finalServings=null → Quality-Gate „Ausgangsportionszahl unbekannt“ obwohl Frontend
+  // dieselben Mengen danach erfolgreich als portionSafe=true normalisiert.
+  // Nur bei echten Zutatenmengen (nicht nur Prise/Salz), sonst bleibt unknown korrekt.
+  const hasSubstantial = (ingredients || []).some(function (ing) {
+    if (!ing) return false;
+    const amount = Number(ing.amount) || 0;
+    const unit = String(ing.unit || '').toLowerCase();
+    if (unit === 'prise' || unit === 'messerspitze') return false;
+    if (!(amount > 0)) return false;
+    const name = String(ing.displayName || ing.name || '').toLowerCase();
+    if (/^(salz|pfeffer|zimt|curry|paprika|muskat|oregano|basilikum|thymian)\b/.test(name)) return false;
+    return true;
+  });
+  if (!looksLikeBatchLabeledAsOne && hasSubstantial && amountsLookLikeSinglePortion(ingredients)) {
+    return {
+      sourceServings: declaredOk ? declared : 1,
+      sourceServingsStatus: SOURCE_SERVINGS_STATUS.EXPLICIT,
+      sourceServingsMethod: 'single_portion_amounts',
+      sourceServingsConfidence: 1,
+      servingsStatus: SERVINGS_STATUS.VALIDATED,
+      requiresReview: false,
+      warnings: [],
+    };
+  }
+
   return {
     sourceServings: null,
     sourceServingsStatus: SOURCE_SERVINGS_STATUS.UNKNOWN,
@@ -391,10 +644,10 @@ function validatePortionPlausibility(recipe) {
     const unit = String(ingredient.unit || '').toLowerCase();
     if (!Number.isFinite(amount)) return;
 
-    if (finalServings === 1 && unit === 'g' && amount >= 280 && isMeatOrFishName(name)) {
+    if (finalServings === 1 && unit === 'g' && amount > SINGLE_PORTION_BASE.meatMaxG && isMeatOrFishName(name)) {
       warnings.push(
-        'Ungewöhnlich große Fleischmenge für 1 Portion: ' + amount + ' g ' +
-          (ingredient.displayName || ingredient.name || '')
+        'Fleisch/Fisch über Einzelportions-Maximum (' + SINGLE_PORTION_BASE.meatMaxG + ' g): ' +
+          amount + ' g ' + (ingredient.displayName || ingredient.name || '')
       );
     }
     if (finalServings === 1 && unit === 'g' && amount >= 250 && isStapleCarbName(name)) {
@@ -403,10 +656,26 @@ function validatePortionPlausibility(recipe) {
           (ingredient.displayName || ingredient.name || '')
       );
     }
-    if (finalServings === 1 && (unit === 'ml' || unit === 'l') && amount >= 180 && isRichLiquidName(name)) {
+    if (
+      finalServings === 1 &&
+      (unit === 'ml' || unit === 'g') &&
+      amount > SINGLE_PORTION_BASE.fatMaxG &&
+      isCookingFatName(name)
+    ) {
       warnings.push(
-        'Ungewöhnlich große Fett-/Flüssigkeitsmenge für 1 Portion: ' + amount + ' ' + unit + ' ' +
-          (ingredient.displayName || ingredient.name || '')
+        'Fett/Öl über Einzelportions-Maximum (' + SINGLE_PORTION_BASE.fatMaxG + ' g/ml): ' +
+          amount + ' ' + unit + ' ' + (ingredient.displayName || ingredient.name || '')
+      );
+    }
+    if (
+      finalServings === 1 &&
+      (unit === 'stk' || unit === 'stück' || unit === 'stueck') &&
+      amount > SINGLE_PORTION_BASE.eggMaxPieces &&
+      isEggPieceIngredient(name, unit)
+    ) {
+      warnings.push(
+        'Eier über Einzelportions-Maximum (' + SINGLE_PORTION_BASE.eggMaxPieces + '): ' +
+          amount + ' × ' + (ingredient.displayName || ingredient.name || '')
       );
     }
   });
@@ -646,6 +915,21 @@ function buildFinalPortionedRecipe(opts) {
   );
   finalIngredients = applyPracticalRounding(finalIngredients);
 
+  const enforceWarnings = [];
+  let hasHardClamp = false;
+  if (targetServings === 1) {
+    const enforced = enforceSinglePortionBaseAmounts(finalIngredients, {
+      dietLabels: o.dietLabels,
+      aiInstruction: o.aiInstruction,
+    });
+    finalIngredients = enforced.ingredients;
+    (enforced.warnings || []).forEach(function (w) { enforceWarnings.push(w); });
+    hasHardClamp = !!(enforced.clamps && enforced.clamps.some(function (c) {
+      // Eier-Klemme ist erfolgreiche Normalisierung, keine Portions-Unsicherheit
+      return c && c.kind && c.kind !== 'egg';
+    }));
+  }
+
   console.log('RECIPE_FINAL_INGREDIENTS', JSON.stringify(finalIngredients.map(function (i) {
     return {
       id: i.id || i._v92_id,
@@ -657,7 +941,8 @@ function buildFinalPortionedRecipe(opts) {
 
   const requiresReview =
     !!resolved.requiresReview ||
-    resolved.sourceServingsStatus === SOURCE_SERVINGS_STATUS.INFERRED;
+    resolved.sourceServingsStatus === SOURCE_SERVINGS_STATUS.INFERRED ||
+    hasHardClamp;
 
   const validation = validateRecipePortions({
     sourceServings: resolved.sourceServings,
@@ -670,7 +955,9 @@ function buildFinalPortionedRecipe(opts) {
     steps: o.steps,
   });
 
-  const allWarnings = (resolved.warnings || []).concat(validation.warnings || []);
+  const allWarnings = (resolved.warnings || [])
+    .concat(validation.warnings || [])
+    .concat(enforceWarnings);
   const seenW = {};
   const uniqWarnings = [];
   allWarnings.forEach(function (w) {
@@ -700,6 +987,8 @@ function buildFinalPortionedRecipe(opts) {
     yield: yieldMeta,
     warnings: uniqWarnings,
     errors: validation.errors || [],
+    singlePortionClamps: enforceWarnings.length > 0,
+    singlePortionNormalized: targetServings === 1 && amountsLookLikeSinglePortion(finalIngredients),
     recipeVersion: RECIPE_MODEL_VERSION.recipeVersion,
     ingredientModelVersion: RECIPE_MODEL_VERSION.ingredientModelVersion,
     nutritionVersion: RECIPE_MODEL_VERSION.nutritionVersion,
@@ -733,6 +1022,9 @@ function buildCoachInput(finalRecipe) {
 function canDisplayAsSafeSinglePortion(recipe) {
   if (!recipe) return false;
   if (Number(recipe.finalServings) !== 1) return false;
+  if (recipe.singlePortionNormalized && amountsLookLikeSinglePortion(recipe.finalIngredients || recipe.ingredients)) {
+    return true;
+  }
   if (
     recipe.servingsStatus === SERVINGS_STATUS.UNKNOWN ||
     recipe.servingsStatus === SERVINGS_STATUS.INVALID ||
@@ -754,8 +1046,45 @@ function canDisplayAsSafeSinglePortion(recipe) {
   return !critical;
 }
 
+function amountsLookLikeSinglePortion(ingredients) {
+  const list = Array.isArray(ingredients) ? ingredients : [];
+  let ok = true;
+  list.forEach(function (ing) {
+    if (!ing) return;
+    const name = String(ing.displayName || ing.name || '');
+    const amount = Number(ing.amount);
+    const unit = String(ing.unit || '').toLowerCase();
+    if (!Number.isFinite(amount) || amount <= 0) return;
+    if (isMeatOrFishName(name) && (unit === 'g' || unit === 'kg')) {
+      const g = unit === 'kg' ? amount * 1000 : amount;
+      if (g > SINGLE_PORTION_BASE.meatMaxG) ok = false;
+    }
+    if (isCookingFatName(name) && (unit === 'g' || unit === 'ml' || unit === 'l')) {
+      const v = unit === 'l' ? amount * 1000 : amount;
+      if (v > SINGLE_PORTION_BASE.fatMaxG) ok = false;
+    }
+    const eggs = resolveEggPieceCount(ing);
+    if (eggs != null && eggs > SINGLE_PORTION_BASE.eggMaxPieces) ok = false;
+  });
+  return ok;
+}
+
 function getPortionDisplayHint(recipe) {
   if (!recipe) return null;
+  // Alle Rezepte auf 1 Portion normiert → kein Schätz-Banner (nur unknown bleibt)
+  if (
+    Number(recipe.finalServings) === 1 ||
+    recipe.singlePortionNormalized ||
+    amountsLookLikeSinglePortion(recipe.finalIngredients || recipe.ingredients)
+  ) {
+    if (
+      recipe.sourceServingsStatus === SOURCE_SERVINGS_STATUS.UNKNOWN ||
+      recipe.servingsStatus === SERVINGS_STATUS.UNKNOWN
+    ) {
+      return UNKNOWN_WARNING;
+    }
+    return null;
+  }
   if (
     recipe.sourceServingsStatus === SOURCE_SERVINGS_STATUS.UNKNOWN ||
     recipe.servingsStatus === SERVINGS_STATUS.UNKNOWN
@@ -917,16 +1246,22 @@ function normalizeRecipeToFinalModel(recipe, opts) {
       finalServings: finalServings,
       servingsStatus: portioned.servingsStatus,
       sourceServingsStatus: portioned.sourceServingsStatus,
-      requiresReview: requiresReview,
+      requiresReview: portioned.singlePortionNormalized ? false : requiresReview,
       portionWarnings: portioned.warnings,
+      singlePortionNormalized: !!portioned.singlePortionNormalized,
+      finalIngredients: finalIngredients,
     }),
     portionDisplayHint: getPortionDisplayHint({
+      finalServings: finalServings,
       servingsStatus: portioned.servingsStatus,
       sourceServingsStatus: portioned.sourceServingsStatus,
-      requiresReview: requiresReview,
+      requiresReview: portioned.singlePortionNormalized ? false : requiresReview,
+      singlePortionNormalized: !!portioned.singlePortionNormalized,
+      finalIngredients: finalIngredients,
     }),
     portionWarnings: portioned.warnings || [],
     validationWarnings: portioned.warnings || [],
+    singlePortionNormalized: !!portioned.singlePortionNormalized,
     yield: portioned.yield || {
       rawBatchWeight: computeRawBatchWeight(sourceIngredients),
       cookedBatchWeight: null,
@@ -935,6 +1270,12 @@ function normalizeRecipeToFinalModel(recipe, opts) {
     },
     livePathNormalized: true,
   });
+
+  if (out.singlePortionNormalized) {
+    out.requiresReview = false;
+    out.portionSafe = true;
+    out.portionDisplayHint = null;
+  }
 
   // Chef-Analyse: bei requiresReview/unknown keine scheinbar sichere Nährwert-Analyse
   if (requiresReview || !scaledOk) {
@@ -1054,6 +1395,7 @@ module.exports = {
   INFERRED_WARNING: INFERRED_WARNING,
   UNKNOWN_WARNING: UNKNOWN_WARNING,
   ESTIMATED_UI_HINT: ESTIMATED_UI_HINT,
+  SINGLE_PORTION_BASE: SINGLE_PORTION_BASE,
   scaleIngredients: scaleIngredients,
   scaleDisplayFromFinalBase: scaleDisplayFromFinalBase,
   roundPracticalAmount: roundPracticalAmount,
@@ -1065,11 +1407,18 @@ module.exports = {
   inferSourceServingsFromIngredients: inferSourceServingsFromIngredients,
   resolveSourceServings: resolveSourceServings,
   validatePortionPlausibility: validatePortionPlausibility,
+  enforceSinglePortionBaseAmounts: enforceSinglePortionBaseAmounts,
+  validateSinglePortionKcal: validateSinglePortionKcal,
+  isCookingFatName: isCookingFatName,
+  isEggPieceIngredient: isEggPieceIngredient,
+  resolveEggPieceCount: resolveEggPieceCount,
+  formatEggDisplayName: formatEggDisplayName,
   validateRecipeConsistency: validateRecipeConsistency,
   validateRecipePortions: validateRecipePortions,
   buildFinalPortionedRecipe: buildFinalPortionedRecipe,
   buildCoachInput: buildCoachInput,
   canDisplayAsSafeSinglePortion: canDisplayAsSafeSinglePortion,
+  amountsLookLikeSinglePortion: amountsLookLikeSinglePortion,
   getPortionDisplayHint: getPortionDisplayHint,
   normalizeRecipeToFinalModel: normalizeRecipeToFinalModel,
   runActualLiveRecipePipeline: runActualLiveRecipePipeline,
