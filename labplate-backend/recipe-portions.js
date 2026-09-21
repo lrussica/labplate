@@ -957,6 +957,29 @@ function normalizeRecipeToFinalModel(recipe, opts) {
     }),
   }));
 
+  try {
+    const displayFixes = require('./recipe-display-fixes');
+    displayFixes.applyRecipeDisplayFixes(out, {
+      noHerbs: !!(o.noHerbs || raw.noHerbs),
+      isOriginalRequest: !!(o.isOriginalRequest || raw.recipeSource === 'ai-generated-original'),
+      isOriginalBolognese: /bolognese/i.test(String(out.title || '')),
+      allergens: o.allergens || raw.allergens || [],
+      aiInstruction: o.aiInstruction || raw.ai_instruction || '',
+      dairyFreeAdaptation: !!o.dairyFreeAdaptation,
+    });
+  } catch (eFx) {
+    console.warn('[recipe-portions] display fixes failed', eFx && eFx.message);
+  }
+
+  try {
+    const qualityGate = require('./recipe-quality-gate');
+    qualityGate.applyRecipeQualityGate(out, {
+      allergens: o.allergens || raw.allergens || [],
+    });
+  } catch (eQg) {
+    console.warn('[recipe-portions] quality gate failed', eQg && eQg.message);
+  }
+
   return out;
 }
 

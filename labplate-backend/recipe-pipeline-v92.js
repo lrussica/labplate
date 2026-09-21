@@ -197,10 +197,27 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     : true;
 
   // Display-Mapping (stk → g für Makros; Eier-Name kulinarisch).
+  // Unplausible KI-Makros/100g sofort klemmen (z.B. Protein 81 bei Hackfleisch).
   const ingredients = useIngredients.map(function (ing) {
     const name = String(ing.displayName || ing.name || 'Zutat').trim().slice(0, 200);
     let amount = Number(ing.amount);
     let unit = ing.unit;
+    let netCarbs = Math.max(0, Number(ing.netCarbs) || 0);
+    let fat = Math.max(0, Number(ing.fat) || 0);
+    let protein = Math.max(0, Number(ing.protein) || 0);
+    let fiber = Math.max(0, Number(ing.fiber) || 0);
+    const isOil = /öl|oil|olio|butter|schmalz/i.test(name);
+    if (protein > 40 || (!isOil && fat > 45) || netCarbs > 90) {
+      if (/hack|rind|beef/i.test(name)) {
+        protein = 20; fat = Math.min(fat > 0 ? fat : 15, 15); netCarbs = 0; fiber = 0;
+      } else if (isOil) {
+        protein = 0; fat = 100; netCarbs = 0; fiber = 0;
+      } else {
+        protein = Math.min(protein, 25);
+        fat = Math.min(fat, 40);
+        netCarbs = Math.min(netCarbs, 80);
+      }
+    }
     if (unit === 'stk' || (unit == null && isEggIngredient(name))) {
       const pieces = Number.isFinite(amount) && amount > 0 ? Math.max(1, Math.round(amount)) : 1;
       amount = pieces * 60;
@@ -212,12 +229,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
         amount: amount,
         unit: 'g',
         status: 'benoetigt',
-        macrosPer100g: {
-          netCarbs: Math.max(0, Number(ing.netCarbs) || 0),
-          fat: Math.max(0, Number(ing.fat) || 0),
-          protein: Math.max(0, Number(ing.protein) || 0),
-          fiber: Math.max(0, Number(ing.fiber) || 0),
-        },
+        macrosPer100g: { netCarbs: netCarbs, fat: fat, protein: protein, fiber: fiber },
         _v92_id: ing.id,
         _protein_source: !!ing.protein_source,
         _culinary_amount: pieces,
@@ -242,12 +254,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
       amount: amount > 0 ? Math.round(amount * 10) / 10 : 0,
       unit: unit === 'ml' ? 'ml' : 'g',
       status: 'benoetigt',
-      macrosPer100g: {
-        netCarbs: Math.max(0, Number(ing.netCarbs) || 0),
-        fat: Math.max(0, Number(ing.fat) || 0),
-        protein: Math.max(0, Number(ing.protein) || 0),
-        fiber: Math.max(0, Number(ing.fiber) || 0),
-      },
+      macrosPer100g: { netCarbs: netCarbs, fat: fat, protein: protein, fiber: fiber },
       _v92_id: ing.id,
       _protein_source: !!ing.protein_source,
     };
@@ -302,36 +309,77 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     }
     let content = validator.resolvePlaceholders(s.content || '', byIdForProse, { nameOnly: true });
     content = validator.stripQuantityMentionsFromText(content);
-    // Bare Namenlisten vermeiden: "{a} {b} {c}" → natürliche Formulierung mit Titel-Verb
-    const bareNames = /^\s*[A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß0-9\-]*(?:\s+[A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß0-9\-]*){1,8}\s*$/;
-    if (bareNames.test(content) && !/\b(und|mit|in|auf|bei|bis|dann)\b/i.test(content)) {
-      const names = content.trim().split(/\s+/);
-      const joined = names.length === 1 ? names[0]
-        : (names.length === 2 ? names[0] + ' und ' + names[1]
-          : names.slice(0, -1).join(', ') + ' und ' + names[names.length - 1]);
-      const title = String(s.title || '').toLowerCase();
-      if (/anschwitz|gemüse/.test(title)) {
-        content = 'Das Olivenöl erhitzen und ' + joined.replace(/,? und Olivenöl|,? Olivenöl/gi, '') +
-          ' darin bei mittlerer Hitze langsam anschwitzen.';
-      } else if (/brat|fleisch/.test(title)) {
-        content = joined + ' unter Rühren krümelig anbraten.';
-      } else if (/abschmeck|würz/.test(title)) {
+    const title = String(s.title || '').trim();
+    const titleLower = title.toLowerCase();
+
+    // Köcheln + Garnieren nie in einem Schritt
+    if (/köchel|simmer|schmor/i.test(titleLower) && /garnier/i.test(titleLower + ' ' + content)) {
+      content = 'Das Ragù bei niedriger Hitze etwa zwei Stunden sanft köcheln lassen und gelegentlich umrühren.';
+      return content;
+    }
+
+    // Bare Namenlisten / nur Platzhalter-Auflösung → natürliche Sätze aus Titel
+    const bareNames = /^\s*[A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß0-9\-]*(?:\s+[A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß0-9\-]*){0,8}\s*$/;
+    const isBare = bareNames.test(content) &&
+      !/\b(und|mit|in|auf|bei|bis|dann|lassen|erhitzen|braten)\b/i.test(content);
+    if (isBare || !content) {
+      if (/öl.*erhitz|erhitzen.*öl|^olivenöl erhitz/i.test(titleLower)) {
+        content = 'Das Olivenöl in einem schweren Topf erhitzen.';
+      } else if (/anschwitz|gemüse|soffritto/i.test(titleLower)) {
+        content = 'Zwiebel, Karotte und Sellerie darin bei mittlerer Hitze langsam anschwitzen, bis das Gemüse weich ist.';
+      } else if (/brat|fleisch|hack/i.test(titleLower)) {
+        content = 'Das Rinderhackfleisch hinzufügen und unter Rühren krümelig anbraten.';
+      } else if (/ablösch|wein/i.test(titleLower)) {
+        content = 'Mit dem Rotwein ablöschen und kurz einkochen lassen.';
+      } else if (/tomate|hinzufüg/i.test(titleLower)) {
+        content = 'Passierte Tomaten und Tomatenmark einrühren.';
+      } else if (/abschmeck|würz/i.test(titleLower)) {
         content = 'Mit Salz und Pfeffer abschmecken.';
+      } else if (/köchel|schmor|simmer|langsam/i.test(titleLower)) {
+        content = 'Das Ragù bei niedriger Hitze etwa zwei Stunden sanft köcheln lassen und gelegentlich umrühren.';
+      } else if (/garnier/i.test(titleLower)) {
+        content = 'Nach Wunsch garnieren.';
+      } else if (title) {
+        content = title.replace(/:\s*$/, '') + '.';
       } else {
-        content = joined + ' zubereiten.';
+        content = 'Weitergaren.';
       }
     }
-    const parts = [];
-    // Natürliche Sätze: Titel nicht als "Label: Namenliste" voranstellen, wenn content schon Satz ist
-    if (s.stove_level != null && s.stove_level !== '' && Number(s.stove_level) > 0) {
-      parts.push('Stufe ' + s.stove_level + ' von 9.');
+
+    // Explizit verbieten: bare names trotz Titel
+    if (title && bareNameList(content)) {
+      content = naturalizeFromTitle(title, content);
     }
-    if (s.time_min != null && Number(s.time_min) > 0) {
-      parts.push('ca. ' + s.time_min + ' Min.');
-    }
-    parts.push(content);
-    return parts.filter(Boolean).join(' ').trim();
+
+    return String(content || '').trim();
   }).filter(Boolean);
+
+  function bareNameList(t) {
+    const s = String(t || '').trim();
+    if (!s || /[.!?]/.test(s)) return false;
+    if (/\b(und|mit|erhitzen|braten|kochen|dünsten|anschwitzen|ablöschen|einrühren|köcheln|abschmecken|sanft|lassen)\b/i.test(s)) {
+      return false;
+    }
+    const toks = s.split(/\s+/).filter(Boolean);
+    return toks.length >= 1 && toks.length <= 10;
+  }
+  function naturalizeFromTitle(title) {
+    const titleLower = String(title || '').toLowerCase();
+    if (/öl|erhitz/i.test(titleLower)) return 'Das Olivenöl in einem schweren Topf erhitzen.';
+    if (/anschwitz|gemüse/i.test(titleLower)) {
+      return 'Zwiebel, Karotte und Sellerie darin bei mittlerer Hitze langsam anschwitzen, bis das Gemüse weich ist.';
+    }
+    if (/brat|fleisch/i.test(titleLower)) {
+      return 'Das Rinderhackfleisch hinzufügen und unter Rühren krümelig anbraten.';
+    }
+    if (/ablösch|wein/i.test(titleLower)) return 'Mit dem Rotwein ablöschen und kurz einkochen lassen.';
+    if (/tomate/i.test(titleLower)) return 'Passierte Tomaten und Tomatenmark einrühren.';
+    if (/würz|abschmeck/i.test(titleLower)) return 'Mit Salz und Pfeffer abschmecken.';
+    if (/köchel/i.test(titleLower)) {
+      return 'Das Ragù bei niedriger Hitze etwa zwei Stunden sanft köcheln lassen und gelegentlich umrühren.';
+    }
+    return String(title).replace(/:\s*$/, '') + '.';
+  }
 
   const stepTimeSum = (Array.isArray(recipe.steps) ? recipe.steps : []).reduce(function (sum, s) {
     return sum + (Number(s && s.time_min) || 0);
@@ -455,6 +503,30 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     portionSafe: out.portionSafe,
     warnings: portionWarnings,
   }));
+
+  try {
+    const displayFixes = require('./recipe-display-fixes');
+    displayFixes.applyRecipeDisplayFixes(out, {
+      noHerbs: !!(o.noHerbs || recipe.noHerbs),
+      isOriginalRequest: !!(o.isOriginalRequest || recipe.recipeSource === 'ai-generated-original'),
+      isOriginalBolognese: !!(o.isOriginalBolognese || /bolognese/i.test(String(out.title || ''))),
+      allergens: o.allergens || recipe.allergens || [],
+      aiInstruction: o.aiInstruction || recipe.ai_instruction || '',
+      originalRules: o.originalRules || recipe.originalRules || '',
+      dairyFreeAdaptation: !!o.dairyFreeAdaptation,
+    });
+  } catch (eFx) {
+    console.warn('[recipe-v92] display fixes failed', eFx && eFx.message);
+  }
+
+  try {
+    const qualityGate = require('./recipe-quality-gate');
+    qualityGate.applyRecipeQualityGate(out, {
+      allergens: o.allergens || recipe.allergens || [],
+    });
+  } catch (eQg) {
+    console.warn('[recipe-v92] quality gate failed', eQg && eQg.message);
+  }
 
   return out;
 }

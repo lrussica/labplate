@@ -1211,7 +1211,7 @@
   .trend-bar-fill{ height:100%; border-radius:99px; }
   .trend-pct{ font-size:13px; font-weight:800; color:var(--ink-soft); text-align:right; }
 
-  /* Tages-Tabelle (nutzt dieselbe .data-table-Basis wie der Zielvergleich, fuer Konsistenz) */
+  /* Tages-Tabelle (nutzt dieselbe .data-table-Basis wie der Tagesziel-Vergleich, fuer Konsistenz) */
   .history-table td, .history-table th{ font-size:14px; }
   .history-table td{ padding:8px 10px; }
   .history-table tbody tr:nth-child(even):not(.history-today-row){ background:var(--bg); }
@@ -1456,7 +1456,7 @@
   .micro-goals-group-label.qa-micro-group-important{ color:#1A6091; }
   .micro-goals-group-label.qa-micro-group-other{ color:var(--ink-soft); }
 
-  /* ---------- Fortschrittsbalken in Zielvergleich ---------- */
+  /* ---------- Fortschrittsbalken in Tagesziel-Vergleich ---------- */
   .progress-cell{ display:flex; align-items:center; gap:10px; min-width:130px; }
   .progress-track{ flex:1; height:15px; background:var(--bg); border-radius:999px; overflow:hidden; min-width:70px; border:1px solid var(--bg-2); }
   .progress-fill{ height:100%; border-radius:999px; transition:width .4s ease; }
@@ -2446,7 +2446,7 @@ TRANSLATIONS.de = {
   historyShowAll: 'Alle Werte anzeigen',
   historyShowLess: 'Weniger anzeigen',
   historySampleNote: '(Beispieldaten zur Veranschaulichung)',
-  goalTitle: 'Zielvergleich',
+  goalTitle: 'Tagesziel Vergleich',
   thNutrient: 'Nährstoff',
   thGoal: 'Ziel',
   thReached: 'Erreicht',
@@ -2697,7 +2697,7 @@ TRANSLATIONS.de = {
     <p>In LabPlate siehst du bei jedem Lebensmittel drei Werte: die <b>Gesamt-Kohlenhydrate</b> (Zucker + Stärke + Ballaststoffe zusammen), die <b>Ballaststoffe</b> als natürlichen Bremser, und die <b>Netto-Kohlenhydrate</b> – das, was wirklich auf deinen Blutzucker wirkt (Gesamt-Kohlenhydrate minus Ballaststoffe). Die Blutzucker-Ampel (grün/gelb/rot) zeigt dir dazu sofort, wie stark ein Lebensmittel deinen Blutzucker beeinflusst.</p>
     <p class="knowledge-bonus"><b>Bonus für Neugierige:</b> Deine Zellen gewinnen aus Glukose Energie in mehreren chemischen Schritten, an deren Ende ATP steht – der Energieträger, den jede Zelle nutzt. Fruktose nimmt diesen Weg nicht: Sie wird ausschließlich in der Leber verarbeitet und bei Überschuss direkt in Fett umgewandelt.</p>
     <h3>Warum sich dein Tagesziel manchmal ändert</h3>
-    <p>Wenn du Aktivität einträgst (Schritte, Minuten oder Kalorien), schaltet die App dir zusätzliche Netto-Kohlenhydrate frei: pro 100 verbrannte Kalorien 5&nbsp;g extra, gedeckelt bei insgesamt +40&nbsp;g pro Tag. Der Grund: Bewegung verbraucht einen Teil der Glukose direkt in den Muskeln, bevor sie überhaupt den Blutzucker belasten kann. Dein ursprüngliches Ziel wird dabei nicht überschrieben, sondern nur vorübergehend erweitert – du siehst den genauen Bonus sowohl am Ring als auch in der Zielvergleich-Tabelle als „(+X&nbsp;g Bonus)".</p>
+    <p>Wenn du Aktivität einträgst (Schritte, Minuten oder Kalorien), schaltet die App dir zusätzliche Netto-Kohlenhydrate frei: pro 100 verbrannte Kalorien 5&nbsp;g extra, gedeckelt bei insgesamt +40&nbsp;g pro Tag. Der Grund: Bewegung verbraucht einen Teil der Glukose direkt in den Muskeln, bevor sie überhaupt den Blutzucker belasten kann. Dein ursprüngliches Ziel wird dabei nicht überschrieben, sondern nur vorübergehend erweitert – du siehst den genauen Bonus sowohl am Ring als auch in der Tagesziel-Vergleich-Tabelle als „(+X&nbsp;g Bonus)".</p>
     <h3>Glykämischer Index (GI)</h3>
     <p>Der glykämische Index (GI) zeigt, wie schnell und stark ein Lebensmittel deinen Blutzucker ansteigen lässt: <b>niedrig (GI ≤ 55)</b> lässt den Blutzucker ruhig steigen, <b>mittel (GI 56–69)</b> lässt ihn mäßig steigen, <b>hoch (GI ≥ 70)</b> lässt ihn stark ansteigen. In der Detailansicht jedes Lebensmittels findest du den GI-Wert direkt unter den Nährwerten. Die glykämischen Index-Werte basieren auf der Datenbank der Universität Sydney (glycemicindex.com) sowie auf wissenschaftlichen Publikationen zur glykämischen Index-Forschung.</p>
     <h3>Praktische Tipps für den Alltag</h3>
@@ -2969,7 +2969,7 @@ TRANSLATIONS.en = {
   historyShowAll: 'Show all values',
   historyShowLess: 'Show less',
   historySampleNote: '(Sample data for illustration)',
-  goalTitle: 'Goal comparison',
+  goalTitle: 'Daily goal comparison',
   thNutrient: 'Nutrient',
   thGoal: 'Target',
   thReached: 'Reached',
@@ -3488,7 +3488,7 @@ TRANSLATIONS.es = {
   historyShowAll: 'Mostrar todos los valores',
   historyShowLess: 'Mostrar menos',
   historySampleNote: '(Datos de ejemplo, solo ilustrativos)',
-  goalTitle: 'Comparación con el objetivo',
+  goalTitle: 'Comparación con el objetivo diario',
   thNutrient: 'Nutriente',
   thGoal: 'Objetivo',
   thReached: 'Alcanzado',
@@ -4008,7 +4008,7 @@ TRANSLATIONS.it = {
   historyShowAll: 'Mostra tutti i valori',
   historyShowLess: 'Mostra meno',
   historySampleNote: '(Dati di esempio, solo a scopo illustrativo)',
-  goalTitle: 'Confronto con l’obiettivo',
+  goalTitle: 'Confronto con l’obiettivo giornaliero',
   thNutrient: 'Nutriente',
   thGoal: 'Obiettivo',
   thReached: 'Raggiunto',
@@ -6448,7 +6448,7 @@ function nutrientAmpel(kind, value, target) {
   return { color: 'red', label: L.ampelOver };
 }
 
-// Einschaetzungssymbol im Zielvergleich: kleine SVG-Icons (kein Emoji) statt reinem Punkt -
+// Einschaetzungssymbol im Tagesziel-Vergleich: kleine SVG-Icons (kein Emoji) statt reinem Punkt -
 // Haken (gruen), Ausrufezeichen (gelb), X (rot). Farblich/groessenmaessig auf die
 // Fortschrittsbalken abgestimmt.
 function assessmentIconSvg(color) {
@@ -7432,7 +7432,7 @@ let historySelectedDate = null;
 function renderHistory() {
   const el = document.getElementById('history-section');
   if (!el) return;
-  if (state.mode !== 'pro') { el.innerHTML = ''; return; } // Verlauf ist eine Profi-Funktion, wie Aktivitaet/Zielvergleich
+  if (state.mode !== 'pro') { el.innerHTML = ''; return; } // Verlauf ist eine Profi-Funktion, wie Aktivitaet/Tagesziel-Vergleich
 
   const fullHistory = loadHistory();
   const hasRealDay = fullHistory.some(h => !h.sample); // mindestens ein ECHTER (nicht Beispiel-)Tag vorhanden?
@@ -9815,7 +9815,7 @@ initBarcodeEvents();
 
     function sync() {
       // Bugfix (siehe lang() oben): window.L war ebenfalls immer undefined, wodurch
-      // L.thGoal/L.mealDetailTitle/L.historyTitle unten stets auf den deutschen
+      // L.goalTitle/L.mealDetailTitle/L.historyTitle unten stets auf den deutschen
       // Default-Text zurueckfielen - Ursache fuer gemischtsprachige Trigger-Labels nach
       // einem Sprachwechsel. Keine lokale Variable mehr deklarieren: dadurch wird weiter
       // unten automatisch das echte, aktuelle "L" aus dem Hauptscript verwendet.
@@ -9861,7 +9861,7 @@ initBarcodeEvents();
       catTrigger.setAttribute('aria-label', pick(LBL_CATS_TITLE));
       addCustomBtn.setAttribute('aria-label', pick(LBL_EIGENES));
       setText(trHeute,   pick(LBL_HEUTE));
-      setText(trZiel,    L.thGoal || 'Ziel');
+      setText(trZiel,    L.goalTitle || 'Tagesziel Vergleich');
       setText(trDetail,  L.mealDetailTitle || 'Deine Mahlzeit im Detail');
       setText(trVerlauf, L.historyTitle || 'Verlauf der letzten Tage');
       var mlbl = document.querySelector('#settings-overlay .lp-mode-label');

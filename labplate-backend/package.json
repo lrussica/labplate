@@ -5,7 +5,11 @@
   "description": "Sicherer Server-Proxy zwischen der LabPlate-App und der Groq-API (openai/gpt-oss-120b, Strict JSON-Schema) fuer die Funktion 'Naehrstoff-Rezepte'. Haelt den API-Schluessel ausschliesslich serverseitig.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "generate-lexicon-terms": "node scripts/generate-lexicon-terms.js",
+    "generate-lexicon-terms-ai": "node scripts/generate-lexicon-terms.js --ai",
+    "assemble-lexicon-i18n": "node scripts/assemble-lexicon-i18n.js",
+    "translate-lexicon-i18n": "node scripts/translate-lexicon-i18n.js"
   },
   "engines": {
     "node": ">=18.0.0"

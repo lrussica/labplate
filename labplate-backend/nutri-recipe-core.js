@@ -757,13 +757,24 @@ function toClientRecipe(parsed, p) {
       && parsed.steps[0] && typeof parsed.steps[0] === 'object') {
     console.log('LIVE_RECIPE_PATH_V92');
     console.log('LIVE_RECIPE_PATH_RENDER');
-    const rendered = recipePipeline.renderRecipeForDisplay(parsed);
+    const rendered = recipePipeline.renderRecipeForDisplay(parsed, {
+      allergens: (p && p.allergens) || [],
+      aiInstruction: (p && p.ai_instruction) || '',
+      isOriginalRequest: !!(p && /MODUS ORIGINALREZEPT|MODE ORIGINAL RECIPE/i.test(String(p.ai_instruction || ''))),
+      isOriginalBolognese: !!(p && /bolognese|rag[uù]/i.test(String(p.ai_instruction || '') + ' ' + String(parsed.title || '')) &&
+        /ORIGINALREZEPT|ORIGINAL RECIPE|KEINE\s+Kr[aä]uter|NO\s+herbs/i.test(String(p.ai_instruction || ''))),
+      dairyFreeAdaptation: !!(p && Array.isArray(p.allergens) && p.allergens.some(function (a) {
+        return /milch|laktose|lactose|dairy|milk/i.test(String(a || ''));
+      })),
+    });
     if (rendered) {
       rendered.finalIngredients = rendered.ingredients;
       rendered.displayIngredients = rendered.ingredients;
       rendered.nutritionSource = rendered.nutritionBasis || 'finalIngredients';
       rendered.finalNutrition = rendered.finalNutrition || rendered.nutrition;
+      rendered.nutrition = rendered.finalNutrition;
       rendered.livePathNormalized = true;
+      if (p && Array.isArray(p.allergens)) rendered.allergens = p.allergens.slice();
       console.log('TRACE_DISPLAY_RECIPE', JSON.stringify({
         title: rendered.title,
         sourceServings: rendered.sourceServings,

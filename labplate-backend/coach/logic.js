@@ -3,6 +3,14 @@
  * ================================
  * Ernährungs-Analyse: USDA-Nährwerte + Spoonacular/TheMealDB-Rezepte
  * → einheitliche Coach-Ausgabe (Makros, HealthScore, Tagesplan, Alternativen).
+ *
+ * COACH-INPUT-VERTRAG (analyzeRecipe):
+ * Verwende ausschließlich finalNutrition und finalIngredients.
+ * Berechne keine neuen Nährwerte, wenn finalNutrition vorliegt.
+ * Verwende keine Rohzutaten / alten Rezeptversionen / sourceNutrition.
+ * Wenn requiresReview true ist oder validationWarnings kritische Warnungen
+ * enthalten, keine uneingeschränkt sichere Bewertung → coach_unavailable.
+ * Erfinde keine Quellen.
  */
 
 'use strict';
@@ -393,11 +401,135 @@ async function enrichIngredientsWithUsda(ingredients, opts) {
 }
 
 /**
+ * mapFinalNutrition → Coach perServing (keine Neuberechnung aus Rohzutaten).
+ */
+function perServingFromFinalNutrition(fn) {
+  if (!fn || typeof fn !== 'object') return null;
+  const calories = num(fn.kcal != null ? fn.kcal : fn.calories, NaN);
+  const protein = num(fn.protein_g != null ? fn.protein_g : fn.protein, NaN);
+  const fat = num(fn.fat_g != null ? fn.fat_g : fn.fat, NaN);
+  const netCarbs = num(
+    fn.netto_kh_g != null ? fn.netto_kh_g : (fn.netCarbs != null ? fn.netCarbs : fn.carbs),
+    NaN
+  );
+  const fiber = num(fn.ballaststoffe_g != null ? fn.ballaststoffe_g : fn.fiber, NaN);
+  if (![calories, protein, fat, netCarbs, fiber].every(Number.isFinite)) return null;
+  return {
+    calories: round1(calories),
+    protein: round1(protein),
+    fat: round1(fat),
+    netCarbs: round1(netCarbs),
+    fiber: round1(fiber),
+  };
+}
+
+function hasCriticalPortionWarnings(warnings) {
+  return (Array.isArray(warnings) ? warnings : []).some(function (w) {
+    return /nicht bekannt|sichere Skalierung|Ungewöhnlich große/i.test(String(w || ''));
+  });
+}
+
+/**
  * analyzeRecipe(recipe)
  * opts: { enrichUsda: boolean, timeoutMs }
+ *
+ * Bevorzugt finalNutrition + finalIngredients (Coach-Input-Vertrag).
+ * Berechnet keine neuen Nährwerte aus Roh-/Alt-Rezepten, wenn finalNutrition vorliegt.
  */
 async function analyzeRecipe(recipe, opts) {
-  const normalized = normalizeRecipeInput(recipe);
+  const raw = recipe && typeof recipe === 'object' ? recipe : null;
+  if (!raw) return { error: 'invalid_payload' };
+
+  const requiresReview = !!raw.requiresReview;
+  const validationWarnings = raw.validationWarnings || raw.portionWarnings || raw.warnings || [];
+  const servingsStatus = String(raw.servingsStatus || '');
+  const sourceServingsStatus = String(raw.sourceServingsStatus || '');
+
+  if (
+    servingsStatus === 'unknown' ||
+    sourceServingsStatus === 'unknown' ||
+    raw.qualityStatus === 'blocked' ||
+    (requiresReview && hasCriticalPortionWarnings(validationWarnings)) ||
+    (!raw.finalNutrition && !raw.nutrition && requiresReview && sourceServingsStatus === 'unknown')
+  ) {
+    return {
+      error: 'coach_unavailable',
+      reason: raw.qualityStatus === 'blocked' ? 'quality_blocked' : 'requires_review',
+      details: 'Keine uneingeschränkt sichere Ernährungsbewertung möglich (Portionsstatus prüfen).',
+    };
+  }
+
+  // Canonical coach input: finalIngredients + finalNutrition
+  const finalIngredients = Array.isArray(raw.finalIngredients)
+    ? raw.finalIngredients
+    : (Array.isArray(raw.ingredients) ? raw.ingredients : null);
+  const finalNutrition = raw.finalNutrition || (
+    raw.nutritionBasis === 'finalIngredients' || raw.nutritionSource === 'finalIngredients'
+      ? raw.nutrition
+      : null
+  );
+  const finalServings = num(
+    raw.finalServings != null ? raw.finalServings : raw.servings,
+    1
+  );
+  const qualityStatus = String(raw.qualityStatus || '');
+  const qualityWarnings = Array.isArray(raw.qualityWarnings) ? raw.qualityWarnings : [];
+
+  const fromFinal = perServingFromFinalNutrition(finalNutrition);
+  if (fromFinal) {
+    const warnings = buildWarnings(fromFinal, finalIngredients || []);
+    if (
+      qualityStatus === 'review' ||
+      requiresReview ||
+      sourceServingsStatus === 'inferred' ||
+      servingsStatus === 'inferred'
+    ) {
+      warnings.unshift({
+        code: 'portion_estimated',
+        message: (qualityWarnings[0] || 'Portionsgröße geschätzt – bitte prüfen'),
+        severity: 'review',
+      });
+    }
+    const healthScore = computeHealthScore(fromFinal, warnings);
+    return {
+      data: {
+        recipe: {
+          id: raw.id,
+          source: raw.source || 'labplate',
+          title: String(raw.title || 'Rezept').slice(0, 200),
+          servings: finalServings > 0 ? finalServings : 1,
+          prep_time: typeof raw.prep_time === 'string' ? raw.prep_time : '',
+          image: raw.image,
+        },
+        totals: {
+          calories: fromFinal.calories * (finalServings > 0 ? finalServings : 1),
+          protein: fromFinal.protein * (finalServings > 0 ? finalServings : 1),
+          fat: fromFinal.fat * (finalServings > 0 ? finalServings : 1),
+          netCarbs: fromFinal.netCarbs * (finalServings > 0 ? finalServings : 1),
+          fiber: fromFinal.fiber * (finalServings > 0 ? finalServings : 1),
+        },
+        perServing: fromFinal,
+        healthScore: qualityStatus === 'review' ? Math.min(healthScore, 70) : healthScore,
+        warnings,
+        ingredients: finalIngredients || [],
+        nutritionSource: 'finalNutrition',
+        qualityStatus: qualityStatus || 'ready',
+        coverage: {
+          withNutrition: finalIngredients ? finalIngredients.length : 0,
+          total: finalIngredients ? finalIngredients.length : 0,
+          ratio: 1,
+        },
+      },
+    };
+  }
+
+  // Legacy-Fallback: nur wenn keine finalNutrition – Zutaten = bereits final/anzeige.
+  const normalized = normalizeRecipeInput(
+    Object.assign({}, raw, {
+      ingredients: finalIngredients || raw.ingredients,
+      servings: finalServings,
+    })
+  );
   if (!normalized || !normalized.ingredients.length) return { error: 'invalid_payload' };
 
   const o = opts || {};
@@ -444,6 +576,7 @@ async function analyzeRecipe(recipe, opts) {
       healthScore,
       warnings,
       ingredients: analysis.data.ingredients,
+      nutritionSource: 'ingredients_fallback',
       coverage: {
         withNutrition: covered,
         total: analysis.data.ingredients.length,

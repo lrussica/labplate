@@ -29345,6 +29345,33 @@ initBarcodeEvents();
     // Muster wie oben (LBL_CATS_TITLE etc.), KEIN fest eingebauter deutscher Text mehr. ----
     var LBL_RECIPE_LOADING = { de:'Deine heutigen Zielwerte werden berücksichtigt … Rezept wird zusammengestellt.', en:'Your daily targets are being taken into account … recipe is being put together.', es:'Se tienen en cuenta tus valores objetivo de hoy … se está preparando la receta.', it:'I tuoi valori obiettivo di oggi vengono presi in considerazione … la ricetta è in preparazione.' };
     var LBL_RECIPE_ERROR = { de:'Das Rezept konnte gerade nicht geladen werden. Bitte versuche es erneut.', en:'The recipe could not be loaded right now. Please try again.', es:'No se pudo cargar la receta en este momento. Inténtalo de nuevo.', it:'Non è stato possibile caricare la ricetta in questo momento. Riprova.' };
+    var LBL_RECIPE_QUALITY_BLOCKED = {
+      de:'Dieses Rezept konnte nicht sicher erstellt werden, weil Zutaten, Portionen oder Nutzeranforderungen nicht eindeutig zusammenpassen.',
+      en:'This recipe could not be created safely because ingredients, portions, or your requirements do not clearly match.',
+      es:'No se pudo crear esta receta de forma segura porque los ingredientes, las raciones o tus requisitos no coinciden con claridad.',
+      it:'Non è stato possibile creare questa ricetta in modo sicuro perché ingredienti, porzioni o le tue esigenze non corrispondono chiaramente.',
+      pt:'Esta receita não pôde ser criada com segurança porque ingredientes, porções ou os seus requisitos não coincidem de forma clara.',
+      fr:'Cette recette n’a pas pu être créée de façon sûre car les ingrédients, les portions ou vos exigences ne correspondent pas clairement.',
+      tr:'Malzemeler, porsiyonlar veya gereksinimleriniz net eşleşmediği için bu tarif güvenle oluşturulamadı.'
+    };
+    var LBL_RECIPE_QUALITY_ALLERGEN_BLOCKED = {
+      de:'Dieses Rezept wurde nicht angezeigt, weil eine gespeicherte Allergie oder Unverträglichkeit betroffen sein könnte.',
+      en:'This recipe was not shown because a saved allergy or intolerance may be affected.',
+      es:'Esta receta no se mostró porque podría verse afectada una alergia o intolerancia guardada.',
+      it:'Questa ricetta non è stata mostrata perché potrebbe essere coinvolta un’allergia o intolleranza salvata.',
+      pt:'Esta receita não foi mostrada porque uma alergia ou intolerância guardada pode estar envolvida.',
+      fr:'Cette recette n’a pas été affichée car une allergie ou intolérance enregistrée pourrait être concernée.',
+      tr:'Kayıtlı bir alerji veya intolerans etkilenebileceği için bu tarif gösterilmedi.'
+    };
+    var LBL_RECIPE_QUALITY_REVIEW = {
+      de:'Hinweis: Bitte Angaben prüfen – einige Details sind geschätzt oder unsicher.',
+      en:'Note: Please review – some details are estimated or uncertain.',
+      es:'Nota: Revisa los datos – algunos detalles son estimados o inciertos.',
+      it:'Nota: Controlla i dati – alcuni dettagli sono stimati o incerti.',
+      pt:'Nota: Verifique – alguns detalhes são estimados ou incertos.',
+      fr:'Remarque : vérifiez – certains détails sont estimés ou incertains.',
+      tr:'Not: Lütfen kontrol edin – bazı ayrıntılar tahmini veya belirsiz.'
+    };
     var LBL_RECIPE_RETRY = { de:'Erneut versuchen', en:'Try again', es:'Intentar de nuevo', it:'Riprova' };
     var LBL_RECIPE_BACK_TO_INPUT = { de:'Zurück zur Eingabe', en:'Back to input', es:'Volver a la entrada', it:'Torna all\'inserimento' };
     var LBL_RECIPE_SERVINGS_SUFFIX = { de:'Portionen', en:'servings', es:'porciones', it:'porzioni' };
@@ -29497,10 +29524,28 @@ initBarcodeEvents();
     };
     // Speziell Ragù alla Bolognese (klassische italienische Version / Accademia-Orientierung).
     var LBL_RECIPE_ORIGINAL_BOLOGNESE_RULES = {
-      de: ' SPEZIALREGELN RAGÙ ALLA BOLOGNESE: Tomatenmenge 200–300 ml (nicht mehr); Tomatenmark 1–2 EL; Kochzeit mindestens 2 Stunden (besser 3–4 Stunden); Wein optional (Weiß- oder Rotwein, nicht zwingend); Milch optional max. 150 ml; Brühe nur wenig, nicht als Hauptflüssigkeit; KEINE Kräuter (kein Oregano, kein Basilikum); KEIN Knoblauch; KEINE Champignons/Pilze; KEINE Worcestershire Sauce; keine internationalen/modernen Varianten; keine Optimierung; keine Makro-Anpassung. Titel z. B. „Ragù alla Bolognese“.',
-      en: ' SPECIAL RULES RAGÙ ALLA BOLOGNESE: tomato amount 200–300 ml only; tomato paste 1–2 tbsp; cook at least 2 hours (preferably 3–4); wine optional (white or red, not required); milk optional max 150 ml; stock only sparingly, not the main liquid; NO herbs (no oregano, no basil); NO garlic; NO mushrooms; NO Worcestershire sauce; no international/modern variants; no optimization; no macro adjustment. Title e.g. “Ragù alla Bolognese”.',
-      es: ' REGLAS ESPECIALES RAGÙ ALLA BOLOGNESE: tomate 200–300 ml; concentrado de tomate 1–2 cucharadas; cocción mínimo 2 h (mejor 3–4); vino opcional; leche opcional máx. 150 ml; caldo solo poco; SIN hierbas (orégano, albahaca); SIN ajo; SIN champiñones; SIN Worcestershire; sin variantes modernas ni optimización.',
-      it: ' REGOLE SPECIALI RAGÙ ALLA BOLOGNESE: pomodoro 200–300 ml; concentrato 1–2 cucchiai; cottura almeno 2 ore (meglio 3–4); vino opzionale; latte opzionale max 150 ml; brodo solo poco; NIENTE erbe (origano, basilico); NIENTE aglio; NIENTE funghi; NIENTE Worcestershire; nessuna variante moderna né ottimizzazione.',
+      de: ' SPEZIALREGELN RAGÙ ALLA BOLOGNESE: Tomatenmenge 200–300 ml (nicht mehr); Tomatenmark 1–2 EL; Kochzeit mindestens 2 Stunden (besser 3–4 Stunden); Wein optional (Weiß- oder Rotwein, nicht zwingend); Milch optional max. 150 ml; Brühe nur wenig, nicht als Hauptflüssigkeit; KEINE Kräuter (kein Oregano, kein Basilikum, keine Petersilie); KEIN Knoblauch; KEINE Champignons/Pilze; KEINE Worcestershire Sauce; keine internationalen/modernen Varianten; keine Optimierung; keine Makro-Anpassung. Titel z. B. „Ragù alla Bolognese“.',
+      en: ' SPECIAL RULES RAGÙ ALLA BOLOGNESE: tomato amount 200–300 ml only; tomato paste 1–2 tbsp; cook at least 2 hours (preferably 3–4); wine optional (white or red, not required); milk optional max 150 ml; stock only sparingly, not the main liquid; NO herbs (no oregano, no basil, no parsley); NO garlic; NO mushrooms; NO Worcestershire sauce; no international/modern variants; no optimization; no macro adjustment. Title e.g. “Ragù alla Bolognese”.',
+      es: ' REGLAS ESPECIALES RAGÙ ALLA BOLOGNESE: tomate 200–300 ml; concentrado de tomate 1–2 cucharadas; cocción mínimo 2 h (mejor 3–4); vino opcional; leche opcional máx. 150 ml; caldo solo poco; SIN hierbas (orégano, albahaca, perejil); SIN ajo; SIN champiñones; SIN Worcestershire; sin variantes modernas ni optimización.',
+      it: ' REGOLE SPECIALI RAGÙ ALLA BOLOGNESE: pomodoro 200–300 ml; concentrato 1–2 cucchiai; cottura almeno 2 ore (meglio 3–4); vino opzionale; latte opzionale max 150 ml; brodo solo poco; NIENTE erbe (origano, basilico, prezzemolo); NIENTE aglio; NIENTE funghi; NIENTE Worcestershire; nessuna variante moderna né ottimizzazione.',
+    };
+    var LBL_RECIPE_DAIRY_FREE_ADAPTATION = {
+      de: 'Milch wurde aufgrund deiner gespeicherten Einschränkung nicht verwendet.',
+      en: 'Milk was not used because of your saved restriction.',
+      es: 'No se usó leche debido a tu restricción guardada.',
+      it: 'Il latte non è stato usato a causa della tua restrizione salvata.',
+      pt: 'O leite não foi usado devido à sua restrição guardada.',
+      fr: 'Le lait n’a pas été utilisé en raison de votre restriction enregistrée.',
+      tr: 'Kayıtlı kısıtlamanız nedeniyle süt kullanılmadı.'
+    };
+    var LBL_RECIPE_NUTRITION_UNRELIABLE = {
+      de: 'Nährwerte konnten nicht zuverlässig berechnet werden.',
+      en: 'Nutrition values could not be calculated reliably.',
+      es: 'No se pudieron calcular los valores nutricionales de forma fiable.',
+      it: 'I valori nutrizionali non sono stati calcolati in modo affidabile.',
+      pt: 'Os valores nutricionais não puderam ser calculados de forma fiável.',
+      fr: 'Les valeurs nutritionnelles n’ont pas pu être calculées de façon fiable.',
+      tr: 'Besin değerleri güvenilir şekilde hesaplanamadı.'
     };
     // Explizite Nutzer-Trigger (unklare Gerichte) + Auto-Erkennung über Gerichtskatalog.
     var NUTRI_ORIGINAL_RECIPE_TRIGGER_RE = /\b(original|originale|originales|klassisch|traditionell|authentisch|authentische|authentisches|ricetta\s+originale|recette\s+originale|receta\s+original)\b/i;
@@ -29809,7 +29854,7 @@ initBarcodeEvents();
     // ---- Coach-API (Spoonacular/TheMealDB/USDA-Analyse) ----
     // Portions-Vertrag v1.4: Overlay erhält NUR finalIngredients; 1 Karte/operationId;
     // keine Request-JSON in der UI; Gesamtzeit aus Schritten; „1 Portion“-Grammatik.
-    var LP_PORTION_LOGIC_VERSION = '1.4-dedupe-render-time';
+    var LP_PORTION_LOGIC_VERSION = '1.5-canonical-display';
     try {
       console.log('[NUTRI_RECIPE_DEBUG] FRONTEND_ORIGIN', window.location && window.location.origin);
       console.log('[NUTRI_RECIPE_DEBUG] ACTIVE_PORTION_PATH', LP_PORTION_LOGIC_VERSION);
@@ -29896,6 +29941,242 @@ initBarcodeEvents();
       var tpl = pick(LBL_RECIPE_NUTRITION_FOR_N) || 'Nährwerte für {n} Portionen';
       return tpl.replace('{n}', String(Math.abs(n - Math.round(n)) < 1e-9 ? Math.round(n) : n));
     }
+
+    /**
+     * Einzige UI-Quelle für Nährwertanzeigen: finalNutrition.
+     * Kurzzeile „KH“ = Netto-KH (gleiche Zahl wie Kopf „Netto-KH“).
+     */
+    function formatNutritionSummary(finalNutrition) {
+      var n = finalNutrition || {};
+      var netCarbs = Number(
+        n.netto_kh_g != null ? n.netto_kh_g : (n.netCarbs != null ? n.netCarbs : n.carbs)
+      ) || 0;
+      return {
+        calories: Math.round(Number(n.kcal != null ? n.kcal : n.calories) || 0),
+        carbs: Math.round(netCarbs),
+        netCarbs: Math.round(netCarbs * 10) / 10,
+        fat: Math.round((Number(n.fat_g != null ? n.fat_g : n.fat) || 0) * 10) / 10,
+        protein: Math.round((Number(n.protein_g != null ? n.protein_g : n.protein) || 0) * 10) / 10,
+        fiber: Math.round((Number(n.ballaststoffe_g != null ? n.ballaststoffe_g : n.fiber) || 0) * 10) / 10
+      };
+    }
+
+    function resolveDisplayFinalNutrition(recipe) {
+      if (!recipe || typeof recipe !== 'object') return null;
+      if (recipe.finalNutrition && typeof recipe.finalNutrition === 'object') {
+        return recipe.finalNutrition;
+      }
+      if ((recipe.nutritionSource === 'finalIngredients' || recipe.nutritionBasis === 'finalIngredients' ||
+           recipe.nutritionSource === 'finalNutrition') && recipe.nutrition) {
+        return recipe.nutrition;
+      }
+      return null;
+    }
+
+    
+    var LP_CANONICAL_RENDERED_OPS = {};
+    var LP_CANONICAL_HERB_RE = /petersilie|parsley|basilikum|basil|oregano|thymian|rosmarin|schnittlauch|koriander|dill|minze|kr[aä]uter/i;
+    var LP_CANONICAL_MAIN_RE = /hack|fleisch|zwiebel|karotte|sellerie|olivenöl|öl|tomate|wein|rind|schwein|beef|pork/i;
+    var LP_CANONICAL_ACTION = {
+      heat_oil: 'Das Olivenöl in einem schweren Topf erhitzen.',
+      saute: 'Zwiebel, Karotte und Sellerie darin bei mittlerer Hitze langsam anschwitzen, bis das Gemüse weich ist.',
+      brown: 'Das Rinderhackfleisch hinzufügen und unter Rühren krümelig anbraten.',
+      deglaze: 'Mit dem Rotwein ablöschen und kurz einkochen lassen.',
+      tomato: 'Passierte Tomaten und Tomatenmark einrühren.',
+      simmer: 'Das Ragù bei niedriger Hitze etwa zwei Stunden sanft köcheln lassen und gelegentlich umrühren.',
+      season: 'Mit Salz und Pfeffer abschmecken.',
+      mix: 'Die Zutaten gründlich vermengen.',
+      serve: 'Anrichten und servieren.'
+    };
+
+    function lpIsBareNameList(text) {
+      var t = String(text || '').trim();
+      if (!t || /[.!?]/.test(t)) return false;
+      if (/\b(und|mit|erhitzen|braten|kochen|dünsten|mischen|geben|anschwitzen|ablöschen|einrühren|köcheln|abschmecken|servieren|lassen|sanft)\b/i.test(t)) return false;
+      var toks = t.split(/\s+/).filter(Boolean);
+      return toks.length >= 1 && toks.length <= 12;
+    }
+
+    function lpNaturalizeFromTitle(title) {
+      var t = String(title || '').toLowerCase();
+      if (/öl|erhitz/i.test(t)) return LP_CANONICAL_ACTION.heat_oil;
+      if (/anschwitz|gemüse|soffritto/i.test(t)) return LP_CANONICAL_ACTION.saute;
+      if (/brat|fleisch|hack/i.test(t)) return LP_CANONICAL_ACTION.brown;
+      if (/ablösch|wein/i.test(t)) return LP_CANONICAL_ACTION.deglaze;
+      if (/tomate|hinzufüg/i.test(t)) return LP_CANONICAL_ACTION.tomato;
+      if (/köchel|schmor|simmer|langsam/i.test(t)) return LP_CANONICAL_ACTION.simmer;
+      if (/würz|abschmeck|season/i.test(t)) return LP_CANONICAL_ACTION.season;
+      if (/servier|anricht/i.test(t)) return LP_CANONICAL_ACTION.serve;
+      if (title) return String(title).replace(/:\s*$/, '') + '.';
+      return LP_CANONICAL_ACTION.mix;
+    }
+
+    function sanitizeLegacyStepInstruction(raw, index, total) {
+      var t = String(raw == null ? '' : raw).trim();
+      if (!t) return { instruction: '', blocked: true };
+      t = t.replace(/^(?:Stufe\s+\d+\s+von\s+9\.\s*)+(?:ca\.\s*\d+\s*Min\.\s*)+/i, '').trim();
+      var legacy = t.match(/^([^:]{2,50}):\s*(?:Stufe\s+\d+\s+von\s+9\.\s*)?(?:ca\.\s*\d+\s*Min\.\s*)?(.*)$/i);
+      if (legacy) {
+        var title = legacy[1].trim();
+        var rest = String(legacy[2] || '').trim();
+        rest = rest.replace(/^(?:Stufe\s+\d+\s+von\s+9\.\s*)+(?:ca\.\s*\d+\s*Min\.\s*)+/i, '').trim();
+        if (!rest || lpIsBareNameList(rest)) return { instruction: lpNaturalizeFromTitle(title), repaired: true };
+        if (/[.!?]/.test(rest) || /\b(und|mit|lassen|erhitzen|braten|anschwitzen)\b/i.test(rest)) return { instruction: rest, repaired: true };
+        return { instruction: lpNaturalizeFromTitle(title), repaired: true };
+      }
+      if (lpIsBareNameList(t)) {
+        return { instruction: index >= (total || 1) - 1 ? LP_CANONICAL_ACTION.serve : LP_CANONICAL_ACTION.mix, repaired: true };
+      }
+      t = t.replace(/\bStufe\s+\d+\s+von\s+9\.\s*/gi, '').replace(/\bca\.\s*\d+\s*Min\.\s*/gi, '').replace(/\s{2,}/g, ' ').trim();
+      if (!t || lpIsBareNameList(t)) return { instruction: LP_CANONICAL_ACTION.mix, repaired: true, blocked: !t };
+      return { instruction: t, repaired: false };
+    }
+
+    function toCanonicalGarnish(garnish, finalIngredients) {
+      function allowed(name) {
+        var n = String(name || '').trim();
+        if (!n) return false;
+        if (LP_CANONICAL_HERB_RE.test(n)) return true;
+        if (LP_CANONICAL_MAIN_RE.test(n) && !LP_CANONICAL_HERB_RE.test(n)) return false;
+        return false;
+      }
+      if (!garnish) return [];
+      if (Array.isArray(garnish)) {
+        return garnish.map(function (g) {
+          if (typeof g === 'string') return { displayName: g.trim() };
+          return { displayName: String((g && (g.displayName || g.name)) || '').trim() };
+        }).filter(function (g) { return g.displayName && allowed(g.displayName); });
+      }
+      var s = String(garnish).trim();
+      if (!s) return [];
+      if (LP_CANONICAL_HERB_RE.test(s) && !LP_CANONICAL_MAIN_RE.test(s.replace(LP_CANONICAL_HERB_RE, ''))) {
+        var m = s.match(/petersilie|parsley|basilikum|basil|oregano|thymian|rosmarin|schnittlauch|dill|minze/i);
+        return [{ displayName: m ? (m[0].charAt(0).toUpperCase() + m[0].slice(1).toLowerCase()) : s }];
+      }
+      return allowed(s) ? [{ displayName: s }] : [];
+    }
+
+    function toCanonicalDisplayRecipe(finalRecipe) {
+      var r = finalRecipe && typeof finalRecipe === 'object' ? finalRecipe : {};
+      var ingsSrc = Array.isArray(r.finalIngredients) && r.finalIngredients.length
+        ? r.finalIngredients
+        : (Array.isArray(r.ingredients) ? r.ingredients : []);
+      var finalIngredients = ingsSrc.map(function (ing) {
+        return {
+          id: (ing && (ing.id || ing._v92_id)) || null,
+          displayName: String((ing && (ing.displayName || ing.name)) || '').trim(),
+          amount: Number(ing && ing.amount) || 0,
+          unit: (ing && ing.unit === 'ml') ? 'ml' : ((ing && ing.unit) || 'g'),
+          optional: !!(ing && ing.optional),
+          role: (ing && ing.role) || null
+        };
+      }).filter(function (ing) { return !!ing.displayName; });
+
+      var fn = r.finalNutrition || null;
+      if (!fn && (r.nutritionSource === 'finalIngredients' || r.nutritionSource === 'finalNutrition') && r.nutrition) fn = r.nutrition;
+      var finalNutrition = fn ? {
+        kcal: Number(fn.kcal != null ? fn.kcal : fn.calories) || 0,
+        protein_g: Number(fn.protein_g != null ? fn.protein_g : fn.protein) || 0,
+        fat_g: Number(fn.fat_g != null ? fn.fat_g : fn.fat) || 0,
+        netto_kh_g: Number(fn.netto_kh_g != null ? fn.netto_kh_g : fn.netCarbs) || 0,
+        ballaststoffe_g: Number(fn.ballaststoffe_g != null ? fn.ballaststoffe_g : fn.fiber) || 0
+      } : null;
+
+      var rawSteps = Array.isArray(r.structuredSteps) && r.structuredSteps.length ? r.structuredSteps : (r.steps || []);
+      var steps = [];
+      var stepIssues = [];
+      for (var i = 0; i < rawSteps.length; i++) {
+        var step = rawSteps[i];
+        var raw = '';
+        if (typeof step === 'string') raw = step;
+        else if (step && typeof step === 'object') {
+          raw = String(step.instruction || step.text || step.content || '');
+          if (!raw && step.title) {
+            raw = String(step.title) + ': ' + (Array.isArray(step.ingredientNames) ? step.ingredientNames.join(' ') : String(step.content || ''));
+          }
+        }
+        var cleaned = sanitizeLegacyStepInstruction(raw, i, rawSteps.length);
+        if (!cleaned.instruction || lpIsBareNameList(cleaned.instruction)) {
+          stepIssues.push('Schritt ' + (i + 1) + ' ungültig');
+          continue;
+        }
+        if (/Olivenöl\s+Zwiebel\s+Karotte\s+Sellerie/i.test(cleaned.instruction) || /\bStufe\s+\d+\s+von\s+9\b/i.test(cleaned.instruction)) {
+          stepIssues.push('Schritt ' + (i + 1) + ' Legacy-Muster');
+          continue;
+        }
+        steps.push({
+          stepNumber: steps.length + 1,
+          instruction: cleaned.instruction,
+          durationMinutes: (step && typeof step === 'object' && (step.durationMinutes != null || step.time_min != null))
+            ? Number(step.durationMinutes != null ? step.durationMinutes : step.time_min)
+            : null,
+          heatLevel: (step && typeof step === 'object') ? (step.heatLevel != null ? step.heatLevel : step.stove_level) : null,
+          ingredientIds: (step && typeof step === 'object' && Array.isArray(step.ingredientIds)) ? step.ingredientIds.slice() : []
+        });
+      }
+
+      var totalMin = 0;
+      steps.forEach(function (s) { totalMin += Number(s.durationMinutes) || 0; });
+      if (r.timing && Number(r.timing.totalMinutes) > totalMin) totalMin = Number(r.timing.totalMinutes);
+      if (Number(r.totalMinutes) > totalMin) totalMin = Number(r.totalMinutes);
+      function timingLabel(mins) {
+        var m = Math.max(0, Math.round(Number(mins) || 0));
+        if (m <= 0) return '';
+        if (m < 60) return m + ' Minuten';
+        var h = Math.floor(m / 60), rest = m % 60;
+        if (rest === 0) return h === 1 ? 'ca. 1 Stunde' : ('ca. ' + h + ' Stunden');
+        if (h === 1) return 'ca. 1 Stunde ' + rest + ' Minuten';
+        return 'ca. ' + h + ' Stunden ' + rest + ' Minuten';
+      }
+
+      var garnish = toCanonicalGarnish(r.garnish, finalIngredients);
+      var nutritionSummary = finalNutrition ? formatNutritionSummary(finalNutrition) : null;
+      var display = {
+        title: String(r.title || '').trim(),
+        subtitle: String(r.subtitle || '').trim(),
+        finalIngredients: finalIngredients,
+        finalNutrition: finalNutrition,
+        nutritionSummary: nutritionSummary,
+        steps: steps,
+        garnish: garnish,
+        timing: {
+          totalMinutes: totalMin || null,
+          timingStatus: totalMin > 0 ? 'calculated' : 'unknown',
+          label: timingLabel(totalMin)
+        },
+        qualityStatus: r.qualityStatus || null,
+        qualityWarnings: Array.isArray(r.qualityWarnings) ? r.qualityWarnings.slice() : [],
+        adaptationFlags: Array.isArray(r.adaptationFlags) ? r.adaptationFlags.slice() : [],
+        adaptationNote: r.adaptationNote || null,
+        servings: Number(r.finalServings != null ? r.finalServings : r.servings) || 1,
+        finalServings: Number(r.finalServings != null ? r.finalServings : r.servings) || 1,
+        portionWarning: r.portionDisplayHint || null,
+        operationId: r.renderedOperationId || r.operationId || null,
+        sourceServingsStatus: r.sourceServingsStatus || null,
+        requiresReview: !!r.requiresReview
+      };
+
+      var visibleIssues = stepIssues.slice();
+      if (!display.title) visibleIssues.push('Titel fehlt');
+      if (!finalIngredients.length) visibleIssues.push('finalIngredients fehlt');
+      if (!finalNutrition) visibleIssues.push('finalNutrition fehlt');
+      if (!steps.length) visibleIssues.push('Keine Schritte');
+      var visibleBlob = [display.title].concat(steps.map(function (s) { return s.instruction; })).join('\n');
+      if (/Olivenöl\s+Zwiebel\s+Karotte\s+Sellerie/i.test(visibleBlob)) visibleIssues.push('Rohdaten-Zutatenliste sichtbar');
+      if (/Garnitur:\s*(Rinderhackfleisch|Zwiebel|Karotte|Sellerie)/i.test(visibleBlob)) visibleIssues.push('Falsche Garnitur');
+      if (/\bself_check\b|\bai_instruction\b/i.test(visibleBlob)) visibleIssues.push('Interne Felder sichtbar');
+      display._visibleOutput = {
+        status: visibleIssues.length ? 'fail' : 'pass',
+        issues: visibleIssues,
+        renderer: 'canonical'
+      };
+      if (visibleIssues.length) {
+        display.qualityStatus = 'blocked';
+        display.qualityWarnings = (display.qualityWarnings || []).concat(visibleIssues);
+      }
+      return display;
+    }
+
 
     function extractDurationMinutesFromText(text) {
       var s = String(text || '');
@@ -30042,6 +30323,189 @@ initBarcodeEvents();
       return out;
     }
 
+    /**
+     * Frontend Quality Gate (Spiegel des Backend-Gates).
+     * Läuft nach Portionierung, vor Anzeige. Setzt qualityStatus: ready|review|blocked.
+     */
+    function applyFrontendRecipeQualityGate(recipe) {
+      if (!recipe || typeof recipe !== 'object') return recipe;
+      var errors = [];
+      var warnings = [];
+      var checks = {};
+
+      function addCheck(key, status, issues) {
+        checks[key] = { status: status, issues: issues || [] };
+        if (status === 'fail') errors = errors.concat(issues || []);
+        if (status === 'warning') warnings = warnings.concat(issues || []);
+      }
+
+      var ings = Array.isArray(recipe.finalIngredients) && recipe.finalIngredients.length
+        ? recipe.finalIngredients
+        : (Array.isArray(recipe.ingredients) ? recipe.ingredients : []);
+      if (!String(recipe.title || '').trim() || !ings.length || !Array.isArray(recipe.steps) || !recipe.steps.length) {
+        addCheck('structure', 'fail', ['Rezeptstruktur unvollständig']);
+      } else {
+        addCheck('structure', 'pass', []);
+      }
+
+      var srcStatus = String(recipe.sourceServingsStatus || recipe.servingsStatus || '');
+      if (srcStatus === 'unknown') {
+        addCheck('portions', 'fail', ['Die Ausgangsportionszahl ist nicht bekannt. Eine sichere Skalierung ist nicht möglich.']);
+      } else if (srcStatus === 'inferred' || recipe.requiresReview || recipe.portionSafe === false) {
+        addCheck('portions', 'warning', [recipe.portionDisplayHint || 'Portionsgröße geschätzt – bitte prüfen']);
+      } else {
+        addCheck('portions', 'pass', []);
+      }
+
+      var n = recipe.finalNutrition || (recipe.nutritionSource === 'finalIngredients' || recipe.nutritionBasis === 'finalIngredients' ? recipe.nutrition : null);
+      if (!n) {
+        addCheck('nutrition', srcStatus === 'unknown' ? 'fail' : 'warning', ['finalNutrition fehlt']);
+      } else if (Number(n.kcal != null ? n.kcal : n.calories) < 0) {
+        addCheck('nutrition', 'fail', ['Kalorien ungültig']);
+      } else {
+        addCheck('nutrition', 'pass', []);
+      }
+
+      var allergenHit = null;
+      try {
+        allergenHit = (typeof findNutriAllergenConflictInRecipe === 'function')
+          ? findNutriAllergenConflictInRecipe({
+              title: recipe.title,
+              ingredients: ings,
+              steps: recipe.steps,
+              shopping_list: recipe.shopping_list
+            })
+          : null;
+      } catch (_) {}
+      if (allergenHit) {
+        addCheck('allergens', 'fail', ['Allergenkonflikt: ' + allergenHit]);
+        recipe._qualityAllergenLabel = allergenHit;
+      } else {
+        addCheck('allergens', 'pass', []);
+      }
+
+      var title = String(recipe.title || '');
+      var ingBlob = ings.map(function (i) { return String((i && (i.name || i.displayName)) || '').toLowerCase(); }).join(' ');
+      if (/\bpasta\b|nudel/i.test(title) && !/pasta|nudel|spaghetti|penne|fusilli/.test(ingBlob)) {
+        addCheck('ingredients', 'fail', ['Titel nennt Pasta, aber keine Pasta in finalIngredients']);
+      } else {
+        addCheck('ingredients', 'pass', []);
+      }
+
+      var bare = false;
+      var instrFallback = false;
+      var ACTION_FALLBACKS_FE = {
+        saute: 'Die Zutaten bei mittlerer Hitze glasig anschwitzen.',
+        pan_fry: 'Die Zutaten in der Pfanne goldbraun anbraten.',
+        boil: 'Die Zutaten in ausreichend Wasser gar kochen.',
+        simmer: 'Alles bei niedriger Hitze langsam köcheln lassen.',
+        mix: 'Die Zutaten gründlich vermengen.',
+        season: 'Mit Salz und Pfeffer abschmecken.',
+        serve: 'Anrichten und sofort servieren.'
+      };
+      (recipe.steps || []).forEach(function (s, idx) {
+        var t = typeof s === 'string' ? s : String((s && (s.instruction || s.text || s.content)) || '');
+        if (t && !/[.!?]/.test(t) && !/\b(und|mit|erhitzen|braten|kochen|mischen|geben|dünsten|anschwitzen|würzen|servieren)\b/i.test(t)) {
+          var toks = t.trim().split(/\s+/);
+          if (toks.length >= 3 && toks.length <= 12) {
+            instrFallback = true;
+            var action = (s && s.actionId) || 'mix';
+            if (/öl|zwiebel|karotte|sellerie/i.test(t)) action = 'saute';
+            else if (/braten|hack|fleisch/i.test(t)) action = 'pan_fry';
+            else if (/pasta|nudel|kochen|wasser/i.test(t)) action = 'boil';
+            else if (idx >= (recipe.steps.length - 1)) action = 'serve';
+            var fb = ACTION_FALLBACKS_FE[action] || ACTION_FALLBACKS_FE.mix;
+            if (typeof s === 'string') {
+              recipe.steps[idx] = fb;
+            } else if (s && typeof s === 'object') {
+              s.instruction = fb;
+              s._instructionFallbackUsed = true;
+            }
+          }
+        }
+      });
+      // Nach Fallback erneut prüfen
+      (recipe.steps || []).forEach(function (s) {
+        var t = typeof s === 'string' ? s : String((s && (s.instruction || s.text || s.content)) || '');
+        if (t && !/[.!?]/.test(t) && !/\b(und|mit|erhitzen|braten|kochen|mischen|geben|dünsten|anschwitzen|würzen|servieren|vermeng|köchel)\b/i.test(t)) {
+          var toks2 = t.trim().split(/\s+/);
+          if (toks2.length >= 3 && toks2.length <= 12) bare = true;
+        }
+      });
+      if (bare) {
+        addCheck('instructions', 'fail', ['Zubereitung enthält Rohdaten-Aufzählungen']);
+        addCheck('language', 'fail', ['Zubereitungstext nicht natürlich']);
+      } else if (instrFallback) {
+        recipe._instructionFallbackUsed = true;
+        addCheck('instructions', 'warning', ['Zubereitungstext durch Standardformulierung ersetzt']);
+        addCheck('language', 'warning', ['Zubereitungstext durch Fallback ersetzt']);
+      } else {
+        addCheck('instructions', 'pass', []);
+        addCheck('language', 'pass', []);
+      }
+
+      var timing = computeRecipeTimingFromSteps(recipe);
+      if (timing.totalMinutes && timing.prep_time) {
+        recipe.totalMinutes = timing.totalMinutes;
+        recipe.prep_time = timing.prep_time;
+        recipe.timing = {
+          prepMinutes: timing.prepMinutes,
+          cookMinutes: timing.cookMinutes,
+          totalMinutes: timing.totalMinutes,
+          timingStatus: 'calculated'
+        };
+      }
+      addCheck('timing', 'pass', []);
+
+      // Server-Gate respektieren
+      if (recipe.qualityStatus === 'blocked') {
+        errors.push.apply(errors, recipe.qualityErrors || ['Server Quality Gate: blocked']);
+      } else if (recipe.qualityStatus === 'review') {
+        warnings.push.apply(warnings, recipe.qualityWarnings || []);
+      }
+
+      var status = errors.length ? 'blocked' : (warnings.length ? 'review' : 'ready');
+      if (status === 'ready' && (srcStatus === 'inferred' || recipe.requiresReview)) status = 'review';
+
+      recipe.qualityStatus = status;
+      recipe.qualityScore = status === 'ready' ? 100 : (status === 'review' ? 60 : 0);
+      recipe.qualityChecks = checks;
+      recipe.qualityErrors = errors;
+      recipe.qualityWarnings = warnings;
+      recipe.requiresReview = status !== 'ready';
+      if (status === 'blocked') recipe.portionSafe = false;
+      console.log('[NUTRI_RECIPE_DEBUG] QUALITY_GATE', {
+        qualityStatus: status,
+        errors: errors.slice(0, 5),
+        warnings: warnings.slice(0, 5)
+      });
+      return recipe;
+    }
+
+    function commitNutriRecipeOrBlock(recipe, extras) {
+      extras = extras || {};
+      var gated = applyFrontendRecipeQualityGate(
+        stripInternalFieldsFromRecipe(ensureLiveFinalPortionedRecipe(recipe))
+      );
+      if (gated.qualityStatus === 'blocked') {
+        nutriRecipeState.result = null;
+        nutriRecipeState.suggestions = [];
+        nutriRecipeState.error = true;
+        nutriRecipeState.loading = false;
+        nutriRecipeState.chatLoading = false;
+        if (gated._qualityAllergenLabel || (gated.qualityChecks && gated.qualityChecks.allergens && gated.qualityChecks.allergens.status === 'fail')) {
+          nutriRecipeState.errorText = pick(LBL_RECIPE_QUALITY_ALLERGEN_BLOCKED);
+        } else {
+          nutriRecipeState.errorText = pick(LBL_RECIPE_QUALITY_BLOCKED);
+        }
+        return null;
+      }
+      if (extras.assign) {
+        Object.keys(extras.assign).forEach(function (k) { gated[k] = extras.assign[k]; });
+      }
+      return gated;
+    }
+
     // Umschaltbar wie andere Endpunkte: lokal fuer Entwicklung, Render fuer Produktion.
     var COACH_API_USE_LOCAL = true;
     var COACH_API_BASE = COACH_API_USE_LOCAL
@@ -30124,22 +30588,38 @@ initBarcodeEvents();
      */
     function buildCoachInputFromFinalRecipe(recipe) {
       if (!recipe || typeof recipe !== 'object') return null;
+      if (recipe.qualityStatus === 'blocked') {
+        return {
+          title: recipe.title || '',
+          qualityStatus: 'blocked',
+          qualityWarnings: recipe.qualityWarnings || [],
+          finalIngredients: [],
+          finalNutrition: null,
+          finalServings: recipe.finalServings != null ? recipe.finalServings : recipe.servings,
+          servingsStatus: recipe.servingsStatus || null
+        };
+      }
       var finalIngredients = Array.isArray(recipe.finalIngredients)
         ? recipe.finalIngredients
         : (Array.isArray(recipe.ingredients) ? recipe.ingredients : []);
       var finalNutrition = recipe.finalNutrition || (
-        recipe.nutritionBasis === 'finalIngredients' ? recipe.nutrition : null
+        (recipe.nutritionBasis === 'finalIngredients' || recipe.nutritionSource === 'finalIngredients')
+          ? recipe.nutrition
+          : null
       ) || null;
       return {
         title: recipe.title || '',
+        finalIngredients: finalIngredients,
+        finalNutrition: finalNutrition,
         finalServings: recipe.finalServings != null ? recipe.finalServings : recipe.servings,
         servingsStatus: recipe.servingsStatus || null,
         sourceServingsStatus: recipe.sourceServingsStatus || null,
-        requiresReview: !!recipe.requiresReview,
-        finalIngredients: finalIngredients,
-        finalNutrition: finalNutrition,
+        qualityStatus: recipe.qualityStatus || null,
+        qualityWarnings: recipe.qualityWarnings || [],
+        requiresReview: !!recipe.requiresReview || recipe.qualityStatus === 'review',
         validationWarnings: recipe.validationWarnings || recipe.portionWarnings || [],
         nutritionBasis: 'finalIngredients',
+        nutritionSource: 'finalIngredients',
         nutritionServings: recipe.nutritionServings != null
           ? recipe.nutritionServings
           : (recipe.finalServings != null ? recipe.finalServings : recipe.servings)
@@ -30196,10 +30676,13 @@ initBarcodeEvents();
     function buildCoachPerServingLineHtml(perServing, escFn) {
       if (!perServing) return '';
       var esc = escFn || function (s) { return String(s); };
+      // Kurzzeile: KH = Netto-KH (gleiche Quelle wie Kopfbereich)
+      var carbsVal = perServing.netCarbs != null ? perServing.netCarbs
+        : (perServing.carbs != null ? perServing.carbs : 0);
       var line = Math.round(Number(perServing.calories) || 0) + ' kcal/Portion · ' +
         'P ' + Math.round(Number(perServing.protein) || 0) + ' g · ' +
         'F ' + Math.round(Number(perServing.fat) || 0) + ' g · ' +
-        'KH ' + Math.round(Number(perServing.netCarbs) || 0) + ' g · ' +
+        'KH ' + Math.round(Number(carbsVal) || 0) + ' g · ' +
         'B ' + Math.round(Number(perServing.fiber) || 0) + ' g';
       return '<p class="nutri-recipe-match">' + esc(line) + '</p>';
     }
@@ -31608,12 +32091,30 @@ initBarcodeEvents();
         return next;
       });
       if (!Array.isArray(out.steps)) out.steps = [];
-      out.steps = out.steps.map(function (s) {
-        if (s && typeof s === 'object' && (s.instruction || s.text || s.content)) {
-          return String(s.instruction || s.text || s.content || '');
+      out.steps = out.steps.map(function (s, idx, arr) {
+        var raw = '';
+        if (s && typeof s === 'object' && (s.instruction || s.text || s.content || s.title)) {
+          raw = String(s.instruction || s.text || s.content || '');
+          if (!raw && s.title) {
+            raw = String(s.title) + ': ' + (Array.isArray(s.ingredientNames) ? s.ingredientNames.join(' ') : '');
+          }
+        } else {
+          raw = s == null ? '' : String(s);
         }
-        return s == null ? '' : String(s);
-      });
+        if (typeof sanitizeLegacyStepInstruction === 'function') {
+          var cleaned = sanitizeLegacyStepInstruction(raw, idx, arr.length);
+          return cleaned.instruction || raw;
+        }
+        return raw;
+      }).filter(Boolean);
+      // Legacy-Garnitur: keine Hauptzutaten als Garnitur
+      if (typeof toCanonicalGarnish === 'function') {
+        var gCanon = toCanonicalGarnish(out.garnish, out.finalIngredients || out.ingredients);
+        out.garnish = gCanon.length ? gCanon.map(function (g) { return g.displayName; }).join(', ') : '';
+      } else if (typeof out.garnish === 'string' && /hack|fleisch|zwiebel|karotte|sellerie|olivenöl/i.test(out.garnish) &&
+          !/petersilie|basilikum|oregano|kräuter/i.test(out.garnish)) {
+        out.garnish = '';
+      }
       if (typeof out.prep_time !== 'string') out.prep_time = out.prep_time == null ? '' : String(out.prep_time);
       if (typeof out.nutrition_note !== 'string') out.nutrition_note = out.nutrition_note == null ? '' : String(out.nutrition_note);
       if (typeof out.garnish !== 'string') out.garnish = out.garnish == null ? '' : String(out.garnish);
@@ -31656,6 +32157,7 @@ initBarcodeEvents();
 
       out = stripInternalFieldsFromRecipe(out);
       out.normalized = true;
+      out = applyFrontendRecipeQualityGate(out);
 
       console.log('[NUTRI_RECIPE_DEBUG] Nach Normalisierung – Ingredients:', Array.isArray(out.ingredients) ? out.ingredients.length : 0, 'Steps:', Array.isArray(out.steps) ? out.steps.length : 0);
       console.log('[NUTRI_RECIPE_DEBUG] Nach Normalisierung – Ingredient-Namen:', Array.isArray(out.ingredients) ? out.ingredients.map(function (ing) { return ing && ing.name; }) : []);
@@ -32265,6 +32767,12 @@ initBarcodeEvents();
 
     function requestNutriCoachAnalysis(recipe) {
       if (!recipe || !window.LabPlateCoachApi) return;
+      if (recipe.qualityStatus === 'blocked') {
+        nutriRecipeState.coachAnalysis = null;
+        nutriRecipeState.coachAnalysisError = 'coach_unavailable';
+        nutriRecipeState.coachAnalysisLoading = false;
+        return;
+      }
       nutriRecipeState.coachAnalysisGen += 1;
       var gen = nutriRecipeState.coachAnalysisGen;
       nutriRecipeState.coachAnalysis = null;
@@ -32276,10 +32784,11 @@ initBarcodeEvents();
         console.log('[NUTRI_RECIPE_DEBUG] COACH_INPUT', {
           finalServings: coachInput.finalServings,
           servingsStatus: coachInput.servingsStatus,
+          qualityStatus: coachInput.qualityStatus,
           requiresReview: coachInput.requiresReview,
           nutritionSource: 'finalNutrition',
           ingredientSample: (coachInput.finalIngredients || []).slice(0, 3).map(function (i) {
-            return { name: i.name, amount: i.amount, unit: i.unit };
+            return { name: i.name || i.displayName, amount: i.amount, unit: i.unit };
           }),
           finalNutrition: coachInput.finalNutrition
         });
@@ -32348,9 +32857,18 @@ initBarcodeEvents();
         setNutriRecipeToolbarVisible(true);
         console.log('[NUTRI_RECIPE_DEBUG] ACTIVE_PORTION_PATH', LP_PORTION_LOGIC_VERSION);
         // Safety: Overlay nie mit Rohmengen – erneut portionieren falls nötig (idempotent).
-        nutriRecipeState.result = stripInternalFieldsFromRecipe(
+        nutriRecipeState.result = applyFrontendRecipeQualityGate(stripInternalFieldsFromRecipe(
           ensureLiveFinalPortionedRecipe(nutriRecipeState.result)
-        );
+        ));
+        if (nutriRecipeState.result.qualityStatus === 'blocked') {
+          nutriRecipeState.error = true;
+          nutriRecipeState.errorText = (nutriRecipeState.result._qualityAllergenLabel)
+            ? pick(LBL_RECIPE_QUALITY_ALLERGEN_BLOCKED)
+            : pick(LBL_RECIPE_QUALITY_BLOCKED);
+          nutriRecipeState.result = null;
+          renderNutriRecipeBody();
+          return;
+        }
         var rBase = nutriRecipeState.result;
         debugRecipeState('BEFORE_OVERLAY_RENDER', rBase);
         var baseServings = Number(rBase.finalServings) > 0
@@ -32376,21 +32894,69 @@ initBarcodeEvents();
           recipeServingsCount
         );
         r.finalIngredients = r.ingredients;
-        debugRecipeState('OVERLAY_RENDER_INPUT', r);
-        var rMacros = calcRecipeMacrosTotal(r);
-        // Bei 1 Portion: finalNutrition bevorzugen (sichtbar = berechnet aus finalIngredients)
-        var rKcal;
-        if (recipeServingsCount === 1 && rBase.finalNutrition && rBase.finalNutrition.kcal != null) {
-          rKcal = Math.round(Number(rBase.finalNutrition.kcal) || 0);
-          rMacros = {
-            protein: Number(rBase.finalNutrition.protein_g) || 0,
-            fat: Number(rBase.finalNutrition.fat_g) || 0,
-            netCarbs: Number(rBase.finalNutrition.netto_kh_g) || 0,
-            fiber: Number(rBase.finalNutrition.ballaststoffe_g) || 0
+        if (rBase.finalNutrition && recipeServingsCount === baseServings) {
+          r.finalNutrition = rBase.finalNutrition;
+        } else if (rBase.finalNutrition && baseServings > 0) {
+          var sfN = recipeServingsCount / baseServings;
+          var bn = rBase.finalNutrition;
+          r.finalNutrition = {
+            kcal: Math.round((Number(bn.kcal != null ? bn.kcal : bn.calories) || 0) * sfN),
+            protein_g: Math.round(((Number(bn.protein_g != null ? bn.protein_g : bn.protein) || 0) * sfN) * 10) / 10,
+            fat_g: Math.round(((Number(bn.fat_g != null ? bn.fat_g : bn.fat) || 0) * sfN) * 10) / 10,
+            netto_kh_g: Math.round(((Number(bn.netto_kh_g != null ? bn.netto_kh_g : bn.netCarbs) || 0) * sfN) * 10) / 10,
+            ballaststoffe_g: Math.round(((Number(bn.ballaststoffe_g != null ? bn.ballaststoffe_g : bn.fiber) || 0) * sfN) * 10) / 10
           };
-        } else {
-          rKcal = Math.round((rMacros.netCarbs || 0) * 4 + (rMacros.protein || 0) * 4 + (rMacros.fat || 0) * 9);
         }
+        r.structuredSteps = rBase.structuredSteps || rBase.steps;
+        r.steps = r.structuredSteps || r.steps;
+        r.garnish = rBase.garnish;
+        r.adaptationFlags = rBase.adaptationFlags;
+        r.adaptationNote = rBase.adaptationNote;
+        r.qualityStatus = rBase.qualityStatus;
+        r.qualityWarnings = rBase.qualityWarnings;
+        r.timing = rBase.timing;
+        r.totalMinutes = rBase.totalMinutes;
+        r.portionDisplayHint = rBase.portionDisplayHint;
+        r.sourceServingsStatus = rBase.sourceServingsStatus;
+        r.requiresReview = rBase.requiresReview;
+        r.renderedOperationId = rBase.renderedOperationId || nutriRecipeState.activeOperationId;
+
+        // Kanonisches Display-Modell – einziger Eingang für sichtbare Felder
+        var display = toCanonicalDisplayRecipe(r);
+        if (display._visibleOutput && display._visibleOutput.status === 'fail') {
+          nutriRecipeState.error = true;
+          nutriRecipeState.errorText = pick(LBL_RECIPE_QUALITY_BLOCKED);
+          nutriRecipeState.result = null;
+          console.warn('[NUTRI_RECIPE_DEBUG] CANONICAL_VISIBLE_BLOCKED', display._visibleOutput.issues);
+          renderNutriRecipeBody();
+          return;
+        }
+        if (display.qualityStatus === 'blocked') {
+          nutriRecipeState.error = true;
+          nutriRecipeState.errorText = pick(LBL_RECIPE_QUALITY_BLOCKED);
+          nutriRecipeState.result = null;
+          renderNutriRecipeBody();
+          return;
+        }
+
+        var opId = display.operationId || nutriRecipeState.activeOperationId || '';
+        // Dedup-Guard: gleiche operationId nicht doppelt als Karte schreiben (pro Render-Pass ok beim Stepper)
+        console.log('[NUTRI_RECIPE_DEBUG] CANONICAL_RENDER', {
+          operationId: opId,
+          version: LP_PORTION_LOGIC_VERSION,
+          steps: display.steps.length,
+          ings: display.finalIngredients.length
+        });
+
+        debugRecipeState('OVERLAY_RENDER_INPUT', r);
+        var nutriSummary = display.nutritionSummary || formatNutritionSummary(display.finalNutrition);
+        var rKcal = nutriSummary.calories;
+        var rMacros = {
+          protein: nutriSummary.protein,
+          fat: nutriSummary.fat,
+          netCarbs: nutriSummary.netCarbs,
+          fiber: nutriSummary.fiber
+        };
         console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Anzahl der Ingredients:', r.ingredients ? r.ingredients.length : 0);
         console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Anzahl der Steps:', r.steps ? r.steps.length : 0);
         console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Ingredient-Mengen:', (r.ingredients || []).map(function (ing) {
@@ -32412,30 +32978,37 @@ initBarcodeEvents();
             escNutri((rBase.portionDisplayHint || rBase.portionWarnings && rBase.portionWarnings[0]) ||
               'Die Ausgangsportionszahl ist nicht bekannt. Eine sichere Skalierung ist nicht möglich.') +
             '</p>';
-        } else if (isInferredServings || rBase.portionSafe === false ||
-            (rBase.portionWarnings && rBase.portionWarnings.length)) {
+        } else if (rBase.qualityStatus === 'review' || isInferredServings || rBase.portionSafe === false ||
+            (rBase.portionWarnings && rBase.portionWarnings.length) ||
+            (rBase.qualityWarnings && rBase.qualityWarnings.length)) {
           var warnText = rBase.portionDisplayHint ||
+            (rBase.qualityWarnings && rBase.qualityWarnings[0]) ||
             (rBase.portionWarnings && rBase.portionWarnings[0]) ||
-            'Portionsgröße geschätzt – bitte prüfen';
+            pick(LBL_RECIPE_QUALITY_REVIEW);
           if (isInferredServings && !/geschätzt/i.test(String(warnText))) {
             warnText = 'Portionsgröße geschätzt – bitte prüfen';
           }
           portionWarningBanner = '<p class="nutri-recipe-match" role="status"><strong>Portionsangabe prüfen:</strong> ' +
             escNutri(warnText) + '</p>';
         }
-        var coachAnalysis = nutriRecipeState.coachAnalysis;
-        var coachPerServing = coachAnalysis && coachAnalysis.perServing ? coachAnalysis.perServing : null;
-        // Pro-Portion-Werte: Coach-API wenn da, sonst lokal aus Basis-Makros / Basis-Portionen.
-        if (!coachPerServing) {
-          var baseMacrosLocal = calcRecipeMacrosPerServing(Object.assign({}, rBase, { servings: baseServings }));
-          coachPerServing = {
-            calories: Math.round((baseMacrosLocal.netCarbs || 0) * 4 + (baseMacrosLocal.protein || 0) * 4 + (baseMacrosLocal.fat || 0) * 9),
-            protein: baseMacrosLocal.protein || 0,
-            fat: baseMacrosLocal.fat || 0,
-            netCarbs: baseMacrosLocal.netCarbs || 0,
-            fiber: baseMacrosLocal.fiber || 0
-          };
+        if (rBase._nutritionImplausible || (rBase.qualityChecks && rBase.qualityChecks.nutrition && rBase.qualityChecks.nutrition.status === 'fail')) {
+          portionWarningBanner += '<p class="nutri-recipe-match" role="status">' +
+            escNutri(pick(LBL_RECIPE_NUTRITION_UNRELIABLE)) + '</p>';
         }
+        if (rBase.adaptationNote || (rBase.adaptationFlags && rBase.adaptationFlags.indexOf('dairy_free_adaptation') >= 0)) {
+          portionWarningBanner += '<p class="nutri-recipe-match" role="status">' +
+            escNutri(rBase.adaptationNote || pick(LBL_RECIPE_DAIRY_FREE_ADAPTATION)) + '</p>';
+        }
+        var coachAnalysis = nutriRecipeState.coachAnalysis;
+        // Kurzzeile immer aus demselben finalNutrition – nie Coach-Rohwerte mit abweichenden KH
+        var coachPerServing = {
+          calories: nutriSummary.calories,
+          protein: nutriSummary.protein,
+          fat: nutriSummary.fat,
+          netCarbs: nutriSummary.netCarbs,
+          carbs: nutriSummary.carbs,
+          fiber: nutriSummary.fiber
+        };
         var coachScoreBadge = (coachAnalysis && coachAnalysis.healthScore != null)
           ? buildCoachHealthScoreBadgeHtml(coachAnalysis.healthScore)
           : '';
@@ -32452,9 +33025,10 @@ initBarcodeEvents();
           ? (rBase.portionLabelSingular || pick(LBL_RECIPE_SERVING_SINGULAR))
           : (rBase.portionLabel || pick(LBL_RECIPE_SERVINGS_SUFFIX));
         var prepTimeLabel = rBase.prepTimeLabel || pick(LBL_RECIPE_PREP_TIME);
-        // Gesamtzeit aus Schritten, falls Modell-prep_time zu kurz ist.
-        var timingForDisplay = computeRecipeTimingFromSteps(r);
-        if (timingForDisplay.prep_time) r.prep_time = timingForDisplay.prep_time;
+        // Kanonische Kopfzeit nur aus display.timing
+        var prepTimeValue = (display.timing && display.timing.label)
+          ? display.timing.label
+          : (r.prep_time || '');
         var servingsStepperHtml =
           '<div class="nutri-recipe-servings-stepper" role="group" aria-label="' + escNutri(rBase.portionLabel || pick(LBL_RECIPE_SERVINGS_SUFFIX)) + '">' +
             '<button type="button" class="nrs-btn nrs-minus" id="nutri-recipe-servings-minus" aria-label="' + escNutri(pick(LBL_RECIPE_SERVINGS_MINUS_ARIA)) + '"' + (recipeServingsCount <= recipeServingsMin ? ' disabled' : '') + '>' +
@@ -32465,12 +33039,16 @@ initBarcodeEvents();
               '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>' +
             '</button>' +
           '</div>';
+        var canonicalTitle = display.title || r.title;
         var html =
           nutriRecipeCoachTitleBlockHtml() +
-          '<div class="nutri-recipe-result" id="nutri-recipe-recipe-overlay" data-recipe-card="1" data-recipe-operation-id="' + escNutri(nutriRecipeState.lastRenderedOperationId || nutriRecipeState.activeOperationId || '') + '">' +
+          '<div class="nutri-recipe-result" id="nutri-recipe-recipe-overlay" data-recipe-card="1" data-renderer="canonical" data-recipe-operation-id="' + escNutri(opId || nutriRecipeState.lastRenderedOperationId || nutriRecipeState.activeOperationId || '') + '">' +
             '<div class="nutri-recipe-result-header">' +
-              '<h3 class="nutri-recipe-result-title">' + escNutri(r.title) + '</h3>' +
-              '<p class="nutri-recipe-match">' + escNutri(prepTimeLabel) + ': ' + escNutri(r.prep_time) + '</p>' +
+              '<h3 class="nutri-recipe-result-title">' + escNutri(canonicalTitle) + '</h3>' +
+              (display.subtitle
+                ? '<p class="nutri-recipe-match">' + escNutri(display.subtitle) + '</p>'
+                : '') +
+              '<p class="nutri-recipe-match">' + escNutri(prepTimeLabel) + ': ' + escNutri(prepTimeValue) + '</p>' +
               servingsStepperHtml +
             '</div>' +
             '<p class="nutri-recipe-disclaimer">' + escNutri(pick(LBL_RECIPE_DISCLAIMER)) + '</p>' +
@@ -32488,57 +33066,45 @@ initBarcodeEvents();
               coachPerServingHtml +
               coachWarningsHtml +
               coachUsdaHtml +
-              (rBase.sourceText
-                ? '<p class="nutri-recipe-match">' + escNutri(rBase.sourceText) + '</p>'
-                : ((rBase.recipeSource === 'ai-generated-original' || rBase.recipeSource === 'themealdb')
-                  ? '<p class="nutri-recipe-match">' + escNutri('Quelle: klassische Original-Rekonstruktion') + (rBase.originalCuisine ? (' (' + escNutri(rBase.originalCuisine) + ')') : '') + '</p>'
-                  : '')) +
             '</div>' +
             '<div class="section">' +
               '<h4 class="section-title">' + escNutri(pick(LBL_RECIPE_INGREDIENTS_TITLE)) + '</h4>' +
               '<ul class="nutri-recipe-ing-list ingredients-list">' +
-                (r.ingredients || []).map(function (i) {
-                  // Eier: nur Stueckzahl im Namen anzeigen (kein "60 g").
-                  if (typeof isNutriEggPieceIngredient === 'function' && isNutriEggPieceIngredient(i.name)) {
-                    return '<li>' + escNutri(i.name) + '</li>';
+                (display.finalIngredients || []).map(function (i) {
+                  if (typeof isNutriEggPieceIngredient === 'function' && isNutriEggPieceIngredient(i.displayName)) {
+                    return '<li>' + escNutri(i.displayName) + '</li>';
                   }
                   var q = formatIngredientQty(i.amount, i.unit);
-                  // Format: "Rinderhackfleisch 205 g" (Name, dann Menge + Einheit mit Leerzeichen).
                   if (q.amount === 'nicht angegeben') {
-                    return '<li>' + escNutri(i.name) + '</li>';
+                    return '<li>' + escNutri(i.displayName) + '</li>';
                   }
                   if (!q.unit) {
-                    return '<li>' + escNutri(i.name) + ' ' + escNutri(String(q.amount)) + '</li>';
+                    return '<li>' + escNutri(i.displayName) + ' ' + escNutri(String(q.amount)) + '</li>';
                   }
-                  return '<li>' + escNutri(i.name) + ' ' + escNutri(String(q.amount)) + ' ' + escNutri(String(q.unit)) + '</li>';
+                  return '<li>' + escNutri(i.displayName) + ' ' + escNutri(String(q.amount)) + ' ' + escNutri(String(q.unit)) + '</li>';
                 }).join('') +
               '</ul>' +
             '</div>' +
             '<div class="section">' +
               '<h4 class="section-title">' + escNutri(pick(LBL_RECIPE_PREP_TITLE)) + '</h4>' +
               '<ol class="nutri-recipe-steps instructions-list">' +
-                (r.steps || []).map(function (s) {
-                  var stepText = typeof s === 'string' ? s : (s && (s.instruction || s.text) ? (s.instruction || s.text) : String(s || ''));
-                  return '<li>' + escNutri(stripQuantityMentionsFromPrepText(stepText)) + '</li>';
+                (display.steps || []).map(function (s) {
+                  return '<li class="recipe-step" data-step-number="' + escNutri(String(s.stepNumber || '')) + '">' +
+                    '<p class="recipe-step-instruction">' + escNutri(s.instruction) + '</p></li>';
                 }).join('') +
               '</ol>' +
             '</div>' +
-            (r.garnish || (r.nutrition_note && !nutriRecipeState.coachAnalysisError && !r.chefAnalysisBlocked)
+            (display.garnish && display.garnish.length
               ? ('<div class="section nutri-recipe-chef-tail">' +
-                  (r.garnish ? ('<p class="nutri-recipe-match"><strong>' + escNutri(pick(LBL_RECIPE_GARNISH)) + ':</strong> ' + escNutri(r.garnish) + '</p>') : '') +
-                  (r.nutrition_note && !nutriRecipeState.coachAnalysisError && !r.chefAnalysisBlocked
-                    ? ('<p class="nutri-recipe-match"><strong>' + escNutri(pick(LBL_RECIPE_CHEF_ANALYSIS)) + ':</strong> ' + escNutri(r.nutrition_note) + '</p>')
-                    : (r.nutrition_note && (nutriRecipeState.coachAnalysisError || r.requiresReview)
-                      ? ('<p class="nutri-recipe-match"><strong>Zubereitungshinweis (keine Nährwertbewertung):</strong> ' + escNutri(r.nutrition_note) + '</p>')
-                      : '')) +
-                '</div>')
+                  '<p class="nutri-recipe-match"><strong>' + escNutri(pick(LBL_RECIPE_GARNISH)) + ':</strong> ' +
+                    escNutri(display.garnish.map(function (g) { return g.displayName; }).join(', ')) +
+                  '</p></div>')
               : '') +
             '<div class="section">' +
               '<h4 class="section-title">' + escNutri(pick(LBL_RECIPE_SHOPPING_LIST)) + '</h4>' +
               '<ul class="nutri-recipe-ing-list shopping-list">' +
-                (r.ingredients || []).map(function (i) {
-                  // Nur Original-Zutatennamen – keine Mengen, keine Analyse-Daten.
-                  var n = i && i.name ? String(i.name).trim() : '';
+                (display.finalIngredients || []).map(function (i) {
+                  var n = i && i.displayName ? String(i.displayName).trim() : '';
                   return n ? ('<li>' + escNutri(n) + '</li>') : '';
                 }).join('') +
               '</ul>' +
@@ -33070,6 +33636,23 @@ initBarcodeEvents();
         } else if (!(nutriScaledData.servings > 0)) {
           nutriScaledData.servings = 1;
         }
+        nutriScaledData = applyFrontendRecipeQualityGate(nutriScaledData);
+        if (nutriScaledData.qualityStatus === 'blocked') {
+          var qBlockText = nutriScaledData._qualityAllergenLabel
+            ? pick(LBL_RECIPE_QUALITY_ALLERGEN_BLOCKED)
+            : pick(LBL_RECIPE_QUALITY_BLOCKED);
+          nutriRecipeState.chatDraft = '';
+          nutriRecipeState.chatMessages.push({
+            role: 'ai',
+            text: qBlockText,
+            isError: true,
+            query: sanitized,
+            operationId: operationId
+          });
+          renderNutriRecipeBody();
+          nutriRecipeState.chatRetryStatus = '';
+          return;
+        }
         var replyTpl = isStructuredInput ? LBL_RECIPE_CHAT_REPLY_STRUCTURED : LBL_RECIPE_CHAT_REPLY;
         var replyText = pick(replyTpl).replace('{title}', nutriScaledData.title).replace('{time}', nutriScaledData.prep_time);
         nutriRecipeState.chatDraft = '';
@@ -33147,17 +33730,24 @@ initBarcodeEvents();
       nutriRecipeState.mode = 'freesearch';
       nutriRecipeState.freesearchInput = msg.query || '';
       nutriRecipeState.chatLastQuery = msg.query || nutriRecipeState.chatLastQuery || '';
-      nutriRecipeState.result = stripInternalFieldsFromRecipe(msg.recipe);
+      var gated = commitNutriRecipeOrBlock(msg.recipe);
+      if (!gated) {
+        renderNutriRecipeBody();
+        return;
+      }
+      nutriRecipeState.result = gated;
       nutriRecipeState.suggestions = msg.suggestions || [];
       // Start bei der Rezept-Basis (z.B. 2) – Nutzer kann mit − auf 1 runter- und mit + hochskalieren.
-      nutriRecipeState.servings = (msg.recipe && msg.recipe.servings > 0) ? msg.recipe.servings : 1;
+      nutriRecipeState.servings = (gated.finalServings > 0) ? gated.finalServings
+        : ((gated.servings > 0) ? gated.servings : 1);
       nutriRecipeState.selectedCategory = 'none';
       nutriRecipeState.categoryDetailsOpen = false;
       nutriRecipeState.error = false;
+      nutriRecipeState.errorText = '';
       nutriRecipeState.coachAnalysis = null;
       nutriRecipeState.coachAnalysisError = '';
       renderNutriRecipeBody();
-      requestNutriCoachAnalysis(msg.recipe);
+      requestNutriCoachAnalysis(gated);
     }
 
     function scrollNutriRecipeChatToBottom() {
@@ -33402,10 +33992,18 @@ initBarcodeEvents();
           nutriRecipeState.loading = false;
           return;
         }
-        nutriRecipeState.result = nutriScaledData;
+        var gatedReq = commitNutriRecipeOrBlock(nutriScaledData, {
+          assign: { renderedOperationId: operationId }
+        });
+        if (!gatedReq) {
+          nutriRecipeState.loading = false;
+          renderNutriRecipeBody();
+          return;
+        }
+        nutriRecipeState.result = gatedReq;
         nutriRecipeState.suggestions = (isStructuredReq || isOriginalRequest) ? [] : suggestLocalRecipeAlternatives(nutriScaledMacros, nutriTargets);
         nutriRecipeState.error = false;
-        nutriRecipeState.servings = nutriScaledData.servings;
+        nutriRecipeState.servings = gatedReq.finalServings > 0 ? gatedReq.finalServings : gatedReq.servings;
         // NEU (Rezept-Kategorien): jedes neu geladene Rezept startet mit "Ohne Kategorie"
         // vorausgewaehlt ("Standardmaessig ist 'Ohne Kategorie' ausgewaehlt, falls der Nutzer
         // nichts auswaehlt") und dem Aufklappmenue eingeklappt.
@@ -33415,7 +34013,7 @@ initBarcodeEvents();
         nutriRecipeState.coachAnalysis = null;
         nutriRecipeState.coachAnalysisError = '';
         renderNutriRecipeBody();
-        requestNutriCoachAnalysis(nutriScaledData);
+        requestNutriCoachAnalysis(gatedReq);
         return;
       } else {
         nutriRecipeState.result = null;

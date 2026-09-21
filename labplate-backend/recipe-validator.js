@@ -80,10 +80,38 @@ function stripRedundantBesidePlaceholders(text, ingredientsById) {
 }
 
 /**
+ * Entfernt Mengenangaben/Einheiten aus Prosa (Steps/Garnish/Analyse).
+ * Mengen gehören ausschließlich in die autoritative Zutatenliste.
+ */
+function stripQuantityMentionsFromText(text) {
+  let out = String(text == null ? '' : text);
+  // "170 g Lachs", "100 ml Kokosmilch", "5 EL Öl"
+  out = out.replace(
+    /\b\d+[.,]?\d*\s*(g|kg|mg|ml|l|cl|el|tl|stk|stück|stueck|prise|prisen)\b/gi,
+    ''
+  );
+  // Mitten im Wort geklebt: "Kokosmilch30gAvocado" / "Kokosmilch30g Avocado"
+  out = out.replace(
+    /(\d+[.,]?\d*)\s*(g|kg|mg|ml|l|cl)(?=[A-Za-zÄÖÜäöüß]|\s|$)/gi,
+    ''
+  );
+  // CamelCase-Klebe nach Strip: "KokosmilchAvocado" → "Kokosmilch Avocado"
+  out = out.replace(/([a-zäöüß])([A-ZÄÖÜ])/g, '$1 $2');
+  out = out.replace(/\s{2,}/g, ' ').replace(/\s+([.,;:!?])/g, '$1').trim();
+  return out;
+}
+
+function textHasQuantityMention(text) {
+  const t = String(text || '');
+  return /\b\d+[.,]?\d*\s*(g|kg|mg|ml|l|cl|el|tl|stk|stück|stueck)\b/i.test(t) ||
+    /\b\d+[.,]?\d*(g|kg|mg|ml|l|cl)[A-Za-zÄÖÜäöüß]/i.test(t);
+}
+
+/**
  * Ersetzt {0001} durch Anzeige-Token aus der Zutatenliste.
  * @param {string} text
  * @param {object} ingredientsById
- * @param {{ nameOnly?: boolean }} [opts] nameOnly=true → nur Zutatname (chef_analysis)
+ * @param {{ nameOnly?: boolean }} [opts] nameOnly=true → nur Zutatname (Steps/chef_analysis)
  */
 function resolvePlaceholders(text, ingredientsById, opts) {
   const nameOnly = !!(opts && opts.nameOnly);
@@ -97,8 +125,12 @@ function resolvePlaceholders(text, ingredientsById, opts) {
     const amount = ing.amount;
     const unit = ing.unit || '';
     if (amount == null || amount === 0) return name;
-    return String(amount) + (unit ? unit : '') + ' ' + name;
+    // Leerzeichen zwischen amount und unit — verhindert "85g" und Klebe-Effekte.
+    return String(amount) + (unit ? ' ' + unit : '') + ' ' + name;
   });
+  // Benachbarte Expansionen trennen: "…Milch85 g …" / "…Milch85gAvocado"
+  out = out.replace(/([A-Za-zÄÖÜäöüß)])(?=\d)/g, '$1 ');
+  out = out.replace(/([a-zäöüß])(?=[A-ZÄÖÜ])/g, '$1 ');
   // Nach Expansion: doppelte Namen / hängende Einheiten glätten
   Object.keys(byId).forEach(function (id) {
     const ing = byId[id];
@@ -110,13 +142,16 @@ function resolvePlaceholders(text, ingredientsById, opts) {
     const amount = ing.amount;
     const unit = String(ing.unit || '');
     if (amount != null && amount !== 0 && unit) {
-      const token = String(amount) + unit + ' ' + name;
+      const token = String(amount) + ' ' + unit + ' ' + name;
+      const tokenGlued = String(amount) + unit + ' ' + name;
       const tokenRe = escapeRegExp(token);
+      const tokenGluedRe = escapeRegExp(tokenGlued);
       out = out.replace(new RegExp(tokenRe + '\\s+' + nameRe + '\\b', 'gi'), token);
+      out = out.replace(new RegExp(tokenGluedRe + '\\s+' + nameRe + '\\b', 'gi'), token);
       out = out.replace(new RegExp('\\b' + nameRe + '\\s+' + tokenRe, 'gi'), token);
       out = out.replace(new RegExp(tokenRe + '\\s*' + escapeRegExp(unit) + '\\b', 'gi'), token);
       out = out.replace(
-        new RegExp('\\b' + nameRe + '\\s+' + escapeRegExp(String(amount) + unit) + '\\s+' + nameRe +
+        new RegExp('\\b' + nameRe + '\\s+' + escapeRegExp(String(amount) + '\\s*' + unit) + '\\s+' + nameRe +
           '(?:\\s*' + escapeRegExp(unit) + ')?\\b', 'gi'),
         token
       );
@@ -684,6 +719,8 @@ module.exports = {
   isColdSensitiveIngredientName: isColdSensitiveIngredientName,
   resolvePlaceholders: resolvePlaceholders,
   stripRedundantBesidePlaceholders: stripRedundantBesidePlaceholders,
+  stripQuantityMentionsFromText: stripQuantityMentionsFromText,
+  textHasQuantityMention: textHasQuantityMention,
   computeNutritionFromIngredients: computeNutritionFromIngredients,
   isEggIngredientName: isEggIngredientName,
   validateNoFreeNumbersInProse: validateNoFreeNumbersInProse,
