@@ -113,10 +113,11 @@ const CHEF_FRAMEWORK_RULES = [
   '10) Kalorien-Plausibilitaet: kcal = Summe aus Zutaten (Protein×4 + Netto-KH×4 + Fett×9 + Ballaststoffe×2).',
   '11) Zeit-Realismus: prep_time_min ≈ Summe steps[].time_min.',
   '12–16) Einheiten/Allergene/Skalierung/Grenzfaelle/Rundung (kcal 5er, Gramm ganz).',
-  '17) TEXTUR & FOOD PAIRING: mind. 3 Texturen (cremig + bissfest + crunchy); garnish-Feld Pflicht; herzhaft Saeure. ' +
-  'VERBOTEN: separater Step mit Titel „Garnitur“/„Garnish“. Wenn Anrichten schon ein Step ist, Garnieren DORT integrieren; ' +
-  'zusaetzlich Feld garnish befuellen — kein Step 6 nur fuer Garnitur.',
-  '18) BEZEICHNUNGS-KONSISTENZ / Namensgleichheit. garnish + chef_analysis Pflicht. ' +
+  '17) TEXTUR & FOOD PAIRING: mind. 3 Texturen (cremig + bissfest + crunchy); herzhaft Saeure. ' +
+  'garnish-Feld: nur Listen-Zutaten per {id}, sonst \"\". ' +
+  'VERBOTEN: separater Step mit Titel „Garnitur“/„Garnish“. Wenn Anrichten schon ein Step ist, Garnieren DORT integrieren. ' +
+  'GARNITUR-EHRLICHKEIT: VERBOTEN erfundene Deko/Kraeuter (Petersilie, Schnittlauch, Zesten), die nicht in ingredients stehen.',
+  '18) BEZEICHNUNGS-KONSISTENZ / Namensgleichheit. chef_analysis Pflicht; garnish nur mit Listen-Zutaten oder leer. ' +
   'Bei Laktose-Ersatz: Titel anpassen (z. B. „… mit laktosefreiem Soja-Joghurt und Nüssen“).',
   '19) KEIN [SELF-CHECK]-Block. Backend validiert deterministisch (validateRecipeV2) und rechnet nutrition aus ingredients.',
   '19a) dishPlan ZUERST: Bevor ingredients/steps: setze dishPlan (dishType, texture, servingMode, cookingMethod, requiredActions). ' +
@@ -407,7 +408,7 @@ function baseRecipeProperties(opts) {
       type: 'string',
       description: structured
         ? 'Immer leerer String ""'
-        : 'Garnitur/Topping fuer Textur und Anrichten (z.B. gerostete Nuesse, Kraeuter, Kakaonibs). Nie leer.',
+        : 'Garnitur nur mit Zutaten aus ingredients (per {id}). Leer \"\" wenn keine passende Listen-Zutat — VERBOTEN erfundene Kraeuter/Deko.',
     },
     self_check: {
       type: 'string',

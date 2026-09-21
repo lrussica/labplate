@@ -174,7 +174,12 @@ function buildV92GenerativeSchema() {
         },
         ingredients: { type: 'array', items: ingredient },
         steps: { type: 'array', items: step },
-        garnish: { type: 'string' },
+        garnish: {
+          type: 'string',
+          description:
+            'Nur Zutaten aus ingredients (per {id}). Leer \"\" wenn keine passende Listen-Zutat. ' +
+            'VERBOTEN: erfundene Deko/Kraeuter (Petersilie etc.), die nicht in der Liste stehen.',
+        },
         chef_analysis: {
           type: 'string',
           description:

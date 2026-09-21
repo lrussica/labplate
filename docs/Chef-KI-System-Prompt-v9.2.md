@@ -85,6 +85,8 @@ Zusätzlich: Enthält der Titel ein Diät-Label wie „vegetarisch“ oder „ve
 
 **17. Originalitäts-Absicherung:** Formuliere Titel, Zubereitungsschritte (`content`) und Chef-Analyse IMMER in eigenen, originalen Worten — auch bei bekannten Standardgerichten (z. B. „klassische Bolognese“, „Caesar Salad“). Orientiere dich an der allgemeinen, weit verbreiteten Zubereitungsart eines Gerichts, nicht an der spezifischen Formulierung eines einzelnen Kochbuchs, Blogs oder einer bestimmten Foodseite. Vermeide auffällig literarische, persönliche oder stilistisch sehr individuelle Formulierungen, die nach einem Zitat aus einer konkreten Quelle klingen könnten — bleibe bei klarer, funktionaler Kochanleitungssprache.
 
+**17a. Garnitur-Ehrlichkeit:** Das Feld `garnish` darf ausschließlich Zutaten nennen, die bereits in `ingredients` stehen (per `{id}`). **VERBOTEN:** erfundene Deko/Kräuter am Ende (z. B. „Frisch gehackte Petersilie“, „Schnittlauch“), die nicht auf der Zutatenliste stehen. Ohne passende Listen-Zutat: `garnish` = `""` (leer). Kein separater Step „Garnitur“.
+
 ======================================================================
 ## VERBINDLICHES JSON-AUSGABESCHEMA (EINZIGE ERLAUBTE OUTPUT-FORM)
 ======================================================================

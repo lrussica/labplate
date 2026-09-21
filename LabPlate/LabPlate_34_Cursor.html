@@ -1121,6 +1121,17 @@
     border-radius:5px; background:var(--purple-soft); color:var(--purple);
     margin-top:5px; white-space:nowrap; transition:font-size 0.2s ease-out;
   }
+  /* Rezept-Coach: HealthScore + Warnhinweise – weiß, gut lesbar auf dunklem Grund */
+  .nutri-recipe-coach-badges .mrep-badge{
+    color:#FFFFFF;
+    background:rgba(255,255,255,0.12);
+    font-size:calc(13.5px * var(--text-scale-factor, 1));
+    font-weight:600;
+    line-height:1.4;
+    padding:5px 10px;
+    white-space:normal;
+    margin-top:0;
+  }
 
   /* Nächste Schritte */
   .mrep-steps{ display:flex; flex-direction:column; gap:10px; }
@@ -2754,9 +2765,18 @@
   .localrecipe-nutrient-item{ background:var(--bg); border-radius:12px; padding:8px 10px; }
   .localrecipe-nutrient-label{ font-size:11px; font-weight:600; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.02em; }
   .localrecipe-nutrient-value{ font-family:var(--font-ui); font-weight:500; font-size:15px; color:var(--ink); margin-top:2px; }
-  /* Coach-Analyse: Badges/Infozeilen – nur bestehende Tokens (.mrep-badge, .nutri-recipe-match). */
+  /* Coach-Analyse: Badges/Infozeilen – weiß, lesbar auf dunklem Rezept-Overlay */
   .nutri-recipe-coach-badges{ display:flex; flex-wrap:wrap; gap:6px; margin:0 0 12px; }
-  .nutri-recipe-coach-badges .mrep-badge{ margin-top:0; }
+  .nutri-recipe-coach-badges .mrep-badge{
+    color:#FFFFFF;
+    background:rgba(255,255,255,0.12);
+    font-size:calc(13.5px * var(--text-scale-factor, 1));
+    font-weight:600;
+    line-height:1.4;
+    padding:5px 10px;
+    white-space:normal;
+    margin-top:0;
+  }
   .nutri-recipe-result-title-row{ display:flex; flex-wrap:wrap; align-items:baseline; gap:8px; }
   .mvcoach-tool-form{ display:flex; flex-direction:column; gap:8px; margin-top:8px; width:100%; box-sizing:border-box; }
   .mvcoach-tool-form label{ font-size:calc(12.5px * var(--text-scale-factor, 1)); color:var(--ink-soft); font-weight:500; }

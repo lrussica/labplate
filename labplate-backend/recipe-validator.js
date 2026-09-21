@@ -42,7 +42,8 @@ function escapeRegExp(s) {
 
 /**
  * Entfernt redundante Namen/Einheiten neben {id}-Platzhaltern, bevor das Backend
- * amount+unit+name einsetzt — verhindert "Salz Salz", "10ml Öl Öl", "Wasser 1000ml Wasser ml".
+ * amount+unit+name einsetzt — verhindert "Salz Salz", "10ml Öl Öl", "Wasser 1000ml Wasser ml",
+ * "Wasser ({0001})" → "{0001}", "salzen({0005})" → "salzen {0005}".
  */
 function stripRedundantBesidePlaceholders(text, ingredientsById) {
   let out = String(text == null ? '' : text);
@@ -55,9 +56,9 @@ function stripRedundantBesidePlaceholders(text, ingredientsById) {
     const ph = '\\{' + id + '\\}';
     const nameRe = escapeRegExp(name);
     const unit = String(ing.unit || '').trim();
-    const shortName = name.split(/[\s(,]/)[0];
+    const shortName = proseIngredientName(name) || name.split(/[\s(,]/)[0];
     const aliases = [name];
-    if (shortName && shortName.length >= 2 && shortName.toLowerCase() !== name.toLowerCase()) {
+    if (shortName && shortName.length >= 2) {
       aliases.push(shortName);
     }
     // Ei / Eier neben Ei-Platzhalter
@@ -67,6 +68,12 @@ function stripRedundantBesidePlaceholders(text, ingredientsById) {
     aliases.forEach(function (alias) {
       if (!alias) return;
       const aRe = escapeRegExp(alias);
+      // Name ({id}) / Name({id}) → {id}
+      out = out.replace(new RegExp('\\b' + aRe + '\\s*\\(\\s*' + ph + '\\s*\\)', 'gi'), '{' + id + '}');
+      // ({id}) allein → {id}
+      out = out.replace(new RegExp('\\(\\s*' + ph + '\\s*\\)', 'gi'), '{' + id + '}');
+      // verb({id}) → verb {id}
+      out = out.replace(new RegExp('([A-Za-zÄÖÜäöüß]{2,})\\(\\s*' + ph + '\\s*\\)', 'gi'), '$1 {' + id + '}');
       out = out.replace(new RegExp(ph + '\\s+' + aRe + '\\b', 'gi'), '{' + id + '}');
       out = out.replace(new RegExp('\\b' + aRe + '\\s+' + ph, 'gi'), '{' + id + '}');
       if (unit && /^(ml|g|stk|l)$/i.test(unit)) {
@@ -76,6 +83,61 @@ function stripRedundantBesidePlaceholders(text, ingredientsById) {
       }
     });
   });
+  // Generisch: nackte ({0001}) ohne Alias
+  out = out.replace(/\(\s*\{(\d{4})\}\s*\)/g, '{$1}');
+  // verb{0001} ohne Leerzeichen → verb {0001}
+  out = out.replace(/([A-Za-zÄÖÜäöüß])\{(\d{4})\}/g, '$1 {$2}');
+  out = out.replace(/\{(\d{4})\}([A-Za-zÄÖÜäöüß])/g, '{$1} $2');
+  return out;
+}
+
+/**
+ * Nach nameOnly-Expansion: doppelte Namen, Rest-Klammern und Verb+Zutat glätten.
+ * "Wasser (Wasser)" → "Wasser"; "salzen(Salz)" / "salzen Salz" → "salzen".
+ */
+function collapseProseIngredientDuplicates(text, ingredientsById) {
+  let out = String(text == null ? '' : text);
+  const byId = ingredientsById || {};
+  const seen = {};
+  Object.keys(byId).forEach(function (id) {
+    const ing = byId[id];
+    if (!ing) return;
+    const clean = proseIngredientName(String(ing.name || '').trim(), {
+      pieces: ing._culinary_amount != null ? ing._culinary_amount : null,
+      isEgg: isEggIngredientName(ing.name),
+    });
+    if (!clean || clean.length < 2) return;
+    const key = clean.toLowerCase();
+    if (seen[key]) return;
+    seen[key] = true;
+    const re = escapeRegExp(clean);
+    // Name (Name)
+    out = out.replace(new RegExp('\\b(' + re + ')\\s*\\(\\s*\\1\\s*\\)', 'gi'), '$1');
+    // word(Name) geklebt
+    out = out.replace(new RegExp('([A-Za-zÄÖÜäöüß]{2,})\\(\\s*' + re + '\\s*\\)', 'gi'), function (_m, word) {
+      if (word.toLowerCase() === clean.toLowerCase()) return clean;
+      // Verb endet auf -en/-eln und Zutat ist kurz → nur Verb behalten (salzen(Salz) → salzen)
+      if (/(?:en|eln|ieren)$/i.test(word) && clean.length <= 14) {
+        const stem = clean.toLowerCase().slice(0, Math.min(4, clean.length));
+        if (stem.length >= 3 && word.toLowerCase().indexOf(stem) >= 0) return word;
+      }
+      return word + ' ' + clean;
+    });
+    // Verb + gleiche Zutat: "salzen Salz"
+    out = out.replace(
+      new RegExp('\\b([A-Za-zÄÖÜäöüß]{3,}(?:en|eln|ieren))\\s+' + re + '\\b', 'gi'),
+      function (_m, verb) {
+        const stem = clean.toLowerCase().slice(0, Math.min(4, clean.length));
+        if (stem.length >= 3 && verb.toLowerCase().indexOf(stem) >= 0) return verb;
+        return verb + ' ' + clean;
+      }
+    );
+    // Doppelter Name hintereinander
+    out = out.replace(new RegExp('\\b(' + re + ')(\\s+\\1)+\\b', 'gi'), '$1');
+  });
+  // Generisch: beliebiges "Wort (Wort)"
+  out = out.replace(/\b([A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß\-]{1,40})\s*\(\s*\1\s*\)/gi, '$1');
+  out = out.replace(/\s{2,}/g, ' ').replace(/\s+([.,;:!?])/g, '$1').trim();
   return out;
 }
 
@@ -255,13 +317,26 @@ function resolvePlaceholders(text, ingredientsById, opts) {
   Object.keys(byId).forEach(function (id) {
     const ing = byId[id];
     if (!ing) return;
-    const name = String(ing.name || '').trim();
-    if (!name) return;
-    const nameRe = escapeRegExp(name);
-    out = out.replace(new RegExp('(' + nameRe + ')(\\s+\\1)+\\b', 'gi'), '$1');
+    const rawName = String(ing.name || '').trim();
+    if (!rawName) return;
+    const proseName = nameOnly
+      ? proseIngredientName(rawName, {
+        pieces: ing._culinary_amount != null ? ing._culinary_amount : null,
+        isEgg: isEggIngredientName(rawName),
+      })
+      : rawName;
+    const namesToCollapse = [rawName];
+    if (proseName && proseName.toLowerCase() !== rawName.toLowerCase()) namesToCollapse.push(proseName);
+    namesToCollapse.forEach(function (name) {
+      if (!name) return;
+      const nameRe = escapeRegExp(name);
+      out = out.replace(new RegExp('(' + nameRe + ')(\\s+\\1)+\\b', 'gi'), '$1');
+    });
     const amount = ing.amount;
     const unit = String(ing.unit || '');
-    if (amount != null && amount !== 0 && unit) {
+    if (!nameOnly && amount != null && amount !== 0 && unit) {
+      const name = rawName;
+      const nameRe = escapeRegExp(name);
       const token = String(amount) + ' ' + unit + ' ' + name;
       const tokenGlued = String(amount) + unit + ' ' + name;
       const tokenRe = escapeRegExp(token);
@@ -279,6 +354,7 @@ function resolvePlaceholders(text, ingredientsById, opts) {
   });
   out = out.replace(/\s+/g, ' ').trim();
   if (nameOnly) {
+    out = collapseProseIngredientDuplicates(out, byId);
     out = smoothProseIngredientGrammar(out);
   }
   return out;
@@ -1386,6 +1462,7 @@ module.exports = {
   isColdSensitiveIngredientName: isColdSensitiveIngredientName,
   resolvePlaceholders: resolvePlaceholders,
   stripRedundantBesidePlaceholders: stripRedundantBesidePlaceholders,
+  collapseProseIngredientDuplicates: collapseProseIngredientDuplicates,
   stripQuantityMentionsFromText: stripQuantityMentionsFromText,
   textHasQuantityMention: textHasQuantityMention,
   proseIngredientName: proseIngredientName,
