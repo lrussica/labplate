@@ -229,12 +229,39 @@ function isLocalLoopbackOrigin(origin) {
   return /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/.test(origin);
 }
 
+function isOriginAllowed(origin) {
+  if (!origin || origin === 'null') return true;
+  if (ALLOWED_ORIGINS.includes(origin)) return true;
+  if (isLocalLoopbackOrigin(origin)) return true;
+  return false;
+}
+
+/**
+ * CORS-Header explizit setzen — auch im Error-Handler / nach Proxy-Nähe,
+ * damit der Browser bei 5xx die JSON-Fehlermeldung lesen kann statt nur „Netzwerkfehler“.
+ */
+function applyCorsHeaders(req, res) {
+  if (!req || !res || res.headersSent) return;
+  const origin = (req.get && (req.get('Origin') || req.get('origin'))) || '';
+  if (!isOriginAllowed(origin)) return;
+  // Reflect Origin (inkl. "null"); ohne Origin → *
+  if (origin) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  } else {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+  }
+  res.setHeader('Vary', 'Origin');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization, X-Recipe-Operation-Id'
+  );
+}
+
 const corsOptions = {
   origin(origin, callback) {
     // Kein Origin-Header (curl, same-origin) und file:// ("null") erlauben.
-    if (!origin || origin === 'null') return callback(null, true);
-    if (ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
-    if (isLocalLoopbackOrigin(origin)) return callback(null, true);
+    if (isOriginAllowed(origin)) return callback(null, true);
     console.warn('[CORS] Origin nicht erlaubt:', origin);
     return callback(null, false);
   },
@@ -248,6 +275,18 @@ const corsOptions = {
   maxAge: 600,
   optionsSuccessStatus: 204,
 };
+
+// 1) Frühe CORS-Absicherung auf JEDER Antwort (auch wenn spätere Middleware crasht
+//    nachdem Headers noch setzbar sind). cors()-Package bleibt für Preflight/Normalfall.
+app.use(function corsSafetyNet(req, res, next) {
+  applyCorsHeaders(req, res);
+  const originalEnd = res.end;
+  res.end = function corsSafeEnd() {
+    applyCorsHeaders(req, res);
+    return originalEnd.apply(this, arguments);
+  };
+  next();
+});
 
 app.use(cors(corsOptions));
 // Dieselbe Config für Preflight – kein bare cors() (würde Custom-Header verwerfen).
@@ -338,8 +377,9 @@ app.get('/health', (req, res) => {
     prepPromptVersion: core.PREP_PROMPT_VERSION || null,
     recipeSchemaVersion: 'v9.2',
     culinaryUsabilityGate: true,
-    culinaryUsabilityVersion: '1.0.1-soft-repair',
+    culinaryUsabilityVersion: '1.0.2-cors-safety',
     recipeSoftRepair: true,
+    corsCrashSafety: true,
     dishPlanRequiredInSchema: true,
     groq429Diagnostics: true,
     groqDebugKeyRouting: true,
@@ -811,6 +851,7 @@ app.post('/api/photo/verify', limiter, photoVerify.handlePhotoVerify);
 app.post('/api/nutri-recipe', limiter, async (req, res) => {
   const startedAt = Date.now();
   const operationId = getRecipeOperationId(req);
+  try {
   if (operationId) {
     const cached = getCachedRecipeOperation(operationId);
     if (cached) {
@@ -997,6 +1038,16 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
         model: recipeModel,
         key_type: auth.keyType,
         key_fingerprint: auth.keyFingerprint,
+        operationId: operationId || null,
+        // Diagnose: welche Zutaten steckten im letzten Raw (klärt „Haferflocken“-Irrtum)
+        last_attempt_ingredient_names: Array.isArray(pipelineResult.last_raw && pipelineResult.last_raw.ingredients)
+          ? pipelineResult.last_raw.ingredients.map(function (ing) {
+              return String((ing && ing.name) || '');
+            }).filter(Boolean)
+          : [],
+        last_attempt_title: pipelineResult.last_raw && pipelineResult.last_raw.title
+          ? String(pipelineResult.last_raw.title).slice(0, 200)
+          : null,
       };
       if (req.body && req.body.debug_v92_raw === true) {
         exhaustedBody.debug_v92 = {
@@ -1139,6 +1190,31 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
 
   console.log(`[nutri-recipe] OK flow=${flow} ingredients=${recipe.ingredients.length} steps=${recipe.steps.length} key=${auth.keyType} ms=${Date.now() - startedAt}`);
   return sendRecipeOk(recipe);
+  } catch (err) {
+    // Express 4 fängt rejected async Handler nicht ab → sonst hängt die Request,
+    // Render liefert 502 OHNE CORS, Browser zeigt nur „Netzwerkfehler“.
+    const msg = err && err.message ? String(err.message) : String(err);
+    const stack = err && err.stack ? String(err.stack).slice(0, 2000) : null;
+    console.error('[nutri-recipe] UNHANDLED', JSON.stringify({
+      operationId: operationId || null,
+      message: msg,
+      stack: stack,
+      ms: Date.now() - startedAt,
+    }));
+    logEvent('unhandled_error', {
+      reason: 'nutri_recipe_throw',
+      message: msg.slice(0, 300),
+      operationId: operationId || null,
+      ms: Date.now() - startedAt,
+    });
+    if (res.headersSent) return undefined;
+    applyCorsHeaders(req, res);
+    return res.status(500).json({
+      error: 'internal_error',
+      message: 'Interner Serverfehler bei der Rezeptgenerierung.',
+      operationId: operationId || null,
+    });
+  }
 });
 
 // 1:1-Proxy fuer die KI-Lebensmittelsuche (Client baut den Chat-Completion-Request selbst).
@@ -1189,19 +1265,37 @@ app.get('/', (req, res) => {
 });
 
 app.use((req, res) => {
+  applyCorsHeaders(req, res);
   res.status(404).json({ error: 'not_found' });
 });
 
 app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
-  if (err && /CORS/.test(err.message || '')) {
+  applyCorsHeaders(req, res);
+  const msg = err && err.message ? String(err.message) : '';
+  const stack = err && err.stack ? String(err.stack).slice(0, 2000) : null;
+  if (err && /CORS/.test(msg)) {
     logEvent('request_rejected', { reason: 'cors' });
     return res.status(403).json({ error: 'origin_not_allowed' });
   }
   if (err && err.type === 'entity.too.large') {
     return res.status(413).json({ error: 'payload_too_large' });
   }
-  logEvent('unhandled_error', { reason: 'internal' });
+  console.error('[express] UNHANDLED', JSON.stringify({ message: msg.slice(0, 300), stack: stack }));
+  logEvent('unhandled_error', { reason: 'internal', message: msg.slice(0, 300) });
+  if (res.headersSent) return undefined;
   return res.status(500).json({ error: 'internal_error' });
+});
+
+// Process-Level: Stacktrace sichtbar machen (sonst nur Render-502 ohne Body/CORS)
+process.on('unhandledRejection', function (reason) {
+  const msg = reason && reason.message ? String(reason.message) : String(reason);
+  const stack = reason && reason.stack ? String(reason.stack).slice(0, 2000) : null;
+  console.error('[process] unhandledRejection', JSON.stringify({ message: msg.slice(0, 300), stack: stack }));
+});
+process.on('uncaughtException', function (err) {
+  const msg = err && err.message ? String(err.message) : String(err);
+  const stack = err && err.stack ? String(err.stack).slice(0, 2000) : null;
+  console.error('[process] uncaughtException', JSON.stringify({ message: msg.slice(0, 300), stack: stack }));
 });
 
 if (require.main === module) {

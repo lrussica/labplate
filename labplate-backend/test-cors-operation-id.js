@@ -13,8 +13,20 @@ assert.ok(
   'CORS allowedHeaders muss X-Recipe-Operation-Id enthalten'
 );
 assert.ok(
-  /app\.options\('\*',\s*cors\(corsOptions\)\)/.test(serverSrc),
-  'OPTIONS muss dieselbe corsOptions nutzen (kein bare cors())'
+  /function applyCorsHeaders/.test(serverSrc),
+  'applyCorsHeaders muss CORS auch im Error-Pfad setzen'
+);
+assert.ok(
+  /corsSafetyNet|corsSafeEnd/.test(serverSrc),
+  'CORS Safety-Net Middleware vorhanden'
+);
+assert.ok(
+  /UNHANDLED/.test(serverSrc) && /nutri_recipe_throw/.test(serverSrc),
+  'nutri-recipe try/catch mit Stack-Log'
+);
+assert.ok(
+  /last_attempt_ingredient_names/.test(serverSrc),
+  '422 liefert Ingredient-Namen zur Diagnose'
 );
 assert.ok(
   /function getRecipeOperationId/.test(serverSrc),

@@ -729,11 +729,17 @@ function logRawLlmJson(meta) {
 
 function logValidationFailure(meta) {
   try {
+    const parsed = meta.parsed;
+    const ingredientNames = Array.isArray(parsed && parsed.ingredients)
+      ? parsed.ingredients.map(function (ing) { return String((ing && ing.name) || ''); }).filter(Boolean)
+      : [];
     console.log('[recipe-v92] validation_failed ' + JSON.stringify({
       prompt_version: 'v9.2',
       attempt: meta.attempt,
       errors: meta.errors,
       warnings: meta.warnings,
+      title: parsed && parsed.title,
+      ingredient_names: ingredientNames,
     }));
   } catch (e) { /* ignore */ }
 }
@@ -995,6 +1001,7 @@ async function generateValidatedRecipe(opts) {
         attempt: attempt,
         errors: lastErrors,
         warnings: lastWarnings,
+        parsed: parsed,
       });
       continue;
     }
