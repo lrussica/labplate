@@ -1632,7 +1632,23 @@
     line-height:1.5; white-space:pre-wrap; word-break:break-word;
     font-size:calc(14.5px * var(--text-scale-factor, 1)); transition:font-size .2s ease-out;
   }
-  .mvcoach-bubble.user{ background:var(--purple-soft); color:#4C1D95; border-bottom-right-radius:6px; }
+  /* Light: Soft-Lila + dunkle Schrift (lesbar auf hellem Soft). */
+  .mvcoach-bubble.user{
+    background:var(--purple-soft);
+    color:#4C1D95;
+    border-bottom-right-radius:6px;
+  }
+  /* LOCK Dark (2026-09-20): User-Bubble weiße Schrift — #4C1D95 auf Dark-Soft war unleserlich.
+     Nur Dark; Light bleibt oben. !important + Selektoren, damit Theme-Sweeps das nicht kippen. */
+  html[data-theme="dark"] .mvcoach-bubble.user,
+  html:not([data-theme="light"]) .mvcoach-bubble.user,
+  html[data-theme="dark"] #lp-ov-mvcoach .mvcoach-bubble.user,
+  html:not([data-theme="light"]) #lp-ov-mvcoach .mvcoach-bubble.user,
+  html[data-theme="dark"] #lp-ov-team-colleague .mvcoach-bubble.user,
+  html:not([data-theme="light"]) #lp-ov-team-colleague .mvcoach-bubble.user{
+    background:var(--purple) !important;
+    color:#fff !important;
+  }
   /* KI-Antwort ohne Karten-Rahmen: Text direkt auf dem Overlay-Hintergrund. */
   .mvcoach-bubble.ai{
     max-width:100%; background:transparent; color:inherit; border:none;
@@ -2211,15 +2227,19 @@
     white-space:pre-wrap; word-break:break-word;
     transition: font-size 0.2s ease-out;
   }
-  /* AKTUALISIERT (LabPlate-Lila, exakte Referenzfarben): Nutzer-Bubble in sanftem Hell-Lila,
-     KI-Bubble in Weiss mit feinem Rand - wie vorgegeben, unabhaengig vom App-Farbschema. */
+  /* Light: Soft-Lila + dunkle Schrift. */
   .nutri-recipe-chat-bubble.user{
-    background:var(--purple-soft); color:var(--icon-on-purple-soft); border-bottom-right-radius:6px;
+    background:var(--purple-soft);
+    color:var(--icon-on-purple-soft);
+    border-bottom-right-radius:6px;
   }
-  /* Dark: User-Bubble-Text muss hell sein (#4C1D95 war auf --purple-soft/#21183D unleserlich). */
+  /* LOCK Dark: weiße Schrift auf Lila (nur Dark — Light bleibt oben). */
   html[data-theme="dark"] .nutri-recipe-chat-bubble.user,
-  html:not([data-theme="light"]) .nutri-recipe-chat-bubble.user{
-    color:var(--ink);
+  html:not([data-theme="light"]) .nutri-recipe-chat-bubble.user,
+  html[data-theme="dark"] #lp-ov-recipes .nutri-recipe-chat-bubble.user,
+  html:not([data-theme="light"]) #lp-ov-recipes .nutri-recipe-chat-bubble.user{
+    background:var(--purple) !important;
+    color:#fff !important;
   }
   .nutri-recipe-chat-bubble.ai{
     background:var(--card); color:var(--ink); border:1px solid var(--bg-2);
@@ -11610,7 +11630,7 @@ TRANSLATIONS.de = {
   thPortion: 'Portion',
   sumLabel: 'Summe',
   historyTitle: 'Verlauf der letzten Tage',
-  historySubtitle: 'Netto-Kohlenhydrate, Fett und Salz im 7-Tage-Trend – automatisch gespeichert, sobald ein Tag abgeschlossen ist.',
+  historySubtitle: 'Netto-Kohlenhydrate, Protein, Fett und Salz im 7-Tage-Trend – automatisch gespeichert, sobald ein Tag abgeschlossen ist.',
   historyEmpty: 'Noch keine vergangenen Tage gespeichert. Sobald ein Tag vorbei ist, erscheint er hier automatisch.',
   historyTodayLabel: 'Heute',
   historyAllLabel: 'Gesamt',
@@ -12437,7 +12457,7 @@ TRANSLATIONS.en = {
   thPortion: 'Portion',
   sumLabel: 'Total',
   historyTitle: 'Recent days',
-  historySubtitle: 'Net carbs, fat and salt over a 7-day trend – saved automatically once a day is complete.',
+  historySubtitle: 'Net carbs, protein, fat and salt over a 7-day trend – saved automatically once a day is complete.',
   historyEmpty: 'No past days saved yet. As soon as a day is over, it will appear here automatically.',
   historyTodayLabel: 'Today',
   historyAllLabel: 'All',
@@ -13234,7 +13254,7 @@ TRANSLATIONS.es = {
   thPortion: 'Porción',
   sumLabel: 'Total',
   historyTitle: 'Días recientes',
-  historySubtitle: 'Carbohidratos netos, grasa y sal en la tendencia de 7 días – guardados automáticamente al terminar cada día.',
+  historySubtitle: 'Carbohidratos netos, proteína, grasa y sal en la tendencia de 7 días – guardados automáticamente al terminar cada día.',
   historyEmpty: 'Aún no hay días guardados. En cuanto termine un día, aparecerá aquí automáticamente.',
   historyTodayLabel: 'Hoy',
   historyAllLabel: 'Total',
@@ -14008,7 +14028,7 @@ TRANSLATIONS.it = {
   thPortion: 'Porzione',
   sumLabel: 'Totale',
   historyTitle: 'Giorni recenti',
-  historySubtitle: 'Carboidrati netti, grassi e sale nel trend di 7 giorni – salvati automaticamente al termine di ogni giorno.',
+  historySubtitle: 'Carboidrati netti, proteine, grassi e sale nel trend di 7 giorni – salvati automaticamente al termine di ogni giorno.',
   historyEmpty: 'Nessun giorno passato ancora salvato. Non appena un giorno sarà concluso, apparirà qui automaticamente.',
   historyTodayLabel: 'Oggi',
   historyAllLabel: 'Totale',
@@ -14778,7 +14798,7 @@ TRANSLATIONS.pt = Object.assign({}, TRANSLATIONS.en, {
   tgFatLabel: 'Gordura máx.', tgSatLabel: 'das quais saturada máx.', tgSaltLabel: 'Sal máx.',
   thFood: 'Alimento', thPortion: 'Porção', sumLabel: 'Soma',
   historyTitle: 'Histórico dos últimos dias',
-  historySubtitle: 'Hidratos de carbono líquidos, gordura e sal na tendência de 7 dias – guardado automaticamente assim que um dia é concluído.',
+  historySubtitle: 'Hidratos de carbono líquidos, proteína, gordura e sal na tendência de 7 dias – guardado automaticamente assim que um dia é concluído.',
   historyEmpty: 'Ainda não há dias passados guardados. Assim que um dia terminar, aparece aqui automaticamente.',
   historyTodayLabel: 'Hoje', historyAllLabel: 'Total', historyTrendLabel: 'Média de 7 dias',
   historyColDay: 'Dia', historyColStatus: 'Estado', historyOutlierTag: 'Desvio', historyNoDataStatus: 'Sem dados',
@@ -15288,7 +15308,7 @@ TRANSLATIONS.fr = Object.assign({}, TRANSLATIONS.en, {
   tgFatLabel: 'Matières grasses max.', tgSatLabel: 'dont saturées max.', tgSaltLabel: 'Sel max.',
   thFood: 'Aliment', thPortion: 'Portion', sumLabel: 'Somme',
   historyTitle: 'Historique des derniers jours',
-  historySubtitle: 'Glucides nets, graisses et sel sur une tendance de 7 jours – enregistré automatiquement dès qu\'une journée est terminée.',
+  historySubtitle: 'Glucides nets, protéines, graisses et sel sur une tendance de 7 jours – enregistré automatiquement dès qu\'une journée est terminée.',
   historyEmpty: 'Aucun jour passé enregistré pour l\'instant. Dès qu\'une journée est terminée, elle apparaît ici automatiquement.',
   historyTodayLabel: 'Aujourd\'hui', historyAllLabel: 'Total', historyTrendLabel: 'Moyenne sur 7 jours',
   historyColDay: 'Jour', historyColStatus: 'Statut', historyOutlierTag: 'Écart', historyNoDataStatus: 'Aucune donnée',
@@ -15798,7 +15818,7 @@ TRANSLATIONS.tr = Object.assign({}, TRANSLATIONS.en, {
   tgFatLabel: 'Yağ maks.', tgSatLabel: 'bunun doymuş yağ maks.', tgSaltLabel: 'Tuz maks.',
   thFood: 'Gıda', thPortion: 'Porsiyon', sumLabel: 'Toplam',
   historyTitle: 'Son Günlerin Geçmişi',
-  historySubtitle: 'Net karbonhidrat, yağ ve tuzun 7 günlük trendi – bir gün tamamlanır tamamlanmaz otomatik olarak kaydedilir.',
+  historySubtitle: 'Net karbonhidrat, protein, yağ ve tuzun 7 günlük trendi – bir gün tamamlanır tamamlanmaz otomatik olarak kaydedilir.',
   historyEmpty: 'Henüz kaydedilmiş geçmiş gün yok. Bir gün bittiğinde burada otomatik olarak görünür.',
   historyTodayLabel: 'Bugün', historyAllLabel: 'Toplam', historyTrendLabel: '7 Günlük Ortalama',
   historyColDay: 'Gün', historyColStatus: 'Durum', historyOutlierTag: 'Sapma', historyNoDataStatus: 'Veri yok',
@@ -17507,6 +17527,9 @@ function setLanguage(lang) {
 }
 const PROTEIN_SUGGESTION_ID = 50; // Magerquark – zuverlässige, alltagstaugliche Eiweißquelle
 const STORAGE_KEY_DAY = 'tellercheck_day_v1';
+// Native Snapshot des letzten Nicht-Leer-Tellers — überlebt Xcode-Reinstalls, wenn
+// tellercheck_day_v1 inzwischen leer gespiegelt wurde (Verlauf blieb, Teller weg).
+const STORAGE_KEY_DAY_LAST_NONEMPTY = 'tellercheck_day_last_nonempty_v1';
 const STORAGE_KEY_FAVS = 'tellercheck_favs_v1';
 const STORAGE_KEY_ACTIVITY = 'tellercheck_activity_v1';
 const STORAGE_KEY_PROFILE = 'tellercheck_profile_v1';
@@ -17526,6 +17549,61 @@ const STORAGE_KEY_ALLERGENS = 'labplate_user_allergens';
 // unter genau diesem Namen abrufbar ist (siehe saveProfile()/loadProfile() weiter unten).
 const STORAGE_KEY_HEIGHT = 'labplate_user_height';
 
+// App-Store-Persistenz: spiegelt tellercheck_*/labplate_* nach iOS Application Support,
+// damit Updates/Origin-Wechsel den Teller und Verlauf nicht löschen. No-Op im Browser.
+let __lpNativeStorageSyncTimer = null;
+/** @param {{allowEmptyDay?: boolean}} [opts] allowEmptyDay=true nur bei Rollover/Alle löschen */
+function syncWebStorageToNative(opts) {
+  try {
+    if (!window.webkit || !window.webkit.messageHandlers || !window.webkit.messageHandlers.webStorageMirror) return;
+    const allowEmptyDay = !!(opts && opts.allowEmptyDay);
+    const payload = {};
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (!k) continue;
+      if (k.indexOf('tellercheck_') === 0 || k.indexOf('labplate_') === 0) {
+        payload[k] = localStorage.getItem(k);
+      }
+    }
+    // Letzten Nicht-Leer-Teller extra halten (Restore nach Xcode-Install).
+    try {
+      const dayRaw = localStorage.getItem(STORAGE_KEY_DAY);
+      const dayObj = dayRaw ? JSON.parse(dayRaw) : null;
+      if (dayObj && Array.isArray(dayObj.items) && dayObj.items.length > 0) {
+        localStorage.setItem(STORAGE_KEY_DAY_LAST_NONEMPTY, dayRaw);
+        payload[STORAGE_KEY_DAY_LAST_NONEMPTY] = dayRaw;
+      } else if (allowEmptyDay) {
+        localStorage.removeItem(STORAGE_KEY_DAY_LAST_NONEMPTY);
+        payload[STORAGE_KEY_DAY_LAST_NONEMPTY] = '';
+      }
+    } catch (eDaySnap) {}
+    window.webkit.messageHandlers.webStorageMirror.postMessage({
+      action: 'save',
+      data: payload,
+      allowEmptyDay: allowEmptyDay
+    });
+  } catch (eSync) {}
+}
+function scheduleSyncWebStorageToNative(opts) {
+  try {
+    if (__lpNativeStorageSyncTimer) clearTimeout(__lpNativeStorageSyncTimer);
+    __lpNativeStorageSyncTimer = setTimeout(function () {
+      __lpNativeStorageSyncTimer = null;
+      syncWebStorageToNative(opts);
+    }, 120);
+  } catch (eSched) {
+    syncWebStorageToNative(opts);
+  }
+}
+function clearNativeWebStorageMirror() {
+  try {
+    if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.webStorageMirror) {
+      window.webkit.messageHandlers.webStorageMirror.postMessage({ action: 'clear' });
+    }
+  } catch (eClear) {}
+}
+window.syncWebStorageToNative = syncWebStorageToNative;
+
 function loadThemePref() {
   try {
     const v = localStorage.getItem(STORAGE_KEY_THEME);
@@ -17535,6 +17613,7 @@ function loadThemePref() {
 }
 function saveThemePref(v) {
   try { localStorage.setItem(STORAGE_KEY_THEME, v); } catch (e) {}
+  scheduleSyncWebStorageToNative();
 }
 let THEME_PREF = loadThemePref();
 
@@ -17552,6 +17631,7 @@ function loadModePref() {
 }
 function saveModePref(v) {
   try { localStorage.setItem(STORAGE_KEY_MODE, v); } catch (e) {}
+  scheduleSyncWebStorageToNative();
 }
 
 function applyThemePref(pref) {
@@ -20641,13 +20721,20 @@ function getHistory(days = 14) {
   for (let i = 0; i < n; i++) {
     const d = new Date();
     d.setDate(d.getDate() - i);
-    erlaubt[d.toDateString()] = true;
+    const iso = (typeof localISODate === 'function') ? localISODate(d) : null;
+    if (iso) erlaubt[iso] = true;
+    erlaubt[d.toDateString()] = true; // Legacy-Keys
   }
-  return all.filter(h => erlaubt[h.date]);
+  return all.filter(h => {
+    if (erlaubt[h.date]) return true;
+    const k = (typeof normalizeDayDateKey === 'function') ? normalizeDayDateKey(h.date) : null;
+    return !!(k && erlaubt[k]);
+  });
 }
 
 function saveHistory(entries) {
   try { localStorage.setItem(STORAGE_KEY_HISTORY, JSON.stringify(entries)); } catch (e) {}
+  scheduleSyncWebStorageToNative();
 }
 // Loescht ALLE dauerhaft gespeicherten ERNAEHRUNGS-/GESUNDHEITSDATEN unwiderruflich - nur
 // nach Bestaetigung im showConfirm()-Warnhinweis. Alle App-Schluessel tragen das Praefix
@@ -20662,7 +20749,11 @@ function resetAllData() {
     Object.keys(localStorage).filter(k => k.startsWith('tellercheck_') && !keep.has(k)).forEach(k => localStorage.removeItem(k));
     localStorage.removeItem('labplate_stella_v1');
     localStorage.removeItem('labplate_stella_text_scale_v1');
+    localStorage.removeItem(STORAGE_KEY_DAY_LAST_NONEMPTY);
   } catch (e) {}
+  // Native Kopie mitlöschen — sonst stellt Restore nach Reload die gelöschten Daten wieder her.
+  clearNativeWebStorageMirror();
+  syncWebStorageToNative({ allowEmptyDay: true });
   location.reload();
 }
 // Berechnet die Tagessumme fuer ein archiviertes items-Array, unabhaengig vom
@@ -20689,34 +20780,79 @@ function archiveDay(dateStr, items) {
   if (!items || items.length === 0) return; // ein leerer Tag ist keinen Historien-Eintrag wert
   const totals = totalsForItems(items);
   let history = loadHistory();
-  history = history.filter(h => h.date !== dateStr); // falls schon vorhanden (z.B. mehrfacher Ladevorgang): ersetzen statt duplizieren
-  history.push({ date: dateStr, ...totals });
-  history.sort((a, b) => new Date(a.date) - new Date(b.date));
+  const key = normalizeDayDateKey(dateStr) || dateStr;
+  // Duplikate nach ISO-Tag entfernen (alte toDateString- und neue ISO-Keys).
+  history = history.filter(h => {
+    const hk = normalizeDayDateKey(h.date) || h.date;
+    return hk !== key && h.date !== dateStr;
+  });
+  history.push({ date: key, ...totals });
+  history.sort((a, b) => {
+    const ka = normalizeDayDateKey(a.date) || a.date;
+    const kb = normalizeDayDateKey(b.date) || b.date;
+    return String(ka).localeCompare(String(kb));
+  });
   if (history.length > HISTORY_MAX_DAYS) history = history.slice(history.length - HISTORY_MAX_DAYS);
   saveHistory(history);
 }
 
-// Logisches Kalenderdatum fuer state.day. MUSS vor loadDay/saveDay stehen.
-// BUGFIX: saveDay() hat frueher immer new Date().toDateString() geschrieben. Blieb die App
-// ueber Mitternacht geoeffnet (typisch iOS WKWebView), ohne dass checkDayRollover() schon
-// gelaufen war, wurden Vortags-Eintraege unter dem NEUEN Datum gespeichert - loadDay() sah
-// dann "heute" und archivierte nie → Verlauf blieb leer. Profile/Tagesziele waren unbetroffen
-// (eigene Keys). currentDayDateStr + Rollover VOR jeder Mutation + speichern mit diesem
-// Datum statt "jetzt" verhindern das. splitAndArchiveStaleDayItems() repariert bereits
-// vergiftete tellercheck_day_v1-Daten anhand items[].ts.
-let currentDayDateStr = new Date().toDateString();
+// ---------------------------------------------------------------------------
+// BUGFIX 2026-09-20c (Nutzer: Teller leer nach App-Kill, Verlauf bleibt):
+// Ursache: loadDay/checkDayRollover behandelten denselben Kalendertag als "Vortag"
+// (toDateString-Vergleich / aggressive ts-Splits), archivierten in den Verlauf und
+// riefen persistLogicalDay([]) mit allowEmptyDay auf — das loeschte den nativen
+// Backup. Danach: Verlauf hat Summen, Teller leer, "Mahlzeit im Detail" weg.
+// Fix: ISO-Datum YYYY-MM-DD, Same-Day = Teller behalten, allowEmptyDay NUR bei
+// echtem Mitternachts-Rollover oder "Alle loeschen".
+// ---------------------------------------------------------------------------
 
-/** Gruppiert Teller-Eintraege nach lokalem Kalendertag (via ts) und archiviert alle ≠ heute. */
-function splitAndArchiveStaleDayItems(items, todayStr) {
-  const today = todayStr || new Date().toDateString();
+/** Lokales Kalenderdatum als stabiles YYYY-MM-DD (unabhaengig von Locale/toDateString). */
+function localISODate(d) {
+  const x = (d instanceof Date) ? d : new Date(d);
+  if (!(x instanceof Date) || isNaN(x.getTime())) return null;
+  const y = x.getFullYear();
+  const m = String(x.getMonth() + 1).padStart(2, '0');
+  const day = String(x.getDate()).padStart(2, '0');
+  return y + '-' + m + '-' + day;
+}
+
+/** Normalisiert Legacy-toDateString ("Sun Sep 20 2026") und ISO zu YYYY-MM-DD. */
+function normalizeDayDateKey(dateStr) {
+  if (dateStr == null || dateStr === '') return null;
+  if (typeof dateStr !== 'string') {
+    try { return localISODate(dateStr); } catch (e) { return null; }
+  }
+  if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return dateStr;
+  const parsed = new Date(dateStr);
+  if (!isNaN(parsed.getTime())) return localISODate(parsed);
+  return null;
+}
+
+function todayISODate() {
+  return localISODate(new Date());
+}
+
+/** Parst entry.ts zu lokalem ISO-Tag; ohne gueltiges ts → null. */
+function dayISOFromEntryTs(entry) {
+  if (!entry || entry.ts == null) return null;
+  const t = Number(entry.ts);
+  if (!isFinite(t) || t <= 0) return null;
+  // Sekunden-Timestamps (10-stellig) → ms
+  const ms = t < 1e12 ? t * 1000 : t;
+  return localISODate(new Date(ms));
+}
+
+let currentDayDateStr = todayISODate();
+
+/** Gruppiert nur Eintraege mit klarem Vortags-ts; ohne ts → Fallback-Tag. */
+function splitAndArchiveStaleDayItems(items, todayStr, fallbackDateStr) {
+  const today = normalizeDayDateKey(todayStr) || todayISODate();
+  const fallback = normalizeDayDateKey(fallbackDateStr) || today;
   if (!items || !items.length) return [];
   const byDate = {};
   items.forEach(entry => {
-    let d = today;
-    if (entry && entry.ts != null) {
-      const t = Number(entry.ts);
-      if (isFinite(t) && t > 0) d = new Date(t).toDateString();
-    }
+    const fromTs = dayISOFromEntryTs(entry);
+    const d = fromTs || fallback;
     if (!byDate[d]) byDate[d] = [];
     byDate[d].push(entry);
   });
@@ -20726,66 +20862,213 @@ function splitAndArchiveStaleDayItems(items, todayStr) {
   return byDate[today] || [];
 }
 
+/**
+ * @param {Array} items
+ * @param {{allowEmptyDay?: boolean}} [opts] allowEmptyDay nur bei Rollover / Alle löschen
+ */
+function persistLogicalDay(items, opts) {
+  const list = Array.isArray(items) ? items : [];
+  try {
+    localStorage.setItem(STORAGE_KEY_DAY, JSON.stringify({
+      date: currentDayDateStr,
+      items: list
+    }));
+  } catch (e) {}
+  const empty = list.length === 0;
+  const allowEmpty = !!(opts && opts.allowEmptyDay);
+  // WICHTIG: leerer Teller OHNE allowEmptyDay darf den nativen Snapshot NICHT loeschen.
+  if (empty && !allowEmpty) {
+    syncWebStorageToNative();
+    return;
+  }
+  syncWebStorageToNative(empty ? { allowEmptyDay: true } : undefined);
+}
+
+/** Stellt heutigen Teller aus last_nonempty wieder her, falls state/local leer ist. */
+function recoverTodayPlateFromSnapshot() {
+  const today = todayISODate();
+  try {
+    const snap = localStorage.getItem(STORAGE_KEY_DAY_LAST_NONEMPTY);
+    if (!snap) return null;
+    const parsed = JSON.parse(snap);
+    if (!parsed || !Array.isArray(parsed.items) || !parsed.items.length) return null;
+    const snapDay = normalizeDayDateKey(parsed.date);
+    if (snapDay === today) return parsed.items.slice();
+    const todayItems = parsed.items.filter(e => dayISOFromEntryTs(e) === today);
+    if (todayItems.length) return todayItems;
+  } catch (e) {}
+  return null;
+}
+
 function loadDay() {
+  const today = todayISODate();
+  currentDayDateStr = today;
   try {
     const raw = localStorage.getItem(STORAGE_KEY_DAY);
-    const today = new Date().toDateString();
     if (!raw) {
-      currentDayDateStr = today;
+      const recovered = recoverTodayPlateFromSnapshot();
+      if (recovered && recovered.length) {
+        persistLogicalDay(recovered);
+        archiveDay(today, recovered);
+        return recovered;
+      }
       return [];
     }
     const saved = JSON.parse(raw);
     let items = Array.isArray(saved.items) ? saved.items : [];
-    if (saved.date !== today) {
-      archiveDay(saved.date, items);
-      currentDayDateStr = today;
-      return [];
+    const savedKey = normalizeDayDateKey(saved.date);
+
+    // Same calendar day (ISO) → Teller behalten. Kein aggressives Leeren.
+    if (savedKey === today || (!savedKey && items.length > 0 && items.every(e => {
+      const iso = dayISOFromEntryTs(e);
+      return !iso || iso === today;
+    }))) {
+      // Nur klar markierte Vortags-Items (ts) auslagern; Rest bleibt auf dem Teller.
+      if (items.length) {
+        const kept = [];
+        const byOld = {};
+        items.forEach(entry => {
+          const iso = dayISOFromEntryTs(entry);
+          if (iso && iso < today) {
+            if (!byOld[iso]) byOld[iso] = [];
+            byOld[iso].push(entry);
+          } else {
+            kept.push(entry);
+          }
+        });
+        Object.keys(byOld).forEach(d => archiveDay(d, byOld[d]));
+        items = kept;
+      }
+      if (!items.length) {
+        const recovered = recoverTodayPlateFromSnapshot();
+        if (recovered && recovered.length) items = recovered;
+      }
+      persistLogicalDay(items); // kein allowEmptyDay
+      if (items.length > 0) archiveDay(today, items);
+      return items;
     }
-    // Falls Datum schon auf "heute" gestempelt wurde, Eintraege aber von Vortagen stammen:
-    items = splitAndArchiveStaleDayItems(items, today);
-    currentDayDateStr = today;
-    try {
-      localStorage.setItem(STORAGE_KEY_DAY, JSON.stringify({ date: today, items }));
-    } catch (ePersist) {}
-    return items;
+
+    // Echter Kalenderwechsel: Vortag archivieren, Teller leeren.
+    if (items.length) {
+      splitAndArchiveStaleDayItems(items, today, savedKey || saved.date || today);
+    }
+    persistLogicalDay([], { allowEmptyDay: true });
+    return [];
   } catch (e) {
-    currentDayDateStr = new Date().toDateString();
+    currentDayDateStr = todayISODate();
     return [];
   }
 }
 
 function saveDay() {
   try {
-    // Immer das logische Tagesdatum speichern — nie "jetzt", sonst Vortag-Vergiftung.
     localStorage.setItem(STORAGE_KEY_DAY, JSON.stringify({ date: currentDayDateStr, items: state.day }));
   } catch (e) { /* Speicher evtl. nicht verfügbar – App funktioniert trotzdem */ }
+  try {
+    if (typeof state !== 'undefined' && state && Array.isArray(state.day) && state.day.length > 0) {
+      archiveDay(currentDayDateStr, state.day);
+    }
+  } catch (eHist) {}
+  syncWebStorageToNative();
 }
 
 function checkDayRollover() {
-  const today = new Date().toDateString();
-  if (today === currentDayDateStr) return false;
-  // Tagesende: gesamten Teller des logischen Vortags in den Verlauf archivieren
-  // (Summen für Statistik) und mit leerem Teller in den neuen Kalendertag starten.
-  // Kein manueller Schritt nötig — läuft beim Öffnen, bei Fokus, vor Teller-Änderungen
-  // und zu Beginn von renderDay().
-  if (typeof state !== 'undefined' && state && Array.isArray(state.day)) {
-    archiveDay(currentDayDateStr, state.day);
-    state.day = [];
+  const today = todayISODate();
+  let changed = false;
+
+  function collectDayItems() {
+    if (typeof state !== 'undefined' && state && Array.isArray(state.day) && state.day.length > 0) {
+      return state.day.slice();
+    }
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY_DAY);
+      if (!raw) return [];
+      const saved = JSON.parse(raw);
+      return Array.isArray(saved.items) ? saved.items.slice() : [];
+    } catch (e) {
+      return [];
+    }
   }
-  currentDayDateStr = today;
-  try {
-    localStorage.setItem(STORAGE_KEY_DAY, JSON.stringify({ date: currentDayDateStr, items: (state && state.day) || [] }));
-  } catch (e) {}
-  return true;
+
+  const currentKey = normalizeDayDateKey(currentDayDateStr) || currentDayDateStr;
+
+  if (typeof state === 'undefined' || !state || !Array.isArray(state.day)) {
+    if (today !== currentKey) {
+      const items = collectDayItems();
+      if (items.length) splitAndArchiveStaleDayItems(items, today, currentKey);
+      currentDayDateStr = today;
+      persistLogicalDay([], { allowEmptyDay: true });
+      return true;
+    }
+    return false;
+  }
+
+  if (today !== currentKey) {
+    // Echter Mitternachts-Wechsel
+    const items = collectDayItems();
+    if (items.length) {
+      splitAndArchiveStaleDayItems(items, today, currentKey);
+    }
+    state.day = [];
+    currentDayDateStr = today;
+    persistLogicalDay([], { allowEmptyDay: true });
+    changed = true;
+  } else if (state.day.length > 0) {
+    // Gleicher Tag: nur klar veraltete ts-Items entfernen (nicht den ganzen Teller).
+    const kept = [];
+    const byOld = {};
+    state.day.forEach(entry => {
+      const iso = dayISOFromEntryTs(entry);
+      if (iso && iso < today) {
+        if (!byOld[iso]) byOld[iso] = [];
+        byOld[iso].push(entry);
+      } else {
+        kept.push(entry);
+      }
+    });
+    const oldKeys = Object.keys(byOld);
+    if (oldKeys.length) {
+      oldKeys.forEach(d => archiveDay(d, byOld[d]));
+      state.day = kept;
+      changed = true;
+      persistLogicalDay(state.day); // behält Snapshot wenn kept leer ohne allowEmptyDay
+    }
+  }
+  return changed;
 }
 function refreshAfterDayRollover() {
   if (checkDayRollover() && typeof renderDay === 'function') renderDay();
+  syncWebStorageToNative();
 }
-document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshAfterDayRollover(); });
+// Native iOS-Bridge + Overlay-Hooks greifen darauf zu.
+window.checkDayRollover = checkDayRollover;
+window.refreshAfterDayRollover = refreshAfterDayRollover;
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    syncWebStorageToNative();
+  } else {
+    refreshAfterDayRollover();
+    // Nach Resume: falls Teller leer aber Snapshot von heute existiert → wiederherstellen
+    try {
+      if (typeof state !== 'undefined' && state && Array.isArray(state.day) && state.day.length === 0) {
+        const recovered = recoverTodayPlateFromSnapshot();
+        if (recovered && recovered.length) {
+          state.day = recovered;
+          persistLogicalDay(recovered);
+          if (typeof renderDay === 'function') renderDay();
+        }
+      }
+    } catch (eRec) {}
+    syncWebStorageToNative();
+  }
+});
+window.addEventListener('pagehide', () => { syncWebStorageToNative(); });
 window.addEventListener('pageshow', refreshAfterDayRollover);
 window.addEventListener('focus', refreshAfterDayRollover);
-// Sicherheitsnetz, falls die App über Mitternacht durchgehend im Vordergrund bleibt.
-setInterval(refreshAfterDayRollover, 5 * 60 * 1000);
+setInterval(() => {
+  if (typeof document !== 'undefined' && document.hidden) return;
+  refreshAfterDayRollover();
+}, 60 * 1000);
 function loadFavs() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY_FAVS);
@@ -20805,6 +21088,20 @@ let state = {
   favorites: loadFavs(),
   searchTerm: '',
 };
+// Extra-Recovery: falls loadDay leer war, Snapshot von heute aber noch existiert
+// (z.B. nach vorherigem Fehl-Leeren) → Teller und Menü "Mahlzeit im Detail" retten.
+if (!state.day.length) {
+  try {
+    const recovered = recoverTodayPlateFromSnapshot();
+    if (recovered && recovered.length) {
+      state.day = recovered;
+      persistLogicalDay(recovered);
+      archiveDay(currentDayDateStr, recovered);
+    }
+  } catch (eRec0) {}
+}
+// Nach Restore/loadDay einmalig nativ spiegeln (App Store: Daten überleben Updates).
+syncWebStorageToNative();
 
 const DEFAULT_TARGETS = { kh: 150, proteinMin: 50, proteinMax: 75, fat: 66, satFat: 22, salt: 5, fiber: 30, fructose: 25, sugar: null };
 // BUGFIX (Master-Prompt Teil 2, Punkt 1): TARGETS wurde bisher NIRGENDS in localStorage
@@ -23970,6 +24267,15 @@ const INTL_LOCALE = { de: 'de-DE', en: 'en-US', es: 'es-ES', it: 'it-IT' };
 let historySelectedDate = null;
 
 function renderHistory() {
+  // Vortag zuerst syncen — sonst erscheinen gestrige Teller-Summen als "Heute"
+  // und die Vortags-Zeile bleibt "Keine Daten" (typisch nach iOS-Warm-Resume).
+  // Bei Aenderung: renderDay() neu aufbauen (ruft renderHistory erneut auf).
+  if (typeof checkDayRollover === 'function' && checkDayRollover()) {
+    if (typeof renderDay === 'function') {
+      renderDay();
+      return;
+    }
+  }
   const el = document.getElementById('history-section');
   if (!el) return;
   if (state.mode !== 'pro') { el.innerHTML = ''; return; } // Verlauf ist eine Profi-Funktion, wie Aktivitaet/Tagesziel-Vergleich
@@ -23977,7 +24283,10 @@ function renderHistory() {
   const fullHistory = loadHistory();
   const stored = fullHistory.slice(-7); // klinischer 7-Tage-Trend: letzte 7 ABGESCHLOSSENEN Tage
   const todayTotals = totalsForItems(state.day);
-  const todayEntry = { date: new Date().toDateString(), ...todayTotals, isToday: true };
+  const todayStr = (typeof currentDayDateStr === 'string' && currentDayDateStr)
+    ? currentDayDateStr
+    : new Date().toDateString();
+  const todayEntry = { date: todayStr, ...todayTotals, isToday: true };
 
   if (stored.length === 0 && state.day.length === 0) {
     el.innerHTML = `
@@ -23997,22 +24306,26 @@ function renderHistory() {
   const n = stored.length;
   const avg = n > 0 ? {
     kh: stored.reduce((s, d) => s + d.kh, 0) / n,
+    protein: stored.reduce((s, d) => s + (d.protein || 0), 0) / n,
     fat: stored.reduce((s, d) => s + d.fat, 0) / n,
     salt: stored.reduce((s, d) => s + d.salt, 0) / n,
-  } : { kh: todayTotals.kh, fat: todayTotals.fat, salt: todayTotals.salt };
+  } : { kh: todayTotals.kh, protein: todayTotals.protein, fat: todayTotals.fat, salt: todayTotals.salt };
 
-  // Baut die drei Kennzahlen-Zeilen (Netto-KH/Fett/Salz) - wiederverwendbar sowohl fuer
-  // den 7-Tage-Schnitt als auch fuer einen einzeln ausgewaehlten Tag.
+  // Baut die Kennzahlen-Zeilen (Netto-KH/Protein/Fett/Salz) - gleiche Reihenfolge wie
+  // "Mein Teller heute". Wiederverwendbar fuer 7-Tage-Schnitt und einzeln ausgewaehlte Tage.
+  // Protein-Balken bewusst in Lila (var(--purple)), analog zum Protein-Ring auf dem Hauptbildschirm;
+  // die anderen Werte behalten die Ampel-Farben (Obergrenzen-Logik).
   function buildMetricRows(values, prefix) {
     const tHist = (typeof getEffectiveDailyTargets === 'function') ? getEffectiveDailyTargets() : TARGETS;
     const defs = [
       { label: L.labelNetCarbs, val: values.kh, target: tHist.kh, decimals: 0 },
+      { label: L.labelProtein, val: values.protein || 0, target: tHist.proteinMax, decimals: 0, barColor: 'var(--purple)' },
       { label: L.labelFat, val: values.fat, target: tHist.fat, decimals: 0 },
       { label: L.saltLabel, val: values.salt, target: tHist.salt, decimals: 1 },
     ];
     return defs.map(r => {
       const pct = Math.round((r.val / Math.max(r.target, 0.0001)) * 100);
-      const color = pct <= 70 ? 'var(--green)' : pct <= 100 ? 'var(--yellow)' : 'var(--red)';
+      const color = r.barColor || (pct <= 70 ? 'var(--green)' : pct <= 100 ? 'var(--yellow)' : 'var(--red)');
       return `
         <div class="trend-row">
           <span class="trend-label">${prefix}${r.label}</span>
@@ -24051,11 +24364,21 @@ function renderHistory() {
   const last7Dates = Array.from({ length: 7 }, (_, i) => {
     const d = new Date();
     d.setDate(d.getDate() - (6 - i));
-    return d.toDateString();
+    return (typeof localISODate === 'function') ? localISODate(d) : d.toDateString();
   });
+  const todayKey = (typeof normalizeDayDateKey === 'function')
+    ? (normalizeDayDateKey(todayEntry.date) || todayEntry.date)
+    : todayEntry.date;
   const allDays = last7Dates.map(dateStr => {
-    if (dateStr === todayEntry.date) return todayEntry;
-    const found = stored.find(h => h.date === dateStr);
+    const dateKey = (typeof normalizeDayDateKey === 'function')
+      ? (normalizeDayDateKey(dateStr) || dateStr)
+      : dateStr;
+    if (dateKey === todayKey) return todayEntry;
+    const found = stored.find(h => {
+      if (h.date === dateStr) return true;
+      const hk = (typeof normalizeDayDateKey === 'function') ? normalizeDayDateKey(h.date) : null;
+      return hk && hk === dateKey;
+    });
     if (found) return found;
     return { date: dateStr, kh: 0, fat: 0, salt: 0, protein: 0, satFat: 0, noData: true };
   });
@@ -24084,9 +24407,9 @@ function renderHistory() {
       <tr class="history-day-row${d.isToday ? ' history-today-row' : ''}${outlier ? ' history-outlier' : ''}${isSelected ? ' history-row-selected' : ''}${d.noData ? ' history-no-data-row' : ''}" data-date="${d.date}" tabindex="0" role="button" aria-pressed="${isSelected}">
         <td data-label="${L.historyColDay}">${dateLabel}${outlier ? `<span class="history-outlier-tag">${L.historyOutlierTag}</span>` : ''}</td>
         <td data-label="${L.labelNetCarbs}" class="num">${d.noData ? '–' : `${fmtDe(d.kh, 0)} g`}</td>
+        <td data-label="${L.labelProtein}" class="num">${d.noData ? '–' : `${fmtDe(d.protein || 0, 0)} g`}</td>
         <td data-label="${L.labelFat}" class="num">${d.noData ? '–' : `${fmtDe(d.fat, 0)} g`}</td>
         <td data-label="${L.saltLabel}" class="num">${d.noData ? '–' : `${fmtDe(d.salt, 1)} g`}</td>
-        <td data-label="${L.labelProtein}" class="num history-detail-col">${d.noData ? '–' : `${fmtDe(d.protein || 0, 0)} g`}</td>
         <td data-label="${L.labelSatFat}" class="num history-detail-col">${d.noData ? '–' : `${fmtDe(d.satFat || 0, 0)} g`}</td>
         <td data-label="${L.historyColStatus}">${statusHtml}</td>
       </tr>`;
@@ -24134,8 +24457,8 @@ function renderHistory() {
       <div class="table-scroll">
       <table class="data-table history-table" id="history-table">
         <thead><tr>
-          <th>${L.historyColDay}</th><th class="num">${L.labelNetCarbs}</th><th class="num">${L.labelFat}</th><th class="num">${L.saltLabel}</th>
-          <th class="num history-detail-col">${L.labelProtein}</th><th class="num history-detail-col">${L.labelSatFat}</th>
+          <th>${L.historyColDay}</th><th class="num">${L.labelNetCarbs}</th><th class="num">${L.labelProtein}</th><th class="num">${L.labelFat}</th><th class="num">${L.saltLabel}</th>
+          <th class="num history-detail-col">${L.labelSatFat}</th>
           <th>${L.historyColStatus}</th>
         </tr></thead>
         <tbody>${rowsHtml}</tbody>
@@ -24358,7 +24681,13 @@ function protocolDataForDate(dateStr) {
     return { kh: t.kh, fat: t.fat, salt: t.salt };
   }
   const hist = loadHistory();
-  const entry = hist.find(d => d.date && new Date(d.date).toDateString() === new Date(dateStr + 'T00:00:00').toDateString());
+  const want = (typeof normalizeDayDateKey === 'function') ? normalizeDayDateKey(dateStr) : dateStr;
+  const entry = hist.find(d => {
+    if (!d.date) return false;
+    if (d.date === dateStr) return true;
+    const hk = (typeof normalizeDayDateKey === 'function') ? normalizeDayDateKey(d.date) : null;
+    return hk && want && hk === want;
+  });
   if (!entry) return null;
   return { kh: entry.kh, fat: entry.fat, salt: entry.salt };
 }
@@ -25731,7 +26060,18 @@ document.getElementById('confirm-cancel').onclick = () => {
 
 document.getElementById('clear-all-day').onclick = () => {
   if (state.day.length === 0) return;
-  showConfirm(L.confirmClearAll, () => { checkDayRollover(); state.day = []; saveDay(); renderDay(); });
+  showConfirm(L.confirmClearAll, () => {
+    checkDayRollover();
+    if (state.day.length > 0) archiveDay(currentDayDateStr, state.day);
+    state.day = [];
+    try {
+      localStorage.setItem(STORAGE_KEY_DAY, JSON.stringify({ date: currentDayDateStr, items: [] }));
+      localStorage.removeItem(STORAGE_KEY_DAY_LAST_NONEMPTY);
+    } catch (eClr) {}
+    // Bewusst leeren: Native-Snapshot mitlöschen (sonst käme der Teller nach Reinstall zurück).
+    syncWebStorageToNative({ allowEmptyDay: true });
+    renderDay();
+  });
 };
 
 // "Mein Teller heute" ist jetzt klickbarer Overlay-Trigger fuer die 4 Funktionen
@@ -28712,6 +29052,15 @@ initBarcodeEvents();
       if (typeof notifyNativeSearchScrollLock === 'function') {
         try { notifyNativeSearchScrollLock(false); } catch (eNative) {}
       }
+      // Verlauf: Vortag automatisch archivieren, bevor die Karte gezeichnet wird — ohne
+      // Extra-Klick und unabhaengig davon, ob visibilitychange schon gelaufen ist.
+      if (ov === ovVerlauf) {
+        try {
+          if (typeof refreshAfterDayRollover === 'function') refreshAfterDayRollover();
+          else if (typeof checkDayRollover === 'function') checkDayRollover();
+          if (typeof renderHistory === 'function') renderHistory();
+        } catch (eHist) {}
+      }
       ov.classList.add('show');
       ov.setAttribute('aria-hidden', 'false');
       lockBodyScroll();
@@ -29096,6 +29445,16 @@ initBarcodeEvents();
       fr:'VARIATION OBLIGATOIRE: Invente un plat différent à chaque fois. Graine de variation: {seed}. Évite ces titres déjà montrés (pas de répétitions ni de quasi-variantes): {excluded}. Choisis un autre ingrédient principal, cuisine ou méthode.',
       tr:'ÇEŞİTLİLİK ZORUNLU: Her seferinde farklı bir yemek uydur. Çeşitlilik tohumu: {seed}. Daha önce gösterilen şu başlıklardan kaçın (tekrar veya yakın varyant yok): {excluded}. Farklı ana malzeme, mutfak veya pişirme yöntemi seç.'
     };
+    // Freisuche: Gericht ist verbindlich — nur Mengen/Gewürze/Schritte variieren, KEIN anderes Gericht.
+    var LBL_RECIPE_FREESEARCH_VARIETY_INSTRUCTION = {
+      de:'VARIATION (FREISUCHE): Behalte exakt das vorgegebene Gericht "{q}". Variation-Seed: {seed}. Variiere nur Mengen, Gewürze und Zubereitungsschritte; erfinde KEIN anderes Gericht und weiche nicht vom Titel ab.',
+      en:'VARIATION (FREE SEARCH): Keep exactly the required dish "{q}". Variation seed: {seed}. Only vary amounts, spices, and steps; do NOT invent a different dish or change the title.',
+      es:'VARIACIÓN (BÚSQUEDA LIBRE): Mantén exactamente el plato "{q}". Semilla: {seed}. Solo varía cantidades, especias y pasos; NO inventes otro plato.',
+      it:'VARIAZIONE (RICERCA LIBERA): Mantieni esattamente il piatto "{q}". Seed: {seed}. Varia solo quantità, spezie e passaggi; NON inventare un altro piatto.',
+      pt:'VARIAÇÃO (BUSCA LIVRE): Mantém exatamente o prato "{q}". Semente: {seed}. Varia só quantidades, especiarias e passos; NÃO inventes outro prato.',
+      fr:'VARIATION (RECHERCHE LIBRE): Garde exactement le plat "{q}". Graine: {seed}. Ne varie que quantités, épices et étapes; n’invente PAS un autre plat.',
+      tr:'ÇEŞİTLİLİK (SERBEST ARAMA): "{q}" yemeğini birebir koru. Tohum: {seed}. Sadece miktar, baharat ve adımları değiştir; başka yemek uydurma.'
+    };
     var LBL_RECIPE_BACK = { de:'Zurück', en:'Back', es:'Atrás', it:'Indietro' };
     var LBL_RECIPE_MEDICAL_NOTE = { de:'Hinweis: KI-generierte Rezeptvorschläge dienen nur als Inspiration. Bitte überprüfe alle Zutaten auf persönliche Unverträglichkeiten und Allergien. Die Angaben ersetzen keine medizinische oder ernährungstherapeutische Beratung.', en:'Note: AI-generated recipe suggestions are for inspiration only. Please check all ingredients for personal intolerances and allergies. This information does not replace medical or nutritional-therapy advice.', es:'Aviso: Las sugerencias de recetas generadas por IA son solo para inspiración. Comprueba todos los ingredientes por intolerancias o alergias personales. Esta información no sustituye el asesoramiento médico o nutricional profesional.', it:'Nota: I suggerimenti di ricette generati dall\'IA servono solo come ispirazione. Controlla tutti gli ingredienti per intolleranze o allergie personali. Le informazioni non sostituiscono una consulenza medica o nutrizionale professionale.' };
     var LBL_RECIPE_SUBLINE = { de:'KI-gestützte Rezeptideen, orientiert an deinen heutigen Nährstoffzielen.', en:'AI-powered recipe ideas, based on your nutrient goals for today.', es:'Ideas de recetas basadas en IA, orientadas a tus objetivos nutricionales de hoy.', it:'Idee di ricette basate sull\'IA, orientate ai tuoi obiettivi nutrizionali di oggi.' };
@@ -29116,8 +29475,8 @@ initBarcodeEvents();
     // formuliert (statt als hoefliche Bitte) - zusaetzliche Absicherung neben dem eigentlichen
     // Traeger des Suchbegriffs (pantry_ingredients, siehe buildNutriRecipePayload).
     var LBL_RECIPE_FREESEARCH_AI_INSTRUCTION = {
-      de: 'MODUS GENERATIV / FREISUCHE (nicht Eigenrezept): VERBINDLICHE VORGABE, KEIN VORSCHLAG: Erstelle ausschließlich ein Rezept für genau folgendes Gericht: "{q}". Weiche unter keinen Umständen auf ein anderes Gericht aus. Du DARFST Mengen und Zutatendetails an die unten genannten Tagesziele anpassen – das ist hier erlaubt und gewollt. ingredients[].unit NUR "g" oder "ml" (Stueck/EL/TL vorher umrechnen: 1 Ei=60 g, 1 EL=15, 1 TL=5). Wende das CHEF-FRAMEWORK v9.2 an (Bottom-Up, Anti-Halluzination: Platzhalter {id}, Backend-Validierung nach garnish vor Chef-Analyse).',
-      en: 'MODE GENERATIVE / FREE SEARCH (not own-recipe): BINDING REQUIREMENT, NOT A SUGGESTION: Create a recipe exclusively for the following dish: "{q}". Under no circumstances substitute a different dish. You MAY adjust amounts and ingredient details to match the daily targets listed below – that is allowed and intended in this mode. ingredients[].unit ONLY "g" or "ml" (convert piece/tbsp/tsp first: 1 egg=60 g, 1 tbsp=15, 1 tsp=5). Apply the CHEF FRAMEWORK (5 tastes, texture, garnish field, doneness cues, chef analysis in nutrition_note).',
+      de: 'MODUS GENERATIV / FREISUCHE (nicht Eigenrezept): VERBINDLICHE VORGABE, KEIN VORSCHLAG: Erstelle ausschließlich ein Rezept für genau folgendes Gericht: "{q}". Weiche unter keinen Umständen auf ein anderes Gericht aus. Du DARFST Mengen und Zutatendetails an die unten genannten Tagesziele anpassen – das ist hier erlaubt und gewollt. Units laut CHEF-FRAMEWORK v9.2: Eier unit=stk, Gewuerze/prise; sonst g/ml. Kochfluessigkeit (Wasser/Bruehe) MUSS in ingredients stehen und per {id} im Step referenziert werden — nie nur als Klartext „Wasser“. Wende das CHEF-FRAMEWORK v9.2 an (Bottom-Up, Anti-Halluzination: Platzhalter {id}, Backend-Validierung nach garnish vor Chef-Analyse).',
+      en: 'MODE GENERATIVE / FREE SEARCH (not own-recipe): BINDING REQUIREMENT, NOT A SUGGESTION: Create a recipe exclusively for the following dish: "{q}". Under no circumstances substitute a different dish. You MAY adjust amounts and ingredient details to match the daily targets listed below – that is allowed and intended in this mode. Units per CHEF FRAMEWORK v9.2: eggs unit=stk, spices/pinch; otherwise g/ml. Cooking liquid (water/broth) MUST be listed in ingredients and referenced via {id} in steps — never bare “water” prose. Apply the CHEF FRAMEWORK v9.2 (bottom-up, anti-hallucination placeholders {id}).',
       es: 'MODO GENERATIVO / BÚSQUEDA LIBRE (no receta propia): REQUISITO VINCULANTE: Crea una receta exclusivamente para el plato "{q}". No sustituyas por otro plato. SÍ puedes ajustar cantidades y detalles de ingredientes a los objetivos diarios – está permitido en este modo. ingredients[].unit SOLO "g" o "ml". Aplica el CHEF-FRAMEWORK (5 sabores, textura, garnish, análisis chef).',
       it: 'MODALITÀ GENERATIVA / RICERCA LIBERA (non ricetta propria): REQUISITO VINCOLANTE: Crea una ricetta esclusivamente per il piatto "{q}". Non sostituirlo. PUOI adattare quantità e dettagli degli ingredienti agli obiettivi giornalieri – è consentito in questa modalità. ingredients[].unit SOLO "g" o "ml". Applica il CHEF-FRAMEWORK (5 sapori, texture, garnish, analisi chef).',
     };
@@ -29444,6 +29803,241 @@ initBarcodeEvents();
     var NUTRI_RECIPE_MAX_STRING_LEN = 2000;
 
     // ---- Coach-API (Spoonacular/TheMealDB/USDA-Analyse) ----
+    // Portions-Vertrag v1.4: Overlay erhält NUR finalIngredients; 1 Karte/operationId;
+    // keine Request-JSON in der UI; Gesamtzeit aus Schritten; „1 Portion“-Grammatik.
+    var LP_PORTION_LOGIC_VERSION = '1.4-dedupe-render-time';
+    try {
+      console.log('[NUTRI_RECIPE_DEBUG] FRONTEND_ORIGIN', window.location && window.location.origin);
+      console.log('[NUTRI_RECIPE_DEBUG] ACTIVE_PORTION_PATH', LP_PORTION_LOGIC_VERSION);
+    } catch (_) {}
+
+    // ---- Rezept-Suche: eine Operation, Abort, idempotentes Rendering ----
+    var activeRecipeOperationId = null;
+    var activeRecipeController = null;
+    var recipeHandlersBound = false;
+    var recipeRequestInFlight = false;
+
+    function newRecipeOperationId() {
+      try {
+        if (typeof crypto !== 'undefined' && crypto.randomUUID) return crypto.randomUUID();
+      } catch (_) {}
+      return 'op-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
+    }
+
+    function beginRecipeOperation() {
+      if (activeRecipeController) {
+        try { activeRecipeController.abort(); } catch (_) {}
+      }
+      var controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+      activeRecipeController = controller;
+      var operationId = newRecipeOperationId();
+      activeRecipeOperationId = operationId;
+      console.log('[NUTRI_RECIPE_DEBUG] OPERATION_START', operationId);
+      return { operationId: operationId, controller: controller };
+    }
+
+    function isActiveRecipeOperation(operationId) {
+      return !!operationId && operationId === activeRecipeOperationId;
+    }
+
+    function finishRecipeOperation(controller) {
+      if (activeRecipeController === controller) activeRecipeController = null;
+    }
+
+    function isCorsOrNetworkError(errorOrResult) {
+      if (!errorOrResult) return false;
+      if (errorOrResult instanceof TypeError) return true;
+      if (errorOrResult.name === 'NetworkError' || errorOrResult.name === 'TypeError') return true;
+      if (errorOrResult.corsBlocked || errorOrResult.networkFatal) return true;
+      // status 0 + nicht Abort → typisch Preflight/CORS/Offline
+      if (errorOrResult.status === 0 && errorOrResult.aborted !== true && errorOrResult.retryable === false) {
+        return true;
+      }
+      return false;
+    }
+
+    /**
+     * Synchroner Einmal-Guard: ein Nutzerklick → genau eine OPERATION_START.
+     * Muss VOR jedem await/fetch greifen.
+     */
+    function tryAcquireRecipeRequestLock() {
+      if (recipeRequestInFlight) {
+        console.warn('[NUTRI_RECIPE_DEBUG] Duplicate request suppressed');
+        return false;
+      }
+      recipeRequestInFlight = true;
+      return true;
+    }
+
+    function releaseRecipeRequestLock() {
+      recipeRequestInFlight = false;
+    }
+
+    function formatServingsLabel(value) {
+      var n = Number(value);
+      if (!isFinite(n) || n <= 0) n = 1;
+      if (Math.abs(n - 1) < 1e-9) {
+        return '1 ' + (pick(LBL_RECIPE_SERVING_SINGULAR) || 'Portion');
+      }
+      var shown = (Math.abs(n - Math.round(n)) < 1e-9) ? String(Math.round(n)) : String(n);
+      return shown + ' ' + (pick(LBL_RECIPE_SERVINGS_SUFFIX) || 'Portionen');
+    }
+
+    function formatNutritionHeadingForServings(count) {
+      var n = Number(count);
+      if (!isFinite(n) || n <= 0) n = 1;
+      if (Math.abs(n - 1) < 1e-9) {
+        return pick(LBL_RECIPE_NUTRITION_FOR_1) || ('Nährwerte für ' + formatServingsLabel(1));
+      }
+      var tpl = pick(LBL_RECIPE_NUTRITION_FOR_N) || 'Nährwerte für {n} Portionen';
+      return tpl.replace('{n}', String(Math.abs(n - Math.round(n)) < 1e-9 ? Math.round(n) : n));
+    }
+
+    function extractDurationMinutesFromText(text) {
+      var s = String(text || '');
+      var maxMin = 0;
+      var range = s.match(/(\d+)\s*[–\-]\s*(\d+)\s*(?:min|minute)/i);
+      if (range) {
+        maxMin = Math.max(maxMin, parseInt(range[2], 10) || 0);
+      }
+      var re = /(\d+)\s*(?:-\s*\d+\s*)?(?:min(?:uten)?|min\.)\b/gi;
+      var m;
+      while ((m = re.exec(s))) {
+        maxMin = Math.max(maxMin, parseInt(m[1], 10) || 0);
+      }
+      var hours = s.match(/(\d+(?:[.,]\d+)?)\s*(?:stunden|stunde|hours?|hrs?|h)\b/i);
+      if (hours) {
+        maxMin = Math.max(maxMin, Math.round(parseFloat(String(hours[1]).replace(',', '.')) * 60) || 0);
+      }
+      return maxMin;
+    }
+
+    function formatTotalMinutesLabel(totalMinutes) {
+      var mins = Math.max(0, Math.round(Number(totalMinutes) || 0));
+      if (mins <= 0) return '';
+      if (mins < 60) return mins + ' Minuten';
+      var h = Math.floor(mins / 60);
+      var m = mins % 60;
+      if (m === 0) {
+        return h === 1 ? 'ca. 1 Stunde' : ('ca. ' + h + ' Stunden');
+      }
+      if (h === 1) return 'ca. 1 Stunde ' + m + ' Minuten';
+      return 'ca. ' + h + ' Stunden ' + m + ' Minuten';
+    }
+
+    function computeRecipeTimingFromSteps(recipe) {
+      var steps = Array.isArray(recipe && recipe.steps) ? recipe.steps : [];
+      var cookMinutes = 0;
+      var prepMinutes = 0;
+      steps.forEach(function (step) {
+        var text = typeof step === 'string' ? step : (step && (step.instruction || step.text || step.content || step.title) ? String(step.instruction || step.text || step.content || '') : String(step || ''));
+        var fromField = (step && typeof step === 'object' && step.time_min != null) ? Number(step.time_min) : 0;
+        var fromText = extractDurationMinutesFromText(text);
+        var mins = Math.max(fromField || 0, fromText || 0);
+        if (mins <= 0) return;
+        if (/köchel|schmor|garen|kochen|simmer|braise|cook|braten|anbraten|dünsten/i.test(text) || mins >= 45) {
+          cookMinutes += mins;
+        } else {
+          prepMinutes += mins;
+        }
+      });
+      var declared = extractDurationMinutesFromText(recipe && recipe.prep_time);
+      if (!declared && recipe && recipe.prepMinutes != null) declared = Number(recipe.prepMinutes) || 0;
+      if (!declared && recipe && recipe.prep_time_min != null) declared = Number(recipe.prep_time_min) || 0;
+      var totalMinutes = Math.max(declared, prepMinutes + cookMinutes, cookMinutes, prepMinutes);
+      // Wenn nur eine lange Kochzeit in Schritten steht, zählt die als Gesamtzeit.
+      if (cookMinutes >= 60 && totalMinutes < cookMinutes) totalMinutes = cookMinutes;
+      if (prepMinutes > 0 && cookMinutes > 0) totalMinutes = Math.max(totalMinutes, prepMinutes + cookMinutes);
+      return {
+        prepMinutes: prepMinutes || null,
+        cookMinutes: cookMinutes || null,
+        totalMinutes: totalMinutes || null,
+        prep_time: formatTotalMinutesLabel(totalMinutes) || (recipe && recipe.prep_time) || ''
+      };
+    }
+
+    function looksLikeInternalRequestJson(text) {
+      var s = String(text || '').trim();
+      if (!s) return false;
+      if (/^\s*\{[\s\S]*\}\s*$/.test(s) && /"?(mode|pantry_ingredients|ai_instruction|team_ai|allergens)"?\s*:/.test(s)) {
+        return true;
+      }
+      return /"pantry_ingredients"\s*:|"ai_instruction"\s*:|"team_ai"\s*:/.test(s);
+    }
+
+    function looksLikeFullRecipeDump(text, title) {
+      var s = String(text || '');
+      if (looksLikeInternalRequestJson(s)) return true;
+      if (s.length < 280) return false;
+      var t = String(title || '').trim();
+      if (t && s.indexOf(t) >= 0 && /Zubereitung|Ingredients|Preparation|Prep time|Einkaufsliste/i.test(s)) {
+        return true;
+      }
+      return false;
+    }
+
+    function collapseRepeatedRecipeSteps(steps) {
+      var arr = (Array.isArray(steps) ? steps : []).map(function (s) {
+        if (typeof s === 'string') return s.trim();
+        if (s && typeof s === 'object') {
+          return String(s.instruction || s.text || s.content || s || '').trim();
+        }
+        return String(s || '').trim();
+      }).filter(Boolean);
+      if (arr.length < 2) return arr;
+      // Konsekutive Duplikate
+      var deduped = [arr[0]];
+      for (var i = 1; i < arr.length; i++) {
+        if (arr[i] !== arr[i - 1]) deduped.push(arr[i]);
+      }
+      arr = deduped;
+      // Identischer Block 2× oder 3× hintereinander
+      function tryCollapseFactor(factor) {
+        if (arr.length < factor * 2 || arr.length % factor !== 0) return null;
+        var n = arr.length / factor;
+        var first = arr.slice(0, n);
+        for (var f = 1; f < factor; f++) {
+          var slice = arr.slice(f * n, (f + 1) * n);
+          if (slice.join('\n') !== first.join('\n')) return null;
+        }
+        return first;
+      }
+      var collapsed = tryCollapseFactor(3) || tryCollapseFactor(2);
+      return collapsed || arr;
+    }
+
+    function stripInternalFieldsFromRecipe(recipe) {
+      if (!recipe || typeof recipe !== 'object') return recipe;
+      var out;
+      try { out = JSON.parse(JSON.stringify(recipe)); } catch (e) { out = recipe; }
+      // Request-Kontext darf nie in sichtbare Felder.
+      delete out.mode;
+      delete out.pantry_ingredients;
+      delete out.ai_instruction;
+      delete out.team_ai;
+      delete out.macros;
+      delete out.dailyTargets;
+      delete out.lab_guideline_constraints;
+      if (looksLikeInternalRequestJson(out.self_check) || looksLikeFullRecipeDump(out.self_check, out.title)) {
+        console.debug('[NUTRI_RECIPE_DEBUG] Stripped internal self_check JSON');
+        out.self_check = '';
+      }
+      if (looksLikeInternalRequestJson(out.nutrition_note) || looksLikeFullRecipeDump(out.nutrition_note, out.title)) {
+        console.debug('[NUTRI_RECIPE_DEBUG] Stripped recipe-dump nutrition_note');
+        out.nutrition_note = '';
+      }
+      if (looksLikeInternalRequestJson(out.garnish)) out.garnish = '';
+      out.steps = collapseRepeatedRecipeSteps(out.steps);
+      var timing = computeRecipeTimingFromSteps(out);
+      out.prepMinutes = timing.prepMinutes;
+      out.cookMinutes = timing.cookMinutes;
+      out.totalMinutes = timing.totalMinutes;
+      if (timing.prep_time) out.prep_time = timing.prep_time;
+      out.normalized = true;
+      out.portioned = !!out.livePathNormalized || !!out.finalIngredients;
+      return out;
+    }
+
     // Umschaltbar wie andere Endpunkte: lokal fuer Entwicklung, Render fuer Produktion.
     var COACH_API_USE_LOCAL = true;
     var COACH_API_BASE = COACH_API_USE_LOCAL
@@ -29473,12 +30067,14 @@ initBarcodeEvents();
       if (!data || typeof data !== 'object') return null;
       var source = String(data.source || data.provider || 'labplate').toLowerCase();
       var title = String(data.title || data.strMeal || data.name || 'Rezept').trim().slice(0, 200);
-      var servings = Number(data.servings);
+      var servings = Number(data.finalServings != null ? data.finalServings : data.servings);
       if (!(servings > 0)) servings = 1;
-      var ingredients = Array.isArray(data.ingredients) ? data.ingredients : [];
-      ingredients = ingredients.map(function (ing) {
+      var sourceList = Array.isArray(data.finalIngredients)
+        ? data.finalIngredients
+        : (Array.isArray(data.ingredients) ? data.ingredients : []);
+      var ingredients = sourceList.map(function (ing) {
         if (!ing || typeof ing !== 'object') return null;
-        var name = String(ing.name || ing.ingredient || '').trim().slice(0, 200);
+        var name = String(ing.name || ing.displayName || ing.ingredient || '').trim().slice(0, 200);
         if (!name) return null;
         var macros = (ing.macrosPer100g && typeof ing.macrosPer100g === 'object') ? ing.macrosPer100g : {};
         return {
@@ -29494,20 +30090,69 @@ initBarcodeEvents();
           }
         };
       }).filter(Boolean);
+      var finalNutrition = data.finalNutrition || (
+        data.nutritionBasis === 'finalIngredients' ? data.nutrition : null
+      ) || null;
       return {
         id: data.id != null ? data.id : undefined,
         source: source,
         title: title,
         servings: servings,
-        prep_time: typeof data.prep_time === 'string' ? data.prep_time : '',
+        finalServings: Number(data.finalServings) > 0 ? Number(data.finalServings) : servings,
+        servingsStatus: data.servingsStatus || null,
+        sourceServingsStatus: data.sourceServingsStatus || null,
+        requiresReview: !!data.requiresReview,
+        finalIngredients: ingredients,
         ingredients: ingredients,
+        finalNutrition: finalNutrition,
+        nutrition: finalNutrition || data.nutrition || null,
+        nutritionBasis: data.nutritionBasis || (finalNutrition ? 'finalIngredients' : null),
+        nutritionServings: data.nutritionServings != null ? data.nutritionServings : servings,
+        validationWarnings: data.validationWarnings || data.portionWarnings || [],
+        prep_time: typeof data.prep_time === 'string' ? data.prep_time : '',
         steps: Array.isArray(data.steps) ? data.steps.map(function (s) { return String(s || '').trim(); }).filter(Boolean) : []
+      };
+    }
+
+    /**
+     * Coach-Input-Vertrag: ausschließlich finalIngredients + finalNutrition.
+     * Keine Rohzutaten, keine alten Nährwerte, keine doppelte Skalierung.
+     */
+    function buildCoachInputFromFinalRecipe(recipe) {
+      if (!recipe || typeof recipe !== 'object') return null;
+      var finalIngredients = Array.isArray(recipe.finalIngredients)
+        ? recipe.finalIngredients
+        : (Array.isArray(recipe.ingredients) ? recipe.ingredients : []);
+      var finalNutrition = recipe.finalNutrition || (
+        recipe.nutritionBasis === 'finalIngredients' ? recipe.nutrition : null
+      ) || null;
+      return {
+        title: recipe.title || '',
+        finalServings: recipe.finalServings != null ? recipe.finalServings : recipe.servings,
+        servingsStatus: recipe.servingsStatus || null,
+        sourceServingsStatus: recipe.sourceServingsStatus || null,
+        requiresReview: !!recipe.requiresReview,
+        finalIngredients: finalIngredients,
+        finalNutrition: finalNutrition,
+        validationWarnings: recipe.validationWarnings || recipe.portionWarnings || [],
+        nutritionBasis: 'finalIngredients',
+        nutritionServings: recipe.nutritionServings != null
+          ? recipe.nutritionServings
+          : (recipe.finalServings != null ? recipe.finalServings : recipe.servings)
       };
     }
 
     function analyzeRecipe(data) {
       var payload = (data && data.recipe) ? data : { recipe: data, enrichUsda: data && data.enrichUsda };
-      if (payload.recipe) payload.recipe = normalizeRecipeInput(payload.recipe) || payload.recipe;
+      // Coach-Input behalten (finalNutrition); normalize nur als Ergänzung.
+      if (payload.recipe && payload.recipe.finalNutrition) {
+        payload.recipe = Object.assign(
+          normalizeRecipeInput(payload.recipe) || {},
+          buildCoachInputFromFinalRecipe(payload.recipe) || {}
+        );
+      } else if (payload.recipe) {
+        payload.recipe = normalizeRecipeInput(payload.recipe) || payload.recipe;
+      }
       if (payload.enrichUsda == null) payload.enrichUsda = false;
       return coachApiPost('/api/coach/analyze-recipe', payload);
     }
@@ -29531,6 +30176,8 @@ initBarcodeEvents();
       generateDailyPlan: generateDailyPlan,
       suggestAlternatives: suggestAlternatives,
       normalizeRecipeInput: normalizeRecipeInput,
+      buildCoachInputFromFinalRecipe: buildCoachInputFromFinalRecipe,
+      portionLogicVersion: LP_PORTION_LOGIC_VERSION,
       getBase: function () { return COACH_API_BASE; },
       setUseLocal: function (on) {
         COACH_API_USE_LOCAL = !!on;
@@ -30543,14 +31190,20 @@ initBarcodeEvents();
           if (labC && labC.notes && labC.notes.length) anonRules += ' ' + labC.notes.join(' ');
         }
         payload.ai_instruction = payload.ai_instruction ? (payload.ai_instruction + ' ' + anonRules) : anonRules;
-        // Unendliche Variationen: Seed + bereits gezeigte Titel ausschliessen, damit
-        // dieselbe Suche nicht immer dasselbe Gericht liefert.
+        // Variationen: Freisuche hält das Gericht fest; Pantry/Vorschläge dürfen wechseln.
         var recentTitles = (nutriRecipeState.recentRecipeTitles || []).filter(Boolean).slice(-12);
         var varietySeed = String(Date.now()).slice(-6) + '-' + Math.random().toString(36).slice(2, 7);
         var excludedText = recentTitles.length ? recentTitles.join('; ') : '(noch keine)';
-        var varietyInstr = pick(LBL_RECIPE_VARIETY_INSTRUCTION)
-          .replace('{seed}', varietySeed)
-          .replace('{excluded}', excludedText);
+        var varietyInstr;
+        if (mode === 'freesearch' && freesearchQuery) {
+          varietyInstr = pick(LBL_RECIPE_FREESEARCH_VARIETY_INSTRUCTION)
+            .replace('{q}', freesearchQuery)
+            .replace('{seed}', varietySeed);
+        } else {
+          varietyInstr = pick(LBL_RECIPE_VARIETY_INSTRUCTION)
+            .replace('{seed}', varietySeed)
+            .replace('{excluded}', excludedText);
+        }
         payload.ai_instruction = payload.ai_instruction ? (payload.ai_instruction + ' ' + varietyInstr) : varietyInstr;
       }
       // Allergien immer voran (auch bei Eigenrezept) - Sicherheitsgate bleibt aktiv.
@@ -30631,8 +31284,12 @@ initBarcodeEvents();
         console.log('[NUTRI_RECIPE_DEBUG] Response-Größe (Bytes):', responseSize);
         console.log('[NUTRI_RECIPE_DEBUG] Anzahl der Ingredients in der Antwort:', response && Array.isArray(response.ingredients) ? response.ingredients.length : 0);
         console.log('[NUTRI_RECIPE_DEBUG] Anzahl der Steps in der Antwort:', response && Array.isArray(response.steps) ? response.steps.length : 0);
-        if (response && Array.isArray(response.ingredients)) {
-          console.log('[NUTRI_RECIPE_DEBUG] Ingredient-Namen:', response.ingredients.map(function (ing) { return ing && ing.name; }));
+        if (response && typeof debugRecipeState === 'function') {
+          debugRecipeState('RAW_API_RESPONSE', response);
+        } else if (response && Array.isArray(response.ingredients)) {
+          console.log('[NUTRI_RECIPE_DEBUG] Ingredient-Mengen Roh:', response.ingredients.map(function (ing) {
+            return (ing && ing.name) + ' ' + (ing && ing.amount) + ' ' + (ing && ing.unit);
+          }));
         }
       } catch (e) {
         console.error('[NUTRI_RECIPE_DEBUG] Response-Log-Fehler:', e);
@@ -30646,14 +31303,30 @@ initBarcodeEvents();
 
     // ---- Netzwerk-Helfer: gleiches robustes Muster (AbortController + Timeout) wie das
     // bestehende fetchJsonWithTimeout() fuer Barcode-Abfragen, hier fuer POST+Body. ----
-    async function postNutriRecipeRequest(payload) {
+    async function postNutriRecipeRequest(payload, opts) {
+      opts = opts || {};
+      if (opts.operationId && payload && typeof payload === 'object') {
+        payload = Object.assign({}, payload, { operationId: opts.operationId });
+      }
       logNutriRecipeDebugRequest(payload);
+      var externalSignal = opts.signal || null;
       var ctrl = new AbortController();
       var timer = setTimeout(function () { ctrl.abort(); }, NUTRI_RECIPE_TIMEOUT_MS);
+      var onExternalAbort = null;
+      if (externalSignal) {
+        if (externalSignal.aborted) {
+          clearTimeout(timer);
+          throw new DOMException('Aborted', 'AbortError');
+        }
+        onExternalAbort = function () { try { ctrl.abort(); } catch (_) {} };
+        externalSignal.addEventListener('abort', onExternalAbort);
+      }
       try {
+        var headers = { 'Content-Type': 'application/json' };
+        if (opts.operationId) headers['X-Recipe-Operation-Id'] = opts.operationId;
         var res = await fetch(NUTRI_RECIPE_API_ENDPOINT, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: headers,
           body: JSON.stringify(payload),
           signal: ctrl.signal,
         });
@@ -30668,9 +31341,18 @@ initBarcodeEvents();
         return json;
       } catch (e) {
         logNutriRecipeDebugError(e, 0, (e && e.name === 'AbortError') ? 'timeout/abort' : 'network');
-        return null;
+        if (e && e.name === 'AbortError') throw e;
+        // CORS/Network: fatal – kein automatischer Retry mit neuer Operation.
+        var err = new Error((e && e.message) || 'network');
+        err.name = 'NetworkError';
+        err.networkFatal = true;
+        err.cause = e;
+        throw err;
       } finally {
         clearTimeout(timer);
+        if (externalSignal && onExternalAbort) {
+          try { externalSignal.removeEventListener('abort', onExternalAbort); } catch (_) {}
+        }
       }
     }
 
@@ -30697,17 +31379,45 @@ initBarcodeEvents();
       }
       return 800 + Math.floor(Math.random() * 701); // ~0.8–1.5 s
     }
-    function sleepNutriRecipeChat(ms) {
-      return new Promise(function (resolve) { setTimeout(resolve, ms); });
+    function sleepNutriRecipeChat(ms, signal) {
+      return new Promise(function (resolve, reject) {
+        if (signal && signal.aborted) {
+          reject(new DOMException('Aborted', 'AbortError'));
+          return;
+        }
+        var t = setTimeout(resolve, ms);
+        if (signal) {
+          signal.addEventListener('abort', function () {
+            clearTimeout(t);
+            reject(new DOMException('Aborted', 'AbortError'));
+          }, { once: true });
+        }
+      });
     }
-    async function postNutriRecipeChatRequest(payload) {
+    async function postNutriRecipeChatRequest(payload, opts) {
+      opts = opts || {};
+      if (opts.operationId && payload && typeof payload === 'object') {
+        payload = Object.assign({}, payload, { operationId: opts.operationId });
+      }
       logNutriRecipeDebugRequest(payload);
+      var externalSignal = opts.signal || null;
       var ctrl = new AbortController();
       var timer = setTimeout(function () { ctrl.abort(); }, NUTRI_RECIPE_TIMEOUT_MS);
+      var onExternalAbort = null;
+      if (externalSignal) {
+        if (externalSignal.aborted) {
+          clearTimeout(timer);
+          return { ok: false, status: 0, data: null, retryable: false, retryAfterMs: null, aborted: true };
+        }
+        onExternalAbort = function () { try { ctrl.abort(); } catch (_) {} };
+        externalSignal.addEventListener('abort', onExternalAbort);
+      }
       try {
+        var headers = { 'Content-Type': 'application/json' };
+        if (opts.operationId) headers['X-Recipe-Operation-Id'] = opts.operationId;
         var res = await fetch(NUTRI_RECIPE_API_ENDPOINT, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: headers,
           body: JSON.stringify(payload),
           signal: ctrl.signal,
         });
@@ -30734,24 +31444,108 @@ initBarcodeEvents();
         }
       } catch (e) {
         var isAbort = !!(e && (e.name === 'AbortError' || e.message === 'timeout'));
-        var isNetwork = isAbort || !!(e && e.name === 'TypeError');
-        logNutriRecipeDebugError(e, 0, isAbort ? 'timeout/abort' : 'network');
-        return { ok: false, status: 0, data: null, retryable: isNetwork, retryAfterMs: null };
+        // CORS / TypeError / NetworkError: fatal – KEINE automatischen Retries (keine neuen Ops).
+        var isNetworkFatal = !isAbort && !!(e && (e.name === 'TypeError' || e.name === 'NetworkError' || e.networkFatal));
+        logNutriRecipeDebugError(e, 0, isAbort ? 'timeout/abort' : (isNetworkFatal ? 'cors/network-fatal' : 'network'));
+        return {
+          ok: false,
+          status: 0,
+          data: null,
+          retryable: false,
+          retryAfterMs: null,
+          aborted: isAbort,
+          networkFatal: isNetworkFatal,
+          corsBlocked: isNetworkFatal
+        };
       } finally {
         clearTimeout(timer);
+        if (externalSignal && onExternalAbort) {
+          try { externalSignal.removeEventListener('abort', onExternalAbort); } catch (_) {}
+        }
       }
     }
 
     // ---- JSON-Schema pruefen: viele Zutaten/Schritte und lange Texte erlaubt,
     // Typen/Einheiten (g|ml + macrosPer100g) bleiben streng. ----
+    function debugRecipeState(label, recipe) {
+      var r = recipe || {};
+      var mapIng = function (list) {
+        return (Array.isArray(list) ? list : []).map(function (item) {
+          if (!item) return null;
+          return {
+            id: item.id || item._v92_id || item._prep_ingredient_id,
+            name: item.name || item.displayName,
+            amount: item.amount,
+            unit: item.unit
+          };
+        }).filter(Boolean);
+      };
+      console.log('[NUTRI_RECIPE_DEBUG] ' + label, {
+        sourceServings: r.sourceServings,
+        sourceServingsStatus: r.sourceServingsStatus,
+        targetServings: r.targetServings,
+        finalServings: r.finalServings,
+        servings: r.servings,
+        servingsStatus: r.servingsStatus,
+        scalingFactor: r.scalingFactor,
+        portionSafe: r.portionSafe,
+        requiresReview: r.requiresReview,
+        nutritionSource: r.nutritionSource || r.nutritionBasis,
+        nutritionServings: r.nutritionServings,
+        livePathNormalized: r.livePathNormalized,
+        ingredients: mapIng(r.ingredients),
+        finalIngredients: mapIng(r.finalIngredients),
+        nutrition: r.nutrition,
+        finalNutrition: r.finalNutrition,
+        steps: (Array.isArray(r.steps) ? r.steps : []).map(function (step, i) {
+          if (typeof step === 'string') {
+            return { stepNumber: i + 1, instruction: step };
+          }
+          return {
+            stepNumber: step && step.stepNumber,
+            actionId: step && step.actionId,
+            ingredientIds: step && step.ingredientIds,
+            instruction: step && (step.instruction || step.text || step.content) || String(step || '')
+          };
+        })
+      });
+    }
+
+    function recipeAmountsLookLikeBatch(ings, claimedServings) {
+      if (Number(claimedServings) > 1) return false;
+      var meatTotal = 0;
+      var massTotal = 0;
+      (Array.isArray(ings) ? ings : []).forEach(function (ing) {
+        if (!ing) return;
+        var a = Number(ing.amount) || 0;
+        var u = String(ing.unit || 'g').toLowerCase();
+        if (a <= 0) return;
+        var g = u === 'kg' ? a * 1000 : (u === 'l' ? a * 1000 : a);
+        massTotal += g;
+        if (/hack|fleisch|rind|schwein|huhn|hähnchen|pute|lachs|fisch|tofu/i.test(String(ing.name || ing.displayName || ''))) {
+          if (u === 'g' || u === 'kg') meatTotal += g;
+        }
+      });
+      return meatTotal >= 350 || massTotal >= 700;
+    }
+
     function normalizeNutriRecipeResponse(data) {
       if (!data || typeof data !== 'object') return data;
+      console.log('[NUTRI_RECIPE_DEBUG] ACTIVE_PORTION_PATH', LP_PORTION_LOGIC_VERSION);
+      debugRecipeState('BEFORE_NORMALIZATION', data);
       var beforeIng = Array.isArray(data.ingredients) ? data.ingredients.length : 0;
       var beforeSteps = Array.isArray(data.steps) ? data.steps.length : 0;
       console.log('[NUTRI_RECIPE_DEBUG] Vor Normalisierung – Ingredients:', beforeIng, 'Steps:', beforeSteps);
       var out;
       try { out = JSON.parse(JSON.stringify(data)); } catch (e) { return data; }
       if (!Array.isArray(out.ingredients)) return out;
+
+      // WICHTIG: sourceServings sichern BEVOR servings auf 1 gezwungen wird.
+      if (out.sourceServings == null && Number(out.servings) > 1) {
+        out.sourceServings = Number(out.servings);
+        out.sourceServingsStatus = out.sourceServingsStatus || 'explicit';
+      }
+
       out.ingredients = out.ingredients.map(function (ing) {
         if (!ing || typeof ing !== 'object') return ing;
         var next = Object.assign({}, ing);
@@ -30760,8 +31554,6 @@ initBarcodeEvents();
         var unit = unitRaw.toLowerCase().replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ä/g, 'ae');
         var amount = Number(next.amount);
         var amountMissing = !isFinite(amount) || amount <= 0;
-        // Fehlende Menge NICHT auf 1 erfinden (amount 0 = "nicht angegeben").
-        // Nur eindeutige Einheiten-Umrechnung, wenn eine positive Menge vorliegt.
         if (amountMissing) {
           next.amount = 0;
           next.unit = (unit === 'ml') ? 'ml' : 'g';
@@ -30777,7 +31569,7 @@ initBarcodeEvents();
         } else if (unit === 'zehe' || unit === 'zehen' || unit === 'clove' || unit === 'cloves') {
           next.amount = Math.max(1, Math.round(amount * 5));
           next.unit = 'g';
-        } else if (unit === 'stueck' || unit === 'stuck' || unit === 'stuecke' || unit === 'piece' || unit === 'pieces' || unit === 'pcs') {
+        } else if (unit === 'stueck' || unit === 'stuck' || unit === 'stuecke' || unit === 'piece' || unit === 'pieces' || unit === 'pcs' || unit === 'stk') {
           var n = name.toLowerCase();
           var per = 100;
           if (/avocado/.test(n)) per = 200;
@@ -30787,11 +31579,9 @@ initBarcodeEvents();
           next.amount = Math.max(1, Math.round(amount * per));
           next.unit = 'g';
         } else if (!unit || /geschmack|taste|portion|prise|dash|nach belieben/.test(unit)) {
-          // Ohne klare Einheit und ohne gueltige Menge: nicht angegeben (keine 15g-Erfindung).
           next.amount = amount;
           next.unit = 'g';
         } else {
-          // Unbekannte Einheit: als g behalten, damit Schema nicht verwirft.
           next.amount = amount;
           next.unit = 'g';
         }
@@ -30810,7 +31600,12 @@ initBarcodeEvents();
         return next;
       });
       if (!Array.isArray(out.steps)) out.steps = [];
-      out.steps = out.steps.map(function (s) { return s == null ? '' : String(s); });
+      out.steps = out.steps.map(function (s) {
+        if (s && typeof s === 'object' && (s.instruction || s.text || s.content)) {
+          return String(s.instruction || s.text || s.content || '');
+        }
+        return s == null ? '' : String(s);
+      });
       if (typeof out.prep_time !== 'string') out.prep_time = out.prep_time == null ? '' : String(out.prep_time);
       if (typeof out.nutrition_note !== 'string') out.nutrition_note = out.nutrition_note == null ? '' : String(out.nutrition_note);
       if (typeof out.garnish !== 'string') out.garnish = out.garnish == null ? '' : String(out.garnish);
@@ -30818,13 +31613,10 @@ initBarcodeEvents();
       if (typeof out.title !== 'string' && out.title != null) out.title = String(out.title);
       if (typeof out.servings !== 'number' || !isFinite(out.servings)) {
         var sv = parseFloat(out.servings);
-        // Fehlend/ungueltig → 1; 0 vom Server ebenfalls als 1 (Basis fuer Skalierung).
         out.servings = isFinite(sv) && sv > 0 ? sv : 1;
       } else if (out.servings <= 0) {
         out.servings = 1;
       }
-      // Einkaufsliste 1:1 aus Zutaten auffuellen, falls KI sie kuerzt/weglaesst.
-      // Mengen-Anzeige: <100 g/ml ohne Zahl (formatShoppingListLine).
       if (!Array.isArray(out.shopping_list) || out.shopping_list.length < out.ingredients.length) {
         out.shopping_list = out.ingredients.map(function (ing) {
           return formatShoppingListLine(ing);
@@ -30832,8 +31624,34 @@ initBarcodeEvents();
       } else {
         out.shopping_list = out.shopping_list.map(function (s) { return s == null ? '' : String(s); });
       }
+
+      console.log('[NUTRI_RECIPE_DEBUG] RAW_NUTRITION', out.nutrition || out.finalNutrition || null);
+      debugRecipeState('AFTER_UNIT_NORMALIZATION', out);
+
+      // Pflicht: Portionierung VOR Overlay – nie servings=1 mit Rohmengen belassen.
+      out = ensureLiveFinalPortionedRecipe(out);
+      debugRecipeState('AFTER_PORTIONING', out);
+      console.log('[NUTRI_RECIPE_DEBUG] FINAL_NUTRITION', out.finalNutrition || out.nutrition || null);
+
+      // Display-Vertrag: ingredients === finalIngredients
+      if (Array.isArray(out.finalIngredients) && out.finalIngredients.length) {
+        out.ingredients = out.finalIngredients;
+        out.displayIngredients = out.finalIngredients;
+      }
+      if (out.finalNutrition) {
+        out.nutrition = out.finalNutrition;
+        out.nutritionSource = 'finalNutrition';
+      }
+      if (Number(out.finalServings) > 0) {
+        out.servings = out.finalServings;
+      }
+
+      out = stripInternalFieldsFromRecipe(out);
+      out.normalized = true;
+
       console.log('[NUTRI_RECIPE_DEBUG] Nach Normalisierung – Ingredients:', Array.isArray(out.ingredients) ? out.ingredients.length : 0, 'Steps:', Array.isArray(out.steps) ? out.steps.length : 0);
       console.log('[NUTRI_RECIPE_DEBUG] Nach Normalisierung – Ingredient-Namen:', Array.isArray(out.ingredients) ? out.ingredients.map(function (ing) { return ing && ing.name; }) : []);
+      debugRecipeState('AFTER_NORMALIZATION', out);
       return out;
     }
     function validateNutriRecipeSchema(data) {
@@ -30891,7 +31709,7 @@ initBarcodeEvents();
     // zeigt NUR die zugehoerige, unveraenderte Eingabe-Sektion (siehe renderNutriRecipeBody()).
     // Wirkt sich NICHT auf "mode" aus (bleibt weiterhin der an requestNutriRecipe() uebergebene
     // Wert, unveraendert).
-    var nutriRecipeState = { view: 'chat', mode: null, loading: false, result: null, error: false, errorText: '', pantryInput: '', hint: '', freesearchInput: '', freesearchHint: '', suggestions: [], servings: 2, selectedCategory: 'none', categoryDetailsOpen: false, chatMessages: [], chatDraft: '', chatHint: '', chatLoading: false, chatRetryStatus: '', chatLastQuery: '', chatFocusRetryBtn: false, recentRecipeTitles: [], openAnotherIdeaAfterChat: false, teamHandoffBrief: '', teamHandoffTheme: null, teamHandoffActive: false, coachAnalysis: null, coachAnalysisLoading: false, coachAnalysisError: '', coachAnalysisGen: 0 };
+    var nutriRecipeState = { view: 'chat', mode: null, loading: false, result: null, error: false, errorText: '', pantryInput: '', hint: '', freesearchInput: '', freesearchHint: '', suggestions: [], servings: 2, selectedCategory: 'none', categoryDetailsOpen: false, chatMessages: [], chatDraft: '', chatHint: '', chatLoading: false, chatRetryStatus: '', chatLastQuery: '', chatFocusRetryBtn: false, recentRecipeTitles: [], openAnotherIdeaAfterChat: false, teamHandoffBrief: '', teamHandoffTheme: null, teamHandoffActive: false, coachAnalysis: null, coachAnalysisLoading: false, coachAnalysisError: '', coachAnalysisGen: 0, activeOperationId: null, lastRenderedOperationId: null, recipeVersion: 0 };
     ovRecipes._resetOnClose = function () {
       nutriRecipeState.chatDraft = '';
       nutriRecipeState.freesearchInput = '';
@@ -31151,6 +31969,9 @@ initBarcodeEvents();
     }
 
     function wireNutriRecipeChatComposer() {
+      if (recipeHandlersBound) {
+        // DOM wurde neu gerendert – onclick neu setzen, aber document-Listener nicht verdoppeln.
+      }
       var chatInputEl = document.getElementById('nutri-recipe-chat-input');
       if (chatInputEl) {
         chatInputEl.oninput = function () {
@@ -31160,14 +31981,17 @@ initBarcodeEvents();
         chatInputEl.onkeydown = function (e) {
           if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
-            sendNutriRecipeChatMessage(chatInputEl.value);
+            handleNutriRecipeChatSubmit();
           }
         };
         // Nach Re-Render (Draft bleibt bei Retry/Fehler): Hoehe an vorhandenen Text anpassen.
         resizeNutriRecipeChatInput(chatInputEl);
       }
       var chatSendBtn = document.getElementById('nutri-recipe-chat-send');
-      if (chatSendBtn) chatSendBtn.onclick = function () { sendNutriRecipeChatMessage(chatInputEl ? chatInputEl.value : nutriRecipeState.chatDraft); };
+      if (chatSendBtn) chatSendBtn.onclick = function (e) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        handleNutriRecipeChatSubmit();
+      };
 
       var chatInfoBtn = document.getElementById('nutri-recipe-chat-info');
       var chatInfoBubble = document.getElementById('nutri-recipe-chat-info-bubble');
@@ -31186,6 +32010,7 @@ initBarcodeEvents();
         };
         if (!window.__nutriRecipeInfoDocBound) {
           window.__nutriRecipeInfoDocBound = true;
+          recipeHandlersBound = true;
           document.addEventListener('click', function (ev) {
             var btn = document.getElementById('nutri-recipe-chat-info');
             var bubble = document.getElementById('nutri-recipe-chat-info-bubble');
@@ -31257,6 +32082,179 @@ initBarcodeEvents();
       );
     }
 
+    /**
+     * Live-Safety-Net: Roh-/Batch-Mengen dürfen nie als „1 Portion“ ohne Skalierung
+     * in die UI. Idempotent: bereits skalierte finalIngredients werden nicht erneut geteilt.
+     */
+    function ensureLiveFinalPortionedRecipe(recipe) {
+      if (!recipe || typeof recipe !== 'object') return recipe;
+      console.log('[NUTRI_RECIPE_DEBUG] ACTIVE_PORTION_PATH', LP_PORTION_LOGIC_VERSION);
+      console.log('LIVE_RECIPE_PATH_FRONTEND_ENSURE');
+
+      var ings = Array.isArray(recipe.finalIngredients) && recipe.finalIngredients.length
+        ? recipe.finalIngredients
+        : (Array.isArray(recipe.ingredients) ? recipe.ingredients : []);
+      if (!ings.length) return recipe;
+
+      var looksBatch = recipeAmountsLookLikeBatch(ings, 1);
+      var declaredSource = Number(
+        recipe.sourceServings != null ? recipe.sourceServings : recipe.servings
+      );
+
+      // Bereits portionierte Einzelportion (nicht erneut skalieren!).
+      if (!looksBatch && Number(recipe.finalServings) === 1 &&
+          (recipe.livePathNormalized || Number(recipe.scalingFactor) > 0)) {
+        recipe.ingredients = ings;
+        recipe.finalIngredients = ings;
+        recipe.displayIngredients = ings;
+        recipe.servings = 1;
+        if (recipe.finalNutrition) {
+          recipe.nutrition = recipe.finalNutrition;
+          recipe.nutritionSource = 'finalNutrition';
+        }
+        return recipe;
+      }
+      if (!looksBatch && Number(recipe.servings) === 1 && Number(recipe.sourceServings) > 1 &&
+          recipe.livePathNormalized) {
+        recipe.ingredients = ings;
+        recipe.finalIngredients = ings;
+        recipe.displayIngredients = ings;
+        recipe.finalServings = 1;
+        return recipe;
+      }
+
+      function isMeatName(n) {
+        return /hack|fleisch|rind|schwein|huhn|hähnchen|pute|lachs|fisch|tofu/i.test(String(n || ''));
+      }
+      var meatTotal = 0;
+      var massTotal = 0;
+      ings.forEach(function (ing) {
+        var a = Number(ing && ing.amount) || 0;
+        var u = String((ing && ing.unit) || 'g').toLowerCase();
+        if (a <= 0) return;
+        var g = (u === 'kg') ? a * 1000 : ((u === 'ml' || u === 'l') ? (u === 'l' ? a * 1000 : a) : a);
+        massTotal += g;
+        if (isMeatName(ing.name || ing.displayName) && (u === 'g' || u === 'kg')) meatTotal += g;
+      });
+
+      var sourceServings = null;
+      var sourceStatus = 'unknown';
+      if (Number.isFinite(declaredSource) && declaredSource > 1 && looksBatch) {
+        sourceServings = declaredSource;
+        sourceStatus = recipe.sourceServingsStatus === 'inferred' ? 'inferred' : 'explicit';
+      } else if (looksBatch) {
+        sourceServings = Math.min(12, Math.max(2, Math.round(Math.max(meatTotal, massTotal / 6) / 125)));
+        sourceStatus = 'inferred';
+      } else if (Number.isFinite(declaredSource) && declaredSource > 1 && !looksBatch) {
+        // servings>1 gemeldet, Mengen schon 1-Portion → nur Metadaten
+        recipe.sourceServings = declaredSource;
+        recipe.sourceServingsStatus = 'explicit';
+        recipe.finalServings = 1;
+        recipe.servings = 1;
+        recipe.targetServings = 1;
+        recipe.scalingFactor = 1 / declaredSource;
+        recipe.ingredients = ings;
+        recipe.finalIngredients = ings;
+        recipe.displayIngredients = ings;
+        recipe.nutritionSource = 'finalNutrition';
+        recipe.nutritionBasis = 'finalIngredients';
+        recipe.livePathNormalized = true;
+        recipe.requiresReview = false;
+        recipe.portionSafe = true;
+        return recipe;
+      } else {
+        recipe.finalIngredients = ings;
+        recipe.ingredients = ings;
+        recipe.displayIngredients = ings;
+        recipe.finalServings = 1;
+        recipe.servings = 1;
+        recipe.sourceServings = Number.isFinite(declaredSource) && declaredSource > 0 ? declaredSource : 1;
+        recipe.sourceServingsStatus = 'explicit';
+        recipe.nutritionSource = 'finalNutrition';
+        recipe.nutritionBasis = 'finalIngredients';
+        recipe.livePathNormalized = true;
+        recipe.requiresReview = false;
+        recipe.portionSafe = true;
+        if (typeof calcRecipeMacrosTotal === 'function' && !recipe.finalNutrition) {
+          var tot0 = calcRecipeMacrosTotal(recipe);
+          recipe.finalNutrition = {
+            kcal: Math.round((tot0.netCarbs || 0) * 4 + (tot0.protein || 0) * 4 + (tot0.fat || 0) * 9),
+            protein_g: Math.round((tot0.protein || 0) * 10) / 10,
+            fat_g: Math.round((tot0.fat || 0) * 10) / 10,
+            netto_kh_g: Math.round((tot0.netCarbs || 0) * 10) / 10,
+            ballaststoffe_g: Math.round((tot0.fiber || 0) * 10) / 10
+          };
+          recipe.nutrition = recipe.finalNutrition;
+        }
+        return recipe;
+      }
+
+      if (!(Number.isFinite(sourceServings) && sourceServings > 0)) {
+        recipe.requiresReview = true;
+        recipe.sourceServingsStatus = 'unknown';
+        recipe.portionSafe = false;
+        recipe.portionDisplayHint = 'Die Ausgangsportionszahl ist nicht bekannt. Eine sichere Skalierung ist nicht möglich.';
+        recipe.servings = 1;
+        recipe.finalServings = null;
+        return recipe;
+      }
+
+      var target = 1;
+      var factor = target / sourceServings;
+      var finalIngs = ings.map(function (ing) {
+        var next = Object.assign({}, ing);
+        var a = Number(ing.amount);
+        if (Number.isFinite(a)) {
+          next.amount = roundLocalRecipeAmount(a * factor, ing.unit);
+        }
+        return next;
+      });
+      console.log('[NUTRI_RECIPE_DEBUG] TRACE_FRONTEND_SCALE', {
+        sourceServings: sourceServings,
+        sourceStatus: sourceStatus,
+        factor: factor,
+        sampleBefore: ings[0] && ings[0].amount,
+        sampleAfter: finalIngs[0] && finalIngs[0].amount
+      });
+      recipe.ingredients = finalIngs;
+      recipe.finalIngredients = finalIngs;
+      recipe.displayIngredients = finalIngs;
+      recipe.sourceServings = sourceServings;
+      recipe.sourceServingsStatus = sourceStatus;
+      recipe.sourceServingsConfidence = sourceStatus === 'explicit' ? 1 : 0.6;
+      recipe.targetServings = target;
+      recipe.finalServings = target;
+      recipe.servings = target;
+      recipe.scalingFactor = factor;
+      recipe.servingsStatus = sourceStatus === 'explicit' ? 'validated' : 'inferred';
+      recipe.requiresReview = sourceStatus !== 'explicit';
+      recipe.portionSafe = sourceStatus === 'explicit';
+      recipe.portionDisplayHint = sourceStatus === 'inferred'
+        ? 'Portionsgröße geschätzt – bitte prüfen'
+        : null;
+      recipe.nutritionSource = 'finalNutrition';
+      recipe.nutritionBasis = 'finalIngredients';
+      recipe.nutritionServings = target;
+      recipe.livePathNormalized = true;
+      if (typeof calcRecipeMacrosTotal === 'function') {
+        var tot = calcRecipeMacrosTotal(recipe);
+        recipe.finalNutrition = {
+          kcal: Math.round((tot.netCarbs || 0) * 4 + (tot.protein || 0) * 4 + (tot.fat || 0) * 9),
+          protein_g: Math.round((tot.protein || 0) * 10) / 10,
+          fat_g: Math.round((tot.fat || 0) * 10) / 10,
+          netto_kh_g: Math.round((tot.netCarbs || 0) * 10) / 10,
+          ballaststoffe_g: Math.round((tot.fiber || 0) * 10) / 10
+        };
+        recipe.nutrition = recipe.finalNutrition;
+      }
+      if (recipe.requiresReview && recipe.nutrition_note &&
+          /kcal|protein|fett|kohlenhydrat|nährwert/i.test(String(recipe.nutrition_note))) {
+        recipe.nutrition_note = '';
+        recipe.chefAnalysisBlocked = true;
+      }
+      return recipe;
+    }
+
     function requestNutriCoachAnalysis(recipe) {
       if (!recipe || !window.LabPlateCoachApi) return;
       nutriRecipeState.coachAnalysisGen += 1;
@@ -31264,7 +32262,22 @@ initBarcodeEvents();
       nutriRecipeState.coachAnalysis = null;
       nutriRecipeState.coachAnalysisError = '';
       nutriRecipeState.coachAnalysisLoading = true;
-      window.LabPlateCoachApi.analyzeRecipe({ recipe: recipe, enrichUsda: false }).then(function (res) {
+      var coachInput = buildCoachInputFromFinalRecipe(recipe) || recipe;
+      try {
+        console.log('[NUTRI_RECIPE_DEBUG] FRONTEND_ORIGIN', window.location && window.location.origin);
+        console.log('[NUTRI_RECIPE_DEBUG] COACH_INPUT', {
+          finalServings: coachInput.finalServings,
+          servingsStatus: coachInput.servingsStatus,
+          requiresReview: coachInput.requiresReview,
+          nutritionSource: 'finalNutrition',
+          ingredientSample: (coachInput.finalIngredients || []).slice(0, 3).map(function (i) {
+            return { name: i.name, amount: i.amount, unit: i.unit };
+          }),
+          finalNutrition: coachInput.finalNutrition
+        });
+      } catch (_) {}
+      // Verwende ausschließlich finalNutrition und finalIngredients.
+      window.LabPlateCoachApi.analyzeRecipe({ recipe: coachInput, enrichUsda: false }).then(function (res) {
         if (gen !== nutriRecipeState.coachAnalysisGen) return;
         nutriRecipeState.coachAnalysisLoading = false;
         if (res && res.ok && res.data) {
@@ -31325,34 +32338,83 @@ initBarcodeEvents();
       }
       if (nutriRecipeState.result) {
         setNutriRecipeToolbarVisible(true);
-        // NEU (Portions-Stepper): nutriRecipeState.result (rBase) ist der EINMALIGE, unveraen-
-        // derte Basis-Stand dieser Anfrage (bereits einmal lokal auf die Tages-Makroziele skaliert,
-        // siehe requestNutriRecipe) - er wird nie ueberschrieben. Fuer die Anzeige wird bei JEDEM
-        // Rendern frisch aus DIESER fixen Basis auf die aktuell gewaehlte Portionsanzahl skaliert
-        // (nie aus einer bereits gerundeten Zwischenstufe) - so entstehen beim wiederholten Hoch-/
-        // Runterschalten keine sich aufschaukelnden Rundungsfehler (siehe scaleRecipeToServings()).
+        console.log('[NUTRI_RECIPE_DEBUG] ACTIVE_PORTION_PATH', LP_PORTION_LOGIC_VERSION);
+        // Safety: Overlay nie mit Rohmengen – erneut portionieren falls nötig (idempotent).
+        nutriRecipeState.result = stripInternalFieldsFromRecipe(
+          ensureLiveFinalPortionedRecipe(nutriRecipeState.result)
+        );
         var rBase = nutriRecipeState.result;
-        // rBase.servings = Original (z.B. 2 oder 4). Anzeige startet bei genau dieser Basis;
-        // − skaliert herunter (bis 1), + nach oben – immer proportional zur Basis.
-        var baseServings = Number(rBase.servings) > 0 ? Number(rBase.servings) : 1;
-        if (!(Number(rBase.servings) > 0)) rBase.servings = 1;
+        debugRecipeState('BEFORE_OVERLAY_RENDER', rBase);
+        var baseServings = Number(rBase.finalServings) > 0
+          ? Number(rBase.finalServings)
+          : (Number(rBase.servings) > 0 ? Number(rBase.servings) : 1);
+        if (!(Number(rBase.servings) > 0)) rBase.servings = baseServings;
+        // Display-Vertrag: nur finalIngredients
+        rBase.ingredients = rBase.finalIngredients || rBase.ingredients;
+        rBase.displayIngredients = rBase.ingredients;
+        if (rBase.finalNutrition) {
+          rBase.nutrition = rBase.finalNutrition;
+          rBase.nutritionSource = 'finalNutrition';
+        }
         var recipeServingsCount = Math.max(1, Number(nutriRecipeState.servings) || baseServings);
         var recipeServingsMin = 1;
         var recipeServingsMax = Math.max(8, baseServings);
         var r = scaleRecipeToServings(
-          Object.assign({}, rBase, { servings: baseServings }),
+          Object.assign({}, rBase, {
+            servings: baseServings,
+            finalServings: baseServings,
+            ingredients: rBase.finalIngredients || rBase.ingredients
+          }),
           recipeServingsCount
         );
-        // Naehrwerte fuer die AKTUELL gewaehlte Portionsanzahl (skalierte Mengen-Summe),
-        // nicht "pro Portion" (das bliebe beim Stepper konstant und wirkt wie ein Bug).
+        r.finalIngredients = r.ingredients;
+        debugRecipeState('OVERLAY_RENDER_INPUT', r);
         var rMacros = calcRecipeMacrosTotal(r);
+        // Bei 1 Portion: finalNutrition bevorzugen (sichtbar = berechnet aus finalIngredients)
+        var rKcal;
+        if (recipeServingsCount === 1 && rBase.finalNutrition && rBase.finalNutrition.kcal != null) {
+          rKcal = Math.round(Number(rBase.finalNutrition.kcal) || 0);
+          rMacros = {
+            protein: Number(rBase.finalNutrition.protein_g) || 0,
+            fat: Number(rBase.finalNutrition.fat_g) || 0,
+            netCarbs: Number(rBase.finalNutrition.netto_kh_g) || 0,
+            fiber: Number(rBase.finalNutrition.ballaststoffe_g) || 0
+          };
+        } else {
+          rKcal = Math.round((rMacros.netCarbs || 0) * 4 + (rMacros.protein || 0) * 4 + (rMacros.fat || 0) * 9);
+        }
         console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Anzahl der Ingredients:', r.ingredients ? r.ingredients.length : 0);
         console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Anzahl der Steps:', r.steps ? r.steps.length : 0);
-        console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Ingredient-Namen:', (r.ingredients || []).map(function (ing) { return ing && ing.name; }));
-        var rKcal = Math.round((rMacros.netCarbs || 0) * 4 + (rMacros.protein || 0) * 4 + (rMacros.fat || 0) * 9);
-        var nutritionHeading = (recipeServingsCount === 1)
-          ? (rBase.nutritionHeaderText || pick(LBL_RECIPE_NUTRITION_FOR_1))
-          : ((rBase.nutritionHeaderTextN || pick(LBL_RECIPE_NUTRITION_FOR_N)).replace('{n}', String(recipeServingsCount)));
+        console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Ingredient-Mengen:', (r.ingredients || []).map(function (ing) {
+          return (ing && ing.name) + ' ' + (ing && ing.amount) + ' ' + (ing && ing.unit);
+        }));
+        var nutritionHeading = formatNutritionHeadingForServings(recipeServingsCount);
+        // portionSafe/unknown: gleiche Grammatik („1 Portion“ / „n Portionen“), kein FOR_N mit n=1.
+        if (rBase.portionSafe === false || rBase.servingsStatus === 'unknown' || rBase.servingsStatus === 'invalid') {
+          nutritionHeading = formatNutritionHeadingForServings(recipeServingsCount);
+        }
+        var portionWarningBanner = '';
+        var isInferredServings = rBase.sourceServingsStatus === 'inferred' ||
+          rBase.servingsStatus === 'inferred' ||
+          rBase.requiresReview;
+        var isUnknownServings = rBase.sourceServingsStatus === 'unknown' ||
+          rBase.servingsStatus === 'unknown';
+        if (isUnknownServings) {
+          portionWarningBanner = '<p class="nutri-recipe-match" role="status"><strong>Portionsangabe unklar:</strong> ' +
+            escNutri((rBase.portionDisplayHint || rBase.portionWarnings && rBase.portionWarnings[0]) ||
+              'Die Ausgangsportionszahl ist nicht bekannt. Eine sichere Skalierung ist nicht möglich.') +
+            '</p>';
+        } else if (isInferredServings || rBase.portionSafe === false ||
+            (rBase.portionWarnings && rBase.portionWarnings.length)) {
+          var warnText = rBase.portionDisplayHint ||
+            (rBase.portionWarnings && rBase.portionWarnings[0]) ||
+            'Portionsgröße geschätzt – bitte prüfen';
+          if (isInferredServings && !/geschätzt/i.test(String(warnText))) {
+            warnText = 'Portionsgröße geschätzt – bitte prüfen';
+          }
+          portionWarningBanner = '<p class="nutri-recipe-match" role="status"><strong>Portionsangabe prüfen:</strong> ' +
+            escNutri(warnText) + '</p>';
+        }
         var coachAnalysis = nutriRecipeState.coachAnalysis;
         var coachPerServing = coachAnalysis && coachAnalysis.perServing ? coachAnalysis.perServing : null;
         // Pro-Portion-Werte: Coach-API wenn da, sonst lokal aus Basis-Makros / Basis-Portionen.
@@ -31382,6 +32444,9 @@ initBarcodeEvents();
           ? (rBase.portionLabelSingular || pick(LBL_RECIPE_SERVING_SINGULAR))
           : (rBase.portionLabel || pick(LBL_RECIPE_SERVINGS_SUFFIX));
         var prepTimeLabel = rBase.prepTimeLabel || pick(LBL_RECIPE_PREP_TIME);
+        // Gesamtzeit aus Schritten, falls Modell-prep_time zu kurz ist.
+        var timingForDisplay = computeRecipeTimingFromSteps(r);
+        if (timingForDisplay.prep_time) r.prep_time = timingForDisplay.prep_time;
         var servingsStepperHtml =
           '<div class="nutri-recipe-servings-stepper" role="group" aria-label="' + escNutri(rBase.portionLabel || pick(LBL_RECIPE_SERVINGS_SUFFIX)) + '">' +
             '<button type="button" class="nrs-btn nrs-minus" id="nutri-recipe-servings-minus" aria-label="' + escNutri(pick(LBL_RECIPE_SERVINGS_MINUS_ARIA)) + '"' + (recipeServingsCount <= recipeServingsMin ? ' disabled' : '') + '>' +
@@ -31394,13 +32459,14 @@ initBarcodeEvents();
           '</div>';
         var html =
           nutriRecipeCoachTitleBlockHtml() +
-          '<div class="nutri-recipe-result" id="nutri-recipe-recipe-overlay">' +
+          '<div class="nutri-recipe-result" id="nutri-recipe-recipe-overlay" data-recipe-card="1" data-recipe-operation-id="' + escNutri(nutriRecipeState.lastRenderedOperationId || nutriRecipeState.activeOperationId || '') + '">' +
             '<div class="nutri-recipe-result-header">' +
               '<h3 class="nutri-recipe-result-title">' + escNutri(r.title) + '</h3>' +
               '<p class="nutri-recipe-match">' + escNutri(prepTimeLabel) + ': ' + escNutri(r.prep_time) + '</p>' +
               servingsStepperHtml +
             '</div>' +
             '<p class="nutri-recipe-disclaimer">' + escNutri(pick(LBL_RECIPE_DISCLAIMER)) + '</p>' +
+            portionWarningBanner +
             '<div class="section">' +
               '<h4 class="section-title">' + escNutri(nutritionHeading) + '</h4>' +
               (coachScoreBadge ? ('<div class="nutri-recipe-coach-badges">' + coachScoreBadge + '</div>') : '') +
@@ -31443,14 +32509,20 @@ initBarcodeEvents();
             '<div class="section">' +
               '<h4 class="section-title">' + escNutri(pick(LBL_RECIPE_PREP_TITLE)) + '</h4>' +
               '<ol class="nutri-recipe-steps instructions-list">' +
-                (r.steps || []).map(function (s) { return '<li>' + escNutri(s) + '</li>'; }).join('') +
+                (r.steps || []).map(function (s) {
+                  var stepText = typeof s === 'string' ? s : (s && (s.instruction || s.text) ? (s.instruction || s.text) : String(s || ''));
+                  return '<li>' + escNutri(stripQuantityMentionsFromPrepText(stepText)) + '</li>';
+                }).join('') +
               '</ol>' +
             '</div>' +
-            (r.garnish || r.self_check || r.nutrition_note
+            (r.garnish || (r.nutrition_note && !nutriRecipeState.coachAnalysisError && !r.chefAnalysisBlocked)
               ? ('<div class="section nutri-recipe-chef-tail">' +
                   (r.garnish ? ('<p class="nutri-recipe-match"><strong>' + escNutri(pick(LBL_RECIPE_GARNISH)) + ':</strong> ' + escNutri(r.garnish) + '</p>') : '') +
-                  (r.self_check ? ('<div class="nutri-recipe-match nutri-recipe-self-check" style="white-space:pre-wrap"><strong>' + escNutri(pick(LBL_RECIPE_SELF_CHECK)) + ':</strong>\n' + escNutri(r.self_check) + '</div>') : '') +
-                  (r.nutrition_note ? ('<p class="nutri-recipe-match"><strong>' + escNutri(pick(LBL_RECIPE_CHEF_ANALYSIS)) + ':</strong> ' + escNutri(r.nutrition_note) + '</p>') : '') +
+                  (r.nutrition_note && !nutriRecipeState.coachAnalysisError && !r.chefAnalysisBlocked
+                    ? ('<p class="nutri-recipe-match"><strong>' + escNutri(pick(LBL_RECIPE_CHEF_ANALYSIS)) + ':</strong> ' + escNutri(r.nutrition_note) + '</p>')
+                    : (r.nutrition_note && (nutriRecipeState.coachAnalysisError || r.requiresReview)
+                      ? ('<p class="nutri-recipe-match"><strong>Zubereitungshinweis (keine Nährwertbewertung):</strong> ' + escNutri(r.nutrition_note) + '</p>')
+                      : '')) +
                 '</div>')
               : '') +
             '<div class="section">' +
@@ -31477,7 +32549,18 @@ initBarcodeEvents();
             '</div>' +
             '<p class="nutri-recipe-medical-note">' + escNutri(pick(LBL_RECIPE_MEDICAL_NOTE)) + '</p>' +
           '</div>';
+        console.log('[NUTRI_RECIPE_DEBUG] RENDER_ATTEMPT', {
+          operationId: nutriRecipeState.activeOperationId || nutriRecipeState.lastRenderedOperationId,
+          recipeId: rBase.id || r.title
+        });
+        // Ersetzen, nie anhängen – eine sichtbare Karte.
+        body.innerHTML = '';
         body.innerHTML = html;
+        nutriRecipeState.lastRenderedOperationId = nutriRecipeState.activeOperationId || nutriRecipeState.lastRenderedOperationId;
+        console.log('[NUTRI_RECIPE_DEBUG] RENDER_COMMITTED', {
+          operationId: nutriRecipeState.lastRenderedOperationId,
+          cards: body.querySelectorAll('[data-recipe-card]').length
+        });
         // NEU: Portions-Stepper (-/+) - veraendert ausschliesslich nutriRecipeState.servings
         // und rendert danach neu; die eigentliche Skalierung passiert oben ueber
         // scaleRecipeToServings(rBase, ...), rBase selbst bleibt dabei immer unangetastet.
@@ -31504,7 +32587,13 @@ initBarcodeEvents();
         // unveraenderten Basis-Daten (rBase), damit der Picker unabhaengig von der aktuell am
         // Stepper eingestellten Anzahl korrekt skaliert (0.5 / 1 / 1.5 / 2 Portionen).
         wireRecipeAddToPlateButton(addPlateBtn, function () { return r.ingredients; }, rBase.id,
-          function (m) { return scaleRecipeToServings({ servings: baseServings, ingredients: rBase.ingredients }, m).ingredients; }
+          function (m) {
+            return scaleRecipeToServings({
+              servings: baseServings,
+              finalServings: baseServings,
+              ingredients: rBase.finalIngredients || rBase.ingredients
+            }, m).ingredients;
+          }
         );
         // Eine Hauptkachel "Speichern" → Overlay-Menü (Rezept / Einkaufsliste / Kategorie / Teilen).
         var saveMenuBtn = document.getElementById('nutri-recipe-save-menu-btn');
@@ -31650,6 +32739,16 @@ initBarcodeEvents();
     // Rezeptsuche"-Kachel (buildNutriRecipePayload/.../lokale Skalierung).
     // Automatischer Retry (bis 3 Versuche) nur bei temporaeren Fehlern; Eingabetext bleibt
     // waehrend Retry/Fehlschlag im Feld erhalten; keine doppelten Chat-Eintraege.
+    function handleNutriRecipeChatSubmit(event) {
+      if (event) {
+        try { event.preventDefault(); } catch (_) {}
+        try { event.stopPropagation(); } catch (_) {}
+      }
+      var chatInputEl = document.getElementById('nutri-recipe-chat-input');
+      var text = chatInputEl ? chatInputEl.value : nutriRecipeState.chatDraft;
+      sendNutriRecipeChatMessage(text);
+    }
+
     function rememberNutriRecipeTitle(title) {
       if (!title || typeof title !== 'string') return;
       var t = title.replace(/\s+/g, ' ').trim();
@@ -31686,13 +32785,24 @@ initBarcodeEvents();
 
     async function sendNutriRecipeChatMessage(rawText, opts) {
       opts = opts || {};
-      if (nutriRecipeState.chatLoading) return; // Debounce/Lock gegen Mehrfach-Anfragen
+      // Sync-Mutex ZUERST – verhindert drei OPERATION_STARTs bei Mehrfach-Handler-Fire.
+      if (!tryAcquireRecipeRequestLock()) return;
+      var lockHeld = true;
+      function releaseLock() {
+        if (lockHeld) {
+          lockHeld = false;
+          releaseRecipeRequestLock();
+        }
+      }
+      try {
+      if (nutriRecipeState.chatLoading) { releaseLock(); return; }
       if (typeof cancelSpeak === 'function') cancelSpeak();
       var sanitized = sanitizeNutriRecipeInput(rawText);
       if (!sanitized) {
         nutriRecipeState.chatHint = pick(LBL_RECIPE_CHAT_HINT);
         nutriRecipeState.chatRetryStatus = '';
         renderNutriRecipeBody();
+        releaseLock();
         return;
       }
       var isStructuredChat = (typeof looksLikeNutriStructuredRecipeInput === 'function') && looksLikeNutriStructuredRecipeInput(sanitized);
@@ -31706,7 +32816,8 @@ initBarcodeEvents();
         nutriRecipeState.chatLoading = false;
         nutriRecipeState.chatFocusRetryBtn = false;
         console.log('[NUTRI_RECIPE_DEBUG] Chat: Original-Trigger → requestNutriRecipe(freesearch)');
-        await requestNutriRecipe('freesearch');
+        // Lock an requestNutriRecipe übergeben (bereits gehalten).
+        await requestNutriRecipe('freesearch', { inheritLock: true });
         return;
       }
       // Phase 2 KI-Team: emotionale Blockade → Handoff-CTA (kein Rezept, kein Coaching durch den Koch).
@@ -31734,6 +32845,7 @@ initBarcodeEvents();
             query: sanitized
           });
           renderNutriRecipeBody();
+          releaseLock();
           return;
         }
       }
@@ -31752,6 +32864,7 @@ initBarcodeEvents();
         if (blockedInput) {
           try { blockedInput.focus(); } catch (eFocus) {}
         }
+        releaseLock();
         return;
       }
       nutriRecipeState.chatHint = '';
@@ -31776,6 +32889,10 @@ initBarcodeEvents();
         nutriRecipeState.chatMessages.push({ role: 'user', text: sanitized });
       }
 
+      var op = beginRecipeOperation();
+      var operationId = op.operationId;
+      var controller = op.controller;
+      nutriRecipeState.activeOperationId = operationId;
       nutriRecipeState.chatLoading = true;
       nutriRecipeState.chatRetryStatus = '';
       renderNutriRecipeBody();
@@ -31783,16 +32900,43 @@ initBarcodeEvents();
       var data = null;
       var allergenResultConflict = null;
       var attempt = 0;
+      try {
       while (attempt < NUTRI_RECIPE_CHAT_MAX_ATTEMPTS) {
+        if (controller && controller.signal.aborted) {
+          console.info('[NUTRI_RECIPE_DEBUG] REQUEST_ABORTED', operationId);
+          break;
+        }
+        if (!isActiveRecipeOperation(operationId)) {
+          console.warn('[NUTRI_RECIPE_DEBUG] Ignoring stale recipe response', operationId);
+          break;
+        }
         attempt += 1;
+        console.log('[NUTRI_RECIPE_DEBUG] REQUEST_ATTEMPT', { operationId: operationId, attempt: attempt });
         var result = null;
         try {
           var payload = buildNutriRecipePayload('freesearch', [], sanitized);
-          result = await postNutriRecipeChatRequest(payload);
+          result = await postNutriRecipeChatRequest(payload, {
+            signal: controller ? controller.signal : null,
+            operationId: operationId
+          });
         } catch (e) {
-          result = { ok: false, status: 0, data: null, retryable: true, retryAfterMs: null };
+          if (e && e.name === 'AbortError') {
+            console.info('[NUTRI_RECIPE_DEBUG] REQUEST_ABORTED', operationId);
+            result = { ok: false, aborted: true, retryable: false };
+          } else if (isCorsOrNetworkError(e)) {
+            result = { ok: false, status: 0, data: null, retryable: false, networkFatal: true, corsBlocked: true };
+          } else {
+            result = { ok: false, status: 0, data: null, retryable: true, retryAfterMs: null };
+          }
+        }
+        if (result && result.aborted) break;
+        if (result && (result.networkFatal || result.corsBlocked || isCorsOrNetworkError(result))) {
+          console.warn('[NUTRI_RECIPE_DEBUG] CORS/Network fatal – no retry', operationId);
+          data = null;
+          break;
         }
         if (result && result.ok && result.data) {
+          console.log('[NUTRI_RECIPE_DEBUG] RESPONSE_RECEIVED', { operationId: operationId, attempt: attempt });
           // Phase 2: Server-Handoff (String-Match oder LLM-Sentinel) – kein Rezept-Schema.
           if (result.data.handoff && typeof result.data.handoff === 'object'
               && String(result.data.handoff.to || '').toLowerCase() === 'coach') {
@@ -31810,6 +32954,11 @@ initBarcodeEvents();
           if (looksLikeNutriStructuredRecipeInput(sanitized)) {
             result.data = enforceNutriUserRecipe(result.data, sanitized);
             result.data = enrichNutriRecipeMacrosLocally(result.data);
+            // Enforce kann Rohmengen wiederherstellen → Portionierung erneut erzwingen.
+            result.data.livePathNormalized = false;
+            result.data = ensureLiveFinalPortionedRecipe(result.data);
+            result.data = stripInternalFieldsFromRecipe(result.data);
+            debugRecipeState('AFTER_ENFORCE_REPORTION', result.data);
           }
         }
         var schemaOk = !!(result && result.ok && validateNutriRecipeSchema(result.data));
@@ -31844,7 +32993,24 @@ initBarcodeEvents();
         // Zwischen Versuch 1→2 und 2→3: ruhiger Status, kurze Wartezeit, kein Fehlertext.
         nutriRecipeState.chatRetryStatus = pick(LBL_RECIPE_CHAT_RETRYING);
         renderNutriRecipeBody();
-        await sleepNutriRecipeChat(nutriRecipeChatRetryDelayMs(result.retryAfterMs));
+        try {
+          await sleepNutriRecipeChat(nutriRecipeChatRetryDelayMs(result.retryAfterMs), controller ? controller.signal : null);
+        } catch (sleepErr) {
+          if (sleepErr && sleepErr.name === 'AbortError') {
+            console.info('[NUTRI_RECIPE_DEBUG] REQUEST_ABORTED', operationId);
+            break;
+          }
+          throw sleepErr;
+        }
+      }
+      } finally {
+        finishRecipeOperation(controller);
+      }
+
+      if (!isActiveRecipeOperation(operationId)) {
+        console.warn('[NUTRI_RECIPE_DEBUG] Ignoring stale recipe response', operationId);
+        nutriRecipeState.chatLoading = false;
+        return;
       }
 
       nutriRecipeState.chatLoading = false;
@@ -31864,21 +33030,38 @@ initBarcodeEvents();
         }
         var isStructuredInput = looksLikeNutriStructuredRecipeInput(sanitized);
         var nutriTargets = getLocalRecipeTargets();
-        var nutriMacrosPerServing = calcRecipeMacrosPerServing(data);
+        // Normalisierung inkl. Portionierung (normalizeNutriRecipeResponse → ensureLive).
+        var portionedData = sanitizeRecipePrepTexts(JSON.parse(JSON.stringify(data)));
+        // data kommt bereits aus normalizeNutriRecipeResponse (portioniert).
+        if (!portionedData.livePathNormalized) {
+          portionedData = ensureLiveFinalPortionedRecipe(portionedData);
+        }
+        portionedData = stripInternalFieldsFromRecipe(portionedData);
+        portionedData.renderedOperationId = operationId;
+        portionedData.portioned = true;
+        debugRecipeState('AFTER_PORTIONING_CHAT', portionedData);
+        var nutriMacrosPerServing = calcRecipeMacrosPerServing(portionedData);
         var nutriScaledData;
         var nutriScaledMacros;
-        // Strukturierte Rezepte: Nutzermengen beibehalten (keine Ziel-Herunterskalierung).
-        // Chat-Ideen: bestehende Tagesziel-Skalierung unveraendert.
         if (isStructuredInput) {
-          nutriScaledData = JSON.parse(JSON.stringify(data));
+          nutriScaledData = portionedData;
           nutriScaledMacros = nutriMacrosPerServing;
         } else {
           var nutriScale = computeLocalRecipeScaleFactor(nutriMacrosPerServing, nutriTargets);
-          nutriScaledData = scaleLocalRecipe(data, nutriScale);
+          nutriScaledData = scaleLocalRecipe(portionedData, nutriScale);
+          // finalIngredients nach Makro-Skalierung synchron halten
+          nutriScaledData.finalIngredients = nutriScaledData.ingredients;
+          nutriScaledData.displayIngredients = nutriScaledData.ingredients;
           nutriScaledMacros = calcRecipeMacrosPerServing(nutriScaledData);
         }
+        nutriScaledData = stripInternalFieldsFromRecipe(nutriScaledData);
         nutriScaledData.id = 'ai-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
-        if (!(nutriScaledData.servings > 0)) nutriScaledData.servings = 1;
+        nutriScaledData.renderedOperationId = operationId;
+        if (Number(nutriScaledData.finalServings) > 0) {
+          nutriScaledData.servings = nutriScaledData.finalServings;
+        } else if (!(nutriScaledData.servings > 0)) {
+          nutriScaledData.servings = 1;
+        }
         var replyTpl = isStructuredInput ? LBL_RECIPE_CHAT_REPLY_STRUCTURED : LBL_RECIPE_CHAT_REPLY;
         var replyText = pick(replyTpl).replace('{title}', nutriScaledData.title).replace('{time}', nutriScaledData.prep_time);
         nutriRecipeState.chatDraft = '';
@@ -31889,7 +33072,8 @@ initBarcodeEvents();
           recipe: nutriScaledData,
           suggestions: isStructuredInput ? [] : suggestLocalRecipeAlternatives(nutriScaledMacros, nutriTargets),
           query: sanitized,
-          structuredInput: isStructuredInput
+          structuredInput: isStructuredInput,
+          operationId: operationId
         };
         nutriRecipeState.chatMessages.push(chatMsg);
         if (isStructuredInput || nutriRecipeState.openAnotherIdeaAfterChat) {
@@ -31929,6 +33113,9 @@ initBarcodeEvents();
       var liveEl = document.getElementById('nutri-recipe-chat-live');
       if (liveEl && !data && !allergenResultConflict) liveEl.textContent = pick(LBL_RECIPE_CHAT_RETRY_FAIL);
       nutriRecipeState.chatRetryStatus = '';
+      } finally {
+        releaseLock();
+      }
     }
 
     // NEU (KI-Rezept-Chat -> Detailansicht): oeffnet zu einer im Chat erhaltenen Rezept-
@@ -31941,10 +33128,18 @@ initBarcodeEvents();
     function openNutriRecipeFromChat(msg) {
       if (!msg || !msg.recipe) return;
       if (typeof cancelSpeak === 'function') cancelSpeak();
+      if (msg.operationId && activeRecipeOperationId && msg.operationId !== activeRecipeOperationId) {
+        console.warn('[NUTRI_RECIPE_DEBUG] Ignoring stale recipe response', msg.operationId);
+        return;
+      }
+      if (msg.operationId) {
+        nutriRecipeState.activeOperationId = msg.operationId;
+        activeRecipeOperationId = msg.operationId;
+      }
       nutriRecipeState.mode = 'freesearch';
       nutriRecipeState.freesearchInput = msg.query || '';
       nutriRecipeState.chatLastQuery = msg.query || nutriRecipeState.chatLastQuery || '';
-      nutriRecipeState.result = msg.recipe;
+      nutriRecipeState.result = stripInternalFieldsFromRecipe(msg.recipe);
       nutriRecipeState.suggestions = msg.suggestions || [];
       // Start bei der Rezept-Basis (z.B. 2) – Nutzer kann mit − auf 1 runter- und mit + hochskalieren.
       nutriRecipeState.servings = (msg.recipe && msg.recipe.servings > 0) ? msg.recipe.servings : 1;
@@ -31962,8 +33157,17 @@ initBarcodeEvents();
       if (log) log.scrollTop = log.scrollHeight;
     }
 
-    async function requestNutriRecipe(mode) {
-      if (nutriRecipeState.loading) return; // Debounce/Lock gegen Mehrfach-Anfragen
+    async function requestNutriRecipe(mode, reqOpts) {
+      reqOpts = reqOpts || {};
+      var ownLock = !reqOpts.inheritLock;
+      if (ownLock) {
+        if (!tryAcquireRecipeRequestLock()) return;
+      }
+      if (nutriRecipeState.loading && !reqOpts.inheritLock) {
+        if (ownLock) releaseRecipeRequestLock();
+        return;
+      }
+      try {
       // Falls gerade ein vorheriges Ergebnis vorgelesen wird (z.B. Klick auf "Andere Idee
       // vorschlagen"/"Erneut versuchen" waehrend die Vorlesen-Funktion noch aktiv ist), erst
       // stoppen - sonst liefe die alte Vorlesen-Stimme unsichtbar im Hintergrund weiter,
@@ -32014,6 +33218,10 @@ initBarcodeEvents();
       nutriRecipeState.hint = '';
       nutriRecipeState.freesearchHint = '';
       nutriRecipeState.mode = mode;
+      var op = beginRecipeOperation();
+      var operationId = op.operationId;
+      var controller = op.controller;
+      nutriRecipeState.activeOperationId = operationId;
       nutriRecipeState.loading = true;
       nutriRecipeState.error = false;
       nutriRecipeState.errorText = '';
@@ -32044,11 +33252,40 @@ initBarcodeEvents();
             originalDishKey: originalMeta && originalMeta.dishKey ? originalMeta.dishKey : originalSearchQuery,
             originalMeta: originalMeta
           });
-          data = await postNutriRecipeRequest(payload);
+          console.log('[NUTRI_RECIPE_DEBUG] REQUEST_ATTEMPT', { operationId: operationId, attempt: 1 });
+          data = await postNutriRecipeRequest(payload, {
+            signal: controller ? controller.signal : null,
+            operationId: operationId
+          });
+          if (data) console.log('[NUTRI_RECIPE_DEBUG] RESPONSE_RECEIVED', { operationId: operationId, attempt: 1 });
           if (isOriginalRequest && data) recipeSource = 'ai-generated-original';
         }
       } catch (e) {
+        if (e && e.name === 'AbortError') {
+          console.info('[NUTRI_RECIPE_DEBUG] REQUEST_ABORTED', operationId);
+          nutriRecipeState.loading = false;
+          finishRecipeOperation(controller);
+          return;
+        }
+        if (isCorsOrNetworkError(e)) {
+          console.warn('[NUTRI_RECIPE_DEBUG] CORS/Network fatal – no retry', operationId);
+          nutriRecipeState.result = null;
+          nutriRecipeState.suggestions = [];
+          nutriRecipeState.error = true;
+          nutriRecipeState.errorText = 'Die Verbindung zum Rezeptdienst konnte nicht hergestellt werden.';
+          nutriRecipeState.loading = false;
+          finishRecipeOperation(controller);
+          renderNutriRecipeBody();
+          return;
+        }
         data = null;
+      } finally {
+        finishRecipeOperation(controller);
+      }
+      if (!isActiveRecipeOperation(operationId)) {
+        console.warn('[NUTRI_RECIPE_DEBUG] Ignoring stale recipe response', operationId);
+        nutriRecipeState.loading = false;
+        return;
       }
       // loading bleibt true bis Rezept vollständig aufbereitet ist.
       if (data) data = normalizeNutriRecipeResponse(data);
@@ -32056,6 +33293,10 @@ initBarcodeEvents();
       if (data && mode === 'freesearch' && freesearchQuery && looksLikeNutriStructuredRecipeInput(freesearchQuery)) {
         data = enforceNutriUserRecipe(data, freesearchQuery);
         data = enrichNutriRecipeMacrosLocally(data);
+        data.livePathNormalized = false;
+        data = ensureLiveFinalPortionedRecipe(data);
+        data = stripInternalFieldsFromRecipe(data);
+        debugRecipeState('AFTER_ENFORCE_REPORTION', data);
       }
       // Originalmodus: KI liefert in App-Sprache (payload.lang). MT nur als Fallback,
       // falls der Text noch auf Deutsch wirkt (z. B. altes Prompt-Verhalten).
@@ -32091,16 +33332,26 @@ initBarcodeEvents();
         }
         var isStructuredReq = mode === 'freesearch' && freesearchQuery && looksLikeNutriStructuredRecipeInput(freesearchQuery);
         var nutriTargets = getLocalRecipeTargets();
-        var nutriMacrosPerServing = calcRecipeMacrosPerServing(data);
+        // data bereits via normalizeNutriRecipeResponse portioniert.
+        var portionedData = sanitizeRecipePrepTexts(JSON.parse(JSON.stringify(data)));
+        if (!portionedData.livePathNormalized) {
+          portionedData = ensureLiveFinalPortionedRecipe(portionedData);
+        }
+        portionedData = stripInternalFieldsFromRecipe(portionedData);
+        portionedData.renderedOperationId = operationId;
+        portionedData.portioned = true;
+        debugRecipeState('AFTER_PORTIONING_REQUEST', portionedData);
+        var nutriMacrosPerServing = calcRecipeMacrosPerServing(portionedData);
         var nutriScaledData;
         var nutriScaledMacros;
-        // Eigenrezept + Originalmodus: Mengen 1:1 (keine Tagesziel-Skalierung).
         if (isStructuredReq || isOriginalRequest) {
-          nutriScaledData = JSON.parse(JSON.stringify(data));
+          nutriScaledData = portionedData;
           nutriScaledMacros = nutriMacrosPerServing;
         } else {
           var nutriScale = computeLocalRecipeScaleFactor(nutriMacrosPerServing, nutriTargets);
-          nutriScaledData = scaleLocalRecipe(data, nutriScale);
+          nutriScaledData = scaleLocalRecipe(portionedData, nutriScale);
+          nutriScaledData.finalIngredients = nutriScaledData.ingredients;
+          nutriScaledData.displayIngredients = nutriScaledData.ingredients;
           nutriScaledMacros = calcRecipeMacrosPerServing(nutriScaledData);
         }
         nutriScaledData.id = 'ai-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
@@ -32129,9 +33380,20 @@ initBarcodeEvents();
           applyNutriBlockedPhotoFields(nutriScaledData);
         }
         nutriRecipeState.loading = false;
-        // Basis-Portionen am Rezept (fehlend → 1); Anzeige startet bei dieser Basis.
-        if (!(nutriScaledData.servings > 0)) nutriScaledData.servings = 1;
+        // Basis = finalServings nach Portions-Normalisierung.
+        if (Number(nutriScaledData.finalServings) > 0) {
+          nutriScaledData.servings = nutriScaledData.finalServings;
+        } else if (!(nutriScaledData.servings > 0)) {
+          nutriScaledData.servings = 1;
+        }
         rememberNutriRecipeTitle(nutriScaledData.title);
+        nutriScaledData = stripInternalFieldsFromRecipe(nutriScaledData);
+        nutriScaledData.renderedOperationId = operationId;
+        if (!isActiveRecipeOperation(operationId)) {
+          console.warn('[NUTRI_RECIPE_DEBUG] Ignoring stale recipe response', operationId);
+          nutriRecipeState.loading = false;
+          return;
+        }
         nutriRecipeState.result = nutriScaledData;
         nutriRecipeState.suggestions = (isStructuredReq || isOriginalRequest) ? [] : suggestLocalRecipeAlternatives(nutriScaledMacros, nutriTargets);
         nutriRecipeState.error = false;
@@ -32155,6 +33417,9 @@ initBarcodeEvents();
       }
       nutriRecipeState.loading = false;
       renderNutriRecipeBody();
+      } finally {
+        if (ownLock) releaseRecipeRequestLock();
+      }
     }
 
     // BUGFIX (3. Korrektur-Prompt Punkt 3): die bisherige copyNutriRecipeShoppingList()
@@ -32518,6 +33783,42 @@ initBarcodeEvents();
       return scale;
     }
 
+    // Zubereitungstext darf keine Mengenangaben enthalten — Mengen nur in ingredients[].
+    // Verhindert Faktor-2-Drift (scaleLocalRecipe skaliert nur ingredients) und
+    // geklebte Strings wie "100mlKokosmilch30gAvocado".
+    function stripQuantityMentionsFromPrepText(text) {
+      var out = String(text == null ? '' : text);
+      out = out.replace(/\b\d+[.,]?\d*\s*(g|kg|mg|ml|l|cl|el|tl|stk|stück|stueck|prise|prisen)\b/gi, '');
+      out = out.replace(/(\d+[.,]?\d*)\s*(g|kg|mg|ml|l|cl)(?=[A-Za-zÄÖÜäöüß]|\s|$)/gi, '');
+      out = out.replace(/([a-zäöüß])([A-ZÄÖÜ])/g, '$1 $2');
+      out = out.replace(/\s{2,}/g, ' ').replace(/\s+([.,;:!?])/g, '$1').trim();
+      return out;
+    }
+
+    function sanitizeRecipePrepTexts(recipe) {
+      if (!recipe || typeof recipe !== 'object') return recipe;
+      if (Array.isArray(recipe.steps)) {
+        recipe.steps = recipe.steps.map(function (s) {
+          if (typeof s === 'string') return stripQuantityMentionsFromPrepText(s);
+          if (s && typeof s === 'object') {
+            var copy = Object.assign({}, s);
+            if (typeof copy.instruction === 'string') {
+              copy.instruction = stripQuantityMentionsFromPrepText(copy.instruction);
+            }
+            if (typeof copy.text === 'string') {
+              copy.text = stripQuantityMentionsFromPrepText(copy.text);
+            }
+            return copy;
+          }
+          return s;
+        });
+      }
+      if (typeof recipe.garnish === 'string' && recipe.garnish) {
+        recipe.garnish = stripQuantityMentionsFromPrepText(recipe.garnish);
+      }
+      return recipe;
+    }
+
     // 5g-Schritte fuer feste Zutaten, 1ml-Schritte fuer Fluessigkeiten.
     // amount 0 (= nicht angegeben) bleibt 0 und wird nicht auf den Mindest-Schritt angehoben.
     function roundLocalRecipeAmount(value, unit) {
@@ -32530,30 +33831,34 @@ initBarcodeEvents();
     // Erstellt eine unabhaengige Kopie des Rezepts mit skalierten Mengen - das Original in
     // LOCAL_RECIPE_DB bleibt dabei unveraendert (wichtig, da es fuer jeden Nutzer/jedes
     // Oeffnen neu skaliert wird, je nach dessen individuellen Zielen).
+    // WICHTIG: Nur ingredients[].amount wird skaliert — Steps/Garnish enthalten keine Mengen
+    // (siehe sanitizeRecipePrepTexts). Niemals amount * servings auf Step-Texte anwenden.
     function scaleLocalRecipe(recipe, scale) {
       var scaled = JSON.parse(JSON.stringify(recipe));
       scaled.ingredients = recipe.ingredients.map(function (ing) {
         return Object.assign({}, ing, { amount: roundLocalRecipeAmount(ing.amount * scale, ing.unit) });
       });
-      return scaled;
+      return sanitizeRecipePrepTexts(scaled);
     }
 
-    // NEU (Portions-Stepper "Naehrstoff-Rezepte"/"Kochen mit Vorraeten", #lp-ov-recipes):
-    // skaliert IMMER direkt aus dem uebergebenen, unveraenderten Basis-Rezept heraus auf die
-    // Ziel-Portionsanzahl - "recipe" bleibt dabei selbst unangetastet (siehe renderNutriRecipeBody:
-    // rBase wird nie ueberschrieben, jedes Rendern skaliert frisch aus rBase). Dadurch entstehen
-    // beim wiederholten Hoch-/Runterschalten KEINE sich aufschaukelnden Rundungsfehler - anders,
-    // als wenn man aus einer bereits gerundeten Zwischenstufe heraus weiterskalieren wuerde.
-    // Nutzt dieselbe 5g/1ml-Rundungslogik wie roundLocalRecipeAmount/scaleLocalRecipe oben.
+    // MODEL B: Basis = finalIngredients bei finalServings (Backend hat bereits
+    // sourceServings → finalServings skaliert). Stepper: factor = selected / finalServings.
+    // VERBOTEN: finalAmount * selectedServings ohne Division durch finalServings,
+    // oder Skalierung relativ zu sourceServings auf bereits portionierte Mengen.
     function scaleRecipeToServings(recipe, targetServings) {
-      var baseServings = recipe.servings || 1;
+      var baseServings = Number(recipe.finalServings) > 0
+        ? Number(recipe.finalServings)
+        : (Number(recipe.servings) > 0 ? Number(recipe.servings) : 1);
       var factor = targetServings / baseServings;
+      var baseIngredients = Array.isArray(recipe.finalIngredients) && recipe.finalIngredients.length
+        ? recipe.finalIngredients
+        : recipe.ingredients;
       var scaled = JSON.parse(JSON.stringify(recipe));
       scaled.servings = targetServings;
-      scaled.ingredients = recipe.ingredients.map(function (ing) {
+      scaled.ingredients = (baseIngredients || []).map(function (ing) {
         return Object.assign({}, ing, { amount: roundLocalRecipeAmount(ing.amount * factor, ing.unit) });
       });
-      return scaled;
+      return sanitizeRecipePrepTexts(scaled);
     }
 
     // NEU ("Hinzufügen zum Teller" bei Rezepten): gemeinsamer Klick-Handler fuer den
@@ -32866,7 +34171,9 @@ initBarcodeEvents();
               }).join('') +
             '</ul></div>' +
             '<div class="nutri-recipe-ing-group"><h4 class="nutri-recipe-ing-group-title">' + escNutri(pick(LBL_RECIPE_PREP_TITLE)) + '</h4><ol class="nutri-recipe-steps">' +
-              activeRecipe.steps.map(function (s) { return '<li>' + escNutri(pick(s)) + '</li>'; }).join('') +
+              activeRecipe.steps.map(function (s) {
+                return '<li>' + escNutri(stripQuantityMentionsFromPrepText(pick(s))) + '</li>';
+              }).join('') +
             '</ol></div>' +
             (prepared.suggestions.length
               ? '<div class="localrecipe-tip-box"><b>' + escNutri(pick(LBL_LOCALRECIPES_TIP_LABEL)) + ':</b> ' + prepared.suggestions.map(function (t) { return escNutri(t); }).join(' ') + '</div>'
@@ -33338,16 +34645,28 @@ initBarcodeEvents();
         // unveraendert und wird nicht erneut geschrieben. Bestehende Rezeptdaten (id/name/
         // ingredients/nutrition/steps/favorite/selectedServings/...) bleiben dabei unangetastet,
         // es werden keine Eintraege geloescht oder dupliziert.
+        // Zusaetzlich: eingebettete Mengenangaben in steps/garnish bereinigen (Faktor-2-Fix),
+        // damit Alt-Rezepte aus localStorage keine verdoppelten Mengen in der Zubereitung zeigen.
         var migrated = false;
         var list = parsed.map(function (r) {
-          if (r && typeof r === 'object' && (r.category === undefined || r.useCount === undefined)) {
+          if (!r || typeof r !== 'object') return r;
+          var next = r;
+          if (r.category === undefined || r.useCount === undefined) {
             migrated = true;
-            return Object.assign({}, r, {
+            next = Object.assign({}, r, {
               category: r.category || 'none',
               useCount: typeof r.useCount === 'number' ? r.useCount : 0
             });
           }
-          return r;
+          if (typeof sanitizeRecipePrepTexts === 'function') {
+            var beforeSteps = JSON.stringify(next.steps || null);
+            var beforeGarnish = next.garnish || '';
+            next = sanitizeRecipePrepTexts(Object.assign({}, next));
+            if (JSON.stringify(next.steps || null) !== beforeSteps || (next.garnish || '') !== beforeGarnish) {
+              migrated = true;
+            }
+          }
+          return next;
         });
         if (migrated) persistSavedRecipes(list);
         return list;
@@ -33720,7 +35039,10 @@ initBarcodeEvents();
             '</ul></div>' +
             ((active.steps && active.steps.length)
               ? '<div class="nutri-recipe-ing-group"><h4 class="nutri-recipe-ing-group-title">' + escNutri(pick(LBL_RECIPE_PREP_TITLE)) + '</h4><ol class="nutri-recipe-steps">' +
-                  active.steps.map(function (s) { return '<li>' + escNutri(s) + '</li>'; }).join('') +
+                  active.steps.map(function (s) {
+                    var stepText = typeof s === 'string' ? s : String(s || '');
+                    return '<li>' + escNutri(stripQuantityMentionsFromPrepText(stepText)) + '</li>';
+                  }).join('') +
                 '</ol></div>'
               : '') +
             // NEU (Rezept-Kategorie nachtraeglich aendern): dasselbe dezente native
@@ -34998,7 +36320,7 @@ initBarcodeEvents();
     function nutriOvDateStr(offsetDays) {
       var d = new Date();
       d.setDate(d.getDate() - offsetDays);
-      return d.toDateString();
+      return (typeof localISODate === 'function') ? localISODate(d) : d.toDateString();
     }
     function nutriOvMicrosForOffset(offsetDays) {
       if (offsetDays === 0) {
@@ -35007,7 +36329,13 @@ initBarcodeEvents();
       }
       if (typeof loadHistory !== 'function') return null;
       var dateStr = nutriOvDateStr(offsetDays);
-      var entry = loadHistory().find(function (h) { return h.date === dateStr; });
+      var entry = loadHistory().find(function (h) {
+        if (h.date === dateStr) return true;
+        if (typeof normalizeDayDateKey === 'function') {
+          return normalizeDayDateKey(h.date) === normalizeDayDateKey(dateStr);
+        }
+        return false;
+      });
       if (!entry) return null;
       return entry.micros || {};
     }

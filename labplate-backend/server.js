@@ -224,23 +224,68 @@ app.use(helmet({
 app.use(express.json({ limit: '64kb' }));
 
 function isLocalLoopbackOrigin(origin) {
+  if (!origin) return true;
+  if (origin === 'null') return true; // file:// / WKWebView
   return /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/.test(origin);
 }
 
-app.use(cors({
+const corsOptions = {
   origin(origin, callback) {
-    // Kein Origin-Header (z.B. curl, same-origin) immer erlauben.
-    if (!origin) return callback(null, true);
+    // Kein Origin-Header (curl, same-origin) und file:// ("null") erlauben.
+    if (!origin || origin === 'null') return callback(null, true);
     if (ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
-    // file:// und lokales Test-Frontend (localhost / 127.0.0.1)
     if (isLocalLoopbackOrigin(origin)) return callback(null, true);
-    return callback(new Error('CORS: Origin nicht erlaubt'));
+    console.warn('[CORS] Origin nicht erlaubt:', origin);
+    return callback(null, false);
   },
   methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type'],
+  allowedHeaders: [
+    'Content-Type',
+    'Authorization',
+    'X-Recipe-Operation-Id',
+  ],
+  credentials: false,
   maxAge: 600,
-}));
+  optionsSuccessStatus: 204,
+};
 
+app.use(cors(corsOptions));
+// Dieselbe Config für Preflight – kein bare cors() (würde Custom-Header verwerfen).
+app.options('*', cors(corsOptions));
+
+/** Kurzer Idempotenz-Cache für /api/nutri-recipe (gleiche operationId → gleiche Antwort). */
+const RECIPE_OPERATION_CACHE_TTL_MS = 10 * 60 * 1000;
+const RECIPE_OPERATION_CACHE_MAX = 200;
+const recipeOperationCache = new Map();
+
+function getRecipeOperationId(req) {
+  const fromHeader = req.get && (req.get('X-Recipe-Operation-Id') || req.get('x-recipe-operation-id'));
+  const fromBody = req.body && typeof req.body === 'object' ? req.body.operationId : null;
+  const raw = fromHeader || fromBody || null;
+  if (raw == null) return null;
+  const key = String(raw).trim().slice(0, 128);
+  return key || null;
+}
+
+function getCachedRecipeOperation(key) {
+  if (!key) return null;
+  const entry = recipeOperationCache.get(key);
+  if (!entry) return null;
+  if (Date.now() - entry.at > RECIPE_OPERATION_CACHE_TTL_MS) {
+    recipeOperationCache.delete(key);
+    return null;
+  }
+  return entry.payload;
+}
+
+function setCachedRecipeOperation(key, payload) {
+  if (!key || payload == null) return;
+  recipeOperationCache.set(key, { at: Date.now(), payload });
+  while (recipeOperationCache.size > RECIPE_OPERATION_CACHE_MAX) {
+    const oldest = recipeOperationCache.keys().next().value;
+    recipeOperationCache.delete(oldest);
+  }
+}
 const limiter = rateLimit({
   windowMs: RATE_LIMIT_WINDOW_MS,
   max: RATE_LIMIT_MAX,
@@ -289,6 +334,8 @@ app.get('/health', (req, res) => {
     strictPromptActiveInCoach: STRICT_COACH_OK,
     strictPromptActiveInSuggestions: STRICT_SUGGESTIONS_OK,
     v92PipelineWired: typeof core.generateValidatedRecipe === 'function',
+    prepAssistantWired: typeof core.generatePrepRecipe === 'function',
+    prepPromptVersion: core.PREP_PROMPT_VERSION || null,
     recipeSchemaVersion: 'v9.2',
     groq429Diagnostics: true,
     groqDebugKeyRouting: true,
@@ -759,6 +806,19 @@ app.post('/api/photo/verify', limiter, photoVerify.handlePhotoVerify);
 
 app.post('/api/nutri-recipe', limiter, async (req, res) => {
   const startedAt = Date.now();
+  const operationId = getRecipeOperationId(req);
+  if (operationId) {
+    const cached = getCachedRecipeOperation(operationId);
+    if (cached) {
+      console.log(`[nutri-recipe] CACHE_HIT operationId=${operationId}`);
+      return res.status(200).json(cached);
+    }
+    console.log(`[nutri-recipe] OPERATION_ID=${operationId}`);
+  }
+  function sendRecipeOk(payload) {
+    if (operationId) setCachedRecipeOperation(operationId, payload);
+    return res.status(200).json(payload);
+  }
   const auth = resolveGroqAuth(req.body);
   if (auth.keyType === 'prod' && !GROQ_API_KEY) {
     logEvent('request_rejected', { reason: 'server_not_configured', keyType: 'prod' });
@@ -771,6 +831,78 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
       message: 'GROQ_API_KEY_DEBUG ist nicht gesetzt. Debug-Requests verbrauchen absichtlich nicht den Prod-Key.',
       key_type: 'debug',
     });
+  }
+
+  // Prep-Assistent: App besitzt Zutaten/Mengen/Aktionen; KI nur Prosa.
+  const prepPayload = core.parsePrepIncoming(req.body);
+  if (prepPayload) {
+    const recipeModel = resolveRecipeModel(req.body);
+    console.log(`[nutri-recipe] PREP model=${recipeModel} key=${auth.keyType} ingredients=${prepPayload.ingredients.length} actions=${prepPayload.plannedActions.length} lang=${prepPayload.lang}`);
+    const prepResult = await core.generatePrepRecipe({
+      prepInput: prepPayload,
+      callGroq: core.callGroq,
+      model: recipeModel,
+      groqOpts: { apiKey: auth.apiKey, timeoutMs: REQUEST_TIMEOUT_MS },
+    });
+    if (prepResult.error === 'provider_error') {
+      const upstreamStatus = Number(prepResult.status) || 0;
+      const clientStatus = upstreamStatus === 400 ? 400 : 502;
+      logEvent('groq_http_error', {
+        status: upstreamStatus,
+        model: recipeModel,
+        keyType: auth.keyType,
+        keyFingerprint: auth.keyFingerprint,
+        body: prepResult.body,
+        headers: prepResult.headers || null,
+        ms: Date.now() - startedAt,
+        clientStatus,
+        flow: 'prep',
+      });
+      const errPayload = {
+        error: 'provider_error',
+        status: upstreamStatus,
+        message: core.providerErrorClientMessage(upstreamStatus, prepResult.body, prepResult.headers),
+        model: recipeModel,
+        key_type: auth.keyType,
+        key_fingerprint: auth.keyFingerprint,
+      };
+      if (upstreamStatus === 429) {
+        errPayload.provider_headers = prepResult.headers || {};
+        errPayload.provider_body = prepResult.body || '';
+        errPayload.rate_limit_kind = prepResult.rateLimitKind ||
+          core.classifyGroqRateLimit(prepResult.body, prepResult.headers);
+      }
+      return res.status(clientStatus).json(errPayload);
+    }
+    if (prepResult.error === 'prep_validation_failed') {
+      logEvent('response_rejected', {
+        reason: 'prep_validation_failed',
+        errors: prepResult.errors,
+        ms: Date.now() - startedAt,
+        flow: 'prep',
+        keyType: auth.keyType,
+      });
+      return res.status(422).json({
+        error: 'prep_validation_failed',
+        errors: prepResult.errors || [],
+        warnings: prepResult.warnings || [],
+        flow: 'prep',
+        model: recipeModel,
+        key_type: auth.keyType,
+        key_fingerprint: auth.keyFingerprint,
+      });
+    }
+    if (prepResult.error || !prepResult.recipe) {
+      logEvent('response_rejected', {
+        reason: prepResult.error || 'prep_unavailable',
+        ms: Date.now() - startedAt,
+        flow: 'prep',
+        keyType: auth.keyType,
+      });
+      return res.status(502).json({ error: 'recipe_unavailable', key_type: auth.keyType });
+    }
+    console.log(`[nutri-recipe] OK flow=prep model=${recipeModel} key=${auth.keyType} ingredients=${prepResult.recipe.ingredients.length} steps=${prepResult.recipe.steps.length} ms=${Date.now() - startedAt}`);
+    return sendRecipeOk(prepResult.recipe);
   }
 
   const payload = core.validateIncoming(req.body);
@@ -937,7 +1069,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
         }),
       };
     }
-    return res.status(200).json(recipe);
+    return sendRecipeOk(recipe);
   }
 
   const result = await core.callGroq(requestBody, { apiKey: auth.apiKey, timeoutMs: REQUEST_TIMEOUT_MS });
@@ -1002,7 +1134,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   }
 
   console.log(`[nutri-recipe] OK flow=${flow} ingredients=${recipe.ingredients.length} steps=${recipe.steps.length} key=${auth.keyType} ms=${Date.now() - startedAt}`);
-  return res.status(200).json(recipe);
+  return sendRecipeOk(recipe);
 });
 
 // 1:1-Proxy fuer die KI-Lebensmittelsuche (Client baut den Chat-Completion-Request selbst).

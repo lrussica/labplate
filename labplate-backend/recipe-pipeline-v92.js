@@ -5,8 +5,10 @@
 'use strict';
 
 const validator = require('./recipe-validator');
+const portions = require('./recipe-portions');
 
 const MAX_VALIDATION_ATTEMPTS = 3;
+const DEFAULT_TARGET_SERVINGS = 1;
 
 function stripJsonFences(raw) {
   let s = String(raw == null ? '' : raw).trim();
@@ -76,11 +78,18 @@ function buildV92GenerativeSchema() {
       type: 'object',
       additionalProperties: false,
       required: [
-        'title', 'prep_time_min', 'nutrition', 'diet_labels', 'target_deviation_note',
+        'title', 'servings', 'prep_time_min', 'nutrition', 'diet_labels', 'target_deviation_note',
         'ingredients', 'steps', 'garnish', 'chef_analysis',
       ],
       properties: {
         title: { type: 'string' },
+        servings: {
+          type: 'number',
+          description:
+            'sourceServings: Für WIE VIELE Portionen die ingredients[].amount gelten. ' +
+            'Muss zu den Mengen passen (z.B. 500g Hack ≈ 4–6 Portionen, NICHT servings=1). ' +
+            'Für ein echtes Einzelportion-Rezept: servings=1 UND passende Einzelmengen (z.B. ~120g Fleisch).',
+        },
         prep_time_min: { type: 'number' },
         nutrition: {
           type: 'object',
@@ -119,27 +128,82 @@ function isEggIngredient(name) {
 }
 
 /**
- * Wandelt v9.2-JSON in den bestehenden Client-Vertrag um
- * (title, prep_time, nutrition_note, garnish, ingredients g|ml, steps strings).
+ * Wandelt v9.2-JSON in den Client-Vertrag um.
+ * sourceServings (Rohmengen) → einmalige Skalierung auf targetServings → finalIngredients.
+ * Steps/Garnish nur Namen (nameOnly) — keine Mengen in Prosa.
  */
-function renderRecipeForDisplay(recipe) {
+function renderRecipeForDisplay(recipe, renderOpts) {
   if (!recipe || typeof recipe !== 'object') return null;
   const ingredientsIn = Array.isArray(recipe.ingredients) ? recipe.ingredients : [];
   if (!ingredientsIn.length) return null;
+  const o = renderOpts || {};
+  const targetServings = Number(o.targetServings) > 0
+    ? Number(o.targetServings)
+    : DEFAULT_TARGET_SERVINGS;
 
-  const byId = {};
-  ingredientsIn.forEach(function (ing) {
-    if (ing && ing.id) byId[String(ing.id)] = ing;
+  // Rohzutaten mit Original-Einheiten (Skalierung VOR stk→g).
+  const sourceIngredients = ingredientsIn.map(function (ing) {
+    const name = String(ing.name || 'Zutat').trim().slice(0, 200);
+    let amount = Number(ing.amount);
+    if (!Number.isFinite(amount) || amount < 0) amount = 0;
+    let unit = ing.unit;
+    if (unit === 'stk' || (unit == null && isEggIngredient(name))) unit = 'stk';
+    else if (unit === 'prise' || unit === 'messerspitze') unit = unit;
+    else if (unit === 'ml') unit = 'ml';
+    else unit = 'g';
+    return {
+      id: ing.id,
+      name: name,
+      displayName: name,
+      amount: amount,
+      unit: unit,
+      protein_source: !!ing.protein_source,
+      netCarbs: Math.max(0, Number(ing.netCarbs) || 0),
+      fat: Math.max(0, Number(ing.fat) || 0),
+      protein: Math.max(0, Number(ing.protein) || 0),
+      fiber: Math.max(0, Number(ing.fiber) || 0),
+    };
   });
 
-  const ingredients = ingredientsIn.map(function (ing) {
-    const name = String(ing.name || 'Zutat').trim().slice(0, 200);
+  console.log('RECIPE_RAW_SOURCE', JSON.stringify({
+    title: recipe.title,
+    declaredServings: recipe.servings,
+    ingredients: sourceIngredients.map(function (i) {
+      return { id: i.id, name: i.name, amount: i.amount, unit: i.unit };
+    }),
+  }));
+
+  const portioned = portions.buildFinalPortionedRecipe({
+    sourceIngredients: sourceIngredients,
+    sourceServings: recipe.servings != null ? recipe.servings : recipe.sourceServings,
+    sourceServingsStatus: recipe.sourceServingsStatus,
+    sourceServingsMethod: recipe.sourceServingsMethod,
+    sourceServingsConfidence: recipe.sourceServingsConfidence,
+    cookedBatchWeight: recipe.cookedBatchWeight,
+    targetServings: targetServings,
+    title: recipe.title,
+    steps: recipe.steps,
+  });
+
+  // Bei unbekannter Ausgangsportion: Rohmengen anzeigen, aber nie als sichere 1-Portion markieren.
+  const scaledOk = !!(portioned.ok && portioned.finalIngredients);
+  const useIngredients = scaledOk ? portioned.finalIngredients : sourceIngredients;
+  const finalServings = scaledOk ? portioned.finalServings : null;
+  const servingsStatus = portioned.servingsStatus || portions.SERVINGS_STATUS.UNKNOWN;
+  const sourceServingsStatus = portioned.sourceServingsStatus ||
+    portions.SOURCE_SERVINGS_STATUS.UNKNOWN;
+  const requiresReview = scaledOk
+    ? !!portioned.requiresReview
+    : true;
+
+  // Display-Mapping (stk → g für Makros; Eier-Name kulinarisch).
+  const ingredients = useIngredients.map(function (ing) {
+    const name = String(ing.displayName || ing.name || 'Zutat').trim().slice(0, 200);
     let amount = Number(ing.amount);
     let unit = ing.unit;
     if (unit === 'stk' || (unit == null && isEggIngredient(name))) {
-      const pieces = Number.isFinite(amount) && amount > 0 ? amount : 1;
+      const pieces = Number.isFinite(amount) && amount > 0 ? Math.max(1, Math.round(amount)) : 1;
       amount = pieces * 60;
-      unit = 'g';
       const displayName = pieces === 1
         ? (/\bei\b/i.test(name) ? name : '1 Ei (Größe M, ca. 60 g)')
         : (name.indexOf('Eier') >= 0 ? name : pieces + ' Eier (Größe M, ca. 60 g je)');
@@ -156,6 +220,9 @@ function renderRecipeForDisplay(recipe) {
         },
         _v92_id: ing.id,
         _protein_source: !!ing.protein_source,
+        _culinary_amount: pieces,
+        _culinary_unit: 'stk',
+        _discrete: true,
       };
     }
     if (unit === 'prise' || unit === 'messerspitze') {
@@ -186,11 +253,76 @@ function renderRecipeForDisplay(recipe) {
     };
   });
 
+  // Nährwerte nur aus skalierten finalIngredients als Portionswerte ausgeben.
+  // Bei unknown: Mengen sind unskaliert → keine scheinbar sichere Portions-Nährwertangabe.
+  let protein = 0;
+  let fat = 0;
+  let nettoKh = 0;
+  let fiber = 0;
+  ingredients.forEach(function (ing) {
+    const grams = Number(ing.amount) || 0;
+    const m = ing.macrosPer100g || {};
+    const f = grams / 100;
+    protein += (Number(m.protein) || 0) * f;
+    fat += (Number(m.fat) || 0) * f;
+    nettoKh += (Number(m.netCarbs) || 0) * f;
+    fiber += (Number(m.fiber) || 0) * f;
+  });
+  const nutritionFromAmounts = {
+    kcal: Math.round(protein * 4 + fat * 9 + nettoKh * 4),
+    protein_g: Math.round(protein * 10) / 10,
+    fat_g: Math.round(fat * 10) / 10,
+    netto_kh_g: Math.round(nettoKh * 10) / 10,
+    ballaststoffe_g: Math.round(fiber * 10) / 10,
+  };
+  const finalNutrition = scaledOk ? nutritionFromAmounts : null;
+  console.log('RECIPE_FINAL_NUTRITION', JSON.stringify({
+    scaledOk: scaledOk,
+    nutrition: finalNutrition,
+  }));
+
+  const byIdForProse = {};
+  ingredients.forEach(function (ing) {
+    if (!ing || !ing._v92_id) return;
+    let proseName = String(ing.name || '').trim();
+    proseName = proseName.replace(/\(\s*[^)]*\d+[.,]?\d*\s*(g|kg|mg|ml|l|stk)[^)]*\)/gi, '').trim();
+    proseName = proseName.replace(/\(\s*\)/g, '').replace(/\s{2,}/g, ' ').trim() || String(ing.name || '').trim();
+    byIdForProse[String(ing._v92_id)] = {
+      id: ing._v92_id,
+      name: proseName,
+      amount: 0,
+      unit: '',
+    };
+  });
+
   const steps = (Array.isArray(recipe.steps) ? recipe.steps : []).map(function (s) {
-    if (!s || typeof s !== 'object') return '';
-    let content = validator.resolvePlaceholders(s.content || '', byId);
+    if (!s || typeof s === 'string') {
+      const t = String(s || '').trim();
+      return t ? validator.stripQuantityMentionsFromText(t) : '';
+    }
+    let content = validator.resolvePlaceholders(s.content || '', byIdForProse, { nameOnly: true });
+    content = validator.stripQuantityMentionsFromText(content);
+    // Bare Namenlisten vermeiden: "{a} {b} {c}" → natürliche Formulierung mit Titel-Verb
+    const bareNames = /^\s*[A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß0-9\-]*(?:\s+[A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß0-9\-]*){1,8}\s*$/;
+    if (bareNames.test(content) && !/\b(und|mit|in|auf|bei|bis|dann)\b/i.test(content)) {
+      const names = content.trim().split(/\s+/);
+      const joined = names.length === 1 ? names[0]
+        : (names.length === 2 ? names[0] + ' und ' + names[1]
+          : names.slice(0, -1).join(', ') + ' und ' + names[names.length - 1]);
+      const title = String(s.title || '').toLowerCase();
+      if (/anschwitz|gemüse/.test(title)) {
+        content = 'Das Olivenöl erhitzen und ' + joined.replace(/,? und Olivenöl|,? Olivenöl/gi, '') +
+          ' darin bei mittlerer Hitze langsam anschwitzen.';
+      } else if (/brat|fleisch/.test(title)) {
+        content = joined + ' unter Rühren krümelig anbraten.';
+      } else if (/abschmeck|würz/.test(title)) {
+        content = 'Mit Salz und Pfeffer abschmecken.';
+      } else {
+        content = joined + ' zubereiten.';
+      }
+    }
     const parts = [];
-    if (s.title) parts.push(String(s.title) + ':');
+    // Natürliche Sätze: Titel nicht als "Label: Namenliste" voranstellen, wenn content schon Satz ist
     if (s.stove_level != null && s.stove_level !== '' && Number(s.stove_level) > 0) {
       parts.push('Stufe ' + s.stove_level + ' von 9.');
     }
@@ -201,36 +333,130 @@ function renderRecipeForDisplay(recipe) {
     return parts.filter(Boolean).join(' ').trim();
   }).filter(Boolean);
 
-  const prepMin = Number(recipe.prep_time_min) || 0;
-  const prep_time = prepMin > 0 ? (prepMin + ' Minuten') : '';
-  const garnish = validator.resolvePlaceholders(recipe.garnish || '', byId).slice(0, 400);
-  // chef_analysis: Platzhalter = nur Zutatnamen (kein amount+unit-Drift)
-  let note = validator.resolvePlaceholders(recipe.chef_analysis || '', byId, { nameOnly: true });
+  const stepTimeSum = (Array.isArray(recipe.steps) ? recipe.steps : []).reduce(function (sum, s) {
+    return sum + (Number(s && s.time_min) || 0);
+  }, 0);
+  const declaredPrep = Number(recipe.prep_time_min) || 0;
+  // Gesamtzeit: max(deklariert, Summe Schrittzeiten) – lange Kochzeiten nicht unterschlagen.
+  const prepMin = Math.max(declaredPrep, stepTimeSum);
+  function formatPrepLabel(mins) {
+    const m = Math.max(0, Math.round(Number(mins) || 0));
+    if (m <= 0) return '';
+    if (m < 60) return m + ' Minuten';
+    const h = Math.floor(m / 60);
+    const rest = m % 60;
+    if (rest === 0) return h === 1 ? 'ca. 1 Stunde' : ('ca. ' + h + ' Stunden');
+    if (h === 1) return 'ca. 1 Stunde ' + rest + ' Minuten';
+    return 'ca. ' + h + ' Stunden ' + rest + ' Minuten';
+  }
+  const prep_time = formatPrepLabel(prepMin);
+  const cookMinutes = stepTimeSum;
+  const prepMinutes = Math.max(0, declaredPrep > stepTimeSum ? declaredPrep - stepTimeSum : 0);
+  const totalMinutes = prepMin;
+  let garnish = validator.resolvePlaceholders(recipe.garnish || '', byIdForProse, { nameOnly: true });
+  garnish = validator.stripQuantityMentionsFromText(garnish).slice(0, 400);
+  // Keine Schein-Garnitur nur aus Öl/Salz
+  if (/^(das\s+)?(olivenöl|öl|salz|pfeffer)\.?$/i.test(String(garnish || '').trim())) {
+    garnish = '';
+  }
+  let note = validator.resolvePlaceholders(recipe.chef_analysis || '', byIdForProse, { nameOnly: true });
+  note = validator.stripQuantityMentionsFromText(note);
   if (recipe.target_deviation_note) {
     note = (note ? note + ' ' : '') + String(recipe.target_deviation_note);
   }
+
+  const consistency = portions.validateRecipeConsistency({
+    title: recipe.title,
+    finalIngredients: ingredients,
+    steps: steps,
+  });
+  const portionWarnings = (portioned.warnings || [])
+    .concat(consistency.warnings || [])
+    .filter(Boolean);
 
   const shopping = ingredients.map(function (ing) {
     if (!ing.amount) return ing.name + ' – nicht angegeben';
     return ing.name + ' – ' + ing.amount + ' ' + ing.unit;
   });
 
-  return {
+  // Client-Vertrag: servings = finalServings (nach Skalierung), nie stille Lüge.
+  const displayServings = finalServings != null ? finalServings : 0;
+  const safeSingle = portions.canDisplayAsSafeSinglePortion({
+    finalServings: displayServings,
+    servingsStatus: servingsStatus,
+    sourceServingsStatus: sourceServingsStatus,
+    requiresReview: requiresReview,
+    portionWarnings: portionWarnings,
+  });
+  const portionDisplayHint = portions.getPortionDisplayHint({
+    finalServings: displayServings,
+    servingsStatus: servingsStatus,
+    sourceServingsStatus: sourceServingsStatus,
+    requiresReview: requiresReview,
+  });
+
+  const out = {
     title: (typeof recipe.title === 'string' && recipe.title.trim())
       ? recipe.title.trim().slice(0, 200)
       : 'Rezept',
-    servings: 1,
+    servings: displayServings > 0 ? displayServings : 1,
+    sourceServings: portioned.sourceServings,
+    sourceServingsStatus: sourceServingsStatus,
+    sourceServingsMethod: portioned.sourceServingsMethod || null,
+    sourceServingsConfidence: portioned.sourceServingsConfidence != null
+      ? portioned.sourceServingsConfidence
+      : null,
+    targetServings: targetServings,
+    finalServings: displayServings > 0 ? displayServings : null,
+    servingsStatus: servingsStatus,
+    requiresReview: requiresReview,
+    scalingFactor: portioned.scalingFactor != null ? portioned.scalingFactor : null,
+    portionSafe: safeSingle,
+    portionDisplayHint: portionDisplayHint,
+    portionWarnings: portionWarnings,
+    validationWarnings: portionWarnings,
     prep_time: prep_time.slice(0, 60),
+    prepMinutes: prepMinutes || null,
+    cookMinutes: cookMinutes || null,
+    totalMinutes: totalMinutes || null,
     nutrition_note: note.slice(0, 800),
     garnish: garnish.slice(0, 200),
     self_check: '',
     ingredients: ingredients,
+    finalIngredients: ingredients,
     shopping_list: shopping,
     steps: steps,
     diet_labels: Array.isArray(recipe.diet_labels) ? recipe.diet_labels : [],
-    nutrition: recipe.nutrition || null,
+    nutrition: finalNutrition || nutritionFromAmounts,
+    finalNutrition: finalNutrition,
+    nutritionBasis: scaledOk ? 'finalIngredients' : 'unscaled_source',
+    nutritionSource: scaledOk ? 'finalIngredients' : 'unscaled_source',
+    nutritionServings: scaledOk && displayServings > 0 ? displayServings : null,
+    nutritionIngredientCount: ingredients.length,
+    yield: portioned.yield || {
+      rawBatchWeight: null,
+      cookedBatchWeight: null,
+      yieldStatus: 'unknown',
+      portionWeight: null,
+    },
     recipe_schema_version: 'v9.2',
+    recipeVersion: portions.RECIPE_MODEL_VERSION.recipeVersion,
+    ingredientModelVersion: portions.RECIPE_MODEL_VERSION.ingredientModelVersion,
+    nutritionVersion: portions.RECIPE_MODEL_VERSION.nutritionVersion,
+    instructionVersion: portions.RECIPE_MODEL_VERSION.instructionVersion,
   };
+
+  console.log('RECIPE_VALIDATION', JSON.stringify({
+    servingsStatus: out.servingsStatus,
+    sourceServingsStatus: out.sourceServingsStatus,
+    sourceServings: out.sourceServings,
+    finalServings: out.finalServings,
+    requiresReview: out.requiresReview,
+    portionSafe: out.portionSafe,
+    warnings: portionWarnings,
+  }));
+
+  return out;
 }
 
 function logRawLlmJson(meta) {
@@ -508,4 +734,6 @@ module.exports = {
   generateValidatedRecipe: generateValidatedRecipe,
   errorsToDirectives: errorsToDirectives,
   buildRetryFeedbackMessage: buildRetryFeedbackMessage,
+  portions: portions,
+  DEFAULT_TARGET_SERVINGS: DEFAULT_TARGET_SERVINGS,
 };

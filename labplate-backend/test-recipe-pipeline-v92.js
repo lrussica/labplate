@@ -9,6 +9,7 @@ const pipeline = require('./recipe-pipeline-v92');
 
 const gutesBeispiel = {
   title: 'Schnelles High-Protein Pfannen-Hähnchen mit Ei-Spinat',
+  servings: 1,
   prep_time_min: 20,
   nutrition: { kcal: 460, protein_g: 55, fat_g: 25, netto_kh_g: 3, ballaststoffe_g: 1 },
   diet_labels: ['high_protein'],
@@ -35,14 +36,22 @@ const result2 = validator.validateRecipeV2(gutesBeispiel);
 assert.strictEqual(result2.ok, true, 'gutes Beispiel muss ok sein: ' + result2.errors.join('; '));
 const rendered = pipeline.renderRecipeForDisplay(gutesBeispiel);
 assert.ok(rendered, 'render liefert Rezept');
-assert.ok(rendered.steps.some(function (s) { return /8ml Olivenöl|8 ml|8ml/.test(s) || s.indexOf('Olivenöl') >= 0; }), 'Placeholder aufgelöst: ' + rendered.steps.join(' | '));
+assert.ok(rendered.steps.some(function (s) { return s.indexOf('Olivenöl') >= 0; }), 'Placeholder nameOnly: ' + rendered.steps.join(' | '));
+assert.ok(!rendered.steps.some(function (s) {
+  return /\b\d+[.,]?\d*\s*(g|ml)\b/i.test(s) || /\b\d+(g|ml)\b/i.test(s);
+}), 'Steps dürfen keine Mengen enthalten: ' + rendered.steps.join(' | '));
+assert.ok(!/Kokosmilch\d|ml[A-ZÄÖÜ]/i.test(rendered.steps.join(' ')), 'keine geklebten Mengen');
+// Zutatenliste behält Mengen
+const oil = rendered.ingredients.find(function (i) { return /öl|oel/i.test(i.name); });
+assert.ok(oil && oil.amount === 8 && oil.unit === 'ml', 'Zutatenliste Menge bleibt');
 assert.strictEqual(rendered.self_check, '');
 assert.ok(rendered.nutrition_note.indexOf('siehe nutrition') >= 0 || rendered.nutrition_note.length > 10);
 assert.strictEqual(rendered.recipe_schema_version, 'v9.2');
-// Ei stk → 120 g
+// Ei stk → 120 g in Liste, aber nicht "30 g Ei" in Steps
 const egg = rendered.ingredients.find(function (i) { return /ei/i.test(i.name); });
 assert.ok(egg && egg.amount === 120 && egg.unit === 'g', 'Ei stk→g');
-console.log('OK validate+render valid v9.2');
+assert.ok(egg._culinary_amount === 2, 'Ei culinary amount');
+console.log('OK validate+render valid v9.2 (nameOnly steps)');
 
 // TEST 3: broken
 const kaputt = JSON.parse(JSON.stringify(gutesBeispiel));
@@ -308,12 +317,12 @@ assert.strictEqual(
 );
 assert.strictEqual(
   validator.resolvePlaceholders('Olivenöl {0004}', byIdDbl),
-  '10ml Olivenöl',
+  '10 ml Olivenöl',
   'Olivenöl Doppler vermeiden'
 );
 assert.strictEqual(
   validator.resolvePlaceholders('Wasser {0007} ml', byIdDbl),
-  '1000ml Wasser',
+  '1000 ml Wasser',
   'Wasser ml Doppler vermeiden'
 );
 assert.strictEqual(
@@ -321,6 +330,16 @@ assert.strictEqual(
   'Die Kombi aus Olivenöl und Salz',
   'chef_analysis nameOnly'
 );
+const gluedResolved = validator.resolvePlaceholders('{0004}{0007}', byIdDbl);
+assert.ok(/10 ml Olivenöl/.test(gluedResolved) && /1000 ml Wasser/.test(gluedResolved), 'beide Tokens: ' + gluedResolved);
+assert.ok(/Olivenöl\s+1000/.test(gluedResolved), 'benachbarte Expansionen getrennt: ' + gluedResolved);
+const strippedQty = validator.stripQuantityMentionsFromText(
+  '170 g Lachsfilet und 100ml Kokosmilch30g Avocado unterrühren.'
+);
+assert.ok(!/\d+\s*(g|ml)\b/i.test(strippedQty), 'strip qty: ' + strippedQty);
+assert.ok(/Lachsfilet/.test(strippedQty) && /Avocado/.test(strippedQty), 'Namen bleiben: ' + strippedQty);
+assert.ok(!validator.textHasQuantityMention('Das Lachsfilet anbraten.'));
+assert.ok(validator.textHasQuantityMention('170 g Lachs anbraten.'));
 console.log('OK resolvePlaceholders Anti-Doppel');
 
 // TEST 3n: Eier nur stk ganze Zahlen; kein Garnitur-Step
@@ -364,6 +383,22 @@ async function mockCallGroq() {
   assert.ok(!fail.recipe);
   assert.ok(fail.errors && fail.errors.length);
   console.log('OK exhausted after 3 attempts');
+
+  // Faktor-2-Regression: Zutatenliste skaliert, Steps bleiben mengenfrei (nameOnly).
+  const factor2Base = JSON.parse(JSON.stringify(gutesBeispiel));
+  factor2Base.ingredients[0].amount = 170; // KI liefert oft 2-Personen-Mengen
+  const renderedFull = pipeline.renderRecipeForDisplay(factor2Base);
+  // Simuliere Frontend-Skalierung nur auf ingredients (wie scaleLocalRecipe)
+  const scaledIngs = renderedFull.ingredients.map(function (ing) {
+    return Object.assign({}, ing, { amount: Math.round((ing.amount * 0.5) / 5) * 5 || ing.amount });
+  });
+  const salmonList = scaledIngs.find(function (i) { return /lachs|hähnchen|haehnchen/i.test(i.name); });
+  assert.ok(salmonList && salmonList.amount <= 90, 'skalierte Liste ~85g: ' + (salmonList && salmonList.amount));
+  assert.ok(!renderedFull.steps.some(function (s) {
+    return /\b\d+[.,]?\d*\s*(g|ml)\b/i.test(s);
+  }), 'Steps ohne Mengen trotz Skalierung: ' + renderedFull.steps.join(' | '));
+  assert.ok(!/KokosmilchAvocado|ml[A-ZÄÖÜ]/.test(renderedFull.steps.join('')), 'keine Klebe-Strings');
+  console.log('OK Faktor-2-Regression (Steps nameOnly)');
 
   console.log('\nAll recipe-v92 pipeline tests passed.');
 })().catch(function (err) {

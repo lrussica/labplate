@@ -5,14 +5,17 @@
  * Die Root-Datei ../nutri-recipe-core.js re-exportiert DIESES Modul – dort keine
  * eigenen Prompt-Regeln pflegen.
  *
- * Zwei getrennte KI-Modi (nicht vermischen!):
+ * Drei getrennte KI-Modi (nicht vermischen!):
  *  1) STRUCTURED / Eigenrezept (looksStructured): reiner Passthrough –
  *     title, servings (0 wenn nicht im Text), Zutaten + Schritte 1:1.
  *     KEINE Makros (App: lookupNutriMacrosPer100g + Portions-Stepper).
  *  2) GENERATIV / Freisuche / Shopping: kreativ – Zutaten/Mengen duerfen
  *     vorgeschlagen und an Tagesziele angepasst werden (Chef-Framework).
+ *  3) PREP-ASSISTENT (prep_mode / plannedActions): App besitzt Zutaten,
+ *     Mengen und Aktionen; KI schreibt nur Titel + Zubereitungsprosa
+ *     (recipe-pipeline-prep.js, Prompt prep-assistant-v1.md).
  *
- * Generativ: temperature 0.2 (Anti-Drift); Eigenrezept/structured: temperature 0.
+ * Generativ/Prep: temperature 0.2 (Anti-Drift); Eigenrezept/structured: temperature 0.
  * reasoning_effort: "low"
  *
  * Client-Vertrag (LabPlate_34_Cursor.html, validateNutriRecipeSchema):
@@ -28,7 +31,9 @@
 
 const strictPrompt = require('./strict-prompt');
 const recipePipeline = require('./recipe-pipeline-v92');
+const recipePipelinePrep = require('./recipe-pipeline-prep');
 const recipeValidator = require('./recipe-validator');
+const recipePortions = require('./recipe-portions');
 
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const DEFAULT_MODEL = 'openai/gpt-oss-120b';
@@ -561,7 +566,8 @@ function themeGuidanceFromTheme(theme) {
     foods: theme.foods,
     instruction: truncateTeamBrief(
       'THEMEN-REZEPT: Brief/Kontext nennt ' + theme.label + '. ' +
-      'Erstelle ein einfaches Alltaggericht (ca. 30 Minuten, 1 Portion). ' +
+      'Erstelle ein einfaches Alltaggericht (ca. 30 Minuten). ' +
+      'servings muss zu den Zutatenmengen passen (Einzelportion oder korrekte Mehrportionen-Angabe). ' +
       'Nutze passende Lebensmittel aus: ' + foodList + '. ' +
       'Keine Dosierungen, keine Diagnosen, keine medizinischen Aussagen – nur Rezept.',
       TEAM_HANDOFF_BRIEF_MAX
@@ -612,7 +618,8 @@ function buildGenerativeMessages(p) {
       'THEMEN-REZEPT (vom Kollegen-Brief / Suchkontext):',
       'Thema erkannt: ' + themeGuide.label + '.',
       'Waehle alltagstaugliche Zutaten aus dieser Liste (mind. 2-3 davon zentral nutzen): ' + themeGuide.foods.join(', ') + '.',
-      'Ziel: einfaches Gericht, ca. 30 Minuten, 1 Portion (servings=1), Alltagssprache in title/steps/nutrition_note.',
+      'Ziel: einfaches Gericht, ca. 30 Minuten. servings muss zur Zutatenmenge passen ' +
+      '(Einzelportion: servings=1 mit Einzelmengen; klassisches Mehrportionen-Rezept: servings=4–6, nie servings=1 bei 500g Hack).',
       'VERBOTEN: medizinische Aussagen, Dosierungen (mg/IE), Diagnosen, Heilversprechen, Supplement-Empfehlungen.',
       'Kein Coaching-Text – nur Rezept-JSON.',
     ].join(' ')
@@ -629,7 +636,13 @@ function buildGenerativeMessages(p) {
     'Mengen in ingredients: Eier unit=stk; Gewuerze amount=0 unit=prise|messerspitze; Fluessigkeiten ml; Festes g. netCarbs/fat/protein/fiber je 100 g/ml.',
     'Beispiel Ei: {"id":"0002","name":"Ei (Groesse M, ca. 60 g)","amount":2,"unit":"stk","protein_source":true}. Olivenoel: unit ml. Salz: unit prise, amount 0.',
     'steps: Objekte {title, content mit {id}-Platzhaltern, stove_level 0|1-9, time_min}. garnish + chef_analysis Pflicht.',
-    'Schema v9.2: nutrition{kcal,protein_g,fat_g,netto_kh_g,ballaststoffe_g}, ingredients[{id,name,amount,unit,protein_source,macros}], steps[{title,content,stove_level,time_min}], garnish, chef_analysis, diet_labels, target_deviation_note, prep_time_min.',
+    'Schema v9.2: servings (sourceServings = für wie viele Portionen ingredients[].amount gelten), ' +
+    'nutrition{kcal,protein_g,fat_g,netto_kh_g,ballaststoffe_g}, ingredients[{id,name,amount,unit,protein_source,macros}], ' +
+    'steps[{title,content,stove_level,time_min}], garnish, chef_analysis, diet_labels, target_deviation_note, prep_time_min.',
+    'PORTIONEN (verbindlich): servings MUSS zu den Mengen passen. ' +
+    'VERBOTEN: servings=1 bei 400–500g Hackfleisch/Fleisch (das ist eine Mehrportionenmenge). ' +
+    'Entweder echte Einzelportion (z.B. ~100–150g Fleisch, servings=1) ODER Batch mit korrektem servings (z.B. 500g Hack → servings=4..6). ' +
+    'Das Backend skaliert danach einmalig auf die Nutzer-Zielportion.',
     'content/garnish: Mengen NUR als {0001}-Platzhalter – KEINE freien g/ml/kcal-Zahlen. KEIN self_check-Feld.',
     'Eier unit=stk; Gewuerze unit=prise|messerspitze amount=0; sonst g|ml. stove_level 0=kalt, 1-9=Hitze.',
     'chef_analysis: {id} NUR fuer Zutatennamen; Naehrwerte nur qualitativ (nie Zahl, nie "{0001} g Protein"). Zahlen nur in nutrition.',
@@ -738,10 +751,28 @@ function stripQty(line) {
 
 function toClientRecipe(parsed, p) {
   if (!parsed || typeof parsed !== 'object') return null;
-  // v9.2 generatives JSON → Client-Vertrag via Placeholder-Resolve
+  console.log('LIVE_RECIPE_PATH_B');
+  // v9.2 generatives JSON → Client-Vertrag via Placeholder-Resolve + Portionierung
   if (!(p && p.structured) && parsed.prep_time_min != null && parsed.nutrition && Array.isArray(parsed.steps)
       && parsed.steps[0] && typeof parsed.steps[0] === 'object') {
-    return recipePipeline.renderRecipeForDisplay(parsed);
+    console.log('LIVE_RECIPE_PATH_V92');
+    console.log('LIVE_RECIPE_PATH_RENDER');
+    const rendered = recipePipeline.renderRecipeForDisplay(parsed);
+    if (rendered) {
+      rendered.finalIngredients = rendered.ingredients;
+      rendered.displayIngredients = rendered.ingredients;
+      rendered.nutritionSource = rendered.nutritionBasis || 'finalIngredients';
+      rendered.finalNutrition = rendered.finalNutrition || rendered.nutrition;
+      rendered.livePathNormalized = true;
+      console.log('TRACE_DISPLAY_RECIPE', JSON.stringify({
+        title: rendered.title,
+        sourceServings: rendered.sourceServings,
+        finalServings: rendered.finalServings,
+        scalingFactor: rendered.scalingFactor,
+        sample: (rendered.ingredients || []).slice(0, 2),
+      }));
+      return rendered;
+    }
   }
   const structured = !!(p && p.structured);
   let ingredients;
@@ -771,18 +802,38 @@ function toClientRecipe(parsed, p) {
   const selfCheck = structured
     ? ''
     : (typeof parsed.self_check === 'string' ? parsed.self_check.trim().slice(0, 2000) : '');
-  return {
+  const nutritionNote = structured
+    ? ''
+    : (typeof parsed.nutrition_note === 'string' ? parsed.nutrition_note.slice(0, 800) : '');
+
+  let client = {
     title: (typeof parsed.title === 'string' && parsed.title.trim()) ? parsed.title.trim().slice(0, 200) : 'Rezept',
     // STRUCTURED: 0 = Portionen nicht angegeben (App laesst leer). GENERATIV: Fallback 2.
     servings: servings > 0 ? servings : (structured ? 0 : 2),
     prep_time: structured ? '' : (typeof parsed.prep_time === 'string' ? parsed.prep_time.slice(0, 60) : ''),
-    nutrition_note: structured ? '' : (typeof parsed.nutrition_note === 'string' ? parsed.nutrition_note.slice(0, 800) : ''),
+    nutrition_note: nutritionNote,
     garnish,
     self_check: selfCheck,
     ingredients,
     shopping_list: shopping.slice(0, MAX_INGREDIENTS),
     steps,
   };
+
+  // Live-Pflicht: generativ immer portionieren. Structured: nur bei servings>1 oder Batch-als-1.
+  console.log('LIVE_RECIPE_PATH_NORMALIZE');
+  const targetServings = 1;
+  if (!structured) {
+    client = recipePortions.normalizeRecipeToFinalModel(client, { targetServings: targetServings });
+  } else if (servings > 1 || recipePortions.looksLikeBatchAmounts(client.ingredients, servings || 1)) {
+    client = recipePortions.normalizeRecipeToFinalModel(client, { targetServings: targetServings });
+  } else {
+    client.finalIngredients = client.ingredients;
+    client.displayIngredients = client.ingredients;
+    client.finalServings = servings > 0 ? servings : null;
+    client.nutritionSource = 'finalIngredients';
+    client.livePathNormalized = true;
+  }
+  return client;
 }
 
 // ---------------------------------------------------------------------------
@@ -1010,10 +1061,17 @@ module.exports = {
   callGroqOnce,
   callGroq,
   recipePipeline,
+  recipePipelinePrep,
   recipeValidator,
   generateValidatedRecipe: recipePipeline.generateValidatedRecipe,
   renderRecipeForDisplay: recipePipeline.renderRecipeForDisplay,
   validateRecipeV2: recipeValidator.validateRecipeV2,
+  parsePrepIncoming: recipePipelinePrep.parsePrepIncoming,
+  generatePrepRecipe: recipePipelinePrep.generatePrepRecipe,
+  validatePrepAssistantOutput: recipePipelinePrep.validatePrepAssistantOutput,
+  renderPrepClientRecipe: recipePipelinePrep.renderPrepClientRecipe,
+  PREP_PROMPT_VERSION: recipePipelinePrep.PREP_PROMPT_VERSION,
+  recipePortions: require('./recipe-portions'),
   ingKey,
   STRUCTURED_PROMPT_VERSION: strictPrompt.STRUCTURED_PROMPT_VERSION,
 };
