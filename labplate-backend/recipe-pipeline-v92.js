@@ -749,19 +749,68 @@ function logValidationFailure(meta) {
  * @param {string[]} errors
  * @returns {string[]}
  */
-function errorsToDirectives(errors) {
+function errorsToDirectives(errors, opts) {
   const list = Array.isArray(errors) ? errors : [];
+  const o = opts && typeof opts === 'object' ? opts : {};
+  const dishQuery = String(o.dishQuery || o.title || '').trim();
   const directives = [];
   const seenProtein = {};
 
+  function splitIngredientNameList(raw) {
+    const out = [];
+    let cur = '';
+    let depth = 0;
+    const s = String(raw || '');
+    for (let i = 0; i < s.length; i++) {
+      const ch = s[i];
+      if (ch === '(') depth += 1;
+      if (ch === ')') depth = Math.max(0, depth - 1);
+      if (ch === ',' && depth === 0) {
+        if (cur.trim()) out.push(cur.trim());
+        cur = '';
+        continue;
+      }
+      cur += ch;
+    }
+    if (cur.trim()) out.push(cur.trim());
+    return out;
+  }
+
+  function namesNotInTitle(names) {
+    if (!dishQuery || !names || !names.length) return [];
+    const qLower = dishQuery.toLowerCase();
+    return names.filter(function (nm) {
+      const token = String(nm || '').toLowerCase()
+        .replace(/\([^)]*\)/g, ' ')
+        .replace(/[,.].*$/, '')
+        .trim()
+        .split(/\s+/)[0];
+      if (!token || token.length < 3) return true;
+      const stem = token.replace(/(en|er|e|n)$/i, '');
+      return qLower.indexOf(token) < 0 && (stem.length < 3 || qLower.indexOf(stem) < 0);
+    });
+  }
+
   list.forEach(function (err) {
     const e = String(err || '');
+    const mTitleBind = e.match(/Titel-Zutaten-Bindung:\s*Die Zutat\(en\)\s+(.+?)\s+stehen nicht im vorgegebenen Titel/i);
+    if (mTitleBind && !seenProtein.titleBind) {
+      seenProtein.titleBind = true;
+      const extraNames = mTitleBind[1].trim();
+      const titleLabel = dishQuery || (e.match(/Titel '([^']+)'/) || [])[1] || '';
+      directives.push(
+        "Die Zutat(en) " + extraNames + " stehen nicht im vorgegebenen Titel '" + titleLabel +
+        "'. Entferne sie und erhöhe stattdessen die Menge der im Titel genannten Zutat(en), " +
+        'um das Proteinziel zu erreichen.'
+      );
+    }
     const mKw = e.match(/Mehr als 2 Proteinquellen \(Keyword-Heuristik\):\s*(.+)$/i);
     const mFlag = e.match(/Mehr als 2 Proteinquellen \(protein_source=true\):\s*(.+)$/i);
-    const namesRaw = (mKw && mKw[1]) || (mFlag && mFlag[1]) || '';
+    const mCulinary = e.match(/Mehr als 2 primäre? Proteinquellen[^:]*:\s*(.+)$/i);
+    const namesRaw = (mKw && mKw[1]) || (mFlag && mFlag[1]) || (mCulinary && mCulinary[1]) || '';
     if (namesRaw && !seenProtein.done) {
       seenProtein.done = true;
-      const names = namesRaw.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+      const names = splitIngredientNameList(namesRaw);
       directives.push(
         'KONKRETE KORREKTUR: Du hast 3 Proteinquellen verwendet (' + names.join(', ') + '). ' +
         'Entferne EINE davon komplett aus den ingredients und erhöhe die Menge einer der ' +
@@ -769,6 +818,15 @@ function errorsToDirectives(errors) {
         'Setze protein_source NICHT auf false, um eine Zutat zu "verstecken" — ' +
         'entferne sie stattdessen ganz aus dem Rezept.'
       );
+      const extras = namesNotInTitle(names);
+      if (extras.length && !seenProtein.titleBind) {
+        seenProtein.titleBind = true;
+        directives.push(
+          "Die Zutat(en) " + extras.join(', ') + " stehen nicht im vorgegebenen Titel '" + dishQuery +
+          "'. Entferne sie und erhöhe stattdessen die Menge der im Titel genannten Zutat(en), " +
+          'um das Proteinziel zu erreichen.'
+        );
+      }
     }
     if (/protein_source falsch gesetzt|primaere Proteinquellen|primäre Proteinquellen/i.test(e) && !seenProtein.flagHint) {
       seenProtein.flagHint = true;
@@ -892,9 +950,9 @@ function errorsToDirectives(errors) {
   return directives;
 }
 
-function buildRetryFeedbackMessage(lastErrors) {
+function buildRetryFeedbackMessage(lastErrors, opts) {
   const errors = Array.isArray(lastErrors) ? lastErrors : [];
-  const directives = errorsToDirectives(errors);
+  const directives = errorsToDirectives(errors, opts);
   let content = 'Deine letzte Ausgabe hatte folgende Fehler, korrigiere sie und gib erneut NUR valides v9.2-JSON aus:\n- ' +
     errors.join('\n- ');
   if (directives.length) {
@@ -923,11 +981,14 @@ async function generateValidatedRecipe(opts) {
   const attemptRaws = [];
 
   for (let attempt = 1; attempt <= MAX_VALIDATION_ATTEMPTS; attempt++) {
+    const dishQuery = Array.isArray(payload && payload.pantry_ingredients)
+      ? payload.pantry_ingredients.join(' ')
+      : '';
     const requestBody = buildRequestBody(payload, attempt, lastErrors);
     if (attempt > 1 && lastErrors.length && requestBody && Array.isArray(requestBody.messages)) {
       requestBody.messages = requestBody.messages.concat([{
         role: 'user',
-        content: buildRetryFeedbackMessage(lastErrors),
+        content: buildRetryFeedbackMessage(lastErrors, { dishQuery: dishQuery }),
       }]);
     }
 
@@ -990,10 +1051,10 @@ async function generateValidatedRecipe(opts) {
       continue;
     }
 
-    const dishQuery = Array.isArray(payload && payload.pantry_ingredients)
+    const dishQueryForValidation = Array.isArray(payload && payload.pantry_ingredients)
       ? payload.pantry_ingredients.join(' ')
       : '';
-    const validation = validator.validateRecipeV2(parsed, { dishQuery: dishQuery });
+    const validation = validator.validateRecipeV2(parsed, { dishQuery: dishQueryForValidation });
     if (!validation.ok) {
       lastErrors = validation.errors.slice();
       lastWarnings = validation.warnings.slice();

@@ -76,6 +76,16 @@ const CHEF_FRAMEWORK_RULES = [
   'Joghurt/Joghurt-Alternative = base (countsAsPrimaryProteinSource:false), sofern nicht ausdruecklich Hauptprotein. ' +
   'Proteinpulver = protein_supplement (zaehlt als primaer). Fleisch/Fisch/Ei/Tofu = main_protein. ' +
   'VERBOTEN: 3× main/secondary/supplement gleichzeitig. Setze protein_source == countsAsPrimaryProteinSource.',
+  '4a) TITEL-ZUTATEN-BINDUNG: Nennt der Gerichtstitel bereits eine/mehrere Hauptzutaten ' +
+  '(z. B. „Curry mit Kichererbsen“, „Bowl mit Linsen und Quinoa“), sind DAS die EINZIGEN Haupt-Proteinquellen. ' +
+  'VERBOTEN: weitere, im Titel nicht genannte Proteinquellen (Tofu, Ei, Fleisch, Fisch, andere Huelsenfruechte) ' +
+  'zu ergaenzen — auch nicht, um ein Naehrwert-/Proteinziel zu erreichen. ' +
+  'Stattdessen: Menge der im Titel genannten Zutat(en) erhoehen. ' +
+  'Ziel auch mit maximal sinnvoller Menge unerreichbar → target_deviation_note ehrlich, KEINE unerlaubte Zutat. ' +
+  'Beispiel VERBOTEN: Titel „Curry mit Kichererbsen und Kokosmilch“ + zusaetzlich Tofu und/oder Ei. ' +
+  'Beispiel RICHTIG: nur Kichererbsen als Proteinquelle, Menge erhoeht (z. B. 300 g statt 150 g). ' +
+  'Traegt der Titel ein Diaet-Label (vegetarisch/vegan): keine widersprechenden Zutaten ' +
+  '(kein Ei bei vegan; kein Fleisch/Fisch bei vegetarisch) — zusaetzlich zu Regel 5.',
   '5) DIÄT- & KETO-EHRLEICHKEIT: diet_labels keto nur bei netto_kh_g <10; high_protein nur ab protein_g ≥25; vegan ohne Ei/Milch.',
   '6) Eier & Stueckware: unit "stk", amount GANZE Zahl ≥1 (1, 2, 3…), name "Ei (Groesse M, ca. 60 g)". ' +
   'VERBOTEN: Kommastellen, "0.5 Ei", "30g Ei", unit g fuer Eier. Inhalt nur via {id}.',

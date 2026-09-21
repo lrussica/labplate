@@ -695,6 +695,145 @@ function validateDishConceptFidelity(recipe, dishQuery) {
 }
 
 /**
+ * Protein-Familien, die im Titel als Hauptzutaten vorkommen können.
+ * Wenn der Titel mind. eine nennt → nur diese Familien dürfen primäre Proteinquellen sein.
+ */
+const TITLE_PROTEIN_FAMILIES = [
+  { id: 'chickpea', label: 'Kichererbsen', queryRe: /kichererbsen?|chickpea/i, needRe: /kichererbse|chickpea/i },
+  { id: 'lentil', label: 'Linsen', queryRe: /linsen?|lentil/i, needRe: /linse|lentil/i },
+  { id: 'quinoa', label: 'Quinoa', queryRe: /quinoa/i, needRe: /quinoa/i },
+  { id: 'tofu', label: 'Tofu', queryRe: /tofu|tempeh|edamame/i, needRe: /tofu|tempeh|edamame/i },
+  { id: 'egg', label: 'Ei', queryRe: /r[uü]hrei|(?:^|[^a-zäöüß])ei(?:er)?(?:[^a-zäöüß]|$)/i, needRe: /(?:^|[^a-zäöüß])ei(?:er)?(?:[^a-zäöüß]|$)/i },
+  { id: 'bean', label: 'Bohnen', queryRe: /bohnen?|beans?/i, needRe: /bohne|bean|kidney|schwarze\s+bohne/i },
+  { id: 'chicken', label: 'Geflügel', queryRe: /hähnchen|haehnchen|huhn|pute|chicken|truthahn/i, needRe: /hähnchen|haehnchen|huhn|pute|truthahn|chicken/i },
+  { id: 'beef', label: 'Rind', queryRe: /rind|hackfleisch|beef/i, needRe: /rind|hackfleisch|beef/i },
+  { id: 'pork', label: 'Schwein', queryRe: /schwein|speck|bacon/i, needRe: /schwein|speck|bacon/i },
+  { id: 'fish', label: 'Fisch', queryRe: /lachs|thunfisch|fisch|garnelen|krabben|salmon/i, needRe: /lachs|thunfisch|fisch|garnelen|krabben|salmon/i },
+  { id: 'seitan', label: 'Seitan', queryRe: /seitan/i, needRe: /seitan/i },
+  { id: 'quark', label: 'Quark', queryRe: /quark|hüttenkäse|huettenkaese/i, needRe: /quark|hüttenkäse|huettenkaese/i },
+];
+
+function titleMentionsProteinFamily(dishQuery, fam) {
+  const q = String(dishQuery || '');
+  if (!fam || !fam.queryRe) return false;
+  if (fam.id === 'egg') {
+    return /r[uü]hrei|(?:^|[^a-zäöüß])ei(?:er)?(?:[^a-zäöüß]|$)/i.test(q);
+  }
+  return fam.queryRe.test(q);
+}
+
+function ingredientMatchesTitleProteinFamily(ingName, fam) {
+  const n = String(ingName || '').toLowerCase();
+  if (!n || !fam || !fam.needRe) return false;
+  if (fam.id === 'egg' && /eiweiss|eiweiß|eiweis/.test(n)) return false;
+  return fam.needRe.test(n);
+}
+
+function isMeatOrFishIngredientName(name) {
+  const n = String(name || '').toLowerCase();
+  if (!n) return false;
+  return /hähnchen|haehnchen|huhn|pute|truthahn|rind|schwein|hackfleisch|speck|bacon|lachs|thunfisch|fisch|garnelen|krabben|fleisch|wurst|salami/.test(n);
+}
+
+function isEggIngredientNameStrict(name) {
+  return isEggIngredientName(name);
+}
+
+function isAnimalDairyName(name) {
+  const n = String(name || '').toLowerCase();
+  if (!n) return false;
+  if (/soja|kokos|mandel|hafer|reis|cashew|pflanzlich|vegan/.test(n)) return false;
+  return /milch|sahne|rahm|butter|käse|kaese|joghurt|yogurt|quark|schmand|mascarpone|frischkäse|frischkaese|molke|whey|casein/.test(n);
+}
+
+function ingredientNameMentionedInTitle(ingName, dishQuery) {
+  const q = normalizeDeAscii(dishQuery).toLowerCase();
+  if (!q) return false;
+  let n = normalizeDeAscii(String(ingName || '').toLowerCase())
+    .replace(/\([^)]*\)/g, ' ')
+    .replace(/,/g, ' ');
+  const stop = {
+    frisch: 1, natur: 1, gekocht: 1, gross: 1, grosse: 1, groesse: 1, mittel: 1,
+    gelb: 1, light: 1, fest: 1, weich: 1, ca: 1, und: 1, mit: 1, zum: 1,
+  };
+  const tokens = n.split(/\s+/).filter(function (t) {
+    return t.length >= 4 && !stop[t];
+  });
+  return tokens.some(function (t) {
+    if (q.indexOf(t) >= 0) return true;
+    const stem = t.replace(/(en|er|e|n)$/i, '');
+    return stem.length >= 4 && q.indexOf(stem) >= 0;
+  });
+}
+
+/**
+ * Titel definiert die vollständige Hauptprotein-Liste (nicht nur eine Untermenge).
+ * @returns {{ ok: boolean, problems: string[], extras: string[] }}
+ */
+function validateTitleProteinBinding(recipe, dishQuery) {
+  const problems = [];
+  const extras = [];
+  const q = String(dishQuery || (recipe && recipe.title) || '').trim();
+  if (!q) return { ok: true, problems: problems, extras: extras };
+
+  const ingredients = Array.isArray(recipe && recipe.ingredients) ? recipe.ingredients : [];
+  applyCulinaryRoleInference(ingredients);
+
+  const titleFams = TITLE_PROTEIN_FAMILIES.filter(function (fam) {
+    return titleMentionsProteinFamily(q, fam);
+  });
+
+  if (titleFams.length) {
+    ingredients.forEach(function (ing) {
+      if (!countsAsPrimaryProteinSource(ing)) return;
+      const name = String((ing && ing.name) || '');
+      if (!name) return;
+      const allowedByFamily = titleFams.some(function (fam) {
+        return ingredientMatchesTitleProteinFamily(name, fam);
+      });
+      const allowedByMention = ingredientNameMentionedInTitle(name, q);
+      if (!allowedByFamily && !allowedByMention) {
+        extras.push(name);
+      }
+    });
+  }
+
+  if (extras.length) {
+    problems.push(
+      "Titel-Zutaten-Bindung: Die Zutat(en) " + extras.join(', ') +
+      " stehen nicht im vorgegebenen Titel '" + q + "'. " +
+      'Entferne sie und erhöhe stattdessen die Menge der im Titel genannten Zutat(en), ' +
+      'um das Proteinziel zu erreichen.'
+    );
+  }
+
+  const isVegan = /\bvegan(?:er|es|e)?\b/i.test(q);
+  const isVegetarian = /vegetarisch(?:es|e|er)?\b|vegetarian/i.test(q);
+  ingredients.forEach(function (ing) {
+    const name = String((ing && ing.name) || '');
+    if (!name) return;
+    if (isVegan && isEggIngredientNameStrict(name)) {
+      problems.push(
+        "Titel-Diät-Label 'vegan': Zutat '" + name + "' (Ei) widerspricht dem Titel — entferne sie."
+      );
+    }
+    if (isVegan && isAnimalDairyName(name)) {
+      problems.push(
+        "Titel-Diät-Label 'vegan': Zutat '" + name + "' (tierisches Milchprodukt) widerspricht dem Titel — ersetze oder entferne sie."
+      );
+    }
+    if ((isVegan || isVegetarian) && isMeatOrFishIngredientName(name)) {
+      problems.push(
+        "Titel-Diät-Label '" + (isVegan ? 'vegan' : 'vegetarisch') + "': Zutat '" + name +
+        "' (Fleisch/Fisch) widerspricht dem Titel — entferne sie."
+      );
+    }
+  });
+
+  return { ok: problems.length === 0, problems: problems, extras: extras };
+}
+
+/**
  * Fehlerklasse 3: Klartext-Grundzutat im Prosa-Text, aber kein ingredients-Eintrag.
  * Whitelist häufiger Koch-Staples; Treffer nur wenn kein Zutatenname den Stem abdeckt.
  */
@@ -1218,6 +1357,11 @@ function validateRecipeV2(recipe, opts) {
   if (dishQuery) {
     const fidelity = validateDishConceptFidelity(r, dishQuery);
     fidelity.problems.forEach(function (p) { result.addError(p); });
+    const titleBind = validateTitleProteinBinding(r, dishQuery);
+    titleBind.problems.forEach(function (p) { result.addError(p); });
+  } else if (r.title) {
+    const titleBind = validateTitleProteinBinding(r, r.title);
+    titleBind.problems.forEach(function (p) { result.addError(p); });
   }
 
   // Kulinarische Brauchbarkeit (Usage, generische Steps, dishPlan, Flüssigkeit)
@@ -1260,6 +1404,8 @@ module.exports = {
   countsAsPrimaryProteinSource: countsAsPrimaryProteinSource,
   applyCulinaryRoleInference: applyCulinaryRoleInference,
   validateDishConceptFidelity: validateDishConceptFidelity,
+  validateTitleProteinBinding: validateTitleProteinBinding,
+  TITLE_PROTEIN_FAMILIES: TITLE_PROTEIN_FAMILIES,
   evaluateCulinaryUsability: function (recipe) {
     return require('./culinary-usability').evaluateCulinaryUsability(recipe);
   },

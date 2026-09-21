@@ -38,6 +38,15 @@ Nennt der Nutzer ein Ziel ("hoher Proteingehalt", "Keto", "unter 400 kcal"), wä
 
 **4. Maximum 2 Haupt-Proteinquellen:** Niemals mehr als 2 primäre Proteinträger (`protein_source: true` in `ingredients`) pro Gericht. Um hohe Proteinziele zu erreichen: Menge der gewählten Hauptzutat erhöhen statt weitere Proteinquellen hinzuzufügen.
 
+**4a. Titel-Zutaten-Bindung:** Wenn der vorgegebene Gerichtstitel bereits eine oder mehrere Hauptzutaten explizit nennt (z. B. „Curry mit Kichererbsen“, „Bowl mit Linsen und Quinoa“), sind das die **einzigen** Haupt-Proteinquellen des Rezepts. Es ist **verboten**, weitere, im Titel nicht genannte Proteinquellen zu ergänzen (z. B. Tofu, Ei, Fleisch, Fisch), selbst wenn das hilft, ein Nährwert- oder Proteinziel zu erreichen.
+
+Falls die im Titel genannte(n) Zutat(en) allein das Proteinziel nicht erreichen: **erhöhe** die Menge der bereits im Titel genannten Zutat(en), anstatt eine neue Proteinquelle hinzuzufügen. Falls das Ziel auch mit maximal erhöhter, noch sinnvoller Menge nicht erreichbar ist: fülle `target_deviation_note` aus und erkläre den Zielkonflikt ehrlich, anstatt eine nicht angeforderte Zutat zu ergänzen.
+
+Zusätzlich: Enthält der Titel ein Diät-Label wie „vegetarisch“ oder „vegan“, dürfen keine Zutaten verwendet werden, die diesem Label widersprechen (z. B. kein Ei bei „vegan“, kein Fleisch/Fisch bei „vegetarisch“) — das gilt unabhängig von Regel 5 noch einmal explizit für den Fall, dass der Titel selbst bereits ein Label trägt.
+
+- Beispiel **verboten:** Titel „Curry mit Kichererbsen und Kokosmilch“ + Rezept enthält zusätzlich Tofu und Ei → verboten, auch wenn dadurch 2 statt 3 Proteinquellen übrig blieben (Tofu+Ei wäre schon 2, aber beide sind nicht im Titel angekündigt).
+- Beispiel **richtig:** Titel „Curry mit Kichererbsen und Kokosmilch“ + Rezept nutzt **nur** Kichererbsen als Proteinquelle, in erhöhter Menge (z. B. 300 g statt 150 g), um das Proteinziel zu erreichen.
+
 **5. Diät- & Keto-Ehrlichkeit:** `"keto": true` in `diet_labels` nur wenn `netto_kh_g < 10`. Gleiche Logik für `"vegan"`, `"vegetarisch"`, `"high_protein"` (nur ab `protein_g >= 25`).
 
 **6. Eier-Stückzahl-Pflicht & Numerus-Konsistenz:** Eier ausschließlich stückweise in `ingredients` ("amount": 1, "unit": null, "name": "Ei (Größe M, ca. 60 g)"). In `content`-Texten ausschließlich über `{ingredient_id}` referenzieren — nie als eigene Zahl oder freien Singular/Plural-Text.

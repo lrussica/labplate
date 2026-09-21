@@ -417,6 +417,65 @@ assert.ok(eggOnlyInChef.errors.some(function (e) {
 }), 'Eier nur in chef_analysis zählen nicht als Zubereitung: ' + eggOnlyInChef.errors.join('; '));
 console.log('OK Gerichtskonzept-Treue Joghurt+Nüsse');
 
+// Titel-Zutaten-Bindung: Curry mit Kichererbsen + erfundenes Tofu+Ei
+const curryTitle = 'Vegetarisches Curry mit Kichererbsen und Kokosmilch';
+const curryWithExtraProteins = {
+  title: curryTitle,
+  servings: 1,
+  prep_time_min: 25,
+  dishPlan: { dishType: 'general_cooked_main', requiredActions: ['saute', 'simmer', 'serve'] },
+  nutrition: { kcal: 520, protein_g: 42, fat_g: 22, netto_kh_g: 35, ballaststoffe_g: 12 },
+  ingredients: [
+    { id: '0001', name: 'Tofu (fest, natur, 350 g)', amount: 350, unit: 'g', protein_source: true, culinaryRole: 'main_protein', countsAsPrimaryProteinSource: true, netCarbs: 2, fat: 5, protein: 12, fiber: 1 },
+    { id: '0002', name: 'Kichererbsen (gekocht, 150 g)', amount: 150, unit: 'g', protein_source: true, culinaryRole: 'main_protein', countsAsPrimaryProteinSource: true, netCarbs: 14, fat: 2, protein: 7, fiber: 6 },
+    { id: '0003', name: 'Kokosmilch (light, 60 ml)', amount: 60, unit: 'ml', protein_source: false, culinaryRole: 'fat_source', countsAsPrimaryProteinSource: false, netCarbs: 3, fat: 12, protein: 1, fiber: 0 },
+    { id: '0004', name: 'Wasser', amount: 100, unit: 'ml', protein_source: false, culinaryRole: 'liquid', countsAsPrimaryProteinSource: false, netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
+    { id: '0005', name: 'Olivenöl', amount: 5, unit: 'ml', protein_source: false, culinaryRole: 'fat_source', countsAsPrimaryProteinSource: false, netCarbs: 0, fat: 100, protein: 0, fiber: 0 },
+    { id: '0006', name: 'Zwiebel (gelb, 50 g)', amount: 50, unit: 'g', protein_source: false, culinaryRole: 'vegetable', countsAsPrimaryProteinSource: false, netCarbs: 7, fat: 0, protein: 1, fiber: 1 },
+    { id: '0007', name: 'Knoblauch (frisch, 5 g)', amount: 5, unit: 'g', protein_source: false, culinaryRole: 'vegetable', countsAsPrimaryProteinSource: false, netCarbs: 30, fat: 0, protein: 6, fiber: 2 },
+    { id: '0008', name: 'Ei (Größe M, ca. 60 g)', amount: 1, unit: 'stk', protein_source: false, culinaryRole: 'protein_supplement', countsAsPrimaryProteinSource: false, netCarbs: 1, fat: 10, protein: 13, fiber: 0 },
+    { id: '0009', name: 'Currypulver', amount: 0, unit: 'prise', protein_source: false, culinaryRole: 'seasoning', countsAsPrimaryProteinSource: false, netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
+    { id: '0010', name: 'Salz', amount: 0, unit: 'prise', protein_source: false, culinaryRole: 'seasoning', countsAsPrimaryProteinSource: false, netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
+  ],
+  steps: [
+    { title: 'Anbraten', content: '{0005} erhitzen, {0006} und {0007} anbraten, {0001} und {0002} zugeben.', stove_level: 5, time_min: 8 },
+    { title: 'Köcheln', content: '{0003} und {0004} aufgießen, mit {0009} und {0010} würzen, köcheln lassen. {0008} verquirlen und einarbeiten.', stove_level: 3, time_min: 12 },
+    { title: 'Anrichten', content: 'Curry anrichten.', stove_level: 0, time_min: 2 },
+  ],
+  garnish: '',
+  chef_analysis: 'Proteinreich durch mehrere Quellen.',
+  diet_labels: ['vegetarisch', 'high_protein'],
+};
+const bindOnly = validator.validateTitleProteinBinding(curryWithExtraProteins, curryTitle);
+assert.strictEqual(bindOnly.ok, false, 'Titel-Bindung muss Tofu+Ei failen');
+assert.ok(bindOnly.extras.some(function (n) { return /tofu/i.test(n); }), 'Tofu als Extra: ' + bindOnly.extras.join('; '));
+assert.ok(bindOnly.extras.some(function (n) { return /ei/i.test(n); }), 'Ei als Extra: ' + bindOnly.extras.join('; '));
+assert.ok(bindOnly.problems.some(function (p) {
+  return /Titel-Zutaten-Bindung/i.test(p) && /stehen nicht im vorgegebenen Titel/i.test(p);
+}), 'Bindungs-Fehlertext: ' + bindOnly.problems.join('; '));
+
+const curryBindRes = validator.validateRecipeV2(curryWithExtraProteins, { dishQuery: curryTitle });
+assert.strictEqual(curryBindRes.ok, false, 'Curry+Tofu+Ei muss validieren-failen');
+assert.ok(curryBindRes.errors.some(function (e) {
+  return /Titel-Zutaten-Bindung/i.test(e) && /Tofu/i.test(e) && /Ei/i.test(e);
+}), 'Validator Titel-Bindung: ' + curryBindRes.errors.join('; '));
+
+const fbTitleBind = pipeline.buildRetryFeedbackMessage([
+  'Mehr als 2 primäre Proteinquellen (culinaryRole main/secondary/supplement): Tofu (fest, natur, 350 g), Kichererbsen (gekocht, 150 g), Ei (Größe M, ca. 60 g)',
+], { dishQuery: curryTitle });
+assert.ok(/stehen nicht im vorgegebenen Titel/i.test(fbTitleBind), 'Retry-Directive Titel: ' + fbTitleBind);
+assert.ok(/Tofu/i.test(fbTitleBind) && /Ei/i.test(fbTitleBind), 'Extras in Directive: ' + fbTitleBind);
+assert.ok(new RegExp(curryTitle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).test(fbTitleBind), 'Titel in Directive');
+const extrasInFb = (fbTitleBind.match(/Die Zutat\(en\) (.+?) stehen nicht im vorgegebenen Titel/) || [])[1] || '';
+assert.ok(/Tofu/i.test(extrasInFb), 'Tofu in extras directive: ' + extrasInFb);
+assert.ok(/Ei/i.test(extrasInFb), 'Ei in extras directive: ' + extrasInFb);
+assert.ok(!/Kichererbsen/i.test(extrasInFb), 'Kichererbsen nicht als Extra: ' + extrasInFb);
+
+const fbDirectBind = pipeline.buildRetryFeedbackMessage(bindOnly.problems, { dishQuery: curryTitle });
+assert.ok(/erhöhe stattdessen die Menge der im Titel genannten Zutat/i.test(fbDirectBind),
+  'Direct bind directive: ' + fbDirectBind);
+console.log('OK Titel-Zutaten-Bindung Curry+Tofu+Ei + Retry-Directive');
+
 // TEST 3j: Gegentest — korrekte Zutat-Platzhalter ohne Nährwertzahlen
 const chefOk = JSON.parse(JSON.stringify(gutesBeispiel));
 chefOk.chef_analysis =
