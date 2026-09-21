@@ -23,7 +23,7 @@ const FAMILY_ACTION_RES = {
   egg: /verquirl|aufschlag|rührei|stocken|braten|anbrat|ausbacken|backen|pochier|kochen|einarbeiten|unterheb|unterrühr|scrambl|whisk|omelett|pfannkuchen|pancake/i,
   oats: /einrühr|unterheb|quellen|kochen|köchel|backen|ausbacken|einarbeiten|vermeng|verrühr|mix|brei|porridge|pfannkuchen|pancake/i,
   yogurt: /unterheb|unterrühr|verrühr|vermeng|servier|dazu\s*(geben|reichen)|anricht|auf\s*den\s*teller|als\s*topping|in\s+eine\s+schale|in\s+die\s+schale|darüber|bestreu|fold|mix/i,
-  water: /erhitz|aufkoch|kochen|köchel|quellen|einrühr|aufgieß|übergieß|vermengen|verrühr|ablösch/i,
+  water: /erhitz|aufkoch|kochen|köchel|quellen|einrühr|aufgieß|übergieß|hinzugieß|auffüll|hinzugeb|dazugeb|gieß|verdünn|anschwitz|simmer|vermengen|verrühr|ablösch|dämpfen|gar\s*kochen/i,
   nuts: /darüber|bestreu|topp|servier|verrühr|unterheb|hacken|rösten|anricht|geröstet|geroestet|pinien|kern/i,
 };
 
@@ -214,7 +214,16 @@ function validateIngredientUsage(recipe) {
     }
     if (family && FAMILY_ACTION_RES[family]) {
       const actionTexts = meaningful.map(function (r) { return r.text; });
-      if (!hasSemanticAction(family, actionTexts)) {
+      let okAction = hasSemanticAction(family, actionTexts);
+      // Kochflüssigkeit: Referenz + Hitze irgendwo im Rezept reicht (Curry/Eintopf),
+      // sonst scheitert "{id} hinzugeben" + späteres „köcheln“ ohne Wasser-Wort.
+      if (!okAction && family === 'water') {
+        const allTexts = steps.map(stepText);
+        okAction = allTexts.some(function (t) {
+          return /erhitz|aufkoch|kochen|köchel|simmer|ablösch|dämpfen|gar\s*kochen|anschwitz/i.test(t);
+        });
+      }
+      if (!okAction) {
         if (family === 'egg') {
           errors.push(
             'Eier sind nicht in einem sinnvollen Kochschritt verwendet ' +

@@ -866,6 +866,21 @@ function errorsToDirectives(errors) {
         'ODER Quellen im Joghurt (≥60 g). 8 ml ist unplausibel — Menge oder Verfahren anpassen.'
       );
     }
+    if (/high_protein-Label/i.test(e) && !seenProtein.highProtein) {
+      seenProtein.highProtein = true;
+      directives.push(
+        'KONKRETE KORREKTUR LABEL: Entferne diet_labels high_protein ODER erhöhe Protein auf ≥25 g ' +
+        '(mehr Hülsenfrüchte/Ei/Tofu) — Label und Makros müssen zusammenpassen.'
+      );
+    }
+    if (/Wasser ohne passende Aktion/i.test(e) && !seenProtein.waterAction) {
+      seenProtein.waterAction = true;
+      directives.push(
+        'KONKRETE KORREKTUR WASSER: Referenziere {wasser-id} in einem Hitze-Schritt ' +
+        '(aufgießen, erhitzen, köcheln, einrühren) — nicht nur „Wasser bereitstellen“ oder ' +
+        'still hinzufügen ohne Kochverb.'
+      );
+    }
   });
 
   return directives;

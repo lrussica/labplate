@@ -224,4 +224,29 @@ const f = culinary.evaluateCulinaryUsability(testF);
 assert.strictEqual(f.qualityStatus, 'blocked', 'F dump blocked: ' + f.errors.join('; '));
 console.log('OK Test F ingredient dump → blocked');
 
-console.log('\nAll culinary-usability market-drive tests A–F passed.');
+// ---- Test G: Wasser hinzugeben + später köcheln (Curry) darf nicht blocken ----
+const curryWater = {
+  title: 'Vegetarisches Curry mit Kichererbsen und Kokosmilch',
+  servings: 1,
+  prep_time_min: 20,
+  dishPlan: { dishType: 'general_cooked_main', requiredActions: ['saute', 'simmer'] },
+  nutrition: baseNutrition(),
+  ingredients: [
+    { id: '0001', name: 'Kichererbsen', amount: 150, unit: 'g', protein_source: true, netCarbs: 14, fat: 2, protein: 8, fiber: 6 },
+    { id: '0002', name: 'Kokosmilch', amount: 120, unit: 'ml', protein_source: false, netCarbs: 3, fat: 18, protein: 2, fiber: 0 },
+    { id: '0003', name: 'Wasser', amount: 80, unit: 'ml', protein_source: false, netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
+  ],
+  steps: [
+    { title: 'Ansatz', content: '{0001} und {0003} dazugeben.', stove_level: 4, time_min: 2 },
+    { title: 'Köcheln', content: 'Mit {0002} aufgießen und 10 Min. köcheln lassen.', stove_level: 3, time_min: 10 },
+  ],
+  garnish: '',
+  chef_analysis: 'Cremig.',
+  diet_labels: [],
+};
+const g = culinary.evaluateCulinaryUsability(curryWater);
+assert.strictEqual(g.errors.filter(function (e) { return /Wasser ohne passende Aktion/i.test(e); }).length, 0,
+  'G Wasser-Kochkontext: ' + g.errors.join('; '));
+console.log('OK Test G water cooking context → pass');
+
+console.log('\nAll culinary-usability market-drive tests A–G passed.');

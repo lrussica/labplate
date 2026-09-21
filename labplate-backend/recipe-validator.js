@@ -491,6 +491,84 @@ function repairChefAnalysisPlaceholderMisuse(chefAnalysis) {
   return t;
 }
 
+function nextIngredientId(ingredients) {
+  let max = 0;
+  (Array.isArray(ingredients) ? ingredients : []).forEach(function (ing) {
+    const n = parseInt(String((ing && ing.id) || '').replace(/\D/g, ''), 10);
+    if (Number.isFinite(n) && n > max) max = n;
+  });
+  return String(max + 1).padStart(4, '0');
+}
+
+/**
+ * Soft-Repair vor Staple-Check: Salz/Pfeffer im Prosa → fehlende prise-Einträge injizieren.
+ * Verhindert 422-Schleifen bei „mit Salz und Pfeffer würzen“ ohne Listen-Eintrag.
+ * @returns {string[]} kurze Repair-Hinweise
+ */
+function injectMissingSeasoningStaples(recipe) {
+  const repairs = [];
+  if (!recipe || typeof recipe !== 'object') return repairs;
+  if (!Array.isArray(recipe.ingredients)) recipe.ingredients = [];
+  const ingredients = recipe.ingredients;
+  const steps = Array.isArray(recipe.steps) ? recipe.steps : [];
+  const garnish = typeof recipe.garnish === 'string' ? recipe.garnish : '';
+  const staples = validateUnlistedStaplesInProse(steps, garnish, ingredients);
+  (staples.problems || []).forEach(function (p) {
+    const m = String(p || '').match(/Zutat '(Salz|Pfeffer)'/i);
+    if (!m) return;
+    const label = m[1] === 'Pfeffer' || /^pfeffer$/i.test(m[1]) ? 'Pfeffer' : 'Salz';
+    const already = ingredients.some(function (ing) {
+      return isSeasoningSaltOrPepperName((ing && ing.name) || '') &&
+        new RegExp(label, 'i').test(String((ing && ing.name) || ''));
+    });
+    if (already) return;
+    ingredients.push({
+      id: nextIngredientId(ingredients),
+      name: label,
+      amount: 1,
+      unit: 'prise',
+      protein_source: false,
+      culinaryRole: 'seasoning',
+      countsAsPrimaryProteinSource: false,
+      netCarbs: 0,
+      fat: 0,
+      protein: 0,
+      fiber: 0,
+    });
+    repairs.push(label);
+  });
+  return repairs;
+}
+
+/**
+ * Unehrliche diet_labels nach Bottom-up-Nutrition entfernen (kein Hard-Fail).
+ * @returns {string[]} entfernte Labels
+ */
+function stripDishonestDietLabels(recipe) {
+  const removed = [];
+  if (!recipe || typeof recipe !== 'object') return removed;
+  const nutrition = recipe.nutrition || {};
+  const protein = Number(nutrition.protein_g) || 0;
+  const khRaw = Number(nutrition.netto_kh_g);
+  const kh = Number.isFinite(khRaw) ? khRaw : 999;
+  const labels = Array.isArray(recipe.diet_labels) ? recipe.diet_labels : [];
+  const kept = [];
+  labels.forEach(function (l) {
+    const x = String(l || '').toLowerCase();
+    if ((x === 'high_protein' || x === 'high-protein') && protein < 25) {
+      removed.push(String(l));
+      return;
+    }
+    if (x === 'keto' && kh >= 10) {
+      removed.push(String(l));
+      return;
+    }
+    kept.push(l);
+  });
+  recipe.diet_labels = kept;
+  return removed;
+}
+
 function isExemptFromUsageRequirement(ing) {
   if (!ing) return true;
   if (ing.optional === true) return true;
@@ -1083,10 +1161,18 @@ function validateRecipeV2(recipe, opts) {
     );
   }
 
-  const prose = validateNoFreeNumbersInProse(steps, garnish, chefAnalysis, ingredients);
+  // Soft-Repair: Salz/Pfeffer im Step-Text ohne Listen-Eintrag → prise injizieren
+  const seasoningInjected = injectMissingSeasoningStaples(r);
+  if (seasoningInjected.length) {
+    result.addWarning('Gewürze ergänzt: ' + seasoningInjected.join(', '));
+  }
+  // ingredients-Array kann durch Inject gewachsen sein — lokal neu binden
+  const ingredientsLive = Array.isArray(r.ingredients) ? r.ingredients : ingredients;
+
+  const prose = validateNoFreeNumbersInProse(steps, garnish, chefAnalysis, ingredientsLive);
   prose.problems.forEach(function (p) { result.addError(p); });
 
-  const staples = validateUnlistedStaplesInProse(steps, garnish, ingredients);
+  const staples = validateUnlistedStaplesInProse(steps, garnish, ingredientsLive);
   staples.problems.forEach(function (p) { result.addError(p); });
 
   const coldHeat = validateColdIngredientHeatSequence(r);
@@ -1103,6 +1189,11 @@ function validateRecipeV2(recipe, opts) {
     );
   }
 
+  // Unehrliche Labels strippen (nach Bottom-up-Nutrition) statt Hard-Fail
+  const strippedLabels = stripDishonestDietLabels(r);
+  if (strippedLabels.length) {
+    result.addWarning('diet_labels bereinigt: ' + strippedLabels.join(', '));
+  }
   const labels = (r.diet_labels || []).map(function (d) { return String(d || '').toLowerCase(); });
   if (labels.indexOf('keto') >= 0 && (Number(r.nutrition.netto_kh_g) || 999) >= 10) {
     result.addError(
@@ -1115,7 +1206,7 @@ function validateRecipeV2(recipe, opts) {
     }
   }
 
-  ingredients.forEach(function (ing) {
+  ingredientsLive.forEach(function (ing) {
     if (!ing) return;
     if (isSeasoningSaltOrPepperName(ing.name) && ing.unit === 'g') {
       result.addError("'" + ing.name + "' ist in Gramm angegeben statt Prise/Messerspitze");
@@ -1161,6 +1252,8 @@ module.exports = {
   validateChefAnalysisPlaceholderMisuse: validateChefAnalysisPlaceholderMisuse,
   validatePlaceholdersInText: validatePlaceholdersInText,
   repairChefAnalysisPlaceholderMisuse: repairChefAnalysisPlaceholderMisuse,
+  injectMissingSeasoningStaples: injectMissingSeasoningStaples,
+  stripDishonestDietLabels: stripDishonestDietLabels,
   isSeasoningSaltOrPepperName: isSeasoningSaltOrPepperName,
   isExemptFromUsageRequirement: isExemptFromUsageRequirement,
   inferCulinaryRole: inferCulinaryRole,

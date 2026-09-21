@@ -110,7 +110,46 @@ const fbCold = pipeline.buildRetryFeedbackMessage([
 ]);
 assert.ok(/Verschiebe das Einrühren von 'Frischkäse'/i.test(fbCold), 'Gerinnung directive: ' + fbCold);
 assert.ok(/Herd ausgeschaltet|stove_level 0/i.test(fbCold), 'Gerinnung directive Herd AUS');
-console.log('OK errorsToDirectives Fix B + staple + kcal + unused + Gerinnung');
+const fbHp = pipeline.buildRetryFeedbackMessage(['high_protein-Label, aber protein_g < 25']);
+assert.ok(/KONKRETE KORREKTUR LABEL/i.test(fbHp) && /high_protein/i.test(fbHp), 'high_protein directive: ' + fbHp);
+const fbWa = pipeline.buildRetryFeedbackMessage(['Wasser ohne passende Aktion (erhitzen, quellen oder einrühren).']);
+assert.ok(/KONKRETE KORREKTUR WASSER/i.test(fbWa), 'water action directive: ' + fbWa);
+console.log('OK errorsToDirectives Fix B + staple + kcal + unused + Gerinnung + label/water');
+
+// Soft-Repair: high_protein bei protein < 25 → Label strippen, kein 422
+const lowProteinCurry = {
+  title: 'Vegetarisches Curry mit Kichererbsen und Kokosmilch',
+  prep_time_min: 25,
+  dishPlan: { dishType: 'general_cooked_main', requiredActions: ['saute', 'simmer', 'serve'] },
+  nutrition: { kcal: 400, protein_g: 18, fat_g: 20, netto_kh_g: 30, ballaststoffe_g: 8 },
+  diet_labels: ['high_protein', 'vegan'],
+  ingredients: [
+    { id: '0001', name: 'Kichererbsen (gekocht)', amount: 120, unit: 'g', protein_source: true, culinaryRole: 'main_protein', countsAsPrimaryProteinSource: true, netCarbs: 14, fat: 2, protein: 7, fiber: 6 },
+    { id: '0002', name: 'Kokosmilch', amount: 150, unit: 'ml', protein_source: false, culinaryRole: 'fat_source', countsAsPrimaryProteinSource: false, netCarbs: 3, fat: 18, protein: 2, fiber: 0 },
+    { id: '0003', name: 'Tomaten (passiert)', amount: 100, unit: 'g', protein_source: false, culinaryRole: 'vegetable', countsAsPrimaryProteinSource: false, netCarbs: 4, fat: 0, protein: 1, fiber: 1 },
+    { id: '0004', name: 'Zwiebel', amount: 60, unit: 'g', protein_source: false, culinaryRole: 'vegetable', countsAsPrimaryProteinSource: false, netCarbs: 7, fat: 0, protein: 1, fiber: 1 },
+    { id: '0005', name: 'Öl', amount: 10, unit: 'ml', protein_source: false, culinaryRole: 'fat_source', countsAsPrimaryProteinSource: false, netCarbs: 0, fat: 100, protein: 0, fiber: 0 },
+    { id: '0006', name: 'Wasser', amount: 80, unit: 'ml', protein_source: false, culinaryRole: 'liquid', countsAsPrimaryProteinSource: false, netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
+    { id: '0007', name: 'Currypulver', amount: 1, unit: 'prise', protein_source: false, culinaryRole: 'seasoning', countsAsPrimaryProteinSource: false, netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
+  ],
+  steps: [
+    { title: 'Anschwitzen', content: '{0004} in {0005} anschwitzen.', stove_level: 5, time_min: 4 },
+    { title: 'Curry', content: '{0003}, {0001} und {0006} dazugeben, {0007} einrühren.', stove_level: 4, time_min: 2 },
+    { title: 'Köcheln', content: 'Mit {0002} aufgießen und 12 Min. köcheln lassen. Mit Salz und Pfeffer abschmecken.', stove_level: 3, time_min: 12 },
+    { title: 'Servieren', content: 'Anrichten und sofort servieren.', stove_level: 0, time_min: 1 },
+  ],
+  garnish: '',
+  chef_analysis: 'Cremiges Curry passend zu den Tageszielen.',
+};
+const softRepair = validator.validateRecipeV2(lowProteinCurry);
+assert.strictEqual(softRepair.ok, true, 'Curry Soft-Repair muss ok sein: ' + softRepair.errors.join('; '));
+assert.ok(!(lowProteinCurry.diet_labels || []).some(function (l) {
+  return /high_protein/i.test(String(l));
+}), 'high_protein muss gestrippt sein: ' + JSON.stringify(lowProteinCurry.diet_labels));
+assert.ok(lowProteinCurry.ingredients.some(function (i) { return /^Salz$/i.test(i.name); }), 'Salz injiziert');
+assert.ok(lowProteinCurry.ingredients.some(function (i) { return /^Pfeffer$/i.test(i.name); }), 'Pfeffer injiziert');
+assert.ok(softRepair.warnings.some(function (w) { return /Gewürze ergänzt/i.test(w); }), 'Warnung Gewürze');
+console.log('OK Soft-Repair Curry: labels + Salz/Pfeffer');
 
 // TEST 3d: Fall 9 — Frischkäse kalt einrühren, danach Hitze (muss failen)
 const fall9 = {
