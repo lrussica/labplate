@@ -337,6 +337,9 @@ app.get('/health', (req, res) => {
     prepAssistantWired: typeof core.generatePrepRecipe === 'function',
     prepPromptVersion: core.PREP_PROMPT_VERSION || null,
     recipeSchemaVersion: 'v9.2',
+    culinaryUsabilityGate: true,
+    culinaryUsabilityVersion: '1.0.0-market-drive',
+    dishPlanRequiredInSchema: true,
     groq429Diagnostics: true,
     groqDebugKeyRouting: true,
   });

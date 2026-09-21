@@ -11860,7 +11860,7 @@ TRANSLATIONS.de = {
   // NEU: feste Verknuepfung Allergien/Unvertraeglichkeiten (Mein Profil) -> KI-Rezept-Coach,
   // siehe getAllergenAiInstruction() im Hauptscript. {list} wird durch die aktiven Allergene
   // ersetzt und diese Instruktion wird VOR allen anderen ai_instruction-Teilen gesendet.
-  aiRuleAllergenWarning: list => `ACHTUNG ALLERGIEN: Der Nutzer verträgt folgende Stoffe NICHT: ${list}. Schlage niemals Rezepte oder Zutaten vor, die diese Stoffe enthalten!`,
+  aiRuleAllergenWarning: list => `ACHTUNG ALLERGIEN: Der Nutzer verträgt folgende Stoffe NICHT: ${list}. Verwende niemals Zutaten mit diesen Stoffen. Wenn der Gerichtstitel Allergen-Lebensmittel nennt (z. B. Frischkäse/Joghurt/Sahne bei Laktose): behalte das Gerichtskonzept und ersetze durch sichere Alternativen (z. B. laktosefrei / pflanzlich). KEIN Abbruch, KEIN Mental-Coach-Handoff – liefere ein angepasstes Rezept.`,
   portionWarnLarge: g => `Das ist eine sehr große Portion (${g} g) – bist du sicher?`,
   portionWarnLabTrig: v => `Deine Laborwerte (Triglyceride: ${v} mg/dL) sind erhöht – bei dieser Portion solltest du vorsichtig sein.`,
   portionWarnLabLdl: v => `Dein LDL-Cholesterin (${v} mg/dL) ist erhöht – bei dieser Portion solltest du vorsichtig sein.`,
@@ -12668,7 +12668,7 @@ TRANSLATIONS.en = {
   aiRuleAvoidSatFat: 'No butter, cream, or fatty meat. Favor plant oils and high-fiber ingredients.',
   aiRuleOmega3Focus: 'Focus on omega-3-rich ingredients (e.g. fatty fish, flaxseed oil, walnuts).',
   aiRulePriorityTrigOverLdl: 'When targets conflict (high LDL AND high triglycerides at the same time), triglyceride reduction takes priority (pancreatitis protection).',
-  aiRuleAllergenWarning: list => `ALLERGY WARNING: The user CANNOT tolerate the following substances: ${list}. Never suggest recipes or ingredients that contain these substances!`,
+  aiRuleAllergenWarning: list => `ALLERGY WARNING: The user CANNOT tolerate: ${list}. Never use ingredients with these substances. If the dish title names allergen foods (e.g. cream cheese/yogurt/cream with lactose): keep the dish idea and substitute safe alternatives (e.g. lactose-free / plant-based). Do NOT abort or hand off to the mental coach – deliver an adapted recipe.`,
   portionWarnLarge: g => `That's a very large portion (${g} g) – are you sure?`,
   portionWarnLabTrig: v => `Your lab values (triglycerides: ${v} mg/dL) are elevated – be careful with this portion.`,
   portionWarnLabLdl: v => `Your LDL cholesterol (${v} mg/dL) is elevated – be careful with this portion.`,
@@ -20387,8 +20387,8 @@ function unitInputValueToGrams(value) {
 // Portionsgewichte und bleiben unangetastet.
 function isNutriEggPieceIngredient(name) {
   var n = String(name == null ? '' : name).trim();
-  // "1 Ei (Größe M)", "2 Eier (Groesse M)", "1 egg (size M)" – Stueckzahl im Namen, Gramm nur intern.
-  return /^\d+\s*(ei(er)?|egg(s)?)\b/i.test(n);
+  // "1 Ei (Größe M)", "2 Eier", "Ei (Größe M, ca. 60 g)", "egg (size M)"
+  return /(?:^\d+\s*)?(?:ei(?:er)?|egg(?:s)?)\b/i.test(n) && !/eiweiss|eiweiß|eiweis|egg\s*white/i.test(n);
 }
 function formatIngredientQty(amount, unit) {
   // amount 0 / null / ungueltig = "nicht angegeben" (Eigenrezept ohne Mengenangabe).
@@ -29854,7 +29854,28 @@ initBarcodeEvents();
     // ---- Coach-API (Spoonacular/TheMealDB/USDA-Analyse) ----
     // Portions-Vertrag v1.4: Overlay erhält NUR finalIngredients; 1 Karte/operationId;
     // keine Request-JSON in der UI; Gesamtzeit aus Schritten; „1 Portion“-Grammatik.
-    var LP_PORTION_LOGIC_VERSION = '1.5-canonical-display';
+    var LP_PORTION_LOGIC_VERSION = '1.6.3-yogurt-batch-orphan-fix';
+    var LP_CANONICAL_RENDERED_OPS = (typeof Set !== 'undefined')
+      ? new Set()
+      : {
+          _m: {},
+          has: function (k) { return !!this._m[k]; },
+          add: function (k) { this._m[k] = 1; },
+          clear: function () { this._m = {}; }
+        };
+    var LP_CANONICAL_RENDER_COUNT = 0;
+    function lpResetCanonicalRenderGuard() {
+      try {
+        if (LP_CANONICAL_RENDERED_OPS && typeof LP_CANONICAL_RENDERED_OPS.clear === 'function') {
+          LP_CANONICAL_RENDERED_OPS.clear();
+        } else {
+          LP_CANONICAL_RENDERED_OPS = (typeof Set !== 'undefined') ? new Set() : { _m: {}, has: function (k) { return !!this._m[k]; }, add: function (k) { this._m[k] = 1; }, clear: function () { this._m = {}; } };
+        }
+      } catch (_) {
+        LP_CANONICAL_RENDERED_OPS = (typeof Set !== 'undefined') ? new Set() : { _m: {}, has: function (k) { return !!this._m[k]; }, add: function (k) { this._m[k] = 1; }, clear: function () { this._m = {}; } };
+      }
+      LP_CANONICAL_RENDER_COUNT = 0;
+    }
     try {
       console.log('[NUTRI_RECIPE_DEBUG] FRONTEND_ORIGIN', window.location && window.location.origin);
       console.log('[NUTRI_RECIPE_DEBUG] ACTIVE_PORTION_PATH', LP_PORTION_LOGIC_VERSION);
@@ -29974,7 +29995,6 @@ initBarcodeEvents();
     }
 
     
-    var LP_CANONICAL_RENDERED_OPS = {};
     var LP_CANONICAL_HERB_RE = /petersilie|parsley|basilikum|basil|oregano|thymian|rosmarin|schnittlauch|koriander|dill|minze|kr[aä]uter/i;
     var LP_CANONICAL_MAIN_RE = /hack|fleisch|zwiebel|karotte|sellerie|olivenöl|öl|tomate|wein|rind|schwein|beef|pork/i;
     var LP_CANONICAL_ACTION = {
@@ -30028,8 +30048,68 @@ initBarcodeEvents();
         return { instruction: index >= (total || 1) - 1 ? LP_CANONICAL_ACTION.serve : LP_CANONICAL_ACTION.mix, repaired: true };
       }
       t = t.replace(/\bStufe\s+\d+\s+von\s+9\.\s*/gi, '').replace(/\bca\.\s*\d+\s*Min\.\s*/gi, '').replace(/\s{2,}/g, ' ').trim();
+      // Herdstufe mitten im Satz entfernen („auf Stufe 2“, „Stufe 5“, „Kaltstufe 0“)
+      t = t.replace(/\b(?:auf\s+)?(?:niedriger\s+|mittlerer\s+|hoher\s+)?Stufe\s+\d+\b/gi, '');
+      t = t.replace(/\bKaltstufe\s*\d*\b/gi, '');
+      t = t.replace(/\(\s*Kaltstufe[^)]*\)/gi, '');
+      t = t.replace(/\(\s*\)/g, '');
+      t = t.replace(/\s{2,}/g, ' ').trim();
+      t = t.replace(/\s+,/g, ',').replace(/\s+\./g, '.').trim();
       if (!t || lpIsBareNameList(t)) return { instruction: LP_CANONICAL_ACTION.mix, repaired: true, blocked: !t };
       return { instruction: t, repaired: false };
+    }
+
+    /** Fließtext: Klammerzusätze entfernen, Ei/Eier + Artikel glätten. */
+    function smoothProseIngredientGrammar(text) {
+      var out = String(text == null ? '' : text);
+      out = out.replace(/\(\s*(?:Größe|Groesse|Size)\s*[^)]*\)/gi, '');
+      out = out.replace(/\(\s*ca\.\s*\d+[.,]?\d*\s*(?:g|kg|mg|ml|l)\s*(?:je)?\s*\)/gi, '');
+      out = out.replace(
+        /\(\s*(?:geräuchert|geraeuchert|smoked|frisch|fresh|gehackt|geschnitten|in\s+Würfel[^)]*|gewürfelt|in\s+Scheiben[^)]*)\s*\)/gi,
+        ''
+      );
+      out = out.replace(
+        /\b(Ei|Eier|Speck|Bacon|Avocado|Lachs|Schinken|Tomaten?|Zwiebeln?|Karotten?|Sellerie|Olivenöl|Hackfleisch)\s*\([^)]*\)/gi,
+        '$1'
+      );
+      // Annotations-Klammern am Schrittende: "( Zwiebel + Karotte + Sellerie + Olivenöl)"
+      out = out.replace(/\s*\(([^)]*)\)\s*([.!?])?\s*$/g, function (_full, inner, punct) {
+        var t = String(inner || '').trim();
+        if (!t) return punct || '';
+        if (/[+/]/.test(t)) return punct || '';
+        if (/,/.test(t) && !/\d/.test(t)) return punct || '';
+        if (/\bund\b/i.test(t) && !/\d/.test(t) && t.length <= 100) return punct || '';
+        var toks = t.split(/[\s+,;/&]+/).filter(Boolean);
+        if (toks.length >= 2 && !/\d/.test(t) &&
+            toks.every(function (w) { return /^[A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß\-]*$/i.test(w); })) {
+          return punct || '';
+        }
+        return '(' + inner + ')' + (punct || '');
+      });
+      out = out.replace(/\b([Dd]ie)\s+Ei\b/g, '$1 Eier');
+      out = out.replace(/\b([Dd]as)\s+Eier\b/g, function (_m, art) {
+        return (art === 'Das' ? 'Die' : 'die') + ' Eier';
+      });
+      out = out.replace(/\b([Dd]en)\s+Ei\b/g, function (_m, art) {
+        return (art === 'Den' ? 'Das' : 'das') + ' Ei';
+      });
+      out = out.replace(/\b([Ee]in)\s+Eier\b/g, 'Eier');
+      out = out.replace(/\b([Ee]inem)\s+Eier\b/g, '$1 Ei');
+      out = out.replace(/\b([Dd]er)\s+Eier\b/g, function (_m, art) {
+        return (art === 'Der' ? 'Die' : 'die') + ' Eier';
+      });
+      out = out.replace(/\b([Dd])en\s+((?:H[äa]hnchen|Puten|Truthahn)?brust)\b/g, function (_m, d, noun) {
+        return (d === 'D' ? 'Die' : 'die') + ' ' + noun;
+      });
+      out = out.replace(/\b(zum|den|einem)\s+laktosefreier\b/gi, function (_m, prep) {
+        return prep + ' laktosefreien';
+      });
+      out = out.replace(/\b(zum|den|einem)\s+laktosefreie\b/gi, function (_m, prep) {
+        return prep + ' laktosefreien';
+      });
+      out = out.replace(/\b(\d+[.,]?\d*)\s+(Eier|Ei)\b/gi, '$2');
+      out = out.replace(/\s{2,}/g, ' ').replace(/\s+([.,;:!?])/g, '$1').trim();
+      return out;
     }
 
     function toCanonicalGarnish(garnish, finalIngredients) {
@@ -30061,12 +30141,44 @@ initBarcodeEvents();
       var ingsSrc = Array.isArray(r.finalIngredients) && r.finalIngredients.length
         ? r.finalIngredients
         : (Array.isArray(r.ingredients) ? r.ingredients : []);
+      var EGG_MAX_PIECES = 3;
       var finalIngredients = ingsSrc.map(function (ing) {
+        var displayName = String((ing && (ing.displayName || ing.name)) || '').trim();
+        var amount = Number(ing && ing.amount) || 0;
+        var unit = (ing && ing.unit === 'ml') ? 'ml' : ((ing && ing.unit) || 'g');
+        // Defense: Eier immer als ganze Stücke (je 60 g) – nie 30 g + „ca. 60 g“ im Namen
+        var eggish = /\bei(er)?\b/i.test(displayName) && !/eiweiss|eiweiß|eiweis/i.test(displayName);
+        if (eggish) {
+          var pieces = null;
+          var namePieces = displayName.match(/^\s*(\d+)\s*eier?\b/i);
+          if (namePieces) pieces = Math.round(Number(namePieces[1]));
+          else if (unit === 'stk' || unit === 'stück' || unit === 'stueck') pieces = Math.round(amount) || 1;
+          else if ((unit === 'g' || unit === 'kg') && amount > 0) {
+            var gramsEgg = unit === 'kg' ? amount * 1000 : amount;
+            // Unter 40 g = unvollständiges/skaliertes Ei → auf 1 Stück anheben
+            pieces = gramsEgg < 40 ? 1 : Math.max(1, Math.round(gramsEgg / 60));
+          } else if (ing && ing._culinary_amount != null) {
+            pieces = Math.round(Number(ing._culinary_amount)) || 1;
+          } else {
+            pieces = 1;
+          }
+          if (pieces == null || !(pieces >= 1)) pieces = 1;
+          if (pieces > EGG_MAX_PIECES) pieces = EGG_MAX_PIECES;
+          displayName = pieces === 1
+            ? '1 Ei (Größe M, ca. 60 g)'
+            : pieces + ' Eier (Größe M, ca. 60 g je)';
+          if (unit === 'stk' || unit === 'stück' || unit === 'stueck') {
+            amount = pieces;
+          } else {
+            amount = pieces * 60;
+            unit = 'g';
+          }
+        }
         return {
           id: (ing && (ing.id || ing._v92_id)) || null,
-          displayName: String((ing && (ing.displayName || ing.name)) || '').trim(),
-          amount: Number(ing && ing.amount) || 0,
-          unit: (ing && ing.unit === 'ml') ? 'ml' : ((ing && ing.unit) || 'g'),
+          displayName: displayName,
+          amount: amount,
+          unit: unit,
           optional: !!(ing && ing.optional),
           role: (ing && ing.role) || null
         };
@@ -30082,7 +30194,18 @@ initBarcodeEvents();
         ballaststoffe_g: Number(fn.ballaststoffe_g != null ? fn.ballaststoffe_g : fn.fiber) || 0
       } : null;
 
-      var rawSteps = Array.isArray(r.structuredSteps) && r.structuredSteps.length ? r.structuredSteps : (r.steps || []);
+      var rawStepsSrc = (function pickClientSteps() {
+        var a = Array.isArray(r.steps) ? r.steps : [];
+        var b = Array.isArray(r.structuredSteps) ? r.structuredSteps : [];
+        function hasInst(step) {
+          if (typeof step === 'string') return !!String(step).trim();
+          if (!step || typeof step !== 'object') return false;
+          return !!(step.instruction || step.text || step.content);
+        }
+        if (a.length && a.some(hasInst)) return a;
+        return b.length ? b : a;
+      }());
+      var rawSteps = rawStepsSrc;
       var steps = [];
       var stepIssues = [];
       for (var i = 0; i < rawSteps.length; i++) {
@@ -30090,23 +30213,25 @@ initBarcodeEvents();
         var raw = '';
         if (typeof step === 'string') raw = step;
         else if (step && typeof step === 'object') {
-          raw = String(step.instruction || step.text || step.content || '');
-          if (!raw && step.title) {
-            raw = String(step.title) + ': ' + (Array.isArray(step.ingredientNames) ? step.ingredientNames.join(' ') : String(step.content || ''));
-          }
+          // Nur Instruction – niemals title + ingredientNames zusammenbauen
+          raw = String(step.instruction || step.text || step.content || '').trim();
+          if (!raw && step.title) raw = lpNaturalizeFromTitle(step.title);
         }
         var cleaned = sanitizeLegacyStepInstruction(raw, i, rawSteps.length);
-        if (!cleaned.instruction || lpIsBareNameList(cleaned.instruction)) {
+        var instruction = smoothProseIngredientGrammar(cleaned.instruction || '');
+        if (!instruction || lpIsBareNameList(instruction)) {
           stepIssues.push('Schritt ' + (i + 1) + ' ungültig');
           continue;
         }
-        if (/Olivenöl\s+Zwiebel\s+Karotte\s+Sellerie/i.test(cleaned.instruction) || /\bStufe\s+\d+\s+von\s+9\b/i.test(cleaned.instruction)) {
+        if (/Olivenöl\s+Zwiebel\s+Karotte\s+Sellerie/i.test(instruction) ||
+            /\bStufe\s+\d+\s+von\s+9\b/i.test(instruction) ||
+            /Rinderhackfleisch\s+Schweinehackfleisch/i.test(instruction)) {
           stepIssues.push('Schritt ' + (i + 1) + ' Legacy-Muster');
           continue;
         }
         steps.push({
           stepNumber: steps.length + 1,
-          instruction: cleaned.instruction,
+          instruction: instruction,
           durationMinutes: (step && typeof step === 'object' && (step.durationMinutes != null || step.time_min != null))
             ? Number(step.durationMinutes != null ? step.durationMinutes : step.time_min)
             : null,
@@ -30349,8 +30474,13 @@ initBarcodeEvents();
       }
 
       var srcStatus = String(recipe.sourceServingsStatus || recipe.servingsStatus || '');
+      var singleOk = recipe.singlePortionNormalized === true ||
+        Number(recipe.finalServings) === 1;
       if (srcStatus === 'unknown') {
         addCheck('portions', 'fail', ['Die Ausgangsportionszahl ist nicht bekannt. Eine sichere Skalierung ist nicht möglich.']);
+      } else if (singleOk) {
+        // Nach enforceSinglePortionBaseAmounts keine Schätz-/Prüf-Warnung mehr
+        addCheck('portions', 'pass', []);
       } else if (srcStatus === 'inferred' || recipe.requiresReview || recipe.portionSafe === false) {
         addCheck('portions', 'warning', [recipe.portionDisplayHint || 'Portionsgröße geschätzt – bitte prüfen']);
       } else {
@@ -30390,6 +30520,41 @@ initBarcodeEvents();
         addCheck('ingredients', 'fail', ['Titel nennt Pasta, aber keine Pasta in finalIngredients']);
       } else {
         addCheck('ingredients', 'pass', []);
+      }
+
+      // Gerichtskonzept: Chat-Query vs. Zutaten (Joghurt+Nüsse darf nicht zu Ei/Fleisch ohne Nüsse werden)
+      var dishQ = '';
+      try {
+        dishQ = String((typeof nutriRecipeState !== 'undefined' && nutriRecipeState &&
+          (nutriRecipeState.chatLastQuery || nutriRecipeState.freesearchInput)) || '');
+      } catch (_) {}
+      if (dishQ && /joghurt|yogurt/i.test(dishQ) && /n[uü]ss/i.test(dishQ)) {
+        var hasNutsFe = ings.some(function (i) {
+          var nm = String((i && (i.name || i.displayName)) || '').toLowerCase();
+          if (!/n[uü]ss|mandel|cashew|walnuss|haselnuss|pistazie|pecan|erdnuss/i.test(nm)) return false;
+          if (/\b(öl|oel|oil)\b/i.test(nm)) return false;
+          return true;
+        });
+        var hasEggFe = ings.some(function (i) {
+          var nm = String((i && (i.name || i.displayName)) || '').toLowerCase();
+          return /(?:^|[^a-zäöüß])ei(?:er)?(?:[^a-zäöüß]|$)/i.test(nm) && !/eiweiss|eiweiß|eiweis/i.test(nm);
+        });
+        var hasMeatFe = /hähnchen|haehnchen|huhn|pute|rind|schwein|fleisch/i.test(ingBlob);
+        if (!hasNutsFe && hasEggFe) {
+          addCheck('dishFidelity', 'fail', [
+            'Gerichtskonzept verfehlt: Ei statt Nüsse — bitte Joghurt + Nüsse.'
+          ]);
+        } else if (!hasNutsFe && hasMeatFe) {
+          addCheck('dishFidelity', 'fail', [
+            'Gerichtskonzept verfehlt: Fleisch statt Nüsse.'
+          ]);
+        } else if (!hasNutsFe) {
+          addCheck('dishFidelity', 'fail', [
+            'Gerichtskonzept verfehlt: Anfrage verlangt Nüsse, aber keine Nuss-Zutat gelistet.'
+          ]);
+        } else {
+          addCheck('dishFidelity', 'pass', []);
+        }
       }
 
       var bare = false;
@@ -30432,9 +30597,127 @@ initBarcodeEvents();
           if (toks2.length >= 3 && toks2.length <= 12) bare = true;
         }
       });
+
+      // Hauptzutaten müssen in der Zubereitung vorkommen (nach Fallback — sonst verschwinden z.B. Eier)
+      var stepsBlob = (recipe.steps || []).map(function (s) {
+        if (typeof s === 'string') return s;
+        var parts = [
+          (s && (s.instruction || s.text || s.content)) || '',
+          Array.isArray(s && s.ingredientIds) ? s.ingredientIds.join(' ') : ''
+        ];
+        return parts.join(' ');
+      }).join(' ').toLowerCase();
+      var orphanMains = [];
+      ings.forEach(function (ing) {
+        if (!ing) return;
+        var role = String(ing.culinaryRole || ing.role || '').toLowerCase();
+        if (role === 'seasoning' || role === 'garnish' || ing.optional === true) return;
+        var unit = String(ing.unit || '').toLowerCase();
+        if (unit === 'prise' || unit === 'messerspitze') return;
+        var nm = String(ing.name || ing.displayName || '').toLowerCase();
+        if (!nm) return;
+        if (/^(zimt|curry|paprika|muskat|oregano|basilikum|thymian|dill|petersilie|salz|pfeffer)\b/i.test(nm)) return;
+        if (/^(das\s+)?(wasser|trinkwasser)\b/i.test(nm)) return;
+        var id = String(ing.id || ing._v92_id || '');
+        if (id && (stepsBlob.indexOf('{' + id.toLowerCase() + '}') >= 0 ||
+            new RegExp('(?:^|[^0-9])' + id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?:[^0-9]|$)').test(stepsBlob))) return;
+        var stemHit = false;
+        if (/(?:^|[^a-zäöüß])ei(?:er)?(?:[^a-zäöüß]|$)/i.test(nm) && !/eiweiss|eiweiß/i.test(nm)) {
+          stemHit = /(?:^|[^a-zäöüß])ei(?:er)?(?:[^a-zäöüß]|$)/i.test(stepsBlob);
+        } else if (/joghurt|yogurt|yoghurt|skyr/i.test(nm)) {
+          stemHit = /joghurt|yogurt|yoghurt|skyr/i.test(stepsBlob);
+        } else if (/n[uü]ss|mandel|cashew|walnuss|haselnuss|pistazie/i.test(nm)) {
+          stemHit = /n[uü]ss|mandel|cashew|walnuss|haselnuss|pistazie|nüsse/i.test(stepsBlob);
+        } else {
+          var stem = nm.replace(/\([^)]*\)/g, ' ').replace(/[^a-zäöüß0-9\s]/gi, ' ').trim().split(/\s+/)[0];
+          if (stem && stem.length >= 4) stemHit = stepsBlob.indexOf(stem) >= 0;
+        }
+        if (!stemHit) orphanMains.push(String(ing.name || ing.displayName || id || 'Zutat'));
+      });
+      if (orphanMains.length) {
+        addCheck('stepUsage', 'fail', [
+          'Zubereitung erwähnt diese Zutaten nicht: ' + orphanMains.slice(0, 4).join(', ')
+        ]);
+      } else {
+        addCheck('stepUsage', 'pass', []);
+      }
+
+      // Generische-only + Hafer/Wasser + vager Snack-Titel (Market-Drive Gate)
+      (function culinaryUsabilityFe() {
+        var stepTexts = (recipe.steps || []).map(function (s) {
+          return typeof s === 'string' ? s : String((s && (s.instruction || s.text || s.content)) || '');
+        }).filter(Boolean);
+        var GENERIC_RE = [
+          /^die\s+zutaten\s+(gründlich\s+)?vermengen\.?$/i,
+          /^alles\s+(gründlich\s+)?vermengen\.?$/i,
+          /^zutaten\s+vermischen\.?$/i,
+          /^nach\s+belieben\s+zubereiten\.?$/i,
+          /^wie\s+gewohnt\s+zubereiten\.?$/i,
+          /^wasser\s+bereitstellen\.?$/i
+        ];
+        var SERVE_RE = [
+          /^anrichten\s+und\s+(sofort\s+)?servieren\.?$/i,
+          /^servieren\.?$/i,
+          /^anrichten\.?$/i,
+          /^mit\s+salz\s+und\s+pfeffer\s+abschmecken\.?$/i
+        ];
+        function isGeneric(t) {
+          return GENERIC_RE.some(function (re) { return re.test(String(t || '').trim()); });
+        }
+        function isServe(t) {
+          return SERVE_RE.some(function (re) { return re.test(String(t || '').trim()); });
+        }
+        var concrete = stepTexts.filter(function (t) { return !isGeneric(t) && !isServe(t); });
+        var culErrs = [];
+        if (stepTexts.length && concrete.length === 0) {
+          culErrs.push('Generische Zubereitungsschritte ohne konkrete Technik.');
+        }
+        var oatsG = 0;
+        var waterMl = 0;
+        ings.forEach(function (ing) {
+          var nm = String((ing && (ing.name || ing.displayName)) || '').toLowerCase();
+          var a = Number(ing && ing.amount) || 0;
+          var u = String((ing && ing.unit) || 'g').toLowerCase();
+          var ml = u === 'l' ? a * 1000 : a;
+          if (/hafer|oat/i.test(nm)) oatsG += ml;
+          if (/^(das\s+)?(wasser|trinkwasser|kochwasser)\b/i.test(nm)) waterMl += ml;
+        });
+        var blob = stepTexts.join(' ').toLowerCase();
+        var dry = /backen|braten|ausbacken|pfanne|pancake|pfannkuchen/i.test(blob);
+        if (oatsG >= 25 && waterMl > 0 && waterMl < 60 && !dry) {
+          culErrs.push('Die Flüssigkeitsmenge ist für die angegebene Haferflockenmenge zu gering.');
+        }
+        var hasEgg = ings.some(function (i) {
+          var nm = String((i && (i.name || i.displayName)) || '').toLowerCase();
+          return /(?:^|[^a-zäöüß])ei(?:er)?(?:[^a-zäöüß]|$)/i.test(nm) && !/eiweiss|eiweiß/i.test(nm);
+        });
+        var hasOatYog = ings.some(function (i) {
+          var nm = String((i && (i.name || i.displayName)) || '').toLowerCase();
+          return /hafer|oat|joghurt|yogurt|yoghurt|skyr/i.test(nm);
+        });
+        var titleFe = String(recipe.title || '');
+        var dishWord = /pancake|pfannkuchen|porridge|brei|bowl|pfanne|rührei|omelett|pasta|nudel/i.test(titleFe);
+        if (hasEgg && hasOatYog && /proteinreicher\s+snack\s+mit/i.test(titleFe) && !dishWord) {
+          culErrs.push('Keine eindeutige Rezeptart oder Kochmethode erkennbar.');
+        }
+        if (hasEgg && orphanMains.some(function (n) { return /ei/i.test(n); })) {
+          if (culErrs.indexOf('Eier sind nicht in einem sinnvollen Kochschritt verwendet.') < 0) {
+            culErrs.push('Eier sind nicht in einem sinnvollen Kochschritt verwendet.');
+          }
+        }
+        if (culErrs.length) {
+          addCheck('culinaryUsability', 'fail', culErrs);
+        } else {
+          addCheck('culinaryUsability', 'pass', []);
+        }
+      })();
+
       if (bare) {
         addCheck('instructions', 'fail', ['Zubereitung enthält Rohdaten-Aufzählungen']);
         addCheck('language', 'fail', ['Zubereitungstext nicht natürlich']);
+      } else if (orphanMains.length) {
+        addCheck('instructions', 'fail', ['Zubereitung nennt nicht alle Hauptzutaten']);
+        addCheck('language', 'fail', ['Zubereitung unvollständig']);
       } else if (instrFallback) {
         recipe._instructionFallbackUsed = true;
         addCheck('instructions', 'warning', ['Zubereitungstext durch Standardformulierung ersetzt']);
@@ -30457,15 +30740,24 @@ initBarcodeEvents();
       }
       addCheck('timing', 'pass', []);
 
-      // Server-Gate respektieren
+      // Server-Gate respektieren (Portions-Schätz-Hinweise ausfiltern – servings=1-Normierung)
+      function isPortionEstimateWarn(msg) {
+        return /Portionsgröße geschätzt|Portionsangabe prüfen/i.test(String(msg || ''));
+      }
       if (recipe.qualityStatus === 'blocked') {
         errors.push.apply(errors, recipe.qualityErrors || ['Server Quality Gate: blocked']);
       } else if (recipe.qualityStatus === 'review') {
-        warnings.push.apply(warnings, recipe.qualityWarnings || []);
+        (recipe.qualityWarnings || []).forEach(function (w) {
+          if (!isPortionEstimateWarn(w)) warnings.push(w);
+        });
       }
+      // Eigene Portions-Warnungen ebenfalls bereinigen
+      warnings = warnings.filter(function (w) { return !isPortionEstimateWarn(w); });
 
       var status = errors.length ? 'blocked' : (warnings.length ? 'review' : 'ready');
-      if (status === 'ready' && (srcStatus === 'inferred' || recipe.requiresReview)) status = 'review';
+      if (status === 'ready' && !singleOk && (srcStatus === 'inferred' || recipe.requiresReview)) {
+        status = 'review';
+      }
 
       recipe.qualityStatus = status;
       recipe.qualityScore = status === 'ready' ? 100 : (status === 'review' ? 60 : 0);
@@ -30506,11 +30798,18 @@ initBarcodeEvents();
       return gated;
     }
 
-    // Umschaltbar wie andere Endpunkte: lokal fuer Entwicklung, Render fuer Produktion.
-    var COACH_API_USE_LOCAL = true;
-    var COACH_API_BASE = COACH_API_USE_LOCAL
-      ? 'http://localhost:3004'
-      : 'https://labplate.onrender.com';
+    // Gleiche Basis wie NUTRI_RECIPE_API_ENDPOINT – lokal nur bei bewusstem Override.
+    // COACH_API_USE_LOCAL=true bricht in der App (Origin null / WKWebView) mit CORS.
+    var COACH_API_USE_LOCAL = false;
+    var COACH_API_BASE = (function () {
+      try {
+        if (typeof NUTRI_RECIPE_API_ENDPOINT === 'string' && NUTRI_RECIPE_API_ENDPOINT) {
+          var u = new URL(NUTRI_RECIPE_API_ENDPOINT);
+          return u.origin;
+        }
+      } catch (_) {}
+      return COACH_API_USE_LOCAL ? 'http://localhost:3004' : 'https://labplate.onrender.com';
+    })();
     var COACH_API_TIMEOUT_MS = 25000;
 
     function coachApiPost(path, body) {
@@ -30665,7 +30964,17 @@ initBarcodeEvents();
       getBase: function () { return COACH_API_BASE; },
       setUseLocal: function (on) {
         COACH_API_USE_LOCAL = !!on;
-        COACH_API_BASE = COACH_API_USE_LOCAL ? 'http://localhost:3004' : 'https://labplate.onrender.com';
+        if (COACH_API_USE_LOCAL) {
+          COACH_API_BASE = 'http://localhost:3004';
+        } else {
+          try {
+            COACH_API_BASE = (typeof NUTRI_RECIPE_API_ENDPOINT === 'string' && NUTRI_RECIPE_API_ENDPOINT)
+              ? new URL(NUTRI_RECIPE_API_ENDPOINT).origin
+              : 'https://labplate.onrender.com';
+          } catch (_) {
+            COACH_API_BASE = 'https://labplate.onrender.com';
+          }
+        }
       }
     };
 
@@ -30674,33 +30983,32 @@ initBarcodeEvents();
       return '<span class="mrep-badge">HealthScore ' + Math.round(Number(score)) + '</span>';
     }
     function buildCoachPerServingLineHtml(perServing, escFn) {
-      if (!perServing) return '';
-      var esc = escFn || function (s) { return String(s); };
-      // Kurzzeile: KH = Netto-KH (gleiche Quelle wie Kopfbereich)
-      var carbsVal = perServing.netCarbs != null ? perServing.netCarbs
-        : (perServing.carbs != null ? perServing.carbs : 0);
-      var line = Math.round(Number(perServing.calories) || 0) + ' kcal/Portion · ' +
-        'P ' + Math.round(Number(perServing.protein) || 0) + ' g · ' +
-        'F ' + Math.round(Number(perServing.fat) || 0) + ' g · ' +
-        'KH ' + Math.round(Number(carbsVal) || 0) + ' g · ' +
-        'B ' + Math.round(Number(perServing.fiber) || 0) + ' g';
-      return '<p class="nutri-recipe-match">' + esc(line) + '</p>';
+      // Makro-Einzeiler absichtlich deaktiviert – die Nährwert-Kacheln reichen aus.
+      return '';
     }
     function buildCoachWarningsBadgesHtml(warnings) {
       if (!warnings || !warnings.length) return '';
-      return '<div class="nutri-recipe-coach-badges">' +
-        warnings.map(function (w) {
-          var msg = (w && w.message) ? String(w.message) : String(w || '');
-          return '<span class="mrep-badge">' + String(msg).replace(/</g, '&lt;').slice(0, 80) + '</span>';
-        }).join('') +
-      '</div>';
+      var badges = warnings.map(function (w) {
+        var msg = (w && w.message) ? String(w.message) : String(w || '');
+        // Portions-Schätz-Hinweise nie anzeigen (alle Rezepte auf servings=1 normiert)
+        if (/Portionsgröße geschätzt|Portionsangabe prüfen|portion_estimated/i.test(msg) ||
+            (w && w.code === 'portion_estimated')) {
+          return '';
+        }
+        return '<span class="mrep-badge">' + String(msg).replace(/</g, '&lt;').slice(0, 80) + '</span>';
+      }).filter(Boolean);
+      if (!badges.length) return '';
+      return '<div class="nutri-recipe-coach-badges">' + badges.join('') + '</div>';
     }
     function buildCoachUsdaStatusHtml(analysis, escFn) {
       var esc = escFn || function (s) { return String(s); };
-      if (!analysis) return '<p class="nutri-recipe-match">' + esc('Coach-Analyse läuft…') + '</p>';
+      if (!analysis) return '';
       var cov = analysis.coverage || {};
-      var line = 'USDA/Coach: ' + (cov.withNutrition != null ? cov.withNutrition : '–') +
-        '/' + (cov.total != null ? cov.total : '–') + ' Zutaten mit Nährwerten';
+      var withN = cov.withNutrition;
+      var total = cov.total;
+      if (withN == null && total == null) return '';
+      var line = 'USDA/Coach: ' + (withN != null ? withN : '–') +
+        '/' + (total != null ? total : '–') + ' Zutaten mit Nährwerten';
       return '<p class="nutri-recipe-match">' + esc(line) + '</p>';
     }
     window.LabPlateCoachUi = {
@@ -31491,10 +31799,28 @@ initBarcodeEvents();
       }
       if (Array.isArray(out.steps)) {
         for (var s = 0; s < out.steps.length; s++) {
-          if (out.steps[s]) out.steps[s] = await translateText(String(out.steps[s]), to);
+          if (!out.steps[s]) continue;
+          if (typeof out.steps[s] === 'string') {
+            out.steps[s] = await translateText(out.steps[s], to);
+          } else if (typeof out.steps[s] === 'object' && out.steps[s].instruction) {
+            out.steps[s].instruction = await translateText(String(out.steps[s].instruction), to);
+          }
         }
       }
-      if (out.garnish) out.garnish = await translateText(out.garnish, to);
+      if (out.garnish) {
+        if (typeof out.garnish === 'string') {
+          out.garnish = await translateText(out.garnish, to);
+        } else if (Array.isArray(out.garnish)) {
+          for (var gi = 0; gi < out.garnish.length; gi++) {
+            var g = out.garnish[gi];
+            if (typeof g === 'string') {
+              out.garnish[gi] = await translateText(g, to);
+            } else if (g && g.displayName) {
+              g.displayName = await translateText(String(g.displayName), to);
+            }
+          }
+        }
+      }
       if (out.self_check) out.self_check = await translateText(out.self_check, to);
       if (out.nutrition_note) out.nutrition_note = await translateText(out.nutrition_note, to);
       if (out.prep_time) out.prep_time = await translateText(out.prep_time, to);
@@ -32005,19 +32331,49 @@ initBarcodeEvents();
     function recipeAmountsLookLikeBatch(ings, claimedServings) {
       if (Number(claimedServings) > 1) return false;
       var meatTotal = 0;
+      var meatMax = 0;
       var massTotal = 0;
+      var maxCarbG = 0;
+      var maxRichMl = 0;
       (Array.isArray(ings) ? ings : []).forEach(function (ing) {
         if (!ing) return;
+        var name = String(ing.name || ing.displayName || '');
         var a = Number(ing.amount) || 0;
         var u = String(ing.unit || 'g').toLowerCase();
         if (a <= 0) return;
-        var g = u === 'kg' ? a * 1000 : (u === 'l' ? a * 1000 : a);
+        // Kochwasser/Brühe zählen nicht als Batch-Masse (sonst Pasta-Gerichte → Faktor 0.5)
+        if (/^(das\s+)?(wasser|trinkwasser|leitungs?wasser|kochwasser)\b/i.test(name) ||
+            /\b(brühe|bruehe|fond|stock)\b/i.test(name)) {
+          return;
+        }
+        if (u === 'prise' || u === 'messerspitze' || u === 'stk' || u === 'stück' || u === 'stueck') return;
+        if (u === 'ml' || u === 'l') {
+          var ml = u === 'l' ? a * 1000 : a;
+          // Joghurt/Skyr sind Einzelportion-Basis (150–250 ml) — nicht als Batch-Sahne werten
+          // (sonst „Kokosjoghurt“ → Faktor 0.5). Nur echte Koch-Sahne/Saucen.
+          if (/joghurt|yogurt|yoghurt|skyr/i.test(name)) return;
+          if (/sahne|creme|rahm|sauce|soße/i.test(name) ||
+              (/\bkokos\b/i.test(name) && !/joghurt|yogurt|yoghurt/i.test(name))) {
+            maxRichMl = Math.max(maxRichMl, ml);
+            massTotal += ml;
+          }
+          return;
+        }
+        var g = u === 'kg' ? a * 1000 : a;
         massTotal += g;
-        if (/hack|fleisch|rind|schwein|huhn|hähnchen|pute|lachs|fisch|tofu/i.test(String(ing.name || ing.displayName || ''))) {
-          if (u === 'g' || u === 'kg') meatTotal += g;
+        if (/hack|fleisch|rind|schwein|huhn|hähnchen|pute|lachs|fisch|tofu/i.test(name)) {
+          meatTotal += g;
+          meatMax = Math.max(meatMax, g);
+        }
+        if (/pasta|nudeln|spaghetti|reis|quinoa|kartoffel|brot|mehl/i.test(name)) {
+          maxCarbG = Math.max(maxCarbG, g);
         }
       });
-      return meatTotal >= 350 || massTotal >= 700;
+      if (meatTotal >= 350 || meatMax >= 280) return true;
+      if (maxCarbG >= 250) return true;
+      if (maxRichMl >= 180) return true;
+      if (massTotal >= 700) return true;
+      return false;
     }
 
     function normalizeNutriRecipeResponse(data) {
@@ -32093,32 +32449,60 @@ initBarcodeEvents();
       if (!Array.isArray(out.steps)) out.steps = [];
       out.steps = out.steps.map(function (s, idx, arr) {
         var raw = '';
-        if (s && typeof s === 'object' && (s.instruction || s.text || s.content || s.title)) {
-          raw = String(s.instruction || s.text || s.content || '');
-          if (!raw && s.title) {
-            raw = String(s.title) + ': ' + (Array.isArray(s.ingredientNames) ? s.ingredientNames.join(' ') : '');
+        var durationMinutes = null;
+        var heatLevel = null;
+        var ingredientIds = [];
+        if (s && typeof s === 'object') {
+          // Nur Instruction – kein title+ingredientNames-Join
+          raw = String(s.instruction || s.text || s.content || '').trim();
+          if (!raw && s.title && typeof lpNaturalizeFromTitle === 'function') {
+            raw = lpNaturalizeFromTitle(s.title);
+          } else if (!raw && s.title) {
+            raw = String(s.title).replace(/:\s*$/, '') + '.';
           }
+          durationMinutes = s.durationMinutes != null ? s.durationMinutes : s.time_min;
+          heatLevel = s.heatLevel != null ? s.heatLevel : s.stove_level;
+          ingredientIds = Array.isArray(s.ingredientIds) ? s.ingredientIds.slice() : [];
         } else {
           raw = s == null ? '' : String(s);
         }
         if (typeof sanitizeLegacyStepInstruction === 'function') {
           var cleaned = sanitizeLegacyStepInstruction(raw, idx, arr.length);
-          return cleaned.instruction || raw;
+          raw = cleaned.instruction || raw;
         }
-        return raw;
-      }).filter(Boolean);
-      // Legacy-Garnitur: keine Hauptzutaten als Garnitur
+        if (typeof smoothProseIngredientGrammar === 'function') {
+          raw = smoothProseIngredientGrammar(raw);
+        }
+        return {
+          stepNumber: idx + 1,
+          instruction: String(raw || '').trim(),
+          durationMinutes: durationMinutes != null ? Number(durationMinutes) : null,
+          heatLevel: heatLevel != null ? heatLevel : null,
+          ingredientIds: ingredientIds
+        };
+      }).filter(function (s) { return !!(s && s.instruction); });
+      // structuredSteps = dieselbe bereinigte Liste (keine Legacy-Felder)
+      out.structuredSteps = out.steps.slice();
+      // Legacy-Garnitur: keine Hauptzutaten; intern als String behalten (Schema/Translate)
       if (typeof toCanonicalGarnish === 'function') {
         var gCanon = toCanonicalGarnish(out.garnish, out.finalIngredients || out.ingredients);
-        out.garnish = gCanon.length ? gCanon.map(function (g) { return g.displayName; }).join(', ') : '';
+        out.garnish = gCanon.length
+          ? gCanon.map(function (g) { return g.displayName; }).filter(Boolean).join(', ')
+          : '';
       } else if (typeof out.garnish === 'string' && /hack|fleisch|zwiebel|karotte|sellerie|olivenöl/i.test(out.garnish) &&
           !/petersilie|basilikum|oregano|kräuter/i.test(out.garnish)) {
         out.garnish = '';
+      } else if (Array.isArray(out.garnish)) {
+        out.garnish = out.garnish.map(function (g) {
+          return typeof g === 'string' ? g : String((g && (g.displayName || g.name)) || '');
+        }).filter(Boolean).join(', ');
+      } else if (typeof out.garnish !== 'string') {
+        out.garnish = out.garnish == null ? '' : String(out.garnish);
       }
       if (typeof out.prep_time !== 'string') out.prep_time = out.prep_time == null ? '' : String(out.prep_time);
-      if (typeof out.nutrition_note !== 'string') out.nutrition_note = out.nutrition_note == null ? '' : String(out.nutrition_note);
-      if (typeof out.garnish !== 'string') out.garnish = out.garnish == null ? '' : String(out.garnish);
-      if (typeof out.self_check !== 'string') out.self_check = out.self_check == null ? '' : String(out.self_check);
+      // Interne Felder nie für UI – leeren
+      out.nutrition_note = '';
+      out.self_check = '';
       if (typeof out.title !== 'string' && out.title != null) out.title = String(out.title);
       if (typeof out.servings !== 'number' || !isFinite(out.servings)) {
         var sv = parseFloat(out.servings);
@@ -32176,8 +32560,20 @@ initBarcodeEvents();
       if (typeof data.servings !== 'number' || !isFinite(data.servings) || data.servings < 0) return false;
       if (!okStr(data.prep_time, true)) return false;
       if (!okStr(data.nutrition_note, true)) return false;
-      // garnish optional (aeltere Server-Antworten) – wenn vorhanden, muss String sein.
-      if (data.garnish != null && !okStr(data.garnish, true)) return false;
+      // garnish optional (String oder Array) – Schema akzeptiert beides
+      if (data.garnish != null) {
+        if (typeof data.garnish === 'string') {
+          if (!okStr(data.garnish, true)) return false;
+        } else if (Array.isArray(data.garnish)) {
+          for (var gi = 0; gi < data.garnish.length; gi++) {
+            var gItem = data.garnish[gi];
+            var gName = typeof gItem === 'string' ? gItem : (gItem && (gItem.displayName || gItem.name));
+            if (gName != null && !okStr(String(gName), true)) return false;
+          }
+        } else {
+          return false;
+        }
+      }
       // self_check optional (aeltere Server-Antworten)
       if (data.self_check != null && !okStr(data.self_check, true)) return false;
       if (!Array.isArray(data.ingredients) || !data.ingredients.length) return false;
@@ -32204,7 +32600,14 @@ initBarcodeEvents();
       if (!data.shopping_list.every(function (s) { return okStr(s, true); })) return false;
       if (!Array.isArray(data.steps)) return false;
       if (data.steps.length > NUTRI_RECIPE_MAX_STEPS) return false;
-      if (!data.steps.every(function (s) { return okStr(s, true); })) return false;
+      if (!data.steps.every(function (s) {
+        if (typeof s === 'string') return okStr(s, true);
+        if (s && typeof s === 'object') {
+          var inst = s.instruction != null ? s.instruction : (s.text || s.content || '');
+          return okStr(String(inst || ''), true);
+        }
+        return false;
+      })) return false;
       return true;
     }
 
@@ -32596,6 +32999,33 @@ initBarcodeEvents();
      * Live-Safety-Net: Roh-/Batch-Mengen dürfen nie als „1 Portion“ ohne Skalierung
      * in die UI. Idempotent: bereits skalierte finalIngredients werden nicht erneut geteilt.
      */
+    function sanitizeEggAmountsInList(list) {
+      return (Array.isArray(list) ? list : []).map(function (ing) {
+        if (!ing || typeof ing !== 'object') return ing;
+        var name = String(ing.name || ing.displayName || '');
+        if (!/\bei(er)?\b/i.test(name) || /eiweiss|eiweiß|eiweis/i.test(name)) return ing;
+        var next = Object.assign({}, ing);
+        var a = Number(ing.amount);
+        var unit = String(ing.unit || 'g').toLowerCase();
+        var pieces = 1;
+        var namePieces = name.match(/^\s*(\d+)\s*eier?\b/i);
+        if (namePieces) pieces = Math.max(1, Math.round(Number(namePieces[1])));
+        else if (unit === 'stk' || unit === 'stück' || unit === 'stueck') pieces = Math.max(1, Math.round(a) || 1);
+        else if ((unit === 'g' || unit === 'kg') && Number.isFinite(a) && a > 0) {
+          var g = unit === 'kg' ? a * 1000 : a;
+          pieces = g < 40 ? 1 : Math.max(1, Math.round(g / 60));
+        }
+        if (pieces > 3) pieces = 3;
+        next.amount = pieces * 60;
+        next.unit = 'g';
+        next.name = pieces === 1
+          ? '1 Ei (Größe M, ca. 60 g)'
+          : (pieces + ' Eier (Größe M, ca. 60 g je)');
+        if (next.displayName != null) next.displayName = next.name;
+        return next;
+      });
+    }
+
     function ensureLiveFinalPortionedRecipe(recipe) {
       if (!recipe || typeof recipe !== 'object') return recipe;
       console.log('[NUTRI_RECIPE_DEBUG] ACTIVE_PORTION_PATH', LP_PORTION_LOGIC_VERSION);
@@ -32614,9 +33044,9 @@ initBarcodeEvents();
       // Bereits portionierte Einzelportion (nicht erneut skalieren!).
       if (!looksBatch && Number(recipe.finalServings) === 1 &&
           (recipe.livePathNormalized || Number(recipe.scalingFactor) > 0)) {
-        recipe.ingredients = ings;
-        recipe.finalIngredients = ings;
-        recipe.displayIngredients = ings;
+        recipe.ingredients = sanitizeEggAmountsInList(ings);
+        recipe.finalIngredients = recipe.ingredients;
+        recipe.displayIngredients = recipe.ingredients;
         recipe.servings = 1;
         if (recipe.finalNutrition) {
           recipe.nutrition = recipe.finalNutrition;
@@ -32626,9 +33056,9 @@ initBarcodeEvents();
       }
       if (!looksBatch && Number(recipe.servings) === 1 && Number(recipe.sourceServings) > 1 &&
           recipe.livePathNormalized) {
-        recipe.ingredients = ings;
-        recipe.finalIngredients = ings;
-        recipe.displayIngredients = ings;
+        recipe.ingredients = sanitizeEggAmountsInList(ings);
+        recipe.finalIngredients = recipe.ingredients;
+        recipe.displayIngredients = recipe.ingredients;
         recipe.finalServings = 1;
         return recipe;
       }
@@ -32663,9 +33093,9 @@ initBarcodeEvents();
         recipe.servings = 1;
         recipe.targetServings = 1;
         recipe.scalingFactor = 1 / declaredSource;
-        recipe.ingredients = ings;
-        recipe.finalIngredients = ings;
-        recipe.displayIngredients = ings;
+        recipe.ingredients = sanitizeEggAmountsInList(ings);
+        recipe.finalIngredients = recipe.ingredients;
+        recipe.displayIngredients = recipe.ingredients;
         recipe.nutritionSource = 'finalNutrition';
         recipe.nutritionBasis = 'finalIngredients';
         recipe.livePathNormalized = true;
@@ -32673,9 +33103,9 @@ initBarcodeEvents();
         recipe.portionSafe = true;
         return recipe;
       } else {
-        recipe.finalIngredients = ings;
-        recipe.ingredients = ings;
-        recipe.displayIngredients = ings;
+        recipe.finalIngredients = sanitizeEggAmountsInList(ings);
+        recipe.ingredients = recipe.finalIngredients;
+        recipe.displayIngredients = recipe.finalIngredients;
         recipe.finalServings = 1;
         recipe.servings = 1;
         recipe.sourceServings = Number.isFinite(declaredSource) && declaredSource > 0 ? declaredSource : 1;
@@ -32714,6 +33144,23 @@ initBarcodeEvents();
       var finalIngs = ings.map(function (ing) {
         var next = Object.assign({}, ing);
         var a = Number(ing.amount);
+        var name = String((ing && (ing.name || ing.displayName)) || '');
+        var eggish = /\bei(er)?\b/i.test(name) && !/eiweiss|eiweiß|eiweis/i.test(name);
+        if (eggish) {
+          // Eier nie als Batch-Gramm skalieren – Stücklogik (ca. 60 g / Ei)
+          var pieces = 1;
+          var namePieces = name.match(/^\s*(\d+)\s*eier?\b/i);
+          if (namePieces) pieces = Math.max(1, Math.round(Number(namePieces[1])));
+          else if (Number.isFinite(a) && a >= 40) pieces = Math.max(1, Math.round(a / 60));
+          if (pieces > 3) pieces = 3;
+          next.amount = pieces * 60;
+          next.unit = 'g';
+          next.name = pieces === 1
+            ? '1 Ei (Größe M, ca. 60 g)'
+            : (pieces + ' Eier (Größe M, ca. 60 g je)');
+          if (next.displayName != null) next.displayName = next.name;
+          return next;
+        }
         if (Number.isFinite(a)) {
           next.amount = roundLocalRecipeAmount(a * factor, ing.unit);
         }
@@ -32737,11 +33184,11 @@ initBarcodeEvents();
       recipe.servings = target;
       recipe.scalingFactor = factor;
       recipe.servingsStatus = sourceStatus === 'explicit' ? 'validated' : 'inferred';
-      recipe.requiresReview = sourceStatus !== 'explicit';
-      recipe.portionSafe = sourceStatus === 'explicit';
-      recipe.portionDisplayHint = sourceStatus === 'inferred'
-        ? 'Portionsgröße geschätzt – bitte prüfen'
-        : null;
+      // Nach 1-Portions-Normierung kein Schätz-Banner / kein Review-Zwang
+      recipe.requiresReview = false;
+      recipe.portionSafe = true;
+      recipe.portionDisplayHint = null;
+      recipe.singlePortionNormalized = true;
       recipe.nutritionSource = 'finalNutrition';
       recipe.nutritionBasis = 'finalIngredients';
       recipe.nutritionServings = target;
@@ -32797,19 +33244,26 @@ initBarcodeEvents();
       window.LabPlateCoachApi.analyzeRecipe({ recipe: coachInput, enrichUsda: false }).then(function (res) {
         if (gen !== nutriRecipeState.coachAnalysisGen) return;
         nutriRecipeState.coachAnalysisLoading = false;
-        if (res && res.ok && res.data) {
+        if (res && res.ok && res.data && !res.data.error) {
           nutriRecipeState.coachAnalysis = res.data;
           nutriRecipeState.coachAnalysisError = '';
         } else {
           nutriRecipeState.coachAnalysis = null;
-          nutriRecipeState.coachAnalysisError = (res && res.data && res.data.error) ? String(res.data.error) : 'coach_unavailable';
+          var errCode = (res && res.data && res.data.error) ? String(res.data.error)
+            : (res && res.status === 404 ? 'coach_route_missing' : 'coach_unavailable');
+          nutriRecipeState.coachAnalysisError = errCode;
+          if (res && res.status === 404) {
+            console.warn('[NUTRI_RECIPE_DEBUG] Coach-Route fehlt auf Server (404) – Rezeptkarte bleibt sichtbar');
+          }
         }
+        // Coach-UI aktualisieren, ohne Fehler sichtbar zu machen
         if (nutriRecipeState.result) renderNutriRecipeBody();
-      }).catch(function () {
+      }).catch(function (err) {
         if (gen !== nutriRecipeState.coachAnalysisGen) return;
         nutriRecipeState.coachAnalysisLoading = false;
         nutriRecipeState.coachAnalysis = null;
         nutriRecipeState.coachAnalysisError = 'coach_unavailable';
+        console.warn('[NUTRI_RECIPE_DEBUG] Coach-Analyse fehlgeschlagen', err && err.message ? err.message : err);
         if (nutriRecipeState.result) renderNutriRecipeBody();
       });
     }
@@ -32907,8 +33361,8 @@ initBarcodeEvents();
             ballaststoffe_g: Math.round(((Number(bn.ballaststoffe_g != null ? bn.ballaststoffe_g : bn.fiber) || 0) * sfN) * 10) / 10
           };
         }
-        r.structuredSteps = rBase.structuredSteps || rBase.steps;
-        r.steps = r.structuredSteps || r.steps;
+        r.structuredSteps = null;
+        r.steps = rBase.steps;
         r.garnish = rBase.garnish;
         r.adaptationFlags = rBase.adaptationFlags;
         r.adaptationNote = rBase.adaptationNote;
@@ -32957,10 +33411,10 @@ initBarcodeEvents();
           netCarbs: nutriSummary.netCarbs,
           fiber: nutriSummary.fiber
         };
-        console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Anzahl der Ingredients:', r.ingredients ? r.ingredients.length : 0);
-        console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Anzahl der Steps:', r.steps ? r.steps.length : 0);
-        console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Ingredient-Mengen:', (r.ingredients || []).map(function (ing) {
-          return (ing && ing.name) + ' ' + (ing && ing.amount) + ' ' + (ing && ing.unit);
+        console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Anzahl der Ingredients:', display.finalIngredients ? display.finalIngredients.length : 0);
+        console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Anzahl der Steps:', display.steps ? display.steps.length : 0);
+        console.log('[NUTRI_RECIPE_DEBUG] Overlay-Render: Ingredient-Mengen:', (display.finalIngredients || []).map(function (ing) {
+          return (ing && ing.displayName) + ' ' + (ing && ing.amount) + ' ' + (ing && ing.unit);
         }));
         var nutritionHeading = formatNutritionHeadingForServings(recipeServingsCount);
         // portionSafe/unknown: gleiche Grammatik („1 Portion“ / „n Portionen“), kein FOR_N mit n=1.
@@ -32968,9 +33422,9 @@ initBarcodeEvents();
           nutritionHeading = formatNutritionHeadingForServings(recipeServingsCount);
         }
         var portionWarningBanner = '';
-        var isInferredServings = rBase.sourceServingsStatus === 'inferred' ||
-          rBase.servingsStatus === 'inferred' ||
-          rBase.requiresReview;
+        // Portions-Schätz-/Prüf-Hinweise bewusst deaktiviert:
+        // Alle Rezepte laufen über enforceSinglePortionBaseAmounts() auf servings=1.
+        // Nur echte Unbekannt-Fälle und inhaltliche Hinweise (Nährwert/Anpassung) bleiben.
         var isUnknownServings = rBase.sourceServingsStatus === 'unknown' ||
           rBase.servingsStatus === 'unknown';
         if (isUnknownServings) {
@@ -32978,18 +33432,6 @@ initBarcodeEvents();
             escNutri((rBase.portionDisplayHint || rBase.portionWarnings && rBase.portionWarnings[0]) ||
               'Die Ausgangsportionszahl ist nicht bekannt. Eine sichere Skalierung ist nicht möglich.') +
             '</p>';
-        } else if (rBase.qualityStatus === 'review' || isInferredServings || rBase.portionSafe === false ||
-            (rBase.portionWarnings && rBase.portionWarnings.length) ||
-            (rBase.qualityWarnings && rBase.qualityWarnings.length)) {
-          var warnText = rBase.portionDisplayHint ||
-            (rBase.qualityWarnings && rBase.qualityWarnings[0]) ||
-            (rBase.portionWarnings && rBase.portionWarnings[0]) ||
-            pick(LBL_RECIPE_QUALITY_REVIEW);
-          if (isInferredServings && !/geschätzt/i.test(String(warnText))) {
-            warnText = 'Portionsgröße geschätzt – bitte prüfen';
-          }
-          portionWarningBanner = '<p class="nutri-recipe-match" role="status"><strong>Portionsangabe prüfen:</strong> ' +
-            escNutri(warnText) + '</p>';
         }
         if (rBase._nutritionImplausible || (rBase.qualityChecks && rBase.qualityChecks.nutrition && rBase.qualityChecks.nutrition.status === 'fail')) {
           portionWarningBanner += '<p class="nutri-recipe-match" role="status">' +
@@ -33000,35 +33442,29 @@ initBarcodeEvents();
             escNutri(rBase.adaptationNote || pick(LBL_RECIPE_DAIRY_FREE_ADAPTATION)) + '</p>';
         }
         var coachAnalysis = nutriRecipeState.coachAnalysis;
-        // Kurzzeile immer aus demselben finalNutrition – nie Coach-Rohwerte mit abweichenden KH
-        var coachPerServing = {
-          calories: nutriSummary.calories,
-          protein: nutriSummary.protein,
-          fat: nutriSummary.fat,
-          netCarbs: nutriSummary.netCarbs,
-          carbs: nutriSummary.carbs,
-          fiber: nutriSummary.fiber
-        };
         var coachScoreBadge = (coachAnalysis && coachAnalysis.healthScore != null)
           ? buildCoachHealthScoreBadgeHtml(coachAnalysis.healthScore)
           : '';
-        var coachPerServingHtml = buildCoachPerServingLineHtml(coachPerServing, escNutri);
+        // Makro-Einzeiler nicht rendern – nur die Nährwert-Kacheln
+        var coachPerServingHtml = '';
         var coachWarningsHtml = (coachAnalysis && coachAnalysis.warnings)
           ? buildCoachWarningsBadgesHtml(coachAnalysis.warnings)
           : '';
-        var coachUsdaHtml = nutriRecipeState.coachAnalysisLoading
-          ? '<p class="nutri-recipe-match">' + escNutri((rBase.coachStatusText ? (rBase.coachStatusText + '…') : 'Coach-Analyse läuft…')) + '</p>'
-          : (nutriRecipeState.coachAnalysisError
-            ? '<p class="nutri-recipe-match">' + escNutri((rBase.coachStatusText || 'Coach-Analyse') + ' – ' + nutriRecipeState.coachAnalysisError) + '</p>'
-            : buildCoachUsdaStatusHtml(coachAnalysis, escNutri));
+        // Coach-Sektion nur bei validem Inhalt; coach_unavailable nie im DOM
+        var coachUsdaHtml = '';
+        if (nutriRecipeState.coachAnalysisLoading) {
+          coachUsdaHtml = '<p class="nutri-recipe-match">' +
+            escNutri((rBase.coachStatusText ? (rBase.coachStatusText + '…') : 'Coach-Analyse läuft…')) +
+            '</p>';
+        } else if (!nutriRecipeState.coachAnalysisError && coachAnalysis) {
+          coachUsdaHtml = buildCoachUsdaStatusHtml(coachAnalysis, escNutri);
+        }
         var portionWord = recipeServingsCount === 1
           ? (rBase.portionLabelSingular || pick(LBL_RECIPE_SERVING_SINGULAR))
           : (rBase.portionLabel || pick(LBL_RECIPE_SERVINGS_SUFFIX));
         var prepTimeLabel = rBase.prepTimeLabel || pick(LBL_RECIPE_PREP_TIME);
-        // Kanonische Kopfzeit nur aus display.timing
-        var prepTimeValue = (display.timing && display.timing.label)
-          ? display.timing.label
-          : (r.prep_time || '');
+        // Kanonische Kopfzeit ausschließlich aus display.timing – kein prep_time-Fallback
+        var prepTimeValue = (display.timing && display.timing.label) ? display.timing.label : '';
         var servingsStepperHtml =
           '<div class="nutri-recipe-servings-stepper" role="group" aria-label="' + escNutri(rBase.portionLabel || pick(LBL_RECIPE_SERVINGS_SUFFIX)) + '">' +
             '<button type="button" class="nrs-btn nrs-minus" id="nutri-recipe-servings-minus" aria-label="' + escNutri(pick(LBL_RECIPE_SERVINGS_MINUS_ARIA)) + '"' + (recipeServingsCount <= recipeServingsMin ? ' disabled' : '') + '>' +
@@ -33127,13 +33563,17 @@ initBarcodeEvents();
           operationId: nutriRecipeState.activeOperationId || nutriRecipeState.lastRenderedOperationId,
           recipeId: rBase.id || r.title
         });
-        // Ersetzen, nie anhängen – eine sichtbare Karte.
-        body.innerHTML = '';
+        // Container vollständig ersetzen (nie anhängen). Re-Renders (Coach/Stepper) sind erlaubt.
+        if (opId) LP_CANONICAL_RENDERED_OPS.add(opId);
+        nutriRecipeState._lastCanonicalServings = recipeServingsCount;
+        LP_CANONICAL_RENDER_COUNT += 1;
         body.innerHTML = html;
         nutriRecipeState.lastRenderedOperationId = nutriRecipeState.activeOperationId || nutriRecipeState.lastRenderedOperationId;
         console.log('[NUTRI_RECIPE_DEBUG] RENDER_COMMITTED', {
           operationId: nutriRecipeState.lastRenderedOperationId,
-          cards: body.querySelectorAll('[data-recipe-card]').length
+          cards: body.querySelectorAll('[data-recipe-card]').length,
+          renderer: 'canonical',
+          version: LP_PORTION_LOGIC_VERSION
         });
         // NEU: Portions-Stepper (-/+) - veraendert ausschliesslich nutriRecipeState.servings
         // und rendert danach neu; die eigentliche Skalierung passiert oben ueber
@@ -33467,6 +33907,7 @@ initBarcodeEvents();
       var operationId = op.operationId;
       var controller = op.controller;
       nutriRecipeState.activeOperationId = operationId;
+      lpResetCanonicalRenderGuard();
       nutriRecipeState.chatLoading = true;
       nutriRecipeState.chatRetryStatus = '';
       renderNutriRecipeBody();
@@ -33511,15 +33952,28 @@ initBarcodeEvents();
         }
         if (result && result.ok && result.data) {
           console.log('[NUTRI_RECIPE_DEBUG] RESPONSE_RECEIVED', { operationId: operationId, attempt: attempt });
-          // Phase 2: Server-Handoff (String-Match oder LLM-Sentinel) – kein Rezept-Schema.
+          // Phase 2: Server-Handoff nur bei echter emotionaler Blockade im Nutzertext.
+          // Klarer Gerichtswunsch (z. B. Frischkäse trotz Laktose) → KEIN Coach-Umweg.
           if (result.data.handoff && typeof result.data.handoff === 'object'
               && String(result.data.handoff.to || '').toLowerCase() === 'coach') {
-            var srvHandoff = (typeof normalizeKochCoachHandoff === 'function')
-              ? normalizeKochCoachHandoff(result.data.handoff, sanitized)
-              : normalizeTeamHandoff(result.data.handoff, 'koch', 'coach');
-            if (srvHandoff) {
-              data = { __teamHandoff: srvHandoff };
-              break;
+            var emoOk = (typeof detectEmotionalBlockade === 'function')
+              ? !!detectEmotionalBlockade(sanitized)
+              : false;
+            if (!emoOk) {
+              console.warn('[NUTRI_RECIPE_DEBUG] FALSE_COACH_HANDOFF_IGNORED', {
+                operationId: operationId,
+                query: sanitized,
+                reason: result.data.handoff && result.data.handoff.reason
+              });
+              // Wie Schema-Fail behandeln → Retry / Fehler, nicht Mental-Coach.
+            } else {
+              var srvHandoff = (typeof normalizeKochCoachHandoff === 'function')
+                ? normalizeKochCoachHandoff(result.data.handoff, sanitized)
+                : normalizeTeamHandoff(result.data.handoff, 'koch', 'coach');
+              if (srvHandoff) {
+                data = { __teamHandoff: srvHandoff };
+                break;
+              }
             }
           }
           result.data = normalizeNutriRecipeResponse(result.data);
@@ -33726,6 +34180,7 @@ initBarcodeEvents();
       if (msg.operationId) {
         nutriRecipeState.activeOperationId = msg.operationId;
         activeRecipeOperationId = msg.operationId;
+        lpResetCanonicalRenderGuard();
       }
       nutriRecipeState.mode = 'freesearch';
       nutriRecipeState.freesearchInput = msg.query || '';
@@ -33820,6 +34275,7 @@ initBarcodeEvents();
       var operationId = op.operationId;
       var controller = op.controller;
       nutriRecipeState.activeOperationId = operationId;
+      lpResetCanonicalRenderGuard();
       nutriRecipeState.loading = true;
       nutriRecipeState.error = false;
       nutriRecipeState.errorText = '';
@@ -33886,6 +34342,20 @@ initBarcodeEvents();
         return;
       }
       // loading bleibt true bis Rezept vollständig aufbereitet ist.
+      if (data) {
+        // Falscher Coach-Handoff (Gericht ohne Emotion) → wie leere Antwort behandeln.
+        if (data.handoff && typeof data.handoff === 'object'
+            && String(data.handoff.to || '').toLowerCase() === 'coach') {
+          var dishQuery = String(freesearchQuery || (pantryIngredients && pantryIngredients[0]) || '');
+          var emoDish = (typeof detectEmotionalBlockade === 'function')
+            ? !!detectEmotionalBlockade(dishQuery)
+            : false;
+          if (!emoDish) {
+            console.warn('[NUTRI_RECIPE_DEBUG] FALSE_COACH_HANDOFF_IGNORED_REQUEST', dishQuery);
+            data = null;
+          }
+        }
+      }
       if (data) data = normalizeNutriRecipeResponse(data);
       // FIX v3: Eigenrezept (Kachel "Freie Rezeptsuche") -> Nutzer-Zutaten/-Schritte 1:1 erzwingen.
       if (data && mode === 'freesearch' && freesearchQuery && looksLikeNutriStructuredRecipeInput(freesearchQuery)) {
@@ -34344,19 +34814,48 @@ initBarcodeEvents();
     // ---- Reine Berechnungsfunktionen (kein DOM-Zugriff) - leicht einzeln testbar. ----
 
     // Makros PRO PORTION fuer ein Rezept-Objekt (siehe LOCAL_RECIPE_DB fuer das exakte Format).
+    function clampFrontendMacrosPer100g(name, macros, amountG) {
+      var m = {
+        protein: Math.max(0, Number(macros && macros.protein) || 0),
+        fat: Math.max(0, Number(macros && macros.fat) || 0),
+        netCarbs: Math.max(0, Number(macros && macros.netCarbs) || 0),
+        fiber: Math.max(0, Number(macros && macros.fiber) || 0)
+      };
+      var n = String(name || '');
+      var isMeat = /hack|fleisch|rind|schwein|huhn|hähn|pute|lachs|fisch|beef|pork|tofu/i.test(n);
+      var isOil = /öl|oil|olio|butter|schmalz/i.test(n);
+      var amt = Number(amountG) || 0;
+      if (amt > 0 && amt >= 80 && isMeat && m.protein > Math.max(40, amt * 0.5)) {
+        m.protein = 20; m.fat = Math.min(m.fat || 15, 15); m.netCarbs = 0; m.fiber = 0;
+      } else if (isMeat && m.protein > 35) {
+        m.protein = 20; m.fat = Math.min(m.fat || 15, 15); m.netCarbs = 0; m.fiber = 0;
+      } else if (m.protein > 40 || (!isOil && m.fat > 45) || m.netCarbs > 90) {
+        if (isOil) { m.protein = 0; m.fat = 100; m.netCarbs = 0; m.fiber = 0; }
+        else if (/parmesan|pecorino|grana/i.test(n)) { m.protein = 33; m.fat = Math.min(m.fat || 28, 35); m.netCarbs = 0; }
+        else { m.protein = Math.min(m.protein, 25); m.fat = Math.min(m.fat, 40); m.netCarbs = Math.min(m.netCarbs, 80); }
+      }
+      return m;
+    }
     function calcRecipeMacrosTotal(recipe) {
       var totals = { netCarbs: 0, fat: 0, protein: 0, fiber: 0 };
       if (!recipe || !Array.isArray(recipe.ingredients)) return totals;
+      var meatGrams = 0;
       recipe.ingredients.forEach(function (ing) {
         var amt = Number(ing && ing.amount);
         if (!isFinite(amt) || amt <= 0) return;
+        var name = (ing && (ing.name || ing.displayName)) || '';
+        if (/hack|fleisch|rind|schwein|huhn|hähn|pute|lachs|fisch|beef|pork/i.test(name)) meatGrams += amt;
         var factor = amt / 100;
-        var m = (ing && ing.macrosPer100g) || {};
+        var m = clampFrontendMacrosPer100g(name, (ing && ing.macrosPer100g) || {}, amt);
         totals.netCarbs += (Number(m.netCarbs) || 0) * factor;
         totals.fat += (Number(m.fat) || 0) * factor;
         totals.protein += (Number(m.protein) || 0) * factor;
         totals.fiber += (Number(m.fiber) || 0) * factor;
       });
+      // Protein-Bremse: max. ~35 % der Fleischmasse + 8 g Puffer
+      if (meatGrams > 0 && totals.protein > meatGrams * 0.35 + 8) {
+        totals.protein = meatGrams * 0.20 + Math.min(8, totals.protein * 0.1);
+      }
       return totals;
     }
     function calcRecipeMacrosPerServing(recipe) {
@@ -35088,7 +35587,11 @@ initBarcodeEvents();
         if (r.steps && r.steps.length) {
           shareLines.push('');
           shareLines.push(pick(LBL_RECIPE_PREP_TITLE) + ':');
-          r.steps.forEach(function (step, idx) { shareLines.push((idx + 1) + '. ' + step); });
+          r.steps.forEach(function (step, idx) {
+            var txt = typeof step === 'string' ? step
+              : (step && step.instruction ? step.instruction : '');
+            if (txt) shareLines.push((idx + 1) + '. ' + txt);
+          });
         }
         var shareText = shareLines.join('\n');
         var shareTitle = r.title || 'LabPlate';

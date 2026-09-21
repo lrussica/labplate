@@ -108,6 +108,114 @@ function textHasQuantityMention(text) {
 }
 
 /**
+ * Zutatennamen für Fließtext (Schritte/Analyse): ohne Klammerzusätze und ohne Stückzahl-Prefix.
+ * Listen-displayName bleibt unangetastet — nur Prosa.
+ *
+ * @param {string} displayName
+ * @param {{ pieces?: number|null, isEgg?: boolean }} [opts]
+ * @returns {string}
+ */
+function proseIngredientName(displayName, opts) {
+  const o = opts || {};
+  let name = String(displayName || '').trim();
+  if (!name) return '';
+
+  // Alle Klammerzusätze entfernen: (Größe M, ca. 60 g je), (geräuchert), …
+  name = name.replace(/\s*\([^)]*\)/g, '').trim();
+  // Führende Stück-/Mengenzahl: "2 Eier" → "Eier", "1 Ei" → "Ei"
+  name = name.replace(/^\d+[.,]?\d*\s+/, '').trim();
+  name = name.replace(/\s{2,}/g, ' ').trim();
+
+  const piecesRaw = o.pieces != null ? Number(o.pieces) : null;
+  const pieces = Number.isFinite(piecesRaw) && piecesRaw > 0 ? piecesRaw : null;
+  const eggish = o.isEgg === true || isEggIngredientName(name) || isEggIngredientName(displayName);
+
+  if (eggish) {
+    if (pieces != null && pieces > 1) {
+      name = 'Eier';
+    } else if (pieces === 1) {
+      name = 'Ei';
+    } else if (/^eier\b/i.test(name) || /\beier\b/i.test(name)) {
+      name = 'Eier';
+    } else {
+      name = 'Ei';
+    }
+  }
+
+  return name || String(displayName || '').replace(/\s*\([^)]*\)/g, '').trim();
+}
+
+/**
+ * Glättet Artikel/Numerus und Rest-Klammern in Zubereitungstexten.
+ * Beispiel: "die Ei …" → "die Eier …"
+ */
+function smoothProseIngredientGrammar(text) {
+  let out = String(text == null ? '' : text);
+
+  // Restliche Zutaten-Klammern im Fließtext entfernen
+  out = out.replace(/\(\s*(?:Größe|Groesse|Size)\s*[^)]*\)/gi, '');
+  out = out.replace(/\(\s*ca\.\s*\d+[.,]?\d*\s*(?:g|kg|mg|ml|l)\s*(?:je)?\s*\)/gi, '');
+  out = out.replace(
+    /\(\s*(?:geräuchert|geraeuchert|smoked|frisch|fresh|gehackt|geschnitten|in\s+Würfel[^)]*|gewürfelt|in\s+Scheiben[^)]*)\s*\)/gi,
+    ''
+  );
+  // Generisch: Klammer direkt hinter typischem Zutatennamen
+  out = out.replace(
+    /\b(Ei|Eier|Speck|Bacon|Avocado|Lachs|Schinken|Tomaten?|Zwiebeln?|Karotten?|Sellerie|Olivenöl|Hackfleisch)\s*\([^)]*\)/gi,
+    '$1'
+  );
+
+  // Technische Annotations-Klammern am Schrittende:
+  // "( Zwiebel + Karotte + Sellerie + Olivenöl)" / "(Zwiebel, Karotte und Sellerie)"
+  out = out.replace(/\s*\(([^)]*)\)\s*([.!?])?\s*$/g, function (_full, inner, punct) {
+    const t = String(inner || '').trim();
+    if (!t) return punct || '';
+    // Zutaten-Verknüpfungen / Listen in Klammern → entfernen
+    if (/[+/]/.test(t)) return punct || '';
+    if (/,/.test(t) && !/\d/.test(t)) return punct || '';
+    if (/\bund\b/i.test(t) && !/\d/.test(t) && t.length <= 100) return punct || '';
+    const toks = t.split(/[\s+,;/&]+/).filter(Boolean);
+    if (toks.length >= 2 && !/\d/.test(t) &&
+        toks.every(function (w) { return /^[A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß\-]*$/i.test(w); })) {
+      return punct || '';
+    }
+    return '(' + inner + ')' + (punct || '');
+  });
+
+  // Artikel/Numerus für Eier
+  out = out.replace(/\b([Dd]ie)\s+Ei\b/g, '$1 Eier');
+  out = out.replace(/\b([Dd]as)\s+Eier\b/g, function (_m, art) {
+    return (art === 'Das' ? 'Die' : 'die') + ' Eier';
+  });
+  out = out.replace(/\b([Dd]en)\s+Ei\b/g, function (_m, art) {
+    return (art === 'Den' ? 'Das' : 'das') + ' Ei';
+  });
+  out = out.replace(/\b([Ee]in)\s+Eier\b/g, 'Eier');
+  out = out.replace(/\b([Ee]inem)\s+Eier\b/g, '$1 Ei');
+  out = out.replace(/\b([Dd]er)\s+Eier\b/g, function (_m, art) {
+    return (art === 'Der' ? 'Die' : 'die') + ' Eier';
+  });
+
+  // Femininum Brust: „Den Hähnchenbrust“ → „Die Hähnchenbrust“
+  out = out.replace(/\b([Dd])en\s+((?:H[äa]hnchen|Puten|Truthahn)?brust)\b/g, function (_m, d, noun) {
+    return (d === 'D' ? 'Die' : 'die') + ' ' + noun;
+  });
+  // Adjektiv nach zum/den: „zum laktosefreier X“ → „zum laktosefreien X“
+  out = out.replace(/\b(zum|den|einem)\s+laktosefreier\b/gi, function (_m, prep) {
+    return prep + ' laktosefreien';
+  });
+  out = out.replace(/\b(zum|den|einem)\s+laktosefreie\b/gi, function (_m, prep) {
+    return prep + ' laktosefreien';
+  });
+
+  // Führende Stückzahl vor Ei/Eier im Satz entfernen ("die 2 Eier" → "die Eier")
+  out = out.replace(/\b(\d+[.,]?\d*)\s+(Eier|Ei)\b/gi, '$2');
+
+  out = out.replace(/\s{2,}/g, ' ').replace(/\s+([.,;:!?])/g, '$1').trim();
+  return out;
+}
+
+/**
  * Ersetzt {0001} durch Anzeige-Token aus der Zutatenliste.
  * @param {string} text
  * @param {object} ingredientsById
@@ -120,14 +228,26 @@ function resolvePlaceholders(text, ingredientsById, opts) {
   out = out.replace(/\{(\d{4})\}/g, function (_m, id) {
     const ing = byId[id];
     if (!ing) return '{' + id + '}';
-    const name = String(ing.name || '').trim();
-    if (nameOnly) return name || '{' + id + '}';
+    const rawName = String(ing.name || '').trim();
+    if (nameOnly) {
+      const pieces = ing._culinary_amount != null ? ing._culinary_amount
+        : (ing._prosePieces != null ? ing._prosePieces : null);
+      const clean = proseIngredientName(rawName, {
+        pieces: pieces,
+        isEgg: !!(ing._discrete && isEggIngredientName(rawName)) || isEggIngredientName(rawName),
+      });
+      return clean || '{' + id + '}';
+    }
+    const name = rawName;
     const amount = ing.amount;
     const unit = ing.unit || '';
     if (amount == null || amount === 0) return name;
     // Leerzeichen zwischen amount und unit — verhindert "85g" und Klebe-Effekte.
     return String(amount) + (unit ? ' ' + unit : '') + ' ' + name;
   });
+  if (nameOnly) {
+    out = smoothProseIngredientGrammar(out);
+  }
   // Benachbarte Expansionen trennen: "…Milch85 g …" / "…Milch85gAvocado"
   out = out.replace(/([A-Za-zÄÖÜäöüß)])(?=\d)/g, '$1 ');
   out = out.replace(/([a-zäöüß])(?=[A-ZÄÖÜ])/g, '$1 ');
@@ -157,7 +277,11 @@ function resolvePlaceholders(text, ingredientsById, opts) {
       );
     }
   });
-  return out.replace(/\s+/g, ' ').trim();
+  out = out.replace(/\s+/g, ' ').trim();
+  if (nameOnly) {
+    out = smoothProseIngredientGrammar(out);
+  }
+  return out;
 }
 
 /**
@@ -219,66 +343,277 @@ function validateNoFreeNumbersInProse(steps, garnish, chefAnalysis, ingredients)
     problems.push("garnish enthält eine freie Mengen-Zahl statt Platzhalter: '" + garnish + "'");
   }
 
+  // Freie Nährwert-Zahlen in chef_analysis (nicht {id}-Referenzen)
   if (chefAnalysis && /\d+[.,]?\d*\s*(g|kcal|kg)\b/i.test(chefAnalysis)) {
     problems.push(
       "chef_analysis enthält eine eigene Zahl statt Verweis auf 'nutrition': '" + chefAnalysis + "'"
     );
   }
 
-  validateChefAnalysisPlaceholderMisuse(chefAnalysis).problems.forEach(function (p) {
-    problems.push(p);
-  });
-
   const validIds = {};
   (ingredients || []).forEach(function (ing) {
     if (ing && ing.id) validIds[String(ing.id)] = true;
   });
-  let allText = list.map(function (s) { return (s && s.content) || ''; }).join(' ') + ' ' + (garnish || '');
-  const usedIds = {};
-  const re = /\{(\d{4})\}/g;
-  let m;
-  while ((m = re.exec(allText))) usedIds[m[1]] = true;
 
-  const unknown = Object.keys(usedIds).filter(function (id) { return !validIds[id]; });
+  // Platzhalter in steps + garnish + chef_analysis (Zutat-Referenz OK, Nährwert-Missbrauch nicht)
+  const stepsText = list.map(function (s) { return (s && s.content) || ''; }).join(' ');
+  const fieldTexts = [
+    { name: 'steps', text: stepsText },
+    { name: 'garnish', text: garnish || '' },
+    { name: 'chef_analysis', text: chefAnalysis || '' },
+  ];
+  fieldTexts.forEach(function (ft) {
+    validatePlaceholdersInText(ft.text, ft.name, validIds).forEach(function (p) {
+      problems.push(p);
+    });
+  });
+
+  // Unbekannte IDs: alle Felder (inkl. chef_analysis)
+  let allText = fieldTexts.map(function (ft) { return ft.text; }).join(' ');
+  const usedIdsAnywhere = {};
+  const reAnywhere = /\{([a-zA-Z0-9_-]+)\}/g;
+  let mAnywhere;
+  while ((mAnywhere = reAnywhere.exec(allText))) usedIdsAnywhere[mAnywhere[1]] = true;
+
+  const unknown = Object.keys(usedIdsAnywhere).filter(function (id) { return !validIds[id]; });
   if (unknown.length) problems.push('Referenzierte ingredient_ids ohne Zutateneintrag: ' + unknown.join(', '));
 
-  const unused = Object.keys(validIds).filter(function (id) { return !usedIds[id]; });
-  if (unused.length) problems.push('Zutaten nie referenziert (evtl. überflüssig): ' + unused.join(', '));
+  // Nutzungspflicht: nur Zubereitung (steps + garnish). chef_analysis allein zählt NICHT —
+  // sonst landen Eier/Hauptzutaten in der Liste, ohne dass die Schritte sagen, was damit passiert.
+  const usedInPrep = {};
+  const prepText = stepsText + ' ' + (garnish || '');
+  const rePrep = /\{([a-zA-Z0-9_-]+)\}/g;
+  let mPrep;
+  while ((mPrep = rePrep.exec(prepText))) usedInPrep[mPrep[1]] = true;
+  // Auch ingredientIds an Step-Objekten zählen
+  list.forEach(function (s) {
+    const ids = (s && (s.ingredientIds || s.ingredient_ids)) || [];
+    if (Array.isArray(ids)) {
+      ids.forEach(function (id) {
+        if (id != null && String(id)) usedInPrep[String(id)] = true;
+      });
+    }
+  });
+
+  const unusedMain = [];
+  (ingredients || []).forEach(function (ing) {
+    if (!ing || !ing.id) return;
+    const id = String(ing.id);
+    if (usedInPrep[id]) return;
+    if (isExemptFromUsageRequirement(ing)) return;
+    unusedMain.push(id);
+  });
+  if (unusedMain.length) {
+    problems.push('Zutaten nie referenziert (evtl. überflüssig): ' + unusedMain.join(', '));
+  }
 
   return { ok: problems.length === 0, problems: problems };
 }
 
 /**
- * chef_analysis: {ingredient_id}-Platzhalter nur zur Benennung von Zutaten —
- * niemals als Ersatz für Nährwert-Zahlen ("{0001} g Protein").
+ * Kontextabhängige Platzhalter-Prüfung.
+ * Erlaubt: „{0003} unterheben“ / „Die Zutat {0003} …“
+ * Verboten: „{0003} kcal“, „{0003} g Protein“, „{0003}%“
  */
-function validateChefAnalysisPlaceholderMisuse(chefAnalysis) {
+function validatePlaceholdersInText(text, fieldName, validIds) {
   const problems = [];
-  const text = String(chefAnalysis || '');
-  if (!text) return { ok: true, problems: problems };
+  const raw = String(text || '');
+  if (!raw) return problems;
+  const ids = validIds || {};
+  const re = /\{([a-zA-Z0-9_-]+)\}/g;
+  let m;
+  const seenNutrient = {};
+  const seenUnknown = {};
+  while ((m = re.exec(raw))) {
+    const id = m[1];
+    if (!ids[id]) {
+      if (!seenUnknown[id]) {
+        seenUnknown[id] = true;
+        problems.push(fieldName + ' verwendet unbekannte Zutat: {' + id + '}');
+      }
+    }
+    const after = raw.slice(m.index + m[0].length, m.index + m[0].length + 48);
+    // Nur direkter Nährwert-/Mengen-Kontext nach dem Platzhalter
+    if (/^\s*(?:kcal|g\b|kg\b|ml\b|l\b|%|protein\b|fett\b|kohlenhydrate\b|kohlenhydraten\b|kalorien\b|netto-?kh\b)/i.test(after)) {
+      if (!seenNutrient[id]) {
+        seenNutrient[id] = true;
+        problems.push(
+          fieldName + ' verwendet {' + id + '} als Zahlen- oder Nährwertplatzhalter — ' +
+          'Platzhalter nur als Zutatreferenz, nie vor kcal/g/ml/%/Protein/Fett/KH.'
+        );
+      }
+    }
+  }
+  return problems;
+}
 
-  const nutrientToken = '(?:Protein|Fett|kcal|Kohlenhydrate|Kalorien|Netto-?KH|\\bKH\\b)';
-  const patterns = [
-    /\{(\d{4})\}\s*(?:g|kcal|kg)\b/gi,
-    new RegExp('\\{(\\d{4})\\}.{0,15}' + nutrientToken, 'gi'),
-    new RegExp(nutrientToken + '.{0,15}\\{(\\d{4})\\}', 'gi'),
-  ];
+/** @deprecated Alias – nutzt validatePlaceholdersInText (Nährwert-Missbrauch). */
+function validateChefAnalysisPlaceholderMisuse(chefAnalysis, ingredients) {
+  const validIds = {};
+  (ingredients || []).forEach(function (ing) {
+    if (ing && ing.id) validIds[String(ing.id)] = true;
+  });
+  // Ohne ingredients-Liste: nur Nährwert-Missbrauch prüfen (IDs als bekannt annehmen)
+  const text = String(chefAnalysis || '');
+  const problems = [];
+  const re = /\{([a-zA-Z0-9_-]+)\}/g;
+  let m;
   const seen = {};
-  patterns.forEach(function (re) {
-    let m;
-    re.lastIndex = 0;
-    while ((m = re.exec(text))) {
-      const id = m[1];
-      if (!id || seen[id]) continue;
-      seen[id] = true;
+  while ((m = re.exec(text))) {
+    const id = m[1];
+    const after = text.slice(m.index + m[0].length, m.index + m[0].length + 48);
+    if (/^\s*(?:kcal|g\b|kg\b|ml\b|l\b|%|protein\b|fett\b|kohlenhydrate\b|kohlenhydraten\b|kalorien\b|netto-?kh\b)/i.test(after)) {
+      if (!seen[id]) {
+        seen[id] = true;
+        problems.push(
+          'chef_analysis missbraucht Zutat-Platzhalter {' + id + '} als Nährwert-Referenz — ' +
+          'Platzhalter sind nur für Zutatennamen zulässig, nicht für Zahlen.'
+        );
+      }
+    }
+  }
+  return { ok: problems.length === 0, problems: problems };
+}
+
+/**
+ * Auto-Repair: {id} g Protein / {id} kcal → qualitative Formulierungen.
+ */
+function repairChefAnalysisPlaceholderMisuse(chefAnalysis) {
+  let t = String(chefAnalysis || '');
+  if (!t) return t;
+  t = t.replace(/\{(\d{4})\}\s*g\s*Protein\b/gi, 'reichlich Protein');
+  t = t.replace(/\{(\d{4})\}\s*g\s*Fett\b/gi, 'passendes Fett');
+  t = t.replace(/\{(\d{4})\}\s*g\s*(?:Netto-?KH|Kohlenhydrate|KH)\b/gi, 'moderate Kohlenhydrate');
+  t = t.replace(/\{(\d{4})\}\s*kcal\b/gi, 'eine passende Energiemenge');
+  t = t.replace(/\{(\d{4})\}\s*%/gi, 'einem Anteil');
+  t = t.replace(/\{(\d{4})\}\s*(?:g|kg|ml|l)\b/gi, 'dieser Zutat');
+  t = t.replace(/\s{2,}/g, ' ').trim();
+  return t;
+}
+
+function isExemptFromUsageRequirement(ing) {
+  if (!ing) return true;
+  if (ing.optional === true) return true;
+  const role = String(ing.culinaryRole || ing.role || '').toLowerCase();
+  if (role === 'seasoning' || role === 'garnish') return true;
+  const unit = String(ing.unit || '').toLowerCase();
+  if (unit === 'prise' || unit === 'messerspitze') return true;
+  if (isSeasoningSaltOrPepperName(ing.name)) return true;
+  const n = String(ing.name || '').toLowerCase();
+  if (/^(zimt|curry|paprika\s*pulver|muskat|oregano|basilikum|thymian|dill|petersilie)\b/i.test(n)) return true;
+  return false;
+}
+
+/** Salz/Pfeffer als Gewürz — nicht „ungesalzen“, „salzarm“, Nussöle etc. */
+function isSeasoningSaltOrPepperName(name) {
+  const n = String(name || '').toLowerCase();
+  if (!n) return false;
+  if (/ungesalz|salzarm|salzfrei|ohne\s+salz|wenig\s+salz/.test(n)) return false;
+  if (/(?:^|[^a-zäöüß])pfeffer(?:[^a-zäöüß]|$)/.test(n)) return true;
+  // „Salz“, „Meersalz“, „Salz (jodiert)“ — nicht Teilwort in ungesalzen
+  if (/(?:^|[^a-zäöüß])(?:meer)?salz(?:[^a-zäöüß]|$)/.test(n)) return true;
+  return false;
+}
+
+/**
+ * Gerichtskonzept aus Suchbegriff: Pflicht-Zutatenfamilien (gegen Titel-Drift).
+ * z.B. „Joghurt und Nüsse“ → Rezept muss Joghurt + Nuss enthalten, nicht Hähnchen+Hafer.
+ */
+const DISH_CONCEPT_FAMILIES = [
+  {
+    id: 'yogurt',
+    label: 'Joghurt',
+    queryRe: /joghurt|yogurt|yoghurt|skyr/i,
+    needRe: /joghurt|yogurt|yoghurt|skyr/i,
+  },
+  {
+    id: 'nuts',
+    label: 'Nüsse',
+    queryRe: /n[uü]sse?\b|nuts?\b|mandeln?|cashews?|waln[uü]sse?|haseln[uü]sse?|pistazien?|pecans?/i,
+    needRe: /n[uü]ss|nüsse|nusse|mandel|cashew|walnuss|haselnuss|pistazie|pecan|erdnuss/i,
+  },
+  {
+    id: 'egg',
+    label: 'Ei',
+    queryRe: /r[uü]hrei|\beier?\b|scrambled\s+egg/i,
+    needRe: /(?:^|[^a-zäöüß])ei(?:er)?(?:[^a-zäöüß]|$)/i,
+  },
+  {
+    id: 'salmon',
+    label: 'Lachs',
+    queryRe: /lachs|salmon|räucherlachs|raeucherlachs/i,
+    needRe: /lachs|salmon/i,
+  },
+  {
+    id: 'pasta',
+    label: 'Pasta',
+    queryRe: /pasta|nudeln?|spaghetti|penne|fusilli/i,
+    needRe: /pasta|nudel|spaghetti|penne|fusilli|macaroni/i,
+  },
+];
+
+function ingredientMatchesDishNeed(ingName, needRe, familyId) {
+  const n = String(ingName || '').toLowerCase();
+  if (!n || !needRe.test(n)) return false;
+  if (familyId === 'nuts' && isFatOrOilLikeName(n)) return false;
+  if (familyId === 'egg' && /eiweiss|eiweiß|eiweis/.test(n)) return false;
+  return true;
+}
+
+/**
+ * @param {object} recipe
+ * @param {string} dishQuery Suchbegriff / Gerichtstitel vom Nutzer
+ * @returns {{ ok: boolean, problems: string[], missing: string[] }}
+ */
+function validateDishConceptFidelity(recipe, dishQuery) {
+  const problems = [];
+  const missing = [];
+  const q = String(dishQuery || '').trim();
+  if (!q) return { ok: true, problems: problems, missing: missing };
+
+  const ingredients = Array.isArray(recipe && recipe.ingredients) ? recipe.ingredients : [];
+  const names = ingredients.map(function (ing) { return String((ing && ing.name) || ''); });
+  const blob = names.join('\n');
+
+  DISH_CONCEPT_FAMILIES.forEach(function (fam) {
+    if (!fam.queryRe.test(q)) return;
+    const hit = names.some(function (nm) {
+      return ingredientMatchesDishNeed(nm, fam.needRe, fam.id);
+    });
+    if (!hit) {
+      missing.push(fam.label);
       problems.push(
-        'chef_analysis missbraucht Zutat-Platzhalter {' + id + '} als Nährwert-Referenz — ' +
-        'Platzhalter sind nur für Zutatennamen zulässig, nicht für Zahlen.'
+        "Gerichtskonzept verfehlt: Der Titel verlangt '" + fam.label +
+        "', aber keine passende Zutat ist gelistet. Behalte das Gericht – ersetze nur Allergene, erfinde kein anderes Gericht."
       );
     }
   });
 
-  return { ok: problems.length === 0, problems: problems };
+  // Speziell: Joghurt+Nüsse-Snack darf nicht zu Fleisch- oder Ei-Gericht ohne Nüsse werden
+  if (/joghurt|yogurt/i.test(q) && /n[uü]ss/i.test(q)) {
+    const nutsFam = DISH_CONCEPT_FAMILIES.filter(function (f) { return f.id === 'nuts'; })[0];
+    const hasNuts = names.some(function (nm) {
+      return ingredientMatchesDishNeed(nm, nutsFam.needRe, 'nuts');
+    });
+    const hasMeat = /hähnchen|haehnchen|huhn|pute|rind|schwein|truthahn|fleisch/i.test(blob);
+    const hasEgg = names.some(function (nm) {
+      return ingredientMatchesDishNeed(nm, DISH_CONCEPT_FAMILIES.filter(function (f) { return f.id === 'egg'; })[0].needRe, 'egg');
+    });
+    if (hasMeat && !hasNuts) {
+      problems.push(
+        'Gerichtskonzept verfehlt: „Joghurt und Nüsse“ wurde durch ein Fleischgericht ohne Nüsse ersetzt. ' +
+        'Pflicht: Joghurt (ggf. laktosefrei/Soja) + Nüsse; kein Hähnchen/Fleisch als Ersatzkonzept.'
+      );
+    }
+    if (hasEgg && !hasNuts) {
+      problems.push(
+        'Gerichtskonzept verfehlt: „Joghurt und Nüsse“ wurde durch ein Ei-Gericht ohne Nüsse ersetzt. ' +
+        'Pflicht: Joghurt (ggf. laktosefrei/Soja/Kokos) + Nüsse; kein Ei als Nuss-Ersatz.'
+      );
+    }
+  }
+
+  return { ok: problems.length === 0, problems: problems, missing: missing };
 }
 
 /**
@@ -471,30 +806,28 @@ function validateColdIngredientHeatSequence(recipe) {
   return { ok: problems.length === 0, problems: problems };
 }
 
-/** Hauptprotein-Keywords (Fleisch, Ei, Hülsenfrüchte, …) — immer zählen. */
+/** Hauptprotein-Keywords → main_protein / secondary_protein (Fallback-Klassifizierung). */
 const PROTEIN_KEYWORDS_CORE = [
   'hähnchen', 'haehnchen', 'huhn', 'pute', 'rind', 'schwein', 'lachs', 'thunfisch', 'fisch',
   'ei', 'eier', 'tofu', 'quark', 'hüttenkäse', 'huettenkaese', 'linsen', 'kichererbsen',
-  'bohnen', 'protein', 'whey', 'seitan', 'tempeh', 'garnelen', 'krabben', 'truthahn',
-  'speck', 'joghurt', 'yogurt',
+  'bohnen', 'seitan', 'tempeh', 'garnelen', 'krabben', 'truthahn', 'speck',
 ];
 
-/**
- * Käse / Nüsse / Samen — nur bei nennenswerter Menge (≥ PROTEIN_SUBSTANTIAL_G).
- * Ein Spritzer Parmesan oder 5 g Topping zählt nicht als Hauptproteinquelle (Regel 4).
- */
+/** Käse ≥ PROTEIN_SUBSTANTIAL_G → secondary_protein; Nüsse/Samen → topping (nie primary). */
 const PROTEIN_KEYWORDS_SUBSTANTIAL = [
-  // Käse (inkl. Oberbegriff + Sorten)
   'käse', 'kaese', 'gouda', 'cheddar', 'mozzarella', 'parmesan', 'feta', 'ricotta',
   'camembert', 'frischkäse', 'frischkaese', 'frischkase', 'mascarpone', 'schmand',
-  // Nüsse / Samen
-  'nüsse', 'nusse', 'nuss', 'mandeln', 'mandel', 'cashew', 'walnüsse', 'walnusse', 'walnuss',
-  'erdnüsse', 'erdnusse', 'erdnuss', 'haselnuss', 'haselnüsse',
-  'sonnenblumenkerne', 'kürbiskerne', 'kuerbiskerne', 'chiasamen', 'chia-samen',
-  'leinsamen', 'leinsaat', 'pistazie', 'pistazien', 'pecan',
 ];
 
 const PROTEIN_SUBSTANTIAL_G = 30;
+
+const PRIMARY_PROTEIN_ROLES = ['main_protein', 'secondary_protein', 'protein_supplement'];
+
+const CULINARY_ROLES = [
+  'main_protein', 'secondary_protein', 'protein_supplement', 'base', 'carbohydrate',
+  'vegetable', 'fruit', 'fat_source', 'topping', 'garnish', 'seasoning', 'liquid',
+  'binder', 'sweetener',
+];
 
 function ingredientAmountGrams(ing) {
   const amount = Number(ing && ing.amount);
@@ -502,7 +835,6 @@ function ingredientAmountGrams(ing) {
   const unit = String((ing && ing.unit) || '').toLowerCase();
   if (unit === 'prise' || unit === 'messerspitze') return 0;
   if (unit === 'stk') return amount * 60;
-  // g / ml näherungsweise 1:1 fuer Heuristik
   return amount;
 }
 
@@ -515,59 +847,160 @@ function nameMatchesProteinKeyword(nameLower, kw) {
   if (kw === 'ei' || kw === 'eier') {
     if (!/(?:^|[^a-zäöüß])ei(?:er)?(?:[^a-zäöüß]|$)/i.test(nameLower)) return false;
   }
-  // Nuss-/Samen-Stems nicht in Ölen/Milch (Erdnussöl, Haselnussmilch, …)
   if (/nuss|nüsse|nusse|mandel|cashew|erdnuss|haselnuss|walnuss|chia|lein/.test(kw) && isFatOrOilLikeName(nameLower)) {
     return false;
   }
   return true;
 }
 
-/**
- * Regel 4 Gegenprobe: Keyword-Heuristik unabhängig vom Modell-Flag.
- * Käse/Nüsse/Samen nur ab PROTEIN_SUBSTANTIAL_G (default 30 g).
- * @returns {{ ok: boolean, found: string[] }}
- */
-function validateMaxProteinSourcesByKeywords(ingredients, proteinSourceKeywords) {
-  const useCustom = Array.isArray(proteinSourceKeywords) && proteinSourceKeywords.length;
-  const core = useCustom ? proteinSourceKeywords : PROTEIN_KEYWORDS_CORE;
-  const substantial = useCustom ? [] : PROTEIN_KEYWORDS_SUBSTANTIAL;
-  const found = [];
-
-  (ingredients || []).forEach(function (ing) {
-    const name = String((ing && ing.name) || '');
-    const nameLower = name.toLowerCase();
-    if (!nameLower) return;
-    if (nameLower.indexOf('eiweiss') >= 0 || nameLower.indexOf('eiweiß') >= 0) return;
-
-    let matched = false;
-    for (let i = 0; i < core.length; i++) {
-      if (nameMatchesProteinKeyword(nameLower, core[i])) {
-        matched = true;
-        break;
-      }
-    }
-    if (!matched) {
-      for (let i = 0; i < substantial.length; i++) {
-        if (!nameMatchesProteinKeyword(nameLower, substantial[i])) continue;
-        if (ingredientAmountGrams(ing) < PROTEIN_SUBSTANTIAL_G) continue;
-        matched = true;
-        break;
-      }
-    }
-    if (matched && found.indexOf(name) < 0) found.push(name);
-  });
-
-  return { ok: found.length <= 2, found: found };
+function isNutOrSeedName(nameLower) {
+  if (!nameLower) return false;
+  if (isFatOrOilLikeName(nameLower)) return false;
+  return /n[uü]ss|nüsse|nusse|mandel|cashew|walnuss|haselnuss|erdnuss|pistazie|pecan|sonnenblumenkern|kürbiskern|kuerbiskern|chiasamen|leinsamen|leinsaat|pinienkern/.test(nameLower);
 }
 
-function validateRecipeV2(recipe) {
+function isYogurtBaseName(nameLower) {
+  return /joghurt|yogurt|yoghurt|skyr/.test(nameLower);
+}
+
+function isProteinSupplementName(nameLower) {
+  return /protein\s*-?\s*pulver|proteinpulver|whey|casein|erbsen\s*-?\s*protein|pea\s*protein|protein\s*powder/.test(nameLower);
+}
+
+/**
+ * Inferiert culinaryRole; Keywords nur als Fallback.
+ * Nüsse/Samen → topping; Joghurt → base; Fleisch/Ei/Tofu → main_protein; Pulver → protein_supplement.
+ */
+function inferCulinaryRole(ing) {
+  if (!ing || typeof ing !== 'object') return 'vegetable';
+  const explicit = String(ing.culinaryRole || ing.role || '').toLowerCase().trim();
+  if (explicit && CULINARY_ROLES.indexOf(explicit) >= 0) return explicit;
+
+  const nameLower = String(ing.name || '').toLowerCase();
+  if (!nameLower) return 'vegetable';
+  const unit = String(ing.unit || '').toLowerCase();
+  const grams = ingredientAmountGrams(ing);
+
+  if (unit === 'prise' || unit === 'messerspitze' || isSeasoningSaltOrPepperName(ing.name)) return 'seasoning';
+  if (isProteinSupplementName(nameLower)) return 'protein_supplement';
+  if (isNutOrSeedName(nameLower)) return 'topping';
+  if (isYogurtBaseName(nameLower)) return 'base';
+  if (/[oö]l\b|oel\b|butter\b|ghee\b/.test(nameLower)) return 'fat_source';
+  if (/wasser|brühe|bruehe|fond|wein\b/.test(nameLower)) return 'liquid';
+  if (/hafer|pasta|nudel|reis|brot|quinoa|couscous|mehl/.test(nameLower)) return 'carbohydrate';
+  if (/apfel|banane|beere|obst|frucht/.test(nameLower)) return 'fruit';
+  if (/zucker|honig|sirup|süß|suess/.test(nameLower)) return 'sweetener';
+
+  for (let i = 0; i < PROTEIN_KEYWORDS_CORE.length; i++) {
+    if (nameMatchesProteinKeyword(nameLower, PROTEIN_KEYWORDS_CORE[i])) return 'main_protein';
+  }
+  for (let i = 0; i < PROTEIN_KEYWORDS_SUBSTANTIAL.length; i++) {
+    if (!nameMatchesProteinKeyword(nameLower, PROTEIN_KEYWORDS_SUBSTANTIAL[i])) continue;
+    if (grams >= PROTEIN_SUBSTANTIAL_G) return 'secondary_protein';
+    return 'topping';
+  }
+  if (/gemüse|spinat|paprika|zucchini|tomate|salat|gurke|brokkoli/.test(nameLower)) return 'vegetable';
+  return 'vegetable';
+}
+
+function countsAsPrimaryProteinSource(ing) {
+  if (!ing) return false;
+  if (ing.countsAsPrimaryProteinSource === true) return true;
+  if (ing.countsAsPrimaryProteinSource === false) return false;
+  const role = inferCulinaryRole(ing);
+  return PRIMARY_PROTEIN_ROLES.indexOf(role) >= 0;
+}
+
+/**
+ * Setzt culinaryRole + countsAsPrimaryProteinSource + protein_source konsistent.
+ * @returns {{ primary: object[], corrections: string[] }}
+ */
+function applyCulinaryRoleInference(ingredients) {
+  const corrections = [];
+  const primary = [];
+  (ingredients || []).forEach(function (ing) {
+    if (!ing || typeof ing !== 'object') return;
+    const role = inferCulinaryRole(ing);
+    const primaryFlag = PRIMARY_PROTEIN_ROLES.indexOf(role) >= 0;
+    // Explizites false vom Modell respektieren nur wenn Rolle nicht klar primary ist
+    let counts = primaryFlag;
+    if (ing.countsAsPrimaryProteinSource === false && !primaryFlag) counts = false;
+    if (ing.countsAsPrimaryProteinSource === true && primaryFlag) counts = true;
+    // Nüsse/Joghurt/Base/Topping nie als primary erzwingen
+    if (role === 'topping' || role === 'base' || role === 'fat_source' || role === 'seasoning' ||
+        role === 'garnish' || role === 'carbohydrate') {
+      counts = false;
+    }
+    if (role === 'protein_supplement' || role === 'main_protein' || role === 'secondary_protein') {
+      counts = true;
+    }
+
+    const prevRole = ing.culinaryRole || ing.role;
+    const prevFlag = !!ing.protein_source;
+    ing.culinaryRole = role;
+    ing.role = role;
+    ing.countsAsPrimaryProteinSource = counts;
+    ing.protein_source = counts;
+    if (prevFlag !== counts) {
+      corrections.push(String(ing.name || '') + ': protein_source ' + prevFlag + '→' + counts + ' (role=' + role + ')');
+    } else if (prevRole && String(prevRole) !== role) {
+      corrections.push(String(ing.name || '') + ': role ' + prevRole + '→' + role);
+    }
+    if (counts) primary.push(ing);
+  });
+  return { primary: primary, corrections: corrections };
+}
+
+/**
+ * Max. 2 primäre Proteinquellen — nach kulinarischer Rolle, nicht Keyword-Rohzählung.
+ * @returns {{ ok: boolean, found: string[], primary: object[], corrections: string[] }}
+ */
+function validateMaxProteinSourcesByKeywords(ingredients, proteinSourceKeywords) {
+  // proteinSourceKeywords: Legacy-Override (Tests) — dann alte Keyword-Logik
+  if (Array.isArray(proteinSourceKeywords) && proteinSourceKeywords.length) {
+    const found = [];
+    (ingredients || []).forEach(function (ing) {
+      const name = String((ing && ing.name) || '');
+      const nameLower = name.toLowerCase();
+      if (!nameLower) return;
+      for (let i = 0; i < proteinSourceKeywords.length; i++) {
+        if (nameMatchesProteinKeyword(nameLower, proteinSourceKeywords[i])) {
+          if (found.indexOf(name) < 0) found.push(name);
+          break;
+        }
+      }
+    });
+    return { ok: found.length <= 2, found: found, primary: [], corrections: [] };
+  }
+
+  const applied = applyCulinaryRoleInference(ingredients);
+  const found = applied.primary.map(function (ing) { return String(ing.name || ''); });
+  return {
+    ok: found.length <= 2,
+    found: found,
+    primary: applied.primary,
+    corrections: applied.corrections,
+  };
+}
+
+function validateRecipeV2(recipe, opts) {
   const result = new ValidationResult();
+  const o = opts && typeof opts === 'object' ? opts : {};
   const r = recipe && typeof recipe === 'object' ? recipe : {};
   const nutrition = r.nutrition || {};
   const ingredients = Array.isArray(r.ingredients) ? r.ingredients : [];
   const steps = Array.isArray(r.steps) ? r.steps : [];
   const garnish = typeof r.garnish === 'string' ? r.garnish : '';
-  const chefAnalysis = typeof r.chef_analysis === 'string' ? r.chef_analysis : '';
+  let chefAnalysis = typeof r.chef_analysis === 'string' ? r.chef_analysis : '';
+  // Auto-Repair vor Validierung: {id} g Protein → qualitativ (sonst häufige 422-Schleife)
+  if (chefAnalysis) {
+    const repairedChef = repairChefAnalysisPlaceholderMisuse(chefAnalysis);
+    if (repairedChef !== chefAnalysis) {
+      r.chef_analysis = repairedChef;
+      chefAnalysis = repairedChef;
+      result.addWarning('chef_analysis: Platzhalter-Nährwert-Formulierungen qualitativ korrigiert');
+    }
+  }
 
   // Bottom-up: nutrition aus Zutaten erzwingen (kein freies Erfinden von Makros)
   const computed = computeNutritionFromIngredients(ingredients);
@@ -637,34 +1070,17 @@ function validateRecipeV2(recipe) {
     }
   });
 
-  const flagSources = ingredients
-    .filter(function (ing) { return ing && ing.protein_source; })
-    .map(function (ing) { return ing.name; });
-  if (flagSources.length > 2) {
-    result.addError('Mehr als 2 Proteinquellen (protein_source=true): ' + flagSources.join(', '));
+  // Primäre Proteinquellen: kulinarische Rolle (max. 2). Auto-Korrektur, kein Keyword-Rohblock.
+  const primaryInfo = validateMaxProteinSourcesByKeywords(ingredients);
+  if (primaryInfo.corrections && primaryInfo.corrections.length) {
+    console.log('[recipe-v92] culinary_role_corrections ' + primaryInfo.corrections.join(' | '));
+    result.addWarning('protein_source/Rollen korrigiert: ' + primaryInfo.corrections.slice(0, 4).join('; '));
   }
-
-  // Gegenprobe: Keyword-Heuristik unabhängig vom Modell-Flag
-  const kw = validateMaxProteinSourcesByKeywords(ingredients);
-  if (!kw.ok) {
-    result.addError('Mehr als 2 Proteinquellen (Keyword-Heuristik): ' + kw.found.join(', '));
-  }
-  // Flag vs. Keyword-Mismatch (Modell hat protein_source falsch gesetzt)
-  const flagSet = {};
-  flagSources.forEach(function (n) { flagSet[String(n)] = true; });
-  const mislabeled = kw.found.filter(function (n) { return !flagSet[n]; });
-  if (mislabeled.length) {
-    const logMsg = 'Modell hat protein_source möglicherweise falsch gesetzt für: [' + mislabeled.join(', ') + ']' +
-      ' (Flags=' + flagSources.length + ', Keywords=' + kw.found.length + ')';
-    // LLM-Feedback / validation.errors: ohne „möglicherweise“ — unmissverständlich
-    const errMsg = 'Modell hat protein_source falsch gesetzt für: [' + mislabeled.join(', ') + ']' +
-      ' (Flags=' + flagSources.length + ', Keywords=' + kw.found.length + ')';
-    console.log('[recipe-v92] protein_source_mismatch ' + logMsg);
-    if (kw.found.length > 2 || flagSources.length > 2) {
-      if (result.errors.indexOf(errMsg) < 0) result.addError(errMsg);
-    } else if (kw.found.length !== flagSources.length) {
-      result.addError(errMsg);
-    }
+  if (!primaryInfo.ok) {
+    result.addError(
+      'Mehr als 2 primäre Proteinquellen (culinaryRole main/secondary/supplement): ' +
+      primaryInfo.found.join(', ')
+    );
   }
 
   const prose = validateNoFreeNumbersInProse(steps, garnish, chefAnalysis, ingredients);
@@ -701,11 +1117,27 @@ function validateRecipeV2(recipe) {
 
   ingredients.forEach(function (ing) {
     if (!ing) return;
-    const nameLower = String(ing.name || '').toLowerCase();
-    if ((nameLower.indexOf('salz') >= 0 || nameLower.indexOf('pfeffer') >= 0) && ing.unit === 'g') {
+    if (isSeasoningSaltOrPepperName(ing.name) && ing.unit === 'g') {
       result.addError("'" + ing.name + "' ist in Gramm angegeben statt Prise/Messerspitze");
     }
   });
+
+  const dishQuery = o.dishQuery != null ? o.dishQuery
+    : (r._dishQuery != null ? r._dishQuery : '');
+  if (dishQuery) {
+    const fidelity = validateDishConceptFidelity(r, dishQuery);
+    fidelity.problems.forEach(function (p) { result.addError(p); });
+  }
+
+  // Kulinarische Brauchbarkeit (Usage, generische Steps, dishPlan, Flüssigkeit)
+  try {
+    const culinaryUsability = require('./culinary-usability');
+    const cu = culinaryUsability.evaluateCulinaryUsability(r);
+    (cu.errors || []).forEach(function (p) { result.addError(p); });
+    (cu.warnings || []).forEach(function (w) { result.addWarning(w); });
+  } catch (eCu) {
+    result.addWarning('culinary-usability check skipped: ' + (eCu && eCu.message));
+  }
 
   return result;
 }
@@ -721,10 +1153,26 @@ module.exports = {
   stripRedundantBesidePlaceholders: stripRedundantBesidePlaceholders,
   stripQuantityMentionsFromText: stripQuantityMentionsFromText,
   textHasQuantityMention: textHasQuantityMention,
+  proseIngredientName: proseIngredientName,
+  smoothProseIngredientGrammar: smoothProseIngredientGrammar,
   computeNutritionFromIngredients: computeNutritionFromIngredients,
   isEggIngredientName: isEggIngredientName,
   validateNoFreeNumbersInProse: validateNoFreeNumbersInProse,
   validateChefAnalysisPlaceholderMisuse: validateChefAnalysisPlaceholderMisuse,
+  validatePlaceholdersInText: validatePlaceholdersInText,
+  repairChefAnalysisPlaceholderMisuse: repairChefAnalysisPlaceholderMisuse,
+  isSeasoningSaltOrPepperName: isSeasoningSaltOrPepperName,
+  isExemptFromUsageRequirement: isExemptFromUsageRequirement,
+  inferCulinaryRole: inferCulinaryRole,
+  countsAsPrimaryProteinSource: countsAsPrimaryProteinSource,
+  applyCulinaryRoleInference: applyCulinaryRoleInference,
+  validateDishConceptFidelity: validateDishConceptFidelity,
+  evaluateCulinaryUsability: function (recipe) {
+    return require('./culinary-usability').evaluateCulinaryUsability(recipe);
+  },
+  DISH_CONCEPT_FAMILIES: DISH_CONCEPT_FAMILIES,
+  PRIMARY_PROTEIN_ROLES: PRIMARY_PROTEIN_ROLES,
+  CULINARY_ROLES: CULINARY_ROLES,
   validateUnlistedStaplesInProse: validateUnlistedStaplesInProse,
   STAPLE_WHITELIST: STAPLE_WHITELIST,
   COLD_SENSITIVE_STEMS: COLD_SENSITIVE_STEMS,

@@ -6,6 +6,10 @@
  *   POST /api/nutri-recipe   -> Strict-JSON-Schema (siehe nutri-recipe-core.js → labplate-backend/)
  *      STRUCTURED/Eigenrezept: Inhalt fix, nur Struktur + Naehrwert-Anreicherung
  *      GENERATIV/Freisuche/Shopping: kreativ, Mengen an Tagesziele anpassbar
+ *   POST /api/coach/analyze-recipe     -> Rezept-Analyse (Makros, HealthScore)
+ *   POST /api/coach/analyze-ingredients -> Zutaten-Analyse
+ *   POST /api/coach/daily-plan         -> Tagesplan aus Makro-Zielen
+ *   POST /api/coach/alternatives       -> gesuendere Alternativen
  *   POST /api/photo/verify  -> Vision-Check: fertiges Gerichtsfoto vs. Rohzutaten/falsches Motiv
  *   POST /api/food-lookup    -> 1:1-Weiterleitung eines Chat-Completion-Requests an Groq
  *
@@ -32,6 +36,7 @@ const strictPrompt = require('./labplate-backend/strict-prompt');
 const coachRecipe = require('./labplate-backend/coach-recipe');
 const nutriCoach = require('./labplate-backend/nutri-coach');
 const recipeSuggestions = require('./labplate-backend/recipe-suggestions');
+const coachLogic = require('./labplate-backend/coach/logic');
 const { createPhotoVerifyHandlers } = require('./labplate-backend/api/photo-verify');
 
 // ---------------------------------------------------------------------
@@ -236,6 +241,9 @@ app.get('/health', (req, res) => {
     // Deploy-Marker: Root-Entry hat v9.2-Validierung+Retry (nicht nur Render-Display)
     v92PipelineWired: typeof core.generateValidatedRecipe === 'function',
     recipeSchemaVersion: 'v9.2',
+    culinaryUsabilityGate: true,
+    culinaryUsabilityVersion: '1.0.0-market-drive',
+    dishPlanRequiredInSchema: true,
     groq429Diagnostics: true,
     groqDebugKeyRouting: true,
   });
@@ -484,6 +492,80 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
 // Vision-Check (vor Catch-All). GET → kein 404; POST → { isValidDishPhoto, reason }.
 app.get('/api/photo/verify', photoVerify.handlePhotoVerifyGet);
 app.post('/api/photo/verify', limiter, photoVerify.handlePhotoVerify);
+
+// ---- Coach-API (muss auf Render existieren; Client ruft labplate.onrender.com auf) ----
+function mapCoachError(result, res, startedAt, flow) {
+  if (result && result.error === 'invalid_payload') {
+    return res.status(400).json({ error: 'invalid_payload' });
+  }
+  console.warn('[coach] ' + flow + ' rejected', result && result.error, 'ms=' + (Date.now() - startedAt));
+  return res.status(502).json({ error: (result && result.error) || 'coach_unavailable' });
+}
+
+app.post('/api/coach/analyze-recipe', limiter, async (req, res) => {
+  const startedAt = Date.now();
+  const body = req.body && typeof req.body === 'object' ? req.body : {};
+  const recipe = body.recipe || body;
+  if (!recipe || typeof recipe !== 'object') {
+    return res.status(400).json({ error: 'invalid_payload' });
+  }
+  const enrichUsda = body.enrichUsda !== false && body.enrich_usda !== false;
+  try {
+    const result = await coachLogic.analyzeRecipe(recipe, {
+      enrichUsda,
+      timeoutMs: Math.min(REQUEST_TIMEOUT_MS, 20000),
+    });
+    if (result.error) return mapCoachError(result, res, startedAt, 'analyze-recipe');
+    console.log(
+      '[coach/analyze-recipe] OK title="' +
+        String((result.data.recipe && result.data.recipe.title) || '').slice(0, 40) +
+        '" score=' + result.data.healthScore +
+        ' ms=' + (Date.now() - startedAt)
+    );
+    return res.status(200).json(result.data);
+  } catch (err) {
+    console.error('[coach/analyze-recipe] failed', err && err.message ? err.message : err);
+    return res.status(502).json({ error: 'coach_unavailable' });
+  }
+});
+
+app.post('/api/coach/analyze-ingredients', limiter, (req, res) => {
+  const startedAt = Date.now();
+  const body = req.body && typeof req.body === 'object' ? req.body : {};
+  const ingredients = body.ingredients || body;
+  const result = coachLogic.analyzeIngredients(ingredients);
+  if (result.error) return mapCoachError(result, res, startedAt, 'analyze-ingredients');
+  return res.status(200).json(result.data);
+});
+
+app.post('/api/coach/daily-plan', limiter, (req, res) => {
+  const startedAt = Date.now();
+  const body = req.body && typeof req.body === 'object' ? req.body : {};
+  const targets = body.targets || body;
+  const result = coachLogic.generateDailyPlan(targets);
+  if (result.error) return mapCoachError(result, res, startedAt, 'daily-plan');
+  return res.status(200).json(result.data);
+});
+
+app.post('/api/coach/alternatives', limiter, async (req, res) => {
+  const startedAt = Date.now();
+  const body = req.body && typeof req.body === 'object' ? req.body : {};
+  const ingredient = body.ingredient != null ? body.ingredient : body.name;
+  if (ingredient == null || ingredient === '') {
+    return res.status(400).json({ error: 'invalid_payload', message: 'ingredient erforderlich.' });
+  }
+  try {
+    const result = await coachLogic.suggestAlternatives(ingredient, {
+      enrichUsda: body.enrichUsda !== false && body.enrich_usda !== false,
+      timeoutMs: Math.min(REQUEST_TIMEOUT_MS, 15000),
+    });
+    if (result.error) return mapCoachError(result, res, startedAt, 'alternatives');
+    return res.status(200).json(result.data);
+  } catch (err) {
+    console.error('[coach/alternatives] failed', err && err.message ? err.message : err);
+    return res.status(502).json({ error: 'coach_unavailable' });
+  }
+});
 
 // 1:1-Proxy fuer die KI-Lebensmittelsuche (Client baut den Chat-Completion-Request selbst).
 app.post('/api/food-lookup', limiter, async (req, res) => {

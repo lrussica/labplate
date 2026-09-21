@@ -45,7 +45,22 @@ function buildV92GenerativeSchema() {
         enum: ['g', 'ml', 'prise', 'messerspitze', 'stk'],
         description: 'Eier: "stk". Salz/Pfeffer: "prise"|"messerspitze". Sonst g|ml.',
       },
-      protein_source: { type: 'boolean' },
+      protein_source: {
+        type: 'boolean',
+        description:
+          'true nur bei primaerer Proteinquelle (main_protein/secondary_protein/protein_supplement). ' +
+          'Nuesse/Joghurt-Basis: false.',
+      },
+      culinaryRole: {
+        type: 'string',
+        description:
+          'main_protein|secondary_protein|protein_supplement|base|carbohydrate|vegetable|fruit|' +
+          'fat_source|topping|garnish|seasoning|liquid|binder|sweetener',
+      },
+      countsAsPrimaryProteinSource: {
+        type: 'boolean',
+        description: 'Muss mit protein_source uebereinstimmen. Nuesse/topping/base: false.',
+      },
       netCarbs: { type: 'number', description: 'Netto-KH je 100 g/ml (Eier: je 100 g Ei)' },
       fat: { type: 'number' },
       protein: { type: 'number' },
@@ -79,16 +94,20 @@ function buildV92GenerativeSchema() {
       additionalProperties: false,
       required: [
         'title', 'servings', 'prep_time_min', 'nutrition', 'diet_labels', 'target_deviation_note',
-        'ingredients', 'steps', 'garnish', 'chef_analysis',
+        'dishPlan', 'ingredients', 'steps', 'garnish', 'chef_analysis',
       ],
       properties: {
-        title: { type: 'string' },
+        title: {
+          type: 'string',
+          description:
+            'Beschreibt eine erkennbare Speise (z. B. „Protein-Pancakes mit Kokosjoghurt“), ' +
+            'nicht nur „Proteinreicher Snack mit X und Y“.',
+        },
         servings: {
           type: 'number',
           description:
-            'sourceServings: Für WIE VIELE Portionen die ingredients[].amount gelten. ' +
-            'Muss zu den Mengen passen (z.B. 500g Hack ≈ 4–6 Portionen, NICHT servings=1). ' +
-            'Für ein echtes Einzelportion-Rezept: servings=1 UND passende Einzelmengen (z.B. ~120g Fleisch).',
+            'IMMER exakt 1. Alle ingredients[].amount und nutrition gelten NUR für 1 Einzelportion. ' +
+            'VERBOTEN: Batch/Meal-Prep/Familienmengen. Mehrportionen skaliert nur die App.',
         },
         prep_time_min: { type: 'number' },
         nutrition: {
@@ -108,14 +127,51 @@ function buildV92GenerativeSchema() {
           type: 'string',
           description: 'Leer "" wenn Ziel erreicht; sonst ehrliche Abweichung.',
         },
+        dishPlan: {
+          type: 'object',
+          additionalProperties: false,
+          required: ['dishType', 'texture', 'servingMode', 'cookingMethod', 'requiredActions'],
+          description:
+            'ZUERST festlegen, DANN Zutaten/Schritte. Bestimmt Rezeptart vor Makro-Optimierung.',
+          properties: {
+            dishType: {
+              type: 'string',
+              enum: [
+                'cold_yogurt_oat_bowl',
+                'yogurt_nut_bowl',
+                'oat_egg_pancake',
+                'protein_porridge',
+                'baked_oats',
+                'scrambled_egg_yogurt_bowl',
+                'savory_skillet',
+                'pasta_main',
+                'general_cooked_main',
+                'smoothie_bowl',
+                'salad_bowl',
+              ],
+            },
+            texture: { type: 'string', description: 'z. B. soft, creamy, crispy' },
+            servingMode: { type: 'string', enum: ['warm', 'cold', 'either'] },
+            cookingMethod: {
+              type: 'string',
+              description: 'z. B. pan, boil, bake, no_cook, scramble',
+            },
+            requiredActions: {
+              type: 'array',
+              items: { type: 'string' },
+              description:
+                'Konkrete Aktionen in Reihenfolge, z. B. whisk_eggs, mix_oats, cook_pan, fold_yogurt, serve',
+            },
+          },
+        },
         ingredients: { type: 'array', items: ingredient },
         steps: { type: 'array', items: step },
         garnish: { type: 'string' },
         chef_analysis: {
           type: 'string',
           description:
-            'Qualitativ; {id}-Platzhalter NUR fuer Zutatennamen. ' +
-            'KEINE Naehrwerte als Zahl oder als {id} (z.B. verboten: "{0001} g Protein").',
+            'Qualitativ. {id}-Platzhalter als Zutatreferenz erlaubt ("{0003} bildet die Basis"). ' +
+            'VERBOTEN: "{0003} kcal", "{0003} g Protein", "{0003} g", "{0003}%".',
         },
       },
     },
@@ -158,6 +214,9 @@ function renderRecipeForDisplay(recipe, renderOpts) {
       amount: amount,
       unit: unit,
       protein_source: !!ing.protein_source,
+      culinaryRole: ing.culinaryRole || ing.role || null,
+      countsAsPrimaryProteinSource: !!ing.countsAsPrimaryProteinSource,
+      optional: !!ing.optional,
       netCarbs: Math.max(0, Number(ing.netCarbs) || 0),
       fat: Math.max(0, Number(ing.fat) || 0),
       protein: Math.max(0, Number(ing.protein) || 0),
@@ -198,7 +257,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
 
   // Display-Mapping (stk → g für Makros; Eier-Name kulinarisch).
   // Unplausible KI-Makros/100g sofort klemmen (z.B. Protein 81 bei Hackfleisch).
-  const ingredients = useIngredients.map(function (ing) {
+  let ingredients = useIngredients.map(function (ing) {
     const name = String(ing.displayName || ing.name || 'Zutat').trim().slice(0, 200);
     let amount = Number(ing.amount);
     let unit = ing.unit;
@@ -207,26 +266,64 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     let protein = Math.max(0, Number(ing.protein) || 0);
     let fiber = Math.max(0, Number(ing.fiber) || 0);
     const isOil = /öl|oil|olio|butter|schmalz/i.test(name);
-    if (protein > 40 || (!isOil && fat > 45) || netCarbs > 90) {
-      if (/hack|rind|beef/i.test(name)) {
+    if (protein > 40 || (!isOil && fat > 45) || netCarbs > 90 ||
+        (/hack|fleisch|rind|schwein|huhn|hähn|pute|lachs|fisch|beef|pork/i.test(name) && protein > 35)) {
+      if (/hack|rind|beef|schwein|pork|fleisch|huhn|hähn|pute|lachs|fisch/i.test(name)) {
         protein = 20; fat = Math.min(fat > 0 ? fat : 15, 15); netCarbs = 0; fiber = 0;
       } else if (isOil) {
         protein = 0; fat = 100; netCarbs = 0; fiber = 0;
+      } else if (/parmesan|pecorino|grana/i.test(name)) {
+        protein = Math.min(protein, 35); fat = Math.min(fat > 0 ? fat : 28, 35); netCarbs = 0; fiber = 0;
       } else {
         protein = Math.min(protein, 25);
         fat = Math.min(fat, 40);
         netCarbs = Math.min(netCarbs, 80);
       }
     }
+    // Absolute Proteinmenge als per-100g (z.B. 112 bei 135 g Fleisch)
+    if (/hack|rind|beef|schwein|fleisch|huhn|hähn|pute|lachs|fisch/i.test(name) &&
+        Number.isFinite(amount) && amount >= 80 && protein > Math.max(40, amount * 0.5)) {
+      protein = 20; fat = Math.min(fat > 0 ? fat : 15, 15); netCarbs = 0; fiber = 0;
+    }
     if (unit === 'stk' || (unit == null && isEggIngredient(name))) {
-      const pieces = Number.isFinite(amount) && amount > 0 ? Math.max(1, Math.round(amount)) : 1;
+      let pieces = Number.isFinite(amount) && amount > 0 ? Math.max(1, Math.round(amount)) : 1;
+      // Name kann bereits „10 Eier“ tragen, obwohl amount=1
+      const namePieces = String(name).match(/^\s*(\d+)\s*eier?\b/i);
+      if (namePieces) {
+        pieces = Math.max(pieces, Math.round(Number(namePieces[1])));
+      }
+      if (pieces > portions.SINGLE_PORTION_BASE.eggMaxPieces) {
+        pieces = portions.SINGLE_PORTION_BASE.eggMaxPieces;
+      }
       amount = pieces * 60;
       const displayName = pieces === 1
-        ? (/\bei\b/i.test(name) ? name : '1 Ei (Größe M, ca. 60 g)')
-        : (name.indexOf('Eier') >= 0 ? name : pieces + ' Eier (Größe M, ca. 60 g je)');
+        ? '1 Ei (Größe M, ca. 60 g)'
+        : pieces + ' Eier (Größe M, ca. 60 g je)';
       return {
         name: displayName,
         amount: amount,
+        unit: 'g',
+        status: 'benoetigt',
+        macrosPer100g: { netCarbs: netCarbs, fat: fat, protein: protein, fiber: fiber },
+        _v92_id: ing.id,
+        _protein_source: !!ing.protein_source,
+        _culinary_amount: pieces,
+        _culinary_unit: 'stk',
+        _discrete: true,
+      };
+    }
+    // Eier fälschlich als Gramm + „N Eier“ im Namen
+    if (isEggIngredient(name) && (unit === 'g' || unit === 'kg')) {
+      let grams = unit === 'kg' ? amount * 1000 : amount;
+      let pieces = Number.isFinite(grams) && grams >= 40 ? Math.max(1, Math.round(grams / 60)) : 1;
+      const namePieces = String(name).match(/^\s*(\d+)\s*eier?\b/i);
+      if (namePieces) pieces = Math.max(pieces, Math.round(Number(namePieces[1])));
+      if (pieces > portions.SINGLE_PORTION_BASE.eggMaxPieces) {
+        pieces = portions.SINGLE_PORTION_BASE.eggMaxPieces;
+      }
+      return {
+        name: pieces === 1 ? '1 Ei (Größe M, ca. 60 g)' : (pieces + ' Eier (Größe M, ca. 60 g je)'),
+        amount: pieces * 60,
         unit: 'g',
         status: 'benoetigt',
         macrosPer100g: { netCarbs: netCarbs, fat: fat, protein: protein, fiber: fiber },
@@ -260,6 +357,20 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     };
   });
 
+  // Zweite Sicherheits-Klemme nach Display-Mapping (deckt g-Eier / „10 Eier“-Namen ab)
+  if (scaledOk) {
+    const enforcedDisplay = portions.enforceSinglePortionBaseAmounts(ingredients, {
+      dietLabels: recipe.diet_labels,
+      aiInstruction: o.aiInstruction || recipe.ai_instruction,
+    });
+    if (enforcedDisplay.clamps && enforcedDisplay.clamps.length) {
+      ingredients = enforcedDisplay.ingredients;
+      recipe._eggClampWarnings = (recipe._eggClampWarnings || []).concat(enforcedDisplay.warnings || []);
+    } else {
+      ingredients = enforcedDisplay.ingredients;
+    }
+  }
+
   // Nährwerte nur aus skalierten finalIngredients als Portionswerte ausgeben.
   // Bei unknown: Mengen sind unskaliert → keine scheinbar sichere Portions-Nährwertangabe.
   let protein = 0;
@@ -283,6 +394,16 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     ballaststoffe_g: Math.round(fiber * 10) / 10,
   };
   const finalNutrition = scaledOk ? nutritionFromAmounts : null;
+  if (scaledOk && finalNutrition) {
+    const kcalCheck = portions.validateSinglePortionKcal(finalNutrition, {
+      dietLabels: recipe.diet_labels,
+      aiInstruction: o.aiInstruction || recipe.ai_instruction,
+    });
+    if (kcalCheck.warnings && kcalCheck.warnings.length) {
+      // Warnungen später in portionWarnings mergen
+      recipe._singlePortionKcalWarnings = kcalCheck.warnings;
+    }
+  }
   console.log('RECIPE_FINAL_NUTRITION', JSON.stringify({
     scaledOk: scaledOk,
     nutrition: finalNutrition,
@@ -291,24 +412,30 @@ function renderRecipeForDisplay(recipe, renderOpts) {
   const byIdForProse = {};
   ingredients.forEach(function (ing) {
     if (!ing || !ing._v92_id) return;
-    let proseName = String(ing.name || '').trim();
-    proseName = proseName.replace(/\(\s*[^)]*\d+[.,]?\d*\s*(g|kg|mg|ml|l|stk)[^)]*\)/gi, '').trim();
-    proseName = proseName.replace(/\(\s*\)/g, '').replace(/\s{2,}/g, ' ').trim() || String(ing.name || '').trim();
+    const pieces = ing._culinary_amount != null ? Number(ing._culinary_amount) : null;
+    const proseName = validator.proseIngredientName(ing.name, {
+      pieces: pieces,
+      isEgg: !!ing._discrete || validator.isEggIngredientName(ing.name),
+    });
     byIdForProse[String(ing._v92_id)] = {
       id: ing._v92_id,
       name: proseName,
       amount: 0,
       unit: '',
+      _culinary_amount: pieces,
+      _discrete: !!ing._discrete,
     };
   });
 
   const steps = (Array.isArray(recipe.steps) ? recipe.steps : []).map(function (s) {
     if (!s || typeof s === 'string') {
       const t = String(s || '').trim();
-      return t ? validator.stripQuantityMentionsFromText(t) : '';
+      if (!t) return '';
+      return validator.smoothProseIngredientGrammar(validator.stripQuantityMentionsFromText(t));
     }
     let content = validator.resolvePlaceholders(s.content || '', byIdForProse, { nameOnly: true });
     content = validator.stripQuantityMentionsFromText(content);
+    content = validator.smoothProseIngredientGrammar(content);
     const title = String(s.title || '').trim();
     const titleLower = title.toLowerCase();
 
@@ -402,13 +529,13 @@ function renderRecipeForDisplay(recipe, renderOpts) {
   const prepMinutes = Math.max(0, declaredPrep > stepTimeSum ? declaredPrep - stepTimeSum : 0);
   const totalMinutes = prepMin;
   let garnish = validator.resolvePlaceholders(recipe.garnish || '', byIdForProse, { nameOnly: true });
-  garnish = validator.stripQuantityMentionsFromText(garnish).slice(0, 400);
+  garnish = validator.smoothProseIngredientGrammar(validator.stripQuantityMentionsFromText(garnish)).slice(0, 400);
   // Keine Schein-Garnitur nur aus Öl/Salz
   if (/^(das\s+)?(olivenöl|öl|salz|pfeffer)\.?$/i.test(String(garnish || '').trim())) {
     garnish = '';
   }
   let note = validator.resolvePlaceholders(recipe.chef_analysis || '', byIdForProse, { nameOnly: true });
-  note = validator.stripQuantityMentionsFromText(note);
+  note = validator.smoothProseIngredientGrammar(validator.stripQuantityMentionsFromText(note));
   if (recipe.target_deviation_note) {
     note = (note ? note + ' ' : '') + String(recipe.target_deviation_note);
   }
@@ -420,6 +547,8 @@ function renderRecipeForDisplay(recipe, renderOpts) {
   });
   const portionWarnings = (portioned.warnings || [])
     .concat(consistency.warnings || [])
+    .concat(recipe._singlePortionKcalWarnings || [])
+    .concat(recipe._eggClampWarnings || [])
     .filter(Boolean);
 
   const shopping = ingredients.map(function (ing) {
@@ -429,18 +558,31 @@ function renderRecipeForDisplay(recipe, renderOpts) {
 
   // Client-Vertrag: servings = finalServings (nach Skalierung), nie stille Lüge.
   const displayServings = finalServings != null ? finalServings : 0;
+  const singlePortionNormalized = !!(
+    portioned.singlePortionNormalized ||
+    (displayServings === 1 && portions.amountsLookLikeSinglePortion &&
+      portions.amountsLookLikeSinglePortion(ingredients))
+  );
+  // Nach erfolgreicher 1-Portions-Normierung: kein Schätz-Banner / Review-Zwang nur wegen inferred
+  const reviewForHint = singlePortionNormalized ? false : requiresReview;
   const safeSingle = portions.canDisplayAsSafeSinglePortion({
     finalServings: displayServings,
-    servingsStatus: servingsStatus,
-    sourceServingsStatus: sourceServingsStatus,
-    requiresReview: requiresReview,
+    servingsStatus: singlePortionNormalized ? portions.SERVINGS_STATUS.VALIDATED : servingsStatus,
+    sourceServingsStatus: singlePortionNormalized
+      ? portions.SOURCE_SERVINGS_STATUS.EXPLICIT
+      : sourceServingsStatus,
+    requiresReview: reviewForHint,
     portionWarnings: portionWarnings,
+    singlePortionNormalized: singlePortionNormalized,
+    finalIngredients: ingredients,
   });
   const portionDisplayHint = portions.getPortionDisplayHint({
     finalServings: displayServings,
     servingsStatus: servingsStatus,
     sourceServingsStatus: sourceServingsStatus,
-    requiresReview: requiresReview,
+    requiresReview: reviewForHint,
+    singlePortionNormalized: singlePortionNormalized,
+    finalIngredients: ingredients,
   });
 
   const out = {
@@ -457,9 +599,10 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     targetServings: targetServings,
     finalServings: displayServings > 0 ? displayServings : null,
     servingsStatus: servingsStatus,
-    requiresReview: requiresReview,
+    requiresReview: singlePortionNormalized ? false : requiresReview,
+    singlePortionNormalized: singlePortionNormalized,
     scalingFactor: portioned.scalingFactor != null ? portioned.scalingFactor : null,
-    portionSafe: safeSingle,
+    portionSafe: safeSingle || singlePortionNormalized,
     portionDisplayHint: portionDisplayHint,
     portionWarnings: portionWarnings,
     validationWarnings: portionWarnings,
@@ -475,6 +618,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     shopping_list: shopping,
     steps: steps,
     diet_labels: Array.isArray(recipe.diet_labels) ? recipe.diet_labels : [],
+    dishPlan: recipe.dishPlan && typeof recipe.dishPlan === 'object' ? recipe.dishPlan : null,
     nutrition: finalNutrition || nutritionFromAmounts,
     finalNutrition: finalNutrition,
     nutritionBasis: scaledOk ? 'finalIngredients' : 'unscaled_source',
@@ -612,14 +756,14 @@ function errorsToDirectives(errors) {
         'entferne sie stattdessen ganz aus dem Rezept.'
       );
     }
-    if (/protein_source falsch gesetzt/i.test(e) && !seenProtein.flagHint) {
+    if (/protein_source falsch gesetzt|primaere Proteinquellen|primäre Proteinquellen/i.test(e) && !seenProtein.flagHint) {
       seenProtein.flagHint = true;
-      // Nur ergänzen, wenn die Keyword-Korrektur noch nicht da ist
       if (!seenProtein.done) {
         directives.push(
-          'KONKRETE KORREKTUR: protein_source-Flags stimmen nicht mit den tatsächlichen ' +
-          'Proteinquellen überein. Setze Flags ehrlich; bei >2 echten Proteinquellen ' +
-          'entferne eine Zutat komplett statt das Flag zu fälschen.'
+          'KONKRETE KORREKTUR PROTEIN-ROLLEN: Maximal 2 Zutaten mit countsAsPrimaryProteinSource=true ' +
+          '(Rollen main_protein, secondary_protein, protein_supplement). ' +
+          'Nuesse/Samen/Mandeln = topping (false). Joghurt/Soja-Joghurt = base (false). ' +
+          'Proteinpulver = protein_supplement (true). Entferne ueberzaehlige Hauptproteine komplett — Flag nicht faelschen.'
         );
       }
     }
@@ -664,13 +808,54 @@ function errorsToDirectives(errors) {
         '"Mischung" vorkommt. Gare zuerst (Herd AUS), dann ' + mCold[1] + ' unterheben.'
       );
     }
-    const mPh = e.match(/chef_analysis missbraucht Zutat-Platzhalter \{(\d{4})\}/i);
+    const mPh = e.match(/(?:chef_analysis|steps|garnish).*\{(\d{4})\}.*(?:Nährwert|Zahlen-|Naehrwert)/i) ||
+      e.match(/missbraucht Zutat-Platzhalter \{(\d{4})\}/i);
     if (mPh && !seenProtein['ph_' + mPh[1]]) {
       seenProtein['ph_' + mPh[1]] = true;
       directives.push(
-        'KONKRETE KORREKTUR: Du hast einen Zutat-Platzhalter ({' + mPh[1] + '}) fälschlich für eine ' +
-        'Nährwert-Zahl verwendet. Entferne die Zahl/den Platzhalter komplett aus chef_analysis und ' +
-        'ersetze sie durch eine rein qualitative Aussage ohne jede Zahl.'
+        'KONKRETE KORREKTUR: Platzhalter {' + mPh[1] + '} nur als Zutatreferenz ' +
+        '("{' + mPh[1] + '} bildet die cremige Basis"). VERBOTEN direkt davor/danach: kcal, g, ml, %, Protein, Fett, KH.'
+      );
+    }
+    if (/Gerichtskonzept verfehlt/i.test(e) && !seenProtein.dishConcept) {
+      seenProtein.dishConcept = true;
+      directives.push(
+        'KONKRETE KORREKTUR TITEL-TREUE: Der Nutzer hat ein konkretes Gericht vorgegeben. ' +
+        'Du DARFST Allergene ersetzen (z.B. Joghurt → laktosefreier/Soja-Joghurt), aber du DARFST NICHT ' +
+        'das Gerichtskonzept wechseln (kein Hähnchen/Hafer statt Nüssen, kein anderes Hauptgericht). ' +
+        'Pflichtzutaten aus dem Titel müssen als ingredients vorkommen (z.B. Joghurt + Nüsse). ' +
+        'Nüsse unit=g (nie prise). Titel exakt beibehalten.'
+      );
+    }
+    if (/nicht in einem sinnvollen Kochschritt|Eier sind nicht/i.test(e) && !seenProtein.eggUsage) {
+      seenProtein.eggUsage = true;
+      directives.push(
+        'KONKRETE KORREKTUR ZUTATEN-NUTZUNG: Jede nicht-optionale Zutat MUSS in einem konkreten Step ' +
+        'per {id} vorkommen UND eine passende Aktion haben. Eier: verquirlen/braten/stocken/backen/' +
+        'einarbeiten — VERBOTEN nur in chef_analysis oder in „Die Zutaten vermengen“. ' +
+        'Lösche ungenutzte Zutaten NICHT stillschweigend — schreibe den fehlenden Kochschritt.'
+      );
+    }
+    if (/Generische Zubereitungsschritte/i.test(e) && !seenProtein.genericSteps) {
+      seenProtein.genericSteps = true;
+      directives.push(
+        'KONKRETE KORREKTUR SCHRITTE: Ersetze generische Floskeln („Die Zutaten gründlich vermengen“, ' +
+        '„Wasser bereitstellen“) durch konkrete Technik (verquirlen, braten, kochen, unterheben).'
+      );
+    }
+    if (/Keine eindeutige Rezeptart|Titel beschreibt keine erkennbare/i.test(e) && !seenProtein.dishPlan) {
+      seenProtein.dishPlan = true;
+      directives.push(
+        'KONKRETE KORREKTUR dishPlan: Lege ZUERST dishPlan fest (z. B. oat_egg_pancake, protein_porridge, ' +
+        'yogurt_nut_bowl), DANN Zutaten/Steps. Titel = Speise (Pancakes/Porridge/Bowl), ' +
+        'nicht nur „Proteinreicher Snack mit…“.'
+      );
+    }
+    if (/Flüssigkeitsmenge.*Haferflocken/i.test(e) && !seenProtein.oatsLiquid) {
+      seenProtein.oatsLiquid = true;
+      directives.push(
+        'KONKRETE KORREKTUR FLÜSSIGKEIT: Hafer ≥25 g braucht ≥60 ml Wasser/Brühe ODER Backen/Braten ' +
+        'ODER Quellen im Joghurt (≥60 g). 8 ml ist unplausibel — Menge oder Verfahren anpassen.'
       );
     }
   });
@@ -748,19 +933,38 @@ async function generateValidatedRecipe(opts) {
     // Diagnose: Raw-JSON VOR Validierung und VOR renderRecipeForDisplay (jeder Versuch)
     logRawLlmJson({ attempt: attempt, parsed: parsed });
 
-    // Emotion-Handoff-Sentinel: nicht validieren, an Caller durchreichen
+    // Emotion-Handoff-Sentinel: nur bei echter emotionaler Blockade im Nutzertext.
+    // Klarer Gerichtswunsch (Allergen-Konflikt etc.) → Retry mit Korrekturhinweis, kein Handoff.
     if (parsed && parsed.title === '__TEAM_HANDOFF_COACH__') {
-      return {
-        ok: true,
-        recipe: null,
-        raw: parsed,
-        handoff_sentinel: true,
-        attempts: attempt,
-        attempt_raws: attemptRaws,
-      };
+      const userText = Array.isArray(payload && payload.pantry_ingredients)
+        ? payload.pantry_ingredients.join(' ')
+        : '';
+      const acceptHandoff = typeof o.acceptCoachHandoff === 'function'
+        ? !!o.acceptCoachHandoff(userText)
+        : false;
+      if (acceptHandoff) {
+        return {
+          ok: true,
+          recipe: null,
+          raw: parsed,
+          handoff_sentinel: true,
+          attempts: attempt,
+          attempt_raws: attemptRaws,
+        };
+      }
+      lastErrors = [
+        'Falscher Coach-Handoff: Der Nutzer verlangt ein konkretes Gericht. ' +
+        'Liefere ein normales v9.2-Rezept. Bei Allergenen (z.B. Laktose): ersetze Milchprodukte ' +
+        'durch laktosefreie Alternativen, behalte Gerichtskonzept/Titel – KEIN title=__TEAM_HANDOFF_COACH__.',
+      ];
+      logValidationFailure({ attempt: attempt, errors: lastErrors, warnings: [] });
+      continue;
     }
 
-    const validation = validator.validateRecipeV2(parsed);
+    const dishQuery = Array.isArray(payload && payload.pantry_ingredients)
+      ? payload.pantry_ingredients.join(' ')
+      : '';
+    const validation = validator.validateRecipeV2(parsed, { dishQuery: dishQuery });
     if (!validation.ok) {
       lastErrors = validation.errors.slice();
       lastWarnings = validation.warnings.slice();

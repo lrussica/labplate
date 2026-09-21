@@ -182,10 +182,15 @@ const fall6 = [
   { name: 'Zimt', amount: 0, unit: 'prise', protein_source: false },
 ];
 const kw6 = validator.validateMaxProteinSourcesByKeywords(fall6);
-assert.ok(kw6.found.some(function (n) { return /joghurt/i.test(n); }), 'Fall 6: Joghurt erkannt: ' + kw6.found.join(', '));
-assert.ok(kw6.found.some(function (n) { return /nüss|nuss|mandel|walnuss/i.test(n); }), 'Fall 6: Nüsse erkannt: ' + kw6.found.join(', '));
-assert.strictEqual(kw6.ok, true, 'Fall 6: genau 2 → ok');
-console.log('OK Fall 6 Keyword Joghurt+Nüsse');
+assert.ok(kw6.found.every(function (n) { return !/nüss|nuss|mandel|walnuss|joghurt/i.test(n); }),
+  'Fall 6: Joghurt/Nüsse nicht als primary: ' + kw6.found.join(', '));
+assert.strictEqual(kw6.ok, true, 'Fall 6: topping+base → ok');
+assert.strictEqual(fall6[0].culinaryRole, 'base', 'Joghurt = base');
+assert.strictEqual(fall6[1].culinaryRole, 'topping', 'Nüsse = topping');
+assert.strictEqual(fall6[0].countsAsPrimaryProteinSource, false, 'Joghurt nicht primary');
+assert.strictEqual(fall6[1].countsAsPrimaryProteinSource, false, 'Nüsse nicht primary');
+console.log('OK Fall 6 Keyword Joghurt+Nüsse → base/topping');
+
 
 // TEST 3h: Fall 7 — Eier + Gouda (≥30 g)
 const fall7 = [
@@ -241,31 +246,137 @@ ketoHuehnchen.chef_analysis =
   'deutlich unter 10 g, ideal für eine ketogene Ernährung.';
 ketoHuehnchen.diet_labels = ['keto', 'high_protein'];
 ketoHuehnchen.nutrition = { kcal: 420, protein_g: 48, fat_g: 22, netto_kh_g: 3, ballaststoffe_g: 1 };
-const resultPhMisuse = validator.validateRecipeV2(ketoHuehnchen);
-assert.strictEqual(resultPhMisuse.ok, false, 'Platzhalter-Missbrauch muss failen');
-assert.ok(resultPhMisuse.errors.some(function (e) {
+// Isolierte Erkennung (vor Auto-Repair)
+const misuseDetect = validator.validateChefAnalysisPlaceholderMisuse(ketoHuehnchen.chef_analysis);
+assert.strictEqual(misuseDetect.ok, false, 'Platzhalter-Missbrauch muss erkannt werden');
+assert.ok(misuseDetect.problems.some(function (e) {
   return /chef_analysis missbraucht Zutat-Platzhalter \{0001\} als Nährwert-Referenz/i.test(e);
-}), 'erwartet spezifischen Missbrauch-Fehler für {0001}: ' + resultPhMisuse.errors.join('; '));
-assert.ok(resultPhMisuse.errors.some(function (e) {
+}), 'erwartet spezifischen Missbrauch-Fehler für {0001}: ' + misuseDetect.problems.join('; '));
+assert.ok(misuseDetect.problems.some(function (e) {
   return /chef_analysis missbraucht Zutat-Platzhalter \{0003\} als Nährwert-Referenz/i.test(e);
-}), 'erwartet spezifischen Missbrauch-Fehler für {0003}: ' + resultPhMisuse.errors.join('; '));
-// Isolierter Fall ohne freie Zahl "10 g" — nur {id} g Protein
+}), 'erwartet spezifischen Missbrauch-Fehler für {0003}: ' + misuseDetect.problems.join('; '));
+// validateRecipeV2 auto-repariert Nährwert-Missbrauch; reine Zutatreferenz ist erlaubt
+const repairedCopy = JSON.parse(JSON.stringify(ketoHuehnchen));
+const resultPhMisuse = validator.validateRecipeV2(repairedCopy);
+assert.ok(!resultPhMisuse.errors.some(function (e) { return /Nährwertplatzhalter|missbraucht Zutat-Platzhalter/i.test(e); }),
+  'Auto-Repair entfernt Platzhalter-Fehler: ' + resultPhMisuse.errors.join('; '));
+assert.ok(!/\{0001\}\s*g\s*Protein/i.test(repairedCopy.chef_analysis || ''),
+  'chef_analysis nach Repair ohne {id} g Protein: ' + repairedCopy.chef_analysis);
+// Erlaubte Zutatreferenz in chef_analysis
+const okPhRef = JSON.parse(JSON.stringify(gutesBeispiel));
+okPhRef.chef_analysis = '{0001} bildet die cremige Basis des Snacks.';
+const okPhRes = validator.validateChefAnalysisPlaceholderMisuse(okPhRef.chef_analysis);
+assert.strictEqual(okPhRes.ok, true, 'Zutatreferenz in chef_analysis erlaubt: ' + okPhRes.problems.join('; '));
+// Isolierter Missbrauch
 const onlyPh = JSON.parse(JSON.stringify(gutesBeispiel));
 onlyPh.chef_analysis = 'Die Zubereitung liefert rund {0001} g Protein bei ausgewogener Sensorik.';
-const resultOnlyPh = validator.validateRecipeV2(onlyPh);
-assert.strictEqual(resultOnlyPh.ok, false, 'isolierter Platzhalter-Missbrauch muss failen');
-assert.ok(resultOnlyPh.errors.some(function (e) {
+const misuseOnly = validator.validateChefAnalysisPlaceholderMisuse(onlyPh.chef_analysis);
+assert.strictEqual(misuseOnly.ok, false, 'isolierter Platzhalter-Missbrauch muss erkannt werden');
+assert.ok(misuseOnly.problems.some(function (e) {
   return /missbraucht Zutat-Platzhalter \{0001\}/i.test(e);
-}), 'isoliert: spezifischer Fehlertyp: ' + resultOnlyPh.errors.join('; '));
-assert.ok(!resultOnlyPh.errors.some(function (e) {
-  return /eigene Zahl statt Verweis/i.test(e);
-}), 'isoliert: nicht nur über freie-Zahl-Regex: ' + resultOnlyPh.errors.join('; '));
+}), 'isoliert: spezifischer Fehlertyp: ' + misuseOnly.problems.join('; '));
+const resultOnlyPh = validator.validateRecipeV2(onlyPh);
+assert.ok(!resultOnlyPh.errors.some(function (e) { return /missbraucht Zutat-Platzhalter|Nährwertplatzhalter/i.test(e); }),
+  'isoliert: Auto-Repair, kein Hard-Error: ' + resultOnlyPh.errors.join('; '));
+assert.ok(!/\{0001\}\s*g/i.test(onlyPh.chef_analysis || ''), 'isoliert: Text repariert');
 const fbPh = pipeline.buildRetryFeedbackMessage([
-  'chef_analysis missbraucht Zutat-Platzhalter {0001} als Nährwert-Referenz — Platzhalter sind nur für Zutatennamen zulässig, nicht für Zahlen.',
+  'chef_analysis verwendet {0001} als Zahlen- oder Nährwertplatzhalter — Platzhalter nur als Zutatreferenz.',
 ]);
-assert.ok(/Zutat-Platzhalter \(\{0001\}\).*fälschlich für eine Nährwert-Zahl/i.test(fbPh), 'Retry-Directive Platzhalter: ' + fbPh);
-assert.ok(/rein qualitative Aussage/i.test(fbPh), 'Retry-Directive qualitativ');
-console.log('OK chef_analysis Platzhalter-Missbrauch + Retry-Directive');
+assert.ok(/\{0001\}/.test(fbPh), 'Retry-Directive Platzhalter: ' + fbPh);
+console.log('OK chef_analysis Platzhalter: Referenz OK, Nährwert fail+repair');
+
+
+// TEST: ungesalzen ≠ Salz-Gewürz; Joghurt+Nüsse mit Flag-Mismatch → ok nach Auto-Align
+const snackNuts = {
+  title: 'Proteinreicher Snack mit griechischem Joghurt und Nüssen',
+  servings: 1,
+  prep_time_min: 5,
+  nutrition: { kcal: 350, protein_g: 25, fat_g: 22, netto_kh_g: 8, ballaststoffe_g: 3 },
+  ingredients: [
+    { id: '0001', name: 'Griechischer Joghurt (laktosefrei)', amount: 200, unit: 'g', protein_source: true, netCarbs: 4, fat: 5, protein: 10, fiber: 0 },
+    { id: '0002', name: 'gemischte Nüsse (geröstet, ungesalzen)', amount: 35, unit: 'g', protein_source: false, netCarbs: 7, fat: 50, protein: 20, fiber: 7 },
+    { id: '0003', name: 'Zimt', amount: 0, unit: 'prise', protein_source: false, netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
+  ],
+  steps: [
+    { title: 'Anrichten', content: '{0001} in eine Schale geben, {0002} grob hacken und darüber streuen, mit {0003} würzen.', stove_level: 0, time_min: 5 },
+  ],
+  garnish: '',
+  chef_analysis: 'Cremiger Joghurt trifft knackige Nüsse – proteinreich und alltagstauglich.',
+  diet_labels: [],
+  target_deviation_note: '',
+};
+assert.strictEqual(validator.isSeasoningSaltOrPepperName('gemischte Nüsse (geröstet, ungesalzen)'), false, 'ungesalzen kein Salz-Gewürz');
+assert.strictEqual(validator.isSeasoningSaltOrPepperName('Salz'), true, 'Salz ist Gewürz');
+const snackResult = validator.validateRecipeV2(snackNuts);
+assert.strictEqual(snackResult.ok, true, 'Joghurt+Nüsse-Snack muss ok sein: ' + snackResult.errors.join('; '));
+assert.strictEqual(snackNuts.ingredients[1].protein_source, false, 'Nüsse nicht primary');
+assert.strictEqual(snackNuts.ingredients[1].culinaryRole, 'topping', 'Nüsse = topping');
+assert.strictEqual(snackNuts.ingredients[0].culinaryRole, 'base', 'Joghurt = base');
+assert.ok(!snackResult.errors.some(function (e) { return /Prise\/Messerspitze/i.test(e); }), 'kein Prise-False-Positive');
+console.log('OK Snack Joghurt+Nüsse (ungesalzen + roles base/topping)');
+
+
+// Titel-Treue: Hähnchen statt Nüsse muss failen
+const fakeChickenSnack = {
+  title: 'Proteinreicher Snack mit griechischem Joghurt und Nüssen',
+  servings: 1,
+  prep_time_min: 15,
+  nutrition: { kcal: 463, protein_g: 60, fat_g: 12, netto_kh_g: 29, ballaststoffe_g: 7 },
+  ingredients: [
+    { id: '0001', name: 'Hähnchenbrust (gegart, ohne Haut)', amount: 130, unit: 'g', protein_source: true, netCarbs: 0, fat: 2, protein: 30, fiber: 0 },
+    { id: '0002', name: 'laktosefreier Sojajoghurt', amount: 175, unit: 'g', protein_source: true, netCarbs: 4, fat: 2, protein: 6, fiber: 0 },
+    { id: '0003', name: 'Haferflocken', amount: 25, unit: 'g', protein_source: false, netCarbs: 55, fat: 7, protein: 13, fiber: 10 },
+    { id: '0004', name: 'Salz', amount: 0, unit: 'prise', protein_source: false, netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
+    { id: '0005', name: 'Zimt', amount: 0, unit: 'prise', protein_source: false, netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
+  ],
+  steps: [
+    { title: 'Mix', content: '{0001} würfeln, mit {0002} und {0003} verrühren, mit {0004} und {0005} würzen.', stove_level: 0, time_min: 10 },
+  ],
+  garnish: '',
+  chef_analysis: 'Proteinreich, aber falsches Konzept.',
+  diet_labels: [],
+};
+const fakeRes = validator.validateRecipeV2(fakeChickenSnack, {
+  dishQuery: 'Proteinreicher Snack mit griechischem Joghurt und Nüssen',
+});
+assert.strictEqual(fakeRes.ok, false, 'Hähnchen-Ersatzkonzept muss failen');
+assert.ok(fakeRes.errors.some(function (e) { return /Gerichtskonzept verfehlt/i.test(e); }),
+  'Titel-Treue-Fehler: ' + fakeRes.errors.join('; '));
+assert.ok(fakeRes.errors.some(function (e) { return /Nüsse/i.test(e); }),
+  'fehlende Nüsse: ' + fakeRes.errors.join('; '));
+const okFidelity = validator.validateDishConceptFidelity(snackNuts,
+  'Proteinreicher Snack mit griechischem Joghurt und Nüssen');
+assert.strictEqual(okFidelity.ok, true, 'echter Nuss-Snack treu: ' + okFidelity.problems.join('; '));
+
+// Ei statt Nüsse (Produktionsfall „Kokosjoghurt und Ei“)
+const fakeEggSnack = {
+  title: 'Kokosjoghurt und Ei',
+  servings: 1,
+  prep_time_min: 10,
+  nutrition: { kcal: 320, protein_g: 22, fat_g: 18, netto_kh_g: 14, ballaststoffe_g: 3 },
+  ingredients: [
+    { id: '0001', name: 'Kokosjoghurt', amount: 200, unit: 'g', protein_source: false, netCarbs: 6, fat: 12, protein: 2, fiber: 0 },
+    { id: '0002', name: 'Eier', amount: 3, unit: 'stk', protein_source: true, netCarbs: 1, fat: 10, protein: 13, fiber: 0 },
+    { id: '0003', name: 'Haferflocken', amount: 40, unit: 'g', protein_source: false, netCarbs: 55, fat: 7, protein: 13, fiber: 10 },
+  ],
+  steps: [
+    { title: 'Mix', content: 'Wasser bereitstellen. {0003} einrühren. Die Zutaten gründlich vermengen. Joghurt unterheben.', stove_level: 0, time_min: 8 },
+  ],
+  garnish: '',
+  chef_analysis: '{0002} liefern Protein, {0001} die Basis.',
+  diet_labels: [],
+};
+const eggOnlyInChef = validator.validateRecipeV2(fakeEggSnack, {
+  dishQuery: 'Proteinreicher Snack mit griechischem Joghurt und Nüssen',
+});
+assert.strictEqual(eggOnlyInChef.ok, false, 'Ei-Snack ohne Nüsse muss failen');
+assert.ok(eggOnlyInChef.errors.some(function (e) {
+  return /Gerichtskonzept verfehlt/i.test(e) && /Nüsse|Ei/i.test(e);
+}), 'Ei-statt-Nüsse: ' + eggOnlyInChef.errors.join('; '));
+assert.ok(eggOnlyInChef.errors.some(function (e) {
+  return /nie referenziert.*0002|0002/i.test(e);
+}), 'Eier nur in chef_analysis zählen nicht als Zubereitung: ' + eggOnlyInChef.errors.join('; '));
+console.log('OK Gerichtskonzept-Treue Joghurt+Nüsse');
 
 // TEST 3j: Gegentest — korrekte Zutat-Platzhalter ohne Nährwertzahlen
 const chefOk = JSON.parse(JSON.stringify(gutesBeispiel));

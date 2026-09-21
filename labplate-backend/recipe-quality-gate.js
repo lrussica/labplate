@@ -7,6 +7,7 @@
  */
 
 const portions = require('./recipe-portions');
+const culinaryUsability = require('./culinary-usability');
 
 const QUALITY_STATUS = {
   READY: 'ready',
@@ -75,6 +76,9 @@ function validatePortions(recipe) {
   }
   if (!(Number.isFinite(sourceServings) && sourceServings > 0) && sourceStatus !== 'explicit') {
     if (sourceStatus === 'inferred') {
+      if (recipe.singlePortionNormalized || Number(recipe.finalServings) === 1) {
+        return checkResult(CHECK_STATUS.PASS, issues);
+      }
       issues.push('Portionsgröße geschätzt – bitte prüfen');
       return checkResult(CHECK_STATUS.WARNING, issues);
     }
@@ -87,6 +91,13 @@ function validatePortions(recipe) {
     issues.push('nutritionSource ist unerwartet: ' + nutritionSource);
   }
   if (sourceStatus === 'inferred' || recipe.requiresReview || recipe.portionSafe === false) {
+    // Erfolgreich auf 1 Portion normiert → kein Schätz-Banner mehr
+    if (
+      recipe.singlePortionNormalized ||
+      Number(recipe.finalServings) === 1
+    ) {
+      return checkResult(CHECK_STATUS.PASS, issues);
+    }
     issues.push(recipe.portionDisplayHint || 'Portionsgröße geschätzt – bitte prüfen');
     return checkResult(CHECK_STATUS.WARNING, issues);
   }
@@ -463,6 +474,13 @@ function evaluateRecipeQuality(recipe, opts) {
     };
   }
 
+  const culinary = culinaryUsability.evaluateCulinaryUsability(recipe);
+  const culinaryCheck = culinary.errors.length
+    ? checkResult(CHECK_STATUS.FAIL, culinary.errors)
+    : (culinary.warnings.length
+      ? checkResult(CHECK_STATUS.WARNING, culinary.warnings)
+      : checkResult(CHECK_STATUS.PASS, []));
+
   const checks = {
     structure: validateRecipeStructure(recipe),
     portions: validatePortions(recipe),
@@ -472,6 +490,7 @@ function evaluateRecipeQuality(recipe, opts) {
     instructions: validateInstructions(recipe),
     timing: validateTiming(recipe),
     language: validateLanguageQuality(recipe),
+    culinaryUsability: culinaryCheck,
   };
 
   // Fallback-Schritte übernehmen
@@ -494,9 +513,10 @@ function evaluateRecipeQuality(recipe, opts) {
   if (hasFailure) qualityStatus = QUALITY_STATUS.BLOCKED;
   else if (hasWarning) qualityStatus = QUALITY_STATUS.REVIEW;
 
-  // inferred portions: höchstens review (bereits warning)
+  // inferred portions: höchstens review – außer auf 1 Portion normiert
   if (qualityStatus === QUALITY_STATUS.READY &&
-      (recipe.sourceServingsStatus === 'inferred' || recipe.requiresReview)) {
+      (recipe.sourceServingsStatus === 'inferred' || recipe.requiresReview) &&
+      !(recipe.singlePortionNormalized || Number(recipe.finalServings) === 1)) {
     qualityStatus = QUALITY_STATUS.REVIEW;
   }
 

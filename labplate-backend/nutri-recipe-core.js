@@ -61,33 +61,28 @@ const CHEF_FRAMEWORK_RULES = [
   'In steps/garnish steht AUSSCHLIESSLICH der nackte Platzhalter {0001} — VERBOTEN: "{0004} Olivenöl", "Olivenöl {0004}", ' +
   '"Wasser {0007} ml", "{0005} Salz", "100g Speck" als Freitext. Das Backend setzt amount+unit+name ein. ' +
   'chef_analysis: nur {id} als Zutatname, keine Mengen.',
-  '1) Naehrwert-Verbindlichkeit / chef_analysis: {ingredient_id}-Platzhalter AUSSCHLIESSLICH zur Benennung von Zutaten ' +
-  '(z. B. "Die Kombination aus {0001} und {0002} liefert..."). NIEMALS Naehrwerte referenzieren — weder als Zahl ' +
-  '("48 g Protein") noch fälschlich als {id}-Platzhalter ("liefert rund {0001} g Protein" ist FALSCH, weil Platzhalter ' +
-  'nur Zutaten kennen). Stattdessen qualitativ: "liefert eine hohe Proteinmenge", "bleibt weit unter dem Keto-Grenzwert". ' +
-  'Alle exakten Zahlen leben ausschliesslich im nutrition-Objekt und MUESSEN der Summe amount×(Makros/100g) entsprechen. ' +
-  'VERBOTEN: Protein/Fett/KH/kcal frei zu erfinden (z. B. 74g Protein bei 125g Lachs).',
+  '1) Naehrwert-Verbindlichkeit / chef_analysis: {ingredient_id}-Platzhalter DUERFEN Zutaten referenzieren ' +
+  '(z. B. "{0003} bildet die cremige Basis", "Die Kombination aus {0001} und {0002}…"). ' +
+  'VERBOTEN als Naehrwert-/Mengensatz: "{0003} kcal", "{0003} g Protein", "{0003} g", "{0003} ml", "{0003}%". ' +
+  'Exakte Zahlen nur im nutrition-Objekt (= Summe amount×Makros/100). Qualitativ: "hohe Proteinmenge", nie erfundene g/kcal.',
   '2) GERINNUNGSSCHUTZ: Quark/Joghurt/Huettenkaese/Creme fraiche/Frischkaese/Mascarpone/Schmand/Kokosjoghurt ' +
   '→ stove_level 0 beim Einruehren, Herd vorher AUS. VERBOTEN: Eier mit Frischkaese verquirlen und dann ' +
   '"die Mischung" in die heisse Pfanne geben — auch wenn die sensible Zutat im Hitze-Step nicht mehr ' +
   'namentlich/{id} genannt wird. Stattdessen: erst garen (Herd AUS), DANN sensible Zutat unterruehren.',
   '3) Mengen nur nacktes {ingredient_id} in content/garnish – nie freie g/ml und nie Name/Einheit neben dem Platzhalter.',
-  '4) MAXIMUM 2 protein_source:true (PROTEIN-HARMONIE / kein Zutaten-Salat). ' +
-  'VERBOTEN: Haehnchen + Tofu + Ei gleichzeitig (3 Proteinquellen), auch wenn eine davon ' +
-  'protein_source:false gesetzt wird — das Flag aendert nichts an der tatsaechlichen ' +
-  'Zusammensetzung des Gerichts. Waehle stattdessen NUR 2 der 3 Zutaten aus und erhoehe ' +
-  'die Menge der gewaehlten Hauptzutat, um das Proteinziel zu erreichen ' +
-  '(z. B. 220g Haehnchen + 1 Ei statt 150g Haehnchen + 100g Tofu + 2 Eier). ' +
-  'Jede Zutat mit protein_source:true UND jede Zutat, die de facto eine Proteinquelle ' +
-  'ist (Fleisch, Fisch, Ei, Tofu, Huelsenfruechte, Milchprodukte mit >10g Protein/100g), ' +
-  'zaehlt in die 2er-Grenze — unabhaengig vom gesetzten Flag.',
+  '4) MAXIMAL 2 PRIMÄERE Proteinquellen (culinaryRole: main_protein | secondary_protein | protein_supplement). ' +
+  'Unterscheide: ernaehrungsphysiologischer Proteinbeitrag vs. kulinarische Hauptproteinquelle. ' +
+  'Nuesse/Samen/Toppings = topping (countsAsPrimaryProteinSource:false) — sie duerfen Protein zu nutrition beitragen. ' +
+  'Joghurt/Joghurt-Alternative = base (countsAsPrimaryProteinSource:false), sofern nicht ausdruecklich Hauptprotein. ' +
+  'Proteinpulver = protein_supplement (zaehlt als primaer). Fleisch/Fisch/Ei/Tofu = main_protein. ' +
+  'VERBOTEN: 3× main/secondary/supplement gleichzeitig. Setze protein_source == countsAsPrimaryProteinSource.',
   '5) DIÄT- & KETO-EHRLEICHKEIT: diet_labels keto nur bei netto_kh_g <10; high_protein nur ab protein_g ≥25; vegan ohne Ei/Milch.',
   '6) Eier & Stueckware: unit "stk", amount GANZE Zahl ≥1 (1, 2, 3…), name "Ei (Groesse M, ca. 60 g)". ' +
   'VERBOTEN: Kommastellen, "0.5 Ei", "30g Ei", unit g fuer Eier. Inhalt nur via {id}.',
-  '7) VOLLSTAENDIGKEIT: jede {id} in steps/garnish existiert in ingredients; jede Zutat mind. 1x referenziert. ' +
-  'Auch Basis-Zutaten (Oel, Butter, Wasser, Salz, Mehl, Zucker, Ei) MUESSEN in ingredients stehen und per {id} ' +
-  'referenziert werden — VERBOTEN: "in etwas Oel anbraten" ohne Oel-Eintrag in ingredients. Keine Klartext-Zutat ' +
-  'ohne Listen-Eintrag (Allergie-/Sicherheitsrisiko).',
+  '7) VOLLSTAENDIGKEIT: jede {id} in steps/garnish/chef_analysis existiert in ingredients; ' +
+  'Hauptzutaten mind. 1x in steps/garnish referenziert. Gewuerze (prise) und optionale Zutaten duerfen unreferenziert bleiben. ' +
+  'Auch Basis-Zutaten (Oel, Butter, Wasser, Salz, Mehl) MUESSEN in ingredients stehen und per {id} ' +
+  'referenziert werden — VERBOTEN: "in etwas Oel anbraten" ohne Oel-Eintrag.',
   '8) HERD-STUFEN: stove_level 1-9 nur bei Hitze; kalt = 0. Mise en Place zuerst; Zeit + Sensorik.',
   '9) GEWUERZE: unit prise|messerspitze, amount 0 – nie unit g fuer Salz/Pfeffer (ABSOLUTES GRAMM-VERBOT).',
   '10) Kalorien-Plausibilitaet: kcal = Summe aus Zutaten (Protein×4 + Netto-KH×4 + Fett×9 + Ballaststoffe×2).',
@@ -96,10 +91,21 @@ const CHEF_FRAMEWORK_RULES = [
   '17) TEXTUR & FOOD PAIRING: mind. 3 Texturen (cremig + bissfest + crunchy); garnish-Feld Pflicht; herzhaft Saeure. ' +
   'VERBOTEN: separater Step mit Titel „Garnitur“/„Garnish“. Wenn Anrichten schon ein Step ist, Garnieren DORT integrieren; ' +
   'zusaetzlich Feld garnish befuellen — kein Step 6 nur fuer Garnitur.',
-  '18) BEZEICHNUNGS-KONSISTENZ / Namensgleichheit. garnish + chef_analysis Pflicht.',
+  '18) BEZEICHNUNGS-KONSISTENZ / Namensgleichheit. garnish + chef_analysis Pflicht. ' +
+  'Bei Laktose-Ersatz: Titel anpassen (z. B. „… mit laktosefreiem Soja-Joghurt und Nüssen“).',
   '19) KEIN [SELF-CHECK]-Block. Backend validiert deterministisch (validateRecipeV2) und rechnet nutrition aus ingredients.',
-  '20) NEGATIV-VERBOT: freie Mengen in content; Name/Einheit neben {id}; eigene g/kcal ODER missbrauchte {id}-Platzhalter als Naehrwert-Ersatz ' +
-  'in chef_analysis; ungelistete garnish-Zutaten; >2 protein_source; Klartext-Basiszutaten ohne ingredients-Eintrag; ' +
+  '19a) dishPlan ZUERST: Bevor ingredients/steps: setze dishPlan (dishType, texture, servingMode, cookingMethod, requiredActions). ' +
+  'Erlaubt u. a.: yogurt_nut_bowl, cold_yogurt_oat_bowl, oat_egg_pancake, protein_porridge, baked_oats, ' +
+  'scrambled_egg_yogurt_bowl, savory_skillet, pasta_main, general_cooked_main. ' +
+  'VERBOTEN: erst Makro-Zutaten wählen und danach beliebige Floskel-Schritte. ' +
+  'Titel = erkennbare Speise (Pancakes/Porridge/Bowl/Pfanne), nicht nur „Proteinreicher Snack mit X und Y“.',
+  '19b) Jede nicht-optionale Zutat braucht einen sinnvollen Step mit {id} UND passender Aktion ' +
+  '(Ei: verquirlen/braten/stocken; Hafer: einrühren/quellen/kochen/backen; Joghurt: unterheben/servieren; ' +
+  'Wasser: erhitzen/einrühren — nicht „Wasser bereitstellen“). ' +
+  'VERBOTEN als einzige Technik: „Die Zutaten gründlich vermengen“, „Alles vermengen“, „Nach Belieben zubereiten“.',
+  '19c) Hafer ≥25 g: ≥60 ml Kochflüssigkeit ODER Backen/Braten ODER Quellen im Joghurt — keine 8-ml-Alibi-Menge.',
+  '20) NEGATIV-VERBOT: freie Mengen in content; Name/Einheit neben {id}; {id} vor kcal/g/ml/%/Protein in chef_analysis; ' +
+  '>2 primaere Proteinquellen; Klartext-Basiszutaten ohne ingredients-Eintrag; ' +
   'separater Garnitur-Schritt; erfundene nutrition-Werte.',
   '21) ORIGINALITAETS-ABSICHERUNG: Formuliere Titel, Zubereitungsschritte (content) und Chef-Analyse IMMER in ' +
   'eigenen, originalen Worten — auch bei bekannten Standardgerichten (z. B. "klassische Bolognese", "Caesar Salad"). ' +
@@ -206,15 +212,22 @@ function tryEmotionalHandoffEarly(payload) {
 
 /**
  * LLM-Sentinel: title === __TEAM_HANDOFF_COACH__ → Handoff statt Rezept.
+ * Nur akzeptieren, wenn der Nutzertext selbst eine emotionale Blockade zeigt.
+ * Klarer Gerichtswunsch (z. B. „Rührei mit Frischkäse“) trotz Allergen → KEIN Handoff
+ * (Modell soll Ersatzzutaten liefern, nicht zum Mental-Coach umleiten).
  */
 function extractHandoffFromParsed(parsed, userText) {
   if (!parsed || typeof parsed !== 'object') return null;
+  const text = String(userText == null ? '' : userText).trim();
+  // Ohne nachweisbare Emotion im Nutzertext: Sentinel/handoff-Feld ignorieren.
+  if (!detectEmotionalBlockade(text)) return null;
+
   if (parsed.handoff && typeof parsed.handoff === 'object') {
     const to = String(parsed.handoff.to || '').toLowerCase();
     if (to === 'coach') {
       return buildCoachHandoffPayload(
-        userText || parsed.handoff.brief || '',
-        { kind: 'emotion', match: truncateTeamBrief(parsed.handoff.brief || userText || '', 80) }
+        text || parsed.handoff.brief || '',
+        { kind: 'emotion', match: truncateTeamBrief(parsed.handoff.brief || text || '', 80) }
       ).handoff;
     }
   }
@@ -222,13 +235,13 @@ function extractHandoffFromParsed(parsed, userText) {
   if (title !== HANDOFF_SENTINEL_TITLE) return null;
   const note = typeof parsed.nutrition_note === 'string' ? parsed.nutrition_note.trim()
     : (typeof parsed.chef_analysis === 'string' ? parsed.chef_analysis.trim() : '');
-  const brief = truncateTeamBrief(note || ('Nutzer emotional blockiert. Rezept abgelehnt. Kontext: ' + String(userText || '')), TEAM_HANDOFF_BRIEF_MAX);
+  const brief = truncateTeamBrief(note || ('Nutzer emotional blockiert. Rezept abgelehnt. Kontext: ' + text), TEAM_HANDOFF_BRIEF_MAX);
   return {
     from: 'koch',
     to: 'coach',
     reason: 'emotionale_blockade',
     brief: brief,
-    suggestedPrefill: truncateTeamBrief(userText, 200),
+    suggestedPrefill: truncateTeamBrief(text, 200),
   };
 }
 
@@ -567,7 +580,8 @@ function themeGuidanceFromTheme(theme) {
     instruction: truncateTeamBrief(
       'THEMEN-REZEPT: Brief/Kontext nennt ' + theme.label + '. ' +
       'Erstelle ein einfaches Alltaggericht (ca. 30 Minuten). ' +
-      'servings muss zu den Zutatenmengen passen (Einzelportion oder korrekte Mehrportionen-Angabe). ' +
+      'servings MUSS immer exakt 1 sein (Einzelportion). Alle Mengen nur für 1 Person. ' +
+      'VERBOTEN: Batch/Meal-Prep/Mehrportionen-Planung. ' +
       'Nutze passende Lebensmittel aus: ' + foodList + '. ' +
       'Keine Dosierungen, keine Diagnosen, keine medizinischen Aussagen – nur Rezept.',
       TEAM_HANDOFF_BRIEF_MAX
@@ -612,14 +626,20 @@ function buildGenerativeMessages(p) {
     'Dann setze title exakt auf "' + HANDOFF_SENTINEL_TITLE + '", chef_analysis = kurzer Handoff-Brief (max ' + TEAM_HANDOFF_BRIEF_MAX + ' Zeichen),',
     'garnish="", prep_time_min=0, ingredients=[], steps=[], nutrition alle 0, diet_labels=[].',
     'Sonst normales Rezept wie unten. Bei gemischter Anfrage (Emotion + klares Gericht) → normales Rezept.',
+    'STRENG VERBOTEN als Handoff: Allergen-Konflikt, Milchprodukte im Gerichtstitel, fehlende Zutaten, Validierungszweifel.',
+    'Beispiel: Nutzer will "Rührei mit Frischkäse" und meidet Laktose → liefere das Gericht mit laktosefreien Ersatzzutaten',
+    '(z.B. laktosefreier Frischkäse / Kokoscreme / pflanzliche Alternative), Titel beibehalten, KEIN ' + HANDOFF_SENTINEL_TITLE + '.',
+    'TITEL-TREUE (FREISUCHE): Wenn ein konkretes Gericht vorgegeben ist, behalte dessen Kernzutaten.',
+    'Beispiel "Joghurt und Nüsse": MUSS Joghurt (ggf. laktosefrei/Soja) UND Nüsse (unit=g) enthalten —',
+    'VERBOTEN: Hähnchen/Fleisch/Haferflocken als Ersatzkonzept ohne Nüsse. Nur Mengen/Gewürze variieren.',
   ].join(' ') : '';
   const themeRules = themeGuide
     ? [
       'THEMEN-REZEPT (vom Kollegen-Brief / Suchkontext):',
       'Thema erkannt: ' + themeGuide.label + '.',
       'Waehle alltagstaugliche Zutaten aus dieser Liste (mind. 2-3 davon zentral nutzen): ' + themeGuide.foods.join(', ') + '.',
-      'Ziel: einfaches Gericht, ca. 30 Minuten. servings muss zur Zutatenmenge passen ' +
-      '(Einzelportion: servings=1 mit Einzelmengen; klassisches Mehrportionen-Rezept: servings=4–6, nie servings=1 bei 500g Hack).',
+      'Ziel: einfaches Gericht, ca. 30 Minuten. servings=1 mit Einzelportions-Mengen ' +
+      '(Fleisch/Fisch ~120–180 g, Öl ~10–15 ml, Eier max. 2–3; nie Batch wie 500g Hack).',
       'VERBOTEN: medizinische Aussagen, Dosierungen (mg/IE), Diagnosen, Heilversprechen, Supplement-Empfehlungen.',
       'Kein Coaching-Text – nur Rezept-JSON.',
     ].join(' ')
@@ -636,16 +656,18 @@ function buildGenerativeMessages(p) {
     'Mengen in ingredients: Eier unit=stk; Gewuerze amount=0 unit=prise|messerspitze; Fluessigkeiten ml; Festes g. netCarbs/fat/protein/fiber je 100 g/ml.',
     'Beispiel Ei: {"id":"0002","name":"Ei (Groesse M, ca. 60 g)","amount":2,"unit":"stk","protein_source":true}. Olivenoel: unit ml. Salz: unit prise, amount 0.',
     'steps: Objekte {title, content mit {id}-Platzhaltern, stove_level 0|1-9, time_min}. garnish + chef_analysis Pflicht.',
-    'Schema v9.2: servings (sourceServings = für wie viele Portionen ingredients[].amount gelten), ' +
+    'Schema v9.2: servings MUSS immer exakt 1 sein (1-Portions-Basis für eine Einzelperson). ' +
     'nutrition{kcal,protein_g,fat_g,netto_kh_g,ballaststoffe_g}, ingredients[{id,name,amount,unit,protein_source,macros}], ' +
     'steps[{title,content,stove_level,time_min}], garnish, chef_analysis, diet_labels, target_deviation_note, prep_time_min.',
-    'PORTIONEN (verbindlich): servings MUSS zu den Mengen passen. ' +
-    'VERBOTEN: servings=1 bei 400–500g Hackfleisch/Fleisch (das ist eine Mehrportionenmenge). ' +
-    'Entweder echte Einzelportion (z.B. ~100–150g Fleisch, servings=1) ODER Batch mit korrektem servings (z.B. 500g Hack → servings=4..6). ' +
-    'Das Backend skaliert danach einmalig auf die Nutzer-Zielportion.',
+    'PORTIONEN (STRIKT – 1-PORTIONS-BASIS):',
+    'servings = 1. Alle Zutatennamen, Gramm-/ml-Angaben, Nährwerte und KE/BE beziehen sich AUSSCHLIESSLICH auf 1 Einzelportion.',
+    'VERBOTEN: Meal-Prep, Vorratskochen, Familien-/Batch-Mengen (z.B. 400–500g Hack), servings>1.',
+    'REALISTISCHE MENGEN (1 Portion): Eier max. 2–3 Stück; Fleisch/Fisch ca. 120–180 g; Öl/Butter/Fett ca. 10–15 g/ml (≈1 EL);',
+    'Standard-Kalorienrahmen ca. 400–700 kcal (außer der Nutzer verlangt explizit eine Extrem-Diät).',
+    'Mehrportionen erzeugt ausschließlich die App durch Multiplikation der 1-Portions-Basismengen – die KI plant nie auf Vorrat.',
     'content/garnish: Mengen NUR als {0001}-Platzhalter – KEINE freien g/ml/kcal-Zahlen. KEIN self_check-Feld.',
     'Eier unit=stk; Gewuerze unit=prise|messerspitze amount=0; sonst g|ml. stove_level 0=kalt, 1-9=Hitze.',
-    'chef_analysis: {id} NUR fuer Zutatennamen; Naehrwerte nur qualitativ (nie Zahl, nie "{0001} g Protein"). Zahlen nur in nutrition.',
+    'chef_analysis: {id} als Zutatreferenz erlaubt; VERBOTEN "{0001} g Protein" / "{0001} kcal". Zahlen nur in nutrition.',
     isOriginalMode ? '' : CHEF_FRAMEWORK_RULES,
     emotionRules,
     themeRules,
@@ -819,8 +841,10 @@ function toClientRecipe(parsed, p) {
 
   let client = {
     title: (typeof parsed.title === 'string' && parsed.title.trim()) ? parsed.title.trim().slice(0, 200) : 'Rezept',
-    // STRUCTURED: 0 = Portionen nicht angegeben (App laesst leer). GENERATIV: Fallback 2.
-    servings: servings > 0 ? servings : (structured ? 0 : 2),
+    // STRUCTURED: 0 = Portionen nicht angegeben. GENERATIV: immer 1-Portions-Basis.
+    servings: structured
+      ? (servings > 0 ? servings : 0)
+      : 1,
     prep_time: structured ? '' : (typeof parsed.prep_time === 'string' ? parsed.prep_time.slice(0, 60) : ''),
     nutrition_note: nutritionNote,
     garnish,
@@ -830,10 +854,18 @@ function toClientRecipe(parsed, p) {
     steps,
   };
 
-  // Live-Pflicht: generativ immer portionieren. Structured: nur bei servings>1 oder Batch-als-1.
+  // Live-Pflicht: generativ immer auf 1-Portions-Basis portionieren.
   console.log('LIVE_RECIPE_PATH_NORMALIZE');
   const targetServings = 1;
   if (!structured) {
+    // KI kann trotzdem Batch-Mengen liefern → resolveSourceServings + Enforce auf 1 Portion
+    if (servings > 1) {
+      client.servings = servings;
+      client.sourceServings = servings;
+    } else {
+      client.servings = 1;
+      client.sourceServings = 1;
+    }
     client = recipePortions.normalizeRecipeToFinalModel(client, { targetServings: targetServings });
   } else if (servings > 1 || recipePortions.looksLikeBatchAmounts(client.ingredients, servings || 1)) {
     client = recipePortions.normalizeRecipeToFinalModel(client, { targetServings: targetServings });
@@ -1074,7 +1106,15 @@ module.exports = {
   recipePipeline,
   recipePipelinePrep,
   recipeValidator,
-  generateValidatedRecipe: recipePipeline.generateValidatedRecipe,
+  generateValidatedRecipe: function generateValidatedRecipeWithHandoffGuard(opts) {
+    const o = opts && typeof opts === 'object' ? Object.assign({}, opts) : {};
+    if (typeof o.acceptCoachHandoff !== 'function') {
+      o.acceptCoachHandoff = function (userText) {
+        return !!detectEmotionalBlockade(userText);
+      };
+    }
+    return recipePipeline.generateValidatedRecipe(o);
+  },
   renderRecipeForDisplay: recipePipeline.renderRecipeForDisplay,
   validateRecipeV2: recipeValidator.validateRecipeV2,
   parsePrepIncoming: recipePipelinePrep.parsePrepIncoming,
