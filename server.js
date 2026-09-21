@@ -179,20 +179,64 @@ app.use(helmet());
 app.use(express.json({ limit: '64kb' }));
 
 function isLocalLoopbackOrigin(origin) {
+  if (!origin) return true;
+  if (origin === 'null') return true;
   return /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/.test(origin);
 }
 
-app.use(cors({
+function isOriginAllowed(origin) {
+  if (!origin || origin === 'null') return true;
+  if (ALLOWED_ORIGINS.includes(origin)) return true;
+  if (isLocalLoopbackOrigin(origin)) return true;
+  return false;
+}
+
+function applyCorsHeaders(req, res) {
+  if (!req || !res || res.headersSent) return;
+  const origin = (req.get && (req.get('Origin') || req.get('origin'))) || '';
+  if (!isOriginAllowed(origin)) return;
+  if (origin) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  } else {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+  }
+  res.setHeader('Vary', 'Origin');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization, X-Recipe-Operation-Id'
+  );
+}
+
+const corsOptions = {
   origin(origin, callback) {
-    if (!origin) return callback(null, true);
-    if (ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
-    if (isLocalLoopbackOrigin(origin)) return callback(null, true);
-    return callback(new Error('CORS: Origin nicht erlaubt'));
+    if (isOriginAllowed(origin)) return callback(null, true);
+    console.warn('[CORS] Origin nicht erlaubt:', origin);
+    return callback(null, false);
   },
   methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type'],
+  allowedHeaders: [
+    'Content-Type',
+    'Authorization',
+    'X-Recipe-Operation-Id',
+  ],
+  credentials: false,
   maxAge: 600,
-}));
+  optionsSuccessStatus: 204,
+};
+
+app.use(function corsSafetyNet(req, res, next) {
+  applyCorsHeaders(req, res);
+  const originalEnd = res.end;
+  res.end = function corsSafeEnd() {
+    applyCorsHeaders(req, res);
+    return originalEnd.apply(this, arguments);
+  };
+  next();
+});
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 const limiter = rateLimit({
   windowMs: RATE_LIMIT_WINDOW_MS,
@@ -200,6 +244,7 @@ const limiter = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
   handler(req, res) {
+    applyCorsHeaders(req, res);
     res.status(429).json({ error: 'rate_limited' });
   },
 });
@@ -242,8 +287,10 @@ app.get('/health', (req, res) => {
     v92PipelineWired: typeof core.generateValidatedRecipe === 'function',
     recipeSchemaVersion: 'v9.2',
     culinaryUsabilityGate: true,
-    culinaryUsabilityVersion: '1.0.1-soft-repair',
+    culinaryUsabilityVersion: '1.0.3-error-source',
     recipeSoftRepair: true,
+    corsCrashSafety: true,
+    errorSourceField: true,
     dishPlanRequiredInSchema: true,
     groq429Diagnostics: true,
     groqDebugKeyRouting: true,
@@ -252,6 +299,7 @@ app.get('/health', (req, res) => {
 
 app.post('/api/nutri-recipe', limiter, async (req, res) => {
   const startedAt = Date.now();
+  try {
   const auth = resolveGroqAuth(req.body);
   if (auth.keyType === 'prod' && !GROQ_API_KEY) {
     logEvent('request_rejected', { reason: 'server_not_configured', keyType: 'prod' });
@@ -321,6 +369,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
       });
       const errPayload = {
         error: 'provider_error',
+        error_source: 'groq_provider',
         status: upstreamStatus,
         message: core.providerErrorClientMessage(upstreamStatus, pipelineResult.body, pipelineResult.headers),
         model: recipeModel,
@@ -357,6 +406,14 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
         model: recipeModel,
         key_type: auth.keyType,
         key_fingerprint: auth.keyFingerprint,
+        last_attempt_ingredient_names: Array.isArray(pipelineResult.last_raw && pipelineResult.last_raw.ingredients)
+          ? pipelineResult.last_raw.ingredients.map(function (ing) {
+              return String((ing && ing.name) || '');
+            }).filter(Boolean)
+          : [],
+        last_attempt_title: pipelineResult.last_raw && pipelineResult.last_raw.title
+          ? String(pipelineResult.last_raw.title).slice(0, 200)
+          : null,
       };
       if (req.body && req.body.debug_v92_raw === true) {
         exhaustedBody.debug_v92 = {
@@ -386,7 +443,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     }
     if (pipelineResult.error) {
       logEvent('response_rejected', { reason: pipelineResult.error, detail: pipelineResult.reason || pipelineResult.body || '', ms: Date.now() - startedAt, flow, keyType: auth.keyType });
-      return res.status(502).json({ error: 'recipe_unavailable', key_type: auth.keyType });
+      return res.status(502).json({ error: 'recipe_unavailable', error_source: 'pipeline', key_type: auth.keyType });
     }
 
     if (!payload.structured && payload.team_ai !== false && pipelineResult.raw) {
@@ -400,7 +457,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
 
     if (!pipelineResult.recipe) {
       logEvent('response_rejected', { reason: 'invalid_or_missing_schema', ms: Date.now() - startedAt, flow });
-      return res.status(502).json({ error: 'recipe_unavailable' });
+      return res.status(502).json({ error: 'recipe_unavailable', error_source: 'pipeline' });
     }
 
     const recipe = pipelineResult.recipe;
@@ -455,6 +512,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     });
     const errPayload = {
       error: 'provider_error',
+      error_source: 'groq_provider',
       status: upstreamStatus,
       message: core.providerErrorClientMessage(upstreamStatus, result.body, result.headers),
       model: recipeModel,
@@ -474,7 +532,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   }
   if (result.error) {
     logEvent('response_rejected', { reason: result.error, detail: result.reason || result.body || '', ms: Date.now() - startedAt, flow });
-    return res.status(502).json({ error: 'recipe_unavailable' });
+    return res.status(502).json({ error: 'recipe_unavailable', error_source: 'pipeline' });
   }
 
   const effectivePayload = (flow === 'coach' || flow === 'nutri-coach')
@@ -483,11 +541,32 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   const recipe = core.toClientRecipe(result.data, effectivePayload);
   if (!recipe) {
     logEvent('response_rejected', { reason: 'invalid_or_missing_schema', ms: Date.now() - startedAt, flow });
-    return res.status(502).json({ error: 'recipe_unavailable' });
+    return res.status(502).json({ error: 'recipe_unavailable', error_source: 'pipeline' });
   }
 
   console.log(`[nutri-recipe] OK flow=${flow} ingredients=${recipe.ingredients.length} steps=${recipe.steps.length} ms=${Date.now() - startedAt}`);
   return res.status(200).json(recipe);
+  } catch (err) {
+    const msg = err && err.message ? String(err.message) : String(err);
+    const stack = err && err.stack ? String(err.stack).slice(0, 2000) : null;
+    console.error('[nutri-recipe] UNHANDLED', JSON.stringify({
+      message: msg,
+      stack: stack,
+      ms: Date.now() - startedAt,
+    }));
+    logEvent('unhandled_error', {
+      reason: 'nutri_recipe_throw',
+      message: msg.slice(0, 300),
+      ms: Date.now() - startedAt,
+    });
+    if (res.headersSent) return undefined;
+    applyCorsHeaders(req, res);
+    return res.status(500).json({
+      error: 'internal_error',
+      error_source: 'internal_crash',
+      message: 'Interner Serverfehler bei der Rezeptgenerierung.',
+    });
+  }
 });
 
 // Vision-Check (vor Catch-All). GET → kein 404; POST → { isValidDishPhoto, reason }.
@@ -603,7 +682,7 @@ app.post('/api/food-lookup', limiter, async (req, res) => {
     res.status(upstream.status).type('application/json').send(text);
   } catch (err) {
     logEvent('food_lookup_failed', { reason: err && err.name ? err.name : 'unknown' });
-    res.status(502).json({ error: 'provider_error' });
+    res.status(502).json({ error: 'provider_error', error_source: 'groq_provider' });
   } finally {
     clearTimeout(timer);
   }
@@ -614,15 +693,31 @@ app.use((req, res) => {
 });
 
 app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
-  if (err && /CORS/.test(err.message || '')) {
+  applyCorsHeaders(req, res);
+  const msg = err && err.message ? String(err.message) : '';
+  const stack = err && err.stack ? String(err.stack).slice(0, 2000) : null;
+  if (err && /CORS/.test(msg)) {
     logEvent('request_rejected', { reason: 'cors' });
     return res.status(403).json({ error: 'origin_not_allowed' });
   }
   if (err && err.type === 'entity.too.large') {
     return res.status(413).json({ error: 'payload_too_large' });
   }
-  logEvent('unhandled_error', { reason: 'internal' });
-  return res.status(500).json({ error: 'internal_error' });
+  console.error('[express] UNHANDLED', JSON.stringify({ message: msg.slice(0, 300), stack: stack }));
+  logEvent('unhandled_error', { reason: 'internal', message: msg.slice(0, 300) });
+  if (res.headersSent) return undefined;
+  return res.status(500).json({ error: 'internal_error', error_source: 'internal_crash' });
+});
+
+process.on('unhandledRejection', function (reason) {
+  const msg = reason && reason.message ? String(reason.message) : String(reason);
+  const stack = reason && reason.stack ? String(reason.stack).slice(0, 2000) : null;
+  console.error('[process] unhandledRejection', JSON.stringify({ message: msg.slice(0, 300), stack: stack }));
+});
+process.on('uncaughtException', function (err) {
+  const msg = err && err.message ? String(err.message) : String(err);
+  const stack = err && err.stack ? String(err.stack).slice(0, 2000) : null;
+  console.error('[process] uncaughtException', JSON.stringify({ message: msg.slice(0, 300), stack: stack }));
 });
 
 if (require.main === module) {
