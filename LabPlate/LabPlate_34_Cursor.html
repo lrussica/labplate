@@ -29795,8 +29795,12 @@ initBarcodeEvents();
     // und die Anfrage von dort an den KI-Anbieter weiterleitet. Der App-Code enthaelt und
     // sieht NIEMALS den echten Schluessel. Ohne echten, erreichbaren Endpunkt zeigt die
     // App kontrolliert den Fehlerzustand - kein kaputtes UI.
+    // Custom-Header loest CORS-Preflight aus. Solange Produktion den Header nicht in
+    // Access-Control-Allow-Headers hat, nur im JSON-Body senden (Server liest beides).
+    // Nach erfolgreichem Deploy auf true setzen.
     var NUTRI_RECIPE_API_ENDPOINT = 'https://labplate.onrender.com/api/nutri-recipe';
     var NUTRI_RECIPE_TIMEOUT_MS = 60000;
+    var NUTRI_RECIPE_SEND_OPERATION_HEADER = false;
     var NUTRI_RECIPE_MAX_INPUT_LEN = 8000;
     var NUTRI_RECIPE_MAX_INGREDIENTS = 100;
     var NUTRI_RECIPE_MAX_STEPS = 50;
@@ -31323,7 +31327,9 @@ initBarcodeEvents();
       }
       try {
         var headers = { 'Content-Type': 'application/json' };
-        if (opts.operationId) headers['X-Recipe-Operation-Id'] = opts.operationId;
+        if (NUTRI_RECIPE_SEND_OPERATION_HEADER && opts.operationId) {
+          headers['X-Recipe-Operation-Id'] = opts.operationId;
+        }
         var res = await fetch(NUTRI_RECIPE_API_ENDPOINT, {
           method: 'POST',
           headers: headers,
@@ -31414,7 +31420,9 @@ initBarcodeEvents();
       }
       try {
         var headers = { 'Content-Type': 'application/json' };
-        if (opts.operationId) headers['X-Recipe-Operation-Id'] = opts.operationId;
+        if (NUTRI_RECIPE_SEND_OPERATION_HEADER && opts.operationId) {
+          headers['X-Recipe-Operation-Id'] = opts.operationId;
+        }
         var res = await fetch(NUTRI_RECIPE_API_ENDPOINT, {
           method: 'POST',
           headers: headers,
