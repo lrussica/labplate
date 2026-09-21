@@ -377,9 +377,10 @@ app.get('/health', (req, res) => {
     prepPromptVersion: core.PREP_PROMPT_VERSION || null,
     recipeSchemaVersion: 'v9.2',
     culinaryUsabilityGate: true,
-    culinaryUsabilityVersion: '1.0.2-cors-safety',
+    culinaryUsabilityVersion: '1.0.3-error-source',
     recipeSoftRepair: true,
     corsCrashSafety: true,
+    errorSourceField: true,
     dishPlanRequiredInSchema: true,
     groq429Diagnostics: true,
     groqDebugKeyRouting: true,
@@ -905,6 +906,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
       });
       const errPayload = {
         error: 'provider_error',
+        error_source: 'groq_provider',
         status: upstreamStatus,
         message: core.providerErrorClientMessage(upstreamStatus, prepResult.body, prepResult.headers),
         model: recipeModel,
@@ -944,7 +946,11 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
         flow: 'prep',
         keyType: auth.keyType,
       });
-      return res.status(502).json({ error: 'recipe_unavailable', key_type: auth.keyType });
+      return res.status(502).json({
+        error: 'recipe_unavailable',
+        error_source: 'pipeline',
+        key_type: auth.keyType,
+      });
     }
     console.log(`[nutri-recipe] OK flow=prep model=${recipeModel} key=${auth.keyType} ingredients=${prepResult.recipe.ingredients.length} steps=${prepResult.recipe.steps.length} ms=${Date.now() - startedAt}`);
     return sendRecipeOk(prepResult.recipe);
@@ -1003,6 +1009,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
       });
       const errPayload = {
         error: 'provider_error',
+        error_source: 'groq_provider',
         status: upstreamStatus,
         message: core.providerErrorClientMessage(upstreamStatus, pipelineResult.body, pipelineResult.headers),
         model: recipeModel,
@@ -1077,7 +1084,11 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     }
     if (pipelineResult.error) {
       logEvent('response_rejected', { reason: pipelineResult.error, detail: pipelineResult.reason || pipelineResult.body || '', ms: Date.now() - startedAt, flow, keyType: auth.keyType });
-      return res.status(502).json({ error: 'recipe_unavailable', key_type: auth.keyType });
+      return res.status(502).json({
+        error: 'recipe_unavailable',
+        error_source: 'pipeline',
+        key_type: auth.keyType,
+      });
     }
 
     // Handoff-Sentinel in Raw-JSON?
@@ -1092,7 +1103,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
 
     if (!pipelineResult.recipe) {
       logEvent('response_rejected', { reason: 'invalid_or_missing_schema', ms: Date.now() - startedAt, flow });
-      return res.status(502).json({ error: 'recipe_unavailable' });
+      return res.status(502).json({ error: 'recipe_unavailable', error_source: 'pipeline' });
     }
 
     const recipe = pipelineResult.recipe;
@@ -1147,6 +1158,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     });
     const errPayload = {
       error: 'provider_error',
+      error_source: 'groq_provider',
       status: upstreamStatus,
       message: core.providerErrorClientMessage(upstreamStatus, result.body, result.headers),
       model: recipeModel,
@@ -1166,7 +1178,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   }
   if (result.error) {
     logEvent('response_rejected', { reason: result.error, detail: result.reason || result.body || '', ms: Date.now() - startedAt, flow });
-    return res.status(502).json({ error: 'recipe_unavailable' });
+    return res.status(502).json({ error: 'recipe_unavailable', error_source: 'pipeline' });
   }
 
   // Phase 2: LLM-Sentinel / handoff-Feld → Coach statt Rezept.
@@ -1185,7 +1197,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   const recipe = core.toClientRecipe(result.data, effectivePayload);
   if (!recipe) {
     logEvent('response_rejected', { reason: 'invalid_or_missing_schema', ms: Date.now() - startedAt, flow });
-    return res.status(502).json({ error: 'recipe_unavailable' });
+    return res.status(502).json({ error: 'recipe_unavailable', error_source: 'pipeline' });
   }
 
   console.log(`[nutri-recipe] OK flow=${flow} ingredients=${recipe.ingredients.length} steps=${recipe.steps.length} key=${auth.keyType} ms=${Date.now() - startedAt}`);
@@ -1211,6 +1223,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     applyCorsHeaders(req, res);
     return res.status(500).json({
       error: 'internal_error',
+      error_source: 'internal_crash',
       message: 'Interner Serverfehler bei der Rezeptgenerierung.',
       operationId: operationId || null,
     });
@@ -1252,7 +1265,7 @@ app.post('/api/food-lookup', limiter, async (req, res) => {
     res.status(upstream.status).type('application/json').send(text);
   } catch (err) {
     logEvent('food_lookup_failed', { reason: err && err.name ? err.name : 'unknown' });
-    res.status(502).json({ error: 'provider_error' });
+    res.status(502).json({ error: 'provider_error', error_source: 'groq_provider' });
   } finally {
     clearTimeout(timer);
   }
@@ -1283,7 +1296,7 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   console.error('[express] UNHANDLED', JSON.stringify({ message: msg.slice(0, 300), stack: stack }));
   logEvent('unhandled_error', { reason: 'internal', message: msg.slice(0, 300) });
   if (res.headersSent) return undefined;
-  return res.status(500).json({ error: 'internal_error' });
+  return res.status(500).json({ error: 'internal_error', error_source: 'internal_crash' });
 });
 
 // Process-Level: Stacktrace sichtbar machen (sonst nur Render-502 ohne Body/CORS)

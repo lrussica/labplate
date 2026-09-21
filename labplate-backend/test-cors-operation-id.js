@@ -29,6 +29,11 @@ assert.ok(
   '422 liefert Ingredient-Namen zur Diagnose'
 );
 assert.ok(
+  /error_source:\s*'groq_provider'/.test(serverSrc) &&
+    /error_source:\s*'internal_crash'/.test(serverSrc),
+  'error_source trennt groq_provider vs internal_crash'
+);
+assert.ok(
   /function getRecipeOperationId/.test(serverSrc),
   'getRecipeOperationId vorhanden'
 );
