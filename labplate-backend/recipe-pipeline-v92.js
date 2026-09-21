@@ -32,7 +32,12 @@ function buildV92GenerativeSchema() {
   const ingredient = {
     type: 'object',
     additionalProperties: false,
-    required: ['id', 'name', 'amount', 'unit', 'protein_source', 'netCarbs', 'fat', 'protein', 'fiber'],
+    // Groq strict: JEDES property muss in required stehen (sonst 400 invalid JSON schema).
+    required: [
+      'id', 'name', 'amount', 'unit', 'protein_source',
+      'culinaryRole', 'countsAsPrimaryProteinSource',
+      'netCarbs', 'fat', 'protein', 'fiber',
+    ],
     properties: {
       id: { type: 'string', description: 'Vierstellige ID z.B. "0001"' },
       name: { type: 'string' },
@@ -53,9 +58,12 @@ function buildV92GenerativeSchema() {
       },
       culinaryRole: {
         type: 'string',
-        description:
-          'main_protein|secondary_protein|protein_supplement|base|carbohydrate|vegetable|fruit|' +
-          'fat_source|topping|garnish|seasoning|liquid|binder|sweetener',
+        enum: [
+          'main_protein', 'secondary_protein', 'protein_supplement', 'base', 'carbohydrate',
+          'vegetable', 'fruit', 'fat_source', 'topping', 'garnish', 'seasoning', 'liquid',
+          'binder', 'sweetener',
+        ],
+        description: 'Kulinarische Rolle der Zutat.',
       },
       countsAsPrimaryProteinSource: {
         type: 'boolean',

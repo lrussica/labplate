@@ -49,8 +49,23 @@ assert(/SPRACHE \(verbindlich\)|komplett auf/i.test(sys), 'Generativ-Prompt: ver
 assert.strictEqual(genReq.response_format.json_schema.schema.required.includes('garnish'), true);
 assert.strictEqual(genReq.response_format.json_schema.schema.required.includes('chef_analysis'), true);
 assert.strictEqual(genReq.response_format.json_schema.schema.required.includes('nutrition'), true);
+assert.strictEqual(genReq.response_format.json_schema.schema.required.includes('dishPlan'), true);
 assert.strictEqual(!!genReq.response_format.json_schema.schema.properties.self_check, false, 'kein self_check im Schema');
 assert.strictEqual(genReq.response_format.json_schema.name, 'nutri_recipe_v92');
+// Groq strict: jedes property muss in required stehen
+(function assertStrictRequired(obj, path) {
+  if (!obj || typeof obj !== 'object') return;
+  if (obj.type === 'object' && obj.properties && obj.additionalProperties === false) {
+    const props = Object.keys(obj.properties).sort();
+    const req = (obj.required || []).slice().sort();
+    assert.deepStrictEqual(req, props, 'strict required mismatch at ' + path);
+    props.forEach(function (k) {
+      assertStrictRequired(obj.properties[k], path + '.' + k);
+    });
+  }
+  if (obj.items) assertStrictRequired(obj.items, path + '.items');
+})(genReq.response_format.json_schema.schema, 'schema');
+console.log('OK generative schema strict-required coverage');
 // Originalmodus: kein Chef-Framework
 const origReq = core.buildGroqRequest(genPayload({
   ai_instruction: 'MODUS ORIGINALREZEPT (Italien): Gib die klassische Version von "Bolognese" zurück.',
