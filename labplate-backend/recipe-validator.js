@@ -41,9 +41,39 @@ function escapeRegExp(s) {
 }
 
 /**
+ * Alias-Varianten eines Zutatennamens für Anti-Stutter (kurz/lang/Komma-Zusatz).
+ * "Schwarzer Pfeffer" → Pfeffer, Schwarzer, …; "Mozzarella, gerieben" → Mozzarella.
+ */
+function ingredientNameAliases(rawName, opts) {
+  const name = String(rawName || '').trim();
+  const aliases = [];
+  function add(a) {
+    const t = String(a || '').trim();
+    if (!t || t.length < 2) return;
+    const key = t.toLowerCase();
+    if (aliases.some(function (x) { return x.toLowerCase() === key; })) return;
+    aliases.push(t);
+  }
+  if (!name) return aliases;
+  add(name);
+  const clean = proseIngredientName(name, opts);
+  add(clean);
+  const beforeComma = String(clean || name).split(',')[0].trim();
+  add(beforeComma);
+  const tokens = beforeComma.split(/\s+/).filter(Boolean);
+  if (tokens.length) {
+    add(tokens[0]);
+    add(tokens[tokens.length - 1]);
+    if (tokens.length >= 2) add(tokens.slice(1).join(' '));
+  }
+  return aliases;
+}
+
+/**
  * Entfernt redundante Namen/Einheiten neben {id}-Platzhaltern, bevor das Backend
  * amount+unit+name einsetzt — verhindert "Salz Salz", "10ml Öl Öl", "Wasser 1000ml Wasser ml",
- * "Wasser ({0001})" → "{0001}", "salzen({0005})" → "salzen {0005}".
+ * "Wasser ({0001})" → "{0001}", "salzen({0005})" → "salzen {0005}",
+ * "Pfeffer {id}" bei Name "Schwarzer Pfeffer".
  */
 function stripRedundantBesidePlaceholders(text, ingredientsById) {
   let out = String(text == null ? '' : text);
@@ -54,17 +84,19 @@ function stripRedundantBesidePlaceholders(text, ingredientsById) {
     const name = String(ing.name || '').trim();
     if (!name) return;
     const ph = '\\{' + id + '\\}';
-    const nameRe = escapeRegExp(name);
     const unit = String(ing.unit || '').trim();
-    const shortName = proseIngredientName(name) || name.split(/[\s(,]/)[0];
-    const aliases = [name];
-    if (shortName && shortName.length >= 2) {
-      aliases.push(shortName);
-    }
+    const aliases = ingredientNameAliases(name, {
+      pieces: ing._culinary_amount != null ? ing._culinary_amount : null,
+      isEgg: isEggIngredientName(name),
+    });
     // Ei / Eier neben Ei-Platzhalter
     if (/\bei\b/i.test(name) || String(ing.unit || '') === 'stk') {
-      aliases.push('Ei', 'Eier', 'egg', 'eggs');
+      ['Ei', 'Eier', 'egg', 'eggs'].forEach(function (a) {
+        if (aliases.indexOf(a) < 0) aliases.push(a);
+      });
     }
+    // Längere Aliase zuerst (Schwarzer Pfeffer vor Pfeffer)
+    aliases.sort(function (a, b) { return b.length - a.length; });
     aliases.forEach(function (alias) {
       if (!alias) return;
       const aRe = escapeRegExp(alias);
@@ -92,20 +124,73 @@ function stripRedundantBesidePlaceholders(text, ingredientsById) {
 }
 
 /**
+ * Glättet Kurzform+Langform und exakte Doppelungen im Fließtext.
+ * "Pfeffer Schwarzer Pfeffer" → "Schwarzer Pfeffer"
+ * "Mozzarella Mozzarella, gerieben" → "Mozzarella"
+ */
+function collapseShortLongIngredientForms(text, nameForms) {
+  let out = String(text == null ? '' : text);
+  const forms = (nameForms || []).filter(function (f) { return f && String(f).trim().length >= 2; })
+    .map(function (f) { return String(f).trim(); });
+  // Längere Formen zuerst
+  const unique = [];
+  forms.forEach(function (f) {
+    if (!unique.some(function (u) { return u.toLowerCase() === f.toLowerCase(); })) unique.push(f);
+  });
+  unique.sort(function (a, b) { return b.length - a.length; });
+  unique.forEach(function (longForm) {
+    const longRe = escapeRegExp(longForm);
+    const longLower = longForm.toLowerCase();
+    unique.forEach(function (shortForm) {
+      if (shortForm.length >= longForm.length) return;
+      if (longLower.indexOf(shortForm.toLowerCase()) < 0) return;
+      // short muss als eigenes Wort in long vorkommen
+      if (!new RegExp('\\b' + escapeRegExp(shortForm) + '\\b', 'i').test(longForm)) return;
+      const shortRe = escapeRegExp(shortForm);
+      // "Name" + "Name, gerieben" → Prosa bevorzugt Kurzform ohne Komma-Zusatz
+      const preferShort = /,/.test(longForm) && !/,/.test(shortForm) &&
+        longLower.replace(/\s*,.*$/, '') === shortForm.toLowerCase();
+      const keep = preferShort ? shortForm : longForm;
+      out = out.replace(new RegExp('\\b' + shortRe + '\\s+' + longRe + '\\b', 'gi'), keep);
+      out = out.replace(new RegExp('\\b' + longRe + '\\s+' + shortRe + '\\b', 'gi'), keep);
+      // "Name Name, zusatz" → "Name"
+      out = out.replace(
+        new RegExp('\\b' + shortRe + '\\s+' + shortRe + '\\s*,\\s*[^.,;!?]{1,40}', 'gi'),
+        shortForm
+      );
+    });
+    // Exakte Doppelung der Langform
+    out = out.replace(new RegExp('\\b(' + longRe + ')(\\s+\\1)+\\b', 'gi'), '$1');
+  });
+  // Generisch: "Wort Wort," → "Wort"
+  out = out.replace(
+    /\b([A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß\-]{1,40})\s+\1(\s*,\s*[A-Za-zÄÖÜäöüß\-][^.,;!?]{0,40})?/gi,
+    '$1'
+  );
+  return out;
+}
+
+/**
  * Nach nameOnly-Expansion: doppelte Namen, Rest-Klammern und Verb+Zutat glätten.
  * "Wasser (Wasser)" → "Wasser"; "salzen(Salz)" / "salzen Salz" → "salzen".
  */
 function collapseProseIngredientDuplicates(text, ingredientsById) {
   let out = String(text == null ? '' : text);
   const byId = ingredientsById || {};
+  const allForms = [];
   const seen = {};
   Object.keys(byId).forEach(function (id) {
     const ing = byId[id];
     if (!ing) return;
-    const clean = proseIngredientName(String(ing.name || '').trim(), {
+    const raw = String(ing.name || '').trim();
+    const clean = proseIngredientName(raw, {
       pieces: ing._culinary_amount != null ? ing._culinary_amount : null,
       isEgg: isEggIngredientName(ing.name),
     });
+    ingredientNameAliases(raw, {
+      pieces: ing._culinary_amount != null ? ing._culinary_amount : null,
+      isEgg: isEggIngredientName(ing.name),
+    }).forEach(function (a) { allForms.push(a); });
     if (!clean || clean.length < 2) return;
     const key = clean.toLowerCase();
     if (seen[key]) return;
@@ -135,10 +220,157 @@ function collapseProseIngredientDuplicates(text, ingredientsById) {
     // Doppelter Name hintereinander
     out = out.replace(new RegExp('\\b(' + re + ')(\\s+\\1)+\\b', 'gi'), '$1');
   });
+  out = collapseShortLongIngredientForms(out, allForms);
   // Generisch: beliebiges "Wort (Wort)"
   out = out.replace(/\b([A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß\-]{1,40})\s*\(\s*\1\s*\)/gi, '$1');
   out = out.replace(/\s{2,}/g, ' ').replace(/\s+([.,;:!?])/g, '$1').trim();
   return out;
+}
+
+/**
+ * Säubert Step-/Garnish-Prosa von Zutaten-Dopplungen (auch ohne Platzhalter).
+ * Nutzt optionale Zutatenliste für Alias-Formen.
+ */
+function cleanupStepProseDuplicates(text, ingredients) {
+  let out = String(text == null ? '' : text);
+  if (!out) return out;
+  const forms = [];
+  (Array.isArray(ingredients) ? ingredients : []).forEach(function (ing) {
+    if (!ing) return;
+    ingredientNameAliases(ing.name || ing.displayName || '').forEach(function (a) {
+      forms.push(a);
+    });
+  });
+  out = collapseShortLongIngredientForms(out, forms);
+  // Generisch ohne Zutatenliste: "Pfeffer Schwarzer Pfeffer" / "Salz Meersalz"
+  // Kurzform + (Adjektiv+Kurzform) → längere Form behalten
+  out = out.replace(
+    /\b([A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß\-]{2,30})\s+((?:[A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß\-]{1,30}\s+){1,3}\1)\b/gi,
+    '$2'
+  );
+  // "Name Name, zusatz" → "Name"
+  out = out.replace(
+    /\b([A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß\-]{1,40})\s+\1(\s*,\s*[A-Za-zÄÖÜäöüß][^.,;!?]{0,40})?/gi,
+    '$1'
+  );
+  out = out.replace(/\s{2,}/g, ' ').replace(/\s+([.,;:!?])/g, '$1').trim();
+  return out;
+}
+
+/**
+ * Merge-Key für identische Zutaten (Name+Unit, normalisiert).
+ */
+function ingredientMergeKey(ing) {
+  const raw = String((ing && (ing.name || ing.displayName)) || '').trim().toLowerCase();
+  const name = raw
+    .replace(/\s*\([^)]*\)/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  let unit = String((ing && ing.unit) || 'g').toLowerCase().trim();
+  if (unit === 'stück' || unit === 'stueck') unit = 'stk';
+  if (unit === 'prisen') unit = 'prise';
+  return name + '|' + unit;
+}
+
+/**
+ * Fasst identische Zutaten (gleicher Name+Unit) zusammen und summiert Mengen.
+ * Remapt {id}-Platzhalter in steps/garnish/chef_analysis auf die behaltene Id.
+ * @returns {{ merged: object[], idMap: object, removedIds: string[] }}
+ */
+function mergeDuplicateIngredients(ingredients) {
+  const list = Array.isArray(ingredients) ? ingredients : [];
+  const idMap = {};
+  const removedIds = [];
+  const byKey = {};
+  const order = [];
+
+  list.forEach(function (ing) {
+    if (!ing || typeof ing !== 'object') return;
+    const key = ingredientMergeKey(ing);
+    const id = ing.id != null ? String(ing.id) : (ing._v92_id != null ? String(ing._v92_id) : null);
+    if (!byKey[key]) {
+      byKey[key] = Object.assign({}, ing);
+      order.push(key);
+      if (id) idMap[id] = id;
+      return;
+    }
+    const keep = byKey[key];
+    const keepId = keep.id != null ? String(keep.id)
+      : (keep._v92_id != null ? String(keep._v92_id) : null);
+    const unit = String(keep.unit || ing.unit || 'g').toLowerCase();
+    const a = Number(keep.amount);
+    const b = Number(ing.amount);
+    if (unit === 'prise' || unit === 'messerspitze') {
+      keep.amount = 0;
+    } else if (Number.isFinite(a) && Number.isFinite(b)) {
+      keep.amount = Math.round((a + b) * 10) / 10;
+    } else if (Number.isFinite(b) && !Number.isFinite(a)) {
+      keep.amount = b;
+    }
+    // Makros/100g: behalte Keep (identische Zutat)
+    if (id && keepId && id !== keepId) {
+      idMap[id] = keepId;
+      removedIds.push(id);
+    } else if (id && !keepId) {
+      keep.id = id;
+      idMap[id] = id;
+    }
+    if (ing.protein_source) keep.protein_source = true;
+    if (ing.countsAsPrimaryProteinSource) keep.countsAsPrimaryProteinSource = true;
+  });
+
+  const merged = order.map(function (k) { return byKey[k]; });
+  return { merged: merged, idMap: idMap, removedIds: removedIds };
+}
+
+/** Ersetzt {altId} durch {keepId} in Prosa-Feldern. */
+function remapIngredientPlaceholdersInRecipe(recipe, idMap) {
+  if (!recipe || !idMap) return;
+  const keys = Object.keys(idMap).filter(function (k) { return idMap[k] && idMap[k] !== k; });
+  if (!keys.length) return;
+  function remapText(t) {
+    let out = String(t == null ? '' : t);
+    keys.forEach(function (from) {
+      const to = idMap[from];
+      out = out.split('{' + from + '}').join('{' + to + '}');
+    });
+    return out;
+  }
+  if (Array.isArray(recipe.steps)) {
+    recipe.steps = recipe.steps.map(function (s) {
+      if (!s) return s;
+      if (typeof s === 'string') return remapText(s);
+      const copy = Object.assign({}, s);
+      if (copy.content != null) copy.content = remapText(copy.content);
+      if (copy.instruction != null) copy.instruction = remapText(copy.instruction);
+      if (copy.text != null) copy.text = remapText(copy.text);
+      return copy;
+    });
+  }
+  if (recipe.garnish != null) recipe.garnish = remapText(recipe.garnish);
+  if (recipe.chef_analysis != null) recipe.chef_analysis = remapText(recipe.chef_analysis);
+}
+
+/**
+ * Soft-Repair: doppelte Listen-Einträge mergen + Platzhalter umbiegen.
+ * @returns {string[]} kurze Beschreibungen der Merges
+ */
+function dedupeRecipeIngredients(recipe) {
+  if (!recipe || typeof recipe !== 'object') return [];
+  const notes = [];
+  function runOn(field) {
+    const list = recipe[field];
+    if (!Array.isArray(list) || list.length < 2) return;
+    const before = list.length;
+    const result = mergeDuplicateIngredients(list);
+    if (result.merged.length >= before) return;
+    recipe[field] = result.merged;
+    remapIngredientPlaceholdersInRecipe(recipe, result.idMap);
+    notes.push(field + ': ' + before + '→' + result.merged.length);
+  }
+  runOn('ingredients');
+  runOn('finalIngredients');
+  return notes;
 }
 
 /**
@@ -186,6 +418,12 @@ function proseIngredientName(displayName, opts) {
   name = name.replace(/\s*\([^)]*\)/g, '').trim();
   // Führende Stück-/Mengenzahl: "2 Eier" → "Eier", "1 Ei" → "Ei"
   name = name.replace(/^\d+[.,]?\d*\s+/, '').trim();
+  // Komma-Zubereitungszusätze nur in Prosa streichen (Listenname bleibt voll):
+  // "Mozzarella, gerieben" → "Mozzarella" — verhindert "Mozzarella Mozzarella, gerieben"
+  name = name.replace(
+    /\s*,\s*(?:gerieben|gehackt|geschnitten|gewürfelt|gewuerfelt|gemahlen|frisch|getrocknet|in\s+Würfeln?|in\s+Wuerfeln?|in\s+Scheiben|geschält|geschaelt|entsteint|ohne\s+Haut)(?:\s+.*)?$/i,
+    ''
+  ).trim();
   name = name.replace(/\s{2,}/g, ' ').trim();
 
   const piecesRaw = o.pieces != null ? Number(o.pieces) : null;
@@ -1368,7 +1606,14 @@ function validateRecipeV2(recipe, opts) {
   const o = opts && typeof opts === 'object' ? opts : {};
   const r = recipe && typeof recipe === 'object' ? recipe : {};
   const nutrition = r.nutrition || {};
-  const ingredients = Array.isArray(r.ingredients) ? r.ingredients : [];
+
+  // Soft-Repair: identische Zutaten zusammenfassen (Mengen addieren, Ids remappen)
+  const dedupeNotes = dedupeRecipeIngredients(r);
+  if (dedupeNotes.length) {
+    result.addWarning('Zutaten dedupliziert: ' + dedupeNotes.join('; '));
+  }
+
+  let ingredients = Array.isArray(r.ingredients) ? r.ingredients : [];
   const steps = Array.isArray(r.steps) ? r.steps : [];
   const garnish = typeof r.garnish === 'string' ? r.garnish : '';
   let chefAnalysis = typeof r.chef_analysis === 'string' ? r.chef_analysis : '';
@@ -1468,8 +1713,9 @@ function validateRecipeV2(recipe, opts) {
   if (seasoningInjected.length) {
     result.addWarning('Gewürze ergänzt: ' + seasoningInjected.join(', '));
   }
-  // ingredients-Array kann durch Inject gewachsen sein — lokal neu binden
-  const ingredientsLive = Array.isArray(r.ingredients) ? r.ingredients : ingredients;
+  // ingredients-Array kann durch Inject/Dedupe gewachsen/geschrumpft sein — lokal neu binden
+  ingredients = Array.isArray(r.ingredients) ? r.ingredients : ingredients;
+  const ingredientsLive = ingredients;
 
   const dishQueryEarly = o.dishQuery != null ? o.dishQuery
     : (r._dishQuery != null ? r._dishQuery : (r.title || ''));
@@ -1560,6 +1806,11 @@ module.exports = {
   resolvePlaceholders: resolvePlaceholders,
   stripRedundantBesidePlaceholders: stripRedundantBesidePlaceholders,
   collapseProseIngredientDuplicates: collapseProseIngredientDuplicates,
+  collapseShortLongIngredientForms: collapseShortLongIngredientForms,
+  cleanupStepProseDuplicates: cleanupStepProseDuplicates,
+  ingredientNameAliases: ingredientNameAliases,
+  mergeDuplicateIngredients: mergeDuplicateIngredients,
+  dedupeRecipeIngredients: dedupeRecipeIngredients,
   stripQuantityMentionsFromText: stripQuantityMentionsFromText,
   textHasQuantityMention: textHasQuantityMention,
   proseIngredientName: proseIngredientName,

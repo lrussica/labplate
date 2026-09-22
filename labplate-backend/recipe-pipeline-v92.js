@@ -203,6 +203,10 @@ function isEggIngredient(name) {
  */
 function renderRecipeForDisplay(recipe, renderOpts) {
   if (!recipe || typeof recipe !== 'object') return null;
+  // Identische Zutaten vor Skalierung zusammenfassen
+  try {
+    validator.dedupeRecipeIngredients(recipe);
+  } catch (_) { /* best effort */ }
   const ingredientsIn = Array.isArray(recipe.ingredients) ? recipe.ingredients : [];
   if (!ingredientsIn.length) return null;
   const o = renderOpts || {};

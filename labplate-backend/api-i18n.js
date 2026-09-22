@@ -389,7 +389,8 @@ function langFromReq(reqOrBody) {
   const body = reqOrBody && reqOrBody.body && typeof reqOrBody.body === 'object'
     ? reqOrBody.body
     : (reqOrBody && typeof reqOrBody === 'object' ? reqOrBody : {});
-  return normalizeLang(body.lang || body.language || 'en');
+  // LabPlate default: Deutsch (HealthScore-/Coach-Badges)
+  return normalizeLang(body.lang || body.language || 'de');
 }
 
 module.exports = {

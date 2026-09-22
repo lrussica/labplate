@@ -316,7 +316,7 @@ function buildWarnings(perServing, ingredients, lang) {
   const netCarbs = num(perServing.netCarbs, 0);
   const fiber = num(perServing.fiber, 0);
   const macroSum = protein + fat + netCarbs || 1;
-  const L = lang || 'en';
+  const L = lang || 'de';
 
   if (fat / macroSum > 0.4 || fat > 35) {
     warnings.push({ code: 'high_fat', message: apiI18n.t('warn_high_fat', L) });
@@ -446,7 +446,7 @@ function hasCriticalPortionWarnings(warnings) {
 async function analyzeRecipe(recipe, opts) {
   const raw = recipe && typeof recipe === 'object' ? recipe : null;
   if (!raw) return { error: 'invalid_payload' };
-  const lang = apiI18n.normalizeLang((opts && opts.lang) || raw.lang || 'en');
+  const lang = apiI18n.normalizeLang((opts && opts.lang) || raw.lang || 'de');
 
   const requiresReview = !!raw.requiresReview;
   const validationWarnings = raw.validationWarnings || raw.portionWarnings || raw.warnings || [];

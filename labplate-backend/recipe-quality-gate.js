@@ -9,6 +9,7 @@ const apiI18n = require('./api-i18n');
 
 const portions = require('./recipe-portions');
 const culinaryUsability = require('./culinary-usability');
+const validator = require('./recipe-validator');
 
 const QUALITY_STATUS = {
   READY: 'ready',
@@ -22,6 +23,15 @@ const CHECK_STATUS = {
   FAIL: 'fail',
 };
 
+/** Englische Coach-/HealthScore-Meldungen → DE-Keys in api-i18n. */
+const EN_COACH_WARN_TO_KEY = {
+  'High fat per serving – check portion size or preparation.': 'warn_high_fat',
+  'Low protein per serving – consider a protein-rich side or alternative.': 'warn_low_protein',
+  'High net carbs per serving.': 'warn_high_carbs',
+  'Low fiber – add whole grains or vegetables.': 'warn_low_fiber',
+  'Calorie-dense per serving (> 800 kcal).': 'warn_high_calories',
+};
+
 function checkResult(status, issues) {
   return {
     status: status,
@@ -33,6 +43,16 @@ function stepInstruction(step) {
   if (typeof step === 'string') return String(step || '').trim();
   if (!step || typeof step !== 'object') return '';
   return String(step.instruction || step.content || step.text || '').trim();
+}
+
+function setStepInstruction(step, text) {
+  if (typeof step === 'string') return text;
+  const copy = Object.assign({}, step);
+  if (copy.content != null) copy.content = text;
+  else if (copy.instruction != null) copy.instruction = text;
+  else if (copy.text != null) copy.text = text;
+  else copy.content = text;
+  return copy;
 }
 
 function finalIngredientList(recipe) {
@@ -342,6 +362,8 @@ function validateInstructions(recipe) {
   const steps = Array.isArray(recipe.steps) ? recipe.steps : [];
   let fallbackUsed = false;
   const repaired = [];
+  const ings = finalIngredientList(recipe);
+  let stutterCleaned = 0;
 
   steps.forEach(function (step, i) {
     let text = stepInstruction(step);
@@ -350,6 +372,13 @@ function validateInstructions(recipe) {
       repaired.push(step);
       return;
     }
+    // Auto-Cleanup: Zutaten-Dopplungen im Step-Text (vor Client-Rückgabe)
+    const cleaned = validator.cleanupStepProseDuplicates(text, ings);
+    if (cleaned !== text) {
+      stutterCleaned += 1;
+      text = cleaned;
+      step = setStepInstruction(step, cleaned);
+    }
     if (looksLikeBareIngredientDump(text)) {
       const action = (step && step.actionId) || guessActionFromContext(text, i, steps.length);
       const fb = ACTION_FALLBACKS[action] || ACTION_FALLBACKS.mix;
@@ -357,7 +386,7 @@ function validateInstructions(recipe) {
       if (typeof step === 'string') {
         repaired.push(fb);
       } else {
-        repaired.push(Object.assign({}, step, { instruction: fb, _instructionFallbackUsed: true }));
+        repaired.push(Object.assign({}, step, { instruction: fb, content: fb, _instructionFallbackUsed: true }));
       }
       issues.push('Step ' + (i + 1) + ': raw enumeration replaced by fallback');
       return;
@@ -367,6 +396,10 @@ function validateInstructions(recipe) {
 
   recipe._qualityRepairedSteps = repaired;
   recipe._instructionFallbackUsed = fallbackUsed;
+  if (stutterCleaned > 0) {
+    recipe._stepStutterCleaned = stutterCleaned;
+    // Soft-Repair: bereinigt, ohne Review zu erzwingen
+  }
 
   // Nach Fallback: wenn immer noch Dumps → fail
   const stillBad = repaired.some(function (s) {
@@ -375,7 +408,163 @@ function validateInstructions(recipe) {
   if (stillBad) {
     return checkResult(CHECK_STATUS.FAIL, issues.concat(['Preparation text not displayable']));
   }
-  if (issues.length) return checkResult(CHECK_STATUS.WARNING, issues);
+  // Nur echte Instruction-Probleme als Warning (Stutter-Cleanup ist still)
+  const reportIssues = issues.filter(function (x) {
+    return !/^Step-Text Dopplungen bereinigt/i.test(String(x || ''));
+  });
+  if (reportIssues.length) return checkResult(CHECK_STATUS.WARNING, reportIssues);
+  return checkResult(CHECK_STATUS.PASS, []);
+}
+
+/**
+ * Prüft und säubert Kurz-/Langform-Dopplungen in bereits aufgelösten Steps
+ * (zusätzliche Gate-Regel neben validateInstructions).
+ */
+function validateAndCleanStepStutter(recipe) {
+  const issues = [];
+  const ings = finalIngredientList(recipe);
+  const steps = Array.isArray(recipe.steps) ? recipe.steps : [];
+  let cleanedCount = 0;
+  const stutterRe = /\b([A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß\-]{1,40})\s+\1\b/i;
+
+  const nextSteps = steps.map(function (step, i) {
+    const text = stepInstruction(step);
+    if (!text) return step;
+    const cleaned = validator.cleanupStepProseDuplicates(text, ings);
+    if (cleaned !== text || stutterRe.test(text)) {
+      if (cleaned !== text) {
+        cleanedCount += 1;
+        issues.push('Step ' + (i + 1) + ': Zutaten-Dopplung bereinigt');
+        return setStepInstruction(step, cleaned);
+      }
+    }
+    return step;
+  });
+
+  if (cleanedCount > 0) {
+    recipe.steps = nextSteps;
+    recipe._qualityRepairedSteps = nextSteps;
+  }
+
+  // Garnish / chef_analysis / nutrition_note ebenfalls
+  ['garnish', 'chef_analysis', 'nutrition_note'].forEach(function (field) {
+    if (recipe[field] == null || typeof recipe[field] !== 'string') return;
+    const cleaned = validator.cleanupStepProseDuplicates(recipe[field], ings);
+    if (cleaned !== recipe[field]) {
+      recipe[field] = cleaned;
+      cleanedCount += 1;
+      issues.push(field + ': Zutaten-Dopplung bereinigt');
+    }
+  });
+
+  if (cleanedCount > 0) {
+    // Bereinigt → PASS (Auto-Repair), Issues nur intern fürs Logging
+    recipe._stepStutterCleaned = (recipe._stepStutterCleaned || 0) + cleanedCount;
+    return checkResult(CHECK_STATUS.PASS, []);
+  }
+  return checkResult(CHECK_STATUS.PASS, []);
+}
+
+/**
+ * Dedupliziert finale Zutatenliste (Mengen summieren) im QualityGate.
+ */
+function validateAndDedupeIngredients(recipe) {
+  const notes = validator.dedupeRecipeIngredients(recipe);
+  if (!notes.length) return checkResult(CHECK_STATUS.PASS, []);
+  // Soft-Repair: Mengen zusammengefasst, ohne Review zu erzwingen
+  recipe._ingredientsDeduped = notes;
+  return checkResult(CHECK_STATUS.PASS, []);
+}
+
+/**
+ * Ersetzt englische HealthScore-/Coach-Warntexte durch deutsche Strings.
+ * Englische Fallbacks gelten als Validierungsfehler (Soft: Warning + Rewrite).
+ */
+function sanitizeGermanCoachMessages(recipe, opts) {
+  const issues = [];
+  const lang = 'de';
+  const fields = ['warnings', 'coachWarnings', 'healthScoreWarnings', 'qualityWarnings'];
+
+  function translateMessage(msg) {
+    const s = String(msg || '').trim();
+    if (!s) return s;
+    if (EN_COACH_WARN_TO_KEY[s]) {
+      return apiI18n.t(EN_COACH_WARN_TO_KEY[s], lang);
+    }
+    // Prefix-Match für added_sugar / portion_estimated
+    const enFat = apiI18n.t('warn_high_fat', 'en');
+    const enProt = apiI18n.t('warn_low_protein', 'en');
+    const enCarb = apiI18n.t('warn_high_carbs', 'en');
+    const enFiber = apiI18n.t('warn_low_fiber', 'en');
+    const enCal = apiI18n.t('warn_high_calories', 'en');
+    const enPortion = apiI18n.t('portion_estimated', 'en');
+    if (s === enFat) return apiI18n.t('warn_high_fat', lang);
+    if (s === enProt) return apiI18n.t('warn_low_protein', lang);
+    if (s === enCarb) return apiI18n.t('warn_high_carbs', lang);
+    if (s === enFiber) return apiI18n.t('warn_low_fiber', lang);
+    if (s === enCal) return apiI18n.t('warn_high_calories', lang);
+    if (s === enPortion || /^Portion size estimated/i.test(s)) {
+      return apiI18n.t('portion_estimated', lang);
+    }
+    if (/^Contains sugar\/sweeteners:/i.test(s) || /^Contains sugar\/sweeteners：/i.test(s)) {
+      const names = s.replace(/^Contains sugar\/sweeteners:\s*/i, '');
+      return apiI18n.t('warn_added_sugar', lang, { names: names });
+    }
+    // Heuristik: typische EN-Coach-Phrasen
+    if (/^High fat per serving/i.test(s)) return apiI18n.t('warn_high_fat', lang);
+    if (/^Low protein per serving/i.test(s)) return apiI18n.t('warn_low_protein', lang);
+    if (/^High net carbs/i.test(s)) return apiI18n.t('warn_high_carbs', lang);
+    if (/^Low fiber/i.test(s)) return apiI18n.t('warn_low_fiber', lang);
+    if (/^Calorie-dense per serving/i.test(s)) return apiI18n.t('warn_high_calories', lang);
+    return s;
+  }
+
+  fields.forEach(function (field) {
+    const arr = recipe[field];
+    if (!Array.isArray(arr) || !arr.length) return;
+    recipe[field] = arr.map(function (item) {
+      if (item == null) return item;
+      if (typeof item === 'string') {
+        const next = translateMessage(item);
+        if (next !== item) {
+          issues.push('EN→DE: ' + field);
+        }
+        return next;
+      }
+      if (typeof item === 'object' && item.message != null) {
+        const next = translateMessage(item.message);
+        if (next !== item.message) {
+          issues.push('EN→DE: ' + field + '/' + (item.code || 'msg'));
+          return Object.assign({}, item, { message: next });
+        }
+      }
+      return item;
+    });
+  });
+
+  // Coach-Analyse-Objekt am Rezept
+  if (recipe.coachAnalysis && Array.isArray(recipe.coachAnalysis.warnings)) {
+    recipe.coachAnalysis.warnings = recipe.coachAnalysis.warnings.map(function (w) {
+      if (!w || typeof w !== 'object') return w;
+      const next = translateMessage(w.message);
+      if (next !== w.message) {
+        issues.push('EN→DE: coachAnalysis.warnings/' + (w.code || 'msg'));
+        return Object.assign({}, w, { message: next });
+      }
+      return w;
+    });
+  }
+
+  if (opts && opts.forceGerman === false) {
+    return checkResult(CHECK_STATUS.PASS, []);
+  }
+
+  if (issues.length) {
+    // Soft-Repair: Warning (nicht blocked), Texte sind bereits ersetzt
+    return checkResult(CHECK_STATUS.WARNING, uniq(issues.concat([
+      'HealthScore-/Coach-Meldungen waren Englisch und wurden auf Deutsch ersetzt',
+    ])));
+  }
   return checkResult(CHECK_STATUS.PASS, []);
 }
 
@@ -534,10 +723,13 @@ function evaluateRecipeQuality(recipe, opts) {
     portions: validatePortions(recipe),
     nutrition: validateNutrition(recipe),
     allergens: validateAllergens(recipe, opts),
+    ingredientDedupe: validateAndDedupeIngredients(recipe),
     ingredients: validateIngredientConsistency(recipe),
     instructions: validateInstructions(recipe),
+    stepStutter: validateAndCleanStepStutter(recipe),
     timing: validateTiming(recipe),
     language: validateLanguageQuality(recipe),
+    coachLocalization: sanitizeGermanCoachMessages(recipe, opts),
     culinaryUsability: culinaryCheck,
   };
 
@@ -674,6 +866,9 @@ module.exports = {
   validateAllergens: validateAllergens,
   validateIngredientConsistency: validateIngredientConsistency,
   validateInstructions: validateInstructions,
+  validateAndCleanStepStutter: validateAndCleanStepStutter,
+  validateAndDedupeIngredients: validateAndDedupeIngredients,
+  sanitizeGermanCoachMessages: sanitizeGermanCoachMessages,
   validateTiming: validateTiming,
   validateLanguageQuality: validateLanguageQuality,
   calculateQualityScore: calculateQualityScore,

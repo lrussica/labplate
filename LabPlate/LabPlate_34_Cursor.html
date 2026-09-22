@@ -30868,10 +30868,17 @@ initBarcodeEvents();
     function coachApiPost(path, body) {
       var controller = new AbortController();
       var timer = setTimeout(function () { controller.abort(); }, COACH_API_TIMEOUT_MS);
+      var payload = Object.assign({}, body || {});
+      if (payload.lang == null && payload.language == null) {
+        var appLang = (typeof lang === 'function')
+          ? lang()
+          : ((typeof currentLang !== 'undefined' && currentLang) ? currentLang : 'de');
+        payload.lang = appLang || 'de';
+      }
       return fetch(COACH_API_BASE + path, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body || {}),
+        body: JSON.stringify(payload),
         signal: controller.signal
       }).then(function (res) {
         return res.text().then(function (text) {
