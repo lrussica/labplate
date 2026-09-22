@@ -162,7 +162,7 @@ function liveRaguRaw(overrides) {
   console.log('PASS 5+6 natural steps', steps.slice(0, 3));
 }());
 
-// —— 7: Milchfreie Anpassung ——
+// —— 7: Laktose aktiv, aber Ragù ohne Milch/Ersatz → kein adapted (kein False Positive) ——
 (function test7_dairy() {
   const rendered = pipeline.renderRecipeForDisplay(liveRaguRaw(), {
     noHerbs: true,
@@ -170,11 +170,13 @@ function liveRaguRaw(overrides) {
     allergens: ['Milch / Laktose'],
     dairyFreeAdaptation: true,
   });
-  assert.ok(/milchfrei/i.test(rendered.title), 'Titel: ' + rendered.title);
-  assert.ok(rendered.adaptationFlags && rendered.adaptationFlags.indexOf('dairy_free_adaptation') >= 0);
-  assert.ok(/Milch wurde/i.test(rendered.adaptationNote || ''));
-  assert.strictEqual(rendered.isUnmodifiedOriginal, false);
-  console.log('PASS 7 dairy-free adaptation', rendered.title);
+  assert.ok(!/milchfrei angepasst/i.test(rendered.title), 'Titel ohne milchfrei-Suffix: ' + rendered.title);
+  assert.ok(!rendered.adaptationFlags || rendered.adaptationFlags.indexOf('dairy_free_adaptation') < 0,
+    'kein dairy_free_adaptation ohne Ersatz');
+  assert.ok(!rendered.adaptationNote, 'keine adaptationNote ohne Ersatz: ' + rendered.adaptationNote);
+  assert.ok(!rendered.lactoseHonestyStatus || rendered.lactoseHonestyStatus === 'none',
+    'status=' + rendered.lactoseHonestyStatus);
+  console.log('PASS 7 ragu + lactose without substitute → not adapted');
 }());
 
 // —— 8: Geschätzte Portion → review ——

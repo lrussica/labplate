@@ -399,10 +399,14 @@ function isEggIngredientName(name) {
   return /(?:^|[^a-z])ei(?:er)?(?:[^a-z]|$)/.test(n);
 }
 
-function validateNoFreeNumbersInProse(steps, garnish, chefAnalysis, ingredients) {
+function validateNoFreeNumbersInProse(steps, garnish, chefAnalysis, ingredients, opts) {
   const problems = [];
   const unitPattern = /\d+[.,]?\d*\s*(ml|g|kg|l|el|tl)\b/i;
   const list = Array.isArray(steps) ? steps : [];
+  const o = opts && typeof opts === 'object' ? opts : {};
+  const allowFromQuery = amountTokensFromText(
+    String(o.dishQuery || o.title || '')
+  );
 
   for (let i = 0; i < list.length; i++) {
     const step = list[i] || {};
@@ -419,11 +423,19 @@ function validateNoFreeNumbersInProse(steps, garnish, chefAnalysis, ingredients)
     problems.push("garnish enthält eine freie Mengen-Zahl statt Platzhalter: '" + garnish + "'");
   }
 
-  // Freie Nährwert-Zahlen in chef_analysis (nicht {id}-Referenzen)
-  if (chefAnalysis && /\d+[.,]?\d*\s*(g|kcal|kg)\b/i.test(chefAnalysis)) {
-    problems.push(
-      "chef_analysis enthält eine eigene Zahl statt Verweis auf 'nutrition': '" + chefAnalysis + "'"
-    );
+  // Freie Nährwert-Zahlen in chef_analysis (nicht {id}-Referenzen).
+  // Zahlen, die bereits in der Nutzer-Anfrage/Titel stehen (z. B. „unter 10 g“ bei Keto-Karte),
+  // sind Constraint-Echos und kein erfundener Makro-Wert.
+  if (chefAnalysis && /\d+[.,]?\d*[\s\u00a0\u202f\u2007\u2009\u200a]*(g|kcal|kg)\b/i.test(chefAnalysis)) {
+    const hits = String(chefAnalysis).match(/\d+[.,]?\d*[\s\u00a0\u202f\u2007\u2009\u200a]*(?:g|kcal|kg)\b/gi) || [];
+    const unexpected = hits.filter(function (h) {
+      return !allowFromQuery[normalizeAmountToken(h)];
+    });
+    if (unexpected.length) {
+      problems.push(
+        "chef_analysis enthält eine eigene Zahl statt Verweis auf 'nutrition': '" + chefAnalysis + "'"
+      );
+    }
   }
 
   const validIds = {};
@@ -722,8 +734,9 @@ function ingredientMatchesDishNeed(ingName, needRe, familyId) {
 function validateDishConceptFidelity(recipe, dishQuery) {
   const problems = [];
   const missing = [];
-  const q = String(dishQuery || '').trim();
-  if (!q) return { ok: true, problems: problems, missing: missing };
+  const qRaw = String(dishQuery || '').trim();
+  if (!qRaw) return { ok: true, problems: problems, missing: missing };
+  const q = stripNegatedFoodMentions(qRaw);
 
   const ingredients = Array.isArray(recipe && recipe.ingredients) ? recipe.ingredients : [];
   const names = ingredients.map(function (ing) { return String((ing && ing.name) || ''); });
@@ -789,8 +802,39 @@ const TITLE_PROTEIN_FAMILIES = [
   { id: 'quark', label: 'Quark', queryRe: /quark|hüttenkäse|huettenkaese/i, needRe: /quark|hüttenkäse|huettenkaese/i },
 ];
 
+/**
+ * Entfernt verneinte Lebensmittel-Listen aus der Anfrage
+ * („ohne Linsen/Bohnen…“, „without oats“, „kein Tofu“), damit Bindungs-/Konzept-Checks
+ * Ausschlüsse nicht als erlaubte/verlangte Zutaten lesen.
+ */
+function stripNegatedFoodMentions(text) {
+  return String(text || '')
+    .replace(/\bohne\s+[^.!?;]+/gi, ' ')
+    .replace(/\bwithout\s+[^.!?;]+/gi, ' ')
+    .replace(/\bno\s+[^.!?;]+/gi, ' ')
+    .replace(/\bkein(?:e|en|er|es)?\s+[^.!?;]+/gi, ' ');
+}
+
+function normalizeAmountToken(tok) {
+  return String(tok || '')
+    .toLowerCase()
+    .replace(/[\u00a0\u202f\u2007\u2009\u200a\s]+/g, '')
+    .replace(/,/g, '.')
+    .replace(/‑/g, '-')
+    .replace(/–/g, '-');
+}
+
+function amountTokensFromText(text) {
+  const out = Object.create(null);
+  const hits = String(text || '').match(/\d+[.,]?\d*[\s\u00a0\u202f\u2007\u2009\u200a]*(?:g|kcal|kg|ml|l)\b/gi) || [];
+  hits.forEach(function (h) {
+    out[normalizeAmountToken(h)] = true;
+  });
+  return out;
+}
+
 function titleMentionsProteinFamily(dishQuery, fam) {
-  const q = String(dishQuery || '');
+  const q = stripNegatedFoodMentions(dishQuery);
   if (!fam || !fam.queryRe) return false;
   if (fam.id === 'egg') {
     return /r[uü]hrei|(?:^|[^a-zäöüß])ei(?:er)?(?:[^a-zäöüß]|$)/i.test(q);
@@ -844,6 +888,7 @@ function ingredientNameMentionedInTitle(ingName, dishQuery) {
 
 /**
  * Titel definiert die vollständige Hauptprotein-Liste (nicht nur eine Untermenge).
+ * Nur wenn der Titel positiv Protein-Familien nennt (nicht „ohne Linsen…“).
  * @returns {{ ok: boolean, problems: string[], extras: string[] }}
  */
 function validateTitleProteinBinding(recipe, dishQuery) {
@@ -859,6 +904,8 @@ function validateTitleProteinBinding(recipe, dishQuery) {
     return titleMentionsProteinFamily(q, fam);
   });
 
+  // Keine positiv genannten Proteine im Titel (z. B. freie Keto-/Makro-Karten) →
+  // keine Extra-Bindung; nur Diät-Labels (vegan/vegetarisch) bleiben hart.
   if (titleFams.length) {
     ingredients.forEach(function (ing) {
       if (!countsAsPrimaryProteinSource(ing)) return;
@@ -1040,6 +1087,46 @@ function isMiseEnPlaceOnlyMention(step, id) {
   if (/mise|vorbereit|abwieg|bereitstell/.test(title)) return true;
   if (/abwieg|bereitstell|mise en place|alle zutaten/.test(content)) return true;
   return false;
+}
+
+/**
+ * Soft-Repair: Nach aktiver Einarbeitung gerinnungsempfindlicher Milchprodukte
+ * stove_level auf 0 setzen (Herd AUS) statt hart zu scheitern.
+ * @returns {string[]} kurze Hinweise, was korrigiert wurde
+ */
+function repairColdIngredientHeatSequence(recipe) {
+  const fixed = [];
+  const r = recipe && typeof recipe === 'object' ? recipe : {};
+  const ingredients = Array.isArray(r.ingredients) ? r.ingredients : [];
+  const steps = Array.isArray(r.steps) ? r.steps : [];
+  if (!steps.length) return fixed;
+
+  const sensitive = ingredients.filter(function (ing) {
+    return ing && ing.id && isColdSensitiveIngredientName(ing.name);
+  });
+  if (!sensitive.length) return fixed;
+
+  sensitive.forEach(function (ing) {
+    const id = String(ing.id);
+    const name = String(ing.name || id);
+    let firstActive = -1;
+    for (let i = 0; i < steps.length; i++) {
+      if (!stepMentionsIngredientId(steps[i], id)) continue;
+      if (isMiseEnPlaceOnlyMention(steps[i], id)) continue;
+      firstActive = i;
+      break;
+    }
+    if (firstActive < 0) return;
+    for (let j = firstActive; j < steps.length; j++) {
+      const stove = stepStoveLevel(steps[j]);
+      if (stove <= 0) continue;
+      steps[j].stove_level = 0;
+      fixed.push(
+        name + ' Step ' + (j + 1) + ': stove_level ' + stove + '→0 (Gerinnungsschutz)'
+      );
+    }
+  });
+  return fixed;
 }
 
 /**
@@ -1384,12 +1471,21 @@ function validateRecipeV2(recipe, opts) {
   // ingredients-Array kann durch Inject gewachsen sein — lokal neu binden
   const ingredientsLive = Array.isArray(r.ingredients) ? r.ingredients : ingredients;
 
-  const prose = validateNoFreeNumbersInProse(steps, garnish, chefAnalysis, ingredientsLive);
+  const dishQueryEarly = o.dishQuery != null ? o.dishQuery
+    : (r._dishQuery != null ? r._dishQuery : (r.title || ''));
+  const prose = validateNoFreeNumbersInProse(steps, garnish, chefAnalysis, ingredientsLive, {
+    dishQuery: dishQueryEarly,
+    title: r.title,
+  });
   prose.problems.forEach(function (p) { result.addError(p); });
 
   const staples = validateUnlistedStaplesInProse(steps, garnish, ingredientsLive);
   staples.problems.forEach(function (p) { result.addError(p); });
 
+  const coldRepaired = repairColdIngredientHeatSequence(r);
+  if (coldRepaired.length) {
+    result.addWarning('Gerinnungsschutz korrigiert: ' + coldRepaired.join('; '));
+  }
   const coldHeat = validateColdIngredientHeatSequence(r);
   coldHeat.problems.forEach(function (p) { result.addError(p); });
 
@@ -1459,6 +1555,7 @@ module.exports = {
   validateRecipeV2: validateRecipeV2,
   validateMaxProteinSourcesByKeywords: validateMaxProteinSourcesByKeywords,
   validateColdIngredientHeatSequence: validateColdIngredientHeatSequence,
+  repairColdIngredientHeatSequence: repairColdIngredientHeatSequence,
   isColdSensitiveIngredientName: isColdSensitiveIngredientName,
   resolvePlaceholders: resolvePlaceholders,
   stripRedundantBesidePlaceholders: stripRedundantBesidePlaceholders,

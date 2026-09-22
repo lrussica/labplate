@@ -359,10 +359,16 @@ def validate_recipe_v2(recipe: dict) -> ValidationResult:
                 f"Keto-Label vergeben, aber Netto-KH={nutrition.get('netto_kh_g')}g >= 10g"
             )
 
-    # Regel 9: Salz/Pfeffer nicht in Gramm
+    # Regel 9: Salz/Pfeffer nicht in Gramm (nicht „ungesalzen“)
     for ing in ingredients:
         name_lower = ing.get("name", "").lower()
-        if any(k in name_lower for k in ["salz", "pfeffer"]) and ing.get("unit") == "g":
+        if re.search(r"ungesalz|salzarm|salzfrei|ohne\s+salz", name_lower):
+            continue
+        is_seasoning = bool(
+            re.search(r"(^|[^a-zäöüß])pfeffer([^a-zäöüß]|$)", name_lower)
+            or re.search(r"(^|[^a-zäöüß])(meer)?salz([^a-zäöüß]|$)", name_lower)
+        )
+        if is_seasoning and ing.get("unit") == "g":
             result.add_error(f"'{ing.get('name')}' ist in Gramm angegeben statt Prise/Messerspitze")
 
     return result

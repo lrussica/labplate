@@ -34,6 +34,7 @@ const recipePipeline = require('./recipe-pipeline-v92');
 const recipePipelinePrep = require('./recipe-pipeline-prep');
 const recipeValidator = require('./recipe-validator');
 const recipePortions = require('./recipe-portions');
+const apiI18n = require('./api-i18n');
 
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const DEFAULT_MODEL = 'openai/gpt-oss-120b';
@@ -118,7 +119,8 @@ const CHEF_FRAMEWORK_RULES = [
   'VERBOTEN: separater Step mit Titel „Garnitur“/„Garnish“. Wenn Anrichten schon ein Step ist, Garnieren DORT integrieren. ' +
   'GARNITUR-EHRLICHKEIT: VERBOTEN erfundene Deko/Kraeuter (Petersilie, Schnittlauch, Zesten), die nicht in ingredients stehen.',
   '18) BEZEICHNUNGS-KONSISTENZ / Namensgleichheit. chef_analysis Pflicht; garnish nur mit Listen-Zutaten oder leer. ' +
-  'Bei Laktose-Ersatz: Titel anpassen (z. B. „… mit laktosefreiem Soja-Joghurt und Nüssen“).',
+  'Bei Laktose-Ersatz: nur kulinarisch etablierte Alternativen; Titel klar halten ' +
+  '(z. B. „… mit laktosefreiem Soja-Joghurt und Nüssen“). Keine unpassenden Notlösungen.',
   '19) KEIN [SELF-CHECK]-Block. Backend validiert deterministisch (validateRecipeV2) und rechnet nutrition aus ingredients.',
   '19a) dishPlan ZUERST: Bevor ingredients/steps: setze dishPlan (dishType, texture, servingMode, cookingMethod, requiredActions). ' +
   'Erlaubt u. a.: yogurt_nut_bowl, cold_yogurt_oat_bowl, oat_egg_pancake, protein_porridge, baked_oats, ' +
@@ -323,8 +325,31 @@ function validateIncoming(body) {
     lang: typeof body.lang === 'string' && /^[a-z]{2}$/.test(body.lang) ? body.lang : 'de',
     macros: body.macros && typeof body.macros === 'object' ? body.macros : {},
     micronutrient_gaps: Array.isArray(body.micronutrient_gaps) ? body.micronutrient_gaps.slice(0, 20) : [],
-    lab_guideline_constraints: body.lab_guideline_constraints && typeof body.lab_guideline_constraints === 'object'
-      ? body.lab_guideline_constraints : null,
+    // Legacy-Feld: wird nicht mehr als „Leitlinien-Therapie“ in Prompts injiziert.
+    // Lifestyle-Fokus-Notizen dürfen bleiben, medizinische Guideline-Payloads werden verworfen.
+    lab_guideline_constraints: (function () {
+      const raw = body.lab_guideline_constraints && typeof body.lab_guideline_constraints === 'object'
+        ? body.lab_guideline_constraints : null;
+      if (!raw) return null;
+      const notes = Array.isArray(raw.notes) ? raw.notes.map(function (n) { return String(n || ''); }) : [];
+      const medical = notes.some(function (n) {
+        return /leitlinie|ADA|AWMF|ESC|EAS|KDIGO|WHO|Pankreatitis|Diagnose|Therapie|Stoffwechselstörung/i.test(n);
+      });
+      if (medical) return null;
+      // Nur Fokus-Notizen / Prefer-Listen ohne medizinische Schwellen
+      return {
+        max_net_carbs_per_serving_g: null,
+        no_quick_carbs_or_sugar: !!raw.no_quick_carbs_or_sugar && notes.some(function (n) {
+          return /processed carbohydrate|fiber|fat quality|salt/i.test(n);
+        }),
+        avoid_ingredients: [],
+        prefer_ingredients: Array.isArray(raw.prefer_ingredients) ? raw.prefer_ingredients.slice(0, 12) : [],
+        priority: null,
+        notes: notes.filter(function (n) {
+          return /focus|lifestyle|fiber|carbohydrate|fat quality|salt/i.test(n);
+        }).slice(0, 8),
+      };
+    }()),
     ai_instruction: sanitizeText(body.ai_instruction, MAX_INSTRUCTION_LEN),
     allergens: Array.isArray(body.allergens) ? body.allergens.map((a) => sanitizeLine(a)).filter(Boolean).slice(0, 30) : [],
     pantry_ingredients: [],
@@ -654,7 +679,7 @@ function buildGenerativeMessages(p) {
     'Sonst normales Rezept wie unten. Bei gemischter Anfrage (Emotion + klares Gericht) → normales Rezept.',
     'STRENG VERBOTEN als Handoff: Allergen-Konflikt, Milchprodukte im Gerichtstitel, fehlende Zutaten, Validierungszweifel.',
     'Beispiel: Nutzer will "Rührei mit Frischkäse" und meidet Laktose → liefere das Gericht mit laktosefreien Ersatzzutaten',
-    '(z.B. laktosefreier Frischkäse / Kokoscreme / pflanzliche Alternative), Titel beibehalten, KEIN ' + HANDOFF_SENTINEL_TITLE + '.',
+    '(z.B. laktosefreier Frischkäse), Titel beibehalten, KEIN ' + HANDOFF_SENTINEL_TITLE + '.',
     'TITEL-TREUE (FREISUCHE): Wenn ein konkretes Gericht vorgegeben ist, behalte dessen Kernzutaten.',
     'Beispiel "Joghurt und Nüsse": MUSS Joghurt (ggf. laktosefrei/Soja) UND Nüsse (unit=g) enthalten —',
     'VERBOTEN: Hähnchen/Fleisch/Haferflocken als Ersatzkonzept ohne Nüsse. Nur Mengen/Gewürze variieren.',
@@ -677,7 +702,7 @@ function buildGenerativeMessages(p) {
       ? 'Du bist ein Rezept-Koch fuer klassische Originalrezepte. Erstelle EINE landestypische Rezeptidee als JSON gemaess Schema.'
       : 'Du bist ein hyper-intelligenter System-Chefkoch und Ernaehrungs-Wissenschaftler der Spitzenklasse. Rezepte vereinen Food-Pairing, Sensorik, makellose Konsistenz und exakte Naehrwert-Mathematik – an Tages-Makros angepasst, ohne Halluzinationen. JSON gemaess Schema.',
     'VARIATION: Liefere bei gleichen Suchbegriffen bewusst unterschiedliche Gerichte (andere Hauptzutat, Kueche oder Zubereitung). Wiederhole keine frueheren Titel aus der Zusatz-Instruction.',
-    'ERLAUBT: Zutaten vorschlagen, Mengen waehlen und an Tagesziele/Leitlinien anpassen, Schritte neu formulieren.',
+    'ERLAUBT: Zutaten vorschlagen, Mengen waehlen und an Nutzer-Tagesziele anpassen, Schritte neu formulieren.',
     'KRITISCH – Schema v9.2: ingredients[].unit NUR "g"|"ml"|"stk"|"prise"|"messerspitze". content/garnish ohne freie Mengen-Zahlen – nur {0001}-Platzhalter.',
     'Mengen in ingredients: Eier unit=stk; Gewuerze amount=0 unit=prise|messerspitze; Fluessigkeiten ml; Festes g. netCarbs/fat/protein/fiber je 100 g/ml.',
     'Beispiel Ei (4 Portionen): {"id":"0002","name":"Ei (Groesse M, ca. 60 g)","amount":4,"unit":"stk","protein_source":true}. Olivenoel: unit ml. Salz: unit prise, amount 0.',
@@ -708,13 +733,27 @@ function buildGenerativeMessages(p) {
     p.pantry_ingredients.length ? 'Vorhandene Zutaten / Suchbegriff: ' + p.pantry_ingredients.join(', ') : '',
     'Aggregierte Tages-Makrowerte (Wert / Ziel): ' + JSON.stringify(p.macros),
     p.micronutrient_gaps.length ? 'Mikronaehrstoffe unter 70% des Tagesziels: ' + JSON.stringify(p.micronutrient_gaps) : '',
-    p.lab_guideline_constraints ? 'Leitlinien-Vorgaben: ' + JSON.stringify(p.lab_guideline_constraints) : '',
+    (p.lab_guideline_constraints && Array.isArray(p.lab_guideline_constraints.notes) && p.lab_guideline_constraints.notes.length)
+      ? ('Lifestyle-Fokus (keine medizinischen Leitlinien): ' + JSON.stringify({
+          prefer_ingredients: p.lab_guideline_constraints.prefer_ingredients || [],
+          notes: p.lab_guideline_constraints.notes,
+        }))
+      : '',
     p.ai_instruction ? 'Zusatz-Instruction (Mengen/Zutaten an Tagesziele anpassen; Schema v9.2 mit Platzhaltern): ' + p.ai_instruction : '',
     themeGuide
       ? ('THEMEN-HINWEIS: Baue ein einfaches 30-Minuten-Rezept (4 Portionen, servings=4) mit Fokus auf ' + themeGuide.label +
         ' unter Nutzung von: ' + themeGuide.foods.slice(0, 6).join(', ') + '.')
       : '',
     p.allergens.length ? 'Allergene strikt meiden: ' + p.allergens.join(', ') : '',
+    (function () {
+      try {
+        const lactoseHonesty = require('./lactose-honesty');
+        if (lactoseHonesty.hasLactoseAllergen(p.allergens)) {
+          return lactoseHonesty.culinaryHonestyPromptRules();
+        }
+      } catch (_) { /* optional */ }
+      return '';
+    }()),
     teamOn
       ? 'Wenn emotionale Blockade (siehe System): Sentinel-Titel + kurzer chef_analysis-Brief. Sonst normales v9.2-JSON.'
       : 'Erstelle jetzt ausschliesslich das v9.2-JSON-Objekt (keine Markdown-Fences, kein Self-Check).',
@@ -809,6 +848,7 @@ function toClientRecipe(parsed, p) {
     const rendered = recipePipeline.renderRecipeForDisplay(parsed, {
       allergens: (p && p.allergens) || [],
       aiInstruction: (p && p.ai_instruction) || '',
+      lang: (p && p.lang) || 'de',
       isOriginalRequest: !!(p && /MODUS ORIGINALREZEPT|MODE ORIGINAL RECIPE/i.test(String(p.ai_instruction || ''))),
       isOriginalBolognese: !!(p && /bolognese|rag[uù]/i.test(String(p.ai_instruction || '') + ' ' + String(parsed.title || '')) &&
         /ORIGINALREZEPT|ORIGINAL RECIPE|KEINE\s+Kr[aä]uter|NO\s+herbs/i.test(String(p.ai_instruction || ''))),
@@ -985,19 +1025,20 @@ function classifyGroqRateLimit(bodyText, headers) {
   return 'unknown';
 }
 
-function providerErrorClientMessage(status, bodyText, headers) {
+function providerErrorClientMessage(status, bodyText, headers, lang) {
+  const L = apiI18n.normalizeLang(lang || 'en');
   const st = Number(status) || 0;
   if (st === 400) {
-    return 'Der KI-Anbieter hat die Antwort wegen Schema-/Validierungsfehler abgelehnt.';
+    return apiI18n.t('provider_schema_rejected', L);
   }
   if (st === 429) {
     const kind = classifyGroqRateLimit(bodyText, headers);
     if (kind === 'daily') {
-      return 'Tageskontingent des KI-Anbieters erreicht. Bitte spaeter erneut versuchen.';
+      return apiI18n.t('provider_rate_daily', L);
     }
-    return 'Der KI-Anbieter ist kurzzeitig ausgelastet. Bitte in wenigen Sekunden erneut versuchen.';
+    return apiI18n.t('provider_rate_busy', L);
   }
-  return 'Der KI-Anbieter meldete einen Fehler. Bitte ueberpruefe das eingestellte Modell.';
+  return apiI18n.t('provider_generic', L);
 }
 
 function sleepMs(ms, sleepFn) {
@@ -1150,6 +1191,7 @@ module.exports = {
   renderPrepClientRecipe: recipePipelinePrep.renderPrepClientRecipe,
   PREP_PROMPT_VERSION: recipePipelinePrep.PREP_PROMPT_VERSION,
   recipePortions: require('./recipe-portions'),
+  lactoseHonesty: require('./lactose-honesty'),
   ingKey,
   STRUCTURED_PROMPT_VERSION: strictPrompt.STRUCTURED_PROMPT_VERSION,
 };

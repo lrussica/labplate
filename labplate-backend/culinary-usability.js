@@ -1,4 +1,5 @@
 'use strict';
+const apiI18n = require('./api-i18n');
 /**
  * Kulinarische Brauchbarkeit – hartes Gate jenseits Schema/JSON.
  * Formal gültiges JSON ≠ gültiges Rezept.
@@ -189,25 +190,25 @@ function validateIngredientUsage(recipe) {
   ings.forEach(function (ing) {
     if (isExemptUsage(ing)) return;
     const family = classifyFamily(ing);
-    const label = String((ing && (ing.name || ing.displayName)) || 'Zutat');
+    const label = String((ing && (ing.name || ing.displayName)) || 'ingredient');
     const refs = stepsReferencingIngredient(ing, steps, garnish);
     const meaningful = refs.filter(function (r) { return !r.generic && !(r.serveOnly && family === 'egg'); });
 
     if (!refs.length) {
       if (family === 'egg') {
-        errors.push('Eier sind nicht in einem sinnvollen Kochschritt verwendet.');
+        errors.push('Eggs are not used in a meaningful cooking step.');
       } else {
-        errors.push("'" + label + "' ist nicht in einem Zubereitungsschritt verwendet.");
+        errors.push("'" + label + "' is not used in a preparation step.");
       }
       return;
     }
     if (!meaningful.length) {
       if (family === 'egg') {
-        errors.push('Eier sind nicht in einem sinnvollen Kochschritt verwendet.');
+        errors.push('Eggs are not used in a meaningful cooking step.');
       } else {
         errors.push(
-          "'" + label + "' ist nur in generischen Schritten genannt — " +
-          'keine passende Kochtechnik.'
+          "'" + label + "' is only mentioned in generic steps — " +
+          'no matching cooking technique.'
         );
       }
       return;
@@ -226,20 +227,20 @@ function validateIngredientUsage(recipe) {
       if (!okAction) {
         if (family === 'egg') {
           errors.push(
-            'Eier sind nicht in einem sinnvollen Kochschritt verwendet ' +
-            '(erwartet: verquirlen, braten, stocken, backen oder einarbeiten).'
+            'Eggs are not used in a meaningful cooking step ' +
+            '(expected: whisk, fry, set, bake, or incorporate).'
           );
         } else if (family === 'oats') {
           errors.push(
-            'Haferflocken ohne passende Aktion (einrühren, quellen, kochen oder backen).'
+            'Oats without a matching action (stir in, soak, cook, or bake).'
           );
         } else if (family === 'yogurt') {
           errors.push(
-            'Joghurt ohne passende Aktion (unterheben, verrühren oder servieren).'
+            'Yogurt without a matching action (fold in, stir, or serve).'
           );
         } else if (family === 'water') {
           errors.push(
-            'Wasser ohne passende Aktion (erhitzen, quellen oder einrühren).'
+            'Water without a matching action (heat, soak, or stir in).'
           );
         }
       }
@@ -256,7 +257,7 @@ function validateGenericInstructions(recipe) {
   const errors = [];
   const steps = Array.isArray(recipe.steps) ? recipe.steps : [];
   if (!steps.length) {
-    errors.push('Keine Zubereitungsschritte.');
+    errors.push('No preparation steps.');
     return { errors: errors, warnings: [] };
   }
   const texts = steps.map(stepText).filter(Boolean);
@@ -264,7 +265,7 @@ function validateGenericInstructions(recipe) {
     return !isGenericInstruction(t) && !isServeOnlyInstruction(t);
   });
   if (concrete.length === 0) {
-    errors.push('Generische Zubereitungsschritte ohne konkrete Technik.');
+    errors.push('Generic preparation steps without concrete technique.');
   }
   // „Wasser bereitstellen“ allein als Flüssigkeits-Schritt zählt nicht
   const onlyWaterReady =
@@ -273,7 +274,7 @@ function validateGenericInstructions(recipe) {
       return /erhitz|kochen|quellen|einrühr|aufgieß/i.test(t) && !/^wasser\s+bereitstellen/i.test(t);
     });
   if (onlyWaterReady && texts.some(function (t) { return /hafer|oat/i.test(t); })) {
-    errors.push('Generische Zubereitungsschritte ohne konkrete Technik.');
+    errors.push('Generic preparation steps without concrete technique.');
   }
   return { errors: errors, warnings: [] };
 }
@@ -306,15 +307,15 @@ function validateOatsLiquidRatio(recipe) {
 
   if (waterMl > 0 && waterMl < 60 && oatsG >= 25 && !dryMethod) {
     errors.push(
-      'Die Flüssigkeitsmenge ist für die angegebene Haferflockenmenge zu gering.'
+      'The liquid amount is too low for the stated oats quantity.'
     );
   } else if (waterMl > 0 && waterMl < oatsG * 1.5 && oatsG >= 25 && !dryMethod) {
     warnings.push(
-      'Die Flüssigkeitsmenge ist für die angegebene Haferflockenmenge knapp — bitte prüfen.'
+      'The liquid amount is tight for the stated oats quantity — please check.'
     );
   } else if (waterMl <= 0 && yogurtG < 40 && !dryMethod && !yogurtSoak) {
     warnings.push(
-      'Haferflocken ohne ausreichende Flüssigkeit und ohne Back-/Bratverfahren.'
+      'Oats without enough liquid and without baking/frying method.'
     );
   }
   return { errors: errors, warnings: warnings };
@@ -338,16 +339,16 @@ function validateDishPlan(recipe) {
 
   if (!plan || !plan.dishType) {
     if (needsPlan) {
-      errors.push('Keine eindeutige Rezeptart oder Kochmethode erkennbar.');
+      errors.push('No clear dish type or cooking method detectable.');
     }
   } else {
     const dt = String(plan.dishType || '');
     if (ALLOWED_DISH_TYPES.indexOf(dt) < 0) {
-      warnings.push('Unbekannter dishPlan.dishType: ' + dt);
+      warnings.push('Unknown dishPlan.dishType: ' + dt);
     }
     const actions = Array.isArray(plan.requiredActions) ? plan.requiredActions : [];
     if (needsPlan && actions.length < 2) {
-      errors.push('Keine eindeutige Rezeptart oder Kochmethode erkennbar.');
+      errors.push('No clear dish type or cooking method detectable.');
     }
     // Titel soll Speiseform tragen, nicht nur Makros+Zutaten
     const dishWord =
@@ -355,15 +356,15 @@ function validateDishPlan(recipe) {
     const vagueSnack = /proteinreicher\s+snack\s+mit/i.test(title) && !dishWord;
     if (vagueSnack && needsPlan) {
       errors.push(
-        'Titel beschreibt keine erkennbare Speise (z. B. Pancakes, Porridge, Bowl) — nur Makros/Zutaten.'
+        'Title does not describe a recognizable dish (e.g. pancakes, porridge, bowl) — only macros/ingredients.'
       );
     }
   }
 
   // Ohne Plan: vager Snack-Titel + Ei ohne Technik
   if ((!plan || !plan.dishType) && /proteinreicher\s+snack\s+mit/i.test(title) && families.egg) {
-    if (errors.indexOf('Keine eindeutige Rezeptart oder Kochmethode erkennbar.') < 0) {
-      errors.push('Keine eindeutige Rezeptart oder Kochmethode erkennbar.');
+    if (errors.indexOf('No clear dish type or cooking method detectable.') < 0) {
+      errors.push('No clear dish type or cooking method detectable.');
     }
   }
 
@@ -374,13 +375,14 @@ function validateDishPlan(recipe) {
  * Gesamte kulinarische Brauchbarkeit.
  * @returns {{ ok: boolean, errors: string[], warnings: string[], qualityStatus: 'ready'|'review'|'blocked' }}
  */
-function evaluateCulinaryUsability(recipe) {
+function evaluateCulinaryUsability(recipe, opts) {
   const errors = [];
   const warnings = [];
+  const lang = apiI18n.normalizeLang((opts && opts.lang) || (recipe && recipe.lang) || 'en');
   if (!recipe || typeof recipe !== 'object') {
     return {
       ok: false,
-      errors: ['Kein Rezept'],
+      errors: [apiI18n.t('err_no_recipe', lang)],
       warnings: [],
       qualityStatus: 'blocked',
     };

@@ -501,7 +501,7 @@ const CATALOG = [
     term: "Fluorid",
     synonyms: ["Fluor", "F"],
     category: "Spurenelement",
-    short_description: "Fluorid härtet den Zahnschmelz und schützt vor Karies. Es wird über Zahnpasta und teilweise über Trinkwasser oder Salz aufgenommen. Zu hohe Mengen in der Kindheit können Zahnfluorose verursachen.",
+    short_description: "Fluorid härtet den Zahnschmelz. Es wird über Zahnpasta und teilweise über Trinkwasser oder Salz aufgenommen. Zu hohe Mengen in der Kindheit können Zahnfluorose verursachen.",
     related_chapters: [8, 11],
   },
   {
@@ -739,21 +739,21 @@ const CATALOG = [
     term: "Cholesterin",
     synonyms: ["Gesamtcholesterin", "Chol"],
     category: "Blutwert",
-    short_description: "Das Gesamtcholesterin fasst alle cholesterinhaltigen Lipoproteine zusammen. Es allein sagt wenig über das Risiko aus; LDL, HDL und non-HDL sind aussagekräftiger. Ernährung, Gene und Schilddrüse beeinflussen den Wert.",
+    short_description: "Das Gesamtcholesterin fasst alle cholesterinhaltigen Lipoproteine zusammen. Für sich allein ist es wenig aussagekräftig; LDL, HDL und non-HDL geben mehr Kontext. Ernährung, Gene und Schilddrüse beeinflussen den Wert.",
     related_chapters: [1, 3, 9],
   },
   {
     term: "LDL-Cholesterin",
     synonyms: ["LDL", "Low Density Lipoprotein"],
     category: "Blutwert",
-    short_description: "LDL transportiert Cholesterin zu den Geweben und gilt als zentraler Risikomarker für Atherosklerose. Gesättigte Fette, Transfette und hohe Zuckermuster können ungünstig wirken. Zielwerte hängen vom persönlichen Risikoprofil ab.",
+    short_description: "LDL transportiert Cholesterin zu den Geweben. Gesättigte Fette, Transfette und hohe Zuckermuster können ungünstig wirken. Zielbereiche sind individuell und werden mit einer Fachperson festgelegt.",
     related_chapters: [1, 3, 9],
   },
   {
     term: "HDL-Cholesterin",
     synonyms: ["HDL", "High Density Lipoprotein"],
     category: "Blutwert",
-    short_description: "HDL gilt als „gutes“ Cholesterin, weil es Cholesterin rücktransportieren kann. Sehr niedrige Werte gehen mit höherem Risiko einher, sehr hohe sind nicht automatisch schützend. Bewegung und Rauchstopp wirken oft günstig.",
+    short_description: "HDL transportiert überschüssiges Cholesterin zurück zur Leber. Sehr niedrige oder sehr hohe Werte allein sagen wenig aus – die Einordnung gehört in den Gesamtbefund. Bewegung und Rauchstopp gehen oft mit günstigeren Mustern einher.",
     related_chapters: [3, 7, 9],
   },
   {
@@ -767,7 +767,7 @@ const CATALOG = [
     term: "Non-HDL-Cholesterin",
     synonyms: ["non-HDL", "Nicht-HDL"],
     category: "Blutwert",
-    short_description: "Non-HDL-Cholesterin ist Gesamtcholesterin minus HDL und umfasst alle atherogenen Partikel. Es ist auch bei erhöhten Triglyceriden nützlich. Manche Leitlinien nutzen es als Therapieziel neben LDL.",
+    short_description: "Non-HDL-Cholesterin ist Gesamtcholesterin minus HDL und umfasst Partikel jenseits von HDL. Es ist auch bei erhöhten Triglyceriden nützlich. Ob es neben LDL als Orientierung dient, entscheidet die Fachperson.",
     related_chapters: [1, 3, 9],
   },
   {
@@ -781,7 +781,7 @@ const CATALOG = [
     term: "Lipoprotein a",
     synonyms: ["Lp(a)", "Lp a"],
     category: "Blutwert",
-    short_description: "Lp(a) ist ein genetisch stark bestimmter Risikomarker für Herz-Kreislauf-Erkrankungen. Lebensstil ändert ihn nur wenig. Einmal messen reicht oft, um das persönliche Risiko besser einzuordnen.",
+    short_description: "Lp(a) ist ein genetisch stark bestimmter Blutwert im Lipidstoffwechsel. Lebensstil ändert ihn nur wenig. Einmal messen kann helfen, den Befund besser einzuordnen – die Bewertung gehört zur Fachperson.",
     related_chapters: [3, 9],
   },
   {
@@ -795,14 +795,14 @@ const CATALOG = [
     term: "Oxidiertes LDL",
     synonyms: ["oxLDL"],
     category: "Blutwert",
-    short_description: "Oxidiertes LDL gilt als besonders gefäßschädigend und wird in der Forschung untersucht. Routinemäßig wird es selten bestimmt. Antioxidantienreiche Ernährung kann oxidativen Stress mindern, ersetzt aber keine Risikokontrolle.",
+    short_description: "Oxidiertes LDL wird in der Forschung untersucht und routinemäßig selten bestimmt. Antioxidantienreiche Ernährung kann oxidativen Stress mitbeeinflussen, ersetzt aber keine individuelle Befundbesprechung.",
     related_chapters: [3, 9],
   },
   {
     term: "Glukose",
     synonyms: ["Glucose", "Blutzucker", "Traubenzucker"],
     category: "Blutwert",
-    short_description: "Glukose ist der zentrale Blutzucker und Energielieferant für Gehirn und Muskeln. Nüchtern- und Gelegenheitswerte helfen, Diabetes und Prädiabetes zu erkennen. Ernährung, Stress und Medikamente beeinflussen den Spiegel stark.",
+    short_description: "Glukose ist der zentrale Blutzucker und Energielieferant für Gehirn und Muskeln. Nüchtern- und Gelegenheitswerte beschreiben den aktuellen Spiegel. Ernährung, Stress und Medikamente beeinflussen ihn stark.",
     related_chapters: [1, 3, 5, 6, 9],
   },
   {
@@ -816,7 +816,7 @@ const CATALOG = [
     term: "HbA1c",
     synonyms: ["glykiertes Hämoglobin", "Langzeitblutzucker"],
     category: "Blutwert",
-    short_description: "Der HbA1c spiegelt die durchschnittliche Glukosebelastung der letzten zwei bis drei Monate wider. Er ist ein Schlüsselwert für Diabetesdiagnose und -therapie. Bei bestimmten Anämien kann er verfälscht sein.",
+    short_description: "Der HbA1c spiegelt die durchschnittliche Glukosebelastung der letzten zwei bis drei Monate wider. Er dient der längerfristigen Einordnung des Blutzuckerverlaufs. Bei bestimmten Anämien kann er verfälscht sein.",
     related_chapters: [1, 3, 9],
   },
   {
@@ -844,7 +844,7 @@ const CATALOG = [
     term: "OGTT",
     synonyms: ["oraler Glukosetoleranztest", "Zuckerbelastungstest"],
     category: "Blutwert",
-    short_description: "Beim OGTT wird Glukose getrunken und der Blutzuckerverlauf gemessen. Er erkennt gestörte Glukosetoleranz früher als ein einzelner Nüchternwert. In der Schwangerschaft ist er Standard zur Gestationsdiabetes-Diagnostik.",
+    short_description: "Beim OGTT wird Glukose getrunken und der Blutzuckerverlauf gemessen. Er erkennt gestörte Glukosetoleranz früher als ein einzelner Nüchternwert. In der Schwangerschaft wird er zur Einordnung der Glukosetoleranz genutzt.",
     related_chapters: [1, 3, 9],
   },
   {
@@ -858,7 +858,7 @@ const CATALOG = [
     term: "ALT",
     synonyms: ["ALAT", "GPT", "Alanin-Aminotransferase"],
     category: "Blutwert",
-    short_description: "ALT ist ein leberspezifisches Enzym und steigt bei Leberzellschädigung. Ursachen reichen von Fettleber und Viren bis zu Medikamenten. Isoliert erhöhte Werte brauchen Verlauf und Kontext.",
+    short_description: "ALT ist ein leberspezifisches Enzym und steigt bei Leberzellschädigung. Ursachen reichen von Fettablagerung in der Leber und Viren bis zu Medikamenten. Isoliert erhöhte Werte brauchen Verlauf und Kontext.",
     related_chapters: [1, 3, 9],
   },
   {
@@ -942,7 +942,7 @@ const CATALOG = [
     term: "Harnsäure",
     synonyms: ["UA", "Urat", "Harnsaeure"],
     category: "Blutwert",
-    short_description: "Harnsäure ist Endprodukt des Purinstoffwechsels und kann Gichtanfälle auslösen. Fruktose, Alkohol und Übergewicht können den Spiegel erhöhen. Hydration und Ernährungsumstellung sind oft Teil der Strategie.",
+    short_description: "Harnsäure ist Endprodukt des Purinstoffwechsels. Fruktose, Alkohol und Übergewicht können den Spiegel erhöhen. Hydration und Ernährungsumstellung sind oft Teil der Alltagsstrategie.",
     related_chapters: [1, 3, 9],
   },
   {
@@ -998,7 +998,7 @@ const CATALOG = [
     term: "hs-CRP",
     synonyms: ["hochsensitives CRP", "high-sensitivity CRP"],
     category: "Blutwert",
-    short_description: "hs-CRP erfasst niedrige Entzündungsgrade und wird als zusätzlicher Herz-Kreislauf-Risikomarker genutzt. Es ist nicht spezifisch für Arteriosklerose. Akute Infekte machen die Interpretation unbrauchbar.",
+    short_description: "hs-CRP erfasst niedrige Entzündungsgrade und wird manchmal im Stoffwechselkontext mitbetrachtet. Es ist nicht spezifisch für Gefäßveränderungen. Akute Infekte machen die Interpretation unbrauchbar.",
     related_chapters: [3, 9],
   },
   {
@@ -1040,7 +1040,7 @@ const CATALOG = [
     term: "Homocystein",
     synonyms: ["Hcy", "Homocysteinspiegel"],
     category: "Blutwert",
-    short_description: "Homocystein steigt bei Mangel an Folat, Vitamin B12 oder B6 und gilt als Risikomarker für Gefäße. Eine Senkung über Vitamine verbessert nicht immer automatisch Outcomes. Dennoch lohnt die Ursachensuche bei erhöhten Werten.",
+    short_description: "Homocystein steigt bei Mangel an Folat, Vitamin B12 oder B6 und wird im Stoffwechselkontext mitbetrachtet. Eine Senkung über Vitamine verändert nicht immer automatisch den Gesamtbefund. Dennoch lohnt die Ursachensuche bei erhöhten Werten.",
     related_chapters: [3, 9],
   },
   {
@@ -1152,7 +1152,7 @@ const CATALOG = [
     term: "Harnsäure Klarance",
     synonyms: ["Urat-Clearance"],
     category: "Blutwert",
-    short_description: "Die Harnsäure-Clearance schätzt, wie gut die Niere Urat ausscheidet. Sie wird bei speziellen Gicht- oder Stoffwechselfragen genutzt. Für die meisten Alltagsbefunde reicht der Serumwert.",
+    short_description: "Die Harnsäure-Clearance schätzt, wie gut die Niere Urat ausscheidet. Sie wird bei speziellen Fragen zum Harnsäurestoffwechsel genutzt. Für die meisten Alltagsbefunde reicht der Serumwert.",
     related_chapters: [3, 9],
   },
   {
@@ -1166,7 +1166,7 @@ const CATALOG = [
     term: "Ketone Blut",
     synonyms: ["Betahydroxybutyrat", "BHB"],
     category: "Blutwert",
-    short_description: "Ketonkörper entstehen bei Kohlenhydratmangel oder unkontrolliertem Diabetes. Im therapeutischen Fasten oder bei Low-Carb sind milde Erhöhungen möglich. Sehr hohe Werte mit Krankheitssymptomen sind ein Notfall.",
+    short_description: "Ketonkörper entstehen bei Kohlenhydratmangel oder stark verändertem Glukosestoffwechsel. Im Fasten oder bei Low-Carb sind milde Erhöhungen möglich. Sehr hohe Werte mit starken Beschwerden gehören rasch abgeklärt.",
     related_chapters: [1, 6, 9],
   },
   {
@@ -1306,21 +1306,21 @@ const CATALOG = [
     term: "Glukagon",
     synonyms: ["Glucagon"],
     category: "Stoffwechsel",
-    short_description: "Glukagon ist der Gegenspieler von Insulin und hebt den Blutzucker über Glykogenabbau und Glukoneogenese an. Im Fasten hält es die Versorgung aufrecht. Ein Ungleichgewicht spielt bei Diabetes eine Rolle.",
+    short_description: "Glukagon ist der Gegenspieler von Insulin und hebt den Blutzucker über Glykogenabbau und Glukoneogenese an. Im Fasten hält es die Versorgung aufrecht. Ein Ungleichgewicht kann den Blutzuckerstoffwechsel mitprägen.",
     related_chapters: [1, 3, 9],
   },
   {
     term: "Metabolisches Syndrom",
     synonyms: ["Wohlstandssyndrom"],
     category: "Stoffwechsel",
-    short_description: "Das metabolische Syndrom bündelt Bauchfett, Bluthochdruck, gestörte Glukosewerte und ungünstige Blutfette. Es erhöht das Risiko für Typ-2-Diabetes und Herzkrankheiten. Lebensstiländerung ist die Basistherapie.",
+    short_description: "Das metabolische Syndrom bündelt Bauchfett, Bluthochdruck, gestörte Glukosewerte und ungünstige Blutfette. Es beschreibt ein Stoffwechselmuster, keine einzelne Diagnose. Ernährung, Bewegung und Lebensstil sind zentrale Bausteine der Einordnung.",
     related_chapters: [1, 3, 7, 8, 9],
   },
   {
     term: "Nicht-alkoholische Fettleber",
     synonyms: ["NAFLD", "MASLD", "Leberverfettung"],
     category: "Stoffwechsel",
-    short_description: "Die nicht-alkoholische Fettleber hängt eng mit Insulinresistenz und Kalorienüberschuss zusammen. Fruktose und zuckerreiche Getränke gelten als Treiber. Gewichtsreduktion und Bewegung können die Leberwerte verbessern.",
+    short_description: "Nicht-alkoholische Fettleber beschreibt eine Fettablagerung in der Leber ohne relevanten Alkoholkonsum und hängt oft mit Insulinresistenz und Kalorienüberschuss zusammen. Fruktose und zuckerreiche Getränke können die Last erhöhen. Ernährung und Bewegung beeinflussen die Leberwerte mit.",
     related_chapters: [1, 3, 7, 9],
   },
   {
@@ -1390,7 +1390,7 @@ const CATALOG = [
     term: "Purinstoffwechsel",
     synonyms: ["Purinabbau"],
     category: "Stoffwechsel",
-    short_description: "Im Purinstoffwechsel entstehen aus Nukleinsäuren Purine und schließlich Harnsäure. Innereien, manche Fische und Fruktose beeinflussen die Last. Gichtpatienten profitieren oft von angepasster Ernährung und Gewichtskontrolle.",
+    short_description: "Im Purinstoffwechsel entstehen aus Nukleinsäuren Purine und schließlich Harnsäure. Innereien, manche Fische und Fruktose beeinflussen die Last. Angepasste Ernährung und Gewichtskontrolle können den Harnsäurespiegel mitprägen.",
     related_chapters: [1, 3, 9],
   },
   {
@@ -1859,14 +1859,14 @@ const CATALOG = [
     term: "Insulinsekretion",
     synonyms: ["Betazellfunktion", "Insulinausschüttung"],
     category: "Stoffwechsel",
-    short_description: "Die Insulinsekretion beschreibt, wie viel Insulin die Bauchspeicheldrüse freisetzt. C-Peptid hilft, die Eigenproduktion einzuschätzen. Überforderung der Betazellen kann langfristig in Typ-2-Diabetes münden.",
+    short_description: "Die Insulinsekretion beschreibt, wie viel Insulin die Bauchspeicheldrüse freisetzt. C-Peptid hilft, die Eigenproduktion einzuschätzen. Dauerhaft hohe Anforderungen an die Betazellen können die Insulinantwort langfristig verändern.",
     related_chapters: [1, 3, 9],
   },
   {
     term: "Glukosetoxizität",
     synonyms: ["Glucose Toxicity"],
     category: "Stoffwechsel",
-    short_description: "Anhaltend hohe Glukosespiegel schädigen Betazellen und Insulinempfindlichkeit zusätzlich. Das verschlechtert die Blutzuckerkontrolle in einem Teufelskreis. Senkung der Glukoselast durch Kost und Bewegung durchbricht ihn.",
+    short_description: "Anhaltend hohe Glukosespiegel können Betazellen und Insulinempfindlichkeit zusätzlich belasten. Ernährung und Bewegung können die Glukoselast mitbeeinflussen. Die Einordnung gehört in den Gesamtbefund.",
     related_chapters: [1, 3, 5, 7],
   },
   {

@@ -178,11 +178,17 @@ const fall9 = {
   chef_analysis: 'Siehe nutrition — cremige Textur und keto-Profil.',
 };
 const resultFall9 = validator.validateRecipeV2(fall9);
-assert.strictEqual(resultFall9.ok, false, 'Fall 9 muss Gerinnung failen');
-assert.ok(resultFall9.errors.some(function (e) {
-  return /Gerinnungsschutz/i.test(e) && /Frischkäse/i.test(e) && /stove_level=5/i.test(e);
-}), 'erwartet Gerinnung nach Einrühren: ' + resultFall9.errors.join('; '));
-console.log('OK Fall 9 Gerinnung fail');
+assert.ok(
+  (resultFall9.warnings || []).some(function (w) { return /Gerinnungsschutz korrigiert/i.test(w); }),
+  'Fall 9 Soft-Repair erwartet: ' + JSON.stringify(resultFall9.warnings)
+);
+assert.ok(
+  !(resultFall9.errors || []).some(function (e) { return /Gerinnungsschutz/i.test(e); }),
+  'Gerinnung nach Soft-Repair kein Hard-Fail: ' + (resultFall9.errors || []).join('; ')
+);
+assert.strictEqual(fall9.steps[3].stove_level, 0, 'Rührei-Step nach Frischkäse → stove 0');
+assert.strictEqual(fall9.steps[4].stove_level, 0, 'Fertigstellen nach Frischkäse → stove 0');
+console.log('OK Fall 9 Gerinnung Soft-Repair');
 
 // TEST 3e: korrekt — Hitze zuerst, Frischkäse erst nach Herd AUS
 // (nur 2 Keyword-Proteine: Ei + Frischkäse; Lachs weggelassen, sonst ≥30g Frischkäse = 3.)
@@ -475,6 +481,41 @@ const fbDirectBind = pipeline.buildRetryFeedbackMessage(bindOnly.problems, { dis
 assert.ok(/erhöhe stattdessen die Menge der im Titel genannten Zutat/i.test(fbDirectBind),
   'Direct bind directive: ' + fbDirectBind);
 console.log('OK Titel-Zutaten-Bindung Curry+Tofu+Ei + Retry-Directive');
+
+// Titel-Bindung: „ohne Linsen/Kichererbsen/Bohnen“ darf NICHT als erlaubte Protein-Familien gelten
+(function testKetoCardOhneLegumesBinding() {
+  const ketoQ = 'Echtes Keto-Gericht unter 10 g Netto-Kohlenhydrate, ohne Linsen/Kichererbsen/Bohnen/Haferflocken. Max. 2 Proteinquellen.';
+  const ketoRecipe = {
+    title: ketoQ,
+    servings: 1,
+    prep_time_min: 20,
+    nutrition: { kcal: 450, protein_g: 35, fat_g: 32, netto_kh_g: 6, ballaststoffe_g: 2 },
+    ingredients: [
+      { id: '0001', name: 'Hähnchenbrustfilet', amount: 150, unit: 'g', protein_source: true, culinaryRole: 'main_protein', countsAsPrimaryProteinSource: true, netCarbs: 0, fat: 2, protein: 25, fiber: 0 },
+      { id: '0002', name: 'Parmesan, gerieben', amount: 20, unit: 'g', protein_source: true, culinaryRole: 'main_protein', countsAsPrimaryProteinSource: true, netCarbs: 0, fat: 6, protein: 8, fiber: 0 },
+      { id: '0003', name: 'Butter', amount: 10, unit: 'g', protein_source: false, culinaryRole: 'fat_source', countsAsPrimaryProteinSource: false, netCarbs: 0, fat: 8, protein: 0, fiber: 0 },
+      { id: '0004', name: 'Zucchini', amount: 100, unit: 'g', protein_source: false, culinaryRole: 'vegetable', countsAsPrimaryProteinSource: false, netCarbs: 2, fat: 0, protein: 1, fiber: 1 },
+      { id: '0005', name: 'Olivenöl', amount: 5, unit: 'ml', protein_source: false, culinaryRole: 'fat_source', countsAsPrimaryProteinSource: false, netCarbs: 0, fat: 5, protein: 0, fiber: 0 },
+      { id: '0006', name: 'Salz', amount: 0, unit: 'prise', protein_source: false, culinaryRole: 'seasoning', countsAsPrimaryProteinSource: false, netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
+    ],
+    steps: [
+      { title: 'Braten', content: '{0005} erhitzen, {0001} anbraten, {0004} zugeben.', stove_level: 5, time_min: 10 },
+      { title: 'Käse', content: '{0003} schmelzen, {0002} unterrühren, mit {0006} würzen.', stove_level: 3, time_min: 5 },
+    ],
+    garnish: '',
+    chef_analysis: 'Protein aus {0001} und {0002}; Fett aus {0003}. Netto‑Kohlenhydrat‑Limit von 10 g eingehalten.',
+    diet_labels: ['keto'],
+  };
+  const bind = validator.validateTitleProteinBinding(ketoRecipe, ketoQ);
+  assert.strictEqual(bind.ok, true, 'ohne-Hülsenfrüchte darf Bindung nicht triggern: ' + bind.problems.join('; '));
+  const prose = validator.validateNoFreeNumbersInProse(
+    ketoRecipe.steps, '', ketoRecipe.chef_analysis, ketoRecipe.ingredients, { dishQuery: ketoQ }
+  );
+  assert.strictEqual(prose.ok, true, '10 g aus Query in chef_analysis erlaubt: ' + prose.problems.join('; '));
+  const full = validator.validateRecipeV2(ketoRecipe, { dishQuery: ketoQ });
+  assert.strictEqual(full.ok, true, 'Keto-Karte muss validieren: ' + (full.errors || []).join('; '));
+  console.log('OK Keto-Karte ohne Linsen/Bohnen – Bindung + chef_analysis 10g');
+}());
 
 // TEST 3j: Gegentest — korrekte Zutat-Platzhalter ohne Nährwertzahlen
 const chefOk = JSON.parse(JSON.stringify(gutesBeispiel));

@@ -510,7 +510,7 @@ window.lexikonTerms = [
       "tr": "Kan değeri"
     },
     "short_description": {
-      "de": "ALT ist ein leberspezifisches Enzym und steigt bei Leberzellschädigung. Ursachen reichen von Fettleber und Viren bis zu Medikamenten. Isoliert erhöhte Werte brauchen Verlauf und Kontext.",
+      "de": "ALT ist ein leberspezifisches Enzym und steigt bei Leberzellschädigung. Ursachen reichen von Fettablagerung in der Leber und Viren bis zu Medikamenten. Isoliert erhöhte Werte brauchen Verlauf und Kontext.",
       "en": "ALT is a liver-specific enzyme and rises with hepatocyte injury. Causes range from fatty liver and viruses to medications. Isolated elevations need follow-up and clinical context.",
       "es": "La ALT es una enzima relativamente específica del hígado y se eleva en daño de hepatocitos. Las causas van desde esteatosis y virus hasta medicamentos. Valores aislados elevados necesitan evolución y contexto.",
       "it": "L'ALT è un enzima relativamente specifico del fegato e sale in caso di danno epatocellulare. Le cause vanno dalla steatosi e dai virus ai farmaci. Valori isolati elevati richiedono andamento e contesto.",
@@ -2440,7 +2440,7 @@ window.lexikonTerms = [
       "tr": "Kan değeri"
     },
     "short_description": {
-      "de": "Das Gesamtcholesterin fasst alle cholesterinhaltigen Lipoproteine zusammen. Es allein sagt wenig über das Risiko aus; LDL, HDL und non-HDL sind aussagekräftiger. Ernährung, Gene und Schilddrüse beeinflussen den Wert.",
+      "de": "Das Gesamtcholesterin fasst alle cholesterinhaltigen Lipoproteine zusammen. Für sich allein ist es wenig aussagekräftig; LDL, HDL und non-HDL geben mehr Kontext. Ernährung, Gene und Schilddrüse beeinflussen den Wert.",
       "en": "Total cholesterol summarizes all cholesterol-containing lipoproteins. Alone it says little about risk; LDL, HDL, and non-HDL are more informative. Diet, genes, and thyroid function influence the value.",
       "es": "El colesterol total resume todas las lipoproteínas que contienen colesterol. Por sí solo dice poco sobre el riesgo; LDL, HDL y non-HDL son más informativos. Alimentación, genes y tiroides influyen en el valor.",
       "it": "Il colesterolo totale somma tutte le lipoproteine contenenti colesterolo. Da solo dice poco sul rischio; LDL, HDL e non-HDL sono più informativi. Alimentazione, geni e tiroide influenzano il valore.",
@@ -4479,7 +4479,7 @@ window.lexikonTerms = [
       "tr": "İz element"
     },
     "short_description": {
-      "de": "Fluorid härtet den Zahnschmelz und schützt vor Karies. Es wird über Zahnpasta und teilweise über Trinkwasser oder Salz aufgenommen. Zu hohe Mengen in der Kindheit können Zahnfluorose verursachen.",
+      "de": "Fluorid härtet den Zahnschmelz. Es wird über Zahnpasta und teilweise über Trinkwasser oder Salz aufgenommen. Zu hohe Mengen in der Kindheit können Zahnfluorose verursachen.",
       "en": "Fluoride hardens tooth enamel and protects against caries. It is taken up via toothpaste and partly via drinking water or salt. Excessively high amounts in childhood can cause dental fluorosis.",
       "es": "El fluoruro endurece el esmalte dental y protege frente a la caries. Se aporta con la pasta dental y, en parte, con el agua potable o la sal. Cantidades demasiado altas en la infancia pueden causar fluorosis dental.",
       "it": "Il fluoruro indurisce lo smalto dentale e protegge dalla carie. Si assume tramite il dentifricio e in parte tramite acqua potabile o sale. Quantità troppo elevate nell'infanzia possono causare fluorosi dentale.",
@@ -5326,13 +5326,13 @@ window.lexikonTerms = [
       "tr": "Metabolizma"
     },
     "short_description": {
-      "de": "Glukagon ist der Gegenspieler von Insulin und hebt den Blutzucker über Glykogenabbau und Glukoneogenese an. Im Fasten hält es die Versorgung aufrecht. Ein Ungleichgewicht spielt bei Diabetes eine Rolle.",
-      "en": "Glucagon is insulin's counterpart and raises blood sugar via glycogen breakdown and gluconeogenesis. In fasting it maintains supply. Imbalance plays a role in diabetes.",
-      "es": "El glucagón es el antagonista de la insulina y eleva la glucemia mediante degradación de glucógeno y gluconeogénesis. En el ayuno mantiene el suministro. Un desequilibrio desempeña un papel en la diabetes.",
-      "it": "Il glucagone è l'antagonista dell'insulina e alza la glicemia tramite degradazione del glicogeno e gluconeogenesi. Nel digiuno mantiene l'apporto. Uno squilibrio gioca un ruolo nel diabete.",
-      "pt": "O glucagon é o antagonista da insulina e eleva o açúcar via degradação do glicogénio e gluconeogénese. No jejum mantém o fornecimento. Um desequilíbrio tem papel na diabetes.",
-      "fr": "Le glucagon est l'antagoniste de l'insuline et élève la glycémie via dégradation du glycogène et néoglucogenèse. En jeûne, il maintient l'approvisionnement. Un déséquilibre joue un rôle dans le diabète.",
-      "tr": "Glukagon, insülinin karşıtıdır ve glikojen yıkımı ile glukoneogenez yoluyla kan şekerini yükseltir. Oruçta tedariki sürdürür. Dengesizlik diyabette rol oynar."
+      "de": "Glukagon ist der Gegenspieler von Insulin und hebt den Blutzucker über Glykogenabbau und Glukoneogenese an. Im Fasten hält es die Versorgung aufrecht. Ein Ungleichgewicht kann den Blutzuckerstoffwechsel mitprägen.",
+      "en": "Glucagon is insulin's counterpart and raises blood sugar via glycogen breakdown and gluconeogenesis. In fasting it maintains supply. Imbalance can shape glucose metabolism.",
+      "es": "El glucagón es el antagonista de la insulina y eleva la glucemia mediante degradación de glucógeno y gluconeogénesis. En el ayuno mantiene el suministro. Un desequilibrio puede moldear el metabolismo de la glucosa.",
+      "it": "Il glucagone è l'antagonista dell'insulina e alza la glicemia tramite degradazione del glicogeno e gluconeogenesi. Nel digiuno mantiene l'apporto. Uno squilibrio può modellare il metabolismo del glucosio.",
+      "pt": "O glucagon é o antagonista da insulina e eleva o açúcar via degradação do glicogénio e gluconeogénese. No jejum mantém o fornecimento. Um desequilíbrio pode moldar o metabolismo da glicose.",
+      "fr": "Le glucagon est l'antagoniste de l'insuline et élève la glycémie via dégradation du glycogène et néoglucogenèse. En jeûne, il maintient l'approvisionnement. Un déséquilibre peut façonner le métabolisme du glucose.",
+      "tr": "Glukagon, insülinin karşıtıdır ve glikojen yıkımı ile glukoneogenez yoluyla kan şekerini yükseltir. Oruçta tedariki sürdürür. Dengesizlik glukoz metabolizmasını şekillendirebilir."
     },
     "related_chapters": [
       1,
@@ -5458,13 +5458,13 @@ window.lexikonTerms = [
       "tr": "Kan değeri"
     },
     "short_description": {
-      "de": "Glukose ist der zentrale Blutzucker und Energielieferant für Gehirn und Muskeln. Nüchtern- und Gelegenheitswerte helfen, Diabetes und Prädiabetes zu erkennen. Ernährung, Stress und Medikamente beeinflussen den Spiegel stark.",
-      "en": "Glucose is the central blood sugar and energy source for brain and muscle. Fasting and random values help detect diabetes and prediabetes. Diet, stress, and medications strongly influence the level.",
-      "es": "La glucosa es el azúcar sanguíneo central y el proveedor de energía para cerebro y músculos. Valores en ayunas y ocasionales ayudan a detectar diabetes y prediabetes. Alimentación, estrés y medicamentos influyen mucho en el nivel.",
-      "it": "Il glucosio è lo zucchero ematico centrale e fornitore di energia per cervello e muscoli. Valori a digiuno e occasionali aiutano a riconoscere diabete e prediabete. Alimentazione, stress e farmaci influenzano fortemente i livelli.",
-      "pt": "A glicose é o açúcar sanguíneo central e fornecedor de energia para o cérebro e os músculos. Valores em jejum e ocasionais ajudam a reconhecer diabetes e pré-diabetes. Alimentação, stresse e medicamentos influenciam fortemente o nível.",
-      "fr": "Le glucose est le sucre sanguin central et le fournisseur d'énergie pour le cerveau et les muscles. Les valeurs à jeun et occasionnelles aident à reconnaître le diabète et le prédiabète. Alimentation, stress et médicaments influencent fortement le taux.",
-      "tr": "Glukoz, beyin ve kaslar için merkezi kan şekeri ve enerji kaynağıdır. Açlık ve rastgele değerler diyabet ve prediyabeti tanımaya yardımcı olur. Beslenme, stres ve ilaçlar düzeyi güçlü etkiler."
+      "de": "Glukose ist der zentrale Blutzucker und Energielieferant für Gehirn und Muskeln. Nüchtern- und Gelegenheitswerte beschreiben den aktuellen Spiegel. Ernährung, Stress und Medikamente beeinflussen ihn stark.",
+      "en": "Glucose is the central blood sugar and energy source for brain and muscle. Fasting and random values describe the current level. Diet, stress, and medications strongly influence it.",
+      "es": "La glucosa es el azúcar sanguíneo central y el proveedor de energía para cerebro y músculos. Valores en ayunas y ocasionales describen el nivel actual. Alimentación, estrés y medicamentos influyen mucho en él.",
+      "it": "Il glucosio è lo zucchero ematico centrale e fornitore di energia per cervello e muscoli. Valori a digiuno e occasionali descrivono il livello attuale. Alimentazione, stress e farmaci lo influenzano fortemente.",
+      "pt": "A glicose é o açúcar sanguíneo central e fornecedor de energia para o cérebro e os músculos. Valores em jejum e ocasionais descrevem o nível atual. Alimentação, stresse e medicamentos influenciam-no fortemente.",
+      "fr": "Le glucose est le sucre sanguin central et le fournisseur d'énergie pour le cerveau et les muscles. Les valeurs à jeun et occasionnelles décrivent le taux actuel. Alimentation, stress et médicaments l'influencent fortement.",
+      "tr": "Glukoz, beyin ve kaslar için merkezi kan şekeri ve enerji kaynağıdır. Açlık ve rastgele değerler mevcut düzeyi tanımlar. Beslenme, stres ve ilaçlar onu güçlü etkiler."
     },
     "related_chapters": [
       1,
@@ -5519,13 +5519,13 @@ window.lexikonTerms = [
       "tr": "Metabolizma"
     },
     "short_description": {
-      "de": "Anhaltend hohe Glukosespiegel schädigen Betazellen und Insulinempfindlichkeit zusätzlich. Das verschlechtert die Blutzuckerkontrolle in einem Teufelskreis. Senkung der Glukoselast durch Kost und Bewegung durchbricht ihn.",
-      "en": "Persistently high glucose further damages beta cells and insulin sensitivity. That worsens blood glucose control in a vicious cycle. Lowering the glucose load via diet and exercise breaks it.",
-      "es": "Niveles de glucosa persistentemente altos dañan además las células beta y la sensibilidad a la insulina. Eso empeora el control glucémico en un círculo vicioso. Bajar la carga de glucosa con dieta y ejercicio lo rompe.",
-      "it": "La glicemia persistentemente alta danneggia ulteriormente cellule beta e sensibilità insulinica. Ciò peggiora il controllo glicemico in un circolo vizioso. Ridurre il carico di glucosio con dieta e movimento lo interrompe.",
-      "pt": "Níveis de glicose persistentemente altos danificam adicionalmente as células beta e a sensibilidade à insulina. Isso piora o controlo glicémico num círculo vicioso. Reduzir a carga de glicose com alimentação e exercício interrompe-o.",
-      "fr": "Une glycémie durablement élevée endommage encore cellules bêta et sensibilité à l'insuline. Cela aggrave le contrôle glycémique dans un cercle vicieux. Réduire la charge glucidique par alimentation et mouvement le brise.",
-      "tr": "Sürekli yüksek glukoz beta hücrelerini ve insülin duyarlılığını daha da bozar. Bu, kısır döngüde kan şekeri kontrolünü kötüleştirir. Beslenme ve hareketle glukoz yükünü düşürmek döngüyü kırar."
+      "de": "Anhaltend hoher Blutzucker kann Betazellen und Insulinempfindlichkeit zusätzlich belasten. Ernährung und Bewegung können die Glukoselast mitbeeinflussen. Die Einordnung gehört in den Gesamtbefund.",
+      "en": "Persistently high blood sugar can further strain beta cells and insulin sensitivity. Diet and movement can influence the glucose load. Interpretation belongs in the overall context.",
+      "es": "Una glucosa persistentemente alta puede gravar además las células beta y la sensibilidad a la insulina. Dieta y movimiento pueden influir en la carga de glucosa. La interpretación pertenece al contexto global.",
+      "it": "Una glicemia persistentemente alta può gravare ulteriormente su cellule beta e sensibilità insulinica. Dieta e movimento possono influenzare il carico di glucosio. L'interpretazione del quadro appartiene al contesto complessivo.",
+      "pt": "Uma glicose persistentemente alta pode sobrecarregar adicionalmente as células beta e a sensibilidade à insulina. Alimentação e movimento podem influenciar a carga de glicose. A interpretação pertence ao contexto global.",
+      "fr": "Une glycémie durablement élevée peut encore grever cellules bêta et sensibilité à l'insuline. Alimentation et mouvement peuvent influencer la charge de glucose. L'interprétation appartient au contexte d'ensemble.",
+      "tr": "Sürekli yüksek kan şekeri beta hücrelerini ve insülin duyarlılığını ek olarak zorlayabilir. Beslenme ve hareket glukoz yükünü etkileyebilir. Yorumlama genel bağlama aittir."
     },
     "related_chapters": [
       1,
@@ -6104,12 +6104,12 @@ window.lexikonTerms = [
       "tr": "Kan değeri"
     },
     "short_description": {
-      "de": "Harnsäure ist Endprodukt des Purinstoffwechsels und kann Gichtanfälle auslösen. Fruktose, Alkohol und Übergewicht können den Spiegel erhöhen. Hydration und Ernährungsumstellung sind oft Teil der Strategie.",
-      "en": "Uric acid is the end product of purine metabolism and can trigger gout attacks. Fructose, alcohol, and excess weight can raise the level. Hydration and dietary change are often part of the strategy.",
+      "de": "Harnsäure ist Endprodukt des Purinstoffwechsels. Fruktose, Alkohol und Übergewicht können den Spiegel erhöhen. Hydration und Ernährungsumstellung sind oft Teil der Alltagsstrategie.",
+      "en": "Uric acid is the end product of purine metabolism. Fructose, alcohol, and excess weight can raise the level. Hydration and dietary change are often part of everyday strategy.",
       "es": "El ácido úrico es el producto final del metabolismo de las purinas y puede desencadenar crisis de gota. Fructosa, alcohol y sobrepeso pueden elevar el nivel. Hidratación y cambios alimentarios suelen formar parte de la estrategia.",
       "it": "L'acido urico è il prodotto finale del metabolismo delle purine e può scatenare attacchi di gotta. Fruttosio, alcol e sovrappeso possono alzarne i livelli. Idratazione e cambiamento alimentare sono spesso parte della strategia.",
       "pt": "O ácido úrico é o produto final do metabolismo das purinas e pode desencadear crises de gota. Frutose, álcool e excesso de peso podem elevar o nível. Hidratação e mudança alimentar fazem muitas vezes parte da estratégia.",
-      "fr": "L'acide urique est le produit final du métabolisme des purines et peut déclencher des crises de goutte. Le fructose, l'alcool et le surpoids peuvent élever le taux. L'hydratation et l'adaptation alimentaire font souvent partie de la stratégie.",
+      "fr": "L'acide urique est le produit final du métabolisme des purines. Le fructose, l'alcool et le surpoids peuvent élever le taux. L'hydratation et l'adaptation alimentaire font souvent partie de la stratégie du quotidien.",
       "tr": "Ürik asit pürin metabolizmasının son ürünüdür ve gut ataklarını tetikleyebilir. Fruktoz, alkol ve fazla kilo düzeyi yükseltebilir. Hidrasyon ve beslenme değişikliği sıklıkla stratejinin parçasıdır."
     },
     "related_chapters": [
@@ -6163,12 +6163,12 @@ window.lexikonTerms = [
       "tr": "Kan değeri"
     },
     "short_description": {
-      "de": "Die Harnsäure-Clearance schätzt, wie gut die Niere Urat ausscheidet. Sie wird bei speziellen Gicht- oder Stoffwechselfragen genutzt. Für die meisten Alltagsbefunde reicht der Serumwert.",
-      "en": "Uric acid clearance estimates how well the kidney excretes urate. It is used in special gout or metabolic questions. For most everyday findings, the serum value suffices.",
+      "de": "Die Harnsäure-Clearance schätzt, wie gut die Niere Urat ausscheidet. Sie wird bei speziellen Fragen zum Harnsäurestoffwechsel genutzt. Für die meisten Alltagsbefunde reicht der Serumwert.",
+      "en": "Uric acid clearance estimates how well the kidney excretes urate. It is used in special questions about uric acid metabolism. For most everyday findings, the serum value suffices.",
       "es": "El aclaramiento de ácido úrico estima cuán bien el riñón elimina urato. Se usa en cuestiones especiales de gota o metabolismo. Para la mayoría de los hallazgos cotidianos basta el valor sérico.",
       "it": "La clearance dell'acido urico stima quanto bene il rene elimina l'urato. Si usa in quesiti speciali su gotta o metabolismo. Per la maggior parte dei reperti quotidiani basta il valore sierico.",
       "pt": "A clearance de ácido úrico estima quão bem o rim elimina urato. Usa-se em questões especiais de gota ou metabolismo. Para a maioria dos achados do dia a dia basta o valor sérico.",
-      "fr": "La clairance de l'acide urique estime combien le rein élimine bien l'urate. Elle sert dans des questions spéciales de goutte ou de métabolisme. Pour la plupart des bilans courants, le taux sérique suffit.",
+      "fr": "La clairance de l'acide urique estime combien le rein élimine bien l'urate. Elle sert dans des questions spéciales sur le métabolisme de l'urate. Pour la plupart des bilans courants, le taux sérique suffit.",
       "tr": "Ürik asit klirensi, böbreğin üratı ne kadar iyi attığını tahmin eder. Özel gut veya metabolizma sorularında kullanılır. Çoğu günlük bulgu için serum değeri yeterlidir."
     },
     "related_chapters": [
@@ -6228,13 +6228,13 @@ window.lexikonTerms = [
       "tr": "Kan değeri"
     },
     "short_description": {
-      "de": "Der HbA1c spiegelt die durchschnittliche Glukosebelastung der letzten zwei bis drei Monate wider. Er ist ein Schlüsselwert für Diabetesdiagnose und -therapie. Bei bestimmten Anämien kann er verfälscht sein.",
-      "en": "HbA1c reflects average glucose exposure over the past two to three months. It is a key value for diabetes diagnosis and therapy. In certain anemias it can be unreliable.",
-      "es": "El HbA1c refleja la carga media de glucosa de los últimos dos a tres meses. Es un valor clave para el diagnóstico y el tratamiento de la diabetes. En ciertas anemias puede falsearse.",
-      "it": "L'HbA1c riflette il carico medio di glucosio degli ultimi due-tre mesi. È un valore chiave per diagnosi e terapia del diabete. In alcune anemie può essere alterato.",
-      "pt": "O HbA1c reflecte a carga média de glicose dos últimos dois a três meses. É um valor-chave no diagnóstico e na terapêutica da diabetes. Em certas anemias pode estar falseado.",
-      "fr": "L'HbA1c reflète la charge glycémique moyenne des deux à trois derniers mois. C'est une valeur clé pour le diagnostic et le traitement du diabète. En cas de certaines anémies, elle peut être faussée.",
-      "tr": "HbA1c, son iki-üç ayın ortalama glukoz yükünü yansıtır. Diyabet tanısı ve tedavisi için anahtar bir değerdir. Bazı anemilerde yanıltıcı olabilir."
+      "de": "Der HbA1c spiegelt die durchschnittliche Glukosebelastung der letzten zwei bis drei Monate wider. Er dient der längerfristigen Einordnung des Blutzuckerverlaufs. Bei bestimmten Anämien kann er verfälscht sein.",
+      "en": "HbA1c reflects average glucose exposure over the past two to three months. It helps place the longer-term blood-sugar pattern in context. In certain anemias it can be unreliable.",
+      "es": "El HbA1c refleja la carga media de glucosa de los últimos dos a tres meses. Sirve para situar el patrón glucémico a más largo plazo. En ciertas anemias puede falsearse.",
+      "it": "L'HbA1c riflette il carico medio di glucosio degli ultimi due-tre mesi. Serve a contestualizzare il pattern glicemico a più lungo termine. In alcune anemie può essere alterato.",
+      "pt": "O HbA1c reflecte a carga média de glicose dos últimos dois a três meses. Serve para situar o padrão glicémico a mais longo prazo. Em certas anemias pode estar falseado.",
+      "fr": "L'HbA1c reflète la charge glycémique moyenne des deux à trois derniers mois. Elle sert à situer le schéma glycémique sur le plus long terme. En cas de certaines anémies, elle peut être faussée.",
+      "tr": "HbA1c, son iki-üç ayın ortalama glukoz yükünü yansıtır. Daha uzun vadeli kan şekeri örüntüsünü bağlama oturtmaya yarar. Bazı anemilerde yanıltıcı olabilir."
     },
     "related_chapters": [
       1,
@@ -6294,7 +6294,7 @@ window.lexikonTerms = [
       "tr": "Kan değeri"
     },
     "short_description": {
-      "de": "HDL gilt als „gutes“ Cholesterin, weil es Cholesterin rücktransportieren kann. Sehr niedrige Werte gehen mit höherem Risiko einher, sehr hohe sind nicht automatisch schützend. Bewegung und Rauchstopp wirken oft günstig.",
+      "de": "HDL transportiert überschüssiges Cholesterin zurück zur Leber. Sehr niedrige oder sehr hohe Werte allein sagen wenig aus – die Einordnung gehört in den Gesamtbefund. Bewegung und Rauchstopp gehen oft mit günstigeren Mustern einher.",
       "en": "HDL is often called “good” cholesterol because it can reverse-transport cholesterol. Very low values go with higher risk; very high values are not automatically protective. Exercise and quitting smoking often help.",
       "es": "El HDL se considera el colesterol «bueno» porque puede devolver colesterol. Valores muy bajos se asocian a mayor riesgo; valores muy altos no protegen automáticamente. El ejercicio y dejar de fumar suelen actuar de forma favorable.",
       "it": "L'HDL è considerato il colesterolo «buono» perché può ritrasportare il colesterolo. Valori molto bassi si associano a rischio più alto; valori molto alti non sono automaticamente protettivi. Movimento e smettere di fumare spesso aiutano.",
@@ -6550,7 +6550,7 @@ window.lexikonTerms = [
       "tr": "Kan değeri"
     },
     "short_description": {
-      "de": "Homocystein steigt bei Mangel an Folat, Vitamin B12 oder B6 und gilt als Risikomarker für Gefäße. Eine Senkung über Vitamine verbessert nicht immer automatisch Outcomes. Dennoch lohnt die Ursachensuche bei erhöhten Werten.",
+      "de": "Homocystein steigt bei Mangel an Folat, Vitamin B12 oder B6 und wird im Stoffwechselkontext mitbetrachtet. Eine Senkung über Vitamine verändert nicht immer automatisch den Gesamtbefund. Dennoch lohnt die Ursachensuche bei erhöhten Werten.",
       "en": "Homocysteine rises with folate, vitamin B12, or B6 deficiency and is considered a vascular risk marker. Lowering it with vitamins does not always automatically improve outcomes. Still, searching for causes of elevated values is worthwhile.",
       "es": "La homocisteína se eleva en deficiencia de folato, vitamina B12 o B6 y se considera marcador de riesgo vascular. Bajarla con vitaminas no siempre mejora automáticamente los resultados clínicos. Aun así merece buscar la causa si los valores están altos.",
       "it": "L'omocisteina sale con carenza di folato, vitamina B12 o B6 e si considera un marcatore di rischio vascolare. Ridurla con vitamine non migliora sempre automaticamente gli esiti. Cercare le cause di valori elevati resta comunque utile.",
@@ -6681,7 +6681,7 @@ window.lexikonTerms = [
       "tr": "Kan değeri"
     },
     "short_description": {
-      "de": "hs-CRP erfasst niedrige Entzündungsgrade und wird als zusätzlicher Herz-Kreislauf-Risikomarker genutzt. Es ist nicht spezifisch für Arteriosklerose. Akute Infekte machen die Interpretation unbrauchbar.",
+      "de": "hs-CRP erfasst niedrige Entzündungsgrade und wird manchmal im Stoffwechselkontext mitbetrachtet. Es ist nicht spezifisch für Gefäßveränderungen. Akute Infekte machen die Interpretation unbrauchbar.",
       "en": "hs-CRP detects low-grade inflammation and is used as an additional cardiovascular risk marker. It is not specific for atherosclerosis. Acute infections make interpretation unreliable.",
       "es": "La hs-CRP capta grados bajos de inflamación y se usa como marcador adicional de riesgo cardiovascular. No es específica de aterosclerosis. Las infecciones agudas hacen inutilizable la interpretación.",
       "it": "La hs-CRP rileva gradi bassi di infiammazione e si usa come marcatore aggiuntivo di rischio cardiovascolare. Non è specifica per l'aterosclerosi. Le infezioni acute rendono l'interpretazione inutilizzabile.",
@@ -7473,12 +7473,12 @@ window.lexikonTerms = [
       "tr": "Metabolizma"
     },
     "short_description": {
-      "de": "Die Insulinsekretion beschreibt, wie viel Insulin die Bauchspeicheldrüse freisetzt. C-Peptid hilft, die Eigenproduktion einzuschätzen. Überforderung der Betazellen kann langfristig in Typ-2-Diabetes münden.",
-      "en": "Insulin secretion describes how much insulin the pancreas releases. C-peptide helps estimate endogenous production. Overloading beta cells can long-term lead to type 2 diabetes.",
-      "es": "La secreción de insulina describe cuánta insulina libera el páncreas. El péptido C ayuda a estimar la producción propia. La sobrecarga de las células beta puede conducir a largo plazo a diabetes tipo 2.",
-      "it": "La secrezione di insulina descrive quanta insulina rilascia il pancreas. Il C-peptide aiuta a stimare la produzione endogena. Il sovraccarico delle cellule beta può portare a lungo termine al diabete di tipo 2.",
-      "pt": "A secreção de insulina descreve quanta insulina o pâncreas liberta. O peptídeo C ajuda a estimar a produção própria. A sobrecarga das células beta pode, a longo prazo, conduzir a diabetes tipo 2.",
-      "fr": "La sécrétion d'insuline décrit combien d'insuline le pancréas libère. Le peptide C aide à estimer la production endogène. La surcharge des cellules bêta peut à long terme aboutir au diabète de type 2.",
+      "de": "Die Insulinsekretion beschreibt, wie viel Insulin die Bauchspeicheldrüse freisetzt. C-Peptid hilft, die Eigenproduktion einzuschätzen. Dauerhaft hohe Anforderungen an die Betazellen können die Insulinantwort langfristig verändern.",
+      "en": "Insulin secretion describes how much insulin the pancreas releases. C-peptide helps estimate endogenous production. Persistently high demand on beta cells can change the insulin response over time.",
+      "es": "La secreción de insulina describe cuánta insulina libera el páncreas. El péptido C ayuda a estimar la producción propia. Una demanda alta y persistente sobre las células beta puede cambiar la respuesta de insulina con el tiempo.",
+      "it": "La secrezione di insulina descrive quanta insulina rilascia il pancreas. Il C-peptide aiuta a stimare la produzione endogena. Una domanda alta e persistente sulle cellule beta può cambiare nel tempo la risposta insulinica.",
+      "pt": "A secreção de insulina descreve quanta insulina o pâncreas liberta. O peptídeo C ajuda a estimar a produção própria. Uma exigência elevada e persistente sobre as células beta pode alterar a resposta à insulina ao longo do tempo.",
+      "fr": "La sécrétion d'insuline décrit combien d'insuline le pancréas libère. Le peptide C aide à estimer la production endogène. Une demande élevée et persistante sur les cellules bêta peut modifier la réponse insulinique avec le temps.",
       "tr": "İnsülin salgısı pankreasın ne kadar insülin saldığını tanımlar. C-peptid kendi üretimi tahmin etmeye yardım eder. Beta hücrelerinin aşırı yüklenmesi uzun vadede tip 2 diyabete yol açabilir."
     },
     "related_chapters": [
@@ -8168,12 +8168,12 @@ window.lexikonTerms = [
       "tr": "Kan değeri"
     },
     "short_description": {
-      "de": "Ketonkörper entstehen bei Kohlenhydratmangel oder unkontrolliertem Diabetes. Im therapeutischen Fasten oder bei Low-Carb sind milde Erhöhungen möglich. Sehr hohe Werte mit Krankheitssymptomen sind ein Notfall.",
-      "en": "Ketone bodies form in carbohydrate shortage or uncontrolled diabetes. Mild elevations can occur in therapeutic fasting or low-carb diets. Very high values with illness symptoms are an emergency.",
-      "es": "Los cuerpos cetónicos se forman en falta de hidratos de carbono o diabetes descontrolada. En ayuno terapéutico o low-carb son posibles elevaciones leves. Valores muy altos con síntomas de enfermedad son una urgencia.",
-      "it": "I corpi chetonici si formano in carenza di carboidrati o diabete non controllato. Nel digiuno terapeutico o low-carb sono possibili lievi aumenti. Valori molto alti con sintomi di malattia sono un'emergenza.",
-      "pt": "Os corpos cetónicos formam-se na falta de hidratos de carbono ou diabetes descontrolada. No jejum terapêutico ou low-carb são possíveis elevações ligeiras. Valores muito altos com sintomas de doença são uma emergência.",
-      "fr": "Les corps cétoniques se forment en manque de glucides ou diabète non contrôlé. En jeûne thérapeutique ou low-carb, de légères élévations sont possibles. Des valeurs très hautes avec symptômes de maladie sont une urgence.",
+      "de": "Ketonkörper entstehen bei Kohlenhydratmangel oder stark verändertem Glukosestoffwechsel. Im Fasten oder bei Low-Carb sind milde Erhöhungen möglich. Sehr hohe Werte mit starken Beschwerden gehören rasch abgeklärt.",
+      "en": "Ketone bodies form in carbohydrate shortage or strongly altered glucose metabolism. Mild elevations can occur in fasting or low-carb diets. Very high values with strong symptoms need prompt clarification.",
+      "es": "Los cuerpos cetónicos se forman en falta de hidratos de carbono o metabolismo de la glucosa muy alterado. En ayuno o low-carb son posibles elevaciones leves. Valores muy altos con molestias intensas requieren aclaración rápida.",
+      "it": "I corpi chetonici si formano in carenza di carboidrati o metabolismo del glucosio fortemente alterato. Nel digiuno o low-carb sono possibili lievi aumenti. Valori molto alti con disturbi intensi vanno chiariti rapidamente.",
+      "pt": "Os corpos cetónicos formam-se na falta de hidratos de carbono ou metabolismo da glicose muito alterado. No jejum ou low-carb são possíveis elevações ligeiras. Valores muito altos com queixas intensas pedem esclarecimento rápido.",
+      "fr": "Les corps cétoniques se forment en manque de glucides ou métabolisme du glucose fortement altéré. En jeûne ou low-carb, de légères élévations sont possibles. Des valeurs très hautes avec de fortes plaintes demandent une clarification rapide.",
       "tr": "Keton cisimleri karbonhidrat eksikliğinde veya kontrolsüz diyabette oluşur. Terapötik oruç veya düşük karbonhidrattta hafif yükselmeler olabilir. Hastalık belirtileriyle çok yüksek değerler acildir."
     },
     "related_chapters": [
@@ -9252,7 +9252,7 @@ window.lexikonTerms = [
       "tr": "Kan değeri"
     },
     "short_description": {
-      "de": "LDL transportiert Cholesterin zu den Geweben und gilt als zentraler Risikomarker für Atherosklerose. Gesättigte Fette, Transfette und hohe Zuckermuster können ungünstig wirken. Zielwerte hängen vom persönlichen Risikoprofil ab.",
+      "de": "LDL transportiert Cholesterin zu den Geweben. Gesättigte Fette, Transfette und hohe Zuckermuster können ungünstig wirken. Zielbereiche sind individuell und werden mit einer Fachperson festgelegt.",
       "en": "LDL carries cholesterol to tissues and is a central risk marker for atherosclerosis. Saturated fats, trans fats, and high-sugar patterns can act unfavorably. Target values depend on personal risk profile.",
       "es": "El LDL transporta colesterol a los tejidos y se considera el marcador de riesgo central de aterosclerosis. Grasas saturadas, grasas trans y patrones altos en azúcar pueden actuar de forma desfavorable. Los objetivos dependen del perfil de riesgo personal.",
       "it": "L'LDL trasporta colesterolo ai tessuti ed è il marcatore di rischio centrale per l'aterosclerosi. Grassi saturi, grassi trans e pattern ricchi di zuccheri possono agire sfavorevolmente. I valori obiettivo dipendono dal profilo di rischio personale.",
@@ -9565,7 +9565,7 @@ window.lexikonTerms = [
       "tr": "Kan değeri"
     },
     "short_description": {
-      "de": "Lp(a) ist ein genetisch stark bestimmter Risikomarker für Herz-Kreislauf-Erkrankungen. Lebensstil ändert ihn nur wenig. Einmal messen reicht oft, um das persönliche Risiko besser einzuordnen.",
+      "de": "Lp(a) ist ein genetisch stark bestimmter Blutwert im Lipidstoffwechsel. Lebensstil ändert ihn nur wenig. Einmal messen kann helfen, den Befund besser einzuordnen – die Bewertung gehört zur Fachperson.",
       "en": "Lp(a) is a strongly genetic risk marker for cardiovascular disease. Lifestyle changes it only slightly. Measuring once is often enough to better classify personal risk.",
       "es": "La Lp(a) es un marcador de riesgo cardiovascular determinado en gran medida genéticamente. El estilo de vida apenas lo modifica. Medirlo una vez suele bastar para encuadrar mejor el riesgo personal.",
       "it": "La Lp(a) è un marcatore di rischio cardiovascolare fortemente determinato geneticamente. Lo stile di vita lo modifica poco. Spesso basta misurarlo una volta per inquadrare meglio il rischio personale.",
@@ -10778,13 +10778,13 @@ window.lexikonTerms = [
       "tr": "Metabolizma"
     },
     "short_description": {
-      "de": "Das metabolische Syndrom bündelt Bauchfett, Bluthochdruck, gestörte Glukosewerte und ungünstige Blutfette. Es erhöht das Risiko für Typ-2-Diabetes und Herzkrankheiten. Lebensstiländerung ist die Basistherapie.",
-      "en": "Metabolic syndrome clusters abdominal fat, high blood pressure, impaired glucose, and unfavorable blood lipids. It raises risk of type 2 diabetes and heart disease. Lifestyle change is the foundation of therapy.",
-      "es": "El síndrome metabólico agrupa grasa abdominal, hipertensión, valores de glucosa alterados y lípidos desfavorables. Eleva el riesgo de diabetes tipo 2 y enfermedades cardíacas. El cambio de estilo de vida es la terapia de base.",
-      "it": "La sindrome metabolica raggruppa grasso addominale, ipertensione, glucosio alterato e lipidi sfavorevoli. Aumenta il rischio di diabete di tipo 2 e malattie cardiache. Il cambiamento di stile di vita è la terapia di base.",
-      "pt": "A síndrome metabólica agrupa gordura abdominal, hipertensão, glicose alterada e lípidos desfavoráveis. Eleva o risco de diabetes tipo 2 e doenças cardíacas. A mudança de estilo de vida é a terapia de base.",
-      "fr": "Le syndrome métabolique regroupe graisse abdominale, hypertension, glucose altéré et lipides défavorables. Il élève le risque de diabète de type 2 et de maladies cardiaques. Le changement de mode de vie est la thérapie de base.",
-      "tr": "Metabolik sendrom karın yağı, hipertansiyon, bozulmuş glukoz ve olumsuz kan yağlarını bir araya getirir. Tip 2 diyabet ve kalp hastalığı riskini artırır. Yaşam tarzı değişikliği temel tedavidir."
+      "de": "Das metabolische Syndrom bündelt Bauchfett, Bluthochdruck, gestörte Glukosewerte und ungünstige Blutfette. Es beschreibt ein Stoffwechselmuster, keine einzelne Diagnose. Ernährung, Bewegung und Lebensstil sind zentrale Bausteine der Einordnung.",
+      "en": "Metabolic syndrome clusters abdominal fat, high blood pressure, impaired glucose, and unfavorable blood lipids. It describes a metabolic pattern, not a single diagnosis. Diet, movement, and lifestyle are central to how it is interpreted.",
+      "es": "El síndrome metabólico agrupa grasa abdominal, hipertensión, valores de glucosa alterados y lípidos desfavorables. Describe un patrón metabólico, no un diagnóstico único. Alimentación, movimiento y estilo de vida son pilares de la interpretación.",
+      "it": "La sindrome metabolica raggruppa grasso addominale, ipertensione, glucosio alterato e lipidi sfavorevoli. Descrive un pattern metabolico, non una diagnosi unica. Alimentazione, movimento e stile di vita sono pilastri dell'interpretazione.",
+      "pt": "A síndrome metabólica agrupa gordura abdominal, hipertensão, glicose alterada e lípidos desfavoráveis. Descreve um padrão metabólico, não um diagnóstico único. Alimentação, movimento e estilo de vida são pilares da interpretação.",
+      "fr": "Le syndrome métabolique regroupe graisse abdominale, hypertension, glucose altéré et lipides défavorables. Il décrit un schéma métabolique, pas un diagnostic unique. Alimentation, mouvement et mode de vie sont des piliers de l'interprétation.",
+      "tr": "Metabolik sendrom karın yağı, hipertansiyon, bozulmuş glukoz ve olumsuz kan yağlarını bir araya getirir. Tek bir tanı değil, bir metabolik örüntüyü tanımlar. Beslenme, hareket ve yaşam tarzı yorumlamanın temelidir."
     },
     "related_chapters": [
       1,
@@ -11807,7 +11807,7 @@ window.lexikonTerms = [
       "tr": "Metabolizma"
     },
     "short_description": {
-      "de": "Die nicht-alkoholische Fettleber hängt eng mit Insulinresistenz und Kalorienüberschuss zusammen. Fruktose und zuckerreiche Getränke gelten als Treiber. Gewichtsreduktion und Bewegung können die Leberwerte verbessern.",
+      "de": "Nicht-alkoholische Fettleber beschreibt eine Fettablagerung in der Leber ohne relevanten Alkoholkonsum und hängt oft mit Insulinresistenz und Kalorienüberschuss zusammen. Fruktose und zuckerreiche Getränke können die Last erhöhen. Ernährung und Bewegung beeinflussen die Leberwerte mit.",
       "en": "Non-alcoholic fatty liver is closely tied to insulin resistance and calorie surplus. Fructose and sugary drinks are considered drivers. Weight loss and exercise can improve liver values.",
       "es": "El hígado graso no alcohólico está estrechamente ligado a la resistencia a la insulina y al exceso calórico. La fructosa y las bebidas azucaradas se consideran impulsores. La pérdida de peso y el ejercicio pueden mejorar los valores hepáticos.",
       "it": "Il fegato grasso non alcolico si lega strettamente a insulinoresistenza ed eccesso calorico. Fruttosio e bevande zuccherate sono considerati driver. Perdita di peso e movimento possono migliorare i valori epatici.",
@@ -11995,7 +11995,7 @@ window.lexikonTerms = [
       "tr": "Kan değeri"
     },
     "short_description": {
-      "de": "Non-HDL-Cholesterin ist Gesamtcholesterin minus HDL und umfasst alle atherogenen Partikel. Es ist auch bei erhöhten Triglyceriden nützlich. Manche Leitlinien nutzen es als Therapieziel neben LDL.",
+      "de": "Non-HDL-Cholesterin ist Gesamtcholesterin minus HDL und umfasst Partikel jenseits von HDL. Es ist auch bei erhöhten Triglyceriden nützlich. Ob es neben LDL als Orientierung dient, entscheidet die Fachperson.",
       "en": "Non-HDL cholesterol is total cholesterol minus HDL and includes all atherogenic particles. It is useful even when triglycerides are elevated. Some guidelines use it as a treatment target alongside LDL.",
       "es": "El colesterol non-HDL es el colesterol total menos el HDL e incluye todas las partículas aterógenas. También es útil con triglicéridos elevados. Algunas guías lo usan como objetivo terapéutico junto al LDL.",
       "it": "Il colesterolo non-HDL è il colesterolo totale meno l'HDL e comprende tutte le particelle aterogene. È utile anche con trigliceridi elevati. Alcune linee guida lo usano come obiettivo terapeutico insieme all'LDL.",
@@ -12245,13 +12245,13 @@ window.lexikonTerms = [
       "tr": "Kan değeri"
     },
     "short_description": {
-      "de": "Beim OGTT wird Glukose getrunken und der Blutzuckerverlauf gemessen. Er erkennt gestörte Glukosetoleranz früher als ein einzelner Nüchternwert. In der Schwangerschaft ist er Standard zur Gestationsdiabetes-Diagnostik.",
-      "en": "In an OGTT, glucose is drunk and the blood sugar course is measured. It detects impaired glucose tolerance earlier than a single fasting value. In pregnancy it is standard for gestational diabetes diagnosis.",
-      "es": "En la SOG se bebe glucosa y se mide la evolución de la glucemia. Detecta la intolerancia a la glucosa antes que un solo valor en ayunas. En el embarazo es estándar para diagnosticar diabetes gestacional.",
-      "it": "Nell'OGTT si beve glucosio e si misura l'andamento della glicemia. Rileva una tolleranza alterata prima di un singolo valore a digiuno. In gravidanza è lo standard per diagnosticare il diabete gestazionale.",
-      "pt": "No TOTG bebe-se glicose e mede-se a evolução da glicemia. Detecta a tolerância à glicose alterada mais cedo do que um único valor em jejum. Na gravidez é o padrão para diagnosticar diabetes gestacional.",
-      "fr": "Lors de l'HGPO, on boit du glucose et on mesure l'évolution de la glycémie. Elle détecte une tolérance au glucose altérée plus tôt qu'une seule valeur à jeun. Pendant la grossesse, c'est le standard pour diagnostiquer le diabète gestationnel.",
-      "tr": "OGTT'de glukoz içilir ve kan şekeri seyri ölçülür. Bozulmuş glukoz toleransını tek bir açlık değerinden daha erken saptar. Gebelikte gestasyonel diyabet tanısı için standarttır."
+      "de": "Beim OGTT wird Glukose getrunken und der Blutzuckerverlauf gemessen. Er erkennt gestörte Glukosetoleranz früher als ein einzelner Nüchternwert. In der Schwangerschaft wird er zur Einordnung der Glukosetoleranz genutzt.",
+      "en": "In an OGTT, glucose is drunk and the blood sugar course is measured. It detects impaired glucose tolerance earlier than a single fasting value. In pregnancy it is used to place glucose tolerance in context.",
+      "es": "En la SOG se bebe glucosa y se mide la evolución de la glucemia. Detecta la intolerancia a la glucosa antes que un solo valor en ayunas. En el embarazo se usa para situar la tolerancia a la glucosa.",
+      "it": "Nell'OGTT si beve glucosio e si misura l'andamento della glicemia. Rileva una tolleranza alterata prima di un singolo valore a digiuno. In gravidanza serve a contestualizzare la tolleranza al glucosio.",
+      "pt": "No TOTG bebe-se glicose e mede-se a evolução da glicemia. Detecta a tolerância à glicose alterada mais cedo do que um único valor em jejum. Na gravidez usa-se para situar a tolerância à glicose.",
+      "fr": "Lors de l'HGPO, on boit du glucose et on mesure l'évolution de la glycémie. Elle détecte une tolérance au glucose altérée plus tôt qu'une seule valeur à jeun. Pendant la grossesse, elle sert à situer la tolérance au glucose.",
+      "tr": "OGTT'de glukoz içilir ve kan şekeri seyri ölçülür. Bozulmuş glukoz toleransını tek bir açlık değerinden daha erken saptar. Gebelikte glukoz toleransını bağlama oturtmak için kullanılır."
     },
     "related_chapters": [
       1,
@@ -12558,7 +12558,7 @@ window.lexikonTerms = [
       "tr": "Kan değeri"
     },
     "short_description": {
-      "de": "Oxidiertes LDL gilt als besonders gefäßschädigend und wird in der Forschung untersucht. Routinemäßig wird es selten bestimmt. Antioxidantienreiche Ernährung kann oxidativen Stress mindern, ersetzt aber keine Risikokontrolle.",
+      "de": "Oxidiertes LDL wird in der Forschung untersucht und routinemäßig selten bestimmt. Antioxidantienreiche Ernährung kann oxidativen Stress mitbeeinflussen, ersetzt aber keine individuelle Befundbesprechung.",
       "en": "Oxidized LDL is considered especially vessel-damaging and is studied in research. It is rarely measured routinely. An antioxidant-rich diet may reduce oxidative stress but does not replace risk control.",
       "es": "El LDL oxidado se considera especialmente dañino para los vasos y se investiga en investigación. Rara vez se determina de forma rutinaria. Una alimentación rica en antioxidantes puede reducir el estrés oxidativo, pero no sustituye el control de riesgos.",
       "it": "L'LDL ossidato è considerato particolarmente dannoso per i vasi ed è studiato nella ricerca. Di routine si misura raramente. Un'alimentazione ricca di antiossidanti può ridurre lo stress ossidativo, ma non sostituisce il controllo dei fattori di rischio.",
@@ -13518,12 +13518,12 @@ window.lexikonTerms = [
       "tr": "Metabolizma"
     },
     "short_description": {
-      "de": "Im Purinstoffwechsel entstehen aus Nukleinsäuren Purine und schließlich Harnsäure. Innereien, manche Fische und Fruktose beeinflussen die Last. Gichtpatienten profitieren oft von angepasster Ernährung und Gewichtskontrolle.",
-      "en": "In purine metabolism, nucleic acids yield purines and finally uric acid. Offal, some fish, and fructose influence the load. Gout patients often benefit from adapted diet and weight control.",
+      "de": "Im Purinstoffwechsel entstehen aus Nukleinsäuren Purine und schließlich Harnsäure. Innereien, manche Fische und Fruktose beeinflussen die Last. Angepasste Ernährung und Gewichtskontrolle können den Harnsäurespiegel mitprägen.",
+      "en": "In purine metabolism, nucleic acids yield purines and finally uric acid. Offal, some fish, and fructose influence the load. Adapted diet and weight control can shape uric acid levels.",
       "es": "En el metabolismo de las purinas se forman purinas a partir de ácidos nucleicos y finalmente ácido úrico. Vísceras, algunos pescados y la fructosa influyen en la carga. Los pacientes con gota suelen beneficiarse de una alimentación adaptada y control del peso.",
       "it": "Nel metabolismo delle purine, dagli acidi nucleici nascono purine e infine acido urico. Frattaglie, alcuni pesci e fruttosio influenzano il carico. I pazienti con gotta spesso beneficiano di dieta adattata e controllo del peso.",
       "pt": "No metabolismo das purinas, os ácidos nucleicos dão purinas e por fim ácido úrico. Miudezas, alguns peixes e frutose influenciam a carga. Doentes com gota beneficiam muitas vezes de alimentação adaptada e controlo de peso.",
-      "fr": "Dans le métabolisme des purines, les acides nucléiques donnent des purines puis de l'acide urique. Abats, certains poissons et fructose influencent la charge. Les patients goutteux bénéficient souvent d'une alimentation adaptée et du contrôle du poids.",
+      "fr": "Dans le métabolisme des purines, les acides nucléiques donnent des purines puis de l'acide urique. Abats, certains poissons et fructose influencent la charge. Une alimentation adaptée et le contrôle du poids peuvent façonner le taux d'acide urique.",
       "tr": "Pürin metabolizmasında nükleik asitlerden pürinler ve sonunda ürik asit oluşur. Sakatat, bazı balıklar ve fruktoz yükü etkiler. Gut hastaları çoğu zaman uyarlanmış beslenme ve kilo kontrolünden yararlanır."
     },
     "related_chapters": [

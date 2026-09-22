@@ -28,10 +28,10 @@ const RECIPE_MODEL_VERSION = {
 };
 
 const INFERRED_WARNING =
-  'Die ursprüngliche Portionszahl wurde anhand der Zutatenmenge geschätzt.';
+  'Original servings were estimated from ingredient amounts.';
 const UNKNOWN_WARNING =
-  'Die Ausgangsportionszahl ist nicht bekannt. Eine sichere Skalierung ist nicht möglich.';
-const ESTIMATED_UI_HINT = 'Portionsgröße geschätzt – bitte prüfen';
+  'Source servings are unknown. Safe scaling is not possible.';
+const ESTIMATED_UI_HINT = 'Portion size estimated – please check';
 
 /**
  * Strikte 1-Portions-Basis (Einzelperson). KI und finalIngredients beziehen sich darauf.
@@ -688,20 +688,33 @@ function extractMentionedFoodTokens(text) {
   const checks = [
     { key: 'pasta', re: /\bpasta\b|\bnudel|\bspaghetti\b|\bpenne\b|\bfusilli\b/ },
     { key: 'reis', re: /\breis\b|\brace\b/ },
-    { key: 'sahne', re: /\bsahne\b|\bcreme\b|\bcream\b/ },
     { key: 'lachs', re: /\blachs\b|\bsalmon\b/ },
     { key: 'hack', re: /\bhack\b|\brag[uù]\b|\bbolognese\b/ },
   ];
-  return checks.filter(function (c) { return c.re.test(t); }).map(function (c) { return c.key; });
+  const keys = checks.filter(function (c) { return c.re.test(t); }).map(function (c) { return c.key; });
+  // Sahne/Creme: nur echte Dairy-Creme, nicht Kokos-/Hafercreme im Text
+  try {
+    const lactoseHonesty = require('./lactose-honesty');
+    if (lactoseHonesty.textMentionsRealDairyCream(t)) keys.push('sahne');
+  } catch (_) {
+    if (/\bsahne\b|\bcreme\b|\bcream\b/.test(t)) keys.push('sahne');
+  }
+  return keys;
 }
 
-function ingredientListMentionsToken(ingredients, token) {
+function ingredientListMentionsToken(ingredients, token, textContext) {
   const blob = (Array.isArray(ingredients) ? ingredients : [])
     .map(function (i) { return String((i && (i.displayName || i.name)) || '').toLowerCase(); })
     .join(' ');
   if (token === 'pasta') return /pasta|nudel|spaghetti|penne|fusilli/.test(blob);
   if (token === 'reis') return /\breis\b|rice/.test(blob);
-  if (token === 'sahne') return /sahne|creme|cream|schmand/.test(blob);
+  if (token === 'sahne') {
+    try {
+      const lactoseHonesty = require('./lactose-honesty');
+      if (lactoseHonesty.ingredientSatisfiesSahneSlot(ingredients, textContext)) return true;
+    } catch (_) { /* fall through */ }
+    return /sahne|creme|cream|schmand/.test(blob);
+  }
   if (token === 'lachs') return /lachs|salmon/.test(blob);
   if (token === 'hack') return /hack|rind|schwein|bolognese|rag[uù]/.test(blob);
   return blob.indexOf(token) >= 0;
@@ -719,25 +732,26 @@ function validateRecipeConsistency(recipe) {
     return String((s && (s.instruction || s.content || s.text)) || '');
   }).join(' ');
 
-  const mentioned = extractMentionedFoodTokens(stepText + ' ' + title);
+  const contextBlob = stepText + ' ' + title;
+  const mentioned = extractMentionedFoodTokens(contextBlob);
   mentioned.forEach(function (token) {
-    if (!ingredientListMentionsToken(ingredients, token)) {
+    if (!ingredientListMentionsToken(ingredients, token, contextBlob)) {
       if (token === 'pasta' || token === 'reis' || token === 'lachs' || token === 'sahne') {
         warnings.push(
-          'Zubereitung/Titel erwähnt "' + token + '", aber die Zutat fehlt in finalIngredients.'
+          'Prep/title mentions "' + token + '", but the ingredient is missing in finalIngredients.'
         );
       }
     }
   });
 
-  if (/sahnesauce|sahne-sauce/i.test(title) && !ingredientListMentionsToken(ingredients, 'sahne')) {
-    warnings.push('Titel nennt Sahnesauce, aber keine Sahne in den Zutaten.');
+  if (/sahnesauce|sahne-sauce/i.test(title) && !ingredientListMentionsToken(ingredients, 'sahne', contextBlob)) {
+    warnings.push('Title mentions cream sauce, but no cream in the ingredients.');
   }
-  if (/\blachs\b/i.test(title) && !ingredientListMentionsToken(ingredients, 'lachs')) {
-    warnings.push('Titel nennt Lachs, aber kein Lachs in den Zutaten.');
+  if (/\blachs\b/i.test(title) && !ingredientListMentionsToken(ingredients, 'lachs', contextBlob)) {
+    warnings.push('Title mentions salmon, but no salmon in the ingredients.');
   }
-  if (/bolognese|rag[uù]/i.test(title) && !ingredientListMentionsToken(ingredients, 'hack')) {
-    warnings.push('Titel nennt Bolognese/Ragù, aber kein Hackfleisch in den Zutaten.');
+  if (/bolognese|rag[uù]/i.test(title) && !ingredientListMentionsToken(ingredients, 'hack', contextBlob)) {
+    warnings.push('Title mentions Bolognese/Ragù, but no minced meat in the ingredients.');
   }
 
   const qtyRe = /\b\d+(?:[.,]\d+)?\s*(g|kg|mg|ml|l|cl|el|tl|stk|stück)\b/i;
@@ -746,13 +760,13 @@ function validateRecipeConsistency(recipe) {
       ? step
       : String((step && (step.instruction || step.content || step.text)) || '');
     if (qtyRe.test(instruction)) {
-      errors.push('Mengenangabe in Zubereitungsschritt ' + ((step && step.stepNumber) || (i + 1)));
+      errors.push('Quantity in preparation step ' + ((step && step.stepNumber) || (i + 1)));
     }
     if (step && typeof step === 'object') {
       if (Object.prototype.hasOwnProperty.call(step, 'amount') ||
           Object.prototype.hasOwnProperty.call(step, 'quantity') ||
           Object.prototype.hasOwnProperty.call(step, 'ingredients')) {
-        errors.push('Schritt ' + ((step.stepNumber) || (i + 1)) + ' enthält unerlaubte Mengenfelder');
+        errors.push('Step ' + ((step.stepNumber) || (i + 1)) + ' contains forbidden quantity fields');
       }
       const ids = Array.isArray(step.ingredientIds) ? step.ingredientIds : null;
       if (ids) {
@@ -762,7 +776,7 @@ function validateRecipeConsistency(recipe) {
         });
         ids.forEach(function (id) {
           if (!map[String(id)]) {
-            warnings.push('Schritt verweist auf unbekannte ingredientId: ' + id);
+            warnings.push('Step references unknown ingredientId: ' + id);
           }
         });
       }

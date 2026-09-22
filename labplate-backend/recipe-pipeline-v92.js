@@ -671,6 +671,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
       aiInstruction: o.aiInstruction || recipe.ai_instruction || '',
       originalRules: o.originalRules || recipe.originalRules || '',
       dairyFreeAdaptation: !!o.dairyFreeAdaptation,
+      lang: o.lang || recipe.lang || 'de',
     });
   } catch (eFx) {
     console.warn('[recipe-v92] display fixes failed', eFx && eFx.message);
@@ -898,10 +899,12 @@ function errorsToDirectives(errors, opts) {
       seenProtein.dishConcept = true;
       directives.push(
         'KONKRETE KORREKTUR TITEL-TREUE: Der Nutzer hat ein konkretes Gericht vorgegeben. ' +
-        'Du DARFST Allergene ersetzen (z.B. Joghurt → laktosefreier/Soja-Joghurt), aber du DARFST NICHT ' +
-        'das Gerichtskonzept wechseln (kein Hähnchen/Hafer statt Nüssen, kein anderes Hauptgericht). ' +
+        'Du DARFST Allergene nur durch kulinarisch etablierte Alternativen ersetzen ' +
+        '(z.B. Joghurt → laktosefreier/Soja-Joghurt; Sahne → Pflanzensahne/Hafercreme). ' +
+        'VERBOTEN: Gerichtskonzept wechseln oder unpassende Notlösungen (Tofu in Sahnesauce, Hähnchen statt Joghurt-Bowl). ' +
         'Pflichtzutaten aus dem Titel müssen als ingredients vorkommen (z.B. Joghurt + Nüsse). ' +
-        'Nüsse unit=g (nie prise). Titel exakt beibehalten.'
+        'Nüsse unit=g (nie prise). Titel exakt beibehalten. ' +
+        'Wenn kein würdiger Ersatz: title=__LACTOSE_HONESTY_ALTERNATIVE__ oder __LACTOSE_HONESTY_IMPOSSIBLE__.'
       );
     }
     if (/nicht in einem sinnvollen Kochschritt|Eier sind nicht/i.test(e) && !seenProtein.eggUsage) {
@@ -1028,6 +1031,27 @@ async function generateValidatedRecipe(opts) {
     // Diagnose: Raw-JSON VOR Validierung und VOR renderRecipeForDisplay (jeder Versuch)
     logRawLlmJson({ attempt: attempt, parsed: parsed });
 
+    // Laktose-Ehrlichkeit: Alternative / unmöglich (Sentinel in Titel/Analyse/Steps; leere Zutaten).
+    try {
+      const lactoseHonesty = require('./lactose-honesty');
+      const allergens = (payload && payload.allergens) || [];
+      const lang = (payload && payload.lang) || 'de';
+      const lh = lactoseHonesty.extractLactoseHonestyFromParsed(parsed, allergens, dishQuery, { lang: lang });
+      if (lh && (lh.status === lactoseHonesty.STATUS.ALTERNATIVE ||
+          lh.status === lactoseHonesty.STATUS.IMPOSSIBLE)) {
+        return {
+          ok: true,
+          recipe: null,
+          raw: parsed,
+          lactoseHonesty: lh,
+          attempts: attempt,
+          attempt_raws: attemptRaws,
+        };
+      }
+    } catch (eLh) {
+      console.warn('[recipe-v92] lactose honesty parse failed', eLh && eLh.message);
+    }
+
     // Emotion-Handoff-Sentinel: nur bei echter emotionaler Blockade im Nutzertext.
     // Klarer Gerichtswunsch (Allergen-Konflikt etc.) → Retry mit Korrekturhinweis, kein Handoff.
     if (parsed && parsed.title === '__TEAM_HANDOFF_COACH__') {
@@ -1049,8 +1073,10 @@ async function generateValidatedRecipe(opts) {
       }
       lastErrors = [
         'Falscher Coach-Handoff: Der Nutzer verlangt ein konkretes Gericht. ' +
-        'Liefere ein normales v9.2-Rezept. Bei Allergenen (z.B. Laktose): ersetze Milchprodukte ' +
-        'durch laktosefreie Alternativen, behalte Gerichtskonzept/Titel – KEIN title=__TEAM_HANDOFF_COACH__.',
+        'Liefere ein normales v9.2-Rezept. Bei Laktose: nur kulinarisch etablierte Ersatzprodukte ' +
+        '(laktosefreie Sahne/Butter, Pflanzensahne, Kokosmilch bei Currys) – kein Tofu/Hähnchen als Notlösung. ' +
+        'Wenn kein authentischer Ersatz: title=__LACTOSE_HONESTY_ALTERNATIVE__ oder ' +
+        '__LACTOSE_HONESTY_IMPOSSIBLE__ – KEIN title=__TEAM_HANDOFF_COACH__.',
       ];
       logValidationFailure({ attempt: attempt, errors: lastErrors, warnings: [] });
       continue;

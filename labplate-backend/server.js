@@ -55,6 +55,7 @@ const spoonacular = require('./spoonacular');
 const themealdb = require('./api/themealdb');
 const usda = require('./api/usda');
 const coachLogic = require('./coach/logic');
+const apiI18n = require('./api-i18n');
 const { createPhotoVerifyHandlers } = require('./api/photo-verify');
 
 // ---------------------------------------------------------------------
@@ -404,7 +405,7 @@ app.get('/api/lexicon-terms', (req, res) => {
   }
 });
 
-function mapSpoonacularError(result, res, startedAt, flow) {
+function mapSpoonacularError(result, res, startedAt, flow, lang) {
   if (result.error === 'server_not_configured') {
     logEvent('request_rejected', { reason: 'spoonacular_not_configured', flow });
     return res.status(500).json({ error: 'server_not_configured' });
@@ -426,7 +427,7 @@ function mapSpoonacularError(result, res, startedAt, flow) {
     return res.status(clientStatus).json({
       error: 'provider_error',
       status: upstreamStatus,
-      message: 'Spoonacular meldete einen Fehler.',
+      message: apiI18n.t('provider_spoonacular', lang),
     });
   }
   if (result.error === 'recipe_unavailable') {
@@ -440,13 +441,14 @@ function mapSpoonacularError(result, res, startedAt, flow) {
 // Spoonacular: Textsuche (complexSearch)
 app.get('/api/recipes/search', limiter, async (req, res) => {
   const startedAt = Date.now();
+  const lang = apiI18n.normalizeLang(req.query.lang || 'en');
   if (!SPOONACULAR_CONFIGURED) {
     return res.status(500).json({ error: 'server_not_configured' });
   }
   const q = String(req.query.q || req.query.query || '').trim();
   const includeIngredients = String(req.query.includeIngredients || '').trim();
   if (!q && !includeIngredients) {
-    return res.status(400).json({ error: 'invalid_payload', message: 'Parameter q oder includeIngredients erforderlich.' });
+    return res.status(400).json({ error: 'invalid_payload', message: apiI18n.t('param_q_or_include', lang) });
   }
 
   const result = await spoonacular.searchRecipes({
@@ -462,7 +464,7 @@ app.get('/api/recipes/search', limiter, async (req, res) => {
     maxReadyTime: req.query.maxReadyTime,
   }, { timeoutMs: Math.min(REQUEST_TIMEOUT_MS, 20000) });
 
-  if (result.error) return mapSpoonacularError(result, res, startedAt, 'recipes-search');
+  if (result.error) return mapSpoonacularError(result, res, startedAt, 'recipes-search', lang);
   console.log(`[recipes/search] OK q="${q.slice(0, 40)}" results=${result.data.results.length} ms=${Date.now() - startedAt}`);
   return res.status(200).json(result.data);
 });
@@ -470,12 +472,13 @@ app.get('/api/recipes/search', limiter, async (req, res) => {
 // Spoonacular: Suche anhand vorhandener Zutaten
 app.get('/api/recipes/by-ingredients', limiter, async (req, res) => {
   const startedAt = Date.now();
+  const lang = apiI18n.normalizeLang(req.query.lang || 'en');
   if (!SPOONACULAR_CONFIGURED) {
     return res.status(500).json({ error: 'server_not_configured' });
   }
   const ingredients = String(req.query.ingredients || req.query.q || '').trim();
   if (!ingredients) {
-    return res.status(400).json({ error: 'invalid_payload', message: 'Parameter ingredients erforderlich.' });
+    return res.status(400).json({ error: 'invalid_payload', message: apiI18n.t('param_ingredients', lang) });
   }
 
   const result = await spoonacular.findByIngredients(ingredients, {
@@ -483,7 +486,7 @@ app.get('/api/recipes/by-ingredients', limiter, async (req, res) => {
     timeoutMs: Math.min(REQUEST_TIMEOUT_MS, 20000),
   });
 
-  if (result.error) return mapSpoonacularError(result, res, startedAt, 'recipes-by-ingredients');
+  if (result.error) return mapSpoonacularError(result, res, startedAt, 'recipes-by-ingredients', lang);
   console.log(`[recipes/by-ingredients] OK ingredients="${ingredients.slice(0, 60)}" results=${result.data.results.length} ms=${Date.now() - startedAt}`);
   return res.status(200).json(result.data);
 });
@@ -491,6 +494,7 @@ app.get('/api/recipes/by-ingredients', limiter, async (req, res) => {
 // Spoonacular: Rezeptdetail im LabPlate-Format
 app.get('/api/recipes/:id', limiter, async (req, res) => {
   const startedAt = Date.now();
+  const lang = apiI18n.normalizeLang(req.query.lang || 'en');
   if (!SPOONACULAR_CONFIGURED) {
     return res.status(500).json({ error: 'server_not_configured' });
   }
@@ -504,12 +508,12 @@ app.get('/api/recipes/:id', limiter, async (req, res) => {
     timeoutMs: Math.min(REQUEST_TIMEOUT_MS, 25000),
   });
 
-  if (result.error) return mapSpoonacularError(result, res, startedAt, 'recipes-detail');
+  if (result.error) return mapSpoonacularError(result, res, startedAt, 'recipes-detail', lang);
   console.log(`[recipes/${id}] OK title="${(result.data.title || '').slice(0, 40)}" ingredients=${result.data.ingredients.length} steps=${result.data.steps.length} ms=${Date.now() - startedAt}`);
   return res.status(200).json(result.data);
 });
 
-function mapThemealdbError(result, res, startedAt, flow) {
+function mapThemealdbError(result, res, startedAt, flow, lang) {
   if (result.error === 'server_not_configured') {
     logEvent('request_rejected', { reason: 'themealdb_not_configured', flow });
     return res.status(500).json({ error: 'server_not_configured' });
@@ -531,7 +535,7 @@ function mapThemealdbError(result, res, startedAt, flow) {
     return res.status(502).json({
       error: 'provider_error',
       status: upstreamStatus,
-      message: 'TheMealDB meldete einen Fehler.',
+      message: apiI18n.t('provider_themealdb', lang),
     });
   }
   if (result.error === 'recipe_unavailable') {
@@ -551,7 +555,7 @@ app.get('/api/themealdb/meal/:id', limiter, async (req, res) => {
   const result = await themealdb.getMealById(req.params.id, {
     timeoutMs: Math.min(REQUEST_TIMEOUT_MS, 20000),
   });
-  if (result.error) return mapThemealdbError(result, res, startedAt, 'themealdb-meal');
+  if (result.error) return mapThemealdbError(result, res, startedAt, 'themealdb-meal', apiI18n.normalizeLang(req.query.lang || 'en'));
   console.log(`[themealdb/meal/${req.params.id}] OK title="${(result.data.title || '').slice(0, 40)}" ingredients=${result.data.ingredients.length} steps=${result.data.steps.length} ms=${Date.now() - startedAt}`);
   return res.status(200).json(result.data);
 });
@@ -565,7 +569,7 @@ app.get('/api/themealdb/category/:name', limiter, async (req, res) => {
   const result = await themealdb.getMealsByCategory(req.params.name, {
     timeoutMs: Math.min(REQUEST_TIMEOUT_MS, 20000),
   });
-  if (result.error) return mapThemealdbError(result, res, startedAt, 'themealdb-category');
+  if (result.error) return mapThemealdbError(result, res, startedAt, 'themealdb-category', apiI18n.normalizeLang(req.query.lang || 'en'));
   console.log(`[themealdb/category] OK name="${result.data.category}" results=${result.data.results.length} ms=${Date.now() - startedAt}`);
   return res.status(200).json(result.data);
 });
@@ -579,7 +583,7 @@ app.get('/api/themealdb/area/:name', limiter, async (req, res) => {
   const result = await themealdb.getMealsByArea(req.params.name, {
     timeoutMs: Math.min(REQUEST_TIMEOUT_MS, 20000),
   });
-  if (result.error) return mapThemealdbError(result, res, startedAt, 'themealdb-area');
+  if (result.error) return mapThemealdbError(result, res, startedAt, 'themealdb-area', apiI18n.normalizeLang(req.query.lang || 'en'));
   console.log(`[themealdb/area] OK name="${result.data.area}" results=${result.data.results.length} ms=${Date.now() - startedAt}`);
   return res.status(200).json(result.data);
 });
@@ -593,12 +597,12 @@ app.get('/api/themealdb/random', limiter, async (req, res) => {
   const result = await themealdb.getRandomMeal({
     timeoutMs: Math.min(REQUEST_TIMEOUT_MS, 20000),
   });
-  if (result.error) return mapThemealdbError(result, res, startedAt, 'themealdb-random');
+  if (result.error) return mapThemealdbError(result, res, startedAt, 'themealdb-random', apiI18n.normalizeLang(req.query.lang || 'en'));
   console.log(`[themealdb/random] OK title="${(result.data.title || '').slice(0, 40)}" id=${result.data.id} ms=${Date.now() - startedAt}`);
   return res.status(200).json(result.data);
 });
 
-function mapUsdaError(result, res, startedAt, flow) {
+function mapUsdaError(result, res, startedAt, flow, lang) {
   if (result.error === 'server_not_configured') {
     logEvent('request_rejected', { reason: 'usda_not_configured', flow });
     return res.status(500).json({ error: 'server_not_configured' });
@@ -620,7 +624,7 @@ function mapUsdaError(result, res, startedAt, flow) {
     return res.status(502).json({
       error: 'provider_error',
       status: upstreamStatus,
-      message: 'USDA FoodData Central meldete einen Fehler.',
+      message: apiI18n.t('provider_usda', lang),
     });
   }
   logEvent('response_rejected', { reason: result.error || 'unknown', detail: result.reason || '', ms: Date.now() - startedAt, flow });
@@ -630,12 +634,13 @@ function mapUsdaError(result, res, startedAt, flow) {
 // USDA: Lebensmittelsuche
 app.get('/api/usda/search', limiter, async (req, res) => {
   const startedAt = Date.now();
+  const lang = apiI18n.normalizeLang(req.query.lang || 'en');
   if (!USDA_CONFIGURED) {
     return res.status(500).json({ error: 'server_not_configured' });
   }
   const q = String(req.query.q || req.query.query || '').trim();
   if (!q) {
-    return res.status(400).json({ error: 'invalid_payload', message: 'Parameter q erforderlich.' });
+    return res.status(400).json({ error: 'invalid_payload', message: apiI18n.t('param_q', lang) });
   }
 
   const result = await usda.searchFood(q, {
@@ -645,7 +650,7 @@ app.get('/api/usda/search', limiter, async (req, res) => {
     timeoutMs: Math.min(REQUEST_TIMEOUT_MS, 20000),
   });
 
-  if (result.error) return mapUsdaError(result, res, startedAt, 'usda-search');
+  if (result.error) return mapUsdaError(result, res, startedAt, 'usda-search', lang);
   console.log(`[usda/search] OK q="${q.slice(0, 40)}" results=${result.data.results.length} total=${result.data.totalHits} ms=${Date.now() - startedAt}`);
   return res.status(200).json(result.data);
 });
@@ -665,7 +670,7 @@ app.get('/api/usda/food/:fdcId', limiter, async (req, res) => {
     timeoutMs: Math.min(REQUEST_TIMEOUT_MS, 20000),
   });
 
-  if (result.error) return mapUsdaError(result, res, startedAt, 'usda-food');
+  if (result.error) return mapUsdaError(result, res, startedAt, 'usda-food', apiI18n.normalizeLang(req.query.lang || 'en'));
   console.log(`[usda/food/${fdcId}] OK name="${(result.data.name || '').slice(0, 40)}" kcal=${result.data.calories} ms=${Date.now() - startedAt}`);
   return res.status(200).json(result.data);
 });
@@ -687,8 +692,10 @@ app.post('/api/coach/analyze-recipe', limiter, async (req, res) => {
     return res.status(400).json({ error: 'invalid_payload' });
   }
   const enrichUsda = body.enrichUsda !== false && body.enrich_usda !== false;
+  const lang = apiI18n.langFromReq(body);
   const result = await coachLogic.analyzeRecipe(recipe, {
     enrichUsda,
+    lang,
     timeoutMs: Math.min(REQUEST_TIMEOUT_MS, 20000),
   });
   if (result.error) return mapCoachError(result, res, startedAt, 'coach-analyze-recipe');
@@ -712,7 +719,8 @@ app.post('/api/coach/daily-plan', limiter, (req, res) => {
   const startedAt = Date.now();
   const body = req.body && typeof req.body === 'object' ? req.body : {};
   const targets = body.targets || body;
-  const result = coachLogic.generateDailyPlan(targets);
+  const lang = apiI18n.langFromReq(body);
+  const result = coachLogic.generateDailyPlan(targets, { lang });
   if (result.error) return mapCoachError(result, res, startedAt, 'coach-daily-plan');
   console.log(`[coach/daily-plan] OK kcal=${result.data.targets.calories} meals=${result.data.meals.length} ms=${Date.now() - startedAt}`);
   return res.status(200).json(result.data);
@@ -723,8 +731,9 @@ app.post('/api/coach/alternatives', limiter, async (req, res) => {
   const startedAt = Date.now();
   const body = req.body && typeof req.body === 'object' ? req.body : {};
   const ingredient = body.ingredient != null ? body.ingredient : body.name;
+  const lang = apiI18n.langFromReq(body);
   if (ingredient == null || ingredient === '') {
-    return res.status(400).json({ error: 'invalid_payload', message: 'ingredient erforderlich.' });
+    return res.status(400).json({ error: 'invalid_payload', message: apiI18n.t('param_ingredient', lang) });
   }
   const result = await coachLogic.suggestAlternatives(ingredient, {
     enrichUsda: body.enrichUsda !== false && body.enrich_usda !== false,
@@ -803,11 +812,12 @@ app.post('/api/team-colleague', limiter, async (req, res) => {
   const route = teamRouter.detectCoachRouteIntent(payload.text);
   if (route && route.to === 'coach' && route.kind === 'emotion') {
     console.log(`[team-colleague] EMOTION_BOUNCE agent=${payload.agent} ms=${Date.now() - startedAt}`);
+    const lang = apiI18n.normalizeLang(payload.lang || 'en');
     return res.status(200).json({
       type: 'advice',
-      summary: 'Das klingt eher nach einer belastenden Situation als nach einer Fachfrage.',
-      details: 'Dafür ist der Mental- & Verhaltencoach besser geeignet – ich ersetze kein Coaching.',
-      next_step: 'Wenn du möchtest, leite ich dich zu meinem Kollegen, dem Mental-Coach, weiter.',
+      summary: apiI18n.t('emotion_summary', lang),
+      details: apiI18n.t('emotion_details', lang),
+      next_step: apiI18n.t('emotion_next', lang),
       items: [],
       handoff: { to: 'coach', reason: 'intent_routing', brief: teamRouter.truncateTeamBrief(payload.text, 400) },
     });
@@ -873,9 +883,10 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   }
   if (auth.keyType === 'debug' && !auth.keyConfigured) {
     logEvent('request_rejected', { reason: 'debug_key_not_configured', keyType: 'debug' });
+    const lang = apiI18n.langFromReq(req.body);
     return res.status(503).json({
       error: 'debug_key_not_configured',
-      message: 'GROQ_API_KEY_DEBUG ist nicht gesetzt. Debug-Requests verbrauchen absichtlich nicht den Prod-Key.',
+      message: apiI18n.t('debug_key_missing', lang),
       key_type: 'debug',
     });
   }
@@ -909,7 +920,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
         error: 'provider_error',
         error_source: 'groq_provider',
         status: upstreamStatus,
-        message: core.providerErrorClientMessage(upstreamStatus, prepResult.body, prepResult.headers),
+        message: core.providerErrorClientMessage(upstreamStatus, prepResult.body, prepResult.headers, prepPayload.lang),
         model: recipeModel,
         key_type: auth.keyType,
         key_fingerprint: auth.keyFingerprint,
@@ -1012,7 +1023,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
         error: 'provider_error',
         error_source: 'groq_provider',
         status: upstreamStatus,
-        message: core.providerErrorClientMessage(upstreamStatus, pipelineResult.body, pipelineResult.headers),
+        message: core.providerErrorClientMessage(upstreamStatus, pipelineResult.body, pipelineResult.headers, payload && payload.lang),
         model: recipeModel,
         key_type: auth.keyType,
         key_fingerprint: auth.keyFingerprint,
@@ -1102,6 +1113,12 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
       }
     }
 
+    // Laktose-Ehrlichkeit: Alternative anbieten oder ehrlich ablehnen (kein Rezept-JSON).
+    if (pipelineResult.lactoseHonesty && pipelineResult.lactoseHonesty.status) {
+      console.log(`[nutri-recipe] LACTOSE_HONESTY status=${pipelineResult.lactoseHonesty.status} ms=${Date.now() - startedAt}`);
+      return sendRecipeOk({ lactoseHonesty: pipelineResult.lactoseHonesty });
+    }
+
     if (!pipelineResult.recipe) {
       logEvent('response_rejected', { reason: 'invalid_or_missing_schema', ms: Date.now() - startedAt, flow });
       return res.status(502).json({ error: 'recipe_unavailable', error_source: 'pipeline' });
@@ -1161,7 +1178,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
       error: 'provider_error',
       error_source: 'groq_provider',
       status: upstreamStatus,
-      message: core.providerErrorClientMessage(upstreamStatus, result.body, result.headers),
+      message: core.providerErrorClientMessage(upstreamStatus, result.body, result.headers, apiI18n.langFromReq(req.body)),
       model: recipeModel,
       key_type: auth.keyType,
       key_fingerprint: auth.keyFingerprint,
@@ -1225,7 +1242,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     return res.status(500).json({
       error: 'internal_error',
       error_source: 'internal_crash',
-      message: 'Interner Serverfehler bei der Rezeptgenerierung.',
+      message: apiI18n.t('internal_recipe_error', apiI18n.langFromReq(req.body)),
       operationId: operationId || null,
     });
   }

@@ -91,9 +91,16 @@ function buildStrictUserPrompt(p) {
     p && p.ai_instruction
       ? 'ZUSATZ-INSTRUCTION DES CLIENTS (Schritte/Portionen 1:1, Inhalt nicht aendern):\n' + p.ai_instruction
       : '',
-    p && Array.isArray(p.allergens) && p.allergens.length
-      ? 'ALLERGENE (nur merken, Zutaten NICHT entfernen/ersetzen): ' + p.allergens.join(', ')
-      : '',
+    (function () {
+      if (!(p && Array.isArray(p.allergens) && p.allergens.length)) return '';
+      try {
+        const lactoseHonesty = require('./lactose-honesty');
+        if (lactoseHonesty.hasLactoseAllergen(p.allergens)) {
+          return lactoseHonesty.eigenrezeptAllergenPassthroughNote(p.allergens);
+        }
+      } catch (_) { /* optional */ }
+      return 'ALLERGENE (nur merken, Zutaten NICHT entfernen/ersetzen): ' + p.allergens.join(', ');
+    }()),
     'Fuelle jetzt fuer jeden Key ing_01 … ing_' + String(lines.length).padStart(2, '0') + ' ein Objekt aus (Makros = 0).',
   ].filter(Boolean).join('\n\n');
 }

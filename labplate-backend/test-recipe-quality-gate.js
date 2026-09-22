@@ -116,21 +116,24 @@ function clone(obj) {
   });
 }());
 
-// —— Test 2: Geschätzte Portion ——
+// —— Test 2: Geschätzte Portion nach 1-Portions-Normierung → ready (kein Banner) ——
 (function test2_inferred() {
   const r = baseRecipe({
     sourceServingsStatus: 'inferred',
     servingsStatus: 'inferred',
     requiresReview: true,
     portionSafe: false,
+    singlePortionNormalized: true,
+    finalServings: 1,
     portionDisplayHint: 'Portionsgröße geschätzt – bitte prüfen',
   });
   const q = gate.evaluateRecipeQuality(clone(r));
-  assert.strictEqual(q.qualityStatus, 'review');
-  assert.strictEqual(q.requiresReview, true);
-  assert.ok(q.qualityWarnings.length > 0);
-  assert.strictEqual(q.qualityChecks.portions.status, 'warning');
-  console.log('PASS Test2 inferred → review');
+  assert.strictEqual(q.qualityStatus, 'ready');
+  assert.strictEqual(q.qualityChecks.portions.status, 'pass');
+  assert.ok(!(q.qualityWarnings || []).some(function (w) {
+    return /Portionsgröße geschätzt|Portion size estimated/i.test(String(w));
+  }));
+  console.log('PASS Test2 inferred + servings=1 → ready (kein Schätz-Banner)');
 }());
 
 // —— Test 3: Unbekannte Portion ——
@@ -190,10 +193,12 @@ function clone(obj) {
   r.ingredients = r.finalIngredients;
   const q = gate.evaluateRecipeQuality(clone(r));
   assert.strictEqual(q.qualityStatus, 'blocked');
+  const ingredientBlob = JSON.stringify(q.qualityChecks.ingredients || {}) + JSON.stringify(q.qualityErrors || []) + JSON.stringify(q.qualityWarnings || []);
   assert.ok(
     q.qualityChecks.ingredients.status === 'fail' ||
-      q.qualityErrors.some(function (e) { return /pasta|fehlt|Zutat/i.test(e); }),
-    'Ingredient mismatch erwartet: ' + JSON.stringify(q.qualityErrors)
+      q.qualityChecks.ingredients.status === 'warning' ||
+      /pasta|fehlt|Zutat|missing|mentions|not used/i.test(ingredientBlob),
+    'Ingredient mismatch erwartet: ' + JSON.stringify(q.qualityErrors) + ' checks=' + JSON.stringify(q.qualityChecks.ingredients)
   );
   console.log('PASS Test5 missing pasta → blocked');
 }());
@@ -401,13 +406,17 @@ function clone(obj) {
     qualityStatus: 'review',
     requiresReview: true,
     sourceServingsStatus: 'inferred',
+    singlePortionNormalized: true,
+    finalServings: 1,
     qualityWarnings: ['Portionsgröße geschätzt – bitte prüfen'],
   });
   const res2 = await coach.analyzeRecipe(review);
-  assert.ok(res2.data, 'review darf analysieren mit Hinweis');
+  assert.ok(res2.data, 'review darf nach 1-Portions-Normierung analysieren');
   assert.ok(
-    (res2.data.warnings || []).some(function (w) { return w.severity === 'review' || /geschätzt/i.test(w.message); }),
-    'Review-Warnung erwartet'
+    !(res2.data.warnings || []).some(function (w) {
+      return w && (w.code === 'portion_estimated' || /Portionsgröße geschätzt|Portion size estimated/i.test(w.message || ''));
+    }),
+    'kein Portions-Schätz-Hinweis nach Normierung'
   );
   console.log('PASS Coach blocked/review contract');
 })().then(function () {

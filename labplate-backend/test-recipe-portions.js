@@ -109,7 +109,7 @@ const qtyErr = portions.validateRecipeConsistency({
   finalIngredients: [{ id: 'beef', displayName: 'Hack', amount: 80, unit: 'g' }],
   steps: [{ stepNumber: 1, instruction: '500 g Rinderhackfleisch anbraten.' }],
 });
-assert.ok(qtyErr.errors.some(function (e) { return /Mengenangabe/i.test(e); }));
+assert.ok(qtyErr.errors.some(function (e) { return /Mengenangabe|Quantity/i.test(e); }));
 console.log('OK TEST6 Mengen in instruction');
 
 assert.ok(!rendered.steps.some(function (s) {
@@ -122,7 +122,7 @@ const titleWarn = portions.validateRecipeConsistency({
   finalIngredients: [{ id: 'pasta', displayName: 'Pasta', amount: 80, unit: 'g' }],
   steps: ['Die Pasta garen.'],
 });
-assert.ok(titleWarn.warnings.some(function (w) { return /Lachs/i.test(w); }));
+assert.ok(titleWarn.warnings.some(function (w) { return /Lachs|salmon/i.test(w); }));
 console.log('OK TEST8 Titel/Zutaten');
 
 // ---------- TEST 9: Plausibilität mutiert nicht ----------
@@ -147,7 +147,7 @@ assert.strictEqual(unknown.sourceServingsStatus, 'unknown');
 assert.strictEqual(unknown.sourceServings, null);
 assert.strictEqual(unknown.ok, false);
 assert.strictEqual(unknown.requiresReview, true);
-assert.ok((unknown.warnings || []).some(function (w) { return /nicht bekannt/i.test(w); }));
+assert.ok((unknown.warnings || []).some(function (w) { return /nicht bekannt|unknown|Safe scaling/i.test(w); }));
 assert.ok(!portions.canDisplayAsSafeSinglePortion({
   finalServings: 1,
   servingsStatus: 'unknown',
@@ -180,7 +180,7 @@ assert.ok(carrot6 && Math.abs(carrot6.amount - portions.roundPracticalAmount(100
 assert.ok(celery6 && Math.abs(celery6.amount - portions.roundPracticalAmount(80 / 6, 'g')) <= 5);
 assert.ok(oil6 && Math.abs(oil6.amount - portions.roundPracticalAmount(30 / 6, 'ml')) <= 2);
 assert.ok(beef6.amount < 200 && beef6.amount !== 500, 'keine Batch-Menge');
-assert.ok(!(rendered6.portionWarnings || []).some(function (w) { return /geschätzt|nicht bekannt/i.test(w); }),
+assert.ok(!(rendered6.portionWarnings || []).some(function (w) { return /geschätzt|nicht bekannt|estimated|unknown/i.test(w); }),
   'keine falsche Warnung bei explicit: ' + (rendered6.portionWarnings || []).join('; '));
 assert.ok(rendered6.finalNutrition && rendered6.nutritionBasis === 'finalIngredients');
 assert.ok(rendered6.yield.yieldStatus === 'unknown');
@@ -231,7 +231,7 @@ console.log('OK TEST12 Stepper MODEL B 1/2/0.5');
   assert.ok(coachInferred.data, 'inferred darf nach 1-Portions-Normierung analysiert werden');
   // Kein Portions-Schätz-Banner mehr, wenn finalServings=1 / singlePortionNormalized
   assert.ok(!(coachInferred.data.warnings || []).some(function (w) {
-    return w && (w.code === 'portion_estimated' || /Portionsgröße geschätzt/i.test(w.message || ''));
+    return w && (w.code === 'portion_estimated' || /Portionsgröße geschätzt|Portion size estimated/i.test(w.message || ''));
   }), 'kein Portions-Schätz-Hinweis nach Normierung');
 
   // resolveSourceServings: Heuristik nie explicit

@@ -262,7 +262,10 @@ console.log('OK retry policy (no 400/502 auto-retry)');
   );
   assert(/Tageskontingent/i.test(core.providerErrorClientMessage(429, JSON.stringify({
     error: { message: 'tokens per day (TPD)' },
-  }), {})));
+  }), {}, 'de')));
+  assert(/Daily AI provider quota/i.test(core.providerErrorClientMessage(429, JSON.stringify({
+    error: { message: 'tokens per day (TPD)' },
+  }), {}, 'en')));
   console.log('OK TPM auto-retry (429 minute → wait → success)');
 
   // TPD: kein Auto-Retry

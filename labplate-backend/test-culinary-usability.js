@@ -38,9 +38,9 @@ const liveShame = {
 // ---- Live-Beispiel muss blocked sein ----
 const shameCu = culinary.evaluateCulinaryUsability(liveShame);
 assert.strictEqual(shameCu.qualityStatus, 'blocked', 'Live-Beispiel qualityStatus: ' + shameCu.qualityStatus);
-assert.ok(shameCu.errors.some(function (e) { return /Eier sind nicht/i.test(e); }),
+assert.ok(shameCu.errors.some(function (e) { return /Eggs are not|Eier sind nicht/i.test(e); }),
   'Eier-Fehler: ' + shameCu.errors.join('; '));
-assert.ok(shameCu.errors.some(function (e) { return /Generische Zubereitung|Rezeptart|Flüssigkeitsmenge/i.test(e); }),
+assert.ok(shameCu.errors.some(function (e) { return /Generic preparation|Generische Zubereitung|dish type|Rezeptart|liquid|Flüssigkeitsmenge/i.test(e); }),
   'weitere Fehler: ' + shameCu.errors.join('; '));
 const shameV2 = validator.validateRecipeV2(JSON.parse(JSON.stringify(liveShame)));
 assert.strictEqual(shameV2.ok, false, 'validateRecipeV2 muss failen');
@@ -73,7 +73,7 @@ const testA = {
 };
 const a = culinary.evaluateCulinaryUsability(testA);
 assert.strictEqual(a.qualityStatus, 'blocked', 'A blocked');
-assert.ok(a.errors.some(function (e) { return /Eier sind nicht/i.test(e); }), 'A Eier: ' + a.errors.join('; '));
+assert.ok(a.errors.some(function (e) { return /Eggs are not|Eier sind nicht/i.test(e); }), 'A Eier: ' + a.errors.join('; '));
 console.log('OK Test A unused egg → blocked');
 
 // ---- Test B: Generische Zubereitung ----
@@ -100,7 +100,7 @@ const testB = {
 };
 const b = culinary.evaluateCulinaryUsability(testB);
 assert.strictEqual(b.qualityStatus, 'blocked', 'B blocked');
-assert.ok(b.errors.some(function (e) { return /Generische Zubereitung/i.test(e); }), 'B generic: ' + b.errors.join('; '));
+assert.ok(b.errors.some(function (e) { return /Generic preparation|Generische Zubereitung/i.test(e); }), 'B generic: ' + b.errors.join('; '));
 console.log('OK Test B generic steps → blocked');
 
 // ---- Test C: Unplausible Flüssigkeit ----

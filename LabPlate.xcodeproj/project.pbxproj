@@ -6,14 +6,48 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D2B1C00D303206D20005635B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B1C00C303206D20005635B /* XCTest.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D2B1C008303206D20005635B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D17EAB6D303206D10005635B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D17EAB74303206D10005635B;
+			remoteInfo = LabPlate;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		D17EAB75303206D10005635B /* LabPlate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LabPlate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2B1C001303206D20005635B /* LabPlateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LabPlateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2B1C00C303206D20005635B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D1A8F51B3033026700D6B656 /* Exceptions for "LabPlate" folder in "LabPlate" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D17EAB74303206D10005635B /* LabPlate */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		D17EAB77303206D10005635B /* LabPlate */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D1A8F51B3033026700D6B656 /* Exceptions for "LabPlate" folder in "LabPlate" target */,
+			);
 			path = LabPlate;
+			sourceTree = "<group>";
+		};
+		D2B1C006303206D20005635B /* LabPlateUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = LabPlateUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,6 +60,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D2B1C004303206D20005635B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2B1C00D303206D20005635B /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,7 +75,9 @@
 			isa = PBXGroup;
 			children = (
 				D17EAB77303206D10005635B /* LabPlate */,
+				D2B1C006303206D20005635B /* LabPlateUITests */,
 				D17EAB76303206D10005635B /* Products */,
+				D1AB5B2830606DCD00123268 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -41,8 +85,17 @@
 			isa = PBXGroup;
 			children = (
 				D17EAB75303206D10005635B /* LabPlate.app */,
+				D2B1C001303206D20005635B /* LabPlateUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D1AB5B2830606DCD00123268 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				D2B1C00C303206D20005635B /* XCTest.framework */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -70,6 +123,29 @@
 			productReference = D17EAB75303206D10005635B /* LabPlate.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D2B1C002303206D20005635B /* LabPlateUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2B1C009303206D20005635B /* Build configuration list for PBXNativeTarget "LabPlateUITests" */;
+			buildPhases = (
+				D2B1C003303206D20005635B /* Sources */,
+				D2B1C004303206D20005635B /* Frameworks */,
+				D2B1C005303206D20005635B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2B1C007303206D20005635B /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D2B1C006303206D20005635B /* LabPlateUITests */,
+			);
+			name = LabPlateUITests;
+			packageProductDependencies = (
+			);
+			productName = LabPlateUITests;
+			productReference = D2B1C001303206D20005635B /* LabPlateUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -83,12 +159,17 @@
 					D17EAB74303206D10005635B = {
 						CreatedOnToolsVersion = 26.6;
 					};
+					D2B1C002303206D20005635B = {
+						CreatedOnToolsVersion = 26.6;
+						TestTargetID = D17EAB74303206D10005635B;
+					};
 				};
 			};
 			buildConfigurationList = D17EAB70303206D10005635B /* Build configuration list for PBXProject "LabPlate" */;
-			developmentRegion = en;
+			developmentRegion = de;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				de,
 				en,
 				Base,
 			);
@@ -100,12 +181,20 @@
 			projectRoot = "";
 			targets = (
 				D17EAB74303206D10005635B /* LabPlate */,
+				D2B1C002303206D20005635B /* LabPlateUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D17EAB73303206D10005635B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B1C005303206D20005635B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +211,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D2B1C003303206D20005635B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D2B1C007303206D20005635B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D17EAB74303206D10005635B /* LabPlate */;
+			targetProxy = D2B1C008303206D20005635B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D17EAB7E303206D20005635B /* Debug */ = {
@@ -256,11 +360,28 @@
 				DEVELOPMENT_TEAM = 2N2PT963WU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LabPlate/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_LSBackgroundOnly = NO;
+				INFOPLIST_KEY_NSCameraUsageDescription = "LabPlate benötigt Kamerazugriff, um Barcodes zu scannen und Lebensmittel per Foto zu erkennen.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "LabPlate benötigt keinen Mikrofonzugriff, dies wird technisch von der Kamerafreigabe mit angefragt.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "LabPlate benötigt Zugriff auf deine Fotos, um ein Lebensmittelfoto auszuwählen.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "\"\"";
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportsDocumentBrowser = NO;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -288,11 +409,28 @@
 				DEVELOPMENT_TEAM = 2N2PT963WU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LabPlate/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_LSBackgroundOnly = NO;
+				INFOPLIST_KEY_NSCameraUsageDescription = "LabPlate benötigt Kamerazugriff, um Barcodes zu scannen und Lebensmittel per Foto zu erkennen.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "LabPlate benötigt keinen Mikrofonzugriff, dies wird technisch von der Kamerafreigabe mit angefragt.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "LabPlate benötigt Zugriff auf deine Fotos, um ein Lebensmittelfoto auszuwählen.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "\"\"";
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportsDocumentBrowser = NO;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,6 +445,48 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D2B1C00A303206D20005635B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2N2PT963WU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lrussica.LabPlateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LabPlate;
+			};
+			name = Debug;
+		};
+		D2B1C00B303206D20005635B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2N2PT963WU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lrussica.LabPlateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LabPlate;
 			};
 			name = Release;
 		};
@@ -327,6 +507,15 @@
 			buildConfigurations = (
 				D17EAB81303206D20005635B /* Debug */,
 				D17EAB82303206D20005635B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2B1C009303206D20005635B /* Build configuration list for PBXNativeTarget "LabPlateUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2B1C00A303206D20005635B /* Debug */,
+				D2B1C00B303206D20005635B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

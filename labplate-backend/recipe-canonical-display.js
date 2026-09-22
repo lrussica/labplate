@@ -162,13 +162,10 @@ function toCanonicalSteps(steps) {
     if (typeof step === 'string') {
       raw = step;
     } else if (step && typeof step === 'object') {
-      raw = String(step.instruction || step.text || step.content || '');
+      // Nur Instruction-Text – niemals title/ingredientNames/ingredients zusammenbauen
+      raw = String(step.instruction || step.text || step.content || '').trim();
       if (!raw && step.title) {
-        if (Array.isArray(step.ingredientNames)) {
-          raw = String(step.title) + ': ' + step.ingredientNames.join(' ');
-        } else {
-          raw = String(step.title) + ': ' + String(step.content || '');
-        }
+        raw = naturalizeFromTitle(step.title);
       }
       durationMinutes = step.durationMinutes != null ? Number(step.durationMinutes)
         : (step.time_min != null ? Number(step.time_min) : null);
@@ -181,19 +178,24 @@ function toCanonicalSteps(steps) {
       issues.push('Schritt ' + (i + 1) + ' ohne gültige Instruction');
       return;
     }
-    if (FORBIDDEN_VISIBLE_RE.some(function (re) { return re.test(cleaned.instruction); })) {
+    let instruction = cleaned.instruction;
+    try {
+      const validator = require('./recipe-validator');
+      instruction = validator.smoothProseIngredientGrammar(instruction);
+    } catch (_e) { /* optional */ }
+    if (FORBIDDEN_VISIBLE_RE.some(function (re) { return re.test(instruction); })) {
       blocked = true;
       issues.push('Schritt ' + (i + 1) + ' enthält verbotenes sichtbares Muster');
       return;
     }
-    if (isBareNameList(cleaned.instruction)) {
+    if (isBareNameList(instruction)) {
       blocked = true;
       issues.push('Schritt ' + (i + 1) + ' ist Rohdaten-Zutatenliste');
       return;
     }
     out.push({
       stepNumber: i + 1,
-      instruction: cleaned.instruction,
+      instruction: instruction,
       durationMinutes: Number.isFinite(durationMinutes) ? durationMinutes : null,
       heatLevel: heatLevel != null ? heatLevel : null,
       ingredientIds: ingredientIds,
@@ -311,7 +313,19 @@ function toCanonicalDisplayRecipe(finalRecipe) {
       }
     : null;
 
-  const stepResult = toCanonicalSteps(r.structuredSteps || r.steps || []);
+  // Prefer cleaned steps[] (instruction strings/objects) over legacy structuredSteps
+  const stepsSrc = (function pickSteps() {
+    const a = Array.isArray(r.steps) ? r.steps : [];
+    const b = Array.isArray(r.structuredSteps) ? r.structuredSteps : [];
+    function hasInstruction(step) {
+      if (typeof step === 'string') return !!String(step).trim();
+      if (!step || typeof step !== 'object') return false;
+      return !!(step.instruction || step.text || step.content);
+    }
+    if (a.length && a.some(hasInstruction)) return a;
+    return b.length ? b : a;
+  }());
+  const stepResult = toCanonicalSteps(stepsSrc);
   const garnish = toCanonicalGarnish(r.garnish, finalIngredients);
   const timing = toCanonicalTiming(r, stepResult.steps);
   const nutritionSummary = finalNutrition ? formatNutritionSummary(finalNutrition) : null;
@@ -360,9 +374,10 @@ function buildCanonicalVisibleText(display) {
   if (display.nutritionSummary) {
     const n = display.nutritionSummary;
     lines.push(n.calories + ' kcal');
+    lines.push(Math.round(n.protein) + ' g Protein');
+    lines.push(Math.round(n.fat) + ' g Fett');
     lines.push(Math.round(n.netCarbs) + ' g Netto-KH');
-    lines.push(n.calories + ' kcal/Portion · P ' + Math.round(n.protein) + ' g · F ' + Math.round(n.fat) +
-      ' g · KH ' + Math.round(n.carbs) + ' g · B ' + Math.round(n.fiber) + ' g');
+    lines.push(Math.round(n.fiber) + ' g Ballaststoffe');
   }
   (display.finalIngredients || []).forEach(function (ing) {
     lines.push(ing.displayName + (ing.amount ? (' ' + ing.amount + ' ' + ing.unit) : ''));

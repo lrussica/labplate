@@ -2,7 +2,7 @@
  * LabPlate – Coach Nutrition Logic
  * ================================
  * Ernährungs-Analyse: USDA-Nährwerte + Spoonacular/TheMealDB-Rezepte
- * → einheitliche Coach-Ausgabe (Makros, HealthScore, Tagesplan, Alternativen).
+ * → einheitliche Coach-Ausgabe (Makros, BalanceScore/healthScore-Feld, Tagesplan, Alternativen).
  *
  * COACH-INPUT-VERTRAG (analyzeRecipe):
  * Verwende ausschließlich finalNutrition und finalIngredients.
@@ -16,6 +16,7 @@
 'use strict';
 
 const usda = require('../api/usda');
+const apiI18n = require('../api-i18n');
 
 const VITAMIN_KEYS = ['vitaminA', 'vitaminC', 'vitaminD', 'vitaminB12', 'folate'];
 const MINERAL_KEYS = ['calcium', 'iron', 'magnesium', 'potassium', 'sodium', 'zinc'];
@@ -307,7 +308,7 @@ function computeHealthScore(perServing, warnings) {
   return Math.max(0, Math.min(100, round0(score)));
 }
 
-function buildWarnings(perServing, ingredients) {
+function buildWarnings(perServing, ingredients, lang) {
   const warnings = [];
   const cal = num(perServing.calories, 0);
   const protein = num(perServing.protein, 0);
@@ -315,28 +316,34 @@ function buildWarnings(perServing, ingredients) {
   const netCarbs = num(perServing.netCarbs, 0);
   const fiber = num(perServing.fiber, 0);
   const macroSum = protein + fat + netCarbs || 1;
+  const L = lang || 'en';
 
   if (fat / macroSum > 0.4 || fat > 35) {
-    warnings.push({ code: 'high_fat', message: 'Viel Fett pro Portion – Portionsgröße oder Zubereitung prüfen.' });
+    warnings.push({ code: 'high_fat', message: apiI18n.t('warn_high_fat', L) });
   }
   if (protein < 15) {
-    warnings.push({ code: 'low_protein', message: 'Wenig Protein pro Portion – proteinreiche Beilage oder Alternative erwägen.' });
+    warnings.push({ code: 'low_protein', message: apiI18n.t('warn_low_protein', L) });
   }
   if (netCarbs > 70) {
-    warnings.push({ code: 'high_carbs', message: 'Hoher Netto-Kohlenhydratanteil pro Portion.' });
+    warnings.push({ code: 'high_carbs', message: apiI18n.t('warn_high_carbs', L) });
   }
   if (fiber < 3) {
-    warnings.push({ code: 'low_fiber', message: 'Wenig Ballaststoffe – Vollkorn oder Gemüse ergänzen.' });
+    warnings.push({ code: 'low_fiber', message: apiI18n.t('warn_low_fiber', L) });
   }
   if (cal > 800) {
-    warnings.push({ code: 'high_calories', message: 'Kalorienreich pro Portion (> 800 kcal).' });
+    warnings.push({ code: 'high_calories', message: apiI18n.t('warn_high_calories', L) });
   }
 
   const sugarish = (ingredients || []).filter((ing) =>
     /sugar|zucker|sirup|syrup|honey|honig/i.test(String(ing.name || ''))
   );
   if (sugarish.length) {
-    warnings.push({ code: 'added_sugar', message: 'Enthält Zucker/Süssungsmittel: ' + sugarish.map((s) => s.name).join(', ') });
+    warnings.push({
+      code: 'added_sugar',
+      message: apiI18n.t('warn_added_sugar', L, {
+        names: sugarish.map((s) => s.name).join(', '),
+      }),
+    });
   }
 
   return warnings;
@@ -439,6 +446,7 @@ function hasCriticalPortionWarnings(warnings) {
 async function analyzeRecipe(recipe, opts) {
   const raw = recipe && typeof recipe === 'object' ? recipe : null;
   if (!raw) return { error: 'invalid_payload' };
+  const lang = apiI18n.normalizeLang((opts && opts.lang) || raw.lang || 'en');
 
   const requiresReview = !!raw.requiresReview;
   const validationWarnings = raw.validationWarnings || raw.portionWarnings || raw.warnings || [];
@@ -455,7 +463,7 @@ async function analyzeRecipe(recipe, opts) {
     return {
       error: 'coach_unavailable',
       reason: raw.qualityStatus === 'blocked' ? 'quality_blocked' : 'requires_review',
-      details: 'Keine uneingeschränkt sichere Ernährungsbewertung möglich (Portionsstatus prüfen).',
+      details: apiI18n.t('coach_unavailable_details', lang),
     };
   }
 
@@ -477,16 +485,20 @@ async function analyzeRecipe(recipe, opts) {
 
   const fromFinal = perServingFromFinalNutrition(finalNutrition);
   if (fromFinal) {
-    const warnings = buildWarnings(fromFinal, finalIngredients || []);
+    const warnings = buildWarnings(fromFinal, finalIngredients || [], lang);
+    var singleOk = raw.singlePortionNormalized === true || Number(finalServings) === 1;
     if (
-      qualityStatus === 'review' ||
-      requiresReview ||
-      sourceServingsStatus === 'inferred' ||
-      servingsStatus === 'inferred'
+      !singleOk &&
+      (
+        qualityStatus === 'review' ||
+        requiresReview ||
+        sourceServingsStatus === 'inferred' ||
+        servingsStatus === 'inferred'
+      )
     ) {
       warnings.unshift({
         code: 'portion_estimated',
-        message: (qualityWarnings[0] || 'Portionsgröße geschätzt – bitte prüfen'),
+        message: (qualityWarnings[0] || apiI18n.t('portion_estimated', lang)),
         severity: 'review',
       });
     }
@@ -496,7 +508,7 @@ async function analyzeRecipe(recipe, opts) {
         recipe: {
           id: raw.id,
           source: raw.source || 'labplate',
-          title: String(raw.title || 'Rezept').slice(0, 200),
+          title: String(raw.title || apiI18n.t('recipe_fallback_title', lang)).slice(0, 200),
           servings: finalServings > 0 ? finalServings : 1,
           prep_time: typeof raw.prep_time === 'string' ? raw.prep_time : '',
           image: raw.image,
@@ -551,7 +563,7 @@ async function analyzeRecipe(recipe, opts) {
     fiber: round1(totals.fiber / servings),
   };
 
-  const warnings = buildWarnings(perServing, analysis.data.ingredients);
+  const warnings = buildWarnings(perServing, analysis.data.ingredients, lang);
   const healthScore = computeHealthScore(perServing, warnings);
   const covered = analysis.data.ingredients.filter((i) => i.caloriesPer100g > 0 || (i.macrosPer100g && (i.macrosPer100g.protein + i.macrosPer100g.fat + i.macrosPer100g.netCarbs + i.macrosPer100g.fiber) > 0)).length;
 
@@ -592,8 +604,9 @@ async function analyzeRecipe(recipe, opts) {
  * generateDailyPlan(targets)
  * targets: { calories, protein, fat, carbs|netCarbs }
  */
-function generateDailyPlan(targets) {
+function generateDailyPlan(targets, opts) {
   const t = targets && typeof targets === 'object' ? targets : {};
+  const lang = apiI18n.normalizeLang((opts && opts.lang) || t.lang || 'en');
   const calories = num(t.calories != null ? t.calories : t.zielKalorien, 0);
   const protein = num(t.protein != null ? t.protein : t.zielProtein, 0);
   const fat = num(t.fat != null ? t.fat : t.zielfett != null ? t.zielfett : t.zielFett, 0);
@@ -607,15 +620,15 @@ function generateDailyPlan(targets) {
   }
 
   const slots = [
-    { id: 'breakfast', label: 'Frühstück', share: 0.25, hint: 'Protein + Ballaststoffe (z. B. Skyr, Hafer, Beeren)' },
-    { id: 'lunch', label: 'Mittagessen', share: 0.35, hint: 'Ausgewogen: Protein, Gemüse, komplexe KH' },
-    { id: 'dinner', label: 'Abendessen', share: 0.30, hint: 'Leichter: Protein + Gemüse, weniger späte KH' },
-    { id: 'snack', label: 'Snack', share: 0.10, hint: 'Proteinreich oder Ballaststoffe (Nüsse, Obst, Joghurt)' },
+    { id: 'breakfast', labelKey: 'meal_breakfast', share: 0.25, hintKey: 'meal_hint_breakfast' },
+    { id: 'lunch', labelKey: 'meal_lunch', share: 0.35, hintKey: 'meal_hint_lunch' },
+    { id: 'dinner', labelKey: 'meal_dinner', share: 0.30, hintKey: 'meal_hint_dinner' },
+    { id: 'snack', labelKey: 'meal_snack', share: 0.10, hintKey: 'meal_hint_snack' },
   ];
 
   const meals = slots.map((slot) => ({
     id: slot.id,
-    label: slot.label,
+    label: apiI18n.t(slot.labelKey, lang),
     share: slot.share,
     targets: {
       calories: round0(calories * slot.share),
@@ -623,7 +636,7 @@ function generateDailyPlan(targets) {
       fat: round1(fat * slot.share),
       carbs: round1(carbs * slot.share),
     },
-    hint: slot.hint,
+    hint: apiI18n.t(slot.hintKey, lang),
   }));
 
   return {
@@ -637,9 +650,10 @@ function generateDailyPlan(targets) {
       },
       meals,
       notes: [
-        'Verteilung: 25 % Frühstück · 35 % Mittag · 30 % Abend · 10 % Snack.',
-        'Passe Portionsgrößen an Hunger und Training an – die Werte sind Zielkorridore.',
+        apiI18n.t('plan_note_share', lang),
+        apiI18n.t('plan_note_adjust', lang),
       ],
+      lang: lang,
     },
   };
 }

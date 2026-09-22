@@ -60,22 +60,20 @@ function detectNoHerbs(recipe, opts) {
 
 function detectDairyFreeAdaptation(recipe, opts) {
   opts = opts || {};
-  if (opts.dairyFreeAdaptation === true) return true;
   const allergens = []
     .concat(opts.allergens || [])
     .concat(recipe.allergens || [])
-    .concat(recipe.userAllergens || [])
-    .map(function (a) { return String(a || '').toLowerCase(); });
-  const hasDairyAllergen = allergens.some(function (a) {
-    return /milch|laktose|lactose|dairy|milk|latte|leche/.test(a);
-  });
-  if (!hasDairyAllergen) return false;
-  const title = String(recipe.title || '');
-  const isRagu = /rag[uù]|bolognese/i.test(title);
-  const hasMilk = (recipe.finalIngredients || recipe.ingredients || []).some(function (ing) {
-    return /milch|sahne|butter|cream|milk|latte|panna/i.test(nameOf(ing));
-  });
-  return isRagu && !hasMilk;
+    .concat(recipe.userAllergens || []);
+  try {
+    const lactoseHonesty = require('./lactose-honesty');
+    const lactoseActive = lactoseHonesty.hasLactoseAllergen(allergens) || opts.dairyFreeAdaptation === true;
+    if (!lactoseActive) return false;
+    if (lactoseHonesty.recipeHasAnimalDairy(recipe)) return false;
+    // adapted nur mit nachweisbarem etablierten Ersatz
+    return lactoseHonesty.recipeHasLactoseSafeDairySubstitute(recipe);
+  } catch (_) {
+    return false;
+  }
 }
 
 function finalList(recipe) {
@@ -104,14 +102,55 @@ function macrosOf(ing) {
 
 function fallbackMacrosForName(name) {
   const n = String(name || '').toLowerCase();
-  if (/hack|rind|beef/.test(n)) return Object.assign({}, FALLBACK_MACROS_PER_100.beef_15);
-  if (/öl|oil|olio/.test(n)) return Object.assign({}, FALLBACK_MACROS_PER_100.oil);
+  if (/hack|rind|beef|schwein|pork|lamm|lamb|huhn|hähn|haehn|chicken|pute|turkey|fleisch|meat/.test(n)) {
+    return Object.assign({}, FALLBACK_MACROS_PER_100.beef_15);
+  }
+  if (/parmesan|pecorino|grana/.test(n)) {
+    return { protein: 33, fat: 28, netCarbs: 0, fiber: 0 };
+  }
+  if (/öl|oil|olio|butter|schmalz/.test(n)) return Object.assign({}, FALLBACK_MACROS_PER_100.oil);
   if (/zwiebel|onion|cipolla/.test(n)) return Object.assign({}, FALLBACK_MACROS_PER_100.onion);
   if (/karotte|carrot|möhre|carota/.test(n)) return Object.assign({}, FALLBACK_MACROS_PER_100.carrot);
   if (/sellerie|celery|sedano/.test(n)) return Object.assign({}, FALLBACK_MACROS_PER_100.celery);
   if (/tomate|tomato|passiert/.test(n)) return Object.assign({}, FALLBACK_MACROS_PER_100.tomato);
   if (/wein|wine|vino/.test(n)) return Object.assign({}, FALLBACK_MACROS_PER_100.wine);
   return Object.assign({}, FALLBACK_MACROS_PER_100.default);
+}
+
+/**
+ * Klemmt Makros/100g. Erkennt auch absolute Proteinmenge als per-100g-Fehler der KI.
+ */
+function clampMacrosPer100g(name, macros, amountG) {
+  let m = {
+    protein: Math.max(0, Number(macros && macros.protein) || 0),
+    fat: Math.max(0, Number(macros && macros.fat) || 0),
+    netCarbs: Math.max(0, Number(macros && (macros.netCarbs != null ? macros.netCarbs : macros.netto_kh)) || 0),
+    fiber: Math.max(0, Number(macros && macros.fiber) || 0),
+  };
+  const isMeat = isMeatOrFishName(name);
+  const isOil = /öl|oil|olio|butter|schmalz/i.test(String(name || ''));
+  const amt = Number(amountG) || 0;
+
+  // Absolute Gramm-Protein fälschlich als /100g (typisch: 80–150 g Fleisch mit protein≈80–120)
+  if (isMeat && amt >= 80 && m.protein > Math.max(40, amt * 0.5)) {
+    m = fallbackMacrosForName(name);
+    return { macros: m, clamped: true, reason: 'absolute_as_per100' };
+  }
+  if (isMeat && m.protein > 35) {
+    m = fallbackMacrosForName(name);
+    return { macros: m, clamped: true, reason: 'meat_protein_cap' };
+  }
+  if (m.protein > 40 || (!isOil && m.fat > 45) || m.netCarbs > 90) {
+    m = fallbackMacrosForName(name);
+    return { macros: m, clamped: true, reason: 'implausible_per100' };
+  }
+  if (isOil) {
+    m.protein = 0;
+    m.fat = Math.min(100, Math.max(m.fat, 99));
+    m.netCarbs = 0;
+    m.fiber = 0;
+  }
+  return { macros: m, clamped: false, reason: null };
 }
 
 function computeNutritionFromIngredients(ings) {
@@ -252,16 +291,18 @@ function sanitizeIngredientMacros(recipe) {
   ings.forEach(function (ing) {
     const name = nameOf(ing);
     const amt = Number(ing.amount) || 0;
+    const unit = String(ing.unit || 'g').toLowerCase();
+    const grams = unit === 'kg' ? amt * 1000 : amt;
     let m = macrosOf(ing);
     const isMeat = isMeatOrFishName(name) || !!ing._protein_source || !!ing.protein_source;
-    const isOil = /öl|oil|olio|butter|schmalz/i.test(name);
 
-    if (m.protein > 40 || (!isOil && m.fat > 45) || m.netCarbs > 90) {
-      m = fallbackMacrosForName(name);
+    const clampedOne = clampMacrosPer100g(name, m, grams);
+    m = clampedOne.macros;
+    if (clampedOne.clamped) {
       clamped = true;
       issues.push('Makros für „' + name + '“ korrigiert (unplausible KI-Werte)');
     }
-    if (isMeat && amt > 0) meatGrams += amt;
+    if (isMeat && grams > 0) meatGrams += grams;
 
     ing.macrosPer100g = m;
     ing.protein = m.protein;
@@ -270,12 +311,32 @@ function sanitizeIngredientMacros(recipe) {
     ing.fiber = m.fiber;
   });
 
-  const nutrition = computeNutritionFromIngredients(ings);
+  let nutrition = computeNutritionFromIngredients(ings);
   let ok = true;
-  if (meatGrams > 0 && nutrition.protein_g > meatGrams * 0.4) {
-    issues.push('Die Nährwertdaten passen nicht plausibel zu den angegebenen Zutatenmengen.');
+
+  // Protein-Bremse: Gesamtprotein darf Fleischmasse nicht physikalisch sprengen
+  const proteinCap = meatGrams > 0 ? meatGrams * 0.35 + 8 : null;
+  if (proteinCap != null && nutrition.protein_g > proteinCap) {
+    clamped = true;
     ok = false;
+    issues.push(
+      'Protein (' + nutrition.protein_g + ' g) unplausibel für ' +
+        Math.round(meatGrams) + ' g Fleisch/Fisch – Makros neu berechnet.'
+    );
+    ings.forEach(function (ing) {
+      const name = nameOf(ing);
+      if (!isMeatOrFishName(name) && !ing._protein_source && !ing.protein_source) return;
+      const m = fallbackMacrosForName(name);
+      ing.macrosPer100g = m;
+      ing.protein = m.protein;
+      ing.fat = m.fat;
+      ing.netCarbs = m.netCarbs;
+      ing.fiber = m.fiber;
+    });
+    nutrition = computeNutritionFromIngredients(ings);
+    if (nutrition.protein_g <= proteinCap) ok = true;
   }
+
   const totalMass = ings.reduce(function (s, i) {
     return s + (Number(i.amount) || 0);
   }, 0);
@@ -400,22 +461,24 @@ function rewriteStepsNatural(recipe, opts) {
       const key = inferActionKey(title, content, i, stepsIn.length);
       if (key === 'garnish_parsley' && noHerbs) return;
       if (key && ACTION_SENTENCES[key]) {
+        // Nur kanonische Sätze – niemals Zutaten-Namenlisten einbetten
         instruction = ACTION_SENTENCES[key];
         actionId = actionId || key;
       } else if (title) {
-        const names = content.replace(/^[^:]*:\s*/, '').trim();
-        if (/erhitzen/i.test(title)) {
-          instruction = 'Das ' + (names || 'Öl') + ' in einem Topf erhitzen.';
-        } else if (/anschwitz/i.test(title)) {
-          instruction = (names || 'Das Gemüse') + ' bei mittlerer Hitze langsam anschwitzen, bis es weich ist.';
-        } else if (/braten/i.test(title)) {
-          instruction = (names || 'Das Fleisch') + ' unter Rühren krümelig anbraten.';
-        } else if (/ablösch/i.test(title)) {
-          instruction = 'Mit ' + (names || 'Wein') + ' ablöschen und kurz einkochen lassen.';
+        if (/erhitzen|öl/i.test(title)) {
+          instruction = ACTION_SENTENCES.heat_oil;
+        } else if (/anschwitz|gemüse|soffritto/i.test(title)) {
+          instruction = ACTION_SENTENCES.saute_soffritto;
+        } else if (/braten|fleisch|hack/i.test(title)) {
+          instruction = ACTION_SENTENCES.brown_meat;
+        } else if (/ablösch|wein/i.test(title)) {
+          instruction = ACTION_SENTENCES.deglaze;
         } else if (/hinzufüg|tomate/i.test(title)) {
-          instruction = (names || 'Die Tomaten') + ' einrühren.';
+          instruction = ACTION_SENTENCES.add_tomato;
         } else if (/würz|abschmeck/i.test(title)) {
           instruction = ACTION_SENTENCES.season;
+        } else if (/köchel|schmor|simmer/i.test(title)) {
+          instruction = ACTION_SENTENCES.simmer;
         } else {
           instruction = title.replace(/:\s*$/, '') + '.';
         }
@@ -445,19 +508,19 @@ function rewriteStepsNatural(recipe, opts) {
 
 function applyDairyFreeAdaptation(recipe, opts) {
   if (!detectDairyFreeAdaptation(recipe, opts)) return recipe;
-  const flags = Array.isArray(recipe.adaptationFlags) ? recipe.adaptationFlags.slice() : [];
-  if (flags.indexOf('dairy_free_adaptation') < 0) flags.push('dairy_free_adaptation');
-  recipe.adaptationFlags = flags;
-  recipe.adaptationNote =
-    recipe.adaptationNote ||
-    'Milch wurde aufgrund deiner gespeicherten Einschränkung nicht verwendet.';
-  let title = String(recipe.title || '').trim();
-  if (title && !/milchfrei/i.test(title)) {
-    title = title.replace(/\s*[–—-]\s*unveränderte Originalversion/i, '');
-    recipe.title = title + ' – milchfrei angepasst';
+  try {
+    const lactoseHonesty = require('./lactose-honesty');
+    return lactoseHonesty.applyLactoseHonestyAdaptation(recipe, opts);
+  } catch (_) {
+    const flags = Array.isArray(recipe.adaptationFlags) ? recipe.adaptationFlags.slice() : [];
+    if (flags.indexOf('dairy_free_adaptation') < 0) flags.push('dairy_free_adaptation');
+    recipe.adaptationFlags = flags;
+    recipe.adaptationNote =
+      recipe.adaptationNote ||
+      'Weil du Laktose meidest, haben wir dieses Gericht direkt mit passenden laktosefreien Alternativen zubereitet.';
+    recipe.isUnmodifiedOriginal = false;
+    return recipe;
   }
-  recipe.isUnmodifiedOriginal = false;
-  return recipe;
 }
 
 function applyRecipeDisplayFixes(recipe, opts) {
@@ -501,6 +564,7 @@ module.exports = {
   detectDairyFreeAdaptation: detectDairyFreeAdaptation,
   enforceNoHerbs: enforceNoHerbs,
   sanitizeIngredientMacros: sanitizeIngredientMacros,
+  clampMacrosPer100g: clampMacrosPer100g,
   computeNutritionFromIngredients: computeNutritionFromIngredients,
   recomputeFinalNutrition: recomputeFinalNutrition,
   formatNutritionSummary: formatNutritionSummary,

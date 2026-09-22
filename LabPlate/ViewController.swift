@@ -4,9 +4,11 @@ import CoreML
 import Vision
 import Network
 import CoreImage
+import VisionKit
+import AVFoundation
 
 // Info.plist benötigt: NSCameraUsageDescription, NSPhotoLibraryUsageDescription
-final class LabPlateWebViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate, WKUIDelegate {
+final class LabPlateWebViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate, WKUIDelegate, AVSpeechSynthesizerDelegate {
 
     private var webView: WKWebView!
     private var visionModel: VNCoreMLModel?
@@ -19,6 +21,10 @@ final class LabPlateWebViewController: UIViewController, WKScriptMessageHandler,
     // Aus labplate_class_mapping.json ("confidence_threshold") - unterhalb dieses Werts
     // wird ein DINOv2-Ergebnis in classify() NICHT als sicherer Treffer behandelt.
     private var foodAIConfidenceThreshold: Double = 0.85
+    // Native Vorlesen (App-TTS). Web Speech in WKWebView ignoriert die iOS-Einstellung
+    // "Gesprochene Inhalte → Sprechgeschwindigkeit"; AVSpeech klingt naeher am System und
+    // erlaubt eine bewusst langsamere Rate.
+    private let speechSynthesizer = AVSpeechSynthesizer()
 
     // Nativer Spiegel des LabPlate-Theme-Zustands ("dark"/"light"), gesetzt ausschliesslich
     // ueber die bestehende themeState-Bridge (JS -> Swift, siehe userContentController(_:didReceive:)).
@@ -26,6 +32,8 @@ final class LabPlateWebViewController: UIViewController, WKScriptMessageHandler,
     // Dynamic Island - keine Web-Inhalte, keine zweite Theme-Logik.
     private var isLabPlateDarkMode = false
     private let labPlateDarkBackground = UIColor(red: 15.0 / 255.0, green: 16.0 / 255.0, blue: 18.0 / 255.0, alpha: 1.0)
+    /// Light chrome matches CSS `--bg` (#F5F9F7), not pure white.
+    private let labPlateLightBackground = UIColor(red: 245.0 / 255.0, green: 249.0 / 255.0, blue: 247.0 / 255.0, alpha: 1.0)
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         isLabPlateDarkMode ? .lightContent : .darkContent
@@ -54,17 +62,100 @@ final class LabPlateWebViewController: UIViewController, WKScriptMessageHandler,
         // Seite eintrifft.
         isLabPlateDarkMode = (traitCollection.userInterfaceStyle == .dark)
         loadVisionModel()
+        speechSynthesizer.delegate = self
         setupWebView()
         applyNativeTheme(isDark: isLabPlateDarkMode)
         startLocalServerAndLoad()
+
+        // Verlauf/Tageswechsel: WKWebView feuert visibilitychange/focus nach Mitternacht oft
+        // nicht zuverlaessig, und setInterval wird im Hintergrund gedrosselt. Ohne nativen
+        // Hook bleibt der Vortag auf dem Teller und erscheint nicht im Verlauf.
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(notifyWebDayRollover),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(notifyWebDayRollover),
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil
+        )
+        // Teller-Persistenz: WKWebView flush't localStorage bei App-Kill oft nicht rechtzeitig.
+        // Sofort nativ spiegeln, sobald die App in den Hintergrund geht / inaktiv wird.
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(flushWebStorageToNative),
+            name: UIApplication.willResignActiveNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(flushWebStorageToNative),
+            name: UIApplication.didEnterBackgroundNotification,
+            object: nil
+        )
+    }
+
+    /// Ruft die JS-Tageswechsel-Logik auf (archiveDay → Verlauf), sobald die App wieder aktiv ist.
+    @objc private func notifyWebDayRollover() {
+        webView?.evaluateJavaScript(
+            """
+            try {
+              if (typeof window.refreshAfterDayRollover === 'function') {
+                window.refreshAfterDayRollover();
+              } else if (typeof window.checkDayRollover === 'function') {
+                window.checkDayRollover();
+              }
+              if (typeof window.syncWebStorageToNative === 'function') {
+                window.syncWebStorageToNative();
+              }
+            } catch (e) {}
+            """,
+            completionHandler: nil
+        )
+    }
+
+    /// Schreibt Teller/Verlauf sofort in Application Support + UserDefaults (überlebt Kill/Xcode-Update).
+    @objc private func flushWebStorageToNative() {
+        let box = BackgroundTaskBox()
+        box.id = UIApplication.shared.beginBackgroundTask(withName: "LabPlateWebStorageFlush") {
+            box.end()
+        }
+        guard let webView = webView else {
+            box.end()
+            return
+        }
+        webView.evaluateJavaScript(
+            """
+            try {
+              if (typeof window.syncWebStorageToNative === 'function') {
+                window.syncWebStorageToNative();
+              }
+            } catch (e) {}
+            """
+        ) { _, _ in
+            // Kurz warten, bis der messageHandler die Datei geschrieben hat.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                box.end()
+            }
+        }
     }
 
     deinit {
+        NotificationCenter.default.removeObserver(self)
+        speechSynthesizer.stopSpeaking(at: .immediate)
         webView?.configuration.userContentController.removeScriptMessageHandler(forName: "photoRecognition")
         webView?.configuration.userContentController.removeScriptMessageHandler(forName: "jsError")
         webView?.configuration.userContentController.removeScriptMessageHandler(forName: "searchScrollLock")
         webView?.configuration.userContentController.removeScriptMessageHandler(forName: "themeState")
         webView?.configuration.userContentController.removeScriptMessageHandler(forName: "printRequest")
+        webView?.configuration.userContentController.removeScriptMessageHandler(forName: "openRecipeTextScanner")
+        webView?.configuration.userContentController.removeScriptMessageHandler(forName: "speakText")
+        webView?.configuration.userContentController.removeScriptMessageHandler(forName: "onboardingState")
+        webView?.configuration.userContentController.removeScriptMessageHandler(forName: "webStorageMirror")
+        webView?.configuration.userContentController.removeScriptMessageHandler(forName: "demoMarker")
         httpServer?.stop()
     }
 
@@ -123,11 +214,46 @@ final class LabPlateWebViewController: UIViewController, WKScriptMessageHandler,
         // Protokolls ALS AUCH den Druck-Knopf im Naehrstoff-Report: Am Rechner im Browser
         // funktionierten beide, auf dem iPhone kam nie etwas an.
         contentController.add(WeakScriptMessageHandler(self), name: "printRequest")
+        // Rezept-Text-Scanner: JS -> Swift, öffnet DataScannerViewController (iOS 16+)
+        contentController.add(WeakScriptMessageHandler(self), name: "openRecipeTextScanner")
+        // Vorlesen: JS -> Swift (AVSpeechSynthesizer), Stop/Ende zurück an JS
+        contentController.add(WeakScriptMessageHandler(self), name: "speakText")
+        // Onboarding-Done/Defer: JS -> Swift UserDefaults. Beim Start zurück in localStorage
+        // injizieren, damit ein WKWebView-localStorage-Verlust (z.B. Origin-Wechsel) das
+        // Onboarding nicht erneut wie nach einer Neuinstallation öffnet.
+        contentController.add(WeakScriptMessageHandler(self), name: "onboardingState")
+        // Teller/Verlauf/Profil: nativer Application-Support-Spiegel (App-Store-tauglich)
+        // gegen localStorage-Verlust bei Updates/Origin-Wechsel. Restore vor Seiten-JS.
+        contentController.add(WeakScriptMessageHandler(self), name: "webStorageMirror")
+        contentController.addUserScript(
+            WKUserScript(source: Self.restoreWebStorageMirrorScript(), injectionTime: .atDocumentStart, forMainFrameOnly: true)
+        )
+        contentController.addUserScript(
+            WKUserScript(source: Self.restoreOnboardingPersistenceScript(), injectionTime: .atDocumentStart, forMainFrameOnly: true)
+        )
         contentController.addUserScript(
             WKUserScript(source: Self.jsonParseSafetyScript, injectionTime: .atDocumentStart, forMainFrameOnly: true)
         )
         contentController.addUserScript(
             WKUserScript(source: Self.errorCaptureScript, injectionTime: .atDocumentStart, forMainFrameOnly: true)
+        )
+        // Demo-Aufnahme: Onboarding + optionaler Teller-Seed via Launch-Arg / UserDefaults
+        // (Recording-Script setzt LabPlateDemoSkipOnboarding vor dem SpringBoard-Start).
+        if Self.shouldSkipOnboardingForDemo {
+            contentController.add(WeakScriptMessageHandler(self), name: "demoMarker")
+            contentController.addUserScript(
+                WKUserScript(source: Self.demoSkipOnboardingScript, injectionTime: .atDocumentStart, forMainFrameOnly: true)
+            )
+            contentController.addUserScript(
+                WKUserScript(source: Self.demoSeedDayScript, injectionTime: .atDocumentStart, forMainFrameOnly: true)
+            )
+            contentController.addUserScript(
+                WKUserScript(source: Self.demoStoryboardAutopilotScript, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+            )
+        }
+        // Web-Speech-Fallback-Rate (etwas langsamer als Default 1.0); native Bridge nutzt AVSpeech.
+        contentController.addUserScript(
+            WKUserScript(source: "window.__LABPLATE_TTS_WEB_RATE__=0.85;", injectionTime: .atDocumentStart, forMainFrameOnly: true)
         )
         contentController.addUserScript(
             WKUserScript(source: Self.bridgeScript, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
@@ -156,7 +282,7 @@ final class LabPlateWebViewController: UIViewController, WKScriptMessageHandler,
         webView.isOpaque = true
         // Hintergrund passend zum Startzustand statt fest weiss - applyNativeTheme() zieht
         // ihn gleich darauf ohnehin auf den von der Seite gemeldeten Zustand nach.
-        let startHintergrund = isLabPlateDarkMode ? labPlateDarkBackground : UIColor.white
+        let startHintergrund = isLabPlateDarkMode ? labPlateDarkBackground : labPlateLightBackground
         webView.backgroundColor = startHintergrund
         webView.scrollView.backgroundColor = startHintergrund
         webView.isUserInteractionEnabled = true
@@ -214,6 +340,30 @@ final class LabPlateWebViewController: UIViewController, WKScriptMessageHandler,
             print("📦 lexikon-data.js aus Bundle gelesen: \(lexikonData.count) Bytes")
         } else {
             print("⚠️ lexikon-data.js nicht im Bundle gefunden – Lexikon bleibt ohne Inhalte")
+        }
+        // Lexikon-Begriffe (Export aus SQLite lexicon_terms) – gleiche Einbindung wie Kapitel-Daten.
+        if let termsURL = Bundle.main.url(forResource: "lexikon-terms", withExtension: "js"),
+           let termsData = try? Data(contentsOf: termsURL) {
+            extraFiles["/lexikon-terms.js"] = (termsData, "application/javascript; charset=utf-8")
+            print("📦 lexikon-terms.js aus Bundle gelesen: \(termsData.count) Bytes")
+        } else {
+            print("⚠️ lexikon-terms.js nicht im Bundle gefunden – Begriffsuche bleibt leer")
+        }
+        // Header-Avatar Dark (labplate_avatar_512.png) – gleiche Extra-File-Einbindung wie Lexikon-JS.
+        if let avatarURL = Bundle.main.url(forResource: "labplate_avatar_512", withExtension: "png"),
+           let avatarData = try? Data(contentsOf: avatarURL) {
+            extraFiles["/labplate_avatar_512.png"] = (avatarData, "image/png")
+            print("📦 labplate_avatar_512.png aus Bundle gelesen: \(avatarData.count) Bytes")
+        } else {
+            print("⚠️ labplate_avatar_512.png nicht im Bundle gefunden – Header zeigt kein Dark-Logo")
+        }
+        // Header-Avatar Light (avatar_light_C3.png)
+        if let avatarLightURL = Bundle.main.url(forResource: "avatar_light_C3", withExtension: "png"),
+           let avatarLightData = try? Data(contentsOf: avatarLightURL) {
+            extraFiles["/avatar_light_C3.png"] = (avatarLightData, "image/png")
+            print("📦 avatar_light_C3.png aus Bundle gelesen: \(avatarLightData.count) Bytes")
+        } else {
+            print("⚠️ avatar_light_C3.png nicht im Bundle gefunden – Header zeigt kein Light-Logo")
         }
 
         let server = LocalHTTPServer(htmlData: data, extraFiles: extraFiles)
@@ -326,9 +476,445 @@ final class LabPlateWebViewController: UIViewController, WKScriptMessageHandler,
         case "printRequest":
             presentPrintDialog()
 
+        case "openRecipeTextScanner":
+            openRecipeTextScanner()
+
+        case "speakText":
+            handleSpeakTextMessage(message.body)
+
+        case "onboardingState":
+            handleOnboardingStateMessage(message.body)
+
+        case "webStorageMirror":
+            handleWebStorageMirrorMessage(message.body)
+
+        case "demoMarker":
+            if let name = message.body as? String, !name.isEmpty {
+                let path = "/tmp/labplate-\(name)"
+                try? "\(Date().timeIntervalSince1970)".write(toFile: path, atomically: true, encoding: .utf8)
+            }
+
         default:
             break
         }
+    }
+
+    // MARK: - Web-Storage-Spiegel (App-Store-tauglich)
+    //
+    // WKWebView-localStorage hängt an der Origin (http://localhost:PORT). Bei Origin-Verlust
+    // (Port-Wechsel, WebKit-Reset) wären Teller/Verlauf/Profil weg — inakzeptabel für Store.
+    // Deshalb: kanonische Kopie in Application Support (überlebt Updates, iTunes/Finder-
+    // Backup, nicht für große Blobs in UserDefaults). Restore atDocumentStart vor loadDay().
+
+    private static let udOnboardingDoneKey = "LabPlateOnboardingDone"
+    private static let udOnboardingDeferredKey = "LabPlateOnboardingDeferred"
+    /// Legacy-Key (kurze Zeit genutzt); wird einmalig nach Application Support migriert.
+    private static let udWebStorageMirrorKey = "LabPlateWebStorageMirror_v1"
+    /// Zusätzliches Tages-Backup in UserDefaults (kleiner JSON, flush't zuverlässiger als nur Datei/WK).
+    private static let udDayBackupKey = "LabPlateDayBackup_v1"
+    private static let udDayLastNonemptyKey = "LabPlateDayLastNonempty_v1"
+    private static let webStorageMirrorFileName = "web_storage_mirror_v1.json"
+
+    private static var webStorageMirrorURL: URL? {
+        let fm = FileManager.default
+        guard let appSupport = try? fm.url(
+            for: .applicationSupportDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: true
+        ) else { return nil }
+        let dir = appSupport.appendingPathComponent("LabPlate", isDirectory: true)
+        if !fm.fileExists(atPath: dir.path) {
+            try? fm.createDirectory(at: dir, withIntermediateDirectories: true)
+        }
+        // Backup-fähig (iCloud-Gerätebackup); nicht in den iCloud-Documents-Sync legen.
+        var values = URLResourceValues()
+        values.isExcludedFromBackup = false
+        var mutableDir = dir
+        try? mutableDir.setResourceValues(values)
+        return dir.appendingPathComponent(webStorageMirrorFileName, isDirectory: false)
+    }
+
+    private static func readWebStorageMirrorJSON() -> String {
+        if let url = webStorageMirrorURL,
+           let data = try? Data(contentsOf: url),
+           let s = String(data: data, encoding: .utf8),
+           !s.isEmpty {
+            return s
+        }
+        // Migration von UserDefaults-Prototype → Datei
+        if let legacy = UserDefaults.standard.string(forKey: udWebStorageMirrorKey), !legacy.isEmpty {
+            _ = writeWebStorageMirrorJSON(legacy)
+            UserDefaults.standard.removeObject(forKey: udWebStorageMirrorKey)
+            return legacy
+        }
+        return ""
+    }
+
+    @discardableResult
+    private static func writeWebStorageMirrorJSON(_ json: String) -> Bool {
+        guard let url = webStorageMirrorURL,
+              let data = json.data(using: .utf8) else { return false }
+        do {
+            try data.write(to: url, options: [.atomic])
+            return true
+        } catch {
+            print("⚠️ Web-Storage-Spiegel speichern fehlgeschlagen: \(error)")
+            return false
+        }
+    }
+
+    private static func clearWebStorageMirror() {
+        if let url = webStorageMirrorURL {
+            try? FileManager.default.removeItem(at: url)
+        }
+        UserDefaults.standard.removeObject(forKey: udWebStorageMirrorKey)
+    }
+
+    private func handleOnboardingStateMessage(_ body: Any) {
+        guard let dict = body as? [String: Any],
+              let action = dict["action"] as? String else { return }
+        let defaults = UserDefaults.standard
+        switch action {
+        case "done":
+            defaults.set(true, forKey: Self.udOnboardingDoneKey)
+            defaults.set(false, forKey: Self.udOnboardingDeferredKey)
+        case "deferred":
+            // Nur speichern, wenn noch nicht abgeschlossen.
+            if !defaults.bool(forKey: Self.udOnboardingDoneKey) {
+                defaults.set(true, forKey: Self.udOnboardingDeferredKey)
+            }
+        case "reset":
+            defaults.set(false, forKey: Self.udOnboardingDoneKey)
+            defaults.set(false, forKey: Self.udOnboardingDeferredKey)
+        default:
+            break
+        }
+    }
+
+    private func handleWebStorageMirrorMessage(_ body: Any) {
+        guard let dict = body as? [String: Any],
+              let action = dict["action"] as? String else { return }
+        switch action {
+        case "save":
+            guard let data = dict["data"] as? [String: Any] else { return }
+            var incoming: [String: String] = [:]
+            for (key, value) in data {
+                if let s = value as? String {
+                    incoming[key] = s
+                }
+            }
+            let allowEmptyDay = (dict["allowEmptyDay"] as? Bool) ?? false
+            let existing = Self.loadWebStorageMirrorDict()
+            var mirror = existing
+            for (key, value) in incoming {
+                mirror[key] = value
+            }
+            let dayKey = "tellercheck_day_v1"
+            let lastKey = "tellercheck_day_last_nonempty_v1"
+            // Schutz vor Xcode-Reinstall/Sync-Race: leerer Teller überschreibt keinen
+            // gespeicherten Nicht-Leer-Teller — sonst bleibt nur der Verlauf übrig.
+            if !allowEmptyDay {
+                let incomingDayEmpty = !Self.dayJSONHasItems(incoming[dayKey])
+                if incomingDayEmpty, Self.dayJSONHasItems(existing[dayKey]), let prev = existing[dayKey] {
+                    mirror[dayKey] = prev
+                }
+                if let incLast = incoming[lastKey], !Self.dayJSONHasItems(incLast),
+                   Self.dayJSONHasItems(existing[lastKey]), let prevLast = existing[lastKey] {
+                    mirror[lastKey] = prevLast
+                }
+            }
+            if Self.dayJSONHasItems(mirror[dayKey]), let day = mirror[dayKey] {
+                mirror[lastKey] = day
+            } else if allowEmptyDay {
+                // Bewusst geleert (Rollover / Alle löschen): Snapshot entfernen
+                mirror.removeValue(forKey: lastKey)
+            }
+            guard JSONSerialization.isValidJSONObject(mirror),
+                  let jsonData = try? JSONSerialization.data(withJSONObject: mirror, options: []),
+                  let json = String(data: jsonData, encoding: .utf8) else { return }
+            _ = Self.writeWebStorageMirrorJSON(json)
+            // UserDefaults-Doppel: überlebt auch dann, wenn die Spiegel-Datei bei Kill zu spät kommt.
+            Self.persistDayUserDefaultsBackup(mirror: mirror, allowEmptyDay: allowEmptyDay)
+        case "clear":
+            Self.clearWebStorageMirror()
+            UserDefaults.standard.removeObject(forKey: Self.udDayBackupKey)
+            UserDefaults.standard.removeObject(forKey: Self.udDayLastNonemptyKey)
+        default:
+            break
+        }
+    }
+
+    private static func persistDayUserDefaultsBackup(mirror: [String: String], allowEmptyDay: Bool) {
+        let dayKey = "tellercheck_day_v1"
+        let lastKey = "tellercheck_day_last_nonempty_v1"
+        let defaults = UserDefaults.standard
+        if dayJSONHasItems(mirror[dayKey]), let day = mirror[dayKey] {
+            defaults.set(day, forKey: udDayBackupKey)
+            defaults.set(day, forKey: udDayLastNonemptyKey)
+        } else if allowEmptyDay {
+            defaults.removeObject(forKey: udDayBackupKey)
+            if let last = mirror[lastKey], dayJSONHasItems(last) {
+                defaults.set(last, forKey: udDayLastNonemptyKey)
+            } else {
+                defaults.removeObject(forKey: udDayLastNonemptyKey)
+            }
+        } else if let last = mirror[lastKey], dayJSONHasItems(last) {
+            defaults.set(last, forKey: udDayLastNonemptyKey)
+        }
+    }
+
+    private static func loadWebStorageMirrorDict() -> [String: String] {
+        let raw = readWebStorageMirrorJSON()
+        guard !raw.isEmpty,
+              let data = raw.data(using: .utf8),
+              let obj = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+            return [:]
+        }
+        var out: [String: String] = [:]
+        for (k, v) in obj {
+            if let s = v as? String { out[k] = s }
+        }
+        return out
+    }
+
+    private static func dayJSONHasItems(_ raw: String?) -> Bool {
+        guard let raw = raw, let data = raw.data(using: .utf8),
+              let obj = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let items = obj["items"] as? [Any] else { return false }
+        return !items.isEmpty
+    }
+
+    /// Stellt Teller/Verlauf/tellercheck_*/labplate_* aus Application Support wieder her,
+    /// wenn localStorage leer ist. Läuft atDocumentStart — vor loadDay().
+    static func restoreWebStorageMirrorScript() -> String {
+        var mirror = loadWebStorageMirrorDict()
+        // UserDefaults-Fallback, falls Spiegel-Datei leer/veraltet (Kill vor Datei-Flush).
+        let defaults = UserDefaults.standard
+        if let day = defaults.string(forKey: udDayBackupKey), dayJSONHasItems(day),
+           !dayJSONHasItems(mirror["tellercheck_day_v1"]) {
+            mirror["tellercheck_day_v1"] = day
+        }
+        if let last = defaults.string(forKey: udDayLastNonemptyKey), dayJSONHasItems(last),
+           !dayJSONHasItems(mirror["tellercheck_day_last_nonempty_v1"]) {
+            mirror["tellercheck_day_last_nonempty_v1"] = last
+        }
+        let raw: String
+        if mirror.isEmpty {
+            raw = ""
+        } else if JSONSerialization.isValidJSONObject(mirror),
+                  let data = try? JSONSerialization.data(withJSONObject: mirror, options: []),
+                  let s = String(data: data, encoding: .utf8) {
+            raw = s
+        } else {
+            raw = readWebStorageMirrorJSON()
+        }
+        let b64 = Data(raw.utf8).base64EncodedString()
+        return """
+        (function () {
+          try {
+            var b64 = '\(b64)';
+            if (!b64) return;
+            var bin = atob(b64);
+            var bytes = new Uint8Array(bin.length);
+            for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+            var json = (typeof TextDecoder !== 'undefined')
+              ? new TextDecoder('utf-8').decode(bytes)
+              : decodeURIComponent(Array.prototype.map.call(bin, function (c) {
+                  return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+            var mirror = JSON.parse(json);
+            if (!mirror || typeof mirror !== 'object') return;
+            function parseDay(rawDay) {
+              try { return rawDay ? JSON.parse(rawDay) : null; } catch (e) { return null; }
+            }
+            function dayHasItems(rawDay) {
+              var p = parseDay(rawDay);
+              return !!(p && Array.isArray(p.items) && p.items.length > 0);
+            }
+            var dayKey = 'tellercheck_day_v1';
+            var lastKey = 'tellercheck_day_last_nonempty_v1';
+            var histKey = 'tellercheck_history_v1';
+            function pad2(n) { return (n < 10 ? '0' : '') + n; }
+            function localISODate(d) {
+              var x = (d instanceof Date) ? d : new Date(d);
+              if (isNaN(x.getTime())) return null;
+              return x.getFullYear() + '-' + pad2(x.getMonth() + 1) + '-' + pad2(x.getDate());
+            }
+            function normalizeDayKey(dateStr) {
+              if (!dateStr) return null;
+              if (/^\\d{4}-\\d{2}-\\d{2}$/.test(dateStr)) return dateStr;
+              var p = new Date(dateStr);
+              return isNaN(p.getTime()) ? null : localISODate(p);
+            }
+            var today = localISODate(new Date());
+            var localDay = null;
+            try { localDay = localStorage.getItem(dayKey); } catch (eDay) {}
+            // Teller wiederherstellen: erst aktueller day-Key, sonst letzter Nicht-Leer-Stand
+            // vom HEUTIGEN Kalendertag (Xcode-Reinstall darf heutigen Teller nicht verlieren).
+            if (!dayHasItems(localDay)) {
+              var candidate = null;
+              if (dayHasItems(mirror[dayKey])) candidate = mirror[dayKey];
+              else if (dayHasItems(mirror[lastKey])) candidate = mirror[lastKey];
+              if (candidate) {
+                var parsed = parseDay(candidate);
+                var parsedKey = parsed ? normalizeDayKey(parsed.date) : null;
+                var hasTodayItem = false;
+                if (parsed && Array.isArray(parsed.items)) {
+                  for (var ti = 0; ti < parsed.items.length; ti++) {
+                    var its = parsed.items[ti] && parsed.items[ti].ts;
+                    if (its == null) continue;
+                    var tnum = Number(its);
+                    if (!isFinite(tnum) || tnum <= 0) continue;
+                    if (tnum < 1e12) tnum *= 1000;
+                    if (localISODate(new Date(tnum)) === today) { hasTodayItem = true; break; }
+                  }
+                }
+                // Gleicher Kalendertag ODER heutige Item-Timestamps → als heute wiederherstellen.
+                if (parsed && (!parsed.date || parsedKey === today || !parsedKey || hasTodayItem)) {
+                  var keepItems = parsed.items;
+                  if (hasTodayItem && parsedKey && parsedKey !== today) {
+                    keepItems = parsed.items.filter(function (it) {
+                      if (!it || it.ts == null) return true;
+                      var n = Number(it.ts);
+                      if (!isFinite(n) || n <= 0) return true;
+                      if (n < 1e12) n *= 1000;
+                      return localISODate(new Date(n)) === today;
+                    });
+                  }
+                  try {
+                    localStorage.setItem(dayKey, JSON.stringify({ date: today, items: keepItems }));
+                  } catch (eSetDay) {}
+                } else if (parsed && parsedKey && parsedKey !== today && dayHasItems(candidate)) {
+                  try { localStorage.setItem(dayKey, candidate); } catch (eSetOld) {}
+                }
+              }
+            }
+            try {
+              var localHist = localStorage.getItem(histKey);
+              var histEmpty = !localHist || localHist === '[]' || localHist === 'null';
+              if (histEmpty && mirror[histKey]) {
+                localStorage.setItem(histKey, mirror[histKey]);
+              }
+            } catch (eHist) {}
+            Object.keys(mirror).forEach(function (k) {
+              if (k === dayKey || k === histKey || k === lastKey) return;
+              try {
+                if (localStorage.getItem(k) == null && mirror[k] != null) {
+                  localStorage.setItem(k, mirror[k]);
+                }
+              } catch (eKey) {}
+            });
+            try { window.__LP_NATIVE_STORAGE_RESTORED__ = true; } catch (eFlag) {}
+          } catch (e) {}
+        })();
+        """
+    }
+
+    /// Stellt Onboarding-Flags aus UserDefaults in localStorage wieder her, bevor
+    /// maybeOpenOnboarding() (~450 ms) läuft – analog zum Demo-Skip-Script.
+    static func restoreOnboardingPersistenceScript() -> String {
+        let done = UserDefaults.standard.bool(forKey: udOnboardingDoneKey)
+        let deferred = UserDefaults.standard.bool(forKey: udOnboardingDeferredKey)
+        let doneJS = done ? "true" : "false"
+        let deferredJS = deferred ? "true" : "false"
+        return """
+        (function () {
+          var nativeDone = \(doneJS);
+          var nativeDeferred = \(deferredJS);
+          try {
+            if (nativeDone) {
+              localStorage.setItem('labplate_onboarding_done_v1', '1');
+              localStorage.removeItem('labplate_onboarding_deferred_v1');
+              try {
+                var key = 'labplate_team_context_v1';
+                var raw = localStorage.getItem(key);
+                var ctx = raw ? JSON.parse(raw) : {};
+                if (!ctx || typeof ctx !== 'object') ctx = {};
+                if (!ctx.user || typeof ctx.user !== 'object') ctx.user = {};
+                if (!ctx.user.onboarding || typeof ctx.user.onboarding !== 'object') ctx.user.onboarding = {};
+                if (!ctx.user.onboarding.completedAt) {
+                  ctx.user.onboarding.completedAt = new Date().toISOString();
+                }
+                localStorage.setItem(key, JSON.stringify(ctx));
+              } catch (eCtx) {}
+            } else if (nativeDeferred) {
+              localStorage.setItem('labplate_onboarding_deferred_v1', '1');
+            }
+          } catch (e) {}
+        })();
+        """
+    }
+
+    // MARK: - Native Vorlesen (AVSpeech)
+    //
+    // Die iOS-Einstellung "Bedienungshilfen → Gesprochene Inhalte → Sprechgeschwindigkeit"
+    // steuert Speak Screen/Speak Selection - Apps bekommen sie nicht als oeffentliche API.
+    // Deshalb: native Stimme + bewusst etwas langsameres Tempo als Web-Speech-Default.
+    private var ignoreNextSpeechCancel = false
+
+    private func handleSpeakTextMessage(_ body: Any) {
+        guard let dict = body as? [String: Any],
+              let action = dict["action"] as? String else { return }
+        if action == "stop" {
+            // JS hat die Button-UI bereits zurueckgesetzt - didCancel nicht nochmal an JS melden,
+            // sonst wuerde ein sofortiger Neu-Start (toggleSpeak) wieder deaktiviert.
+            if speechSynthesizer.isSpeaking || speechSynthesizer.isPaused {
+                ignoreNextSpeechCancel = true
+                speechSynthesizer.stopSpeaking(at: .immediate)
+            }
+            return
+        }
+        guard action == "speak",
+              let text = dict["text"] as? String,
+              !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+        let lang = (dict["lang"] as? String) ?? "de-DE"
+        if speechSynthesizer.isSpeaking || speechSynthesizer.isPaused {
+            ignoreNextSpeechCancel = true
+            speechSynthesizer.stopSpeaking(at: .immediate)
+        }
+        // Ohne aktive Playback-Session bleibt AVSpeech auf vielen iPhones stumm
+        // (Stummschalter / nach Kamera-Nutzung).
+        do {
+            let session = AVAudioSession.sharedInstance()
+            try session.setCategory(.playback, mode: .spokenAudio, options: [.duckOthers])
+            try session.setActive(true, options: [])
+        } catch {
+            print("🔊 AVAudioSession für Vorlesen: \(error)")
+        }
+        let utterance = AVSpeechUtterance(string: text)
+        if let voice = AVSpeechSynthesisVoice(language: lang)
+            ?? AVSpeechSynthesisVoice(language: String(lang.prefix(2)))
+            ?? AVSpeechSynthesisVoice(language: "de-DE") {
+            utterance.voice = voice
+        }
+        // DefaultSpeechRate (~0.5) * 0.85 ≈ spuerbar ruhiger; Floor bei Minimum.
+        let rate = max(AVSpeechUtteranceMinimumSpeechRate,
+                       AVSpeechUtteranceDefaultSpeechRate * 0.85)
+        utterance.rate = rate
+        utterance.pitchMultiplier = 1.0
+        utterance.preUtteranceDelay = 0.05
+        utterance.postUtteranceDelay = 0.05
+        speechSynthesizer.speak(utterance)
+    }
+
+    private func notifySpeakEnded() {
+        webView?.evaluateJavaScript(
+            "(typeof window.__labplateSpeakEnded === 'function' && window.__labplateSpeakEnded())",
+            completionHandler: nil
+        )
+    }
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        notifySpeakEnded()
+    }
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
+        if ignoreNextSpeechCancel {
+            ignoreNextSpeechCancel = false
+            return
+        }
+        notifySpeakEnded()
     }
 
     // MARK: - Drucken / "In PDF sichern"
@@ -387,6 +973,149 @@ final class LabPlateWebViewController: UIViewController, WKScriptMessageHandler,
         }
     }
 
+    // MARK: - Rezept-Text-Scanner (Foto-Aufnahme → Manuelle Live-Text-Auswahl, iOS 16+)
+    //
+    // Ablauf:
+    //   1. VNDocumentCameraViewController öffnen → Foto aufnehmen
+    //   2. RecipeTextReviewViewController zeigt das Standbild mit ImageAnalysisInteraction
+    //   3. Nutzerin markiert Text manuell → „Auswahl übernehmen" → deliverScannedTextToWeb
+
+    // Hält den Scan-Koordinator am Leben (VNDocumentCameraViewControllerDelegate-Implementierung)
+    private var recipeScanCoordinator: AnyObject?
+
+    /// Einstiegspunkt – aus JS-Bridge-Handler „openRecipeTextScanner" aufgerufen.
+    private func openRecipeTextScanner() {
+        if #available(iOS 16.0, *) {
+            checkCameraPermissionAndOpenScanner()
+        } else {
+            showScannerUnavailableAlert()
+        }
+    }
+
+    /// Gibt den passenden Text für die aktuelle Systemsprache zurück (DE / IT / EN-Fallback).
+    private func scannerL(_ de: String, _ it: String, _ en: String) -> String {
+        let lang = String(Locale.preferredLanguages.first?.prefix(2) ?? "en")
+        switch lang {
+        case "de": return de
+        case "it": return it
+        default:   return en
+        }
+    }
+
+    private func showScannerUnavailableAlert() {
+        let alert = UIAlertController(
+            title: scannerL(
+                "Scanner nicht verfügbar",
+                "Scanner non disponibile",
+                "Scanner unavailable"
+            ),
+            message: scannerL(
+                "Der Rezept-Text-Scanner ist auf diesem Gerät nicht verfügbar. "
+                    + "Du kannst den Rezepttext weiterhin manuell einfügen.",
+                "Lo scanner del testo ricetta non è disponibile su questo dispositivo. "
+                    + "Puoi continuare a inserire il testo manualmente.",
+                "The recipe text scanner is not available on this device. "
+                    + "You can still insert the recipe text manually."
+            ),
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+
+    private func showCameraAccessDeniedAlert() {
+        let alert = UIAlertController(
+            title: scannerL(
+                "Kein Kamerazugriff",
+                "Accesso alla fotocamera negato",
+                "Camera access denied"
+            ),
+            message: scannerL(
+                "Bitte aktiviere den Kamerazugriff für LabPlate in den iPhone-Einstellungen.",
+                "Per favore, attiva l'accesso alla fotocamera per LabPlate nelle Impostazioni.",
+                "Please enable camera access for LabPlate in iPhone Settings."
+            ),
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(
+            title: scannerL("Abbrechen", "Annulla", "Cancel"),
+            style: .cancel
+        ))
+        alert.addAction(UIAlertAction(
+            title: scannerL("Einstellungen öffnen", "Apri Impostazioni", "Open Settings"),
+            style: .default
+        ) { _ in
+            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+            UIApplication.shared.open(url)
+        })
+        present(alert, animated: true)
+    }
+
+    private func checkCameraPermissionAndOpenScanner() {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized:
+            if #available(iOS 16.0, *) { presentRecipeDocumentScanner() }
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
+                DispatchQueue.main.async {
+                    if granted {
+                        if #available(iOS 16.0, *) { self?.presentRecipeDocumentScanner() }
+                    } else {
+                        self?.showCameraAccessDeniedAlert()
+                    }
+                }
+            }
+        default:
+            showCameraAccessDeniedAlert()
+        }
+    }
+
+    /// Öffnet Apples Dokument-Scanner-UI (VNDocumentCameraViewController).
+    /// Nach Aufnahme → presentRecipeTextReview(image:)
+    @available(iOS 16.0, *)
+    private func presentRecipeDocumentScanner() {
+        guard VNDocumentCameraViewController.isSupported else {
+            showScannerUnavailableAlert()
+            return
+        }
+        let coordinator = RecipeDocumentScanCoordinator { [weak self] image in
+            self?.presentRecipeTextReview(image: image)
+        }
+        recipeScanCoordinator = coordinator
+        let scanVC = VNDocumentCameraViewController()
+        scanVC.delegate = coordinator
+        present(scanVC, animated: true)
+    }
+
+    /// Zeigt das aufgenommene Foto mit Apple-Live-Text-Auswahl (ImageAnalysisInteraction).
+    @available(iOS 16.0, *)
+    private func presentRecipeTextReview(image: UIImage) {
+        let reviewVC = RecipeTextReviewViewController(
+            image: image,
+            onTextAccepted: { [weak self] text in
+                self?.deliverScannedTextToWeb(text)
+            },
+            onRetake: { [weak self] in
+                self?.presentRecipeDocumentScanner()
+            }
+        )
+        // Falls noch ein Overlay (z. B. Dokument-Scanner) oben liegt, von dort aus präsentieren
+        let presenter = presentedViewController ?? self
+        presenter.present(reviewVC, animated: true)
+    }
+
+    /// Übergibt den gescannten Text per JS-Bridge an das Recipe-Chat-Eingabefeld.
+    private func deliverScannedTextToWeb(_ text: String) {
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: ["text": text]),
+              let jsonString = String(data: jsonData, encoding: .utf8) else { return }
+        DispatchQueue.main.async { [weak self] in
+            self?.webView.evaluateJavaScript(
+                "window.onRecipeTextScanned(\(jsonString));",
+                completionHandler: nil
+            )
+        }
+    }
+
     // MARK: - Natives Theme (Statusleiste + Hintergrund hinter Statusleiste/Dynamic Island)
     //
     // Wird ausschliesslich durch die themeState-Nachricht oben getriggert. view.backgroundColor
@@ -408,7 +1137,7 @@ final class LabPlateWebViewController: UIViewController, WKScriptMessageHandler,
         if overrideUserInterfaceStyle != stil { overrideUserInterfaceStyle = stil }
         if webView?.overrideUserInterfaceStyle != stil { webView?.overrideUserInterfaceStyle = stil }
 
-        let background = isDark ? labPlateDarkBackground : UIColor.white
+        let background = isDark ? labPlateDarkBackground : labPlateLightBackground
         view.backgroundColor = background
         webView?.superview?.backgroundColor = background
         webView?.backgroundColor = background
@@ -703,7 +1432,7 @@ final class LocalHTTPServer {
     // Fix: fester, unveraenderlicher Port bei jedem Start, damit die Origin - und damit
     // localStorage - ueber App-Neustarts hinweg stabil bleibt.
     private static let preferredPort: UInt16 = 51873
-    private var didFallBackToRandomPort = false
+    private var preferredPortRetryCount = 0
 
     init(htmlData: Data, extraFiles: [String: (data: Data, contentType: String)] = [:]) {
         self.htmlData = htmlData
@@ -742,19 +1471,23 @@ final class LocalHTTPServer {
             case .ready:
                 if let port = self?.listener?.port?.rawValue {
                     print("✅ Lokaler Server bereit auf Port \(port)")
+                    self?.preferredPortRetryCount = 0
                     self?.onReady?(port)
                 }
             case .failed(let error):
                 print("❌ Lokaler Server fehlgeschlagen: \(error)")
                 guard let self = self else { return }
-                // Nur falls ausgerechnet der feste Port blockiert ist (sehr unwahrscheinlich,
-                // z.B. durch einen anderen Prozess auf dem Geraet): einmalig auf einen
-                // zufaelligen Port ausweichen, damit die App wenigstens laedt. localStorage
-                // bleibt dann nur fuer diese eine Sitzung stabil, nicht ueber Neustarts hinweg.
-                if port != nil && !self.didFallBackToRandomPort {
-                    self.didFallBackToRandomPort = true
-                    listener.cancel()
-                    self.startListener(on: nil)
+                // KEIN Zufalls-Port mehr: neuer Port = neue Origin = leerer localStorage
+                // (Datenverlust bei jedem Update/Neustart). Stattdessen festen Port erneut versuchen.
+                listener.cancel()
+                if self.preferredPortRetryCount < 8 {
+                    self.preferredPortRetryCount += 1
+                    let delay = 0.25 * Double(self.preferredPortRetryCount)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
+                        self?.startListener(on: NWEndpoint.Port(rawValue: Self.preferredPort))
+                    }
+                } else {
+                    print("❌ Fester Port \(Self.preferredPort) bleibt belegt – App lädt nicht, um Datenverlust zu vermeiden")
                 }
             default:
                 break
@@ -829,6 +1562,17 @@ final class WeakScriptMessageHandler: NSObject, WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController,
                                 didReceive message: WKScriptMessage) {
         target?.userContentController(userContentController, didReceive: message)
+    }
+}
+
+/// Hält eine UIBackgroundTaskIdentifier, damit Expiration- und Completion-Handler sie beenden können.
+private final class BackgroundTaskBox {
+    var id: UIBackgroundTaskIdentifier = .invalid
+    func end() {
+        if id != .invalid {
+            UIApplication.shared.endBackgroundTask(id)
+            id = .invalid
+        }
     }
 }
 
@@ -1106,6 +1850,302 @@ extension LabPlateWebViewController {
 // möglich zu retten (z.B. Kategorie-Fotos), bevor auf den leeren Sicherheits-Fallback
 // zurückgefallen wird.
 extension LabPlateWebViewController {
+    /// Demo-Video: Onboarding nie zeigen (Launch-Arg oder UserDefaults vor SpringBoard-Start).
+    static var shouldSkipOnboardingForDemo: Bool {
+        if ProcessInfo.processInfo.arguments.contains("-LabPlateDemoSkipOnboarding") { return true }
+        if ProcessInfo.processInfo.environment["LABPLATE_DEMO_SKIP_ONBOARDING"] == "1" { return true }
+        return UserDefaults.standard.bool(forKey: "LabPlateDemoSkipOnboarding")
+    }
+
+    /// Setzt Onboarding-Done, bevor maybeOpenOnboarding() (~450ms) laeuft.
+    static let demoSkipOnboardingScript: String = """
+    (function () {
+      try { localStorage.setItem('labplate_onboarding_done_v1', '1'); } catch (e) {}
+      try { sessionStorage.setItem('labplate_onboarding_defer_session', '1'); } catch (e2) {}
+      try {
+        var key = 'labplate_team_context_v1';
+        var raw = localStorage.getItem(key);
+        var ctx = raw ? JSON.parse(raw) : {};
+        if (!ctx || typeof ctx !== 'object') ctx = {};
+        if (!ctx.user || typeof ctx.user !== 'object') ctx.user = {};
+        if (!ctx.user.onboarding || typeof ctx.user.onboarding !== 'object') ctx.user.onboarding = {};
+        if (!ctx.user.onboarding.completedAt) {
+          ctx.user.onboarding.completedAt = new Date().toISOString();
+        }
+        localStorage.setItem(key, JSON.stringify(ctx));
+      } catch (e3) {}
+    })();
+    """
+
+    /// Recording-only: Profi-Modus, leerer Teller (Ringe reagieren erst nach Hinzufügen).
+    /// WICHTIG: Nie einen gefüllten Teller löschen (weder heute noch Vortag) — sonst sind
+    /// echte Nutzerdaten weg, wenn LabPlateDemoSkipOnboarding in UserDefaults hängen bleibt.
+    static let demoSeedDayScript: String = """
+    (function () {
+      try { localStorage.setItem('tellercheck_mode_v1', 'pro'); } catch (eMode) {}
+      try {
+        var dayKey = 'tellercheck_day_v1';
+        function pad2(n) { return (n < 10 ? '0' : '') + n; }
+        var now = new Date();
+        var today = now.getFullYear() + '-' + pad2(now.getMonth() + 1) + '-' + pad2(now.getDate());
+        var raw = null;
+        try { raw = localStorage.getItem(dayKey); } catch (eGet) {}
+        var shouldSeed = true;
+        if (raw) {
+          try {
+            var saved = JSON.parse(raw);
+            var items = saved && Array.isArray(saved.items) ? saved.items : [];
+            if (items.length > 0) {
+              shouldSeed = false;
+            }
+          } catch (eParse) {}
+        }
+        if (shouldSeed) {
+          localStorage.setItem(dayKey, JSON.stringify({ date: today, items: [] }));
+        }
+      } catch (eDay) {}
+      try { localStorage.removeItem('tellercheck_labs_v1'); } catch (eLabs) {}
+    })();
+    """
+
+    /// Recording-only: steuert den 50s-Storyboard-Body per DOM (zuverlässiger als XCUITest in WKWebView).
+    /// Absolute Timeline ab App-ready = Body 0:00–0:44. UITest wartet parallel und schreibt Marker.
+    static let demoStoryboardAutopilotScript: String = #"""
+    (function () {
+      if (window.__lpDemoAutopilotStarted) return;
+      window.__lpDemoAutopilotStarted = true;
+
+      function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+      function click(el) { if (!el) return false; try { el.click(); return true; } catch (e) { return false; } }
+      function q(sel) { return document.querySelector(sel); }
+      function qa(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+      function setInput(id, val) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.focus();
+        el.value = String(val);
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+        el.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      function waitFor(pred, timeoutMs) {
+        var t0 = Date.now();
+        return new Promise(function (resolve) {
+          (function tick() {
+            try { if (pred()) return resolve(true); } catch (e) {}
+            if (Date.now() - t0 > timeoutMs) return resolve(false);
+            setTimeout(tick, 120);
+          })();
+        });
+      }
+      function closeAll() {
+        try { if (typeof closeOverlays === 'function') closeOverlays(); } catch (e) {}
+        try {
+          qa('.overlay.show .overlay-close, .overlay.show [aria-label="Schließen"], .overlay.show [aria-label="Zurück"]').forEach(function (b) { click(b); });
+        } catch (e2) {}
+      }
+      function findFoodBtn(name) {
+        var norm = function (s) {
+          return (s || '').toLowerCase()
+            .replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ß/g, 'ss');
+        };
+        var target = norm(name);
+        return qa('.food-btn, button.food-btn').find(function (b) {
+          return norm(b.textContent).indexOf(target) !== -1;
+        }) || null;
+      }
+      function findByText(sel, text) {
+        return qa(sel).find(function (el) {
+          return (el.textContent || '').replace(/\s+/g, ' ').trim().indexOf(text) !== -1;
+        }) || null;
+      }
+      function writeMarker(name) {
+        try {
+          if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.demoMarker) {
+            window.webkit.messageHandlers.demoMarker.postMessage(name);
+          }
+        } catch (e) {}
+      }
+      function showDemoToast(msg, holdMs) {
+        var el = document.getElementById('lp-demo-story-toast');
+        if (!el) {
+          el = document.createElement('div');
+          el.id = 'lp-demo-story-toast';
+          el.style.cssText = 'position:fixed;left:50%;bottom:20%;transform:translateX(-50%);z-index:999999;background:rgba(22,22,28,0.94);color:#fff;padding:16px 26px;border-radius:18px;font-size:15px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;opacity:0;transition:opacity 0.3s ease;pointer-events:none;box-shadow:0 8px 28px rgba(0,0,0,0.35);white-space:nowrap;';
+          document.body.appendChild(el);
+        }
+        el.textContent = msg;
+        requestAnimationFrame(function () { el.style.opacity = '1'; });
+        setTimeout(function () { el.style.opacity = '0'; }, holdMs || 2600);
+      }
+      async function until(t0, targetSec) {
+        var left = targetSec * 1000 - (Date.now() - t0);
+        if (left > 0) await sleep(left);
+      }
+
+      async function run() {
+        var ready = await waitFor(function () {
+          return !!document.getElementById('settings-btn') && typeof openOverlay === 'function';
+        }, 15000);
+        if (!ready) return;
+        var t0 = Date.now();
+        window.__lpDemoT0 = t0;
+        writeMarker('story-t0-ready');
+        writeMarker('story-t0');
+
+        // 0–4s: Tagesübersicht / Ringe
+        await until(t0, 4.0);
+
+        // 4–9s: Meine Werte (optional) → Tagesziele
+        try {
+          if (typeof openOverlay === 'function') openOverlay('settings');
+          else click(document.getElementById('settings-btn'));
+          await sleep(650);
+          var labDetails = document.getElementById('lab-section-details');
+          if (labDetails) {
+            labDetails.open = true;
+            var labSummary = labDetails.querySelector('.settings-accordion-summary');
+            if (labSummary) {
+              try { labSummary.scrollIntoView({ block: 'start', behavior: 'smooth' }); } catch (eScroll) {}
+            }
+          } else {
+            click(findByText('summary, .section-label, button, span', 'Meine Werte'));
+          }
+          await sleep(600);
+          setInput('lab-trig', 128);
+          await sleep(160);
+          setInput('lab-ldl', 138);
+          await sleep(160);
+          setInput('lab-glucose', 94);
+          await sleep(320);
+          if (typeof applyLabValues === 'function') applyLabValues();
+          else click(document.getElementById('lab-apply') || findByText('button', 'Werte übernehmen'));
+          await sleep(420);
+          try {
+            // Sanfte Zielanpassung ohne Warn-/Alarm-UI (Storyboard).
+            LAB_WARNINGS = [];
+            if (typeof TARGETS !== 'undefined') {
+              TARGETS.kh = 108;
+              if (typeof saveTargetsToStorage === 'function') saveTargetsToStorage();
+              if (typeof saveLabsToStorage === 'function') saveLabsToStorage();
+            }
+            setInput('tg-kh', 108);
+            var goals = document.getElementById('tagesziele-section-details');
+            if (goals) {
+              goals.open = true;
+              try { goals.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e3) {}
+            }
+            if (typeof renderDay === 'function') renderDay();
+            if (typeof renderSettingsOverlay === 'function') renderSettingsOverlay();
+          } catch (eTargets) {}
+          showDemoToast('Tagesziele individuell angepasst', 2800);
+          await sleep(900);
+          var goals2 = document.getElementById('tagesziele-section-details');
+          if (goals2) {
+            goals2.open = true;
+            try { goals2.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e4) {}
+            await sleep(700);
+          }
+        } catch (eLabs) {}
+        await until(t0, 8.8);
+        closeAll();
+        await sleep(350);
+        await until(t0, 9.0);
+
+        // 9–13s: Lebensmittel erfassen
+        try {
+          if (typeof openCategoryOverlay === 'function') openCategoryOverlay('Obst');
+          else click(findByText('button, .cat-chip', 'Obst'));
+        } catch (eCat) {}
+        await until(t0, 13.0);
+
+        // 13–18s: Detail / Nährstoffe
+        try {
+          var foodBtn = findFoodBtn('Apfel') || findFoodBtn('Banane') || findFoodBtn('Birne') || qa('.food-btn')[0];
+          if (foodBtn) click(foodBtn);
+          else if (typeof openQuickAdd === 'function' && typeof FOODS !== 'undefined') {
+            var apple = (FOODS || []).find(function (f) { return f && /apfel/i.test(f.name || ''); });
+            if (apple) openQuickAdd(apple.id);
+          }
+        } catch (eFood) {}
+        await until(t0, 18.0);
+
+        // 18–24s: Hinzufügen → Ringe reagieren (0,5–0,8 s Ruhe)
+        try {
+          click(document.getElementById('qa-add-btn') || findByText('button.qa-add-btn', 'Zum Teller') || findByText('button', 'Zum Teller'));
+          await sleep(680);
+          closeAll();
+        } catch (eAdd) {}
+        await until(t0, 24.0);
+
+        // 24–30s: KI-Rezept-Coach (Demo-Rezept ohne Netzwerk)
+        try {
+          if (typeof openNutriRecipeGenerator === 'function') openNutriRecipeGenerator();
+          else click(document.getElementById('lp-tr-recipes') || q('.lp-recipe-trigger'));
+          await sleep(900);
+          if (window.__lpNutriDemo && typeof window.__lpNutriDemo.injectResult === 'function') {
+            window.__lpNutriDemo.injectResult({
+              title: 'Haferflocken mit Beeren',
+              prep_time: '10 Min',
+              servings: 2,
+              ingredients: [
+                { name: 'Haferflocken', amount: 50, unit: 'g', status: 'benoetigt', macrosPer100g: { netCarbs: 56, fat: 7, protein: 13, fiber: 10 } },
+                { name: 'Beeren', amount: 100, unit: 'g', status: 'benoetigt', macrosPer100g: { netCarbs: 8, fat: 0.3, protein: 0.7, fiber: 2 } }
+              ],
+              steps: [
+                'Haferflocken mit Wasser aufkochen.',
+                'Beeren unterheben und servieren.'
+              ],
+              prepTimeLabel: 'Zubereitungszeit'
+            });
+          } else {
+            click(q('.nutri-recipe-chat-card') || q('.nutri-recipe-hub-card'));
+          }
+        } catch (eKi) {}
+        await until(t0, 29.4);
+        closeAll();
+        await until(t0, 30.0);
+
+        // 30–35s: Routine
+        try {
+          if (typeof openRoutineOverlay === 'function') openRoutineOverlay();
+          else {
+            click(q('.meal-list-toggle') || findByText('button, a, div', 'Mein Teller heute'));
+            await sleep(500);
+            click(findByText('button, a, summary, span', 'Routine'));
+          }
+        } catch (eRou) {}
+        await until(t0, 34.2);
+        closeAll();
+        await sleep(250);
+        await until(t0, 34.6);
+
+        // 35–41s: 14-Tage-Protokoll
+        try {
+          if (typeof openOverlay === 'function') openOverlay('protocol');
+          else click(document.getElementById('protocol-btn'));
+          await sleep(500);
+          var startBtn = document.getElementById('pt-start-btn') || findByText('button', 'Protokoll starten');
+          if (startBtn) click(startBtn);
+        } catch (eProt) {}
+        await until(t0, 40.5);
+        closeAll();
+        await until(t0, 41.0);
+
+        // 41–44s: Rückkehr Hauptscreen
+        closeAll();
+        await until(t0, 44.0);
+        window.__lpDemoAutopilotDone = true;
+        writeMarker('story-done');
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () { setTimeout(run, 250); });
+      } else {
+        setTimeout(run, 250);
+      }
+    })();
+    """#
+
     static let jsonParseSafetyScript: String = """
     (function() {
       var nativeParse = JSON.parse;
@@ -1446,4 +2486,5 @@ extension LabPlateWebViewController {
     """
 }
 
-
+// RecipeDocumentScanCoordinator und RecipeTextReviewViewController
+// sind in RecipeTextScanner.swift definiert.
