@@ -171,26 +171,51 @@ function collapseShortLongIngredientForms(text, nameForms) {
 }
 
 /**
+ * Ob ein Verb die Zutat morphologisch schon enthält (salzen↔Salz, pfeffern↔Pfeffer).
+ * Kein Treffer bei "würzen mit Oregano" / "braten mit Butter".
+ */
+function verbImpliesIngredientStem(verb, ingredientForm) {
+  const v = String(verb || '').toLowerCase();
+  const form = String(ingredientForm || '').toLowerCase().trim();
+  if (!v || !form) return false;
+  const lastToken = form.split(/\s+/).filter(Boolean).pop() || form;
+  const stemLen = Math.min(5, Math.max(3, lastToken.length));
+  const stem = lastToken.slice(0, stemLen);
+  if (stem.length >= 3 && v.indexOf(stem) >= 0) return true;
+  const verbStem = v.replace(/(?:ieren|eln|ern|en)$/i, '');
+  if (verbStem.length >= 3 && (form.indexOf(verbStem) >= 0 || lastToken.indexOf(verbStem) >= 0)) {
+    return true;
+  }
+  return false;
+}
+
+/**
  * Nach nameOnly-Expansion: doppelte Namen, Rest-Klammern und Verb+Zutat glätten.
- * "Wasser (Wasser)" → "Wasser"; "salzen(Salz)" / "salzen Salz" → "salzen".
+ * "Wasser (Wasser)" → "Wasser"; "salzen(Salz)" / "salzen Salz" → "salzen";
+ * "pfeffern mit Schwarzer Pfeffer" → "pfeffern".
  */
 function collapseProseIngredientDuplicates(text, ingredientsById) {
   let out = String(text == null ? '' : text);
   const byId = ingredientsById || {};
   const allForms = [];
   const seen = {};
+  const aliasForms = [];
+
   Object.keys(byId).forEach(function (id) {
     const ing = byId[id];
     if (!ing) return;
     const raw = String(ing.name || '').trim();
-    const clean = proseIngredientName(raw, {
+    const opts = {
       pieces: ing._culinary_amount != null ? ing._culinary_amount : null,
       isEgg: isEggIngredientName(ing.name),
+    };
+    const clean = proseIngredientName(raw, opts);
+    ingredientNameAliases(raw, opts).forEach(function (a) {
+      allForms.push(a);
+      if (a && a.length >= 2) aliasForms.push(a);
     });
-    ingredientNameAliases(raw, {
-      pieces: ing._culinary_amount != null ? ing._culinary_amount : null,
-      isEgg: isEggIngredientName(ing.name),
-    }).forEach(function (a) { allForms.push(a); });
+    if (clean && clean.length >= 2) aliasForms.push(clean);
+
     if (!clean || clean.length < 2) return;
     const key = clean.toLowerCase();
     if (seen[key]) return;
@@ -201,25 +226,36 @@ function collapseProseIngredientDuplicates(text, ingredientsById) {
     // word(Name) geklebt
     out = out.replace(new RegExp('([A-Za-zÄÖÜäöüß]{2,})\\(\\s*' + re + '\\s*\\)', 'gi'), function (_m, word) {
       if (word.toLowerCase() === clean.toLowerCase()) return clean;
-      // Verb endet auf -en/-eln und Zutat ist kurz → nur Verb behalten (salzen(Salz) → salzen)
-      if (/(?:en|eln|ieren)$/i.test(word) && clean.length <= 14) {
-        const stem = clean.toLowerCase().slice(0, Math.min(4, clean.length));
-        if (stem.length >= 3 && word.toLowerCase().indexOf(stem) >= 0) return word;
-      }
+      if (/(?:ieren|eln|ern|en)$/i.test(word) && verbImpliesIngredientStem(word, clean)) return word;
       return word + ' ' + clean;
     });
-    // Verb + gleiche Zutat: "salzen Salz"
-    out = out.replace(
-      new RegExp('\\b([A-Za-zÄÖÜäöüß]{3,}(?:en|eln|ieren))\\s+' + re + '\\b', 'gi'),
-      function (_m, verb) {
-        const stem = clean.toLowerCase().slice(0, Math.min(4, clean.length));
-        if (stem.length >= 3 && verb.toLowerCase().indexOf(stem) >= 0) return verb;
-        return verb + ' ' + clean;
-      }
-    );
     // Doppelter Name hintereinander
     out = out.replace(new RegExp('\\b(' + re + ')(\\s+\\1)+\\b', 'gi'), '$1');
   });
+
+  // Verb + optional "mit (etwas|dem|der|den)" + Zutat-Alias → nur Verb
+  // Längere Aliase zuerst (Schwarzer Pfeffer vor Pfeffer)
+  const uniqueAliases = [];
+  aliasForms.forEach(function (a) {
+    const t = String(a || '').trim();
+    if (!t || t.length < 2) return;
+    if (!uniqueAliases.some(function (u) { return u.toLowerCase() === t.toLowerCase(); })) {
+      uniqueAliases.push(t);
+    }
+  });
+  uniqueAliases.sort(function (a, b) { return b.length - a.length; });
+  uniqueAliases.forEach(function (alias) {
+    const aRe = escapeRegExp(alias);
+    const bridge = '(?:\\s+mit(?:\\s+(?:etwas|dem|der|den))?)?';
+    out = out.replace(
+      new RegExp('\\b([A-Za-zÄÖÜäöüß]{3,}(?:ieren|eln|ern|en))' + bridge + '\\s+' + aRe + '\\b', 'gi'),
+      function (_m, verb) {
+        if (verbImpliesIngredientStem(verb, alias)) return verb;
+        return _m;
+      }
+    );
+  });
+
   out = collapseShortLongIngredientForms(out, allForms);
   // Generisch: beliebiges "Wort (Wort)"
   out = out.replace(/\b([A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß\-]{1,40})\s*\(\s*\1\s*\)/gi, '$1');
@@ -229,32 +265,161 @@ function collapseProseIngredientDuplicates(text, ingredientsById) {
 
 /**
  * Säubert Step-/Garnish-Prosa von Zutaten-Dopplungen (auch ohne Platzhalter).
- * Nutzt optionale Zutatenliste für Alias-Formen.
+ * Nutzt optionale Zutatenliste für Alias-Formen und Verb-Stutter.
  */
 function cleanupStepProseDuplicates(text, ingredients) {
   let out = String(text == null ? '' : text);
   if (!out) return out;
   const forms = [];
+  const byId = {};
+  let idx = 0;
   (Array.isArray(ingredients) ? ingredients : []).forEach(function (ing) {
     if (!ing) return;
-    ingredientNameAliases(ing.name || ing.displayName || '').forEach(function (a) {
+    const name = ing.name || ing.displayName || '';
+    ingredientNameAliases(name).forEach(function (a) {
       forms.push(a);
     });
+    const id = ing.id != null ? String(ing.id) : ('tmp' + (idx++));
+    byId[id] = { name: name, amount: ing.amount, unit: ing.unit };
   });
+  if (Object.keys(byId).length) {
+    out = collapseProseIngredientDuplicates(out, byId);
+  }
   out = collapseShortLongIngredientForms(out, forms);
   // Generisch ohne Zutatenliste: "Pfeffer Schwarzer Pfeffer" / "Salz Meersalz"
-  // Kurzform + (Adjektiv+Kurzform) → längere Form behalten
   out = out.replace(
     /\b([A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß\-]{2,30})\s+((?:[A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß\-]{1,30}\s+){1,3}\1)\b/gi,
     '$2'
   );
-  // "Name Name, zusatz" → "Name"
   out = out.replace(
     /\b([A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß\-]{1,40})\s+\1(\s*,\s*[A-Za-zÄÖÜäöüß][^.,;!?]{0,40})?/gi,
     '$1'
   );
   out = out.replace(/\s{2,}/g, ' ').replace(/\s+([.,;:!?])/g, '$1').trim();
   return out;
+}
+
+/**
+ * Entfernt feste Gramm-/Mengenangaben aus dem Zutatennamen (Listen-Display).
+ * "Kalbfleisch (Rinderbraten, ca. 600 g)" → "Kalbfleisch (Rinderbraten)"
+ * Qualitatives in Klammern bleibt; rein quantitative Klammern fallen weg.
+ */
+function cleanIngredientDisplayName(rawName) {
+  let name = String(rawName || '').trim();
+  if (!name) return '';
+  const qtyInParen = /(?:\bca\.?\s*\d)|(?:\d+[.,]?\d*\s*(?:g|kg|mg|ml|l|cl)\b)/i;
+  name = name.replace(/\s*\(([^)]*)\)/g, function (_full, inner) {
+    const parts = String(inner || '').split(',').map(function (p) { return p.trim(); }).filter(Boolean);
+    const kept = parts.filter(function (p) { return !qtyInParen.test(p); });
+    if (!kept.length) return '';
+    return ' (' + kept.join(', ') + ')';
+  });
+  // Freistehende Mengen-Anhängsel außerhalb von Klammern
+  name = name.replace(/,?\s*ca\.?\s*\d+[.,]?\d*\s*(?:g|kg|mg|ml|l|cl)\b/gi, '');
+  name = name.replace(/,?\s*\d+[.,]?\d*\s*(?:g|kg|mg|ml|l|cl)\b/gi, '');
+  name = name.replace(/\s{2,}/g, ' ').replace(/\s+,/g, ',').replace(/\(\s*\)/g, '').trim();
+  name = name.replace(/\s+\)/g, ')').replace(/\(\s+/g, '(');
+  return name || String(rawName || '').trim();
+}
+
+/**
+ * Soft-Repair: bereinigt ingredient/finalIngredient display names in-place.
+ * @returns {number} Anzahl geänderter Namen
+ */
+function normalizeRecipeIngredientNames(recipe) {
+  if (!recipe || typeof recipe !== 'object') return 0;
+  let changed = 0;
+  function run(field) {
+    const list = recipe[field];
+    if (!Array.isArray(list)) return;
+    list.forEach(function (ing) {
+      if (!ing || typeof ing !== 'object') return;
+      ['name', 'displayName'].forEach(function (key) {
+        if (ing[key] == null) return;
+        const cleaned = cleanIngredientDisplayName(ing[key]);
+        if (cleaned && cleaned !== ing[key]) {
+          ing[key] = cleaned;
+          changed += 1;
+        }
+      });
+    });
+  }
+  run('ingredients');
+  run('finalIngredients');
+  return changed;
+}
+
+/**
+ * Entfernt trailing "Garnitur: …" / "Garnish: …" aus Step-Prosa.
+ * @returns {{ text: string, extracted: string|null }}
+ */
+function stripTrailingGarnishLine(text) {
+  const raw = String(text == null ? '' : text);
+  let extracted = null;
+  const m = raw.match(/(?:Garnitur|Garnish)\s*:\s*([^\r\n.]+)\s*[.!]?\s*$/i);
+  if (m) {
+    extracted = String(m[1] || '').trim();
+  }
+  const out = raw
+    .replace(/(?:[\r\n]+\s*)?(?:Garnitur|Garnish)\s*:\s*[^\r\n.]+(?:\s*[.!]?)?\s*$/i, '')
+    .replace(/\s+$/g, '')
+    .trim();
+  return { text: out, extracted: extracted };
+}
+
+/**
+ * Integriert Garnitur-Echo: strippt Rohzeilen aus Steps, füllt garnish-Feld nur wenn leer
+ * und die Prosa die Garnitur nicht schon nennt.
+ * @returns {{ stripped: number, garnishSet: boolean }}
+ */
+function integrateStepGarnishEcho(recipe) {
+  const stats = { stripped: 0, garnishSet: false };
+  if (!recipe || typeof recipe !== 'object') return stats;
+  const extractedParts = [];
+  if (Array.isArray(recipe.steps)) {
+    recipe.steps = recipe.steps.map(function (step) {
+      if (step == null) return step;
+      if (typeof step === 'string') {
+        const r = stripTrailingGarnishLine(step);
+        if (r.extracted) {
+          stats.stripped += 1;
+          extractedParts.push(r.extracted);
+        }
+        return r.text;
+      }
+      const raw = step.content != null ? step.content
+        : (step.instruction != null ? step.instruction : '');
+      if (raw == null || raw === '') return step;
+      const r = stripTrailingGarnishLine(String(raw));
+      if (!r.extracted) return step;
+      stats.stripped += 1;
+      extractedParts.push(r.extracted);
+      const next = Object.assign({}, step);
+      if (step.content != null) next.content = r.text;
+      if (step.instruction != null) next.instruction = r.text;
+      return next;
+    });
+  }
+  if (!extractedParts.length) return stats;
+  const currentGarnish = String(recipe.garnish || '').trim();
+  if (currentGarnish) return stats;
+  const candidate = extractedParts[extractedParts.length - 1];
+  // Wenn letzter Step die Garnitur schon im Fließtext nennt → Feld nicht doppelnd füllen
+  const lastStep = Array.isArray(recipe.steps) && recipe.steps.length
+    ? recipe.steps[recipe.steps.length - 1]
+    : null;
+  const lastText = typeof lastStep === 'string'
+    ? lastStep
+    : String((lastStep && (lastStep.content || lastStep.instruction)) || '');
+  const candRe = new RegExp('\\b' + escapeRegExp(candidate.split(/[,;]/)[0].trim()) + '\\b', 'i');
+  if (candidate && candRe.test(lastText) &&
+      /\b(bestreuen|garnieren|darüber|darueber|anrichten|servieren|topping)\b/i.test(lastText)) {
+    recipe.garnish = '';
+    return stats;
+  }
+  recipe.garnish = candidate;
+  stats.garnishSet = true;
+  return stats;
 }
 
 /**
@@ -1824,6 +1989,11 @@ module.exports = {
   collapseProseIngredientDuplicates: collapseProseIngredientDuplicates,
   collapseShortLongIngredientForms: collapseShortLongIngredientForms,
   cleanupStepProseDuplicates: cleanupStepProseDuplicates,
+  verbImpliesIngredientStem: verbImpliesIngredientStem,
+  cleanIngredientDisplayName: cleanIngredientDisplayName,
+  normalizeRecipeIngredientNames: normalizeRecipeIngredientNames,
+  stripTrailingGarnishLine: stripTrailingGarnishLine,
+  integrateStepGarnishEcho: integrateStepGarnishEcho,
   ingredientNameAliases: ingredientNameAliases,
   mergeDuplicateIngredients: mergeDuplicateIngredients,
   dedupeRecipeIngredients: dedupeRecipeIngredients,

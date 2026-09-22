@@ -165,6 +165,138 @@ ok(
   console.log('OK QualityGate Step-Cleanup + DE-Lokalisierung');
 })();
 
+// --- 3b) Vitello Tonnato Regression: Verb-Stutter, Mengen im Namen, Garnitur-Echo ---
+(function () {
+  assert.strictEqual(
+    validator.cleanIngredientDisplayName('Kalbfleisch (Rinderbraten, ca. 600 g)'),
+    'Kalbfleisch (Rinderbraten)',
+    'cleanIngredientDisplayName behält Qualität, streicht ca. 600 g'
+  );
+  assert.strictEqual(
+    validator.cleanIngredientDisplayName('Thunfisch (ca. 200 g)'),
+    'Thunfisch',
+    'rein quantitative Klammer fällt weg'
+  );
+
+  const ings = [
+    { id: '0001', name: 'Kalbfleisch (Rinderbraten, ca. 600 g)', amount: 600, unit: 'g' },
+    { id: '0002', name: 'Salz', amount: 0, unit: 'prise' },
+    { id: '0003', name: 'Schwarzer Pfeffer', amount: 0, unit: 'prise' },
+    { id: '0004', name: 'Petersilie', amount: 10, unit: 'g' },
+  ];
+
+  const verbOut = validator.cleanupStepProseDuplicates(
+    'Ein großer Topf mit Wasser füllen, Weißweinessig hinzufügen, leicht salzen Salz und pfeffern mit Schwarzer Pfeffer.',
+    ings
+  );
+  assert.ok(!/salzen\s+Salz/i.test(verbOut), 'kein salzen Salz: ' + verbOut);
+  assert.ok(!/pfeffern\s+mit\s+Schwarzer\s+Pfeffer/i.test(verbOut), 'kein pfeffern mit Pfeffer: ' + verbOut);
+  assert.ok(/\bleicht\s+salzen\b/i.test(verbOut), 'salzen bleibt: ' + verbOut);
+  assert.ok(/\bpfeffern\b/i.test(verbOut), 'pfeffern bleibt: ' + verbOut);
+  // Keine Kollateralschäden
+  assert.ok(
+    /würzen mit Oregano/.test(
+      validator.cleanupStepProseDuplicates('würzen mit Oregano.', [
+        { name: 'Oregano' }, { name: 'Salz' },
+      ])
+    ),
+    'würzen mit Oregano bleibt'
+  );
+
+  const recipe = {
+    title: 'Vitello Tonnato',
+    servings: 4,
+    garnish: '',
+    ingredients: JSON.parse(JSON.stringify(ings)),
+    finalIngredients: [
+      { name: 'Kalbfleisch (Rinderbraten, ca. 600 g)', amount: 150, unit: 'g' },
+      { name: 'Salz', amount: 0, unit: 'prise' },
+      { name: 'Schwarzer Pfeffer', amount: 0, unit: 'prise' },
+      { name: 'Petersilie', amount: 3, unit: 'g' },
+    ],
+    steps: [
+      {
+        content:
+          'Ein großer Topf mit Wasser füllen, Weißweinessig hinzufügen, leicht salzen Salz und pfeffern mit Schwarzer Pfeffer.',
+      },
+      {
+        content:
+          'Die kalten Kalbfleisch-Scheiben gleichmäßig mit der Tonnato-Sauce bestreichen. Mit etwas Petersilie bestreuen.\nGarnitur: Petersilie',
+      },
+    ],
+    finalServings: 1,
+    sourceServings: 4,
+    sourceServingsStatus: 'explicit',
+    servingsStatus: 'scaled',
+    nutritionSource: 'finalIngredients',
+    finalNutrition: { calories: 420, protein: 35, fat: 22, netCarbs: 4, fiber: 1 },
+    nutrition: { kcal: 420, protein_g: 35, fat_g: 22, netto_kh_g: 4, ballaststoffe_g: 1 },
+  };
+
+  gate.evaluateRecipeQuality(recipe);
+
+  const nameAfter = String(recipe.finalIngredients[0].name || '');
+  assert.ok(!/600\s*g/i.test(nameAfter), 'kein 600 g im skalierten Namen: ' + nameAfter);
+  assert.ok(/Kalbfleisch/i.test(nameAfter), 'Kalbfleisch bleibt: ' + nameAfter);
+  assert.strictEqual(Number(recipe.finalIngredients[0].amount), 150, 'amount 150 g unverändert');
+
+  const step0 = String(recipe.steps[0].content || '');
+  assert.ok(!/salzen\s+Salz/i.test(step0), 'Gate: kein salzen Salz: ' + step0);
+  assert.ok(!/pfeffern\s+mit\s+Schwarzer\s+Pfeffer/i.test(step0), 'Gate: kein pfeffern-mit: ' + step0);
+
+  const step1 = String(recipe.steps[1].content || '');
+  assert.ok(!/Garnitur\s*:/i.test(step1), 'keine Garnitur-Rohzeile: ' + step1);
+  assert.ok(/Petersilie\s+bestreuen/i.test(step1), 'Fließtext-Garnitur bleibt: ' + step1);
+  assert.ok(!String(recipe.garnish || '').trim() || !/Garnitur\s*:/i.test(String(recipe.garnish)),
+    'garnish-Feld ohne Rohzeile');
+
+  // Pipeline-Render: Name + Steps sauber
+  const pipeline = require('./recipe-pipeline-v92');
+  const rendered = pipeline.renderRecipeForDisplay({
+    title: 'Vitello Tonnato',
+    servings: 4,
+    garnish: '',
+    chef_analysis: 'Klassiker.',
+    ingredients: [
+      { id: '0001', name: 'Kalbfleisch (Rinderbraten, ca. 600 g)', amount: 600, unit: 'g', protein: 22, fat: 8, netCarbs: 0, fiber: 0 },
+      { id: '0002', name: 'Salz', amount: 0, unit: 'prise', protein: 0, fat: 0, netCarbs: 0, fiber: 0 },
+      { id: '0003', name: 'Schwarzer Pfeffer', amount: 0, unit: 'prise', protein: 0, fat: 0, netCarbs: 0, fiber: 0 },
+      { id: '0004', name: 'Petersilie', amount: 10, unit: 'g', protein: 3, fat: 0.4, netCarbs: 3, fiber: 2 },
+      { id: '0005', name: 'Weißweinessig', amount: 40, unit: 'ml', protein: 0, fat: 0, netCarbs: 0.5, fiber: 0 },
+    ],
+    steps: [
+      {
+        title: 'Sud',
+        content: 'Topf mit Wasser und {0005} füllen, leicht salzen {0002} und pfeffern mit {0003}.',
+        stove_level: 4,
+        time_min: 10,
+      },
+      {
+        title: 'Anrichten',
+        content: 'Scheiben mit Sauce bestreichen. Mit etwas {0004} bestreuen.\nGarnitur: {0004}',
+        stove_level: 0,
+        time_min: 5,
+      },
+    ],
+  }, { targetServings: 1 });
+
+  assert.ok(rendered, 'render ok');
+  const kalb = (rendered.finalIngredients || rendered.ingredients || []).find(function (i) {
+    return /Kalbfleisch/i.test(i.name || i.displayName || '');
+  });
+  assert.ok(kalb, 'Kalbfleisch in Render');
+  assert.ok(!/600\s*g/i.test(String(kalb.name || kalb.displayName)), 'Render ohne 600 g im Namen');
+  assert.ok(Math.abs(Number(kalb.amount) - 150) < 0.6, 'skaliert ~150 g: ' + kalb.amount);
+
+  const joined = (rendered.steps || []).join(' ');
+  assert.ok(!/salzen\s+Salz/i.test(joined), 'Render ohne salzen Salz: ' + joined);
+  assert.ok(!/pfeffern\s+mit\s+/i.test(joined), 'Render ohne pfeffern mit: ' + joined);
+  assert.ok(!/Garnitur\s*:/i.test(joined), 'Render ohne Garnitur-Rohzeile: ' + joined);
+  assert.ok(!/Garnitur\s*:/i.test(String(rendered.garnish || '')), 'Render garnish ohne Prefix');
+
+  console.log('OK Vitello-Tonnato Regression (Verb/Name/Garnitur)');
+})();
+
 // --- 4) Coach defaults to DE ---
 (async function () {
   const sample = {

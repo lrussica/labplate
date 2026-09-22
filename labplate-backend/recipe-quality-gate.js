@@ -456,9 +456,11 @@ function validateAndCleanStepStutter(recipe) {
   const stutterRe = /\b([A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß\-]{1,40})\s+\1\b/i;
 
   const nextSteps = steps.map(function (step, i) {
-    const text = stepInstruction(step);
+    let text = stepInstruction(step);
     if (!text) return step;
-    const cleaned = validator.cleanupStepProseDuplicates(text, ings);
+    let cleaned = validator.cleanupStepProseDuplicates(text, ings);
+    const garnishStrip = validator.stripTrailingGarnishLine(cleaned);
+    if (garnishStrip.extracted) cleaned = garnishStrip.text;
     if (cleaned !== text || stutterRe.test(text)) {
       if (cleaned !== text) {
         cleanedCount += 1;
@@ -486,9 +488,30 @@ function validateAndCleanStepStutter(recipe) {
   });
 
   if (cleanedCount > 0) {
-    // Bereinigt → PASS (Auto-Repair), Issues nur intern fürs Logging
     recipe._stepStutterCleaned = (recipe._stepStutterCleaned || 0) + cleanedCount;
     return checkResult(CHECK_STATUS.PASS, []);
+  }
+  return checkResult(CHECK_STATUS.PASS, []);
+}
+
+/**
+ * Soft-Repair: Mengenangaben aus Zutatennamen entfernen.
+ */
+function validateAndCleanIngredientNames(recipe) {
+  const n = validator.normalizeRecipeIngredientNames(recipe);
+  if (n > 0) {
+    recipe._ingredientNamesCleaned = n;
+  }
+  return checkResult(CHECK_STATUS.PASS, []);
+}
+
+/**
+ * Soft-Repair: trailing "Garnitur: …"-Zeilen aus Steps integrieren.
+ */
+function validateAndCleanGarnishEcho(recipe) {
+  const stats = validator.integrateStepGarnishEcho(recipe);
+  if (stats.stripped > 0) {
+    recipe._garnishEchoStripped = stats.stripped;
   }
   return checkResult(CHECK_STATUS.PASS, []);
 }
@@ -751,9 +774,11 @@ function evaluateRecipeQuality(recipe, opts) {
     portions: validatePortions(recipe),
     nutrition: validateNutrition(recipe),
     allergens: validateAllergens(recipe, opts),
+    ingredientNames: validateAndCleanIngredientNames(recipe),
     ingredientDedupe: validateAndDedupeIngredients(recipe),
     ingredients: validateIngredientConsistency(recipe),
     classicCompleteness: validateClassicCompleteness(recipe, opts),
+    garnishEcho: validateAndCleanGarnishEcho(recipe),
     instructions: validateInstructions(recipe),
     stepStutter: validateAndCleanStepStutter(recipe),
     timing: validateTiming(recipe),
@@ -918,6 +943,8 @@ module.exports = {
   validateIngredientConsistency: validateIngredientConsistency,
   validateInstructions: validateInstructions,
   validateAndCleanStepStutter: validateAndCleanStepStutter,
+  validateAndCleanIngredientNames: validateAndCleanIngredientNames,
+  validateAndCleanGarnishEcho: validateAndCleanGarnishEcho,
   validateAndDedupeIngredients: validateAndDedupeIngredients,
   sanitizeGermanCoachMessages: sanitizeGermanCoachMessages,
   validateClassicCompleteness: validateClassicCompleteness,

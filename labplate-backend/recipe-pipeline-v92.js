@@ -203,9 +203,11 @@ function isEggIngredient(name) {
  */
 function renderRecipeForDisplay(recipe, renderOpts) {
   if (!recipe || typeof recipe !== 'object') return null;
-  // Identische Zutaten vor Skalierung zusammenfassen
+  // Identische Zutaten vor Skalierung zusammenfassen + Mengen aus Namen streichen
   try {
+    validator.normalizeRecipeIngredientNames(recipe);
     validator.dedupeRecipeIngredients(recipe);
+    validator.integrateStepGarnishEcho(recipe);
   } catch (_) { /* best effort */ }
   const ingredientsIn = Array.isArray(recipe.ingredients) ? recipe.ingredients : [];
   if (!ingredientsIn.length) return null;
@@ -216,7 +218,9 @@ function renderRecipeForDisplay(recipe, renderOpts) {
 
   // Rohzutaten mit Original-Einheiten (Skalierung VOR stk→g).
   const sourceIngredients = ingredientsIn.map(function (ing) {
-    const name = String(ing.name || 'Zutat').trim().slice(0, 200);
+    const name = validator.cleanIngredientDisplayName(
+      String(ing.name || 'Zutat').trim().slice(0, 200)
+    ) || String(ing.name || 'Zutat').trim().slice(0, 200);
     let amount = Number(ing.amount);
     if (!Number.isFinite(amount) || amount < 0) amount = 0;
     let unit = ing.unit;
@@ -453,6 +457,8 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     let content = validator.resolvePlaceholders(s.content || '', byIdForProse, { nameOnly: true });
     content = validator.stripQuantityMentionsFromText(content);
     content = validator.smoothProseIngredientGrammar(content);
+    content = validator.cleanupStepProseDuplicates(content, ingredients);
+    content = validator.stripTrailingGarnishLine(content).text;
     const title = String(s.title || '').trim();
     const titleLower = title.toLowerCase();
 
@@ -550,6 +556,15 @@ function renderRecipeForDisplay(recipe, renderOpts) {
   // Keine Schein-Garnitur nur aus Öl/Salz
   if (/^(das\s+)?(olivenöl|öl|salz|pfeffer)\.?$/i.test(String(garnish || '').trim())) {
     garnish = '';
+  }
+  // Keine doppelte Garnitur, wenn letzter Step sie bereits im Fließtext nennt
+  if (garnish && steps.length) {
+    const lastStepText = String(steps[steps.length - 1] || '');
+    const gCore = String(garnish).split(/[,;]/)[0].trim();
+    if (gCore && new RegExp('\\b' + gCore.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i').test(lastStepText) &&
+        /\b(bestreuen|garnieren|darüber|darueber|anrichten)\b/i.test(lastStepText)) {
+      garnish = '';
+    }
   }
   let note = validator.resolvePlaceholders(recipe.chef_analysis || '', byIdForProse, { nameOnly: true });
   note = validator.smoothProseIngredientGrammar(validator.stripQuantityMentionsFromText(note));
