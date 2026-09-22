@@ -1,0 +1,22 @@
+# LABPLATE — SYSTEM INSTRUCTIONS & AGENTIC BEHAVIOR
+
+## DIE 8 UNVERRÜCKBAREN ARBEITSPRINZIPIEN
+1. DIE GESAMTE AUFGABE AUF EINMAL BESCHREIBEN: Ziel, Kontext und Kern-Constraints klar fassen; beste technische Umsetzung autonom wählen.
+2. BEI KOMPLEXEN AUFGABEN ZUERST RÜCKFRAGEN: Bei unklaren Requirements, Tech-Stack-Details oder Edge Cases erst klären, bevor Kernlogik angefasst wird.
+3. DAS WARUM ERKLÄREN: Nutzerwert und Business-Ziele (kulinarische Qualität, flüssige UX) vor blinden Code-Edits priorisieren.
+4. KLARE ABSCHLUSSKRITERIEN DEFINIEREN: Fertig erst wenn Fix/Feature verifiziert und getestet ist und bestehende Features nicht bricht. Explizit nennen, was NICHT geändert werden darf.
+5. BEGRÜNDUNGEN STATT STARRER VERBOTE: Klare Justifications statt starrer Verbote, damit Edge Cases flexibel handhabbar bleiben.
+6. ALTE PROMPT-TECHNIKEN REDUZIEREN: Kein Prompt-Fluff, keine unnötige Ritualsprache; Fokus auf Substanz.
+7. ANTWORTSTIL ZENTRAL: Antworten fokussiert, kurz, präzise. Nur Schlüsseländerungen, Entscheidungen, Probleme und nächste Schritte erklären.
+8. VOLLSTÄNDIGER DEPLOYMENT-ZYKLUS (GIT-PUSH-GARANTIE):
+   - Eine funktionierende Änderung ist erst abgeschlossen, wenn alle neu erstellten und geänderten Feature-/Korrektur-Dateien staged, committed und erfolgreich auf `origin/main` gepusht sind — damit Render das Live-Deployment starten kann.
+   - Es dürfen niemals funktionierende Features oder Korrektur-Module nur lokal als untracked/uncommitted liegen bleiben.
+   - Staging: alle relevanten Code-/Config-/Testdateien der Task erfassen. Begründet ausnehmen (Prinzip 5): Schwergut wie `DemoVideos/`, `build/`, Binaries, Secrets (`.env`), Caches — niemals mit in den Commit ziehen.
+   - Task = erledigt erst nach erfolgreichem Push (bzw. explizitem User-Hinweis, falls Push blockiert wurde).
+
+## PROJECT CONTEXT & CORE RULES
+- DESIGN SYSTEM: Sleek, dark-mode-first aesthetic (Apple-level). Badges/Pills MUST use black background (#000000 / rgba(0,0,0,0.6)), white text (#FFFFFF), thin white borders (border: 1px solid rgba(255, 255, 255, 0.15)), and fully rounded corners.
+- CHEF-FRAMEWORK v9.2: Recipes default to 4 servings and scale deterministically to 1 serving via backend. No invented garnishes in steps that aren't in ingredients. Step placeholders {ingredient_id} must resolve cleanly without duplicate names.
+- CULINARY HONESTY & ALLERGENS: Never force unappetizing/unauthentic ingredient swaps (e.g. chicken/tofu in cream sauces) just to meet an allergen rule. If no authentic alternative exists, issue an honest refusal. QualityGate must not block valid lactose-free recipes just because terms like "Creme" appear in titles.
+- CLASSIC MASTER STORE: Bekannte Klassiker kommen aus `data/master_recipes.json` (immutable cores). LLM nur Adaption (Portionen/Übersetzung/ehrliche Allergen-Swaps), nie Gerüst-Halluzination.
+- DEPLOYMENT: Git sauber halten. Render-Backend (https://labplate.onrender.com) nach Push synchron halten. Niemals `DemoVideos/` oder `build/` stagen.
