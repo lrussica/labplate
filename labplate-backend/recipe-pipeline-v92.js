@@ -306,7 +306,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
         Number.isFinite(amount) && amount >= 80 && protein > Math.max(40, amount * 0.5)) {
       protein = 20; fat = Math.min(fat > 0 ? fat : 15, 15); netCarbs = 0; fiber = 0;
     }
-    if (unit === 'stk' || (unit == null && isEggIngredient(name))) {
+    if (isEggIngredient(name) && (unit === 'stk' || unit == null)) {
       let pieces = Number.isFinite(amount) && amount > 0 ? Math.max(1, Math.round(amount)) : 1;
       // Name kann bereits „10 Eier“ tragen, obwohl amount=1
       const namePieces = String(name).match(/^\s*(\d+)\s*eier?\b/i);
@@ -364,6 +364,21 @@ function renderRecipeForDisplay(recipe, renderOpts) {
         macrosPer100g: { netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
         _v92_id: ing.id,
         _protein_source: !!ing.protein_source,
+      };
+    }
+    // Nicht-Ei Stückware (Lorbeerblatt, Nelken, …) — nicht als Eier umschreiben
+    if (unit === 'stk') {
+      const pieces = Number.isFinite(amount) && amount > 0 ? Math.max(1, Math.round(amount)) : 1;
+      return {
+        name: name,
+        amount: pieces,
+        unit: 'stk',
+        status: 'benoetigt',
+        macrosPer100g: { netCarbs: netCarbs, fat: fat, protein: protein, fiber: fiber },
+        _v92_id: ing.id,
+        _protein_source: !!ing.protein_source,
+        _culinary_amount: pieces,
+        _culinary_unit: 'stk',
       };
     }
     if (!Number.isFinite(amount) || amount < 0) amount = 0;
@@ -436,7 +451,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     const pieces = ing._culinary_amount != null ? Number(ing._culinary_amount) : null;
     const proseName = validator.proseIngredientName(ing.name, {
       pieces: pieces,
-      isEgg: !!ing._discrete || validator.isEggIngredientName(ing.name),
+      isEgg: validator.isEggIngredientName(ing.name),
     });
     byIdForProse[String(ing._v92_id)] = {
       id: ing._v92_id,
@@ -444,7 +459,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
       amount: 0,
       unit: '',
       _culinary_amount: pieces,
-      _discrete: !!ing._discrete,
+      _discrete: !!ing._discrete && validator.isEggIngredientName(ing.name),
     };
   });
 

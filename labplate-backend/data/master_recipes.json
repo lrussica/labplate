@@ -9064,6 +9064,440 @@
         "anchovy",
         "dijon"
       ]
+    },
+    {
+      "id": "vitello_tonnato",
+      "cuisine": "it",
+      "region": "Piemont",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "vitello tonnato",
+          "vitello tonnato klassisch",
+          "kalbfleisch thunfischsauce",
+          "kalb thunfisch"
+        ],
+        "en": [
+          "vitello tonnato",
+          "veal with tuna sauce",
+          "cold veal tuna sauce"
+        ],
+        "fr": [
+          "vitello tonnato",
+          "veau thonné",
+          "veau au thon"
+        ],
+        "it": [
+          "vitello tonnato",
+          "vitel tonnè",
+          "vitello al tonno"
+        ],
+        "tr": [
+          "vitello tonnato",
+          "ton balıklı dana"
+        ]
+      },
+      "titles": {
+        "de": "Vitello Tonnato",
+        "en": "Vitello Tonnato",
+        "fr": "Vitello Tonnato",
+        "it": "Vitello Tonnato",
+        "tr": "Vitello Tonnato"
+      },
+      "servings": 4,
+      "prep_time_min": 100,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Kalbfleisch (Keule, ohne Knochen)",
+            "en": "Veal (leg, boneless)",
+            "fr": "Veau (cuisse, désossé)",
+            "it": "Vitello (coscia, disossato)",
+            "tr": "Dana eti (kemiksiz but)"
+          },
+          "amount": 720,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 5,
+          "protein": 22,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Wasser",
+            "en": "Water",
+            "fr": "Eau",
+            "it": "Acqua",
+            "tr": "Su"
+          },
+          "amount": 2000,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Weißwein",
+            "en": "White wine",
+            "fr": "Vin blanc",
+            "it": "Vino bianco",
+            "tr": "Beyaz şarap"
+          },
+          "amount": 200,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0.5,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Sellerie",
+            "en": "Celery",
+            "fr": "Céleri",
+            "it": "Sedano",
+            "tr": "Kereviz"
+          },
+          "amount": 80,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1.5,
+          "fat": 0.2,
+          "protein": 0.7,
+          "fiber": 1.5,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Karotte",
+            "en": "Carrot",
+            "fr": "Carotte",
+            "it": "Carota",
+            "tr": "Havuç"
+          },
+          "amount": 80,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 6.5,
+          "fat": 0.2,
+          "protein": 0.9,
+          "fiber": 2.8,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Zwiebel",
+            "en": "Onion",
+            "fr": "Oignon",
+            "it": "Cipolla",
+            "tr": "Soğan"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 7,
+          "fat": 0.1,
+          "protein": 1.1,
+          "fiber": 1.7,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Lorbeerblatt",
+            "en": "Bay leaf",
+            "fr": "Feuille de laurier",
+            "it": "Alloro",
+            "tr": "Defne yaprağı"
+          },
+          "amount": 2,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Schwarzer Pfeffer",
+            "en": "Black pepper",
+            "fr": "Poivre noir",
+            "it": "Pepe nero",
+            "tr": "Karabiber"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Thunfisch in Öl (abgetropft)",
+            "en": "Tuna in oil (drained)",
+            "fr": "Thon à l'huile (égoutté)",
+            "it": "Tonno all'olio (sgocciolato)",
+            "tr": "Yağda ton balığı (süzülmüş)"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 8,
+          "protein": 25,
+          "fiber": 0,
+          "allergenTags": [
+            "fish"
+          ],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Mayonnaise",
+            "en": "Mayonnaise",
+            "fr": "Mayonnaise",
+            "it": "Maionese",
+            "tr": "Mayonez"
+          },
+          "amount": 180,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 75,
+          "protein": 1,
+          "fiber": 0,
+          "allergenTags": [
+            "egg"
+          ],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Kapern",
+            "en": "Capers",
+            "fr": "Câpres",
+            "it": "Capperi",
+            "tr": "Kapari"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 0.5,
+          "protein": 2,
+          "fiber": 3,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0013",
+          "names": {
+            "de": "Sardellenfilets",
+            "en": "Anchovy fillets",
+            "fr": "Filets d'anchois",
+            "it": "Filetti di acciuga",
+            "tr": "Hamsi fileto"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 5,
+          "protein": 20,
+          "fiber": 0,
+          "allergenTags": [
+            "fish"
+          ],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0014",
+          "names": {
+            "de": "Zitronensaft",
+            "en": "Lemon juice",
+            "fr": "Jus de citron",
+            "it": "Succo di limone",
+            "tr": "Limon suyu"
+          },
+          "amount": 30,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 0,
+          "protein": 0.3,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0015",
+          "names": {
+            "de": "Olivenöl",
+            "en": "Olive oil",
+            "fr": "Huile d'olive",
+            "it": "Olio d'oliva",
+            "tr": "Zeytinyağı"
+          },
+          "amount": 20,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Sud",
+            "en": "Court bouillon",
+            "fr": "Court-bouillon",
+            "it": "Brodo aromatico",
+            "tr": "Aromatik su"
+          },
+          "content": {
+            "de": "{0002} mit {0003}, {0004}, {0005}, {0006}, {0007}, {0008} und {0009} aufkochen.",
+            "en": "Bring {0002} to a boil with {0003}, {0004}, {0005}, {0006}, {0007}, {0008} and {0009}.",
+            "fr": "Porter {0002} à ébullition avec {0003}, {0004}, {0005}, {0006}, {0007}, {0008} et {0009}.",
+            "it": "Portare a bollore {0002} con {0003}, {0004}, {0005}, {0006}, {0007}, {0008} e {0009}.",
+            "tr": "{0002} ile {0003}, {0004}, {0005}, {0006}, {0007}, {0008} ve {0009} kaynat."
+          },
+          "stove_level": 5,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Kalbfleisch pochen",
+            "en": "Poach the veal",
+            "fr": "Pocher le veau",
+            "it": "Bollire il vitello",
+            "tr": "Danayı haşla"
+          },
+          "content": {
+            "de": "{0001} in den Sud legen und bei mittlerer Hitze etwa 60 Minuten sanft köcheln, bis es zart ist. Herausnehmen, abkühlen und dünn aufschneiden.",
+            "en": "Add {0001} to the bouillon and simmer gently about 60 minutes until tender. Remove, cool and slice thinly.",
+            "fr": "Ajouter {0001} et mijoter environ 60 minutes. Retirer, refroidir et trancher finement.",
+            "it": "Aggiungere {0001} e cuocere dolcemente circa 60 minuti. Togliere, raffreddare e affettare sottilmente.",
+            "tr": "{0001} ekle; yaklaşık 60 dakika kısık ateşte pişir. Çıkar, soğut, ince dilimle."
+          },
+          "stove_level": 3,
+          "time_min": 65
+        },
+        {
+          "title": {
+            "de": "Tonnato-Sauce",
+            "en": "Tuna sauce",
+            "fr": "Sauce thon",
+            "it": "Salsa tonnata",
+            "tr": "Ton sosu"
+          },
+          "content": {
+            "de": "{0010}, {0011}, {0012}, {0013}, {0014} und {0015} zu einer glatten Sauce pürieren.",
+            "en": "Blend {0010}, {0011}, {0012}, {0013}, {0014} and {0015} into a smooth sauce.",
+            "fr": "Mixer {0010}, {0011}, {0012}, {0013}, {0014} et {0015} en sauce lisse.",
+            "it": "Frullare {0010}, {0011}, {0012}, {0013}, {0014} e {0015} fino a salsa liscia.",
+            "tr": "{0010}, {0011}, {0012}, {0013}, {0014} ve {0015} pürüzsüz sos yap."
+          },
+          "stove_level": 0,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Anrichten",
+            "en": "Plate",
+            "fr": "Dresser",
+            "it": "Impiattare",
+            "tr": "Servis"
+          },
+          "content": {
+            "de": "Kalbfleischscheiben mit der Tonnato-Sauce bedecken und mit weiteren {0012} garnieren.",
+            "en": "Cover veal slices with tuna sauce and garnish with more {0012}.",
+            "fr": "Napper les tranches de sauce et garnir de {0012}.",
+            "it": "Coprire le fette con la salsa e guarnire con {0012}.",
+            "tr": "Dilimleri sosla kapla; {0012} ile süsle."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        }
+      ],
+      "garnish": {
+        "de": "",
+        "en": "",
+        "fr": "",
+        "it": "",
+        "tr": ""
+      },
+      "chef_analysis": {
+        "de": "Piemonteser Klassiker: pochiertes Kalbfleisch mit Thunfisch-Kapern-Sauce (Mayonnaise, Sardellen, Zitrone).",
+        "en": "Piedmont classic: poached veal with tuna-caper sauce (mayonnaise, anchovies, lemon).",
+        "fr": "Classique piémontais: veau poché, sauce thon-câpres (mayonnaise, anchois, citron).",
+        "it": "Classico piemontese: vitello lessato, salsa tonno-capperi (maionese, acciughe, limone).",
+        "tr": "Piemonte klasiği: haşlanmış dana, ton-kapari sosu (mayonez, hamsi, limon)."
+      },
+      "diet_labels": [],
+      "coreComponents": [
+        "veal",
+        "tuna",
+        "mayonnaise",
+        "capers",
+        "anchovy",
+        "lemon",
+        "court_bouillon"
+      ]
     }
   ]
 }

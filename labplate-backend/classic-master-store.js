@@ -161,9 +161,6 @@ function buildFromMaster(payload, opts) {
   const lang = normalizeLang((payload && payload.lang) || o.lang || 'de');
   const master = match.recipe;
   const sourceServings = Number(master.servings) > 0 ? Number(master.servings) : 4;
-  const targetServings = Number(o.targetServings) > 0
-    ? Number(o.targetServings)
-    : sourceServings;
 
   let ingredients = (master.ingredients || []).map(function (ing) {
     const name = pickLocalized(ing.names, lang);
@@ -206,21 +203,9 @@ function buildFromMaster(payload, opts) {
     return copy;
   });
 
-  const scale = targetServings / sourceServings;
-  if (scale !== 1) {
-    ingredients = ingredients.map(function (ing) {
-      const unit = String(ing.unit || '');
-      if (unit === 'prise' || unit === 'messerspitze') return ing;
-      let amount = Number(ing.amount) || 0;
-      if (unit === 'stk') {
-        amount = Math.max(1, Math.round(amount * scale));
-      } else {
-        amount = Math.round(amount * scale * 10) / 10;
-      }
-      return Object.assign({}, ing, { amount: amount });
-    });
-  }
-
+  // Mengen bleiben auf Master-Portionen (sourceServings).
+  // Skalierung auf targetServings macht ausschließlich renderRecipeForDisplay —
+  // sonst droht Doppel-Skalierung (720 g → 180 g → 45 g).
   const steps = (master.steps || []).map(function (s) {
     return {
       title: pickLocalized(s.title, lang),
@@ -233,6 +218,10 @@ function buildFromMaster(payload, opts) {
   const recipe = {
     title: pickLocalized(master.titles, lang),
     servings: sourceServings,
+    sourceServings: sourceServings,
+    sourceServingsStatus: 'explicit',
+    sourceServingsMethod: 'master_explicit',
+    sourceServingsConfidence: 1,
     prep_time_min: Number(master.prep_time_min) || 0,
     ingredients: ingredients,
     steps: steps,
@@ -261,7 +250,7 @@ function buildFromMaster(payload, opts) {
     ok: true,
     recipe: recipe,
     match: match,
-    scale: scale,
+    scale: 1,
     lang: lang,
     temperature: 0,
     recipeSource: 'master-classic',

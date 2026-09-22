@@ -302,6 +302,7 @@ function cleanupStepProseDuplicates(text, ingredients) {
 /**
  * Entfernt feste Gramm-/Mengenangaben aus dem Zutatennamen (Listen-Display).
  * "Kalbfleisch (Rinderbraten, ca. 600 g)" → "Kalbfleisch (Rinderbraten)"
+ * "1 Ei (Größe M, ca. 60 g)" → "Ei"
  * Qualitatives in Klammern bleibt; rein quantitative Klammern fallen weg.
  */
 function cleanIngredientDisplayName(rawName) {
@@ -319,7 +320,41 @@ function cleanIngredientDisplayName(rawName) {
   name = name.replace(/,?\s*\d+[.,]?\d*\s*(?:g|kg|mg|ml|l|cl)\b/gi, '');
   name = name.replace(/\s{2,}/g, ' ').replace(/\s+,/g, ',').replace(/\(\s*\)/g, '').trim();
   name = name.replace(/\s+\)/g, ')').replace(/\(\s+/g, '(');
+
+  // Ei: führende Stückzahl + Größenklammer streichen → nur "Ei"/"Eier"
+  if (isEggIngredientName(name) || isEggIngredientName(rawName)) {
+    name = name.replace(/^\d+[.,]?\d*\s+/, '').trim();
+    name = name.replace(/\s*\((?:Größe|Groesse|Size)[^)]*\)/gi, '').trim();
+    if (/^eier\b/i.test(name) || /\beier\b/i.test(name)) name = 'Eier';
+    else if (/^ei\b/i.test(name) || isEggIngredientName(rawName)) name = 'Ei';
+  }
+
   return name || String(rawName || '').trim();
+}
+
+/**
+ * Soft-Repair: Salz/Pfeffer mit unit g und amount 0 → prise.
+ */
+function normalizeSeasoningUnits(recipe) {
+  if (!recipe || typeof recipe !== 'object') return 0;
+  let changed = 0;
+  function run(field) {
+    const list = recipe[field];
+    if (!Array.isArray(list)) return;
+    list.forEach(function (ing) {
+      if (!ing || !isSeasoningSaltOrPepperName(ing.name)) return;
+      const unit = String(ing.unit || '').toLowerCase();
+      if (unit === 'prise' || unit === 'messerspitze') return;
+      if (unit === 'g' || unit === 'ml' || !unit) {
+        ing.unit = 'prise';
+        if (!Number.isFinite(Number(ing.amount)) || Number(ing.amount) <= 0) ing.amount = 0;
+        changed += 1;
+      }
+    });
+  }
+  run('ingredients');
+  run('finalIngredients');
+  return changed;
 }
 
 /**
@@ -346,6 +381,7 @@ function normalizeRecipeIngredientNames(recipe) {
   }
   run('ingredients');
   run('finalIngredients');
+  changed += normalizeSeasoningUnits(recipe);
   return changed;
 }
 
@@ -676,6 +712,16 @@ function smoothProseIngredientGrammar(text) {
   // Führende Stückzahl vor Ei/Eier im Satz entfernen ("die 2 Eier" → "die Eier")
   out = out.replace(/\b(\d+[.,]?\d*)\s+(Eier|Ei)\b/gi, '$2');
 
+  // Geklebte Zutatennamen: "Lorbeerblatt Ei" → "Lorbeerblatt und Ei"
+  out = out.replace(
+    /\b([A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß\-]{2,}(?:blatt|kraut|zwiebel|zehe|wurzel|knolle|filet|filets)?)\s+(Ei|Eier)\b/g,
+    function (_m, left, egg) {
+      const stop = /^(der|die|das|den|dem|ein|eine|einen|einem|etwas|mit|und|oder|sowie|gekochte|kalte|frische|ganze|große|kleine)$/i;
+      if (stop.test(left)) return left + ' ' + egg;
+      return left + ' und ' + egg;
+    }
+  );
+
   out = out.replace(/\s{2,}/g, ' ').replace(/\s+([.,;:!?])/g, '$1').trim();
   return out;
 }
@@ -992,8 +1038,8 @@ function nextIngredientId(ingredients) {
 }
 
 /**
- * Soft-Repair vor Staple-Check: Salz/Pfeffer im Prosa → fehlende prise-Einträge injizieren.
- * Verhindert 422-Schleifen bei „mit Salz und Pfeffer würzen“ ohne Listen-Eintrag.
+ * Soft-Repair vor Staple-Check: Salz/Pfeffer/Wasser im Prosa → fehlende Listen-Einträge.
+ * Verhindert 422-Schleifen bei „Wasser aufkochen“ / „mit Salz würzen“ ohne Listen-Eintrag.
  * @returns {string[]} kurze Repair-Hinweise
  */
 function injectMissingSeasoningStaples(recipe) {
@@ -1005,9 +1051,32 @@ function injectMissingSeasoningStaples(recipe) {
   const garnish = typeof recipe.garnish === 'string' ? recipe.garnish : '';
   const staples = validateUnlistedStaplesInProse(steps, garnish, ingredients);
   (staples.problems || []).forEach(function (p) {
-    const m = String(p || '').match(/Zutat '(Salz|Pfeffer)'/i);
+    const m = String(p || '').match(/Zutat '(Salz|Pfeffer|Wasser)'/i);
     if (!m) return;
-    const label = m[1] === 'Pfeffer' || /^pfeffer$/i.test(m[1]) ? 'Pfeffer' : 'Salz';
+    const rawLabel = m[1];
+    const label = /^wasser$/i.test(rawLabel) ? 'Wasser'
+      : (/^pfeffer$/i.test(rawLabel) ? 'Pfeffer' : 'Salz');
+    if (label === 'Wasser') {
+      const alreadyWater = ingredients.some(function (ing) {
+        return ingredientCoversStem((ing && ing.name) || '', 'wasser');
+      });
+      if (alreadyWater) return;
+      ingredients.push({
+        id: nextIngredientId(ingredients),
+        name: 'Wasser',
+        amount: 500,
+        unit: 'ml',
+        protein_source: false,
+        culinaryRole: 'liquid',
+        countsAsPrimaryProteinSource: false,
+        netCarbs: 0,
+        fat: 0,
+        protein: 0,
+        fiber: 0,
+      });
+      repairs.push('Wasser');
+      return;
+    }
     const already = ingredients.some(function (ing) {
       return isSeasoningSaltOrPepperName((ing && ing.name) || '') &&
         new RegExp(label, 'i').test(String((ing && ing.name) || ''));
@@ -1016,7 +1085,7 @@ function injectMissingSeasoningStaples(recipe) {
     ingredients.push({
       id: nextIngredientId(ingredients),
       name: label,
-      amount: 1,
+      amount: 0,
       unit: 'prise',
       protein_source: false,
       culinaryRole: 'seasoning',
@@ -1992,6 +2061,7 @@ module.exports = {
   verbImpliesIngredientStem: verbImpliesIngredientStem,
   cleanIngredientDisplayName: cleanIngredientDisplayName,
   normalizeRecipeIngredientNames: normalizeRecipeIngredientNames,
+  normalizeSeasoningUnits: normalizeSeasoningUnits,
   stripTrailingGarnishLine: stripTrailingGarnishLine,
   integrateStepGarnishEcho: integrateStepGarnishEcho,
   ingredientNameAliases: ingredientNameAliases,
