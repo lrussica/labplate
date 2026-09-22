@@ -203,8 +203,9 @@ function isEggIngredient(name) {
  */
 function renderRecipeForDisplay(recipe, renderOpts) {
   if (!recipe || typeof recipe !== 'object') return null;
-  // Identische Zutaten vor Skalierung zusammenfassen + Mengen aus Namen streichen
+  // Identische Zutaten vor Skalierung zusammenfassen + Mengen aus Namen streichen + Typed Units
   try {
+    require('./recipe-unit-model').annotateRecipeIngredientUnits(recipe);
     validator.normalizeRecipeIngredientNames(recipe);
     validator.dedupeRecipeIngredients(recipe);
     validator.integrateStepGarnishEcho(recipe);

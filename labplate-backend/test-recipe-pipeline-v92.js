@@ -66,6 +66,7 @@ assert.ok(result3.errors.some(function (e) { return /chef_analysis|64 g|Protein/
 console.log('OK validate broken v9.2');
 
 // TEST 3b: Klartext-Basiszutat ohne ingredients-Eintrag ("etwas Öl")
+// Repair Layer injiziert Katalog-Staples deterministisch → kein Hard-Fail mehr
 const ohneOel = JSON.parse(JSON.stringify(gutesBeispiel));
 ohneOel.ingredients = ohneOel.ingredients.filter(function (i) { return !/öl|oel/i.test(i.name); });
 ohneOel.steps = [
@@ -74,11 +75,17 @@ ohneOel.steps = [
 ];
 ohneOel.garnish = 'Mit gerösteten {0005} bestreuen.';
 const resultOel = validator.validateRecipeV2(ohneOel);
-assert.strictEqual(resultOel.ok, false, 'etwas Öl ohne Listen-Eintrag muss failen');
-assert.ok(resultOel.errors.some(function (e) {
-  return /Zutat 'Öl' im Text erwähnt, aber nicht in ingredients/i.test(e);
-}), 'erwartet unlisted staple Öl: ' + resultOel.errors.join('; '));
-console.log('OK unlisted staple Öl');
+assert.ok(
+  ohneOel.ingredients.some(function (i) { return /öl|oel/i.test(i.name); }),
+  'Repair Layer injiziert Öl in ingredients'
+);
+assert.ok(
+  !resultOel.errors.some(function (e) {
+    return /Zutat 'Öl' im Text erwähnt, aber nicht in ingredients/i.test(e);
+  }),
+  'kein Hard-Fail mehr für unlisted Öl: ' + resultOel.errors.join('; ')
+);
+console.log('OK staple Öl via Repair Layer');
 
 // TEST 3c: Fix B errorsToDirectives Protein
 const fb = pipeline.buildRetryFeedbackMessage([
@@ -147,8 +154,10 @@ assert.ok(!(lowProteinCurry.diet_labels || []).some(function (l) {
   return /high_protein/i.test(String(l));
 }), 'high_protein muss gestrippt sein: ' + JSON.stringify(lowProteinCurry.diet_labels));
 assert.ok(lowProteinCurry.ingredients.some(function (i) { return /^Salz$/i.test(i.name); }), 'Salz injiziert');
-assert.ok(lowProteinCurry.ingredients.some(function (i) { return /^Pfeffer$/i.test(i.name); }), 'Pfeffer injiziert');
-assert.ok(softRepair.warnings.some(function (w) { return /Gewürze ergänzt/i.test(w); }), 'Warnung Gewürze');
+assert.ok(lowProteinCurry.ingredients.some(function (i) { return /Pfeffer/i.test(i.name); }), 'Pfeffer injiziert');
+assert.ok(softRepair.warnings.some(function (w) {
+  return /Gewürze ergänzt|Repair Layer|staples:/i.test(w);
+}), 'Warnung Repair/Gewürze: ' + softRepair.warnings.join('; '));
 console.log('OK Soft-Repair Curry: labels + Salz/Pfeffer');
 
 // TEST 3d: Fall 9 — Frischkäse kalt einrühren, danach Hitze (muss failen)

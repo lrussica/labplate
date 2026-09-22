@@ -811,20 +811,18 @@ function resolvePlaceholders(text, ingredientsById, opts) {
 
 /**
  * Bottom-up: nutrition aus ingredients (amount × Makros/100g).
- * stk → 60 g/Stück; prise/messerspitze → 0 g.
+ * Typed Units: pinch→0, discrete→amount×pieceMassG (kein globales stk×60).
  */
 function computeNutritionFromIngredients(ingredients) {
+  const unitModel = require('./recipe-unit-model');
   let protein = 0;
   let fat = 0;
   let nettoKh = 0;
   let fiber = 0;
   (Array.isArray(ingredients) ? ingredients : []).forEach(function (ing) {
     if (!ing) return;
-    let grams = Number(ing.amount);
-    if (!Number.isFinite(grams) || grams < 0) grams = 0;
-    const unit = String(ing.unit || '');
-    if (unit === 'prise' || unit === 'messerspitze') grams = 0;
-    else if (unit === 'stk') grams = grams * 60;
+    unitModel.annotateIngredientUnits(ing);
+    const grams = unitModel.ingredientAmountGrams(ing);
     const factor = grams / 100;
     protein += factor * Math.max(0, Number(ing.protein) || 0);
     fat += factor * Math.max(0, Number(ing.fat) || 0);
@@ -1038,66 +1036,16 @@ function nextIngredientId(ingredients) {
 }
 
 /**
- * Soft-Repair vor Staple-Check: Salz/Pfeffer/Wasser im Prosa → fehlende Listen-Einträge.
- * Verhindert 422-Schleifen bei „Wasser aufkochen“ / „mit Salz würzen“ ohne Listen-Eintrag.
+ * Soft-Repair: fehlende Staples aus Katalog injizieren (Parity Detector↔Inject).
+ * Delegiert an recipe-repair.js.
  * @returns {string[]} kurze Repair-Hinweise
  */
 function injectMissingSeasoningStaples(recipe) {
-  const repairs = [];
-  if (!recipe || typeof recipe !== 'object') return repairs;
-  if (!Array.isArray(recipe.ingredients)) recipe.ingredients = [];
-  const ingredients = recipe.ingredients;
-  const steps = Array.isArray(recipe.steps) ? recipe.steps : [];
-  const garnish = typeof recipe.garnish === 'string' ? recipe.garnish : '';
-  const staples = validateUnlistedStaplesInProse(steps, garnish, ingredients);
-  (staples.problems || []).forEach(function (p) {
-    const m = String(p || '').match(/Zutat '(Salz|Pfeffer|Wasser)'/i);
-    if (!m) return;
-    const rawLabel = m[1];
-    const label = /^wasser$/i.test(rawLabel) ? 'Wasser'
-      : (/^pfeffer$/i.test(rawLabel) ? 'Pfeffer' : 'Salz');
-    if (label === 'Wasser') {
-      const alreadyWater = ingredients.some(function (ing) {
-        return ingredientCoversStem((ing && ing.name) || '', 'wasser');
-      });
-      if (alreadyWater) return;
-      ingredients.push({
-        id: nextIngredientId(ingredients),
-        name: 'Wasser',
-        amount: 500,
-        unit: 'ml',
-        protein_source: false,
-        culinaryRole: 'liquid',
-        countsAsPrimaryProteinSource: false,
-        netCarbs: 0,
-        fat: 0,
-        protein: 0,
-        fiber: 0,
-      });
-      repairs.push('Wasser');
-      return;
-    }
-    const already = ingredients.some(function (ing) {
-      return isSeasoningSaltOrPepperName((ing && ing.name) || '') &&
-        new RegExp(label, 'i').test(String((ing && ing.name) || ''));
-    });
-    if (already) return;
-    ingredients.push({
-      id: nextIngredientId(ingredients),
-      name: label,
-      amount: 0,
-      unit: 'prise',
-      protein_source: false,
-      culinaryRole: 'seasoning',
-      countsAsPrimaryProteinSource: false,
-      netCarbs: 0,
-      fat: 0,
-      protein: 0,
-      fiber: 0,
-    });
-    repairs.push(label);
-  });
-  return repairs;
+  try {
+    return require('./recipe-repair').injectMissingStaples(recipe);
+  } catch (e) {
+    return [];
+  }
 }
 
 /**
@@ -1430,22 +1378,12 @@ function validateTitleProteinBinding(recipe, dishQuery) {
 
 /**
  * Fehlerklasse 3: Klartext-Grundzutat im Prosa-Text, aber kein ingredients-Eintrag.
- * Whitelist häufiger Koch-Staples; Treffer nur wenn kein Zutatenname den Stem abdeckt.
+ * Katalog aus recipe-repair (Detector = Inject) — lazy, um Circular Requires zu vermeiden.
  */
-const STAPLE_WHITELIST = [
-  { label: 'Öl', stems: ['olivenöl', 'olivenoel', 'rapsöl', 'rapsoel', 'sonnenblumenöl', 'sonnenblumenoel', 'speiseöl', 'speiseoel', 'öl', 'oel'] },
-  { label: 'Butter', stems: ['butter', 'margarine', 'ghee'] },
-  { label: 'Wasser', stems: ['wasser', 'brühe', 'bruehe', 'fond'] },
-  { label: 'Mehl', stems: ['mehl', 'stärke', 'staerke'] },
-  { label: 'Zucker', stems: ['zucker', 'honig', 'sirup'] },
-  { label: 'Ei', stems: ['eier', 'ei'] },
-  { label: 'Salz', stems: ['meersalz', 'salz'] },
-  { label: 'Pfeffer', stems: ['pfeffer'] },
-  { label: 'Essig', stems: ['essig', 'balsamico'] },
-  { label: 'Knoblauch', stems: ['knoblauch'] },
-  { label: 'Zwiebel', stems: ['zwiebeln', 'zwiebel', 'schalotten', 'schalotte'] },
-  { label: 'Milch', stems: ['milch', 'sahne', 'rahm'] },
-];
+function getStapleWhitelist() {
+  return require('./recipe-repair').STAPLE_WHITELIST;
+}
+const STAPLE_WHITELIST = null; // legacy export via getter below
 
 function normalizeDeAscii(s) {
   return String(s || '')
@@ -1483,9 +1421,10 @@ function validateUnlistedStaplesInProse(steps, garnish, ingredients) {
   const list = Array.isArray(steps) ? steps : [];
   const blobs = list.map(function (s) { return String((s && s.content) || ''); });
   if (garnish) blobs.push(String(garnish));
+  const whitelist = getStapleWhitelist();
 
   const coveredLabels = {};
-  STAPLE_WHITELIST.forEach(function (staple) {
+  whitelist.forEach(function (staple) {
     const covered = ings.some(function (ing) {
       return staple.stems.some(function (stem) {
         return ingredientCoversStem((ing && ing.name) || '', stem);
@@ -1496,7 +1435,7 @@ function validateUnlistedStaplesInProse(steps, garnish, ingredients) {
 
   const flagged = {};
   blobs.forEach(function (text, bi) {
-    STAPLE_WHITELIST.forEach(function (staple) {
+    whitelist.forEach(function (staple) {
       if (coveredLabels[staple.label] || flagged[staple.label]) return;
       const hit = staple.stems.some(function (stem) { return textMentionsStem(text, stem); });
       if (!hit) return;
@@ -1682,12 +1621,7 @@ const CULINARY_ROLES = [
 ];
 
 function ingredientAmountGrams(ing) {
-  const amount = Number(ing && ing.amount);
-  if (!Number.isFinite(amount) || amount <= 0) return 0;
-  const unit = String((ing && ing.unit) || '').toLowerCase();
-  if (unit === 'prise' || unit === 'messerspitze') return 0;
-  if (unit === 'stk') return amount * 60;
-  return amount;
+  return require('./recipe-unit-model').ingredientAmountGrams(ing);
 }
 
 function isFatOrOilLikeName(nameLower) {
@@ -1840,6 +1774,17 @@ function validateRecipeV2(recipe, opts) {
   const o = opts && typeof opts === 'object' ? opts : {};
   const r = recipe && typeof recipe === 'object' ? recipe : {};
   const nutrition = r.nutrition || {};
+
+  // ——— Repair Layer (deterministisch) vor Hard-Checks ———
+  try {
+    const repairMod = require('./recipe-repair');
+    const repaired = repairMod.repairRecipeV2(r);
+    if (repaired.repairs && repaired.repairs.length) {
+      result.addWarning('Repair Layer: ' + repaired.repairs.join('; '));
+    }
+  } catch (eRepair) {
+    result.addWarning('Repair Layer skipped: ' + (eRepair && eRepair.message));
+  }
 
   // Soft-Repair: identische Zutaten zusammenfassen (Mengen addieren, Ids remappen)
   const dedupeNotes = dedupeRecipeIngredients(r);
@@ -2078,6 +2023,9 @@ module.exports = {
   validatePlaceholdersInText: validatePlaceholdersInText,
   repairChefAnalysisPlaceholderMisuse: repairChefAnalysisPlaceholderMisuse,
   injectMissingSeasoningStaples: injectMissingSeasoningStaples,
+  repairRecipeV2: function (recipe) {
+    return require('./recipe-repair').repairRecipeV2(recipe);
+  },
   stripDishonestDietLabels: stripDishonestDietLabels,
   isSeasoningSaltOrPepperName: isSeasoningSaltOrPepperName,
   isExemptFromUsageRequirement: isExemptFromUsageRequirement,
@@ -2094,7 +2042,8 @@ module.exports = {
   PRIMARY_PROTEIN_ROLES: PRIMARY_PROTEIN_ROLES,
   CULINARY_ROLES: CULINARY_ROLES,
   validateUnlistedStaplesInProse: validateUnlistedStaplesInProse,
-  STAPLE_WHITELIST: STAPLE_WHITELIST,
+  STAPLE_WHITELIST: null, // use getStapleWhitelist() — lazy, avoids circular require
+  getStapleWhitelist: getStapleWhitelist,
   COLD_SENSITIVE_STEMS: COLD_SENSITIVE_STEMS,
   PROTEIN_KEYWORDS_CORE: PROTEIN_KEYWORDS_CORE,
   PROTEIN_KEYWORDS_SUBSTANTIAL: PROTEIN_KEYWORDS_SUBSTANTIAL,

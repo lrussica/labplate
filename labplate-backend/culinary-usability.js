@@ -108,12 +108,22 @@ function isServeOnlyInstruction(text) {
 }
 
 function amountToMlOrG(ing) {
-  const a = Number(ing && ing.amount) || 0;
-  const u = String((ing && ing.unit) || 'g').toLowerCase();
-  if (u === 'l') return a * 1000;
-  if (u === 'ml' || u === 'g') return a;
-  if (u === 'stk') return a * 60;
-  return a;
+  try {
+    return require('./recipe-unit-model').ingredientAmountGrams(ing);
+  } catch (_) {
+    const a = Number(ing && ing.amount) || 0;
+    const u = String((ing && ing.unit) || 'g').toLowerCase();
+    if (u === 'l') return a * 1000;
+    if (u === 'ml' || u === 'g') return a;
+    if (u === 'prise' || u === 'messerspitze') return 0;
+    if (u === 'stk') {
+      // Fallback ohne unit-model: nur Eier ×60
+      const n = String((ing && ing.name) || '').toLowerCase();
+      if (/(?:^|[^a-z])ei(?:er)?(?:[^a-z]|$)/.test(n) && n.indexOf('eiweiss') < 0) return a * 60;
+      return 0;
+    }
+    return a;
+  }
 }
 
 /**
