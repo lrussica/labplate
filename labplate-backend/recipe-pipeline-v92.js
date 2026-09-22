@@ -653,6 +653,13 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     ingredientModelVersion: portions.RECIPE_MODEL_VERSION.ingredientModelVersion,
     nutritionVersion: portions.RECIPE_MODEL_VERSION.nutritionVersion,
     instructionVersion: portions.RECIPE_MODEL_VERSION.instructionVersion,
+    recipeSource: recipe.recipeSource || null,
+    masterRecipeId: recipe.masterRecipeId || null,
+    immutableCore: !!recipe.immutableCore,
+    lactoseHonestyStatus: recipe.lactoseHonestyStatus || null,
+    cuisine: recipe.cuisine || null,
+    region: recipe.region || null,
+    lang: recipe.lang || o.lang || null,
   };
 
   console.log('RECIPE_VALIDATION', JSON.stringify({
@@ -685,6 +692,8 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     const qualityGate = require('./recipe-quality-gate');
     qualityGate.applyRecipeQualityGate(out, {
       allergens: o.allergens || recipe.allergens || [],
+      dishQuery: o.dishQuery || recipe._dishQuery || recipe.title || '',
+      ai_instruction: o.ai_instruction || recipe.ai_instruction || '',
     });
   } catch (eQg) {
     console.warn('[recipe-v92] quality gate failed', eQg && eQg.message);
@@ -957,6 +966,21 @@ function errorsToDirectives(errors, opts) {
         'still hinzufügen ohne Kochverb.'
       );
     }
+    if (/Klassiker-Standard/i.test(e) && !seenProtein.classicCore) {
+      seenProtein.classicCore = true;
+      directives.push(
+        'KONKRETE KORREKTUR KLASSIKER: Liefere die VOLLSTÄNDIGE klassische Version. ' +
+        'Lasagne MUSS enthalten: Béchamel (Butter+Mehl+Milch), Ragù/Sofrito (Hack+Zwiebel+Karotte+Sellerie+Tomate), ' +
+        'Mozzarella+Parmesan, Lasagneplatten. KEINE Kalorien-Kastration ohne Low-Cal-Anfrage.'
+      );
+    }
+    if (/Komponenten-Vollständigkeit/i.test(e) && !seenProtein.proseComponent) {
+      seenProtein.proseComponent = true;
+      directives.push(
+        'KONKRETE KORREKTUR KOMPONENTEN: Jede im Step-Text genannte Komponente (Béchamel, Ragù, Dressing, …) ' +
+        'braucht ihre Rohzutaten im ingredients-Array — oder nenne die Komponente nicht.'
+      );
+    }
   });
 
   return directives;
@@ -991,6 +1015,84 @@ async function generateValidatedRecipe(opts) {
   let lastWarnings = [];
   let lastRaw = null;
   const attemptRaws = [];
+
+  // ——— MASTER-CLASSIC HIT: starres Stammgerüst, kein generatives Zutatengerüst ———
+  try {
+    const masterStore = require('./classic-master-store');
+    const masterHit = masterStore.tryMasterClassic(payload, {
+      targetServings: payload && (payload.target_servings || payload.targetServings),
+    });
+    if (masterHit && masterHit.ok && masterHit.recipe) {
+      console.log('[recipe-v92] MASTER_CLASSIC_HIT', JSON.stringify({
+        id: masterHit.recipe.masterRecipeId,
+        lang: masterHit.lang,
+        score: masterHit.match && masterHit.match.score,
+        lactose: masterHit.recipe.lactoseHonestyStatus,
+      }));
+      const dishQueryForValidation = Array.isArray(payload && payload.pantry_ingredients)
+        ? payload.pantry_ingredients.join(' ')
+        : '';
+      // Master ist Source of Truth — Validierung bestätigen, keine LLM-Retries am Gerüst
+      const validation = validator.validateRecipeV2(masterHit.recipe, {
+        dishQuery: dishQueryForValidation || masterHit.recipe.title,
+        ai_instruction: payload && (payload.ai_instruction || payload.aiInstruction),
+      });
+      if (!validation.ok) {
+        console.warn('[recipe-v92] MASTER_CLASSIC validation warnings/errors', validation.errors);
+        // Bei Master trotzdem rendern, wenn nur Soft-Themen — harte Fehler loggen
+      }
+      const rendered = renderRecipeForDisplay(masterHit.recipe, {
+        dishQuery: dishQueryForValidation || masterHit.recipe.title,
+        ai_instruction: payload && (payload.ai_instruction || payload.aiInstruction),
+        allergens: payload && payload.allergens,
+        targetServings: payload && (payload.target_servings || payload.targetServings),
+      });
+      if (!rendered) {
+        return { error: 'master_render_failed', attempts: 0, recipeSource: 'master-classic' };
+      }
+      rendered.recipeSource = 'master-classic';
+      rendered.masterRecipeId = masterHit.recipe.masterRecipeId;
+      rendered.immutableCore = true;
+      if (masterHit.recipe.lactoseHonestyStatus) {
+        rendered.lactoseHonestyStatus = masterHit.recipe.lactoseHonestyStatus;
+      }
+      return {
+        ok: true,
+        recipe: rendered,
+        raw: masterHit.recipe,
+        attempts: 0,
+        attempt_raws: [],
+        recipeSource: 'master-classic',
+        masterRecipeId: masterHit.recipe.masterRecipeId,
+        temperature: 0,
+      };
+    }
+    if (masterHit && masterHit.error === 'lactose_impossible_for_classic') {
+      const lactoseHonesty = require('./lactose-honesty');
+      const lang = (payload && payload.lang) || 'de';
+      const dish = (masterHit.match && masterHit.match.recipe &&
+        masterStore.pickLocalized(masterHit.match.recipe.titles, lang)) || 'Rezept';
+      const msg = typeof lactoseHonesty.buildLactoseHonestyMessage === 'function'
+        ? lactoseHonesty.buildLactoseHonestyMessage(
+          lactoseHonesty.STATUS.IMPOSSIBLE, dish, '', lang
+        )
+        : ('Laktose: kein authentischer Swap für ' + dish);
+      return {
+        ok: true,
+        recipe: null,
+        raw: null,
+        lactoseHonesty: {
+          status: lactoseHonesty.STATUS.IMPOSSIBLE,
+          message: msg,
+          dish: dish,
+        },
+        attempts: 0,
+        recipeSource: 'master-classic',
+      };
+    }
+  } catch (eMaster) {
+    console.warn('[recipe-v92] master-classic skipped', eMaster && eMaster.message);
+  }
 
   for (let attempt = 1; attempt <= MAX_VALIDATION_ATTEMPTS; attempt++) {
     const dishQuery = Array.isArray(payload && payload.pantry_ingredients)
@@ -1089,7 +1191,10 @@ async function generateValidatedRecipe(opts) {
     const dishQueryForValidation = Array.isArray(payload && payload.pantry_ingredients)
       ? payload.pantry_ingredients.join(' ')
       : '';
-    const validation = validator.validateRecipeV2(parsed, { dishQuery: dishQueryForValidation });
+    const validation = validator.validateRecipeV2(parsed, {
+      dishQuery: dishQueryForValidation,
+      ai_instruction: payload && (payload.ai_instruction || payload.aiInstruction),
+    });
     if (!validation.ok) {
       lastErrors = validation.errors.slice();
       lastWarnings = validation.warnings.slice();
@@ -1102,7 +1207,11 @@ async function generateValidatedRecipe(opts) {
       continue;
     }
 
-    const rendered = renderRecipeForDisplay(parsed);
+    const rendered = renderRecipeForDisplay(parsed, {
+      dishQuery: dishQueryForValidation,
+      ai_instruction: payload && (payload.ai_instruction || payload.aiInstruction),
+      allergens: payload && payload.allergens,
+    });
     if (!rendered) {
       lastErrors = ['render_failed'];
       continue;

@@ -15,7 +15,7 @@
  *     Mengen und Aktionen; KI schreibt nur Titel + Zubereitungsprosa
  *     (recipe-pipeline-prep.js, Prompt prep-assistant-v1.md).
  *
- * Generativ/Prep: temperature 0.2 (Anti-Drift); Eigenrezept/structured: temperature 0.
+ * Generativ/Prep: temperature 0.2 (Anti-Drift); Klassiker/Original + Eigenrezept/structured: temperature 0.
  * reasoning_effort: "low"
  *
  * Client-Vertrag (LabPlate_34_Cursor.html, validateNutriRecipeSchema):
@@ -701,7 +701,22 @@ function buildGenerativeMessages(p) {
     isOriginalMode
       ? 'Du bist ein Rezept-Koch fuer klassische Originalrezepte. Erstelle EINE landestypische Rezeptidee als JSON gemaess Schema.'
       : 'Du bist ein hyper-intelligenter System-Chefkoch und Ernaehrungs-Wissenschaftler der Spitzenklasse. Rezepte vereinen Food-Pairing, Sensorik, makellose Konsistenz und exakte Naehrwert-Mathematik – an Tages-Makros angepasst, ohne Halluzinationen. JSON gemaess Schema.',
-    'VARIATION: Liefere bei gleichen Suchbegriffen bewusst unterschiedliche Gerichte (andere Hauptzutat, Kueche oder Zubereitung). Wiederhole keine frueheren Titel aus der Zusatz-Instruction.',
+    // Klassiker: keine "kreativen" Abweichungen am Kern — Variation-Regel abschwächen
+    (function () {
+      try {
+        const classic = require('./classic-culinary-standards');
+        const ctx = {
+          ai_instruction: p.ai_instruction,
+          pantry_ingredients: p.pantry_ingredients,
+          dishQuery: Array.isArray(p.pantry_ingredients) ? p.pantry_ingredients.join(' ') : '',
+        };
+        if (classic.findClassicDishStandard(ctx) || classic.isClassicDeclared(ctx)) {
+          return 'VARIATION: Bei klassischen Gerichten KEINE kreativen Kürzungen am Kern — ' +
+            'liefere den etablierten Standard vollständig und reproduzierbar.';
+        }
+      } catch (_) { /* optional */ }
+      return 'VARIATION: Liefere bei gleichen Suchbegriffen bewusst unterschiedliche Gerichte (andere Hauptzutat, Kueche oder Zubereitung). Wiederhole keine frueheren Titel aus der Zusatz-Instruction.';
+    }()),
     'ERLAUBT: Zutaten vorschlagen, Mengen waehlen und an Nutzer-Tagesziele anpassen, Schritte neu formulieren.',
     'KRITISCH – Schema v9.2: ingredients[].unit NUR "g"|"ml"|"stk"|"prise"|"messerspitze". content/garnish ohne freie Mengen-Zahlen – nur {0001}-Platzhalter.',
     'Mengen in ingredients: Eier unit=stk; Gewuerze amount=0 unit=prise|messerspitze; Fluessigkeiten ml; Festes g. netCarbs/fat/protein/fiber je 100 g/ml.',
@@ -721,6 +736,16 @@ function buildGenerativeMessages(p) {
     'Eier unit=stk; Gewuerze unit=prise|messerspitze amount=0; sonst g|ml. stove_level 0=kalt, 1-9=Hitze.',
     'chef_analysis: {id} als Zutatreferenz erlaubt; VERBOTEN "{0001} g Protein" / "{0001} kcal". Zahlen nur in nutrition.',
     isOriginalMode ? '' : CHEF_FRAMEWORK_RULES,
+    (function () {
+      try {
+        const classic = require('./classic-culinary-standards');
+        return classic.buildClassicStandardsPromptRules({
+          ai_instruction: p.ai_instruction,
+          pantry_ingredients: p.pantry_ingredients,
+          dishQuery: Array.isArray(p.pantry_ingredients) ? p.pantry_ingredients.join(' ') : '',
+        });
+      } catch (_) { return ''; }
+    }()),
     emotionRules,
     themeRules,
     'HANDOFF: Lies brief.theme (z.B. eisen, vitamin_b) aus dem Supplement-Handoff aktiv. Wenn ai_instruction mit "HANDOFF VOM MENTAL-COACH" oder "HANDOFF VOM SUPPLEMENT-COACH" beginnt, priorisiere passende Lebensmittel – trotzdem nur Rezept-JSON, kein Coaching.',
@@ -773,10 +798,21 @@ function langName(code) {
 // ---------------------------------------------------------------------------
 function buildGroqRequest(p, model) {
   const structured = p.structured;
+  let temperature = structured ? 0 : 0.2;
+  if (!structured) {
+    try {
+      const classic = require('./classic-culinary-standards');
+      temperature = classic.classicGenerationTemperature({
+        ai_instruction: p.ai_instruction,
+        pantry_ingredients: p.pantry_ingredients,
+        dishQuery: Array.isArray(p.pantry_ingredients) ? p.pantry_ingredients.join(' ') : '',
+      }, 0.2);
+    } catch (_) { /* keep 0.2 */ }
+  }
   return {
     model: model || DEFAULT_MODEL,
-    // Eigenrezept: deterministisch (0). Generativ: niedrig (0.2) gegen Mengen-Drift/Halluzination.
-    temperature: structured ? 0 : 0.2,
+    // Eigenrezept: deterministisch (0). Klassiker: 0. Generativ sonst: 0.2 gegen Mengen-Drift.
+    temperature: temperature,
     reasoning_effort: 'low',
     max_tokens: 8192,
     response_format: {
@@ -1174,6 +1210,8 @@ module.exports = {
   recipePipeline,
   recipePipelinePrep,
   recipeValidator,
+  classicMasterStore: require('./classic-master-store'),
+  classicCulinaryStandards: require('./classic-culinary-standards'),
   generateValidatedRecipe: function generateValidatedRecipeWithHandoffGuard(opts) {
     const o = opts && typeof opts === 'object' ? Object.assign({}, opts) : {};
     if (typeof o.acceptCoachHandoff !== 'function') {

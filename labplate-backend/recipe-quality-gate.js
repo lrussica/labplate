@@ -324,6 +324,34 @@ function validateIngredientConsistency(recipe) {
   return checkResult(CHECK_STATUS.PASS, []);
 }
 
+/**
+ * Klassiker-Core + Prosa-Komponenten-Vollständigkeit (Türsteher).
+ * Unvollständige Klassiker → blocked; fehlende Rohzutaten zu genannten Komponenten → blocked.
+ */
+function validateClassicCompleteness(recipe, opts) {
+  opts = opts || {};
+  try {
+    const classic = require('./classic-culinary-standards');
+    const issues = [];
+    const ctx = {
+      dishQuery: opts.dishQuery || recipe.dishQuery || recipe.title || '',
+      title: recipe.title,
+      ai_instruction: opts.ai_instruction || recipe.ai_instruction || '',
+      pantry_ingredients: opts.pantry_ingredients || recipe.pantry_ingredients,
+    };
+    const core = classic.validateClassicCoreComponents(recipe, ctx);
+    (core.problems || []).forEach(function (p) { issues.push(p); });
+    const prose = classic.validateProseComponentCompleteness(recipe);
+    (prose.problems || []).forEach(function (p) { issues.push(p); });
+    if (issues.length) return checkResult(CHECK_STATUS.FAIL, issues);
+    return checkResult(CHECK_STATUS.PASS, []);
+  } catch (e) {
+    return checkResult(CHECK_STATUS.WARNING, [
+      'classic-completeness check skipped: ' + (e && e.message),
+    ]);
+  }
+}
+
 /** Bare Namenlisten / Rohdaten in Instructions. */
 function looksLikeBareIngredientDump(text) {
   const t = String(text || '').trim();
@@ -725,6 +753,7 @@ function evaluateRecipeQuality(recipe, opts) {
     allergens: validateAllergens(recipe, opts),
     ingredientDedupe: validateAndDedupeIngredients(recipe),
     ingredients: validateIngredientConsistency(recipe),
+    classicCompleteness: validateClassicCompleteness(recipe, opts),
     instructions: validateInstructions(recipe),
     stepStutter: validateAndCleanStepStutter(recipe),
     timing: validateTiming(recipe),
@@ -771,6 +800,28 @@ function evaluateRecipeQuality(recipe, opts) {
   };
 
   applyQualityToRecipe(recipe, result);
+
+  // Master-Klassiker: Source of Truth — generative Nährwert-/Heuristik-Fails dürfen nicht blocken
+  if (
+    (recipe.recipeSource === 'master-classic' || recipe.immutableCore) &&
+    result.qualityStatus === QUALITY_STATUS.BLOCKED
+  ) {
+    const soft = /plausib|Nutrition data does not|Makros neu berechnet|außerhalb des Alltagsrahmens/i;
+    const hard = (result.qualityErrors || []).filter(function (e) { return !soft.test(String(e)); });
+    const softErrs = (result.qualityErrors || []).filter(function (e) { return soft.test(String(e)); });
+    if (!hard.length) {
+      result.qualityErrors = [];
+      result.qualityWarnings = uniq((result.qualityWarnings || []).concat(softErrs));
+      result.qualityStatus = result.qualityWarnings.length ? QUALITY_STATUS.REVIEW : QUALITY_STATUS.READY;
+      // Master bleibt anzeigbar
+      if (result.qualityStatus === QUALITY_STATUS.REVIEW && softErrs.length) {
+        result.qualityStatus = QUALITY_STATUS.READY;
+        result.requiresReview = false;
+      }
+      applyQualityToRecipe(recipe, result);
+    }
+  }
+
   // Sichtbarer Output-Check (kanonisches Display)
   try {
     const canon = require('./recipe-canonical-display');
@@ -869,6 +920,7 @@ module.exports = {
   validateAndCleanStepStutter: validateAndCleanStepStutter,
   validateAndDedupeIngredients: validateAndDedupeIngredients,
   sanitizeGermanCoachMessages: sanitizeGermanCoachMessages,
+  validateClassicCompleteness: validateClassicCompleteness,
   validateTiming: validateTiming,
   validateLanguageQuality: validateLanguageQuality,
   calculateQualityScore: calculateQualityScore,

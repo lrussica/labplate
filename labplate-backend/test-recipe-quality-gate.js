@@ -25,6 +25,8 @@ function baseRecipe(overrides) {
       { id: 'pasta', displayName: 'Spaghetti', name: 'Spaghetti', amount: 80, unit: 'g', optional: false },
       { id: 'tomato', displayName: 'Tomaten', name: 'Tomaten', amount: 100, unit: 'g', optional: false },
       { id: 'onion', displayName: 'Zwiebel', name: 'Zwiebel', amount: 20, unit: 'g', optional: false },
+      { id: 'carrot', displayName: 'Karotte', name: 'Karotte', amount: 20, unit: 'g', optional: false },
+      { id: 'celery', displayName: 'Sellerie', name: 'Sellerie', amount: 15, unit: 'g', optional: false },
       { id: 'oil', displayName: 'Olivenöl', name: 'Olivenöl', amount: 5, unit: 'ml', optional: false },
     ],
     ingredients: null,
@@ -40,8 +42,8 @@ function baseRecipe(overrides) {
       {
         stepNumber: 1,
         actionId: 'saute',
-        ingredientIds: ['oil', 'onion'],
-        instruction: 'Das Olivenöl erhitzen und die Zwiebel bei mittlerer Hitze glasig dünsten.',
+        ingredientIds: ['oil', 'onion', 'carrot', 'celery'],
+        instruction: 'Das Olivenöl erhitzen und Zwiebel, Karotte und Sellerie bei mittlerer Hitze glasig dünsten.',
         durationMinutes: 5,
         heatLevel: 'medium',
       },
@@ -94,9 +96,12 @@ function clone(obj) {
       { id: 'beef', name: 'Rinderhackfleisch', amount: 450, unit: 'g', protein: 20, fat: 15, netCarbs: 0, fiber: 0 },
       { id: 'pasta', name: 'Spaghetti', amount: 480, unit: 'g', protein: 12, fat: 2, netCarbs: 70, fiber: 3 },
       { id: 'tomato', name: 'Tomaten', amount: 600, unit: 'g', protein: 1, fat: 0, netCarbs: 4, fiber: 1 },
+      { id: 'onion', name: 'Zwiebel', amount: 120, unit: 'g', protein: 1, fat: 0, netCarbs: 7, fiber: 2 },
+      { id: 'carrot', name: 'Karotte', amount: 120, unit: 'g', protein: 1, fat: 0, netCarbs: 6, fiber: 2 },
+      { id: 'celery', name: 'Sellerie', amount: 90, unit: 'g', protein: 1, fat: 0, netCarbs: 2, fiber: 1 },
     ],
     steps: [
-      { instruction: 'Das Rinderhackfleisch anbraten und mit Tomaten 15 Minuten köcheln.', durationMinutes: 15 },
+      { instruction: 'Zwiebel, Karotte und Sellerie anschwitzen, Rinderhackfleisch anbraten und mit Tomaten 15 Minuten köcheln.', durationMinutes: 15 },
       { instruction: 'Die Spaghetti kochen und mit der Sauce vermengen.', durationMinutes: 10 },
     ],
   };

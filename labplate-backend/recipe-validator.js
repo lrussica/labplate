@@ -1782,6 +1782,22 @@ function validateRecipeV2(recipe, opts) {
     titleBind.problems.forEach(function (p) { result.addError(p); });
   }
 
+  // Klassiker-Core + Prosa-Komponenten-Vollständigkeit (Hard-Fail → Retry)
+  try {
+    const classic = require('./classic-culinary-standards');
+    const classicCtx = {
+      dishQuery: dishQuery || r.title || '',
+      title: r.title,
+      ai_instruction: o.ai_instruction || r.ai_instruction || '',
+    };
+    const core = classic.validateClassicCoreComponents(r, classicCtx);
+    core.problems.forEach(function (p) { result.addError(p); });
+    const proseComp = classic.validateProseComponentCompleteness(r);
+    proseComp.problems.forEach(function (p) { result.addError(p); });
+  } catch (eClassic) {
+    result.addWarning('classic-standards check skipped: ' + (eClassic && eClassic.message));
+  }
+
   // Kulinarische Brauchbarkeit (Usage, generische Steps, dishPlan, Flüssigkeit)
   try {
     const culinaryUsability = require('./culinary-usability');
