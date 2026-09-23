@@ -90,6 +90,7 @@ ok(!carb.ok && carb.error === 'lactose_impossible_for_classic', 'Carbonara Lakto
       lang: 'en',
       allergens: [],
       mode: 'pantry',
+      original_mode: true,
     },
     buildRequestBody: function () { throw new Error('LLM must not be called on master HIT'); },
     callGroq: function () { throw new Error('LLM must not be called on master HIT'); },
@@ -100,6 +101,36 @@ ok(!carb.ok && carb.error === 'lactose_impossible_for_classic', 'Carbonara Lakto
     return i.name || i.displayName;
   }).join(' ');
   ok(/butter|Butter|milk|Milk|flour|Flour|Mehl|Milch/i.test(blob), 'Rendered enthält Béchamel-Zutaten');
+
+  let generativeCalled = false;
+  const generative = await pipeline.generateValidatedRecipe({
+    payload: {
+      pantry_ingredients: ['Classic Lasagna'],
+      lang: 'en',
+      allergens: [],
+      mode: 'pantry',
+      original_mode: false,
+    },
+    buildRequestBody: function () { generativeCalled = true; return {}; },
+    callGroq: function () {
+      generativeCalled = true;
+      return Promise.resolve({ error: 'provider_error', status: 503, body: '' });
+    },
+  });
+  ok(generativeCalled && generative.error === 'provider_error', 'Generative Anfrage umgeht Master-HIT');
+
+  const originalMiss = await pipeline.generateValidatedRecipe({
+    payload: {
+      pantry_ingredients: ['Unbekanntes Originalgericht'],
+      lang: 'de',
+      allergens: [],
+      mode: 'pantry',
+      original_mode: true,
+    },
+    buildRequestBody: function () { throw new Error('Originalmodus darf keine KI-Anfrage bauen'); },
+    callGroq: function () { throw new Error('Originalmodus darf Groq nicht aufrufen'); },
+  });
+  ok(originalMiss.error === 'original_recipe_unavailable', 'Originalmodus ohne Master bricht ohne KI ab');
   console.log('test-classic-master-store: ALL OK');
 })().catch(function (e) {
   console.error(e);

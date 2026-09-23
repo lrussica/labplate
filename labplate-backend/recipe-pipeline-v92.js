@@ -1047,12 +1047,15 @@ async function generateValidatedRecipe(opts) {
   let lastRaw = null;
   const attemptRaws = [];
 
-  // ——— MASTER-CLASSIC HIT: starres Stammgerüst, kein generatives Zutatengerüst ———
+  // ——— MASTER-CLASSIC HIT: ausschließlich im expliziten Originalmodus ———
+  const originalMode = !!(payload && payload.original_mode);
   try {
     const masterStore = require('./classic-master-store');
-    const masterHit = masterStore.tryMasterClassic(payload, {
-      targetServings: payload && (payload.target_servings || payload.targetServings),
-    });
+    const masterHit = originalMode
+      ? masterStore.tryMasterClassic(payload, {
+          targetServings: payload && (payload.target_servings || payload.targetServings),
+        })
+      : null;
     if (masterHit && masterHit.ok && masterHit.recipe) {
       console.log('[recipe-v92] MASTER_CLASSIC_HIT', JSON.stringify({
         id: masterHit.recipe.masterRecipeId,
@@ -1123,6 +1126,14 @@ async function generateValidatedRecipe(opts) {
     }
   } catch (eMaster) {
     console.warn('[recipe-v92] master-classic skipped', eMaster && eMaster.message);
+  }
+  if (originalMode) {
+    return {
+      error: 'original_recipe_unavailable',
+      reason: 'Originalmodus benötigt ein vorhandenes Master-Rezept.',
+      attempts: 0,
+      recipeSource: 'master-classic',
+    };
   }
 
   for (let attempt = 1; attempt <= MAX_VALIDATION_ATTEMPTS; attempt++) {
