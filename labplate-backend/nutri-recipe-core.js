@@ -322,6 +322,7 @@ function validateIncoming(body) {
 
   const out = {
     mode,
+    original_mode: body.original_mode === true,
     lang: typeof body.lang === 'string' && /^[a-z]{2}$/.test(body.lang) ? body.lang : 'de',
     macros: body.macros && typeof body.macros === 'object' ? body.macros : {},
     micronutrient_gaps: Array.isArray(body.micronutrient_gaps) ? body.micronutrient_gaps.slice(0, 20) : [],
@@ -357,6 +358,7 @@ function validateIncoming(body) {
     theme: null,
     handoff_brief: null,
   };
+  if (out.original_mode && mode !== 'pantry') return null;
 
   // Supplement→Koch: strukturierter Themen-Brief { theme, source }
   if (body.handoff_brief && typeof body.handoff_brief === 'object' && !Array.isArray(body.handoff_brief)) {

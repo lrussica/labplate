@@ -31985,7 +31985,8 @@ initBarcodeEvents();
       var isStructuredFreesearch = (mode === 'freesearch' && freesearchQuery && looksLikeNutriStructuredRecipeInput(freesearchQuery));
       var payload = {
         mode: (mode === 'pantry' || mode === 'freesearch') ? 'pantry' : 'shopping',
-        lang: appLang
+        lang: appLang,
+        original_mode: isOriginalRequest
       };
       // Originalmodus: keine Makros/Gaps/Targets/Handoff → Server darf nicht optimieren.
       if (isOriginalRequest) {
@@ -34359,7 +34360,7 @@ initBarcodeEvents();
             isOriginalRequest = true;
             originalSearchQuery = cleanNutriOriginalSearchQuery(freesearchQuery, originalMeta) || freesearchQuery;
             console.log('[NUTRI_RECIPE_DEBUG] Originalmodus', originalMeta.byDish ? 'Auto-Gericht' : 'Trigger', originalSearchQuery, originalMeta.cuisine || '');
-            // Rezepttext immer via KI-Original-Rekonstruktion (ai-generated-original), ohne Foto.
+            // Originalrezepte kommen ausschließlich aus dem serverseitigen Master-Store.
           }
         }
         if (!data) {
@@ -34376,7 +34377,10 @@ initBarcodeEvents();
             operationId: operationId
           });
           if (data) console.log('[NUTRI_RECIPE_DEBUG] RESPONSE_RECEIVED', { operationId: operationId, attempt: 1 });
-          if (isOriginalRequest && data) recipeSource = 'ai-generated-original';
+          if (isOriginalRequest && data && data.recipeSource !== 'master-classic') {
+            console.warn('[NUTRI_RECIPE_DEBUG] Originalmodus ohne Master-Quelle abgelehnt');
+            data = null;
+          }
         }
       } catch (e) {
         if (e && e.name === 'AbortError') {
@@ -43367,4 +43371,3 @@ initBarcodeEvents();
 </script>
 </body>
 </html>
-

@@ -976,7 +976,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
 
   // Phase 2 KI-Team: emotionale Blockade → Handoff an Coach (String-Match, kein Groq).
   const earlyHandoff = core.tryEmotionalHandoffEarly(payload);
-  if (earlyHandoff && earlyHandoff.handoff) {
+  if (!payload.original_mode && earlyHandoff && earlyHandoff.handoff) {
     console.log(`[nutri-recipe] HANDOFF_COACH early reason=${earlyHandoff.handoff.reason} ms=${Date.now() - startedAt}`);
     return res.status(200).json(earlyHandoff);
   }
@@ -989,8 +989,6 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   } else {
     console.log(`[nutri-recipe] GENERATE flow=${flow} model=${recipeModel} key=${auth.keyType} mode=${payload.mode} pantry=${n}`);
   }
-
-  const requestBody = buildRecipeRequest(flow, payload, recipeModel);
 
   // Generativ (nicht structured/coach): v9.2 Validierung + Retry (max 3)
   const useV92Pipeline = !payload.structured && flow !== 'coach' && flow !== 'nutri-coach' && flow !== 'core';
@@ -1038,6 +1036,19 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
         } catch (e) { /* raw string bleibt in provider_body */ }
       }
       return res.status(clientStatus).json(errPayload);
+    }
+    if (pipelineResult.error === 'original_recipe_unavailable') {
+      logEvent('response_rejected', {
+        reason: pipelineResult.error,
+        ms: Date.now() - startedAt,
+        flow,
+      });
+      return res.status(422).json({
+        error: pipelineResult.error,
+        message: pipelineResult.reason,
+        recipe_source: 'master-classic',
+        flow,
+      });
     }
     if (pipelineResult.error === 'validation_exhausted') {
       logEvent('response_rejected', {
@@ -1156,6 +1167,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     return sendRecipeOk(recipe);
   }
 
+  const requestBody = buildRecipeRequest(flow, payload, recipeModel);
   const result = await core.callGroq(requestBody, { apiKey: auth.apiKey, timeoutMs: REQUEST_TIMEOUT_MS });
 
   if (result.error === 'provider_error') {
