@@ -32654,6 +32654,25 @@ initBarcodeEvents();
         if (!allowEmpty && !s.trim()) return false;
         return s.length <= NUTRI_RECIPE_MAX_STRING_LEN;
       }
+      // The backend quality gate is authoritative for AI recipes. Its ready
+      // response has already passed the strict ingredient/unit checks; the
+      // client only needs the renderable minimum and must not reject it again
+      // because legacy display fields (for example piece -> g or ingredientIds)
+      // are absent or represented differently.
+      if (data.qualityStatus === 'ready') {
+        return okStr(data.title, false) &&
+          Array.isArray(data.ingredients) &&
+          data.ingredients.length > 0 &&
+          data.ingredients.length <= NUTRI_RECIPE_MAX_INGREDIENTS &&
+          Array.isArray(data.steps) &&
+          data.steps.length <= NUTRI_RECIPE_MAX_STEPS &&
+          data.steps.every(function (s) {
+            if (typeof s === 'string') return !!s.trim();
+            if (!s || typeof s !== 'object') return false;
+            var readyInstruction = s.instruction != null ? s.instruction : (s.text || s.content || '');
+            return !!String(readyInstruction || '').trim();
+          });
+      }
       if (!okStr(data.title, false)) return false;
       // servings >= 0: 0 = nicht angegeben (Eigenrezept laesst Portion leer)
       if (typeof data.servings !== 'number' || !isFinite(data.servings) || data.servings < 0) return false;
