@@ -19,10 +19,10 @@ function recipe(overrides) {
     servings: 1,
     ingredients: [
       { id: 'beef', name: 'Rindfleisch', amount: 150, unit: 'g', role: 'main_protein' },
-      { id: 'carrot', name: 'Karotte', amount: 50, unit: 'g', role: 'vegetable' },
+      { id: 'carrot', name: 'Karotte', amount: 100, unit: 'g', role: 'vegetable' },
     ],
     steps: [
-      { order: 1, ingredientIds: ['beef', 'carrot'], action: 'fry', durationMin: 8, text: 'Rindfleisch und Karotte braten.' },
+      { order: 1, ingredientIds: ['beef', 'carrot'], action: 'fry', durationMin: 8, temperatureC: 160 },
     ],
   }, overrides || {});
 }
@@ -40,9 +40,9 @@ const soup = recipe({
   dishCategory: 'soup',
   ingredients: [
     { id: 'water', name: 'Wasser', amount: 100, unit: 'ml', role: 'liquid' },
-    { id: 'carrot', name: 'Karotte', amount: 50, unit: 'g', role: 'vegetable' },
+    { id: 'carrot', name: 'Karotte', amount: 100, unit: 'g', role: 'vegetable' },
   ],
-  steps: [{ order: 1, ingredientIds: ['water', 'carrot'], action: 'boil', durationMin: 10, text: 'Wasser und Karotte kochen.' }],
+  steps: [{ order: 1, ingredientIds: ['water', 'carrot'], action: 'boil', durationMin: 10, temperatureC: 100 }],
 });
 assert.ok(invalidWith.call(null, soup).violations.some((v) => v.code === 'LIQUID_MIN'));
 soup.ingredients[0].amount = 300;
@@ -51,7 +51,7 @@ assert.strictEqual(quality.validateHardConstraints(soup, { ingredientDatabase: d
 const dessert = recipe({
   dishCategory: 'dessert',
   ingredients: [{ id: 'vanilla', name: 'Vanille', amount: 3, unit: 'piece', role: 'spice' }],
-  steps: [{ order: 1, ingredientIds: ['vanilla'], action: 'mix', durationMin: 1, text: 'Vanille mischen.' }],
+  steps: [{ order: 1, ingredientIds: ['vanilla'], action: 'mix', durationMin: 1, temperatureC: null }],
 });
 assert.ok(quality.validateHardConstraints(dessert, { ingredientDatabase: db }).violations.some((v) => v.code === 'SPICE_MAX'));
 
@@ -61,14 +61,14 @@ const oilSalt = recipe({
     { id: 'oil', name: 'Öl', amount: 500, unit: 'ml', role: 'fat' },
     { id: 'salt', name: 'Salz', amount: 5, unit: 'g', role: 'spice' },
   ],
-  steps: [{ order: 1, ingredientIds: ['beef', 'oil', 'salt'], action: 'fry', durationMin: 5, text: 'Rindfleisch mit Öl braten und Salz würzen.' }],
+  steps: [{ order: 1, ingredientIds: ['beef', 'oil', 'salt'], action: 'fry', durationMin: 5, temperatureC: 160 }],
 });
 const oilSaltResult = quality.validateHardConstraints(oilSalt, { ingredientDatabase: db });
 assert.ok(oilSaltResult.violations.some((v) => v.code === 'FAT_MAX'));
 assert.ok(oilSaltResult.violations.some((v) => v.code === 'SPICE_MAX'));
 
 assert.ok(invalidWith({ steps: [{ order: 1, ingredientIds: ['unknown'], action: 'fry', durationMin: 3, text: 'Rindfleisch braten.' }] }).violations.some((v) => v.code === 'STEP_UNKNOWN_INGREDIENT'));
-assert.ok(invalidWith({ steps: [{ order: 1, ingredientIds: ['beef', 'carrot'], action: 'fry', durationMin: 3, text: 'Rindfleisch Minuten braten.' }] }).violations.some((v) => v.code === 'STEP_TEXT_INVALID'));
+assert.ok(invalidWith({ steps: [{ order: 1, ingredientIds: ['beef', 'carrot'], action: 'fry', durationMin: 3, text: 'Rindfleisch braten.' }] }).violations.some((v) => v.code === 'SCHEMA_ADDITIONAL_PROPERTY'));
 assert.ok(invalidWith({ ingredients: [{ id: 'x', name: 'Unbekannt', amount: 150, unit: 'g', role: 'main_protein' }] }).violations.some((v) => v.code === 'INGREDIENT_NOT_RESOLVED'));
 assert.ok(quality.validateHardConstraints(recipe(), { ingredientDatabase: db, userRequest: { vegetarian: true } }).violations.some((v) => v.code === 'DIET_VIOLATION'));
 
@@ -78,7 +78,7 @@ assert.strictEqual(quality.checkFeasibility({ kcal: 500 }, 'main_meat', 'Rindfle
 async function integration() {
   const outputs = [
     '```json\\nnot json\\n```',
-    { title: 'bad', dishCategory: 'main_meat', servings: 1, ingredients: [{ id: 'beef', name: 'Rindfleisch', amount: 20, unit: 'g', role: 'main_protein' }], steps: [{ order: 1, ingredientIds: ['beef'], action: 'fry', durationMin: 2, text: 'Rindfleisch braten.' }] },
+    { title: 'bad', dishCategory: 'main_meat', servings: 1, ingredients: [{ id: 'beef', name: 'Rindfleisch', amount: 20, unit: 'g', role: 'main_protein' }],     steps: [{ order: 1, ingredientIds: ['beef'], action: 'fry', durationMin: 2, temperatureC: 160 }] },
     recipe(),
   ];
   const requests = [];
@@ -92,7 +92,7 @@ async function integration() {
   });
   assert.strictEqual(result.ok, true);
   assert.strictEqual(result.attempts, 3);
-  assert.strictEqual(result.nutrition.kcal, 395.5);
+  assert.strictEqual(result.nutrition.kcal, 416);
   assert.ok(JSON.stringify(requests[2].messages).includes('MAIN_PROTEIN_MIN'));
 
   let calls = 0;

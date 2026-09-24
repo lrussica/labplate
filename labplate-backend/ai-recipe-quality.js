@@ -4,13 +4,15 @@ const fs = require('fs');
 const path = require('path');
 
 const CONSTRAINTS = JSON.parse(fs.readFileSync(path.join(__dirname, 'constraints.json'), 'utf8'));
+const aiRenderer = require('./recipe-ai-renderer');
 const MAX_ATTEMPTS = 3;
 const CATEGORY_VALUES = CONSTRAINTS.categories;
 const UNIT_VALUES = CONSTRAINTS.units;
 const ROLE_VALUES = CONSTRAINTS.roles;
 const ACTION_VALUES = [
   'chop', 'fry', 'boil', 'simmer', 'bake', 'mix', 'season', 'serve',
-  'stir', 'saute', 'grill', 'roast', 'whisk', 'marinate', 'drain', 'blend',
+  'stir', 'saute', 'grill', 'roast', 'whisk', 'fold_in', 'rest',
+  'remove_from_heat', 'preheat', 'marinate', 'drain', 'blend',
 ];
 
 function number(value) {
@@ -114,6 +116,7 @@ function validateHardConstraints(recipe, context) {
   const ids = new Set();
   const lookup = ingredientLookup(ctx);
   const hasIngredientDatabase = lookup.size > 0;
+  const rules = CONSTRAINTS.culinaryRules || {};
   const allowedRoot = ['title', 'dishCategory', 'servings', 'ingredients', 'steps'];
 
   const schemaViolations = validateSchemaShape(recipe);
@@ -157,8 +160,8 @@ function validateHardConstraints(recipe, context) {
       violations.push(violation('STEP_ORDER_INVALID', 'Step order muss lückenlos aufsteigend sein.', index + 1, step && step.order));
     }
     const refs = Array.isArray(step && step.ingredientIds) ? step.ingredientIds : [];
-    if (Object.keys(step || {}).some((key) => !['order', 'ingredientIds', 'action', 'durationMin', 'text'].includes(key))) {
-      violations.push(violation('SCHEMA_ADDITIONAL_PROPERTY', 'Unbekanntes Step-Feld.', ['order', 'ingredientIds', 'action', 'durationMin', 'text'], Object.keys(step || {})));
+    if (Object.keys(step || {}).some((key) => !['order', 'ingredientIds', 'action', 'durationMin', 'temperatureC'].includes(key))) {
+      violations.push(violation('SCHEMA_ADDITIONAL_PROPERTY', 'Unbekanntes Step-Feld.', ['order', 'ingredientIds', 'action', 'durationMin', 'temperatureC'], Object.keys(step || {})));
     }
     if (!ACTION_VALUES.includes(step && step.action)) {
       violations.push(violation('STEP_ACTION_INVALID', 'Step-Aktion ist nicht erlaubt.', ACTION_VALUES, step && step.action));
@@ -169,14 +172,43 @@ function validateHardConstraints(recipe, context) {
     refs.forEach((id) => {
       if (!ids.has(id)) violations.push(violation('STEP_UNKNOWN_INGREDIENT', 'Step referenziert eine unbekannte ingredientId.', Array.from(ids), id, id));
     });
-    const text = String((step && step.text) || '');
-    if (/etwas|nach belieben|eine prise/i.test(text) ||
-        /(?:^|\D)minuten(?!\s*\d)/i.test(text) ||
-        /(?:\d+(?:[.,]\d+)?\s*(?:g|ml|kg|l|tsp|tbsp|stück|stk))/i.test(text)) {
-      violations.push(violation('STEP_TEXT_INVALID', 'Step-Text darf keine vagen oder abweichenden Mengen enthalten.', 'kurzer Satz ohne Mengen', text));
+    const dairyIds = new Set(ingredients.filter((i) => /milch|sahne|joghurt|quark|käse|kaese|butter|frischkäse|mascarpone/i.test(String(i.name))).map((i) => i.id));
+    const eggIds = new Set(ingredients.filter((i) => /ei(er)?\b/i.test(String(i.name)) && !/eiweiß|eiweiss/i.test(String(i.name))).map((i) => i.id));
+    const hot = Number(step.temperatureC);
+    if (rules.dairyForbiddenActions && step.ingredientIds.some((id) => dairyIds.has(id)) &&
+        rules.dairyForbiddenActions.includes(step.action)) {
+      violations.push(violation('DAIRY_HEAT_ACTION', 'Milchprodukte dürfen nicht mit Kochen oder Köcheln kombiniert werden.', rules.dairyAllowedActions, step.action));
     }
-    if (text && !/\b(chop|fry|boil|simmer|bake|mix|season|serve|stir|saute|grill|roast|whisk|marinate|drain|blend|hack|brat|koch|schmor|back|misch|würz|servier|rühr|grill|röst|marinier)\w*/i.test(text)) {
-      violations.push(violation('STEP_ACTION_MISSING', 'Step-Text muss eine erkennbare Aktion enthalten.', 'Verb', text));
+    if (rules.eggForbiddenActions && step.ingredientIds.some((id) => eggIds.has(id)) &&
+        rules.eggForbiddenActions.includes(step.action)) {
+      violations.push(violation('EGG_HOT_SAUCE_ACTION', 'Eier dürfen in heißen Saucen nur nach remove_from_heat verarbeitet werden.', rules.eggAllowedActions, step.action));
+    }
+    if (Number.isFinite(hot) && hot > 0) {
+      if (hot > Number(rules.dairyMaxTemperatureC || 85) && step.ingredientIds.some((id) => dairyIds.has(id))) {
+        violations.push(violation('DAIRY_HEAT_MAX', 'Milchprodukte dürfen nicht über die konfigurierte Temperatur erhitzt werden.', rules.dairyMaxTemperatureC, hot));
+      }
+      if (hot > Number(rules.eggHotSauceMaxTemperatureC || 82) && step.ingredientIds.some((id) => eggIds.has(id))) {
+        violations.push(violation('EGG_HOT_SAUCE_MAX', 'Ei in heißen Saucen darf die konfigurierte Temperatur nicht überschreiten.', rules.eggHotSauceMaxTemperatureC, hot));
+      }
+    }
+    if (rules.sequence && rules.sequence.serveMustBeLast && steps.length &&
+        steps.some((s, i) => s.action === 'serve' && i !== steps.length - 1)) {
+      violations.push(violation('SEQUENCE_SERVE_LAST', 'Serve muss der letzte Schritt sein.', 'last', steps.map((s) => s.action)));
+    }
+    if (rules.sequence && rules.sequence.seasonBeforeServe) {
+      const serveIndex = steps.findIndex((s) => s.action === 'serve');
+      const seasonIndex = steps.findIndex((s) => s.action === 'season');
+      if (serveIndex >= 0 && seasonIndex > serveIndex) violations.push(violation('SEQUENCE_SEASON_BEFORE_SERVE', 'Season muss vor Serve erfolgen.', 'season before serve', steps.map((s) => s.action)));
+    }
+    if (rules.sequence && rules.sequence.preheatBeforeBake) {
+      const bakeIndex = steps.findIndex((s) => s.action === 'bake');
+      const preheatIndex = steps.findIndex((s) => s.action === 'preheat');
+      if (bakeIndex >= 0 && (preheatIndex < 0 || preheatIndex > bakeIndex)) {
+        violations.push(violation('SEQUENCE_PREHEAT_BEFORE_BAKE', 'Vor dem Backen muss der Ofen vorgeheizt werden.', 'preheat before bake', steps.map((s) => s.action)));
+      }
+    }
+    if (step && step.temperatureC != null && (number(step.temperatureC) == null || step.temperatureC < 0 || step.temperatureC > 300)) {
+      violations.push(violation('STEP_TEMPERATURE_INVALID', 'temperatureC muss zwischen 0 und 300 liegen.', '0..300', step.temperatureC));
     }
   });
   const used = new Set(steps.flatMap((step) => Array.isArray(step && step.ingredientIds) ? step.ingredientIds : []));
@@ -210,6 +242,24 @@ function validateHardConstraints(recipe, context) {
       const actual = amountPerPortion(ingredient, servings);
       if (actual > max) violations.push(violation('SPICE_MAX', 'Gewürz überschreitet die Obergrenze pro Portion.', max, actual, ingredient.id));
     });
+    const profile = normalizedText(
+      ctx.dietProfile || (ctx.userRequest && (ctx.userRequest.dietProfile || ctx.userRequest.diet))
+    ).replace(/-/g, '_') || 'standard';
+    const profileRules = (rules.vegetableFiber && rules.vegetableFiber.profiles || {})[profile] ||
+      (rules.vegetableFiber && rules.vegetableFiber.profiles || {}).standard ||
+      { minimumVegetableShare: 0, minimumFiberGPerPortion: 0 };
+    const vegetableAmount = ingredients.filter((i) => i.role === 'vegetable').reduce((s, i) => s + Number(i.amount || 0), 0);
+    const totalAmount = ingredients.reduce((s, i) => s + Number(i.amount || 0), 0);
+    if (totalAmount > 0 && vegetableAmount / totalAmount < Number(profileRules.minimumVegetableShare || 0)) {
+      violations.push(violation('VEGETABLE_PROFILE_MIN', 'Das Gemüseprofil unterschreitet den konfigurierten Anteil.', profileRules.minimumVegetableShare, vegetableAmount / totalAmount));
+    }
+    const fiberDb = ingredients.reduce((s, i) => {
+      const db = lookup.get(normalizedText(i.name)) || lookup.get(normalizedText(i.id)) || {};
+      return s + Number(db.fiber_g || db.fiber || 0) * Number(i.amount || 0) / 100;
+    }, 0) / servings;
+    if (fiberDb < Number(profileRules.minimumFiberGPerPortion || 0)) {
+      violations.push(violation('FIBER_PROFILE_MIN', 'Ballaststoffprofil unterschreitet das konfigurierte Minimum.', profileRules.minimumFiberGPerPortion, fiberDb));
+    }
   }
 
   const request = ctx.userRequest || {};
@@ -241,13 +291,13 @@ function buildSchema() {
   };
   const step = {
     type: 'object', additionalProperties: false,
-    required: ['order', 'ingredientIds', 'action', 'durationMin', 'text'],
+    required: ['order', 'ingredientIds', 'action', 'durationMin', 'temperatureC'],
     properties: {
       order: { type: 'integer', minimum: 1 },
       ingredientIds: { type: 'array', items: { type: 'string' } },
       action: { type: 'string', enum: ACTION_VALUES },
       durationMin: { type: ['number', 'null'] },
-      text: { type: 'string' },
+      temperatureC: { type: ['number', 'null'] },
     },
   };
   return {
@@ -276,7 +326,7 @@ function buildRequest(context, model, previousViolations) {
   const system = [
     'Du bist ein Rezept-Generator. Deine Ausgabe wird maschinell geprüft.',
     'Antworte AUSSCHLIESSLICH mit einem einzigen gültigen JSON-Objekt gemäß Schema. Kein Markdown.',
-    'HARTE REGELN: Mindestmengen und Obergrenzen einhalten; nur erlaubte Zutaten verwenden; keine Nährwerte berechnen; jede Zutat in einem Step referenzieren; keine Mengenangaben im Step-Text.',
+    'HARTE REGELN: Mindestmengen und Obergrenzen einhalten; nur erlaubte Zutaten verwenden; keine Nährwerte berechnen; jede Zutat in einem Step referenzieren; Steps enthalten ausschließlich action, order, ingredientIds, durationMin und optional temperatureC (kein Freitext).',
     'Gültigkeit vor Zielerreichung. Erzeuge das komplette Rezept neu und behebe ausschließlich die gemeldeten Verstöße.',
     'CONSTRAINTS=' + JSON.stringify(CONSTRAINTS),
     'ALLOWED_INGREDIENTS=' + JSON.stringify(c.allowedIngredients || []),
@@ -335,6 +385,10 @@ function toClientRecipe(recipe, nutrition, feasibility, context) {
         (lookup.get(normalizedText(ingredient.name)) || {}).fiber || 0),
     },
   }));
+  const rendered = aiRenderer.renderRecipe(recipe, {
+    lang: context.lang || 'de',
+    servings: context.targetServings || recipe.servings,
+  });
   return {
     title: recipe.title,
     servings: recipe.servings,
@@ -344,11 +398,7 @@ function toClientRecipe(recipe, nutrition, feasibility, context) {
     self_check: '',
     ingredients,
     shopping_list: ingredients.map((ingredient) => ingredient.name + ' – ' + ingredient.amount + ' ' + ingredient.unit),
-    steps: (recipe.steps || []).map((step) => ({
-      stepNumber: step.order,
-      instruction: step.text,
-      ingredientIds: step.ingredientIds,
-    })),
+    steps: rendered.steps.map((step) => Object.assign({ stepNumber: step.order }, step)),
     nutrition,
     finalNutrition: nutrition,
     mode: 'ai',
@@ -369,7 +419,7 @@ async function generateAiRecipe(options) {
   let violations = [];
   let lastError = null;
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt += 1) {
-    const result = await o.callGroq(buildRequest(context, o.model, violations), o.groqOpts || {});
+      const result = await o.callGroq(buildRequest(context, o.model, violations), o.groqOpts || {});
     if (!result || result.error) {
       if (result && (result.error === 'json_parse_failed' || result.error === 'empty_response')) {
         violations = [violation('JSON_PARSE_ERROR', 'LLM-Ausgabe ist kein vollständiges gültiges JSON-Objekt.', 'single JSON object', result.body || result.error)];
@@ -401,6 +451,10 @@ async function generateAiRecipe(options) {
   return {
     error: 'ai_recipe_unavailable',
     message: 'Das KI-Rezept konnte nach drei Prüfungen nicht sicher erstellt werden.',
+    fallback: {
+      type: 'clear',
+      message: 'Kein unsicheres Rezept anzeigen. Bitte Anfrage vereinfachen oder später erneut versuchen.',
+    },
     attempts: MAX_ATTEMPTS,
     violations: (lastError && lastError.violations) || violations,
     feasibility,

@@ -1,0 +1,1162 @@
+[
+  {
+    "id": 1,
+    "category": "main_meat",
+    "cuisine": "de",
+    "dietProfile": "standard",
+    "allergens": [],
+    "servings": 1,
+    "lang": "de",
+    "query": "Pasta"
+  },
+  {
+    "id": 2,
+    "category": "main_fish",
+    "cuisine": "it",
+    "dietProfile": "keto",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 2,
+    "lang": "it",
+    "query": "Curry"
+  },
+  {
+    "id": 3,
+    "category": "main_vegetarian",
+    "cuisine": "fr",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 4,
+    "lang": "fr",
+    "query": "Suppe"
+  },
+  {
+    "id": 4,
+    "category": "soup",
+    "cuisine": "tr",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 1,
+    "lang": "tr",
+    "query": "Salat"
+  },
+  {
+    "id": 5,
+    "category": "stew_braise",
+    "cuisine": "it",
+    "dietProfile": "standard",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 2,
+    "lang": "de",
+    "query": "Biskuit"
+  },
+  {
+    "id": 6,
+    "category": "dessert",
+    "cuisine": "de",
+    "dietProfile": "keto",
+    "allergens": [],
+    "servings": 4,
+    "lang": "it",
+    "query": "Pasta"
+  },
+  {
+    "id": 7,
+    "category": "salad",
+    "cuisine": "it",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 1,
+    "lang": "fr",
+    "query": "Curry"
+  },
+  {
+    "id": 8,
+    "category": "other",
+    "cuisine": "fr",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 2,
+    "lang": "tr",
+    "query": "Suppe"
+  },
+  {
+    "id": 9,
+    "category": "main_meat",
+    "cuisine": "tr",
+    "dietProfile": "standard",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 4,
+    "lang": "de",
+    "query": "Salat"
+  },
+  {
+    "id": 10,
+    "category": "main_fish",
+    "cuisine": "it",
+    "dietProfile": "keto",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 1,
+    "lang": "it",
+    "query": "Biskuit"
+  },
+  {
+    "id": 11,
+    "category": "main_vegetarian",
+    "cuisine": "de",
+    "dietProfile": "low_carb",
+    "allergens": [],
+    "servings": 2,
+    "lang": "fr",
+    "query": "Pasta"
+  },
+  {
+    "id": 12,
+    "category": "soup",
+    "cuisine": "it",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 4,
+    "lang": "tr",
+    "query": "Curry"
+  },
+  {
+    "id": 13,
+    "category": "stew_braise",
+    "cuisine": "fr",
+    "dietProfile": "standard",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 1,
+    "lang": "de",
+    "query": "Suppe"
+  },
+  {
+    "id": 14,
+    "category": "dessert",
+    "cuisine": "tr",
+    "dietProfile": "keto",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 2,
+    "lang": "it",
+    "query": "Salat"
+  },
+  {
+    "id": 15,
+    "category": "salad",
+    "cuisine": "it",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 4,
+    "lang": "fr",
+    "query": "Biskuit"
+  },
+  {
+    "id": 16,
+    "category": "other",
+    "cuisine": "de",
+    "dietProfile": "carnivore",
+    "allergens": [],
+    "servings": 1,
+    "lang": "tr",
+    "query": "Pasta"
+  },
+  {
+    "id": 17,
+    "category": "main_meat",
+    "cuisine": "it",
+    "dietProfile": "standard",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 2,
+    "lang": "de",
+    "query": "Curry"
+  },
+  {
+    "id": 18,
+    "category": "main_fish",
+    "cuisine": "fr",
+    "dietProfile": "keto",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 4,
+    "lang": "it",
+    "query": "Suppe"
+  },
+  {
+    "id": 19,
+    "category": "main_vegetarian",
+    "cuisine": "tr",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 1,
+    "lang": "fr",
+    "query": "Salat"
+  },
+  {
+    "id": 20,
+    "category": "soup",
+    "cuisine": "it",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 2,
+    "lang": "tr",
+    "query": "Biskuit"
+  },
+  {
+    "id": 21,
+    "category": "stew_braise",
+    "cuisine": "de",
+    "dietProfile": "standard",
+    "allergens": [],
+    "servings": 4,
+    "lang": "de",
+    "query": "Pasta"
+  },
+  {
+    "id": 22,
+    "category": "dessert",
+    "cuisine": "it",
+    "dietProfile": "keto",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 1,
+    "lang": "it",
+    "query": "Curry"
+  },
+  {
+    "id": 23,
+    "category": "salad",
+    "cuisine": "fr",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 2,
+    "lang": "fr",
+    "query": "Suppe"
+  },
+  {
+    "id": 24,
+    "category": "other",
+    "cuisine": "tr",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 4,
+    "lang": "tr",
+    "query": "Salat"
+  },
+  {
+    "id": 25,
+    "category": "main_meat",
+    "cuisine": "it",
+    "dietProfile": "standard",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 1,
+    "lang": "de",
+    "query": "Biskuit"
+  },
+  {
+    "id": 26,
+    "category": "main_fish",
+    "cuisine": "de",
+    "dietProfile": "keto",
+    "allergens": [],
+    "servings": 2,
+    "lang": "it",
+    "query": "Pasta"
+  },
+  {
+    "id": 27,
+    "category": "main_vegetarian",
+    "cuisine": "it",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 4,
+    "lang": "fr",
+    "query": "Curry"
+  },
+  {
+    "id": 28,
+    "category": "soup",
+    "cuisine": "fr",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 1,
+    "lang": "tr",
+    "query": "Suppe"
+  },
+  {
+    "id": 29,
+    "category": "stew_braise",
+    "cuisine": "tr",
+    "dietProfile": "standard",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 2,
+    "lang": "de",
+    "query": "Salat"
+  },
+  {
+    "id": 30,
+    "category": "dessert",
+    "cuisine": "it",
+    "dietProfile": "keto",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 4,
+    "lang": "it",
+    "query": "Biskuit"
+  },
+  {
+    "id": 31,
+    "category": "salad",
+    "cuisine": "de",
+    "dietProfile": "low_carb",
+    "allergens": [],
+    "servings": 1,
+    "lang": "fr",
+    "query": "Pasta"
+  },
+  {
+    "id": 32,
+    "category": "other",
+    "cuisine": "it",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 2,
+    "lang": "tr",
+    "query": "Curry"
+  },
+  {
+    "id": 33,
+    "category": "main_meat",
+    "cuisine": "fr",
+    "dietProfile": "standard",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 4,
+    "lang": "de",
+    "query": "Suppe"
+  },
+  {
+    "id": 34,
+    "category": "main_fish",
+    "cuisine": "tr",
+    "dietProfile": "keto",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 1,
+    "lang": "it",
+    "query": "Salat"
+  },
+  {
+    "id": 35,
+    "category": "main_vegetarian",
+    "cuisine": "it",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 2,
+    "lang": "fr",
+    "query": "Biskuit"
+  },
+  {
+    "id": 36,
+    "category": "soup",
+    "cuisine": "de",
+    "dietProfile": "carnivore",
+    "allergens": [],
+    "servings": 4,
+    "lang": "tr",
+    "query": "Pasta"
+  },
+  {
+    "id": 37,
+    "category": "stew_braise",
+    "cuisine": "it",
+    "dietProfile": "standard",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 1,
+    "lang": "de",
+    "query": "Curry"
+  },
+  {
+    "id": 38,
+    "category": "dessert",
+    "cuisine": "fr",
+    "dietProfile": "keto",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 2,
+    "lang": "it",
+    "query": "Suppe"
+  },
+  {
+    "id": 39,
+    "category": "salad",
+    "cuisine": "tr",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 4,
+    "lang": "fr",
+    "query": "Salat"
+  },
+  {
+    "id": 40,
+    "category": "other",
+    "cuisine": "it",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 1,
+    "lang": "tr",
+    "query": "Biskuit"
+  },
+  {
+    "id": 41,
+    "category": "main_meat",
+    "cuisine": "de",
+    "dietProfile": "standard",
+    "allergens": [],
+    "servings": 2,
+    "lang": "de",
+    "query": "Pasta"
+  },
+  {
+    "id": 42,
+    "category": "main_fish",
+    "cuisine": "it",
+    "dietProfile": "keto",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 4,
+    "lang": "it",
+    "query": "Curry"
+  },
+  {
+    "id": 43,
+    "category": "main_vegetarian",
+    "cuisine": "fr",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 1,
+    "lang": "fr",
+    "query": "Suppe"
+  },
+  {
+    "id": 44,
+    "category": "soup",
+    "cuisine": "tr",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 2,
+    "lang": "tr",
+    "query": "Salat"
+  },
+  {
+    "id": 45,
+    "category": "stew_braise",
+    "cuisine": "it",
+    "dietProfile": "standard",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 4,
+    "lang": "de",
+    "query": "Biskuit"
+  },
+  {
+    "id": 46,
+    "category": "dessert",
+    "cuisine": "de",
+    "dietProfile": "keto",
+    "allergens": [],
+    "servings": 1,
+    "lang": "it",
+    "query": "Pasta"
+  },
+  {
+    "id": 47,
+    "category": "salad",
+    "cuisine": "it",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 2,
+    "lang": "fr",
+    "query": "Curry"
+  },
+  {
+    "id": 48,
+    "category": "other",
+    "cuisine": "fr",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 4,
+    "lang": "tr",
+    "query": "Suppe"
+  },
+  {
+    "id": 49,
+    "category": "main_meat",
+    "cuisine": "tr",
+    "dietProfile": "standard",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 1,
+    "lang": "de",
+    "query": "Salat"
+  },
+  {
+    "id": 50,
+    "category": "main_fish",
+    "cuisine": "it",
+    "dietProfile": "keto",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 2,
+    "lang": "it",
+    "query": "Biskuit"
+  },
+  {
+    "id": 51,
+    "category": "main_vegetarian",
+    "cuisine": "de",
+    "dietProfile": "low_carb",
+    "allergens": [],
+    "servings": 4,
+    "lang": "fr",
+    "query": "Pasta"
+  },
+  {
+    "id": 52,
+    "category": "soup",
+    "cuisine": "it",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 1,
+    "lang": "tr",
+    "query": "Curry"
+  },
+  {
+    "id": 53,
+    "category": "stew_braise",
+    "cuisine": "fr",
+    "dietProfile": "standard",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 2,
+    "lang": "de",
+    "query": "Suppe"
+  },
+  {
+    "id": 54,
+    "category": "dessert",
+    "cuisine": "tr",
+    "dietProfile": "keto",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 4,
+    "lang": "it",
+    "query": "Salat"
+  },
+  {
+    "id": 55,
+    "category": "salad",
+    "cuisine": "it",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 1,
+    "lang": "fr",
+    "query": "Biskuit"
+  },
+  {
+    "id": 56,
+    "category": "other",
+    "cuisine": "de",
+    "dietProfile": "carnivore",
+    "allergens": [],
+    "servings": 2,
+    "lang": "tr",
+    "query": "Pasta"
+  },
+  {
+    "id": 57,
+    "category": "main_meat",
+    "cuisine": "it",
+    "dietProfile": "standard",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 4,
+    "lang": "de",
+    "query": "Curry"
+  },
+  {
+    "id": 58,
+    "category": "main_fish",
+    "cuisine": "fr",
+    "dietProfile": "keto",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 1,
+    "lang": "it",
+    "query": "Suppe"
+  },
+  {
+    "id": 59,
+    "category": "main_vegetarian",
+    "cuisine": "tr",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 2,
+    "lang": "fr",
+    "query": "Salat"
+  },
+  {
+    "id": 60,
+    "category": "soup",
+    "cuisine": "it",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 4,
+    "lang": "tr",
+    "query": "Biskuit"
+  },
+  {
+    "id": 61,
+    "category": "stew_braise",
+    "cuisine": "de",
+    "dietProfile": "standard",
+    "allergens": [],
+    "servings": 1,
+    "lang": "de",
+    "query": "Pasta"
+  },
+  {
+    "id": 62,
+    "category": "dessert",
+    "cuisine": "it",
+    "dietProfile": "keto",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 2,
+    "lang": "it",
+    "query": "Curry"
+  },
+  {
+    "id": 63,
+    "category": "salad",
+    "cuisine": "fr",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 4,
+    "lang": "fr",
+    "query": "Suppe"
+  },
+  {
+    "id": 64,
+    "category": "other",
+    "cuisine": "tr",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 1,
+    "lang": "tr",
+    "query": "Salat"
+  },
+  {
+    "id": 65,
+    "category": "main_meat",
+    "cuisine": "it",
+    "dietProfile": "standard",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 2,
+    "lang": "de",
+    "query": "Biskuit"
+  },
+  {
+    "id": 66,
+    "category": "main_fish",
+    "cuisine": "de",
+    "dietProfile": "keto",
+    "allergens": [],
+    "servings": 4,
+    "lang": "it",
+    "query": "Pasta"
+  },
+  {
+    "id": 67,
+    "category": "main_vegetarian",
+    "cuisine": "it",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 1,
+    "lang": "fr",
+    "query": "Curry"
+  },
+  {
+    "id": 68,
+    "category": "soup",
+    "cuisine": "fr",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 2,
+    "lang": "tr",
+    "query": "Suppe"
+  },
+  {
+    "id": 69,
+    "category": "stew_braise",
+    "cuisine": "tr",
+    "dietProfile": "standard",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 4,
+    "lang": "de",
+    "query": "Salat"
+  },
+  {
+    "id": 70,
+    "category": "dessert",
+    "cuisine": "it",
+    "dietProfile": "keto",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 1,
+    "lang": "it",
+    "query": "Biskuit"
+  },
+  {
+    "id": 71,
+    "category": "salad",
+    "cuisine": "de",
+    "dietProfile": "low_carb",
+    "allergens": [],
+    "servings": 2,
+    "lang": "fr",
+    "query": "Pasta"
+  },
+  {
+    "id": 72,
+    "category": "other",
+    "cuisine": "it",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 4,
+    "lang": "tr",
+    "query": "Curry"
+  },
+  {
+    "id": 73,
+    "category": "main_meat",
+    "cuisine": "fr",
+    "dietProfile": "standard",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 1,
+    "lang": "de",
+    "query": "Suppe"
+  },
+  {
+    "id": 74,
+    "category": "main_fish",
+    "cuisine": "tr",
+    "dietProfile": "keto",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 2,
+    "lang": "it",
+    "query": "Salat"
+  },
+  {
+    "id": 75,
+    "category": "main_vegetarian",
+    "cuisine": "it",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 4,
+    "lang": "fr",
+    "query": "Biskuit"
+  },
+  {
+    "id": 76,
+    "category": "soup",
+    "cuisine": "de",
+    "dietProfile": "carnivore",
+    "allergens": [],
+    "servings": 1,
+    "lang": "tr",
+    "query": "Pasta"
+  },
+  {
+    "id": 77,
+    "category": "stew_braise",
+    "cuisine": "it",
+    "dietProfile": "standard",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 2,
+    "lang": "de",
+    "query": "Curry"
+  },
+  {
+    "id": 78,
+    "category": "dessert",
+    "cuisine": "fr",
+    "dietProfile": "keto",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 4,
+    "lang": "it",
+    "query": "Suppe"
+  },
+  {
+    "id": 79,
+    "category": "salad",
+    "cuisine": "tr",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 1,
+    "lang": "fr",
+    "query": "Salat"
+  },
+  {
+    "id": 80,
+    "category": "other",
+    "cuisine": "it",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 2,
+    "lang": "tr",
+    "query": "Biskuit"
+  },
+  {
+    "id": 81,
+    "category": "main_meat",
+    "cuisine": "de",
+    "dietProfile": "standard",
+    "allergens": [],
+    "servings": 4,
+    "lang": "de",
+    "query": "Pasta"
+  },
+  {
+    "id": 82,
+    "category": "main_fish",
+    "cuisine": "it",
+    "dietProfile": "keto",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 1,
+    "lang": "it",
+    "query": "Curry"
+  },
+  {
+    "id": 83,
+    "category": "main_vegetarian",
+    "cuisine": "fr",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 2,
+    "lang": "fr",
+    "query": "Suppe"
+  },
+  {
+    "id": 84,
+    "category": "soup",
+    "cuisine": "tr",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 4,
+    "lang": "tr",
+    "query": "Salat"
+  },
+  {
+    "id": 85,
+    "category": "stew_braise",
+    "cuisine": "it",
+    "dietProfile": "standard",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 1,
+    "lang": "de",
+    "query": "Biskuit"
+  },
+  {
+    "id": 86,
+    "category": "dessert",
+    "cuisine": "de",
+    "dietProfile": "keto",
+    "allergens": [],
+    "servings": 2,
+    "lang": "it",
+    "query": "Pasta"
+  },
+  {
+    "id": 87,
+    "category": "salad",
+    "cuisine": "it",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 4,
+    "lang": "fr",
+    "query": "Curry"
+  },
+  {
+    "id": 88,
+    "category": "other",
+    "cuisine": "fr",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 1,
+    "lang": "tr",
+    "query": "Suppe"
+  },
+  {
+    "id": 89,
+    "category": "main_meat",
+    "cuisine": "tr",
+    "dietProfile": "standard",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 2,
+    "lang": "de",
+    "query": "Salat"
+  },
+  {
+    "id": 90,
+    "category": "main_fish",
+    "cuisine": "it",
+    "dietProfile": "keto",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 4,
+    "lang": "it",
+    "query": "Biskuit"
+  },
+  {
+    "id": 91,
+    "category": "main_vegetarian",
+    "cuisine": "de",
+    "dietProfile": "low_carb",
+    "allergens": [],
+    "servings": 1,
+    "lang": "fr",
+    "query": "Pasta"
+  },
+  {
+    "id": 92,
+    "category": "soup",
+    "cuisine": "it",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 2,
+    "lang": "tr",
+    "query": "Curry"
+  },
+  {
+    "id": 93,
+    "category": "stew_braise",
+    "cuisine": "fr",
+    "dietProfile": "standard",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 4,
+    "lang": "de",
+    "query": "Suppe"
+  },
+  {
+    "id": 94,
+    "category": "dessert",
+    "cuisine": "tr",
+    "dietProfile": "keto",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 1,
+    "lang": "it",
+    "query": "Salat"
+  },
+  {
+    "id": 95,
+    "category": "salad",
+    "cuisine": "it",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 2,
+    "lang": "fr",
+    "query": "Biskuit"
+  },
+  {
+    "id": 96,
+    "category": "other",
+    "cuisine": "de",
+    "dietProfile": "carnivore",
+    "allergens": [],
+    "servings": 4,
+    "lang": "tr",
+    "query": "Pasta"
+  },
+  {
+    "id": 97,
+    "category": "main_meat",
+    "cuisine": "it",
+    "dietProfile": "standard",
+    "allergens": [
+      "lactose"
+    ],
+    "servings": 1,
+    "lang": "de",
+    "query": "Curry"
+  },
+  {
+    "id": 98,
+    "category": "main_fish",
+    "cuisine": "fr",
+    "dietProfile": "keto",
+    "allergens": [
+      "gluten"
+    ],
+    "servings": 2,
+    "lang": "it",
+    "query": "Suppe"
+  },
+  {
+    "id": 99,
+    "category": "main_vegetarian",
+    "cuisine": "tr",
+    "dietProfile": "low_carb",
+    "allergens": [
+      "egg"
+    ],
+    "servings": 4,
+    "lang": "fr",
+    "query": "Salat"
+  },
+  {
+    "id": 100,
+    "category": "soup",
+    "cuisine": "it",
+    "dietProfile": "carnivore",
+    "allergens": [
+      "nuts"
+    ],
+    "servings": 1,
+    "lang": "tr",
+    "query": "Biskuit"
+  }
+]

@@ -60,6 +60,7 @@ const { validateRecipeMode } = require('./recipe-request-mode');
 const aiRecipeQuality = require('./ai-recipe-quality');
 const { createPhotoVerifyHandlers } = require('./api/photo-verify');
 const originalSearchLog = require('./original-search-log');
+const qualityReports = require('./recipe-quality-reports');
 const BUILD_ID = process.env.BUILD_ID || new Date().toISOString();
 
 // ---------------------------------------------------------------------
@@ -399,12 +400,19 @@ app.get('/health', (req, res) => {
     groq429Diagnostics: true,
     groqDebugKeyRouting: true,
   });
+});
 
   app.get('/api/original-search-misses', (req, res) => {
     const limit = Math.min(Math.max(Number(req.query.limit) || 20, 1), 100);
     return res.status(200).json({ items: originalSearchLog.topMisses(limit) });
   });
-});
+  app.post('/api/recipe-quality-reports', limiter, (req, res) => {
+    const result = qualityReports.record(req.body);
+    res.status(result.ok ? 201 : 400).json(result);
+  });
+  app.get('/api/recipe-quality-reports/top', limiter, (req, res) => {
+    res.json({ ruleVersion: (aiRecipeQuality.CONSTRAINTS.culinaryRules || {}).version, reports: qualityReports.top(req.query.limit) });
+  });
 
 // Lexikon-Begriffe aus SQLite lexicon_terms (kein KI-Call zur Laufzeit).
 app.get('/api/lexicon-terms', (req, res) => {
@@ -946,6 +954,8 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
         allowedIngredients: req.body.allowedIngredients || req.body.allowed_ingredients || [],
         ingredientDatabase: req.body.ingredientDatabase || req.body.ingredient_database || req.body.allowedIngredients || [],
         userRequest: req.body.userRequest || req.body.user_request || {},
+        lang: apiI18n.langFromReq(req.body),
+        targetServings: req.body.target_servings || req.body.targetServings,
       },
       callGroq: core.callGroq,
       groqOpts: { apiKey: auth.apiKey, timeoutMs: REQUEST_TIMEOUT_MS },

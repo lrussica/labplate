@@ -66,5 +66,27 @@
       "salad": 150,
       "other": 200
     }
+  },
+  "culinaryRules": {
+    "version": "2026-09-24",
+    "dairyMaxTemperatureC": 85,
+    "dairyForbiddenActions": ["boil", "simmer"],
+    "dairyAllowedActions": ["fold_in", "serve", "remove_from_heat"],
+    "eggHotSauceMaxTemperatureC": 82,
+    "eggForbiddenActions": ["boil", "simmer", "fry", "saute"],
+    "eggAllowedActions": ["fold_in", "serve", "remove_from_heat"],
+    "sequence": {
+      "serveMustBeLast": true,
+      "seasonBeforeServe": true,
+      "preheatBeforeBake": true
+    },
+    "vegetableFiber": {
+      "profiles": {
+        "standard": { "minimumVegetableShare": 0.2, "minimumFiberGPerPortion": 3 },
+        "keto": { "minimumVegetableShare": 0.15, "minimumFiberGPerPortion": 3 },
+        "low_carb": { "minimumVegetableShare": 0.15, "minimumFiberGPerPortion": 3 },
+        "carnivore": { "minimumVegetableShare": 0, "minimumFiberGPerPortion": 0 }
+      }
+    }
   }
 }
