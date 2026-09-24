@@ -1,0 +1,4997 @@
+{
+  "version": 1,
+  "statusPolicy": "draft_only",
+  "recipes": [
+    {
+      "id": "it_pan_di_spagna",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "IT",
+      "category": "dessert",
+      "canonicalName": {
+        "de": "Pan di Spagna",
+        "it": "Pan di Spagna",
+        "fr": "Genoise italienne",
+        "tr": "Italyan pandispanya"
+      },
+      "titles": {
+        "de": "Pan di Spagna",
+        "it": "Pan di Spagna",
+        "fr": "Genoise italienne",
+        "tr": "Italyan pandispanya"
+      },
+      "aliases": {
+        "de": [
+          "italienischer Biskuit"
+        ],
+        "it": [
+          "pandispagna"
+        ],
+        "fr": [
+          "biscuit italien"
+        ],
+        "tr": [
+          "italyan pandispanya"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 8,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "unresolved:egg",
+          "name": {
+            "de": "Ei",
+            "it": "Uovo",
+            "fr": "Oeuf",
+            "tr": "Yumurta"
+          },
+          "amount": 200,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:sugar",
+          "name": {
+            "de": "Zucker",
+            "it": "Zucchero",
+            "fr": "Sucre",
+            "tr": "Seker"
+          },
+          "amount": 100,
+          "unit": "g"
+        },
+        {
+          "id": "0007",
+          "name": {
+            "de": "Weizenmehl Tipo 00",
+            "it": "Farina tipo 00",
+            "fr": "Farine de ble T00",
+            "tr": "Tip 00 bugday unu"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Ei vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:egg"
+          ]
+        },
+        {
+          "text": "Zucker vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:sugar"
+          ]
+        },
+        {
+          "text": "Weizenmehl Tipo 00 vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0007"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Ei",
+          "Zucker"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "it_risotto_milanese",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "IT",
+      "category": "main_dish",
+      "canonicalName": {
+        "de": "Mailander Risotto",
+        "it": "Risotto alla milanese",
+        "fr": "Risotto milanais",
+        "tr": "Milano usulu risotto"
+      },
+      "titles": {
+        "de": "Mailander Risotto",
+        "it": "Risotto alla milanese",
+        "fr": "Risotto milanais",
+        "tr": "Milano usulu risotto"
+      },
+      "aliases": {
+        "de": [
+          "Risotto alla milanese"
+        ],
+        "it": [
+          "risotto milanese"
+        ],
+        "fr": [
+          "risotto a la milanaise"
+        ],
+        "tr": [
+          "milan usulu risotto"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "unresolved:rice",
+          "name": {
+            "de": "Reis",
+            "it": "Riso",
+            "fr": "Riz",
+            "tr": "Pirinc"
+          },
+          "amount": 320,
+          "unit": "g"
+        },
+        {
+          "id": "0002",
+          "name": {
+            "de": "Zwiebel",
+            "it": "Cipolla",
+            "fr": "Oignon",
+            "tr": "Sogan"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0006",
+          "name": {
+            "de": "Butter",
+            "it": "Burro",
+            "fr": "Beurre",
+            "tr": "Tereyagi"
+          },
+          "amount": 40,
+          "unit": "g"
+        },
+        {
+          "id": "0010",
+          "name": {
+            "de": "Parmigiano Reggiano",
+            "it": "Parmigiano Reggiano",
+            "fr": "Parmesan",
+            "tr": "Parmesan"
+          },
+          "amount": 60,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Reis vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:rice"
+          ]
+        },
+        {
+          "text": "Zwiebel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0002"
+          ]
+        },
+        {
+          "text": "Butter vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0006"
+          ]
+        },
+        {
+          "text": "Parmigiano Reggiano vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0010"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Reis"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "it_minestrone",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "IT",
+      "category": "soup",
+      "canonicalName": {
+        "de": "Minestrone",
+        "it": "Minestrone",
+        "fr": "Minestrone",
+        "tr": "Minestrone"
+      },
+      "titles": {
+        "de": "Minestrone",
+        "it": "Minestrone",
+        "fr": "Minestrone",
+        "tr": "Minestrone"
+      },
+      "aliases": {
+        "de": [
+          "italienische Gemusesuppe"
+        ],
+        "it": [
+          "zuppa minestrone"
+        ],
+        "fr": [
+          "soupe minestrone"
+        ],
+        "tr": [
+          "minestrone corbasi"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0003",
+          "name": {
+            "de": "Karotte",
+            "it": "Carota",
+            "fr": "Carotte",
+            "tr": "Havuc"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0002",
+          "name": {
+            "de": "Zwiebel",
+            "it": "Cipolla",
+            "fr": "Oignon",
+            "tr": "Sogan"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0004",
+          "name": {
+            "de": "Sellerie",
+            "it": "Sedano",
+            "fr": "Celeri",
+            "tr": "Kereviz"
+          },
+          "amount": 80,
+          "unit": "g"
+        },
+        {
+          "id": "0005",
+          "name": {
+            "de": "Tomatenpassata",
+            "it": "Passata di pomodoro",
+            "fr": "Passata de tomate",
+            "tr": "Domates passata"
+          },
+          "amount": 400,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Karotte vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0003"
+          ]
+        },
+        {
+          "text": "Zwiebel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0002"
+          ]
+        },
+        {
+          "text": "Sellerie vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0004"
+          ]
+        },
+        {
+          "text": "Tomatenpassata vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0005"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "passed",
+        "missingIngredients": [],
+        "violations": []
+      }
+    },
+    {
+      "id": "it_pizza_margherita",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "IT",
+      "category": "pastry",
+      "canonicalName": {
+        "de": "Pizza Margherita",
+        "it": "Pizza Margherita",
+        "fr": "Pizza Margherita",
+        "tr": "Pizza Margherita"
+      },
+      "titles": {
+        "de": "Pizza Margherita",
+        "it": "Pizza Margherita",
+        "fr": "Pizza Margherita",
+        "tr": "Pizza Margherita"
+      },
+      "aliases": {
+        "de": [
+          "Margherita Pizza"
+        ],
+        "it": [
+          "pizza napoletana margherita"
+        ],
+        "fr": [
+          "pizza napolitaine margherita"
+        ],
+        "tr": [
+          "margherita pizza"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0007",
+          "name": {
+            "de": "Weizenmehl Tipo 00",
+            "it": "Farina tipo 00",
+            "fr": "Farine de ble T00",
+            "tr": "Tip 00 bugday unu"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "0005",
+          "name": {
+            "de": "Tomatenpassata",
+            "it": "Passata di pomodoro",
+            "fr": "Passata de tomate",
+            "tr": "Domates passata"
+          },
+          "amount": 400,
+          "unit": "g"
+        },
+        {
+          "id": "0009",
+          "name": {
+            "de": "Mozzarella",
+            "it": "Mozzarella",
+            "fr": "Mozzarella",
+            "tr": "Mozzarella"
+          },
+          "amount": 250,
+          "unit": "g"
+        },
+        {
+          "id": "0012",
+          "name": {
+            "de": "Olivenol",
+            "it": "Olio d'oliva",
+            "fr": "Huile d'olive",
+            "tr": "Zeytinyagi"
+          },
+          "amount": 30,
+          "unit": "ml"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Weizenmehl Tipo 00 vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0007"
+          ]
+        },
+        {
+          "text": "Tomatenpassata vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0005"
+          ]
+        },
+        {
+          "text": "Mozzarella vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0009"
+          ]
+        },
+        {
+          "text": "Olivenol vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0012"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "passed",
+        "missingIngredients": [],
+        "violations": []
+      }
+    },
+    {
+      "id": "it_panna_cotta",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "IT",
+      "category": "dessert",
+      "canonicalName": {
+        "de": "Panna cotta",
+        "it": "Panna cotta",
+        "fr": "Panna cotta",
+        "tr": "Panna cotta"
+      },
+      "titles": {
+        "de": "Panna cotta",
+        "it": "Panna cotta",
+        "fr": "Panna cotta",
+        "tr": "Panna cotta"
+      },
+      "aliases": {
+        "de": [
+          "Pannacotta"
+        ],
+        "it": [
+          "panna cotta classica"
+        ],
+        "fr": [
+          "panna cotta classique"
+        ],
+        "tr": [
+          "klasik panna cotta"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0008",
+          "name": {
+            "de": "Vollmilch",
+            "it": "Latte intero",
+            "fr": "Lait entier",
+            "tr": "Tam yagli sut"
+          },
+          "amount": 300,
+          "unit": "ml"
+        },
+        {
+          "id": "unresolved:sugar",
+          "name": {
+            "de": "Zucker",
+            "it": "Zucchero",
+            "fr": "Sucre",
+            "tr": "Seker"
+          },
+          "amount": 100,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Vollmilch vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0008"
+          ]
+        },
+        {
+          "text": "Zucker vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:sugar"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Zucker"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "it_polenta",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "IT",
+      "category": "basic",
+      "canonicalName": {
+        "de": "Polenta",
+        "it": "Polenta",
+        "fr": "Polenta",
+        "tr": "Polenta"
+      },
+      "titles": {
+        "de": "Polenta",
+        "it": "Polenta",
+        "fr": "Polenta",
+        "tr": "Polenta"
+      },
+      "aliases": {
+        "de": [
+          "Maisbrei"
+        ],
+        "it": [
+          "polenta morbida"
+        ],
+        "fr": [
+          "polenta cremeuse"
+        ],
+        "tr": [
+          "polenta"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "unresolved:cornmeal",
+          "name": {
+            "de": "Maisgriess",
+            "it": "Farina di mais",
+            "fr": "Semoule de mais",
+            "tr": "Misir unu"
+          },
+          "amount": 240,
+          "unit": "g"
+        },
+        {
+          "id": "0008",
+          "name": {
+            "de": "Vollmilch",
+            "it": "Latte intero",
+            "fr": "Lait entier",
+            "tr": "Tam yagli sut"
+          },
+          "amount": 300,
+          "unit": "ml"
+        },
+        {
+          "id": "0006",
+          "name": {
+            "de": "Butter",
+            "it": "Burro",
+            "fr": "Beurre",
+            "tr": "Tereyagi"
+          },
+          "amount": 40,
+          "unit": "g"
+        },
+        {
+          "id": "0010",
+          "name": {
+            "de": "Parmigiano Reggiano",
+            "it": "Parmigiano Reggiano",
+            "fr": "Parmesan",
+            "tr": "Parmesan"
+          },
+          "amount": 60,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Maisgriess vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:cornmeal"
+          ]
+        },
+        {
+          "text": "Vollmilch vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0008"
+          ]
+        },
+        {
+          "text": "Butter vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0006"
+          ]
+        },
+        {
+          "text": "Parmigiano Reggiano vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0010"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Maisgriess"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "it_parmigiana",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "IT",
+      "category": "main_dish",
+      "canonicalName": {
+        "de": "Melanzane alla parmigiana",
+        "it": "Parmigiana di melanzane",
+        "fr": "Aubergines a la parmesane",
+        "tr": "Parmesanli patlican"
+      },
+      "titles": {
+        "de": "Melanzane alla parmigiana",
+        "it": "Parmigiana di melanzane",
+        "fr": "Aubergines a la parmesane",
+        "tr": "Parmesanli patlican"
+      },
+      "aliases": {
+        "de": [
+          "Auberginen-Parmigiana"
+        ],
+        "it": [
+          "parmigiana di melanzane"
+        ],
+        "fr": [
+          "parmigiana daubergines"
+        ],
+        "tr": [
+          "patlican parmigiana"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "unresolved:eggplant",
+          "name": {
+            "de": "Aubergine",
+            "it": "Melanzana",
+            "fr": "Aubergine",
+            "tr": "Patlican"
+          },
+          "amount": 700,
+          "unit": "g"
+        },
+        {
+          "id": "0005",
+          "name": {
+            "de": "Tomatenpassata",
+            "it": "Passata di pomodoro",
+            "fr": "Passata de tomate",
+            "tr": "Domates passata"
+          },
+          "amount": 400,
+          "unit": "g"
+        },
+        {
+          "id": "0009",
+          "name": {
+            "de": "Mozzarella",
+            "it": "Mozzarella",
+            "fr": "Mozzarella",
+            "tr": "Mozzarella"
+          },
+          "amount": 250,
+          "unit": "g"
+        },
+        {
+          "id": "0010",
+          "name": {
+            "de": "Parmigiano Reggiano",
+            "it": "Parmigiano Reggiano",
+            "fr": "Parmesan",
+            "tr": "Parmesan"
+          },
+          "amount": 60,
+          "unit": "g"
+        },
+        {
+          "id": "0012",
+          "name": {
+            "de": "Olivenol",
+            "it": "Olio d'oliva",
+            "fr": "Huile d'olive",
+            "tr": "Zeytinyagi"
+          },
+          "amount": 30,
+          "unit": "ml"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Aubergine vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:eggplant"
+          ]
+        },
+        {
+          "text": "Tomatenpassata vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0005"
+          ]
+        },
+        {
+          "text": "Mozzarella vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0009"
+          ]
+        },
+        {
+          "text": "Parmigiano Reggiano vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0010"
+          ]
+        },
+        {
+          "text": "Olivenol vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0012"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Aubergine"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "it_tiramisu",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "IT",
+      "category": "dessert",
+      "canonicalName": {
+        "de": "Tiramisu",
+        "it": "Tiramisu",
+        "fr": "Tiramisu",
+        "tr": "Tiramisu"
+      },
+      "titles": {
+        "de": "Tiramisu",
+        "it": "Tiramisu",
+        "fr": "Tiramisu",
+        "tr": "Tiramisu"
+      },
+      "aliases": {
+        "de": [
+          "Tiramisu"
+        ],
+        "it": [
+          "tiramisu classico"
+        ],
+        "fr": [
+          "tiramisu classique"
+        ],
+        "tr": [
+          "klasik tiramisu"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 6,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "unresolved:egg",
+          "name": {
+            "de": "Ei",
+            "it": "Uovo",
+            "fr": "Oeuf",
+            "tr": "Yumurta"
+          },
+          "amount": 200,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:sugar",
+          "name": {
+            "de": "Zucker",
+            "it": "Zucchero",
+            "fr": "Sucre",
+            "tr": "Seker"
+          },
+          "amount": 100,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:coffee",
+          "name": {
+            "de": "Kaffee",
+            "it": "Caffe",
+            "fr": "Cafe",
+            "tr": "Kahve"
+          },
+          "amount": 200,
+          "unit": "ml"
+        },
+        {
+          "id": "unresolved:cocoa",
+          "name": {
+            "de": "Kakao",
+            "it": "Cacao",
+            "fr": "Cacao",
+            "tr": "Kakao"
+          },
+          "amount": 10,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Ei vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:egg"
+          ]
+        },
+        {
+          "text": "Zucker vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:sugar"
+          ]
+        },
+        {
+          "text": "Kaffee vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:coffee"
+          ]
+        },
+        {
+          "text": "Kakao vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:cocoa"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Ei",
+          "Zucker",
+          "Kaffee",
+          "Kakao"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "it_gnocchi",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "IT",
+      "category": "main_dish",
+      "canonicalName": {
+        "de": "Gnocchi al pomodoro",
+        "it": "Gnocchi al pomodoro",
+        "fr": "Gnocchis a la tomate",
+        "tr": "Domatesli gnocchi"
+      },
+      "titles": {
+        "de": "Gnocchi al pomodoro",
+        "it": "Gnocchi al pomodoro",
+        "fr": "Gnocchis a la tomate",
+        "tr": "Domatesli gnocchi"
+      },
+      "aliases": {
+        "de": [
+          "Gnocchi mit Tomatensauce"
+        ],
+        "it": [
+          "gnocchi al sugo"
+        ],
+        "fr": [
+          "gnocchis sauce tomate"
+        ],
+        "tr": [
+          "domates soslu gnocchi"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "unresolved:potato",
+          "name": {
+            "de": "Kartoffel",
+            "it": "Patata",
+            "fr": "Pomme de terre",
+            "tr": "Patates"
+          },
+          "amount": 600,
+          "unit": "g"
+        },
+        {
+          "id": "0007",
+          "name": {
+            "de": "Weizenmehl Tipo 00",
+            "it": "Farina tipo 00",
+            "fr": "Farine de ble T00",
+            "tr": "Tip 00 bugday unu"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "0005",
+          "name": {
+            "de": "Tomatenpassata",
+            "it": "Passata di pomodoro",
+            "fr": "Passata de tomate",
+            "tr": "Domates passata"
+          },
+          "amount": 400,
+          "unit": "g"
+        },
+        {
+          "id": "0010",
+          "name": {
+            "de": "Parmigiano Reggiano",
+            "it": "Parmigiano Reggiano",
+            "fr": "Parmesan",
+            "tr": "Parmesan"
+          },
+          "amount": 60,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Kartoffel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:potato"
+          ]
+        },
+        {
+          "text": "Weizenmehl Tipo 00 vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0007"
+          ]
+        },
+        {
+          "text": "Tomatenpassata vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0005"
+          ]
+        },
+        {
+          "text": "Parmigiano Reggiano vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0010"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Kartoffel"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "it_crostata",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "IT",
+      "category": "pastry",
+      "canonicalName": {
+        "de": "Crostata",
+        "it": "Crostata",
+        "fr": "Crostata italienne",
+        "tr": "Italyan crostata"
+      },
+      "titles": {
+        "de": "Crostata",
+        "it": "Crostata",
+        "fr": "Crostata italienne",
+        "tr": "Italyan crostata"
+      },
+      "aliases": {
+        "de": [
+          "italienische Marmeladentarte"
+        ],
+        "it": [
+          "crostata alla marmellata"
+        ],
+        "fr": [
+          "tarte italienne a la confiture"
+        ],
+        "tr": [
+          "italyan recelli tart"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 8,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0007",
+          "name": {
+            "de": "Weizenmehl Tipo 00",
+            "it": "Farina tipo 00",
+            "fr": "Farine de ble T00",
+            "tr": "Tip 00 bugday unu"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "0006",
+          "name": {
+            "de": "Butter",
+            "it": "Burro",
+            "fr": "Beurre",
+            "tr": "Tereyagi"
+          },
+          "amount": 40,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:sugar",
+          "name": {
+            "de": "Zucker",
+            "it": "Zucchero",
+            "fr": "Sucre",
+            "tr": "Seker"
+          },
+          "amount": 100,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:egg",
+          "name": {
+            "de": "Ei",
+            "it": "Uovo",
+            "fr": "Oeuf",
+            "tr": "Yumurta"
+          },
+          "amount": 200,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Weizenmehl Tipo 00 vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0007"
+          ]
+        },
+        {
+          "text": "Butter vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0006"
+          ]
+        },
+        {
+          "text": "Zucker vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:sugar"
+          ]
+        },
+        {
+          "text": "Ei vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:egg"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Zucker",
+          "Ei"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "de_sauerbraten",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "DE",
+      "category": "main_dish",
+      "canonicalName": {
+        "de": "Rheinischer Sauerbraten",
+        "it": "Sauerbraten",
+        "fr": "Boeuf marine rhenan",
+        "tr": "Ren usulu sauerbraten"
+      },
+      "titles": {
+        "de": "Rheinischer Sauerbraten",
+        "it": "Sauerbraten",
+        "fr": "Boeuf marine rhenan",
+        "tr": "Ren usulu sauerbraten"
+      },
+      "aliases": {
+        "de": [
+          "Rheinischer Sauerbraten"
+        ],
+        "it": [
+          "sauerbraten renano"
+        ],
+        "fr": [
+          "sauerbraten rhenan"
+        ],
+        "tr": [
+          "ren usulu sauerbraten"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0001",
+          "name": {
+            "de": "Rinderhackfleisch",
+            "it": "Carne macinata di manzo",
+            "fr": "Boeuf hache",
+            "tr": "Dana kiyma"
+          },
+          "amount": 600,
+          "unit": "g"
+        },
+        {
+          "id": "0002",
+          "name": {
+            "de": "Zwiebel",
+            "it": "Cipolla",
+            "fr": "Oignon",
+            "tr": "Sogan"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0003",
+          "name": {
+            "de": "Karotte",
+            "it": "Carota",
+            "fr": "Carotte",
+            "tr": "Havuc"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0004",
+          "name": {
+            "de": "Sellerie",
+            "it": "Sedano",
+            "fr": "Celeri",
+            "tr": "Kereviz"
+          },
+          "amount": 80,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Rinderhackfleisch vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0001"
+          ]
+        },
+        {
+          "text": "Zwiebel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0002"
+          ]
+        },
+        {
+          "text": "Karotte vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0003"
+          ]
+        },
+        {
+          "text": "Sellerie vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0004"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "passed",
+        "missingIngredients": [],
+        "violations": []
+      }
+    },
+    {
+      "id": "de_kartoffelsuppe",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "DE",
+      "category": "soup",
+      "canonicalName": {
+        "de": "Kartoffelsuppe",
+        "it": "Zuppa tedesca di patate",
+        "fr": "Soupe allemande aux pommes de terre",
+        "tr": "Alman patates corbasi"
+      },
+      "titles": {
+        "de": "Kartoffelsuppe",
+        "it": "Zuppa tedesca di patate",
+        "fr": "Soupe allemande aux pommes de terre",
+        "tr": "Alman patates corbasi"
+      },
+      "aliases": {
+        "de": [
+          "deutsche Kartoffelsuppe"
+        ],
+        "it": [
+          "zuppa tedesca di patate"
+        ],
+        "fr": [
+          "soupe de pommes de terre allemande"
+        ],
+        "tr": [
+          "alman patates corbasi"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "unresolved:potato",
+          "name": {
+            "de": "Kartoffel",
+            "it": "Patata",
+            "fr": "Pomme de terre",
+            "tr": "Patates"
+          },
+          "amount": 600,
+          "unit": "g"
+        },
+        {
+          "id": "0002",
+          "name": {
+            "de": "Zwiebel",
+            "it": "Cipolla",
+            "fr": "Oignon",
+            "tr": "Sogan"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0003",
+          "name": {
+            "de": "Karotte",
+            "it": "Carota",
+            "fr": "Carotte",
+            "tr": "Havuc"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0004",
+          "name": {
+            "de": "Sellerie",
+            "it": "Sedano",
+            "fr": "Celeri",
+            "tr": "Kereviz"
+          },
+          "amount": 80,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Kartoffel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:potato"
+          ]
+        },
+        {
+          "text": "Zwiebel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0002"
+          ]
+        },
+        {
+          "text": "Karotte vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0003"
+          ]
+        },
+        {
+          "text": "Sellerie vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0004"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Kartoffel"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "de_apfelstrudel",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "DE",
+      "category": "dessert",
+      "canonicalName": {
+        "de": "Apfelstrudel",
+        "it": "Strudel di mele",
+        "fr": "Strudel aux pommes",
+        "tr": "Elmali strudel"
+      },
+      "titles": {
+        "de": "Apfelstrudel",
+        "it": "Strudel di mele",
+        "fr": "Strudel aux pommes",
+        "tr": "Elmali strudel"
+      },
+      "aliases": {
+        "de": [
+          "Wiener Apfelstrudel"
+        ],
+        "it": [
+          "strudel di mele viennese"
+        ],
+        "fr": [
+          "strudel viennois aux pommes"
+        ],
+        "tr": [
+          "viyana elmali strudel"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 8,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0007",
+          "name": {
+            "de": "Weizenmehl Tipo 00",
+            "it": "Farina tipo 00",
+            "fr": "Farine de ble T00",
+            "tr": "Tip 00 bugday unu"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:apple",
+          "name": {
+            "de": "Apfel",
+            "it": "Mela",
+            "fr": "Pomme",
+            "tr": "Elma"
+          },
+          "amount": 600,
+          "unit": "g"
+        },
+        {
+          "id": "0006",
+          "name": {
+            "de": "Butter",
+            "it": "Burro",
+            "fr": "Beurre",
+            "tr": "Tereyagi"
+          },
+          "amount": 40,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:sugar",
+          "name": {
+            "de": "Zucker",
+            "it": "Zucchero",
+            "fr": "Sucre",
+            "tr": "Seker"
+          },
+          "amount": 100,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:cinnamon",
+          "name": {
+            "de": "Zimt",
+            "it": "Cannella",
+            "fr": "Cannelle",
+            "tr": "Tarcin"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Weizenmehl Tipo 00 vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0007"
+          ]
+        },
+        {
+          "text": "Apfel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:apple"
+          ]
+        },
+        {
+          "text": "Butter vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0006"
+          ]
+        },
+        {
+          "text": "Zucker vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:sugar"
+          ]
+        },
+        {
+          "text": "Zimt vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:cinnamon"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Apfel",
+          "Zucker",
+          "Zimt"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "de_brezel",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "DE",
+      "category": "pastry",
+      "canonicalName": {
+        "de": "Laugenbrezel",
+        "it": "Bretzel",
+        "fr": "Bretzel allemand",
+        "tr": "Alman pretzeli"
+      },
+      "titles": {
+        "de": "Laugenbrezel",
+        "it": "Bretzel",
+        "fr": "Bretzel allemand",
+        "tr": "Alman pretzeli"
+      },
+      "aliases": {
+        "de": [
+          "Brezel"
+        ],
+        "it": [
+          "brezel tedesco"
+        ],
+        "fr": [
+          "bretzel allemand"
+        ],
+        "tr": [
+          "alman pretzel"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 8,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0007",
+          "name": {
+            "de": "Weizenmehl Tipo 00",
+            "it": "Farina tipo 00",
+            "fr": "Farine de ble T00",
+            "tr": "Tip 00 bugday unu"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "0006",
+          "name": {
+            "de": "Butter",
+            "it": "Burro",
+            "fr": "Beurre",
+            "tr": "Tereyagi"
+          },
+          "amount": 40,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Weizenmehl Tipo 00 vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0007"
+          ]
+        },
+        {
+          "text": "Butter vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0006"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "passed",
+        "missingIngredients": [],
+        "violations": []
+      }
+    },
+    {
+      "id": "de_rouladen",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "DE",
+      "category": "main_dish",
+      "canonicalName": {
+        "de": "Rinderrouladen",
+        "it": "Involtini di manzo tedeschi",
+        "fr": "Roulades de boeuf allemandes",
+        "tr": "Alman dana rulo"
+      },
+      "titles": {
+        "de": "Rinderrouladen",
+        "it": "Involtini di manzo tedeschi",
+        "fr": "Roulades de boeuf allemandes",
+        "tr": "Alman dana rulo"
+      },
+      "aliases": {
+        "de": [
+          "Rinderroulade"
+        ],
+        "it": [
+          "involtini di manzo tedeschi"
+        ],
+        "fr": [
+          "roulades de boeuf"
+        ],
+        "tr": [
+          "dana eti roulade"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0001",
+          "name": {
+            "de": "Rinderhackfleisch",
+            "it": "Carne macinata di manzo",
+            "fr": "Boeuf hache",
+            "tr": "Dana kiyma"
+          },
+          "amount": 600,
+          "unit": "g"
+        },
+        {
+          "id": "0002",
+          "name": {
+            "de": "Zwiebel",
+            "it": "Cipolla",
+            "fr": "Oignon",
+            "tr": "Sogan"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0003",
+          "name": {
+            "de": "Karotte",
+            "it": "Carota",
+            "fr": "Carotte",
+            "tr": "Havuc"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Rinderhackfleisch vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0001"
+          ]
+        },
+        {
+          "text": "Zwiebel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0002"
+          ]
+        },
+        {
+          "text": "Karotte vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0003"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "passed",
+        "missingIngredients": [],
+        "violations": []
+      }
+    },
+    {
+      "id": "de_linsensuppe",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "DE",
+      "category": "soup",
+      "canonicalName": {
+        "de": "Deutsche Linsensuppe",
+        "it": "Zuppa tedesca di lenticchie",
+        "fr": "Soupe de lentilles allemande",
+        "tr": "Alman mercimek corbasi"
+      },
+      "titles": {
+        "de": "Deutsche Linsensuppe",
+        "it": "Zuppa tedesca di lenticchie",
+        "fr": "Soupe de lentilles allemande",
+        "tr": "Alman mercimek corbasi"
+      },
+      "aliases": {
+        "de": [
+          "Linseneintopf"
+        ],
+        "it": [
+          "zuppa tedesca di lenticchie"
+        ],
+        "fr": [
+          "soupe allemande aux lentilles"
+        ],
+        "tr": [
+          "alman mercimek yemegi"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "unresolved:lentil",
+          "name": {
+            "de": "Rote Linsen",
+            "it": "Lenticchie rosse",
+            "fr": "Lentilles corail",
+            "tr": "Kirmizi mercimek"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "0003",
+          "name": {
+            "de": "Karotte",
+            "it": "Carota",
+            "fr": "Carotte",
+            "tr": "Havuc"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0002",
+          "name": {
+            "de": "Zwiebel",
+            "it": "Cipolla",
+            "fr": "Oignon",
+            "tr": "Sogan"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0004",
+          "name": {
+            "de": "Sellerie",
+            "it": "Sedano",
+            "fr": "Celeri",
+            "tr": "Kereviz"
+          },
+          "amount": 80,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Rote Linsen vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:lentil"
+          ]
+        },
+        {
+          "text": "Karotte vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0003"
+          ]
+        },
+        {
+          "text": "Zwiebel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0002"
+          ]
+        },
+        {
+          "text": "Sellerie vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0004"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Rote Linsen"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "de_zwiebelkuchen",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "DE",
+      "category": "pastry",
+      "canonicalName": {
+        "de": "Zwiebelkuchen",
+        "it": "Torta di cipolle tedesca",
+        "fr": "Tarte allemande aux oignons",
+        "tr": "Soganli Alman tarti"
+      },
+      "titles": {
+        "de": "Zwiebelkuchen",
+        "it": "Torta di cipolle tedesca",
+        "fr": "Tarte allemande aux oignons",
+        "tr": "Soganli Alman tarti"
+      },
+      "aliases": {
+        "de": [
+          "Zwiebelkuchen schwabisch"
+        ],
+        "it": [
+          "torta di cipolle"
+        ],
+        "fr": [
+          "tarte aux oignons allemande"
+        ],
+        "tr": [
+          "alman soganli tart"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 8,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0007",
+          "name": {
+            "de": "Weizenmehl Tipo 00",
+            "it": "Farina tipo 00",
+            "fr": "Farine de ble T00",
+            "tr": "Tip 00 bugday unu"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "0002",
+          "name": {
+            "de": "Zwiebel",
+            "it": "Cipolla",
+            "fr": "Oignon",
+            "tr": "Sogan"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0006",
+          "name": {
+            "de": "Butter",
+            "it": "Burro",
+            "fr": "Beurre",
+            "tr": "Tereyagi"
+          },
+          "amount": 40,
+          "unit": "g"
+        },
+        {
+          "id": "0008",
+          "name": {
+            "de": "Vollmilch",
+            "it": "Latte intero",
+            "fr": "Lait entier",
+            "tr": "Tam yagli sut"
+          },
+          "amount": 300,
+          "unit": "ml"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Weizenmehl Tipo 00 vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0007"
+          ]
+        },
+        {
+          "text": "Zwiebel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0002"
+          ]
+        },
+        {
+          "text": "Butter vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0006"
+          ]
+        },
+        {
+          "text": "Vollmilch vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0008"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "passed",
+        "missingIngredients": [],
+        "violations": []
+      }
+    },
+    {
+      "id": "de_kaesepaetzle",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "DE",
+      "category": "main_dish",
+      "canonicalName": {
+        "de": "Kaesespaetzle",
+        "it": "Spatzle al formaggio",
+        "fr": "Spatzle au fromage",
+        "tr": "Peynirli spatzle"
+      },
+      "titles": {
+        "de": "Kaesespaetzle",
+        "it": "Spatzle al formaggio",
+        "fr": "Spatzle au fromage",
+        "tr": "Peynirli spatzle"
+      },
+      "aliases": {
+        "de": [
+          "Kasespatzle"
+        ],
+        "it": [
+          "spatzle al formaggio"
+        ],
+        "fr": [
+          "spatzle au fromage"
+        ],
+        "tr": [
+          "peynirli spatzle"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0007",
+          "name": {
+            "de": "Weizenmehl Tipo 00",
+            "it": "Farina tipo 00",
+            "fr": "Farine de ble T00",
+            "tr": "Tip 00 bugday unu"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:egg",
+          "name": {
+            "de": "Ei",
+            "it": "Uovo",
+            "fr": "Oeuf",
+            "tr": "Yumurta"
+          },
+          "amount": 200,
+          "unit": "g"
+        },
+        {
+          "id": "0002",
+          "name": {
+            "de": "Zwiebel",
+            "it": "Cipolla",
+            "fr": "Oignon",
+            "tr": "Sogan"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0009",
+          "name": {
+            "de": "Mozzarella",
+            "it": "Mozzarella",
+            "fr": "Mozzarella",
+            "tr": "Mozzarella"
+          },
+          "amount": 250,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Weizenmehl Tipo 00 vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0007"
+          ]
+        },
+        {
+          "text": "Ei vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:egg"
+          ]
+        },
+        {
+          "text": "Zwiebel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0002"
+          ]
+        },
+        {
+          "text": "Mozzarella vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0009"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Ei"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "de_quarkkuchen",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "DE",
+      "category": "dessert",
+      "canonicalName": {
+        "de": "Quarkkuchen",
+        "it": "Torta tedesca al quark",
+        "fr": "Gateau allemand au fromage blanc",
+        "tr": "Alman lorlu kek"
+      },
+      "titles": {
+        "de": "Quarkkuchen",
+        "it": "Torta tedesca al quark",
+        "fr": "Gateau allemand au fromage blanc",
+        "tr": "Alman lorlu kek"
+      },
+      "aliases": {
+        "de": [
+          "Kasekuchen ohne Boden"
+        ],
+        "it": [
+          "torta tedesca al formaggio"
+        ],
+        "fr": [
+          "gateau allemand au fromage blanc"
+        ],
+        "tr": [
+          "alman peynirli kek"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 8,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0007",
+          "name": {
+            "de": "Weizenmehl Tipo 00",
+            "it": "Farina tipo 00",
+            "fr": "Farine de ble T00",
+            "tr": "Tip 00 bugday unu"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:egg",
+          "name": {
+            "de": "Ei",
+            "it": "Uovo",
+            "fr": "Oeuf",
+            "tr": "Yumurta"
+          },
+          "amount": 200,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:sugar",
+          "name": {
+            "de": "Zucker",
+            "it": "Zucchero",
+            "fr": "Sucre",
+            "tr": "Seker"
+          },
+          "amount": 100,
+          "unit": "g"
+        },
+        {
+          "id": "0008",
+          "name": {
+            "de": "Vollmilch",
+            "it": "Latte intero",
+            "fr": "Lait entier",
+            "tr": "Tam yagli sut"
+          },
+          "amount": 300,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Weizenmehl Tipo 00 vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0007"
+          ]
+        },
+        {
+          "text": "Ei vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:egg"
+          ]
+        },
+        {
+          "text": "Zucker vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:sugar"
+          ]
+        },
+        {
+          "text": "Vollmilch vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0008"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Ei",
+          "Zucker"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "de_grundsosse",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "DE",
+      "category": "basic",
+      "canonicalName": {
+        "de": "Deutsche Grundsauce",
+        "it": "Salsa base tedesca",
+        "fr": "Sauce de base allemande",
+        "tr": "Alman temel sosu"
+      },
+      "titles": {
+        "de": "Deutsche Grundsauce",
+        "it": "Salsa base tedesca",
+        "fr": "Sauce de base allemande",
+        "tr": "Alman temel sosu"
+      },
+      "aliases": {
+        "de": [
+          "helle Grundsauce"
+        ],
+        "it": [
+          "salsa base tedesca"
+        ],
+        "fr": [
+          "sauce blanche allemande"
+        ],
+        "tr": [
+          "alman temel sos"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0006",
+          "name": {
+            "de": "Butter",
+            "it": "Burro",
+            "fr": "Beurre",
+            "tr": "Tereyagi"
+          },
+          "amount": 40,
+          "unit": "g"
+        },
+        {
+          "id": "0007",
+          "name": {
+            "de": "Weizenmehl Tipo 00",
+            "it": "Farina tipo 00",
+            "fr": "Farine de ble T00",
+            "tr": "Tip 00 bugday unu"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "0008",
+          "name": {
+            "de": "Vollmilch",
+            "it": "Latte intero",
+            "fr": "Lait entier",
+            "tr": "Tam yagli sut"
+          },
+          "amount": 300,
+          "unit": "ml"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        },
+        {
+          "id": "0014",
+          "name": {
+            "de": "Schwarzer Pfeffer",
+            "it": "Pepe nero",
+            "fr": "Poivre noir",
+            "tr": "Karabiber"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Butter vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0006"
+          ]
+        },
+        {
+          "text": "Weizenmehl Tipo 00 vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0007"
+          ]
+        },
+        {
+          "text": "Vollmilch vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0008"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        },
+        {
+          "text": "Schwarzer Pfeffer vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0014"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "passed",
+        "missingIngredients": [],
+        "violations": []
+      }
+    },
+    {
+      "id": "fr_boeuf_bourguignon",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "FR",
+      "category": "main_dish",
+      "canonicalName": {
+        "de": "Boeuf bourguignon",
+        "it": "Boeuf bourguignon",
+        "fr": "Boeuf bourguignon",
+        "tr": "Burgonya usulu dana"
+      },
+      "titles": {
+        "de": "Boeuf bourguignon",
+        "it": "Boeuf bourguignon",
+        "fr": "Boeuf bourguignon",
+        "tr": "Burgonya usulu dana"
+      },
+      "aliases": {
+        "de": [
+          "Burgunder Rind"
+        ],
+        "it": [
+          "manzo alla borgognona"
+        ],
+        "fr": [
+          "boeuf bourguignon classique"
+        ],
+        "tr": [
+          "boeuf bourguignon"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0001",
+          "name": {
+            "de": "Rinderhackfleisch",
+            "it": "Carne macinata di manzo",
+            "fr": "Boeuf hache",
+            "tr": "Dana kiyma"
+          },
+          "amount": 600,
+          "unit": "g"
+        },
+        {
+          "id": "0002",
+          "name": {
+            "de": "Zwiebel",
+            "it": "Cipolla",
+            "fr": "Oignon",
+            "tr": "Sogan"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0003",
+          "name": {
+            "de": "Karotte",
+            "it": "Carota",
+            "fr": "Carotte",
+            "tr": "Havuc"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:mushroom",
+          "name": {
+            "de": "Champignons",
+            "it": "Funghi",
+            "fr": "Champignons",
+            "tr": "Mantar"
+          },
+          "amount": 250,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Rinderhackfleisch vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0001"
+          ]
+        },
+        {
+          "text": "Zwiebel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0002"
+          ]
+        },
+        {
+          "text": "Karotte vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0003"
+          ]
+        },
+        {
+          "text": "Champignons vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:mushroom"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Champignons"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "fr_soupe_oignon",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "FR",
+      "category": "soup",
+      "canonicalName": {
+        "de": "Franzosische Zwiebelsuppe",
+        "it": "Soupe a loignon",
+        "fr": "Soupe a loignon",
+        "tr": "Fransiz sogan corbasi"
+      },
+      "titles": {
+        "de": "Franzosische Zwiebelsuppe",
+        "it": "Soupe a loignon",
+        "fr": "Soupe a loignon",
+        "tr": "Fransiz sogan corbasi"
+      },
+      "aliases": {
+        "de": [
+          "franzosische Zwiebelsuppe"
+        ],
+        "it": [
+          "zuppa di cipolle francese"
+        ],
+        "fr": [
+          "soupe a loignon gratinee"
+        ],
+        "tr": [
+          "fransiz sogan corbasi"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0002",
+          "name": {
+            "de": "Zwiebel",
+            "it": "Cipolla",
+            "fr": "Oignon",
+            "tr": "Sogan"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0006",
+          "name": {
+            "de": "Butter",
+            "it": "Burro",
+            "fr": "Beurre",
+            "tr": "Tereyagi"
+          },
+          "amount": 40,
+          "unit": "g"
+        },
+        {
+          "id": "0007",
+          "name": {
+            "de": "Weizenmehl Tipo 00",
+            "it": "Farina tipo 00",
+            "fr": "Farine de ble T00",
+            "tr": "Tip 00 bugday unu"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "0010",
+          "name": {
+            "de": "Parmigiano Reggiano",
+            "it": "Parmigiano Reggiano",
+            "fr": "Parmesan",
+            "tr": "Parmesan"
+          },
+          "amount": 60,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Zwiebel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0002"
+          ]
+        },
+        {
+          "text": "Butter vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0006"
+          ]
+        },
+        {
+          "text": "Weizenmehl Tipo 00 vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0007"
+          ]
+        },
+        {
+          "text": "Parmigiano Reggiano vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0010"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "passed",
+        "missingIngredients": [],
+        "violations": []
+      }
+    },
+    {
+      "id": "fr_quiche_lorraine",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "FR",
+      "category": "pastry",
+      "canonicalName": {
+        "de": "Quiche Lorraine",
+        "it": "Quiche lorraine",
+        "fr": "Quiche lorraine",
+        "tr": "Quiche Lorraine"
+      },
+      "titles": {
+        "de": "Quiche Lorraine",
+        "it": "Quiche lorraine",
+        "fr": "Quiche lorraine",
+        "tr": "Quiche Lorraine"
+      },
+      "aliases": {
+        "de": [
+          "Quiche Lorraine klassisch"
+        ],
+        "it": [
+          "quiche lorraine classica"
+        ],
+        "fr": [
+          "quiche lorraine traditionnelle"
+        ],
+        "tr": [
+          "geleneksel quiche lorraine"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 8,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0007",
+          "name": {
+            "de": "Weizenmehl Tipo 00",
+            "it": "Farina tipo 00",
+            "fr": "Farine de ble T00",
+            "tr": "Tip 00 bugday unu"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "0006",
+          "name": {
+            "de": "Butter",
+            "it": "Burro",
+            "fr": "Beurre",
+            "tr": "Tereyagi"
+          },
+          "amount": 40,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:egg",
+          "name": {
+            "de": "Ei",
+            "it": "Uovo",
+            "fr": "Oeuf",
+            "tr": "Yumurta"
+          },
+          "amount": 200,
+          "unit": "g"
+        },
+        {
+          "id": "0008",
+          "name": {
+            "de": "Vollmilch",
+            "it": "Latte intero",
+            "fr": "Lait entier",
+            "tr": "Tam yagli sut"
+          },
+          "amount": 300,
+          "unit": "ml"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Weizenmehl Tipo 00 vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0007"
+          ]
+        },
+        {
+          "text": "Butter vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0006"
+          ]
+        },
+        {
+          "text": "Ei vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:egg"
+          ]
+        },
+        {
+          "text": "Vollmilch vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0008"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Ei"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "fr_crepes",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "FR",
+      "category": "pastry",
+      "canonicalName": {
+        "de": "Crepes",
+        "it": "Crepes",
+        "fr": "Crepes",
+        "tr": "Krep"
+      },
+      "titles": {
+        "de": "Crepes",
+        "it": "Crepes",
+        "fr": "Crepes",
+        "tr": "Krep"
+      },
+      "aliases": {
+        "de": [
+          "franzosische Pfannkuchen"
+        ],
+        "it": [
+          "crepes francesi"
+        ],
+        "fr": [
+          "crepes francaises"
+        ],
+        "tr": [
+          "fransiz krebi"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 8,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0007",
+          "name": {
+            "de": "Weizenmehl Tipo 00",
+            "it": "Farina tipo 00",
+            "fr": "Farine de ble T00",
+            "tr": "Tip 00 bugday unu"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:egg",
+          "name": {
+            "de": "Ei",
+            "it": "Uovo",
+            "fr": "Oeuf",
+            "tr": "Yumurta"
+          },
+          "amount": 200,
+          "unit": "g"
+        },
+        {
+          "id": "0008",
+          "name": {
+            "de": "Vollmilch",
+            "it": "Latte intero",
+            "fr": "Lait entier",
+            "tr": "Tam yagli sut"
+          },
+          "amount": 300,
+          "unit": "ml"
+        },
+        {
+          "id": "0006",
+          "name": {
+            "de": "Butter",
+            "it": "Burro",
+            "fr": "Beurre",
+            "tr": "Tereyagi"
+          },
+          "amount": 40,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Weizenmehl Tipo 00 vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0007"
+          ]
+        },
+        {
+          "text": "Ei vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:egg"
+          ]
+        },
+        {
+          "text": "Vollmilch vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0008"
+          ]
+        },
+        {
+          "text": "Butter vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0006"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Ei"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "fr_clafoutis",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "FR",
+      "category": "dessert",
+      "canonicalName": {
+        "de": "Clafoutis",
+        "it": "Clafoutis",
+        "fr": "Clafoutis",
+        "tr": "Clafoutis"
+      },
+      "titles": {
+        "de": "Clafoutis",
+        "it": "Clafoutis",
+        "fr": "Clafoutis",
+        "tr": "Clafoutis"
+      },
+      "aliases": {
+        "de": [
+          "franzosischer Clafoutis"
+        ],
+        "it": [
+          "clafoutis francese"
+        ],
+        "fr": [
+          "clafoutis classique"
+        ],
+        "tr": [
+          "fransiz clafoutis"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 8,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "unresolved:egg",
+          "name": {
+            "de": "Ei",
+            "it": "Uovo",
+            "fr": "Oeuf",
+            "tr": "Yumurta"
+          },
+          "amount": 200,
+          "unit": "g"
+        },
+        {
+          "id": "0008",
+          "name": {
+            "de": "Vollmilch",
+            "it": "Latte intero",
+            "fr": "Lait entier",
+            "tr": "Tam yagli sut"
+          },
+          "amount": 300,
+          "unit": "ml"
+        },
+        {
+          "id": "0007",
+          "name": {
+            "de": "Weizenmehl Tipo 00",
+            "it": "Farina tipo 00",
+            "fr": "Farine de ble T00",
+            "tr": "Tip 00 bugday unu"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:sugar",
+          "name": {
+            "de": "Zucker",
+            "it": "Zucchero",
+            "fr": "Sucre",
+            "tr": "Seker"
+          },
+          "amount": 100,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:cherry",
+          "name": {
+            "de": "Kirsche",
+            "it": "Ciliegia",
+            "fr": "Cerise",
+            "tr": "Kiraz"
+          },
+          "amount": 400,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Ei vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:egg"
+          ]
+        },
+        {
+          "text": "Vollmilch vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0008"
+          ]
+        },
+        {
+          "text": "Weizenmehl Tipo 00 vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0007"
+          ]
+        },
+        {
+          "text": "Zucker vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:sugar"
+          ]
+        },
+        {
+          "text": "Kirsche vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:cherry"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Ei",
+          "Zucker",
+          "Kirsche"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "fr_ratatouille",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "FR",
+      "category": "main_dish",
+      "canonicalName": {
+        "de": "Ratatouille",
+        "it": "Ratatouille",
+        "fr": "Ratatouille",
+        "tr": "Ratatouille"
+      },
+      "titles": {
+        "de": "Ratatouille",
+        "it": "Ratatouille",
+        "fr": "Ratatouille",
+        "tr": "Ratatouille"
+      },
+      "aliases": {
+        "de": [
+          "Ratatouille Gemusepfanne"
+        ],
+        "it": [
+          "ratatouille francese"
+        ],
+        "fr": [
+          "ratatouille nicoise"
+        ],
+        "tr": [
+          "ratatouille sebze yemegi"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "unresolved:eggplant",
+          "name": {
+            "de": "Aubergine",
+            "it": "Melanzana",
+            "fr": "Aubergine",
+            "tr": "Patlican"
+          },
+          "amount": 700,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:zucchini",
+          "name": {
+            "de": "Zucchini",
+            "it": "Zucchine",
+            "fr": "Courgette",
+            "tr": "Kabak"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "0005",
+          "name": {
+            "de": "Tomatenpassata",
+            "it": "Passata di pomodoro",
+            "fr": "Passata de tomate",
+            "tr": "Domates passata"
+          },
+          "amount": 400,
+          "unit": "g"
+        },
+        {
+          "id": "0002",
+          "name": {
+            "de": "Zwiebel",
+            "it": "Cipolla",
+            "fr": "Oignon",
+            "tr": "Sogan"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0012",
+          "name": {
+            "de": "Olivenol",
+            "it": "Olio d'oliva",
+            "fr": "Huile d'olive",
+            "tr": "Zeytinyagi"
+          },
+          "amount": 30,
+          "unit": "ml"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Aubergine vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:eggplant"
+          ]
+        },
+        {
+          "text": "Zucchini vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:zucchini"
+          ]
+        },
+        {
+          "text": "Tomatenpassata vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0005"
+          ]
+        },
+        {
+          "text": "Zwiebel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0002"
+          ]
+        },
+        {
+          "text": "Olivenol vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0012"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Aubergine",
+          "Zucchini"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "fr_coq_au_vin",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "FR",
+      "category": "main_dish",
+      "canonicalName": {
+        "de": "Coq au vin",
+        "it": "Coq au vin",
+        "fr": "Coq au vin",
+        "tr": "Saraphli tavuk"
+      },
+      "titles": {
+        "de": "Coq au vin",
+        "it": "Coq au vin",
+        "fr": "Coq au vin",
+        "tr": "Saraphli tavuk"
+      },
+      "aliases": {
+        "de": [
+          "Huhn in Rotwein"
+        ],
+        "it": [
+          "pollo al vino rosso"
+        ],
+        "fr": [
+          "coq au vin classique"
+        ],
+        "tr": [
+          "coq au vin"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "unresolved:chicken",
+          "name": {
+            "de": "Hahnchenbrust",
+            "it": "Petto di pollo",
+            "fr": "Blanc de poulet",
+            "tr": "Tavuk gogsu"
+          },
+          "amount": 600,
+          "unit": "g"
+        },
+        {
+          "id": "0002",
+          "name": {
+            "de": "Zwiebel",
+            "it": "Cipolla",
+            "fr": "Oignon",
+            "tr": "Sogan"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0003",
+          "name": {
+            "de": "Karotte",
+            "it": "Carota",
+            "fr": "Carotte",
+            "tr": "Havuc"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:mushroom",
+          "name": {
+            "de": "Champignons",
+            "it": "Funghi",
+            "fr": "Champignons",
+            "tr": "Mantar"
+          },
+          "amount": 250,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Hahnchenbrust vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:chicken"
+          ]
+        },
+        {
+          "text": "Zwiebel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0002"
+          ]
+        },
+        {
+          "text": "Karotte vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0003"
+          ]
+        },
+        {
+          "text": "Champignons vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:mushroom"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Hahnchenbrust",
+          "Champignons"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "fr_bouillabaisse",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "FR",
+      "category": "soup",
+      "canonicalName": {
+        "de": "Bouillabaisse",
+        "it": "Bouillabaisse",
+        "fr": "Bouillabaisse",
+        "tr": "Marsilya balik corbasi"
+      },
+      "titles": {
+        "de": "Bouillabaisse",
+        "it": "Bouillabaisse",
+        "fr": "Bouillabaisse",
+        "tr": "Marsilya balik corbasi"
+      },
+      "aliases": {
+        "de": [
+          "Marseiller Fischsuppe"
+        ],
+        "it": [
+          "zuppa di pesce marsigliese"
+        ],
+        "fr": [
+          "bouillabaisse marseillaise"
+        ],
+        "tr": [
+          "marsilya balik corbasi"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "unresolved:fish",
+          "name": {
+            "de": "Weisser Fisch",
+            "it": "Pesce bianco",
+            "fr": "Poisson blanc",
+            "tr": "Beyaz balik"
+          },
+          "amount": 600,
+          "unit": "g"
+        },
+        {
+          "id": "0005",
+          "name": {
+            "de": "Tomatenpassata",
+            "it": "Passata di pomodoro",
+            "fr": "Passata de tomate",
+            "tr": "Domates passata"
+          },
+          "amount": 400,
+          "unit": "g"
+        },
+        {
+          "id": "0002",
+          "name": {
+            "de": "Zwiebel",
+            "it": "Cipolla",
+            "fr": "Oignon",
+            "tr": "Sogan"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0012",
+          "name": {
+            "de": "Olivenol",
+            "it": "Olio d'oliva",
+            "fr": "Huile d'olive",
+            "tr": "Zeytinyagi"
+          },
+          "amount": 30,
+          "unit": "ml"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Weisser Fisch vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:fish"
+          ]
+        },
+        {
+          "text": "Tomatenpassata vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0005"
+          ]
+        },
+        {
+          "text": "Zwiebel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0002"
+          ]
+        },
+        {
+          "text": "Olivenol vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0012"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Weisser Fisch"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "fr_baguette",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "FR",
+      "category": "basic",
+      "canonicalName": {
+        "de": "Franzosisches Baguette",
+        "it": "Baguette francese",
+        "fr": "Baguette francaise",
+        "tr": "Fransiz bageti"
+      },
+      "titles": {
+        "de": "Franzosisches Baguette",
+        "it": "Baguette francese",
+        "fr": "Baguette francaise",
+        "tr": "Fransiz bageti"
+      },
+      "aliases": {
+        "de": [
+          "Baguette"
+        ],
+        "it": [
+          "baguette francese"
+        ],
+        "fr": [
+          "baguette traditionnelle"
+        ],
+        "tr": [
+          "fransiz bageti"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0007",
+          "name": {
+            "de": "Weizenmehl Tipo 00",
+            "it": "Farina tipo 00",
+            "fr": "Farine de ble T00",
+            "tr": "Tip 00 bugday unu"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Weizenmehl Tipo 00 vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0007"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "passed",
+        "missingIngredients": [],
+        "violations": []
+      }
+    },
+    {
+      "id": "fr_mousse_chocolat",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "FR",
+      "category": "dessert",
+      "canonicalName": {
+        "de": "Mousse au chocolat",
+        "it": "Mousse al cioccolato",
+        "fr": "Mousse au chocolat",
+        "tr": "Cikolatali mus"
+      },
+      "titles": {
+        "de": "Mousse au chocolat",
+        "it": "Mousse al cioccolato",
+        "fr": "Mousse au chocolat",
+        "tr": "Cikolatali mus"
+      },
+      "aliases": {
+        "de": [
+          "Schokoladenmousse"
+        ],
+        "it": [
+          "mousse al cioccolato"
+        ],
+        "fr": [
+          "mousse au chocolat classique"
+        ],
+        "tr": [
+          "cikolatali mus"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 6,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "unresolved:chocolate",
+          "name": {
+            "de": "Zartbitterschokolade",
+            "it": "Cioccolato fondente",
+            "fr": "Chocolat noir",
+            "tr": "Bitter cikolata"
+          },
+          "amount": 200,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:egg",
+          "name": {
+            "de": "Ei",
+            "it": "Uovo",
+            "fr": "Oeuf",
+            "tr": "Yumurta"
+          },
+          "amount": 200,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:sugar",
+          "name": {
+            "de": "Zucker",
+            "it": "Zucchero",
+            "fr": "Sucre",
+            "tr": "Seker"
+          },
+          "amount": 100,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Zartbitterschokolade vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:chocolate"
+          ]
+        },
+        {
+          "text": "Ei vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:egg"
+          ]
+        },
+        {
+          "text": "Zucker vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:sugar"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Zartbitterschokolade",
+          "Ei",
+          "Zucker"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "tr_mercimek",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "TR",
+      "category": "soup",
+      "canonicalName": {
+        "de": "Mercimek corbasi",
+        "it": "Zuppa turca di lenticchie",
+        "fr": "Soupe turque de lentilles",
+        "tr": "Mercimek corbasi"
+      },
+      "titles": {
+        "de": "Mercimek corbasi",
+        "it": "Zuppa turca di lenticchie",
+        "fr": "Soupe turque de lentilles",
+        "tr": "Mercimek corbasi"
+      },
+      "aliases": {
+        "de": [
+          "turkische Linsensuppe"
+        ],
+        "it": [
+          "zuppa turca di lenticchie"
+        ],
+        "fr": [
+          "soupe turque aux lentilles"
+        ],
+        "tr": [
+          "kirmizi mercimek corbasi"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "unresolved:lentil",
+          "name": {
+            "de": "Rote Linsen",
+            "it": "Lenticchie rosse",
+            "fr": "Lentilles corail",
+            "tr": "Kirmizi mercimek"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "0002",
+          "name": {
+            "de": "Zwiebel",
+            "it": "Cipolla",
+            "fr": "Oignon",
+            "tr": "Sogan"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0003",
+          "name": {
+            "de": "Karotte",
+            "it": "Carota",
+            "fr": "Carotte",
+            "tr": "Havuc"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:potato",
+          "name": {
+            "de": "Kartoffel",
+            "it": "Patata",
+            "fr": "Pomme de terre",
+            "tr": "Patates"
+          },
+          "amount": 600,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Rote Linsen vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:lentil"
+          ]
+        },
+        {
+          "text": "Zwiebel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0002"
+          ]
+        },
+        {
+          "text": "Karotte vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0003"
+          ]
+        },
+        {
+          "text": "Kartoffel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:potato"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Rote Linsen",
+          "Kartoffel"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "tr_karn_yarik",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "TR",
+      "category": "main_dish",
+      "canonicalName": {
+        "de": "Karnıyarık",
+        "it": "Karnıyarık",
+        "fr": "Aubergines farcies turques",
+        "tr": "Turk usulu patlican dolmasi"
+      },
+      "titles": {
+        "de": "Karnıyarık",
+        "it": "Karnıyarık",
+        "fr": "Aubergines farcies turques",
+        "tr": "Turk usulu patlican dolmasi"
+      },
+      "aliases": {
+        "de": [
+          "turkische gefullte Auberginen"
+        ],
+        "it": [
+          "melanzane turche ripiene"
+        ],
+        "fr": [
+          "aubergines farcies turques"
+        ],
+        "tr": [
+          "karnıyarık"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "unresolved:eggplant",
+          "name": {
+            "de": "Aubergine",
+            "it": "Melanzana",
+            "fr": "Aubergine",
+            "tr": "Patlican"
+          },
+          "amount": 700,
+          "unit": "g"
+        },
+        {
+          "id": "0001",
+          "name": {
+            "de": "Rinderhackfleisch",
+            "it": "Carne macinata di manzo",
+            "fr": "Boeuf hache",
+            "tr": "Dana kiyma"
+          },
+          "amount": 600,
+          "unit": "g"
+        },
+        {
+          "id": "0002",
+          "name": {
+            "de": "Zwiebel",
+            "it": "Cipolla",
+            "fr": "Oignon",
+            "tr": "Sogan"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0005",
+          "name": {
+            "de": "Tomatenpassata",
+            "it": "Passata di pomodoro",
+            "fr": "Passata de tomate",
+            "tr": "Domates passata"
+          },
+          "amount": 400,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Aubergine vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:eggplant"
+          ]
+        },
+        {
+          "text": "Rinderhackfleisch vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0001"
+          ]
+        },
+        {
+          "text": "Zwiebel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0002"
+          ]
+        },
+        {
+          "text": "Tomatenpassata vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0005"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Aubergine"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "tr_manti",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "TR",
+      "category": "main_dish",
+      "canonicalName": {
+        "de": "Manti",
+        "it": "Manti",
+        "fr": "Manti turcs",
+        "tr": "Manti"
+      },
+      "titles": {
+        "de": "Manti",
+        "it": "Manti",
+        "fr": "Manti turcs",
+        "tr": "Manti"
+      },
+      "aliases": {
+        "de": [
+          "turkische Teigtaschen"
+        ],
+        "it": [
+          "ravioli turchi manti"
+        ],
+        "fr": [
+          "raviolis turcs manti"
+        ],
+        "tr": [
+          "manti"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0007",
+          "name": {
+            "de": "Weizenmehl Tipo 00",
+            "it": "Farina tipo 00",
+            "fr": "Farine de ble T00",
+            "tr": "Tip 00 bugday unu"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "0001",
+          "name": {
+            "de": "Rinderhackfleisch",
+            "it": "Carne macinata di manzo",
+            "fr": "Boeuf hache",
+            "tr": "Dana kiyma"
+          },
+          "amount": 600,
+          "unit": "g"
+        },
+        {
+          "id": "0002",
+          "name": {
+            "de": "Zwiebel",
+            "it": "Cipolla",
+            "fr": "Oignon",
+            "tr": "Sogan"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:yogurt",
+          "name": {
+            "de": "Naturjoghurt",
+            "it": "Yogurt naturale",
+            "fr": "Yaourt nature",
+            "tr": "Sade yogurt"
+          },
+          "amount": 400,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Weizenmehl Tipo 00 vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0007"
+          ]
+        },
+        {
+          "text": "Rinderhackfleisch vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0001"
+          ]
+        },
+        {
+          "text": "Zwiebel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0002"
+          ]
+        },
+        {
+          "text": "Naturjoghurt vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:yogurt"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Naturjoghurt"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "tr_imam",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "TR",
+      "category": "main_dish",
+      "canonicalName": {
+        "de": "Imam bayildi",
+        "it": "Imam bayildi",
+        "fr": "Imam bayildi",
+        "tr": "Imam bayildi"
+      },
+      "titles": {
+        "de": "Imam bayildi",
+        "it": "Imam bayildi",
+        "fr": "Imam bayildi",
+        "tr": "Imam bayildi"
+      },
+      "aliases": {
+        "de": [
+          "Imam bayildi"
+        ],
+        "it": [
+          "imam bayildi"
+        ],
+        "fr": [
+          "imam bayildi"
+        ],
+        "tr": [
+          "imam bayildi"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "unresolved:eggplant",
+          "name": {
+            "de": "Aubergine",
+            "it": "Melanzana",
+            "fr": "Aubergine",
+            "tr": "Patlican"
+          },
+          "amount": 700,
+          "unit": "g"
+        },
+        {
+          "id": "0002",
+          "name": {
+            "de": "Zwiebel",
+            "it": "Cipolla",
+            "fr": "Oignon",
+            "tr": "Sogan"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "0005",
+          "name": {
+            "de": "Tomatenpassata",
+            "it": "Passata di pomodoro",
+            "fr": "Passata de tomate",
+            "tr": "Domates passata"
+          },
+          "amount": 400,
+          "unit": "g"
+        },
+        {
+          "id": "0012",
+          "name": {
+            "de": "Olivenol",
+            "it": "Olio d'oliva",
+            "fr": "Huile d'olive",
+            "tr": "Zeytinyagi"
+          },
+          "amount": 30,
+          "unit": "ml"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Aubergine vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:eggplant"
+          ]
+        },
+        {
+          "text": "Zwiebel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0002"
+          ]
+        },
+        {
+          "text": "Tomatenpassata vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0005"
+          ]
+        },
+        {
+          "text": "Olivenol vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0012"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Aubergine"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "tr_pilav",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "TR",
+      "category": "basic",
+      "canonicalName": {
+        "de": "Turkischer Reis-Pilav",
+        "it": "Pilav turco",
+        "fr": "Riz pilaf turc",
+        "tr": "Turk pirinc pilavi"
+      },
+      "titles": {
+        "de": "Turkischer Reis-Pilav",
+        "it": "Pilav turco",
+        "fr": "Riz pilaf turc",
+        "tr": "Turk pirinc pilavi"
+      },
+      "aliases": {
+        "de": [
+          "Reis Pilaw"
+        ],
+        "it": [
+          "pilaf turco"
+        ],
+        "fr": [
+          "pilaf turc"
+        ],
+        "tr": [
+          "pirinc pilavi"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "unresolved:rice",
+          "name": {
+            "de": "Reis",
+            "it": "Riso",
+            "fr": "Riz",
+            "tr": "Pirinc"
+          },
+          "amount": 320,
+          "unit": "g"
+        },
+        {
+          "id": "0006",
+          "name": {
+            "de": "Butter",
+            "it": "Burro",
+            "fr": "Beurre",
+            "tr": "Tereyagi"
+          },
+          "amount": 40,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Reis vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:rice"
+          ]
+        },
+        {
+          "text": "Butter vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0006"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Reis"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "tr_baklava",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "TR",
+      "category": "dessert",
+      "canonicalName": {
+        "de": "Baklava",
+        "it": "Baklava",
+        "fr": "Baklava",
+        "tr": "Baklava"
+      },
+      "titles": {
+        "de": "Baklava",
+        "it": "Baklava",
+        "fr": "Baklava",
+        "tr": "Baklava"
+      },
+      "aliases": {
+        "de": [
+          "turkische Baklava"
+        ],
+        "it": [
+          "baklava turca"
+        ],
+        "fr": [
+          "baklava turque"
+        ],
+        "tr": [
+          "baklava"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 12,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0007",
+          "name": {
+            "de": "Weizenmehl Tipo 00",
+            "it": "Farina tipo 00",
+            "fr": "Farine de ble T00",
+            "tr": "Tip 00 bugday unu"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "0006",
+          "name": {
+            "de": "Butter",
+            "it": "Burro",
+            "fr": "Beurre",
+            "tr": "Tereyagi"
+          },
+          "amount": 40,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:sugar",
+          "name": {
+            "de": "Zucker",
+            "it": "Zucchero",
+            "fr": "Sucre",
+            "tr": "Seker"
+          },
+          "amount": 100,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:almond",
+          "name": {
+            "de": "Mandeln",
+            "it": "Mandorle",
+            "fr": "Amandes",
+            "tr": "Badem"
+          },
+          "amount": 200,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Weizenmehl Tipo 00 vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0007"
+          ]
+        },
+        {
+          "text": "Butter vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0006"
+          ]
+        },
+        {
+          "text": "Zucker vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:sugar"
+          ]
+        },
+        {
+          "text": "Mandeln vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:almond"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Zucker",
+          "Mandeln"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "tr_simit",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "TR",
+      "category": "pastry",
+      "canonicalName": {
+        "de": "Simit",
+        "it": "Simit",
+        "fr": "Simit turc",
+        "tr": "Simit"
+      },
+      "titles": {
+        "de": "Simit",
+        "it": "Simit",
+        "fr": "Simit turc",
+        "tr": "Simit"
+      },
+      "aliases": {
+        "de": [
+          "turkischer Sesamring"
+        ],
+        "it": [
+          "simit turco"
+        ],
+        "fr": [
+          "simit turc"
+        ],
+        "tr": [
+          "simit"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 8,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0007",
+          "name": {
+            "de": "Weizenmehl Tipo 00",
+            "it": "Farina tipo 00",
+            "fr": "Farine de ble T00",
+            "tr": "Tip 00 bugday unu"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:sesame",
+          "name": {
+            "de": "Sesam",
+            "it": "Sesamo",
+            "fr": "Sesame",
+            "tr": "Susam"
+          },
+          "amount": 80,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Weizenmehl Tipo 00 vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0007"
+          ]
+        },
+        {
+          "text": "Sesam vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:sesame"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Sesam"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "tr_kofte",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "TR",
+      "category": "main_dish",
+      "canonicalName": {
+        "de": "Kofte",
+        "it": "Kofte",
+        "fr": "Kofte turques",
+        "tr": "Turk koftesi"
+      },
+      "titles": {
+        "de": "Kofte",
+        "it": "Kofte",
+        "fr": "Kofte turques",
+        "tr": "Turk koftesi"
+      },
+      "aliases": {
+        "de": [
+          "turkische Hackballchen"
+        ],
+        "it": [
+          "polpette turche"
+        ],
+        "fr": [
+          "boulettes turques"
+        ],
+        "tr": [
+          "kofte"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0001",
+          "name": {
+            "de": "Rinderhackfleisch",
+            "it": "Carne macinata di manzo",
+            "fr": "Boeuf hache",
+            "tr": "Dana kiyma"
+          },
+          "amount": 600,
+          "unit": "g"
+        },
+        {
+          "id": "0002",
+          "name": {
+            "de": "Zwiebel",
+            "it": "Cipolla",
+            "fr": "Oignon",
+            "tr": "Sogan"
+          },
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:egg",
+          "name": {
+            "de": "Ei",
+            "it": "Uovo",
+            "fr": "Oeuf",
+            "tr": "Yumurta"
+          },
+          "amount": 200,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        },
+        {
+          "id": "0014",
+          "name": {
+            "de": "Schwarzer Pfeffer",
+            "it": "Pepe nero",
+            "fr": "Poivre noir",
+            "tr": "Karabiber"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Rinderhackfleisch vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0001"
+          ]
+        },
+        {
+          "text": "Zwiebel vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0002"
+          ]
+        },
+        {
+          "text": "Ei vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:egg"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        },
+        {
+          "text": "Schwarzer Pfeffer vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0014"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Ei"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "tr_hunkar",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "TR",
+      "category": "main_dish",
+      "canonicalName": {
+        "de": "Hunkar Begendi",
+        "it": "Hunkar Begendi",
+        "fr": "Hunkar Begendi",
+        "tr": "Hunkar Begendi"
+      },
+      "titles": {
+        "de": "Hunkar Begendi",
+        "it": "Hunkar Begendi",
+        "fr": "Hunkar Begendi",
+        "tr": "Hunkar Begendi"
+      },
+      "aliases": {
+        "de": [
+          "Sultan liebt es"
+        ],
+        "it": [
+          "hunkar begendi"
+        ],
+        "fr": [
+          "hunkar begendi"
+        ],
+        "tr": [
+          "hunkar begendi"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0001",
+          "name": {
+            "de": "Rinderhackfleisch",
+            "it": "Carne macinata di manzo",
+            "fr": "Boeuf hache",
+            "tr": "Dana kiyma"
+          },
+          "amount": 600,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:eggplant",
+          "name": {
+            "de": "Aubergine",
+            "it": "Melanzana",
+            "fr": "Aubergine",
+            "tr": "Patlican"
+          },
+          "amount": 700,
+          "unit": "g"
+        },
+        {
+          "id": "0008",
+          "name": {
+            "de": "Vollmilch",
+            "it": "Latte intero",
+            "fr": "Lait entier",
+            "tr": "Tam yagli sut"
+          },
+          "amount": 300,
+          "unit": "ml"
+        },
+        {
+          "id": "0007",
+          "name": {
+            "de": "Weizenmehl Tipo 00",
+            "it": "Farina tipo 00",
+            "fr": "Farine de ble T00",
+            "tr": "Tip 00 bugday unu"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "0006",
+          "name": {
+            "de": "Butter",
+            "it": "Burro",
+            "fr": "Beurre",
+            "tr": "Tereyagi"
+          },
+          "amount": 40,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Rinderhackfleisch vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0001"
+          ]
+        },
+        {
+          "text": "Aubergine vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:eggplant"
+          ]
+        },
+        {
+          "text": "Vollmilch vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0008"
+          ]
+        },
+        {
+          "text": "Weizenmehl Tipo 00 vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0007"
+          ]
+        },
+        {
+          "text": "Butter vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0006"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Aubergine"
+        ],
+        "violations": []
+      }
+    },
+    {
+      "id": "tr_cacik",
+      "status": "draft",
+      "sourceType": "labplate_original",
+      "country": "TR",
+      "category": "basic",
+      "canonicalName": {
+        "de": "Cacik",
+        "it": "Cacik",
+        "fr": "Cacik",
+        "tr": "Cacik"
+      },
+      "titles": {
+        "de": "Cacik",
+        "it": "Cacik",
+        "fr": "Cacik",
+        "tr": "Cacik"
+      },
+      "aliases": {
+        "de": [
+          "turkischer Gurkenjoghurt"
+        ],
+        "it": [
+          "cacik turco"
+        ],
+        "fr": [
+          "concombre au yaourt turc"
+        ],
+        "tr": [
+          "cacik"
+        ]
+      },
+      "relatedRecipeIds": [],
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "unresolved:yogurt",
+          "name": {
+            "de": "Naturjoghurt",
+            "it": "Yogurt naturale",
+            "fr": "Yaourt nature",
+            "tr": "Sade yogurt"
+          },
+          "amount": 400,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:cucumber",
+          "name": {
+            "de": "Gurke",
+            "it": "Cetriolo",
+            "fr": "Concombre",
+            "tr": "Salatalik"
+          },
+          "amount": 300,
+          "unit": "g"
+        },
+        {
+          "id": "unresolved:garlic",
+          "name": {
+            "de": "Knoblauch",
+            "it": "Aglio",
+            "fr": "Ail",
+            "tr": "Sarmisak"
+          },
+          "amount": 10,
+          "unit": "g"
+        },
+        {
+          "id": "0013",
+          "name": {
+            "de": "Salz",
+            "it": "Sale",
+            "fr": "Sel",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Naturjoghurt vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:yogurt"
+          ]
+        },
+        {
+          "text": "Gurke vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:cucumber"
+          ]
+        },
+        {
+          "text": "Knoblauch vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "unresolved:garlic"
+          ]
+        },
+        {
+          "text": "Salz vorbereiten und in das Gericht einarbeiten.",
+          "ingredientIds": [
+            "0013"
+          ]
+        }
+      ],
+      "validation": {
+        "status": "blocked_missing_ingredients",
+        "missingIngredients": [
+          "Naturjoghurt",
+          "Gurke",
+          "Knoblauch"
+        ],
+        "violations": []
+      }
+    }
+  ]
+}

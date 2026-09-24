@@ -1,0 +1,16 @@
+{
+  "source": "USDA FoodData Central",
+  "sourceFile": "data/usda_source_22.csv",
+  "imported": 22,
+  "errors": 0,
+  "warnings": 10,
+  "before": {
+    "passed": 9,
+    "blocked_missing_ingredients": 31
+  },
+  "after": {
+    "passed": 40,
+    "blocked_missing_ingredients": 0
+  },
+  "note": "All 22 rows were explicitly approved in the mapping. Warnings are reported macro-kcal outliers; values were not corrected. Existing master_recipes.json was not modified."
+}

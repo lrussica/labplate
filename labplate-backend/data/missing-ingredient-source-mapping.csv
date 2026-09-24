@@ -1,0 +1,23 @@
+ingredient_key,canonical_name_de,name_it,name_fr,name_tr,source,source_id,source_name,confidence,unsicher,geprüft,notes
+egg,Ei,Uovo,Oeuf,Yumurta,USDA FoodData Central,171287,"Egg, whole, raw, fresh",candidate,false,ja,Automated candidate; human food identity review required
+sugar,Zucker,Zucchero,Sucre,Şeker,USDA FoodData Central,746784,"Sugars, granulated",candidate,false,ja,Automated candidate; human food identity review required
+eggplant,Aubergine,Melanzana,Aubergine,Patlıcan,USDA FoodData Central,169228,"Eggplant, raw",candidate,false,ja,Automated candidate; human food identity review required
+potato,Kartoffel,Patata,Pomme de terre,Patates,USDA FoodData Central,170032,"Potatoes, raw, skin",candidate,false,ja,Automated candidate; human food identity review required
+rice,Reis,Riso,Riz,Pirinç,USDA FoodData Central,2512381,"Rice, white, long grain, unenriched, raw",candidate,false,ja,Automated candidate; human food identity review required
+lentil,Rote Linsen,Lenticchie rosse,Lentilles corail,Kırmızı mercimek,USDA FoodData Central,172423,"Lupins, mature seeds, raw",candidate,false,ja,Automated candidate; human food identity review required
+mushroom,Champignons,Funghi,Champignons,Mantar,USDA FoodData Central,169251,"Mushrooms, white, raw",candidate,false,ja,Automated candidate; human food identity review required
+yogurt,Naturjoghurt,Yogurt naturale,Yaourt nature,Sade yoğurt,USDA FoodData Central,2259793,"Yogurt, plain, whole milk",candidate,false,ja,Automated candidate; human food identity review required
+cornmeal,Maisgrieß,Farina di mais,Semoule de maïs,Mısır unu,USDA FoodData Central,169750,"Cornmeal, whole-grain, white",candidate,false,ja,Automated candidate; human food identity review required
+coffee,Kaffee,Caffè,Café,Kahve,USDA FoodData Central,171881,"Beverages, coffee, brewed, breakfast blend",candidate,false,ja,Automated candidate; human food identity review required
+cocoa,Kakao,Cacao,Cacao,Kakao,USDA FoodData Central,169593,"Cocoa, dry powder, unsweetened",candidate,false,ja,Automated candidate; human food identity review required
+apple,Apfel,Mela,Pomme,Elma,USDA FoodData Central,1750340,"Apples, fuji, with skin, raw",candidate,false,ja,Automated candidate; human food identity review required
+cinnamon,Zimt,Cannella,Cannelle,Tarçın,USDA FoodData Central,171320,"Spices, cinnamon, ground",candidate,false,ja,Automated candidate; human food identity review required
+cherry,Kirsche,Ciliegia,Cerise,Kiraz,USDA FoodData Central,171719,"Cherries, sweet, raw",candidate,false,ja,Automated candidate; human food identity review required
+zucchini,Zucchini,Zucchine,Courgette,Kabak,USDA FoodData Central,168565,"Squash, zucchini, baby, raw",candidate,false,ja,Automated candidate; human food identity review required
+chicken,Hähnchenbrust,Petto di pollo,Blanc de poulet,Tavuk göğsü,USDA FoodData Central,2646170,"Chicken, breast, boneless, skinless, raw",candidate,false,ja,Automated candidate; human food identity review required
+fish,Weißer Fisch,Pesce bianco,Poisson blanc,Beyaz balık,USDA FoodData Central,175150,"Fish, sucker, white, raw",candidate,false,ja,Automated candidate; human food identity review required
+chocolate,Zartbitterschokolade,Cioccolato fondente,Chocolat noir,Bitter çikolata,USDA FoodData Central,170273,"Chocolate, dark, 70-85% cacao solids",candidate,false,ja,Automated candidate; human food identity review required
+almond,Mandeln,Mandorle,Amandes,Badem,USDA FoodData Central,2346393,"Nuts, almonds, whole, raw",candidate,false,ja,Automated candidate; human food identity review required
+sesame,Sesam,Sesamo,Sésame,Susam,USDA FoodData Central,170150,"Seeds, sesame seeds, whole, dried",candidate,false,ja,Automated candidate; human food identity review required
+cucumber,Gurke,Cetriolo,Concombre,Salatalık,USDA FoodData Central,169225,"Cucumber, peeled, raw",candidate,false,ja,Automated candidate; human food identity review required
+garlic,Knoblauch,Aglio,Ail,Sarımsak,USDA FoodData Central,1104647,"Garlic, raw",candidate,false,ja,Automated candidate; human food identity review required

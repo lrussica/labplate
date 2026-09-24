@@ -59,6 +59,7 @@ const apiI18n = require('./api-i18n');
 const { validateRecipeMode } = require('./recipe-request-mode');
 const aiRecipeQuality = require('./ai-recipe-quality');
 const { createPhotoVerifyHandlers } = require('./api/photo-verify');
+const originalSearchLog = require('./original-search-log');
 const BUILD_ID = process.env.BUILD_ID || new Date().toISOString();
 
 // ---------------------------------------------------------------------
@@ -397,6 +398,11 @@ app.get('/health', (req, res) => {
     dishPlanRequiredInSchema: true,
     groq429Diagnostics: true,
     groqDebugKeyRouting: true,
+  });
+
+  app.get('/api/original-search-misses', (req, res) => {
+    const limit = Math.min(Math.max(Number(req.query.limit) || 20, 1), 100);
+    return res.status(200).json({ items: originalSearchLog.topMisses(limit) });
   });
 });
 
@@ -955,6 +961,8 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     }
     return sendRecipeOk(Object.assign({}, aiResult.recipe, {
       mode: 'ai',
+      sourceType: 'ai_version',
+      sourceText: 'KI-Version – nicht redaktionell geprüft',
       nutrition: aiResult.nutrition,
       feasibility: aiResult.feasibility,
       targetAdjustment: aiResult.feasibility.adjusted ? {
@@ -1122,6 +1130,9 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
       return res.status(clientStatus).json(errPayload);
     }
     if (pipelineResult.error === 'original_recipe_unavailable') {
+      const originalQuery = Array.isArray(req.body.pantry_ingredients) ? req.body.pantry_ingredients.join(' ') : '';
+      const candidates = require('./classic-master-store').findClassicCandidates(originalQuery, req.body.lang, 5);
+      originalSearchLog.recordMiss(originalQuery, req.body.lang, req.body.country || null);
       logEvent('response_rejected', {
         reason: pipelineResult.error,
         ms: Date.now() - startedAt,
@@ -1132,6 +1143,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
         message: pipelineResult.reason,
         recipe_source: 'master-classic',
         flow,
+        suggestions: candidates,
       });
     }
     if (pipelineResult.error === 'validation_exhausted') {

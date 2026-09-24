@@ -1,0 +1,666 @@
+{
+  "version": 1,
+  "importedAt": "2026-09-24T21:05:53.010Z",
+  "sourcePolicy": "named-source-only",
+  "ingredients": [
+    {
+      "id": "src_usda_fooddata_central_171287",
+      "ingredientKey": "egg",
+      "names": {
+        "de": "Ei",
+        "it": "Uovo",
+        "fr": "Oeuf",
+        "tr": "Yumurta"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 143,
+        "protein": 12.56,
+        "fat": 9.51,
+        "carbohydrates": 0,
+        "fiber": 0,
+        "salt": 0.355
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "171287",
+        "sourceName": "Egg, whole, raw, fresh"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_746784",
+      "ingredientKey": "sugar",
+      "names": {
+        "de": "Zucker",
+        "it": "Zucchero",
+        "fr": "Sucre",
+        "tr": "Şeker"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 385,
+        "protein": 0,
+        "fat": 0.32,
+        "carbohydrates": 0,
+        "fiber": 0,
+        "salt": 0.003
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "746784",
+        "sourceName": "Sugars, granulated"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_169228",
+      "ingredientKey": "eggplant",
+      "names": {
+        "de": "Aubergine",
+        "it": "Melanzana",
+        "fr": "Aubergine",
+        "tr": "Patlıcan"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 25,
+        "protein": 0.98,
+        "fat": 0.18,
+        "carbohydrates": 0,
+        "fiber": 3,
+        "salt": 0.005
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "169228",
+        "sourceName": "Eggplant, raw"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_170032",
+      "ingredientKey": "potato",
+      "names": {
+        "de": "Kartoffel",
+        "it": "Patata",
+        "fr": "Pomme de terre",
+        "tr": "Patates"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 58,
+        "protein": 2.57,
+        "fat": 0.1,
+        "carbohydrates": 0,
+        "fiber": 2.5,
+        "salt": 0.025
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "170032",
+        "sourceName": "Potatoes, raw, skin"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_2512381",
+      "ingredientKey": "rice",
+      "names": {
+        "de": "Reis",
+        "it": "Riso",
+        "fr": "Riz",
+        "tr": "Pirinç"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 358.705,
+        "protein": 7.03885,
+        "fat": 1.033,
+        "carbohydrates": 0,
+        "fiber": 0.1488,
+        "salt": 0.001
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "2512381",
+        "sourceName": "Rice, white, long grain, unenriched, raw"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_172423",
+      "ingredientKey": "lentil",
+      "names": {
+        "de": "Rote Linsen",
+        "it": "Lenticchie rosse",
+        "fr": "Lentilles corail",
+        "tr": "Kırmızı mercimek"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 371,
+        "protein": 36.17,
+        "fat": 9.74,
+        "carbohydrates": 0,
+        "fiber": 18.9,
+        "salt": 0.037
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "172423",
+        "sourceName": "Lupins, mature seeds, raw"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_169251",
+      "ingredientKey": "mushroom",
+      "names": {
+        "de": "Champignons",
+        "it": "Funghi",
+        "fr": "Champignons",
+        "tr": "Mantar"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 22,
+        "protein": 3.09,
+        "fat": 0.34,
+        "carbohydrates": 0,
+        "fiber": 1,
+        "salt": 0.013
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "169251",
+        "sourceName": "Mushrooms, white, raw"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_2259793",
+      "ingredientKey": "yogurt",
+      "names": {
+        "de": "Naturjoghurt",
+        "it": "Yogurt naturale",
+        "fr": "Yaourt nature",
+        "tr": "Sade yoğurt"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 77.9524,
+        "protein": 3.824172,
+        "fat": 4.484,
+        "carbohydrates": 0,
+        "fiber": 0,
+        "salt": 0.104
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "2259793",
+        "sourceName": "Yogurt, plain, whole milk"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_169750",
+      "ingredientKey": "cornmeal",
+      "names": {
+        "de": "Maisgrieß",
+        "it": "Farina di mais",
+        "fr": "Semoule de maïs",
+        "tr": "Mısır unu"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 362,
+        "protein": 8.12,
+        "fat": 3.59,
+        "carbohydrates": 0,
+        "fiber": 7.3,
+        "salt": 0.087
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "169750",
+        "sourceName": "Cornmeal, whole-grain, white"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_171881",
+      "ingredientKey": "coffee",
+      "names": {
+        "de": "Kaffee",
+        "it": "Caffè",
+        "fr": "Café",
+        "tr": "Kahve"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 2,
+        "protein": 0.3,
+        "fat": 0,
+        "carbohydrates": 0,
+        "fiber": 0,
+        "salt": 0.003
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "171881",
+        "sourceName": "Beverages, coffee, brewed, breakfast blend"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_169593",
+      "ingredientKey": "cocoa",
+      "names": {
+        "de": "Kakao",
+        "it": "Cacao",
+        "fr": "Cacao",
+        "tr": "Kakao"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 228,
+        "protein": 19.6,
+        "fat": 13.7,
+        "carbohydrates": 0,
+        "fiber": 37,
+        "salt": 0.052
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "169593",
+        "sourceName": "Cocoa, dry powder, unsweetened"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_1750340",
+      "ingredientKey": "apple",
+      "names": {
+        "de": "Apfel",
+        "it": "Mela",
+        "fr": "Pomme",
+        "tr": "Elma"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 64.6609,
+        "protein": 0.1484375,
+        "fat": 0.1625,
+        "carbohydrates": 0,
+        "fiber": 2.075,
+        "salt": 0.003
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "1750340",
+        "sourceName": "Apples, fuji, with skin, raw"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_171320",
+      "ingredientKey": "cinnamon",
+      "names": {
+        "de": "Zimt",
+        "it": "Cannella",
+        "fr": "Cannelle",
+        "tr": "Tarçın"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 247,
+        "protein": 3.99,
+        "fat": 1.24,
+        "carbohydrates": 0,
+        "fiber": 53.1,
+        "salt": 0.025
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "171320",
+        "sourceName": "Spices, cinnamon, ground"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_171719",
+      "ingredientKey": "cherry",
+      "names": {
+        "de": "Kirsche",
+        "it": "Ciliegia",
+        "fr": "Cerise",
+        "tr": "Kiraz"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 63,
+        "protein": 1.06,
+        "fat": 0.2,
+        "carbohydrates": 0,
+        "fiber": 2.1,
+        "salt": 0
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "171719",
+        "sourceName": "Cherries, sweet, raw"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_168565",
+      "ingredientKey": "zucchini",
+      "names": {
+        "de": "Zucchini",
+        "it": "Zucchine",
+        "fr": "Courgette",
+        "tr": "Kabak"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 21,
+        "protein": 2.71,
+        "fat": 0.4,
+        "carbohydrates": 0,
+        "fiber": 1.1,
+        "salt": 0.007
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "168565",
+        "sourceName": "Squash, zucchini, baby, raw"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_2646170",
+      "ingredientKey": "chicken",
+      "names": {
+        "de": "Hähnchenbrust",
+        "it": "Petto di pollo",
+        "fr": "Blanc de poulet",
+        "tr": "Tavuk göğsü"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 106.034,
+        "protein": 22.525,
+        "fat": 1.934,
+        "carbohydrates": 0,
+        "fiber": 0,
+        "salt": 0.164
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "2646170",
+        "sourceName": "Chicken, breast, boneless, skinless, raw"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_175150",
+      "ingredientKey": "fish",
+      "names": {
+        "de": "Weißer Fisch",
+        "it": "Pesce bianco",
+        "fr": "Poisson blanc",
+        "tr": "Beyaz balık"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 92,
+        "protein": 16.76,
+        "fat": 2.32,
+        "carbohydrates": 0,
+        "fiber": 0,
+        "salt": 0.1
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "175150",
+        "sourceName": "Fish, sucker, white, raw"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_170273",
+      "ingredientKey": "chocolate",
+      "names": {
+        "de": "Zartbitterschokolade",
+        "it": "Cioccolato fondente",
+        "fr": "Chocolat noir",
+        "tr": "Bitter çikolata"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 598,
+        "protein": 7.79,
+        "fat": 42.63,
+        "carbohydrates": 0,
+        "fiber": 10.9,
+        "salt": 0.05
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "170273",
+        "sourceName": "Chocolate, dark, 70-85% cacao solids"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_2346393",
+      "ingredientKey": "almond",
+      "names": {
+        "de": "Mandeln",
+        "it": "Mandorle",
+        "fr": "Amandes",
+        "tr": "Badem"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 625.75,
+        "protein": 21.45038,
+        "fat": 51.09,
+        "carbohydrates": 0,
+        "fiber": 10.78,
+        "salt": 0
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "2346393",
+        "sourceName": "Nuts, almonds, whole, raw"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_170150",
+      "ingredientKey": "sesame",
+      "names": {
+        "de": "Sesam",
+        "it": "Sesamo",
+        "fr": "Sésame",
+        "tr": "Susam"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 573,
+        "protein": 17.73,
+        "fat": 49.67,
+        "carbohydrates": 0,
+        "fiber": 11.8,
+        "salt": 0.028
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "170150",
+        "sourceName": "Seeds, sesame seeds, whole, dried"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_169225",
+      "ingredientKey": "cucumber",
+      "names": {
+        "de": "Gurke",
+        "it": "Cetriolo",
+        "fr": "Concombre",
+        "tr": "Salatalık"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 10,
+        "protein": 0.59,
+        "fat": 0.16,
+        "carbohydrates": 0,
+        "fiber": 0.7,
+        "salt": 0.005
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "169225",
+        "sourceName": "Cucumber, peeled, raw"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    },
+    {
+      "id": "src_usda_fooddata_central_1104647",
+      "ingredientKey": "garlic",
+      "names": {
+        "de": "Knoblauch",
+        "it": "Aglio",
+        "fr": "Ail",
+        "tr": "Sarımsak"
+      },
+      "aliases": [],
+      "nutritionPer100g": {
+        "kcal": 143,
+        "protein": 6.62,
+        "fat": 0.38,
+        "carbohydrates": 0,
+        "fiber": 2.7,
+        "salt": 0
+      },
+      "source": {
+        "name": "USDA FoodData Central",
+        "id": "1104647",
+        "sourceName": "Garlic, raw"
+      },
+      "density_g_per_ml": 0,
+      "piece_weight_g": 0,
+      "allergenTags": [],
+      "culinaryRole": ""
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    {
+      "ingredient_key": "sugar",
+      "reason": "macro kcal outlier"
+    },
+    {
+      "ingredient_key": "potato",
+      "reason": "macro kcal outlier"
+    },
+    {
+      "ingredient_key": "rice",
+      "reason": "macro kcal outlier"
+    },
+    {
+      "ingredient_key": "lentil",
+      "reason": "macro kcal outlier"
+    },
+    {
+      "ingredient_key": "cornmeal",
+      "reason": "macro kcal outlier"
+    },
+    {
+      "ingredient_key": "apple",
+      "reason": "macro kcal outlier"
+    },
+    {
+      "ingredient_key": "cinnamon",
+      "reason": "macro kcal outlier"
+    },
+    {
+      "ingredient_key": "cherry",
+      "reason": "macro kcal outlier"
+    },
+    {
+      "ingredient_key": "chocolate",
+      "reason": "macro kcal outlier"
+    },
+    {
+      "ingredient_key": "garlic",
+      "reason": "macro kcal outlier"
+    }
+  ]
+}

@@ -20,6 +20,7 @@ function loadMaster() {
   if (_cache) return _cache;
   const raw = fs.readFileSync(MASTER_PATH, 'utf8');
   _cache = JSON.parse(raw);
+  _cache.recipes = (_cache.recipes || []).map(metadataFor);
   return _cache;
 }
 
@@ -48,7 +49,25 @@ function normalizeQuery(q) {
     .replace(/ä/g, 'a')
     .replace(/ß/g, 'ss');
   s = s.replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+  s = s.replace(/\b([a-z]+)s\b/g, '$1');
   return s;
+}
+
+function metadataFor(rec) {
+  if (!rec.status) rec.status = 'published';
+  if (!rec.sourceType) rec.sourceType = 'labplate_original';
+  if (!rec.country) rec.country = rec.cuisine || null;
+  if (!rec.category) {
+    const text = `${rec.id} ${Object.values(rec.titles || {}).join(' ')}`.toLowerCase();
+    rec.category = /soup|suppe|corbasi|zuppa|soupe/.test(text) ? 'soup'
+      : /salad|salat|insalata|salade/.test(text) ? 'salad'
+      : /tiramisu|bowl|dessert|cake|kuchen/.test(text) ? 'dessert'
+      : /pizza|quiche|lahmacun|taco|burger|ramen|spätzle|spaetzle/.test(text) ? 'pastry'
+      : 'main_dish';
+  }
+  if (!rec.canonicalName) rec.canonicalName = Object.assign({}, rec.titles || {});
+  if (!Array.isArray(rec.relatedRecipeIds)) rec.relatedRecipeIds = [];
+  return rec;
 }
 
 function pickLocalized(mapOrString, lang) {
@@ -81,16 +100,16 @@ function resolveClassic(queryOrPayload, lang) {
 
   let best = null;
   (master.recipes || []).forEach(function (rec) {
+    if (rec.status !== 'published') return;
     const aliases = rec.aliases || {};
     LANGS.forEach(function (L) {
-      const list = aliases[L] || [];
+      const list = (aliases[L] || []).concat(rec.canonicalName && rec.canonicalName[L] || []);
       list.forEach(function (alias) {
         const a = normalizeQuery(alias);
         if (!a) return;
         let score = 0;
         if (q === a) score = 100;
         else if (q.indexOf(a) >= 0) score = 80 + Math.min(19, a.length);
-        else if (a.indexOf(q) >= 0 && q.length >= 5) score = 60;
         if (score > 0 && (!best || score > best.score)) {
           best = { id: rec.id, recipe: rec, score: score };
         }
@@ -98,6 +117,42 @@ function resolveClassic(queryOrPayload, lang) {
     });
   });
   return best;
+}
+
+function levenshtein(a, b) {
+  const row = Array.from({ length: b.length + 1 }, (_, i) => i);
+  for (let i = 1; i <= a.length; i++) {
+    let prev = row[0];
+    row[0] = i;
+    for (let j = 1; j <= b.length; j++) {
+      const current = row[j];
+      row[j] = Math.min(row[j] + 1, row[j - 1] + 1, prev + (a[i - 1] === b[j - 1] ? 0 : 1));
+      prev = current;
+    }
+  }
+  return row[b.length];
+}
+
+function findClassicCandidates(queryOrPayload, lang, limit) {
+  const master = loadMaster();
+  const q = normalizeQuery(typeof queryOrPayload === 'string' ? queryOrPayload : contextQuery(queryOrPayload));
+  if (!q || q.length < 3) return [];
+  const candidates = [];
+  (master.recipes || []).forEach(function (rec) {
+    if (rec.status !== 'published') return;
+    const names = [];
+    LANGS.forEach(function (L) {
+      names.push.apply(names, (rec.aliases && rec.aliases[L]) || []);
+      if (rec.canonicalName && rec.canonicalName[L]) names.push(rec.canonicalName[L]);
+    });
+    const distance = Math.min.apply(null, names.map(function (name) {
+      return levenshtein(q, normalizeQuery(name));
+    }));
+    if (distance <= 2) {
+      candidates.push({ id: rec.id, title: pickLocalized(rec.canonicalName, lang), distance });
+    }
+  });
+  return candidates.sort((a, b) => a.distance - b.distance).slice(0, limit || 5);
 }
 
 function hasLactoseAllergen(allergens) {
@@ -231,6 +286,7 @@ function buildFromMaster(payload, opts) {
     target_deviation_note: '',
     nutrition: { kcal: 0, protein_g: 0, fat_g: 0, netto_kh_g: 0, ballaststoffe_g: 0 },
     recipeSource: 'master-classic',
+    sourceType: master.sourceType || 'labplate_original',
     masterRecipeId: master.id,
     immutableCore: true,
     lactoseHonestyStatus: swap.lactoseStatus,
@@ -276,6 +332,7 @@ module.exports = {
   normalizeLang: normalizeLang,
   pickLocalized: pickLocalized,
   resolveClassic: resolveClassic,
+  findClassicCandidates: findClassicCandidates,
   applyHonestAllergenSwaps: applyHonestAllergenSwaps,
   buildFromMaster: buildFromMaster,
   tryMasterClassic: tryMasterClassic,
