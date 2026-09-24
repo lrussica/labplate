@@ -32021,7 +32021,10 @@ initBarcodeEvents();
       };
       if (aiMode) {
         payload.dishCategory = aiCategory;
-        payload.mainIngredient = aiQueryText;
+        // Free-text constraints belong in userRequest, not in the optional
+        // ingredient hint. Sending the whole sentence as mainIngredient makes
+        // it look like a database ingredient to older validators.
+        payload.mainIngredient = null;
         payload.allowedIngredients = aiIngredients;
         payload.userRequest = {
           text: aiQueryText,
@@ -32040,9 +32043,9 @@ initBarcodeEvents();
         payload.macros = macros;
         payload.micronutrient_gaps = microGaps.slice(0, 8);
       }
-      if (mode === 'pantry') payload.pantry_ingredients = pantryIngredients;
+      if (!aiMode && mode === 'pantry') payload.pantry_ingredients = pantryIngredients;
       var parsedUserRecipe = isStructuredFreesearch ? parseNutriUserRecipe(freesearchQuery) : null;
-      if (mode === 'freesearch') {
+      if (!aiMode && mode === 'freesearch') {
         if (isStructuredFreesearch) {
           // FIX v3: NUR echte Zutatenzeilen (kein Titel/Header/Schritt) als eigene Array-Eintraege.
           // Der Server formatiert jeden Eintrag einzeln in den KI-Prompt → KI sieht alle
