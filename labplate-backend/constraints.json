@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "categories": [
+    "main_meat",
+    "main_fish",
+    "main_vegetarian",
+    "soup",
+    "stew_braise",
+    "dessert",
+    "salad",
+    "other"
+  ],
+  "units": ["g", "ml", "piece", "tsp", "tbsp"],
+  "roles": [
+    "main_protein",
+    "liquid",
+    "spice",
+    "sweetener",
+    "fat",
+    "vegetable",
+    "carb",
+    "other"
+  ],
+  "minimums": {
+    "mainProteinGPerPortion": {
+      "main_meat": 120,
+      "main_fish": 120,
+      "tofu": 100,
+      "tempeh": 100,
+      "legume_dry": 60
+    },
+    "liquidMlPerPortion": {
+      "soup": 150,
+      "stew_braise": 150
+    }
+  },
+  "maximums": {
+    "fatGPerPortion": 30,
+    "spiceGPerPortion": {
+      "vanilla": 0.5,
+      "nutmeg": 1,
+      "salt": 2,
+      "pepper": 2,
+      "cinnamon": 2,
+      "chili": 2,
+      "default": 5
+    },
+    "sweetenerGPerPortion": {
+      "dessert": 30,
+      "default": 10
+    }
+  },
+  "feasibility": {
+    "mainProteinGPerPortion": {
+      "main_meat": 120,
+      "main_fish": 120,
+      "main_vegetarian": 100
+    },
+    "minimumCaloriesPerPortion": {
+      "main_meat": 350,
+      "main_fish": 250,
+      "main_vegetarian": 300,
+      "soup": 150,
+      "stew_braise": 300,
+      "dessert": 200,
+      "salad": 150,
+      "other": 200
+    }
+  }
+}
