@@ -31983,11 +31983,45 @@ initBarcodeEvents();
       // FIX (Zutaten-Vollstaendigkeit v2): isStructuredFreesearch VOR pantry_ingredients-Zuweisung
       // berechnen, damit strukturierte Rezepteingabe zeilenweise aufgeteilt werden kann.
       var isStructuredFreesearch = (mode === 'freesearch' && freesearchQuery && looksLikeNutriStructuredRecipeInput(freesearchQuery));
+      var aiMode = !isOriginalRequest && !isStructuredFreesearch;
+      var aiIngredients = (typeof FOODS !== 'undefined' && Array.isArray(FOODS))
+        ? FOODS.map(function (food) {
+            return {
+              id: String(food.id),
+              name: String(food.name || ''),
+              synonyms: [],
+              kcal: Number(food.kcal100 || food.kcal || 0),
+              protein: Number(food.protein100 || 0),
+              fat: Number(food.fat100 || 0),
+              netCarbs: Number(food.kh100 || 0),
+              fiber: Number(food.ballast100 || 0)
+            };
+          }).filter(function (food) { return food.name; })
+        : [];
+      var aiQueryText = String(freesearchQuery || (pantryIngredients || []).join(', ') || '');
+      var aiCategory = /suppe|soup/i.test(aiQueryText) ? 'soup'
+        : /salat|salad/i.test(aiQueryText) ? 'salad'
+        : /dessert|kuchen|cake|süß|suess/i.test(aiQueryText) ? 'dessert'
+        : /fisch|lachs|fish|salmon/i.test(aiQueryText) ? 'main_fish'
+        : /tofu|tempeh|linsen|bohnen|kichererbsen|vegetar/i.test(aiQueryText) ? 'main_vegetarian'
+        : 'main_meat';
       var payload = {
-        mode: (mode === 'pantry' || mode === 'freesearch') ? 'pantry' : 'shopping',
+        mode: isOriginalRequest ? 'pantry' : (aiMode ? 'ai' : ((mode === 'pantry' || mode === 'freesearch') ? 'pantry' : 'shopping')),
         lang: appLang,
         original_mode: isOriginalRequest
       };
+      if (aiMode) {
+        payload.dishCategory = aiCategory;
+        payload.mainIngredient = aiQueryText;
+        payload.allowedIngredients = aiIngredients;
+        payload.ingredientDatabase = aiIngredients;
+        payload.userRequest = {
+          text: aiQueryText,
+          allergens: (typeof ALLERGENS !== 'undefined' ? ALLERGENS.map(allergenDisplayLabel) : []),
+          targets: macros
+        };
+        payload.targets = { kcal: Number(totals.kcal || totals.energy || 0), protein_g: Number(totals.protein || 0) };
+      }
       // Originalmodus: keine Makros/Gaps/Targets/Handoff → Server darf nicht optimieren.
       if (isOriginalRequest) {
         payload.macros = null;
