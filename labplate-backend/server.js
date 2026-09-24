@@ -222,8 +222,10 @@ app.use(helmet({
     },
   },
 }));
-// Eigenrezepte mit ai_instruction (bis 8 kB) + 100 Zutaten passen problemlos in 64 kB.
-app.use(express.json({ limit: '64kb' }));
+// AI-Rezeptanfragen enthalten die Zutaten-Datenbank fuer die serverseitige
+// Aufloesung und Validierung; sie kann mehrere hundert Eintraege umfassen.
+app.use(express.json({ limit: '5mb' }));
+app.use(express.urlencoded({ limit: '5mb', extended: true }));
 
 function isLocalLoopbackOrigin(origin) {
   if (!origin) return true;
