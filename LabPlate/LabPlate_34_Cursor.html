@@ -31984,21 +31984,30 @@ initBarcodeEvents();
       // berechnen, damit strukturierte Rezepteingabe zeilenweise aufgeteilt werden kann.
       var isStructuredFreesearch = (mode === 'freesearch' && freesearchQuery && looksLikeNutriStructuredRecipeInput(freesearchQuery));
       var aiMode = !isOriginalRequest && !isStructuredFreesearch;
-      var aiIngredients = (typeof FOODS !== 'undefined' && Array.isArray(FOODS))
-        ? FOODS.map(function (food) {
-            return {
-              id: String(food.id),
-              name: String(food.name || ''),
-              synonyms: [],
-              kcal: Number(food.kcal100 || food.kcal || 0),
-              protein: Number(food.protein100 || 0),
-              fat: Number(food.fat100 || 0),
-              netCarbs: Number(food.kh100 || 0),
-              fiber: Number(food.ballast100 || 0)
-            };
-          }).filter(function (food) { return food.name; })
-        : [];
       var aiQueryText = String(freesearchQuery || (pantryIngredients || []).join(', ') || '');
+      // Never send the complete 370-item client database to the reverse proxy.
+      // The backend only needs the ingredients explicitly named by the user;
+      // generated recipes are still checked server-side against its own data.
+      var aiQueryTokens = aiQueryText.toLowerCase().split(/[^a-zäöüß0-9]+/).filter(function (token) {
+        return token.length >= 3;
+      });
+      var aiIngredients = [];
+      if (typeof FOODS !== 'undefined' && Array.isArray(FOODS)) {
+        FOODS.forEach(function (food) {
+          if (aiIngredients.length >= 20 || !food || !food.name) return;
+          var foodText = String(food.name).toLowerCase();
+          if (!aiQueryTokens.some(function (token) { return foodText.indexOf(token) >= 0; })) return;
+          aiIngredients.push({
+            id: String(food.id),
+            name: String(food.name),
+            kcal: Number(food.kcal100 || food.kcal || 0),
+            protein: Number(food.protein100 || 0),
+            fat: Number(food.fat100 || 0),
+            netCarbs: Number(food.kh100 || 0),
+            fiber: Number(food.ballast100 || 0)
+          });
+        });
+      }
       var aiCategory = /suppe|soup/i.test(aiQueryText) ? 'soup'
         : /salat|salad/i.test(aiQueryText) ? 'salad'
         : /dessert|kuchen|cake|süß|suess/i.test(aiQueryText) ? 'dessert'
@@ -32014,7 +32023,6 @@ initBarcodeEvents();
         payload.dishCategory = aiCategory;
         payload.mainIngredient = aiQueryText;
         payload.allowedIngredients = aiIngredients;
-        payload.ingredientDatabase = aiIngredients;
         payload.userRequest = {
           text: aiQueryText,
           allergens: (typeof ALLERGENS !== 'undefined' ? ALLERGENS.map(allergenDisplayLabel) : []),
@@ -32154,6 +32162,24 @@ initBarcodeEvents();
         try {
           payload.team_ai = (typeof isTeamAiEnabled === 'function') ? !!isTeamAiEnabled() : true;
         } catch (eTeamFlag) { payload.team_ai = true; }
+      }
+      // Keep AI requests below the proxy limit even when a long free-text
+      // request or additional coaching fields are present.
+      if (aiMode) {
+        var aiPayloadBytes = JSON.stringify(payload).length;
+        if (aiPayloadBytes >= 9000) {
+          payload.allowedIngredients = [];
+          delete payload.micronutrient_gaps;
+          delete payload.handoff_brief;
+          delete payload.teamHandoffBrief;
+          payload.mainIngredient = String(payload.mainIngredient || '').slice(0, 1500);
+          if (payload.userRequest) {
+            payload.userRequest.text = String(payload.userRequest.text || '').slice(0, 1500);
+          }
+          if (Array.isArray(payload.pantry_ingredients)) {
+            payload.pantry_ingredients = payload.pantry_ingredients.slice(0, 3);
+          }
+        }
       }
       return payload;
     }
