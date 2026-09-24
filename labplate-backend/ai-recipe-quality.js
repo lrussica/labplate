@@ -435,7 +435,16 @@ function toClientRecipe(recipe, nutrition, feasibility, context) {
     self_check: '',
     ingredients,
     shopping_list: ingredients.map((ingredient) => ingredient.name + ' – ' + ingredient.amount + ' ' + ingredient.unit),
-    steps: rendered.steps.map((step) => Object.assign({ stepNumber: step.order }, step)),
+    // Deliberately expose only renderer-owned step fields. Provider JSON is never
+    // merged into this object, so raw text/content/title fields cannot escape.
+    steps: rendered.steps.map((step) => ({
+      stepNumber: step.order,
+      action: step.action,
+      durationMin: step.durationMin,
+      temperatureC: step.temperatureC,
+      ingredientIds: Array.isArray(step.ingredientIds) ? step.ingredientIds.slice() : [],
+      instruction: String(step.instruction),
+    })),
     nutrition,
     finalNutrition: nutrition,
     mode: 'ai',

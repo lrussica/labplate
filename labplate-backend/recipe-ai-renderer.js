@@ -18,18 +18,26 @@ function formatAmount(ingredient, amount, lang) {
   const unit = String(ingredient.unit || '');
   if (unit === 'piece') {
     const count = Math.round(amount * 10) / 10;
-    if (lang === 'de' && /ei\b/i.test(localizedName(ingredient, lang))) return `${count} ${count === 1 ? 'Ei' : 'Eier'}`;
-    if (lang === 'it' && /uov/i.test(localizedName(ingredient, lang))) return `${count} ${count === 1 ? 'uovo' : 'uova'}`;
-    if (lang === 'fr' && /œuf|oeuf/i.test(localizedName(ingredient, lang))) return `${count} ${count === 1 ? 'œuf' : 'œufs'}`;
-    if (lang === 'tr' && /yumurta/i.test(localizedName(ingredient, lang))) return `${count} yumurta`;
     return `${count} ${unit}`;
   }
   return `${Math.round(amount * 10) / 10} ${unit}`;
 }
 
+function ingredientLabel(ingredient, amount, lang) {
+  const name = localizedName(ingredient, lang);
+  if (String(ingredient.unit || '') === 'piece') {
+    const count = Math.round(amount * 10) / 10;
+    if (lang === 'de' && /ei\b/i.test(name)) return `${count} ${count === 1 ? 'Ei' : 'Eier'}`;
+    if (lang === 'it' && /uov/i.test(name)) return `${count} ${count === 1 ? 'uovo' : 'uova'}`;
+    if (lang === 'fr' && /œuf|oeuf/i.test(name)) return `${count} ${count === 1 ? 'œuf' : 'œufs'}`;
+    if (lang === 'tr' && /yumurta/i.test(name)) return `${count} yumurta`;
+  }
+  return `${formatAmount(ingredient, amount, lang)} ${name}`;
+}
+
 function renderInstruction(step, ingredients, lang, servings) {
   const names = (step.ingredientIds || []).map((id) => ingredients.find((i) => i.id === id)).filter(Boolean);
-  const listed = names.map((ingredient) => `${formatAmount(ingredient, Number(ingredient.amount), lang)} ${localizedName(ingredient, lang)}`);
+  const listed = names.map((ingredient) => ingredientLabel(ingredient, Number(ingredient.amount), lang));
   const subject = listed.join(lang === 'tr' ? ' ve ' : ', ');
   const action = ACTIONS[lang][step.action] || ACTIONS[lang].mix;
   const duration = step.durationMin == null ? '' : ` (${step.durationMin} min)`;

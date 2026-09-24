@@ -78,5 +78,9 @@ for (const lang of ['de', 'it', 'fr', 'tr']) {
   });
   assert.ok(!('text' in ai.validatedRecipe.steps[0]));
   assert.ok(ai.recipe.steps[0].instruction);
+  assert.deepStrictEqual(Object.keys(ai.recipe.steps[0]).sort(), [
+    'action', 'durationMin', 'ingredientIds', 'instruction', 'stepNumber', 'temperatureC',
+  ]);
+  assert.ok(!JSON.stringify(ai.recipe.steps).includes('Provider-Rohtext'));
   console.log('test-ai-quality-rules-renderer: ALL OK');
 })().catch((error) => { console.error(error); process.exit(1); });
