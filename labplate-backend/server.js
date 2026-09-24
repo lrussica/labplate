@@ -56,6 +56,7 @@ const themealdb = require('./api/themealdb');
 const usda = require('./api/usda');
 const coachLogic = require('./coach/logic');
 const apiI18n = require('./api-i18n');
+const { validateRecipeMode } = require('./recipe-request-mode');
 const aiRecipeQuality = require('./ai-recipe-quality');
 const { createPhotoVerifyHandlers } = require('./api/photo-verify');
 
@@ -131,6 +132,7 @@ function resolveGroqAuth(reqBody) {
       keyFingerprint: GROQ_API_KEY ? maskedPreview(GROQ_API_KEY) : null,
     };
   }
+
   return {
     apiKey: GROQ_API_KEY_DEBUG,
     keyType: 'debug',
@@ -867,6 +869,24 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   const startedAt = Date.now();
   const operationId = getRecipeOperationId(req);
   try {
+  const modeValidation = validateRecipeMode(req.body);
+  if (!modeValidation.ok) {
+    logEvent('request_rejected', {
+      reason: modeValidation.error,
+      field: modeValidation.field,
+      rule: modeValidation.rule,
+    });
+    return res.status(400).json({
+      error: modeValidation.error,
+      field: modeValidation.field,
+      rule: modeValidation.rule,
+    });
+  }
+  // Keep the legacy internal Original path while exposing one canonical
+  // public mode value to new clients.
+  if (req.body.mode === 'original') {
+    req.body = Object.assign({}, req.body, { mode: 'pantry', original_mode: true });
+  }
   if (operationId) {
     const cached = getCachedRecipeOperation(operationId);
     if (cached) {
@@ -1010,8 +1030,10 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
 
   const payload = core.validateIncoming(req.body);
   if (!payload) {
-    logEvent('request_rejected', { reason: 'invalid_payload' });
-    return res.status(400).json({ error: 'invalid_payload' });
+    const field = req.body.mode === 'pantry' ? 'pantry_ingredients' : 'mode';
+    const rule = req.body.mode === 'pantry' ? 'required_non_empty' : 'enum';
+    logEvent('request_rejected', { reason: 'invalid_payload', field, rule });
+    return res.status(400).json({ error: 'invalid_payload', field, rule });
   }
 
   // Phase 2 KI-Team: emotionale Blockade → Handoff an Coach (String-Match, kein Groq).
@@ -1390,3 +1412,4 @@ if (require.main === module) {
 module.exports = app;
 module.exports.handlePhotoVerify = photoVerify.handlePhotoVerify;
 module.exports.handlePhotoVerifyGet = photoVerify.handlePhotoVerifyGet;
+module.exports.validateRecipeMode = validateRecipeMode;
