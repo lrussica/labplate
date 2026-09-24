@@ -29577,6 +29577,8 @@ initBarcodeEvents();
       { cuisine: 'Italien', search: 'Pesto', wiki: 'Pesto', re: /\bpesto(\s+genovese)?\b/i },
       { cuisine: 'Italien', search: 'Lasagne', wiki: 'Lasagne', re: /\blasagne\b|\blasagna\b/i },
       { cuisine: 'Italien', search: 'Tiramisu', wiki: 'Tiramisu', re: /\btiramis[uù]\b/i },
+      { cuisine: 'Italien', search: 'Pan di Spagna', wiki: 'Pan_di_Spagna', re: /\bpan[\s-]*di[\s-]*spagna\b|\bpandispagna\b/i },
+      { cuisine: 'Deutschland', search: 'Biskuit', wiki: 'Biskuit', re: /\bbiskuit\b|\bsponge\s+cake\b|\bgenoise\b/i },
       { cuisine: 'Italien', search: 'Osso Buco', wiki: 'Ossobuco', re: /\bossobuco\b|\bosso\s*buco\b/i },
       { cuisine: 'Italien', search: 'Polenta', wiki: 'Polenta', re: /\bpolenta\b/i },
       { cuisine: 'Italien', search: 'Minestrone', wiki: 'Minestrone', re: /\bminestrone\b/i },
@@ -31927,7 +31929,7 @@ initBarcodeEvents();
 
     function buildNutriRecipePayload(mode, pantryIngredients, freesearchQuery, options) {
       options = options || {};
-      var isOriginalRequest = !!options.isOriginalRequest;
+      var isOriginalRequest = !!options.isOriginalRequest && !options.forceAi;
       var originalSearchQuery = String(options.originalSearchQuery || freesearchQuery || '').trim();
       var originalCuisine = String(options.originalCuisine || '').trim() || 'klassisch';
       var originalDishKey = String(options.originalDishKey || options.originalSearchQuery || freesearchQuery || '').trim();
@@ -32308,7 +32310,9 @@ initBarcodeEvents();
           var errText = '';
           try { errText = await res.text(); } catch (eText) {}
           logNutriRecipeDebugError(errText || ('HTTP ' + res.status), res.status, res.statusText);
-          return null;
+          var errorBody = null;
+          try { errorBody = JSON.parse(errText); } catch (eJson) {}
+          return { _requestError: true, status: res.status, error: errorBody || { error: 'request_failed' } };
         }
         var json = await res.json();
         logNutriRecipeDebugResponse(json, res.status);
@@ -32819,7 +32823,7 @@ initBarcodeEvents();
     // zeigt NUR die zugehoerige, unveraenderte Eingabe-Sektion (siehe renderNutriRecipeBody()).
     // Wirkt sich NICHT auf "mode" aus (bleibt weiterhin der an requestNutriRecipe() uebergebene
     // Wert, unveraendert).
-    var nutriRecipeState = { view: 'chat', mode: null, loading: false, result: null, error: false, errorText: '', pantryInput: '', hint: '', freesearchInput: '', freesearchHint: '', suggestions: [], servings: 2, selectedCategory: 'none', categoryDetailsOpen: false, chatMessages: [], chatDraft: '', chatHint: '', chatLoading: false, chatRetryStatus: '', chatLastQuery: '', chatFocusRetryBtn: false, recentRecipeTitles: [], openAnotherIdeaAfterChat: false, teamHandoffBrief: '', teamHandoffTheme: null, teamHandoffActive: false, coachAnalysis: null, coachAnalysisLoading: false, coachAnalysisError: '', coachAnalysisGen: 0, activeOperationId: null, lastRenderedOperationId: null, recipeVersion: 0 };
+    var nutriRecipeState = { view: 'chat', mode: null, loading: false, result: null, error: false, errorText: '', originalSuggestions: [], pantryInput: '', hint: '', freesearchInput: '', freesearchHint: '', suggestions: [], servings: 2, selectedCategory: 'none', categoryDetailsOpen: false, chatMessages: [], chatDraft: '', chatHint: '', chatLoading: false, chatRetryStatus: '', chatLastQuery: '', chatFocusRetryBtn: false, recentRecipeTitles: [], openAnotherIdeaAfterChat: false, teamHandoffBrief: '', teamHandoffTheme: null, teamHandoffActive: false, coachAnalysis: null, coachAnalysisLoading: false, coachAnalysisError: '', coachAnalysisGen: 0, activeOperationId: null, lastRenderedOperationId: null, recipeVersion: 0 };
     ovRecipes._resetOnClose = function () {
       nutriRecipeState.chatDraft = '';
       nutriRecipeState.freesearchInput = '';
@@ -33489,16 +33493,32 @@ initBarcodeEvents();
           nutriRecipeCoachTitleBlockHtml() +
           '<div class="nutri-recipe-error">' +
             '<p class="nutri-recipe-error-text" role="status">' + escNutri(nutriRecipeState.errorText || pick(LBL_RECIPE_ERROR)) + '</p>' +
+            (nutriRecipeState.originalSuggestions && nutriRecipeState.originalSuggestions.length
+              ? '<p class="nutri-recipe-error-text">Meintest du:</p><div>' + nutriRecipeState.originalSuggestions.map(function (s) {
+                  return '<button type="button" class="nutri-recipe-secondary-btn lp-original-suggestion" data-original-id="' + escNutri(s.id) + '">' + escNutri(s.title) + '</button>';
+                }).join('') + '</div>' : '') +
+            '<button type="button" class="nutri-recipe-btn" id="nutri-recipe-ai-fallback-btn">KI-Version erstellen</button>' +
             '<button type="button" class="nutri-recipe-btn" id="nutri-recipe-retry-btn">' + escNutri(pick(LBL_RECIPE_RETRY)) + '</button>' +
             '<button type="button" class="nutri-recipe-secondary-btn" id="nutri-recipe-error-back-btn">' + escNutri(pick(LBL_RECIPE_BACK_TO_INPUT)) + '</button>' +
           '</div>';
         var retryBtn = document.getElementById('nutri-recipe-retry-btn');
         if (retryBtn) retryBtn.onclick = function () { requestNutriRecipe(nutriRecipeState.mode); };
+        var aiFallbackBtn = document.getElementById('nutri-recipe-ai-fallback-btn');
+        if (aiFallbackBtn) aiFallbackBtn.onclick = function () {
+          requestNutriRecipe('freesearch', { forceAi: true });
+        };
+        Array.prototype.forEach.call(document.querySelectorAll('.lp-original-suggestion'), function (btn) {
+          btn.onclick = function () {
+            nutriRecipeState.freesearchInput = btn.textContent || nutriRecipeState.freesearchInput;
+            requestNutriRecipe('freesearch');
+          };
+        });
         var errBackBtn = document.getElementById('nutri-recipe-error-back-btn');
         if (errBackBtn) errBackBtn.onclick = function () {
           if (typeof cancelSpeak === 'function') cancelSpeak();
           nutriRecipeState.error = false;
           nutriRecipeState.errorText = '';
+          nutriRecipeState.originalSuggestions = [];
           nutriRecipeState.result = null;
           renderNutriRecipeBody();
         };
@@ -33569,6 +33589,10 @@ initBarcodeEvents();
         r.totalMinutes = rBase.totalMinutes;
         r.portionDisplayHint = rBase.portionDisplayHint;
         r.sourceServingsStatus = rBase.sourceServingsStatus;
+        r.sourceType = rBase.sourceType;
+        r.sourceText = rBase.sourceText || (rBase.sourceType === 'ai_version'
+          ? 'KI-Version – nicht redaktionell geprüft'
+          : (rBase.sourceType === 'labplate_original' ? 'Original' : rBase.sourceType));
         r.requiresReview = rBase.requiresReview;
         r.renderedOperationId = rBase.renderedOperationId || nutriRecipeState.activeOperationId;
 
@@ -34493,7 +34517,7 @@ initBarcodeEvents();
         // Freisuche: Originalmodus bei Trigger-Wörtern ODER eindeutigem Gerichtskatalog-Treffer.
         // Structured/Eigenrezept bleibt unverändert auf dem KI-/Enforce-Pfad.
         if (mode === 'freesearch' && freesearchQuery && !looksLikeNutriStructuredRecipeInput(freesearchQuery)) {
-          originalMeta = resolveNutriOriginalMode(freesearchQuery);
+          originalMeta = reqOpts.forceAi ? null : resolveNutriOriginalMode(freesearchQuery);
           if (originalMeta) {
             isOriginalRequest = true;
             originalSearchQuery = cleanNutriOriginalSearchQuery(freesearchQuery, originalMeta) || freesearchQuery;
@@ -34504,6 +34528,7 @@ initBarcodeEvents();
         if (!data) {
           var payload = buildNutriRecipePayload(mode, pantryIngredients, freesearchQuery, {
             isOriginalRequest: isOriginalRequest,
+            forceAi: !!reqOpts.forceAi,
             originalSearchQuery: originalSearchQuery,
             originalCuisine: originalMeta && originalMeta.cuisine ? originalMeta.cuisine : '',
             originalDishKey: originalMeta && originalMeta.dishKey ? originalMeta.dishKey : originalSearchQuery,
@@ -34515,7 +34540,7 @@ initBarcodeEvents();
             operationId: operationId
           });
           if (data) console.log('[NUTRI_RECIPE_DEBUG] RESPONSE_RECEIVED', { operationId: operationId, attempt: 1 });
-          if (isOriginalRequest && data && data.recipeSource !== 'master-classic') {
+          if (isOriginalRequest && data && !data._requestError && data.recipeSource !== 'master-classic') {
             console.warn('[NUTRI_RECIPE_DEBUG] Originalmodus ohne Master-Quelle abgelehnt');
             data = null;
           }
@@ -34572,6 +34597,13 @@ initBarcodeEvents();
             data = null;
           }
         }
+      }
+      if (data && data._requestError) {
+        if (isOriginalRequest && data.error && data.error.error === 'original_recipe_unavailable') {
+          nutriRecipeState.originalSuggestions = Array.isArray(data.error.suggestions) ? data.error.suggestions : [];
+          nutriRecipeState.errorText = 'Für diesen Begriff haben wir noch kein geprüftes LabPlate-Rezept.';
+        }
+        data = null;
       }
       if (data) data = normalizeNutriRecipeResponse(data);
       // FIX v3: Eigenrezept (Kachel "Freie Rezeptsuche") -> Nutzer-Zutaten/-Schritte 1:1 erzwingen.
@@ -34696,7 +34728,7 @@ initBarcodeEvents();
         // nichts auswaehlt") und dem Aufklappmenue eingeklappt.
         nutriRecipeState.selectedCategory = 'none';
         nutriRecipeState.categoryDetailsOpen = false;
-        nutriRecipeState.errorText = '';
+        if (!nutriRecipeState.errorText) nutriRecipeState.errorText = '';
         nutriRecipeState.coachAnalysis = null;
         nutriRecipeState.coachAnalysisError = '';
         renderNutriRecipeBody();
@@ -34706,7 +34738,7 @@ initBarcodeEvents();
         nutriRecipeState.result = null;
         nutriRecipeState.suggestions = [];
         nutriRecipeState.error = true;
-        nutriRecipeState.errorText = '';
+        if (!nutriRecipeState.errorText) nutriRecipeState.errorText = '';
       }
       nutriRecipeState.loading = false;
       renderNutriRecipeBody();
