@@ -23,6 +23,20 @@ function normalizedText(value) {
   return String(value == null ? '' : value).trim().toLowerCase();
 }
 
+function ingredientText(ingredient) {
+  const name = ingredient && ingredient.name;
+  return normalizedText(name && typeof name === 'object'
+    ? Object.values(name).join(' ')
+    : name);
+}
+
+function requestMaxProteinSources(userRequest) {
+  const text = normalizedText(JSON.stringify(userRequest || {}));
+  const match = text.match(/(?:max(?:imal)?|höchstens|at most)[^0-9]{0,20}([1-9]\d?)[^0-9]*(?:protein|quelle|source)/i) ||
+    text.match(/(?:protein|quelle|source)[^0-9]{0,20}([1-9]\d?)/i);
+  return match ? Number(match[1]) : null;
+}
+
 function ingredientLookup(context) {
   const source = context && (context.ingredientDatabase || context.allowedIngredients);
   const entries = Array.isArray(source) ? source : Object.keys(source || {}).map((name) => {
@@ -172,8 +186,8 @@ function validateHardConstraints(recipe, context) {
     refs.forEach((id) => {
       if (!ids.has(id)) violations.push(violation('STEP_UNKNOWN_INGREDIENT', 'Step referenziert eine unbekannte ingredientId.', Array.from(ids), id, id));
     });
-    const dairyIds = new Set(ingredients.filter((i) => /milch|sahne|joghurt|quark|käse|kaese|butter|frischkäse|mascarpone/i.test(String(i.name))).map((i) => i.id));
-    const eggIds = new Set(ingredients.filter((i) => /ei(er)?\b/i.test(String(i.name)) && !/eiweiß|eiweiss/i.test(String(i.name))).map((i) => i.id));
+    const dairyIds = new Set(ingredients.filter((i) => /milch|sahne|joghurt|quark|käse|kaese|butter|frischkäse|mascarpone/i.test(ingredientText(i))).map((i) => i.id));
+    const eggIds = new Set(ingredients.filter((i) => /(^|[\s_-])ei(er)?($|[\s_-])/i.test(ingredientText(i)) && !/eiweiß|eiweiss/i.test(ingredientText(i))).map((i) => i.id));
     const hot = Number(step.temperatureC);
     if (rules.dairyForbiddenActions && step.ingredientIds.some((id) => dairyIds.has(id)) &&
         rules.dairyForbiddenActions.includes(step.action)) {
@@ -182,6 +196,12 @@ function validateHardConstraints(recipe, context) {
     if (rules.eggForbiddenActions && step.ingredientIds.some((id) => eggIds.has(id)) &&
         rules.eggForbiddenActions.includes(step.action)) {
       violations.push(violation('EGG_HOT_SAUCE_ACTION', 'Eier dürfen in heißen Saucen nur nach remove_from_heat verarbeitet werden.', rules.eggAllowedActions, step.action));
+    }
+    if (rules.eggRequiresRemoveFromHeat && step.action === 'fold_in' &&
+        step.ingredientIds.some((id) => eggIds.has(id)) &&
+        steps.slice(0, index).some((prior) => ['boil', 'simmer', 'fry', 'saute'].includes(prior.action)) &&
+        !steps.slice(0, index).some((prior) => prior.action === 'remove_from_heat')) {
+      violations.push(violation('EGG_BEFORE_REMOVE_FROM_HEAT', 'Eier dürfen in einer heißen Sauce erst nach remove_from_heat untergehoben werden.', 'remove_from_heat before fold_in', step.order));
     }
     if (Number.isFinite(hot) && hot > 0) {
       if (hot > Number(rules.dairyMaxTemperatureC || 85) && step.ingredientIds.some((id) => dairyIds.has(id))) {
@@ -226,6 +246,10 @@ function validateHardConstraints(recipe, context) {
     const liquidMin = Number(((CONSTRAINTS.minimums || {}).liquidMlPerPortion || {})[category] || 0);
     const liquidTotal = ingredients.filter((ingredient) => ingredient.role === 'liquid').reduce((sum, ingredient) => sum + amountPerPortion(ingredient, servings), 0);
     if (liquidTotal < liquidMin) violations.push(violation('LIQUID_MIN', 'Flüssigkeitsmenge unterschreitet die Mindestmenge pro Portion.', liquidMin, liquidTotal));
+    const sauceMin = Number((((rules.sauce || {}).minimumMlPerPortion || {})[category]) || 0);
+    if (sauceMin > 0 && ingredients.some((ingredient) => ingredient.role === 'liquid') && liquidTotal < sauceMin) {
+      violations.push(violation('SAUCE_MIN', 'Die Saucen-/Flüssigkeitskomponente ist pro Portion zu klein.', sauceMin, liquidTotal));
+    }
     const fatTotal = ingredients.filter((ingredient) => ingredient.role === 'fat').reduce((sum, ingredient) => sum + amountPerPortion(ingredient, servings), 0);
     if (fatTotal > Number(CONSTRAINTS.maximums.fatGPerPortion)) violations.push(violation('FAT_MAX', 'Fettmenge überschreitet die Obergrenze pro Portion.', CONSTRAINTS.maximums.fatGPerPortion, fatTotal));
     const sweetenerMax = Number(((CONSTRAINTS.maximums || {}).sweetenerGPerPortion || {})[category] || CONSTRAINTS.maximums.sweetenerGPerPortion.default);
@@ -259,6 +283,19 @@ function validateHardConstraints(recipe, context) {
     }, 0) / servings;
     if (fiberDb < Number(profileRules.minimumFiberGPerPortion || 0)) {
       violations.push(violation('FIBER_PROFILE_MIN', 'Ballaststoffprofil unterschreitet das konfigurierte Minimum.', profileRules.minimumFiberGPerPortion, fiberDb));
+    }
+    const proteinPolicy = CONSTRAINTS.proteinSourcePolicy || {};
+    const requestedMax = Number(
+      requestMaxProteinSources(ctx.userRequest) || proteinPolicy.maxDefault || 2
+    );
+    const proteinSources = ingredients.filter((ingredient) => {
+      if (proteinPolicy.excludedRoles && proteinPolicy.excludedRoles.includes(ingredient.role)) return false;
+      if (ingredient.role === 'main_protein') return true;
+      if (proteinPolicy.cheeseCountsOnlyWhenMainProtein && /käse|kaese|cheese|fromage|formaggio/i.test(ingredientText(ingredient))) return false;
+      return (proteinPolicy.countedNamePatterns || []).some((pattern) => ingredientText(ingredient).includes(pattern));
+    });
+    if (proteinSources.length > requestedMax) {
+      violations.push(violation('PROTEIN_SOURCE_MAX', 'Zu viele primäre Proteinquellen.', requestedMax, proteinSources.map((ingredient) => ingredient.id)));
     }
   }
 
@@ -446,6 +483,7 @@ async function generateAiRecipe(options) {
       ok: true, recipe: toClientRecipe(parsed, calculateNutrition(parsed, context), feasibility, context),
       validatedRecipe: parsed, attempts: attempt, feasibility,
       nutrition: calculateNutrition(parsed, context),
+      pipeline: { version: 'ai-quality-2026-09-24', renderer: true, validator: true, attempts: attempt },
     };
   }
   return {
@@ -456,6 +494,7 @@ async function generateAiRecipe(options) {
       message: 'Kein unsicheres Rezept anzeigen. Bitte Anfrage vereinfachen oder später erneut versuchen.',
     },
     attempts: MAX_ATTEMPTS,
+    pipeline: { version: 'ai-quality-2026-09-24', renderer: false, validator: true, attempts: MAX_ATTEMPTS },
     violations: (lastError && lastError.violations) || violations,
     feasibility,
   };

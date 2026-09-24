@@ -967,7 +967,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
         violations: aiResult.violations,
         flow: 'ai',
       });
-      return res.status(422).json(aiResult);
+      return res.status(422).json(Object.assign({}, aiResult, { build: BUILD_ID }));
     }
     return sendRecipeOk(Object.assign({}, aiResult.recipe, {
       mode: 'ai',
@@ -980,6 +980,8 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
         adjustedTarget: aiResult.feasibility.adjustedTarget,
         reason: aiResult.feasibility.reason,
       } : null,
+      build: BUILD_ID,
+      pipeline: aiResult.pipeline,
     }));
   }
 

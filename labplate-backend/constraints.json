@@ -21,6 +21,13 @@
     "carb",
     "other"
   ],
+  "proteinSourcePolicy": {
+    "maxDefault": 2,
+    "countedRoles": ["main_protein"],
+    "countedNamePatterns": ["beef", "rind", "pork", "schwein", "lamb", "lamm", "chicken", "huhn", "fish", "fisch", "salmon", "lachs", "egg", "ei", "tofu", "tempeh"],
+    "excludedRoles": ["spice", "fat", "liquid", "vegetable", "carb"],
+    "cheeseCountsOnlyWhenMainProtein": true
+  },
   "minimums": {
     "mainProteinGPerPortion": {
       "main_meat": 120,
@@ -75,6 +82,7 @@
     "eggHotSauceMaxTemperatureC": 82,
     "eggForbiddenActions": ["boil", "simmer", "fry", "saute"],
     "eggAllowedActions": ["fold_in", "serve", "remove_from_heat"],
+    "eggRequiresRemoveFromHeat": true,
     "sequence": {
       "serveMustBeLast": true,
       "seasonBeforeServe": true,
@@ -86,6 +94,14 @@
         "keto": { "minimumVegetableShare": 0.15, "minimumFiberGPerPortion": 3 },
         "low_carb": { "minimumVegetableShare": 0.15, "minimumFiberGPerPortion": 3 },
         "carnivore": { "minimumVegetableShare": 0, "minimumFiberGPerPortion": 0 }
+      }
+    },
+    "sauce": {
+      "minimumMlPerPortion": {
+        "main_meat": 60,
+        "main_fish": 60,
+        "main_vegetarian": 60,
+        "stew_braise": 150
       }
     }
   }
