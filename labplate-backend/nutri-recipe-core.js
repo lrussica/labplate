@@ -314,7 +314,7 @@ function looksStructured(pantry) {
 // ---------------------------------------------------------------------------
 function validateIncoming(body) {
   if (!body || typeof body !== 'object') return null;
-  const mode = body.mode === 'pantry' ? 'pantry' : body.mode === 'shopping' ? 'shopping' : null;
+  const mode = body.mode === 'ai' ? 'ai' : body.mode === 'pantry' ? 'pantry' : body.mode === 'shopping' ? 'shopping' : null;
   if (!mode) return null;
 
   const teamAiRaw = body.team_ai;
@@ -372,6 +372,14 @@ function validateIncoming(body) {
   }
   if (typeof body.theme === 'string' && body.theme.trim()) {
     out.theme = body.theme.toLowerCase().trim();
+  }
+
+  if (mode === 'ai') {
+    out.pantry_ingredients = Array.isArray(body.pantry_ingredients)
+      ? body.pantry_ingredients.map(sanitizeLine).filter(Boolean).slice(0, MAX_INGREDIENTS)
+      : [];
+    out.structured = false;
+    return out;
   }
 
   if (mode === 'pantry') {

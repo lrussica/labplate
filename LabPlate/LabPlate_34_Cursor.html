@@ -32240,10 +32240,45 @@ initBarcodeEvents();
 
     // ---- Netzwerk-Helfer: gleiches robustes Muster (AbortController + Timeout) wie das
     // bestehende fetchJsonWithTimeout() fuer Barcode-Abfragen, hier fuer POST+Body. ----
+    function validateNutriRecipeRequestPayload(payload) {
+      if (!payload || typeof payload !== 'object') return { ok: false, field: 'payload', rule: 'type' };
+      if (payload.mode !== 'ai') return { ok: true };
+      var categories = ['main_meat', 'main_fish', 'main_vegetarian', 'soup', 'stew_braise', 'dessert', 'salad', 'other'];
+      if (payload.dishCategory != null && categories.indexOf(payload.dishCategory) < 0) {
+        return { ok: false, field: 'dishCategory', rule: 'enum' };
+      }
+      if (payload.allowedIngredients != null && !Array.isArray(payload.allowedIngredients)) {
+        return { ok: false, field: 'allowedIngredients', rule: 'type' };
+      }
+      if (payload.mainIngredient != null && typeof payload.mainIngredient !== 'string') {
+        return { ok: false, field: 'mainIngredient', rule: 'type' };
+      }
+      if (payload.pantry_ingredients != null && !Array.isArray(payload.pantry_ingredients)) {
+        return { ok: false, field: 'pantry_ingredients', rule: 'type' };
+      }
+      if (payload.userRequest != null && (!payload.userRequest || typeof payload.userRequest !== 'object' || Array.isArray(payload.userRequest))) {
+        return { ok: false, field: 'userRequest', rule: 'type' };
+      }
+      if (payload.targets != null && (!payload.targets || typeof payload.targets !== 'object' || Array.isArray(payload.targets))) {
+        return { ok: false, field: 'targets', rule: 'type' };
+      }
+      if (payload.targets && payload.targets.kcal != null && typeof payload.targets.kcal !== 'number') {
+        return { ok: false, field: 'targets.kcal', rule: 'type' };
+      }
+      return { ok: true };
+    }
+
     async function postNutriRecipeRequest(payload, opts) {
       opts = opts || {};
       if (opts.operationId && payload && typeof payload === 'object') {
         payload = Object.assign({}, payload, { operationId: opts.operationId });
+      }
+      var requestValidation = validateNutriRecipeRequestPayload(payload);
+      if (!requestValidation.ok) {
+        var requestError = new Error('Ungültige Rezeptanfrage');
+        requestError.requestValidation = requestValidation;
+        console.error('[NUTRI_RECIPE_DEBUG] Request abgebrochen:', requestValidation.field, requestValidation.rule);
+        throw requestError;
       }
       logNutriRecipeDebugRequest(payload);
       var externalSignal = opts.signal || null;
@@ -32337,6 +32372,13 @@ initBarcodeEvents();
       opts = opts || {};
       if (opts.operationId && payload && typeof payload === 'object') {
         payload = Object.assign({}, payload, { operationId: opts.operationId });
+      }
+      var requestValidation = validateNutriRecipeRequestPayload(payload);
+      if (!requestValidation.ok) {
+        var requestError = new Error('Ungültige Rezeptanfrage');
+        requestError.requestValidation = requestValidation;
+        console.error('[NUTRI_RECIPE_DEBUG] Request abgebrochen:', requestValidation.field, requestValidation.rule);
+        throw requestError;
       }
       logNutriRecipeDebugRequest(payload);
       var externalSignal = opts.signal || null;
@@ -32756,6 +32798,14 @@ initBarcodeEvents();
         return false;
       })) return false;
       return true;
+    }
+    function diagnoseNutriRecipeSchema(data) {
+      var errors = [];
+      if (!data || typeof data !== 'object') return [{ path: 'recipe', rule: 'type', expected: 'object', actual: typeof data }];
+      if (typeof data.title !== 'string' || !data.title.trim()) errors.push({ path: 'title', rule: 'required/type', expected: 'non-empty string', actual: typeof data.title });
+      if (!Array.isArray(data.ingredients) || !data.ingredients.length) errors.push({ path: 'ingredients', rule: 'required/minItems', expected: 'non-empty array', actual: Array.isArray(data.ingredients) ? 'empty array' : typeof data.ingredients });
+      if (!Array.isArray(data.steps)) errors.push({ path: 'steps', rule: 'required/type', expected: 'array', actual: typeof data.steps });
+      return errors;
     }
 
     // ---- Eigener, unabhaengiger UI-State (rein additiv - liest state/TARGETS/dayTotals
@@ -34087,6 +34137,11 @@ initBarcodeEvents();
             result = { ok: false, aborted: true, retryable: false };
           } else if (isCorsOrNetworkError(e)) {
             result = { ok: false, status: 0, data: null, retryable: false, networkFatal: true, corsBlocked: true };
+          } else if (e && e.requestValidation) {
+            console.error('[NUTRI_RECIPE_DEBUG] Ungültiger Payload:', e.requestValidation.field, e.requestValidation.rule);
+            nutriRecipeState.error = true;
+            nutriRecipeState.errorText = 'Die Rezeptanfrage ist ungültig. Bitte prüfe deine Eingabe.';
+            result = { ok: false, status: 0, data: null, retryable: false, requestValidation: e.requestValidation };
           } else {
             result = { ok: false, status: 0, data: null, retryable: true, retryAfterMs: null };
           }
@@ -34139,7 +34194,8 @@ initBarcodeEvents();
         var schemaOk = !!(result && result.ok && validateNutriRecipeSchema(result.data));
         console.log('[NUTRI_RECIPE_DEBUG] Schema-Validierung nach Normalisierung:', schemaOk);
         if (result && result.ok && result.data && !schemaOk) {
-          console.warn('[NUTRI_RECIPE_DEBUG] Schema verworfen – Ingredients:', result.data.ingredients && result.data.ingredients.length, 'Steps:', result.data.steps && result.data.steps.length, result.data);
+          console.warn('[NUTRI_RECIPE_DEBUG] Schema-Fehler:', diagnoseNutriRecipeSchema(result.data));
+          console.warn('[NUTRI_RECIPE_DEBUG] Schema verworfen – Ingredients:', result.data.ingredients && result.data.ingredients.length, 'Steps:', result.data.steps && result.data.steps.length);
         }
         if (schemaOk) {
           // Antwort-Gate Stufe 1: nach Schema, vor Erfolg / recipe-Anhang.
@@ -34469,6 +34525,17 @@ initBarcodeEvents();
           console.info('[NUTRI_RECIPE_DEBUG] REQUEST_ABORTED', operationId);
           nutriRecipeState.loading = false;
           finishRecipeOperation(controller);
+          return;
+        }
+        if (e && e.requestValidation) {
+          console.error('[NUTRI_RECIPE_DEBUG] Ungültiger Payload:', e.requestValidation.field, e.requestValidation.rule);
+          nutriRecipeState.result = null;
+          nutriRecipeState.suggestions = [];
+          nutriRecipeState.error = true;
+          nutriRecipeState.errorText = 'Die Rezeptanfrage ist ungültig. Bitte prüfe deine Eingabe.';
+          nutriRecipeState.loading = false;
+          finishRecipeOperation(controller);
+          renderNutriRecipeBody();
           return;
         }
         if (isCorsOrNetworkError(e)) {

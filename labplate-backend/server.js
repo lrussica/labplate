@@ -59,6 +59,7 @@ const apiI18n = require('./api-i18n');
 const { validateRecipeMode } = require('./recipe-request-mode');
 const aiRecipeQuality = require('./ai-recipe-quality');
 const { createPhotoVerifyHandlers } = require('./api/photo-verify');
+const BUILD_ID = process.env.BUILD_ID || new Date().toISOString();
 
 // ---------------------------------------------------------------------
 // Konfiguration
@@ -212,6 +213,10 @@ function buildRecipeRequest(flow, payload, model) {
 // App-Grundgeruest
 // ---------------------------------------------------------------------
 const app = express();
+app.use((req, res, next) => {
+  res.setHeader('X-LabPlate-Build', BUILD_ID);
+  next();
+});
 app.set('trust proxy', 1);
 // CSP erlaubt Inline-CSS/JS in index.html (Test-Frontend im gleichen Ordner).
 app.use(helmet({
@@ -358,6 +363,7 @@ const photoVerify = createPhotoVerifyHandlers({
 // ---------------------------------------------------------------------
 app.get('/health', (req, res) => {
   res.status(200).json({
+    build: BUILD_ID,
     status: 'ok',
     configured: Boolean(GROQ_API_KEY),
     apiKeyLooksValid: GROQ_API_KEY ? GROQ_API_KEY_LOOKS_VALID : null,
@@ -875,12 +881,20 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
       reason: modeValidation.error,
       field: modeValidation.field,
       rule: modeValidation.rule,
+      expected: modeValidation.expected,
+      actual: modeValidation.actual,
+      errors: modeValidation.errors || [],
     });
-    return res.status(400).json({
+    const diagnosticResponse = {
       error: modeValidation.error,
+      build: BUILD_ID,
       field: modeValidation.field,
       rule: modeValidation.rule,
-    });
+      expected: modeValidation.expected,
+      actual: modeValidation.actual,
+      errors: modeValidation.errors || [],
+    };
+    return res.status(400).json(diagnosticResponse);
   }
   // Keep the legacy internal Original path while exposing one canonical
   // public mode value to new clients.
@@ -1033,7 +1047,15 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     const field = req.body.mode === 'pantry' ? 'pantry_ingredients' : 'mode';
     const rule = req.body.mode === 'pantry' ? 'required_non_empty' : 'enum';
     logEvent('request_rejected', { reason: 'invalid_payload', field, rule });
-    return res.status(400).json({ error: 'invalid_payload', field, rule });
+    return res.status(400).json({
+      error: 'invalid_payload',
+      build: BUILD_ID,
+      field,
+      rule,
+      expected: rule === 'required_non_empty' ? 'non-empty array' : 'ai|original|pantry|shopping',
+      actual: req.body && req.body.mode === undefined ? 'undefined' : typeof (req.body && req.body.mode),
+      errors: [{ field, rule }],
+    });
   }
 
   // Phase 2 KI-Team: emotionale Blockade → Handoff an Coach (String-Match, kein Groq).
