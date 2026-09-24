@@ -10,6 +10,7 @@ const apiI18n = require('./api-i18n');
 const portions = require('./recipe-portions');
 const culinaryUsability = require('./culinary-usability');
 const validator = require('./recipe-validator');
+const aiRecipeQuality = require('./ai-recipe-quality');
 
 const QUALITY_STATUS = {
   READY: 'ready',
@@ -954,4 +955,9 @@ module.exports = {
   looksLikeBareIngredientDump: looksLikeBareIngredientDump,
   ACTION_FALLBACKS: ACTION_FALLBACKS,
   formatTotalMinutesLabel: formatTotalMinutesLabel,
+  // Strict mode: Pre-Check → Structured Output → hard validation.
+  checkFeasibility: aiRecipeQuality.checkFeasibility,
+  validateHardConstraints: aiRecipeQuality.validateHardConstraints,
+  buildAiRecipeSchema: aiRecipeQuality.buildSchema,
+  generateAiRecipe: aiRecipeQuality.generateAiRecipe,
 };

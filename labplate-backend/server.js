@@ -56,6 +56,7 @@ const themealdb = require('./api/themealdb');
 const usda = require('./api/usda');
 const coachLogic = require('./coach/logic');
 const apiI18n = require('./api-i18n');
+const aiRecipeQuality = require('./ai-recipe-quality');
 const { createPhotoVerifyHandlers } = require('./api/photo-verify');
 
 // ---------------------------------------------------------------------
@@ -889,6 +890,43 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
       message: apiI18n.t('debug_key_missing', lang),
       key_type: 'debug',
     });
+  }
+
+  // Neue, strikt getrennte KI-Rezept-Pipeline. Original-/DB-Rezepte laufen
+  // weiterhin ausschließlich über den bestehenden Pfad darunter.
+  if (req.body && req.body.mode === 'ai') {
+    const aiResult = await aiRecipeQuality.generateAiRecipe({
+      model: resolveRecipeModel(req.body),
+      context: {
+        targets: req.body.targets || req.body.macros || {},
+        dishCategory: req.body.dishCategory,
+        mainIngredient: req.body.mainIngredient,
+        allowedIngredients: req.body.allowedIngredients || req.body.allowed_ingredients || [],
+        ingredientDatabase: req.body.ingredientDatabase || req.body.ingredient_database || req.body.allowedIngredients || [],
+        userRequest: req.body.userRequest || req.body.user_request || {},
+      },
+      callGroq: core.callGroq,
+      groqOpts: { apiKey: auth.apiKey, timeoutMs: REQUEST_TIMEOUT_MS },
+    });
+    if (!aiResult.ok) {
+      logEvent('response_rejected', {
+        reason: aiResult.error,
+        attempts: aiResult.attempts,
+        violations: aiResult.violations,
+        flow: 'ai',
+      });
+      return res.status(422).json(aiResult);
+    }
+    return sendRecipeOk(Object.assign({}, aiResult.recipe, {
+      mode: 'ai',
+      nutrition: aiResult.nutrition,
+      feasibility: aiResult.feasibility,
+      targetAdjustment: aiResult.feasibility.adjusted ? {
+        originalTarget: aiResult.feasibility.originalTarget,
+        adjustedTarget: aiResult.feasibility.adjustedTarget,
+        reason: aiResult.feasibility.reason,
+      } : null,
+    }));
   }
 
   // Prep-Assistent: App besitzt Zutaten/Mengen/Aktionen; KI nur Prosa.
