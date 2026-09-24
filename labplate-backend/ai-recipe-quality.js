@@ -316,6 +316,51 @@ function calculateNutrition(recipe, context) {
   return totals;
 }
 
+function toClientRecipe(recipe, nutrition, feasibility, context) {
+  const lookup = ingredientLookup(context);
+  const ingredients = (recipe.ingredients || []).map((ingredient) => ({
+    id: ingredient.id,
+    name: ingredient.name,
+    amount: Number(ingredient.amount),
+    unit: ingredient.unit === 'ml' ? 'ml' : 'g',
+    status: 'benoetigt',
+    macrosPer100g: {
+      netCarbs: Number((lookup.get(normalizedText(ingredient.name)) || {}).carbs_g ||
+        (lookup.get(normalizedText(ingredient.name)) || {}).netCarbs || 0),
+      fat: Number((lookup.get(normalizedText(ingredient.name)) || {}).fat_g ||
+        (lookup.get(normalizedText(ingredient.name)) || {}).fat || 0),
+      protein: Number((lookup.get(normalizedText(ingredient.name)) || {}).protein_g ||
+        (lookup.get(normalizedText(ingredient.name)) || {}).protein || 0),
+      fiber: Number((lookup.get(normalizedText(ingredient.name)) || {}).fiber_g ||
+        (lookup.get(normalizedText(ingredient.name)) || {}).fiber || 0),
+    },
+  }));
+  return {
+    title: recipe.title,
+    servings: recipe.servings,
+    prep_time: '',
+    nutrition_note: feasibility.adjusted ? feasibility.reason : '',
+    garnish: '',
+    self_check: '',
+    ingredients,
+    shopping_list: ingredients.map((ingredient) => ingredient.name + ' – ' + ingredient.amount + ' ' + ingredient.unit),
+    steps: (recipe.steps || []).map((step) => ({
+      stepNumber: step.order,
+      instruction: step.text,
+      ingredientIds: step.ingredientIds,
+    })),
+    nutrition,
+    finalNutrition: nutrition,
+    mode: 'ai',
+    dishCategory: recipe.dishCategory,
+    targetAdjustment: feasibility.adjusted ? {
+      originalTarget: feasibility.originalTarget,
+      adjustedTarget: feasibility.adjustedTarget,
+      reason: feasibility.reason,
+    } : null,
+  };
+}
+
 async function generateAiRecipe(options) {
   const o = options || {};
   const context = Object.assign({}, o.context || {});
@@ -348,7 +393,8 @@ async function generateAiRecipe(options) {
       continue;
     }
     return {
-      ok: true, recipe: parsed, attempts: attempt, feasibility,
+      ok: true, recipe: toClientRecipe(parsed, calculateNutrition(parsed, context), feasibility, context),
+      validatedRecipe: parsed, attempts: attempt, feasibility,
       nutrition: calculateNutrition(parsed, context),
     };
   }
