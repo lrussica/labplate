@@ -184,14 +184,23 @@ function enforceSinglePortionBaseAmounts(ingredients, opts) {
       } else if (
         g > 0 &&
         g < SINGLE_PORTION_BASE.meatMinG &&
-        g >= 80 &&
         !/speck|bacon|schinken|wurst|pancetta/i.test(name)
       ) {
-        // Untergrenze nur für klare Hauptportionen (≥80 g), nicht für Garnitur-Speck
+        // FIX 2026-10-04: Hauptprotein (nicht Garnitur-Speck) auf min. 120 g anheben.
+        clamps.push({
+          kind: 'meat_min',
+          name: name,
+          from: g,
+          to: SINGLE_PORTION_BASE.meatMinG,
+        });
         warnings.push(
-          'Fleisch/Fisch unter typischer Einzelportion (~' + SINGLE_PORTION_BASE.meatMinG +
-            '–' + SINGLE_PORTION_BASE.meatMaxG + ' g): ' + Math.round(g) + ' g ' + name
+          'Fleisch/Fisch auf min. ' + SINGLE_PORTION_BASE.meatMinG +
+            ' g pro Einzelportion angehoben (' + name + ': ' + Math.round(g) + ' g → ' +
+            SINGLE_PORTION_BASE.meatMinG + ' g).'
         );
+        g = SINGLE_PORTION_BASE.meatMinG;
+        next.amount = g;
+        next.unit = 'g';
       }
       return next;
     }
