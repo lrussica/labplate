@@ -11,7 +11,30 @@ const ROLE_VALUES = CONSTRAINTS.roles;
 const ACTION_VALUES = [
   'chop', 'fry', 'boil', 'simmer', 'bake', 'mix', 'season', 'serve',
   'stir', 'saute', 'grill', 'roast', 'whisk', 'marinate', 'drain', 'blend',
+  'reduce', 'steam', 'toast', 'rest', 'cool', 'braise',
 ];
+
+// NEU (2026-10-05): Sensorische Anker als sprachneutrale Schluessel.
+// Vorteil: strict:true kann sie erzwingen (keine Floskeln moeglich),
+// und die Anzeige laeuft ueber eine Uebersetzungstabelle (7 Sprachen).
+const CUES_BY_ACTION = {
+  fry:    ['golden_brown', 'dark_crust', 'releases_from_pan', 'edges_browned'],
+  saute:  ['translucent', 'soft_no_color', 'edges_browned', 'fragrant'],
+  boil:   ['al_dente', 'tender', 'liquid_absorbed'],
+  simmer: ['thickened', 'liquid_absorbed', 'tender'],
+  reduce: ['coats_spoon', 'thickened'],
+  bake:   ['golden_brown', 'bubbling_edges', 'set_center'],
+  roast:  ['golden_brown', 'edges_browned', 'tender'],
+  grill:  ['char_marks', 'releases_from_grate'],
+  steam:  ['tender_crisp', 'bright_color'],
+  toast:  ['golden_brown', 'nutty_aroma'],
+  braise: ['tender', 'thickened'],
+};
+const ALL_CUES = Array.from(new Set(Object.values(CUES_BY_ACTION).flat()));
+
+// Hitze-Schluessel: 3 Stufen reichen (drei unterscheidet das Modell
+// zuverlaessiger als vier, und der Anker traegt die eigentliche Information).
+const HEAT_VALUES = ['low', 'medium', 'high'];
 
 function number(value) {
   return typeof value === 'number' && Number.isFinite(value) ? value : null;
@@ -239,13 +262,26 @@ function buildSchema() {
       role: { type: 'string', enum: ROLE_VALUES },
     },
   };
+  // NEU (2026-10-05): step-Schema um sensorische Anker (Enum) und Hitze (Enum) erweitert.
+  // Bei strict:true muessen ALLE Felder in required stehen - semantische Optionalitaet
+  // wird ueber type: ['x','null'] und null im Enum ausgedrueckt (Groq-Anforderung).
+  // Reihenfolge bewusst: text ZULETZT - das Modell legt erst Aktion/Hitze/Anker fest
+  // und formuliert den Satz danach (statt umgekehrt).
   const step = {
     type: 'object', additionalProperties: false,
-    required: ['order', 'ingredientIds', 'action', 'durationMin', 'text'],
+    required: ['order', 'ingredientIds', 'action', 'heat', 'sensory_cue', 'durationMin', 'text'],
     properties: {
       order: { type: 'integer', minimum: 1 },
       ingredientIds: { type: 'array', items: { type: 'string' } },
       action: { type: 'string', enum: ACTION_VALUES },
+      heat: {
+        type: ['string', 'null'],
+        enum: [...HEAT_VALUES, null],
+      },
+      sensory_cue: {
+        type: ['string', 'null'],
+        enum: [...ALL_CUES, null],
+      },
       durationMin: { type: ['number', 'null'] },
       text: { type: 'string' },
     },
@@ -278,6 +314,9 @@ function buildRequest(context, model, previousViolations) {
     'Antworte AUSSCHLIESSLICH mit einem einzigen gültigen JSON-Objekt gemäß Schema. Kein Markdown.',
     'HARTE REGELN: Mindestmengen und Obergrenzen einhalten; nur erlaubte Zutaten verwenden; keine Nährwerte berechnen; jede Zutat in einem Step referenzieren; keine Mengenangaben im Step-Text.',
     'Gültigkeit vor Zielerreichung. Erzeuge das komplette Rezept neu und behebe ausschließlich die gemeldeten Verstöße.',
+    'STEPS (sprachneutral): action = Enum. heat = low|medium|high|null (nur bei Herd-/Topf-Aktionen, sonst null). sensory_cue = sprachneutraler Anker-Schluessel aus CUES_BY_ACTION (Pflicht bei Gar-Aktionen, sonst null).',
+    'BEISPIEL Gar-Schritt: {"order":1,"ingredientIds":["0001"],"action":"fry","heat":"high","sensory_cue":"golden_brown","durationMin":3,"text":"Fleisch trocken tupfen, salzen und in heissem Oel anbraten."}',
+    'BEISPIEL Vorbereitungsschritt: {"order":2,"ingredientIds":["0004"],"action":"chop","heat":null,"sensory_cue":null,"durationMin":null,"text":"Avocado wuerfeln."}',
     'CONSTRAINTS=' + JSON.stringify(CONSTRAINTS),
     'ALLOWED_INGREDIENTS=' + JSON.stringify(c.allowedIngredients || []),
     'USER_REQUEST=' + JSON.stringify(c.userRequest || {}),
@@ -348,6 +387,10 @@ function toClientRecipe(recipe, nutrition, feasibility, context) {
       stepNumber: step.order,
       instruction: step.text,
       ingredientIds: step.ingredientIds,
+      action: step.action || null,
+      heat: step.heat != null ? step.heat : null,
+      sensory_cue: step.sensory_cue != null ? step.sensory_cue : null,
+      durationMin: step.durationMin != null ? step.durationMin : null,
     })),
     nutrition,
     finalNutrition: nutrition,
