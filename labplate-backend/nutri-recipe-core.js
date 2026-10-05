@@ -743,6 +743,7 @@ function buildGenerativeMessages(p) {
     '(Fluessigkeit in ingredients + {id} in steps).',
     'GRAMMATIK (DE): „Das Wasser“ nie „Den Wasser“; korrekte Beugung in Steps (mit schwarzem Pfeffer, die Eier, den Käse).',
     'content/garnish: Mengen NUR als {0001}-Platzhalter – KEINE freien g/ml/kcal-Zahlen. KEIN self_check-Feld.',
+    'JSON-KEYS (STRENG): Nur ASCII-Zeichen im Schlüsselnamen verwenden (netCarbs, fat_g, kcal, protein_g). KEINE unsichtbaren Unicode-Zeichen (zero-width space, etc.). Ungültige Schlüssel führen zu Server-Ablehnung.',
     'Eier unit=stk; Gewuerze unit=prise|messerspitze amount=0; sonst g|ml. stove_level 0=kalt, 1-9=Hitze.',
     'chef_analysis: {id} als Zutatreferenz erlaubt; VERBOTEN "{0001} g Protein" / "{0001} kcal". Zahlen nur in nutrition.',
     isOriginalMode ? '' : CHEF_FRAMEWORK_RULES,
