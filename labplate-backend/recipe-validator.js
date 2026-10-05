@@ -701,6 +701,11 @@ function smoothProseIngredientGrammar(text) {
   out = out.replace(/\b([Dd])en\s+((?:H[äa]hnchen|Puten|Truthahn)?brust)\b/g, function (_m, d, noun) {
     return (d === 'D' ? 'Die' : 'die') + ' ' + noun;
   });
+  // Maskulinum: maennliche Zutaten mit faelschlichem Artikel "die".
+  out = out.replace(/\b([Dd])ie\s+(Tofu|Lachs|Reis|Brokkoli|Spinat|Käse|Knoblauch|Ingwer|Essig|Senf|Honig|Quark|Joghurt|Fisch|Feta|Mozzarella|Parmesan)\b/g, function (_m, d, noun) {
+    return (d === 'D' ? 'Den' : 'den') + ' ' + noun;
+  });
+
   // Adjektiv nach zum/den: „zum laktosefreier X“ → „zum laktosefreien X“
   out = out.replace(/\b(zum|den|einem)\s+laktosefreier\b/gi, function (_m, prep) {
     return prep + ' laktosefreien';
