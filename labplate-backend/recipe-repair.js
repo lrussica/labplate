@@ -463,6 +463,40 @@ function softDropUnusedNonCore(recipe) {
  * Zentrale Repair Layer.
  * @returns {{ recipe: object, repairs: string[] }}
  */
+/**
+ * Strip Trailing Placeholder Lists.
+ * Entfernt Waisen-Platzhalter am Satzende ("...beiseitelegen {0001}.").
+ * Nur sichere Muster: der letzte "Satz" besteht AUSSCHLIESSLICH aus Platzhaltern.
+ * Aufruf NACH deriveIngredientIdsFromPlaceholders, damit Contract ueber
+ * step.ingredientIds bereits gesichert ist.
+ * Grundlage: DeepSeek-Analyse 5.Okt.2026.
+ * @returns {number} Anzahl geaenderter Steps
+ */
+function stripTrailingPlaceholderLists(recipe) {
+  if (!recipe || !Array.isArray(recipe.steps)) return 0;
+  let n = 0;
+  recipe.steps.forEach(function (step) {
+    if (!step || typeof step !== 'object') return;
+    const raw = String(step.content || '');
+    if (!raw) return;
+    let out = raw;
+    for (let i = 0; i < 4; i++) {
+      const before = out;
+      out = out.replace(/\s+(?:\{\d{4,5}\}\s*[,+&]?\s*)+[.!?]?\s*$/, '');
+      const trimmed = out.trim();
+      if (trimmed && !/[.!?]$/.test(trimmed)) {
+        out = trimmed + '.';
+      }
+      if (out === before) break;
+    }
+    if (out !== raw) {
+      step.content = out.trim();
+      n += 1;
+    }
+  });
+  return n;
+}
+
 function repairRecipeV2(recipe) {
   const repairs = [];
   if (!recipe || typeof recipe !== 'object') {
@@ -494,6 +528,10 @@ function repairRecipeV2(recipe) {
   const derived = deriveIngredientIdsFromPlaceholders(recipe);
   if (derived > 0) repairs.push('ingredientIds:' + derived);
 
+  // Waisen-Platzhalter am Satzende entfernen (Schritt 2, 5.Okt.2026)
+  const stripped = stripTrailingPlaceholderLists(recipe);
+  if (stripped > 0) repairs.push('stripTrailing:' + stripped);
+
   // Nochmal Units für frisch injizierte
   unitModel.annotateRecipeIngredientUnits(recipe);
 
@@ -524,6 +562,7 @@ module.exports = {
   injectMissingSeasoningStaples: injectMissingSeasoningStaples,
   linkNamedIngredientsInProse: linkNamedIngredientsInProse,
   deriveIngredientIdsFromPlaceholders: deriveIngredientIdsFromPlaceholders,
+  stripTrailingPlaceholderLists: stripTrailingPlaceholderLists,
   softDropUnusedNonCore: softDropUnusedNonCore,
   repairRecipeV2: repairRecipeV2,
   catalogByLabel: catalogByLabel,
