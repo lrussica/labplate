@@ -375,10 +375,6 @@ function toClientRecipe(recipe, nutrition, feasibility, context) {
     },
   }));
   return {
-    _dbgBuild: 'AI_QUALITY_PATH_20261005',   // DEBUG: nur zur Pfad-Erkennung
-    _dbgStepFields: (recipe.steps || []).slice(0, 1).map(function (s) {
-      return Object.keys(s || {}).join('|');
-    }),
     title: recipe.title,
     servings: recipe.servings,
     prep_time: '',
