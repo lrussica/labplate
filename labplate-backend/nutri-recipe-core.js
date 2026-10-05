@@ -745,6 +745,7 @@ function buildGenerativeMessages(p) {
     'content/garnish: Mengen NUR als {0001}-Platzhalter – KEINE freien g/ml/kcal-Zahlen. KEIN self_check-Feld.',
     'JSON-KEYS (STRENG): Nur ASCII-Zeichen im Schlüsselnamen verwenden (netCarbs, fat_g, kcal, protein_g). KEINE unsichtbaren Unicode-Zeichen (zero-width space, etc.). Ungültige Schlüssel führen zu Server-Ablehnung.',
     'PLATZHALTER-GRAMMATIK (STRIKT): {0001}-Platzhalter MÜSSEN in einen Satz eingebettet sein, nicht als Waise am Ende stehen. FALSCH: "...abschmecken. {0010}." RICHTIG: "...mit {0010} abschmecken." Jeder Satz braucht Subjekt, Verb und vollständige Satzstruktur.',
+    'PLATZHALTER-REGEL (STRIKT): Schreibe NUR den Platzhalter {0001} – NIEMALS den Zutatennamen daneben. FALSCH: "Kokosmilch ({0002})", "Tofu {0001}". RICHTIG: "{0002}", "mit {0001}". Der Zutatenname wird AUSSCHLIESSLICH vom Server aus {0001} erzeugt.',
     'JEDER SCHRITT: Vollständiger deutscher Satz mit min. 5 Wörtern. KEINE Satz-Fragmente am Ende (kein einzelnes Wort nach einem Punkt). KEINE Waisen-Platzhalter. Wenn eine Zutat nicht in den Satz passt: in den vorigen oder nächsten Satz integrieren, nicht anhängen.',
     'GRAMMATIK-PFLICHT: Genus/Kasus korrekt. RICHTIG: "Die Hähnchenbrust", "mit schwarzem Pfeffer", "das Wasser", "den Reis". FALSCH: "Das Hähnchenbrust", "mit schwarzer Pfeffer", "den Wasser". Zutaten als vollständige Nominalphrasen einbinden.',
     'Eier unit=stk; Gewuerze unit=prise|messerspitze amount=0; sonst g|ml. stove_level 0=kalt, 1-9=Hitze.',
