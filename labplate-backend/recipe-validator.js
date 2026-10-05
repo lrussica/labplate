@@ -706,6 +706,15 @@ function smoothProseIngredientGrammar(text) {
     return (d === 'D' ? 'Den' : 'den') + ' ' + noun;
   });
 
+  // Femininum: falsche Artikel "das"/"den" -> "die" vor weiblichen Zutaten
+  out = out.replace(/\b([Dd])(as|en)\s+(Kokosmilch|Sahne|Milch|Butter|Zwiebel|Karotte|Tomate|Limette|Zitrone|Avocado|Gurke|Kartoffel|Zucchini|Aubergine|Petersilie|Minze|So(?:ss|ß)e|Sauce|Paste|Currypaste|Mayonnaise)\b/g, function (_m, d, art, noun) {
+    return (d === 'D' ? 'Die' : 'die') + ' ' + noun;
+  });
+  // Neutrum: falscher Akkusativ "den" -> "das" vor sächlichen Zutaten
+  out = out.replace(/\b([Dd])en\s+(Wasser|\u00d6l|Oliven\u00f6l|Salz|Mehl|Curry|Fett|Eiwei(?:ss|\u00df)|Tomatenmark|Fleisch|Huhn|H\u00e4hnchen|Rind|Lamm)\b/g, function (_m, d, noun) {
+    return (d === 'D' ? 'Das' : 'das') + ' ' + noun;
+  });
+
   // Adjektiv nach zum/den: „zum laktosefreier X“ → „zum laktosefreien X“
   out = out.replace(/\b(zum|den|einem)\s+laktosefreier\b/gi, function (_m, prep) {
     return prep + ' laktosefreien';
