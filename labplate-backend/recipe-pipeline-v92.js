@@ -518,6 +518,20 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     }
 
     return String(content || '').trim();
+  // Portions-Formulierung: bei Einzelportion keine Plural-Anrede ("auf Schalen verteilen")
+  const targetServCheck = Number(o.targetServings) > 0
+    ? Number(o.targetServings)
+    : DEFAULT_TARGET_SERVINGS;
+  if (targetServCheck === 1) {
+    for (let si = 0; si < steps.length; si++) {
+      steps[si] = String(steps[si] || '')
+        .replace(/\bauf\s+(?:vier|zwei|drei|mehrere|verschiedene|beide[n]?)\s+(?:Schalen|Tellern?|Portionen)\s+verteilen/gi, 'auf einen Teller verteilen')
+        .replace(/\bauf\s+die\s+(?:Schalen|Teller)\s+verteilen/gi, 'auf einen Teller verteilen')
+        .replace(/\bauf\s+(?:Schalen|Teller[n]?)\s+verteilen/gi, 'auf einen Teller verteilen')
+        .replace(/\bauf\s+(?:vier|zwei|drei|mehrere|verschiedene)\s+Portionen\s+(?:aufteilen|anrichten)/gi, 'auf einem Teller anrichten');
+    }
+  }
+
   }).filter(Boolean);
 
   function bareNameList(t) {
