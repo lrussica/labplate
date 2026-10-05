@@ -180,8 +180,8 @@ function validateHardConstraints(recipe, context) {
       violations.push(violation('STEP_ORDER_INVALID', 'Step order muss lückenlos aufsteigend sein.', index + 1, step && step.order));
     }
     const refs = Array.isArray(step && step.ingredientIds) ? step.ingredientIds : [];
-    if (Object.keys(step || {}).some((key) => !['order', 'ingredientIds', 'action', 'durationMin', 'text'].includes(key))) {
-      violations.push(violation('SCHEMA_ADDITIONAL_PROPERTY', 'Unbekanntes Step-Feld.', ['order', 'ingredientIds', 'action', 'durationMin', 'text'], Object.keys(step || {})));
+    if (Object.keys(step || {}).some((key) => !['order', 'ingredientIds', 'action', 'heat', 'sensory_cue', 'durationMin', 'text'].includes(key))) {
+      violations.push(violation('SCHEMA_ADDITIONAL_PROPERTY', 'Unbekanntes Step-Feld.', ['order', 'ingredientIds', 'action', 'heat', 'sensory_cue', 'durationMin', 'text'], Object.keys(step || {})));
     }
     if (!ACTION_VALUES.includes(step && step.action)) {
       violations.push(violation('STEP_ACTION_INVALID', 'Step-Aktion ist nicht erlaubt.', ACTION_VALUES, step && step.action));

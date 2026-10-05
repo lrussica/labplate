@@ -32040,14 +32040,23 @@ initBarcodeEvents();
           stepIssues.push('Schritt ' + (i + 1) + ' Legacy-Muster');
           continue;
         }
+        var stepMeta = (step && typeof step === 'object') ? step : {};
+        var stepDuration = stepMeta.durationMin != null ? stepMeta.durationMin
+          : (stepMeta.durationMinutes != null ? stepMeta.durationMinutes : stepMeta.time_min);
+        var stepHeat = stepMeta.heat != null ? stepMeta.heat
+          : (stepMeta.heatLevel != null ? stepMeta.heatLevel : stepMeta.stove_level);
+        var stepSensory = stepMeta.sensory_cue != null ? stepMeta.sensory_cue
+          : (stepMeta.sensoryCue != null ? stepMeta.sensoryCue : null);
         steps.push({
           stepNumber: steps.length + 1,
           instruction: instruction,
-          durationMinutes: (step && typeof step === 'object' && (step.durationMinutes != null || step.time_min != null))
-            ? Number(step.durationMinutes != null ? step.durationMinutes : step.time_min)
-            : null,
-          heatLevel: (step && typeof step === 'object') ? (step.heatLevel != null ? step.heatLevel : step.stove_level) : null,
-          ingredientIds: (step && typeof step === 'object' && Array.isArray(step.ingredientIds)) ? step.ingredientIds.slice() : []
+          durationMinutes: stepDuration != null ? Number(stepDuration) : null,
+          heatLevel: stepHeat != null ? stepHeat : null,
+          durationMin: stepDuration != null ? Number(stepDuration) : null,
+          heat: stepHeat != null ? stepHeat : null,
+          action: stepMeta.action != null ? stepMeta.action : null,
+          sensory_cue: stepSensory,
+          ingredientIds: Array.isArray(stepMeta.ingredientIds) ? stepMeta.ingredientIds.slice() : []
         });
       }
 
@@ -34504,8 +34513,10 @@ initBarcodeEvents();
           } else if (!raw && s.title) {
             raw = String(s.title).replace(/:\s*$/, '') + '.';
           }
-          durationMinutes = s.durationMinutes != null ? s.durationMinutes : s.time_min;
-          heatLevel = s.heatLevel != null ? s.heatLevel : s.stove_level;
+          durationMinutes = s.durationMin != null ? s.durationMin
+            : (s.durationMinutes != null ? s.durationMinutes : s.time_min);
+          heatLevel = s.heat != null ? s.heat
+            : (s.heatLevel != null ? s.heatLevel : s.stove_level);
           ingredientIds = Array.isArray(s.ingredientIds) ? s.ingredientIds.slice() : [];
         } else {
           raw = s == null ? '' : String(s);
@@ -34522,6 +34533,13 @@ initBarcodeEvents();
           instruction: String(raw || '').trim(),
           durationMinutes: durationMinutes != null ? Number(durationMinutes) : null,
           heatLevel: heatLevel != null ? heatLevel : null,
+          // Server-Vertrag 1:1 erhalten (ai-recipe-quality.toClientRecipe)
+          durationMin: durationMinutes != null ? Number(durationMinutes) : null,
+          heat: heatLevel != null ? heatLevel : null,
+          action: (s && typeof s === 'object' && s.action != null) ? s.action : null,
+          sensory_cue: (s && typeof s === 'object' && (s.sensory_cue != null || s.sensoryCue != null))
+            ? (s.sensory_cue != null ? s.sensory_cue : s.sensoryCue)
+            : null,
           ingredientIds: ingredientIds
         };
       }).filter(function (s) { return !!(s && s.instruction); });
