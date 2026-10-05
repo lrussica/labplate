@@ -482,7 +482,7 @@ function stripTrailingPlaceholderLists(recipe) {
     let out = raw;
     for (let i = 0; i < 4; i++) {
       const before = out;
-      out = out.replace(/\s+(?:\{\d{4,5}\}\s*[,+&]?\s*)+[.!?]?\s*$/, '');
+      out = out.replace(/\s+(?:\{\d{4,5}\}\s*(?:[,+&]|und|oder|sowie)?\s*)+[.!?]?\s*$/, '');
       const trimmed = out.trim();
       if (trimmed && !/[.!?]$/.test(trimmed)) {
         out = trimmed + '.';
