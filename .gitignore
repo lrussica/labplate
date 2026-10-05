@@ -1,0 +1,22 @@
+# Große ML-Modelle (extern in ~/Documents/LabPlate_Extern/_mlmodelle/ gesichert)
+*.mlpackage/
+*.mlmodelc/
+*.mlmodel
+
+# HTML-Backups (gehören nicht ins Repo - liegen in _backups_html/)
+LabPlate/LabPlate_34_Cursor.bak_*.html
+
+# macOS
+.DS_Store
+
+# Python
+.venv-keynote/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# Environment
+.env
+.env.local
