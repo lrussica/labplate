@@ -298,9 +298,11 @@ function injectMissingStaples(recipe) {
             linked = true;
           }
         }
-        if (!linked) {
-          step.content = content.replace(/\s*$/, '') + (/\.\s*$/.test(content) ? ' ' : '. ') + ph + '.';
-        }
+        // Fix (Schritt 1, 5.Okt): KEIN Blind-Append mehr. Wenn der Stem nur
+        // in einem Kompositum vorkommt (z.B. Knoblauchzehen), wird der Text
+        // NICHT mehr verunstaltet. Der Usage-Contract laeuft ueber step.ingredientIds
+        // (Push erfolgt direkt nach diesem Block).
+        // Siehe DeepSeek-Analyse 5.Okt.2026.
       }
       if (!Array.isArray(step.ingredientIds)) step.ingredientIds = [];
       if (step.ingredientIds.indexOf(id) < 0) step.ingredientIds.push(id);
