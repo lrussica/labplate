@@ -360,7 +360,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
       return {
         name: name,
         amount: 0,
-        unit: 'g',
+        unit: unit,
         status: 'benoetigt',
         macrosPer100g: { netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
         _v92_id: ing.id,
