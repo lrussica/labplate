@@ -1868,6 +1868,21 @@ function validateRecipeV2(recipe, opts) {
     }
   });
 
+  // Harte Mengen-Validierung: unit=g|ml MUESSEN amount > 0 haben.
+  ingredients.forEach(function (ing) {
+    if (!ing) return;
+    const name = String(ing.name || '').trim();
+    const unit = String(ing.unit || '').trim();
+    const amount = Number(ing.amount);
+    if (unit !== 'g' && unit !== 'ml') return;
+    if (!Number.isFinite(amount) || amount <= 0) {
+      result.addError(
+        "Zutat ohne gueltige Menge: '" + name + "' hat unit=" + unit +
+        " aber amount=" + ing.amount + " (muss > 0 sein)"
+      );
+    }
+  });
+
   // Kein separater Garnitur-Schritt
   steps.forEach(function (s, i) {
     const title = String((s && s.title) || '').trim();
