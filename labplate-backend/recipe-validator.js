@@ -1524,6 +1524,14 @@ function repairColdIngredientHeatSequence(recipe) {
   const r = recipe && typeof recipe === 'object' ? recipe : {};
   const ingredients = Array.isArray(r.ingredients) ? r.ingredients : [];
   const steps = Array.isArray(r.steps) ? r.steps : [];
+
+  // Einbettungs-Pruefung (Schritt 3, 5.Okt.2026) - als Warnung, nicht Hard-Reject
+  try {
+    const embed = validatePlaceholderEmbedding(r);
+    if (embed.warnings && embed.warnings.length) {
+      embed.warnings.forEach(function (w) { result.addWarning(w); });
+    }
+  } catch (_) { /* best effort */ }
   if (!steps.length) return fixed;
 
   const sensitive = ingredients.filter(function (ing) {
@@ -1781,6 +1789,63 @@ function validateMaxProteinSourcesByKeywords(ingredients, proteinSourceKeywords)
     primary: applied.primary,
     corrections: applied.corrections,
   };
+}
+
+/**
+ * Einbettungs-Pruefung: Platzhalter {NNNN} muessen in einem Satz mit finitem Verb stehen.
+ * Erkennt das Muster "Text. {0001} {0002}." (Listen am Satzende ohne Verb).
+ * Aktuell als WARNUNG (nicht Hard-Reject) - sammelt Daten fuer spaetere Verschaerfung.
+ * Grundlage: DeepSeek-Analyse 5.Okt.2026.
+ */
+const RECIPE_VERB_WORDS = new Set([
+  'ist','sind','war','waren','wird','werden','wurde','wurden','hat','haben','hatte','hatten',
+  'kann','koennen','konnte','konnten','muss','muessen','soll','sollen','darf','duerfen',
+  'bleibt','bleiben','blieb','blieben','kommt','kommen','kam','kamen','geht','gehen','ging','gingen',
+  'gibt','geben','gab','gaben','laesst','lassen','liess','liessen','nimmt','nehmen','nahm','nahmen',
+  'erhitzen','erhitzt','erhitze','braten','braet','brate','anbraten','anbraet','anbrate',
+  'duensten','duenstet','duenste','koecheln','koechelt','koechle','kochen','kocht','koche',
+  'ruehren','ruehrt','ruehre','verruehren','verruehrt','verruehre','einruehren','einruehrt','einruehre',
+  'geben','gib','gebe','hinzufuegen','hinzufuegt','hinzufuege','fuegen','fuegt','fuege',
+  'schneiden','schneidet','schneide','waschen','waescht','wasche','hacken','hackt','hacke',
+  'wuerfeln','wuerfelt','wuerfle','verteilen','verteilt','verteile','abschmecken','abschmeckt','abschmecke',
+  'wuerzen','wuerzt','wuerze','garen','gart','gare','servieren','serviert','serviere','anrichten','richtet','richte',
+  'bestreuen','bestreut','bestreue','garnieren','garniert','garniere','abgiessen','giesst','abgiess',
+  'abtropfen','tropft','abtropf','wenden','wendet','wende','sautieren','sautiert','sautiere',
+  'anschwitzen','anschwitzt','anschwitze','abloeschen','abloescht','abloesche','einstreuen','streut','streue',
+  'giessen','giesst','giesse','angiessen','giesst','einfliessen','fliesst','fliesse','zuggiessen',
+  'vermengen','vermengt','vermenge','vermischen','vermischt','vermische','unterheben','unterhebt','unterhebe',
+  'mischen','mischt','mische','mixen','mixt','mixe','schaelen','schaelt','schaele','tupfen','tupft','tupfe',
+  'pressen','presst','presse','abschrecken','schreckt','abschreck','ziehen','zieht','ziehe',
+  'anroesten','anroestet','anroeste','roesten','roestet','roeste',
+  'mitbraten','mitbraet','mitbrate','mitduensten','mitduenstet','mitduenste','aufkochen','aufkocht','aufkoche',
+  'unterruehren','unterruehrt','unterruehre',
+  // Umlaut-Varianten
+  'können','müssen','dürfen','lässt','ließ','ließen','brät','dünstet','dünste','köchelt','köchle',
+  'rührt','rühre','verrührt','verrühre','einrührt','einrühre','hinzufügt','hinzufüge','fügt','füge',
+  'wäscht','würfelt','würfle','würzt','würze','gießt','gieße','fließt','fließe','schält','schäle',
+  'anbrät','anrösten','anröstet','anröste','röstet','röste','mitbrät','mitdünstet','mitdünste',
+  'unterrührt','unterrühre','ablöscht','ablösche','dünstet','dünste','röstet','röste',
+]);
+
+function validatePlaceholderEmbedding(recipe) {
+  const warnings = [];
+  const steps = recipe && Array.isArray(recipe.steps) ? recipe.steps : [];
+  steps.forEach(function (s, i) {
+    if (!s || typeof s !== 'object') return;
+    const content = String(s.content || '');
+    if (!content) return;
+    const sentences = content.split(/[.!?]+/).map(function (x) { return x.trim(); }).filter(Boolean);
+    sentences.forEach(function (sent) {
+      if (!/\{\d{4,5}\}/.test(sent)) return;
+      const words = sent.toLowerCase().split(/[^a-zäöüß]+/).filter(Boolean);
+      const hasVerb = words.some(function (w) { return RECIPE_VERB_WORDS.has(w); });
+      if (!hasVerb) {
+        const short = sent.length > 80 ? sent.slice(0, 77) + '...' : sent;
+        warnings.push('Step ' + (i + 1) + ': Platzhalter in verb-losem Satz: "' + short + '"');
+      }
+    });
+  });
+  return { ok: warnings.length === 0, warnings: warnings };
 }
 
 function validateRecipeV2(recipe, opts) {
