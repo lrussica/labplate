@@ -24,6 +24,15 @@ const GENDER = {
   hähnchen:'n', hackfleisch:'n', curry:'n', fett:'n', ei:'n', gemüse:'n', gemuese:'n',
 };
 
+// ---------- Plural-Formen fuer den Karotte/Karotten-Match ----------
+const PLURAL_MAP = {
+  zwiebel:'Zwiebeln', karotte:'Karotten', tomate:'Tomaten',
+  kartoffel:'Kartoffeln', linse:'Linsen', kichererbse:'Kichererbsen',
+  bohne:'Bohnen', aubergine:'Auberginen', avocado:'Avocados',
+  schale:'Schalen', gurke:'Gurken', zitrone:'Zitronen',
+  pilz:'Pilze', apfel:'Äpfel', blatt:'Blätter',
+};
+
 const ADJ_GROUPS = [
   ['schwarz'], ['weiß','weiss'], ['frisch'], ['gerieben','gerben'],
   ['rot'], ['gelb'], ['grün','gruen'], ['gehackt','gehakt'],
@@ -135,17 +144,32 @@ function declineContext(text, idx, nameSet, g) {
   }
   return { det: det, kase: kase };
 }
+function pluralOfName(name) {
+  const last = lastWord(name);
+  if (!last) return null;
+  if (PLURAL_MAP[last]) return PLURAL_MAP[last];
+  if (/el$/.test(last)) return last + 'n';
+  if (/e$/.test(last) && !/ee$/.test(last)) return last + 'n';
+  return null;
+}
 function namePattern(name) {
   const c = cleanName(name);
   const parts = c.split(/\s+/).filter(Boolean);
+  let base;
   if (parts.length >= 2) {
     const stem = adjStemOf(parts[0]);
     if (stem) {
-      return '(?:' + adjAlternation(stem) + '(?:er|e|es|em|en)?\\s+'
+      base = '(?:' + adjAlternation(stem) + '(?:er|e|es|em|en)?\\s+'
         + escapeRegExp(parts.slice(1).join(' ')) + '|' + escapeRegExp(c) + ')';
     }
   }
-  return escapeRegExp(c);
+  if (!base) base = escapeRegExp(c);
+  const plural = pluralOfName(name);
+  if (plural && plural.toLowerCase() !== lastWord(name)) {
+    const plName = parts.slice(0, -1).concat(plural).join(' ');
+    base = '(?:' + base + '|' + escapeRegExp(plName) + ')';
+  }
+  return base;
 }
 function forwardHasAkkVerb(text, idx) {
   const tail = text.slice(idx);
