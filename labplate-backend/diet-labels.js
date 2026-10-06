@@ -27,16 +27,22 @@ function isDairy(name) {
 
 function classifyByIngredients(ingredients) {
   let hasMeat = false, hasFish = false, hasEgg = false, hasDairy = false, hasHoney = false;
+  let hasAnyIngredient = false;
   (Array.isArray(ingredients) ? ingredients : []).forEach(function (ing) {
     if (!ing) return;
-    const name = String(ing.name || '');
+    const name = String(ing.name || '').trim();
     if (!name) return;
+    hasAnyIngredient = true;
     if (MEAT_RE.test(name)) hasMeat = true;
     if (FISH_RE.test(name)) hasFish = true;
     if (EGG_RE.test(name)) hasEgg = true;
     if (isDairy(name)) hasDairy = true;
     if (HONEY_RE.test(name)) hasHoney = true;
   });
+  // Ohne Zutaten keine Aussage ueber vegetarisch/vegan – ehrlich bleiben.
+  if (!hasAnyIngredient) {
+    return { vegetarisch: false, vegan: false, hasMeat: false, hasFish: false, hasEgg: false, hasDairy: false, hasHoney: false };
+  }
   const vegetarisch = !hasMeat && !hasFish;
   const vegan = vegetarisch && !hasEgg && !hasDairy && !hasHoney;
   return { vegetarisch: vegetarisch, vegan: vegan, hasMeat: hasMeat, hasFish: hasFish, hasEgg: hasEgg, hasDairy: hasDairy, hasHoney: hasHoney };
