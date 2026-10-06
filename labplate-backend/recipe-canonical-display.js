@@ -8,13 +8,13 @@ const HERB_RE = /petersilie|parsley|prezzemolo|perejil|persil|basilikum|basil|or
 const MAIN_ING_RE = /hack|fleisch|zwiebel|karotte|sellerie|olivenöl|öl|tomate|wein|rind|schwein|beef|pork/i;
 
 const ACTION_SENTENCES = {
-  heat_oil: 'Das Olivenöl in einem schweren Topf erhitzen.',
-  saute: 'Zwiebel, Karotte und Sellerie darin bei mittlerer Hitze langsam anschwitzen, bis das Gemüse weich ist.',
-  brown: 'Das Rinderhackfleisch hinzufügen und unter Rühren krümelig anbraten.',
-  deglaze: 'Mit dem Rotwein ablöschen und kurz einkochen lassen.',
-  tomato: 'Passierte Tomaten und Tomatenmark einrühren.',
-  simmer: 'Das Ragù bei niedriger Hitze etwa zwei Stunden sanft köcheln lassen und gelegentlich umrühren.',
-  season: 'Mit Salz und Pfeffer abschmecken.',
+  heat_oil: 'Eine Pfanne bei mittlerer Hitze erhitzen.',
+  saute: 'Das Gemüse bei mittlerer Hitze langsam anschwitzen.',
+  brown: 'Die Hauptzutat unter Rühren krümelig anbraten.',
+  deglaze: 'Mit etwas Flüssigkeit ablöschen und kurz einkochen lassen.',
+  tomato: 'Die vorbereiteten Zutaten einrühren.',
+  simmer: 'Bei niedriger Hitze sanft köcheln lassen und gelegentlich umrühren.',
+  season: 'Abschmecken und servieren.',
   mix: 'Die Zutaten gründlich vermengen.',
   serve: 'Anrichten und servieren.',
 };

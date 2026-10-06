@@ -349,14 +349,14 @@ function sanitizeIngredientMacros(recipe) {
 }
 
 const ACTION_SENTENCES = {
-  heat_oil: 'Das Olivenöl in einem schweren Topf erhitzen.',
-  saute_soffritto: 'Zwiebel, Karotte und Sellerie darin bei mittlerer Hitze langsam anschwitzen, bis das Gemüse weich ist.',
-  brown_meat: 'Das Rinderhackfleisch hinzufügen und unter Rühren krümelig anbraten.',
-  deglaze: 'Mit dem Rotwein ablöschen und kurz einkochen lassen.',
-  add_tomato: 'Passierte Tomaten und Tomatenmark einrühren.',
-  simmer: 'Das Ragù bei niedriger Hitze etwa zwei Stunden sanft köcheln lassen und gelegentlich umrühren.',
-  season: 'Mit Salz und Pfeffer abschmecken.',
-  garnish_parsley: 'Das Ragù nach Wunsch mit Petersilie garnieren.',
+  heat_oil: 'Eine Pfanne bei mittlerer Hitze erhitzen.',
+  saute_soffritto: 'Das Gemüse bei mittlerer Hitze langsam anschwitzen.',
+  brown_meat: 'Die Hauptzutat unter Rühren krümelig anbraten.',
+  deglaze: 'Mit etwas Flüssigkeit ablöschen und kurz einkochen lassen.',
+  add_tomato: 'Die vorbereiteten Zutaten einrühren.',
+  simmer: 'Bei niedriger Hitze sanft köcheln lassen und gelegentlich umrühren.',
+  season: 'Abschmecken und servieren.',
+  garnish_parsley: 'Nach Wunsch garnieren.',
 };
 
 function looksLikeLabelColonDump(text) {
