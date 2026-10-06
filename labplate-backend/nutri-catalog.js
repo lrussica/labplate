@@ -312,6 +312,104 @@ const CATALOG = {
     per100g: { protein: 0, fat: 100.0, netCarbs: 0, fiber: 0, kcal: 884 },
     source: 'USDA FDC 172336 (Oil, canola)',
   },
+
+  // ---------- KRAEUTER + GRUNDZUTATEN 2026-10-06 (USDA-verifiziert) ----------
+  coriander_fresh: {
+    displayName: 'Koriander (frisch)',
+    aliases: ['koriander', 'koriander (frisch)', 'frische korianderblaetter', 'frische korianderblätter', 'korianderblaetter', 'korianderblätter', 'cilantro'],
+    per100g: { protein: 2.1, fat: 0.5, netCarbs: 0.9, fiber: 2.8, kcal: 23 },
+    source: 'USDA FDC 169997 (Coriander/cilantro leaves, raw)',
+  },
+  parsley_fresh: {
+    displayName: 'Petersilie (frisch)',
+    aliases: ['petersilie', 'petersilie (frisch)', 'frische petersilie', 'glatte petersilie'],
+    per100g: { protein: 3.0, fat: 0.8, netCarbs: 3.0, fiber: 3.3, kcal: 36 },
+    source: 'USDA FDC 170416 (Parsley, fresh)',
+  },
+  basil_fresh: {
+    displayName: 'Basilikum (frisch)',
+    aliases: ['basilikum', 'basilikum (frisch)', 'frischer basilikum', 'basil'],
+    per100g: { protein: 3.2, fat: 0.6, netCarbs: 1.1, fiber: 1.6, kcal: 23 },
+    source: 'USDA FDC 172232 (Basil, fresh)',
+  },
+  dill_fresh: {
+    displayName: 'Dill (frisch)',
+    aliases: ['dill', 'dill (frisch)', 'frischer dill', 'dillspitzen'],
+    per100g: { protein: 3.5, fat: 1.1, netCarbs: 4.9, fiber: 2.1, kcal: 43 },
+    source: 'USDA FDC 172233 (Dill weed, fresh)',
+  },
+  mint_fresh: {
+    displayName: 'Minze (frisch)',
+    aliases: ['minze', 'minze (frisch)', 'frische minze', 'pfefferminze', 'minzblaetter', 'minzblätter'],
+    per100g: { protein: 3.8, fat: 0.9, netCarbs: 6.9, fiber: 8.0, kcal: 70 },
+    source: 'USDA FDC 173474 (Peppermint, fresh)',
+  },
+  oregano_dried: {
+    displayName: 'Oregano (getrocknet)',
+    aliases: ['oregano', 'oregano (getrocknet)', 'getrockneter oregano'],
+    per100g: { protein: 9.0, fat: 4.3, netCarbs: 26.4, fiber: 42.5, kcal: 265 },
+    source: 'USDA FDC 171328 (Spices, oregano, dried)',
+  },
+  thyme_fresh: {
+    displayName: 'Thymian (frisch)',
+    aliases: ['thymian', 'thymian (frisch)', 'frischer thymian'],
+    per100g: { protein: 5.6, fat: 1.7, netCarbs: 10.4, fiber: 14.0, kcal: 101 },
+    source: 'USDA FDC 173470 (Thyme, fresh)',
+  },
+  rosemary_fresh: {
+    displayName: 'Rosmarin (frisch)',
+    aliases: ['rosmarin', 'rosmarin (frisch)', 'frischer rosmarin', 'rosmarinnadeln'],
+    per100g: { protein: 3.3, fat: 5.9, netCarbs: 6.6, fiber: 14.1, kcal: 131 },
+    source: 'USDA FDC 173473 (Rosemary, fresh)',
+  },
+  tomato_paste: {
+    displayName: 'Tomatenmark',
+    aliases: ['tomatenmark', 'tomaten paste', 'tomato paste'],
+    per100g: { protein: 4.2, fat: 0.7, netCarbs: 15.5, fiber: 4.7, kcal: 85 },
+    source: 'USDA FDC 2685580 (Tomato paste, canned; kcal aus Makros berechnet, Foundation ohne kcal)',
+  },
+  vegetable_broth: {
+    displayName: 'Gemuesebruehe',
+    aliases: ['gemuesebruehe', 'gemüsebrühe', 'gemuese bruehe', 'gemüse brühe', 'gemuesefond', 'gemüsefond', 'bruehe', 'brühe', 'vegetable broth'],
+    per100g: { protein: 0.2, fat: 0.1, netCarbs: 0.9, fiber: 0.0, kcal: 5 },
+    source: 'USDA FDC 171583 (Soup, vegetable broth, ready to serve)',
+  },
+  mustard: {
+    displayName: 'Senf',
+    aliases: ['senf', 'senf (gelb)', 'gelber senf', 'dijon-senf', 'dijon senf', 'mustard'],
+    per100g: { protein: 3.7, fat: 3.3, netCarbs: 1.8, fiber: 4.0, kcal: 60 },
+    source: 'USDA FDC 172234 (Mustard, prepared, yellow)',
+  },
+  vinegar_apple: {
+    displayName: 'Apfelessig',
+    aliases: ['apfelessig', 'apfel-essig', 'apple cider vinegar', 'cidre-essig'],
+    per100g: { protein: 0, fat: 0, netCarbs: 0.9, fiber: 0, kcal: 21 },
+    source: 'USDA FDC 173469 (Vinegar, cider)',
+  },
+  vinegar_balsamic: {
+    displayName: 'Balsamico-Essig',
+    aliases: ['balsamico', 'balsamico-essig', 'balsamicoessig', 'balsamessig', 'balsamic vinegar'],
+    per100g: { protein: 0.5, fat: 0, netCarbs: 17.0, fiber: 0, kcal: 88 },
+    source: 'USDA FDC 172241 (Vinegar, balsamic)',
+  },
+  cinnamon: {
+    displayName: 'Zimt',
+    aliases: ['zimt', 'zimt (gemahlen)', 'gemahlener zimt', 'zimtpulver', 'cinnamon'],
+    per100g: { protein: 4.0, fat: 1.2, netCarbs: 27.5, fiber: 53.1, kcal: 247 },
+    source: 'USDA FDC 171320 (Spices, cinnamon, ground)',
+  },
+  cumin: {
+    displayName: 'Kreuzkuemmel',
+    aliases: ['kreuzkuemmel', 'kreuzkümmel', 'kumin', 'cumin'],
+    per100g: { protein: 17.8, fat: 22.3, netCarbs: 33.7, fiber: 10.5, kcal: 375 },
+    source: 'USDA FDC 170923 (Spices, cumin seed)',
+  },
+  paprika_powder: {
+    displayName: 'Paprikapulver',
+    aliases: ['paprikapulver', 'paprika (gemahlen)', 'gemahlener paprika', 'paprika edelsuess', 'paprika edelsüß', 'paprika powder'],
+    per100g: { protein: 14.1, fat: 12.9, netCarbs: 19.1, fiber: 34.9, kcal: 282 },
+    source: 'USDA FDC 171329 (Spices, paprika)',
+  },
 };
 
 // ---------- Matching ----------

@@ -51,7 +51,9 @@ console.log('=== KATALOG-LOOKUP ===');
   ['L25', 'Limettensaft', 'lime_juice'],
   ['L26', 'Parmesan', 'parmesan'],
   ['L27', 'Mandelmehl', 'almond_flour'],
-  ['L28', 'Frische Korianderblätter', null],
+  ['L28', 'Frische Korianderblätter', 'coriander_fresh'],
+  ['L28b', 'Voellig erfundene Zutat', null],
+  ['L28c', 'Sternenstaub', null],
   ['L29', 'Irgendein exotisches Gewuerz', null],
 ].forEach(function (t) {
   const hit = catalog.lookupCatalog(t[1]);
