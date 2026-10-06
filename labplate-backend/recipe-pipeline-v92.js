@@ -777,6 +777,8 @@ function logRawLlmJson(meta) {
       : [];
     console.log('[recipe-v92] raw_llm_json ' + JSON.stringify({
       prompt_version: 'v9.2',
+      trace_id: meta.traceId || null,
+      ai_instruction: meta.aiInstruction || null,
       attempt: meta.attempt,
       validation_pending: true,
       title: parsed && parsed.title,
@@ -802,6 +804,8 @@ function logValidationFailure(meta) {
       : [];
     console.log('[recipe-v92] validation_failed ' + JSON.stringify({
       prompt_version: 'v9.2',
+      trace_id: meta.traceId || null,
+      ai_instruction: meta.aiInstruction || null,
       attempt: meta.attempt,
       errors: meta.errors,
       warnings: meta.warnings,
@@ -1058,6 +1062,8 @@ async function generateValidatedRecipe(opts) {
   const buildRequestBody = o.buildRequestBody;
   const callGroq = o.callGroq;
   const payload = o.payload;
+  const traceId = (payload && payload.trace_id) || ('lp-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8));
+  const aiInstructionForLog = payload && (payload.ai_instruction || payload.aiInstruction);
   const groqOpts = o.groqOpts || {};
   let lastErrors = [];
   let lastWarnings = [];
@@ -1185,7 +1191,7 @@ async function generateValidatedRecipe(opts) {
       const p = parseRecipeJson(parsed);
       if (p.error) {
         lastErrors = ['JSON-Parse fehlgeschlagen'];
-        logValidationFailure({ attempt: attempt, errors: lastErrors, warnings: [] });
+        logValidationFailure({ attempt: attempt, errors: lastErrors, warnings: [], traceId: traceId, aiInstruction: aiInstructionForLog });
         continue;
       }
       parsed = p.data;
@@ -1194,7 +1200,7 @@ async function generateValidatedRecipe(opts) {
     attemptRaws.push({ attempt: attempt, raw: parsed });
 
     // Diagnose: Raw-JSON VOR Validierung und VOR renderRecipeForDisplay (jeder Versuch)
-    logRawLlmJson({ attempt: attempt, parsed: parsed });
+    logRawLlmJson({ attempt: attempt, parsed: parsed, traceId: traceId, aiInstruction: aiInstructionForLog });
 
     // Laktose-Ehrlichkeit: Alternative / unmöglich (Sentinel in Titel/Analyse/Steps; leere Zutaten).
     try {
@@ -1243,7 +1249,7 @@ async function generateValidatedRecipe(opts) {
         'Wenn kein authentischer Ersatz: title=__LACTOSE_HONESTY_ALTERNATIVE__ oder ' +
         '__LACTOSE_HONESTY_IMPOSSIBLE__ – KEIN title=__TEAM_HANDOFF_COACH__.',
       ];
-      logValidationFailure({ attempt: attempt, errors: lastErrors, warnings: [] });
+      logValidationFailure({ attempt: attempt, errors: lastErrors, warnings: [], traceId: traceId, aiInstruction: aiInstructionForLog });
       continue;
     }
 
@@ -1262,6 +1268,8 @@ async function generateValidatedRecipe(opts) {
         errors: lastErrors,
         warnings: lastWarnings,
         parsed: parsed,
+        traceId: traceId,
+        aiInstruction: aiInstructionForLog,
       });
       continue;
     }
