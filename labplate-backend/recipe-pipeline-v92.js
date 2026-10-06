@@ -464,6 +464,75 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     };
   });
 
+  // Eiserne Regel: Fallback-Sätze dürfen NUR Zutaten verwenden, die im Rezept stehen.
+  // culinaryRole wird im Display-Mapping nicht mitgeführt -> aus roher recipe.ingredients ableiten.
+  const roleById = {};
+  (Array.isArray(recipe.ingredients) ? recipe.ingredients : []).forEach(function (ing) {
+    if (ing && ing.id != null) roleById[String(ing.id)] = ing.culinaryRole || ing.role || null;
+  });
+  function namesByRole(roles) {
+    const wanted = Array.isArray(roles) ? roles : [roles];
+    const out = [];
+    ingredients.forEach(function (ing) {
+      if (!ing || !ing._v92_id) return;
+      if (wanted.indexOf(roleById[String(ing._v92_id)]) < 0) return;
+      const prose = byIdForProse[String(ing._v92_id)];
+      const name = prose ? prose.name : String(ing.name || '');
+      if (name && out.indexOf(name) < 0) out.push(name);
+    });
+    return out;
+  }
+  function joinNames(names) {
+    if (!names.length) return '';
+    if (names.length === 1) return names[0];
+    return names.slice(0, -1).join(', ') + ' und ' + names[names.length - 1];
+  }
+  function fallbackSentence(titleLower, title) {
+    const fats = joinNames(namesByRole('fat_source'));
+    const veg = joinNames(namesByRole('vegetable'));
+    const protein = joinNames(namesByRole('main_protein'));
+    const carbs = joinNames(namesByRole('carbohydrate'));
+    const liquid = joinNames(namesByRole('liquid'));
+    const seasonings = joinNames(namesByRole('seasoning'));
+    if (/öl.*erhitz|erhitzen.*öl|^olivenöl erhitz/i.test(titleLower)) {
+      return fats ? fats + ' in einem Topf bei mittlerer Hitze erhitzen.'
+        : 'Einen Topf bei mittlerer Hitze erhitzen.';
+    }
+    // Braten VOR Anschwitzen: "Gemüse anbraten" ist Braten, kein Dünsten.
+    if (/brat/i.test(titleLower)) {
+      const subject = protein || veg || carbs;
+      return subject ? subject + ' in einer Pfanne bei mittlerer bis hoher Hitze anbraten.'
+        : 'Die Zutaten in einer Pfanne bei mittlerer bis hoher Hitze anbraten.';
+    }
+    if (/anschwitz|gemüse|soffritto|dünst/i.test(titleLower)) {
+      return veg ? veg + ' bei mittlerer Hitze langsam anschwitzen.'
+        : 'Das Gemüse bei mittlerer Hitze langsam anschwitzen.';
+    }
+    if (/ablösch|wein/i.test(titleLower)) {
+      return liquid ? 'Mit ' + liquid + ' ablöschen und kurz einkochen lassen.'
+        : 'Mit etwas Flüssigkeit ablöschen und kurz einkochen lassen.';
+    }
+    if (/tomate|hinzufüg/i.test(titleLower)) {
+      return veg ? veg + ' hinzufügen und einrühren.'
+        : 'Die vorbereiteten Zutaten hinzufügen und einrühren.';
+    }
+    if (/abschmeck|würz/i.test(titleLower)) {
+      return seasonings ? 'Mit ' + seasonings + ' abschmecken.'
+        : 'Abschmecken und servieren.';
+    }
+    if (/köchel|schmor|simmer|langsam/i.test(titleLower)) {
+      return 'Bei niedriger Hitze sanft köcheln lassen und gelegentlich umrühren.';
+    }
+    if (/garnier/i.test(titleLower)) {
+      return 'Nach Wunsch garnieren.';
+    }
+    // Titel nur übernehmen, wenn er ein Verb enthält — sonst neutrale Phrase.
+    if (title && /\b(erhitz|brat|anschwitz|dünst|köchel|schmor|simmer|ablösch|einrühr|hinzufüg|abschmeck|würz|garnier|lassen|servier|zubereit|vermeng|misch|koch)\w*/i.test(titleLower)) {
+      return String(title).replace(/:\s*$/, '') + '.';
+    }
+    return 'Die Zutaten wie angegeben zubereiten.';
+  }
+
   const steps = (Array.isArray(recipe.steps) ? recipe.steps : []).map(function (s) {
     if (!s || typeof s === 'string') {
       const t = String(s || '').trim();
@@ -480,7 +549,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
 
     // Köcheln + Garnieren nie in einem Schritt
     if (/köchel|simmer|schmor/i.test(titleLower) && /garnier/i.test(titleLower + ' ' + content)) {
-      content = 'Das Ragù bei niedriger Hitze etwa zwei Stunden sanft köcheln lassen und gelegentlich umrühren.';
+      content = 'Bei niedriger Hitze sanft köcheln lassen und gelegentlich umrühren.';
       return content;
     }
 
@@ -489,27 +558,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     const isBare = bareNames.test(content) &&
       !/\b(und|mit|in|auf|bei|bis|dann|lassen|erhitzen|braten)\b/i.test(content);
     if (isBare || !content) {
-      if (/öl.*erhitz|erhitzen.*öl|^olivenöl erhitz/i.test(titleLower)) {
-        content = 'Das Olivenöl in einem schweren Topf erhitzen.';
-      } else if (/anschwitz|gemüse|soffritto/i.test(titleLower)) {
-        content = 'Zwiebel, Karotte und Sellerie darin bei mittlerer Hitze langsam anschwitzen, bis das Gemüse weich ist.';
-      } else if (/brat|fleisch|hack/i.test(titleLower)) {
-        content = 'Das Rinderhackfleisch hinzufügen und unter Rühren krümelig anbraten.';
-      } else if (/ablösch|wein/i.test(titleLower)) {
-        content = 'Mit dem Rotwein ablöschen und kurz einkochen lassen.';
-      } else if (/tomate|hinzufüg/i.test(titleLower)) {
-        content = 'Passierte Tomaten und Tomatenmark einrühren.';
-      } else if (/abschmeck|würz/i.test(titleLower)) {
-        content = 'Mit Salz und Pfeffer abschmecken.';
-      } else if (/köchel|schmor|simmer|langsam/i.test(titleLower)) {
-        content = 'Das Ragù bei niedriger Hitze etwa zwei Stunden sanft köcheln lassen und gelegentlich umrühren.';
-      } else if (/garnier/i.test(titleLower)) {
-        content = 'Nach Wunsch garnieren.';
-      } else if (title) {
-        content = title.replace(/:\s*$/, '') + '.';
-      } else {
-        content = 'Weitergaren.';
-      }
+      content = fallbackSentence(titleLower, title);
     }
 
     // Explizit verbieten: bare names trotz Titel
@@ -549,21 +598,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     return toks.length >= 1 && toks.length <= 10;
   }
   function naturalizeFromTitle(title) {
-    const titleLower = String(title || '').toLowerCase();
-    if (/öl|erhitz/i.test(titleLower)) return 'Das Olivenöl in einem schweren Topf erhitzen.';
-    if (/anschwitz|gemüse/i.test(titleLower)) {
-      return 'Zwiebel, Karotte und Sellerie darin bei mittlerer Hitze langsam anschwitzen, bis das Gemüse weich ist.';
-    }
-    if (/brat|fleisch/i.test(titleLower)) {
-      return 'Das Rinderhackfleisch hinzufügen und unter Rühren krümelig anbraten.';
-    }
-    if (/ablösch|wein/i.test(titleLower)) return 'Mit dem Rotwein ablöschen und kurz einkochen lassen.';
-    if (/tomate/i.test(titleLower)) return 'Passierte Tomaten und Tomatenmark einrühren.';
-    if (/würz|abschmeck/i.test(titleLower)) return 'Mit Salz und Pfeffer abschmecken.';
-    if (/köchel/i.test(titleLower)) {
-      return 'Das Ragù bei niedriger Hitze etwa zwei Stunden sanft köcheln lassen und gelegentlich umrühren.';
-    }
-    return String(title).replace(/:\s*$/, '') + '.';
+    return fallbackSentence(String(title || '').toLowerCase(), title);
   }
 
   const stepTimeSum = (Array.isArray(recipe.steps) ? recipe.steps : []).reduce(function (sum, s) {
