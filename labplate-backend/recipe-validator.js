@@ -750,6 +750,14 @@ function resolvePlaceholders(text, ingredientsById, opts) {
   const nameOnly = !!(opts && opts.nameOnly);
   const byId = ingredientsById || {};
   let out = stripRedundantBesidePlaceholders(text, byId);
+  // Zwei benachbarte Platzhalter ohne Verbindungs-Wort -> "und" einfuegen
+  // Beispiel: "Die {0003} {0004} dazugeben" -> "Die {0003} und {0004} dazugeben"
+  out = out.replace(/\{(\d{4})\}(\s*,\s*)(\d{4})/g, function (_m, a, sep, b) {
+    return '{' + a + '}' + sep + '{' + b + '}';
+  });
+  out = out.replace(/\{(\d{4})\}\s+\{(\d{4})\}/g, function (_m, a, b) {
+    return '{' + a + '} und {' + b + '}';
+  });
   out = out.replace(/\{(\d{4})\}/g, function (_m, id) {
     const ing = byId[id];
     if (!ing) return '{' + id + '}';
