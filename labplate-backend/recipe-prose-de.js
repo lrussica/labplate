@@ -2,35 +2,35 @@
 /**
  * recipe-prose-de.js — zentrale deutsche Post-Edit-Schicht.
  * Regeln laufen in dieser Reihenfolge:
- *   1) "und"-Insertion (Artikel-Muster P1/P2/P3, Komma-Dreier, nackte Paare)
+ *   1) "und"-Insertion (Artikel-Muster P1/P2/P3/P4, Komma-Dreier, nackte Paare)
  *   2) Artikel-Korrektur NUR bei Genus-Mismatch (Plural-Schutz)
- *   3) Adjektivdeklination (stark/schwach/gemischt, Nom/Akk/Dat)
+ *   3) Adjektivdeklination (stark/schwach/gemischt/Plural, Nom/Akk/Dat)
  *   4) Plural-Gefaesse bei 1 Portion
  *   5) Grossschreibung am Satzanfang
  * Sprach-Neutralitaet: lang !== 'de' => Text unveraendert.
+ * Debug: PROSE_DE_DEBUG=1 in der Umgebung aktiviert Logs.
  */
 
 const GENDER = {
+  // feminin
   zwiebel:'f', karotte:'f', tomate:'f', zucchini:'f', aubergine:'f', avocado:'f',
   petersilie:'f', minze:'f', kokosmilch:'f', milch:'f', sahne:'f', butter:'f',
   soße:'f', sauce:'f', brust:'f', kartoffel:'f', linse:'f', kichererbse:'f',
   bohne:'f', paprika:'f', schale:'f', form:'f', schüssel:'f', schuessel:'f',
+  gurke:'f', kurkuma:'f', vanille:'f', quinoa:'f',
+  // maskulin
   tofu:'m', lachs:'m', reis:'m', brokkoli:'m', spinat:'m', kaese:'m', käse:'m',
   knoblauch:'m', ingwer:'m', essig:'m', senf:'m', honig:'m', joghurt:'m',
   fisch:'m', parmesan:'m', pfeffer:'m', koriander:'m', sellerie:'m', lauch:'m',
-  eintopf:'m', auflauf:'m', teller:'m',
+  eintopf:'m', auflauf:'m', teller:'m', zucker:'m', kreuzkümmel:'m', kürbis:'m',
+  muskat:'m', bacon:'m', seitan:'m', tempeh:'m',
+  // neutrum
   wasser:'n', oel:'n', öl:'n', olivenoel:'n', olivenöl:'n', salz:'n', mehl:'n',
   eiweiss:'n', eiweiß:'n', tomatenmark:'n', fleisch:'n', huhn:'n', haehnchen:'n',
   hähnchen:'n', hackfleisch:'n', curry:'n', fett:'n', ei:'n', gemüse:'n', gemuese:'n',
-};
-
-// ---------- Plural-Formen fuer den Karotte/Karotten-Match ----------
-const PLURAL_MAP = {
-  zwiebel:'Zwiebeln', karotte:'Karotten', tomate:'Tomaten',
-  kartoffel:'Kartoffeln', linse:'Linsen', kichererbse:'Kichererbsen',
-  bohne:'Bohnen', aubergine:'Auberginen', avocado:'Avocados',
-  schale:'Schalen', gurke:'Gurken', zitrone:'Zitronen',
-  pilz:'Pilze', apfel:'Äpfel', blatt:'Blätter',
+  filet:'n', gluten:'n',
+  // Plural (nur unregelmaessige Endungen — "...en" wird heuristisch erkannt)
+  eier:'p', zwiebeln:'p', nudeln:'p',
 };
 
 const ADJ_GROUPS = [
@@ -41,26 +41,37 @@ const ADJ_GROUPS = [
 ];
 
 const ENDINGS = {
-  none: { m:{nom:'er',akk:'en',dat:'em'}, f:{nom:'e',akk:'e',dat:'er'}, n:{nom:'es',akk:'es',dat:'em'} },
-  def:  { m:{nom:'e',akk:'en',dat:'en'},  f:{nom:'e',akk:'e',dat:'en'},  n:{nom:'e',akk:'e',dat:'en'} },
-  ind:  { m:{nom:'er',akk:'en',dat:'en'}, f:{nom:'e',akk:'e',dat:'en'},  n:{nom:'es',akk:'es',dat:'en'} },
+  none: { m:{nom:'er',akk:'en',dat:'em'}, f:{nom:'e',akk:'e',dat:'er'}, n:{nom:'es',akk:'es',dat:'em'}, p:{nom:'e',akk:'e',dat:'en'} },
+  def:  { m:{nom:'e',akk:'en',dat:'en'},  f:{nom:'e',akk:'e',dat:'en'},  n:{nom:'e',akk:'e',dat:'en'},  p:{nom:'en',akk:'en',dat:'en'} },
+  ind:  { m:{nom:'er',akk:'en',dat:'en'}, f:{nom:'e',akk:'e',dat:'en'},  n:{nom:'es',akk:'es',dat:'en'}, p:{nom:'en',akk:'en',dat:'en'} },
 };
 
 const ART = {
   m: { nom:'der', akk:'den', dat:'dem' },
   f: { nom:'die', akk:'die', dat:'der' },
   n: { nom:'das', akk:'das', dat:'dem' },
+  p: { nom:'die', akk:'die', dat:'den' },
 };
 
 const DAT_PREP = /^(mit|in|auf|aus|zu|von|bei|an|über|unter|für|fuer)$/i;
 const AKK_VERB = /^(hinzufügen|hinzufuegen|dazugeben|einrühren|einruehren|untermischen|schneiden|würfeln|wuerfeln|geben|gießen|giessen|bestreuen|anbraten|braten|anschwitzen|dünsten|duensten|kochen|garen|einstreuen|rösten|roesten|hacken|zerkleinern|reiben|raspeln|pressen|unterheben|verrühren|verruehren|mischen|vermengen|würzen|wuerzen|marinieren)$/i;
 
 function escapeRegExp(s) { return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
-function cleanName(name) { return String(name || '').split('(')[0].replace(/\s+/g, ' ').trim(); }
+
+function cleanName(name) {
+  return String(name || '')
+    .split('(')[0]
+    .split(',')[0]
+    .replace(/^\s*\d+(?:[.,]\d+)?\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function lastWord(name) {
   const parts = cleanName(name).split(/\s+/).filter(Boolean);
   return parts.length ? parts[parts.length - 1].toLowerCase() : '';
 }
+
 function confidentGender(name) {
   const last = lastWord(name);
   if (!last) return null;
@@ -71,9 +82,12 @@ function confidentGender(name) {
   }
   if (/(chen|lein|ment|püree|pulver|wasser|öl|oel|salz|mark)$/.test(last)) return 'n';
   if (last.endsWith('e') && !/^(gemuese|gemüse)$/.test(last)) return 'f';
+  if (last.endsWith('en')) return 'p';
   return null;
 }
+
 function genderOf(name) { return confidentGender(name) || 'm'; }
+
 function adjStemOf(token) {
   const t = String(token || '').toLowerCase();
   const candidates = [t, t.replace(/(er|e|es|em|en)$/, '')];
@@ -83,6 +97,7 @@ function adjStemOf(token) {
   }
   return null;
 }
+
 function adjAlternation(canonical) {
   for (let i = 0; i < ADJ_GROUPS.length; i++) {
     if (ADJ_GROUPS[i][0] === canonical) {
@@ -91,7 +106,9 @@ function adjAlternation(canonical) {
   }
   return '(?:' + escapeRegExp(canonical) + ')';
 }
+
 function adjEnding(stem, g, kase, det) { return stem + ENDINGS[det][g][kase]; }
+
 function sentenceBefore(text, idx) {
   const head = text.slice(0, idx);
   let cut = -1;
@@ -101,6 +118,7 @@ function sentenceBefore(text, idx) {
   });
   return head.slice(cut + 1).slice(-120).trim();
 }
+
 function caseFromWalk(words, nameSet) {
   for (let i = words.length - 1; i >= 0; i--) {
     const w = words[i].toLowerCase();
@@ -112,6 +130,7 @@ function caseFromWalk(words, nameSet) {
   }
   return null;
 }
+
 function buildNameSet(names) {
   const set = {};
   names.forEach(function (n) {
@@ -123,6 +142,7 @@ function buildNameSet(names) {
   });
   return set;
 }
+
 function declineContext(text, idx, nameSet, g) {
   const before = sentenceBefore(text, idx);
   const words = before.match(/[A-Za-zÄÖÜäöüß]+/g) || [];
@@ -144,33 +164,22 @@ function declineContext(text, idx, nameSet, g) {
   }
   return { det: det, kase: kase };
 }
-function pluralOfName(name) {
-  const last = lastWord(name);
-  if (!last) return null;
-  if (PLURAL_MAP[last]) return PLURAL_MAP[last];
-  if (/el$/.test(last)) return last + 'n';
-  if (/e$/.test(last) && !/ee$/.test(last)) return last + 'n';
-  return null;
-}
+
 function namePattern(name) {
   const c = cleanName(name);
   const parts = c.split(/\s+/).filter(Boolean);
-  let base;
   if (parts.length >= 2) {
     const stem = adjStemOf(parts[0]);
     if (stem) {
-      base = '(?:' + adjAlternation(stem) + '(?:er|e|es|em|en)?\\s+'
-        + escapeRegExp(parts.slice(1).join(' ')) + '|' + escapeRegExp(c) + ')';
+      const nounPart = parts.slice(1).join(' ');
+      return '(?:' + escapeRegExp(c)
+        + '|' + adjAlternation(stem) + '(?:er|e|es|em|en)?\\s+' + escapeRegExp(nounPart)
+        + '|' + escapeRegExp(nounPart) + ')';
     }
   }
-  if (!base) base = escapeRegExp(c);
-  const plural = pluralOfName(name);
-  if (plural && plural.toLowerCase() !== lastWord(name)) {
-    const plName = parts.slice(0, -1).concat(plural).join(' ');
-    base = '(?:' + base + '|' + escapeRegExp(plName) + ')';
-  }
-  return base;
+  return escapeRegExp(c);
 }
+
 function forwardHasAkkVerb(text, idx) {
   const tail = text.slice(idx);
   const cut = tail.search(/[.!?]/);
@@ -183,6 +192,7 @@ function forwardHasAkkVerb(text, idx) {
   }
   return false;
 }
+
 function insertUndArticlePatterns(out, names) {
   names.forEach(function (a) {
     names.forEach(function (b) {
@@ -191,10 +201,18 @@ function insertUndArticlePatterns(out, names) {
       out = out.replace(new RegExp('\\b(der|die|das|den|dem)\\s+(' + A + ')\\s+(der|die|das|den|dem)\\s+(' + B + ')\\b', 'gi'), '$2 und $4');
       out = out.replace(new RegExp('\\b(der|die|das|den|dem)\\s+(' + A + ')\\s+(' + B + ')\\b', 'gi'), '$1 $2 und $3');
       out = out.replace(new RegExp('\\b(' + A + ')\\s*,?\\s+(der|die|das|den|dem)\\s+(' + B + ')\\b', 'gi'), '$1 und $3');
+      out = out.replace(new RegExp('(^|[^A-Za-zÄÖÜäöüß])(' + A + ')\\s+und\\s+(der|die|das|den|dem)\\s+(' + B + ')\\b', 'gi'), function (m, pre, nameA, art, nameB) {
+        const before = sentenceBefore(out, out.indexOf(m));
+        const words = before.match(/[A-Za-zÄÖÜäöüß]+/g) || [];
+        const lastWordX = words.length ? words[words.length - 1].toLowerCase() : '';
+        if (/^(der|die|das|den|dem|ein|eine|einen|einem|einer)$/.test(lastWordX)) return m;
+        return pre + nameA + ' und ' + nameB;
+      });
     });
   });
   return out;
 }
+
 function insertUndBare(out, names) {
   names.forEach(function (a) {
     names.forEach(function (b) {
@@ -212,6 +230,7 @@ function insertUndBare(out, names) {
   });
   return out;
 }
+
 function fixArticles(out, names, nameSet) {
   names.forEach(function (name) {
     const g = confidentGender(name);
@@ -230,7 +249,12 @@ function fixArticles(out, names, nameSet) {
         if (kase === 'nom' && /^(der|die|das)$/.test(a) && forwardHasAkkVerb(out, idx + m.length)) {
           kase = 'akk';
         }
-        const correct = ART[g][kase];
+        let correct;
+        if (g === 'p') {
+          correct = a === 'das' ? 'die' : a === 'dem' ? 'den' : (a === 'der' ? (kase === 'dat' ? 'den' : 'die') : a);
+        } else {
+          correct = ART[g][kase];
+        }
         if (correct === a) return m;
         return correct + ' ' + noun;
       });
@@ -238,6 +262,7 @@ function fixArticles(out, names, nameSet) {
   });
   return out;
 }
+
 function fixAdjectives(out, names, nameSet) {
   names.forEach(function (name) {
     const parts = cleanName(name).split(/\s+/).filter(Boolean);
@@ -262,30 +287,45 @@ function fixAdjectives(out, names, nameSet) {
   });
   return out;
 }
+
 function fixPortionVessels(out) {
   out = out.replace(/\bin\s+(?:Schalen|Schuesseln|Schüsseln)\s+(füllen|fuellen|geben|verteilen|anrichten)\b/gi, 'in eine Schale $1');
   out = out.replace(/\bauf\s+(?:Schalen|Tellern?)\s+(verteilen|anrichten|servieren)\b/gi, 'auf einen Teller $1');
   return out;
 }
+
 function fixSentenceCase(out) {
   return out.replace(/(^|[.!?]\s+)([a-zäöüß])/g, function (m, p, ch) { return p + ch.toUpperCase(); });
 }
+
+const DEBUG = process.env.PROSE_DE_DEBUG === '1';
+function debug(tag, val) {
+  if (!DEBUG) return;
+  console.log('[prose-de] ' + tag + '=' + (typeof val === 'string' ? val : JSON.stringify(val)));
+}
+
 function polishStepText(text, ctx, lang) {
   let out = String(text == null ? '' : text);
+  debug('input', out);
   if (!out) return out;
   if (lang && String(lang).toLowerCase() !== 'de') return out;
   const c = ctx || {};
+  debug('ingredientNamesRaw', c.ingredientNames);
   const names = (c.ingredientNames || []).map(cleanName).filter(function (n) { return n.length >= 2; }).sort(function (a, b) { return b.length - a.length; });
+  debug('ingredientNames', names);
   if (!names.length) return out;
   const nameSet = buildNameSet(names);
   out = insertUndArticlePatterns(out, names);
   out = insertUndBare(out, names);
+  debug('afterUnd', out);
   out = fixArticles(out, names, nameSet);
   out = fixAdjectives(out, names, nameSet);
   if (Number(c.portions) === 1) out = fixPortionVessels(out);
   out = fixSentenceCase(out);
+  debug('output', out);
   return out;
 }
+
 module.exports = {
   polishStepText: polishStepText,
   genderOf: genderOf,
