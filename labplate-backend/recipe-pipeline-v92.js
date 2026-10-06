@@ -7,6 +7,7 @@
 const validator = require('./recipe-validator');
 const portions = require('./recipe-portions');
 const prose = require('./recipe-prose-de');
+const catalog = require('./nutri-catalog');
 
 const MAX_VALIDATION_ATTEMPTS = 3;
 const DEFAULT_TARGET_SERVINGS = 1;
@@ -409,6 +410,17 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     } else {
       ingredients = enforcedDisplay.ingredients;
     }
+  }
+
+  // Naehrwert-Override: gepruefter Katalog (USDA FDC / BLS 4.0) ersetzt
+  // die von der KI geschaetzten Makros pro 100 g, sobald der Zutatenname
+  // im Katalog steht. Siehe nutri-catalog.js.
+  try {
+    const _catalogStats = catalog.applyCatalogOverride(ingredients);
+    console.log('[recipe-v92] catalog_override overridden=' + _catalogStats.overridden +
+                ' unchanged=' + _catalogStats.unchanged + ' total=' + _catalogStats.total);
+  } catch (e) {
+    console.log('[recipe-v92] catalog_override_failed ' + (e && e.message ? e.message : String(e)));
   }
 
   // Nährwerte nur aus skalierten finalIngredients als Portionswerte ausgeben.
