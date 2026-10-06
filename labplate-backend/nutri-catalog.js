@@ -418,6 +418,152 @@ const CATALOG = {
     per100g: { protein: 3.5, fat: 12.0, netCarbs: 13.0, fiber: 5.0, kcal: 173 },
     source: 'Herstellerangabe (typisch fuer Thai Red Curry Paste; kein USDA-FDC-Standardeintrag)',
   },
+
+  // ---------- ERWEITERUNG 24 Zutaten 2026-10-06 ----------
+  turkey_breast: {
+    displayName: 'Putenbrust',
+    aliases: ['pute', 'putenbrust', 'putenbrustfilet', 'truthahn', 'turkey', 'turkey breast'],
+    per100g: { protein: 23.7, fat: 1.5, netCarbs: 0.1, fiber: 0.0, kcal: 114 },
+    source: 'USDA FDC 171098 (Turkey, whole, breast, meat only, raw)',
+  },
+  pork_tenderloin: {
+    displayName: 'Schweinefilet',
+    aliases: ['schweinefilet', 'schweinfilet', 'schweinefilet (mager)', 'pork tenderloin', 'pork fillet'],
+    per100g: { protein: 21.0, fat: 2.2, netCarbs: 0.0, fiber: 0.0, kcal: 109 },
+    source: 'USDA FDC 168249 (Pork, tenderloin, separable lean only, raw)',
+  },
+  shrimp: {
+    displayName: 'Garnelen',
+    aliases: ['garnelen', 'garnele', 'shrimp', 'prawns', 'prawn', 'crevetten'],
+    per100g: { protein: 20.1, fat: 0.5, netCarbs: 0.0, fiber: 0.0, kcal: 85 },
+    source: 'USDA FDC 175179 (Crustaceans, shrimp, raw)',
+  },
+  tuna_canned: {
+    displayName: 'Thunfisch (Dose, in Wasser)',
+    aliases: ['thunfisch', 'thunfisch (dose)', 'thunfisch in wasser', 'tuna', 'tuna canned'],
+    per100g: { protein: 25.5, fat: 0.8, netCarbs: 0.0, fiber: 0.0, kcal: 116 },
+    source: 'USDA FDC 171986 (Fish, tuna, light, canned in water, without salt, drained)',
+  },
+  feta: {
+    displayName: 'Feta',
+    aliases: ['feta', 'feta (schafskaese)', 'feta schafskäse', 'feta cheese'],
+    per100g: { protein: 14.2, fat: 21.5, netCarbs: 3.9, fiber: 0.0, kcal: 265 },
+    source: 'USDA FDC 173420 (Cheese, feta)',
+  },
+  cottage_cheese: {
+    displayName: 'Huettenkaese',
+    aliases: ['huettenkaese', 'hüttenkäse', 'cottage cheese', 'koerniger frischkaese', 'körniger frischkäse'],
+    per100g: { protein: 12.4, fat: 1.0, netCarbs: 2.7, fiber: 0.0, kcal: 72 },
+    source: 'USDA FDC 173417 (Cheese, cottage, lowfat, 1% milkfat)',
+  },
+  cream_cheese: {
+    displayName: 'Frischkaese',
+    aliases: ['frischkaese', 'frischkäse', 'cream cheese', 'philadelphia'],
+    per100g: { protein: 6.2, fat: 34.4, netCarbs: 5.5, fiber: 0.0, kcal: 350 },
+    source: 'USDA FDC 173418 (Cheese, cream)',
+  },
+  kale: {
+    displayName: 'Gruenkohl',
+    aliases: ['gruenkohl', 'grünkohl', 'kale', 'federkohl'],
+    per100g: { protein: 2.9, fat: 1.5, netCarbs: 0.3, fiber: 4.1, kcal: 35 },
+    source: 'USDA FDC 168421 (Kale, raw)',
+  },
+  brussels_sprouts: {
+    displayName: 'Rosenkohl',
+    aliases: ['rosenkohl', 'brussels sprouts', 'kohlsprossen'],
+    per100g: { protein: 3.4, fat: 0.3, netCarbs: 5.2, fiber: 3.8, kcal: 43 },
+    source: 'USDA FDC 170383 (Brussels sprouts, raw)',
+  },
+  cabbage_white: {
+    displayName: 'Weisskohl',
+    aliases: ['weisskohl', 'weißkohl', 'kraut', 'weisskraut', 'weißkraut', 'cabbage'],
+    per100g: { protein: 1.3, fat: 0.1, netCarbs: 3.3, fiber: 2.5, kcal: 25 },
+    source: 'USDA FDC 169975 (Cabbage, raw)',
+  },
+  leek: {
+    displayName: 'Lauch',
+    aliases: ['lauch', 'porree', 'leek'],
+    per100g: { protein: 1.5, fat: 0.3, netCarbs: 12.4, fiber: 1.8, kcal: 61 },
+    source: 'USDA FDC 169246 (Leeks, bulb and lower leaf-portion, raw)',
+  },
+  asparagus: {
+    displayName: 'Spargel',
+    aliases: ['spargel', 'asparagus', 'gruener spargel', 'grüner spargel'],
+    per100g: { protein: 2.2, fat: 0.1, netCarbs: 1.8, fiber: 2.1, kcal: 20 },
+    source: 'USDA FDC 168389 (Asparagus, raw)',
+  },
+  eggplant: {
+    displayName: 'Aubergine',
+    aliases: ['aubergine', 'auberginen', 'eggplant', 'melanzani'],
+    per100g: { protein: 1.0, fat: 0.2, netCarbs: 2.9, fiber: 3.0, kcal: 25 },
+    source: 'USDA FDC 169228 (Eggplant, raw)',
+  },
+  celery: {
+    displayName: 'Sellerie (Staudensellerie)',
+    aliases: ['sellerie', 'staudensellerie', 'bleichsellerie', 'celery'],
+    per100g: { protein: 0.7, fat: 0.2, netCarbs: 1.4, fiber: 1.6, kcal: 14 },
+    source: 'USDA FDC 169988 (Celery, raw)',
+  },
+  carrot: {
+    displayName: 'Karotte',
+    aliases: ['karotte', 'karotten', 'moehre', 'möhre', 'moehren', 'möhren', 'carrot', 'carrots'],
+    per100g: { protein: 0.9, fat: 0.2, netCarbs: 6.8, fiber: 2.8, kcal: 41 },
+    source: 'USDA FDC 170393 (Carrots, raw)',
+  },
+  cream_heavy: {
+    displayName: 'Sahne (Schlagsahne)',
+    aliases: ['sahne', 'schlagsahne', 'suesse sahne', 'süße sahne', 'heavy cream', 'whipping cream'],
+    per100g: { protein: 2.8, fat: 36.1, netCarbs: 2.8, fiber: 0.0, kcal: 340 },
+    source: 'USDA FDC 170859 (Cream, fluid, heavy whipping)',
+  },
+  creme_fraiche: {
+    displayName: 'Schmand / Creme fraiche',
+    aliases: ['schmand', 'creme fraiche', 'crème fraîche', 'saure sahne', 'sour cream'],
+    per100g: { protein: 2.4, fat: 19.4, netCarbs: 4.6, fiber: 0.0, kcal: 198 },
+    source: 'USDA FDC 171257 (Cream, sour, cultured)',
+  },
+  milk_whole: {
+    displayName: 'Vollmilch',
+    aliases: ['milch', 'vollmilch', 'milch (3.5%)', 'whole milk'],
+    per100g: { protein: 3.2, fat: 3.3, netCarbs: 4.8, fiber: 0.0, kcal: 61 },
+    source: 'USDA FDC 171265 (Milk, whole, 3.25% milkfat)',
+  },
+  cashews: {
+    displayName: 'Cashewkerne',
+    aliases: ['cashew', 'cashews', 'cashewkerne', 'cashewnuesse', 'cashewnüsse'],
+    per100g: { protein: 18.2, fat: 43.8, netCarbs: 26.9, fiber: 3.3, kcal: 553 },
+    source: 'USDA FDC 170162 (Nuts, cashew nuts, raw)',
+  },
+  hazelnuts: {
+    displayName: 'Haselnuesse',
+    aliases: ['haselnuss', 'haselnuesse', 'haselnüsse', 'hazelnuts'],
+    per100g: { protein: 15.0, fat: 60.8, netCarbs: 7.0, fiber: 9.7, kcal: 628 },
+    source: 'USDA FDC 170581 (Nuts, hazelnuts or filberts)',
+  },
+  pumpkin_seeds: {
+    displayName: 'Kuerbiskerne',
+    aliases: ['kuerbiskerne', 'kürbiskerne', 'kuerbiskern', 'kürbiskern', 'pepitas', 'pumpkin seeds'],
+    per100g: { protein: 30.2, fat: 49.0, netCarbs: 4.7, fiber: 6.0, kcal: 559 },
+    source: 'USDA FDC 170556 (Seeds, pumpkin and squash seed kernels, dried)',
+  },
+  coconut_flakes: {
+    displayName: 'Kokosraspeln',
+    aliases: ['kokosraspeln', 'kokosflocken', 'kokosnuss raspeln', 'coconut flakes', 'coconut shredded'],
+    per100g: { protein: 6.9, fat: 64.5, netCarbs: 7.3, fiber: 16.3, kcal: 660 },
+    source: 'USDA FDC 170170 (Nuts, coconut meat, dried, not sweetened)',
+  },
+  ghee: {
+    displayName: 'Butterschmalz (Ghee)',
+    aliases: ['ghee', 'butterschmalz', 'butter clarified'],
+    per100g: { protein: 0.0, fat: 100.0, netCarbs: 0.0, fiber: 0.0, kcal: 900 },
+    source: 'USDA FDC 171314 (Butter, clarified butter / ghee)',
+  },
+  potato: {
+    displayName: 'Kartoffel',
+    aliases: ['kartoffel', 'kartoffeln', 'erdapfel', 'potato', 'potatoes'],
+    per100g: { protein: 2.1, fat: 0.1, netCarbs: 15.4, fiber: 2.1, kcal: 77 },
+    source: 'USDA FDC 170026 (Potatoes, flesh and skin, raw)',
+  },
 };
 
 // ---------- Matching ----------
