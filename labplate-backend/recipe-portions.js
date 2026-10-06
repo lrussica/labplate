@@ -337,7 +337,7 @@ function ingredientMapFromList(finalIngredients, idKey) {
 
 function isMeatOrFishName(name) {
   const n = String(name || '').toLowerCase();
-  return /hack|fleisch|rind|schwein|huhn|hähnchen|haehnchen|pute|lachs|fisch|garnele|thunfisch|truthahn|kalb|lamm|wurst|speck|bacon|tofu|tempeh/.test(n);
+  return /hack|fleisch|rind|schwein|huhn|hähnchen|haehnchen|pute|lachs|fisch|garnele|thunfisch|truthahn|kalb|lamm|wurst|speck|bacon/.test(n);
 }
 
 function isStapleCarbName(name) {
