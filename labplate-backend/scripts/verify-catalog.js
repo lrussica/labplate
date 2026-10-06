@@ -25,8 +25,8 @@ if (!process.env.USDA_API_KEY) {
   process.exit(1);
 }
 
-const usda = require('./api/usda');
-const catalog = require('./nutri-catalog');
+const usda = require('../api/usda');
+const catalog = require('../nutri-catalog');
 
 function fdcIdFromSource(source) {
   const m = String(source || '').match(/(\d{4,7})/);

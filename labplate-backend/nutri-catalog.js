@@ -211,9 +211,106 @@ const CATALOG = {
   },
   curry_powder: {
     displayName: 'Currypulver',
-    aliases: ['currypulver', 'curry', 'curry-pulver', 'curry pulver', 'curry-paste (rot)', 'curry-paste', 'rote curry paste', 'rote curry-paste'],
+    aliases: ['currypulver', 'curry', 'curry-pulver', 'curry pulver'],
     per100g: { protein: 14.3, fat: 14.0, netCarbs: 2.6, fiber: 53.2, kcal: 325 },
-    source: 'USDA FDC 170924 (Spices, curry powder)',
+  },
+
+  // ---------- ERWEITERUNG 2026-10-06 (USDA-verifiziert) ----------
+  onion_yellow: {
+    displayName: 'Zwiebel (gelb)',
+    aliases: ['zwiebel', 'zwiebel (gelb)', 'zwiebel gelb', 'gelbe zwiebel', 'onion'],
+    per100g: { protein: 1.1, fat: 0.1, netCarbs: 7.6, fiber: 1.7, kcal: 40 },
+    source: 'USDA FDC 170000 (Onions, raw)',
+  },
+  garlic: {
+    displayName: 'Knoblauch',
+    aliases: ['knoblauch', 'knoblauchzehe', 'knoblauchzehen', 'zehe knoblauch', 'garlic'],
+    per100g: { protein: 6.4, fat: 0.5, netCarbs: 31.0, fiber: 2.1, kcal: 149 },
+    source: 'USDA FDC 169230 (Garlic, raw)',
+  },
+  ginger_fresh: {
+    displayName: 'Ingwer (frisch)',
+    aliases: ['ingwer', 'ingwer (frisch)', 'ingwer frisch', 'frischer ingwer', 'ginger'],
+    per100g: { protein: 1.8, fat: 0.8, netCarbs: 15.8, fiber: 2.0, kcal: 80 },
+    source: 'USDA FDC 169231 (Ginger root, raw)',
+  },
+  lime_juice: {
+    displayName: 'Limettensaft',
+    aliases: ['limettensaft', 'saft einer limette', 'limette saft', 'lime juice'],
+    per100g: { protein: 0.4, fat: 0.1, netCarbs: 8.0, fiber: 0.4, kcal: 25 },
+    source: 'USDA FDC 168156 (Lime juice, raw)',
+  },
+  lemon_juice: {
+    displayName: 'Zitronensaft',
+    aliases: ['zitronensaft', 'saft einer zitrone', 'zitrone saft', 'lemon juice'],
+    per100g: { protein: 0.4, fat: 0.2, netCarbs: 6.6, fiber: 0.3, kcal: 22 },
+    source: 'USDA FDC 167747 (Lemon juice, raw)',
+  },
+  soy_sauce: {
+    displayName: 'Sojasauce',
+    aliases: ['sojasauce', 'soja sauce', 'soya sauce', 'soy sauce'],
+    per100g: { protein: 8.1, fat: 0.6, netCarbs: 4.1, fiber: 0.8, kcal: 53 },
+    source: 'USDA FDC 174277 (Soy sauce made from soy and wheat / shoyu)',
+  },
+  parmesan: {
+    displayName: 'Parmesan',
+    aliases: ['parmesan', 'parmesankaese', 'parmigiano', 'parmigiano reggiano'],
+    per100g: { protein: 35.8, fat: 25.0, netCarbs: 3.2, fiber: 0.0, kcal: 392 },
+    source: 'USDA FDC 170848 (Cheese, parmesan, hard)',
+  },
+  mozzarella: {
+    displayName: 'Mozzarella',
+    aliases: ['mozzarella', 'mozzarella (frisch)', 'bueffelmozzarella'],
+    per100g: { protein: 22.2, fat: 22.1, netCarbs: 2.4, fiber: 0.0, kcal: 299 },
+    source: 'USDA FDC 170845 (Cheese, mozzarella, whole milk)',
+  },
+  gouda: {
+    displayName: 'Gouda',
+    aliases: ['gouda', 'gouda kaese', 'goudakaese'],
+    per100g: { protein: 24.9, fat: 27.4, netCarbs: 2.2, fiber: 0.0, kcal: 356 },
+    source: 'USDA FDC 171241 (Cheese, gouda)',
+  },
+  almond_flour: {
+    displayName: 'Mandelmehl',
+    aliases: ['mandelmehl', 'mandel mehl', 'almond flour'],
+    per100g: { protein: 26.2, fat: 50.2, netCarbs: 6.9, fiber: 9.3, kcal: 584 },
+    source: 'USDA FDC 2261420 (Flour, almond; kcal aus Makros berechnet, Foundation ohne kcal-Wert)',
+  },
+  peanuts: {
+    displayName: 'Erdnuesse',
+    aliases: ['erdnuesse', 'erdnuss', 'erdnusskerne', 'peanuts'],
+    per100g: { protein: 25.2, fat: 48.8, netCarbs: 8.0, fiber: 8.5, kcal: 563 },
+    source: 'USDA FDC 172434 (Peanuts, virginia, raw)',
+  },
+  sesame_seeds: {
+    displayName: 'Sesam',
+    aliases: ['sesam', 'sesamsamen', 'sesamsamen (geroestet)', 'sesamkoerner', 'sesame'],
+    per100g: { protein: 17.7, fat: 49.7, netCarbs: 11.6, fiber: 11.8, kcal: 573 },
+    source: 'USDA FDC 170150 (Seeds, sesame seeds, whole, dried)',
+  },
+  spring_onion: {
+    displayName: 'Fruehlingszwiebel',
+    aliases: ['fruehlingszwiebel', 'fruehlingszwiebeln', 'junge zwiebel', 'scallion'],
+    per100g: { protein: 1.8, fat: 0.2, netCarbs: 4.7, fiber: 2.6, kcal: 32 },
+    source: 'USDA FDC 170005 (Onions, spring or scallions, raw)',
+  },
+  cucumber: {
+    displayName: 'Gurke',
+    aliases: ['gurke', 'gurken', 'salatgurke', 'cucumber'],
+    per100g: { protein: 0.7, fat: 0.1, netCarbs: 3.1, fiber: 0.5, kcal: 15 },
+    source: 'USDA FDC 168409 (Cucumber, with peel, raw)',
+  },
+  mushroom_button: {
+    displayName: 'Champignons',
+    aliases: ['champignons', 'champignon', 'weisse champignons', 'button mushroom'],
+    per100g: { protein: 3.1, fat: 0.3, netCarbs: 2.3, fiber: 1.0, kcal: 22 },
+    source: 'USDA FDC 169251 (Mushrooms, white, raw)',
+  },
+  canola_oil: {
+    displayName: 'Rapsoel',
+    aliases: ['rapsoel', 'raps-oel', 'raps oel', 'canola oil'],
+    per100g: { protein: 0, fat: 100.0, netCarbs: 0, fiber: 0, kcal: 884 },
+    source: 'USDA FDC 172336 (Oil, canola)',
   },
 };
 
