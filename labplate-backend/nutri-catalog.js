@@ -410,6 +410,14 @@ const CATALOG = {
     per100g: { protein: 14.1, fat: 12.9, netCarbs: 19.1, fiber: 34.9, kcal: 282 },
     source: 'USDA FDC 171329 (Spices, paprika)',
   },
+  curry_paste_red: {
+    displayName: 'Curry-Paste (rot)',
+    aliases: ['curry-paste (rot)', 'curry-paste rot', 'curry paste (rot)', 'curry paste rot',
+              'currypaste (rot)', 'currypaste rot', 'rote curry paste', 'rote curry-paste',
+              'rote currypaste', 'thai curry paste', 'thai currypaste', 'red curry paste'],
+    per100g: { protein: 3.5, fat: 12.0, netCarbs: 13.0, fiber: 5.0, kcal: 173 },
+    source: 'Herstellerangabe (typisch fuer Thai Red Curry Paste; kein USDA-FDC-Standardeintrag)',
+  },
 };
 
 // ---------- Matching ----------
