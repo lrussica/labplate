@@ -12,20 +12,20 @@ const CATALOG = {
   tofu_firm: {
     displayName: 'Tofu, fest',
     aliases: ['tofu (fest)', 'tofu fest', 'tofu, fest', 'fester tofu', 'festes tofu', 'tofu'],
-    per100g: { protein: 17.0, fat: 8.5, netCarbs: 2.0, fiber: 1.5, kcal: 152 },
-    source: 'USDA FDC 172476 (Tofu, firm)',
+    per100g: { protein: 17.3, fat: 8.7, netCarbs: 0.5, fiber: 2.3, kcal: 144 },
+    source: 'USDA FDC 172475 (Tofu, raw, firm, prepared with calcium sulfate)',
   },
   tempeh: {
     displayName: 'Tempeh',
     aliases: ['tempeh'],
-    per100g: { protein: 20.3, fat: 10.8, netCarbs: 6.4, fiber: 1.4, kcal: 195 },
-    source: 'USDA FDC 174272',
+    per100g: { protein: 20.3, fat: 10.8, netCarbs: 7.6, fiber: 1.4, kcal: 192 },
+    source: 'USDA FDC 174272 (Tempeh; Ballaststoffe fehlen bei USDA, Wert aus BLS-Schaetzung)',
   },
   chicken_breast: {
     displayName: 'Haehnchenbrust (roh)',
     aliases: ['haehnchenbrust', 'haehnchenbrust (roh)', 'haehnerbrust', 'huhn', 'haehnchen', 'chicken breast'],
-    per100g: { protein: 23.1, fat: 1.2, netCarbs: 0, fiber: 0, kcal: 106 },
-    source: 'USDA FDC 171477',
+    per100g: { protein: 22.5, fat: 2.6, netCarbs: 0.0, fiber: 0.0, kcal: 120 },
+    source: 'USDA FDC 171077 (Chicken, broilers or fryers, breast, skinless, boneless, meat only, raw)',
   },
   salmon: {
     displayName: 'Lachs (roh)',
@@ -36,40 +36,40 @@ const CATALOG = {
   beef_mince: {
     displayName: 'Rinderhackfleisch',
     aliases: ['rinderhack', 'rinderhackfleisch', 'hackfleisch', 'rind', 'beef mince'],
-    per100g: { protein: 19.4, fat: 15.0, netCarbs: 0, fiber: 0, kcal: 215 },
-    source: 'USDA FDC 174037 (20% fat)',
+    per100g: { protein: 17.7, fat: 18.1, netCarbs: 0.0, fiber: 0.0, kcal: 239 },
+    source: 'USDA FDC 173068 (Beef, Australian, grass-fed, ground, 85/15, raw)',
   },
   egg: {
     displayName: 'Ei',
     aliases: ['ei', 'eier', 'ei (groesse m, ca. 60 g)', 'huehnerei', 'huehnereier'],
-    per100g: { protein: 12.6, fat: 9.5, netCarbs: 0.7, fiber: 0, kcal: 143 },
-    source: 'USDA FDC 748967 (Egg, whole, raw)',
+    per100g: { protein: 12.6, fat: 9.5, netCarbs: 0.7, fiber: 0.0, kcal: 148 },
+    source: 'USDA FDC 748967 (Egg, whole, raw, Grade A Large)',
   },
   lentils_dry: {
     displayName: 'Linsen (trocken)',
     aliases: ['linsen', 'linsen (trocken)', 'linsen trocken', 'rote linsen', 'gruene linsen', 'berglinsen'],
-    per100g: { protein: 25.8, fat: 1.1, netCarbs: 46.7, fiber: 30.5, kcal: 353 },
-    source: 'USDA FDC 172420',
+    per100g: { protein: 24.6, fat: 1.1, netCarbs: 52.7, fiber: 10.7, kcal: 352 },
+    source: 'USDA FDC 172420 (Lentils, raw)',
   },
   chickpeas_cooked: {
     displayName: 'Kichererbsen (gekocht)',
     aliases: ['kichererbsen', 'kichererbsen (gekocht)', 'kichererbsen gekocht'],
-    per100g: { protein: 8.9, fat: 2.6, netCarbs: 18.5, fiber: 7.6, kcal: 164 },
-    source: 'USDA FDC 173757',
+    per100g: { protein: 8.9, fat: 2.6, netCarbs: 19.8, fiber: 7.6, kcal: 164 },
+    source: 'USDA FDC 173757 (Chickpeas, mature seeds, cooked, boiled, without salt)',
   },
   greek_yogurt: {
     displayName: 'Griechischer Joghurt',
     aliases: ['griechischer joghurt', 'joghurt griechisch', 'greek yogurt'],
-    per100g: { protein: 10.0, fat: 5.0, netCarbs: 3.6, fiber: 0, kcal: 97 },
-    source: 'USDA FDC 170894 (10% fat)',
+    per100g: { protein: 9.0, fat: 5.0, netCarbs: 4.0, fiber: 0.0, kcal: 97 },
+    source: 'USDA FDC 171304 (Yogurt, Greek, plain, whole milk)',
   },
 
   // ---------- KOHLENHYDRATE / SAMEN / NUESSE ----------
   rice_dry: {
     displayName: 'Reis (trocken)',
     aliases: ['reis', 'reis (trocken)', 'reis trocken', 'weisser reis', 'basmatireis', 'jasminreis'],
-    per100g: { protein: 6.6, fat: 0.6, netCarbs: 78.5, fiber: 1.3, kcal: 358 },
-    source: 'USDA FDC 168878',
+    per100g: { protein: 7.1, fat: 0.7, netCarbs: 78.7, fiber: 1.3, kcal: 365 },
+    source: 'USDA FDC 169756 (Rice, white, long-grain, regular, raw, unenriched)',
   },
   quinoa_dry: {
     displayName: 'Quinoa (trocken)',
@@ -80,14 +80,14 @@ const CATALOG = {
   oats: {
     displayName: 'Haferflocken',
     aliases: ['haferflocken', 'hafer', 'oats'],
-    per100g: { protein: 13.2, fat: 6.5, netCarbs: 55.7, fiber: 10.1, kcal: 380 },
-    source: 'USDA FDC 173904',
+    per100g: { protein: 13.2, fat: 6.5, netCarbs: 57.6, fiber: 10.1, kcal: 380 },
+    source: 'USDA FDC 173904 (Cereals, oats, regular and quick, unenriched, dry)',
   },
   sweet_potato: {
     displayName: 'Suesskartoffel',
     aliases: ['suesskartoffel', 'suesskartoffeln', 'sweet potato'],
-    per100g: { protein: 1.6, fat: 0.1, netCarbs: 17.1, fiber: 3.0, kcal: 86 },
-    source: 'USDA FDC 168483',
+    per100g: { protein: 1.6, fat: 0.1, netCarbs: 17.1, fiber: 3.0, kcal: 90 },
+    source: 'USDA FDC 168483 (Sweet potato, cooked, baked in skin, flesh, without salt)',
   },
   chia_seeds: {
     displayName: 'Chiasamen',
@@ -136,8 +136,8 @@ const CATALOG = {
   bell_pepper_red: {
     displayName: 'Paprika (rot)',
     aliases: ['paprika', 'paprika (rot)', 'paprika rot', 'rote paprika', 'rote paprikaschote'],
-    per100g: { protein: 1.0, fat: 0.3, netCarbs: 4.2, fiber: 2.1, kcal: 31 },
-    source: 'USDA FDC 170108',
+    per100g: { protein: 1.0, fat: 0.3, netCarbs: 4.2, fiber: 2.1, kcal: 26 },
+    source: 'USDA FDC 170108 (Peppers, sweet, red, raw)',
   },
   tomato: {
     displayName: 'Tomate',
@@ -174,14 +174,14 @@ const CATALOG = {
   coconut_oil: {
     displayName: 'Kokosoel',
     aliases: ['kokosoel', 'kokosfett', 'coconut oil'],
-    per100g: { protein: 0, fat: 100, netCarbs: 0, fiber: 0, kcal: 892 },
-    source: 'USDA FDC 171412',
+    per100g: { protein: 0, fat: 99.1, netCarbs: 0, fiber: 0, kcal: 892 },
+    source: 'USDA FDC 171412 (Oil, coconut)',
   },
   coconut_milk_light: {
     displayName: 'Kokosmilch (light)',
     aliases: ['kokosmilch (light)', 'kokosmilch light', 'light kokosmilch'],
     per100g: { protein: 1.0, fat: 7.0, netCarbs: 1.5, fiber: 0.5, kcal: 73 },
-    source: 'USDA FDC 170172 (light)',
+    source: 'Herstellerangabe (typisch fuer Light-Kokosmilch; kein USDA-FDC-Standardeintrag)',
   },
   coconut_milk_full: {
     displayName: 'Kokosmilch',
@@ -212,8 +212,8 @@ const CATALOG = {
   curry_powder: {
     displayName: 'Currypulver',
     aliases: ['currypulver', 'curry', 'curry-pulver', 'curry pulver', 'curry-paste (rot)', 'curry-paste', 'rote curry paste', 'rote curry-paste'],
-    per100g: { protein: 14.3, fat: 14.0, netCarbs: 33.0, fiber: 33.2, kcal: 325 },
-    source: 'USDA FDC 170923',
+    per100g: { protein: 14.3, fat: 14.0, netCarbs: 2.6, fiber: 53.2, kcal: 325 },
+    source: 'USDA FDC 170924 (Spices, curry powder)',
   },
 };
 
