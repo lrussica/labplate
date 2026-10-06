@@ -205,8 +205,10 @@ function insertUndArticlePatterns(out, names) {
     names.forEach(function (b) {
       if (a === b) return;
       const A = namePattern(a), B = namePattern(b);
-      out = out.replace(new RegExp('\\b(der|die|das|den|dem)\\s+(' + A + ')\\s+(der|die|das|den|dem)\\s+(' + B + ')\\b', 'gi'), '$2 und $4');
-      out = out.replace(new RegExp('\\b(der|die|das|den|dem)\\s+(' + A + ')\\s+(' + B + ')\\b', 'gi'), '$1 $2 und $3');
+      // P1: beide haben Artikel -> BEIDE behalten
+      out = out.replace(new RegExp('\\b(der|die|das|den|dem)\\s+(' + A + ')\\s+(der|die|das|den|dem)\\s+(' + B + ')\\b', 'gi'), '$1 $2 und $3 $4');
+      // P2: nur erster hat Artikel -> beide Artikel WEG
+      out = out.replace(new RegExp('\\b(der|die|das|den|dem)\\s+(' + A + ')\\s+(' + B + ')\\b', 'gi'), '$2 und $3');
       out = out.replace(new RegExp('\\b(' + A + ')\\s*,?\\s+(der|die|das|den|dem)\\s+(' + B + ')\\b', 'gi'), '$1 und $3');
       out = out.replace(new RegExp('(^|[^A-Za-zÄÖÜäöüß])(' + A + ')\\s+und\\s+(der|die|das|den|dem)\\s+(' + B + ')\\b', 'gi'), function (m, pre, nameA, art, nameB) {
         const before = sentenceBefore(out, out.indexOf(m));
@@ -215,6 +217,10 @@ function insertUndArticlePatterns(out, names) {
         if (/^(der|die|das|den|dem|ein|eine|einen|einem|einer)$/.test(lastWordX)) return m;
         return pre + nameA + ' und ' + nameB;
       });
+      // P5: "Artikel NAME1 und NAME2" (NAME2 ohne Artikel) -> Artikel WEG
+      out = out.replace(
+        new RegExp('(^|[^A-Za-zÄÖÜäöüß])(der|die|das|den|dem)\\s+(' + A + ')\\s+und\\s+(' + B + ')\\b', 'gi'),
+        '$1$3 und $4');
     });
   });
   return out;
