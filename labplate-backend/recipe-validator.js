@@ -1333,6 +1333,25 @@ function ingredientNameMentionedInTitle(ingName, dishQuery) {
  * Nur wenn der Titel positiv Protein-Familien nennt (nicht „ohne Linsen…“).
  * @returns {{ ok: boolean, problems: string[], extras: string[] }}
  */
+function isStructuralProteinExempt(ing, recipe, q) {
+  if (!ing) return false;
+  const role = String(ing.culinaryRole || ing.role || '').toLowerCase();
+  const name = String(ing.name || '').toLowerCase();
+  const isEgg = isEggIngredientName(name);
+  const isCheese = /kaese|käse|parmesan|mozzarella|cheddar|gouda|feta|ricotta|emmentaler|gruyere|pecorino|manchego/.test(name);
+  if (!isEgg && !isCheese) return false;
+  if (role === 'binder') return true;
+  const dishPlan = (recipe && recipe.dishPlan) || {};
+  const ctx = String(q) + ' ' + String(dishPlan.dishType || '') + ' ' + String(dishPlan.cookingMethod || '');
+  const bakedDish = /auflauf|casserole|frittata|omelett|quiche|gratin|ueberbacken|überbacken|bake|backen/i.test(ctx);
+  if (!bakedDish) return false;
+  if (isEgg) {
+    const pieces = Number(ing.amount) || 0;
+    return pieces <= 3;
+  }
+  return role === 'topping' || role === 'secondary_protein';
+}
+
 function validateTitleProteinBinding(recipe, dishQuery) {
   const problems = [];
   const extras = [];
@@ -1358,7 +1377,8 @@ function validateTitleProteinBinding(recipe, dishQuery) {
       });
       const allowedByMention = ingredientNameMentionedInTitle(name, q);
       if (!allowedByFamily && !allowedByMention) {
-        extras.push(name);
+        if (!isStructuralProteinExempt(ing, recipe, q)) extras.push(name);
+        else console.log('[title-binding] exempted structural protein:', name, '|', q);
       }
     });
   }
