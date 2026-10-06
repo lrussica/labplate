@@ -247,11 +247,13 @@ function insertUndBare(out, names) {
 function fixArticlesWithAdjective(out, names, nameSet) {
   // "die verquirlten Ei" -> "das verquirlte Ei" (Artikel + Adjektiv + Nomen)
   names.forEach(function (name) {
-    const g = confidentGender(name);
-    if (!g) return;
     const parts = cleanName(name).split(/\s+/);
-    const noun = parts[parts.length - 1];
+    // Wenn das zweite Wort ein Adjektiv ist ("Paprika rot"), nimm das erste als Nomen.
+    const noun = (parts.length === 2 && adjStemOf(parts[1])) ? parts[0] : parts[parts.length - 1];
     if (!noun || noun.length < 2) return;
+    // Genus aus dem Nomen (nicht aus dem ganzen Namen)
+    const g = confidentGender(noun);
+    if (!g) return;
     // Match: Artikel + optionales Adjektiv + Nomen
     // Adjektiv = ein Wort, das auf typische Endung endet
     const adjOpt = '(?:([A-Za-zÄÖÜäöüß]{3,}(?:e|en|er|es|em))\\s+)?';
@@ -338,6 +340,27 @@ function fixAdjectives(out, names, nameSet) {
   return out;
 }
 
+function fixPostposedIngredientNames(out, names, nameSet) {
+  // Erkennt Zutaten-Namen, die als "Nomen Adjektiv" gespeichert sind (z.B. "Paprika rot")
+  // und dreht sie im Text zu "adjektiv Nomen" mit korrekter Deklination.
+  names.forEach(function (name) {
+    const parts = cleanName(name).split(/\s+/).filter(Boolean);
+    if (parts.length !== 2) return;
+    const adjStem = adjStemOf(parts[1]);
+    if (!adjStem) return;
+    const nounPart = parts[0];
+    const g = genderOf(nounPart);
+    out = out.replace(
+      new RegExp('\\b(' + escapeRegExp(nounPart) + ')\\s+(' + adjAlternation(adjStem) + ')\\b', 'gi'),
+      function (m, noun) {
+        const idx = out.indexOf(m);
+        const c = declineContext(out, idx, nameSet, g);
+        return adjEnding(adjStem, g, c.kase, c.det) + ' ' + noun;
+      });
+  });
+  return out;
+}
+
 function fixPostposedAdjectives(out, names, nameSet) {
   // "Paprika rot" -> "rote Paprika", nur wenn Zutat "Rote Paprika" in ingredientNames steht.
   names.forEach(function (name) {
@@ -389,6 +412,7 @@ function polishStepText(text, ctx, lang) {
   out = insertUndArticlePatterns(out, names);
   out = insertUndBare(out, names);
   debug('afterUnd', out);
+  out = fixPostposedIngredientNames(out, names, nameSet);
   out = fixPostposedAdjectives(out, names, nameSet);
   out = fixArticlesWithAdjective(out, names, nameSet);
   out = fixArticles(out, names, nameSet);
