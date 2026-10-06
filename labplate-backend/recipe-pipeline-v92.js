@@ -6,6 +6,7 @@
 
 const validator = require('./recipe-validator');
 const portions = require('./recipe-portions');
+const prose = require('./recipe-prose-de');
 
 const MAX_VALIDATION_ATTEMPTS = 3;
 const DEFAULT_TARGET_SERVINGS = 1;
@@ -545,6 +546,15 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     content = validator.stripQuantityMentionsFromText(content);
     content = validator.smoothProseIngredientGrammar(content);
     content = validator.cleanupStepProseDuplicates(content, ingredients);
+    try {
+      const proseNames = Object.keys(byIdForProse || {}).map(function (k) {
+        return byIdForProse[k] && byIdForProse[k].name;
+      }).filter(Boolean);
+      content = prose.polishStepText(content, {
+        ingredientNames: proseNames,
+        portions: targetServings,
+      }, o.lang || 'de');
+    } catch (_e) { /* best effort */ }
     content = validator.stripTrailingGarnishLine(content).text;
     const title = String(s.title || '').trim();
     const titleLower = title.toLowerCase();
