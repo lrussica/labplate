@@ -931,6 +931,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   // Neue, strikt getrennte KI-Rezept-Pipeline. Original-/DB-Rezepte laufen
   // weiterhin ausschließlich über den bestehenden Pfad darunter.
   if (req.body && req.body.mode === 'ai') {
+    console.log('[BRANCH_DIAG] AI_BRANCH_ENTERED mode=' + req.body.mode);
     const aiResult = await aiRecipeQuality.generateAiRecipe({
       model: resolveRecipeModel(req.body),
       context: {
@@ -1076,6 +1077,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
 
   // Generativ (nicht structured/coach): v9.2 Validierung + Retry (max 3)
   const useV92Pipeline = !payload.structured && flow !== 'coach' && flow !== 'nutri-coach' && flow !== 'core';
+  console.log('[BRANCH_DIAG] V92_CHECK mode=' + req.body.mode + ' useV92=' + useV92Pipeline + ' flow=' + flow + ' structured=' + payload.structured);
   if (useV92Pipeline) {
     const pipelineResult = await core.generateValidatedRecipe({
       payload: payload,
