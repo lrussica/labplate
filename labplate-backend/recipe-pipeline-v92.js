@@ -8,6 +8,7 @@ const validator = require('./recipe-validator');
 const portions = require('./recipe-portions');
 const prose = require('./recipe-prose-de');
 const catalog = require('./nutri-catalog');
+const dietLabels = require('./diet-labels');
 
 const MAX_VALIDATION_ATTEMPTS = 3;
 const DEFAULT_TARGET_SERVINGS = 1;
@@ -446,6 +447,19 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     ballaststoffe_g: Math.round(fiber * 10) / 10,
   };
   const finalNutrition = scaledOk ? nutritionFromAmounts : null;
+
+  // Diaet-Labels deterministisch aus finalen Werten + Zutaten berechnen.
+  // Ersetzt die KI-Schaetzung. Siehe diet-labels.js.
+  try {
+    recipe.diet_labels = dietLabels.computeDietLabels(
+      finalNutrition || nutritionFromAmounts,
+      ingredients
+    );
+    console.log('[recipe-v92] diet_labels_computed ' + JSON.stringify(recipe.diet_labels));
+  } catch (e) {
+    console.log('[recipe-v92] diet_labels_compute_failed ' + (e && e.message ? e.message : String(e)));
+  }
+
   if (scaledOk && finalNutrition) {
     const kcalCheck = portions.validateSinglePortionKcal(finalNutrition, {
       dietLabels: recipe.diet_labels,
