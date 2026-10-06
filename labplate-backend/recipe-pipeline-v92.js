@@ -525,13 +525,15 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     const target = Number(o.targetServings) > 0 ? Number(o.targetServings) : DEFAULT_TARGET_SERVINGS;
     if (target !== 1) return;
     const pluralVerbs = '(verteilen|anrichten|servieren|aufteilen|anbieten|hinrichten|darbieten)';
+    // Optionales Adjektiv zwischen Zahl/Artikel und Nomen ("vier tiefen Tellern")
+    const adjOpt = '(?:[a-z\u00e4\u00f6\u00fc\u00df]+\\s+)?';
     for (let si = 0; si < steps.length; si++) {
       let s = String(steps[si] || '');
-      s = s.replace(new RegExp('\\bauf\\s+(?:vier|zwei|drei|mehrere|verschiedene|beide[n]?)\\s+(?:Schalen|Tellern?|Portionen)\\s+' + pluralVerbs, 'gi'),
+      s = s.replace(new RegExp('\\bauf\\s+(?:vier|zwei|drei|mehrere|verschiedene|beide[n]?)\\s+' + adjOpt + '(?:Schalen|Tellern?|Portionen)\\s+' + pluralVerbs, 'gi'),
         function (_m, verb) { return 'auf einem Teller ' + verb; });
-      s = s.replace(new RegExp('\\bauf\\s+die\\s+(?:Schalen|Teller)\\s+' + pluralVerbs, 'gi'),
+      s = s.replace(new RegExp('\\bauf\\s+die\\s+' + adjOpt + '(?:Schalen|Teller)\\s+' + pluralVerbs, 'gi'),
         function (_m, verb) { return 'auf einem Teller ' + verb; });
-      s = s.replace(new RegExp('\\bauf\\s+(?:Schalen|Tellern|Teller|Portionen)\\s+' + pluralVerbs, 'gi'),
+      s = s.replace(new RegExp('\\bauf\\s+' + adjOpt + '(?:Schalen|Tellern|Teller|Portionen)\\s+' + pluralVerbs, 'gi'),
         function (_m, verb) { return 'auf einem Teller ' + verb; });
       steps[si] = s;
     }
