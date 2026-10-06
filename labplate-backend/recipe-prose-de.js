@@ -31,6 +31,10 @@ const GENDER = {
   filet:'n', gluten:'n',
   // Plural (nur unregelmaessige Endungen — "...en" wird heuristisch erkannt)
   eier:'p', zwiebeln:'p', nudeln:'p',
+  nüsse:'p', erdnüsse:'p', haselnüsse:'p', walnüsse:'p', mandeln:'p',
+  samen:'p', sonnenblumenkerne:'p', kürbiskerne:'p',
+  blätter:'p', blaetter:'p',
+  mix:'m',
 };
 
 const ADJ_GROUPS = [
@@ -69,7 +73,13 @@ function cleanName(name) {
 
 function lastWord(name) {
   const parts = cleanName(name).split(/\s+/).filter(Boolean);
-  return parts.length ? parts[parts.length - 1].toLowerCase() : '';
+  let last = parts.length ? parts[parts.length - 1].toLowerCase() : '';
+  // Bindestrich-Komposita: letztes Teilglied nach letztem '-'
+  if (last.indexOf('-') >= 0) {
+    const sub = last.split('-').filter(Boolean);
+    if (sub.length) last = sub[sub.length - 1];
+  }
+  return last;
 }
 
 function confidentGender(name) {
