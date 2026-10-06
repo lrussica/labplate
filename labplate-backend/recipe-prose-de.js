@@ -168,6 +168,13 @@ function declineContext(text, idx, nameSet, g) {
 function namePattern(name) {
   const c = cleanName(name);
   const parts = c.split(/\s+/).filter(Boolean);
+  // Plural-Name matcht auch Singular ("Zwiebeln" === "Zwiebel")
+  if (parts.length === 1 && confidentGender(c) === 'p') {
+    const sing = c.replace(/n$/, '');
+    if (sing.length >= 3 && sing !== c) {
+      return '(?:' + escapeRegExp(c) + '|' + escapeRegExp(sing) + ')';
+    }
+  }
   if (parts.length >= 2) {
     const stem = adjStemOf(parts[0]);
     if (stem) {
@@ -288,9 +295,29 @@ function fixAdjectives(out, names, nameSet) {
   return out;
 }
 
+function fixPostposedAdjectives(out, names, nameSet) {
+  // "Paprika rot" -> "rote Paprika", nur wenn Zutat "Rote Paprika" in ingredientNames steht.
+  names.forEach(function (name) {
+    const parts = cleanName(name).split(/\s+/).filter(Boolean);
+    if (parts.length < 2) return;
+    const stem = adjStemOf(parts[0]);
+    if (!stem) return;
+    const g = genderOf(name);
+    const nounPart = parts.slice(1).join(' ');
+    out = out.replace(
+      new RegExp('\\b(' + escapeRegExp(nounPart) + ')\\s+(' + adjAlternation(stem) + ')\\b', 'gi'),
+      function (m, noun, adj) {
+        const idx = out.indexOf(m);
+        const c = declineContext(out, idx, nameSet, g);
+        return adjEnding(stem, g, c.kase, c.det) + ' ' + noun;
+      });
+  });
+  return out;
+}
+
 function fixPortionVessels(out) {
-  out = out.replace(/\bin\s+(?:Schalen|Schuesseln|Schüsseln)\s+(füllen|fuellen|geben|verteilen|anrichten)\b/gi, 'in eine Schale $1');
-  out = out.replace(/\bauf\s+(?:Schalen|Tellern?)\s+(verteilen|anrichten|servieren)\b/gi, 'auf einen Teller $1');
+  out = out.replace(/\bin\s+(?:Schalen|Schuesseln|Schüsseln)\s+(füllen|fuellen|gefüllt|gefuellt|geben|gegeben|verteilen|verteilt|anrichten|angerichtet)\b/gi, 'in eine Schale $1');
+  out = out.replace(/\bauf\s+(?:Schalen|Tellern?)\s+(verteilen|verteilt|anrichten|angerichtet|servieren|serviert)\b/gi, 'auf einen Teller $1');
   return out;
 }
 
@@ -298,18 +325,19 @@ function fixSentenceCase(out) {
   return out.replace(/(^|[.!?]\s+)([a-zäöüß])/g, function (m, p, ch) { return p + ch.toUpperCase(); });
 }
 
-const DEBUG = process.env.PROSE_DE_DEBUG === '1';
+let DEBUG_RUNTIME = false;
 function debug(tag, val) {
-  if (!DEBUG) return;
+  if (!DEBUG_RUNTIME) return;
   console.log('[prose-de] ' + tag + '=' + (typeof val === 'string' ? val : JSON.stringify(val)));
 }
 
 function polishStepText(text, ctx, lang) {
   let out = String(text == null ? '' : text);
+  const c = ctx || {};
+  DEBUG_RUNTIME = (process.env.PROSE_DE_DEBUG === '1') || (c.debugProse === true);
   debug('input', out);
   if (!out) return out;
   if (lang && String(lang).toLowerCase() !== 'de') return out;
-  const c = ctx || {};
   debug('ingredientNamesRaw', c.ingredientNames);
   const names = (c.ingredientNames || []).map(cleanName).filter(function (n) { return n.length >= 2; }).sort(function (a, b) { return b.length - a.length; });
   debug('ingredientNames', names);
@@ -318,6 +346,7 @@ function polishStepText(text, ctx, lang) {
   out = insertUndArticlePatterns(out, names);
   out = insertUndBare(out, names);
   debug('afterUnd', out);
+  out = fixPostposedAdjectives(out, names, nameSet);
   out = fixArticles(out, names, nameSet);
   out = fixAdjectives(out, names, nameSet);
   if (Number(c.portions) === 1) out = fixPortionVessels(out);
