@@ -258,7 +258,8 @@ function fixArticlesWithAdjective(out, names, nameSet) {
     // Adjektiv = ein Wort, das auf typische Endung endet
     const adjOpt = '(?:([A-Za-zÄÖÜäöüß]{3,}(?:e|en|er|es|em))\\s+)?';
     out = out.replace(
-      new RegExp('\\b(der|die|das|den|dem)\\s+' + adjOpt + '(' + escapeRegExp(noun) + ')\\b', 'gi'),
+      // Bindestrich-Komposita ausschliessen: "Currypaste-Curry" nicht matchen
+      new RegExp('\\b(der|die|das|den|dem)\\s+' + adjOpt + '(' + escapeRegExp(noun) + ')(?![a-zäöüß-])', 'gi'),
       function (m, art, adj, n) {
         const idx = out.indexOf(m);
         const before = sentenceBefore(out, idx);
@@ -291,7 +292,7 @@ function fixArticles(out, names, nameSet) {
     const variants = [cleanName(name)];
     if (parts.length > 1) variants.push(parts[parts.length - 1]);
     variants.forEach(function (v) {
-      out = out.replace(new RegExp('\\b(der|die|das|den|dem)\\s+(' + escapeRegExp(v) + ')\\b', 'gi'), function (m, art, noun) {
+      out = out.replace(new RegExp('\\b(der|die|das|den|dem)\\s+(' + escapeRegExp(v) + ')(?![a-zäöüß-])', 'gi'), function (m, art, noun) {
         const idx = out.indexOf(m);
         const before = sentenceBefore(out, idx);
         const words = before.match(/[A-Za-zÄÖÜäöüß]+/g) || [];
@@ -335,6 +336,28 @@ function fixAdjectives(out, names, nameSet) {
       const idx = out.indexOf(m);
       const c = declineContext(out, idx, nameSet, g);
       return adjEnding(stem, g, c.kase, c.det) + ' ' + noun;
+    });
+  });
+  return out;
+}
+
+function fixWeitereForm(out, names) {
+  // "weitere Wasser" -> "weiteres Wasser" (Neutrum Singular, OHNE Artikel)
+  // Mit Artikel ("das weitere Wasser") bleibt es unveraendert.
+  names.forEach(function (name) {
+    const parts = cleanName(name).split(/\s+/);
+    const noun = parts[parts.length - 1];
+    if (!noun || noun.length < 2) return;
+    const g = confidentGender(noun);
+    if (g !== 'n') return;
+    const re = new RegExp('(^|[^A-Za-zÄÖÜäöüß])(weitere)\\s+(' + escapeRegExp(noun) + ')(?![a-zäöüß-])', 'gi');
+    out = out.replace(re, function (m, pre, w, n) {
+      // Wenn vor "weitere" ein Artikel steht, unveraendert lassen
+      const before = out.slice(0, out.indexOf(m));
+      const words = before.match(/[A-Za-zÄÖÜäöüß]+/g) || [];
+      const lastWord = words.length ? words[words.length - 1].toLowerCase() : '';
+      if (/^(der|die|das|den|dem|ein|eine|einen|einem|einer)$/.test(lastWord)) return m;
+      return pre + 'weiteres ' + n;
     });
   });
   return out;
@@ -412,6 +435,7 @@ function polishStepText(text, ctx, lang) {
   out = insertUndArticlePatterns(out, names);
   out = insertUndBare(out, names);
   debug('afterUnd', out);
+  out = fixWeitereForm(out, names);
   out = fixPostposedIngredientNames(out, names, nameSet);
   out = fixPostposedAdjectives(out, names, nameSet);
   out = fixArticlesWithAdjective(out, names, nameSet);
