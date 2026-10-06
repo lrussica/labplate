@@ -244,6 +244,43 @@ function insertUndBare(out, names) {
   return out;
 }
 
+function fixArticlesWithAdjective(out, names, nameSet) {
+  // "die verquirlten Ei" -> "das verquirlte Ei" (Artikel + Adjektiv + Nomen)
+  names.forEach(function (name) {
+    const g = confidentGender(name);
+    if (!g) return;
+    const parts = cleanName(name).split(/\s+/);
+    const noun = parts[parts.length - 1];
+    if (!noun || noun.length < 2) return;
+    // Match: Artikel + optionales Adjektiv + Nomen
+    // Adjektiv = ein Wort, das auf typische Endung endet
+    const adjOpt = '(?:([A-Za-zÄÖÜäöüß]{3,}(?:e|en|er|es|em))\\s+)?';
+    out = out.replace(
+      new RegExp('\\b(der|die|das|den|dem)\\s+' + adjOpt + '(' + escapeRegExp(noun) + ')\\b', 'gi'),
+      function (m, art, adj, n) {
+        const idx = out.indexOf(m);
+        const before = sentenceBefore(out, idx);
+        const words = before.match(/[A-Za-zÄÖÜäöüß]+/g) || [];
+        const a = art.toLowerCase();
+        let kase = caseFromWalk(words, nameSet)
+          || (/^dem$/i.test(a) ? 'dat' : /^den$/i.test(a) ? 'akk' : 'nom');
+        if (kase === 'nom' && /^(der|die|das)$/.test(a) && forwardHasAkkVerb(out, idx + m.length)) {
+          kase = 'akk';
+        }
+        const correctArt = ART[g][kase];
+        if (!adj) {
+          // kein Adjektiv - nichts tun, fixArticles macht das
+          return m;
+        }
+        // Adjektiv neu deklinieren (schwach, weil Artikel davor)
+        const adjStem = adj.replace(/(e|en|er|es|em)$/, '');
+        const correctAdj = adjStem + ENDINGS['def'][g][kase];
+        return correctArt + ' ' + correctAdj + ' ' + n;
+      });
+  });
+  return out;
+}
+
 function fixArticles(out, names, nameSet) {
   names.forEach(function (name) {
     const g = confidentGender(name);
@@ -353,6 +390,7 @@ function polishStepText(text, ctx, lang) {
   out = insertUndBare(out, names);
   debug('afterUnd', out);
   out = fixPostposedAdjectives(out, names, nameSet);
+  out = fixArticlesWithAdjective(out, names, nameSet);
   out = fixArticles(out, names, nameSet);
   out = fixAdjectives(out, names, nameSet);
   if (Number(c.portions) === 1) out = fixPortionVessels(out);
