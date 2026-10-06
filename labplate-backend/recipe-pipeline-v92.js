@@ -48,7 +48,9 @@ function buildV92GenerativeSchema() {
       unit: {
         type: 'string',
         enum: ['g', 'ml', 'prise', 'messerspitze', 'stk'],
-        description: 'Eier: "stk". Salz/Pfeffer: "prise"|"messerspitze". Sonst g|ml.',
+        description: 'Nur der Einheiten-Code, NIE ein Zutatenname ("Wasser" ist falsch). ' +
+          'Fluessigkeiten (Wasser, Bruehe, Milch, Saft): "ml". Eier: "stk". ' +
+          'Salz/Pfeffer: "prise"|"messerspitze". Sonst "g" oder "ml".',
       },
       protein_source: {
         type: 'boolean',
@@ -1210,6 +1212,26 @@ async function generateValidatedRecipe(opts) {
 
     const result = await callGroq(requestBody, groqOpts);
     if (result.error) {
+      // Groq-400 mit json_validate_failed = INHALTS-Fehler des Modells
+      // (nicht Provider-Fehler). Als Validation-Failure behandeln -> Retry mit Hinweis.
+      const errBody = String(result.body || '');
+      const isSchemaReject = result.error === 'provider_error' &&
+        Number(result.status) === 400 &&
+        /json_validate_failed|invalid.*json|schema/i.test(errBody);
+      if (isSchemaReject && attempt < MAX_VALIDATION_ATTEMPTS) {
+        lastErrors = [/unit/i.test(errBody)
+          ? 'JSON-Schema verletzt: unit darf NUR "g"|"ml"|"prise"|"messerspitze"|"stk" sein - ' +
+            'NIE ein Zutatenname, NIE leer. Fluessigkeiten (Wasser, Bruehe, Milch, Saft): unit="ml".'
+          : 'JSON-Schema verletzt: alle Pflichtfelder exakt befuellen. Kein Feld weglassen, keine Zusatzfelder.'];
+        logValidationFailure({
+          attempt: attempt,
+          errors: lastErrors,
+          warnings: [],
+          traceId: traceId,
+          aiInstruction: aiInstructionForLog,
+        });
+        continue;
+      }
       return {
         error: result.error,
         status: result.status,
