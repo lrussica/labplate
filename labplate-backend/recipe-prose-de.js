@@ -44,7 +44,7 @@ const ART = {
 };
 
 const DAT_PREP = /^(mit|in|auf|aus|zu|von|bei|an|über|unter|für|fuer)$/i;
-const AKK_VERB = /^(hinzufügen|hinzufuegen|dazugeben|einrühren|einruehren|untermischen|schneiden|würfeln|wuerfeln|geben|gießen|giessen|bestreuen|anbraten|braten|anschwitzen|dünsten|duensten|kochen|garen|einstreuen|rösten|roesten|einrühren)$/i;
+const AKK_VERB = /^(hinzufügen|hinzufuegen|dazugeben|einrühren|einruehren|untermischen|schneiden|würfeln|wuerfeln|geben|gießen|giessen|bestreuen|anbraten|braten|anschwitzen|dünsten|duensten|kochen|garen|einstreuen|rösten|roesten|hacken|zerkleinern|reiben|raspeln|pressen|unterheben|verrühren|verruehren|mischen|vermengen|würzen|wuerzen|marinieren)$/i;
 
 function escapeRegExp(s) { return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 function cleanName(name) { return String(name || '').split('(')[0].replace(/\s+/g, ' ').trim(); }
@@ -135,14 +135,38 @@ function declineContext(text, idx, nameSet, g) {
   }
   return { det: det, kase: kase };
 }
+function namePattern(name) {
+  const c = cleanName(name);
+  const parts = c.split(/\s+/).filter(Boolean);
+  if (parts.length >= 2) {
+    const stem = adjStemOf(parts[0]);
+    if (stem) {
+      return '(?:' + adjAlternation(stem) + '(?:er|e|es|em|en)?\\s+'
+        + escapeRegExp(parts.slice(1).join(' ')) + '|' + escapeRegExp(c) + ')';
+    }
+  }
+  return escapeRegExp(c);
+}
+function forwardHasAkkVerb(text, idx) {
+  const tail = text.slice(idx);
+  const cut = tail.search(/[.!?]/);
+  const seg = cut >= 0 ? tail.slice(0, cut) : tail;
+  const words = seg.match(/[A-Za-zÄÖÜäöüß]+/g) || [];
+  for (let i = 0; i < words.length; i++) {
+    const w = words[i].toLowerCase();
+    if (w === 'und' || w === 'oder' || w === 'sowie') continue;
+    if (AKK_VERB.test(w)) return true;
+  }
+  return false;
+}
 function insertUndArticlePatterns(out, names) {
   names.forEach(function (a) {
     names.forEach(function (b) {
       if (a === b) return;
-      const A = escapeRegExp(a), B = escapeRegExp(b);
+      const A = namePattern(a), B = namePattern(b);
       out = out.replace(new RegExp('\\b(der|die|das|den|dem)\\s+(' + A + ')\\s+(der|die|das|den|dem)\\s+(' + B + ')\\b', 'gi'), '$2 und $4');
       out = out.replace(new RegExp('\\b(der|die|das|den|dem)\\s+(' + A + ')\\s+(' + B + ')\\b', 'gi'), '$1 $2 und $3');
-      out = out.replace(new RegExp('\\b(' + A + ')\\s+(der|die|das|den|dem)\\s+(' + B + ')\\b', 'gi'), '$1 und $3');
+      out = out.replace(new RegExp('\\b(' + A + ')\\s*,?\\s+(der|die|das|den|dem)\\s+(' + B + ')\\b', 'gi'), '$1 und $3');
     });
   });
   return out;
@@ -152,14 +176,14 @@ function insertUndBare(out, names) {
     names.forEach(function (b) {
       names.forEach(function (c) {
         if (a === b || b === c || a === c) return;
-        out = out.replace(new RegExp('\\b(' + escapeRegExp(a) + '),\\s+(' + escapeRegExp(b) + ')\\s+(' + escapeRegExp(c) + ')\\b', 'gi'), '$1, $2 und $3');
+        out = out.replace(new RegExp('\\b(' + namePattern(a) + '),\\s+(' + namePattern(b) + ')\\s+(' + namePattern(c) + ')\\b', 'gi'), '$1, $2 und $3');
       });
     });
   });
   names.forEach(function (a) {
     names.forEach(function (b) {
       if (a === b) return;
-      out = out.replace(new RegExp('\\b(' + escapeRegExp(a) + ')\\s+(?!(?:und|oder|sowie|mit|in|auf|zu|von|bei|aus|an|etwas)\\b)(' + escapeRegExp(b) + ')\\b', 'gi'), '$1 und $2');
+      out = out.replace(new RegExp('\\b(' + namePattern(a) + ')\\s+(?!(?:und|oder|sowie|mit|in|auf|zu|von|bei|aus|an|etwas)\\b)(' + namePattern(b) + ')\\b', 'gi'), '$1 und $2');
     });
   });
   return out;
@@ -176,11 +200,15 @@ function fixArticles(out, names, nameSet) {
         const idx = out.indexOf(m);
         const before = sentenceBefore(out, idx);
         const words = before.match(/[A-Za-zÄÖÜäöüß]+/g) || [];
-        const kase = caseFromWalk(words, nameSet) || (/^dem$/i.test(art) ? 'dat' : /^den$/i.test(art) ? 'akk' : 'nom');
         const a = art.toLowerCase();
-        const mismatch = a === 'dem' ? (g === 'f') : a === 'den' ? (g !== 'm') : a === 'das' ? (g !== 'n') : a === 'die' ? (g !== 'f') : kase === 'dat' ? (g !== 'f') : (g !== 'm');
-        if (!mismatch) return m;
-        return ART[g][kase] + ' ' + noun;
+        let kase = caseFromWalk(words, nameSet)
+          || (/^dem$/i.test(a) ? 'dat' : /^den$/i.test(a) ? 'akk' : 'nom');
+        if (kase === 'nom' && /^(der|die|das)$/.test(a) && forwardHasAkkVerb(out, idx + m.length)) {
+          kase = 'akk';
+        }
+        const correct = ART[g][kase];
+        if (correct === a) return m;
+        return correct + ' ' + noun;
       });
     });
   });
