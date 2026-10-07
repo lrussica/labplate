@@ -7,7 +7,7 @@
 require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
-const core = require('../nutri-recipe-core');
+const core = require('./nutri-recipe-core');
 
 const GROQ_API_KEY = (process.env.GROQ_API_KEY || '').trim();
 const GROQ_MODEL = (process.env.GROQ_MODEL || core.DEFAULT_MODEL).trim();

@@ -218,7 +218,6 @@ app.use((req, res, next) => {
   next();
 });
 app.set('trust proxy', 1);
-// CSP erlaubt Inline-CSS/JS in index.html (Test-Frontend im gleichen Ordner).
 app.use(helmet({
   contentSecurityPolicy: {
     useDefaults: true,
@@ -361,17 +360,6 @@ const photoVerify = createPhotoVerifyHandlers({
 // ---------------------------------------------------------------------
 // Routen
 // ---------------------------------------------------------------------
-app.get('/diag-deploy-check', (req, res) => {
-  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
-  return res.json({
-    marker: 'diag-deploy-2026-10-07-01',
-    build: BUILD_ID,
-    pid: process.pid,
-    uptime_s: Math.round(process.uptime()),
-    ts: new Date().toISOString(),
-  });
-});
-
 app.get('/health', (req, res) => {
   res.status(200).json({
     build: BUILD_ID,
@@ -927,12 +915,6 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     return res.status(200).json(payload);
   }
   const auth = resolveGroqAuth(req.body);
-  const _traceId = String((req.body && (req.body.debug_request_id || req.body.debugTraceId)) || '');
-  const _buildSha = BUILD_ID;
-  if (_traceId) {
-    console.log('[TRACE] ' + _traceId + ' ENTER mode=' + ((req.body && req.body.mode) || '?') +
-      ' build=' + _buildSha + ' pid=' + process.pid);
-  }
   if (auth.keyType === 'prod' && !GROQ_API_KEY) {
     logEvent('request_rejected', { reason: 'server_not_configured', keyType: 'prod' });
     return res.status(500).json({ error: 'server_not_configured' });
@@ -956,7 +938,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   // Reaktivieren nur mit ENABLE_AI_QUALITY_BRANCH=1 als Env-Variable.
   if (process.env.ENABLE_AI_QUALITY_BRANCH === '1' &&
       req.body && req.body.mode === 'ai') {
-    console.log('[BRANCH_DIAG] AI_BRANCH_ENTERED mode=' + req.body.mode + (_traceId ? ' trace=' + _traceId : ''));
+    console.log('[BRANCH_DIAG] AI_BRANCH_ENTERED mode=' + req.body.mode);
     const aiResult = await aiRecipeQuality.generateAiRecipe({
       model: resolveRecipeModel(req.body),
       context: {
@@ -1102,7 +1084,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
 
   // Generativ (nicht structured/coach): v9.2 Validierung + Retry (max 3)
   const useV92Pipeline = !payload.structured && flow !== 'coach' && flow !== 'nutri-coach' && flow !== 'core';
-  console.log('[BRANCH_DIAG] V92_CHECK mode=' + req.body.mode + ' useV92=' + useV92Pipeline + ' flow=' + flow + ' structured=' + payload.structured + (_traceId ? ' trace=' + _traceId : ''));
+  console.log('[BRANCH_DIAG] V92_CHECK mode=' + req.body.mode + ' useV92=' + useV92Pipeline + ' flow=' + flow + ' structured=' + payload.structured);
   if (useV92Pipeline) {
     const pipelineResult = await core.generateValidatedRecipe({
       payload: payload,
@@ -1411,12 +1393,6 @@ app.post('/api/food-lookup', limiter, async (req, res) => {
   } finally {
     clearTimeout(timer);
   }
-});
-
-// Test-Frontend: nur index.html aus dem gleichen Ordner (kein static von __dirname,
-// damit server.js / .env / package.json nicht oeffentlich werden).
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.use((req, res) => {
