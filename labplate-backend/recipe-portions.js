@@ -7,6 +7,12 @@
  */
 'use strict';
 
+// Ausnahme: Butternut-Kuerbis und pflanzliche "Butter"-Komposita sind KEIN Kochfett.
+function isPlantButterOrButternut(name) {
+  const n = String(name || '').toLowerCase();
+  return /butternut|erdnussbutter|mandelbutter|cashewbutter|kokosbutter|nussbutter|haselnussbutter|walnussbutter|peanut butter|almond butter|cashew butter/.test(n);
+}
+
 const SERVINGS_STATUS = {
   VALIDATED: 'validated',
   INFERRED: 'inferred',
@@ -49,11 +55,7 @@ const SINGLE_PORTION_BASE = {
 
 function isCookingFatName(name) {
   const n = String(name || '').toLowerCase();
-  // Ausnahmen: Butternut-Kuerbis und pflanzliche "Butter"-Komposita sind KEIN Kochfett.
-  if (/butternut|erdnussbutter|mandelbutter|cashewbutter|kokosbutter|nussbutter|haselnussbutter|walnussbutter|peanut butter|almond butter|cashew butter/.test(n)) {
-    return false;
-  }
-  // Kokosfett/Kokosöl sind dagegen echte Fette und bleiben erkannt.
+  if (isPlantButterOrButternut(n)) return false;
   return /öl|oel|oil|olio|butter|schmalz|ghee|margarine/.test(n);
 }
 
@@ -352,6 +354,7 @@ function isStapleCarbName(name) {
 
 function isRichLiquidName(name) {
   const n = String(name || '').toLowerCase();
+  if (isPlantButterOrButternut(n)) return false;
   return /öl|oel|sahne|creme|kokosmilch|butter|schmalz/.test(n);
 }
 

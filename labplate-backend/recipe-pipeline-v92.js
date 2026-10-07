@@ -4,6 +4,12 @@
  */
 'use strict';
 
+// Ausnahme: Butternut-Kuerbis und pflanzliche "Butter"-Komposita sind KEIN Kochfett.
+function isPlantButterOrButternut(name) {
+  const n = String(name || '').toLowerCase();
+  return /butternut|erdnussbutter|mandelbutter|cashewbutter|kokosbutter|nussbutter|haselnussbutter|walnussbutter|peanut butter|almond butter|cashew butter/.test(n);
+}
+
 const validator = require('./recipe-validator');
 const portions = require('./recipe-portions');
 const prose = require('./recipe-prose-de');
@@ -292,7 +298,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     let fat = Math.max(0, Number(ing.fat) || 0);
     let protein = Math.max(0, Number(ing.protein) || 0);
     let fiber = Math.max(0, Number(ing.fiber) || 0);
-    const isOil = /öl|oil|olio|butter|schmalz/i.test(name);
+    const isOil = /öl|oil|olio|butter|schmalz/i.test(name) && !isPlantButterOrButternut(name);
     if (protein > 40 || (!isOil && fat > 45) || netCarbs > 90 ||
         (/hack|fleisch|rind|schwein|huhn|hähn|pute|lachs|fisch|beef|pork/i.test(name) && protein > 35)) {
       if (/hack|rind|beef|schwein|pork|fleisch|huhn|hähn|pute|lachs|fisch/i.test(name)) {

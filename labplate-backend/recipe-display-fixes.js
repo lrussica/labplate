@@ -1,4 +1,10 @@
 'use strict';
+
+// Ausnahme: Butternut-Kuerbis und pflanzliche "Butter"-Komposita sind KEIN Kochfett.
+function isPlantButterOrButternut(name) {
+  const n = String(name || '').toLowerCase();
+  return /butternut|erdnussbutter|mandelbutter|cashewbutter|kokosbutter|nussbutter|haselnussbutter|walnussbutter|peanut butter|almond butter|cashew butter/.test(n);
+}
 /**
  * Post-KI Display-Fixes für Rezepte:
  * – Nährwert-Plausibilität (Makros pro 100g / Protein vs. Fleischmenge)
@@ -108,7 +114,7 @@ function fallbackMacrosForName(name) {
   if (/parmesan|pecorino|grana/.test(n)) {
     return { protein: 33, fat: 28, netCarbs: 0, fiber: 0 };
   }
-  if (/öl|oil|olio|butter|schmalz/.test(n)) return Object.assign({}, FALLBACK_MACROS_PER_100.oil);
+  if (/öl|oil|olio|butter|schmalz/.test(n) && !isPlantButterOrButternut(n)) return Object.assign({}, FALLBACK_MACROS_PER_100.oil);
   if (/zwiebel|onion|cipolla/.test(n)) return Object.assign({}, FALLBACK_MACROS_PER_100.onion);
   if (/karotte|carrot|möhre|carota/.test(n)) return Object.assign({}, FALLBACK_MACROS_PER_100.carrot);
   if (/sellerie|celery|sedano/.test(n)) return Object.assign({}, FALLBACK_MACROS_PER_100.celery);
@@ -128,7 +134,7 @@ function clampMacrosPer100g(name, macros, amountG) {
     fiber: Math.max(0, Number(macros && macros.fiber) || 0),
   };
   const isMeat = isMeatOrFishName(name);
-  const isOil = /öl|oil|olio|butter|schmalz/i.test(String(name || ''));
+  const isOil = /öl|oil|olio|butter|schmalz/i.test(String(name || '')) && !isPlantButterOrButternut(name);
   const amt = Number(amountG) || 0;
 
   // Absolute Gramm-Protein fälschlich als /100g (typisch: 80–150 g Fleisch mit protein≈80–120)
