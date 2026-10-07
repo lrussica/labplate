@@ -811,6 +811,34 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     console.warn('[recipe-v92] display fixes failed', eFx && eFx.message);
   }
 
+  // Kcal-Warnung nach den Display-Fixes neu berechnen, damit Warnung und
+  // ausgelieferte Naehrwerte zusammenpassen (Display-Fixes koennen Makros aendern).
+  try {
+    const n = out.nutrition || {};
+    const kcalFinal = Number(n.kcal != null ? n.kcal : n.calories);
+    const servingsFinal = Math.max(1, Number(out.finalServings) || 1);
+    const kcalPerPortion = kcalFinal > 0 ? kcalFinal / servingsFinal : 0;
+    const lowBound = 400 - 25;
+    const highBound = 700 + 25;
+    if (out.portionWarnings && Array.isArray(out.portionWarnings)) {
+      const filtered = out.portionWarnings.filter(function (w) {
+        return !/Kalorien der Einzelportion/.test(String(w || ''));
+      });
+      if (kcalPerPortion > 0 && (kcalPerPortion < lowBound || kcalPerPortion > highBound)) {
+        filtered.push(
+          'Kalorien der Einzelportion (' + Math.round(kcalPerPortion) +
+          ' kcal) außerhalb des Alltagsrahmens ca. 400–700 kcal.'
+        );
+      }
+      out.portionWarnings = filtered;
+      if (out.validationWarnings && Array.isArray(out.validationWarnings)) {
+        out.validationWarnings = filtered;
+      }
+    }
+  } catch (eKcal) {
+    console.warn('[recipe-v92] kcal recalc failed', eKcal && eKcal.message);
+  }
+
   try {
     const qualityGate = require('./recipe-quality-gate');
     qualityGate.applyRecipeQualityGate(out, {

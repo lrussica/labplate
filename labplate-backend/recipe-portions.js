@@ -49,6 +49,11 @@ const SINGLE_PORTION_BASE = {
 
 function isCookingFatName(name) {
   const n = String(name || '').toLowerCase();
+  // Ausnahmen: Butternut-Kuerbis und pflanzliche "Butter"-Komposita sind KEIN Kochfett.
+  if (/butternut|erdnussbutter|mandelbutter|cashewbutter|kokosbutter|nussbutter|haselnussbutter|walnussbutter|peanut butter|almond butter|cashew butter/.test(n)) {
+    return false;
+  }
+  // Kokosfett/Kokosöl sind dagegen echte Fette und bleiben erkannt.
   return /öl|oel|oil|olio|butter|schmalz|ghee|margarine/.test(n);
 }
 
