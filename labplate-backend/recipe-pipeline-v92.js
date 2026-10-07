@@ -470,7 +470,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     const kcalCheck = portions.validateSinglePortionKcal(finalNutrition, {
       dietLabels: recipe.diet_labels,
       aiInstruction: o.aiInstruction || recipe.ai_instruction,
-      dishCategory: (payload && payload.dishCategory) || recipe.dishCategory || '',
+      dishCategory: (o && o.dishCategory) || recipe.dishCategory || '',
       title: recipe.title || '',
     });
     if (kcalCheck.warnings && kcalCheck.warnings.length) {
