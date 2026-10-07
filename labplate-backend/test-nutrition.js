@@ -175,6 +175,28 @@ console.log('=== DISPLAY-FIXES: Katalog-Zutaten unangetastet ===');
     'fat=' + unknown[0].macrosPer100g.fat + ' sollte <= 45 sein');
 })();
 
+console.log('=== KOCHWASSER: errorsToDirectives ===');
+(function () {
+  const pipeline = require('./recipe-pipeline-v92');
+  const { errorsToDirectives } = pipeline;
+  if (typeof errorsToDirectives !== 'function') {
+    ok('K00 exports errorsToDirectives', false, 'Funktion fehlt');
+    return;
+  }
+  ok('K00 exports errorsToDirectives', true, '');
+  const errs1 = ["Step 5 ('Reis kochen'): enthält eine freie Mengen-Zahl im content-Text statt eines {ingredient_id}-Platzhalters: 'Den Reis mit 700 ml Wasser'"];
+  const d1 = errorsToDirectives(errs1, {});
+  const joined1 = d1.join(' ');
+  ok('K01 Kochwasser-Directive ausgeloest', d1.length >= 1, 'keine Directive: ' + JSON.stringify(d1));
+  ok('K02 erwaehnt eigene Zutat in ingredients', /ingredients\[\]/i.test(joined1), 'fehlt Hinweis ingredients[]: ' + joined1);
+  ok('K03 erwaehnt Platzhalter-Format', /\{0013\}|Platzhalter/.test(joined1), 'fehlt Platzhalter-Hinweis: ' + joined1);
+  ok('K04 verbietet freie Zahl explizit', /700 ml|freie|VERBOTEN/i.test(joined1), 'fehlt Verbot: ' + joined1);
+
+  const errs2 = ["Step 3 ('Wasser erhitzen'): Wasser ohne passende Aktion"];
+  const d2 = errorsToDirectives(errs2, {});
+  ok('K05 Wasser-Directive weiterhin aktiv', d2.length >= 1, 'water-Action fehlt');
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);
