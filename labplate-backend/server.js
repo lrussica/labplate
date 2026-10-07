@@ -385,6 +385,8 @@ app.get('/health', (req, res) => {
     strictPromptActiveInCoach: STRICT_COACH_OK,
     strictPromptActiveInSuggestions: STRICT_SUGGESTIONS_OK,
     v92PipelineWired: typeof core.generateValidatedRecipe === 'function',
+    build_id: BUILD_ID,
+    pid: process.pid,
     prepAssistantWired: typeof core.generatePrepRecipe === 'function',
     prepPromptVersion: core.PREP_PROMPT_VERSION || null,
     recipeSchemaVersion: 'v9.2',
