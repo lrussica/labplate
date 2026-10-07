@@ -1,4 +1,6 @@
 'use strict';
+
+const plausibility = require('./plausibility-checks');
 const apiI18n = require('./api-i18n');
 /**
  * Kulinarische Brauchbarkeit – hartes Gate jenseits Schema/JSON.
@@ -416,6 +418,7 @@ function evaluateCulinaryUsability(recipe, opts) {
   merge(validateGenericInstructions(recipe));
   merge(validateOatsLiquidRatio(recipe));
   merge(validateDishPlan(recipe));
+  merge(plausibility.evaluateAll(recipe));
 
   let qualityStatus = 'ready';
   if (errors.length) qualityStatus = 'blocked';
