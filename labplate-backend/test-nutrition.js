@@ -344,6 +344,50 @@ console.log('=== PLAUSIBILITAET: P5 Saeure-Korrektur ===');
   });
 })();
 
+console.log('=== SEASONING-TO-TASTE (nach Geschmack bei amount=0) ===');
+(function () {
+  const s = require('./seasoning-to-taste');
+  const salzPfeffer = [
+    { name: 'Salz', amount: 0, unit: 'prise' },
+    { name: 'Schwarzer Pfeffer', amount: 0, unit: 'prise' },
+  ];
+  const salzMitMenge = [{ name: 'Salz', amount: 5, unit: 'g' }];
+
+  // T1: klassischer Fall - abschmecken am Satzende
+  const t1in = 'Mit Salz und Pfeffer abschmecken.';
+  const t1out = s.ensureToTaste(t1in, salzPfeffer);
+  ok('T1 nach Geschmack ergaenzt',
+    t1out === 'Mit Salz und Pfeffer nach Geschmack abschmecken.',
+    'got: ' + t1out);
+
+  // T2: mitten im Satz - wuerzen
+  const t2in = 'Das Haehnchen mit Salz und Pfeffer wuerzen und braten.';
+  const t2out = s.ensureToTaste(t2in, salzPfeffer);
+  ok('T2 nach Geschmack eingefuegt',
+    t2out === 'Das Haehnchen mit Salz und Pfeffer nach Geschmack wuerzen und braten.',
+    'got: ' + t2out);
+
+  // T3: idempotent - "nach Geschmack" schon da
+  const t3in = 'Mit Salz und Pfeffer nach Geschmack abschmecken.';
+  const t3out = s.ensureToTaste(t3in, salzPfeffer);
+  ok('T3 idempotent', t3out === t3in, 'got: ' + t3out);
+
+  // T4: Salz mit konkreter Menge -> keine Aenderung
+  const t4in = 'Mit Salz abschmecken.';
+  const t4out = s.ensureToTaste(t4in, salzMitMenge);
+  ok('T4 konkrete Menge unangetastet', t4out === t4in, 'got: ' + t4out);
+
+  // T5: kein Gewuerz im Step -> keine Aenderung
+  const t5in = 'Das Olivenoel erhitzen und die Kartoffeln anbraten.';
+  const t5out = s.ensureToTaste(t5in, salzPfeffer);
+  ok('T5 kein Gewuerz im Step', t5out === t5in, 'got: ' + t5out);
+
+  // T6: "nach Belieben" schon vorhanden -> idempotent
+  const t6in = 'Mit Salz und Pfeffer nach Belieben abschmecken.';
+  const t6out = s.ensureToTaste(t6in, salzPfeffer);
+  ok('T6 nach Belieben idempotent', t6out === t6in, 'got: ' + t6out);
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);

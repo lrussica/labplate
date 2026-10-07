@@ -122,6 +122,7 @@ const CHEF_FRAMEWORK_RULES = [
   'referenziert werden — VERBOTEN: "in etwas Oel anbraten" ohne Oel-Eintrag.',
   '8) HERD-STUFEN: stove_level 1-9 nur bei Hitze; kalt = 0. Mise en Place zuerst; Zeit + Sensorik.',
   '9) GEWUERZE: unit prise|messerspitze, amount 0 – nie unit g fuer Salz/Pfeffer (ABSOLUTES GRAMM-VERBOT).',
+  '9a) STEPS MIT GEWUERZEN: Salz, Pfeffer und andere Gewuerze mit amount=0/unit=prise|messerspitze MUESSEN im Step-Text mit "nach Geschmack" (oder "nach Belieben") referenziert werden. FALSCH: "Mit Salz und Pfeffer abschmecken." RICHTIG: "Mit Salz und Pfeffer nach Geschmack abschmecken."',
   '10) Kalorien-Plausibilitaet: kcal = Summe aus Zutaten (Protein×4 + Netto-KH×4 + Fett×9 + Ballaststoffe×2).',
   '11) Zeit-Realismus: prep_time_min ≈ Summe steps[].time_min.',
   '12–16) Einheiten/Allergene/Skalierung/Grenzfaelle/Rundung (kcal 5er, Gramm ganz).',

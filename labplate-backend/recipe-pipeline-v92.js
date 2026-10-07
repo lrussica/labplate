@@ -612,6 +612,10 @@ function renderRecipeForDisplay(recipe, renderOpts) {
       content = naturalizeFromTitle(title, content);
     }
 
+    // Fix 2026-10-08: Gewuerze mit amount=0/unit=prise muessen im Step-Text
+    // als "nach Geschmack" markiert sein (siehe seasoning-to-taste.js).
+    content = require('./seasoning-to-taste').ensureToTaste(content, ingredients);
+
     return String(content || '').trim();
   }).filter(Boolean);
 
