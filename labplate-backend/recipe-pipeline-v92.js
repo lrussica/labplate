@@ -470,6 +470,8 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     const kcalCheck = portions.validateSinglePortionKcal(finalNutrition, {
       dietLabels: recipe.diet_labels,
       aiInstruction: o.aiInstruction || recipe.ai_instruction,
+      dishCategory: (payload && payload.dishCategory) || recipe.dishCategory || '',
+      title: recipe.title || '',
     });
     if (kcalCheck.warnings && kcalCheck.warnings.length) {
       // Warnungen später in portionWarnings mergen
@@ -824,8 +826,11 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     const kcalFinal = Number(n.kcal != null ? n.kcal : n.calories);
     const servingsFinal = Math.max(1, Number(out.finalServings) || 1);
     const kcalPerPortion = kcalFinal > 0 ? kcalFinal / servingsFinal : 0;
-    const lowBound = 400 - 25;
-    const highBound = 700 + 25;
+    const catRange = portions.kcalRangeForCategory
+      ? portions.kcalRangeForCategory(out.dishCategory || '', out.title || '')
+      : { min: 400, max: 700 };
+    const lowBound = catRange.min - 25;
+    const highBound = catRange.max + 25;
     if (out.portionWarnings && Array.isArray(out.portionWarnings)) {
       const filtered = out.portionWarnings.filter(function (w) {
         return !/Kalorien der Einzelportion/.test(String(w || ''));

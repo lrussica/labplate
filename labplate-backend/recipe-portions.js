@@ -246,6 +246,17 @@ function enforceSinglePortionBaseAmounts(ingredients, opts) {
 /**
  * Prüft den kcal-Rahmen einer 1-Portions-Basis (Warnung, keine stille kcal-Invention).
  */
+// Kategorie-abhaengige kcal-Rahmen. Fallback: Hauptgericht 400-700.
+function kcalRangeForCategory(dishCategory, title) {
+  const c = String(dishCategory || '').toLowerCase();
+  const t = String(title || '').toLowerCase();
+  if (c === 'soup' || /suppe|soup|broth|brühe/.test(t)) return { min: 150, max: 500 };
+  if (c === 'salad' || /salat|salad/.test(t)) return { min: 150, max: 500 };
+  if (c === 'dessert' || /dessert|nachtisch|pudding|kuchen|mousse|cookie/.test(t)) return { min: 200, max: 500 };
+  if (c === 'other' || /snack|vorspeise|appetizer|starter/.test(t)) return { min: 300, max: 700 };
+  return { min: SINGLE_PORTION_BASE.kcalMin, max: SINGLE_PORTION_BASE.kcalMax };
+}
+
 function validateSinglePortionKcal(nutrition, opts) {
   const o = opts || {};
   const warnings = [];
@@ -258,11 +269,12 @@ function validateSinglePortionKcal(nutrition, opts) {
   if (!Number.isFinite(kcal) || kcal <= 0) {
     return { warnings: warnings, status: 'unknown' };
   }
-  if (kcal < SINGLE_PORTION_BASE.kcalMin - 25 || kcal > SINGLE_PORTION_BASE.kcalMax + 25) {
+  const range = kcalRangeForCategory(o.dishCategory, o.title);
+  if (kcal < range.min - 25 || kcal > range.max + 25) {
     warnings.push(
       'Kalorien der Einzelportion (' + Math.round(kcal) +
         ' kcal) außerhalb des Alltagsrahmens ca. ' +
-        SINGLE_PORTION_BASE.kcalMin + '–' + SINGLE_PORTION_BASE.kcalMax + ' kcal.'
+        range.min + '–' + range.max + ' kcal.'
     );
     return { warnings: warnings, status: 'out_of_range' };
   }
@@ -1440,6 +1452,7 @@ module.exports = {
   validatePortionPlausibility: validatePortionPlausibility,
   enforceSinglePortionBaseAmounts: enforceSinglePortionBaseAmounts,
   validateSinglePortionKcal: validateSinglePortionKcal,
+  kcalRangeForCategory: kcalRangeForCategory,
   isCookingFatName: isCookingFatName,
   isEggPieceIngredient: isEggPieceIngredient,
   resolveEggPieceCount: resolveEggPieceCount,
