@@ -769,6 +769,9 @@ function evaluateRecipeQuality(recipe, opts) {
     : (culinary.warnings.length
       ? checkResult(CHECK_STATUS.WARNING, culinary.warnings)
       : checkResult(CHECK_STATUS.PASS, []));
+  // HOTFIX 2026-10-07: culinary.warnings immer behalten, auch wenn
+  // parallel ein culinary.error existiert (sonst verschwinden Plausibilitaets-Warnungen).
+  const culinaryWarningsStandalone = Array.isArray(culinary.warnings) ? culinary.warnings.slice() : [];
 
   const checks = {
     structure: validateRecipeStructure(recipe),
@@ -800,6 +803,11 @@ function evaluateRecipeQuality(recipe, opts) {
     if (!c) return;
     if (c.status === CHECK_STATUS.FAIL) errors.push.apply(errors, c.issues || []);
     if (c.status === CHECK_STATUS.WARNING) warnings.push.apply(warnings, c.issues || []);
+  });
+
+  // Standalone culinary-Warnungen immer hinzufuegen (unabhaengig vom culinary-FAIL-Status)
+  culinaryWarningsStandalone.forEach(function (w) {
+    if (warnings.indexOf(w) < 0) warnings.push(w);
   });
 
   const hasFailure = errors.length > 0;
