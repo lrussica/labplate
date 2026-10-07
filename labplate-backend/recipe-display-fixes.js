@@ -15,7 +15,7 @@ function isPlantButterOrButternut(name) {
 
 const HERB_RE = /petersilie|parsley|prezzemolo|perejil|persil|basilikum|basil|oregano|thymian|thyme|rosmarin|rosemary|schnittlauch|chives|koriander|cilantro|dill|minze|mint|kr[aä]uter|herbs?/i;
 
-const MEAT_FISH_RE = /hack|rind|schwein|lamm|fleisch|beef|pork|lamb|huhn|hühn|hähn|chicken|pute|turkey|fisch|fish|lachs|salmon|thunfisch|tuna|garnelen|shrimp/i;
+const MEAT_FISH_RE = /(?<!ge)hack|rind|schwein|lamm|fleisch|beef|pork|lamb|huhn|hühn|hähn|chicken|pute|turkey|fisch|fish|lachs|salmon|thunfisch|tuna|garnelen|shrimp/i;
 
 /** Typische Makros/100g, wenn KI-Werte unplausibel sind. */
 const FALLBACK_MACROS_PER_100 = {
@@ -108,7 +108,7 @@ function macrosOf(ing) {
 
 function fallbackMacrosForName(name) {
   const n = String(name || '').toLowerCase();
-  if (/hack|rind|beef|schwein|pork|lamm|lamb|huhn|hähn|haehn|chicken|pute|turkey|fleisch|meat/.test(n)) {
+  if (/(?<!ge)hack|rind|beef|schwein|pork|lamm|lamb|huhn|hähn|haehn|chicken|pute|turkey|fleisch|meat/.test(n)) {
     return Object.assign({}, FALLBACK_MACROS_PER_100.beef_15);
   }
   if (/parmesan|pecorino|grana/.test(n)) {

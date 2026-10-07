@@ -12,7 +12,7 @@ const HIGH_PROTEIN_MIN_G = 25;
 // ("Kokosmilch" matcht nicht \bmilch\b, "Erdnussbutter" nicht \bbutter\b).
 // Substring-Matching (deutsche Komposita wie "Hähnchenbrust" werden erfasst).
 // Ausnahmen: pflanzliche Milch-/Butter-Alternativen, die NICHT als tierisch gelten.
-const MEAT_RE = /(rind|rinder|beef|schwein|pork|huhn|huehner|hühner|haehn|hähn|haehnchen|hähnchen|chicken|pute|truthahn|poularde|turkey|lamm|lammfleisch|lamb|hackfleisch|hack|fleisch|speck|bacon|schinken|ham\b|salami|wurst|sucuk|chorizo|leberkaese|leberkäse)/i;
+const MEAT_RE = /(rind|rinder|beef|schwein|pork|huhn|huehner|hühner|haehn|hähn|haehnchen|hähnchen|chicken|pute|truthahn|poularde|turkey|lamm|lammfleisch|lamb|hackfleisch|(?<!ge)hack|fleisch|speck|bacon|schinken|ham\b|salami|wurst|sucuk|chorizo|leberkaese|leberkäse)/i;
 const FISH_RE = /(fisch|fish|lachs|salmon|thunfisch|tuna|forelle|trout|sardine|sardelle|makrele|garnele|shrimp|prawn|krabbe|crab|muschel|mussel|tintenfisch|octopus|calamari|hering|herring|kabeljau|\bcod\b|seelachs|schellfisch)/i;
 const EGG_RE = /(\bei\b|\beier\b|\beiern\b|eiweiss|eiweiß|eigelb|\begg\b|\beggs\b|\bomelett)/i;
 const DAIRY_RAW_RE = /(milch|milk|butter|kaese|käse|cheese|joghurt|yogurt|sahne|cream|quark|mozzarella|parmesan|gouda|feta|ricotta|mascarpone|schmand|kefir|buttermilch|buttermilk)/i;

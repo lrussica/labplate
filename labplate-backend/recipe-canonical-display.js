@@ -5,7 +5,7 @@
  */
 
 const HERB_RE = /petersilie|parsley|prezzemolo|perejil|persil|basilikum|basil|oregano|thymian|thyme|rosmarin|rosemary|schnittlauch|chives|koriander|cilantro|dill|minze|mint|kr[aä]uter|(^|\b)herb/i;
-const MAIN_ING_RE = /hack|fleisch|zwiebel|karotte|sellerie|olivenöl|öl|tomate|wein|rind|schwein|beef|pork/i;
+const MAIN_ING_RE = /(?<!ge)hack|fleisch|zwiebel|karotte|sellerie|olivenöl|öl|tomate|wein|rind|schwein|beef|pork/i;
 
 const ACTION_SENTENCES = {
   heat_oil: 'Eine Pfanne bei mittlerer Hitze erhitzen.',

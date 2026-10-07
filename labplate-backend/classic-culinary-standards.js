@@ -39,7 +39,7 @@ const CLASSIC_DISH_STANDARDS = [
         id: 'ragu',
         label: 'Ragù/Sofrito (Hack + Zwiebel + Karotte + Sellerie + Tomate)',
         allOf: [
-          { id: 'beef', label: 'Rinderhack', needRe: /hack|rind|beef|minced|bolognese|rag[uù]/i },
+          { id: 'beef', label: 'Rinderhack', needRe: /(?<!ge)hack|rind|beef|minced|bolognese|rag[uù]/i },
           { id: 'onion', label: 'Zwiebel', needRe: /zwiebel|onion|cipolla/i },
           { id: 'carrot', label: 'Karotte', needRe: /karotte|m[oö]hre|carrot/i },
           { id: 'celery', label: 'Sellerie', needRe: /sellerie|celery|sedano/i },
@@ -85,7 +85,7 @@ const CLASSIC_DISH_STANDARDS = [
         id: 'meat',
         label: 'Hackfleisch',
         anyOf: [
-          { id: 'hack', label: 'Hackfleisch', needRe: /hack|rind|schwein|beef|pork|minced/i },
+          { id: 'hack', label: 'Hackfleisch', needRe: /(?<!ge)hack|rind|schwein|beef|pork|minced/i },
         ],
       },
       {
@@ -117,7 +117,7 @@ const PROSE_COMPONENT_BUNDLES = [
     mentionRe: /\brag[uù]\b|\bbolognese\b/i,
     acceptIngredientRe: /rag[uù]|bolognese/i,
     allOf: [
-      { id: 'meat', label: 'Hackfleisch', needRe: /hack|rind|schwein|beef|pork|minced/i },
+      { id: 'meat', label: 'Hackfleisch', needRe: /(?<!ge)hack|rind|schwein|beef|pork|minced/i },
       { id: 'tomato', label: 'Tomate', needRe: /tomate|tomato|passata|pelati|tomatenmark/i },
     ],
   },
