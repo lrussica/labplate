@@ -251,38 +251,6 @@ console.log('=== PLAUSIBILITAET: kulinarische Warnungen ===');
   });
 })();
 
-console.log('=== PLAUSIBILITAET: kulinarische Warnungen ===');
-(function () {
-  const p = require('./plausibility-checks');
-  const cases = [
-    ['P01 drei Fette warnen',
-      [{ name: 'Olivenöl' }, { name: 'Butter' }, { name: 'Kokosöl' }, { name: 'Kartoffel' }],
-      'Bratkartoffeln', true],
-    ['P02 zwei Fette ok',
-      [{ name: 'Olivenöl' }, { name: 'Butter' }, { name: 'Kartoffel' }],
-      'Bratkartoffeln', false],
-    ['P03 Ballaststoff-Overload',
-      [{ name: 'Chiasamen' }, { name: 'Leinsamen' }, { name: 'Psyllium' }, { name: 'Haferflocken' }],
-      'Brei', true],
-    ['P04 Psyllium in Haehnchen',
-      [{ name: 'Hähnchenbrust' }, { name: 'Reis' }, { name: 'Psyllium' }],
-      'Hähnchen mit Reis', true],
-    ['P05 Essig in Tofu-Curry',
-      [{ name: 'Tofu' }, { name: 'Kokosmilch' }, { name: 'Essig' }, { name: 'Currypaste' }],
-      'Tofu-Curry', true],
-    ['P06 sauberes Rezept',
-      [{ name: 'Hähnchenbrust' }, { name: 'Brokkoli' }, { name: 'Olivenöl' }, { name: 'Reis' }],
-      'Hähnchen mit Brokkoli', false],
-  ];
-  cases.forEach(function (t) {
-    const rec = { title: t[2], ingredients: t[1], finalIngredients: t[1] };
-    const r = p.evaluateAll(rec);
-    const hit = r.warnings.length > 0;
-    ok(t[0], hit === t[3], 'erwartet Warnung=' + t[3] + ', bekommen=' + hit);
-    ok(t[0] + ' keine Errors', r.errors.length === 0, 'Errors: ' + JSON.stringify(r.errors));
-  });
-})();
-
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);
