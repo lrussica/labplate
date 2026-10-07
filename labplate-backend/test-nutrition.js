@@ -222,31 +222,40 @@ console.log('=== GARNITUR: isExemptUsage ===');
 console.log('=== PLAUSIBILITAET: kulinarische Warnungen ===');
 (function () {
   const p = require('./plausibility-checks');
+  // Pro Fall: [Name, Zutaten, Titel, Muster, erwartet].
+  // Muster = null bedeutet: gar keine Warnung erlaubt.
+  // Der regelspezifische Muster-Filter verhindert, dass neue Regeln
+  // (z.B. P5) einen Test kippen, der eigentlich nur R1 prueft.
   const cases = [
     ['P01 drei Fette warnen',
       [{ name: 'Olivenöl' }, { name: 'Butter' }, { name: 'Kokosöl' }, { name: 'Kartoffel' }],
-      'Bratkartoffeln', true],
-    ['P02 zwei Fette ok',
+      'Bratkartoffeln', /verschiedene Fette gleichzeitig/, true],
+    ['P02 zwei Fette ok (keine R1-Warnung)',
       [{ name: 'Olivenöl' }, { name: 'Butter' }, { name: 'Kartoffel' }],
-      'Bratkartoffeln', false],
+      'Bratkartoffeln', /verschiedene Fette gleichzeitig/, false],
     ['P03 Ballaststoff-Overload',
       [{ name: 'Chiasamen' }, { name: 'Leinsamen' }, { name: 'Psyllium' }, { name: 'Haferflocken' }],
-      'Brei', true],
+      'Brei', /starke Ballaststoff-Traeger/, true],
     ['P04 Psyllium in Haehnchen',
       [{ name: 'Hähnchenbrust' }, { name: 'Reis' }, { name: 'Psyllium' }],
-      'Hähnchen mit Reis', true],
+      'Hähnchen mit Reis', /Psyllium\/Flohsamen/, true],
     ['P05 Essig in Tofu-Curry',
       [{ name: 'Tofu' }, { name: 'Kokosmilch' }, { name: 'Essig' }, { name: 'Currypaste' }],
-      'Tofu-Curry', true],
+      'Tofu-Curry', /Essig in einem Tofu/, true],
     ['P06 sauberes Rezept',
       [{ name: 'Hähnchenbrust' }, { name: 'Brokkoli' }, { name: 'Olivenöl' }, { name: 'Reis' }],
-      'Hähnchen mit Brokkoli', false],
+      'Hähnchen mit Brokkoli', null, false],
   ];
   cases.forEach(function (t) {
     const rec = { title: t[2], ingredients: t[1], finalIngredients: t[1] };
     const r = p.evaluateAll(rec);
-    const hit = r.warnings.length > 0;
-    ok(t[0], hit === t[3], 'erwartet Warnung=' + t[3] + ', bekommen=' + hit);
+    let hit;
+    if (t[3] === null) {
+      hit = r.warnings.length > 0;
+    } else {
+      hit = (r.warnings || []).some(function (w) { return t[3].test(w); });
+    }
+    ok(t[0], hit === t[4], 'erwartet Warnung=' + t[4] + ', bekommen=' + hit + ' | warnings=' + JSON.stringify(r.warnings));
     ok(t[0] + ' keine Errors', r.errors.length === 0, 'Errors: ' + JSON.stringify(r.errors));
   });
 })();
@@ -297,6 +306,41 @@ console.log('=== PLAUSIBILITAET: P1 Maillard vor Schmoren ===');
     const hit = maillard.length > 0;
     ok(t[0], hit === t[2], 'erwartet Warnung=' + t[2] + ', bekommen=' + hit + ' | warnings=' + JSON.stringify(r.warnings));
     ok(t[0] + ' keine Errors', r.errors.length === 0, 'Errors: ' + JSON.stringify(r.errors));
+  });
+})();
+
+console.log('=== PLAUSIBILITAET: P5 Saeure-Korrektur ===');
+(function () {
+  const p = require('./plausibility-checks');
+  const cases = [
+    ['P11 zwei Fette ohne Saeure -> Warnung', {
+      title: 'Bratkartoffeln',
+      ingredients: [{ name: 'Olivenöl' }, { name: 'Butter' }, { name: 'Kartoffel' }],
+    }, true],
+    ['P12 zwei Fette + Zitronensaft -> keine Warnung', {
+      title: 'Bratkartoffeln',
+      ingredients: [{ name: 'Olivenöl' }, { name: 'Butter' }, { name: 'Zitronensaft' }, { name: 'Kartoffel' }],
+    }, false],
+    ['P13 zwei Fette + Mayonnaise -> keine Warnung', {
+      title: 'Kartoffelsalat',
+      ingredients: [{ name: 'Olivenöl' }, { name: 'Butter' }, { name: 'Mayonnaise' }, { name: 'Kartoffel' }],
+    }, false],
+    ['P14 Dessert (Titel) mit zwei Fetten ohne Saeure -> keine Warnung', {
+      title: 'Schokoladenmousse',
+      ingredients: [{ name: 'Butter' }, { name: 'Kokosöl' }, { name: 'Schokolade' }],
+    }, false],
+  ];
+  cases.forEach(function (t) {
+    const rec = {
+      title: t[1].title,
+      ingredients: t[1].ingredients,
+      finalIngredients: t[1].ingredients,
+      steps: ['Zubereiten und servieren.'],
+    };
+    const r = p.evaluateAll(rec);
+    const acid = (r.warnings || []).filter(function (w) { return /Saeure-Korrektur/i.test(w); });
+    const hit = acid.length > 0;
+    ok(t[0], hit === t[2], 'erwartet Warnung=' + t[2] + ', bekommen=' + hit + ' | warnings=' + JSON.stringify(r.warnings));
   });
 })();
 

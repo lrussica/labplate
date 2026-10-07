@@ -23,6 +23,7 @@ Status: **Warnung** (nicht blockierend), sichtbar im Client als Quality-Notice.
 | R3 | Psyllium/Flohsamen in Protein-Gericht (Haehnchen/Fleisch/Fisch) | aktiv |
 | R4 | Essig in Tofu-/Tempeh-Curry | aktiv |
 | R5 | Maillard vor Schmoren: Bei Brasieren/Schmoren muss Fleisch vor Fluessigkeitszusatz scharf angebraten werden (vormals P1) | aktiv |
+| R6 | Saeure-Korrektur: Gerichte mit >= 2 Fetten brauchen eine Saeurequelle (Zitrone, Essig, Wein, Joghurt, Tomate). Desserts ausgenommen (vormals P5) | aktiv |
 
 Tests: `labplate-backend/test-nutrition.js` (Abschnitt PLAUSIBILITAET).
 
@@ -46,7 +47,7 @@ implementiert, jede mit Test. Status: **nicht implementiert**.
 
 | ID | Regel | Pruefbar? | Anmerkung |
 |---|---|---|---|
-| P5 | Saure-Korrektur: Gerichte mit >= 2 Fetten brauchen eine Saeurequelle (Zitrone, Essig, Wein) | ja | Warnung bei fehlender Saeure |
+| ~~P5~~ | ~~Saure-Korrektur~~ | – | **implementiert als R6 (2026-10-08)** |
 | P6 | Umami-Anker: Herzhaftes Gericht ohne Umami-Traeger (Parmesan, Tomate, Sojasauce, Pilze, Fleischfond) = Warnung | ja | Nur bei "main" |
 | P7 | Salatura a Strati: Salz muss in >= 2 verschiedenen Steps referenziert werden, nicht nur einmal | ja | Ausser bei Desserts und Suppen |
 | P8 | 5-Geschmacks-Balance: Salzig + Sauer + Umami sollten mindestens vorhanden sein | ja (grob) | Nur Warnung |
@@ -100,7 +101,7 @@ Sie gehoeren zum Handwerk und werden nicht automatisch geprueft.
 Reihenfolge nach Nutzen und Aufwand:
 
 1. ~~**P1 Maillard vor Schmoren**~~ ✅ implementiert als **R5** (2026-10-08)
-2. **P5 Saure-Korrektur** – kulinarisch stark, einfach umzusetzen
+2. ~~**P5 Saure-Korrektur**~~ ✅ implementiert als **R6** (2026-10-08)
 3. **P2 Riposo della Carne** – wichtig, einfach
 4. **P11/P12 Saisonalitaet** – sichtbarer Effekt, aber Datumslogik
 5. **P9 Emulsion** – komplexer, selten

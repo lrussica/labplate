@@ -25,6 +25,15 @@ const LIQUID_STEP_RE = /(?:wasser|brühe|bruehe|fond|wein|bier|sahne|milch|kokos
 // nicht als Maillard-Vorstufe zaehlt.
 const SEAR_STEP_RE = /(?:scharf\s+anbraten|heiß\s+anbraten|heiss\s+anbraten|kräftig\s+anbraten|kraeftig\s+anbraten|goldbraun\s+braten|farbe\s+nehmen\s+lassen|maillard|anbraten|anrösten|anroesten|anschwitzen|anbräunen|anbraeunen)/i;
 
+// --- P5 (Saeure-Korrektur) ---
+// Saeurequellen. Bewusst spezifisch:
+//   - Zitrone/Limette nur mit Saft/Abrieb/Schale (kein Zitronengras/-melisse)
+//   - Senf mit Wortgrenze (kein Senfkoerner)
+//   - Oliven NICHT (kulinarisch keine echte Saeurequelle)
+//   - Tomatenmark, Wein, Mayo zaehlen
+const ACID_SOURCE_RE = /(?:zitronensaft|zitronenabrieb|zitronenschale|limettensaft|limettenabrieb|essig|apfelwein|balsamico|weißwein|weisswein|rotwein|verjus|joghurt|buttermilch|sauerrahm|crème\s+fraîche|creme\s+fraiche|kapern|\bsenf\b|tomatenmark|tomaten|passata|tamarinde|sumach|mayonnaise|mayo\b)/i;
+const DESSERT_TITLE_RE = /(?:dessert|nachtisch|mousse|pudding|kuchen)/i;
+
 function nameOf(ing) {
   return String((ing && (ing.name || ing.displayName)) || '');
 }
@@ -189,10 +198,50 @@ function checkMaillardBeforeBraising(recipe) {
   };
 }
 
+/**
+ * P5 (Saeure-Korrektur):
+ * Gerichte mit >= 2 verschiedenen Fetten brauchen eine Saeurequelle
+ * (Zitrone, Essig, Wein, Joghurt, Tomate), um die Fettigkeit auszubalancieren.
+ * Desserts sind ausgenommen (Schokoladenmousse braucht keine Saeure).
+ * Mayonnaise zaehlt als Saeurequelle (enthaelt Zitrone/Essig).
+ */
+function checkAcidInFatDish(recipe) {
+  const title = titleOf(recipe);
+  const category = String((recipe && recipe.dishCategory) || '').toLowerCase();
+  if (category === 'dessert' || DESSERT_TITLE_RE.test(title)) {
+    return { errors: [], warnings: [] };
+  }
+
+  const ings = ingredientsOf(recipe);
+  const fats = [];
+  let hasAcid = false;
+  ings.forEach(function (ing) {
+    const n = nameOf(ing);
+    const role = String(ing.culinaryRole || ing.role || '').toLowerCase();
+    if ((FAT_NAME_RE.test(n) || role === 'fat_source') && !/wasser|water/i.test(n)) {
+      const key = n.toLowerCase();
+      if (fats.indexOf(key) < 0) fats.push(key);
+    }
+    if (ACID_SOURCE_RE.test(n)) hasAcid = true;
+  });
+  if (fats.length < 2) return { errors: [], warnings: [] };
+  if (hasAcid) return { errors: [], warnings: [] };
+
+  return {
+    errors: [],
+    warnings: [
+      'Kulinarische Plausibilitaet: Saeure-Korrektur fehlt. Bei ' +
+      fats.length + ' Fetten (' + fats.slice(0, 3).join(', ') + ') ' +
+      'braucht das Gericht eine Saeurequelle (Zitrone, Essig, Wein, ' +
+      'Joghurt, Tomate), um die Fettigkeit auszubalancieren.'
+    ],
+  };
+}
+
 function evaluateAll(recipe) {
   const errors = [];
   const warnings = [];
-  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising]
+  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish]
     .forEach(function (fn) {
       try {
         const r = fn(recipe);
@@ -212,4 +261,5 @@ module.exports = {
   checkPsylliumInProteinDish: checkPsylliumInProteinDish,
   checkVinegarInTofuCurry: checkVinegarInTofuCurry,
   checkMaillardBeforeBraising: checkMaillardBeforeBraising,
+  checkAcidInFatDish: checkAcidInFatDish,
 };
