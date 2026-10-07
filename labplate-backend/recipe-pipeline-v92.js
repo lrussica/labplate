@@ -1132,6 +1132,16 @@ function errorsToDirectives(errors, opts) {
         'still hinzufügen ohne Kochverb.'
       );
     }
+    if (/freie Mengen-Zahl|Mengen-Zahl im content/i.test(e) && !seenProtein.freeAmount) {
+      seenProtein.freeAmount = true;
+      directives.push(
+        'KONKRETE KORREKTUR KOCHWASSER: Schreibe NIEMALS eine konkrete Menge wie „700 ml Wasser“ ' +
+        'direkt in den Step-Text. Fuer Kochen/Pochieren/Blanchieren MUSST du eine eigene Zutat '
+        + 'in ingredients[] anlegen (z.B. {"id":"0013","name":"Wasser (zum Kochen)","amount":700,"unit":"ml"}) '
+        + 'und im Step nur den Platzhalter {0013} verwenden. '
+        + 'VERBOTEN: „mit 700 ml Wasser aufkochen“ – RICHTIG: „mit {0013} aufkochen“.'
+      );
+    }
     if (/Klassiker-Standard/i.test(e) && !seenProtein.classicCore) {
       seenProtein.classicCore = true;
       directives.push(

@@ -84,6 +84,10 @@ const CHEF_FRAMEWORK_RULES = [
   'In steps/garnish steht AUSSCHLIESSLICH der nackte Platzhalter {0001} — VERBOTEN: "{0004} Olivenöl", "Olivenöl {0004}", ' +
   '"Wasser {0007} ml", "{0005} Salz", "100g Speck" als Freitext. Das Backend setzt amount+unit+name ein. ' +
   'chef_analysis: nur {id} als Zutatname, keine Mengen.',
+  '0b-BEISPIEL (haeufigster Fehler): Fuer Kochwasser/Reis-/Nudelwasser MUSST du eine eigene Zutat in '
+  + 'ingredients[] anlegen (z. B. {id:"0013", name:"Wasser (zum Kochen)", amount:700, unit:"ml"}) '
+  + 'und im Step nur {0013} schreiben. VERBOTEN: "mit 700 ml Wasser zum Kochen bringen" – '
+  + 'RICHTIG: "mit {0013} zum Kochen bringen". Die konkrete Zahl (700) steht NUR in ingredients.amount.',
   '1) Naehrwert-Verbindlichkeit / chef_analysis: {ingredient_id}-Platzhalter DUERFEN Zutaten referenzieren ' +
   '(z. B. "{0003} bildet die cremige Basis", "Die Kombination aus {0001} und {0002}…"). ' +
   'VERBOTEN als Naehrwert-/Mengensatz: "{0003} kcal", "{0003} g Protein", "{0003} g", "{0003} ml", "{0003}%". ' +
