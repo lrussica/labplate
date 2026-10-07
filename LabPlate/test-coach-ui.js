@@ -45,6 +45,43 @@ function buildCoachBadgesRowHtml(scoreBadgeHtml, warningsHtml) {
   if (!inner) return '';
   return '<div class="nutri-recipe-coach-badges">' + inner + '</div>';
 }
+
+function isHardQualityBlock(recipe) {
+  if (!recipe || typeof recipe !== 'object') return false;
+  if (recipe._qualityAllergenLabel) return true;
+  if (recipe.qualityChecks && recipe.qualityChecks.allergens && recipe.qualityChecks.allergens.status === 'fail') {
+    return true;
+  }
+  return false;
+}
+function collectRecipeQualityMessages(recipe) {
+  var out = [];
+  function add(item) {
+    var s = (item && item.message) ? String(item.message) : String(item || '');
+    s = s.replace(/\s+/g, ' ').trim();
+    if (!s) return;
+    if (/Portionsgröße geschätzt|Portionsangabe prüfen|portion_estimated/i.test(s)) return;
+    if (out.indexOf(s) < 0) out.push(s);
+  }
+  if (!recipe) return out;
+  (recipe.qualityErrors || []).forEach(add);
+  (recipe.qualityWarnings || []).forEach(add);
+  return out;
+}
+function buildRecipeQualityNoticeHtml(recipe, titleBlocked, titleReview) {
+  if (!recipe) return '';
+  var status = String(recipe.qualityStatus || '');
+  var msgs = collectRecipeQualityMessages(recipe);
+  if (status !== 'blocked' && status !== 'review' && !msgs.length) return '';
+  var title = status === 'blocked' ? titleBlocked : titleReview;
+  var list = msgs.map(function (m) {
+    return '<li>' + esc(m.slice(0, 280)) + '</li>';
+  }).join('');
+  return '<div class="nutri-recipe-quality-notice" role="status" data-quality-status="' + esc(status || 'review') + '">' +
+    '<p class="nutri-recipe-quality-notice-title">' + esc(title) + '</p>' +
+    (list ? '<ul class="nutri-recipe-quality-notice-list">' + list + '</ul>' : '') +
+    '</div>';
+}
 function buildCoachUsdaStatusHtml(analysis) {
   if (!analysis) return '<p class="nutri-recipe-match">Coach-Analyse läuft…</p>';
   const cov = analysis.coverage || {};
@@ -86,6 +123,25 @@ async function postJson(path, body) {
   const usda = buildCoachUsdaStatusHtml(mockAnalysis);
   assert(usda.indexOf('4/4') !== -1, 'USDA-Statuszeile fehlt');
   console.log('OK  UI-Builder: HealthScore / Warnungen (nutri-coach-pill) / Badge-Row / USDA-Status');
+
+  assert(!isHardQualityBlock({ qualityStatus: 'blocked', qualityErrors: ['unused'] }), 'culinary blocked bleibt nutzbar');
+  assert(isHardQualityBlock({ qualityStatus: 'blocked', _qualityAllergenLabel: 'Milch' }), 'Allergen bleibt hart');
+  var notice = buildRecipeQualityNoticeHtml({
+    qualityStatus: 'blocked',
+    qualityErrors: ['Zutat Ei kommt in keinem Schritt vor'],
+    qualityWarnings: ['Fett-Überladung: 3 Fette', 'Portionsgröße geschätzt – bitte prüfen']
+  }, 'SOFT-BLOCK', 'REVIEW');
+  assert.ok(notice.indexOf('data-quality-status="blocked"') !== -1, 'blocked-Notice fehlt');
+  assert.ok(notice.indexOf('SOFT-BLOCK') !== -1, 'Soft-Block-Titel fehlt');
+  assert.ok(notice.indexOf('Fett-Überladung') !== -1, 'qualityWarnings nicht sichtbar');
+  assert.ok(notice.indexOf('Zutat Ei') !== -1, 'qualityErrors nicht sichtbar');
+  assert.ok(notice.indexOf('Portionsgröße geschätzt') === -1, 'Portions-Schätz-Hinweis darf nicht erscheinen');
+  var reviewNotice = buildRecipeQualityNoticeHtml({
+    qualityStatus: 'review',
+    qualityWarnings: ['Ballaststoff-Overload']
+  }, 'SOFT-BLOCK', 'REVIEW');
+  assert.ok(reviewNotice.indexOf('REVIEW') !== -1 && reviewNotice.indexOf('Ballaststoff-Overload') !== -1, 'review-Warnung fehlt');
+  console.log('OK  UI-Builder: Quality-Notice blocked/review + Allergen-Hard-Block');
 
   // --- Live-API (wie LabPlateCoachApi.*) ---
   const sampleRecipe = {

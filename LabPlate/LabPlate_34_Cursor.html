@@ -2692,6 +2692,25 @@
   .nrs-value{ font-size:13px; font-weight:500; color:var(--ink); padding:0 10px; min-width:76px; text-align:center; white-space:nowrap; }
   #lp-ov-recipes .nutri-recipe-match{ font-size:calc(13.5px * var(--recipe-font-scale, 1)); color:var(--ink); line-height:1.5; margin:0 0 4px; transition: font-size 0.2s ease-out; }
   #lp-ov-recipes .nutri-recipe-disclaimer{ font-size:calc(11.5px * var(--recipe-font-scale, 1)); color:var(--ink-soft); line-height:1.5; margin:0 0 16px; transition: font-size 0.2s ease-out; }
+  .nutri-recipe-quality-notice{
+    margin:0 0 14px; padding:12px 14px;
+    background:rgba(0,0,0,0.6); color:#FFFFFF;
+    border:1px solid rgba(255,255,255,0.15); border-radius:16px;
+  }
+  .nutri-recipe-quality-notice-title{
+    margin:0; font-size:calc(13.5px * var(--recipe-font-scale, 1));
+    font-weight:600; color:#FFFFFF; line-height:1.45;
+  }
+  .nutri-recipe-quality-notice-list{
+    margin:8px 0 0; padding:0; list-style:none;
+    display:flex; flex-wrap:wrap; gap:6px;
+  }
+  .nutri-recipe-quality-notice-list li{
+    display:inline-block; background:#000000; color:#FFFFFF;
+    border:1px solid rgba(255,255,255,0.15); border-radius:999px;
+    padding:5px 10px; font-size:calc(12.5px * var(--recipe-font-scale, 1));
+    font-weight:500; line-height:1.4; white-space:normal;
+  }
   /* KI-Rezept: Schritte/Listen gleiche Lesbarkeit wie Titel (nicht soft-grau). */
   #lp-ov-recipes .nutri-recipe-steps li,
   #lp-ov-recipes .nutri-recipe-ing-list li{
@@ -31182,6 +31201,15 @@ initBarcodeEvents();
       fr:'Remarque : vérifiez – certains détails sont estimés ou incertains.',
       tr:'Not: Lütfen kontrol edin – bazı ayrıntılar tahmini veya belirsiz.'
     };
+    var LBL_RECIPE_QUALITY_SOFT_BLOCKED = {
+      de:'Dieses Rezept ist nutzbar, erfüllt aber nicht alle Qualitätskriterien. Bitte Angaben prüfen.',
+      en:'This recipe is usable, but it does not meet all quality criteria. Please review the details.',
+      es:'Esta receta se puede usar, pero no cumple todos los criterios de calidad. Revisa los datos.',
+      it:'Questa ricetta è utilizzabile, ma non soddisfa tutti i criteri di qualità. Controlla i dati.',
+      pt:'Esta receita é utilizável, mas não cumpre todos os critérios de qualidade. Verifique os dados.',
+      fr:'Cette recette est utilisable, mais elle ne répond pas à tous les critères de qualité. Vérifiez les indications.',
+      tr:'Bu tarif kullanılabilir, ancak tüm kalite ölçütlerini karşılamıyor. Lütfen bilgileri kontrol edin.'
+    };
     var LBL_RECIPE_RETRY = { de:'Erneut versuchen', en:'Try again', es:'Intentar de nuevo', it:'Riprova' };
     var LBL_RECIPE_BACK_TO_INPUT = { de:'Zurück zur Eingabe', en:'Back to input', es:'Volver a la entrada', it:'Torna all\'inserimento' };
     var LBL_RECIPE_SERVINGS_SUFFIX = { de:'Portionen', en:'servings', es:'porciones', it:'porzioni' };
@@ -32571,6 +32599,9 @@ initBarcodeEvents();
       }
       var singlePortionOk = recipe.singlePortionNormalized === true ||
         (Number(recipe.finalServings) === 1 && String(recipe.sourceServingsStatus || '') === 'explicit');
+      (recipe.qualityWarnings || []).forEach(function (w) {
+        if (!isPortionEstimateWarn(w)) warnings.push(w);
+      });
       if (recipe.qualityStatus === 'blocked') {
         var serverErrs = Array.isArray(recipe.qualityErrors) ? recipe.qualityErrors.slice() : [];
         if (singlePortionOk) {
@@ -32581,10 +32612,6 @@ initBarcodeEvents();
         } else if (!singlePortionOk) {
           errors.push('Server Quality Gate: blocked');
         }
-      } else if (recipe.qualityStatus === 'review') {
-        (recipe.qualityWarnings || []).forEach(function (w) {
-          if (!isPortionEstimateWarn(w)) warnings.push(w);
-        });
       }
       // Eigene Portions-Warnungen ebenfalls bereinigen
       warnings = warnings.filter(function (w) { return !isPortionEstimateWarn(w); });
@@ -32627,22 +32654,62 @@ initBarcodeEvents();
       return recipe;
     }
 
+    function isHardQualityBlock(recipe) {
+      if (!recipe || typeof recipe !== 'object') return false;
+      if (recipe._qualityAllergenLabel) return true;
+      if (recipe.qualityChecks && recipe.qualityChecks.allergens && recipe.qualityChecks.allergens.status === 'fail') {
+        return true;
+      }
+      return false;
+    }
+    function isUnreadableCanonicalBlock(display) {
+      return !!(display && display._visibleOutput && display._visibleOutput.status === 'fail');
+    }
+    function collectRecipeQualityMessages(recipe) {
+      var out = [];
+      function add(item) {
+        var s = (item && item.message) ? String(item.message) : String(item || '');
+        s = s.replace(/\s+/g, ' ').trim();
+        if (!s) return;
+        if (/Portionsgröße geschätzt|Portionsangabe prüfen|portion_estimated/i.test(s)) return;
+        if (out.indexOf(s) < 0) out.push(s);
+      }
+      if (!recipe) return out;
+      (recipe.qualityErrors || []).forEach(add);
+      (recipe.qualityWarnings || []).forEach(add);
+      return out;
+    }
+    function buildRecipeQualityNoticeHtml(recipe, escFn) {
+      var esc = escFn || function (s) { return String(s); };
+      if (!recipe) return '';
+      var status = String(recipe.qualityStatus || '');
+      var msgs = collectRecipeQualityMessages(recipe);
+      if (status !== 'blocked' && status !== 'review' && !msgs.length) return '';
+      var title = status === 'blocked'
+        ? pick(LBL_RECIPE_QUALITY_SOFT_BLOCKED)
+        : pick(LBL_RECIPE_QUALITY_REVIEW);
+      var cls = 'nutri-recipe-quality-notice' + (status === 'blocked' ? ' is-blocked' : ' is-review');
+      var list = msgs.map(function (m) {
+        return '<li>' + esc(m.slice(0, 280)) + '</li>';
+      }).join('');
+      return '<div class="' + cls + '" role="status" data-quality-status="' + esc(status || 'review') + '">' +
+        '<p class="nutri-recipe-quality-notice-title">' + esc(title) + '</p>' +
+        (list ? '<ul class="nutri-recipe-quality-notice-list">' + list + '</ul>' : '') +
+        '</div>';
+    }
+
     function commitNutriRecipeOrBlock(recipe, extras) {
       extras = extras || {};
       var gated = applyFrontendRecipeQualityGate(
         stripInternalFieldsFromRecipe(ensureLiveFinalPortionedRecipe(recipe))
       );
-      if (gated.qualityStatus === 'blocked') {
+      if (isHardQualityBlock(gated)) {
         nutriRecipeState.result = null;
         nutriRecipeState.suggestions = [];
         nutriRecipeState.error = true;
         nutriRecipeState.loading = false;
         nutriRecipeState.chatLoading = false;
-        if (gated._qualityAllergenLabel || (gated.qualityChecks && gated.qualityChecks.allergens && gated.qualityChecks.allergens.status === 'fail')) {
-          nutriRecipeState.errorText = pick(LBL_RECIPE_QUALITY_ALLERGEN_BLOCKED);
-        } else {
-          nutriRecipeState.errorText = pick(LBL_RECIPE_QUALITY_BLOCKED);
-        }
+        nutriRecipeState.errorText = pick(LBL_RECIPE_QUALITY_ALLERGEN_BLOCKED);
         return null;
       }
       if (extras.assign) {
@@ -32875,7 +32942,10 @@ initBarcodeEvents();
       buildCoachHealthScoreBadgeHtml: buildCoachHealthScoreBadgeHtml,
       buildCoachPerServingLineHtml: buildCoachPerServingLineHtml,
       buildCoachWarningsBadgesHtml: buildCoachWarningsBadgesHtml,
-      buildCoachUsdaStatusHtml: buildCoachUsdaStatusHtml
+      buildCoachUsdaStatusHtml: buildCoachUsdaStatusHtml,
+      isHardQualityBlock: isHardQualityBlock,
+      collectRecipeQualityMessages: collectRecipeQualityMessages,
+      buildRecipeQualityNoticeHtml: buildRecipeQualityNoticeHtml
     };
 
     // ---- Eingabe-Sanitizing (Vorräte-Modus & strukturierte Rezepteingabe) ----
@@ -35576,11 +35646,9 @@ initBarcodeEvents();
         nutriRecipeState.result = applyFrontendRecipeQualityGate(stripInternalFieldsFromRecipe(
           ensureLiveFinalPortionedRecipe(nutriRecipeState.result)
         ));
-        if (nutriRecipeState.result.qualityStatus === 'blocked') {
+        if (isHardQualityBlock(nutriRecipeState.result)) {
           nutriRecipeState.error = true;
-          nutriRecipeState.errorText = (nutriRecipeState.result._qualityAllergenLabel)
-            ? pick(LBL_RECIPE_QUALITY_ALLERGEN_BLOCKED)
-            : pick(LBL_RECIPE_QUALITY_BLOCKED);
+          nutriRecipeState.errorText = pick(LBL_RECIPE_QUALITY_ALLERGEN_BLOCKED);
           nutriRecipeState.result = null;
           renderNutriRecipeBody();
           return;
@@ -35630,6 +35698,7 @@ initBarcodeEvents();
         r.adaptationNote = rBase.adaptationNote;
         r.qualityStatus = rBase.qualityStatus;
         r.qualityWarnings = rBase.qualityWarnings;
+        r.qualityErrors = rBase.qualityErrors;
         r.timing = rBase.timing;
         r.totalMinutes = rBase.totalMinutes;
         r.portionDisplayHint = rBase.portionDisplayHint;
@@ -35639,18 +35708,11 @@ initBarcodeEvents();
 
         // Kanonisches Display-Modell – einziger Eingang für sichtbare Felder
         var display = toCanonicalDisplayRecipe(r);
-        if (display._visibleOutput && display._visibleOutput.status === 'fail') {
+        if (isUnreadableCanonicalBlock(display) || (display._visibleOutput && display._visibleOutput.status === 'fail')) {
           nutriRecipeState.error = true;
           nutriRecipeState.errorText = pick(LBL_RECIPE_QUALITY_BLOCKED);
           nutriRecipeState.result = null;
-          console.warn('[NUTRI_RECIPE_DEBUG] CANONICAL_VISIBLE_BLOCKED', display._visibleOutput.issues);
-          renderNutriRecipeBody();
-          return;
-        }
-        if (display.qualityStatus === 'blocked') {
-          nutriRecipeState.error = true;
-          nutriRecipeState.errorText = pick(LBL_RECIPE_QUALITY_BLOCKED);
-          nutriRecipeState.result = null;
+          console.warn('[NUTRI_RECIPE_DEBUG] CANONICAL_VISIBLE_BLOCKED', display._visibleOutput && display._visibleOutput.issues);
           renderNutriRecipeBody();
           return;
         }
@@ -35751,6 +35813,7 @@ initBarcodeEvents();
             '</div>' +
             '<p class="nutri-recipe-disclaimer">' + escNutri(pick(LBL_RECIPE_DISCLAIMER)) + '</p>' +
             portionWarningBanner +
+            buildRecipeQualityNoticeHtml(rBase, escNutri) +
             '<div class="section">' +
               '<h4 class="section-title">' + escNutri(nutritionHeading) + '</h4>' +
               (coachScoreBadge ? ('<div class="nutri-recipe-coach-badges">' + coachScoreBadge + '</div>') : '') +
@@ -36401,14 +36464,11 @@ initBarcodeEvents();
           nutriScaledData.servings = 1;
         }
         nutriScaledData = applyFrontendRecipeQualityGate(nutriScaledData);
-        if (nutriScaledData.qualityStatus === 'blocked') {
-          var qBlockText = nutriScaledData._qualityAllergenLabel
-            ? pick(LBL_RECIPE_QUALITY_ALLERGEN_BLOCKED)
-            : pick(LBL_RECIPE_QUALITY_BLOCKED);
+        if (isHardQualityBlock(nutriScaledData)) {
           nutriRecipeState.chatDraft = '';
           nutriRecipeState.chatMessages.push({
             role: 'ai',
-            text: qBlockText,
+            text: pick(LBL_RECIPE_QUALITY_ALLERGEN_BLOCKED),
             isError: true,
             query: sanitized,
             operationId: operationId
