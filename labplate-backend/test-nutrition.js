@@ -136,6 +136,45 @@ eq('C12 leere Zutaten = keine Diaet-Aussage',
   dl.computeDietLabels({ protein_g: 15, netto_kh_g: 5 }, []),
   ['keto']);
 
+console.log('=== DISPLAY-FIXES: Katalog-Zutaten unangetastet ===');
+(function () {
+  const fx = require('./recipe-display-fixes');
+  const cat = require('./nutri-catalog');
+  const cases = [
+    ['F01 Kuerbiskerne bleiben USDA',
+      [{ name: 'Kürbiskerne', amount: 10, unit: 'g', macrosPer100g: { protein: 5, fat: 5, netCarbs: 5, fiber: 1 } }],
+      'pumpkin_seeds', { protein: 30.2, fat: 49, netCarbs: 4.7, fiber: 6 }],
+    ['F02 Walnuesse bleiben USDA',
+      [{ name: 'Walnüsse', amount: 15, unit: 'g', macrosPer100g: { protein: 4, fat: 4, netCarbs: 4, fiber: 4 } }],
+      'walnuts', { protein: 15.2, fat: 65.2, netCarbs: 7, fiber: 6.7 }],
+    ['F03 Mandeln bleiben USDA',
+      [{ name: 'Mandeln', amount: 20, unit: 'g', macrosPer100g: { protein: 5, fat: 5, netCarbs: 5, fiber: 5 } }],
+      'almonds', { protein: 21.2, fat: 49.9, netCarbs: 9.1, fiber: 12.5 }],
+    ['F04 Sesam bleibt USDA',
+      [{ name: 'Sesamsamen', amount: 10, unit: 'g', macrosPer100g: { protein: 5, fat: 5, netCarbs: 5, fiber: 5 } }],
+      'sesame_seeds', { protein: 17.7, fat: 49.7, netCarbs: 11.6, fiber: 11.8 }],
+  ];
+  cases.forEach(function (t) {
+    const id = t[0], ings = t[1], key = t[2], expected = t[3];
+    cat.applyCatalogOverride(ings);
+    const recipe = { ingredients: ings, finalIngredients: ings };
+    fx.applyRecipeDisplayFixes(recipe, { lang: 'de' });
+    const m = ings[0].macrosPer100g;
+    ok(id + ' key=' + key, ings[0]._catalogKey === key, '_catalogKey fehlt');
+    ok(id + ' protein', Math.abs(m.protein - expected.protein) < 0.1,
+      'protein=' + m.protein + ' erwartet ' + expected.protein);
+    ok(id + ' fat', Math.abs(m.fat - expected.fat) < 0.1,
+      'fat=' + m.fat + ' erwartet ' + expected.fat);
+    ok(id + ' netCarbs', Math.abs(m.netCarbs - expected.netCarbs) < 0.1,
+      'netCarbs=' + m.netCarbs + ' erwartet ' + expected.netCarbs);
+  });
+  // Negativ-Test: unbekannte Nuss wird weiterhin geklemmt
+  const unknown = [{ name: 'Unbekannte-Nuss-XYZ', amount: 10, unit: 'g', macrosPer100g: { protein: 5, fat: 60, netCarbs: 5, fiber: 1 } }];
+  fx.applyRecipeDisplayFixes({ ingredients: unknown, finalIngredients: unknown }, { lang: 'de' });
+  ok('F05 unbekannte Nuss wird geklemmt', unknown[0].macrosPer100g.fat <= 45,
+    'fat=' + unknown[0].macrosPer100g.fat + ' sollte <= 45 sein');
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);

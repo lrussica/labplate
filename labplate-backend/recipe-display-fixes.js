@@ -296,11 +296,16 @@ function sanitizeIngredientMacros(recipe) {
     let m = macrosOf(ing);
     const isMeat = isMeatOrFishName(name) || !!ing._protein_source || !!ing.protein_source;
 
-    const clampedOne = clampMacrosPer100g(name, m, grams);
-    m = clampedOne.macros;
-    if (clampedOne.clamped) {
-      clamped = true;
-      issues.push('Makros für „' + name + '“ korrigiert (unplausible KI-Werte)');
+    // Zutaten mit Katalog-Treffer stammen aus USDA FDC / BLS und sind verifiziert.
+    // Der Clamp ist nur fuer KI-Halluzinationen gedacht und wuerde Nüsse/Samen
+    // (fat > 45) faelschlich auf Fallback-Werte setzen. Siehe nutri-catalog.js.
+    if (!ing._catalogKey) {
+      const clampedOne = clampMacrosPer100g(name, m, grams);
+      m = clampedOne.macros;
+      if (clampedOne.clamped) {
+        clamped = true;
+        issues.push('Makros für „' + name + '“ korrigiert (unplausible KI-Werte)');
+      }
     }
     if (isMeat && grams > 0) meatGrams += grams;
 
@@ -326,6 +331,7 @@ function sanitizeIngredientMacros(recipe) {
     ings.forEach(function (ing) {
       const name = nameOf(ing);
       if (!isMeatOrFishName(name) && !ing._protein_source && !ing.protein_source) return;
+      if (ing._catalogKey) return;
       const m = fallbackMacrosForName(name);
       ing.macrosPer100g = m;
       ing.protein = m.protein;
