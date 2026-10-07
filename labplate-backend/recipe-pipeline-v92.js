@@ -1141,6 +1141,7 @@ async function generateValidatedRecipe(opts) {
   const aiInstructionForLog = payload && (payload.ai_instruction || payload.aiInstruction);
   const groqOpts = o.groqOpts || {};
   let lastErrors = [];
+  let lastValidRecipe = null;
   let lastWarnings = [];
   let lastRaw = null;
   const attemptRaws = [];
@@ -1369,6 +1370,47 @@ async function generateValidatedRecipe(opts) {
       continue;
     }
 
+    // Rezept ist formal valide – als Fallback merken, falls kcal-Retry scheitert.
+    lastValidRecipe = { parsed: parsed, validation: validation };
+
+    // Kalorien-Untergrenze pro Portion. Sonst Retry mit konkreter Anweisung.
+    // Nach 3 Versuchen: letztes valides Rezept trotzdem ausliefern (weiche Pruefung).
+    {
+      const cat = String((payload && payload.dishCategory) || '').toLowerCase();
+      const titleLower = String((parsed && parsed.title) || '').toLowerCase();
+      let kcalMin = 400;
+      if (cat === 'dessert' || /dessert|nachtisch|pudding|kuchen|keks|cookie|mousse/.test(titleLower)) {
+        kcalMin = 200;
+      } else if (cat === 'soup' || cat === 'salad' ||
+                 /suppe|salat|soup|salad|broth/.test(titleLower)) {
+        kcalMin = 150;
+      }
+      const totalKcal = Number(parsed && parsed.nutrition && parsed.nutrition.kcal) || 0;
+      const servings = Math.max(1, Number(parsed && parsed.servings) || 4);
+      const kcalPerPortion = totalKcal / servings;
+      if (kcalPerPortion > 0 && kcalPerPortion < kcalMin && attempt < MAX_VALIDATION_ATTEMPTS) {
+        const diff = Math.ceil(kcalMin - kcalPerPortion);
+        lastErrors = [
+          'Kalorien der Einzelportion zu niedrig (' + Math.round(kcalPerPortion) +
+          ' kcal, Minimum ' + kcalMin + ' kcal fuer dieses Gericht). ' +
+          'Erhoehe die Mengen der sattmachenden Zutaten in ingredients[].amount: ' +
+          'Fett (Olivenoel, Butter, Nussmus, Kaese), Protein (Tofu, Ei, Fleisch, Fisch) ' +
+          'ODER komplexe KH (Reis, Kartoffel, Suesskartoffel, Huelenfruchte). ' +
+          'Ziel: mindestens ' + diff + ' kcal mehr pro Portion. ' +
+          'NIEMALS kcal kuenstlich im nutrition-Objekt erhoehen.',
+        ];
+        logValidationFailure({
+          attempt: attempt,
+          errors: lastErrors,
+          warnings: [],
+          parsed: parsed,
+          traceId: traceId,
+          aiInstruction: aiInstructionForLog,
+        });
+        continue;
+      }
+    }
+
     const rendered = renderRecipeForDisplay(parsed, {
       dishQuery: dishQueryForValidation,
       ai_instruction: payload && (payload.ai_instruction || payload.aiInstruction),
@@ -1386,6 +1428,33 @@ async function generateValidatedRecipe(opts) {
       attempts: attempt,
       attempt_raws: attemptRaws,
     };
+  }
+
+  // Kcal-Retry hat kein besseres Rezept gefunden. Statt Fehler liefern wir
+  // das letzte formal valide Rezept aus (mit kcalFallback-Marker).
+  if (lastValidRecipe) {
+    try {
+      const renderedFb = renderRecipeForDisplay(lastValidRecipe.parsed, {
+        dishQuery: Array.isArray(payload && payload.pantry_ingredients)
+          ? payload.pantry_ingredients.join(' ')
+          : '',
+        ai_instruction: payload && (payload.ai_instruction || payload.aiInstruction),
+        allergens: payload && payload.allergens,
+      });
+      if (renderedFb) {
+        return {
+          ok: true,
+          recipe: renderedFb,
+          raw: lastValidRecipe.parsed,
+          warnings: (lastValidRecipe.validation && lastValidRecipe.validation.warnings) || [],
+          attempts: MAX_VALIDATION_ATTEMPTS,
+          attempt_raws: attemptRaws,
+          kcalFallback: true,
+        };
+      }
+    } catch (eFb) {
+      console.warn('[recipe-v92] kcal fallback render failed', eFb && eFb.message);
+    }
   }
 
   return {
