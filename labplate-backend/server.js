@@ -914,6 +914,12 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     return res.status(200).json(payload);
   }
   const auth = resolveGroqAuth(req.body);
+  const _traceId = String((req.body && (req.body.debug_request_id || req.body.debugTraceId)) || '');
+  const _buildSha = BUILD_ID;
+  if (_traceId) {
+    console.log('[TRACE] ' + _traceId + ' ENTER mode=' + ((req.body && req.body.mode) || '?') +
+      ' build=' + _buildSha + ' pid=' + process.pid);
+  }
   if (auth.keyType === 'prod' && !GROQ_API_KEY) {
     logEvent('request_rejected', { reason: 'server_not_configured', keyType: 'prod' });
     return res.status(500).json({ error: 'server_not_configured' });
@@ -931,7 +937,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   // Neue, strikt getrennte KI-Rezept-Pipeline. Original-/DB-Rezepte laufen
   // weiterhin ausschließlich über den bestehenden Pfad darunter.
   if (req.body && req.body.mode === 'ai') {
-    console.log('[BRANCH_DIAG] AI_BRANCH_ENTERED mode=' + req.body.mode);
+    console.log('[BRANCH_DIAG] AI_BRANCH_ENTERED mode=' + req.body.mode + (_traceId ? ' trace=' + _traceId : ''));
     const aiResult = await aiRecipeQuality.generateAiRecipe({
       model: resolveRecipeModel(req.body),
       context: {
@@ -1077,7 +1083,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
 
   // Generativ (nicht structured/coach): v9.2 Validierung + Retry (max 3)
   const useV92Pipeline = !payload.structured && flow !== 'coach' && flow !== 'nutri-coach' && flow !== 'core';
-  console.log('[BRANCH_DIAG] V92_CHECK mode=' + req.body.mode + ' useV92=' + useV92Pipeline + ' flow=' + flow + ' structured=' + payload.structured);
+  console.log('[BRANCH_DIAG] V92_CHECK mode=' + req.body.mode + ' useV92=' + useV92Pipeline + ' flow=' + flow + ' structured=' + payload.structured + (_traceId ? ' trace=' + _traceId : ''));
   if (useV92Pipeline) {
     const pipelineResult = await core.generateValidatedRecipe({
       payload: payload,
