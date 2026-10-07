@@ -70,6 +70,13 @@ const CHEF_FRAMEWORK_RULES = [
   'Fleisch/Lachs/Hauptprotein 400–600 g (100–150 g p.P.); ' +
   'Eier: glatte Stückzahl 3–4 stk fuer 4 Personen (unit MUSS stk); ' +
   'Kochfluessigkeit/Bruehe/Sahne 200–300 ml — MUSS in ingredients stehen und per {id} in steps referenziert werden.',
+  '0p-KALORIEN (STRIKT, NACHRECHENBAR): Jede Einzelportion MUSS im Alltagsrahmen 400–700 kcal liegen. '
+  + 'PRUEFE NACH dem Setzen aller amounts (mental oder im Kopf): Summe(Kalorien) / 4 >= 400 kcal. '
+  + 'Wenn ein Hauptgericht diese Untergrenze NICHT erreicht, erhoehe die Mengen der sattmachenden Zutaten: '
+  + 'Fett (Olivenoel, Butter, Nussmus, Kaese), Protein (Tofu, Ei, Fleisch, Fisch) ODER komplexe KH '
+  + '(Reis, Kartoffel, Suesskartoffel, Huelenfuechte) in ingredients[].amount — NIEMALS die kcal im '
+  + 'nutrition-Objekt kuenstlich aufblaehen. Fuer dessert/soup/salad gilt die Untergrenze 200/150/150 kcal. '
+  + 'Ziel auch mit maximal sinnvoller Menge unerreichbar → target_deviation_note ehrlich, NICHT erfinden.',
   '0g) DEUTSCHE GRAMMATIK in steps/garnish/chef_analysis: ' +
   'Artikelkorrekturen bei Fluessigkeiten — IMMER „Das Wasser“ / „das Wasser“ (niemals „Den Wasser“). ' +
   'Korrekte Dativ-/Akkusativbeugung: „mit schwarzem Pfeffer würzen“, „die Eier verquirlen“, „den Käse unterrühren“.',
