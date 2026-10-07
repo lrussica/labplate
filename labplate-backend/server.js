@@ -949,7 +949,13 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
 
   // Neue, strikt getrennte KI-Rezept-Pipeline. Original-/DB-Rezepte laufen
   // weiterhin ausschließlich über den bestehenden Pfad darunter.
-  if (req.body && req.body.mode === 'ai') {
+  // HOTFIX 2026-10-07: AI-Branch standardmaessig deaktiviert.
+  // Grund: ai-recipe-quality.js braucht allowedIngredients/ingredientDatabase
+  // vom Client und blockiert sonst mit 422 ai_recipe_unavailable. Die V92-Pipeline
+  // (unten) hat alle Funktionen: Katalog, diet_labels, Kcal-Retry.
+  // Reaktivieren nur mit ENABLE_AI_QUALITY_BRANCH=1 als Env-Variable.
+  if (process.env.ENABLE_AI_QUALITY_BRANCH === '1' &&
+      req.body && req.body.mode === 'ai') {
     console.log('[BRANCH_DIAG] AI_BRANCH_ENTERED mode=' + req.body.mode + (_traceId ? ' trace=' + _traceId : ''));
     const aiResult = await aiRecipeQuality.generateAiRecipe({
       model: resolveRecipeModel(req.body),
