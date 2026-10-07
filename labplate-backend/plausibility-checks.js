@@ -11,6 +11,20 @@ const PROTEIN_DISH_RE = /\b(hähnchen|haehnchen|huhn|hähn|haehn|pute|truthahn|r
 const ACID_RE = /\b(essig|vinegar|balsamico|apfelessig)\b/i;
 const TOFU_DISH_RE = /\b(tofu|tempeh)\b/i;
 
+// --- P1 (Maillard vor Schmoren) ---
+// Fleisch-Praefix-Erkennung. Bewusst ohne \b am Ende, damit Komposita
+// wie "Rindfleisch", "Haehnchenbrust", "Rindergulasch" erkannt werden.
+// Bruehe/Fond wird separat ausgeschlossen (siehe BROTH_EXCLUDE_RE),
+// damit "Rinderbruehe" nicht als Fleisch zaehlt.
+const MEAT_RE = /(?:rind|kalb|schwein|lamm|hähnchen|haehnchen|huhn|hühner|pute|truthahn|ente|gans|fisch|lachs|thunfisch|forelle|kabeljau|garnele|shrimp|scampi|steak|kotelett|filet|hackfleisch|gulasch|schnitzel|ossobuco|brisket|entrec[oô]te)/i;
+const BROTH_EXCLUDE_RE = /\b(brühe|bruehe|fond|bouillon|stock|sud)\b/i;
+// Fluessigkeits-/Loesch-Signale im Step-Text.
+// Breit gefasst: Fluessigkeitsname ODER typisches Loesch-Verb.
+const LIQUID_STEP_RE = /(?:wasser|brühe|bruehe|fond|wein|bier|sahne|milch|kokosmilch|soße|soosse|passata|tomaten|pürierte\s+tomaten|puerierte\s+tomaten|ablöschen|abloeschen|aufgießen|aufgiessen|angießen|angiessen|hinzugießen|hinzugiessen)/i;
+// Anbrat-Signale. Bewusst OHNE generisches "braten", damit "im Ofen braten"
+// nicht als Maillard-Vorstufe zaehlt.
+const SEAR_STEP_RE = /(?:scharf\s+anbraten|heiß\s+anbraten|heiss\s+anbraten|kräftig\s+anbraten|kraeftig\s+anbraten|goldbraun\s+braten|farbe\s+nehmen\s+lassen|maillard|anbraten|anrösten|anroesten|anschwitzen|anbräunen|anbraeunen)/i;
+
 function nameOf(ing) {
   return String((ing && (ing.name || ing.displayName)) || '');
 }
@@ -119,10 +133,66 @@ function checkVinegarInTofuCurry(recipe) {
   return { errors: [], warnings: [] };
 }
 
+/**
+ * P1 (Maillard vor Schmoren):
+ * Bei Gerichten mit Fleisch und Fluessigkeit (Braten/Schmoren/Braisieren)
+ * muss das Fleisch VOR dem Fluessigkeitszusatz scharf angebraten werden.
+ * Vegetarische Gerichte loesen P1 nicht aus.
+ * Anbraten und Loeschen im selben Step sind korrekt und loesen nicht aus.
+ */
+function stepsOf(recipe) {
+  const raw = (recipe && (recipe.steps || recipe.instructions)) || [];
+  if (!Array.isArray(raw)) return [];
+  return raw.map(function (s) {
+    if (typeof s === 'string') return s;
+    if (s && typeof s === 'object') {
+      return String((s.title ? s.title + ' ' : '') + (s.content || s.text || ''));
+    }
+    return '';
+  });
+}
+
+function checkMaillardBeforeBraising(recipe) {
+  const ings = ingredientsOf(recipe);
+  const title = titleOf(recipe);
+
+  const meatInTitle = MEAT_RE.test(title) && !BROTH_EXCLUDE_RE.test(title);
+  const meatInIngs = ings.some(function (ing) {
+    const n = nameOf(ing);
+    return MEAT_RE.test(n) && !BROTH_EXCLUDE_RE.test(n);
+  });
+  if (!meatInTitle && !meatInIngs) return { errors: [], warnings: [] };
+
+  const steps = stepsOf(recipe);
+  if (!steps.length) return { errors: [], warnings: [] };
+
+  // Erster Step mit Fluessigkeit/Loesch-Signal.
+  let liquidIdx = -1;
+  for (let i = 0; i < steps.length; i++) {
+    if (LIQUID_STEP_RE.test(steps[i])) { liquidIdx = i; break; }
+  }
+  if (liquidIdx < 0) return { errors: [], warnings: [] };
+
+  // Anbraten in einem Step bis einschliesslich dem ersten Fluessigkeits-Step?
+  for (let i = 0; i <= liquidIdx; i++) {
+    if (SEAR_STEP_RE.test(steps[i])) return { errors: [], warnings: [] };
+  }
+
+  return {
+    errors: [],
+    warnings: [
+      'Kulinarische Plausibilitaet: Maillard vor dem Schmoren fehlt. ' +
+      'Bei einem Gericht mit Fleisch und Fluessigkeit sollte das Fleisch ' +
+      'vor dem Fluessigkeitszusatz scharf angebraten werden ' +
+      '(Roestaromen, Maillard-Reaktion).'
+    ],
+  };
+}
+
 function evaluateAll(recipe) {
   const errors = [];
   const warnings = [];
-  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry]
+  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising]
     .forEach(function (fn) {
       try {
         const r = fn(recipe);
@@ -141,4 +211,5 @@ module.exports = {
   checkFiberOverload: checkFiberOverload,
   checkPsylliumInProteinDish: checkPsylliumInProteinDish,
   checkVinegarInTofuCurry: checkVinegarInTofuCurry,
+  checkMaillardBeforeBraising: checkMaillardBeforeBraising,
 };

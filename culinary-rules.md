@@ -7,7 +7,7 @@ Neue Regeln werden hier zuerst dokumentiert, dann implementiert.
 Quelle: Eigene Notizen (Kochlehre), internationale Kuechen-Standards,
 BLS/DSGVO-Konformitaet, ChatGPT-Empfehlungen.
 
-Stand: 2026-10-07
+Stand: 2026-10-08
 
 ---
 
@@ -22,6 +22,7 @@ Status: **Warnung** (nicht blockierend), sichtbar im Client als Quality-Notice.
 | R2 | Ballaststoff-Overload: >= 3 starke Ballaststoff-Traeger | aktiv |
 | R3 | Psyllium/Flohsamen in Protein-Gericht (Haehnchen/Fleisch/Fisch) | aktiv |
 | R4 | Essig in Tofu-/Tempeh-Curry | aktiv |
+| R5 | Maillard vor Schmoren: Bei Brasieren/Schmoren muss Fleisch vor Fluessigkeitszusatz scharf angebraten werden (vormals P1) | aktiv |
 
 Tests: `labplate-backend/test-nutrition.js` (Abschnitt PLAUSIBILITAET).
 
@@ -36,7 +37,7 @@ implementiert, jede mit Test. Status: **nicht implementiert**.
 
 | ID | Regel | Pruefbar? | Anmerkung |
 |---|---|---|---|
-| P1 | Maillard vor dem Schmoren: Bei Brasieren/Schmoren muss Fleisch vor dem Fluessigkeitszusatz scharf angebraten werden | ja | Step-Sequenz-Pruefung: "anbraten" muss vor "Fluessigkeit" kommen |
+| ~~P1~~ | ~~Maillard vor dem Schmoren~~ | – | **implementiert als R5 (2026-10-08)** |
 | P2 | Riposo della Carne: Nach Braten/Grillen muss ein Ruheschritt kommen, bevor geschnitten wird | ja | Step muss "ruhen"/"rasten"/"ziehen lassen" enthalten |
 | P3 | Riduzione korrekt: Bei "Reduktion" muss Fluessigkeit vorher drin sein | ja | Sequenz-Pruefung |
 | P4 | Deglassatura: Nach "Anbraten" mit Fond-Rueckstand muss ein Loesch-Schritt (Wein/Bruehe/Essig) kommen | ja | Sequenz-Pruefung |
@@ -98,7 +99,7 @@ Sie gehoeren zum Handwerk und werden nicht automatisch geprueft.
 
 Reihenfolge nach Nutzen und Aufwand:
 
-1. **P1 Maillard vor Schmoren** – haeufigster Fehler, einfache Sequenz-Pruefung
+1. ~~**P1 Maillard vor Schmoren**~~ ✅ implementiert als **R5** (2026-10-08)
 2. **P5 Saure-Korrektur** – kulinarisch stark, einfach umzusetzen
 3. **P2 Riposo della Carne** – wichtig, einfach
 4. **P11/P12 Saisonalitaet** – sichtbarer Effekt, aber Datumslogik

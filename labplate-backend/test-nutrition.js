@@ -251,6 +251,55 @@ console.log('=== PLAUSIBILITAET: kulinarische Warnungen ===');
   });
 })();
 
+console.log('=== PLAUSIBILITAET: P1 Maillard vor Schmoren ===');
+(function () {
+  const p = require('./plausibility-checks');
+  const cases = [
+    ['P07 Gulasch ohne Anbraten -> Warnung', {
+      title: 'Rindergulasch',
+      ingredients: [{ name: 'Rindfleisch (Schulter)' }, { name: 'Zwiebel' }, { name: 'Rinderbrühe' }],
+      steps: [
+        'Das Rindfleisch in Wuerfel schneiden.',
+        'Mit Rinderbruehe aufgiessen und zwei Stunden schmoren.'
+      ],
+    }, true],
+    ['P08 Gulasch mit Anbraten -> keine Warnung', {
+      title: 'Rindergulasch',
+      ingredients: [{ name: 'Rindfleisch (Schulter)' }, { name: 'Zwiebel' }, { name: 'Rinderbrühe' }],
+      steps: [
+        'Das Rindfleisch kraeftig anbraten, bis es braun ist.',
+        'Mit Rinderbruehe abloeschen und zwei Stunden schmoren.'
+      ],
+    }, false],
+    ['P09 vegetarisch -> keine Warnung', {
+      title: 'Kuerbissuppe',
+      ingredients: [{ name: 'Kürbis' }, { name: 'Gemüsebrühe' }],
+      steps: ['Den Kuerbis in Gemuesebruehe koecheln lassen.'],
+    }, false],
+    ['P10 ohne Fluessigkeit -> keine Warnung', {
+      title: 'Rindersteak',
+      ingredients: [{ name: 'Rindersteak' }, { name: 'Butter' }],
+      steps: [
+        'Das Steak scharf anbraten.',
+        'Kurz ruhen lassen und servieren.'
+      ],
+    }, false],
+  ];
+  cases.forEach(function (t) {
+    const rec = {
+      title: t[1].title,
+      ingredients: t[1].ingredients,
+      finalIngredients: t[1].ingredients,
+      steps: t[1].steps,
+    };
+    const r = p.evaluateAll(rec);
+    const maillard = (r.warnings || []).filter(function (w) { return /Maillard/i.test(w); });
+    const hit = maillard.length > 0;
+    ok(t[0], hit === t[2], 'erwartet Warnung=' + t[2] + ', bekommen=' + hit + ' | warnings=' + JSON.stringify(r.warnings));
+    ok(t[0] + ' keine Errors', r.errors.length === 0, 'Errors: ' + JSON.stringify(r.errors));
+  });
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);
