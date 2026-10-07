@@ -361,6 +361,17 @@ const photoVerify = createPhotoVerifyHandlers({
 // ---------------------------------------------------------------------
 // Routen
 // ---------------------------------------------------------------------
+app.get('/diag-deploy-check', (req, res) => {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  return res.json({
+    marker: 'diag-deploy-2026-10-07-01',
+    build: BUILD_ID,
+    pid: process.pid,
+    uptime_s: Math.round(process.uptime()),
+    ts: new Date().toISOString(),
+  });
+});
+
 app.get('/health', (req, res) => {
   res.status(200).json({
     build: BUILD_ID,
