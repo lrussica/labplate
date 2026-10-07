@@ -85,6 +85,11 @@ function isExemptUsage(ing) {
   if (ing.optional === true) return true;
   const role = String(ing.culinaryRole || ing.role || '').toLowerCase();
   if (role === 'seasoning' || role === 'garnish') return true;
+  // HOTFIX 2026-10-07: Garnitur-Marker im Namen erkennen (nicht nur in culinaryRole).
+  // Beispiel: "Frischer Koriander (Garnitur)" darf nur im garnish-Feld stehen
+  // und wird nicht als Hauptzutat geprueft.
+  const nRaw = String(ing.name || ing.displayName || '').toLowerCase();
+  if (/\(\s*garnitur\s*\)|\(\s*garnish\s*\)|zum\s+garnier|zur\s+garnitur|als\s+garnitur|als\s+topping|als\s+dekoration/i.test(nRaw)) return true;
   // Toppings dürfen ausschließlich im garnish-Feld stehen
   if (role === 'topping') return false;
   const unit = String(ing.unit || '').toLowerCase();

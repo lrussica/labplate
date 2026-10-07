@@ -197,6 +197,28 @@ console.log('=== KOCHWASSER: errorsToDirectives ===');
   ok('K05 Wasser-Directive weiterhin aktiv', d2.length >= 1, 'water-Action fehlt');
 })();
 
+console.log('=== GARNITUR: isExemptUsage ===');
+(function () {
+  const cu = require('./culinary-usability');
+  const cases = [
+    ['G01 Koriander (Garnitur)', 'Frischer Koriander (Garnitur)', 'other', true],
+    ['G02 Petersilie zum Garnieren', 'Petersilie, zum Garnieren', 'vegetable', true],
+    ['G03 Sesam als Topping', 'Sesam (als Topping)', 'other', true],
+    ['G04 Koriander ohne Marker wird geprueft', 'Frischer Koriander', 'other', false],
+  ];
+  cases.forEach(function (t) {
+    const ing = { name: t[1], role: t[2], culinaryRole: t[2], unit: 'g', amount: 10 };
+    const rec = { ingredients: [ing], finalIngredients: [ing], steps: [], garnish: '' };
+    const res = cu.validateIngredientUsage(rec);
+    const hasErr = (res.errors || []).some(function (e) {
+      return /is not used in a preparation step/.test(e);
+    });
+    const istExempt = (hasErr === false);
+    ok(t[0], istExempt === t[3],
+      'erwartet ' + (t[3] ? 'EXEMPT' : 'GEPRUEFT') + ', bekommen ' + (istExempt ? 'EXEMPT' : 'GEPRUEFT'));
+  });
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);
