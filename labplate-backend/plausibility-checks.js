@@ -106,6 +106,14 @@ const REDUCTION_LIQUID_RE = /\b(?:brühe|bruehe|fond|bouillon|wein|weisswein|wei
 const REDUCTION_SAUCE_CONTEXT_RE = /\b(?:sauce|soße|soosse|suppe|tunke|gericht)\b/i;
 const MILK_RE = /\bmilch\b/i;
 
+// --- P7 (Salatura a Strati) ---
+// Salz-Erwaehnung im Step (auch Verb salzen, salzig).
+const P7_SALT_IN_STEP_RE = /\b(?:salz|salzen|salzig|salzige|salziges|salziger)\b/i;
+// Salz als Zutat.
+const P7_SALT_INGREDIENT_RE = /\b(?:salz|meersalz|steinsalz|jodsalz|kochsalz)\b/i;
+// Dessert/Suppe-Titel ausschliessen (dort ist einmal Salzen ueblich).
+const P7_EXCLUDE_TITLE_RE = /\b(?:dessert|nachtisch|mousse|pudding|kuchen|suppe|soup|smoothie|smoothies)\b/i;
+
 function nameOf(ing) {
   return String((ing && (ing.name || ing.displayName)) || '');
 }
@@ -597,10 +605,49 @@ function checkRiduzione(recipe) {
   };
 }
 
+/**
+ * P7 (Salatura a Strati):
+ * Salz sollte in mehreren Schichten ins Gericht kommen (Fleisch wuerzen,
+ * Wasser salzen, Gemuese abschmecken) — nicht nur einmal am Ende.
+ * Desserts und Suppen sind ausgenommen (dort reicht einmal salzen).
+ * Feuert nur, wenn Salz ueberhaupt als Zutat gelistet ist.
+ */
+function checkSalaturaAStrati(recipe) {
+  const ings = ingredientsOf(recipe);
+  const title = titleOf(recipe);
+  const category = String((recipe && recipe.dishCategory) || '').toLowerCase();
+
+  if (category === 'dessert' || category === 'soup') return { errors: [], warnings: [] };
+  if (P7_EXCLUDE_TITLE_RE.test(title)) return { errors: [], warnings: [] };
+
+  const saltInIngredients = ings.some(function (ing) {
+    return P7_SALT_INGREDIENT_RE.test(nameOf(ing));
+  });
+  if (!saltInIngredients) return { errors: [], warnings: [] };
+
+  const steps = stepsOf(recipe);
+  if (!steps.length) return { errors: [], warnings: [] };
+
+  let saltStepCount = 0;
+  for (let i = 0; i < steps.length; i++) {
+    if (P7_SALT_IN_STEP_RE.test(steps[i])) saltStepCount++;
+  }
+  if (saltStepCount >= 2) return { errors: [], warnings: [] };
+
+  return {
+    errors: [],
+    warnings: [
+      'Kochlehre-Hinweis: Salz nur in einem Step. Salatura a Strati — Salz ' +
+      'in mehreren Schichten (Fleisch wuerzen, Wasser salzen, Gemuese abschmecken) ' +
+      'bringt mehr Tiefe als einmal am Ende.'
+    ],
+  };
+}
+
 function evaluateAll(recipe) {
   const errors = [];
   const warnings = [];
-  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne, checkDeglassatura, checkEmulsion, checkUmamiAnchor, checkThreeCreams, checkRiduzione]
+  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne, checkDeglassatura, checkEmulsion, checkUmamiAnchor, checkThreeCreams, checkRiduzione, checkSalaturaAStrati]
     .forEach(function (fn) {
       try {
         const r = fn(recipe);
@@ -627,4 +674,5 @@ module.exports = {
   checkUmamiAnchor: checkUmamiAnchor,
   checkThreeCreams: checkThreeCreams,
   checkRiduzione: checkRiduzione,
+  checkSalaturaAStrati: checkSalaturaAStrati,
 };

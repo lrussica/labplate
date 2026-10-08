@@ -30,6 +30,7 @@ Status: **Warnung** (nicht blockierend), sichtbar im Client als Quality-Notice.
 | R10 | Umami-Anker: Vegetarische Hauptgerichte ohne Parmesan/Tomate/Sojasauce/Pilze/Miso = Warnung. Salate, Suppen, Desserts, Fleischgerichte ausgenommen (vormals P6) | aktiv |
 | R11 | Drei Cremes gleichzeitig: Sahne/Creme fraiche/Schmand/Kokosmilch/Frischkaese/Mascarpone/Doppelrahm/Sojacreme/Hafercreme = Textur-Kollaps. Klassisch reicht eine Creme (vormals P10) | aktiv |
 | R12 | Riduzione: Reduktions-Steps (reduzieren/einkochen/eindicken) brauchen eine Fluessigkeit zum Reduzieren. 'Hitze reduzieren' ausgenommen; Milch nur im Sauce/Suppe-Kontext (vormals P3) | aktiv |
+| R13 | Salatura a Strati: Salz in mindestens 2 verschiedenen Steps referenziert. Desserts und Suppen ausgenommen (vormals P7) | aktiv |
 
 Tests: `labplate-backend/test-nutrition.js` (Abschnitt PLAUSIBILITAET).
 
@@ -55,7 +56,7 @@ implementiert, jede mit Test. Status: **nicht implementiert**.
 |---|---|---|---|
 | ~~P5~~ | ~~Saure-Korrektur~~ | – | **implementiert als R6 (2026-10-08)** |
 | ~~P6~~ | ~~Umami-Anker~~ | – | **implementiert als R10 (2026-10-08)** |
-| P7 | Salatura a Strati: Salz muss in >= 2 verschiedenen Steps referenziert werden, nicht nur einmal | ja | Ausser bei Desserts und Suppen |
+| ~~P7~~ | ~~Salatura a Strati~~ | – | **implementiert als R13 (2026-10-08)** |
 | P8 | 5-Geschmacks-Balance: Salzig + Sauer + Umami sollten mindestens vorhanden sein | ja (grob) | Nur Warnung |
 
 ### Emulsione / Konsistenz
@@ -115,7 +116,7 @@ Reihenfolge nach Nutzen und Aufwand:
 7. ~~**P10 Drei Cremes**~~ ✅ implementiert als **R11** (2026-10-08)
 8. ~~**P3 Riduzione**~~ ✅ implementiert als **R12** (2026-10-08)
 9. **P11/P12 Saisonalitaet** – sichtbarer Effekt, aber Datumslogik
-10. **P7 Salatura a Strati** – nuanciert, schwierig sauber zu pruefen
+10. ~~**P7 Salatura a Strati**~~ ✅ implementiert als **R13** (2026-10-08)
 
 ---
 

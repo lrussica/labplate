@@ -870,6 +870,82 @@ console.log('=== PLAUSIBILITAET: P3 Riduzione ===');
   ok('P48 Reduktion ohne Fluessigkeit (2) -> Warnung', hasRed(p48), 'got: ' + JSON.stringify(p48.warnings));
 })();
 
+console.log('=== PLAUSIBILITAET: P7 Salatura a Strati ===');
+(function () {
+  const p = require('./plausibility-checks');
+  function hasSalt(r) {
+    return (r.warnings || []).some(function (w) { return /Salatura a Strati/i.test(w); });
+  }
+
+  // P49: Salz nur in einem Step -> Warnung
+  const p49 = p.evaluateAll({
+    title: 'Rindergulasch',
+    dishCategory: 'main_meat',
+    ingredients: [{ name: 'Rindfleisch' }, { name: 'Zwiebel' }, { name: 'Salz' }],
+    finalIngredients: [{ name: 'Rindfleisch' }, { name: 'Zwiebel' }, { name: 'Salz' }],
+    steps: [
+      'Fleisch anbraten.',
+      'Zwiebeln zugeben und 60 Minuten schmoren.',
+      'Mit Salz abschmecken.'
+    ],
+  });
+  ok('P49 Salz nur einmal -> Warnung', hasSalt(p49), 'got: ' + JSON.stringify(p49.warnings));
+
+  // P50: Salz in zwei Steps -> keine Warnung
+  const p50 = p.evaluateAll({
+    title: 'Rindergulasch',
+    dishCategory: 'main_meat',
+    ingredients: [{ name: 'Rindfleisch' }, { name: 'Zwiebel' }, { name: 'Salz' }],
+    finalIngredients: [{ name: 'Rindfleisch' }, { name: 'Zwiebel' }, { name: 'Salz' }],
+    steps: [
+      'Fleisch mit Salz wuerzen und anbraten.',
+      'Zwiebeln zugeben und 60 Minuten schmoren.',
+      'Mit Salz abschmecken.'
+    ],
+  });
+  ok('P50 Salz in zwei Steps -> keine Warnung', !hasSalt(p50), 'got: ' + JSON.stringify(p50.warnings));
+
+  // P51: Dessert -> keine Warnung (Ausnahme)
+  const p51 = p.evaluateAll({
+    title: 'Schokoladenmousse',
+    dishCategory: 'dessert',
+    ingredients: [{ name: 'Schokolade' }, { name: 'Sahne' }, { name: 'Salz' }],
+    finalIngredients: [{ name: 'Schokolade' }, { name: 'Sahne' }, { name: 'Salz' }],
+    steps: [
+      'Schokolade schmelzen.',
+      'Sahne steif schlagen.',
+      'Mit einer Prise Salz abschmecken.'
+    ],
+  });
+  ok('P51 Dessert -> keine Warnung', !hasSalt(p51), 'got: ' + JSON.stringify(p51.warnings));
+
+  // P52: Suppe -> keine Warnung (Ausnahme)
+  const p52 = p.evaluateAll({
+    title: 'Kuerbissuppe',
+    dishCategory: 'soup',
+    ingredients: [{ name: 'Kuerbis' }, { name: 'Bruehe' }, { name: 'Salz' }],
+    finalIngredients: [{ name: 'Kuerbis' }, { name: 'Bruehe' }, { name: 'Salz' }],
+    steps: [
+      'Kuerbis in Bruehe kochen.',
+      'Mit Salz abschmecken.'
+    ],
+  });
+  ok('P52 Suppe -> keine Warnung', !hasSalt(p52), 'got: ' + JSON.stringify(p52.warnings));
+
+  // P53: Kein Salz in Zutaten -> keine Warnung (Regel greift nicht)
+  const p53 = p.evaluateAll({
+    title: 'Rindergulasch',
+    dishCategory: 'main_meat',
+    ingredients: [{ name: 'Rindfleisch' }, { name: 'Zwiebel' }],
+    finalIngredients: [{ name: 'Rindfleisch' }, { name: 'Zwiebel' }],
+    steps: [
+      'Fleisch anbraten.',
+      'Zwiebeln zugeben und schmoren.'
+    ],
+  });
+  ok('P53 ohne Salz-Zutat -> keine Warnung', !hasSalt(p53), 'got: ' + JSON.stringify(p53.warnings));
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);
