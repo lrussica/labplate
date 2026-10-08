@@ -97,6 +97,8 @@ function isExemptUsage(ing) {
   const unit = String(ing.unit || '').toLowerCase();
   if (unit === 'prise' || unit === 'messerspitze') return true;
   const n = String(ing.name || ing.displayName || '').toLowerCase();
+  // Koriander bewusst NICHT exempt: In Thai/Mexiko/Indien Hauptaroma. Nur
+  // bei Marker '(Garnitur)' greift die Ausnahme oben (2026-10-08).
   if (/^(zimt|curry|paprika|muskat|oregano|basilikum|thymian|dill|petersilie|salz|pfeffer)\b/i.test(n)) {
     return true;
   }

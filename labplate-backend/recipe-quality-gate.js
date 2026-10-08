@@ -165,7 +165,10 @@ function validateNutrition(recipe) {
     const amt = Number(ing && ing.amount) || 0;
     totalMass += amt;
     const nm = String((ing && (ing.displayName || ing.name)) || '');
-    if (/hack|rind|schwein|lamm|fleisch|beef|pork|huhn|hähn|fisch|lachs/i.test(nm) ||
+    // Fix 2026-10-08: 'gehackt' ist kein Fleisch — negative Lookbehind 'ge'.
+    // Sonst zaehlt z.B. 'Knoblauch (fein gehackt)' als Fleisch und triggert die
+    // Protein-Bremse unbegruendet (=> 'Nutrition data does not plausibly match').
+    if (/(?<!ge)hack|rind|schwein|lamm|fleisch|beef|pork|huhn|hähn|fisch|lachs/i.test(nm) ||
         ing._protein_source || ing.protein_source) {
       meatGrams += amt;
     }
