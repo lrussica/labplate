@@ -139,7 +139,8 @@ const P8_ACID_IN_ING_RE = /\b(?:essig|balsamico|apfelessig|zitronensaft|zitronen
 // Umami-Traeger (analog R10, aber als Meta-Check).
 const P8_UMAMI_IN_ING_RE = /\b(?:parmesan|pecorino|grana|tomatenmark|passata|tomate|tomaten|sojasauce|sojasoße|miso|shiitake|champignon|pilz|pilze|anchov|fischsauce|hefeextrakt|worcestersh|ketchup)\b/i;
 // Dessert/Suess-Ausschluss.
-const P8_EXCLUDE_TITLE_RE = /\b(?:dessert|nachtisch|mousse|pudding|kuchen|torte|keks|smoothie|smoothies|kompott|mus\b)\b/i;
+// Keine \b am Anfang: faengt Komposita wie 'Schokoladenmousse'.
+const P8_EXCLUDE_TITLE_RE = /(?:dessert|nachtisch|mousse|pudding|kuchen|torte|keks|smoothie|smoothies|kompott|mus)\b/i;
 
 function nameOf(ing) {
   return String((ing && (ing.name || ing.displayName)) || '');
@@ -788,9 +789,11 @@ function checkFlavorBalance(recipe) {
   const hasSalt = P8_SALT_IN_ING_RE.test(allNames);
   const hasAcid = P8_ACID_IN_ING_RE.test(allNames);
   const hasUmami = P8_UMAMI_IN_ING_RE.test(allNames);
+  // Fix 2026-10-08: Fleisch/Fisch ist Umami — sonst False Positives bei Fleischgerichten.
+  const hasMeat = P6_MEAT_FISH_RE.test(allNames);
 
-  // Nur warnen, wenn ALLE DREI fehlen.
-  if (hasSalt || hasAcid || hasUmami) return { errors: [], warnings: [] };
+  // Nur warnen, wenn ALLE DREI fehlen UND kein Fleisch/Fisch dabei ist.
+  if (hasSalt || hasAcid || hasUmami || hasMeat) return { errors: [], warnings: [] };
 
   return {
     errors: [],
