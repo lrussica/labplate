@@ -658,6 +658,74 @@ console.log('=== PLAUSIBILITAET: P9 Emulsion ===');
   ok('P31 Fett+Wasser verruehrt ohne Emulgator -> Warnung', hasEmul(p31), 'got: ' + JSON.stringify(p31.warnings));
 })();
 
+console.log('=== PLAUSIBILITAET: P6 Umami-Anker ===');
+(function () {
+  const p = require('./plausibility-checks');
+  function hasUmami(r) {
+    return (r.warnings || []).some(function (w) { return /Umami-Anker fehlt/i.test(w); });
+  }
+
+  // P32: Gemuese-Curry ohne Umami-Traeger -> Warnung
+  const p32 = p.evaluateAll({
+    title: 'Gemuese-Curry',
+    dishCategory: 'main_vegetarian',
+    ingredients: [{ name: 'Blumenkohl' }, { name: 'Kokosmilch' }, { name: 'Kartoffel' }],
+    finalIngredients: [{ name: 'Blumenkohl' }, { name: 'Kokosmilch' }, { name: 'Kartoffel' }],
+    steps: ['Alles koecheln lassen.'],
+  });
+  ok('P32 Gemuese-Curry ohne Umami -> Warnung', hasUmami(p32), 'got: ' + JSON.stringify(p32.warnings));
+
+  // P33: Gemuese-Curry mit Tomatenmark -> keine Warnung
+  const p33 = p.evaluateAll({
+    title: 'Gemuese-Curry',
+    dishCategory: 'main_vegetarian',
+    ingredients: [{ name: 'Blumenkohl' }, { name: 'Kokosmilch' }, { name: 'Tomatenmark' }],
+    finalIngredients: [{ name: 'Blumenkohl' }, { name: 'Kokosmilch' }, { name: 'Tomatenmark' }],
+    steps: ['Alles koecheln lassen.'],
+  });
+  ok('P33 Gemuese-Curry mit Tomatenmark -> keine Warnung', !hasUmami(p33), 'got: ' + JSON.stringify(p33.warnings));
+
+  // P34: Fleischgericht -> keine Warnung (Fleisch ist Umami)
+  const p34 = p.evaluateAll({
+    title: 'Rindergulasch',
+    dishCategory: 'main_meat',
+    ingredients: [{ name: 'Rindfleisch' }, { name: 'Zwiebel' }, { name: 'Rinderbruehe' }],
+    finalIngredients: [{ name: 'Rindfleisch' }, { name: 'Zwiebel' }, { name: 'Rinderbruehe' }],
+    steps: ['Schmoren lassen.'],
+  });
+  ok('P34 Fleischgericht -> keine Warnung', !hasUmami(p34), 'got: ' + JSON.stringify(p34.warnings));
+
+  // P35: Gurkensalat -> keine Warnung (Kategorie salad)
+  const p35 = p.evaluateAll({
+    title: 'Gurkensalat mit Dill',
+    dishCategory: 'salad',
+    ingredients: [{ name: 'Gurke' }, { name: 'Dill' }, { name: 'Essig' }],
+    finalIngredients: [{ name: 'Gurke' }, { name: 'Dill' }, { name: 'Essig' }],
+    steps: ['Alles vermengen.'],
+  });
+  ok('P35 Gurkensalat -> keine Warnung', !hasUmami(p35), 'got: ' + JSON.stringify(p35.warnings));
+
+  // P36: Gemuesesuppe -> keine Warnung (Kategorie soup)
+  const p36 = p.evaluateAll({
+    title: 'Kuerbissuppe',
+    dishCategory: 'soup',
+    ingredients: [{ name: 'Kuerbis' }, { name: 'Gemuesebruehe' }],
+    finalIngredients: [{ name: 'Kuerbis' }, { name: 'Gemuesebruehe' }],
+    steps: ['Kochen.'],
+  });
+  ok('P36 Gemuesesuppe -> keine Warnung', !hasUmami(p36), 'got: ' + JSON.stringify(p36.warnings));
+
+  // P37: Gemuese-Pfanne mit Parmesan -> keine Warnung
+  const p37 = p.evaluateAll({
+    title: 'Gemuese-Pfanne',
+    dishCategory: 'main_vegetarian',
+    ingredients: [{ name: 'Zucchini' }, { name: 'Paprika' }, { name: 'Parmesan' }],
+    finalIngredients: [{ name: 'Zucchini' }, { name: 'Paprika' }, { name: 'Parmesan' }],
+    steps: ['Anbraten.'],
+  });
+  ok('P37 Gemuese-Pfanne mit Parmesan -> keine Warnung', !hasUmami(p37), 'got: ' + JSON.stringify(p37.warnings));
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);

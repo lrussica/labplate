@@ -27,6 +27,7 @@ Status: **Warnung** (nicht blockierend), sichtbar im Client als Quality-Notice.
 | R7 | Riposo della Carne: Nach scharfem Anbraten/Grillen von ganzem Fleisch (Steak, Kotelett, Filet, Haehnchenbrust) Ruheschritt vor dem Schneiden. Hackfleisch/Gulasch ausgenommen (vormals P2) | aktiv |
 | R8 | Deglassatura: Nach scharfem Anbraten mit Saucen-Kontext (Koecheln/Schmoren) muss der Fond mit Fluessigkeit geloest werden (abloeschen). Reine Bratgerichte ohne Sauce ausgenommen (vormals P4) | aktiv |
 | R9 | Emulsion ohne Bindemittel: Mayonnaise/Aioli/Hollandaise brauchen Ei; Vinaigrette braucht Senf; generisch Fett+Wasser+Emulsionsverb braucht Emulgator. Montierte Butter zaehlt nicht (vormals P9) | aktiv |
+| R10 | Umami-Anker: Vegetarische Hauptgerichte ohne Parmesan/Tomate/Sojasauce/Pilze/Miso = Warnung. Salate, Suppen, Desserts, Fleischgerichte ausgenommen (vormals P6) | aktiv |
 
 Tests: `labplate-backend/test-nutrition.js` (Abschnitt PLAUSIBILITAET).
 
@@ -51,7 +52,7 @@ implementiert, jede mit Test. Status: **nicht implementiert**.
 | ID | Regel | Pruefbar? | Anmerkung |
 |---|---|---|---|
 | ~~P5~~ | ~~Saure-Korrektur~~ | – | **implementiert als R6 (2026-10-08)** |
-| P6 | Umami-Anker: Herzhaftes Gericht ohne Umami-Traeger (Parmesan, Tomate, Sojasauce, Pilze, Fleischfond) = Warnung | ja | Nur bei "main" |
+| ~~P6~~ | ~~Umami-Anker~~ | – | **implementiert als R10 (2026-10-08)** |
 | P7 | Salatura a Strati: Salz muss in >= 2 verschiedenen Steps referenziert werden, nicht nur einmal | ja | Ausser bei Desserts und Suppen |
 | P8 | 5-Geschmacks-Balance: Salzig + Sauer + Umami sollten mindestens vorhanden sein | ja (grob) | Nur Warnung |
 
@@ -107,9 +108,10 @@ Reihenfolge nach Nutzen und Aufwand:
 2. ~~**P5 Saure-Korrektur**~~ ✅ implementiert als **R6** (2026-10-08)
 3. ~~**P2 Riposo della Carne**~~ ✅ implementiert als **R7** (2026-10-08)
 4. ~~**P4 Deglassatura**~~ ✅ implementiert als **R8** (2026-10-08)
-5. **P11/P12 Saisonalitaet** – sichtbarer Effekt, aber Datumslogik
+5. ~~**P6 Umami-Anker**~~ ✅ implementiert als **R10** (2026-10-08)
 6. ~~**P9 Emulsion**~~ ✅ implementiert als **R9** (2026-10-08)
-7. **P7 Salatura a Strati** – nuanciert, schwierig sauber zu pruefen
+7. **P11/P12 Saisonalitaet** – sichtbarer Effekt, aber Datumslogik
+8. **P7 Salatura a Strati** – nuanciert, schwierig sauber zu pruefen
 
 ---
 

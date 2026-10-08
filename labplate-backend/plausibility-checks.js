@@ -76,6 +76,17 @@ const ACID_FOR_EMULSION_RE = /\b(?:essig|balsamico|apfelessig|zitronensaft|limet
 // Bindemittel (echte Emulgatoren).
 const EMULSIFIER_RE = /\b(?:ei|eier|eigelb|senf|dijon|tomatenmark|lecithin|xanthan|käse|kaese|sahne|mehl|stärke|staerke)\b/i;
 
+// --- P6 (Umami-Anker) ---
+// Fleisch/Fisch/Meeresfruechte zaehlen als Umami — P6 prueft sie nicht.
+// Nur Wortgrenze am Anfang — faengt Komposita wie Rindfleisch, Haehnchenbrust.
+const P6_MEAT_FISH_RE = /\b(?:rind|kalb|schwein|lamm|haehnchen|hähnchen|huhn|hühner|pute|truthahn|ente|gans|fisch|lachs|thunfisch|forelle|kabeljau|garnele|shrimp|scampi|steak|kotelett|filet|hackfleisch|gulasch|schnitzel|speck|schinken|salami|wurst|anchov|sardine|makrele|garnel|scamp)/i;
+// Gericht-Kategorien, die P6 ausschliessen.
+const P6_EXCLUDE_CATEGORIES = ['salad', 'dessert', 'soup', 'other'];
+// Titel-Signale fuer Ausschluss (Salat/Suppe/Dessert).
+const P6_EXCLUDE_TITLE_RE = /\b(?:salat|salad|suppe|soup|dessert|nachtisch|mousse|pudding|kuchen|smoothie)\b/i;
+// Echte Umami-Traeger (Glutamat, Inosinat, Guanylat).
+const UMAMI_SOURCE_RE = /\b(?:parmesan|pecorino|grana|tomatenmark|passata|tomate|tomaten|sojasauce|sojasoße|soja\s+sauce|miso|shiitake|champignon|pilz|pilze|getrocknete\s+pilze|anchov|fischsauce|hefeextrakt|worcestersh|worcester|ketchup|umami)\b/i;
+
 function nameOf(ing) {
   return String((ing && (ing.name || ing.displayName)) || '');
 }
@@ -449,10 +460,51 @@ function checkEmulsion(recipe) {
   };
 }
 
+/**
+ * P6 (Umami-Anker):
+ * Vegetarische Hauptgerichte ohne natuerliche Umami-Quelle (Parmesan,
+ * Tomate, Sojasauce, Pilze, Miso) sind oft aromatisch flach. P6 warnt.
+ * Fleischgerichte, Salate, Suppen und Desserts sind ausgenommen.
+ */
+function checkUmamiAnchor(recipe) {
+  const title = titleOf(recipe);
+  const ings = ingredientsOf(recipe);
+  const category = String((recipe && recipe.dishCategory) || '').toLowerCase();
+
+  // Ausschluss zuerst (Kategorie ODER Titel).
+  if (P6_EXCLUDE_CATEGORIES.indexOf(category) >= 0) return { errors: [], warnings: [] };
+  if (P6_EXCLUDE_TITLE_RE.test(title)) return { errors: [], warnings: [] };
+
+  // Zutaten-Liste.
+  const allNames = ings.map(nameOf).join(' ');
+  if (!allNames.trim()) return { errors: [], warnings: [] };
+
+  // Fleisch/Fisch schliesst aus.
+  if (P6_MEAT_FISH_RE.test(allNames)) return { errors: [], warnings: [] };
+
+  // Umami-Traeger vorhanden -> OK.
+  if (UMAMI_SOURCE_RE.test(allNames)) return { errors: [], warnings: [] };
+
+  // Nur Hauptgerichte pruefen: dishCategory=main_* ODER (ohne Kategorie) plausibler
+  // Hauptgericht-Titel. Sonst still.
+  const isMainCategory = /^main/.test(category);
+  const plausibleMain = !category && /\b(?:pfanne|curry|bowl|eintopf|risotto|pasta|auflauf|gratin|burger|wrap|bolognese|chili|stew|schnitzel|terrine|quiche)\b/i.test(title);
+  if (!isMainCategory && !plausibleMain) return { errors: [], warnings: [] };
+
+  return {
+    errors: [],
+    warnings: [
+      'Kochlehre-Hinweis: Umami-Anker fehlt. Dieses vegetarische Hauptgericht ' +
+      'hat keine natuerliche Umami-Quelle (Parmesan, Tomatenmark, Sojasauce, ' +
+      'Pilze, Miso) — Aromen koennen flach bleiben.'
+    ],
+  };
+}
+
 function evaluateAll(recipe) {
   const errors = [];
   const warnings = [];
-  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne, checkDeglassatura, checkEmulsion]
+  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne, checkDeglassatura, checkEmulsion, checkUmamiAnchor]
     .forEach(function (fn) {
       try {
         const r = fn(recipe);
@@ -476,4 +528,5 @@ module.exports = {
   checkRiposoDellaCarne: checkRiposoDellaCarne,
   checkDeglassatura: checkDeglassatura,
   checkEmulsion: checkEmulsion,
+  checkUmamiAnchor: checkUmamiAnchor,
 };
