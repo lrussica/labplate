@@ -523,6 +523,32 @@ console.log('=== PLAUSIBILITAET: P2 Riposo della Carne ===');
   ok('P20 Titel scharf, kein Brat-Step -> Warnung', hasRiposo(p20), 'got: ' + JSON.stringify(p20.warnings));
 })();
 
+console.log('=== ESSIG/SENF/SAUCE NICHT BLOCKEND ===');
+(function () {
+  const cu = require('./culinary-usability');
+  const recipe = {
+    title: 'Steak mit Essig-Dressing',
+    ingredients: [
+      { name: 'Rumpsteak', amount: 200, unit: 'g' },
+      { name: 'Essig', amount: 0, unit: 'prise' },
+      { name: 'Dijon-Senf', amount: 5, unit: 'g' },
+      { name: 'Zitronensaft', amount: 10, unit: 'ml' },
+    ],
+    finalIngredients: [
+      { name: 'Rumpsteak', amount: 200, unit: 'g' },
+      { name: 'Essig', amount: 0, unit: 'prise' },
+      { name: 'Dijon-Senf', amount: 5, unit: 'g' },
+      { name: 'Zitronensaft', amount: 10, unit: 'ml' },
+    ],
+    steps: ['Das Steak anbraten.'],
+  };
+  const r = cu.evaluateCulinaryUsability(recipe);
+  const errBlob = JSON.stringify(r.errors || []).toLowerCase();
+  ok('P22 Essig blockt nicht', errBlob.indexOf('essig') < 0, 'got errors: ' + JSON.stringify(r.errors));
+  ok('P22 Dijon-Senf blockt nicht', errBlob.indexOf('senf') < 0, 'got errors: ' + JSON.stringify(r.errors));
+  ok('P22 Zitronensaft blockt nicht', errBlob.indexOf('zitronensaft') < 0, 'got errors: ' + JSON.stringify(r.errors));
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);

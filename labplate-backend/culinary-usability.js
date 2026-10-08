@@ -100,6 +100,12 @@ function isExemptUsage(ing) {
   if (/^(zimt|curry|paprika|muskat|oregano|basilikum|thymian|dill|petersilie|salz|pfeffer)\b/i.test(n)) {
     return true;
   }
+  // Fix 2026-10-08: Saeure-Wuerzmittel sind keine Hauptzutaten — in kleinen
+  // Mengen zugegeben, oft nur im Abschmecken-Step erwaehnt. Kulinarisch
+  // gehoeren Essig/Zitronensaft/Senf zur Wuerz-Gruppe, nicht zum Gemuese.
+  if (/\b(essig|balsamico|apfelessig|weisswein|weißwein|rotwein|zitronensaft|zitronenabrieb|limettensaft|limettenabrieb|senf|dijon|kapern|tabasco|worcestersauce|sriracha|sambal|fischsauce|sojasauce|sojasoße|miso|tamarinde|sumach|verjus|tomatenmark|passata)\b/i.test(n)) {
+    return true;
+  }
   return false;
 }
 
