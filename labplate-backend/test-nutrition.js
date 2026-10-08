@@ -759,6 +759,50 @@ console.log('=== PLAUSIBILITAET: P4 Kokosmilch als Abloeschung ===');
   ok('P39 Tomatendose loest Fond -> keine P4-Warnung', !hasDegl(p39), 'got: ' + JSON.stringify(p39.warnings));
 })();
 
+console.log('=== PLAUSIBILITAET: P10 Drei Cremes ===');
+(function () {
+  const p = require('./plausibility-checks');
+  function hasCreams(r) {
+    return (r.warnings || []).some(function (w) { return /Drei Cremes gleichzeitig/i.test(w); });
+  }
+
+  // P40: Sahne + Kokosmilch + Frischkäse -> Warnung
+  const p40 = p.evaluateAll({
+    title: 'Pasta',
+    ingredients: [{ name: 'Sahne' }, { name: 'Kokosmilch' }, { name: 'Frischkäse' }],
+    finalIngredients: [{ name: 'Sahne' }, { name: 'Kokosmilch' }, { name: 'Frischkäse' }],
+    steps: ['Alles verruehren.'],
+  });
+  ok('P40 drei Cremes -> Warnung', hasCreams(p40), 'got: ' + JSON.stringify(p40.warnings));
+
+  // P41: zwei Cremes -> keine Warnung
+  const p41 = p.evaluateAll({
+    title: 'Pasta',
+    ingredients: [{ name: 'Sahne' }, { name: 'Kokosmilch' }],
+    finalIngredients: [{ name: 'Sahne' }, { name: 'Kokosmilch' }],
+    steps: ['Alles verruehren.'],
+  });
+  ok('P41 zwei Cremes -> keine Warnung', !hasCreams(p41), 'got: ' + JSON.stringify(p41.warnings));
+
+  // P42: Sahne + Kochsahne + Kokosmilch -> keine Warnung (Sahne/Kochsahne = eine Creme)
+  const p42 = p.evaluateAll({
+    title: 'Pasta',
+    ingredients: [{ name: 'Sahne' }, { name: 'Kochsahne' }, { name: 'Kokosmilch' }],
+    finalIngredients: [{ name: 'Sahne' }, { name: 'Kochsahne' }, { name: 'Kokosmilch' }],
+    steps: ['Alles verruehren.'],
+  });
+  ok('P42 Sahne + Kochsahne dedupliziert -> keine Warnung', !hasCreams(p42), 'got: ' + JSON.stringify(p42.warnings));
+
+  // P43: Mascarpone + Schmand + Sahne + Doppelrahm -> Warnung
+  const p43 = p.evaluateAll({
+    title: 'Dessert',
+    ingredients: [{ name: 'Mascarpone' }, { name: 'Schmand' }, { name: 'Sahne' }, { name: 'Doppelrahm' }],
+    finalIngredients: [{ name: 'Mascarpone' }, { name: 'Schmand' }, { name: 'Sahne' }, { name: 'Doppelrahm' }],
+    steps: ['Alles verruehren.'],
+  });
+  ok('P43 vier Cremes -> Warnung', hasCreams(p43), 'got: ' + JSON.stringify(p43.warnings));
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);

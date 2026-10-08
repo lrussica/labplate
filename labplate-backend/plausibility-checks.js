@@ -89,6 +89,11 @@ const P6_EXCLUDE_TITLE_RE = /\b(?:salat|salad|suppe|soup|dessert|nachtisch|mouss
 // Echte Umami-Traeger (Glutamat, Inosinat, Guanylat).
 const UMAMI_SOURCE_RE = /\b(?:parmesan|pecorino|grana|tomatenmark|passata|tomate|tomaten|sojasauce|sojasoße|soja\s+sauce|miso|shiitake|champignon|pilz|pilze|getrocknete\s+pilze|anchov|fischsauce|hefeextrakt|worcestersh|worcester|ketchup|umami)\b/i;
 
+// --- P10 (Drei Cremes gleichzeitig) ---
+// Verschiedene Cremes/Sahnen/Schmelzkaese, die eine Sauce dick und pappig machen.
+// Ergaenzt R1 (Fett-Ueberladung) um die Creme-Komponente.
+const CREAM_NAME_RE = /\b(sahne|crème\s+fraîche|creme\s+fraiche|schmand|kokosmilch|frischkäse|frischkaese|mascarpone|doppelrahm|sojacreme|sojacrème|hafercreme|hafercrème)\b/gi;
+
 function nameOf(ing) {
   return String((ing && (ing.name || ing.displayName)) || '');
 }
@@ -503,10 +508,42 @@ function checkUmamiAnchor(recipe) {
   };
 }
 
+/**
+ * P10 (Drei Cremes gleichzeitig):
+ * Sahne, Crème fraîche, Schmand, Kokosmilch, Frischkäse, Mascarpone,
+ * Doppelrahm, Sojacreme, Hafercreme — drei oder mehr ergeben eine pappige
+ * Textur ohne Kontrast. Klassisch reicht eine Creme.
+ * Kochsahne und Sahne werden zusammengefasst (gleiche Creme-Familie).
+ */
+function checkThreeCreams(recipe) {
+  const ings = ingredientsOf(recipe);
+  const creams = [];
+  ings.forEach(function (ing) {
+    const n = nameOf(ing);
+    if (!n) return;
+    const found = n.match(CREAM_NAME_RE) || [];
+    found.forEach(function (hit) {
+      const key = String(hit).toLowerCase().replace(/\s+/g, ' ');
+      if (creams.indexOf(key) < 0) creams.push(key);
+    });
+  });
+  if (creams.length >= 3) {
+    return {
+      errors: [],
+      warnings: [
+        'Kochlehre-Hinweis: Drei Cremes gleichzeitig: ' + creams.slice(0, 3).join(' + ') +
+        ' ergeben eine pappige Textur ohne Kontrast. Klassisch reicht eine Creme — ' +
+        'der Rest kommt ueber Saeure, Kraeuter oder Crunch.'
+      ],
+    };
+  }
+  return { errors: [], warnings: [] };
+}
+
 function evaluateAll(recipe) {
   const errors = [];
   const warnings = [];
-  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne, checkDeglassatura, checkEmulsion, checkUmamiAnchor]
+  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne, checkDeglassatura, checkEmulsion, checkUmamiAnchor, checkThreeCreams]
     .forEach(function (fn) {
       try {
         const r = fn(recipe);
@@ -531,4 +568,5 @@ module.exports = {
   checkDeglassatura: checkDeglassatura,
   checkEmulsion: checkEmulsion,
   checkUmamiAnchor: checkUmamiAnchor,
+  checkThreeCreams: checkThreeCreams,
 };

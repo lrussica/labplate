@@ -28,6 +28,7 @@ Status: **Warnung** (nicht blockierend), sichtbar im Client als Quality-Notice.
 | R8 | Deglassatura: Nach scharfem Anbraten mit Saucen-Kontext (Koecheln/Schmoren) muss der Fond mit Fluessigkeit geloest werden (abloeschen). Reine Bratgerichte ohne Sauce ausgenommen (vormals P4) | aktiv |
 | R9 | Emulsion ohne Bindemittel: Mayonnaise/Aioli/Hollandaise brauchen Ei; Vinaigrette braucht Senf; generisch Fett+Wasser+Emulsionsverb braucht Emulgator. Montierte Butter zaehlt nicht (vormals P9) | aktiv |
 | R10 | Umami-Anker: Vegetarische Hauptgerichte ohne Parmesan/Tomate/Sojasauce/Pilze/Miso = Warnung. Salate, Suppen, Desserts, Fleischgerichte ausgenommen (vormals P6) | aktiv |
+| R11 | Drei Cremes gleichzeitig: Sahne/Creme fraiche/Schmand/Kokosmilch/Frischkaese/Mascarpone/Doppelrahm/Sojacreme/Hafercreme = Textur-Kollaps. Klassisch reicht eine Creme (vormals P10) | aktiv |
 
 Tests: `labplate-backend/test-nutrition.js` (Abschnitt PLAUSIBILITAET).
 
@@ -61,7 +62,7 @@ implementiert, jede mit Test. Status: **nicht implementiert**.
 | ID | Regel | Pruefbar? | Anmerkung |
 |---|---|---|---|
 | ~~P9~~ | ~~Emulsion ohne Bindemittel~~ | – | **implementiert als R9 (2026-10-08)** |
-| P10 | Nicht drei Cremes gleichzeitig (Kokosmilch + Sahne + Frischkaese) = Textur-Kollaps | ja | Aehneln R1 |
+| ~~P10~~ | ~~Nicht drei Cremes gleichzeitig~~ | – | **implementiert als R11 (2026-10-08)** |
 
 ### Stagionalitaet
 
@@ -110,8 +111,9 @@ Reihenfolge nach Nutzen und Aufwand:
 4. ~~**P4 Deglassatura**~~ ✅ implementiert als **R8** (2026-10-08)
 5. ~~**P6 Umami-Anker**~~ ✅ implementiert als **R10** (2026-10-08)
 6. ~~**P9 Emulsion**~~ ✅ implementiert als **R9** (2026-10-08)
-7. **P11/P12 Saisonalitaet** – sichtbarer Effekt, aber Datumslogik
-8. **P7 Salatura a Strati** – nuanciert, schwierig sauber zu pruefen
+7. ~~**P10 Drei Cremes**~~ ✅ implementiert als **R11** (2026-10-08)
+8. **P11/P12 Saisonalitaet** – sichtbarer Effekt, aber Datumslogik
+9. **P7 Salatura a Strati** – nuanciert, schwierig sauber zu pruefen
 
 ---
 
