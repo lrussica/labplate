@@ -425,6 +425,62 @@ console.log('=== CHEF-ANALYSIS-REPAIR (freie Naehrwertzahlen) ===');
   ok('T-C4 sauberer Text unveraendert', dOut === d, 'got: ' + dOut);
 })();
 
+console.log('=== PLAUSIBILITAET: P2 Riposo della Carne ===');
+(function () {
+  const p = require('./plausibility-checks');
+  function hasRiposo(r) {
+    return (r.warnings || []).some(function (w) { return /Riposo/i.test(w); });
+  }
+
+  // P15: Steak ohne Ruheschritt -> Warnung
+  const p15 = p.evaluateAll({
+    title: 'Rumpsteak mit Butter',
+    ingredients: [{ name: 'Rumpsteak' }, { name: 'Butter' }],
+    finalIngredients: [{ name: 'Rumpsteak' }, { name: 'Butter' }],
+    steps: [
+      'Das Rumpsteak scharf anbraten und sofort servieren.',
+      'Mit der Butter ueberziehen.'
+    ],
+  });
+  ok('P15 Steak ohne Ruhen -> Warnung', hasRiposo(p15), 'got: ' + JSON.stringify(p15.warnings));
+
+  // P16: Steak mit Ruhen -> keine Warnung
+  const p16 = p.evaluateAll({
+    title: 'Rumpsteak mit Butter',
+    ingredients: [{ name: 'Rumpsteak' }, { name: 'Butter' }],
+    finalIngredients: [{ name: 'Rumpsteak' }, { name: 'Butter' }],
+    steps: [
+      'Das Rumpsteak scharf anbraten.',
+      'Fuenf Minuten ruhen lassen und dann servieren.'
+    ],
+  });
+  ok('P16 Steak mit Ruhen -> keine Warnung', !hasRiposo(p16), 'got: ' + JSON.stringify(p16.warnings));
+
+  // P17: Hackfleisch -> kein Riposo noetig
+  const p17 = p.evaluateAll({
+    title: 'Rinderhackpfanne',
+    ingredients: [{ name: 'Rinderhackfleisch' }, { name: 'Zwiebel' }],
+    finalIngredients: [{ name: 'Rinderhackfleisch' }, { name: 'Zwiebel' }],
+    steps: [
+      'Das Hackfleisch scharf anbraten.',
+      'Zwiebeln zugeben und fertig garen.'
+    ],
+  });
+  ok('P17 Hackfleisch -> keine Warnung', !hasRiposo(p17), 'got: ' + JSON.stringify(p17.warnings));
+
+  // P18: Gulasch (geschmort) -> kein Riposo noetig
+  const p18 = p.evaluateAll({
+    title: 'Rindergulasch',
+    ingredients: [{ name: 'Rindfleisch' }, { name: 'Zwiebel' }, { name: 'Rinderbrühe' }],
+    finalIngredients: [{ name: 'Rindfleisch' }, { name: 'Zwiebel' }, { name: 'Rinderbrühe' }],
+    steps: [
+      'Das Rindfleisch kraeftig anbraten.',
+      'Mit Bruehe aufgiessen und zwei Stunden schmoren.'
+    ],
+  });
+  ok('P18 Gulasch (geschmort) -> keine Warnung', !hasRiposo(p18), 'got: ' + JSON.stringify(p18.warnings));
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);

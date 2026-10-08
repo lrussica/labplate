@@ -34,6 +34,20 @@ const SEAR_STEP_RE = /(?:scharf\s+anbraten|heiß\s+anbraten|heiss\s+anbraten|kr�
 const ACID_SOURCE_RE = /(?:zitronensaft|zitronenabrieb|zitronenschale|limettensaft|limettenabrieb|essig|apfelwein|balsamico|weißwein|weisswein|rotwein|verjus|joghurt|buttermilch|sauerrahm|crème\s+fraîche|creme\s+fraiche|kapern|\bsenf\b|tomatenmark|tomaten|passata|tamarinde|sumach|mayonnaise|mayo\b)/i;
 const DESSERT_TITLE_RE = /(?:dessert|nachtisch|mousse|pudding|kuchen)/i;
 
+// --- P2 (Riposo della Carne) ---
+// Fleischsorten, die typischerweise Riposo brauchen: ganze Stuecke, die scharf
+// angebraten/gegrillt und dann geschnitten werden. NICHT: Hackfleisch/Gulasch/
+// Wurst/Speck/Bruehe/Fond — die sind entweder durchgegart oder werden geschmort.
+// Nur Wortgrenze am Anfang: faengt Komposita wie "Rumpsteak", "Rindersteak",
+// "Haehnchenbrustfilet". Wortgrenze am Ende wuerde bei Komposita scheitern.
+const RIPOSO_CANDIDATE_RE = /\b(?:rind|kalb|lamm|schwein|rump|steak|kotelett|filet|haehnchen|hähnchen|hühner|huehner|pute|truthahn|ente|gans|lachs|thunfisch|forelle|fisch)/i;
+// Keine Wortgrenzen: faengt "Rindergulasch", "Rinderhackfleisch", "Rinderbruehe".
+const RIPOSO_EXCLUDE_RE = /(?:hack|gulasch|wurst|speck|schinken|salami|leberwurst|brühe|bruehe|fond|bouillon)/i;
+// Scharfes Braten / Grillen, NICHT "anschwitzen" (mittlere Hitze, kein Riposo).
+const GRILL_SEAR_RE = /(?:scharf\s+anbraten|heiß\s+anbraten|heiss\s+anbraten|kräftig\s+anbraten|kraeftig\s+anbraten|goldbraun\s+braten|goldbraun|kruste|scharf\s+braten|\bgrillen\b|\bgrill\b)/i;
+// Ruhe-/Zieh-Signale.
+const REST_STEP_RE = /\b(?:ruhen\s+lassen|ruhen|rasten|ziehen\s+lassen|abgedeckt\s+ruhen|warm\s+halten|ziehen|ruhephase)\b/i;
+
 function nameOf(ing) {
   return String((ing && (ing.name || ing.displayName)) || '');
 }
@@ -238,10 +252,67 @@ function checkAcidInFatDish(recipe) {
   };
 }
 
+/**
+ * P2 (Riposo della Carne):
+ * Nach scharfem Anbraten/Grillen von ganzen Fleischstuecken (Steak, Kotelett,
+ * Filet, Haehnchenbrust) sollte ein Ruheschritt kommen, bevor geschnitten/
+ * serviert wird. Das Fleisch zieht nach, die Saeure verteilt sich.
+ * Hackfleisch, Gulasch, Wurst, Speck und Bruehen brauchen das nicht.
+ * Anschwitzen zaehlt NICHT als scharfes Braten.
+ */
+function checkRiposoDellaCarne(recipe) {
+  const ings = ingredientsOf(recipe);
+  const title = titleOf(recipe);
+
+  // Titel-Ausnahme (Fix 2026-10-08): Wenn der Titel klar "geschmort/gehackt"
+  // signalisiert (Rindergulasch, Hackpfanne, Wurstpfanne), braucht das ganze
+  // Gericht kein Riposo — auch wenn eine Zutat den Kandidaten-Namen traegt.
+  if (title && RIPOSO_EXCLUDE_RE.test(title)) return { errors: [], warnings: [] };
+
+  // Kandidat ermitteln: im Titel ODER in Zutaten (Zutaten zusaetzlich gefiltert).
+  function isCandidate(text) {
+    if (!text) return false;
+    if (RIPOSO_EXCLUDE_RE.test(text)) return false;
+    return RIPOSO_CANDIDATE_RE.test(text);
+  }
+  const titleHit = isCandidate(title);
+  const ingHit = ings.some(function (ing) {
+    const n = nameOf(ing);
+    if (!n) return false;
+    if (RIPOSO_EXCLUDE_RE.test(n)) return false;
+    return RIPOSO_CANDIDATE_RE.test(n);
+  });
+  if (!titleHit && !ingHit) return { errors: [], warnings: [] };
+
+  const steps = stepsOf(recipe);
+  if (!steps.length) return { errors: [], warnings: [] };
+
+  // Erster Grill-/Brat-Step.
+  let searIdx = -1;
+  for (let i = 0; i < steps.length; i++) {
+    if (GRILL_SEAR_RE.test(steps[i])) { searIdx = i; break; }
+  }
+  if (searIdx < 0) return { errors: [], warnings: [] };
+
+  // Ruhe-Signal ab searIdx (auch im selben Step).
+  for (let i = searIdx; i < steps.length; i++) {
+    if (REST_STEP_RE.test(steps[i])) return { errors: [], warnings: [] };
+  }
+
+  return {
+    errors: [],
+    warnings: [
+      'Kulinarische Plausibilitaet: Riposo della Carne fehlt. Nach dem scharfen ' +
+      'Anbraten/Grillen von ganzem Fleisch sollte ein Ruheschritt kommen ' +
+      '(2-5 Min. abgedeckt ruhen lassen), bevor es geschnitten oder serviert wird.'
+    ],
+  };
+}
+
 function evaluateAll(recipe) {
   const errors = [];
   const warnings = [];
-  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish]
+  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne]
     .forEach(function (fn) {
       try {
         const r = fn(recipe);
@@ -262,4 +333,5 @@ module.exports = {
   checkVinegarInTofuCurry: checkVinegarInTofuCurry,
   checkMaillardBeforeBraising: checkMaillardBeforeBraising,
   checkAcidInFatDish: checkAcidInFatDish,
+  checkRiposoDellaCarne: checkRiposoDellaCarne,
 };
