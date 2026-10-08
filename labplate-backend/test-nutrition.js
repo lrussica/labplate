@@ -803,6 +803,73 @@ console.log('=== PLAUSIBILITAET: P10 Drei Cremes ===');
   ok('P43 vier Cremes -> Warnung', hasCreams(p43), 'got: ' + JSON.stringify(p43.warnings));
 })();
 
+console.log('=== PLAUSIBILITAET: P3 Riduzione ===');
+(function () {
+  const p = require('./plausibility-checks');
+  function hasRed(r) {
+    return (r.warnings || []).some(function (w) { return /Reduktion ohne Fluessigkeit/i.test(w); });
+  }
+
+  // P44: Wein angiessen, dann reduzieren -> keine Warnung
+  const p44 = p.evaluateAll({
+    title: 'Sauce',
+    ingredients: [{ name: 'Wein' }, { name: 'Zwiebel' }],
+    finalIngredients: [{ name: 'Wein' }, { name: 'Zwiebel' }],
+    steps: [
+      'Zwiebel anbraten.',
+      'Wein angiessen und auf die Haelfte reduzieren.'
+    ],
+  });
+  ok('P44 Wein + Reduktion -> keine Warnung', !hasRed(p44), 'got: ' + JSON.stringify(p44.warnings));
+
+  // P45: Reduktion ohne Fluessigkeit -> Warnung
+  const p45 = p.evaluateAll({
+    title: 'Sauce',
+    ingredients: [{ name: 'Zwiebel' }],
+    finalIngredients: [{ name: 'Zwiebel' }],
+    steps: [
+      'Zwiebel anbraten.',
+      'Die Sauce auf die Haelfte reduzieren.'
+    ],
+  });
+  ok('P45 Reduktion ohne Fluessigkeit -> Warnung', hasRed(p45), 'got: ' + JSON.stringify(p45.warnings));
+
+  // P46: "Hitze reduzieren" -> keine Warnung
+  const p46 = p.evaluateAll({
+    title: 'Braten',
+    ingredients: [{ name: 'Fleisch' }],
+    finalIngredients: [{ name: 'Fleisch' }],
+    steps: [
+      'Fleisch anbraten.',
+      'Die Hitze reduzieren und 20 Minuten garen.'
+    ],
+  });
+  ok('P46 Hitze reduzieren -> keine Warnung', !hasRed(p46), 'got: ' + JSON.stringify(p46.warnings));
+
+  // P47: Sahne + einkochen -> keine Warnung
+  const p47 = p.evaluateAll({
+    title: 'Pasta',
+    ingredients: [{ name: 'Sahne' }],
+    finalIngredients: [{ name: 'Sahne' }],
+    steps: [
+      'Sahne angiessen und 5 Minuten einkochen lassen.'
+    ],
+  });
+  ok('P47 Sahne + einkochen -> keine Warnung', !hasRed(p47), 'got: ' + JSON.stringify(p47.warnings));
+
+  // P48: Reduktion ohne Fluessigkeit (Ingredients leer) -> Warnung
+  const p48 = p.evaluateAll({
+    title: 'Fleisch',
+    ingredients: [{ name: 'Steak' }],
+    finalIngredients: [{ name: 'Steak' }],
+    steps: [
+      'Steak anbraten.',
+      'Auf die Haelfte einreduzieren.'
+    ],
+  });
+  ok('P48 Reduktion ohne Fluessigkeit (2) -> Warnung', hasRed(p48), 'got: ' + JSON.stringify(p48.warnings));
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);

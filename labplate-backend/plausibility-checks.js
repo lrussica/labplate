@@ -94,6 +94,18 @@ const UMAMI_SOURCE_RE = /\b(?:parmesan|pecorino|grana|tomatenmark|passata|tomate
 // Ergaenzt R1 (Fett-Ueberladung) um die Creme-Komponente.
 const CREAM_NAME_RE = /\b(sahne|crème\s+fraîche|creme\s+fraiche|schmand|kokosmilch|frischkäse|frischkaese|mascarpone|doppelrahm|sojacreme|sojacrème|hafercreme|hafercrème)\b/gi;
 
+// --- P3 (Riduzione) ---
+// Reduktions-Verben.
+const REDUCTION_ACTION_RE = /\b(?:reduzier\w*|einkoch\w*|eindick\w*|einreduzier\w*|verring\w*)/i;
+// Hitze-Kontext (schliesst aus): 'Hitze reduzieren' ist kein Reduzieren von Fluessigkeit.
+const HEAT_CONTEXT_RE = /\b(?:hitze|temperatur|stufe|flamme|herd|ofen|hitz\w*)/i;
+const HEAT_ACTION_RE = /\b(?:reduzier\w*|verring\w*|runterdreh\w*|niedriger|kleiner|herunter|herunterregel\w*)/i;
+// Reduktions-Fluessigkeiten (immer gueltig).
+const REDUCTION_LIQUID_RE = /\b(?:brühe|bruehe|fond|bouillon|wein|weisswein|weißwein|rotwein|sekt|bier|essig|wasser|kochwasser|tomatensaft|tomatenpüree|tomatenpuree|tomatenmark|passata|sahne|kokosmilch)\b/i;
+// Milch nur im Sauce/Suppe-Kontext.
+const REDUCTION_SAUCE_CONTEXT_RE = /\b(?:sauce|soße|soosse|suppe|tunke|gericht)\b/i;
+const MILK_RE = /\bmilch\b/i;
+
 function nameOf(ing) {
   return String((ing && (ing.name || ing.displayName)) || '');
 }
@@ -540,10 +552,55 @@ function checkThreeCreams(recipe) {
   return { errors: [], warnings: [] };
 }
 
+/**
+ * P3 (Riduzione):
+ * Reduktions-Steps ("reduzieren", "einkochen", "eindicken") brauchen eine
+ * Fluessigkeit zum Reduzieren. "Hitze reduzieren" ist KEIN Reduktions-Step.
+ * Milch zaehlt nur im Sauce/Suppe-Kontext.
+ */
+function checkRiduzione(recipe) {
+  const steps = stepsOf(recipe);
+  const ings = ingredientsOf(recipe);
+  if (!steps.length) return { errors: [], warnings: [] };
+
+  // Erster Reduktions-Step (ohne Hitze-Kontext).
+  let redIdx = -1;
+  for (let i = 0; i < steps.length; i++) {
+    const s = steps[i];
+    if (!REDUCTION_ACTION_RE.test(s)) continue;
+    if (HEAT_CONTEXT_RE.test(s) && HEAT_ACTION_RE.test(s)) continue;
+    redIdx = i; break;
+  }
+  if (redIdx < 0) return { errors: [], warnings: [] };
+
+  function hasLiquid(text) {
+    if (REDUCTION_LIQUID_RE.test(text)) return true;
+    if (MILK_RE.test(text) && REDUCTION_SAUCE_CONTEXT_RE.test(text)) return true;
+    return false;
+  }
+
+  // Fluessigkeit in einem Step bis einschliesslich Reduktions-Step?
+  for (let i = 0; i <= redIdx; i++) {
+    if (hasLiquid(steps[i])) return { errors: [], warnings: [] };
+  }
+  // Oder wenigstens in den Zutaten (dann ist der Reduktions-Step plausibel)?
+  const allIngs = ings.map(nameOf).join(' ');
+  if (hasLiquid(allIngs)) return { errors: [], warnings: [] };
+
+  return {
+    errors: [],
+    warnings: [
+      'Kochlehre-Hinweis: Reduktion ohne Fluessigkeit. Der Step spricht von ' +
+      'Reduktion/Einkochen, aber vorher wurde keine Fluessigkeit (Wein, Bruehe, ' +
+      'Sahne, Kokosmilch, Tomate) zugegeben — es gibt nichts zu reduzieren.'
+    ],
+  };
+}
+
 function evaluateAll(recipe) {
   const errors = [];
   const warnings = [];
-  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne, checkDeglassatura, checkEmulsion, checkUmamiAnchor, checkThreeCreams]
+  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne, checkDeglassatura, checkEmulsion, checkUmamiAnchor, checkThreeCreams, checkRiduzione]
     .forEach(function (fn) {
       try {
         const r = fn(recipe);
@@ -569,4 +626,5 @@ module.exports = {
   checkEmulsion: checkEmulsion,
   checkUmamiAnchor: checkUmamiAnchor,
   checkThreeCreams: checkThreeCreams,
+  checkRiduzione: checkRiduzione,
 };

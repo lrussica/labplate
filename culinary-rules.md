@@ -29,6 +29,7 @@ Status: **Warnung** (nicht blockierend), sichtbar im Client als Quality-Notice.
 | R9 | Emulsion ohne Bindemittel: Mayonnaise/Aioli/Hollandaise brauchen Ei; Vinaigrette braucht Senf; generisch Fett+Wasser+Emulsionsverb braucht Emulgator. Montierte Butter zaehlt nicht (vormals P9) | aktiv |
 | R10 | Umami-Anker: Vegetarische Hauptgerichte ohne Parmesan/Tomate/Sojasauce/Pilze/Miso = Warnung. Salate, Suppen, Desserts, Fleischgerichte ausgenommen (vormals P6) | aktiv |
 | R11 | Drei Cremes gleichzeitig: Sahne/Creme fraiche/Schmand/Kokosmilch/Frischkaese/Mascarpone/Doppelrahm/Sojacreme/Hafercreme = Textur-Kollaps. Klassisch reicht eine Creme (vormals P10) | aktiv |
+| R12 | Riduzione: Reduktions-Steps (reduzieren/einkochen/eindicken) brauchen eine Fluessigkeit zum Reduzieren. 'Hitze reduzieren' ausgenommen; Milch nur im Sauce/Suppe-Kontext (vormals P3) | aktiv |
 
 Tests: `labplate-backend/test-nutrition.js` (Abschnitt PLAUSIBILITAET).
 
@@ -45,7 +46,7 @@ implementiert, jede mit Test. Status: **nicht implementiert**.
 |---|---|---|---|
 | ~~P1~~ | ~~Maillard vor dem Schmoren~~ | – | **implementiert als R5 (2026-10-08)** |
 | ~~P2~~ | ~~Riposo della Carne~~ | – | **implementiert als R7 (2026-10-08)** |
-| P3 | Riduzione korrekt: Bei "Reduktion" muss Fluessigkeit vorher drin sein | ja | Sequenz-Pruefung |
+| ~~P3~~ | ~~Riduzione korrekt~~ | – | **implementiert als R12 (2026-10-08)** |
 | ~~P4~~ | ~~Deglassatura~~ | – | **implementiert als R8 (2026-10-08)** |
 
 ### Bilanciamento dei Sapori
@@ -112,8 +113,9 @@ Reihenfolge nach Nutzen und Aufwand:
 5. ~~**P6 Umami-Anker**~~ ✅ implementiert als **R10** (2026-10-08)
 6. ~~**P9 Emulsion**~~ ✅ implementiert als **R9** (2026-10-08)
 7. ~~**P10 Drei Cremes**~~ ✅ implementiert als **R11** (2026-10-08)
-8. **P11/P12 Saisonalitaet** – sichtbarer Effekt, aber Datumslogik
-9. **P7 Salatura a Strati** – nuanciert, schwierig sauber zu pruefen
+8. ~~**P3 Riduzione**~~ ✅ implementiert als **R12** (2026-10-08)
+9. **P11/P12 Saisonalitaet** – sichtbarer Effekt, aber Datumslogik
+10. **P7 Salatura a Strati** – nuanciert, schwierig sauber zu pruefen
 
 ---
 
