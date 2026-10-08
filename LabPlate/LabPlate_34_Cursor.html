@@ -2692,10 +2692,11 @@
   .nrs-value{ font-size:13px; font-weight:500; color:var(--ink); padding:0 10px; min-width:76px; text-align:center; white-space:nowrap; }
   #lp-ov-recipes .nutri-recipe-match{ font-size:calc(13.5px * var(--recipe-font-scale, 1)); color:var(--ink); line-height:1.5; margin:0 0 4px; transition: font-size 0.2s ease-out; }
   #lp-ov-recipes .nutri-recipe-disclaimer{ font-size:calc(11.5px * var(--recipe-font-scale, 1)); color:var(--ink-soft); line-height:1.5; margin:0 0 16px; transition: font-size 0.2s ease-out; }
+  /* Fix 2026-10-08: Quality-Notice ohne Rahmen — nur Hintergrund + Padding. */
   .nutri-recipe-quality-notice{
     margin:0 0 14px; padding:12px 14px;
     background:rgba(0,0,0,0.6); color:#FFFFFF;
-    border:1px solid rgba(255,255,255,0.15); border-radius:16px;
+    border-radius:16px;
   }
   .nutri-recipe-quality-notice-title{
     margin:0; font-size:calc(13.5px * var(--recipe-font-scale, 1));
@@ -2703,14 +2704,15 @@
   }
   .nutri-recipe-quality-notice-list{
     margin:8px 0 0; padding:0; list-style:none;
-    display:flex; flex-wrap:wrap; gap:6px;
+    display:block;
   }
   .nutri-recipe-quality-notice-list li{
-    display:inline-block; background:#000000; color:#FFFFFF;
-    border:1px solid rgba(255,255,255,0.15); border-radius:999px;
-    padding:5px 10px; font-size:calc(12.5px * var(--recipe-font-scale, 1));
-    font-weight:500; line-height:1.4; white-space:normal;
+    display:block; color:#FFFFFF;
+    padding:8px 2px; font-size:calc(12.5px * var(--recipe-font-scale, 1));
+    font-weight:500; line-height:1.45; white-space:normal;
+    margin-top:6px;
   }
+  .nutri-recipe-quality-notice-list li:first-child{ margin-top:0; }
   /* KI-Rezept: Schritte/Listen gleiche Lesbarkeit wie Titel (nicht soft-grau). */
   #lp-ov-recipes .nutri-recipe-steps li,
   #lp-ov-recipes .nutri-recipe-ing-list li{
@@ -32687,15 +32689,16 @@ initBarcodeEvents();
       var status = String(recipe.qualityStatus || '');
       var msgs = collectRecipeQualityMessages(recipe);
       if (status !== 'blocked' && status !== 'review' && !msgs.length) return '';
-      var title = status === 'blocked'
-        ? pick(LBL_RECIPE_QUALITY_SOFT_BLOCKED)
-        : pick(LBL_RECIPE_QUALITY_REVIEW);
+      // Fix 2026-10-08: Titel nur bei blocked. Bei review sprechen die Warnungen selbst.
+      var titleHtml = (status === 'blocked')
+        ? '<p class="nutri-recipe-quality-notice-title">' + esc(pick(LBL_RECIPE_QUALITY_SOFT_BLOCKED)) + '</p>'
+        : '';
       var cls = 'nutri-recipe-quality-notice' + (status === 'blocked' ? ' is-blocked' : ' is-review');
       var list = msgs.map(function (m) {
         return '<li>' + esc(m.slice(0, 280)) + '</li>';
       }).join('');
       return '<div class="' + cls + '" role="status" data-quality-status="' + esc(status || 'review') + '">' +
-        '<p class="nutri-recipe-quality-notice-title">' + esc(title) + '</p>' +
+        titleHtml +
         (list ? '<ul class="nutri-recipe-quality-notice-list">' + list + '</ul>' : '') +
         '</div>';
     }

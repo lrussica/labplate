@@ -88,7 +88,7 @@ function checkFatOverload(recipe) {
     return {
       errors: [],
       warnings: [
-        'Kulinarische Plausibilitaet: ' + fats.length + ' verschiedene Fette gleichzeitig (' +
+        'Kochlehre-Hinweis: ' + fats.length + ' verschiedene Fette gleichzeitig (' +
         fats.slice(0, 4).join(', ') + '). Fuer ein Gericht reichen meist 1-2 Fette.'
       ],
     };
@@ -113,7 +113,7 @@ function checkFiberOverload(recipe) {
     return {
       errors: [],
       warnings: [
-        'Kulinarische Plausibilitaet: ' + fibers.length + ' starke Ballaststoff-Traeger gleichzeitig (' +
+        'Kochlehre-Hinweis: ' + fibers.length + ' starke Ballaststoff-Traeger gleichzeitig (' +
         fibers.join(', ') + '). Das kann Magen-Darm belasten und die Konsistenz verderben.'
       ],
     };
@@ -133,7 +133,7 @@ function checkPsylliumInProteinDish(recipe) {
     return {
       errors: [],
       warnings: [
-        'Kulinarische Plausibilitaet: Psyllium/Flohsamen in einem proteinreichen Gericht (Haehnchen/Fleisch/Fisch) ' +
+        'Kochlehre-Hinweis: Psyllium/Flohsamen in einem proteinreichen Gericht (Haehnchen/Fleisch/Fisch) ' +
         'ist ungewoehnlich. Psyllium bindet Wasser stark und wird meist in Gebaeck oder als Verdickungsmittel ' +
         'in veganen Rezepten verwendet.'
       ],
@@ -156,7 +156,7 @@ function checkVinegarInTofuCurry(recipe) {
     return {
       errors: [],
       warnings: [
-        'Kulinarische Plausibilitaet: Essig in einem Tofu-/Tempeh-Curry ist ungewoehnlich. ' +
+        'Kochlehre-Hinweis: Essig in einem Tofu-/Tempeh-Curry ist ungewoehnlich. ' +
         'Fuer Saeure in Currys werden eher Limette oder Zitrone verwendet.'
       ],
     };
@@ -216,7 +216,7 @@ function checkMaillardBeforeBraising(recipe) {
   return {
     errors: [],
     warnings: [
-      'Kulinarische Plausibilitaet: Maillard vor dem Schmoren fehlt. ' +
+      'Kochlehre-Hinweis: Maillard vor dem Schmoren fehlt. ' +
       'Bei einem Gericht mit Fleisch und Fluessigkeit sollte das Fleisch ' +
       'vor dem Fluessigkeitszusatz scharf angebraten werden ' +
       '(Roestaromen, Maillard-Reaktion).'
@@ -256,7 +256,7 @@ function checkAcidInFatDish(recipe) {
   return {
     errors: [],
     warnings: [
-      'Kulinarische Plausibilitaet: Saeure-Korrektur fehlt. Bei ' +
+      'Kochlehre-Hinweis: Saeure-Korrektur fehlt. Bei ' +
       fats.length + ' Fetten (' + fats.slice(0, 3).join(', ') + ') ' +
       'braucht das Gericht eine Saeurequelle (Zitrone, Essig, Wein, ' +
       'Joghurt, Tomate), um die Fettigkeit auszubalancieren.'
@@ -320,7 +320,7 @@ function checkRiposoDellaCarne(recipe) {
   return {
     errors: [],
     warnings: [
-      'Kulinarische Plausibilitaet: Riposo della Carne fehlt. Nach dem scharfen ' +
+      'Kochlehre-Hinweis: Riposo della Carne fehlt. Nach dem scharfen ' +
       'Anbraten/Grillen von ganzem Fleisch sollte ein Ruheschritt kommen ' +
       '(2-5 Min. abgedeckt ruhen lassen), bevor es geschnitten oder serviert wird.'
     ],
