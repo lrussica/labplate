@@ -1154,9 +1154,26 @@ async function callGroqOnce(requestBody, opts) {
  * Groq-Call mit optionalem Auto-Retry bei kurzfristigem TPM/RPM-429.
  * TPD/RPD-429 wird nicht automatisch wiederholt.
  */
+/** Transiente Fehler, die guenstig einmal wiederholt werden koennen. */
+function shouldTransientRetry(result) {
+  return !!(result && (result.error === 'empty_response' || result.error === 'json_parse_failed'));
+}
+
 async function callGroq(requestBody, opts) {
   const o = opts || {};
   const first = await callGroqOnce(requestBody, o);
+
+  // Block D (2026-10-08): einmaliger Retry bei transienten Fehlern.
+  if (shouldTransientRetry(first)) {
+    const waitMs = o.transientRetryWaitMs != null ? Number(o.transientRetryWaitMs) : 800;
+    console.log('[groq] transient_retry_wait reason=' + first.error + ' waitMs=' + waitMs);
+    await sleepMs(waitMs, o.sleepFn);
+    const second = await callGroqOnce(requestBody, o);
+    second.transientRetried = true;
+    second.transientRetryReason = first.error;
+    return second;
+  }
+
   if (!(first && first.error === 'provider_error' && Number(first.status) === 429)) {
     return first;
   }
@@ -1232,6 +1249,7 @@ module.exports = {
   extractGroqErrorMessage,
   parseRetryAfterSeconds,
   classifyGroqRateLimit,
+  shouldTransientRetry,
   providerErrorClientMessage,
   callGroqOnce,
   callGroq,

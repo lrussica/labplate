@@ -1154,6 +1154,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
       });
       const exhaustedBody = {
         error: 'recipe_validation_failed',
+        error_class: 'validation_exhausted',
         message_user: 'Die KI hatte gerade einen Aussetzer. Bitte in einem Moment noch einmal versuchen.',
         attempts: pipelineResult.attempts,
         errors: pipelineResult.errors || [],

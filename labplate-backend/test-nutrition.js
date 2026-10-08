@@ -388,6 +388,17 @@ console.log('=== SEASONING-TO-TASTE (nach Geschmack bei amount=0) ===');
   ok('T6 nach Belieben idempotent', t6out === t6in, 'got: ' + t6out);
 })();
 
+console.log('=== GROQ-TRANSIENT-RETRY ===');
+(function () {
+  const core = require('./nutri-recipe-core');
+  ok('T-G1 empty_response retryable', core.shouldTransientRetry({ error: 'empty_response' }) === true);
+  ok('T-G2 json_parse_failed retryable', core.shouldTransientRetry({ error: 'json_parse_failed' }) === true);
+  ok('T-G3 provider_error nicht retryable',
+    core.shouldTransientRetry({ error: 'provider_error', status: 500 }) === false);
+  ok('T-G4 Erfolg nicht retryable', core.shouldTransientRetry({ data: {} }) === false);
+  ok('T-G5 null nicht retryable', core.shouldTransientRetry(null) === false);
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);
