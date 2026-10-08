@@ -399,6 +399,32 @@ console.log('=== GROQ-TRANSIENT-RETRY ===');
   ok('T-G5 null nicht retryable', core.shouldTransientRetry(null) === false);
 })();
 
+console.log('=== CHEF-ANALYSIS-REPAIR (freie Naehrwertzahlen) ===');
+(function () {
+  const v = require('./recipe-validator');
+  const fix = v.repairChefAnalysisPlaceholderMisuse;
+
+  // T-C1: freie Makro-Zahl ohne Platzhalter -> qualitativ
+  const a = 'Das {0001} liefert die zentrale Proteinbasis, die das Ziel von 40 g Protein deckt.';
+  const aOut = fix(a);
+  ok('T-C1 40 g Protein qualitativ', !/\d+\s*g\s*Protein/i.test(aOut) && /reichlich Protein/i.test(aOut), 'got: ' + aOut);
+
+  // T-C2: freie kcal-Zahl -> qualitativ
+  const b = 'Zusammen ergeben die Zutaten rund 600 kcal pro Portion.';
+  const bOut = fix(b);
+  ok('T-C2 600 kcal qualitativ', !/\d+\s*kcal/i.test(bOut) && /passende Energiemenge/i.test(bOut), 'got: ' + bOut);
+
+  // T-C3: Platzhalter-Variante bleibt funktional (Regression)
+  const c = 'Das {0001} liefert 30 g Protein.';
+  const cOut = fix(c);
+  ok('T-C3 Platzhalter+Zahl weiterhin repariert', !/\d+\s*g\s*Protein/i.test(cOut), 'got: ' + cOut);
+
+  // T-C4: saubere Analyse bleibt unveraendert
+  const d = 'Das {0001} liefert reichlich Protein und passt zum Gericht.';
+  const dOut = fix(d);
+  ok('T-C4 sauberer Text unveraendert', dOut === d, 'got: ' + dOut);
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);

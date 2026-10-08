@@ -1038,12 +1038,21 @@ function validateChefAnalysisPlaceholderMisuse(chefAnalysis, ingredients) {
 function repairChefAnalysisPlaceholderMisuse(chefAnalysis) {
   let t = String(chefAnalysis || '');
   if (!t) return t;
+  // 1) Platzhalter + Naehrwert ({0001} g Protein)
   t = t.replace(/\{(\d{4})\}\s*g\s*Protein\b/gi, 'reichlich Protein');
   t = t.replace(/\{(\d{4})\}\s*g\s*Fett\b/gi, 'passendes Fett');
   t = t.replace(/\{(\d{4})\}\s*g\s*(?:Netto-?KH|Kohlenhydrate|KH)\b/gi, 'moderate Kohlenhydrate');
   t = t.replace(/\{(\d{4})\}\s*kcal\b/gi, 'eine passende Energiemenge');
   t = t.replace(/\{(\d{4})\}\s*%/gi, 'einem Anteil');
   t = t.replace(/\{(\d{4})\}\s*(?:g|kg|ml|l)\b/gi, 'dieser Zutat');
+  // 2) Freie Makro-Zahlen ohne Platzhalter (Fix 2026-10-08):
+  //    Die KI schreibt gelegentlich '40 g Protein' ohne {id}. Der Validator
+  //    lehnt das ab (validateNoFreeNumbersInProse). Hier qualitativ ersetzen.
+  t = t.replace(/\b\d+[.,]?\d*\s*g\s*(?:Protein|Eiwei(?:ss|ß))\b/gi, 'reichlich Protein');
+  t = t.replace(/\b\d+[.,]?\d*\s*g\s*Fett\b/gi, 'passendes Fett');
+  t = t.replace(/\b\d+[.,]?\d*\s*g\s*(?:Netto-?KH|Kohlenhydrate|KH)\b/gi, 'moderate Kohlenhydrate');
+  t = t.replace(/\b\d+[.,]?\d*\s*g\s*Ballaststoffe\b/gi, 'Ballaststoffe');
+  t = t.replace(/\b\d+[.,]?\d*\s*kcal\b/gi, 'eine passende Energiemenge');
   t = t.replace(/\s{2,}/g, ' ').trim();
   return t;
 }
