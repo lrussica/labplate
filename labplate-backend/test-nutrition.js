@@ -726,6 +726,39 @@ console.log('=== PLAUSIBILITAET: P6 Umami-Anker ===');
   ok('P37 Gemuese-Pfanne mit Parmesan -> keine Warnung', !hasUmami(p37), 'got: ' + JSON.stringify(p37.warnings));
 })();
 
+console.log('=== PLAUSIBILITAET: P4 Kokosmilch als Abloeschung ===');
+(function () {
+  const p = require('./plausibility-checks');
+  function hasDegl(r) {
+    return (r.warnings || []).some(function (w) { return /Deglassatura/i.test(w); });
+  }
+  // P38: Curry mit Kokosmilch — Kokosmilch loest den Fond, keine P4-Warnung.
+  const p38 = p.evaluateAll({
+    title: 'Gemuese-Curry',
+    dishCategory: 'main_vegetarian',
+    ingredients: [{ name: 'Blumenkohl' }, { name: 'Kokosmilch' }, { name: 'Zwiebel' }],
+    finalIngredients: [{ name: 'Blumenkohl' }, { name: 'Kokosmilch' }, { name: 'Zwiebel' }],
+    steps: [
+      'Zwiebel scharf anbraten.',
+      'Kokosmilch angiessen und 20 Minuten koecheln lassen.'
+    ],
+  });
+  ok('P38 Kokosmilch loest Fond -> keine P4-Warnung', !hasDegl(p38), 'got: ' + JSON.stringify(p38.warnings));
+
+  // P39: Tomatensauce mit Tomatendose — gleiche Logik.
+  const p39 = p.evaluateAll({
+    title: 'Tomatensauce',
+    dishCategory: 'main_vegetarian',
+    ingredients: [{ name: 'Zwiebel' }, { name: 'Tomatendose' }, { name: 'Olivenoel' }],
+    finalIngredients: [{ name: 'Zwiebel' }, { name: 'Tomatendose' }, { name: 'Olivenoel' }],
+    steps: [
+      'Zwiebel scharf anbraten.',
+      'Tomatendose hinzufuegen und 15 Minuten koecheln lassen.'
+    ],
+  });
+  ok('P39 Tomatendose loest Fond -> keine P4-Warnung', !hasDegl(p39), 'got: ' + JSON.stringify(p39.warnings));
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);

@@ -61,7 +61,9 @@ const REST_NEGATION_RE = /\b(?:ohne|kein(?:e|en)?|nicht)\s+(?:zu\s+)?(?:ruhen|ru
 // Wenn danach kein Loesch-Schritt kommt, bleibt der Fond-Rueckstand ungenutzt.
 const SAUCE_COOK_STEP_RE = /(?:koecheln|köcheln|schmoren|reduzieren|einkochen|weiterkochen|sanft\s+garen|ziehen\s+lassen)/i;
 // Loesch-Signal: Fluessigkeit + typisches Verb.
-const DEGLACE_STEP_RE = /(?:(?:wein|weisswein|weißwein|rotwein|bruehe|brühe|fond|wasser|bier|essig)[^\n.!?]{0,40}?\b(?:abloeschen|ablöschen|aufgiessen|aufgießen|angießen|angiessen|hinzugiessen|hinzugießen|deglacieren|abschrecken|hinzufuegen|hinzufügen|dazugeben|zugeben|einruehren|einrühren|zum\s+Kochen|aufkochen))|(?:\b(?:abloeschen|ablöschen|deglacieren)\b)/i;
+// Fix 2026-10-08: Kokosmilch/Sahne/Milch/Tomaten loesen den Fond funktional
+// (Thai-Curry, Cream Sauce, Tomatensauce) — ohne Saeure, aber gleichwertig.
+const DEGLACE_STEP_RE = /(?:(?:wein|weisswein|weißwein|rotwein|bruehe|brühe|fond|wasser|bier|essig|kokosmilch|sahne|milch|tomaten|tomatendose|passata|tomatenmark)[^\n.!?]{0,40}?\b(?:abloeschen|ablöschen|aufgiessen|aufgießen|angießen|angiessen|hinzugiessen|hinzugießen|deglacieren|abschrecken|hinzufuegen|hinzufügen|dazugeben|zugeben|einruehren|einrühren|zum\s+Kochen|aufkochen))|(?:\b(?:abloeschen|ablöschen|deglacieren)\b)/i;
 
 // --- P9 (Emulsion ohne Bindemittel) ---
 // Titel-Klassiker:
