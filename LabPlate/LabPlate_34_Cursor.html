@@ -18468,8 +18468,10 @@ function setLanguage(lang) {
   // "Alle löschen": Icon-SVG vor dem Text — nur Label-Span setzen, Icon nicht überschreiben.
   (function () {
     var clearAllLabelEl = document.querySelector('#clear-all-day .clear-all-btn-label');
-    if (clearAllLabelEl) clearAllLabelEl.textContent = L.clearAllBtn;
-    else document.getElementById('clear-all-day').textContent = L.clearAllBtn;
+    if (clearAllLabelEl) { clearAllLabelEl.textContent = L.clearAllBtn; return; }
+    // Fix 2026-10-08: Element kann fehlen (z.B. iOS-WebView) -> null-Guard.
+    var clearAllFallback = document.getElementById('clear-all-day');
+    if (clearAllFallback) clearAllFallback.textContent = L.clearAllBtn;
   })();
   document.getElementById('confirm-ok').textContent = L.confirmYes;
   document.getElementById('confirm-cancel').textContent = L.confirmCancel;
@@ -34745,8 +34747,13 @@ initBarcodeEvents();
         // amount >= 0: 0 = "nicht angegeben" (Eigenrezept ohne Mengenangabe).
         // Positive Mengen bleiben Pflicht fuer Makro-Skalierung; 0 zaehlt in calcRecipeMacrosPerServing als 0.
         if (typeof ing.amount !== 'number' || !isFinite(ing.amount) || ing.amount < 0) return false;
-        // Nur g/ml: calcRecipeMacrosPerServing bleibt unveraendert nutzbar.
-        if (ing.unit !== 'g' && ing.unit !== 'ml') return false;
+        // g/ml fuer skalierbare Zutaten; prise/messerspitze fuer amount=0-Gewuerze.
+        // Fix 2026-10-08: Das Backend setzt Salz/Pfeffer auf unit='prise' (korrekt
+        // fuer die Anzeige 'nach Belieben'). Der Client lehnte das vorher ab und
+        // verwarf deshalb ganze Rezepte (Bratkartoffeln).
+        var unitOk = (ing.unit === 'g' || ing.unit === 'ml');
+        if (!unitOk && ing.amount === 0 && (ing.unit === 'prise' || ing.unit === 'messerspitze')) unitOk = true;
+        if (!unitOk) return false;
         var m = ing.macrosPer100g;
         if (!m || typeof m !== 'object') return false;
         if (typeof m.netCarbs !== 'number' || !isFinite(m.netCarbs) || m.netCarbs < 0) return false;
