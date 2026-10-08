@@ -47,6 +47,8 @@ const RIPOSO_EXCLUDE_RE = /(?:hack|gulasch|wurst|speck|schinken|salami|leberwurs
 const GRILL_SEAR_RE = /(?:scharf\s+anbraten|heiß\s+anbraten|heiss\s+anbraten|kräftig\s+anbraten|kraeftig\s+anbraten|goldbraun\s+braten|goldbraun|kruste|scharf\s+braten|\bgrillen\b|\bgrill\b)/i;
 // Ruhe-/Zieh-Signale.
 const REST_STEP_RE = /\b(?:ruhen\s+lassen|ruhen|rasten|ziehen\s+lassen|abgedeckt\s+ruhen|warm\s+halten|ziehen|ruhephase)\b/i;
+// Verneinung: 'ohne Ruhen', 'nicht ruhen lassen' — darf NICHT als Ruheschritt zaehlen.
+const REST_NEGATION_RE = /\b(?:ohne|kein(?:e|en)?|nicht)\s+(?:zu\s+)?(?:ruhen|ruhe|rasten|ziehen)/i;
 
 function nameOf(ing) {
   return String((ing && (ing.name || ing.displayName)) || '');
@@ -295,8 +297,10 @@ function checkRiposoDellaCarne(recipe) {
   if (searIdx < 0) return { errors: [], warnings: [] };
 
   // Ruhe-Signal ab searIdx (auch im selben Step).
+  // Aber: 'ohne Ruhen' etc. zaehlt nicht (Fix 2026-10-08).
   for (let i = searIdx; i < steps.length; i++) {
-    if (REST_STEP_RE.test(steps[i])) return { errors: [], warnings: [] };
+    const s = steps[i];
+    if (REST_STEP_RE.test(s) && !REST_NEGATION_RE.test(s)) return { errors: [], warnings: [] };
   }
 
   return {

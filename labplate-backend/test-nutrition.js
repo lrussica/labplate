@@ -479,6 +479,18 @@ console.log('=== PLAUSIBILITAET: P2 Riposo della Carne ===');
     ],
   });
   ok('P18 Gulasch (geschmort) -> keine Warnung', !hasRiposo(p18), 'got: ' + JSON.stringify(p18.warnings));
+
+  // P19: Negation 'ohne Ruhen' darf NICHT als Ruheschritt zaehlen.
+  const p19 = p.evaluateAll({
+    title: 'Rumpsteak mit Butter',
+    ingredients: [{ name: 'Rumpsteak' }, { name: 'Butter' }],
+    finalIngredients: [{ name: 'Rumpsteak' }, { name: 'Butter' }],
+    steps: [
+      'Das Rumpsteak scharf anbraten.',
+      'Das Steak anrichten und ohne Ruhen servieren.'
+    ],
+  });
+  ok('P19 ohne Ruhen -> Warnung', hasRiposo(p19), 'got: ' + JSON.stringify(p19.warnings));
 })();
 
 console.log('=== ZUSAMMENFASSUNG ===');
