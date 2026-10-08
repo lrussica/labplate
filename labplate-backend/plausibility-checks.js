@@ -63,6 +63,19 @@ const SAUCE_COOK_STEP_RE = /(?:koecheln|köcheln|schmoren|reduzieren|einkochen|w
 // Loesch-Signal: Fluessigkeit + typisches Verb.
 const DEGLACE_STEP_RE = /(?:(?:wein|weisswein|weißwein|rotwein|bruehe|brühe|fond|wasser|bier|essig)[^\n.!?]{0,40}?\b(?:abloeschen|ablöschen|aufgiessen|aufgießen|angießen|angiessen|hinzugiessen|hinzugießen|deglacieren|abschrecken|hinzufuegen|hinzufügen|dazugeben|zugeben|einruehren|einrühren|zum\s+Kochen|aufkochen))|(?:\b(?:abloeschen|ablöschen|deglacieren)\b)/i;
 
+// --- P9 (Emulsion ohne Bindemittel) ---
+// Titel-Klassiker:
+const EMULSION_TITLE_RE = /\b(?:mayonnaise|mayo|aioli|hollandaise|vinaigrette|dressing)\b/i;
+const VINAIGRETTE_TITLE_RE = /\b(?:vinaigrette|dressing)\b/i;
+// Emulsions-Verben im Step-Text.
+const EMULSION_VERB_RE = /\b(?:verruehr|verrühr|emulgier|aufschlag|aufschl[aä]g|mixe?n?|pürier|puerier)\w*/i;
+// Waessrige Fluessigkeit (Basis fuer eine echte Emulsion).
+const AQUEOUS_RE = /\b(?:wasser|essig|balsamico|apfelessig|zitronensaft|limettensaft|weisswein|weißwein|rotwein|bruehe|brühe|fond|milch|kokosmilch|joghurt|buttermilch|sauerrahm)\b/i;
+// Sauren-Komponente (fuer Vinaigrette-Pflicht).
+const ACID_FOR_EMULSION_RE = /\b(?:essig|balsamico|apfelessig|zitronensaft|limettensaft|weisswein|weißwein|rotwein|verjus)\b/i;
+// Bindemittel (echte Emulgatoren).
+const EMULSIFIER_RE = /\b(?:ei|eier|eigelb|senf|dijon|tomatenmark|lecithin|xanthan|käse|kaese|sahne|mehl|stärke|staerke)\b/i;
+
 function nameOf(ing) {
   return String((ing && (ing.name || ing.displayName)) || '');
 }
@@ -374,10 +387,72 @@ function checkDeglassatura(recipe) {
   };
 }
 
+/**
+ * P9 (Emulsion ohne Bindemittel):
+ * - Mayonnaise/Aioli/Hollandaise brauchen Ei.
+ * - Vinaigrette/Dressing brauchen Senf (klassische 3:1-Emulsion).
+ * - Sonst: Fett + Wasser + Emulsionsverb ohne Bindemittel = instabile Sauce.
+ * Montierte Butter zaehlt NICHT als Bindemittel (Viskositaet, keine Emulsion).
+ */
+function checkEmulsion(recipe) {
+  const ings = ingredientsOf(recipe);
+  const title = titleOf(recipe);
+  const steps = stepsOf(recipe);
+
+  const allNames = ings.map(nameOf).join(' ');
+  const hasEgg = /\b(?:ei|eier|eigelb)\b/i.test(allNames);
+  const hasMustard = /\b(?:senf|dijon)\b/i.test(allNames);
+  const hasFat = ings.some(function (ing) { return FAT_NAME_RE.test(nameOf(ing)); });
+  const hasAcid = ACID_FOR_EMULSION_RE.test(allNames);
+  const hasEmulsifier = EMULSIFIER_RE.test(allNames);
+
+  // Pfad 1: Mayonnaise / Aioli / Hollandaise -> Ei Pflicht
+  if (/\b(?:mayonnaise|mayo|aioli|hollandaise)\b/i.test(title)) {
+    if (hasEgg) return { errors: [], warnings: [] };
+    return {
+      errors: [],
+      warnings: [
+        'Kochlehre-Hinweis: Emulsion ohne Bindemittel. ' +
+        'Mayonnaise/Aioli/Hollandaise brauchen Eigelb als Emulgator — ' +
+        'ohne Ei trennt sich die Sauce.'
+      ],
+    };
+  }
+
+  // Pfad 2: Vinaigrette / Dressing -> Senf Pflicht (nur wenn Oel + Saeure)
+  if (VINAIGRETTE_TITLE_RE.test(title)) {
+    if (!(hasFat && hasAcid)) return { errors: [], warnings: [] };
+    if (hasMustard) return { errors: [], warnings: [] };
+    return {
+      errors: [],
+      warnings: [
+        'Kochlehre-Hinweis: Vinaigrette ohne Senf. ' +
+        'Klassisch braucht eine Vinaigrette Senf (Dijon) als Emulgator, ' +
+        'sonst trennt sie sich sofort.'
+      ],
+    };
+  }
+
+  // Pfad 3 (b): Fett + Wasser + Emulsionsverb im Step -> Bindemittel noetig
+  const joinedSteps = steps.join(' ');
+  if (!EMULSION_VERB_RE.test(joinedSteps)) return { errors: [], warnings: [] };
+  if (!hasFat || !AQUEOUS_RE.test(allNames)) return { errors: [], warnings: [] };
+  if (hasEmulsifier) return { errors: [], warnings: [] };
+
+  return {
+    errors: [],
+    warnings: [
+      'Kochlehre-Hinweis: Emulsion ohne Bindemittel. Fett und waessrige ' +
+      'Fluessigkeit werden verruehrt/emulgiert, aber kein Emulgator ' +
+      '(Ei, Senf, Tomatenmark, Lecithin) ist dabei — die Sauce trennt sich.'
+    ],
+  };
+}
+
 function evaluateAll(recipe) {
   const errors = [];
   const warnings = [];
-  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne, checkDeglassatura]
+  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne, checkDeglassatura, checkEmulsion]
     .forEach(function (fn) {
       try {
         const r = fn(recipe);
@@ -400,4 +475,5 @@ module.exports = {
   checkAcidInFatDish: checkAcidInFatDish,
   checkRiposoDellaCarne: checkRiposoDellaCarne,
   checkDeglassatura: checkDeglassatura,
+  checkEmulsion: checkEmulsion,
 };

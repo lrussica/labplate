@@ -26,6 +26,7 @@ Status: **Warnung** (nicht blockierend), sichtbar im Client als Quality-Notice.
 | R6 | Saeure-Korrektur: Gerichte mit >= 2 Fetten brauchen eine Saeurequelle (Zitrone, Essig, Wein, Joghurt, Tomate). Desserts ausgenommen (vormals P5) | aktiv |
 | R7 | Riposo della Carne: Nach scharfem Anbraten/Grillen von ganzem Fleisch (Steak, Kotelett, Filet, Haehnchenbrust) Ruheschritt vor dem Schneiden. Hackfleisch/Gulasch ausgenommen (vormals P2) | aktiv |
 | R8 | Deglassatura: Nach scharfem Anbraten mit Saucen-Kontext (Koecheln/Schmoren) muss der Fond mit Fluessigkeit geloest werden (abloeschen). Reine Bratgerichte ohne Sauce ausgenommen (vormals P4) | aktiv |
+| R9 | Emulsion ohne Bindemittel: Mayonnaise/Aioli/Hollandaise brauchen Ei; Vinaigrette braucht Senf; generisch Fett+Wasser+Emulsionsverb braucht Emulgator. Montierte Butter zaehlt nicht (vormals P9) | aktiv |
 
 Tests: `labplate-backend/test-nutrition.js` (Abschnitt PLAUSIBILITAET).
 
@@ -58,7 +59,7 @@ implementiert, jede mit Test. Status: **nicht implementiert**.
 
 | ID | Regel | Pruefbar? | Anmerkung |
 |---|---|---|---|
-| P9 | Emulsion ohne Bindemittel: Oel + Wasser in Sauce ohne Ei/Senf/Tomatenmark = Warnung | ja | Zutaten-Kombinations-Pruefung |
+| ~~P9~~ | ~~Emulsion ohne Bindemittel~~ | – | **implementiert als R9 (2026-10-08)** |
 | P10 | Nicht drei Cremes gleichzeitig (Kokosmilch + Sahne + Frischkaese) = Textur-Kollaps | ja | Aehneln R1 |
 
 ### Stagionalitaet
@@ -107,7 +108,7 @@ Reihenfolge nach Nutzen und Aufwand:
 3. ~~**P2 Riposo della Carne**~~ ✅ implementiert als **R7** (2026-10-08)
 4. ~~**P4 Deglassatura**~~ ✅ implementiert als **R8** (2026-10-08)
 5. **P11/P12 Saisonalitaet** – sichtbarer Effekt, aber Datumslogik
-6. **P9 Emulsion** – komplexer, selten
+6. ~~**P9 Emulsion**~~ ✅ implementiert als **R9** (2026-10-08)
 7. **P7 Salatura a Strati** – nuanciert, schwierig sauber zu pruefen
 
 ---

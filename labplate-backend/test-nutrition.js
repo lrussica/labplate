@@ -605,6 +605,59 @@ console.log('=== PLAUSIBILITAET: P4 Deglassatura ===');
   ok('P26 Abloeschen im selben Step -> keine Warnung', !hasDegl(p26), 'got: ' + JSON.stringify(p26.warnings));
 })();
 
+console.log('=== PLAUSIBILITAET: P9 Emulsion ===');
+(function () {
+  const p = require('./plausibility-checks');
+  function hasEmul(r) {
+    return (r.warnings || []).some(function (w) { return /Emulsion ohne Bindemittel|Vinaigrette ohne Senf/i.test(w); });
+  }
+
+  // P27: Aioli ohne Ei -> Warnung
+  const p27 = p.evaluateAll({
+    title: 'Aioli',
+    ingredients: [{ name: 'Olivenoel' }, { name: 'Knoblauch' }],
+    finalIngredients: [{ name: 'Olivenoel' }, { name: 'Knoblauch' }],
+    steps: ['Knoblauch mit Olivenoel verruehren.'],
+  });
+  ok('P27 Aioli ohne Ei -> Warnung', hasEmul(p27), 'got: ' + JSON.stringify(p27.warnings));
+
+  // P28: Aioli mit Ei -> keine Warnung
+  const p28 = p.evaluateAll({
+    title: 'Aioli',
+    ingredients: [{ name: 'Olivenoel' }, { name: 'Eigelb' }, { name: 'Knoblauch' }],
+    finalIngredients: [{ name: 'Olivenoel' }, { name: 'Eigelb' }, { name: 'Knoblauch' }],
+    steps: ['Eigelb mit Olivenoel emulgieren.'],
+  });
+  ok('P28 Aioli mit Ei -> keine Warnung', !hasEmul(p28), 'got: ' + JSON.stringify(p28.warnings));
+
+  // P29: Vinaigrette ohne Senf -> Warnung
+  const p29 = p.evaluateAll({
+    title: 'Vinaigrette',
+    ingredients: [{ name: 'Olivenoel' }, { name: 'Weisswein Essig' }, { name: 'Salz' }],
+    finalIngredients: [{ name: 'Olivenoel' }, { name: 'Weisswein Essig' }, { name: 'Salz' }],
+    steps: ['Alles verruehren.'],
+  });
+  ok('P29 Vinaigrette ohne Senf -> Warnung', hasEmul(p29), 'got: ' + JSON.stringify(p29.warnings));
+
+  // P30: Vinaigrette mit Senf -> keine Warnung
+  const p30 = p.evaluateAll({
+    title: 'Vinaigrette',
+    ingredients: [{ name: 'Olivenoel' }, { name: 'Weisswein Essig' }, { name: 'Dijon Senf' }],
+    finalIngredients: [{ name: 'Olivenoel' }, { name: 'Weisswein Essig' }, { name: 'Dijon Senf' }],
+    steps: ['Alles verruehren.'],
+  });
+  ok('P30 Vinaigrette mit Senf -> keine Warnung', !hasEmul(p30), 'got: ' + JSON.stringify(p30.warnings));
+
+  // P31: generische Emulsion ohne Bindemittel -> Warnung
+  const p31 = p.evaluateAll({
+    title: 'Sauce',
+    ingredients: [{ name: 'Butter' }, { name: 'Wasser' }],
+    finalIngredients: [{ name: 'Butter' }, { name: 'Wasser' }],
+    steps: ['Butter und Wasser kräftig verruehren.'],
+  });
+  ok('P31 Fett+Wasser verruehrt ohne Emulgator -> Warnung', hasEmul(p31), 'got: ' + JSON.stringify(p31.warnings));
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);
