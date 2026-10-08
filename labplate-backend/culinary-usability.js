@@ -205,6 +205,36 @@ function hasSemanticAction(family, texts) {
 /**
  * 1) Unbenutzte / nur generisch referenzierte Hauptzutaten.
  */
+// Finish-Kraeuter: werden typischerweise erst am Ende gestreut, nicht im Step
+// erwaehnt. Wenn die KI eines davon mit kleiner Menge listet, ohne es zu nutzen,
+// stufen wir es automatisch zur Garnitur herab (Fix 2026-10-08).
+const FINISH_HERB_RE = /\b(?:koriander|petersilie|basilikum|dill|minze|estragon|kerbel|liebstoeckel|liebstöckel|bohnenkraut|schnittlauch|majoran|salbei|thymian|oregano|rosmarin)\b/i;
+const FINISH_HERB_MAX_GRAMS = 15;
+
+function autoClassifyFinishHerbsAsGarnish(recipe) {
+  const ings = ingredientList(recipe);
+  const steps = Array.isArray(recipe.steps) ? recipe.steps : [];
+  const garnish = typeof recipe.garnish === 'string' ? recipe.garnish : '';
+  const reclassified = [];
+  ings.forEach(function (ing) {
+    if (!ing || typeof ing !== 'object') return;
+    const role = String(ing.culinaryRole || ing.role || '').toLowerCase();
+    if (role === 'garnish') return;
+    const name = String(ing.name || ing.displayName || '');
+    if (!FINISH_HERB_RE.test(name)) return;
+    const grams = Number(ing.amount) || 0;
+    const unit = String(ing.unit || '').toLowerCase();
+    if (unit !== 'g' && unit !== 'kg') return;
+    const inGrams = unit === 'kg' ? grams * 1000 : grams;
+    if (inGrams <= 0 || inGrams > FINISH_HERB_MAX_GRAMS) return;
+    const refs = stepsReferencingIngredient(ing, steps, garnish);
+    if (refs.length) return;
+    ing.culinaryRole = 'garnish';
+    reclassified.push(name);
+  });
+  return reclassified;
+}
+
 function validateIngredientUsage(recipe) {
   const errors = [];
   const warnings = [];
@@ -422,6 +452,7 @@ function evaluateCulinaryUsability(recipe, opts) {
     });
   }
 
+  autoClassifyFinishHerbsAsGarnish(recipe);
   merge(validateIngredientUsage(recipe));
   merge(validateGenericInstructions(recipe));
   merge(validateOatsLiquidRatio(recipe));

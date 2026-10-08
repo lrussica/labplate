@@ -1127,6 +1127,62 @@ console.log('=== PLAUSIBILITAET: P8 Geschmacks-Balance ===');
   ok('P68 mit Zitronensaft -> keine Warnung', !hasFlavor(p68), 'got: ' + JSON.stringify(p68.warnings));
 })();
 
+console.log('=== FINISH-KRAEUTER AUTO-GARNITUR ===');
+(function () {
+  const cu = require('./culinary-usability');
+
+  // H1: Koriander 3 g ohne Step -> zur Garnitur umklassifiziert, kein Block
+  const h1 = cu.evaluateCulinaryUsability({
+    title: 'Curry',
+    ingredients: [
+      { name: 'Blumenkohl', amount: 100, unit: 'g' },
+      { name: 'Frischer Koriander', amount: 3, unit: 'g' },
+    ],
+    finalIngredients: [
+      { name: 'Blumenkohl', amount: 100, unit: 'g' },
+      { name: 'Frischer Koriander', amount: 3, unit: 'g' },
+    ],
+    steps: [{ instruction: 'Blumenkohl anbraten.' }],
+  });
+  ok('H1 Koriander 3g ohne Step -> kein Block',
+    !(h1.errors || []).some(function (e) { return /Koriander/.test(e); }),
+    'got: ' + JSON.stringify(h1.errors));
+
+  // H2: Koriander 20 g ohne Step -> bleibt Block (Hauptaroma-Fall)
+  const h2 = cu.evaluateCulinaryUsability({
+    title: 'Thai-Curry',
+    ingredients: [
+      { name: 'Kokosmilch', amount: 200, unit: 'ml' },
+      { name: 'Frischer Koriander', amount: 20, unit: 'g' },
+    ],
+    finalIngredients: [
+      { name: 'Kokosmilch', amount: 200, unit: 'ml' },
+      { name: 'Frischer Koriander', amount: 20, unit: 'g' },
+    ],
+    steps: [{ instruction: 'Kokosmilch koecheln lassen.' }],
+  });
+  ok('H2 Koriander 20g ohne Step -> Block',
+    (h2.errors || []).some(function (e) { return /Koriander/.test(e); }),
+    'got: ' + JSON.stringify(h2.errors));
+
+  // H3: Petersilie 5 g ohne Step -> keine Klassifikation noetig (bereits exempt)
+  const h3 = cu.evaluateCulinaryUsability({
+    title: 'Sauce',
+    ingredients: [
+      { name: 'Tomate', amount: 100, unit: 'g' },
+      { name: 'Petersilie', amount: 5, unit: 'g' },
+    ],
+    finalIngredients: [
+      { name: 'Tomate', amount: 100, unit: 'g' },
+      { name: 'Petersilie', amount: 5, unit: 'g' },
+    ],
+    steps: [{ instruction: 'Tomate verarbeiten.' }],
+  });
+  ok('H3 Petersilie 5g ohne Step -> kein Block',
+    !(h3.errors || []).some(function (e) { return /Petersilie/.test(e); }),
+    'got: ' + JSON.stringify(h3.errors));
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);
