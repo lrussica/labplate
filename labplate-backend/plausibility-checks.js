@@ -23,7 +23,7 @@ const BROTH_EXCLUDE_RE = /\b(brühe|bruehe|fond|bouillon|stock|sud)\b/i;
 const LIQUID_STEP_RE = /(?:wasser|brühe|bruehe|fond|wein|bier|sahne|milch|kokosmilch|soße|soosse|passata|tomaten|pürierte\s+tomaten|puerierte\s+tomaten|ablöschen|abloeschen|aufgießen|aufgiessen|angießen|angiessen|hinzugießen|hinzugiessen)/i;
 // Anbrat-Signale. Bewusst OHNE generisches "braten", damit "im Ofen braten"
 // nicht als Maillard-Vorstufe zaehlt.
-const SEAR_STEP_RE = /(?:scharf\s+anbraten|heiß\s+anbraten|heiss\s+anbraten|kräftig\s+anbraten|kraeftig\s+anbraten|goldbraun\s+braten|farbe\s+nehmen\s+lassen|maillard|anbraten|anrösten|anroesten|anschwitzen|anbräunen|anbraeunen)/i;
+const SEAR_STEP_RE = /(?:scharf\s+an(?:ge)?br[äa]t|heiß\s+an(?:ge)?br[äa]t|heiss\s+an(?:ge)?br[äa]t|kräftig\s+an(?:ge)?br[äa]t|kraeftig\s+an(?:ge)?br[äa]t|goldbraun(?:\s+ge)?braten|farbe\s+nehmen\s+lassen|maillard|an(?:ge)?br[äa]t|an(?:ge)?r[oö]st|an(?:ge)?schwitz|an(?:ge)?br[äa]un)/i;
 
 // --- P5 (Saeure-Korrektur) ---
 // Saeurequellen. Bewusst spezifisch:
@@ -44,7 +44,7 @@ const RIPOSO_CANDIDATE_RE = /\b(?:rind|kalb|lamm|schwein|rump|steak|kotelett|fil
 // Keine Wortgrenzen: faengt "Rindergulasch", "Rinderhackfleisch", "Rinderbruehe".
 const RIPOSO_EXCLUDE_RE = /(?:hack|gulasch|wurst|speck|schinken|salami|leberwurst|brühe|bruehe|fond|bouillon)/i;
 // Scharfes Braten / Grillen, NICHT "anschwitzen" (mittlere Hitze, kein Riposo).
-const GRILL_SEAR_RE = /(?:scharf\s+anbraten|heiß\s+anbraten|heiss\s+anbraten|kräftig\s+anbraten|kraeftig\s+anbraten|goldbraun\s+braten|goldbraun|kruste|scharf\s+braten|\bgrillen\b|\bgrill\b)/i;
+const GRILL_SEAR_RE = /(?:scharf\s+an(?:ge)?br[äa]t|heiß\s+an(?:ge)?br[äa]t|heiss\s+an(?:ge)?br[äa]t|kräftig\s+an(?:ge)?br[äa]t|kraeftig\s+an(?:ge)?br[äa]t|goldbraun|kruste|scharf\s+(?:ge)?braten|an(?:ge)?br[äa]t|\bgrill(?:en|te)?\b|\bgegrillt\b)/i;
 // Ruhe-/Zieh-Signale.
 const REST_STEP_RE = /\b(?:ruhen\s+lassen|ruhen|rasten|ziehen\s+lassen|abgedeckt\s+ruhen|warm\s+halten|ziehen|ruhephase)\b/i;
 // Verneinung: 'ohne Ruhen', 'nicht ruhen lassen' — darf NICHT als Ruheschritt zaehlen.
