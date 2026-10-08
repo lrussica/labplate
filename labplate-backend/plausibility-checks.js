@@ -114,6 +114,12 @@ const P7_SALT_INGREDIENT_RE = /\b(?:salz|meersalz|steinsalz|jodsalz|kochsalz)\b/
 // Dessert/Suppe-Titel ausschliessen (dort ist einmal Salzen ueblich).
 const P7_EXCLUDE_TITLE_RE = /\b(?:dessert|nachtisch|mousse|pudding|kuchen|suppe|soup|smoothie|smoothies)\b/i;
 
+// --- P14 (Eier-Sicherheit) ---
+// Ei als Zutat.
+const EGG_INGREDIENT_RE = /\b(?:ei|eier|eigelb|eiweiss|eiweiß|eidotter)\b/i;
+// Hitzeschritt: irgendwas, was das Ei auf >70 C bringt.
+const P14_HEAT_STEP_RE = /\b(?:anbraten|anbrat|braten|brat|kochen|koch|köcheln|koecheln|backen|back|garen|gar\s|erhitzen|erhitze|stocken|pochier|pochier|grillen|grill|dünsten|duensten|schmoren|schmor|überbacken|ueberbacken|sieden|frittier|frittier|karamellisier|karamellisier|aufkochen|aufkoch|hitzebestaendig|hitzebeständig|im\s+ofen|im\s+backofen)\b/i;
+
 function nameOf(ing) {
   return String((ing && (ing.name || ing.displayName)) || '');
 }
@@ -644,10 +650,42 @@ function checkSalaturaAStrati(recipe) {
   };
 }
 
+/**
+ * P14 (Eier-Sicherheit):
+ * Rohe Eier in kalten Gerichten (Mayonnaise, Tiramisu, Tatar) sind ein
+ * Salmonellen-Risiko — besonders relevant fuer metabolisch vorbelastete
+ * Zielgruppe. Feuert nur, wenn Ei als Zutat vorkommt UND kein Hitzeschritt
+ * im Rezept vorhanden ist.
+ */
+function checkEggSafety(recipe) {
+  const ings = ingredientsOf(recipe);
+  const steps = stepsOf(recipe);
+  if (!steps.length) return { errors: [], warnings: [] };
+
+  const hasEgg = ings.some(function (ing) { return EGG_INGREDIENT_RE.test(nameOf(ing)); });
+  if (!hasEgg) return { errors: [], warnings: [] };
+
+  // Wenn mindestens ein Hitzeschritt im Rezept ist: wir vertrauen darauf,
+  // dass das Ei mitgegart wird. Sonst Warnung.
+  for (let i = 0; i < steps.length; i++) {
+    if (P14_HEAT_STEP_RE.test(steps[i])) return { errors: [], warnings: [] };
+  }
+
+  return {
+    errors: [],
+    warnings: [
+      'Kochlehre-Hinweis: Rohes Ei ohne Hitzebehandlung. Rohe Eier koennen ' +
+      'Salmonellen enthalten — besonders relevant fuer metabolisch vorbelastete ' +
+      'Menschen. Erhitze das Gericht auf mindestens 70 °C oder verwende ' +
+      'pasteurisierte Eier.'
+    ],
+  };
+}
+
 function evaluateAll(recipe) {
   const errors = [];
   const warnings = [];
-  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne, checkDeglassatura, checkEmulsion, checkUmamiAnchor, checkThreeCreams, checkRiduzione, checkSalaturaAStrati]
+  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne, checkDeglassatura, checkEmulsion, checkUmamiAnchor, checkThreeCreams, checkRiduzione, checkSalaturaAStrati, checkEggSafety]
     .forEach(function (fn) {
       try {
         const r = fn(recipe);
@@ -675,4 +713,5 @@ module.exports = {
   checkThreeCreams: checkThreeCreams,
   checkRiduzione: checkRiduzione,
   checkSalaturaAStrati: checkSalaturaAStrati,
+  checkEggSafety: checkEggSafety,
 };

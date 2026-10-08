@@ -31,6 +31,7 @@ Status: **Warnung** (nicht blockierend), sichtbar im Client als Quality-Notice.
 | R11 | Drei Cremes gleichzeitig: Sahne/Creme fraiche/Schmand/Kokosmilch/Frischkaese/Mascarpone/Doppelrahm/Sojacreme/Hafercreme = Textur-Kollaps. Klassisch reicht eine Creme (vormals P10) | aktiv |
 | R12 | Riduzione: Reduktions-Steps (reduzieren/einkochen/eindicken) brauchen eine Fluessigkeit zum Reduzieren. 'Hitze reduzieren' ausgenommen; Milch nur im Sauce/Suppe-Kontext (vormals P3) | aktiv |
 | R13 | Salatura a Strati: Salz in mindestens 2 verschiedenen Steps referenziert. Desserts und Suppen ausgenommen (vormals P7) | aktiv |
+| R14 | Eier-Sicherheit: Rohe Eier ohne Hitzeschritt im Rezept = Salmonellen-Risiko (Mayonnaise, Tiramisu, Tatar). Hitzeschritte (braten/backen/kochen) schliessen aus (vormals P14) | aktiv |
 
 Tests: `labplate-backend/test-nutrition.js` (Abschnitt PLAUSIBILITAET).
 
@@ -78,7 +79,7 @@ implementiert, jede mit Test. Status: **nicht implementiert**.
 | ID | Regel | Pruefbar? | Anmerkung |
 |---|---|---|---|
 | P13 | Erster Step ist Vorbereitung: Schneiden/Wiegen vor Hitze | ja | Warnung wenn erster Step Hitze ist |
-| P14 | Eier-Sicherheit: Rohe Eier in nicht-gekochten Steps = Warnung | ja | Nur bei Salat/Dessert |
+| ~~P14~~ | ~~Eier-Sicherheit~~ | – | **implementiert als R14 (2026-10-08)** |
 
 ### Cross-Contamination
 
@@ -115,8 +116,8 @@ Reihenfolge nach Nutzen und Aufwand:
 6. ~~**P9 Emulsion**~~ ✅ implementiert als **R9** (2026-10-08)
 7. ~~**P10 Drei Cremes**~~ ✅ implementiert als **R11** (2026-10-08)
 8. ~~**P3 Riduzione**~~ ✅ implementiert als **R12** (2026-10-08)
-9. **P11/P12 Saisonalitaet** – sichtbarer Effekt, aber Datumslogik
-10. ~~**P7 Salatura a Strati**~~ ✅ implementiert als **R13** (2026-10-08)
+9. ~~**P14 Eier-Sicherheit**~~ ✅ implementiert als **R14** (2026-10-08)
+10. **P11/P12 Saisonalitaet** – sichtbarer Effekt, aber Datumslogik
 
 ---
 

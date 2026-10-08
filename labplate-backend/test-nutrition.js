@@ -946,6 +946,75 @@ console.log('=== PLAUSIBILITAET: P7 Salatura a Strati ===');
   ok('P53 ohne Salz-Zutat -> keine Warnung', !hasSalt(p53), 'got: ' + JSON.stringify(p53.warnings));
 })();
 
+console.log('=== PLAUSIBILITAET: P14 Eier-Sicherheit ===');
+(function () {
+  const p = require('./plausibility-checks');
+  function hasEgg(r) {
+    return (r.warnings || []).some(function (w) { return /Rohes Ei ohne Hitzebehandlung/i.test(w); });
+  }
+
+  // P54: Mayonnaise mit rohem Eigelb -> Warnung
+  const p54 = p.evaluateAll({
+    title: 'Mayonnaise',
+    ingredients: [{ name: 'Eigelb' }, { name: 'Olivenoel' }, { name: 'Zitronensaft' }],
+    finalIngredients: [{ name: 'Eigelb' }, { name: 'Olivenoel' }, { name: 'Zitronensaft' }],
+    steps: [
+      'Eigelb mit Zitronensaft verruehren.',
+      'Olivenoel langsam einlaufen lassen, bis die Sauce emulgiert.'
+    ],
+  });
+  ok('P54 Mayonnaise mit rohem Eigelb -> Warnung', hasEgg(p54), 'got: ' + JSON.stringify(p54.warnings));
+
+  // P55: Ruehrei mit Hitze -> keine Warnung
+  const p55 = p.evaluateAll({
+    title: 'Ruehrei',
+    ingredients: [{ name: 'Ei' }, { name: 'Butter' }],
+    finalIngredients: [{ name: 'Ei' }, { name: 'Butter' }],
+    steps: [
+      'Eier verquirlen.',
+      'In der Pfanne bei mittlerer Hitze stocken lassen.'
+    ],
+  });
+  ok('P55 Ruehrei mit Hitze -> keine Warnung', !hasEgg(p55), 'got: ' + JSON.stringify(p55.warnings));
+
+  // P56: Kuchen (backen) -> keine Warnung
+  const p56 = p.evaluateAll({
+    title: 'Schokoladenkuchen',
+    ingredients: [{ name: 'Ei' }, { name: 'Mehl' }, { name: 'Schokolade' }],
+    finalIngredients: [{ name: 'Ei' }, { name: 'Mehl' }, { name: 'Schokolade' }],
+    steps: [
+      'Alle Zutaten verruehren.',
+      'Im Ofen bei 180 Grad backen.'
+    ],
+  });
+  ok('P56 Kuchen mit Backen -> keine Warnung', !hasEgg(p56), 'got: ' + JSON.stringify(p56.warnings));
+
+  // P57: Tiramisu ohne Hitze -> Warnung
+  const p57 = p.evaluateAll({
+    title: 'Tiramisu',
+    ingredients: [{ name: 'Ei' }, { name: 'Mascarpone' }, { name: 'Loewenfoehn' }],
+    finalIngredients: [{ name: 'Ei' }, { name: 'Mascarpone' }, { name: 'Loewenfoehn' }],
+    steps: [
+      'Eigelb mit Zucker aufschlagen.',
+      'Mascarpone unterheben.',
+      'Kalt stellen.'
+    ],
+  });
+  ok('P57 Tiramisu ohne Hitze -> Warnung', hasEgg(p57), 'got: ' + JSON.stringify(p57.warnings));
+
+  // P58: Ohne Ei -> keine Warnung
+  const p58 = p.evaluateAll({
+    title: 'Gemuesepfanne',
+    ingredients: [{ name: 'Zucchini' }, { name: 'Paprika' }],
+    finalIngredients: [{ name: 'Zucchini' }, { name: 'Paprika' }],
+    steps: [
+      'Gemuese schneiden.',
+      'Anbraten.'
+    ],
+  });
+  ok('P58 ohne Ei -> keine Warnung', !hasEgg(p58), 'got: ' + JSON.stringify(p58.warnings));
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);
