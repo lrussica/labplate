@@ -549,6 +549,62 @@ console.log('=== ESSIG/SENF/SAUCE NICHT BLOCKEND ===');
   ok('P22 Zitronensaft blockt nicht', errBlob.indexOf('zitronensaft') < 0, 'got errors: ' + JSON.stringify(r.errors));
 })();
 
+console.log('=== PLAUSIBILITAET: P4 Deglassatura ===');
+(function () {
+  const p = require('./plausibility-checks');
+  function hasDegl(r) {
+    return (r.warnings || []).some(function (w) { return /Deglassatura/i.test(w); });
+  }
+
+  // P23: Gulasch mit Anbraten + Koecheln, kein Loeschen -> Warnung
+  const p23 = p.evaluateAll({
+    title: 'Rindergulasch',
+    ingredients: [{ name: 'Rindfleisch' }, { name: 'Zwiebel' }],
+    finalIngredients: [{ name: 'Rindfleisch' }, { name: 'Zwiebel' }],
+    steps: [
+      'Das Rindfleisch scharf anbraten.',
+      'Zwiebeln zugeben und 60 Minuten koecheln lassen.'
+    ],
+  });
+  ok('P23 Gulasch ohne Abloeschen -> Warnung', hasDegl(p23), 'got: ' + JSON.stringify(p23.warnings));
+
+  // P24: Gulasch mit Abloeschen -> keine Warnung
+  const p24 = p.evaluateAll({
+    title: 'Rindergulasch',
+    ingredients: [{ name: 'Rindfleisch' }, { name: 'Zwiebel' }, { name: 'Rotwein' }],
+    finalIngredients: [{ name: 'Rindfleisch' }, { name: 'Zwiebel' }, { name: 'Rotwein' }],
+    steps: [
+      'Das Rindfleisch scharf anbraten.',
+      'Mit Rotwein abloeschen und 60 Minuten koecheln lassen.'
+    ],
+  });
+  ok('P24 Gulasch mit Abloeschen -> keine Warnung', !hasDegl(p24), 'got: ' + JSON.stringify(p24.warnings));
+
+  // P25: Steak anbraten + servieren -> keine Warnung (kein Saucen-Kontext)
+  const p25 = p.evaluateAll({
+    title: 'Rumpsteak',
+    ingredients: [{ name: 'Rumpsteak' }, { name: 'Butter' }],
+    finalIngredients: [{ name: 'Rumpsteak' }, { name: 'Butter' }],
+    steps: [
+      'Das Rumpsteak scharf anbraten.',
+      'Fuenf Minuten ruhen lassen und servieren.'
+    ],
+  });
+  ok('P25 Steak ohne Saucen-Kontext -> keine Warnung', !hasDegl(p25), 'got: ' + JSON.stringify(p25.warnings));
+
+  // P26: Gulasch mit Abloeschen im selben Step wie Anbraten -> keine Warnung
+  const p26 = p.evaluateAll({
+    title: 'Rindergulasch',
+    ingredients: [{ name: 'Rindfleisch' }, { name: 'Rinderbruehe' }],
+    finalIngredients: [{ name: 'Rindfleisch' }, { name: 'Rinderbruehe' }],
+    steps: [
+      'Rindfleisch scharf anbraten und mit Rinderbruehe abloeschen.',
+      'Eine Stunde koecheln lassen.'
+    ],
+  });
+  ok('P26 Abloeschen im selben Step -> keine Warnung', !hasDegl(p26), 'got: ' + JSON.stringify(p26.warnings));
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);

@@ -25,6 +25,7 @@ Status: **Warnung** (nicht blockierend), sichtbar im Client als Quality-Notice.
 | R5 | Maillard vor Schmoren: Bei Brasieren/Schmoren muss Fleisch vor Fluessigkeitszusatz scharf angebraten werden (vormals P1) | aktiv |
 | R6 | Saeure-Korrektur: Gerichte mit >= 2 Fetten brauchen eine Saeurequelle (Zitrone, Essig, Wein, Joghurt, Tomate). Desserts ausgenommen (vormals P5) | aktiv |
 | R7 | Riposo della Carne: Nach scharfem Anbraten/Grillen von ganzem Fleisch (Steak, Kotelett, Filet, Haehnchenbrust) Ruheschritt vor dem Schneiden. Hackfleisch/Gulasch ausgenommen (vormals P2) | aktiv |
+| R8 | Deglassatura: Nach scharfem Anbraten mit Saucen-Kontext (Koecheln/Schmoren) muss der Fond mit Fluessigkeit geloest werden (abloeschen). Reine Bratgerichte ohne Sauce ausgenommen (vormals P4) | aktiv |
 
 Tests: `labplate-backend/test-nutrition.js` (Abschnitt PLAUSIBILITAET).
 
@@ -42,7 +43,7 @@ implementiert, jede mit Test. Status: **nicht implementiert**.
 | ~~P1~~ | ~~Maillard vor dem Schmoren~~ | – | **implementiert als R5 (2026-10-08)** |
 | ~~P2~~ | ~~Riposo della Carne~~ | – | **implementiert als R7 (2026-10-08)** |
 | P3 | Riduzione korrekt: Bei "Reduktion" muss Fluessigkeit vorher drin sein | ja | Sequenz-Pruefung |
-| P4 | Deglassatura: Nach "Anbraten" mit Fond-Rueckstand muss ein Loesch-Schritt (Wein/Bruehe/Essig) kommen | ja | Sequenz-Pruefung |
+| ~~P4~~ | ~~Deglassatura~~ | – | **implementiert als R8 (2026-10-08)** |
 
 ### Bilanciamento dei Sapori
 
@@ -104,9 +105,10 @@ Reihenfolge nach Nutzen und Aufwand:
 1. ~~**P1 Maillard vor Schmoren**~~ ✅ implementiert als **R5** (2026-10-08)
 2. ~~**P5 Saure-Korrektur**~~ ✅ implementiert als **R6** (2026-10-08)
 3. ~~**P2 Riposo della Carne**~~ ✅ implementiert als **R7** (2026-10-08)
-4. **P11/P12 Saisonalitaet** – sichtbarer Effekt, aber Datumslogik
-5. **P9 Emulsion** – komplexer, selten
-6. **P7 Salatura a Strati** – nuanciert, schwierig sauber zu pruefen
+4. ~~**P4 Deglassatura**~~ ✅ implementiert als **R8** (2026-10-08)
+5. **P11/P12 Saisonalitaet** – sichtbarer Effekt, aber Datumslogik
+6. **P9 Emulsion** – komplexer, selten
+7. **P7 Salatura a Strati** – nuanciert, schwierig sauber zu pruefen
 
 ---
 

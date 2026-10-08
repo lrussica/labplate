@@ -56,6 +56,13 @@ const REST_STEP_RE = /\b(?:ruhen\s+lassen|ruhen|rasten|ziehen\s+lassen|abgedeckt
 // Verneinung: 'ohne Ruhen', 'nicht ruhen lassen' — darf NICHT als Ruheschritt zaehlen.
 const REST_NEGATION_RE = /\b(?:ohne|kein(?:e|en)?|nicht)\s+(?:zu\s+)?(?:ruhen|ruhe|rasten|ziehen)/i;
 
+// --- P4 (Deglassatura) ---
+// Koch-Step-Signale, die auf Saucenbildung hindeuten (Schmoren/Koecheln/Reduzieren).
+// Wenn danach kein Loesch-Schritt kommt, bleibt der Fond-Rueckstand ungenutzt.
+const SAUCE_COOK_STEP_RE = /(?:koecheln|köcheln|schmoren|reduzieren|einkochen|weiterkochen|sanft\s+garen|ziehen\s+lassen)/i;
+// Loesch-Signal: Fluessigkeit + typisches Verb.
+const DEGLACE_STEP_RE = /(?:(?:mit\s+)?(?:wein|weisswein|weißwein|rotwein|bruehe|brühe|fond|wasser|bier|essig)[^\n.!?]{0,40}?\b(?:abloeschen|ablöschen|aufgiessen|aufgießen|angießen|angiessen|hinzugiessen|hinzugießen|deglacieren|abschrecken))|(?:\b(?:abloeschen|ablöschen|deglacieren)\b)/i;
+
 function nameOf(ing) {
   return String((ing && (ing.name || ing.displayName)) || '');
 }
@@ -327,10 +334,50 @@ function checkRiposoDellaCarne(recipe) {
   };
 }
 
+/**
+ * P4 (Deglassatura):
+ * Nach einem scharfen Anbraten mit Fond-Rueckstand (SEAR-Step) sollte der
+ * Fond geloest werden, sobald eine Sauce entstehen soll (koecheln/schmoren).
+ * Reine Bratgerichte (Steak anbraten + servieren) loesen P4 nicht aus.
+ */
+function checkDeglassatura(recipe) {
+  const steps = stepsOf(recipe);
+  if (!steps.length) return { errors: [], warnings: [] };
+
+  // Erster SEAR-Step.
+  let searIdx = -1;
+  for (let i = 0; i < steps.length; i++) {
+    if (GRILL_SEAR_RE.test(steps[i])) { searIdx = i; break; }
+  }
+  if (searIdx < 0) return { errors: [], warnings: [] };
+
+  // Naechster Koch-Step (Saucenbildung) nach dem SEAR.
+  let cookIdx = -1;
+  for (let i = searIdx + 1; i < steps.length; i++) {
+    if (SAUCE_COOK_STEP_RE.test(steps[i])) { cookIdx = i; break; }
+  }
+  if (cookIdx < 0) return { errors: [], warnings: [] };
+
+  // Zwischen SEAR (einschliesslich) und CookIdx (einschliesslich) muss ein
+  // Loesch-Signal vorkommen.
+  for (let i = searIdx; i <= cookIdx; i++) {
+    if (DEGLACE_STEP_RE.test(steps[i])) return { errors: [], warnings: [] };
+  }
+
+  return {
+    errors: [],
+    warnings: [
+      'Kochlehre-Hinweis: Deglassatura fehlt. Nach dem scharfen Anbraten ' +
+      'sollte der Fond-Rueckstand mit Wein, Bruehe oder Wasser geloest werden ' +
+      '(«abloeschen»), bevor das Gericht geschmort oder gekoechelt wird.'
+    ],
+  };
+}
+
 function evaluateAll(recipe) {
   const errors = [];
   const warnings = [];
-  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne]
+  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne, checkDeglassatura]
     .forEach(function (fn) {
       try {
         const r = fn(recipe);
@@ -352,4 +399,5 @@ module.exports = {
   checkMaillardBeforeBraising: checkMaillardBeforeBraising,
   checkAcidInFatDish: checkAcidInFatDish,
   checkRiposoDellaCarne: checkRiposoDellaCarne,
+  checkDeglassatura: checkDeglassatura,
 };
