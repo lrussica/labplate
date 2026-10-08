@@ -1183,6 +1183,53 @@ console.log('=== FINISH-KRAEUTER AUTO-GARNITUR ===');
     'got: ' + JSON.stringify(h3.errors));
 })();
 
+console.log('=== PLAUSIBILITAET: P17 Aromaten-Reihenfolge ===');
+(function () {
+  const p = require('./plausibility-checks');
+  function hasOrder(r) {
+    return (r.warnings || []).some(function (w) { return /Zwiebel und Knoblauch gleichzeitig/i.test(w); });
+  }
+
+  // P69: Zwiebel + Knoblauch im selben Hitze-Step -> Warnung
+  const p69 = p.evaluateAll({
+    title: 'Sauce',
+    ingredients: [{ name: 'Zwiebel' }, { name: 'Knoblauch' }, { name: 'Tomaten' }],
+    finalIngredients: [{ name: 'Zwiebel' }, { name: 'Knoblauch' }, { name: 'Tomaten' }],
+    steps: ['Zwiebel und Knoblauch in Olivenoel anschwitzen.'],
+  });
+  ok('P69 Zwiebel+Knoblauch zusammen -> Warnung', hasOrder(p69), 'got: ' + JSON.stringify(p69.warnings));
+
+  // P70: Sequenziell -> keine Warnung
+  const p70 = p.evaluateAll({
+    title: 'Sauce',
+    ingredients: [{ name: 'Zwiebel' }, { name: 'Knoblauch' }, { name: 'Tomaten' }],
+    finalIngredients: [{ name: 'Zwiebel' }, { name: 'Knoblauch' }, { name: 'Tomaten' }],
+    steps: [
+      'Zwiebel in Olivenoel 5 Minuten anschwitzen.',
+      'Knoblauch zugeben und 30 Sekunden mitbraten.'
+    ],
+  });
+  ok('P70 sequenziell -> keine Warnung', !hasOrder(p70), 'got: ' + JSON.stringify(p70.warnings));
+
+  // P71: Nur Hacken (Vorbereitung) -> keine Warnung
+  const p71 = p.evaluateAll({
+    title: 'Sauce',
+    ingredients: [{ name: 'Zwiebel' }, { name: 'Knoblauch' }, { name: 'Tomaten' }],
+    finalIngredients: [{ name: 'Zwiebel' }, { name: 'Knoblauch' }, { name: 'Tomaten' }],
+    steps: ['Zwiebel und Knoblauch fein hacken.', 'Tomaten zugeben.'],
+  });
+  ok('P71 nur Hacken -> keine Warnung', !hasOrder(p71), 'got: ' + JSON.stringify(p71.warnings));
+
+  // P72: Nur Zwiebel (kein Knoblauch) -> keine Warnung
+  const p72 = p.evaluateAll({
+    title: 'Sauce',
+    ingredients: [{ name: 'Zwiebel' }, { name: 'Tomaten' }],
+    finalIngredients: [{ name: 'Zwiebel' }, { name: 'Tomaten' }],
+    steps: ['Zwiebel in Olivenoel anschwitzen.'],
+  });
+  ok('P72 nur Zwiebel -> keine Warnung', !hasOrder(p72), 'got: ' + JSON.stringify(p72.warnings));
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);

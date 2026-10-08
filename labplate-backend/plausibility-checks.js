@@ -142,6 +142,12 @@ const P8_UMAMI_IN_ING_RE = /\b(?:parmesan|pecorino|grana|tomatenmark|passata|tom
 // Keine \b am Anfang: faengt Komposita wie 'Schokoladenmousse'.
 const P8_EXCLUDE_TITLE_RE = /(?:dessert|nachtisch|mousse|pudding|kuchen|torte|keks|smoothie|smoothies|kompott|mus)\b/i;
 
+// --- P17 (Aromaten-Reihenfolge) ---
+const P17_ZWIEBEL_RE = /\b(?:zwiebel|zwiebeln|schalotte|schalotten|gemuese?zwiebel)\b/i;
+const P17_KNOBLAUCH_RE = /\b(?:knoblauch|knoblauchzehe|knoblauchzehen|knofi)\b/i;
+// Hitze-Verben (nicht: hacken/schneiden/vorbereiten).
+const P17_HEAT_VERB_RE = /(?:anschwitz|anbrat|anbraet|anbraet|duenst|duenst|sautier|erhitz|schwitz|koechel|koch|braet|brat|garen|gar\s|schmorf|schmor)/i;
+
 function nameOf(ing) {
   return String((ing && (ing.name || ing.displayName)) || '');
 }
@@ -805,10 +811,38 @@ function checkFlavorBalance(recipe) {
   };
 }
 
+/**
+ * P17 (Aromaten-Reihenfolge):
+ * Zwiebel (3-5 Min) und Knoblauch (30 Sek) haben stark unterschiedliche
+ * Garzeiten. Wenn beide im selben Hitze-Step stehen, verbrennt entweder
+ * die Zwiebel oder der Knoblauch. Klassisch sequenziell: Zwiebel zuerst.
+ * Vorbereitungs-Steps (hacken/schneiden) loesen nicht aus.
+ */
+function checkAromaticsOrder(recipe) {
+  const steps = stepsOf(recipe);
+  if (!steps.length) return { errors: [], warnings: [] };
+
+  for (let i = 0; i < steps.length; i++) {
+    const s = steps[i];
+    if (!P17_ZWIEBEL_RE.test(s)) continue;
+    if (!P17_KNOBLAUCH_RE.test(s)) continue;
+    if (!P17_HEAT_VERB_RE.test(s)) continue;
+    return {
+      errors: [],
+      warnings: [
+        'Kochlehre-Hinweis: Zwiebel und Knoblauch gleichzeitig im selben Step ' +
+        'erhitzt. Klassisch: Zwiebel zuerst 3-5 Minuten anschwitzen, dann ' +
+        'Knoblauch kurz mitbraten — sonst verbrennt der Knoblauch und wird bitter.'
+      ],
+    };
+  }
+  return { errors: [], warnings: [] };
+}
+
 function evaluateAll(recipe) {
   const errors = [];
   const warnings = [];
-  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne, checkDeglassatura, checkEmulsion, checkUmamiAnchor, checkThreeCreams, checkRiduzione, checkSalaturaAStrati, checkEggSafety, checkSeasonality, checkFlavorBalance]
+  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne, checkDeglassatura, checkEmulsion, checkUmamiAnchor, checkThreeCreams, checkRiduzione, checkSalaturaAStrati, checkEggSafety, checkSeasonality, checkFlavorBalance, checkAromaticsOrder]
     .forEach(function (fn) {
       try {
         const r = fn(recipe);
@@ -839,4 +873,5 @@ module.exports = {
   checkEggSafety: checkEggSafety,
   checkSeasonality: checkSeasonality,
   checkFlavorBalance: checkFlavorBalance,
+  checkAromaticsOrder: checkAromaticsOrder,
 };

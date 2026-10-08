@@ -34,6 +34,7 @@ Status: **Warnung** (nicht blockierend), sichtbar im Client als Quality-Notice.
 | R14 | Eier-Sicherheit: Rohe Eier ohne Hitzeschritt im Rezept = Salmonellen-Risiko (Mayonnaise, Tiramisu, Tatar). Hitzeschritte (braten/backen/kochen) schliessen aus (vormals P14) | aktiv |
 | R15 | Saisonalitaet: Sommergemuese im Winter (Nov-Feb), Wintergemuese im Sommer (Jun-Aug). Verarbeitete Formen (Tomatenmark, Passata, TK) ausgenommen (vormals P11/P12) | aktiv |
 | R16 | Geschmacks-Balance: Warnt nur, wenn Salz UND Saeure UND Umami gleichzeitig fehlen. Meta-Regel ohne Ueberschneidung mit R6/R10/R13. Desserts ausgenommen (vormals P8) | aktiv |
+| R17 | Aromaten-Reihenfolge: Zwiebel und Knoblauch im selben Hitze-Step = Warnung. Klassisch sequenziell (Zwiebel 3-5 Min, dann Knoblauch 30 Sek). Vorbereitungs-Steps ausgenommen | aktiv |
 
 Tests: `labplate-backend/test-nutrition.js` (Abschnitt PLAUSIBILITAET).
 
