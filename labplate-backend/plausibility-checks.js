@@ -120,6 +120,17 @@ const EGG_INGREDIENT_RE = /\b(?:ei|eier|eigelb|eiweiss|eiweiß|eidotter)\b/i;
 // Hitzeschritt: irgendwas, was das Ei auf >70 C bringt.
 const P14_HEAT_STEP_RE = /\b(?:anbraten|anbrat|braten|brat|kochen|koch|köcheln|koecheln|backen|back|garen|gar\s|erhitzen|erhitze|stocken|pochier|pochier|grillen|grill|dünsten|duensten|schmoren|schmor|überbacken|ueberbacken|sieden|frittier|frittier|karamellisier|karamellisier|aufkochen|aufkoch|hitzebestaendig|hitzebeständig|im\s+ofen|im\s+backofen)\b/i;
 
+// --- P11/P12 (Saisonalitaet) ---
+// Sommergemuese, das im Winter untypisch ist.
+const P11_SUMMER_VEG_RE = /\b(?:tomate|tomaten|paprika|aubergine|zucchini|gurke|gurken|melanzane)\b/i;
+// Wintergemuese, das im Sommer untypisch ist.
+const P12_WINTER_VEG_RE = /\b(?:kuerbis|kürbis|suesskartoffel|süßkartoffel|rosenkohl|gruenkohl|grünkohl|steckruebe|steckrübe|pastinake)\b/i;
+// Ausnahmen: verarbeitete Formen (immer verfuegbar).
+const P11_EXEMPT_PROCESSED_RE = /\b(?:tomatenmark|passata|dosentomate|dosentomaten|getrocknete\s+tomaten|sonnengetrocknete|tk-|tiefgekuehlt|tiefgekühlt|gefroren)\b/i;
+// Monatsspannen.
+const WINTER_MONTHS = [11, 12, 1, 2];
+const SUMMER_MONTHS = [6, 7, 8];
+
 function nameOf(ing) {
   return String((ing && (ing.name || ing.displayName)) || '');
 }
@@ -682,10 +693,76 @@ function checkEggSafety(recipe) {
   };
 }
 
+/**
+ * P11/P12 (Saisonalitaet):
+ * Sommergemuese (Tomate, Paprika, Aubergine, Zucchini, Gurke) im Winter (Nov-Feb)
+ * und Wintergemuese (Kuerbis, Suesskartoffel, Rosenkohl, Gruenkohl) im Sommer
+ * (Jun-Aug) sind kulinarisch untypisch.
+ * Verarbeitete Formen (Tomatenmark, Passata, Dosentomaten, TK) sind ausgenommen.
+ * Datum: `recipe._currentMonth` (1-12) als Override fuer Tests, sonst aktueller Monat.
+ */
+function checkSeasonality(recipe) {
+  const title = titleOf(recipe);
+  const ings = ingredientsOf(recipe);
+  const allNames = ings.map(nameOf).join(' ');
+  if (!allNames.trim() && !title) return { errors: [], warnings: [] };
+
+  let month = null;
+  if (recipe && Number.isFinite(Number(recipe._currentMonth))) {
+    month = Number(recipe._currentMonth);
+  } else {
+    month = new Date().getMonth() + 1;
+  }
+
+  // Ausnahmen: wenn die Sommergemuese-Nennung nur in verarbeiteter Form vorkommt,
+  // nicht warnen.
+  const hasProcessed = P11_EXEMPT_PROCESSED_RE.test(allNames + ' ' + title);
+
+  // Sommergemuese im Winter?
+  if (WINTER_MONTHS.indexOf(month) >= 0) {
+    const summerHit = P11_SUMMER_VEG_RE.test(allNames);
+    if (summerHit && !hasProcessed) {
+      // Pruefen, ob die Sommergemuese nur verarbeitet vorkommt.
+      let summerFresh = false;
+      ings.forEach(function (ing) {
+        const n = nameOf(ing);
+        if (P11_EXEMPT_PROCESSED_RE.test(n)) return;
+        if (P11_SUMMER_VEG_RE.test(n)) summerFresh = true;
+      });
+      if (summerFresh) {
+        return {
+          errors: [],
+          warnings: [
+            'Kochlehre-Hinweis: Saisonalitaet. Sommergemuese (Tomate, Paprika, ' +
+            'Aubergine, Zucchini, Gurke) im Winter ist kulinarisch untypisch — ' +
+            'Aroma und Naehrwerte sind schwaecher als in der Saison.'
+          ],
+        };
+      }
+    }
+  }
+
+  // Wintergemuese im Sommer?
+  if (SUMMER_MONTHS.indexOf(month) >= 0) {
+    if (P12_WINTER_VEG_RE.test(allNames)) {
+      return {
+        errors: [],
+        warnings: [
+          'Kochlehre-Hinweis: Saisonalitaet. Wintergemuese (Kuerbis, Suesskartoffel, ' +
+          'Rosenkohl, Gruenkohl) im Sommer ist kulinarisch untypisch — ' +
+          'in der Saison schmeckt es deutlich besser.'
+        ],
+      };
+    }
+  }
+
+  return { errors: [], warnings: [] };
+}
+
 function evaluateAll(recipe) {
   const errors = [];
   const warnings = [];
-  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne, checkDeglassatura, checkEmulsion, checkUmamiAnchor, checkThreeCreams, checkRiduzione, checkSalaturaAStrati, checkEggSafety]
+  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne, checkDeglassatura, checkEmulsion, checkUmamiAnchor, checkThreeCreams, checkRiduzione, checkSalaturaAStrati, checkEggSafety, checkSeasonality]
     .forEach(function (fn) {
       try {
         const r = fn(recipe);
@@ -714,4 +791,5 @@ module.exports = {
   checkRiduzione: checkRiduzione,
   checkSalaturaAStrati: checkSalaturaAStrati,
   checkEggSafety: checkEggSafety,
+  checkSeasonality: checkSeasonality,
 };

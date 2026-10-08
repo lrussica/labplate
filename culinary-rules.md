@@ -32,6 +32,7 @@ Status: **Warnung** (nicht blockierend), sichtbar im Client als Quality-Notice.
 | R12 | Riduzione: Reduktions-Steps (reduzieren/einkochen/eindicken) brauchen eine Fluessigkeit zum Reduzieren. 'Hitze reduzieren' ausgenommen; Milch nur im Sauce/Suppe-Kontext (vormals P3) | aktiv |
 | R13 | Salatura a Strati: Salz in mindestens 2 verschiedenen Steps referenziert. Desserts und Suppen ausgenommen (vormals P7) | aktiv |
 | R14 | Eier-Sicherheit: Rohe Eier ohne Hitzeschritt im Rezept = Salmonellen-Risiko (Mayonnaise, Tiramisu, Tatar). Hitzeschritte (braten/backen/kochen) schliessen aus (vormals P14) | aktiv |
+| R15 | Saisonalitaet: Sommergemuese im Winter (Nov-Feb), Wintergemuese im Sommer (Jun-Aug). Verarbeitete Formen (Tomatenmark, Passata, TK) ausgenommen (vormals P11/P12) | aktiv |
 
 Tests: `labplate-backend/test-nutrition.js` (Abschnitt PLAUSIBILITAET).
 
@@ -71,8 +72,8 @@ implementiert, jede mit Test. Status: **nicht implementiert**.
 
 | ID | Regel | Pruefbar? | Anmerkung |
 |---|---|---|---|
-| P11 | Saison-Check: Tomate/Paprika/Aubergine im Winter (Nov-Feb) = Warnung | ja (mit Datum) | Nur bei explizit frischer Ware |
-| P12 | Saison-Check: Kuerbis/Suesskartoffel/Rosenkohl im Sommer (Jun-Aug) = Warnung | ja (mit Datum) | |
+| ~~P11~~ | ~~Saison-Check Sommergemuese im Winter~~ | – | **implementiert als R15 (2026-10-08)** |
+| ~~P12~~ | ~~Saison-Check Wintergemuese im Sommer~~ | – | **implementiert als R15 (2026-10-08)** |
 
 ### Mise en Place
 
@@ -117,7 +118,7 @@ Reihenfolge nach Nutzen und Aufwand:
 7. ~~**P10 Drei Cremes**~~ ✅ implementiert als **R11** (2026-10-08)
 8. ~~**P3 Riduzione**~~ ✅ implementiert als **R12** (2026-10-08)
 9. ~~**P14 Eier-Sicherheit**~~ ✅ implementiert als **R14** (2026-10-08)
-10. **P11/P12 Saisonalitaet** – sichtbarer Effekt, aber Datumslogik
+10. ~~**P11/P12 Saisonalitaet**~~ ✅ implementiert als **R15** (2026-10-08)
 
 ---
 

@@ -1015,6 +1015,65 @@ console.log('=== PLAUSIBILITAET: P14 Eier-Sicherheit ===');
   ok('P58 ohne Ei -> keine Warnung', !hasEgg(p58), 'got: ' + JSON.stringify(p58.warnings));
 })();
 
+console.log('=== PLAUSIBILITAET: P11/P12 Saisonalitaet ===');
+(function () {
+  const p = require('./plausibility-checks');
+  function hasSeason(r) {
+    return (r.warnings || []).some(function (w) { return /Saisonalitaet/i.test(w); });
+  }
+  const baseIng = [{ name: 'Tomate' }, { name: 'Olivenoel' }];
+
+  // P59: Tomate im Januar -> Warnung
+  const p59 = p.evaluateAll({
+    title: 'Tomatensauce',
+    _currentMonth: 1,
+    ingredients: baseIng,
+    finalIngredients: baseIng,
+    steps: ['Tomaten verarbeiten.'],
+  });
+  ok('P59 Tomate im Januar -> Warnung', hasSeason(p59), 'got: ' + JSON.stringify(p59.warnings));
+
+  // P60: Tomate im Juli -> keine Warnung
+  const p60 = p.evaluateAll({
+    title: 'Tomatensauce',
+    _currentMonth: 7,
+    ingredients: baseIng,
+    finalIngredients: baseIng,
+    steps: ['Tomaten verarbeiten.'],
+  });
+  ok('P60 Tomate im Juli -> keine Warnung', !hasSeason(p60), 'got: ' + JSON.stringify(p60.warnings));
+
+  // P61: Tomatenmark im Januar -> keine Warnung (Ausnahme)
+  const p61 = p.evaluateAll({
+    title: 'Sauce',
+    _currentMonth: 1,
+    ingredients: [{ name: 'Tomatenmark' }, { name: 'Zwiebel' }],
+    finalIngredients: [{ name: 'Tomatenmark' }, { name: 'Zwiebel' }],
+    steps: ['Alles verruehren.'],
+  });
+  ok('P61 Tomatenmark im Januar -> keine Warnung', !hasSeason(p61), 'got: ' + JSON.stringify(p61.warnings));
+
+  // P62: Kuerbis im Juli -> Warnung
+  const p62 = p.evaluateAll({
+    title: 'Kuerbissuppe',
+    _currentMonth: 7,
+    ingredients: [{ name: 'Kuerbis' }, { name: 'Bruehe' }],
+    finalIngredients: [{ name: 'Kuerbis' }, { name: 'Bruehe' }],
+    steps: ['Kochen.'],
+  });
+  ok('P62 Kuerbis im Juli -> Warnung', hasSeason(p62), 'got: ' + JSON.stringify(p62.warnings));
+
+  // P63: Kuerbis im Oktober -> keine Warnung
+  const p63 = p.evaluateAll({
+    title: 'Kuerbissuppe',
+    _currentMonth: 10,
+    ingredients: [{ name: 'Kuerbis' }, { name: 'Bruehe' }],
+    finalIngredients: [{ name: 'Kuerbis' }, { name: 'Bruehe' }],
+    steps: ['Kochen.'],
+  });
+  ok('P63 Kuerbis im Oktober -> keine Warnung', !hasSeason(p63), 'got: ' + JSON.stringify(p63.warnings));
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);
