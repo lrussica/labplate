@@ -45,6 +45,9 @@ const RIPOSO_CANDIDATE_RE = /\b(?:rind|kalb|lamm|schwein|rump|steak|kotelett|fil
 const RIPOSO_EXCLUDE_RE = /(?:hack|gulasch|wurst|speck|schinken|salami|leberwurst|brühe|bruehe|fond|bouillon)/i;
 // Scharfes Braten / Grillen, NICHT "anschwitzen" (mittlere Hitze, kein Riposo).
 const GRILL_SEAR_RE = /(?:scharf\s+an(?:ge)?br[äa]t|heiß\s+an(?:ge)?br[äa]t|heiss\s+an(?:ge)?br[äa]t|kräftig\s+an(?:ge)?br[äa]t|kraeftig\s+an(?:ge)?br[äa]t|goldbraun|kruste|scharf\s+(?:ge)?braten|an(?:ge)?br[äa]t|\bgrill(?:en|te)?\b|\bgegrillt\b)/i;
+// Titel-Fallback: Wenn der Titel Brat-Signale traegt, aber kein Step das
+// Braten explizit nennt, soll P2 trotzdem greifen (Fix 2026-10-08).
+const SEAR_TITLE_RE = /(?:scharf|gebraten|angebraten|gegrillt|knusprig|kruste)/i;
 // Ruhe-/Zieh-Signale.
 const REST_STEP_RE = /\b(?:ruhen\s+lassen|ruhen|rasten|ziehen\s+lassen|abgedeckt\s+ruhen|warm\s+halten|ziehen|ruhephase)\b/i;
 // Verneinung: 'ohne Ruhen', 'nicht ruhen lassen' — darf NICHT als Ruheschritt zaehlen.
@@ -294,7 +297,11 @@ function checkRiposoDellaCarne(recipe) {
   for (let i = 0; i < steps.length; i++) {
     if (GRILL_SEAR_RE.test(steps[i])) { searIdx = i; break; }
   }
-  if (searIdx < 0) return { errors: [], warnings: [] };
+  // Titel-Fallback: KI schreibt das Braten oft nur in den Titel (Fix 2026-10-08).
+  if (searIdx < 0) {
+    if (SEAR_TITLE_RE.test(title)) searIdx = 0;
+    else return { errors: [], warnings: [] };
+  }
 
   // Ruhe-Signal ab searIdx (auch im selben Step).
   // Aber: 'ohne Ruhen' etc. zaehlt nicht (Fix 2026-10-08).

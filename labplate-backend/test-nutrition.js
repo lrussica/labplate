@@ -491,6 +491,19 @@ console.log('=== PLAUSIBILITAET: P2 Riposo della Carne ===');
     ],
   });
   ok('P19 ohne Ruhen -> Warnung', hasRiposo(p19), 'got: ' + JSON.stringify(p19.warnings));
+
+  // P20: Titel "scharf", aber Brat-Step fehlt – Titel-Fallback greift.
+  const p20 = p.evaluateAll({
+    title: 'Scharfes Rumpsteak mit Kartoffeln',
+    ingredients: [{ name: 'Rumpsteak' }, { name: 'Butter' }],
+    finalIngredients: [{ name: 'Rumpsteak' }, { name: 'Butter' }],
+    steps: [
+      'Die Pfanne erhitzen.',
+      'Das Rumpsteak wuerzen und in die Pfanne geben.',
+      'Sofort servieren.'
+    ],
+  });
+  ok('P20 Titel scharf, kein Brat-Step -> Warnung', hasRiposo(p20), 'got: ' + JSON.stringify(p20.warnings));
 })();
 
 console.log('=== ZUSAMMENFASSUNG ===');
