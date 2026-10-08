@@ -307,6 +307,23 @@ console.log('=== PLAUSIBILITAET: P1 Maillard vor Schmoren ===');
     ok(t[0], hit === t[2], 'erwartet Warnung=' + t[2] + ', bekommen=' + hit + ' | warnings=' + JSON.stringify(r.warnings));
     ok(t[0] + ' keine Errors', r.errors.length === 0, 'Errors: ' + JSON.stringify(r.errors));
   });
+
+  // P21 (Fix 2026-10-08): Reines Kochwasser (Topf/Kochen) darf NICHT als
+  // Schmor-Fluessigkeit zaehlen. Steak wird angebrieten, kein P1-Fehler.
+  const p21 = p.evaluateAll({
+    title: 'Rumpsteak mit Kartoffeln',
+    ingredients: [{ name: 'Rumpsteak' }, { name: 'Wasser' }, { name: 'Olivenoel' }, { name: 'Butter' }],
+    finalIngredients: [{ name: 'Rumpsteak' }, { name: 'Wasser' }, { name: 'Olivenoel' }, { name: 'Butter' }],
+    steps: [
+      'Das Wasser in einem Topf zum Kochen bringen.',
+      'Kartoffeln ins kochende Wasser geben und 15 Minuten kochen.',
+      'Das Rumpsteak in Olivenoel und Butter scharf anbraten.',
+      'Sofort servieren.'
+    ],
+  });
+  const p21P1 = (p21.warnings || []).filter(function (w) { return /Maillard/i.test(w); });
+  ok('P21 Kochwasser zaehlt nicht als Schmor-Fluessigkeit (kein Maillard-Fehler)',
+    p21P1.length === 0, 'got: ' + JSON.stringify(p21P1));
 })();
 
 console.log('=== PLAUSIBILITAET: P5 Saeure-Korrektur ===');

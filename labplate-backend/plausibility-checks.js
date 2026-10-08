@@ -21,6 +21,9 @@ const BROTH_EXCLUDE_RE = /\b(brühe|bruehe|fond|bouillon|stock|sud)\b/i;
 // Fluessigkeits-/Loesch-Signale im Step-Text.
 // Breit gefasst: Fluessigkeitsname ODER typisches Loesch-Verb.
 const LIQUID_STEP_RE = /(?:wasser|brühe|bruehe|fond|wein|bier|sahne|milch|kokosmilch|soße|soosse|passata|tomaten|pürierte\s+tomaten|puerierte\s+tomaten|ablöschen|abloeschen|aufgießen|aufgiessen|angießen|angiessen|hinzugießen|hinzugiessen)/i;
+// Kochwasser-Steps sind KEINE Schmor-Fluessigkeit (Fix 2026-10-08):
+// 'Wasser zum Kochen bringen' / 'kochendes Wasser' sind Vorbereitung, kein Loeschen.
+const BOILING_WATER_STEP_RE = /(?:wasser\s+(?:zum|zum\s+)?kochen|kochend(?:e|es|em|er)?\s+wasser|kochwasser|wasser\s+in\s+(?:einem|dem)\s+topf|topf\s+(?:mit\s+)?wasser)/i;
 // Anbrat-Signale. Bewusst OHNE generisches "braten", damit "im Ofen braten"
 // nicht als Maillard-Vorstufe zaehlt.
 const SEAR_STEP_RE = /(?:scharf\s+an(?:ge)?br[äa]t|heiß\s+an(?:ge)?br[äa]t|heiss\s+an(?:ge)?br[äa]t|kräftig\s+an(?:ge)?br[äa]t|kraeftig\s+an(?:ge)?br[äa]t|goldbraun(?:\s+ge)?braten|farbe\s+nehmen\s+lassen|maillard|an(?:ge)?br[äa]t|an(?:ge)?r[oö]st|an(?:ge)?schwitz|an(?:ge)?br[äa]un)/i;
@@ -195,9 +198,13 @@ function checkMaillardBeforeBraising(recipe) {
   if (!steps.length) return { errors: [], warnings: [] };
 
   // Erster Step mit Fluessigkeit/Loesch-Signal.
+  // Kochwasser-Steps ueberspringen (kein Schmor-Kontext).
   let liquidIdx = -1;
   for (let i = 0; i < steps.length; i++) {
-    if (LIQUID_STEP_RE.test(steps[i])) { liquidIdx = i; break; }
+    const s = steps[i];
+    if (!LIQUID_STEP_RE.test(s)) continue;
+    if (BOILING_WATER_STEP_RE.test(s)) continue;
+    liquidIdx = i; break;
   }
   if (liquidIdx < 0) return { errors: [], warnings: [] };
 
