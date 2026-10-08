@@ -33,6 +33,7 @@ Status: **Warnung** (nicht blockierend), sichtbar im Client als Quality-Notice.
 | R13 | Salatura a Strati: Salz in mindestens 2 verschiedenen Steps referenziert. Desserts und Suppen ausgenommen (vormals P7) | aktiv |
 | R14 | Eier-Sicherheit: Rohe Eier ohne Hitzeschritt im Rezept = Salmonellen-Risiko (Mayonnaise, Tiramisu, Tatar). Hitzeschritte (braten/backen/kochen) schliessen aus (vormals P14) | aktiv |
 | R15 | Saisonalitaet: Sommergemuese im Winter (Nov-Feb), Wintergemuese im Sommer (Jun-Aug). Verarbeitete Formen (Tomatenmark, Passata, TK) ausgenommen (vormals P11/P12) | aktiv |
+| R16 | Geschmacks-Balance: Warnt nur, wenn Salz UND Saeure UND Umami gleichzeitig fehlen. Meta-Regel ohne Ueberschneidung mit R6/R10/R13. Desserts ausgenommen (vormals P8) | aktiv |
 
 Tests: `labplate-backend/test-nutrition.js` (Abschnitt PLAUSIBILITAET).
 
@@ -59,7 +60,7 @@ implementiert, jede mit Test. Status: **nicht implementiert**.
 | ~~P5~~ | ~~Saure-Korrektur~~ | – | **implementiert als R6 (2026-10-08)** |
 | ~~P6~~ | ~~Umami-Anker~~ | – | **implementiert als R10 (2026-10-08)** |
 | ~~P7~~ | ~~Salatura a Strati~~ | – | **implementiert als R13 (2026-10-08)** |
-| P8 | 5-Geschmacks-Balance: Salzig + Sauer + Umami sollten mindestens vorhanden sein | ja (grob) | Nur Warnung |
+| ~~P8~~ | ~~5-Geschmacks-Balance~~ | – | **implementiert als R16 (2026-10-08)** |
 
 ### Emulsione / Konsistenz
 

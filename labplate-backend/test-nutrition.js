@@ -1074,6 +1074,59 @@ console.log('=== PLAUSIBILITAET: P11/P12 Saisonalitaet ===');
   ok('P63 Kuerbis im Oktober -> keine Warnung', !hasSeason(p63), 'got: ' + JSON.stringify(p63.warnings));
 })();
 
+console.log('=== PLAUSIBILITAET: P8 Geschmacks-Balance ===');
+(function () {
+  const p = require('./plausibility-checks');
+  function hasFlavor(r) {
+    return (r.warnings || []).some(function (w) { return /Geschmacks-Balance fehlt/i.test(w); });
+  }
+
+  // P64: Zucchini + Olivenoel, nichts sonst -> Warnung
+  const p64 = p.evaluateAll({
+    title: 'Gemuesepfanne',
+    ingredients: [{ name: 'Zucchini' }, { name: 'Olivenoel' }],
+    finalIngredients: [{ name: 'Zucchini' }, { name: 'Olivenoel' }],
+    steps: ['Anbraten.'],
+  });
+  ok('P64 ohne Salz/Saeure/Umami -> Warnung', hasFlavor(p64), 'got: ' + JSON.stringify(p64.warnings));
+
+  // P65: Salz dabei -> keine Warnung (nur Salz reicht fuer P8)
+  const p65 = p.evaluateAll({
+    title: 'Gemuesepfanne',
+    ingredients: [{ name: 'Zucchini' }, { name: 'Olivenoel' }, { name: 'Salz' }],
+    finalIngredients: [{ name: 'Zucchini' }, { name: 'Olivenoel' }, { name: 'Salz' }],
+    steps: ['Anbraten.'],
+  });
+  ok('P65 mit Salz -> keine Warnung', !hasFlavor(p65), 'got: ' + JSON.stringify(p65.warnings));
+
+  // P66: Tomate (Umami) dabei -> keine Warnung
+  const p66 = p.evaluateAll({
+    title: 'Gemuesepfanne',
+    ingredients: [{ name: 'Zucchini' }, { name: 'Olivenoel' }, { name: 'Tomate' }],
+    finalIngredients: [{ name: 'Zucchini' }, { name: 'Olivenoel' }, { name: 'Tomate' }],
+    steps: ['Anbraten.'],
+  });
+  ok('P66 mit Tomate -> keine Warnung', !hasFlavor(p66), 'got: ' + JSON.stringify(p66.warnings));
+
+  // P67: Dessert ohne Salz/Saeure/Umami -> keine Warnung (Ausnahme)
+  const p67 = p.evaluateAll({
+    title: 'Schokoladenmousse',
+    ingredients: [{ name: 'Schokolade' }, { name: 'Sahne' }],
+    finalIngredients: [{ name: 'Schokolade' }, { name: 'Sahne' }],
+    steps: ['Schmelzen.'],
+  });
+  ok('P67 Dessert -> keine Warnung', !hasFlavor(p67), 'got: ' + JSON.stringify(p67.warnings));
+
+  // P68: Zitronensaft (Saeure) dabei -> keine Warnung
+  const p68 = p.evaluateAll({
+    title: 'Gemuesepfanne',
+    ingredients: [{ name: 'Zucchini' }, { name: 'Zitronensaft' }],
+    finalIngredients: [{ name: 'Zucchini' }, { name: 'Zitronensaft' }],
+    steps: ['Anbraten.'],
+  });
+  ok('P68 mit Zitronensaft -> keine Warnung', !hasFlavor(p68), 'got: ' + JSON.stringify(p68.warnings));
+})();
+
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);

@@ -131,6 +131,16 @@ const P11_EXEMPT_PROCESSED_RE = /\b(?:tomatenmark|passata|dosentomate|dosentomat
 const WINTER_MONTHS = [11, 12, 1, 2];
 const SUMMER_MONTHS = [6, 7, 8];
 
+// --- P8 (5-Geschmacks-Balance) ---
+// Salz in Zutaten.
+const P8_SALT_IN_ING_RE = /\b(?:salz|meersalz|steinsalz|jodsalz|kochsalz)\b/i;
+// Saeurequellen (analog R6, aber eigenstaendig — als Meta-Check).
+const P8_ACID_IN_ING_RE = /\b(?:essig|balsamico|apfelessig|zitronensaft|zitronenabrieb|limettensaft|limettenabrieb|weisswein|weißwein|rotwein|verjus|joghurt|buttermilch|sauerrahm|kapern|\bsenf\b)\b/i;
+// Umami-Traeger (analog R10, aber als Meta-Check).
+const P8_UMAMI_IN_ING_RE = /\b(?:parmesan|pecorino|grana|tomatenmark|passata|tomate|tomaten|sojasauce|sojasoße|miso|shiitake|champignon|pilz|pilze|anchov|fischsauce|hefeextrakt|worcestersh|ketchup)\b/i;
+// Dessert/Suess-Ausschluss.
+const P8_EXCLUDE_TITLE_RE = /\b(?:dessert|nachtisch|mousse|pudding|kuchen|torte|keks|smoothie|smoothies|kompott|mus\b)\b/i;
+
 function nameOf(ing) {
   return String((ing && (ing.name || ing.displayName)) || '');
 }
@@ -759,10 +769,43 @@ function checkSeasonality(recipe) {
   return { errors: [], warnings: [] };
 }
 
+/**
+ * P8 (5-Geschmacks-Balance):
+ * Meta-Regel. Ein herzhaftes Gericht ohne Salz, ohne Saeure UND ohne Umami
+ * hat keinen Traeger — die Aromen bleiben flach. Feuert nur, wenn ALLE DREI
+ * Grundgeschmaecker fehlen, sonst waeren die False Positives zu zahlreich
+ * und die Ueberschneidung mit R6/R10/R13 zu gross.
+ * Desserts/Suesses sind ausgenommen.
+ */
+function checkFlavorBalance(recipe) {
+  const ings = ingredientsOf(recipe);
+  const title = titleOf(recipe);
+  if (!ings.length) return { errors: [], warnings: [] };
+
+  if (P8_EXCLUDE_TITLE_RE.test(title)) return { errors: [], warnings: [] };
+
+  const allNames = ings.map(nameOf).join(' ');
+  const hasSalt = P8_SALT_IN_ING_RE.test(allNames);
+  const hasAcid = P8_ACID_IN_ING_RE.test(allNames);
+  const hasUmami = P8_UMAMI_IN_ING_RE.test(allNames);
+
+  // Nur warnen, wenn ALLE DREI fehlen.
+  if (hasSalt || hasAcid || hasUmami) return { errors: [], warnings: [] };
+
+  return {
+    errors: [],
+    warnings: [
+      'Kochlehre-Hinweis: Geschmacks-Balance fehlt. Das Gericht hat weder ' +
+      'Salz noch Saeure (Essig, Zitrone) noch Umami (Parmesan, Tomate, Sojasauce, ' +
+      'Pilze) — die Aromen bleiben flach.'
+    ],
+  };
+}
+
 function evaluateAll(recipe) {
   const errors = [];
   const warnings = [];
-  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne, checkDeglassatura, checkEmulsion, checkUmamiAnchor, checkThreeCreams, checkRiduzione, checkSalaturaAStrati, checkEggSafety, checkSeasonality]
+  [checkFatOverload, checkFiberOverload, checkPsylliumInProteinDish, checkVinegarInTofuCurry, checkMaillardBeforeBraising, checkAcidInFatDish, checkRiposoDellaCarne, checkDeglassatura, checkEmulsion, checkUmamiAnchor, checkThreeCreams, checkRiduzione, checkSalaturaAStrati, checkEggSafety, checkSeasonality, checkFlavorBalance]
     .forEach(function (fn) {
       try {
         const r = fn(recipe);
@@ -792,4 +835,5 @@ module.exports = {
   checkSalaturaAStrati: checkSalaturaAStrati,
   checkEggSafety: checkEggSafety,
   checkSeasonality: checkSeasonality,
+  checkFlavorBalance: checkFlavorBalance,
 };
