@@ -61,7 +61,7 @@ const REST_NEGATION_RE = /\b(?:ohne|kein(?:e|en)?|nicht)\s+(?:zu\s+)?(?:ruhen|ru
 // Wenn danach kein Loesch-Schritt kommt, bleibt der Fond-Rueckstand ungenutzt.
 const SAUCE_COOK_STEP_RE = /(?:koecheln|köcheln|schmoren|reduzieren|einkochen|weiterkochen|sanft\s+garen|ziehen\s+lassen)/i;
 // Loesch-Signal: Fluessigkeit + typisches Verb.
-const DEGLACE_STEP_RE = /(?:(?:mit\s+)?(?:wein|weisswein|weißwein|rotwein|bruehe|brühe|fond|wasser|bier|essig)[^\n.!?]{0,40}?\b(?:abloeschen|ablöschen|aufgiessen|aufgießen|angießen|angiessen|hinzugiessen|hinzugießen|deglacieren|abschrecken))|(?:\b(?:abloeschen|ablöschen|deglacieren)\b)/i;
+const DEGLACE_STEP_RE = /(?:(?:wein|weisswein|weißwein|rotwein|bruehe|brühe|fond|wasser|bier|essig)[^\n.!?]{0,40}?\b(?:abloeschen|ablöschen|aufgiessen|aufgießen|angießen|angiessen|hinzugiessen|hinzugießen|deglacieren|abschrecken|hinzufuegen|hinzufügen|dazugeben|zugeben|einruehren|einrühren|zum\s+Kochen|aufkochen))|(?:\b(?:abloeschen|ablöschen|deglacieren)\b)/i;
 
 function nameOf(ing) {
   return String((ing && (ing.name || ing.displayName)) || '');
