@@ -295,6 +295,11 @@ function cleanupStepProseDuplicates(text, ingredients) {
     /\b([A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß\-]{1,40})\s+\1(\s*,\s*[A-Za-zÄÖÜäöüß][^.,;!?]{0,40})?/gi,
     '$1'
   );
+  // Fix 2026-10-08: Prosa-Stutter "Brühe Rinderbrühe" -> "Rinderbrühe".
+  out = out.replace(
+    /(?<![A-Za-zÄÖÜäöüß])([A-ZÄÖÜa-zäöüß]{2,15})\s+([A-ZÄÖÜa-zäöüß][A-Za-zÄÖÜäöüß\-]{0,40}\1)(?![A-Za-zÄÖÜäöüß])/gi,
+    '$2'
+  );
   out = out.replace(/\s{2,}/g, ' ').replace(/\s+([.,;:!?])/g, '$1').trim();
   return out;
 }

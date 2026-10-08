@@ -99,6 +99,20 @@ ok(
   'cleanupStepProseDuplicates Mozzarella Doppler'
 );
 
+// 2026-10-08: Stutter "Brühe Rinderbrühe" -> "Rinderbrühe"
+ok('Stutter Bruehe Rinderbruehe',
+  validator.cleanupStepProseDuplicates('Die Brühe Rinderbrühe angiessen.') === 'Die Rinderbrühe angiessen.',
+  'got: ' + validator.cleanupStepProseDuplicates('Die Brühe Rinderbrühe angiessen.'));
+ok('Stutter Oel Olivenoel',
+  validator.cleanupStepProseDuplicates('Das Öl Olivenöl erhitzen.') === 'Das Olivenöl erhitzen.',
+  'got: ' + validator.cleanupStepProseDuplicates('Das Öl Olivenöl erhitzen.'));
+ok('Stutter Sahne Kochsahne',
+  validator.cleanupStepProseDuplicates('Sahne Kochsahne einruehren.') === 'Kochsahne einruehren.',
+  'got: ' + validator.cleanupStepProseDuplicates('Sahne Kochsahne einruehren.'));
+ok('Kein Stutter: Kaese Parmesan',
+  validator.cleanupStepProseDuplicates('Käse Parmesan reiben.') === 'Käse Parmesan reiben.',
+  'got: ' + validator.cleanupStepProseDuplicates('Käse Parmesan reiben.'));
+
 // --- 3) QualityGate auto cleanup ---
 (function () {
   const recipe = {
