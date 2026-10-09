@@ -1261,6 +1261,10 @@
     },
     "extra_vegetable": {
       "kind": "placeholder"
+    },
+    "tomato": {
+      "kind": "nutrient",
+      "catalog_key": "tomato"
     }
   }
 }
