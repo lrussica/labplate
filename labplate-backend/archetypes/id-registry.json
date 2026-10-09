@@ -1655,6 +1655,46 @@
       "kind": "alias",
       "target": "vegetable_broth",
       "target_exists": true
+    },
+    "frische_tomaten": {
+      "kind": "alias",
+      "target": "tomato",
+      "target_exists": true
+    },
+    "frische_tomate": {
+      "kind": "alias",
+      "target": "tomato",
+      "target_exists": true
+    },
+    "reife_tomaten": {
+      "kind": "alias",
+      "target": "tomato",
+      "target_exists": true
+    },
+    "reife_tomate": {
+      "kind": "alias",
+      "target": "tomato",
+      "target_exists": true
+    },
+    "worcestersauce": {
+      "kind": "alias",
+      "target": "fish_sauce",
+      "target_exists": true
+    },
+    "worcestershire_sauce": {
+      "kind": "alias",
+      "target": "fish_sauce",
+      "target_exists": true
+    },
+    "sahnesauce": {
+      "kind": "alias",
+      "target": "cream_heavy",
+      "target_exists": true
+    },
+    "pfefferrahmsauce": {
+      "kind": "alias",
+      "target": "cream_heavy",
+      "target_exists": true
     }
   }
 }
