@@ -11,7 +11,7 @@
     "assemble-lexicon-i18n": "node scripts/assemble-lexicon-i18n.js",
     "translate-lexicon-i18n": "node scripts/translate-lexicon-i18n.js",
     "test": "npm run test:all",
-    "test:all": "node test-prose-de.js && node test-nutrition.js && node test-single-portion-base.js && node test-quality-client-contract.js && node test-archetype-loader.js",
+    "test:all": "node test-prose-de.js && node test-nutrition.js && node test-single-portion-base.js && node test-quality-client-contract.js && node test-archetype-loader.js && node test-dish-identity-validator.js",
     "test:prose": "node test-prose-de.js",
     "test:nutrition": "node test-nutrition.js",
     "test:portion": "node test-single-portion-base.js",
