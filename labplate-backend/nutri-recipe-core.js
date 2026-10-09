@@ -491,7 +491,7 @@ function buildEnrichmentSchema(lines) {
     schema: {
       type: 'object',
       additionalProperties: false,
-      required: ['title', 'servings', 'prep_time', 'nutrition_note', 'garnish', 'ingredients', 'shopping_list', 'steps'],
+      required: ['title', 'servings', 'prep_time', 'nutrition_note', 'garnish', 'self_check', 'ingredients', 'shopping_list', 'steps'],
       properties,
     },
   };
