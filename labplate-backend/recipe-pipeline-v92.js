@@ -15,6 +15,7 @@ const portions = require('./recipe-portions');
 const prose = require('./recipe-prose-de');
 const catalog = require('./nutri-catalog');
 const dietLabels = require('./diet-labels');
+const pipelineTrace = require('./pipeline-trace');
 
 const MAX_VALIDATION_ATTEMPTS = 3;
 const DEFAULT_TARGET_SERVINGS = 1;
@@ -1191,6 +1192,13 @@ async function generateValidatedRecipe(opts) {
   const callGroq = o.callGroq;
   const payload = o.payload;
   const traceId = (payload && payload.trace_id) || ('lp-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8));
+  const traceActive = pipelineTrace.isEnabled(payload);
+  const ptId = traceActive ? pipelineTrace.makeTraceId() : null;
+  if (traceActive) {
+    console.log('[pipeline-trace] ' + ptId + ' REQUEST-START ai_instruction=' +
+      JSON.stringify(payload && (payload.ai_instruction || payload.aiInstruction) || null) +
+      ' pantry=' + JSON.stringify(payload && payload.pantry_ingredients || []));
+  }
   const aiInstructionForLog = payload && (payload.ai_instruction || payload.aiInstruction);
   const groqOpts = o.groqOpts || {};
   let lastErrors = [];
@@ -1347,6 +1355,7 @@ async function generateValidatedRecipe(opts) {
     }
     lastRaw = parsed;
     attemptRaws.push({ attempt: attempt, raw: parsed });
+    if (traceActive) pipelineTrace.snapshot(ptId, 'A' + attempt + '_raw_llm', parsed);
 
     // Diagnose: Raw-JSON VOR Validierung und VOR renderRecipeForDisplay (jeder Versuch)
     logRawLlmJson({ attempt: attempt, parsed: parsed, traceId: traceId, aiInstruction: aiInstructionForLog });
@@ -1409,6 +1418,8 @@ async function generateValidatedRecipe(opts) {
       dishQuery: dishQueryForValidation,
       ai_instruction: payload && (payload.ai_instruction || payload.aiInstruction),
     });
+    if (traceActive) pipelineTrace.snapshot(ptId, 'B' + attempt + '_after_validateV2', parsed);
+
     if (!validation.ok) {
       lastErrors = validation.errors.slice();
       lastWarnings = validation.warnings.slice();
@@ -1491,11 +1502,17 @@ async function generateValidatedRecipe(opts) {
       }
     }
 
+    if (traceActive) pipelineTrace.snapshot(ptId, 'C' + attempt + '_before_render', parsed);
+    if (traceActive && parsed && typeof parsed === 'object') {
+      parsed._pipelineTraceId = ptId;
+    }
+
     const rendered = renderRecipeForDisplay(parsed, {
       dishQuery: dishQueryForValidation,
       ai_instruction: payload && (payload.ai_instruction || payload.aiInstruction),
       allergens: payload && payload.allergens,
     });
+    if (traceActive) pipelineTrace.snapshot(ptId, 'D' + attempt + '_after_render', rendered);
     if (!rendered) {
       lastErrors = ['render_failed'];
       continue;
@@ -1507,6 +1524,7 @@ async function generateValidatedRecipe(opts) {
       warnings: validation.warnings,
       attempts: attempt,
       attempt_raws: attemptRaws,
+      pipeline_trace_id: ptId,
     };
   }
 

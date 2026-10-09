@@ -842,6 +842,7 @@ function resolvePlaceholders(text, ingredientsById, opts) {
  */
 function computeNutritionFromIngredients(ingredients) {
   const unitModel = require('./recipe-unit-model');
+const pipelineTrace = require('./pipeline-trace');
   let protein = 0;
   let fat = 0;
   let nettoKh = 0;
@@ -1899,9 +1900,15 @@ function validateRecipeV2(recipe, opts) {
   // ——— Repair Layer (deterministisch) vor Hard-Checks ———
   try {
     const repairMod = require('./recipe-repair');
+    if (pipelineTrace.isEnabled(recipe) || recipe && recipe._pipelineTraceId) {
+      pipelineTrace.snapshot(recipe._pipelineTraceId || 'adhoc', 'E_before_repairLayer', recipe);
+    }
     const repaired = repairMod.repairRecipeV2(r);
     if (repaired.repairs && repaired.repairs.length) {
       result.addWarning('Repair Layer: ' + repaired.repairs.join('; '));
+      if (pipelineTrace.isEnabled(recipe) || recipe && recipe._pipelineTraceId) {
+        pipelineTrace.snapshot(recipe._pipelineTraceId || 'adhoc', 'F_after_repairLayer', recipe);
+      }
     }
   } catch (eRepair) {
     result.addWarning('Repair Layer skipped: ' + (eRepair && eRepair.message));
