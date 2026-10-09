@@ -1,7 +1,7 @@
 {
-  "version": 1,
+  "version": 2,
   "generated": "2026-10-09",
-  "note": "Klassifizierung der Archetypen-YAML-IDs. sechs kind-Werte: nutrient, alias, composite, state_variant, selector, placeholder, forbidden.",
+  "note": "Klassifizierung der Archetypen-YAML-IDs. Sieben kind-Werte: nutrient, alias, composite, state_variant, selector, placeholder, forbidden.",
   "ids": {
     "aglio_olio": {
       "kind": "composite",
@@ -40,9 +40,9 @@
       "needs_recipe": true
     },
     "beans": {
-      "kind": "nutrient",
-      "catalog_key": "beans",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "beans_cooked",
+      "target_exists": true
     },
     "beef": {
       "kind": "alias",
@@ -299,9 +299,9 @@
       "catalog_key": "kale"
     },
     "lamb": {
-      "kind": "nutrient",
-      "catalog_key": "lamb",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "lamb_meat",
+      "target_exists": true
     },
     "lamb_chop": {
       "kind": "nutrient",
@@ -370,9 +370,9 @@
       "needs_recipe": true
     },
     "noodle": {
-      "kind": "nutrient",
-      "catalog_key": "noodle",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "noodle_cooked",
+      "target_exists": true
     },
     "noodle_cold": {
       "kind": "composite",
@@ -459,9 +459,9 @@
       "catalog_key": "pomegranate"
     },
     "pork": {
-      "kind": "nutrient",
-      "catalog_key": "pork",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "pork_meat",
+      "target_exists": true
     },
     "pork_chop": {
       "kind": "nutrient",
