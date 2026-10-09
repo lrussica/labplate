@@ -9,10 +9,25 @@ const strictPrompt = require('./strict-prompt');
 
 const MODULE = 'recipe-suggestions';
 
+function shouldTreatAsStructured(p) {
+  // Explizit vom Client gesetzt -> immer strukturiert
+  if (p.structured === true) return true;
+  // mode=pantry ohne ai_instruction -> Nutzer liefert Vorrat, passthrough.
+  const hasAiInstruction = !!(p.ai_instruction || p.aiInstruction);
+  if (p.mode === 'pantry' && !hasAiInstruction && core.looksStructured(p.pantry_ingredients)) {
+    return true;
+  }
+  // mode=ai oder mit ai_instruction -> generativ, auch bei vielen Zutaten.
+  return false;
+}
+
 function buildRequest(payload, model) {
   const p = Object.assign({}, payload);
   // Strukturierte Eigenrezepte immer Strict – nie generative Vermischung.
-  if (p.structured || core.looksStructured(p.pantry_ingredients)) {
+  // Wichtig: mode=ai mit ai_instruction ist IMMER generativ, selbst wenn
+  // der Nutzer mehrere Zutaten listet (sonst greift der Enrichment-Prompt
+  // "steps = [] wenn nichts im Input" und die Pipeline blockt).
+  if (shouldTreatAsStructured(p)) {
     p.structured = true;
   }
   const req = core.buildGroqRequest(p, model);
@@ -36,7 +51,7 @@ function buildRequest(payload, model) {
 
 async function run(payload, opts) {
   const p = Object.assign({}, payload);
-  if (p.structured || core.looksStructured(p.pantry_ingredients)) p.structured = true;
+  if (shouldTreatAsStructured(p)) p.structured = true;
   const requestBody = buildRequest(p, opts && opts.model);
   const result = await core.callGroq(requestBody, opts || {});
   if (result.error) return result;
@@ -70,6 +85,7 @@ module.exports = {
   MODULE,
   buildRequest,
   run,
+  shouldTreatAsStructured,
   isStrictActive: () => !!strictPrompt.getModuleStrictStatus(MODULE).ok,
   getStrictStatus: () => strictPrompt.getModuleStrictStatus(MODULE),
 };
