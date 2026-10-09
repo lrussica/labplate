@@ -1896,6 +1896,36 @@ function validatePlaceholderEmbedding(recipe) {
   return { ok: warnings.length === 0, warnings: warnings };
 }
 
+/**
+ * Guard-Terminologie in chef_analysis ist verboten. Wenn die KI
+ * Systembegriffe wie "Kern-" / "toleriertes Protein" / "core_slot"
+ * in den Beschreibungstext uebernimmt, ist das kein Kochen, sondern
+ * ein Leak aus unseren Retry-Anweisungen.
+ */
+function validateChefAnalysisNoSystemLeak(chefAnalysis) {
+  const problems = [];
+  const text = String(chefAnalysis || '');
+  if (!text) return { problems: problems };
+  const leaks = [
+    { rx: /\bcore[-_ ]?slot\b/i, label: 'core_slot' },
+    { rx: /\btolerated[-_ ]?protein\b/i, label: 'tolerated-Protein' },
+    { rx: /\bKern[-_ ]?zu[-_ ]?toleriert/i, label: 'Kern-zu-toleriert' },
+    { rx: /\bcore_protein_dominance\b/i, label: 'core_protein_dominance' },
+    { rx: /\bside_policy\b/i, label: 'side_policy' },
+    { rx: /\bVerhaeltnis von Kern\b/i, label: 'Verhältnis von Kern' },
+    { rx: /\bidentityLevel\b/i, label: 'identityLevel' },
+    { rx: /\bdishProfile\b/i, label: 'dishProfile' },
+  ];
+  for (const L of leaks) {
+    if (L.rx.test(text)) {
+      problems.push(
+        'chef_analysis enthaelt Systembegriff ("' + L.label + '"): ' + text.slice(0, 160)
+      );
+    }
+  }
+  return { problems: problems };
+}
+
 function validateRecipeV2(recipe, opts) {
   const result = new ValidationResult();
   const o = opts && typeof opts === 'object' ? opts : {};
@@ -2050,6 +2080,8 @@ function validateRecipeV2(recipe, opts) {
     dishQuery: dishQueryEarly,
     title: r.title,
   });
+  const chefLeak = validateChefAnalysisNoSystemLeak(chefAnalysis);
+  chefLeak.problems.forEach(function (p) { result.addError(p); });
   prose.problems.forEach(function (p) { result.addError(p); });
   if (Array.isArray(prose.warnings)) {
     prose.warnings.forEach(function (w) { result.addWarning(w); });

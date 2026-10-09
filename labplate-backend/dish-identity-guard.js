@@ -15,6 +15,38 @@
 const resolver = require('./dish-resolver');
 const validator = require('./dish-identity-validator');
 
+/**
+ * Zutaten, die der Nutzer in der Anfrage ausdruecklich verlangt hat.
+ * Beispiel: "Spaghetti mit Tomatensoße und Hähnchen" -> chicken.
+ * Diese Zutaten sind kein KI-Stuffing, sondern Kundenwunsch. Der
+ * core_protein_dominance-Check darf sie nicht als Verstoss zaehlen.
+ */
+function extractUserRequestedIds(query) {
+  const q = String(query || '').toLowerCase();
+  if (!q) return [];
+  const rules = [
+    { rx: /haehnchen|hähnchen|chicken|huhn|poulet/, id: 'chicken' },
+    { rx: /rind|steak|beef|rumpsteak/, id: 'beef' },
+    { rx: /schwein|pork|kotelett|schnitzel/, id: 'pork' },
+    { rx: /lamm|lamb/, id: 'lamb' },
+    { rx: /lachs|salmon/, id: 'salmon' },
+    { rx: /thunfisch|tuna/, id: 'tuna' },
+    { rx: /garnele|shrimp|scampi/, id: 'shrimp' },
+    { rx: /tofu/, id: 'tofu' },
+    { rx: /tempeh/, id: 'tempeh' },
+    { rx: /seitan/, id: 'seitan' },
+    { rx: /ei(?:er)?\b/, id: 'egg' },
+    { rx: /speck|bacon|guanciale|pancetta/, id: 'bacon' },
+    { rx: /sardelle|anchov/, id: 'anchovy' },
+    { rx: /kaese|käse|parmesan|pecorino|mozzarella/, id: 'cheese' },
+  ];
+  const hits = [];
+  for (const r of rules) {
+    if (r.rx.test(q)) hits.push(r.id);
+  }
+  return hits;
+}
+
 function checkQuery(query, recipe, options) {
   const resolved = resolver.resolve(query);
 
@@ -55,6 +87,7 @@ function checkQuery(query, recipe, options) {
   // die Composite-allowed-IDs und uebernimmt die Protein-Bewertung
   // nicht (das Composite ist die spezifischere Schicht).
   const archetypeOpts = Object.assign({}, options || {});
+  archetypeOpts.userRequestedIds = extractUserRequestedIds(query);
   if (resolved.compositeId) {
     archetypeOpts.extraAllowedIds = validator.getCompositeAllowedIds(resolved.compositeId);
     archetypeOpts.skipCoreShare = true;
@@ -77,4 +110,4 @@ function checkQuery(query, recipe, options) {
   };
 }
 
-module.exports = { checkQuery };
+module.exports = { checkQuery, extractUserRequestedIds };

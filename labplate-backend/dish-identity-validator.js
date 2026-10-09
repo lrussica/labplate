@@ -266,7 +266,7 @@ function estimateProtein(ing, candidateSets, catalog) {
  *   Carbonara (Ei + Pecorino + Guanciale toleriert):
  *     core ~52g, tolerated ~49g, Faktor 0.94 -> OK
  */
-function checkCoreShare(archetype, recipe, candidateSets, catalog) {
+function checkCoreShare(archetype, recipe, candidateSets, catalog, userRequestedIds) {
   const core = archetype.core || {};
   const tolerated = archetype.tolerated || {};
   const coreIds = new Set();
@@ -313,8 +313,30 @@ function checkCoreShare(archetype, recipe, candidateSets, catalog) {
     const cands = candidateSets[i] || [];
     const p = estimateProtein(ing, cands, catalog);
     if (p <= 0) continue;
+    // User-requested tolerated zaehlt NICHT als Stuffing (Kundenwunsch)
+    const isUserRequested = Array.isArray(userRequestedIds)
+      && userRequestedIds.some(function (uid) {
+        if (cands.includes(uid)) return true;
+        const r = loader.resolveId(uid);
+        if (r && r.target && cands.includes(r.target)) return true;
+        // Chicken->chicken_breast: prefix-Match
+        for (const c of cands) {
+          if (uid === 'chicken' && /^chicken/.test(c)) return true;
+          if (uid === 'beef' && /^beef/.test(c)) return true;
+          if (uid === 'pork' && /^pork/.test(c)) return true;
+          if (uid === 'lamb' && /^lamb/.test(c)) return true;
+          if (uid === 'salmon' && /^salmon/.test(c)) return true;
+          if (uid === 'shrimp' && /^shrimp/.test(c)) return true;
+          if (uid === 'tofu' && /^tofu/.test(c)) return true;
+          if (uid === 'egg' && /^egg/.test(c)) return true;
+        }
+        return false;
+      });
+
     if (isInSet(cands, coreIdsExpanded)) coreProtein += p;
-    else if (isInSet(cands, tolIdsExpanded)) tolProtein += p;
+    else if (isInSet(cands, tolIdsExpanded)) {
+      if (!isUserRequested) tolProtein += p;
+    }
     // Zutaten weder core noch tolerated (z.B. basic seasoning) ignoriert
   }
 
@@ -778,7 +800,7 @@ function validate(archetypeId, recipe, options) {
   //     Bei Composite-Profilen uebernimmt das Composite die
   //     Protein-Bewertung, der Archetyp-Grenzwert greift nicht.
   if (!skipCoreShare) {
-    violations.push(...checkCoreShare(archetype, recipe, candidateSets, catalog));
+    violations.push(...checkCoreShare(archetype, recipe, candidateSets, catalog, opts.userRequestedIds));
   }
 
   // 3c. Profil-Treue: jede Zutat muss in core/tolerated erlaubt sein,
