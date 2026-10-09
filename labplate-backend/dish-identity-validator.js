@@ -44,7 +44,11 @@ function ingredientCandidates(ing, catalog) {
   const raw = (ing.name || ing.displayName) || '';
   const norm = normalizeName(raw);
   const normSpaced = String(raw).trim().toLowerCase();
-  const noParens = normSpaced.replace(/\(.*?\)/g, ' ').replace(/\s+/g, ' ').trim();
+  const noParens = normSpaced
+    .replace(/\(.*?\)/g, ' ')
+    .replace(/[,;]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
   // Bindestrich -> Leerzeichen: 'chili-flocken' -> 'chili flocken'
   const hyphenFree = noParens.replace(/-/g, ' ').replace(/\s+/g, ' ').trim();
   // Adjektiv-Suffixe entfernen: 'rote chilischote fein gehackt' -> 'rote chilischote'
@@ -142,16 +146,51 @@ function collectForbiddenFromRecipe(archetype, ingredientCandidateSets) {
   return Array.from(used);
 }
 
-function checkSidePolicy(archetype, recipe) {
+function checkSidePolicy(archetype, recipe, candidateSets) {
   const policy = archetype.side_policy;
   const requested = recipe && (recipe.side_requested === true ||
                      recipe.side_policy_used === 'requested');
+
+  // Beilage-IDs aus tolerated.side.allowed sammeln
+  const sideAllowed = new Set();
+  const tolerated = archetype.tolerated || {};
+  const sideDef = tolerated.side;
+  if (sideDef && sideDef.allowed) {
+    const a = sideDef.allowed;
+    if (Array.isArray(a)) a.forEach(x => sideAllowed.add(x));
+    else Object.keys(a).forEach(x => sideAllowed.add(x));
+  }
+
+  // Prefix-Match: potato <-> potato_boiled, rice <-> rice_cooked
+  function sideMatch(candidate) {
+    if (!candidate) return false;
+    if (sideAllowed.has(candidate)) return true;
+    for (const allowed of sideAllowed) {
+      if (allowed.startsWith(candidate + '_') || candidate.startsWith(allowed + '_')) return true;
+    }
+    return false;
+  }
+
+  // Eine Zutat gilt als Beilage, wenn:
+  //   1. role === 'side' oder isSide === true (explizite Markierung)
+  //   2. ihr Kandidaten-Set eine ID aus sideAllowed enthaelt (inkl. Prefix)
   const hasSide = recipe && Array.isArray(recipe.ingredients)
-    && recipe.ingredients.some(i => i && (i.role === 'side' || i.isSide === true));
+    && recipe.ingredients.some((ing, i) => {
+      if (ing.role === 'side' || ing.isSide === true) return true;
+      if (!sideAllowed.size) return false;
+      const cands = candidateSets ? candidateSets[i] : [];
+      for (const c of cands) {
+        if (sideMatch(c)) return true;
+        const r = loader.resolveId(c);
+        if (r && r.target && sideMatch(r.target)) return true;
+        if (r && r.catalog_key && sideMatch(r.catalog_key)) return true;
+      }
+      return false;
+    });
 
   if (policy === 'only-if-requested' && hasSide && !requested) {
     return [{ code: 'side_not_requested', severity: SEV_BLOCK,
-              detail: 'Beilage im Rezept, aber side_policy=only-if-requested' }];
+              detail: 'Beilage im Rezept (aus tolerated.side.allowed), aber side_policy=only-if-requested' }];
   }
   if (policy === 'required' && !hasSide) {
     return [{ code: 'side_missing', severity: SEV_BLOCK,
@@ -197,7 +236,7 @@ function validate(archetypeId, recipe, options) {
   }
 
   // 3. side_policy pruefen
-  violations.push(...checkSidePolicy(archetype, recipe));
+  violations.push(...checkSidePolicy(archetype, recipe, candidateSets));
 
   // 4. unknown (nur warn)
   //    Bekannt = entweder Registry kennt den Kandidaten ODER Catalog hat ihn.

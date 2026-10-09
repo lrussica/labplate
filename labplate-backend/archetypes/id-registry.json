@@ -1425,6 +1425,126 @@
       "kind": "alias",
       "target": "ranch",
       "target_exists": true
+    },
+    "speck": {
+      "kind": "alias",
+      "target": "bacon",
+      "target_exists": true
+    },
+    "speck_(geraeuchert)": {
+      "kind": "alias",
+      "target": "bacon",
+      "target_exists": true
+    },
+    "speck_(geräuchert)": {
+      "kind": "alias",
+      "target": "bacon",
+      "target_exists": true
+    },
+    "speck_(geraeuchert,_in_wuerfeln)": {
+      "kind": "alias",
+      "target": "bacon",
+      "target_exists": true
+    },
+    "speck_(geräuchert,_in_würfeln)": {
+      "kind": "alias",
+      "target": "bacon",
+      "target_exists": true
+    },
+    "rindfleisch": {
+      "kind": "alias",
+      "target": "beef_mince",
+      "target_exists": true
+    },
+    "rindfleisch_(wuerfel)": {
+      "kind": "alias",
+      "target": "beef_mince",
+      "target_exists": true
+    },
+    "rindfleisch_(würfel)": {
+      "kind": "alias",
+      "target": "beef_mince",
+      "target_exists": true
+    },
+    "rindfleisch_wuerfel": {
+      "kind": "alias",
+      "target": "beef_mince",
+      "target_exists": true
+    },
+    "rindergulasch": {
+      "kind": "alias",
+      "target": "beef_mince",
+      "target_exists": true
+    },
+    "rindergulaschfleisch": {
+      "kind": "alias",
+      "target": "beef_mince",
+      "target_exists": true
+    },
+    "gulaschfleisch": {
+      "kind": "alias",
+      "target": "beef_mince",
+      "target_exists": true
+    },
+    "tomatenmark": {
+      "kind": "alias",
+      "target": "tomato_paste",
+      "target_exists": true
+    },
+    "karotten": {
+      "kind": "alias",
+      "target": "carrot",
+      "target_exists": true
+    },
+    "karotte": {
+      "kind": "alias",
+      "target": "carrot",
+      "target_exists": true
+    },
+    "mittelgrosse_zwiebel": {
+      "kind": "alias",
+      "target": "onion_yellow",
+      "target_exists": true
+    },
+    "grobe_zwiebel": {
+      "kind": "alias",
+      "target": "onion_yellow",
+      "target_exists": true
+    },
+    "roman-salat": {
+      "kind": "alias",
+      "target": "romaine",
+      "target_exists": true
+    },
+    "pfeffer": {
+      "kind": "alias",
+      "target": "black_pepper",
+      "target_exists": true
+    },
+    "schwarzer_pfeffer": {
+      "kind": "alias",
+      "target": "black_pepper",
+      "target_exists": true
+    },
+    "essig": {
+      "kind": "alias",
+      "target": "vinegar",
+      "target_exists": true
+    },
+    "weissweinessig": {
+      "kind": "alias",
+      "target": "vinegar",
+      "target_exists": true
+    },
+    "sahne": {
+      "kind": "alias",
+      "target": "cream_heavy",
+      "target_exists": true
+    },
+    "senf": {
+      "kind": "alias",
+      "target": "mustard",
+      "target_exists": true
     }
   }
 }
