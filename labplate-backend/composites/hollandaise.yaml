@@ -1,0 +1,64 @@
+composite: hollandaise
+version: 1
+displayName: "Hollandaise"
+category: warm_sauce
+aliases: ["hollandaise", "hollandaise sauce"]
+
+core:
+  pasteurized_egg_yolk:
+    roles: [base, binder]
+    allowed: [pasteurized_egg_yolk, egg]
+    amount_g: [60, 120]
+    notes: "R14: nur pasteurisiertes Eigelb. Rohes Eigelb forbidden."
+  butter:
+    roles: [fat]
+    allowed: [butter]
+    amount_g: [150, 300]
+    notes: "Geklaerte Butter ist Referenz."
+  lemon_juice:
+    roles: [acid]
+    allowed: [lemon_juice]
+    amount_g: [10, 30]
+  salt:
+    roles: [seasoning]
+    allowed: [salt]
+    amount_g: [1, 4]
+  black_pepper:
+    roles: [seasoning]
+    allowed: [black_pepper, white_pepper, pepper]
+    amount_g: [0, 2]
+
+tolerated:
+  white_wine_vinegar:
+    roles: [acid]
+    allowed: [white_wine_vinegar, vinegar]
+    amount_g: [0, 15]
+  water:
+    roles: [technique]
+    allowed: [water]
+    amount_g: [0, 30]
+    notes: "Bei zu dicker Sauce oder zur Temperaturkontrolle."
+
+forbidden:
+  - raw_egg_yolk_unpasteurized
+  - cream_heavy
+  - milk_whole
+  - margarine
+  - sunflower_oil
+
+ratios:
+  butter_to_yolk: [1.5, 3.5]
+
+technique:
+  - step: clarify_butter
+  - step: whisk_yolk_with_water
+  - step: bain_marie_gentle
+    notes: "Nicht ueber 65 Grad. Sonst gerinnt das Eigelb."
+  - step: add_butter_slowly
+  - step: season_lemon_salt_pepper
+  - step: keep_warm
+    notes: "Nicht heisser als handwarm halten."
+
+notes:
+  - "Eigelb ist konstitutiv. Keine traditionelle eifreie Hollandaise."
+  - "R14: pasteurisiertes Eigelb. Rohes Eigelb forbidden."

@@ -1,0 +1,74 @@
+composite: bearnaise
+version: 1
+displayName: "Sauce Béarnaise"
+category: warm_sauce
+aliases: ["bearnaise", "sauce bearnaise"]
+
+core:
+  white_wine_vinegar:
+    roles: [acid, reduction]
+    allowed: [white_wine_vinegar, vinegar]
+    amount_g: [40, 100]
+  shallot:
+    roles: [aromatic]
+    allowed: [shallot, onion_yellow]
+    amount_g: [20, 60]
+  tarragon:
+    roles: [flavor, base]
+    allowed: [tarragon]
+    amount_g: [5, 15]
+  black_pepper:
+    roles: [seasoning]
+    allowed: [black_pepper, pepper]
+    amount_g: [2, 6]
+  pasteurized_egg_yolk:
+    roles: [base, binder]
+    allowed: [pasteurized_egg_yolk, egg]
+    amount_g: [60, 120]
+    notes: "R14: pasteurisiertes Eigelb."
+  butter:
+    roles: [fat]
+    allowed: [butter]
+    amount_g: [150, 300]
+    notes: "Geklaerte Butter."
+  salt:
+    roles: [seasoning]
+    allowed: [salt]
+    amount_g: [1, 4]
+
+tolerated:
+  chervil:
+    roles: [finish]
+    allowed: [chervil, parsley_fresh, parsley]
+    amount_g: [0, 10]
+  lemon_juice:
+    roles: [acid]
+    allowed: [lemon_juice]
+    amount_g: [0, 15]
+
+forbidden:
+  - raw_egg_yolk_unpasteurized
+  - cream_heavy
+  - milk_whole
+  - margarine
+  - oregano
+  - basil
+
+ratios:
+  butter_to_yolk: [1.5, 3.5]
+  vinegar_to_shallot: [1.5, 4.0]
+
+technique:
+  - step: reduce_vinegar_with_shallot_tarragon_pepper
+    notes: "Eigenstaendige Reduktion. Nicht optional."
+  - step: strain_reduction
+  - step: whisk_yolk_with_reduction
+  - step: bain_marie_gentle
+  - step: add_clarified_butter
+  - step: finish_with_chervil_tarragon
+  - step: season_salt
+
+notes:
+  - "Eigenes Composite, nicht Hollandaise + Estragon."
+  - "Reduktion aus Weissweinessig, Schalotten, Estragon und Pfeffer."
+  - "R14: pasteurisiertes Eigelb."

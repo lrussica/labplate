@@ -1,0 +1,46 @@
+composite: balsamic_glaze
+version: 1
+displayName: "Balsamico-Reduktion"
+category: cold_sauce
+aliases: ["balsamic glaze", "balsamico reduktion", "balsamic reduction"]
+
+core:
+  balsamic_vinegar:
+    roles: [base]
+    allowed: [balsamic_vinegar, balsamico]
+    amount_g: [200, 500]
+    notes: "Guter Balsamico, mindestens 6 Jahre gereift."
+
+tolerated:
+  honey:
+    roles: [sweet]
+    allowed: [honey]
+    amount_g: [0, 20]
+    notes: "Nur wenn der Balsamico zu sauer ist."
+  brown_sugar:
+    roles: [sweet]
+    allowed: [sugar_brown, sugar]
+    amount_g: [0, 20]
+
+forbidden:
+  - cream_heavy
+  - yogurt
+  - milk_whole
+  - mayonnaise
+  - tomato
+  - tomato_canned
+  - soy_sauce
+
+ratios:
+  # Kein Verhaeltnis. Nur ein Prozess.
+
+technique:
+  - step: pour_balsamic_into_pan
+  - step: simmer_low
+    params: { duration_min: [15, 25] }
+    notes: "Auf etwa die Haelfte reduzieren. Nicht kochen, sonst bitter."
+  - step: cool_and_bottle
+
+notes:
+  - "Einzige Zutat: Balsamico. Alles andere ist Suesse-Anpassung."
+  - "Reduktion auf etwa 50% des Volumens."

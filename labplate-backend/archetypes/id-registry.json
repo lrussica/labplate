@@ -1,5 +1,5 @@
 {
-  "version": 8,
+  "version": 10,
   "generated": "2026-10-09",
   "note": "Registry v3: alle in YAMLs referenzierten IDs. nutrient-Eintraege mit needs_catalog:true sind als TODO markiert — Welle 3+ fuellt die Naehrwerte nach.",
   "ids": {
@@ -36,8 +36,8 @@
     },
     "balsamic_glaze": {
       "kind": "composite",
-      "ref": null,
-      "needs_recipe": true
+      "ref": "composites/balsamic_glaze.yaml",
+      "needs_recipe": false
     },
     "beans": {
       "kind": "alias",
@@ -1032,8 +1032,8 @@
     },
     "chimichurri": {
       "kind": "composite",
-      "ref": null,
-      "needs_recipe": true
+      "ref": "composites/chimichurri.yaml",
+      "needs_recipe": false
     },
     "peanut": {
       "kind": "alias",
@@ -1238,23 +1238,23 @@
     },
     "tartar": {
       "kind": "composite",
-      "ref": null,
-      "needs_recipe": true
+      "ref": "composites/tartar.yaml",
+      "needs_recipe": false
     },
     "aioli": {
       "kind": "composite",
-      "ref": null,
-      "needs_recipe": true
+      "ref": "composites/aioli.yaml",
+      "needs_recipe": false
     },
     "hollandaise": {
       "kind": "composite",
-      "ref": null,
-      "needs_recipe": true
+      "ref": "composites/hollandaise.yaml",
+      "needs_recipe": false
     },
     "bearnaise": {
       "kind": "composite",
-      "ref": null,
-      "needs_recipe": true
+      "ref": "composites/bearnaise.yaml",
+      "needs_recipe": false
     },
     "salad_greens": {
       "kind": "selector"
@@ -1772,6 +1772,49 @@
       "kind": "composite",
       "ref": "composites/ragu_salsiccia.yaml",
       "needs_recipe": false
+    },
+    "balsamic_vinegar": {
+      "kind": "nutrient",
+      "catalog_key": "balsamic_vinegar"
+    },
+    "mayonnaise": {
+      "kind": "nutrient",
+      "catalog_key": "mayonnaise"
+    },
+    "balsamico": {
+      "kind": "alias",
+      "target": "balsamic_vinegar",
+      "target_exists": true
+    },
+    "balsamicoessig": {
+      "kind": "alias",
+      "target": "balsamic_vinegar",
+      "target_exists": true
+    },
+    "tarragon_vinegar": {
+      "kind": "alias",
+      "target": "vinegar",
+      "target_exists": true
+    },
+    "estragonessig": {
+      "kind": "alias",
+      "target": "vinegar",
+      "target_exists": true
+    },
+    "cornichon": {
+      "kind": "alias",
+      "target": "capers",
+      "target_exists": true
+    },
+    "cornichons": {
+      "kind": "alias",
+      "target": "capers",
+      "target_exists": true
+    },
+    "kapern": {
+      "kind": "alias",
+      "target": "capers",
+      "target_exists": true
     }
   }
 }

@@ -1,0 +1,52 @@
+composite: aioli
+version: 1
+displayName: "Aioli"
+category: cold_sauce
+aliases: ["aioli", "allioli", "knoblauchmayonnaise"]
+
+core:
+  garlic:
+    roles: [base, flavor]
+    allowed: [garlic]
+    amount_g: [15, 40]
+    notes: "Viel Knoblauch. Das ist ein Knoblauchprodukt, kein Dressing."
+  olive_oil:
+    roles: [fat, base]
+    allowed: [olive_oil]
+    amount_g: [120, 300]
+  salt:
+    roles: [seasoning]
+    allowed: [salt]
+    amount_g: [2, 8]
+
+tolerated:
+  pasteurized_egg_yolk:
+    roles: [binder, modernisierung]
+    allowed: [pasteurized_egg_yolk, egg, mayonnaise]
+    amount_g: [0, 40]
+    notes: >
+      Moderne provenzalische Variante. Nur pasteurisiertes Eigelb
+      (R14). Klassisch katalanisch ohne Ei.
+  lemon_juice:
+    roles: [acid]
+    allowed: [lemon_juice]
+    amount_g: [0, 15]
+
+forbidden:
+  - cream_heavy
+  - yogurt
+  - milk_whole
+  - raw_egg_yolk_unpasteurized
+
+ratios:
+  oil_to_garlic: [4.0, 15.0]
+
+technique:
+  - step: crush_garlic_with_salt
+    notes: "Im Moerter zu Paste."
+  - step: emulsify_oil_slowly
+    notes: "Oel in duennem Strahl, stetig ruehren."
+
+notes:
+  - "Katalanisch/provenzalisch ohne Ei ist die Referenz."
+  - "Ei nur als tolerated Modernisierung, nicht als Kern."

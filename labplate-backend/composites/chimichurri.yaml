@@ -1,0 +1,73 @@
+composite: chimichurri
+version: 1
+displayName: "Chimichurri"
+category: cold_sauce
+aliases: ["chimichurri"]
+
+core:
+  parsley:
+    roles: [base, flavor]
+    allowed: [parsley, parsley_fresh]
+    amount_g: [40, 100]
+    notes: "Frisch, fein gehackt. Nicht mixen."
+  garlic:
+    roles: [aromatic]
+    allowed: [garlic]
+    amount_g: [5, 20]
+  oregano:
+    roles: [flavor]
+    allowed: [oregano, oregano_dried]
+    amount_g: [3, 10]
+  olive_oil:
+    roles: [fat, base]
+    allowed: [olive_oil]
+    amount_g: [80, 200]
+  red_wine_vinegar:
+    roles: [acid]
+    allowed: [red_wine_vinegar, vinegar]
+    amount_g: [30, 70]
+  salt:
+    roles: [seasoning]
+    allowed: [salt]
+    amount_g: [2, 6]
+
+tolerated:
+  chili:
+    roles: [heat]
+    allowed: [chili, dried_chili, fresh_chili]
+    amount_g: [0, 10]
+  black_pepper:
+    roles: [seasoning]
+    allowed: [black_pepper, pepper]
+    amount_g: [0, 3]
+  cilantro:
+    roles: [flavor]
+    allowed: [cilantro, coriander_fresh]
+    amount_g: [0, 20]
+    notes: "Moderne Variante. Klassisch nur Petersilie."
+
+forbidden:
+  - cream_heavy
+  - yogurt
+  - mayonnaise
+  - milk_whole
+  - tomato
+  - tomato_canned
+
+ratios:
+  oil_to_vinegar: [1.5, 4.0]
+  parsley_to_oil: [0.25, 0.8]
+
+technique:
+  - step: chop_parsley_fine
+    notes: "Messer, nicht Mixer."
+  - step: mince_garlic
+  - step: combine_oil_vinegar_oregano
+  - step: fold_in_parsley_garlic
+  - step: season_salt_chili
+  - step: rest_30_min
+    notes: "Ziehen lassen, damit Aromen sich verbinden."
+
+notes:
+  - "Argentinisch. Petersilie, Knoblauch, Oregano, Olivenöl, Rotweinessig."
+  - "Nicht mixen, sonst wird es Sauce statt Salsa."

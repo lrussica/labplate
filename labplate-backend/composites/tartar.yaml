@@ -1,0 +1,74 @@
+composite: tartar
+version: 1
+displayName: "Sauce Tartare"
+category: cold_sauce
+aliases: ["tartar", "sauce tartare", "remoulade (tartar)"]
+
+core:
+  mayonnaise:
+    roles: [base, binder]
+    allowed: [mayonnaise, pasteurized_egg_yolk, egg]
+    amount_g: [150, 300]
+    notes: >
+      R14: Mayonnaise als Basis, oder pasteurisiertes Eigelb.
+      Rohes Eigelb forbidden.
+  caper:
+    roles: [flavor, acid]
+    allowed: [caper, capers, cornichon]
+    amount_g: [15, 40]
+  parsley:
+    roles: [flavor, finish]
+    allowed: [parsley, parsley_fresh]
+    amount_g: [5, 20]
+  shallot:
+    roles: [aromatic]
+    allowed: [shallot, onion_yellow]
+    amount_g: [10, 30]
+  lemon_juice:
+    roles: [acid]
+    allowed: [lemon_juice]
+    amount_g: [5, 20]
+  salt:
+    roles: [seasoning]
+    allowed: [salt]
+    amount_g: [1, 4]
+
+tolerated:
+  tarragon:
+    roles: [flavor]
+    allowed: [tarragon]
+    amount_g: [0, 8]
+  chive:
+    roles: [finish]
+    allowed: [chive, chives]
+    amount_g: [0, 10]
+  black_pepper:
+    roles: [seasoning]
+    allowed: [black_pepper, pepper]
+    amount_g: [0, 3]
+  mustard:
+    roles: [flavor]
+    allowed: [mustard, dijon_mustard]
+    amount_g: [0, 10]
+
+forbidden:
+  - raw_egg_yolk_unpasteurized
+  - cream_heavy
+  - yogurt
+  - milk_whole
+  - tomato
+  - tomato_canned
+
+ratios:
+  caper_to_mayo: [0.05, 0.25]
+
+technique:
+  - step: chop_capers_shallot_parsley
+  - step: combine_with_mayo
+  - step: season_lemon_salt
+  - step: add_herbs_optional
+  - step: rest_cold
+
+notes:
+  - "R14: Mayonnaise statt rohes Ei."
+  - "Klassisch: Kapern, Cornichons, Kraeuter, Schalotten."

@@ -50,6 +50,12 @@ const COMPOSITE_ALIASES = [
   { pattern: /(rag[uù]\s+(alla\s+)?bolognese|bolognese|bologneser)/i, compositeId: 'ragu_bolognese', confidence: 0.9 },
   { pattern: /(caesar\s+dressing|caesar\s+sauce)/i, compositeId: 'caesar', confidence: 0.9 },
   { pattern: /(vinaigrette)/i, compositeId: 'vinaigrette', confidence: 0.95 },
+  { pattern: /(aioli|allioli)/i, compositeId: 'aioli', confidence: 0.95 },
+  { pattern: /(hollandaise)/i, compositeId: 'hollandaise', confidence: 0.95 },
+  { pattern: /(b[eé]arnaise)/i, compositeId: 'bearnaise', confidence: 0.95 },
+  { pattern: /(chimichurri)/i, compositeId: 'chimichurri', confidence: 0.95 },
+  { pattern: /(sauce\s+tartare|tartar(?!\s*steak)|remoulade)/i, compositeId: 'tartar', confidence: 0.9 },
+  { pattern: /(balsamic\s+glaze|balsamico[\s-]*reduktion|balsamic\s+reduction)/i, compositeId: 'balsamic_glaze', confidence: 0.9 },
 ];
 
 function resolveComposite(query) {

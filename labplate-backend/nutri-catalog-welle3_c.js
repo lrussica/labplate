@@ -144,4 +144,17 @@ module.exports = {
     source: 'USDA FDC (geschaetzt: Italian sausage, pork, raw)',
   },
 
+  balsamic_vinegar: {
+    displayName: 'Balsamico-Essig',
+    aliases: ['balsamico', 'balsamicoessig', 'balsamic vinegar', 'aceto balsamico'],
+    per100g: { protein: 0.5, fat: 0.0, netCarbs: 17.0, fiber: 0.0, kcal: 88 },
+    source: 'USDA FDC 172241 (Vinegar, balsamic)',
+  },
+  mayonnaise: {
+    displayName: 'Mayonnaise',
+    aliases: ['mayonnaise', 'mayo', 'majonaise'],
+    per100g: { protein: 1.1, fat: 75.0, netCarbs: 0.6, fiber: 0.0, kcal: 680 },
+    source: 'USDA FDC 171009 (Salad dressing, mayonnaise, regular)',
+  },
+
 };
