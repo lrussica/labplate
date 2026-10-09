@@ -1,0 +1,80 @@
+composite: pesto
+version: 1
+displayName: "Pesto Genovese"
+category: pasta_sauce
+aliases: ["pesto", "pesto genovese", "basilico"]
+
+core:
+  basil:
+    roles: [base, flavor]
+    allowed: [basil, basil_fresh]
+    amount_g: [40, 80]
+    notes: "Frisch, trocken getupft."
+  pine_nut:
+    roles: [fat, texture]
+    allowed: [pine_nut]
+    amount_g: [15, 35]
+    notes: "Idealerweise leicht geröstet."
+  garlic:
+    roles: [aromatic]
+    allowed: [garlic]
+    amount_g: [3, 10]
+  parmesan:
+    roles: [umami, binder]
+    allowed: [parmesan, parmigiano_reggiano]
+    amount_g: [30, 60]
+    notes: "Parmigiano Reggiano. Mischung 2:1 mit Pecorino."
+  pecorino:
+    roles: [umami, binder]
+    allowed: [pecorino, pecorino_romano]
+    amount_g: [15, 30]
+  olive_oil:
+    roles: [fat]
+    allowed: [olive_oil]
+    amount_g: [50, 100]
+    notes: "Erst am Ende, mäßig dosiert."
+  salt:
+    roles: [seasoning]
+    allowed: [salt]
+    amount_g: [1, 4]
+
+tolerated:
+  walnut:
+    allowed: [walnut, walnuts]
+    amount_g: [0, 30]
+    notes: "Moderne Abwandlung statt Pinienkernen."
+  cashew:
+    allowed: [cashew, cashews]
+    amount_g: [0, 30]
+
+forbidden:
+  - cream_heavy
+  - butter
+  - milk_whole
+  - tomato
+  - tomato_canned
+  - onion
+  - beef_mince
+  - chicken_breast
+  - pork_meat
+  - tofu
+  - tempeh
+
+ratios:
+  basil_to_oil: [0.5, 1.2]
+  cheese_to_basil: [0.6, 1.2]
+  pine_nut_to_basil: [0.2, 0.5]
+
+technique:
+  - step: toast_pine_nuts_optional
+  - step: pound_or_blend_basil_garlic_pinenuts
+  - step: add_cheese
+  - step: add_olive_oil_slowly
+  - step: season_salt
+  - step: fold_into_hot_pasta_with_pasta_water
+
+notes:
+  - "Knoblauch ist Referenz, nicht optional."
+  - "Parmigiano + Pecorino, Mischung 2:1."
+  - "Olivenöl erst am Ende."
+  - "Salz sparsam — beide Käse salzen."

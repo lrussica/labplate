@@ -1,0 +1,67 @@
+composite: napoletana
+version: 1
+displayName: "Sugo Napoletana"
+category: pasta_sauce
+aliases: ["napoletana", "sugo napoletana", "tomato sauce (napoletana)"]
+
+core:
+  tomato:
+    roles: [base]
+    allowed: [tomato, tomato_canned, tomato_puree, fresh_tomatoes]
+    amount_g: [300, 700]
+  olive_oil:
+    roles: [fat]
+    allowed: [olive_oil]
+    amount_g: [20, 55]
+  garlic:
+    roles: [aromatic]
+    allowed: [garlic]
+    amount_g: [5, 15]
+  basil:
+    roles: [flavor, finish]
+    allowed: [basil, basil_fresh]
+    amount_g: [3, 12]
+  salt:
+    roles: [seasoning]
+    allowed: [salt]
+    amount_g: [1, 6]
+
+tolerated:
+  oregano:
+    allowed: [oregano, oregano_dried]
+    amount_g: [0, 5]
+  chili:
+    allowed: [chili, dried_chili, fresh_chili]
+    amount_g: [0, 4]
+
+forbidden:
+  - cream_heavy
+  - butter
+  - milk_whole
+  - parmesan
+  - pecorino
+  - beef_mince
+  - chicken_breast
+  - pork_meat
+  - onion
+  - tofu
+  - tempeh
+
+ratios:
+  oil_to_tomato: [0.05, 0.15]
+  garlic_to_tomato: [0.01, 0.05]
+
+technique:
+  - step: heat_olive_oil
+  - step: bloom_garlic_low_heat
+  - step: add_tomato
+  - step: simmer_gentle
+    params: { duration_min: [25, 45] }
+    notes: "Sanft koechseln, etwas mehr Koerper als Marinara."
+  - step: add_basil_late
+    notes: "Basilikum erst spaet, damit das Aroma bleibt."
+  - step: season_salt
+
+notes:
+  - "Basilikum-forward. Basilikum ist core, Oregano tolerated."
+  - "Zwiebel ist forbidden — klare neapolitanische Referenz."

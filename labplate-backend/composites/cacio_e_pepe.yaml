@@ -1,0 +1,60 @@
+composite: cacio_e_pepe
+version: 1
+displayName: "Cacio e Pepe"
+category: pasta_sauce
+aliases: ["cacio e pepe", "cacioepepe"]
+
+core:
+  pecorino:
+    roles: [base, umami, binder]
+    allowed: [pecorino, pecorino_romano]
+    amount_g: [60, 120]
+    notes: "Pecorino Romano."
+  black_pepper:
+    roles: [heat, flavor]
+    allowed: [black_pepper, pepper]
+    amount_g: [3, 8]
+    notes: "Frisch grob gemahlen."
+  pasta_water:
+    roles: [technique, binder]
+    amount_g: [100, 250]
+    notes: "Stärkehaltig, emulgiert den Käse."
+
+tolerated: {}
+
+forbidden:
+  - olive_oil
+  - butter
+  - cream_heavy
+  - milk_whole
+  - garlic
+  - onion
+  - parmesan
+  - tomato
+  - tomato_canned
+  - beef_mince
+  - chicken_breast
+  - pork_meat
+  - guanciale
+  - pancetta
+  - tofu
+  - tempeh
+
+ratios:
+  pecorino_to_pasta_water: [0.25, 0.8]
+  pepper_to_pecorino: [0.03, 0.12]
+
+technique:
+  - step: toast_pepper_in_pan
+    notes: "Pfeffer kurz in trockener Pfanne antoasten."
+  - step: add_pasta_water_dash
+  - step: cook_pasta_al_dente
+  - step: combine_off_heat
+    notes: "Topf vom Herd, Käse unter ständigem Bewegen einarbeiten."
+  - step: adjust_with_pasta_water
+    notes: "Emulsion mit Nudelwasser justieren."
+
+notes:
+  - "Nur Pecorino, Pfeffer, Pasta und Nudelwasser."
+  - "Kein Öl, keine Butter, keine Sahne, kein Knoblauch."
+  - "Technik ist Teil des Rezepts: Pfeffer toasten, Käse off-heat einrühren."

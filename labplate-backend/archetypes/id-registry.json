@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "generated": "2026-10-09",
   "note": "Registry v3: alle in YAMLs referenzierten IDs. nutrient-Eintraege mit needs_catalog:true sind als TODO markiert — Welle 3+ fuellt die Naehrwerte nach.",
   "ids": {
@@ -10,8 +10,8 @@
     },
     "amatriciana": {
       "kind": "composite",
-      "ref": null,
-      "needs_recipe": true
+      "ref": "composites/amatriciana.yaml",
+      "needs_recipe": false
     },
     "apple": {
       "kind": "nutrient",
@@ -19,8 +19,8 @@
     },
     "arrabbiata": {
       "kind": "composite",
-      "ref": null,
-      "needs_recipe": true
+      "ref": "composites/arrabbiata.yaml",
+      "needs_recipe": false
     },
     "arugula": {
       "kind": "nutrient",
@@ -447,8 +447,8 @@
     },
     "pesto": {
       "kind": "composite",
-      "ref": null,
-      "needs_recipe": true
+      "ref": "composites/pesto.yaml",
+      "needs_recipe": false
     },
     "polenta": {
       "kind": "nutrient",
@@ -1695,6 +1695,21 @@
       "kind": "alias",
       "target": "cream_heavy",
       "target_exists": true
+    },
+    "cacio_e_pepe": {
+      "kind": "composite",
+      "ref": "composites/cacio_e_pepe.yaml",
+      "needs_recipe": false
+    },
+    "marinara": {
+      "kind": "composite",
+      "ref": "composites/marinara.yaml",
+      "needs_recipe": false
+    },
+    "napoletana": {
+      "kind": "composite",
+      "ref": "composites/napoletana.yaml",
+      "needs_recipe": false
     }
   }
 }

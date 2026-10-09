@@ -1,0 +1,60 @@
+composite: amatriciana
+version: 1
+displayName: "Sugo all'Amatriciana"
+category: pasta_sauce
+aliases: ["amatriciana", "sugo amatriciana", "matriciana"]
+
+core:
+  guanciale:
+    roles: [fat, protein, umami]
+    allowed: [guanciale, pancetta]
+    amount_g: [80, 150]
+    notes: "Guanciale klassisch. Pancetta nur wenn Guanciale nicht verfuegbar."
+  tomato:
+    roles: [base]
+    allowed: [tomato, tomato_canned, tomato_puree]
+    amount_g: [300, 600]
+  pecorino:
+    roles: [umami, finish]
+    allowed: [pecorino, pecorino_romano]
+    amount_g: [30, 60]
+    notes: "Pecorino Romano."
+
+tolerated:
+  chili:
+    allowed: [chili, dried_chili, fresh_chili, peperoncino]
+    amount_g: [0, 8]
+    notes: "Peperoncino oft genannt, aber nicht in allen Referenzen."
+
+forbidden:
+  - onion
+  - garlic
+  - olive_oil
+  - cream_heavy
+  - butter
+  - milk_whole
+  - parmesan
+  - beef_mince
+  - chicken_breast
+  - pork_meat
+  - tofu
+  - tempeh
+
+ratios:
+  guanciale_to_tomato: [0.15, 0.40]
+  pecorino_to_tomato: [0.05, 0.15]
+
+technique:
+  - step: render_guanciale_fat
+    notes: "Guanciale in eigener Fett auslassen. Kein zusätzliches Öl."
+  - step: remove_guanciale_crisp
+  - step: add_tomato_to_fat
+  - step: simmer
+    params: { duration_min: [15, 30] }
+  - step: return_guanciale
+  - step: fold_in_pecorino_off_heat
+
+notes:
+  - "Römische Lehre: kein Knoblauch, keine Zwiebel."
+  - "Kein Olivenöl als eigene Zutat — Fett kommt aus Guanciale."
+  - "Chili optional. Pecorino am Ende, ausserhalb der Hitze."

@@ -1,0 +1,73 @@
+composite: arrabbiata
+version: 1
+displayName: "Sugo all'Arrabbiata"
+category: pasta_sauce
+aliases: ["arrabbiata", "sugo arrabbiata", "all'arrabbiata"]
+
+core:
+  tomato:
+    roles: [base]
+    allowed: [tomato, tomato_canned, tomato_puree, fresh_tomatoes]
+    amount_g: [300, 600]
+  garlic:
+    roles: [aromatic]
+    allowed: [garlic]
+    amount_g: [5, 15]
+  dried_chili:
+    roles: [heat, flavor]
+    allowed: [dried_chili, chili, peperoncino]
+    amount_g: [3, 12]
+  olive_oil:
+    roles: [fat]
+    allowed: [olive_oil]
+    amount_g: [20, 50]
+  salt:
+    roles: [seasoning]
+    allowed: [salt]
+    amount_g: [1, 6]
+
+tolerated:
+  pecorino:
+    roles: [topping]
+    allowed: [pecorino, pecorino_romano]
+    amount_g: [0, 25]
+    notes: "Nur als Topping am Tisch, nicht in der Sauce."
+  parsley:
+    roles: [finish]
+    allowed: [parsley, parsley_fresh]
+    amount_g: [0, 8]
+  fresh_chili:
+    roles: [heat]
+    allowed: [fresh_chili, chili]
+    amount_g: [0, 8]
+
+forbidden:
+  - onion
+  - cream_heavy
+  - butter
+  - milk_whole
+  - parmesan
+  - beef_mince
+  - chicken_breast
+  - pork_meat
+  - tofu
+  - tempeh
+
+ratios:
+  oil_to_tomato: [0.05, 0.15]
+  chili_to_tomato: [0.005, 0.03]
+
+technique:
+  - step: heat_olive_oil
+  - step: bloom_garlic_and_chili
+    notes: "Knoblauch und Chili zusammen anziehen, nicht braeunen."
+  - step: add_tomato
+  - step: simmer
+    params: { duration_min: [20, 35] }
+  - step: season_salt
+  - step: optional_pecorino_at_table
+
+notes:
+  - "Peperoncino ist definierend — ohne Chili ist es keine Arrabbiata."
+  - "Pecorino tolerated, nicht core. Klassisch kaesefrei."
+  - "Kein Zwiebel. Kein Fleisch."

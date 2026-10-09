@@ -1,0 +1,66 @@
+composite: marinara
+version: 1
+displayName: "Sugo Marinara"
+category: pasta_sauce
+aliases: ["marinara", "sugo marinara", "tomato sauce (marinara)"]
+
+core:
+  tomato:
+    roles: [base]
+    allowed: [tomato, tomato_canned, tomato_puree, fresh_tomatoes]
+    amount_g: [300, 600]
+  olive_oil:
+    roles: [fat]
+    allowed: [olive_oil]
+    amount_g: [20, 50]
+  garlic:
+    roles: [aromatic]
+    allowed: [garlic]
+    amount_g: [5, 15]
+  oregano:
+    roles: [flavor]
+    allowed: [oregano, oregano_dried]
+    amount_g: [2, 8]
+  salt:
+    roles: [seasoning]
+    allowed: [salt]
+    amount_g: [1, 6]
+
+tolerated:
+  basil:
+    allowed: [basil, basil_fresh]
+    amount_g: [0, 10]
+  chili:
+    allowed: [chili, dried_chili, fresh_chili]
+    amount_g: [0, 5]
+
+forbidden:
+  - cream_heavy
+  - butter
+  - milk_whole
+  - parmesan
+  - pecorino
+  - beef_mince
+  - chicken_breast
+  - pork_meat
+  - tofu
+  - tempeh
+
+ratios:
+  oil_to_tomato: [0.05, 0.15]
+  garlic_to_tomato: [0.01, 0.05]
+
+technique:
+  - step: heat_olive_oil
+  - step: bloom_garlic_low_heat
+    notes: "Knoblauch nur anziehen, nie braeunen."
+  - step: add_tomato
+  - step: simmer_short
+    params: { duration_min: [15, 25] }
+    notes: "Kurz garen, kein langes Einkochen."
+  - step: season_oregano_salt
+
+notes:
+  - "Hell und oregano-forward. Oregano ist core, Basilikum tolerated."
+  - "Kein Zucker. Bei guten Tomaten unnoetig."
+  - "Kein Parmesan in der Sauce."
