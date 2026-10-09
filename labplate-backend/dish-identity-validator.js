@@ -493,27 +493,81 @@ function validateComposite(compositeId, recipe) {
     }
   }
 
-  // 2. forbidden pruefen
+  // 2. forbidden pruefen (harte Blocker)
+  //    Plus separater Check fuer tolerated-Slots mit role=technique
+  //    und amount_g-Limit (Nutzer-Lehre 9. Okt: "Olivenöl als
+  //    Anbrat-Fett erlaubt, aber nicht als Sauce-Fett").
   const forbidden = composite.forbidden || [];
-  for (let i = 0; i < recipe.ingredients.length; i++) {
-    const cands = candidateSets[i];
-    for (const c of cands) {
-      if (forbidden.includes(c)) {
-        violations.push({
-          code: 'composite_forbidden_used',
-          severity: SEV_BLOCK,
-          detail: 'Composite "' + compositeId + '": forbidden-Zutat ' + c + ' (' + (recipe.ingredients[i].name || '?') + ')',
-        });
-        break;
+
+  const techniqueSlots = [];
+  for (const slotDef of Object.values(composite.tolerated || {})) {
+    if (!slotDef || !slotDef.allowed) continue;
+    const roles = slotDef.roles || [];
+    if (!roles.includes('technique')) continue;
+    const allowed = Array.isArray(slotDef.allowed)
+      ? slotDef.allowed : Object.keys(slotDef.allowed);
+    const amountG = slotDef.amount_g || [0, 0];
+    techniqueSlots.push({
+      allowed: expandSet(new Set(allowed)),
+      maxG: Number(amountG[1]) || 0,
+      notes: slotDef.notes || '',
+    });
+  }
+
+  function matchesTechniqueSlot(cands) {
+    for (const slot of techniqueSlots) {
+      for (const c of cands) {
+        if (slot.allowed.has(c)) return slot;
+        const r = loader.resolveId(c);
+        if (r && r.target && slot.allowed.has(r.target)) return slot;
+        if (r && r.catalog_key && slot.allowed.has(r.catalog_key)) return slot;
       }
+    }
+    return null;
+  }
+
+  for (let i = 0; i < recipe.ingredients.length; i++) {
+    const ing = recipe.ingredients[i];
+    const cands = candidateSets[i];
+
+    // (a) Harte Blocker
+    let forbiddenHit = null;
+    for (const c of cands) {
+      if (forbidden.includes(c)) { forbiddenHit = c; break; }
       const r = loader.resolveId(c);
-      if (r && r.target && forbidden.includes(r.target)) {
+      if (r && r.target && forbidden.includes(r.target)) { forbiddenHit = r.target; break; }
+    }
+    if (forbiddenHit) {
+      violations.push({
+        code: 'composite_forbidden_used',
+        severity: SEV_BLOCK,
+        detail: 'Composite "' + compositeId + '": forbidden-Zutat ' + forbiddenHit + ' (' + (ing.name || '?') + ')',
+      });
+      continue;
+    }
+
+    // (b) Technik-Slot mit Mengenlimit
+    const slot = matchesTechniqueSlot(cands);
+    if (slot && slot.maxG > 0) {
+      const amount = Number(ing.amount) || 0;
+      if (amount <= 0) continue; // Prise/Messerspitze oder unbestimmt
+      if (amount > slot.maxG) {
         violations.push({
-          code: 'composite_forbidden_used',
+          code: 'technique_fat_excess',
           severity: SEV_BLOCK,
-          detail: 'Composite "' + compositeId + '": forbidden-Zutat ' + r.target + ' (' + (recipe.ingredients[i].name || '?') + ')',
+          detail: 'Composite "' + compositeId + '": ' + (ing.name || cands[0]) +
+                  ' (' + amount + 'g) ueberschreitet das Technik-Limit (' +
+                  slot.maxG + 'g). Das verschiebt das Profil.',
         });
-        break;
+      } else {
+        violations.push({
+          code: 'technique_fat_deviation',
+          severity: SEV_WARN,
+          detail: 'Composite "' + compositeId + '": ' + (ing.name || cands[0]) +
+                  ' als technisches Anbrat-Fett (' + amount + 'g von max ' +
+                  slot.maxG + 'g). Nicht traditionell erforderlich; ' +
+                  (slot.notes || 'Guanciale-Fett bevorzugt.'),
+        });
       }
     }
   }

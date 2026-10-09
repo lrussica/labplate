@@ -305,6 +305,60 @@ function bad(m) { console.log('FAIL ' + m); fail++; }
   else bad('composite_forbidden_used butter fehlt');
 }
 
+// --- C7: Amatriciana + 8 ml Olivenöl -> Warn (Technik-Fett)
+{
+  const r = validateComposite('amatriciana', {
+    ingredients: [
+      { name: 'Spaghetti', _catalogKey: 'pasta_dry' },
+      { name: 'Guanciale', _catalogKey: 'guanciale' },
+      { name: 'Tomaten', _catalogKey: 'tomato' },
+      { name: 'Pecorino', _catalogKey: 'pecorino' },
+      { name: 'Olivenöl', amount: 8, unit: 'ml', _catalogKey: 'olive_oil' },
+    ],
+  });
+  if (r.ok) ok('Amatriciana + 8ml Olivenöl -> freigegeben');
+  else bad('Amatriciana + 8ml Olivenöl abgelehnt');
+  const hasDev = r.violations.some(v => v.code === 'technique_fat_deviation');
+  if (hasDev) ok('Violation technique_fat_deviation');
+  else bad('technique_fat_deviation fehlt');
+}
+
+// --- C8: Amatriciana + 25 ml Olivenöl -> ueber Limit
+{
+  const r = validateComposite('amatriciana', {
+    ingredients: [
+      { name: 'Spaghetti', _catalogKey: 'pasta_dry' },
+      { name: 'Guanciale', _catalogKey: 'guanciale' },
+      { name: 'Tomaten', _catalogKey: 'tomato' },
+      { name: 'Pecorino', _catalogKey: 'pecorino' },
+      { name: 'Olivenöl', amount: 25, unit: 'ml', _catalogKey: 'olive_oil' },
+    ],
+  });
+  if (!r.ok) ok('Amatriciana + 25ml Olivenöl -> abgelehnt');
+  else bad('Amatriciana + 25ml Olivenöl NICHT abgelehnt');
+  const hasExc = r.violations.some(v => v.code === 'technique_fat_excess');
+  if (hasExc) ok('Violation technique_fat_excess');
+  else bad('technique_fat_excess fehlt');
+}
+
+// --- C9: Amatriciana + 5 g Butter -> forbidden
+{
+  const r = validateComposite('amatriciana', {
+    ingredients: [
+      { name: 'Spaghetti', _catalogKey: 'pasta_dry' },
+      { name: 'Guanciale', _catalogKey: 'guanciale' },
+      { name: 'Tomaten', _catalogKey: 'tomato' },
+      { name: 'Pecorino', _catalogKey: 'pecorino' },
+      { name: 'Butter', amount: 5, unit: 'g', _catalogKey: 'butter' },
+    ],
+  });
+  if (!r.ok) ok('Amatriciana + 5g Butter -> abgelehnt');
+  else bad('Amatriciana + 5g Butter NICHT abgelehnt');
+  const hasForb = r.violations.some(v => v.code === 'composite_forbidden_used' && /butter/.test(v.detail));
+  if (hasForb) ok('Violation composite_forbidden_used butter');
+  else bad('composite_forbidden_used butter fehlt');
+}
+
 console.log();
 console.log('Pass: ' + pass + '  Fail: ' + fail);
 process.exit(fail > 0 ? 1 : 0);

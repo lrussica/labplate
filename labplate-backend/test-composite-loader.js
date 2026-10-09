@@ -39,10 +39,16 @@ if ((p.forbidden || []).includes('tomato') && (p.forbidden || []).includes('crea
 
 // Amatriciana-Kernpruefung
 const a = loader.loadComposite('amatriciana');
-if ((a.forbidden || []).includes('garlic') && (a.forbidden || []).includes('onion') && (a.forbidden || []).includes('olive_oil')) {
-  ok('Amatriciana.forbidden enthaelt garlic + onion + olive_oil');
+if ((a.forbidden || []).includes('garlic') && (a.forbidden || []).includes('onion')) {
+  ok('Amatriciana.forbidden enthaelt garlic + onion');
 } else {
   bad('Amatriciana.forbidden unvollstaendig');
+}
+// olive_oil ist NICHT forbidden, sondern tolerated.sautéing_fat
+if ((a.tolerated || {}).sautéing_fat && (a.tolerated.sautéing_fat.roles || []).includes('technique')) {
+  ok('Amatriciana.tolerated.sautéing_fat mit role=technique');
+} else {
+  bad('Amatriciana.sautéing_fat fehlt oder hat falsche Rolle');
 }
 
 // Cacio e Pepe: nur 3 Kern-Slots

@@ -25,11 +25,18 @@ tolerated:
     allowed: [chili, dried_chili, fresh_chili, peperoncino]
     amount_g: [0, 8]
     notes: "Peperoncino oft genannt, aber nicht in allen Referenzen."
+  sautéing_fat:
+    roles: [technique]
+    allowed: [olive_oil]
+    amount_g: [0, 10]
+    notes: >
+      Nur als technisches Anbrat-Fett zum Auslassen des Guanciale,
+      wenn dieses wenig Fett abgibt. Nicht als Sauce-Fett. Guanciale-
+      Fett ist der Standard. Maximal 10 ml, nur mit role=technique."
 
 forbidden:
   - onion
   - garlic
-  - olive_oil
   - cream_heavy
   - butter
   - milk_whole
