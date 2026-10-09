@@ -1286,6 +1286,8 @@ module.exports = {
             mode: g.mode,
             archetypeId: g.resolved && g.resolved.archetypeId,
             dishId: g.resolved && g.resolved.dishId,
+            compositeId: g.resolved && g.resolved.compositeId,
+            compositeConfidence: g.resolved && g.resolved.compositeConfidence,
             confidence: g.resolved && g.resolved.confidence,
             violations: g.violations,
             blocked: blockMode && !g.ok,
