@@ -1,5 +1,6 @@
 'use strict';
 const { validate, validateComposite } = require('./dish-identity-validator');
+const guard = require('./dish-identity-guard');
 
 let pass = 0, fail = 0;
 function ok(m) { console.log('OK ' + m); pass++; }
@@ -357,6 +358,116 @@ function bad(m) { console.log('FAIL ' + m); fail++; }
   const hasForb = r.violations.some(v => v.code === 'composite_forbidden_used' && /butter/.test(v.detail));
   if (hasForb) ok('Violation composite_forbidden_used butter');
   else bad('composite_forbidden_used butter fehlt');
+}
+
+// --- BRIDGE-Tests: Archetyp + Composite zusammen --------------------
+
+// --- B1: Bolognese klassisch (mit Soffritto, Pancetta, Wein) -> freigegeben
+{
+  const g = guard.checkQuery('Spaghetti Bolognese', {
+    ingredients: [
+      { name: 'Spaghetti', _catalogKey: 'pasta_dry' },
+      { name: 'Rinderhack', _catalogKey: 'beef_mince' },
+      { name: 'Pancetta', _catalogKey: 'pancetta' },
+      { name: 'Zwiebel', _catalogKey: 'onion_yellow' },
+      { name: 'Karotte', _catalogKey: 'carrot' },
+      { name: 'Sellerie', _catalogKey: 'celery' },
+      { name: 'Rotwein', _catalogKey: 'red_wine' },
+      { name: 'Tomaten (Passata)', _catalogKey: 'tomato_canned' },
+      { name: 'Tomatenmark', _catalogKey: 'tomato_paste' },
+      { name: 'Brühe', _catalogKey: 'vegetable_broth' },
+      { name: 'Salz', _catalogKey: 'salt' },
+    ],
+  });
+  if (g.ok) ok('Bridge: Bolognese klassisch -> freigegeben');
+  else bad('Bridge: Bolognese klassisch abgelehnt: ' + JSON.stringify(g.violations.map(v => v.code + ':' + v.detail.slice(0,60))));
+  if (g.resolved && g.resolved.compositeId === 'ragu_bolognese') ok('Bridge: compositeId erkannt');
+  else bad('Bridge: compositeId falsch');
+}
+
+// --- B2: Bolognese mit Soffritto (Karotte/Sellerie) -> KEINE unknown_to_profile
+{
+  const g = guard.checkQuery('Spaghetti Bolognese', {
+    ingredients: [
+      { name: 'Spaghetti', _catalogKey: 'pasta_dry' },
+      { name: 'Rinderhack', _catalogKey: 'beef_mince' },
+      { name: 'Pancetta', _catalogKey: 'pancetta' },
+      { name: 'Karotte', _catalogKey: 'carrot' },
+      { name: 'Sellerie', _catalogKey: 'celery' },
+      { name: 'Rotwein', _catalogKey: 'red_wine' },
+      { name: 'Tomaten (Passata)', _catalogKey: 'tomato_canned' },
+      { name: 'Tomatenmark', _catalogKey: 'tomato_paste' },
+      { name: 'Brühe', _catalogKey: 'vegetable_broth' },
+      { name: 'Zwiebel', _catalogKey: 'onion_yellow' },
+      { name: 'Salz', _catalogKey: 'salt' },
+    ],
+  });
+  const unknownKarotte = g.violations.some(v => v.code === 'unknown_to_profile' && /karotte/i.test(v.detail));
+  const unknownSellerie = g.violations.some(v => v.code === 'unknown_to_profile' && /sellerie/i.test(v.detail));
+  if (!unknownKarotte && !unknownSellerie) ok('Bridge: Karotte + Sellerie NICHT als unknown_to_profile');
+  else bad('Bridge: Fehlalarm fuer Soffritto: karotte=' + unknownKarotte + ' sellerie=' + unknownSellerie);
+}
+
+// --- B3: Bolognese -> KEIN core_protein_dominance (Bridge skipCoreShare)
+{
+  const g = guard.checkQuery('Spaghetti Bolognese', {
+    ingredients: [
+      { name: 'Spaghetti', _catalogKey: 'pasta_dry' },
+      { name: 'Rinderhack', _catalogKey: 'beef_mince' },
+      { name: 'Pancetta', _catalogKey: 'pancetta' },
+      { name: 'Karotte', _catalogKey: 'carrot' },
+      { name: 'Sellerie', _catalogKey: 'celery' },
+      { name: 'Rotwein', _catalogKey: 'red_wine' },
+      { name: 'Tomaten (Passata)', _catalogKey: 'tomato_canned' },
+      { name: 'Tomatenmark', _catalogKey: 'tomato_paste' },
+      { name: 'Brühe', _catalogKey: 'vegetable_broth' },
+      { name: 'Zwiebel', _catalogKey: 'onion_yellow' },
+      { name: 'Salz', _catalogKey: 'salt' },
+    ],
+  });
+  const hasDom = g.violations.some(v => v.code === 'core_protein_dominance');
+  if (!hasDom) ok('Bridge: core_protein_dominance bei Composite uebersprungen');
+  else bad('Bridge: core_protein_dominance greift faelschlich');
+}
+
+// --- B4: Bolognese ohne Pancetta -> composite_core_missing
+{
+  const g = guard.checkQuery('Spaghetti Bolognese', {
+    ingredients: [
+      { name: 'Spaghetti', _catalogKey: 'pasta_dry' },
+      { name: 'Rinderhack', _catalogKey: 'beef_mince' },
+      { name: 'Zwiebel', _catalogKey: 'onion_yellow' },
+      { name: 'Karotte', _catalogKey: 'carrot' },
+      { name: 'Sellerie', _catalogKey: 'celery' },
+      { name: 'Rotwein', _catalogKey: 'red_wine' },
+      { name: 'Tomaten (Passata)', _catalogKey: 'tomato_canned' },
+      { name: 'Tomatenmark', _catalogKey: 'tomato_paste' },
+      { name: 'Brühe', _catalogKey: 'vegetable_broth' },
+      { name: 'Salz', _catalogKey: 'salt' },
+    ],
+  });
+  if (!g.ok) ok('Bridge: Bolognese ohne Pancetta -> abgelehnt');
+  else bad('Bridge: Bolognese ohne Pancetta NICHT abgelehnt');
+  const hasMissing = g.violations.some(v => v.code === 'composite_core_missing' && /pancetta/i.test(v.detail));
+  if (hasMissing) ok('Bridge: composite_core_missing pancetta');
+  else bad('Bridge: composite_core_missing pancetta fehlt');
+}
+
+// --- B5: Bolognese ohne ai_instruction-Treffer -> kein Composite
+{
+  const g = guard.checkQuery('Spaghetti mit Tomatensoße', {
+    ingredients: [
+      { name: 'Spaghetti', _catalogKey: 'pasta_dry' },
+      { name: 'Tomaten', _catalogKey: 'tomato' },
+      { name: 'Olivenöl', _catalogKey: 'olive_oil' },
+      { name: 'Zwiebel', _catalogKey: 'onion_yellow' },
+      { name: 'Knoblauch', _catalogKey: 'garlic' },
+    ],
+  });
+  if (g.ok) ok('Bridge: Tomatensoße (kein Composite) -> freigegeben');
+  else bad('Bridge: Tomatensoße abgelehnt: ' + JSON.stringify(g.violations));
+  if (!g.resolved.compositeId) ok('Bridge: kein compositeId fuer einfache Tomatensoße');
+  else bad('Bridge: falscher compositeId: ' + g.resolved.compositeId);
 }
 
 console.log();
