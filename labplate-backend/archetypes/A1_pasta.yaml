@@ -59,8 +59,23 @@ core:
       - norma                 # Melanzane + Ricotta
       - vodka_sauce
       - burro_parmigiano      # Butter + Parmesan, ohne Tomate
-    amount_g: [50, 300]
-    notes: "Komponierte Sauce. Minimum 50g Flüssigbasis, sonst ist die Pasta trocken."
+      # Elementare Saucen-Bausteine (Aglio e Olio, Carbonara,
+      # Cacio e Pepe, Pasta al Burro etc. haben keine Sauce im
+      # Tomaten-Sinn - sie werden aus Fett+Aromat+Ei+Käse gebaut)
+      - olive_oil
+      - butter
+      - garlic
+      - chili
+      - guanciale
+      - pancetta
+      - egg
+      - pecorino
+      - parmesan
+    amount_g: [10, 300]
+    notes: >
+      Komponierte Sauce ODER elementare Sauce-Bausteine.
+      Minimum 10g, weil reine Fett-Aromaten-Pasta (Aglio e Olio)
+      eine kleine Menge ausmacht.
 
 tolerated:
   # Alles hier ist erlaubt, aber mit Mengengrenze.

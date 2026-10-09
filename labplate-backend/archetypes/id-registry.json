@@ -1265,6 +1265,21 @@
     "tomato": {
       "kind": "nutrient",
       "catalog_key": "tomato"
+    },
+    "rote_chilischote": {
+      "kind": "alias",
+      "target": "chili",
+      "target_exists": true
+    },
+    "chilischote": {
+      "kind": "alias",
+      "target": "chili",
+      "target_exists": true
+    },
+    "rote_chilischote_(fein_gehackt)": {
+      "kind": "alias",
+      "target": "chili",
+      "target_exists": true
     }
   }
 }

@@ -45,6 +45,9 @@ function ingredientCandidates(ing, catalog) {
   const norm = normalizeName(raw);
   const normSpaced = String(raw).trim().toLowerCase();
   const noParens = normSpaced.replace(/\(.*?\)/g, ' ').replace(/\s+/g, ' ').trim();
+  // Adjektiv-Suffixe entfernen: 'rote chilischote fein gehackt' -> 'rote chilischote'
+  const ADJ = /\b(fein|grob|fein_gehackt|grob_gehackt|gehackt|geschnitten|gewuerfelt|gerieben|gehobelt|frisch|getrocknet|gemahlen|ganz|halbiert|geviertelt|gewaschen|geputzt|abgetropft)\b/g;
+  const stripped = noParens.replace(ADJ, ' ').replace(/\s+/g, ' ').trim();
 
   // 1. Direkt aus Recipe-Metadaten (hoechste Prioritaet):
   //    die v92-Pipeline liefert _catalogKey und _v92_id mit.
@@ -59,6 +62,17 @@ function ingredientCandidates(ing, catalog) {
   if (noParens) {
     out.add(noParens);
     out.add(noParens.replace(/\s+/g, '_'));
+  }
+  // 3b. Adjektiv-Strip: "rote chilischote fein gehackt" -> "rote chilischote"
+  if (stripped && stripped !== noParens) {
+    out.add(stripped);
+    out.add(stripped.replace(/\s+/g, '_'));
+    // Farbadjektive entfernen: "rote chilischote" -> "chilischote"
+    const noColor = stripped.replace(/^(rote|roter|rotes|roten|gruene|gruener|gruenes|gruenen|gelbe|gelber|gelbes|gelben|schwarze|schwarzer|schwarzes|schwarzen|weisse|weisser|weisses|weissen|reife|reifer|reifes|reifen)\s+/i, '').trim();
+    if (noColor && noColor !== stripped) {
+      out.add(noColor);
+      out.add(noColor.replace(/\s+/g, '_'));
+    }
   }
   // 4. Einzelwort-Variante ohne Klammer-Inhalt
   if (noParens && noParens !== normSpaced) {
