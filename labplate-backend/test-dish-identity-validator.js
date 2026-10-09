@@ -470,6 +470,85 @@ function bad(m) { console.log('FAIL ' + m); fail++; }
   else bad('Bridge: falscher compositeId: ' + g.resolved.compositeId);
 }
 
+// --- AMOUNT-Tests: Mengenbereiche ----------------------------------
+
+// --- M1: Spaghetti deutlich zu viel (250g/Portion, max=150) -> amount_out_of_range
+{
+  const r = validate('A1_pasta', {
+    servings: 1,
+    ingredients: [
+      { name: 'Spaghetti', amount: 250, unit: 'g', _catalogKey: 'pasta_dry' },
+      { name: 'Tomaten', amount: 200, unit: 'g', _catalogKey: 'tomato' },
+      { name: 'Olivenöl', amount: 15, unit: 'ml', _catalogKey: 'olive_oil' },
+    ],
+  });
+  const hasRange = r.violations.some(v => v.code === 'amount_out_of_range' && /spaghetti/i.test(v.detail));
+  if (hasRange) ok('M1: Spaghetti 250g/Portion -> amount_out_of_range');
+  else bad('M1: amount_out_of_range fuer Spaghetti fehlt');
+}
+
+// --- M2: Spaghetti im oberen Rand (140g/Portion, max=150) -> ok
+{
+  const r = validate('A1_pasta', {
+    servings: 1,
+    ingredients: [
+      { name: 'Spaghetti', amount: 140, unit: 'g', _catalogKey: 'pasta_dry' },
+      { name: 'Tomaten', amount: 200, unit: 'g', _catalogKey: 'tomato' },
+      { name: 'Olivenöl', amount: 15, unit: 'ml', _catalogKey: 'olive_oil' },
+    ],
+  });
+  const hasRange = r.violations.some(v => v.code === 'amount_out_of_range' && /spaghetti/i.test(v.detail));
+  if (!hasRange) ok('M2: Spaghetti 140g/Portion -> keine Range-Verletzung');
+  else bad('M2: Fehlalarm bei Spaghetti 140g: ' + JSON.stringify(r.violations.filter(v => /spaghetti/i.test(v.detail))));
+}
+
+// --- M3: Spaghetti minimal (60g/Portion, min=70) -> amount_near_boundary
+{
+  const r = validate('A1_pasta', {
+    servings: 1,
+    ingredients: [
+      { name: 'Spaghetti', amount: 55, unit: 'g', _catalogKey: 'pasta_dry' },
+      { name: 'Tomaten', amount: 200, unit: 'g', _catalogKey: 'tomato' },
+      { name: 'Olivenöl', amount: 15, unit: 'ml', _catalogKey: 'olive_oil' },
+    ],
+  });
+  const hasNear = r.violations.some(v => v.code === 'amount_near_boundary' && /spaghetti/i.test(v.detail));
+  if (hasNear) ok('M3: Spaghetti 55g/Portion -> amount_near_boundary');
+  else bad('M3: amount_near_boundary fuer Spaghetti fehlt');
+}
+
+// --- M4: Cacio e Pepe mit 250g Pecorino (max=120) -> amount_out_of_range
+{
+  const r = validateComposite('cacio_e_pepe', {
+    servings: 1,
+    ingredients: [
+      { name: 'Spaghetti', amount: 100, unit: 'g', _catalogKey: 'pasta_dry' },
+      { name: 'Pecorino Romano', amount: 250, unit: 'g', _catalogKey: 'pecorino' },
+      { name: 'Schwarzer Pfeffer', amount: 5, unit: 'g', _catalogKey: 'black_pepper' },
+      { name: 'Nudelwasser', amount: 150, unit: 'g', _catalogKey: 'water' },
+    ],
+  });
+  const hasRange = r.violations.some(v => v.code === 'amount_out_of_range' && /pecorino/i.test(v.detail));
+  if (hasRange) ok('M4: Pecorino 250g -> amount_out_of_range');
+  else bad('M4: amount_out_of_range fuer Pecorino fehlt: ' + JSON.stringify(r.violations));
+}
+
+// --- M5: Multi-Portion-Berechnung. 2 Portionen, 280g Spaghetti
+//         = 140g/Portion. Im Toleranzband, kein Blocker.
+{
+  const r = validate('A1_pasta', {
+    servings: 2,
+    ingredients: [
+      { name: 'Spaghetti', amount: 280, unit: 'g', _catalogKey: 'pasta_dry' },
+      { name: 'Tomaten', amount: 400, unit: 'g', _catalogKey: 'tomato' },
+      { name: 'Olivenöl', amount: 30, unit: 'ml', _catalogKey: 'olive_oil' },
+    ],
+  });
+  const hasRange = r.violations.some(v => v.code === 'amount_out_of_range' && /spaghetti/i.test(v.detail));
+  if (!hasRange) ok('M5: Spaghetti 280g fuer 2 Portionen (140g/P) -> ok');
+  else bad('M5: Fehlalarm bei 280g/2P');
+}
+
 console.log();
 console.log('Pass: ' + pass + '  Fail: ' + fail);
 process.exit(fail > 0 ? 1 : 0);

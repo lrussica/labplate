@@ -58,6 +58,7 @@ function checkQuery(query, recipe, options) {
   if (resolved.compositeId) {
     archetypeOpts.extraAllowedIds = validator.getCompositeAllowedIds(resolved.compositeId);
     archetypeOpts.skipCoreShare = true;
+    archetypeOpts.skipAmountRanges = true;  // Composite uebernimmt
   }
   const v = validator.validate(resolved.archetypeId, recipe, archetypeOpts);
 

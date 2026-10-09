@@ -593,8 +593,126 @@ function validateComposite(compositeId, recipe) {
     }
   }
 
+  // 4. Mengen-Check gegen die Composite-amount_g-Bereiche
+  violations.push(...checkAmountRanges('Composite ' + compositeId, composite, recipe, candidateSets));
+
   const hasBlock = violations.some(v => v.severity === SEV_BLOCK);
   return { ok: !hasBlock, violations };
+}
+
+/**
+ * Sammelt Mengenbereiche pro Zutat aus einem Profil (Archetyp oder Composite).
+ * Unterstuetzt drei Formen:
+ *   a) slot: { allowed: [...], amount_g: [min, max] }
+ *   b) slot: { allowed: [...], amount_g: { id: [min,max] } }
+ *   c) slot: { allowed: { id: { amount_g: [min,max] } } }
+ */
+function buildRangeIndex(profile) {
+  const rangeById = new Map();
+
+  function addSlot(slotName, slotDef) {
+    if (!slotDef) return;
+    const allowed = slotDef.allowed;
+    const slotAmount = slotDef.amount_g;
+
+    if (Array.isArray(allowed)) {
+      let min = null, max = null;
+      if (Array.isArray(slotAmount)) { min = slotAmount[0]; max = slotAmount[1]; }
+      for (const id of allowed) {
+        if (rangeById.has(id)) continue;
+        rangeById.set(id, { min, max, slotName });
+      }
+    } else if (allowed && typeof allowed === 'object') {
+      for (const [id, itemDef] of Object.entries(allowed)) {
+        if (rangeById.has(id)) continue;
+        const itemAmount = (itemDef && itemDef.amount_g) || slotAmount;
+        let min = null, max = null;
+        if (Array.isArray(itemAmount)) { min = itemAmount[0]; max = itemAmount[1]; }
+        rangeById.set(id, { min, max, slotName });
+      }
+    }
+  }
+
+  for (const [name, def] of Object.entries(profile.core || {})) addSlot(name, def);
+  for (const [name, def] of Object.entries(profile.tolerated || {})) addSlot(name, def);
+
+  const expanded = new Map(rangeById);
+  for (const [id, info] of expanded) {
+    const r = loader.resolveId(id);
+    if (r && r.target && !expanded.has(r.target)) expanded.set(r.target, info);
+    if (r && r.catalog_key && !expanded.has(r.catalog_key)) expanded.set(r.catalog_key, info);
+  }
+  return expanded;
+}
+
+/**
+ * Prueft Mengen pro Portion gegen die erlaubten Bereiche im Profil.
+ * Rechnet amount / servings.
+ *
+ * Schwellen:
+ *   < 50% von min     -> BLOCK  amount_out_of_range
+ *   < 80% von min     -> WARN   amount_near_boundary
+ *   > 150% von max    -> BLOCK  amount_out_of_range
+ *   > 120% von max    -> WARN   amount_near_boundary
+ */
+function checkAmountRanges(profileName, profile, recipe, candidateSets) {
+  const violations = [];
+  const rangeById = buildRangeIndex(profile);
+  const servings = Math.max(1, Number(recipe.servings) || 1);
+
+  for (let i = 0; i < recipe.ingredients.length; i++) {
+    const ing = recipe.ingredients[i];
+    const unit = String(ing.unit || '').toLowerCase();
+    if (unit === 'prise' || unit === 'messerspitze' || unit === 'stk') continue;
+    const amount = Number(ing.amount);
+    if (!Number.isFinite(amount) || amount <= 0) continue;
+
+    const cands = candidateSets[i] || [];
+    let info = null;
+    for (const c of cands) {
+      if (rangeById.has(c)) { info = rangeById.get(c); break; }
+    }
+    if (!info || info.min == null || info.max == null) continue;
+
+    const perServing = amount / servings;
+    const min = Number(info.min);
+    const max = Number(info.max);
+
+    if (perServing < min * 0.5) {
+      violations.push({
+        code: 'amount_out_of_range',
+        severity: SEV_BLOCK,
+        detail: profileName + ': ' + (ing.name || cands[0]) +
+                ' bei ' + perServing.toFixed(1) + ' g/Portion, Profil erwartet ' +
+                min + '-' + max + ' g.',
+      });
+    } else if (perServing < min * 0.85) {
+      violations.push({
+        code: 'amount_near_boundary',
+        severity: SEV_WARN,
+        detail: profileName + ': ' + (ing.name || cands[0]) +
+                ' bei ' + perServing.toFixed(1) + ' g/Portion, unterer Rand ' +
+                min + '-' + max + ' g.',
+      });
+    } else if (perServing > max * 1.5) {
+      violations.push({
+        code: 'amount_out_of_range',
+        severity: SEV_BLOCK,
+        detail: profileName + ': ' + (ing.name || cands[0]) +
+                ' bei ' + perServing.toFixed(1) + ' g/Portion, Profil erlaubt ' +
+                min + '-' + max + ' g.',
+      });
+    } else if (perServing > max * 1.15) {
+      violations.push({
+        code: 'amount_near_boundary',
+        severity: SEV_WARN,
+        detail: profileName + ': ' + (ing.name || cands[0]) +
+                ' bei ' + perServing.toFixed(1) + ' g/Portion, oberer Rand ' +
+                min + '-' + max + ' g.',
+      });
+    }
+  }
+  return violations;
 }
 
 function validate(archetypeId, recipe, options) {
@@ -650,6 +768,12 @@ function validate(archetypeId, recipe, options) {
   // 3c. Profil-Treue: jede Zutat muss in core/tolerated erlaubt sein,
   //     ausser sie kommt aus einem Composite-Profil (extraAllowed).
   violations.push(...checkProfileFit(archetype, recipe, candidateSets, extraAllowed));
+
+  // 3d. Mengen-Check gegen Archetyp-amount_g-Bereiche.
+  //     Bei Composite uebernimmt das Composite, dann hier uebersprungen.
+  if (!opts.skipAmountRanges) {
+    violations.push(...checkAmountRanges('Archetyp ' + archetypeId, archetype, recipe, candidateSets));
+  }
 
   // 4. unknown (nur warn)
   //    Bekannt = entweder Registry kennt den Kandidaten ODER Catalog hat ihn.
