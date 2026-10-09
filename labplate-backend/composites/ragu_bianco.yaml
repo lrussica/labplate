@@ -8,36 +8,36 @@ core:
   beef_mince:
     roles: [protein, base]
     allowed: [beef_mince, beef, pork_meat]
-    amount_g: [50, 100]
+    amount_g: [100, 200]
   pancetta:
     roles: [fat, umami]
     allowed: [pancetta, guanciale]
-    amount_g: [12, 30]
+    amount_g: [24, 60]
   soffritto_onion:
     roles: [aromatic]
     allowed: [onion, onion_yellow, shallot]
-    amount_g: [10, 25]
+    amount_g: [20, 50]
   soffritto_carrot:
     roles: [aromatic, sweet]
     allowed: [carrot]
-    amount_g: [10, 25]
+    amount_g: [20, 50]
   soffritto_celery:
     roles: [aromatic]
     allowed: [celery]
-    amount_g: [7.5, 20]
+    amount_g: [15, 40]
   wine:
     roles: [acid, liquid]
     allowed: [white_wine, red_wine]
-    amount_g: [20, 50]
+    amount_g: [40, 100]
   stock:
     roles: [liquid]
     allowed: [vegetable_broth, beef_broth, water]
-    amount_g: [75, 150]
+    amount_g: [150, 300]
   seasoning:
     roles: [seasoning]
     cardinality: one_or_more
     allowed: [salt, black_pepper]
-    amount_g: [0.2, 1.5]
+    amount_g: [0.4, 3]
 
 tolerated:
   whole_milk:

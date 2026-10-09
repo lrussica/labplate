@@ -8,41 +8,41 @@ core:
   eggplant:
     roles: [base, bulk]
     allowed: [eggplant, aubergine]
-    amount_g: [62, 125]
+    amount_g: [124, 250]
     notes: "In Scheiben oder Wuerfeln, vor dem Braten salzen."
   tomato:
     roles: [base]
     allowed: [tomato, tomato_canned, tomato_puree]
-    amount_g: [75, 150]
+    amount_g: [150, 300]
   basil:
     roles: [flavor, finish]
     allowed: [basil, basil_fresh]
-    amount_g: [0.8, 3]
+    amount_g: [1.5, 6]
   olive_oil:
     roles: [fat]
     allowed: [olive_oil]
-    amount_g: [7.5, 18]
+    amount_g: [15, 36]
   garlic:
     roles: [aromatic]
     allowed: [garlic]
-    amount_g: [0.8, 2.5]
+    amount_g: [1.5, 5]
   salt:
     roles: [seasoning]
     allowed: [salt]
-    amount_g: [0.5, 2]
+    amount_g: [1, 4]
 
 tolerated:
   ricotta:
     roles: [topping, umami]
     allowed: [ricotta, ricotta_salata]
-    amount_g: [0, 20]
+    amount_g: [0, 40]
     notes: >
       Ricotta salata ist der klassische Kaese. Wenn verfuegbar, 40-80g
       gerieben ueber die fertige Pasta. Ricotta fresco nur wenn
       Ricotta salata nicht verfuegbar.
   chili:
     allowed: [chili, dried_chili]
-    amount_g: [0, 1]
+    amount_g: [0, 2]
 
 forbidden:
   - cream_heavy

@@ -8,51 +8,51 @@ core:
   beef_mince:
     roles: [protein, base]
     allowed: [beef_mince, beef]
-    amount_g: [50, 100]
+    amount_g: [100, 200]
   pancetta:
     roles: [fat, umami]
     allowed: [pancetta, guanciale]
-    amount_g: [12, 30]
+    amount_g: [24, 60]
   soffritto_onion:
     roles: [aromatic]
     allowed: [onion, onion_yellow, shallot]
-    amount_g: [10, 25]
+    amount_g: [20, 50]
   soffritto_carrot:
     roles: [aromatic, sweet]
     allowed: [carrot]
-    amount_g: [10, 25]
+    amount_g: [20, 50]
   soffritto_celery:
     roles: [aromatic]
     allowed: [celery]
-    amount_g: [7.5, 20]
+    amount_g: [15, 40]
   wine:
     roles: [acid, liquid]
     allowed: [red_wine, white_wine]
-    amount_g: [20, 50]
+    amount_g: [40, 100]
   tomato_passata:
     roles: [base]
     allowed: [tomato_passata, tomato_canned, tomato_puree, tomato]
-    amount_g: [75, 150]
+    amount_g: [150, 300]
     notes: "Frische Tomaten sind tolerated, aber Passata ist die Referenz."
   tomato_paste:
     roles: [umami, thickener]
     allowed: [tomato_paste]
-    amount_g: [4, 12]
+    amount_g: [8, 24]
   stock:
     roles: [liquid]
     allowed: [vegetable_broth, beef_broth, water]
-    amount_g: [50, 125]
+    amount_g: [100, 250]
   seasoning:
     roles: [seasoning]
     cardinality: one_or_more
     allowed: [salt, black_pepper]
-    amount_g: [0.2, 1.5]
+    amount_g: [0.4, 3]
 
 tolerated:
   whole_milk:
     roles: [finishing_technique]
     allowed: [whole_milk, milk_whole]
-    amount_g: [0, 25]
+    amount_g: [0, 50]
     notes: >
       Traditionell, optional. Gegen Ende der Garzeit vollstaendig
       einkochen lassen. Reduziert die Saeure der Tomate.
@@ -63,11 +63,11 @@ tolerated:
   butter:
     roles: [technique, finish]
     allowed: [butter]
-    amount_g: [0, 5]
+    amount_g: [0, 10]
   parmesan:
     roles: [finish, umami]
     allowed: [parmesan, parmigiano_reggiano, pecorino]
-    amount_g: [0, 10]
+    amount_g: [0, 20]
     notes: >
       Als Finish ueber die fertige Pasta. Nicht in die Sauce
       einruehren, das ist nicht klassisch bolognesisch."

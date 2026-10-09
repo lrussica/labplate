@@ -8,47 +8,47 @@ core:
   mushroom:
     roles: [base, umami]
     allowed: [mushroom, mushroom_button, champignon, porcini]
-    amount_g: [62, 125]
+    amount_g: [124, 250]
     notes: "Champignons als Basis, Steinpilze fuer Tiefe."
   garlic:
     roles: [aromatic]
     allowed: [garlic]
-    amount_g: [1, 4]
+    amount_g: [2, 8]
   olive_oil:
     roles: [fat]
     allowed: [olive_oil]
-    amount_g: [6, 14]
+    amount_g: [12, 28]
   parsley:
     roles: [finish]
     allowed: [parsley, parsley_fresh]
-    amount_g: [0.8, 3]
+    amount_g: [1.5, 6]
   salt:
     roles: [seasoning]
     allowed: [salt]
-    amount_g: [0.2, 1.5]
+    amount_g: [0.4, 3]
 
 tolerated:
   dried_porcini:
     roles: [umami]
     allowed: [porcini_dried, mushroom_dried]
-    amount_g: [0, 5]
+    amount_g: [0, 10]
     notes: "In warmem Wasser eingeweicht. Einweichwasser mitverwenden."
   cream_heavy:
     roles: [fat, texture]
     allowed: [cream_heavy]
-    amount_g: [0, 25]
+    amount_g: [0, 50]
     notes: "Nicht klassisch. Nur in der italo-amerikanischen Variante."
   white_wine:
     roles: [acid, liquid]
     allowed: [white_wine]
-    amount_g: [0, 20]
+    amount_g: [0, 40]
   parmesan:
     roles: [umami, finish]
     allowed: [parmesan, parmigiano_reggiano]
-    amount_g: [0, 7.5]
+    amount_g: [0, 15]
   chili:
     allowed: [chili, dried_chili]
-    amount_g: [0, 1]
+    amount_g: [0, 2]
 
 forbidden:
   - butter

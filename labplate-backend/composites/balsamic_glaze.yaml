@@ -8,19 +8,19 @@ core:
   balsamic_vinegar:
     roles: [base]
     allowed: [balsamic_vinegar, balsamico]
-    amount_g: [50, 125]
+    amount_g: [100, 250]
     notes: "Guter Balsamico, mindestens 6 Jahre gereift."
 
 tolerated:
   honey:
     roles: [sweet]
     allowed: [honey]
-    amount_g: [0, 5]
+    amount_g: [0, 10]
     notes: "Nur wenn der Balsamico zu sauer ist."
   brown_sugar:
     roles: [sweet]
     allowed: [sugar_brown, sugar]
-    amount_g: [0, 5]
+    amount_g: [0, 10]
 
 forbidden:
   - cream_heavy

@@ -615,20 +615,29 @@ function buildRangeIndex(profile) {
     const allowed = slotDef.allowed;
     const slotAmount = slotDef.amount_g;
 
+    // Merge-Helper: wenn eine Zutat in mehreren Slots vorkommt,
+    // nehmen wir den weiteren Bereich (kleinere min, groessere max).
+    function put(id, min, max) {
+      if (rangeById.has(id)) {
+        const old = rangeById.get(id);
+        const mergedMin = (old.min == null || min == null) ? (old.min == null ? min : old.min) : Math.min(old.min, min);
+        const mergedMax = (old.max == null || max == null) ? (old.max == null ? max : old.max) : Math.max(old.max, max);
+        rangeById.set(id, { min: mergedMin, max: mergedMax, slotName: old.slotName + '+' + slotName });
+        return;
+      }
+      rangeById.set(id, { min, max, slotName });
+    }
+
     if (Array.isArray(allowed)) {
       let min = null, max = null;
       if (Array.isArray(slotAmount)) { min = slotAmount[0]; max = slotAmount[1]; }
-      for (const id of allowed) {
-        if (rangeById.has(id)) continue;
-        rangeById.set(id, { min, max, slotName });
-      }
+      for (const id of allowed) put(id, min, max);
     } else if (allowed && typeof allowed === 'object') {
       for (const [id, itemDef] of Object.entries(allowed)) {
-        if (rangeById.has(id)) continue;
         const itemAmount = (itemDef && itemDef.amount_g) || slotAmount;
         let min = null, max = null;
         if (Array.isArray(itemAmount)) { min = itemAmount[0]; max = itemAmount[1]; }
-        rangeById.set(id, { min, max, slotName });
+        put(id, min, max);
       }
     }
   }

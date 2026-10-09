@@ -8,31 +8,31 @@ core:
   tomato:
     roles: [base]
     allowed: [tomato, tomato_canned, tomato_puree, fresh_tomatoes]
-    amount_g: [75, 175]
+    amount_g: [150, 350]
   olive_oil:
     roles: [fat]
     allowed: [olive_oil]
-    amount_g: [5, 14]
+    amount_g: [10, 28]
   garlic:
     roles: [aromatic]
     allowed: [garlic]
-    amount_g: [1, 4]
+    amount_g: [2, 8]
   basil:
     roles: [flavor, finish]
     allowed: [basil, basil_fresh]
-    amount_g: [0.8, 3]
+    amount_g: [1.5, 6]
   salt:
     roles: [seasoning]
     allowed: [salt]
-    amount_g: [0.2, 1.5]
+    amount_g: [0.4, 3]
 
 tolerated:
   oregano:
     allowed: [oregano, oregano_dried]
-    amount_g: [0, 1]
+    amount_g: [0, 2]
   chili:
     allowed: [chili, dried_chili, fresh_chili]
-    amount_g: [0, 1]
+    amount_g: [0, 2]
 
 forbidden:
   - cream_heavy

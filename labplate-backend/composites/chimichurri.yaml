@@ -8,42 +8,42 @@ core:
   parsley:
     roles: [base, flavor]
     allowed: [parsley, parsley_fresh]
-    amount_g: [10, 25]
+    amount_g: [20, 50]
     notes: "Frisch, fein gehackt. Nicht mixen."
   garlic:
     roles: [aromatic]
     allowed: [garlic]
-    amount_g: [1, 5]
+    amount_g: [2, 10]
   oregano:
     roles: [flavor]
     allowed: [oregano, oregano_dried]
-    amount_g: [0.8, 2.5]
+    amount_g: [1.5, 5]
   olive_oil:
     roles: [fat, base]
     allowed: [olive_oil]
-    amount_g: [20, 50]
+    amount_g: [40, 100]
   red_wine_vinegar:
     roles: [acid]
     allowed: [red_wine_vinegar, vinegar]
-    amount_g: [7.5, 18]
+    amount_g: [15, 36]
   salt:
     roles: [seasoning]
     allowed: [salt]
-    amount_g: [0.5, 1.5]
+    amount_g: [1, 3]
 
 tolerated:
   chili:
     roles: [heat]
     allowed: [chili, dried_chili, fresh_chili]
-    amount_g: [0, 2.5]
+    amount_g: [0, 5]
   black_pepper:
     roles: [seasoning]
     allowed: [black_pepper, pepper]
-    amount_g: [0, 0.8]
+    amount_g: [0, 1.5]
   cilantro:
     roles: [flavor]
     allowed: [cilantro, coriander_fresh]
-    amount_g: [0, 5]
+    amount_g: [0, 10]
     notes: "Moderne Variante. Klassisch nur Petersilie."
 
 forbidden:

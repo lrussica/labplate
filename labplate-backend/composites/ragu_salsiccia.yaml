@@ -8,34 +8,34 @@ core:
   sausage:
     roles: [protein, base, fat]
     allowed: [sausage, italian_sausage]
-    amount_g: [62, 125]
+    amount_g: [124, 250]
   soffritto_onion:
     roles: [aromatic]
     allowed: [onion, onion_yellow, shallot]
-    amount_g: [10, 25]
+    amount_g: [20, 50]
   wine:
     roles: [acid, liquid]
     allowed: [red_wine, white_wine]
-    amount_g: [20, 50]
+    amount_g: [40, 100]
   tomato_passata:
     roles: [base]
     allowed: [tomato_passata, tomato_canned, tomato_puree]
-    amount_g: [75, 150]
+    amount_g: [150, 300]
   stock:
     roles: [liquid]
     allowed: [vegetable_broth, beef_broth, water]
-    amount_g: [50, 100]
+    amount_g: [100, 200]
   seasoning:
     roles: [seasoning]
     cardinality: one_or_more
     allowed: [salt, black_pepper]
-    amount_g: [0.2, 1.5]
+    amount_g: [0.4, 3]
 
 tolerated:
   soffritto_carrot:
     roles: [aromatic, sweet]
     allowed: [carrot]
-    amount_g: [0, 20]
+    amount_g: [0, 40]
   soffritto_celery:
     roles: [aromatic]
     allowed: [celery]
@@ -47,11 +47,11 @@ tolerated:
   whole_milk:
     roles: [finishing_technique]
     allowed: [whole_milk, milk_whole]
-    amount_g: [0, 20]
+    amount_g: [0, 40]
   parmesan:
     roles: [finish, umami]
     allowed: [parmesan, parmigiano_reggiano, pecorino]
-    amount_g: [0, 10]
+    amount_g: [0, 20]
 
 forbidden:
   - beef_mince

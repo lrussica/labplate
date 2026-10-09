@@ -8,17 +8,17 @@ core:
   pecorino:
     roles: [base, umami, binder]
     allowed: [pecorino, pecorino_romano]
-    amount_g: [15, 30]
+    amount_g: [30, 60]
     notes: "Pecorino Romano."
   black_pepper:
     roles: [heat, flavor]
     allowed: [black_pepper, pepper]
-    amount_g: [0.8, 2]
+    amount_g: [1.5, 4]
     notes: "Frisch grob gemahlen."
   pasta_water:
     roles: [technique, binder]
     allowed: [pasta_water, water]
-    amount_g: [25, 62]
+    amount_g: [50, 124]
     notes: "Stärkehaltig, emulgiert den Käse. Catalog-Key: water."
 
 tolerated: {}

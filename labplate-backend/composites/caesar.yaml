@@ -8,54 +8,54 @@ core:
   pasteurized_egg_yolk:
     roles: [binder, base]
     allowed: [pasteurized_egg_yolk, egg, mayonnaise]
-    amount_g: [5, 15]
+    amount_g: [10, 30]
     notes: >
       R14 (Eier-Sicherheit): Nur pasteurisiertes Eigelb oder
       Mayonnaise als Ersatz. Rohes Eigelb nicht zulaessig.
   anchovy:
     roles: [umami, flavor]
     allowed: [anchovy, anchovies]
-    amount_g: [2.5, 10]
+    amount_g: [5, 20]
     notes: "Cardini-Linie. Definierend."
   garlic:
     roles: [aromatic]
     allowed: [garlic]
-    amount_g: [0.5, 2.5]
+    amount_g: [1, 5]
   lemon_juice:
     roles: [acid]
     allowed: [lemon_juice]
-    amount_g: [2.5, 7.5]
+    amount_g: [5, 15]
   dijon_mustard:
     roles: [emulsifier, acid]
     allowed: [dijon_mustard, mustard]
-    amount_g: [1, 4]
+    amount_g: [2, 8]
   parmesan:
     roles: [umami, finish]
     allowed: [parmesan, parmigiano_reggiano]
-    amount_g: [7.5, 18]
+    amount_g: [15, 36]
   olive_oil:
     roles: [fat]
     allowed: [olive_oil]
-    amount_g: [20, 38]
+    amount_g: [40, 76]
   worcestershire_sauce:
     roles: [umami, flavor]
     allowed: [worcestershire_sauce, fish_sauce]
-    amount_g: [1, 5]
+    amount_g: [2, 10]
     notes: "Ersetzt Sardellen nicht vollstaendig, ergaenzt sie."
   black_pepper:
     roles: [seasoning]
     allowed: [black_pepper, pepper]
-    amount_g: [0.2, 1]
+    amount_g: [0.4, 2]
 
 tolerated:
   red_wine_vinegar:
     roles: [acid]
     allowed: [red_wine_vinegar, white_wine_vinegar, vinegar]
-    amount_g: [0, 4]
+    amount_g: [0, 8]
   salt:
     roles: [seasoning]
     allowed: [salt]
-    amount_g: [0, 0.8]
+    amount_g: [0, 1.5]
 
 forbidden:
   - raw_egg_yolk_unpasteurized

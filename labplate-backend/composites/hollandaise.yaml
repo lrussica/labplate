@@ -8,25 +8,25 @@ core:
   pasteurized_egg_yolk:
     roles: [base, binder]
     allowed: [pasteurized_egg_yolk, egg]
-    amount_g: [15, 30]
+    amount_g: [30, 60]
     notes: "R14: nur pasteurisiertes Eigelb. Rohes Eigelb forbidden."
   butter:
     roles: [fat]
     allowed: [butter]
-    amount_g: [38, 75]
+    amount_g: [76, 150]
     notes: "Geklaerte Butter ist Referenz."
   lemon_juice:
     roles: [acid]
     allowed: [lemon_juice]
-    amount_g: [2.5, 7.5]
+    amount_g: [5, 15]
   salt:
     roles: [seasoning]
     allowed: [salt]
-    amount_g: [0.2, 1]
+    amount_g: [0.4, 2]
   black_pepper:
     roles: [seasoning]
     allowed: [black_pepper, white_pepper, pepper]
-    amount_g: [0, 0.5]
+    amount_g: [0, 1]
 
 tolerated:
   white_wine_vinegar:
