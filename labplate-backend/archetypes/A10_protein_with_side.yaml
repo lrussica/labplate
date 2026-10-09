@@ -1,0 +1,190 @@
+archetype: protein_with_side
+version: 1
+
+# ---------------------------------------------------------------------------
+# A10 - Protein + Beilage
+# Referenzprofil fuer den "Rumpsteak"-Fall aus dem iPhone-Test:
+# die KI darf KEINE Beilage erfinden. Die Beilage wird nur aufgenommen,
+# wenn der Nutzer sie nennt oder explizit eine Beilage anfordert.
+# Handover (Block E, Teil 2): "Bei 'Rumpsteak' liefert das System ein
+# Steak-Rezept und bietet Beilagen SEPARAT an."
+# Alle Mengen pro Portion (Single Serving).
+# ---------------------------------------------------------------------------
+
+core:
+  protein:
+    roles: [protein]
+    allowed:
+      - beef_steak
+      - beef_roast
+      - pork_chop
+      - pork_tenderloin
+      - chicken_breast
+      - chicken_thigh
+      - turkey_breast
+      - duck_breast
+      - lamb_chop
+      - lamb_leg
+      - salmon
+      - cod
+      - trout
+      - sea_bass
+      - tuna_steak
+      - shrimp
+      - scallop
+      - tofu
+      - tempeh
+      - seitan
+    amount_g: [100, 250]
+    notes: >
+      Rohgewicht. Kochverluste 15-25% bei Fleisch, 10-15% bei Fisch.
+      Das Gerichtprofil definiert, welche Proteinquelle fuer welches
+      Gericht ueblich ist.
+
+tolerated:
+  side:
+    roles: [starch, bulk]
+    allowed:
+      - potato_boiled
+      - potato_roasted
+      - potato_mashed
+      - potato_fried
+      - sweet_potato
+      - rice
+      - risotto
+      - pasta_side
+      - polenta
+      - couscous
+      - bulgur
+      - quinoa
+      - bread
+      - lentils
+      - beans
+      - chickpeas
+    amount_g: [80, 300]
+    notes: >
+      Nur aufgenommen, wenn der Nutzer sie nennt oder explizit eine
+      Beilage anfordert. pasta_side ist bewusst getrennt von A1:
+      A1 ist Pasta als Hauptgericht, A10 nutzt Pasta als Beilage.
+
+  vegetable:
+    roles: [bulk, flavor]
+    allowed:
+      - broccoli
+      - cauliflower
+      - green_beans
+      - asparagus
+      - spinach
+      - kale
+      - zucchini
+      - bell_pepper
+      - carrot
+      - beetroot
+      - brussels_sprouts
+      - peas
+      - tomato_fresh
+      - mushroom
+      - onion
+      - leek
+      - fennel
+      - eggplant
+      - cabbage
+    amount_g: [0, 250]
+
+  fat:
+    roles: [fat]
+    allowed: [olive_oil, butter, ghee, lard, beef_tallow, duck_fat, coconut_oil]
+    amount_g: [0, 40]
+
+  aromatics:
+    roles: [aromatic]
+    allowed: [garlic, onion, shallot, chili, leek, ginger, lemongrass]
+    amount_g: [0, 30]
+
+  acid:
+    roles: [balance]
+    allowed: [lemon_juice, lime_juice, white_wine, red_wine, vinegar, capers]
+    amount_g: [0, 30]
+
+  herbs:
+    roles: [finish]
+    allowed: [parsley, thyme, rosemary, sage, oregano, basil, dill, tarragon, chive]
+    amount_g: [0, 15]
+
+  sauce_cold:
+    roles: [finish, balance]
+    allowed: [chimichurri, salsa_verde, tartar, aioli, hollandaise, bearnaise, pesto_side, yogurt_sauce]
+    amount_g: [0, 60]
+
+  nuts:
+    roles: [finish, texture]
+    allowed: [pine_nut, walnut, almond, pistachio, hazelnut, sesame]
+    amount_g: [0, 30]
+
+  cheese:
+    roles: [finish, umami]
+    allowed: [parmesan, pecorino, feta, goat_cheese, blue_cheese, mozzarella]
+    amount_g: [0, 50]
+
+variants:
+  high_protein:
+    label: "proteinoptimierte Variante von <Gericht>"
+    additions:
+      - id: extra_protein
+        separate_side: true
+        notes: "Separate Proteinbeilage. Naehrwerte getrennt ausweisen."
+      - id: greek_yogurt_side
+        separate_side: true
+      - id: protein_rich_side
+        separate_side: true
+    amount_g: [30, 100]
+
+  low_carb:
+    label: "low-carb Variante von <Gericht>"
+    substitutions:
+      side: [cauliflower_rice, zucchini_noodles, salad_greens, extra_vegetable]
+
+forbidden:
+  - oats
+  - haferflocken
+  - psyllium
+  - chia
+  - flaxseed
+  - leinsamen
+  - protein_powder
+  - proteinpulver
+  - huel
+  - soylent
+  - weight_gainer
+  - meal_replacement
+  - unrelated_starch
+  - unrelated_protein_blend
+
+ratios:
+  protein_to_side: [0.5, 2.0]
+  fat_to_protein:  [0.05, 0.20]
+  salt_to_protein: [0.005, 0.015]
+
+technique:
+  - step: prepare_ingredients
+    params: { mise_en_place: true }
+  - step: start_side
+    parallel_group: sides
+    params: { side: from_plan, cook_time_min: [10, 45] }
+  - step: season_protein
+    parallel_group: protein
+    params: { salt: true, pepper: true, rest_min: [0, 30] }
+  - step: sear_or_grill_protein
+    parallel_group: protein
+    params: { target_internal_temp: depends_on_protein, rest_min: [2, 10] }
+  - step: cook_vegetable
+    parallel_group: sides
+    params: { method: [steam, roast, saute, blanch] }
+  - step: finish_and_plate
+    params: { finish: [sauce_cold, herbs, acid, nuts] }
+
+side_policy: only-if-requested
+# Handover Block E, Teil 2: "Bei 'Rumpsteak' liefert das System ein
+# Steak-Rezept und bietet Beilagen SEPARAT an." Die Beilage wird NICHT
+# automatisch ins Rezept geschrieben. Sie kann als separater Vorschlag
+# angeboten werden, mit getrennter Naehrwertausweisung.

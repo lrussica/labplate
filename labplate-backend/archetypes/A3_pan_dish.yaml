@@ -1,0 +1,158 @@
+archetype: pan_dish
+version: 1
+
+# ---------------------------------------------------------------------------
+# A3 - Pfannengericht
+# Drittes Referenzprofil. Neue Schema-Eigenschaft: cardinality: one_or_more
+# am main-Slot. Item-spezifische amount_g pro Eintrag in allowed.
+# Umfasst: Bratkartoffeln, Wok, Shakshuka, Fried Rice, Pfannengemuese,
+#          Ruehrei-Varianten, Hash, etc.
+# Alle Mengen pro Portion (Single Serving).
+# ---------------------------------------------------------------------------
+
+core:
+  main:
+    roles: [base]
+    cardinality: one_or_more
+    allowed:
+      potato:
+        amount_g: [200, 400]
+        notes: "Bratkartoffeln, Hash. Rohgewicht."
+      rice:
+        amount_g: [150, 300]
+        notes: "Gekochtes Gewicht. Fried Rice."
+      noodle:
+        amount_g: [150, 300]
+        notes: "Gekochtes Gewicht. Wok-Nudeln."
+      egg:
+        amount_g: [100, 220]
+        notes: "2-4 Eier. Shakshuka, Omelett, Ruehrei."
+      tofu:
+        amount_g: [100, 250]
+        notes: "Rohgewicht. Wok, Pfannentofu."
+      tempeh:
+        amount_g: [100, 200]
+      seitan:
+        amount_g: [100, 200]
+      chicken:
+        amount_g: [100, 200]
+        notes: "Rohgewicht. Wok, Pfannenhaenchen."
+      beef:
+        amount_g: [100, 200]
+      pork:
+        amount_g: [100, 200]
+      shrimp:
+        amount_g: [100, 180]
+      chickpea:
+        amount_g: [100, 200]
+        notes: "Gekocht. Chana Masala als Pfannenvariante."
+      vegetable_hearty:
+        amount_g: [150, 300]
+        notes: "Aubergine, Zucchini, Pilz, Paprika als Hauptkomponente."
+
+tolerated:
+  fat:
+    roles: [fat]
+    allowed: [olive_oil, butter, ghee, lard, beef_tallow, duck_fat, coconut_oil, sesame_oil]
+    amount_g: [0, 40]
+    notes: "0 erlaubt (beschichtete Pfanne, eigenes Fett der Zutat)."
+
+  aromatics:
+    roles: [aromatic]
+    allowed: [garlic, onion, shallot, chili, leek, ginger, lemongrass, scallion]
+    amount_g: [0, 40]
+
+  protein:
+    roles: [protein]
+    allowed: [chicken, beef, pork, shrimp, tofu, tempeh, seitan, egg, bacon, pancetta, chorizo, anchovy]
+    amount_g: [0, 150]
+    condition: >
+      Nur wenn nicht schon im main-Slot. Ergaenzend zu vegetarischem main
+      (z.B. Bratkartoffeln mit Speck). Bei Shakshuka ist Ei im main-Slot.
+
+  vegetable:
+    roles: [bulk, flavor]
+    allowed: [tomato_fresh, tomato_canned, bell_pepper, zucchini, eggplant, mushroom, spinach, kale, cabbage, carrot, peas, green_beans, broccoli, cauliflower, corn, olive]
+    amount_g: [0, 250]
+
+  acid:
+    roles: [balance]
+    allowed: [lemon_juice, lime_juice, white_wine, red_wine, vinegar, rice_vinegar, soy_sauce, fish_sauce]
+    amount_g: [0, 30]
+
+  herbs:
+    roles: [finish]
+    allowed: [parsley, cilantro, basil, mint, thyme, rosemary, oregano, dill, chive, scallion_green]
+    amount_g: [0, 15]
+
+  sauce_cold:
+    roles: [finish, balance]
+    allowed: [yogurt_sauce, sriracha, sambal, pesto_side, tahini_sauce, chimichurri]
+    amount_g: [0, 50]
+
+  nuts:
+    roles: [finish, texture]
+    allowed: [peanut, cashew, sesame, pine_nut, walnut, almond]
+    amount_g: [0, 30]
+
+  cheese:
+    roles: [finish, umami]
+    allowed: [parmesan, pecorino, feta, goat_cheese, mozzarella, cheddar]
+    amount_g: [0, 50]
+
+variants:
+  high_protein:
+    label: "proteinoptimierte Variante von <Gericht>"
+    additions:
+      - extra_protein
+      - greek_yogurt_side
+    amount_g: [30, 100]
+
+  low_carb:
+    label: "low-carb Variante von <Gericht>"
+    substitutions:
+      rice: [cauliflower_rice]
+      noodle: [zucchini_noodles, konjac_noodles]
+      potato: [cauliflower, celeriac]
+
+forbidden:
+  - oats
+  - haferflocken
+  - psyllium
+  - chia
+  - flaxseed
+  - leinsamen
+  - protein_powder
+  - proteinpulver
+  - huel
+  - soylent
+  - weight_gainer
+  - meal_replacement
+  - unrelated_starch
+  - unrelated_protein_blend
+
+ratios:
+  fat_to_main:      [0.05, 0.25]
+  salt_to_main:     [0.005, 0.015]
+  aromatic_to_main: [0.02, 0.15]
+
+technique:
+  - step: prepare_ingredients
+    params: { mise_en_place: true }
+    notes: "Bei Wok Pflicht (hohe Hitze, keine Zeit zum Schneiden)."
+  - step: preheat_pan
+    params: { heat_level: [medium, medium_high, high] }
+  - step: add_fat
+    params: { optional: true }
+  - step: add_aromatics
+    params: { bloom_until: fragrant }
+  - step: add_main_ingredient
+    params: { order: from_plan }
+  - step: add_secondary_ingredients
+    params: { order: from_plan }
+  - step: season_and_finish
+    params: { finish: [acid, herbs, sauce_cold, nuts, cheese] }
+
+side_policy: only-if-requested
+# Bratkartoffeln, Wok, Fried Rice, Shakshuka sind vollstaendige Gerichte.
+# Beilage nur, wenn der Nutzer sie nennt.

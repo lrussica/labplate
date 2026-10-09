@@ -1,0 +1,189 @@
+archetype: pasta_with_sauce
+version: 1
+
+# ---------------------------------------------------------------------------
+# A1 – Pasta mit Sauce
+# Referenzprofil für Block E. Kein Code. Nur zur Review.
+# Alle Mengen pro Portion (Single Serving).
+# ---------------------------------------------------------------------------
+
+core:
+  # Beide Slots sind Pflicht. Ohne einen davon ist es nicht dieser Archetyp.
+  pasta:
+    roles: [base]
+    allowed:
+      - spaghetti
+      - penne
+      - rigatoni
+      - fusilli
+      - tagliatelle
+      - linguine
+      - farfalle
+      - orecchiette
+      - bucatini
+      - conchiglie
+      - gemelli
+      - trofie
+      - fettuccine
+      - pappardelle
+      - ziti
+      - cavatappi
+      - elbow_macaroni
+    amount_g: [70, 150]        # Trockengewicht pro Portion
+    notes: "Frische Pasta: 100-180g. amount_g bezieht sich auf Trockengewicht."
+
+  sauce:
+    roles: [sauce]
+    # Auf Archetyp-Ebene ist jede benannte Sauce zulässig.
+    # Das Gerichtprofil definiert die exakte Zusammensetzung und
+    # erforderliche Unterzutaten (z.B. Ei + Pecorino bei Carbonara).
+    allowed:
+      - tomato_sauce          # Marinara, Napoletana
+      - pesto                 # Genovese, Sicilian
+      - aglio_olio
+      - carbonara
+      - amatriciana
+      - cacio_pepe
+      - arrabbiata
+      - ragu                  # Bolognese, Napoletana
+      - cream_sauce           # Alfredo, Panna
+      - mushroom_sauce
+      - vegetable_sauce
+      - clam_sauce            # Vongole
+      - puttanesca
+      - norma                 # Melanzane + Ricotta
+      - vodka_sauce
+      - burro_parmigiano      # Butter + Parmesan, ohne Tomate
+    amount_g: [50, 300]
+    notes: "Komponierte Sauce. Minimum 50g Flüssigbasis, sonst ist die Pasta trocken."
+
+tolerated:
+  # Alles hier ist erlaubt, aber mit Mengengrenze.
+  # Fett und Aromaten sind bewusst NICHT core — eine wasserbasierte Marinara
+  # ist technisch möglich (selten, aber nicht absurd).
+
+  fat:
+    roles: [fat]
+    allowed: [olive_oil, butter, lard, guanciale_fat, pancetta_fat]
+    amount_g: [0, 40]
+    notes: "0 ist erlaubt (wasserbasierte Marinara). Über 40g wirkt fettig."
+
+  aromatics:
+    roles: [aromatic]
+    allowed: [garlic, onion, shallot, chili, leek]
+    amount_g: [0, 30]
+
+  protein:
+    roles: [protein]
+    allowed: [chicken, shrimp, beef, pork, guanciale, pancetta, anchovy, tuna, salmon, egg]
+    amount_g: [0, 150]
+    condition: >
+      Deklarativer Hinweis für den Fallback-Pfad (kein Gerichtprofil gematcht).
+      Gerichtprofil übersteuert.
+      Nur wenn für das benannte Gericht üblich.
+      Hähnchen-Pesto: ja. Marinara + Hähnchen: nein.
+      Guanciale in Carbonara/Amatriciana: ja (im Gerichtprofil sogar Pflicht).
+      Ei in Carbonara: ja (Pflicht).
+
+  cheese:
+    roles: [finish, umami]
+    allowed: [parmesan, pecorino, grana_padano, mozzarella, ricotta, gorgonzola, provolone]
+    amount_g: [0, 60]
+    notes: >
+      In einigen Gerichten (Cacio e Pepe, Carbonara) ist Käse core, nicht
+      tolerated. Gerichtprofil überschreibt.
+
+  herbs:
+    roles: [finish]
+    allowed: [basil, parsley, oregano, thyme, rosemary, sage]
+    amount_g: [0, 15]
+
+  vegetables:
+    roles: [bulk, flavor]
+    allowed: [tomato_fresh, mushroom, zucchini, eggplant, bell_pepper, spinach, arugula, peas, artichoke, olive]
+    amount_g: [0, 200]
+
+  nuts:
+    roles: [finish, texture]
+    allowed: [pine_nut, walnut, almond, pistachio, hazelnut]
+    amount_g: [0, 30]
+
+  acid:
+    roles: [balance]
+    allowed: [lemon_juice, white_wine, red_wine, vinegar]
+    amount_g: [0, 30]
+
+  pasta_water:
+    roles: [technique]
+    amount_g: [0, 100]
+    notes: "Stärkewasser zum Emulgieren. Kein Geschmacksbestandteil."
+
+variants:
+  high_protein:
+    label: "proteinoptimierte Variante von <Gericht>"
+    additions:
+      - id: chicken_breast
+        separate_side: true
+        notes: "Separate Beilage. Naehrwerte getrennt ausweisen."
+      - id: shrimp
+        separate_side: true
+        notes: "Separate Beilage. Naehrwerte getrennt ausweisen."
+      - id: extra_parmesan
+        separate_side: false
+        notes: "Klassische Finish-Erhoehung. Inline zulaessig."
+      - id: egg
+        separate_side: false
+        notes: "Nur bei Gerichten, die Ei bereits vorsehen (Carbonara)."
+    amount_g: [30, 100]
+    notes: >
+      Nur klassische Zutaten. Kein Proteinpulver. Protein wird bevorzugt
+      als SEPARATE Beilage ausgewiesen (separate_side: true), damit die
+      Identitaet des Grundgerichts nicht verwischt wird.
+
+  low_carb:
+    label: "low-carb Variante von <Gericht>"
+    substitutions:
+      pasta: [zucchini_noodles, konjac_noodles, protein_pasta]
+    notes: "Label erforderlich. Nicht das klassische Gericht."
+
+forbidden:
+  # Niemals in einem klassischen Pasta-Gericht.
+  - oats
+  - haferflocken
+  - psyllium
+  - chia
+  - flaxseed
+  - leinsamen
+  - protein_powder
+  - proteinpulver
+  - huel
+  - soylent
+  - weight_gainer
+  - meal_replacement
+  - unrelated_protein_blend   # z.B. Tofu in Carbonara
+
+ratios:
+  pasta_to_sauce: [0.5, 1.2]      # Gewicht, Trockenpasta : Sauce
+  fat_to_pasta:   [0.05, 0.20]    # Gewicht
+  salt_to_pasta:  [0.005, 0.015]  # Gewicht
+  # Sanity-Bänder, keine harten Constraints. Solver bleibt innerhalb.
+
+technique:
+  # Feste Schrittfolge. LLM schreibt Text, nicht Struktur.
+  # Gerichtprofile dürfen die Reihenfolge überschreiben
+  # (z.B. Pesto: kein Erhitzen; Carbonara: außerhalb der Hitze).
+  - step: bring_water_to_boil
+    params: { salt_g_per_liter: [7, 10] }
+  - step: cook_pasta_al_dente
+    params: { al_dente_offset_min: -1 }
+  - step: heat_fat_and_aromatics    # überspringbar, wenn Fett = 0
+  - step: add_sauce_base
+  - step: combine_pasta_and_sauce
+    params: { use_pasta_water: true }
+  - step: finish_and_serve
+    params: { finish: [cheese, herbs, pepper, acid] }
+
+side_policy: only-if-requested
+# Pasta ist ein vollständiges Gericht. Kein Beilagensalat, außer der Nutzer
+# fragt danach. Nennt der Nutzer eine Beilage ("Spaghetti mit Salat"),
+# wird sie Teil des Gerichts und gegen das Side-Profil geprüft.

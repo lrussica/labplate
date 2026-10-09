@@ -1,0 +1,265 @@
+archetype: bowl_salad
+version: 1
+
+# ---------------------------------------------------------------------------
+# A7 - Bowl / Salat
+# Fuenftes und letztes V1-Referenzprofil.
+# Struktur: Basis + Toppings + Dressing.
+# Besonderheiten:
+#   - dressing ist core (sonst Rohkost, nicht Gericht).
+#   - Technik ueberwiegend kalt. Kein preheat, kein sear.
+#   - Toppings: cardinality one_or_more.
+# side_policy: only-if-requested.
+# Alle Mengen pro Portion (Single Serving).
+# ---------------------------------------------------------------------------
+
+core:
+  base:
+    roles: [base, bulk]
+    cardinality: one_or_more
+    allowed:
+      mixed_greens:
+        amount_g: [80, 200]
+        notes: "Salatbasis. Blattsalate, Frisee, Radicchio."
+      arugula:
+        amount_g: [60, 150]
+      spinach:
+        amount_g: [60, 150]
+      romaine:
+        amount_g: [80, 200]
+      kale:
+        amount_g: [60, 150]
+      rice:
+        amount_g: [120, 250]
+        notes: "Gekocht. Bowl-Basis."
+      quinoa:
+        amount_g: [120, 250]
+        notes: "Gekocht."
+      couscous:
+        amount_g: [120, 250]
+      bulgur:
+        amount_g: [120, 250]
+      farro:
+        amount_g: [120, 250]
+      noodle_cold:
+        amount_g: [120, 250]
+        notes: "Gekocht, abgekuehlt. Glasnudeln, Soba, Ramen kalt."
+
+  dressing:
+    roles: [dressing]
+    cardinality: one
+    allowed:
+      vinaigrette:
+        amount_g: [15, 50]
+        notes: "Oel + Essig. R9: braucht Senf als Emulgator."
+      lemon_oil:
+        amount_g: [10, 40]
+        notes: "Zitrone + Olivenoel. Emulsion ohne Senf grenzwertig."
+      yogurt_dressing:
+        amount_g: [30, 80]
+      tahini_dressing:
+        amount_g: [20, 60]
+      peanut_dressing:
+        amount_g: [20, 60]
+      caesar:
+        amount_g: [30, 70]
+        notes: "R9: braucht Ei. R14 greift."
+      ranch:
+        amount_g: [30, 70]
+      soy_sesame:
+        amount_g: [15, 50]
+      balsamic_glaze:
+        amount_g: [10, 40]
+    notes: >
+      Konstitutiv. Ohne Dressing ist es Rohkost, nicht A7.
+      R9 (Emulsion) greift bei vinaigrette und lemon_oil.
+      R14 (Eier-Sicherheit) greift bei caesar und ranch.
+
+tolerated:
+  topping_protein:
+    roles: [protein]
+    cardinality: one_or_more
+    allowed:
+      chicken:
+        amount_g: [80, 200]
+        notes: "Gegart. Bowl-Topping."
+      beef:
+        amount_g: [80, 200]
+      shrimp:
+        amount_g: [80, 180]
+      salmon:
+        amount_g: [80, 180]
+        notes: "Gegart oder roh (Poke Bowl, Sashimi)."
+      tuna_canned:
+        amount_g: [60, 150]
+      egg:
+        amount_g: [60, 150]
+        notes: "Hartgekocht. R14 greift bei weich."
+      tofu:
+        amount_g: [100, 200]
+      tempeh:
+        amount_g: [80, 180]
+      chickpea:
+        amount_g: [80, 200]
+        notes: "Gekocht."
+      beans:
+        amount_g: [80, 200]
+      lentil:
+        amount_g: [80, 200]
+      feta:
+        amount_g: [30, 80]
+      goat_cheese:
+        amount_g: [30, 80]
+      mozzarella:
+        amount_g: [50, 100]
+      parmesan:
+        amount_g: [15, 40]
+        notes: "Shaved, als Finish."
+
+  topping_vegetable:
+    roles: [bulk, flavor]
+    cardinality: one_or_more
+    allowed:
+      tomato_fresh:
+        amount_g: [60, 200]
+      cucumber:
+        amount_g: [60, 150]
+      bell_pepper:
+        amount_g: [60, 150]
+      carrot:
+        amount_g: [50, 120]
+      beetroot:
+        amount_g: [50, 120]
+      radish:
+        amount_g: [30, 80]
+      avocado:
+        amount_g: [50, 120]
+        notes: "R6: zaehlt als Fett."
+      corn:
+        amount_g: [50, 120]
+      edamame:
+        amount_g: [60, 150]
+      broccoli:
+        amount_g: [80, 180]
+        notes: "Kurz blanchiert oder roh."
+      cauliflower:
+        amount_g: [80, 180]
+      zucchini:
+        amount_g: [80, 150]
+      roasted_vegetable:
+        amount_g: [80, 200]
+        notes: "Ofengemuese als Bowl-Topping. Sub-Step cook_topping."
+
+  topping_fruit:
+    roles: [flavor, balance]
+    allowed:
+      apple:
+        amount_g: [50, 120]
+      pear:
+        amount_g: [50, 120]
+      orange:
+        amount_g: [60, 150]
+      grape:
+        amount_g: [60, 150]
+      pomegranate:
+        amount_g: [30, 80]
+      dried_cranberry:
+        amount_g: [20, 50]
+      mango:
+        amount_g: [60, 120]
+
+  topping_crunch:
+    roles: [texture]
+    allowed:
+      nut:
+        amount_g: [15, 40]
+        notes: "Walnuss, Mandel, Pinienkern, Pekannuss."
+      seed:
+        amount_g: [10, 30]
+        notes: "Kuerbiskern, Sonnenblumenkern, Sesam."
+      crouton:
+        amount_g: [20, 60]
+      crispy_onion:
+        amount_g: [15, 40]
+      tortilla_strip:
+        amount_g: [20, 50]
+
+  herb:
+    roles: [finish]
+    allowed: [parsley, cilantro, basil, mint, dill, chive, tarragon]
+    amount_g: [0, 15]
+
+  cheese_extra:
+    roles: [finish, umami]
+    allowed: [parmesan, pecorino, blue_cheese]
+    amount_g: [0, 30]
+    notes: "Nur wenn nicht schon als topping_protein gefuehrt."
+
+  acid:
+    roles: [balance]
+    allowed: [lemon_juice, lime_juice, vinegar]
+    amount_g: [0, 20]
+    notes: "R6: Saeure-Korrektur bei >= 2 Fetten. Bei Bowl mit Avocado + Nuss relevant."
+
+variants:
+  high_protein:
+    label: "proteinoptimierte Variante von <Gericht>"
+    additions:
+      - extra_protein
+      - greek_yogurt_dressing
+      - protein_rich_topping
+    amount_g: [30, 100]
+
+  low_carb:
+    label: "low-carb Variante von <Gericht>"
+    substitutions:
+      base: [extra_greens]
+      rice: [cauliflower_rice]
+      noodle_cold: [zucchini_noodles]
+
+forbidden:
+  - oats
+  - haferflocken
+  - psyllium
+  - chia
+  - flaxseed
+  - leinsamen
+  - protein_powder
+  - proteinpulver
+  - huel
+  - soylent
+  - weight_gainer
+  - meal_replacement
+  - unrelated_starch
+
+ratios:
+  dressing_to_base:    [0.05, 0.25]
+  topping_to_base:     [0.5, 2.0]
+  fat_to_total:        [0.05, 0.30]
+  salt_to_total:       [0.005, 0.015]
+
+technique:
+  # Ueberwiegend kalt. Kein preheat, kein sear als Hauptschritt.
+  # cook_protein_topping ist optional und nur, wenn das Gericht
+  # warmes Protein vorsieht (Haehnchen-Bowl, gegartes Lachs-Topping).
+  - step: prepare_ingredients
+    params: { mise_en_place: true }
+  - step: wash_and_dry_base
+    params: { apply_if: base_is_greens }
+  - step: cook_grain_base
+    params: { apply_if: base_is_grain, cool_before_use: true }
+  - step: cook_protein_topping
+    params: { apply_if: protein_requires_cooking }
+    notes: "R5 (Maillard) greift, wenn angebraten. R7 (Riposo) bei Fleisch."
+  - step: prepare_raw_toppings
+    params: { chop: true }
+  - step: make_dressing
+    params: { emulsify: true }
+    notes: "R9 greift bei vinaigrette und lemon_oil (Senf als Emulgator)."
+  - step: assemble
+    params: { order: [base, protein, vegetables, crunch, dressing, finish] }
+  - step: finish_and_serve
+    params: { finish: [herb, cheese_extra, acid] }
+
+side_policy: only-if-requested
+# Bowl/Salat ist vollstaendig. Keine separate Beilage.

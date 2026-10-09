@@ -1,0 +1,198 @@
+archetype: stew_curry
+version: 1
+
+# ---------------------------------------------------------------------------
+# A4 - Eintopf / Curry
+# Viertes Referenzprofil. Linear wie A1, nicht nebenlaeufig wie A10.
+# Zwei Besonderheiten:
+#   - liquid ist core (konstitutiv). Ohne Liquid ist es A3, nicht A4.
+#   - Technik baut R5 (Maillard vor Schmoren) und R8 (Deglassatura)
+#     strukturell ein, nicht als Nachpruefung.
+# side_policy: allowed (Brot/Reis als Beilage optional moeglich).
+# Alle Mengen pro Portion (Single Serving).
+# ---------------------------------------------------------------------------
+
+core:
+  main:
+    roles: [base, protein]
+    cardinality: one_or_more
+    allowed:
+      beef:
+        amount_g: [150, 300]
+        notes: "Rohgewicht. Gulasch, Rindereintopf, Chili con Carne."
+      lamb:
+        amount_g: [150, 300]
+      pork:
+        amount_g: [150, 300]
+      chicken:
+        amount_g: [150, 300]
+      lentils:
+        amount_g: [80, 200]
+        notes: "Trockengewicht. Linsen-Curry, Linseneintopf."
+      beans:
+        amount_g: [100, 250]
+        notes: "Gekocht. Chili, Bohneneintopf."
+      chickpeas:
+        amount_g: [100, 250]
+        notes: "Gekocht. Chana Masala."
+      vegetable_hearty:
+        amount_g: [200, 400]
+        notes: "Gemuese-Eintopf. Kuerbis, Wurzelgemuese, Kohl."
+      tofu:
+        amount_g: [150, 250]
+      seitan:
+        amount_g: [150, 250]
+      tempeh:
+        amount_g: [150, 250]
+      mushroom:
+        amount_g: [150, 300]
+        notes: "Pilzeintopf, Mushroom Curry."
+
+  liquid:
+    roles: [liquid]
+    cardinality: one_or_more
+    allowed:
+      broth_meat:
+        amount_g: [200, 800]
+        notes: "Fond, Bruehe. Basis fuer Gulasch, Rindereintopf."
+      broth_vegetable:
+        amount_g: [200, 800]
+      tomato_canned:
+        amount_g: [200, 600]
+        notes: "Passata, gehackte Tomaten. Chili, Shakshuka-Variante."
+      coconut_milk:
+        amount_g: [200, 500]
+        notes: "Curry-Basis. Nicht mit Sahne verwechseln."
+      water:
+        amount_g: [0, 600]
+        notes: "0 nur, wenn andere Liquids ausreichen. Nie als einziges Liquid."
+    notes: >
+      Konstitutiv. Ohne Liquid ist es kein Eintopf, sondern ein
+      Pfannengericht (A3). Konsequenz fuer Solver: wenn Liquid-Ziel
+      nicht erreichbar, ist der Status infeasible_within_identity.
+
+tolerated:
+  fat:
+    roles: [fat]
+    allowed: [olive_oil, butter, ghee, lard, beef_tallow, duck_fat, coconut_oil, sesame_oil]
+    amount_g: [0, 40]
+    notes: "0 erlaubt, wenn das Fleisch eigenes Fett mitbringt."
+
+  aromatics:
+    roles: [aromatic]
+    allowed: [garlic, onion, shallot, chili, ginger, lemongrass, curry_leaf, bay_leaf, cinnamon_stick, clove, cardamom, cumin_seed, coriander_seed, mustard_seed]
+    amount_g: [0, 50]
+
+  secondary_vegetable:
+    roles: [bulk, flavor]
+    allowed: [carrot, celery, bell_pepper, zucchini, eggplant, potato, sweet_potato, tomato_fresh, spinach, kale, cabbage, peas, green_beans, mushroom, cauliflower, broccoli]
+    amount_g: [0, 300]
+    notes: "Nicht der Hauptdarsteller. Bei Gemuese-Eintopf: im main-Slot."
+
+  wine:
+    roles: [liquid, acid]
+    allowed: [red_wine, white_wine, beer]
+    amount_g: [0, 200]
+    notes: "Zusaetzlich zum core-liquid. Deglassatura-relevant (R8)."
+
+  acid:
+    roles: [balance]
+    allowed: [lemon_juice, lime_juice, vinegar, tomato_paste]
+    amount_g: [0, 30]
+
+  herbs:
+    roles: [finish]
+    allowed: [parsley, cilantro, thyme, rosemary, oregano, basil, dill, mint]
+    amount_g: [0, 15]
+
+  spices:
+    roles: [flavor]
+    allowed: [paprika_sweet, paprika_smoked, turmeric, cumin_ground, coriander_ground, chili_powder, garam_masala, curry_powder, cinnamon_ground, nutmeg, black_pepper, salt]
+    amount_g: [0, 15]
+
+  thickener:
+    roles: [technique]
+    allowed: [flour, cornstarch, arrowroot, potato_starch, tomato_paste, yogurt]
+    amount_g: [0, 30]
+    notes: "Yogurt nur bei niedriger Hitze einruehren (R9 Emulsion)."
+
+  sauce_cold:
+    roles: [finish, balance]
+    allowed: [yogurt_sauce, raita, sour_cream, chimichurri, tahini_sauce]
+    amount_g: [0, 60]
+
+  nuts:
+    roles: [finish, texture]
+    allowed: [peanut, cashew, almond, walnut, sesame]
+    amount_g: [0, 30]
+
+variants:
+  high_protein:
+    label: "proteinoptimierte Variante von <Gericht>"
+    additions:
+      - extra_protein
+      - greek_yogurt_side
+      - protein_rich_side
+    amount_g: [30, 100]
+
+  low_carb:
+    label: "low-carb Variante von <Gericht>"
+    substitutions:
+      potato: [celeriac, cauliflower]
+      rice: [cauliflower_rice]
+    notes: "Liquid bleibt. Nur die Beilage wird substituiert."
+
+forbidden:
+  - oats
+  - haferflocken
+  - psyllium
+  - chia
+  - flaxseed
+  - leinsamen
+  - protein_powder
+  - proteinpulver
+  - huel
+  - soylent
+  - weight_gainer
+  - meal_replacement
+  - unrelated_starch
+  - unrelated_protein_blend
+
+ratios:
+  liquid_to_main: [0.8, 3.0]      # Gewicht. Eintoepfe variieren stark.
+  fat_to_main:    [0.05, 0.25]
+  salt_to_total:  [0.005, 0.015]  # bezogen auf Gesamtgewicht inkl. Liquid
+
+technique:
+  # Linear. R5 (Maillard vor Schmoren) und R8 (Deglassatura) sind
+  # struktureller Teil der Reihenfolge, nicht Nachpruefung.
+  - step: prepare_ingredients
+    params: { mise_en_place: true }
+  - step: sear_protein
+    params: { heat_level: [medium_high, high], batch: true }
+    notes: "R5: Maillard vor Schmoren. Nicht bei vegetarischen Eintoepfen."
+  - step: remove_protein_temp
+    params: { keep_warm: true }
+  - step: saute_aromatics
+    params: { heat_level: [medium, medium_high] }
+  - step: deglaze
+    params: { fluid: from_plan }
+    notes: "R8: Deglassatura. Wine oder Bruehe. Kokosmilch nur bei Curry."
+  - step: add_liquid
+    params: { liquid: from_plan }
+  - step: return_protein
+    params: { optional: true }
+  - step: simmer_long
+    params: { duration_min: [30, 180], cover: true }
+  - step: add_secondary_vegetables
+    params: { timing: from_plan }
+    notes: "Blattgemuese und weiche Gemuese spaet zufuegen."
+  - step: thicken_optional
+    params: { method: from_plan }
+  - step: season_and_finish
+    params: { finish: [acid, herbs, sauce_cold, nuts] }
+
+side_policy: allowed
+# Eintopf ist selbstaendig, aber Brot/Reis kulturell ueblich. Solver darf
+# eine Beilage ergaenzen, wenn es die Naehrwertziele stuetzt. Kein
+# Zwang. Anders als A1 (only-if-requested) und A10 (required).
