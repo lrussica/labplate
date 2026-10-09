@@ -347,9 +347,12 @@ function checkCoreShare(archetype, recipe, candidateSets, catalog) {
  * SEVERITY_BLOCK, wenn die Zutat auch nicht in Registry als
  * 'nutrient' oder 'alias' mit Ziel in allowed steht.
  */
-function checkProfileFit(archetype, recipe, candidateSets) {
+function checkProfileFit(archetype, recipe, candidateSets, extraAllowed) {
   const violations = [];
   const allAllowed = new Set();
+  if (extraAllowed) {
+    for (const id of extraAllowed) allAllowed.add(id);
+  }
   function collect(map) {
     for (const slotDef of Object.values(map || {})) {
       if (!slotDef || !slotDef.allowed) continue;
@@ -596,6 +599,10 @@ function validateComposite(compositeId, recipe) {
 
 function validate(archetypeId, recipe, options) {
   const opts = Object.assign({ strict: true }, options || {});
+  // Composite-Bridge: erlaubte IDs aus einem Composite-Profil
+  // werden als zusaetzlich legitim akzeptiert.
+  const extraAllowed = new Set(opts.extraAllowedIds || []);
+  const skipCoreShare = !!opts.skipCoreShare;
   const archetype = loader.loadArchetype(archetypeId);
   const catalog = require('./nutri-catalog');
   const violations = [];
@@ -634,10 +641,15 @@ function validate(archetypeId, recipe, options) {
   violations.push(...checkSidePolicy(archetype, recipe, candidateSets));
 
   // 3b. Protein-Dominanz pruefen (Block E, 2026-10-09, spaet)
-  violations.push(...checkCoreShare(archetype, recipe, candidateSets, catalog));
+  //     Bei Composite-Profilen uebernimmt das Composite die
+  //     Protein-Bewertung, der Archetyp-Grenzwert greift nicht.
+  if (!skipCoreShare) {
+    violations.push(...checkCoreShare(archetype, recipe, candidateSets, catalog));
+  }
 
-  // 3c. Profil-Treue: jede Zutat muss in core/tolerated erlaubt sein
-  violations.push(...checkProfileFit(archetype, recipe, candidateSets));
+  // 3c. Profil-Treue: jede Zutat muss in core/tolerated erlaubt sein,
+  //     ausser sie kommt aus einem Composite-Profil (extraAllowed).
+  violations.push(...checkProfileFit(archetype, recipe, candidateSets, extraAllowed));
 
   // 4. unknown (nur warn)
   //    Bekannt = entweder Registry kennt den Kandidaten ODER Catalog hat ihn.
@@ -661,4 +673,27 @@ function validate(archetypeId, recipe, options) {
   return { ok: !hasBlock, violations };
 }
 
-module.exports = { validate, validateComposite };
+function getCompositeAllowedIds(compositeId) {
+  const compositeLoader = require('./composite-loader');
+  const composite = compositeLoader.loadComposite(compositeId);
+  const ids = new Set();
+  function collect(map) {
+    for (const slotDef of Object.values(map || {})) {
+      if (!slotDef || !slotDef.allowed) continue;
+      const a = slotDef.allowed;
+      const arr = Array.isArray(a) ? a : Object.keys(a);
+      arr.forEach(x => ids.add(x));
+    }
+  }
+  collect(composite.core);
+  collect(composite.tolerated);
+  // Alias-Targets auch aufnehmen
+  for (const id of Array.from(ids)) {
+    const r = loader.resolveId(id);
+    if (r && r.target) ids.add(r.target);
+    if (r && r.catalog_key) ids.add(r.catalog_key);
+  }
+  return Array.from(ids);
+}
+
+module.exports = { validate, validateComposite, getCompositeAllowedIds };

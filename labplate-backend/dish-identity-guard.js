@@ -50,8 +50,16 @@ function checkQuery(query, recipe, options) {
     };
   }
 
-  // Archetyp-Check
-  const v = validator.validate(resolved.archetypeId, recipe, options);
+  // Archetyp-Check mit Composite-Bridge
+  // Wenn ein Composite erkannt wurde, akzeptiert der Archetyp-Check
+  // die Composite-allowed-IDs und uebernimmt die Protein-Bewertung
+  // nicht (das Composite ist die spezifischere Schicht).
+  const archetypeOpts = Object.assign({}, options || {});
+  if (resolved.compositeId) {
+    archetypeOpts.extraAllowedIds = validator.getCompositeAllowedIds(resolved.compositeId);
+    archetypeOpts.skipCoreShare = true;
+  }
+  const v = validator.validate(resolved.archetypeId, recipe, archetypeOpts);
 
   // Violations zusammenfuehren
   let allViolations = v.violations.slice();
