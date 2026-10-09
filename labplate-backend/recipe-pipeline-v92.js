@@ -183,8 +183,8 @@ function buildV92GenerativeSchema() {
             },
           },
         },
-        ingredients: { type: 'array', items: ingredient },
-        steps: { type: 'array', items: step },
+        ingredients: { type: 'array', items: ingredient, minItems: 1 },
+        steps: { type: 'array', items: step, minItems: 1 },
         garnish: {
           type: 'string',
           description:
