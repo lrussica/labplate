@@ -564,6 +564,155 @@ const CATALOG = {
     per100g: { protein: 2.1, fat: 0.1, netCarbs: 15.4, fiber: 2.1, kcal: 77 },
     source: 'USDA FDC 170026 (Potatoes, flesh and skin, raw)',
   },
+  // ---------- WELLE 2a (Block E, 2026-10-09) ----------
+  // Gemuese & Obst. Naehrwerte USDA FoodData Central.
+  // Wo exakter FDC-Code unsicher: '(geschaetzt, zu verifizieren)'.
+  apple: {
+    displayName: 'Apfel (roh, mit Schale)',
+    aliases: ['apfel', 'aepfel', 'apple'],
+    per100g: { protein: 0.3, fat: 0.2, netCarbs: 11.4, fiber: 2.4, kcal: 52 },
+    source: 'USDA FDC 1750340 (Apples, raw, with skin)',
+  },
+  arugula: {
+    displayName: 'Rucola',
+    aliases: ['rucola', 'rauke', 'arugula', 'rocket'],
+    per100g: { protein: 2.6, fat: 0.7, netCarbs: 1.4, fiber: 1.6, kcal: 25 },
+    source: 'USDA FDC 169387 (Arugula, raw)',
+  },
+  beetroot: {
+    displayName: 'Rote Bete (roh)',
+    aliases: ['rote bete', 'randen', 'beetroot', 'beet'],
+    per100g: { protein: 1.6, fat: 0.2, netCarbs: 6.8, fiber: 2.8, kcal: 43 },
+    source: 'USDA FDC 169145 (Beets, raw)',
+  },
+  corn: {
+    displayName: 'Mais (gekocht)',
+    aliases: ['mais', 'maiskoerner', 'corn', 'sweetcorn'],
+    per100g: { protein: 3.4, fat: 1.5, netCarbs: 16.7, fiber: 2.4, kcal: 96 },
+    source: 'USDA FDC 168425 (Corn, sweet, yellow, cooked, boiled, drained, without salt)',
+  },
+  dried_cranberry: {
+    displayName: 'Cranberries (getrocknet, gesuesst)',
+    aliases: ['cranberries', 'getrocknete cranberries', 'craisins', 'dried cranberry'],
+    per100g: { protein: 0.2, fat: 0.1, netCarbs: 76.5, fiber: 5.7, kcal: 308 },
+    source: 'USDA FDC 173209 (Cranberries, dried, sweetened)',
+  },
+  edamame: {
+    displayName: 'Edamame (gekocht)',
+    aliases: ['edamame', 'sojabohnen (gruen)', 'edamame beans'],
+    per100g: { protein: 10.9, fat: 5.2, netCarbs: 3.7, fiber: 5.2, kcal: 121 },
+    source: 'USDA FDC 168411 (Edamame, frozen, prepared)',
+  },
+  fennel: {
+    displayName: 'Fenchel (roh)',
+    aliases: ['fenchel', 'fenchelknolle', 'fennel'],
+    per100g: { protein: 1.2, fat: 0.2, netCarbs: 4.2, fiber: 3.1, kcal: 31 },
+    source: 'USDA FDC 169385 (Fennel, bulb, raw)',
+  },
+  grape: {
+    displayName: 'Weintrauben',
+    aliases: ['weintrauben', 'trauben', 'grape', 'grapes'],
+    per100g: { protein: 0.7, fat: 0.2, netCarbs: 16.2, fiber: 0.9, kcal: 69 },
+    source: 'USDA FDC 174683 (Grapes, red or green, raw)',
+  },
+  green_beans: {
+    displayName: 'Gruene Bohnen (gekocht)',
+    aliases: ['gruene bohnen', 'prinzessbohnen', 'green beans', 'haricots verts'],
+    per100g: { protein: 1.9, fat: 0.3, netCarbs: 4.3, fiber: 3.2, kcal: 35 },
+    source: 'USDA FDC 169961 (Beans, snap, green, cooked, boiled, drained, without salt)',
+  },
+  mango: {
+    displayName: 'Mango (roh)',
+    aliases: ['mango', 'mangos'],
+    per100g: { protein: 0.8, fat: 0.4, netCarbs: 13.4, fiber: 1.6, kcal: 60 },
+    source: 'USDA FDC 169910 (Mangos, raw)',
+  },
+  orange: {
+    displayName: 'Orange (roh)',
+    aliases: ['orange', 'orangen', 'apfelsine'],
+    per100g: { protein: 0.9, fat: 0.1, netCarbs: 9.4, fiber: 2.4, kcal: 47 },
+    source: 'USDA FDC 169097 (Oranges, raw, all commercial varieties)',
+  },
+  pear: {
+    displayName: 'Birne (roh, mit Schale)',
+    aliases: ['birne', 'birnen', 'pear'],
+    per100g: { protein: 0.4, fat: 0.1, netCarbs: 12.1, fiber: 3.1, kcal: 57 },
+    source: 'USDA FDC 169119 (Pears, raw)',
+  },
+  peas: {
+    displayName: 'Erbsen (gruen, gekocht)',
+    aliases: ['erbsen', 'gruene erbsen', 'peas', 'green peas'],
+    per100g: { protein: 5.4, fat: 0.4, netCarbs: 10.1, fiber: 5.5, kcal: 84 },
+    source: 'USDA FDC 170420 (Peas, green, cooked, boiled, drained, without salt)',
+  },
+  pomegranate: {
+    displayName: 'Granatapfel',
+    aliases: ['granatapfel', 'granatapfelkerne', 'pomegranate'],
+    per100g: { protein: 1.7, fat: 1.2, netCarbs: 14.7, fiber: 4.0, kcal: 83 },
+    source: 'USDA FDC 169134 (Pomegranates, raw)',
+  },
+  radish: {
+    displayName: 'Radieschen (roh)',
+    aliases: ['radieschen', 'rettich (rot)', 'radish'],
+    per100g: { protein: 0.7, fat: 0.1, netCarbs: 1.8, fiber: 1.6, kcal: 16 },
+    source: 'USDA FDC 169276 (Radishes, raw)',
+  },
+  romaine: {
+    displayName: 'Romain-Salat',
+    aliases: ['romainsalat', 'roemischer salat', 'romaine', 'cos lettuce'],
+    per100g: { protein: 1.2, fat: 0.3, netCarbs: 1.6, fiber: 2.1, kcal: 17 },
+    source: 'USDA FDC 169247 (Lettuce, cos or romaine, raw)',
+  },
+  tomato_canned: {
+    displayName: 'Tomaten (Dose, ohne Salz)',
+    aliases: ['tomaten dose', 'dosentomaten', 'gehackte tomaten', 'passata',
+              'tomato canned', 'canned tomatoes'],
+    per100g: { protein: 1.6, fat: 0.3, netCarbs: 3.3, fiber: 1.9, kcal: 32 },
+    source: 'USDA FDC 170457 (Tomatoes, red, ripe, canned, whole, no salt added)',
+  },
+  cabbage_white_new: {
+    displayName: 'Weisskohl (roh)',
+    aliases: ['weisskohl', 'weisskraut', 'white cabbage'],
+    per100g: { protein: 1.3, fat: 0.1, netCarbs: 3.3, fiber: 2.5, kcal: 25 },
+    source: 'USDA FDC 169975 (Cabbage, raw)',
+  },
+
+  // ---------- WELLE 1 (Block E, 2026-10-09) ----------
+  // Vier Ziel-Keys, die als Alias-Ziele gebraucht werden.
+  // Quellen: USDA FoodData Central.
+  pasta_dry: {
+    displayName: 'Pasta, trocken (Hartweizen)',
+    aliases: ['pasta (trocken)', 'nudeln (trocken)', 'spaghetti', 'penne', 'rigatoni',
+              'fusilli', 'tagliatelle', 'linguine', 'farfalle', 'orecchiette',
+              'bucatini', 'conchiglie', 'gemelli', 'trofie', 'fettuccine',
+              'pappardelle', 'ziti', 'cavatappi', 'elbow macaroni',
+              'macaroni', 'pasta trocken', 'hartweizennudeln'],
+    per100g: { protein: 13.0, fat: 1.5, netCarbs: 61.0, fiber: 3.2, kcal: 371 },
+    source: 'USDA FDC 168928 (Pasta, dry, unenriched)',
+  },
+  beans_cooked: {
+    displayName: 'Bohnen (gekocht)',
+    aliases: ['bohnen', 'bohnen (gekocht)', 'kidneybohnen', 'schwarze bohnen',
+              'weisse bohnen', 'cannellini', 'kidney beans', 'black beans',
+              'white beans', 'beans cooked'],
+    per100g: { protein: 8.7, fat: 0.5, netCarbs: 14.5, fiber: 6.4, kcal: 127 },
+    source: 'USDA FDC 175202 (Beans, kidney, mature seeds, cooked, boiled, without salt)',
+  },
+  lamb_meat: {
+    displayName: 'Lammfleisch (roh)',
+    aliases: ['lamm', 'lammfleisch', 'lamm (roh)', 'lammkeule', 'lammkarree',
+              'lamb', 'lamb meat', 'lammruecken'],
+    per100g: { protein: 20.0, fat: 8.8, netCarbs: 0.0, fiber: 0.0, kcal: 162 },
+    source: 'USDA FDC 172620 (Lamb, Australian, imported, fresh, composite of trimmed retail cuts, separable lean and fat, raw)',
+  },
+  pork_meat: {
+    displayName: 'Schweinefleisch (roh)',
+    aliases: ['schwein', 'schweinefleisch', 'schwein (roh)', 'schweinefilet',
+              'schweinenacken', 'pork', 'pork meat'],
+    per100g: { protein: 20.9, fat: 8.2, netCarbs: 0.0, fiber: 0.0, kcal: 158 },
+    source: 'USDA FDC 167895 (Pork, fresh, composite of trimmed retail cuts (leg, loin, shoulder), separable lean and fat, raw)',
+  },
+
 };
 
 // ---------- Matching ----------
