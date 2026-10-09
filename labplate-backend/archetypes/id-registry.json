@@ -1,0 +1,766 @@
+{
+  "version": 1,
+  "generated": "2026-10-09",
+  "note": "Klassifizierung der Archetypen-YAML-IDs. sechs kind-Werte: nutrient, alias, composite, state_variant, selector, placeholder, forbidden.",
+  "ids": {
+    "aglio_olio": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "amatriciana": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "apple": {
+      "kind": "nutrient",
+      "catalog_key": "apple",
+      "needs_catalog": true
+    },
+    "arrabbiata": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "arugula": {
+      "kind": "nutrient",
+      "catalog_key": "arugula",
+      "needs_catalog": true
+    },
+    "asparagus": {
+      "kind": "nutrient",
+      "catalog_key": "asparagus"
+    },
+    "avocado": {
+      "kind": "nutrient",
+      "catalog_key": "avocado"
+    },
+    "balsamic_glaze": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "beans": {
+      "kind": "nutrient",
+      "catalog_key": "beans",
+      "needs_catalog": true
+    },
+    "beef": {
+      "kind": "alias",
+      "target": "beef_mince",
+      "target_exists": true
+    },
+    "beef_roast": {
+      "kind": "nutrient",
+      "catalog_key": "beef_roast",
+      "needs_catalog": true
+    },
+    "beef_steak": {
+      "kind": "nutrient",
+      "catalog_key": "beef_steak",
+      "needs_catalog": true
+    },
+    "beetroot": {
+      "kind": "nutrient",
+      "catalog_key": "beetroot",
+      "needs_catalog": true
+    },
+    "bell_pepper": {
+      "kind": "alias",
+      "target": "bell_pepper_red",
+      "target_exists": true
+    },
+    "bread": {
+      "kind": "nutrient",
+      "catalog_key": "bread",
+      "needs_catalog": true
+    },
+    "broccoli": {
+      "kind": "nutrient",
+      "catalog_key": "broccoli"
+    },
+    "broth_meat": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
+    },
+    "broth_vegetable": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
+    },
+    "brussels_sprouts": {
+      "kind": "nutrient",
+      "catalog_key": "brussels_sprouts"
+    },
+    "bucatini": {
+      "kind": "alias",
+      "target": "pasta_dry",
+      "target_exists": false
+    },
+    "bulgur": {
+      "kind": "nutrient",
+      "catalog_key": "bulgur",
+      "needs_catalog": true
+    },
+    "burro_parmigiano": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "cabbage": {
+      "kind": "alias",
+      "target": "cabbage_white",
+      "target_exists": true
+    },
+    "cacio_pepe": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "caesar": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "carbonara": {
+      "kind": "composite",
+      "ref": "master_recipes/carbonara",
+      "needs_recipe": false
+    },
+    "carrot": {
+      "kind": "nutrient",
+      "catalog_key": "carrot"
+    },
+    "cauliflower": {
+      "kind": "nutrient",
+      "catalog_key": "cauliflower"
+    },
+    "cavatappi": {
+      "kind": "alias",
+      "target": "pasta_dry",
+      "target_exists": false
+    },
+    "chia": {
+      "kind": "forbidden"
+    },
+    "chicken": {
+      "kind": "alias",
+      "target": "chicken_breast",
+      "target_exists": true
+    },
+    "chicken_breast": {
+      "kind": "nutrient",
+      "catalog_key": "chicken_breast"
+    },
+    "chicken_thigh": {
+      "kind": "nutrient",
+      "catalog_key": "chicken_thigh",
+      "needs_catalog": true
+    },
+    "chickpea": {
+      "kind": "alias",
+      "target": "chickpeas_cooked",
+      "target_exists": true
+    },
+    "chickpeas": {
+      "kind": "alias",
+      "target": "chickpeas_cooked",
+      "target_exists": true
+    },
+    "clam_sauce": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "coconut_milk": {
+      "kind": "alias",
+      "target": "coconut_milk_full",
+      "target_exists": true
+    },
+    "cod": {
+      "kind": "nutrient",
+      "catalog_key": "cod",
+      "needs_catalog": true
+    },
+    "conchiglie": {
+      "kind": "alias",
+      "target": "pasta_dry",
+      "target_exists": false
+    },
+    "corn": {
+      "kind": "nutrient",
+      "catalog_key": "corn",
+      "needs_catalog": true
+    },
+    "couscous": {
+      "kind": "nutrient",
+      "catalog_key": "couscous",
+      "needs_catalog": true
+    },
+    "cream_sauce": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "crispy_onion": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "crouton": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "cucumber": {
+      "kind": "nutrient",
+      "catalog_key": "cucumber"
+    },
+    "dried_cranberry": {
+      "kind": "nutrient",
+      "catalog_key": "dried_cranberry",
+      "needs_catalog": true
+    },
+    "duck_breast": {
+      "kind": "nutrient",
+      "catalog_key": "duck_breast",
+      "needs_catalog": true
+    },
+    "edamame": {
+      "kind": "nutrient",
+      "catalog_key": "edamame",
+      "needs_catalog": true
+    },
+    "egg": {
+      "kind": "nutrient",
+      "catalog_key": "egg"
+    },
+    "eggplant": {
+      "kind": "nutrient",
+      "catalog_key": "eggplant"
+    },
+    "elbow_macaroni": {
+      "kind": "alias",
+      "target": "pasta_dry",
+      "target_exists": false
+    },
+    "extra_protein": {
+      "kind": "placeholder"
+    },
+    "farfalle": {
+      "kind": "alias",
+      "target": "pasta_dry",
+      "target_exists": false
+    },
+    "farro": {
+      "kind": "nutrient",
+      "catalog_key": "farro",
+      "needs_catalog": true
+    },
+    "fennel": {
+      "kind": "nutrient",
+      "catalog_key": "fennel",
+      "needs_catalog": true
+    },
+    "feta": {
+      "kind": "nutrient",
+      "catalog_key": "feta"
+    },
+    "fettuccine": {
+      "kind": "alias",
+      "target": "pasta_dry",
+      "target_exists": false
+    },
+    "flaxseed": {
+      "kind": "forbidden"
+    },
+    "fusilli": {
+      "kind": "alias",
+      "target": "pasta_dry",
+      "target_exists": false
+    },
+    "gemelli": {
+      "kind": "alias",
+      "target": "pasta_dry",
+      "target_exists": false
+    },
+    "goat_cheese": {
+      "kind": "nutrient",
+      "catalog_key": "goat_cheese",
+      "needs_catalog": true
+    },
+    "grape": {
+      "kind": "nutrient",
+      "catalog_key": "grape",
+      "needs_catalog": true
+    },
+    "greek_yogurt_dressing": {
+      "kind": "placeholder"
+    },
+    "greek_yogurt_side": {
+      "kind": "placeholder"
+    },
+    "green_beans": {
+      "kind": "nutrient",
+      "catalog_key": "green_beans",
+      "needs_catalog": true
+    },
+    "haferflocken": {
+      "kind": "forbidden"
+    },
+    "huel": {
+      "kind": "forbidden"
+    },
+    "kale": {
+      "kind": "nutrient",
+      "catalog_key": "kale"
+    },
+    "lamb": {
+      "kind": "nutrient",
+      "catalog_key": "lamb",
+      "needs_catalog": true
+    },
+    "lamb_chop": {
+      "kind": "nutrient",
+      "catalog_key": "lamb_chop",
+      "needs_catalog": true
+    },
+    "lamb_leg": {
+      "kind": "nutrient",
+      "catalog_key": "lamb_leg",
+      "needs_catalog": true
+    },
+    "leek": {
+      "kind": "nutrient",
+      "catalog_key": "leek"
+    },
+    "leinsamen": {
+      "kind": "forbidden"
+    },
+    "lemon_oil": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "lentil": {
+      "kind": "alias",
+      "target": "lentils_dry",
+      "target_exists": true
+    },
+    "lentils": {
+      "kind": "alias",
+      "target": "lentils_dry",
+      "target_exists": true
+    },
+    "linguine": {
+      "kind": "alias",
+      "target": "pasta_dry",
+      "target_exists": false
+    },
+    "mango": {
+      "kind": "nutrient",
+      "catalog_key": "mango",
+      "needs_catalog": true
+    },
+    "meal_replacement": {
+      "kind": "forbidden"
+    },
+    "mixed_greens": {
+      "kind": "selector",
+      "preferred": "romaine",
+      "from": [
+        "romaine",
+        "arugula",
+        "spinach",
+        "kale"
+      ]
+    },
+    "mozzarella": {
+      "kind": "nutrient",
+      "catalog_key": "mozzarella"
+    },
+    "mushroom": {
+      "kind": "alias",
+      "target": "mushroom_button",
+      "target_exists": true
+    },
+    "mushroom_sauce": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "noodle": {
+      "kind": "nutrient",
+      "catalog_key": "noodle",
+      "needs_catalog": true
+    },
+    "noodle_cold": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "norma": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "nut": {
+      "kind": "selector",
+      "preferred": "almonds",
+      "from": [
+        "almonds",
+        "walnuts",
+        "cashews",
+        "hazelnuts",
+        "peanuts"
+      ]
+    },
+    "oats": {
+      "kind": "nutrient",
+      "catalog_key": "oats"
+    },
+    "onion": {
+      "kind": "alias",
+      "target": "onion_yellow",
+      "target_exists": true
+    },
+    "orange": {
+      "kind": "nutrient",
+      "catalog_key": "orange",
+      "needs_catalog": true
+    },
+    "orecchiette": {
+      "kind": "alias",
+      "target": "pasta_dry",
+      "target_exists": false
+    },
+    "pappardelle": {
+      "kind": "alias",
+      "target": "pasta_dry",
+      "target_exists": false
+    },
+    "parmesan": {
+      "kind": "nutrient",
+      "catalog_key": "parmesan"
+    },
+    "pasta_side": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "peanut_dressing": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "pear": {
+      "kind": "nutrient",
+      "catalog_key": "pear",
+      "needs_catalog": true
+    },
+    "peas": {
+      "kind": "nutrient",
+      "catalog_key": "peas",
+      "needs_catalog": true
+    },
+    "penne": {
+      "kind": "alias",
+      "target": "pasta_dry",
+      "target_exists": false
+    },
+    "pesto": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "polenta": {
+      "kind": "nutrient",
+      "catalog_key": "polenta",
+      "needs_catalog": true
+    },
+    "pomegranate": {
+      "kind": "nutrient",
+      "catalog_key": "pomegranate",
+      "needs_catalog": true
+    },
+    "pork": {
+      "kind": "nutrient",
+      "catalog_key": "pork",
+      "needs_catalog": true
+    },
+    "pork_chop": {
+      "kind": "nutrient",
+      "catalog_key": "pork_chop",
+      "needs_catalog": true
+    },
+    "pork_tenderloin": {
+      "kind": "nutrient",
+      "catalog_key": "pork_tenderloin"
+    },
+    "potato": {
+      "kind": "nutrient",
+      "catalog_key": "potato"
+    },
+    "potato_boiled": {
+      "kind": "state_variant",
+      "base": "potato",
+      "state": "boiled"
+    },
+    "potato_fried": {
+      "kind": "state_variant",
+      "base": "potato",
+      "state": "fried"
+    },
+    "potato_mashed": {
+      "kind": "state_variant",
+      "base": "potato",
+      "state": "mashed"
+    },
+    "potato_roasted": {
+      "kind": "state_variant",
+      "base": "potato",
+      "state": "roasted"
+    },
+    "protein_powder": {
+      "kind": "forbidden"
+    },
+    "protein_rich_side": {
+      "kind": "placeholder"
+    },
+    "protein_rich_topping": {
+      "kind": "placeholder"
+    },
+    "proteinpulver": {
+      "kind": "forbidden"
+    },
+    "psyllium": {
+      "kind": "forbidden"
+    },
+    "puttanesca": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "quinoa": {
+      "kind": "alias",
+      "target": "quinoa_dry",
+      "target_exists": true
+    },
+    "radish": {
+      "kind": "nutrient",
+      "catalog_key": "radish",
+      "needs_catalog": true
+    },
+    "ragu": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "ranch": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "rice": {
+      "kind": "alias",
+      "target": "rice_dry",
+      "target_exists": true
+    },
+    "rigatoni": {
+      "kind": "alias",
+      "target": "pasta_dry",
+      "target_exists": false
+    },
+    "risotto": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "roasted_vegetable": {
+      "kind": "selector",
+      "preferred": "bell_pepper_red",
+      "from": [
+        "bell_pepper_red",
+        "zucchini",
+        "eggplant",
+        "cauliflower",
+        "carrot"
+      ]
+    },
+    "romaine": {
+      "kind": "nutrient",
+      "catalog_key": "romaine",
+      "needs_catalog": true
+    },
+    "salmon": {
+      "kind": "nutrient",
+      "catalog_key": "salmon"
+    },
+    "scallop": {
+      "kind": "nutrient",
+      "catalog_key": "scallop",
+      "needs_catalog": true
+    },
+    "sea_bass": {
+      "kind": "nutrient",
+      "catalog_key": "sea_bass",
+      "needs_catalog": true
+    },
+    "seed": {
+      "kind": "selector",
+      "preferred": "pumpkin_seeds",
+      "from": [
+        "pumpkin_seeds",
+        "sesame_seeds",
+        "sunflower_seeds"
+      ]
+    },
+    "seitan": {
+      "kind": "nutrient",
+      "catalog_key": "seitan",
+      "needs_catalog": true
+    },
+    "shrimp": {
+      "kind": "nutrient",
+      "catalog_key": "shrimp"
+    },
+    "soy_sesame": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "soylent": {
+      "kind": "forbidden"
+    },
+    "spaghetti": {
+      "kind": "alias",
+      "target": "pasta_dry",
+      "target_exists": false
+    },
+    "spinach": {
+      "kind": "nutrient",
+      "catalog_key": "spinach"
+    },
+    "sweet_potato": {
+      "kind": "nutrient",
+      "catalog_key": "sweet_potato"
+    },
+    "tagliatelle": {
+      "kind": "alias",
+      "target": "pasta_dry",
+      "target_exists": false
+    },
+    "tahini_dressing": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "tempeh": {
+      "kind": "nutrient",
+      "catalog_key": "tempeh"
+    },
+    "tofu": {
+      "kind": "alias",
+      "target": "tofu_firm",
+      "target_exists": true
+    },
+    "tomato_canned": {
+      "kind": "nutrient",
+      "catalog_key": "tomato_canned",
+      "needs_catalog": true
+    },
+    "tomato_fresh": {
+      "kind": "alias",
+      "target": "tomato",
+      "target_exists": true
+    },
+    "tomato_sauce": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "tortilla_strip": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "trofie": {
+      "kind": "alias",
+      "target": "pasta_dry",
+      "target_exists": false
+    },
+    "trout": {
+      "kind": "nutrient",
+      "catalog_key": "trout",
+      "needs_catalog": true
+    },
+    "tuna_canned": {
+      "kind": "nutrient",
+      "catalog_key": "tuna_canned"
+    },
+    "tuna_steak": {
+      "kind": "nutrient",
+      "catalog_key": "tuna_steak",
+      "needs_catalog": true
+    },
+    "turkey_breast": {
+      "kind": "nutrient",
+      "catalog_key": "turkey_breast"
+    },
+    "unrelated_protein_blend": {
+      "kind": "forbidden"
+    },
+    "unrelated_starch": {
+      "kind": "forbidden"
+    },
+    "vegetable_hearty": {
+      "kind": "selector",
+      "preferred": "eggplant",
+      "from": [
+        "eggplant",
+        "zucchini",
+        "mushroom_button",
+        "bell_pepper_red",
+        "cauliflower"
+      ]
+    },
+    "vegetable_sauce": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "vinaigrette": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "vodka_sauce": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "water": {
+      "kind": "nutrient",
+      "catalog_key": "water"
+    },
+    "weight_gainer": {
+      "kind": "forbidden"
+    },
+    "yogurt_dressing": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "ziti": {
+      "kind": "alias",
+      "target": "pasta_dry",
+      "target_exists": false
+    },
+    "zucchini": {
+      "kind": "nutrient",
+      "catalog_key": "zucchini"
+    }
+  }
+}
