@@ -1,12 +1,12 @@
 {
-  "version": 5,
+  "version": 6,
   "generated": "2026-10-09",
   "note": "Registry v3: alle in YAMLs referenzierten IDs. nutrient-Eintraege mit needs_catalog:true sind als TODO markiert — Welle 3+ fuellt die Naehrwerte nach.",
   "ids": {
     "aglio_olio": {
       "kind": "composite",
-      "ref": null,
-      "needs_recipe": true
+      "ref": "composites/aglio_olio.yaml",
+      "needs_recipe": false
     },
     "amatriciana": {
       "kind": "composite",
@@ -366,8 +366,8 @@
     },
     "mushroom_sauce": {
       "kind": "composite",
-      "ref": null,
-      "needs_recipe": true
+      "ref": "composites/mushroom_sauce.yaml",
+      "needs_recipe": false
     },
     "noodle": {
       "kind": "alias",
@@ -381,8 +381,8 @@
     },
     "norma": {
       "kind": "composite",
-      "ref": null,
-      "needs_recipe": true
+      "ref": "composites/norma.yaml",
+      "needs_recipe": false
     },
     "nut": {
       "kind": "selector",
@@ -512,8 +512,8 @@
     },
     "puttanesca": {
       "kind": "composite",
-      "ref": null,
-      "needs_recipe": true
+      "ref": "composites/puttanesca.yaml",
+      "needs_recipe": false
     },
     "quinoa": {
       "kind": "alias",
@@ -702,8 +702,8 @@
     },
     "vodka_sauce": {
       "kind": "composite",
-      "ref": null,
-      "needs_recipe": true
+      "ref": "composites/vodka_sauce.yaml",
+      "needs_recipe": false
     },
     "water": {
       "kind": "nutrient",

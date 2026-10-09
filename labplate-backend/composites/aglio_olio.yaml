@@ -1,0 +1,64 @@
+composite: aglio_olio
+version: 1
+displayName: "Aglio e Olio"
+category: pasta_sauce
+aliases: ["aglio e olio", "aglio olio", "knoblauch oel pasta"]
+
+core:
+  olive_oil:
+    roles: [fat, base]
+    allowed: [olive_oil]
+    amount_g: [30, 60]
+  garlic:
+    roles: [aromatic, flavor]
+    allowed: [garlic]
+    amount_g: [8, 25]
+    notes: "In Scheiben, nicht gepresst."
+  parsley:
+    roles: [finish, flavor]
+    allowed: [parsley, parsley_fresh]
+    amount_g: [5, 15]
+  salt:
+    roles: [seasoning]
+    allowed: [salt]
+    amount_g: [1, 6]
+
+tolerated:
+  chili:
+    allowed: [chili, dried_chili, fresh_chili, peperoncino]
+    amount_g: [0, 8]
+  black_pepper:
+    allowed: [black_pepper, pepper]
+    amount_g: [0, 3]
+
+forbidden:
+  - tomato
+  - tomato_canned
+  - cream_heavy
+  - butter
+  - milk_whole
+  - parmesan
+  - pecorino
+  - onion
+  - beef_mince
+  - chicken_breast
+  - pork_meat
+  - tofu
+  - tempeh
+
+ratios:
+  oil_to_garlic: [1.5, 5.0]
+
+technique:
+  - step: slice_garlic_thin
+  - step: warm_olive_oil_low
+    notes: "Niedrige Hitze, Knoblauch darf nicht braeunen."
+  - step: add_garlic_and_chili
+  - step: add_pasta_and_pasta_water
+  - step: toss_off_heat
+  - step: finish_parsley
+
+notes:
+  - "Chili tolerated — viele Referenzen ohne, viele mit."
+  - "Petersilie core — das Finish definiert das Gericht."
+  - "Knoblauch nicht braeunen, sonst bitter."

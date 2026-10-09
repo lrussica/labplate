@@ -1,0 +1,78 @@
+composite: norma
+version: 1
+displayName: "Pasta alla Norma"
+category: pasta_sauce
+aliases: ["norma", "pasta alla norma", "melanzane"]
+
+core:
+  eggplant:
+    roles: [base, bulk]
+    allowed: [eggplant, aubergine]
+    amount_g: [250, 500]
+    notes: "In Scheiben oder Wuerfeln, vor dem Braten salzen."
+  tomato:
+    roles: [base]
+    allowed: [tomato, tomato_canned, tomato_puree]
+    amount_g: [300, 600]
+  basil:
+    roles: [flavor, finish]
+    allowed: [basil, basil_fresh]
+    amount_g: [3, 12]
+  olive_oil:
+    roles: [fat]
+    allowed: [olive_oil]
+    amount_g: [30, 70]
+  garlic:
+    roles: [aromatic]
+    allowed: [garlic]
+    amount_g: [3, 10]
+  salt:
+    roles: [seasoning]
+    allowed: [salt]
+    amount_g: [2, 8]
+
+tolerated:
+  ricotta:
+    roles: [topping, umami]
+    allowed: [ricotta, ricotta_salata]
+    amount_g: [0, 80]
+    notes: >
+      Ricotta salata ist der klassische Kaese. Wenn verfuegbar, 40-80g
+      gerieben ueber die fertige Pasta. Ricotta fresco nur wenn
+      Ricotta salata nicht verfuegbar.
+  chili:
+    allowed: [chili, dried_chili]
+    amount_g: [0, 4]
+
+forbidden:
+  - cream_heavy
+  - butter
+  - milk_whole
+  - parmesan
+  - pecorino
+  - mozzarella
+  - beef_mince
+  - chicken_breast
+  - pork_meat
+  - tofu
+  - tempeh
+
+ratios:
+  eggplant_to_tomato: [0.5, 1.3]
+  oil_to_eggplant: [0.08, 0.25]
+
+technique:
+  - step: salt_eggplant_slices
+    notes: "30 Min ziehen lassen, abtupfen. Reduziert Bitterstoffe."
+  - step: fry_eggplant_in_oil
+    notes: "Goldbraun, portionsweise. Nicht zu viel auf einmal."
+  - step: drain_eggplant
+  - step: prepare_tomato_sauce
+    params: { duration_min: [15, 25] }
+  - step: combine_eggplant_and_sauce
+  - step: fold_with_pasta
+  - step: top_with_ricotta_salata_and_basil
+
+notes:
+  - "Aubergine ist definierend. Ohne Aubergine ist es keine Norma."
+  - "Ricotta salata klassisch. Wenn nicht verfuegbar: ricotta fresco tolerated."

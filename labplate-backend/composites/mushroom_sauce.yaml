@@ -1,0 +1,87 @@
+composite: mushroom_sauce
+version: 1
+displayName: "Sugo ai Funghi"
+category: pasta_sauce
+aliases: ["mushroom sauce", "sugo ai funghi", "funghi"]
+
+core:
+  mushroom:
+    roles: [base, umami]
+    allowed: [mushroom, mushroom_button, champignon, porcini]
+    amount_g: [250, 500]
+    notes: "Champignons als Basis, Steinpilze fuer Tiefe."
+  garlic:
+    roles: [aromatic]
+    allowed: [garlic]
+    amount_g: [5, 15]
+  olive_oil:
+    roles: [fat]
+    allowed: [olive_oil]
+    amount_g: [25, 55]
+  parsley:
+    roles: [finish]
+    allowed: [parsley, parsley_fresh]
+    amount_g: [3, 12]
+  salt:
+    roles: [seasoning]
+    allowed: [salt]
+    amount_g: [1, 6]
+
+tolerated:
+  dried_porcini:
+    roles: [umami]
+    allowed: [porcini_dried, mushroom_dried]
+    amount_g: [0, 20]
+    notes: "In warmem Wasser eingeweicht. Einweichwasser mitverwenden."
+  cream_heavy:
+    roles: [fat, texture]
+    allowed: [cream_heavy]
+    amount_g: [0, 100]
+    notes: "Nicht klassisch. Nur in der italo-amerikanischen Variante."
+  white_wine:
+    roles: [acid, liquid]
+    allowed: [white_wine]
+    amount_g: [0, 80]
+  parmesan:
+    roles: [umami, finish]
+    allowed: [parmesan, parmigiano_reggiano]
+    amount_g: [0, 30]
+  chili:
+    allowed: [chili, dried_chili]
+    amount_g: [0, 4]
+
+forbidden:
+  - butter
+  - milk_whole
+  - pecorino
+  - onion
+  - tomato
+  - tomato_canned
+  - beef_mince
+  - chicken_breast
+  - pork_meat
+  - anchovy
+  - tofu
+  - tempeh
+
+ratios:
+  oil_to_mushroom: [0.06, 0.2]
+  garlic_to_mushroom: [0.015, 0.06]
+
+technique:
+  - step: clean_and_slice_mushrooms
+  - step: heat_olive_oil
+  - step: brown_mushrooms_high_heat
+    notes: "Nicht zu viel auf einmal. Erst wenn Wasser weg ist, kommt Bräunung."
+  - step: add_garlic
+  - step: deglaze_with_wine_optional
+  - step: add_soaked_porcini_water_optional
+  - step: simmer_short
+    params: { duration_min: [8, 15] }
+  - step: finish_parsley
+  - step: optional_cream
+
+notes:
+  - "Pilze zuerst scharf anbraten, sonst kochen sie im eigenen Wasser."
+  - "Steinpilze (getrocknet) tolerated — sie bringen Tiefe, sind aber nicht überall verfügbar."
+  - "Sahne tolerated — nicht klassisch italienisch."

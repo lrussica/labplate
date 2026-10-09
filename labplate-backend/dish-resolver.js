@@ -14,7 +14,7 @@
  */
 const ALIASES = [
   // A1 Pasta — Substring-Match (Vollkornnudeln, Pastasauce, ...)
-  { pattern: /(spaghetti|penne|rigatoni|fusilli|tagliatelle|linguine|farfalle|orecchiette|bucatini|conchiglie|gemelli|trofie|fettuccine|pappardelle|ziti|cavatappi|pasta|nudeln|cacio\s*e\s*pepe|aglio\s*e\s*olio|pesto)/i,
+  { pattern: /(spaghetti|penne|rigatoni|fusilli|tagliatelle|linguine|farfalle|orecchiette|bucatini|conchiglie|gemelli|trofie|fettuccine|pappardelle|ziti|cavatappi|pasta|nudeln|cacio\s*e\s*pepe|aglio\s*e\s*olio|pesto|puttanesca|alla\s+norma|alla\s+vodka)/i,
     archetypeId: 'A1_pasta', dishId: 'pasta.generic', confidence: 0.85 },
   // A3 Pfanne — "hash" mit rechter Grenze (sonst "Hashtag")
   { pattern: /(bratkartoffeln|wok|shakshuka|fried rice|pfannengericht|ruehrei|omelett|hash(?![a-zäöüß]))/i,
@@ -40,6 +40,11 @@ const COMPOSITE_ALIASES = [
   { pattern: /(pesto(?!\s*genovese\s*mild)|pesto genovese|basilico)/i, compositeId: 'pesto', confidence: 0.9 },
   { pattern: /(marinara)/i, compositeId: 'marinara', confidence: 0.9 },
   { pattern: /(napoletana|napoletan)/i, compositeId: 'napoletana', confidence: 0.9 },
+  { pattern: /(aglio\s*(e|\s)?\s*olio|knoblauch.*oliven)/i, compositeId: 'aglio_olio', confidence: 0.9 },
+  { pattern: /(puttanesca)/i, compositeId: 'puttanesca', confidence: 0.95 },
+  { pattern: /(pasta\s+alla\s+norma|\bnorma\b)/i, compositeId: 'norma', confidence: 0.85 },
+  { pattern: /(vodka[\s-]?sauce|alla\s+vodka|penne\s+alla\s+vodka)/i, compositeId: 'vodka_sauce', confidence: 0.9 },
+  { pattern: /(mushroom\s+sauce|sugo\s+ai\s+funghi|funghi|pilzsauce)/i, compositeId: 'mushroom_sauce', confidence: 0.85 },
 ];
 
 function resolveComposite(query) {

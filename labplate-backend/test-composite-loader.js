@@ -6,7 +6,7 @@ let pass = 0, fail = 0;
 function ok(m) { console.log('OK ' + m); pass++; }
 function bad(m) { console.log('FAIL ' + m); fail++; }
 
-const expected = ['amatriciana','arrabbiata','cacio_e_pepe','marinara','napoletana','pesto'];
+const expected = ['aglio_olio','amatriciana','arrabbiata','cacio_e_pepe','marinara','mushroom_sauce','napoletana','norma','pesto','puttanesca','vodka_sauce'];
 const listed = loader.listComposites().slice().sort();
 if (JSON.stringify(listed) === JSON.stringify(expected.slice().sort())) {
   ok('listComposites: ' + listed.length);
@@ -69,7 +69,7 @@ for (const id of expected) {
   if (!r) missing.push(id);
   else if (r.kind !== 'composite') missing.push(id + '(kind=' + r.kind + ')');
 }
-if (missing.length === 0) ok('alle 6 Compositen in Registry als kind=composite');
+if (missing.length === 0) ok('alle 11 Compositen in Registry als kind=composite');
 else bad('fehlend in Registry: ' + missing.join(', '));
 
 console.log();

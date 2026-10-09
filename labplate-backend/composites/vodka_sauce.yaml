@@ -1,0 +1,79 @@
+composite: vodka_sauce
+version: 1
+displayName: "Sugo alla Vodka"
+category: pasta_sauce
+aliases: ["vodka sauce", "sugo alla vodka", "penne alla vodka"]
+
+core:
+  tomato:
+    roles: [base]
+    allowed: [tomato, tomato_canned, tomato_puree, tomato_paste]
+    amount_g: [300, 600]
+  cream_heavy:
+    roles: [fat, texture]
+    allowed: [cream_heavy, cream_fresh]
+    amount_g: [80, 200]
+  vodka:
+    roles: [flavor]
+    allowed: [vodka]
+    amount_g: [30, 80]
+    notes: "Der Alkohol verkocht, die Aromen bleiben."
+  parmesan:
+    roles: [umami, finish]
+    allowed: [parmesan, parmigiano_reggiano]
+    amount_g: [20, 50]
+  garlic:
+    roles: [aromatic]
+    allowed: [garlic]
+    amount_g: [5, 15]
+  olive_oil:
+    roles: [fat]
+    allowed: [olive_oil]
+    amount_g: [15, 40]
+  salt:
+    roles: [seasoning]
+    allowed: [salt]
+    amount_g: [1, 5]
+
+tolerated:
+  chili:
+    allowed: [chili, dried_chili, peperoncino]
+    amount_g: [0, 5]
+  onion:
+    allowed: [onion, onion_yellow, shallot]
+    amount_g: [0, 60]
+    notes: "In manchen Varianten statt Knoblauch."
+  basil:
+    allowed: [basil, basil_fresh]
+    amount_g: [0, 8]
+
+forbidden:
+  - butter
+  - milk_whole
+  - pecorino
+  - beef_mince
+  - chicken_breast
+  - pork_meat
+  - anchovy
+  - tofu
+  - tempeh
+
+ratios:
+  cream_to_tomato: [0.2, 0.5]
+  vodka_to_tomato: [0.08, 0.2]
+
+technique:
+  - step: heat_olive_oil
+  - step: bloom_garlic
+  - step: add_tomato
+  - step: add_vodka
+    notes: "Vodka zugeben, kurz aufkochen lassen — Alkohol verfliegt."
+  - step: simmer
+    params: { duration_min: [15, 25] }
+  - step: add_cream
+    notes: "Sahne erst spaet, sonst bricht sie."
+  - step: finish_parmesan
+
+notes:
+  - "Italo-amerikanische Referenz. In Italien selten gegessen."
+  - "Sahne erst am Ende, damit sie nicht ausflockt."

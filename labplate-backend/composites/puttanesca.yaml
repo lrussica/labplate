@@ -1,0 +1,79 @@
+composite: puttanesca
+version: 1
+displayName: "Sugo alla Puttanesca"
+category: pasta_sauce
+aliases: ["puttanesca", "sugo puttanesca"]
+
+core:
+  tomato:
+    roles: [base]
+    allowed: [tomato, tomato_canned, tomato_puree]
+    amount_g: [300, 600]
+  olive:
+    roles: [flavor, texture]
+    allowed: [olive, black_olive, green_olive]
+    amount_g: [40, 100]
+    notes: "Klassisch schwarz, aber gruen ist verbreitet."
+  caper:
+    roles: [flavor, acid]
+    allowed: [capers, caper]
+    amount_g: [15, 40]
+  anchovy:
+    roles: [umami, flavor]
+    allowed: [anchovy, anchovies]
+    amount_g: [20, 60]
+    notes: "Definierend. Nicht weglassbar."
+  garlic:
+    roles: [aromatic]
+    allowed: [garlic]
+    amount_g: [5, 15]
+  olive_oil:
+    roles: [fat]
+    allowed: [olive_oil]
+    amount_g: [20, 50]
+  salt:
+    roles: [seasoning]
+    allowed: [salt]
+    amount_g: [1, 5]
+    notes: "Sparsam — Oliven, Kapern und Sardellen salzen bereits."
+
+tolerated:
+  chili:
+    allowed: [chili, dried_chili, fresh_chili, peperoncino]
+    amount_g: [0, 6]
+  parsley:
+    allowed: [parsley, parsley_fresh]
+    amount_g: [0, 10]
+
+forbidden:
+  - cream_heavy
+  - butter
+  - milk_whole
+  - parmesan
+  - onion
+  - beef_mince
+  - chicken_breast
+  - pork_meat
+  - tofu
+  - tempeh
+
+ratios:
+  olive_to_tomato: [0.08, 0.35]
+  caper_to_tomato: [0.03, 0.15]
+  anchovy_to_tomato: [0.04, 0.20]
+
+technique:
+  - step: heat_olive_oil
+  - step: melt_anchovies_in_oil
+    notes: "Sardellen in warmem Oel aufloesen, bis sie zerfallen."
+  - step: add_garlic_and_chili
+  - step: add_olives_and_capers
+  - step: add_tomato
+  - step: simmer
+    params: { duration_min: [15, 30] }
+  - step: season_salt_carefully
+
+notes:
+  - "Sardellen sind Kern, nicht optional. Sie sind der Umami-Anker."
+  - "Salz sparsam. Oliven + Kapern + Sardellen salzen stark."
+  - "Kein Kaese klassisch."
