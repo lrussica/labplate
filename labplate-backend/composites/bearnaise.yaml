@@ -8,43 +8,43 @@ core:
   white_wine_vinegar:
     roles: [acid, reduction]
     allowed: [white_wine_vinegar, vinegar]
-    amount_g: [40, 100]
+    amount_g: [10, 25]
   shallot:
     roles: [aromatic]
     allowed: [shallot, onion_yellow]
-    amount_g: [20, 60]
+    amount_g: [5, 15]
   tarragon:
     roles: [flavor, base]
     allowed: [tarragon]
-    amount_g: [5, 15]
+    amount_g: [1, 4]
   black_pepper:
     roles: [seasoning]
     allowed: [black_pepper, pepper]
-    amount_g: [2, 6]
+    amount_g: [0.5, 1.5]
   pasteurized_egg_yolk:
     roles: [base, binder]
     allowed: [pasteurized_egg_yolk, egg]
-    amount_g: [60, 120]
+    amount_g: [15, 30]
     notes: "R14: pasteurisiertes Eigelb."
   butter:
     roles: [fat]
     allowed: [butter]
-    amount_g: [150, 300]
+    amount_g: [38, 75]
     notes: "Geklaerte Butter."
   salt:
     roles: [seasoning]
     allowed: [salt]
-    amount_g: [1, 4]
+    amount_g: [0.2, 1]
 
 tolerated:
   chervil:
     roles: [finish]
     allowed: [chervil, parsley_fresh, parsley]
-    amount_g: [0, 10]
+    amount_g: [0, 2.5]
   lemon_juice:
     roles: [acid]
     allowed: [lemon_juice]
-    amount_g: [0, 15]
+    amount_g: [0, 4]
 
 forbidden:
   - raw_egg_yolk_unpasteurized

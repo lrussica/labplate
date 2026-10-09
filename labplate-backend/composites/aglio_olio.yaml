@@ -8,28 +8,28 @@ core:
   olive_oil:
     roles: [fat, base]
     allowed: [olive_oil]
-    amount_g: [30, 60]
+    amount_g: [7.5, 15]
   garlic:
     roles: [aromatic, flavor]
     allowed: [garlic]
-    amount_g: [8, 25]
+    amount_g: [2, 6]
     notes: "In Scheiben, nicht gepresst."
   parsley:
     roles: [finish, flavor]
     allowed: [parsley, parsley_fresh]
-    amount_g: [5, 15]
+    amount_g: [1, 4]
   salt:
     roles: [seasoning]
     allowed: [salt]
-    amount_g: [1, 6]
+    amount_g: [0.2, 1.5]
 
 tolerated:
   chili:
     allowed: [chili, dried_chili, fresh_chili, peperoncino]
-    amount_g: [0, 8]
+    amount_g: [0, 2]
   black_pepper:
     allowed: [black_pepper, pepper]
-    amount_g: [0, 3]
+    amount_g: [0, 0.8]
 
 forbidden:
   - tomato

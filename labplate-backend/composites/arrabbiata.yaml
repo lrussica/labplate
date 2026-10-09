@@ -8,38 +8,38 @@ core:
   tomato:
     roles: [base]
     allowed: [tomato, tomato_canned, tomato_puree, fresh_tomatoes]
-    amount_g: [300, 600]
+    amount_g: [75, 150]
   garlic:
     roles: [aromatic]
     allowed: [garlic]
-    amount_g: [5, 15]
+    amount_g: [1, 4]
   dried_chili:
     roles: [heat, flavor]
     allowed: [dried_chili, chili, peperoncino]
-    amount_g: [3, 12]
+    amount_g: [0.8, 3]
   olive_oil:
     roles: [fat]
     allowed: [olive_oil]
-    amount_g: [20, 50]
+    amount_g: [5, 12]
   salt:
     roles: [seasoning]
     allowed: [salt]
-    amount_g: [1, 6]
+    amount_g: [0.2, 1.5]
 
 tolerated:
   pecorino:
     roles: [topping]
     allowed: [pecorino, pecorino_romano]
-    amount_g: [0, 25]
+    amount_g: [0, 6]
     notes: "Nur als Topping am Tisch, nicht in der Sauce."
   parsley:
     roles: [finish]
     allowed: [parsley, parsley_fresh]
-    amount_g: [0, 8]
+    amount_g: [0, 2]
   fresh_chili:
     roles: [heat]
     allowed: [fresh_chili, chili]
-    amount_g: [0, 8]
+    amount_g: [0, 2]
 
 forbidden:
   - onion

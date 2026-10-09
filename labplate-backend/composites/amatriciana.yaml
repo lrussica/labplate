@@ -8,22 +8,22 @@ core:
   guanciale:
     roles: [fat, protein, umami]
     allowed: [guanciale, pancetta]
-    amount_g: [80, 150]
+    amount_g: [20, 38]
     notes: "Guanciale klassisch. Pancetta nur wenn Guanciale nicht verfuegbar."
   tomato:
     roles: [base]
     allowed: [tomato, tomato_canned, tomato_puree]
-    amount_g: [300, 600]
+    amount_g: [75, 150]
   pecorino:
     roles: [umami, finish]
     allowed: [pecorino, pecorino_romano]
-    amount_g: [30, 60]
+    amount_g: [7.5, 15]
     notes: "Pecorino Romano."
 
 tolerated:
   chili:
     allowed: [chili, dried_chili, fresh_chili, peperoncino]
-    amount_g: [0, 8]
+    amount_g: [0, 2]
     notes: "Peperoncino oft genannt, aber nicht in allen Referenzen."
   sautéing_fat:
     roles: [technique]

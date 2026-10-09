@@ -8,44 +8,44 @@ core:
   basil:
     roles: [base, flavor]
     allowed: [basil, basil_fresh]
-    amount_g: [40, 80]
+    amount_g: [10, 20]
     notes: "Frisch, trocken getupft."
   pine_nut:
     roles: [fat, texture]
     allowed: [pine_nut]
-    amount_g: [15, 35]
+    amount_g: [4, 9]
     notes: "Idealerweise leicht geröstet."
   garlic:
     roles: [aromatic]
     allowed: [garlic]
-    amount_g: [3, 10]
+    amount_g: [0.8, 2.5]
   parmesan:
     roles: [umami, binder]
     allowed: [parmesan, parmigiano_reggiano]
-    amount_g: [30, 60]
+    amount_g: [7.5, 15]
     notes: "Parmigiano Reggiano. Mischung 2:1 mit Pecorino."
   pecorino:
     roles: [umami, binder]
     allowed: [pecorino, pecorino_romano]
-    amount_g: [15, 30]
+    amount_g: [4, 7.5]
   olive_oil:
     roles: [fat]
     allowed: [olive_oil]
-    amount_g: [50, 100]
+    amount_g: [12, 25]
     notes: "Erst am Ende, mäßig dosiert."
   salt:
     roles: [seasoning]
     allowed: [salt]
-    amount_g: [1, 4]
+    amount_g: [0.2, 1]
 
 tolerated:
   walnut:
     allowed: [walnut, walnuts]
-    amount_g: [0, 30]
+    amount_g: [0, 7.5]
     notes: "Moderne Abwandlung statt Pinienkernen."
   cashew:
     allowed: [cashew, cashews]
-    amount_g: [0, 30]
+    amount_g: [0, 7.5]
 
 forbidden:
   - cream_heavy

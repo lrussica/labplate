@@ -8,42 +8,42 @@ core:
   olive_oil:
     roles: [fat, base]
     allowed: [olive_oil]
-    amount_g: [60, 120]
+    amount_g: [15, 30]
   red_wine_vinegar:
     roles: [acid]
     allowed: [red_wine_vinegar, vinegar]
-    amount_g: [15, 45]
+    amount_g: [4, 11]
   dijon_mustard:
     roles: [emulsifier]
     allowed: [dijon_mustard, mustard]
-    amount_g: [5, 15]
+    amount_g: [1, 4]
   salt:
     roles: [seasoning]
     allowed: [salt]
-    amount_g: [1, 4]
+    amount_g: [0.2, 1]
   black_pepper:
     roles: [seasoning]
     allowed: [black_pepper, pepper]
-    amount_g: [0, 3]
+    amount_g: [0, 0.8]
 
 tolerated:
   white_wine_vinegar:
     roles: [acid]
     allowed: [white_wine_vinegar]
-    amount_g: [0, 45]
+    amount_g: [0, 11]
     notes: "Hellere, mildere Variante statt Rotweinessig."
   shallot:
     roles: [aromatic]
     allowed: [shallot, onion_yellow]
-    amount_g: [0, 20]
+    amount_g: [0, 5]
   fresh_herbs:
     roles: [finish]
     allowed: [parsley, chives, chive, tarragon, basil]
-    amount_g: [0, 10]
+    amount_g: [0, 2.5]
   honey:
     roles: [sweet]
     allowed: [honey]
-    amount_g: [0, 10]
+    amount_g: [0, 2.5]
 
 forbidden:
   - cream_heavy

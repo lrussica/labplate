@@ -8,29 +8,29 @@ core:
   garlic:
     roles: [base, flavor]
     allowed: [garlic]
-    amount_g: [15, 40]
+    amount_g: [4, 10]
     notes: "Viel Knoblauch. Das ist ein Knoblauchprodukt, kein Dressing."
   olive_oil:
     roles: [fat, base]
     allowed: [olive_oil]
-    amount_g: [120, 300]
+    amount_g: [30, 75]
   salt:
     roles: [seasoning]
     allowed: [salt]
-    amount_g: [2, 8]
+    amount_g: [0.5, 2]
 
 tolerated:
   pasteurized_egg_yolk:
     roles: [binder, modernisierung]
     allowed: [pasteurized_egg_yolk, egg, mayonnaise]
-    amount_g: [0, 40]
+    amount_g: [0, 10]
     notes: >
       Moderne provenzalische Variante. Nur pasteurisiertes Eigelb
       (R14). Klassisch katalanisch ohne Ei.
   lemon_juice:
     roles: [acid]
     allowed: [lemon_juice]
-    amount_g: [0, 15]
+    amount_g: [0, 4]
 
 forbidden:
   - cream_heavy

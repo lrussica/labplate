@@ -8,42 +8,42 @@ core:
   tomato:
     roles: [base]
     allowed: [tomato, tomato_canned, tomato_puree]
-    amount_g: [300, 600]
+    amount_g: [75, 150]
   olive:
     roles: [flavor, texture]
     allowed: [olive, black_olive, green_olive]
-    amount_g: [40, 100]
+    amount_g: [10, 25]
     notes: "Klassisch schwarz, aber gruen ist verbreitet."
   caper:
     roles: [flavor, acid]
     allowed: [capers, caper]
-    amount_g: [15, 40]
+    amount_g: [4, 10]
   anchovy:
     roles: [umami, flavor]
     allowed: [anchovy, anchovies]
-    amount_g: [20, 60]
+    amount_g: [5, 15]
     notes: "Definierend. Nicht weglassbar."
   garlic:
     roles: [aromatic]
     allowed: [garlic]
-    amount_g: [5, 15]
+    amount_g: [1, 4]
   olive_oil:
     roles: [fat]
     allowed: [olive_oil]
-    amount_g: [20, 50]
+    amount_g: [5, 12]
   salt:
     roles: [seasoning]
     allowed: [salt]
-    amount_g: [1, 5]
+    amount_g: [0.2, 1]
     notes: "Sparsam — Oliven, Kapern und Sardellen salzen bereits."
 
 tolerated:
   chili:
     allowed: [chili, dried_chili, fresh_chili, peperoncino]
-    amount_g: [0, 6]
+    amount_g: [0, 1.5]
   parsley:
     allowed: [parsley, parsley_fresh]
-    amount_g: [0, 10]
+    amount_g: [0, 2.5]
 
 forbidden:
   - cream_heavy
