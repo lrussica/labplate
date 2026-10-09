@@ -1265,6 +1265,74 @@ module.exports = {
         return !!detectEmotionalBlockade(userText);
       };
     }
+    // Block E: postValidationHook laeuft nach validateRecipeV2 in der
+    // Pipeline. Wir nutzen ihn fuer Mengen-Range-Checks gegen das
+    // erkannte Profil (Archetyp oder Composite). Bei Blockern Retry
+    // mit konkreten Zahlen, damit das LLM selbst korrigiert.
+    if (typeof o.postValidationHook !== 'function') {
+      o.postValidationHook = function (parsedRecipe, attempt, ctx) {
+        try {
+          const payload = (ctx && ctx.payload) || o.payload || {};
+          const dishQuery = String(
+            payload.ai_instruction || payload.aiInstruction ||
+            (Array.isArray(payload.pantry_ingredients) ? payload.pantry_ingredients.join(' ') : '')
+          ).trim();
+          if (!dishQuery) return null;
+
+          const guard = require('./dish-identity-guard');
+          const g = guard.checkQuery(dishQuery, parsedRecipe);
+          if (!g || !Array.isArray(g.violations)) return null;
+
+          const blockers = [];
+          const warnings = [];
+          for (const v of g.violations) {
+            if (v.severity === 'block') {
+              // Mengen-Blocker konkret umformulieren
+              if (v.code === 'amount_out_of_range') {
+                blockers.push(
+                  'Mengen-Korrektur: ' + v.detail + ' ' +
+                  'Passe die Zutatenmenge an, damit sie zum Profil passt. ' +
+                  'Aendere nur die Menge, nicht das Gericht.'
+                );
+              } else if (v.code === 'composite_core_missing') {
+                blockers.push(
+                  'Fehlende Kern-Zutat: ' + v.detail + ' ' +
+                  'Ergaenze die Zutat in angemessener Menge. Kein Ersatz durch andere Zutaten.'
+                );
+              } else if (v.code === 'composite_forbidden_used') {
+                blockers.push(
+                  'Verbotene Zutat: ' + v.detail + ' ' +
+                  'Entferne diese Zutat. Sie gehoert nicht zum klassischen Rezept.'
+                );
+              } else if (v.code === 'forbidden_used' || v.code === 'unknown_to_profile') {
+                blockers.push(
+                  'Identitaets-Verletzung: ' + v.detail + ' ' +
+                  'Ersetze oder entferne die Zutat. Behalte das Gericht.'
+                );
+              } else if (v.code === 'core_slot_missing') {
+                blockers.push(
+                  'Pflicht-Zutat fehlt: ' + v.detail + ' ' +
+                  'Ergaenze eine klassische Zutat dieses Gerichts.'
+                );
+              } else if (v.code === 'side_not_requested') {
+                blockers.push(
+                  'Beilage nicht angefragt: ' + v.detail + ' ' +
+                  'Entferne die Beilage. Der Nutzer hat nur das Hauptgericht bestellt.'
+                );
+              } else {
+                blockers.push(v.code + ': ' + v.detail);
+              }
+            } else if (v.severity === 'warn') {
+              warnings.push(v.code + ': ' + v.detail);
+            }
+          }
+          return { blockers: blockers, warnings: warnings, resolved: g.resolved };
+        } catch (e) {
+          console.warn('[nutri-recipe-core] postValidationHook failed', e && e.message);
+          return null;
+        }
+      };
+    }
     const result = await recipePipeline.generateValidatedRecipe(o);
     // --- Block E: Gericht-Identitaet (dish-identity-guard) ---
     // Beobachter-Modus: loggt Violations, blockiert nicht.

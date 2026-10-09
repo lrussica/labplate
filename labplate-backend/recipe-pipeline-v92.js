@@ -1423,6 +1423,33 @@ async function generateValidatedRecipe(opts) {
       continue;
     }
 
+    // Optionaler Post-Validation-Hook (Block E): laeuft nach der formalen
+    // Validierung. Liefert er Blocker, wird ein Retry ausgeloest mit
+    // konkreten Korrektur-Anweisungen (z.B. Mengen ausserhalb des Profils).
+    // Nur aktiv, wenn noch Retries uebrig sind; im letzten Versuch wird
+    // das Rezept als Fallback durchgelassen.
+    if (typeof o.postValidationHook === 'function' && attempt < MAX_VALIDATION_ATTEMPTS) {
+      let hookResult = null;
+      try {
+        hookResult = o.postValidationHook(parsed, attempt, { payload: payload });
+      } catch (eHook) {
+        console.warn('[recipe-v92] postValidationHook error', eHook && eHook.message);
+      }
+      if (hookResult && Array.isArray(hookResult.blockers) && hookResult.blockers.length) {
+        lastErrors = hookResult.blockers.slice();
+        lastWarnings = (hookResult.warnings || []).slice();
+        logValidationFailure({
+          attempt: attempt,
+          errors: lastErrors,
+          warnings: lastWarnings,
+          parsed: parsed,
+          traceId: traceId,
+          aiInstruction: aiInstructionForLog,
+        });
+        continue;
+      }
+    }
+
     // Rezept ist formal valide – als Fallback merken, falls kcal-Retry scheitert.
     lastValidRecipe = { parsed: parsed, validation: validation };
 
