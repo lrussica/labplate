@@ -64,9 +64,12 @@ core:
     allowed:
       broth_meat:
         amount_g: [200, 800]
-        notes: "Fond, Bruehe. Basis fuer Gulasch, Rindereintopf."
+        notes: "Fond, Bruehe. Basis fuer Gulasch, Rindereintopf. Alias -> vegetable_broth."
       broth_vegetable:
         amount_g: [200, 800]
+      vegetable_broth:
+        amount_g: [200, 800]
+        notes: "Concrete Catalog-ID. Alle Bruehen-Varianten mappen hierhin." 
       tomato_canned:
         amount_g: [200, 600]
         notes: "Passata, gehackte Tomaten. Chili, Shakshuka-Variante."
