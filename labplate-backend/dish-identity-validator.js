@@ -404,6 +404,142 @@ function checkProfileFit(archetype, recipe, candidateSets) {
   return violations;
 }
 
+/**
+ * Prueft ein Rezept gegen ein Composite-Profil (Pesto, Amatriciana,
+ * Marinara, Napoletana, Arrabbiata, Cacio e Pepe).
+ *
+ * Nur aufgerufen, wenn der Resolver ein Composite erkannt hat
+ * (z.B. "Spaghetti all'Amatriciana" -> compositeId='amatriciana').
+ *
+ * Prueft analog zur Archetyp-Pruefung, aber gegen das Composite-YAML:
+ *   - jeder core-Slot muss befuellt sein
+ *   - forbidden-Zutaten duerfen nicht vorkommen
+ *   - Zutaten ausserhalb von core+tolerated -> unknown_to_composite
+ */
+function validateComposite(compositeId, recipe) {
+  const compositeLoader = require('./composite-loader');
+  const catalog = require('./nutri-catalog');
+  const composite = compositeLoader.loadComposite(compositeId);
+
+  const violations = [];
+  const candidateSets = recipe.ingredients.map(ing =>
+    ingredientCandidates(ing, catalog));
+
+  // Alle allowed-IDs aus core + tolerated sammeln
+  const allAllowed = new Set();
+  const coreIds = new Set();
+  function collect(map, target) {
+    for (const slotDef of Object.values(map || {})) {
+      if (!slotDef || !slotDef.allowed) continue;
+      const a = slotDef.allowed;
+      const arr = Array.isArray(a) ? a : Object.keys(a);
+      arr.forEach(x => { target.add(x); allAllowed.add(x); });
+    }
+  }
+  collect(composite.core, coreIds);
+  collect(composite.tolerated, allAllowed);
+  // Core-IDs auch in allAllowed (sonst doppelt sammeln)
+  coreIds.forEach(x => allAllowed.add(x));
+
+  // Alias-Targets expandieren
+  const expandSet = (set) => {
+    const expanded = new Set(set);
+    for (const id of set) {
+      const r = loader.resolveId(id);
+      if (r && r.target) expanded.add(r.target);
+      if (r && r.catalog_key) expanded.add(r.catalog_key);
+    }
+    return expanded;
+  };
+  const coreExpanded = expandSet(coreIds);
+  const allExpanded = expandSet(allAllowed);
+
+  const BASIC = new Set([
+    'salt', 'water', 'black_pepper', 'white_pepper', 'pepper',
+    'pasta_dry', 'spaghetti', 'penne', 'rigatoni', 'fusilli',
+    'tagliatelle', 'linguine', 'farfalle', 'orecchiette', 'bucatini',
+    'conchiglie', 'gemelli', 'trofie', 'fettuccine', 'pappardelle',
+    'ziti', 'cavatappi', 'elbow_macaroni', 'noodle',
+  ]);
+
+  // matchesSet: nur echte Zutaten. BASIC-Kandidaten zaehlen nicht als
+  // Slot-Fueller, sondern werden bei der Core-Pruefung ausgefiltert.
+  function matchesSet(cands, set) {
+    for (const c of cands) {
+      if (set.has(c)) return true;
+      const r = loader.resolveId(c);
+      if (r && r.target && set.has(r.target)) return true;
+      if (r && r.catalog_key && set.has(r.catalog_key)) return true;
+    }
+    return false;
+  }
+
+  // 1. core-Slots pruefen
+  //    matchesSet prueft nur echte Slot-Zugehoerigkeit, keine BASIC-Shortcuts.
+  for (const [slotName, slotDef] of Object.entries(composite.core || {})) {
+    let filled = false;
+    const slotSet = expandSet(new Set(
+      Array.isArray(slotDef.allowed) ? slotDef.allowed : Object.keys(slotDef.allowed || {})
+    ));
+    for (const cands of candidateSets) {
+      if (matchesSet(cands, slotSet)) { filled = true; break; }
+    }
+    if (!filled) {
+      violations.push({
+        code: 'composite_core_missing',
+        severity: SEV_BLOCK,
+        detail: 'Composite "' + compositeId + '": core-Slot "' + slotName + '" nicht befuellt',
+      });
+    }
+  }
+
+  // 2. forbidden pruefen
+  const forbidden = composite.forbidden || [];
+  for (let i = 0; i < recipe.ingredients.length; i++) {
+    const cands = candidateSets[i];
+    for (const c of cands) {
+      if (forbidden.includes(c)) {
+        violations.push({
+          code: 'composite_forbidden_used',
+          severity: SEV_BLOCK,
+          detail: 'Composite "' + compositeId + '": forbidden-Zutat ' + c + ' (' + (recipe.ingredients[i].name || '?') + ')',
+        });
+        break;
+      }
+      const r = loader.resolveId(c);
+      if (r && r.target && forbidden.includes(r.target)) {
+        violations.push({
+          code: 'composite_forbidden_used',
+          severity: SEV_BLOCK,
+          detail: 'Composite "' + compositeId + '": forbidden-Zutat ' + r.target + ' (' + (recipe.ingredients[i].name || '?') + ')',
+        });
+        break;
+      }
+    }
+  }
+
+  // 3. unknown_to_composite (Warnung, kein Block)
+  //    BASIC (Pasta, Wasser, Salz, Pfeffer) wird komplett uebersprungen,
+  //    wenn mindestens ein Kandidat in BASIC steht. Sonst wuerde z.B.
+  //    "Salz" mit Kandidaten ['salz','salt'] getriggert, weil nur
+  //    'salt' in BASIC ist und 'salz' nicht matcht.
+  for (let i = 0; i < recipe.ingredients.length; i++) {
+    const cands = candidateSets[i];
+    if (cands.some(x => BASIC.has(x))) continue;
+    if (!matchesSet(cands, allExpanded)) {
+      violations.push({
+        code: 'unknown_to_composite',
+        severity: SEV_WARN,
+        detail: 'Composite "' + compositeId + '": "' + (recipe.ingredients[i].name || cands[0]) +
+                '" steht in keinem Slot',
+      });
+    }
+  }
+
+  const hasBlock = violations.some(v => v.severity === SEV_BLOCK);
+  return { ok: !hasBlock, violations };
+}
+
 function validate(archetypeId, recipe, options) {
   const opts = Object.assign({ strict: true }, options || {});
   const archetype = loader.loadArchetype(archetypeId);
@@ -471,4 +607,4 @@ function validate(archetypeId, recipe, options) {
   return { ok: !hasBlock, violations };
 }
 
-module.exports = { validate };
+module.exports = { validate, validateComposite };

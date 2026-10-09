@@ -17,20 +17,54 @@ const validator = require('./dish-identity-validator');
 
 function checkQuery(query, recipe, options) {
   const resolved = resolver.resolve(query);
+
+  // Composite-Check laeuft zusaetzlich, wenn ein Composite erkannt wurde
+  let compositeResult = null;
+  if (resolved.compositeId && recipe) {
+    try {
+      compositeResult = validator.validateComposite(resolved.compositeId, recipe);
+    } catch (e) {
+      compositeResult = { ok: true, violations: [{
+        code: 'composite_check_failed',
+        severity: 'warn',
+        detail: 'Composite-Check Fehler: ' + (e && e.message),
+      }] };
+    }
+  }
+
+  // Wenn weder Archetyp noch Composite -> free
   if (resolved.mode === 'free' || !resolved.archetypeId) {
+    if (compositeResult && !compositeResult.ok) {
+      return {
+        ok: false,
+        mode: 'classic',
+        resolved,
+        violations: compositeResult.violations,
+      };
+    }
     return {
       ok: true,
-      mode: 'free',
+      mode: resolved.compositeId ? 'composite' : 'free',
       resolved,
-      violations: [],
+      violations: compositeResult ? compositeResult.violations : [],
     };
   }
+
+  // Archetyp-Check
   const v = validator.validate(resolved.archetypeId, recipe, options);
+
+  // Violations zusammenfuehren
+  let allViolations = v.violations.slice();
+  if (compositeResult) {
+    allViolations = allViolations.concat(compositeResult.violations);
+  }
+
+  const hasBlock = allViolations.some(x => x.severity === 'block');
   return {
-    ok: v.ok,
-    mode: 'classic',
+    ok: !hasBlock,
+    mode: resolved.compositeId ? 'composite' : 'classic',
     resolved,
-    violations: v.violations,
+    violations: allViolations,
   };
 }
 

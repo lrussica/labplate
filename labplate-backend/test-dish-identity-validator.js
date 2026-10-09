@@ -1,5 +1,5 @@
 'use strict';
-const { validate } = require('./dish-identity-validator');
+const { validate, validateComposite } = require('./dish-identity-validator');
 
 let pass = 0, fail = 0;
 function ok(m) { console.log('OK ' + m); pass++; }
@@ -200,6 +200,109 @@ function bad(m) { console.log('FAIL ' + m); fail++; }
     if (hasFit) bad('Carbonara faelschlich unknown_to_profile: ' + JSON.stringify(r.violations));
     else ok('Carbonara -> abgelehnt, aber NICHT wegen unknown_to_profile');
   }
+}
+
+// --- Composite-Tests -------------------------------------------------
+
+// --- C1: Pesto klassisch -> freigegeben
+{
+  const r = validateComposite('pesto', {
+    ingredients: [
+      { name: 'Spaghetti', _catalogKey: 'pasta_dry' },
+      { name: 'Basilikum', _catalogKey: 'basil_fresh' },
+      { name: 'Pinienkerne', _catalogKey: 'pine_nut' },
+      { name: 'Knoblauch', _catalogKey: 'garlic' },
+      { name: 'Parmigiano', _catalogKey: 'parmesan' },
+      { name: 'Pecorino', _catalogKey: 'pecorino' },
+      { name: 'Olivenöl', _catalogKey: 'olive_oil' },
+      { name: 'Salz', _catalogKey: 'salt' },
+    ],
+  });
+  if (r.ok) ok('Composite Pesto klassisch -> freigegeben');
+  else bad('Composite Pesto klassisch abgelehnt: ' + JSON.stringify(r.violations));
+}
+
+// --- C2: Pesto mit Tomate -> composite_core_missing + composite_forbidden_used
+{
+  const r = validateComposite('pesto', {
+    ingredients: [
+      { name: 'Spaghetti', _catalogKey: 'pasta_dry' },
+      { name: 'Tomaten', _catalogKey: 'tomato' },
+      { name: 'Pinienkerne', _catalogKey: 'pine_nut' },
+      { name: 'Parmigiano', _catalogKey: 'parmesan' },
+      { name: 'Olivenöl', _catalogKey: 'olive_oil' },
+    ],
+  });
+  if (!r.ok) ok('Composite Pesto mit Tomate -> abgelehnt');
+  else bad('Pesto mit Tomate wurde NICHT abgelehnt');
+  const hasCore = r.violations.some(v => v.code === 'composite_core_missing' && /basil/.test(v.detail));
+  const hasForb = r.violations.some(v => v.code === 'composite_forbidden_used' && /tomato/.test(v.detail));
+  if (hasCore && hasForb) ok('Violations composite_core_missing basil + composite_forbidden_used tomato');
+  else bad('Violations fehlen: core=' + hasCore + ' forb=' + hasForb);
+}
+
+// --- C3: Amatriciana klassisch -> freigegeben
+{
+  const r = validateComposite('amatriciana', {
+    ingredients: [
+      { name: 'Spaghetti', _catalogKey: 'pasta_dry' },
+      { name: 'Guanciale', _catalogKey: 'guanciale' },
+      { name: 'Tomaten', _catalogKey: 'tomato' },
+      { name: 'Pecorino', _catalogKey: 'pecorino' },
+    ],
+  });
+  if (r.ok) ok('Composite Amatriciana klassisch -> freigegeben');
+  else bad('Amatriciana klassisch abgelehnt: ' + JSON.stringify(r.violations));
+}
+
+// --- C4: Amatriciana mit Knoblauch -> forbidden
+{
+  const r = validateComposite('amatriciana', {
+    ingredients: [
+      { name: 'Spaghetti', _catalogKey: 'pasta_dry' },
+      { name: 'Guanciale', _catalogKey: 'guanciale' },
+      { name: 'Tomaten', _catalogKey: 'tomato' },
+      { name: 'Pecorino', _catalogKey: 'pecorino' },
+      { name: 'Knoblauch', _catalogKey: 'garlic' },
+    ],
+  });
+  if (!r.ok) ok('Amatriciana mit Knoblauch -> abgelehnt');
+  else bad('Amatriciana mit Knoblauch wurde NICHT abgelehnt');
+  const hasForb = r.violations.some(v => v.code === 'composite_forbidden_used' && /garlic/.test(v.detail));
+  if (hasForb) ok('Violation composite_forbidden_used garlic');
+  else bad('composite_forbidden_used garlic fehlt');
+}
+
+// --- C5: Cacio e Pepe klassisch -> freigegeben
+{
+  const r = validateComposite('cacio_e_pepe', {
+    ingredients: [
+      { name: 'Spaghetti', _catalogKey: 'pasta_dry' },
+      { name: 'Pecorino Romano', _catalogKey: 'pecorino' },
+      { name: 'Schwarzer Pfeffer', _catalogKey: 'black_pepper' },
+      { name: 'Nudelwasser', _catalogKey: 'water' },
+    ],
+  });
+  if (r.ok) ok('Composite Cacio e Pepe klassisch -> freigegeben');
+  else bad('Cacio e Pepe klassisch abgelehnt: ' + JSON.stringify(r.violations));
+}
+
+// --- C6: Cacio e Pepe mit Butter -> forbidden
+{
+  const r = validateComposite('cacio_e_pepe', {
+    ingredients: [
+      { name: 'Spaghetti', _catalogKey: 'pasta_dry' },
+      { name: 'Pecorino Romano', _catalogKey: 'pecorino' },
+      { name: 'Schwarzer Pfeffer', _catalogKey: 'black_pepper' },
+      { name: 'Nudelwasser', _catalogKey: 'water' },
+      { name: 'Butter', _catalogKey: 'butter' },
+    ],
+  });
+  if (!r.ok) ok('Cacio e Pepe mit Butter -> abgelehnt');
+  else bad('Cacio e Pepe mit Butter wurde NICHT abgelehnt');
+  const hasForb = r.violations.some(v => v.code === 'composite_forbidden_used' && /butter/.test(v.detail));
+  if (hasForb) ok('Violation composite_forbidden_used butter');
+  else bad('composite_forbidden_used butter fehlt');
 }
 
 console.log();

@@ -17,8 +17,9 @@ core:
     notes: "Frisch grob gemahlen."
   pasta_water:
     roles: [technique, binder]
+    allowed: [pasta_water, water]
     amount_g: [100, 250]
-    notes: "Stärkehaltig, emulgiert den Käse."
+    notes: "Stärkehaltig, emulgiert den Käse. Catalog-Key: water."
 
 tolerated: {}
 
