@@ -1194,6 +1194,7 @@ async function generateValidatedRecipe(opts) {
   const traceId = (payload && payload.trace_id) || ('lp-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8));
   const traceActive = pipelineTrace.isEnabled(payload);
   const ptId = traceActive ? pipelineTrace.makeTraceId() : null;
+  if (ptId) pipelineTrace.startTrace(ptId);
   if (traceActive) {
     console.log('[pipeline-trace] ' + ptId + ' REQUEST-START ai_instruction=' +
       JSON.stringify(payload && (payload.ai_instruction || payload.aiInstruction) || null) +
@@ -1517,7 +1518,7 @@ async function generateValidatedRecipe(opts) {
       lastErrors = ['render_failed'];
       continue;
     }
-    return {
+    const successReturn = {
       ok: true,
       recipe: rendered,
       raw: parsed,
@@ -1526,6 +1527,10 @@ async function generateValidatedRecipe(opts) {
       attempt_raws: attemptRaws,
       pipeline_trace_id: ptId,
     };
+    if (ptId) {
+      successReturn.pipeline_trace = pipelineTrace.getTrace(ptId);
+    }
+    return successReturn;
   }
 
   // Kcal-Retry hat kein besseres Rezept gefunden. Statt Fehler liefern wir

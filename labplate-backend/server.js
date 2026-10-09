@@ -1254,6 +1254,10 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
 
     const recipe = pipelineResult.recipe;
     console.log(`[nutri-recipe] OK flow=${flow} v92 attempts=${pipelineResult.attempts} model=${recipeModel} key=${auth.keyType} ingredients=${recipe.ingredients.length} steps=${recipe.steps.length} ms=${Date.now() - startedAt}`);
+    // Block E: pipeline_trace in Response, wenn Debug aktiv
+    if (pipelineResult.pipeline_trace) {
+      recipe._pipeline_trace = pipelineResult.pipeline_trace;
+    }
     // Block E: dish_identity (Beobachter-Modus) im Log + Response sichtbar machen
     if (pipelineResult.dish_identity) {
       const di = pipelineResult.dish_identity;

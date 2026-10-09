@@ -68,6 +68,8 @@ function traceSnapshot(traceId, stage, recipe) {
   // Zwei Log-Zeilen: eine kompakt fuer schnelles Lesen, eine voll fuer Diff
   console.log('[pipeline-trace] ' + traceId + ' ' + stage + ' SUMMARY ' + JSON.stringify(summary));
   console.log('[pipeline-trace] ' + traceId + ' ' + stage + ' FULL ' + JSON.stringify(recipe));
+  // Auch im Speicher ablegen
+  recordStage(traceId, stage, recipe);
 
   // Auch auf Platte
   try {
@@ -77,9 +79,41 @@ function traceSnapshot(traceId, stage, recipe) {
   } catch (_) { /* best effort */ }
 }
 
+// In-Memory-Speicher fuer aktive Traces, damit wir den Verlauf in die
+// Response haengen koennen (fuer ?trace=1 ohne Render-Dashboard).
+const _activeTraces = new Map();
+
+function startTrace(traceId) {
+  if (!traceId) return;
+  _activeTraces.set(traceId, []);
+}
+
+function recordStage(traceId, stage, recipe) {
+  if (!traceId) return;
+  if (!_activeTraces.has(traceId)) _activeTraces.set(traceId, []);
+  _activeTraces.get(traceId).push({
+    stage: stage,
+    summary: compact(recipe),
+  });
+}
+
+function getTrace(traceId) {
+  return _activeTraces.get(traceId) || null;
+}
+
+function endTrace(traceId) {
+  // Nicht loeschen, damit die Response ihn noch lesen kann.
+  // Garbage-Collection spaeter via zyklischem Aufraeumen moeglich.
+  // Fuer den Debug-Modus reicht das.
+}
+
 module.exports = {
   isEnabled: isEnabled,
   makeTraceId: makeTraceId,
   snapshot: traceSnapshot,
   compact: compact,
+  startTrace: startTrace,
+  recordStage: recordStage,
+  getTrace: getTrace,
+  endTrace: endTrace,
 };
