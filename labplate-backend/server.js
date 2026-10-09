@@ -1254,6 +1254,21 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
 
     const recipe = pipelineResult.recipe;
     console.log(`[nutri-recipe] OK flow=${flow} v92 attempts=${pipelineResult.attempts} model=${recipeModel} key=${auth.keyType} ingredients=${recipe.ingredients.length} steps=${recipe.steps.length} ms=${Date.now() - startedAt}`);
+    // Block E: dish_identity (Beobachter-Modus) im Log + Response sichtbar machen
+    if (pipelineResult.dish_identity) {
+      const di = pipelineResult.dish_identity;
+      console.log('[dish-identity]', JSON.stringify({
+        mode: di.mode,
+        archetype: di.archetypeId,
+        dishId: di.dishId,
+        confidence: di.confidence,
+        violationCount: Array.isArray(di.violations) ? di.violations.length : 0,
+      }));
+      if (Array.isArray(di.violations) && di.violations.length > 0) {
+        console.warn('[dish-identity] VIOLATION (observer)', JSON.stringify(di.violations));
+      }
+      recipe._dish_identity = di;
+    }
     if (req.body && req.body.debug_v92_raw === true) {
       recipe._debug_v92 = {
         flow: flow,
