@@ -103,13 +103,13 @@ const CATALOG = {
   },
   almonds: {
     displayName: 'Mandeln',
-    aliases: ['mandeln', 'mandel', 'almonds'],
+    aliases: ['mandeln', 'mandel', 'almonds', 'almond'],
     per100g: { protein: 21.2, fat: 49.9, netCarbs: 9.1, fiber: 12.5, kcal: 579 },
     source: 'USDA FDC 170567',
   },
   walnuts: {
     displayName: 'Walnuesse',
-    aliases: ['walnuesse', 'walnuss', 'walnuts'],
+    aliases: ['walnuesse', 'walnuss', 'walnuts', 'walnut'],
     per100g: { protein: 15.2, fat: 65.2, netCarbs: 7.0, fiber: 6.7, kcal: 654 },
     source: 'USDA FDC 170187',
   },
@@ -322,7 +322,7 @@ const CATALOG = {
   },
   parsley_fresh: {
     displayName: 'Petersilie (frisch)',
-    aliases: ['petersilie', 'petersilie (frisch)', 'frische petersilie', 'glatte petersilie'],
+    aliases: ['petersilie', 'petersilie (frisch)', 'frische petersilie', 'glatte petersilie', 'parsley'],
     per100g: { protein: 3.0, fat: 0.8, netCarbs: 3.0, fiber: 3.3, kcal: 36 },
     source: 'USDA FDC 170416 (Parsley, fresh)',
   },
@@ -340,7 +340,7 @@ const CATALOG = {
   },
   mint_fresh: {
     displayName: 'Minze (frisch)',
-    aliases: ['minze', 'minze (frisch)', 'frische minze', 'pfefferminze', 'minzblaetter', 'minzblätter'],
+    aliases: ['minze', 'minze (frisch)', 'frische minze', 'pfefferminze', 'minzblaetter', 'minzblätter', 'mint'],
     per100g: { protein: 3.8, fat: 0.9, netCarbs: 6.9, fiber: 8.0, kcal: 70 },
     source: 'USDA FDC 173474 (Peppermint, fresh)',
   },
@@ -352,13 +352,13 @@ const CATALOG = {
   },
   thyme_fresh: {
     displayName: 'Thymian (frisch)',
-    aliases: ['thymian', 'thymian (frisch)', 'frischer thymian'],
+    aliases: ['thymian', 'thymian (frisch)', 'frischer thymian', 'thyme'],
     per100g: { protein: 5.6, fat: 1.7, netCarbs: 10.4, fiber: 14.0, kcal: 101 },
     source: 'USDA FDC 173470 (Thyme, fresh)',
   },
   rosemary_fresh: {
     displayName: 'Rosmarin (frisch)',
-    aliases: ['rosmarin', 'rosmarin (frisch)', 'frischer rosmarin', 'rosmarinnadeln'],
+    aliases: ['rosmarin', 'rosmarin (frisch)', 'frischer rosmarin', 'rosmarinnadeln', 'rosemary'],
     per100g: { protein: 3.3, fat: 5.9, netCarbs: 6.6, fiber: 14.1, kcal: 131 },
     source: 'USDA FDC 173473 (Rosemary, fresh)',
   },
@@ -394,19 +394,19 @@ const CATALOG = {
   },
   cinnamon: {
     displayName: 'Zimt',
-    aliases: ['zimt', 'zimt (gemahlen)', 'gemahlener zimt', 'zimtpulver', 'cinnamon'],
+    aliases: ['zimt', 'zimt (gemahlen)', 'gemahlener zimt', 'zimtpulver', 'cinnamon', 'cinnamon_ground'],
     per100g: { protein: 4.0, fat: 1.2, netCarbs: 27.5, fiber: 53.1, kcal: 247 },
     source: 'USDA FDC 171320 (Spices, cinnamon, ground)',
   },
   cumin: {
     displayName: 'Kreuzkuemmel',
-    aliases: ['kreuzkuemmel', 'kreuzkümmel', 'kumin', 'cumin'],
+    aliases: ['kreuzkuemmel', 'kreuzkümmel', 'kumin', 'cumin', 'cumin_seed'],
     per100g: { protein: 17.8, fat: 22.3, netCarbs: 33.7, fiber: 10.5, kcal: 375 },
     source: 'USDA FDC 170923 (Spices, cumin seed)',
   },
   paprika_powder: {
     displayName: 'Paprikapulver',
-    aliases: ['paprikapulver', 'paprika (gemahlen)', 'gemahlener paprika', 'paprika edelsuess', 'paprika edelsüß', 'paprika powder'],
+    aliases: ['paprikapulver', 'paprika (gemahlen)', 'gemahlener paprika', 'paprika edelsuess', 'paprika edelsüß', 'paprika powder', 'paprika_sweet'],
     per100g: { protein: 14.1, fat: 12.9, netCarbs: 19.1, fiber: 34.9, kcal: 282 },
     source: 'USDA FDC 171329 (Spices, paprika)',
   },
@@ -440,7 +440,7 @@ const CATALOG = {
   },
   tuna_canned: {
     displayName: 'Thunfisch (Dose, in Wasser)',
-    aliases: ['thunfisch', 'thunfisch (dose)', 'thunfisch in wasser', 'tuna', 'tuna canned'],
+    aliases: ['thunfisch (dose)', 'thunfisch in wasser', 'tuna', 'tuna canned'],
     per100g: { protein: 25.5, fat: 0.8, netCarbs: 0.0, fiber: 0.0, kcal: 116 },
     source: 'USDA FDC 171986 (Fish, tuna, light, canned in water, without salt, drained)',
   },
@@ -536,7 +536,7 @@ const CATALOG = {
   },
   hazelnuts: {
     displayName: 'Haselnuesse',
-    aliases: ['haselnuss', 'haselnuesse', 'haselnüsse', 'hazelnuts'],
+    aliases: ['haselnuss', 'haselnuesse', 'haselnüsse', 'hazelnuts', 'hazelnut'],
     per100g: { protein: 15.0, fat: 60.8, netCarbs: 7.0, fiber: 9.7, kcal: 628 },
     source: 'USDA FDC 170581 (Nuts, hazelnuts or filberts)',
   },
@@ -820,20 +820,28 @@ const CATALOG = {
   },
   lamb_meat: {
     displayName: 'Lammfleisch (roh)',
-    aliases: ['lamm', 'lammfleisch', 'lamm (roh)', 'lammkeule', 'lammkarree',
+    aliases: ['lamm', 'lammfleisch', 'lamm (roh)',
               'lamb', 'lamb meat', 'lammruecken'],
     per100g: { protein: 20.0, fat: 8.8, netCarbs: 0.0, fiber: 0.0, kcal: 162 },
     source: 'USDA FDC 172620 (Lamb, Australian, imported, fresh, composite of trimmed retail cuts, separable lean and fat, raw)',
   },
   pork_meat: {
     displayName: 'Schweinefleisch (roh)',
-    aliases: ['schwein', 'schweinefleisch', 'schwein (roh)', 'schweinefilet',
+    aliases: ['schwein', 'schweinefleisch', 'schwein (roh)',
               'schweinenacken', 'pork', 'pork meat'],
     per100g: { protein: 20.9, fat: 8.2, netCarbs: 0.0, fiber: 0.0, kcal: 158 },
     source: 'USDA FDC 167895 (Pork, fresh, composite of trimmed retail cuts (leg, loin, shoulder), separable lean and fat, raw)',
   },
 
 };
+
+// ---------- WELLE 3 (Block E, 2026-10-09) ----------
+// In drei Modulen, um Chat-Limits zu respektieren.
+// Object.assign mutiert CATALOG; ALIAS_INDEX wird danach gebaut.
+Object.assign(CATALOG, require('./nutri-catalog-welle3_a.js'));
+Object.assign(CATALOG, require('./nutri-catalog-welle3_b.js'));
+Object.assign(CATALOG, require('./nutri-catalog-welle3_c.js'));
+
 
 // ---------- Matching ----------
 

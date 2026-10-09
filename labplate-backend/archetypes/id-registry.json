@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "generated": "2026-10-09",
   "note": "Registry v3: alle in YAMLs referenzierten IDs. nutrient-Eintraege mit needs_catalog:true sind als TODO markiert — Welle 3+ fuellt die Naehrwerte nach.",
   "ids": {
@@ -782,9 +782,9 @@
       "needs_catalog": true
     },
     "tuna": {
-      "kind": "nutrient",
-      "category": "meat_fish",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "tuna_canned",
+      "target_exists": true
     },
     "pecorino": {
       "kind": "nutrient",
@@ -812,29 +812,29 @@
       "needs_catalog": true
     },
     "basil": {
-      "kind": "nutrient",
-      "category": "herb",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "basil_fresh",
+      "target_exists": true
     },
     "parsley": {
-      "kind": "nutrient",
-      "category": "herb",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "parsley_fresh",
+      "target_exists": true
     },
     "oregano": {
-      "kind": "nutrient",
-      "category": "herb",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "oregano_dried",
+      "target_exists": true
     },
     "thyme": {
-      "kind": "nutrient",
-      "category": "herb",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "thyme_fresh",
+      "target_exists": true
     },
     "rosemary": {
-      "kind": "nutrient",
-      "category": "herb",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "rosemary_fresh",
+      "target_exists": true
     },
     "sage": {
       "kind": "nutrient",
@@ -857,14 +857,14 @@
       "needs_catalog": true
     },
     "walnut": {
-      "kind": "nutrient",
-      "category": "nut",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "walnuts",
+      "target_exists": true
     },
     "almond": {
-      "kind": "nutrient",
-      "category": "nut",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "almonds",
+      "target_exists": true
     },
     "pistachio": {
       "kind": "nutrient",
@@ -872,9 +872,9 @@
       "needs_catalog": true
     },
     "hazelnut": {
-      "kind": "nutrient",
-      "category": "nut",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "hazelnuts",
+      "target_exists": true
     },
     "lemon_juice": {
       "kind": "nutrient",
@@ -936,9 +936,9 @@
       "needs_catalog": true
     },
     "ginger": {
-      "kind": "nutrient",
-      "needs_catalog": true,
-      "unclassified": true
+      "kind": "alias",
+      "target": "ginger_fresh",
+      "target_exists": true
     },
     "lemongrass": {
       "kind": "nutrient",
@@ -946,9 +946,9 @@
       "unclassified": true
     },
     "scallion": {
-      "kind": "nutrient",
-      "needs_catalog": true,
-      "unclassified": true
+      "kind": "alias",
+      "target": "spring_onion",
+      "target_exists": true
     },
     "bacon": {
       "kind": "nutrient",
@@ -981,19 +981,19 @@
       "needs_catalog": true
     },
     "cilantro": {
-      "kind": "nutrient",
-      "category": "herb",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "coriander_fresh",
+      "target_exists": true
     },
     "mint": {
-      "kind": "nutrient",
-      "category": "herb",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "mint_fresh",
+      "target_exists": true
     },
     "dill": {
-      "kind": "nutrient",
-      "category": "herb",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "dill_fresh",
+      "target_exists": true
     },
     "chive": {
       "kind": "nutrient",
@@ -1036,19 +1036,19 @@
       "needs_recipe": true
     },
     "peanut": {
-      "kind": "nutrient",
-      "category": "nut",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "peanuts",
+      "target_exists": true
     },
     "cashew": {
-      "kind": "nutrient",
-      "category": "nut",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "cashews",
+      "target_exists": true
     },
     "sesame": {
-      "kind": "nutrient",
-      "category": "nut",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "sesame_seeds",
+      "target_exists": true
     },
     "cheddar": {
       "kind": "nutrient",
@@ -1089,9 +1089,9 @@
       "needs_catalog": true
     },
     "cumin_seed": {
-      "kind": "nutrient",
-      "category": "spice",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "cumin",
+      "target_exists": true
     },
     "coriander_seed": {
       "kind": "nutrient",
@@ -1119,9 +1119,9 @@
       "needs_catalog": true
     },
     "paprika_sweet": {
-      "kind": "nutrient",
-      "category": "spice",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "paprika_powder",
+      "target_exists": true
     },
     "paprika_smoked": {
       "kind": "nutrient",
@@ -1159,9 +1159,9 @@
       "needs_catalog": true
     },
     "cinnamon_ground": {
-      "kind": "nutrient",
-      "category": "spice",
-      "needs_catalog": true
+      "kind": "alias",
+      "target": "cinnamon",
+      "target_exists": true
     },
     "nutmeg": {
       "kind": "nutrient",
