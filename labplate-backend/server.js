@@ -1130,6 +1130,28 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
       }
       return res.status(clientStatus).json(errPayload);
     }
+    if (pipelineResult.error === 'dish_identity_violated') {
+      logEvent('response_rejected', {
+        reason: 'dish_identity_violated',
+        archetypeId: pipelineResult.archetypeId,
+        dishId: pipelineResult.dishId,
+        violations: pipelineResult.violations,
+        attempts: pipelineResult.attempts,
+        ms: Date.now() - startedAt,
+        flow,
+        keyType: auth.keyType,
+      });
+      return res.status(422).json({
+        error: 'dish_identity_violated',
+        error_source: 'guard',
+        message_user: 'Das Rezept hielt die Gericht-Identitaet nicht ein und wurde nicht freigegeben.',
+        archetypeId: pipelineResult.archetypeId,
+        dishId: pipelineResult.dishId,
+        violations: pipelineResult.violations || [],
+        attempts: pipelineResult.attempts,
+        flow: flow,
+      });
+    }
     if (pipelineResult.error === 'original_recipe_unavailable') {
       logEvent('response_rejected', {
         reason: pipelineResult.error,

@@ -1258,14 +1258,62 @@ module.exports = {
   recipeValidator,
   classicMasterStore: require('./classic-master-store'),
   classicCulinaryStandards: require('./classic-culinary-standards'),
-  generateValidatedRecipe: function generateValidatedRecipeWithHandoffGuard(opts) {
+  generateValidatedRecipe: async function generateValidatedRecipeWithHandoffGuard(opts) {
     const o = opts && typeof opts === 'object' ? Object.assign({}, opts) : {};
     if (typeof o.acceptCoachHandoff !== 'function') {
       o.acceptCoachHandoff = function (userText) {
         return !!detectEmotionalBlockade(userText);
       };
     }
-    return recipePipeline.generateValidatedRecipe(o);
+    const result = await recipePipeline.generateValidatedRecipe(o);
+    // --- Block E: Gericht-Identitaet (dish-identity-guard) ---
+    // Beobachter-Modus: loggt Violations, blockiert nicht.
+    // Scharf schalten: Umgebungsvariable DISH_IDENTITY_BLOCK=1.
+    try {
+      if (result && result.ok && result.recipe) {
+        const payload = o.payload || {};
+        const dishQuery = String(
+          payload.ai_instruction || payload.aiInstruction ||
+          (Array.isArray(payload.pantry_ingredients)
+            ? payload.pantry_ingredients.join(' ')
+            : '')
+        ).trim();
+        if (dishQuery) {
+          const guard = require('./dish-identity-guard');
+          const g = guard.checkQuery(dishQuery, result.recipe);
+          const blockMode = process.env.DISH_IDENTITY_BLOCK === '1';
+          result.dish_identity = {
+            mode: g.mode,
+            archetypeId: g.resolved && g.resolved.archetypeId,
+            dishId: g.resolved && g.resolved.dishId,
+            confidence: g.resolved && g.resolved.confidence,
+            violations: g.violations,
+            blocked: blockMode && !g.ok,
+          };
+          if (!g.ok && blockMode) {
+            console.warn('[dish-identity] BLOCKED',
+              JSON.stringify({ q: dishQuery, archetype: g.resolved.archetypeId,
+                               violations: g.violations }));
+            return {
+              error: 'dish_identity_violated',
+              archetypeId: g.resolved.archetypeId,
+              dishId: g.resolved.dishId,
+              violations: g.violations,
+              attempts: result.attempts,
+              recipeSource: result.recipeSource,
+            };
+          }
+          if (!g.ok) {
+            console.warn('[dish-identity] VIOLATION (observer)',
+              JSON.stringify({ q: dishQuery, archetype: g.resolved.archetypeId,
+                               violations: g.violations }));
+          }
+        }
+      }
+    } catch (e) {
+      console.warn('[dish-identity] guard skipped', e && e.message);
+    }
+    return result;
   },
   renderRecipeForDisplay: recipePipeline.renderRecipeForDisplay,
   validateRecipeV2: recipeValidator.validateRecipeV2,
