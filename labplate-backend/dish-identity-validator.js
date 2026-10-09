@@ -669,8 +669,15 @@ function checkAmountRanges(profileName, profile, recipe, candidateSets) {
   const rangeById = buildRangeIndex(profile);
   const servings = Math.max(1, Number(recipe.servings) || 1);
 
+  // Zutaten mit "zum Kochen" / "Kochwasser" im Namen sind Pasta- oder
+  // Gemüse-Kochwasser. Sie werden vom Range-Check ignoriert, weil
+  // sie kein Sauce-Bestandteil sind.
+  const KOCHWASSER_RX = /(zum\s+kochen|kochwasser|nudelwasser|pasta\s*water)/i;
+
   for (let i = 0; i < recipe.ingredients.length; i++) {
     const ing = recipe.ingredients[i];
+    const name = String(ing.name || '');
+    if (KOCHWASSER_RX.test(name)) continue;
     const unit = String(ing.unit || '').toLowerCase();
     if (unit === 'prise' || unit === 'messerspitze' || unit === 'stk') continue;
     const amount = Number(ing.amount);
