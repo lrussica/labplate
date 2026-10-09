@@ -1,7 +1,7 @@
 {
-  "version": 2,
+  "version": 3,
   "generated": "2026-10-09",
-  "note": "Klassifizierung der Archetypen-YAML-IDs. Sieben kind-Werte: nutrient, alias, composite, state_variant, selector, placeholder, forbidden.",
+  "note": "Registry v3: alle in YAMLs referenzierten IDs. nutrient-Eintraege mit needs_catalog:true sind als TODO markiert — Welle 3+ fuellt die Naehrwerte nach.",
   "ids": {
     "aglio_olio": {
       "kind": "composite",
@@ -725,6 +725,542 @@
     "zucchini": {
       "kind": "nutrient",
       "catalog_key": "zucchini"
+    },
+    "olive_oil": {
+      "kind": "nutrient",
+      "category": "fat",
+      "needs_catalog": true
+    },
+    "butter": {
+      "kind": "nutrient",
+      "category": "fat",
+      "needs_catalog": true
+    },
+    "lard": {
+      "kind": "nutrient",
+      "category": "fat",
+      "needs_catalog": true
+    },
+    "guanciale_fat": {
+      "kind": "nutrient",
+      "category": "fat",
+      "needs_catalog": true
+    },
+    "pancetta_fat": {
+      "kind": "nutrient",
+      "category": "fat",
+      "needs_catalog": true
+    },
+    "garlic": {
+      "kind": "nutrient",
+      "needs_catalog": true,
+      "unclassified": true
+    },
+    "shallot": {
+      "kind": "nutrient",
+      "needs_catalog": true,
+      "unclassified": true
+    },
+    "chili": {
+      "kind": "nutrient",
+      "needs_catalog": true,
+      "unclassified": true
+    },
+    "guanciale": {
+      "kind": "nutrient",
+      "category": "meat_fish",
+      "needs_catalog": true
+    },
+    "pancetta": {
+      "kind": "nutrient",
+      "category": "meat_fish",
+      "needs_catalog": true
+    },
+    "anchovy": {
+      "kind": "nutrient",
+      "category": "meat_fish",
+      "needs_catalog": true
+    },
+    "tuna": {
+      "kind": "nutrient",
+      "category": "meat_fish",
+      "needs_catalog": true
+    },
+    "pecorino": {
+      "kind": "nutrient",
+      "category": "cheese",
+      "needs_catalog": true
+    },
+    "grana_padano": {
+      "kind": "nutrient",
+      "category": "cheese",
+      "needs_catalog": true
+    },
+    "ricotta": {
+      "kind": "nutrient",
+      "category": "cheese",
+      "needs_catalog": true
+    },
+    "gorgonzola": {
+      "kind": "nutrient",
+      "category": "cheese",
+      "needs_catalog": true
+    },
+    "provolone": {
+      "kind": "nutrient",
+      "category": "cheese",
+      "needs_catalog": true
+    },
+    "basil": {
+      "kind": "nutrient",
+      "category": "herb",
+      "needs_catalog": true
+    },
+    "parsley": {
+      "kind": "nutrient",
+      "category": "herb",
+      "needs_catalog": true
+    },
+    "oregano": {
+      "kind": "nutrient",
+      "category": "herb",
+      "needs_catalog": true
+    },
+    "thyme": {
+      "kind": "nutrient",
+      "category": "herb",
+      "needs_catalog": true
+    },
+    "rosemary": {
+      "kind": "nutrient",
+      "category": "herb",
+      "needs_catalog": true
+    },
+    "sage": {
+      "kind": "nutrient",
+      "category": "herb",
+      "needs_catalog": true
+    },
+    "artichoke": {
+      "kind": "nutrient",
+      "category": "vegetable",
+      "needs_catalog": true
+    },
+    "olive": {
+      "kind": "nutrient",
+      "category": "vegetable",
+      "needs_catalog": true
+    },
+    "pine_nut": {
+      "kind": "nutrient",
+      "category": "nut",
+      "needs_catalog": true
+    },
+    "walnut": {
+      "kind": "nutrient",
+      "category": "nut",
+      "needs_catalog": true
+    },
+    "almond": {
+      "kind": "nutrient",
+      "category": "nut",
+      "needs_catalog": true
+    },
+    "pistachio": {
+      "kind": "nutrient",
+      "category": "nut",
+      "needs_catalog": true
+    },
+    "hazelnut": {
+      "kind": "nutrient",
+      "category": "nut",
+      "needs_catalog": true
+    },
+    "lemon_juice": {
+      "kind": "nutrient",
+      "needs_catalog": true,
+      "unclassified": true
+    },
+    "white_wine": {
+      "kind": "nutrient",
+      "category": "liquid",
+      "needs_catalog": true
+    },
+    "red_wine": {
+      "kind": "nutrient",
+      "category": "liquid",
+      "needs_catalog": true
+    },
+    "vinegar": {
+      "kind": "nutrient",
+      "category": "liquid",
+      "needs_catalog": true
+    },
+    "extra_parmesan": {
+      "kind": "placeholder"
+    },
+    "zucchini_noodles": {
+      "kind": "placeholder",
+      "base_hint": "low_carb_sub"
+    },
+    "konjac_noodles": {
+      "kind": "placeholder",
+      "base_hint": "low_carb_sub"
+    },
+    "protein_pasta": {
+      "kind": "placeholder"
+    },
+    "ghee": {
+      "kind": "nutrient",
+      "category": "fat",
+      "needs_catalog": true
+    },
+    "beef_tallow": {
+      "kind": "nutrient",
+      "category": "fat",
+      "needs_catalog": true
+    },
+    "duck_fat": {
+      "kind": "nutrient",
+      "category": "fat",
+      "needs_catalog": true
+    },
+    "coconut_oil": {
+      "kind": "nutrient",
+      "category": "fat",
+      "needs_catalog": true
+    },
+    "sesame_oil": {
+      "kind": "nutrient",
+      "category": "fat",
+      "needs_catalog": true
+    },
+    "ginger": {
+      "kind": "nutrient",
+      "needs_catalog": true,
+      "unclassified": true
+    },
+    "lemongrass": {
+      "kind": "nutrient",
+      "needs_catalog": true,
+      "unclassified": true
+    },
+    "scallion": {
+      "kind": "nutrient",
+      "needs_catalog": true,
+      "unclassified": true
+    },
+    "bacon": {
+      "kind": "nutrient",
+      "category": "meat_fish",
+      "needs_catalog": true
+    },
+    "chorizo": {
+      "kind": "nutrient",
+      "category": "meat_fish",
+      "needs_catalog": true
+    },
+    "lime_juice": {
+      "kind": "nutrient",
+      "needs_catalog": true,
+      "unclassified": true
+    },
+    "rice_vinegar": {
+      "kind": "nutrient",
+      "category": "liquid",
+      "needs_catalog": true
+    },
+    "soy_sauce": {
+      "kind": "nutrient",
+      "category": "condiment",
+      "needs_catalog": true
+    },
+    "fish_sauce": {
+      "kind": "nutrient",
+      "category": "condiment",
+      "needs_catalog": true
+    },
+    "cilantro": {
+      "kind": "nutrient",
+      "category": "herb",
+      "needs_catalog": true
+    },
+    "mint": {
+      "kind": "nutrient",
+      "category": "herb",
+      "needs_catalog": true
+    },
+    "dill": {
+      "kind": "nutrient",
+      "category": "herb",
+      "needs_catalog": true
+    },
+    "chive": {
+      "kind": "nutrient",
+      "category": "herb",
+      "needs_catalog": true
+    },
+    "scallion_green": {
+      "kind": "nutrient",
+      "category": "herb",
+      "needs_catalog": true
+    },
+    "yogurt_sauce": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "sriracha": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "sambal": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "pesto_side": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "tahini_sauce": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "chimichurri": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "peanut": {
+      "kind": "nutrient",
+      "category": "nut",
+      "needs_catalog": true
+    },
+    "cashew": {
+      "kind": "nutrient",
+      "category": "nut",
+      "needs_catalog": true
+    },
+    "sesame": {
+      "kind": "nutrient",
+      "category": "nut",
+      "needs_catalog": true
+    },
+    "cheddar": {
+      "kind": "nutrient",
+      "category": "cheese",
+      "needs_catalog": true
+    },
+    "cauliflower_rice": {
+      "kind": "placeholder",
+      "base_hint": "low_carb_sub"
+    },
+    "celeriac": {
+      "kind": "placeholder",
+      "base_hint": "low_carb_sub"
+    },
+    "curry_leaf": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "bay_leaf": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "cinnamon_stick": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "clove": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "cardamom": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "cumin_seed": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "coriander_seed": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "mustard_seed": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "celery": {
+      "kind": "nutrient",
+      "category": "vegetable",
+      "needs_catalog": true
+    },
+    "beer": {
+      "kind": "nutrient",
+      "category": "liquid",
+      "needs_catalog": true
+    },
+    "tomato_paste": {
+      "kind": "nutrient",
+      "category": "condiment",
+      "needs_catalog": true
+    },
+    "paprika_sweet": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "paprika_smoked": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "turmeric": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "cumin_ground": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "coriander_ground": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "chili_powder": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "garam_masala": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "curry_powder": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "cinnamon_ground": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "nutmeg": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "black_pepper": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "salt": {
+      "kind": "nutrient",
+      "category": "spice",
+      "needs_catalog": true
+    },
+    "flour": {
+      "kind": "nutrient",
+      "category": "thickener",
+      "needs_catalog": true
+    },
+    "cornstarch": {
+      "kind": "nutrient",
+      "category": "thickener",
+      "needs_catalog": true
+    },
+    "arrowroot": {
+      "kind": "nutrient",
+      "category": "thickener",
+      "needs_catalog": true
+    },
+    "potato_starch": {
+      "kind": "nutrient",
+      "category": "thickener",
+      "needs_catalog": true
+    },
+    "yogurt": {
+      "kind": "nutrient",
+      "needs_catalog": true,
+      "unclassified": true
+    },
+    "raita": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "sour_cream": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "tarragon": {
+      "kind": "nutrient",
+      "category": "herb",
+      "needs_catalog": true
+    },
+    "blue_cheese": {
+      "kind": "nutrient",
+      "category": "cheese",
+      "needs_catalog": true
+    },
+    "extra_greens": {
+      "kind": "placeholder"
+    },
+    "capers": {
+      "kind": "nutrient",
+      "needs_catalog": true,
+      "unclassified": true
+    },
+    "salsa_verde": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "tartar": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "aioli": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "hollandaise": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "bearnaise": {
+      "kind": "composite",
+      "ref": null,
+      "needs_recipe": true
+    },
+    "salad_greens": {
+      "kind": "selector"
+    },
+    "extra_vegetable": {
+      "kind": "placeholder"
     }
   }
 }
