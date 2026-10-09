@@ -38,6 +38,11 @@ core:
     # Das Gerichtprofil definiert die exakte Zusammensetzung und
     # erforderliche Unterzutaten (z.B. Ei + Pecorino bei Carbonara).
     allowed:
+      # Frische Basis (LLM schreibt oft Basis-Zutaten statt Komposita)
+      - tomato                # Catalog-Key
+      - tomato_fresh          # Registry-Alias -> tomato
+      - tomato_canned         # Catalog-Key
+      # Klassische Saucen-Konzepte
       - tomato_sauce          # Marinara, Napoletana
       - pesto                 # Genovese, Sicilian
       - aglio_olio

@@ -39,34 +39,49 @@ function normalizeName(s) {
  */
 function ingredientCandidates(ing, catalog) {
   const out = new Set();
-  const raw = (ing && (ing.name || ing.displayName)) || '';
-  const norm = normalizeName(raw);
-  if (norm) out.add(norm);
-  if (ing && ing.yamlId) out.add(normalizeName(ing.yamlId));
-  if (ing && ing.catalogKey) out.add(normalizeName(ing.catalogKey));
+  if (!ing || typeof ing !== 'object') return [];
 
-  // Catalog-Lookup
-  if (raw) {
+  const raw = (ing.name || ing.displayName) || '';
+  const norm = normalizeName(raw);
+  const normSpaced = String(raw).trim().toLowerCase();
+  const noParens = normSpaced.replace(/\(.*?\)/g, ' ').replace(/\s+/g, ' ').trim();
+
+  // 1. Direkt aus Recipe-Metadaten (hoechste Prioritaet):
+  //    die v92-Pipeline liefert _catalogKey und _v92_id mit.
+  if (ing._catalogKey) out.add(String(ing._catalogKey));
+  if (ing.catalogKey) out.add(String(ing.catalogKey));
+  if (ing.yamlId) out.add(String(ing.yamlId));
+  if (ing._yamlId) out.add(String(ing._yamlId));
+
+  // 2. Normalisierter Name (mit Underscores)
+  if (norm) out.add(norm);
+  // 3. Klammersubstitution: "Spaghetti (trocken)" -> "spaghetti"
+  if (noParens) {
+    out.add(noParens);
+    out.add(noParens.replace(/\s+/g, '_'));
+  }
+  // 4. Einzelwort-Variante ohne Klammer-Inhalt
+  if (noParens && noParens !== normSpaced) {
+    const first = noParens.split(/\s+/)[0];
+    if (first) out.add(first);
+  }
+
+  // 5. Catalog-Lookup: mit Roh-Name und Klammer-Rest
+  for (const probe of [raw, normSpaced, noParens]) {
+    if (!probe) continue;
     try {
-      const hit = catalog.lookupCatalog(raw);
+      const hit = catalog.lookupCatalog(probe);
       if (hit && hit.key) out.add(hit.key);
     } catch (_) { /* ignore */ }
   }
 
-  // Registry-Aufloesung
-  const reg = loader.resolveId(norm);
-  if (reg) {
-    if (reg.target) out.add(reg.target);
-    if (reg.catalog_key) out.add(reg.catalog_key);
-  }
-  // Ebenso fuer die expliziten Felder
-  for (const cand of ['yamlId', 'catalogKey']) {
-    if (ing && ing[cand]) {
-      const r = loader.resolveId(normalizeName(ing[cand]));
-      if (r) {
-        if (r.target) out.add(r.target);
-        if (r.catalog_key) out.add(r.catalog_key);
-      }
+  // 6. Registry-Aufloesung fuer alle Kandidaten
+  const expanded = new Set(out);
+  for (const c of expanded) {
+    const r = loader.resolveId(c);
+    if (r) {
+      if (r.target) out.add(r.target);
+      if (r.catalog_key) out.add(r.catalog_key);
     }
   }
 
@@ -165,9 +180,15 @@ function validate(archetypeId, recipe, options) {
   violations.push(...checkSidePolicy(archetype, recipe));
 
   // 4. unknown (nur warn)
+  //    Bekannt = entweder Registry kennt den Kandidaten ODER Catalog hat ihn.
+  const catalogKeys = new Set(Object.keys(catalog.CATALOG || {}));
   for (let i = 0; i < recipe.ingredients.length; i++) {
     const cands = candidateSets[i];
-    const known = cands.some(c => loader.resolveId(c));
+    const known = cands.some(c =>
+      loader.resolveId(c) ||
+      catalogKeys.has(c) ||
+      (catalog.lookupCatalog && (() => { try { return !!catalog.lookupCatalog(c); } catch (_) { return false; } })())
+    );
     if (!known) {
       violations.push({
         code: 'unknown_ingredient', severity: SEV_WARN,
