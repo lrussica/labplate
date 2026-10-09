@@ -72,11 +72,13 @@ const CHEF_FRAMEWORK_RULES = [
   'Kochfluessigkeit/Bruehe/Sahne 200–300 ml — MUSS in ingredients stehen und per {id} in steps referenziert werden.',
   '0p-KALORIEN (STRIKT, NACHRECHENBAR): Jede Einzelportion MUSS im Alltagsrahmen 400–700 kcal liegen. '
   + 'PRUEFE NACH dem Setzen aller amounts (mental oder im Kopf): Summe(Kalorien) / 4 >= 400 kcal. '
-  + 'Wenn ein Hauptgericht diese Untergrenze NICHT erreicht, erhoehe die Mengen der sattmachenden Zutaten: '
-  + 'Fett (Olivenoel, Butter, Nussmus, Kaese), Protein (Tofu, Ei, Fleisch, Fisch) ODER komplexe KH '
-  + '(Reis, Kartoffel, Suesskartoffel, Huelenfuechte) in ingredients[].amount — NIEMALS die kcal im '
-  + 'nutrition-Objekt kuenstlich aufblaehen. Fuer dessert/soup/salad gilt die Untergrenze 200/150/150 kcal. '
-  + 'Ziel auch mit maximal sinnvoller Menge unerreichbar → target_deviation_note ehrlich, NICHT erfinden.',
+  + 'Wenn ein Hauptgericht diese Untergrenze NICHT erreicht, erhoehe NUR die Mengen der Zutaten, '
+  + 'die bereits im Rezept stehen (mehr Pasta, mehr Oel, mehr Kaese — soweit zum Gericht passend). '
+  + 'VERBOTEN: eine neue Zutat hinzuzufuegen, um die Kalorien oder das Protein zu erhoehen. '
+  + 'NIEMALS die kcal im nutrition-Objekt kuenstlich aufblaehen. '
+  + 'Fuer dessert/soup/salad gilt die Untergrenze 200/150/150 kcal. '
+  + 'Wenn das Ziel mit den vorhandenen Zutaten auch in maximal sinnvoller Menge nicht erreichbar ist: '
+  + 'target_deviation_note ehrlich ausfuellen, NICHT erfinden, KEINE Fremdzutat.',
   '0g) DEUTSCHE GRAMMATIK in steps/garnish/chef_analysis: ' +
   'Artikelkorrekturen bei Fluessigkeiten — IMMER „Das Wasser“ / „das Wasser“ (niemals „Den Wasser“). ' +
   'Korrekte Dativ-/Akkusativbeugung: „mit schwarzem Pfeffer würzen“, „die Eier verquirlen“, „den Käse unterrühren“.',
@@ -113,6 +115,11 @@ const CHEF_FRAMEWORK_RULES = [
   'Beispiel RICHTIG: nur Kichererbsen als Proteinquelle, Menge erhoeht (z. B. 600–800 g gekocht fuer 4 Portionen). ' +
   'Traegt der Titel ein Diaet-Label (vegetarisch/vegan): keine widersprechenden Zutaten ' +
   '(kein Ei bei vegan; kein Fleisch/Fisch bei vegetarisch) — zusaetzlich zu Regel 5.',
+  'Gilt auch fuer Eier, Huelsenfruechte, Milchprodukte und Tofu: '
+  + 'wenn der Titel sie nicht nennt, duerfen sie NICHT als zusaetzliche Proteinquelle ins Rezept. '
+  + 'Konkret VERBOTEN bei "Spaghetti mit Tomatensosse": Kidneybohnen, Kichererbsen, Linsen, '
+  + 'Tofu, Ei, Haehnchen, Hackfleisch, griechischer Joghurt oder Quark als Zutat. '
+  + 'VERBOTEN ebenso: Parmesan als Proteinquelle zweckentfremden (Parmesan ist Finish, nicht Proteinlieferant).',
   '5) DIÄT- & KETO-EHRLEICHKEIT: diet_labels keto nur bei netto_kh_g <10; high_protein nur ab protein_g ≥25; vegan ohne Ei/Milch.',
   '6) Eier & Stueckware: unit "stk", amount GANZE Zahl (fuer 4 Portionen typisch 3–4), name "Ei (Groesse M, ca. 60 g)". ' +
   'VERBOTEN: Kommastellen, "0.5 Ei", "30g Ei", unit g fuer Eier. Inhalt nur via {id}.',
@@ -784,7 +791,7 @@ function buildGenerativeMessages(p) {
   const user = [
     'Modus: ' + (p.mode === 'pantry' ? 'Rezept mit vorhandenen Zutaten / Suchbegriff' : 'Rezeptidee mit Einkaufsliste'),
     p.pantry_ingredients.length ? 'Vorhandene Zutaten / Suchbegriff: ' + p.pantry_ingredients.join(', ') : '',
-    'Aggregierte Tages-Makrowerte (Wert / Ziel): ' + JSON.stringify(p.macros),
+    // Tages-Makros bewusst NICHT mehr im Rezept-Prompt (10. Okt).
     p.micronutrient_gaps.length ? 'Mikronaehrstoffe unter 70% des Tagesziels: ' + JSON.stringify(p.micronutrient_gaps) : '',
     (p.lab_guideline_constraints && Array.isArray(p.lab_guideline_constraints.notes) && p.lab_guideline_constraints.notes.length)
       ? ('Lifestyle-Fokus (keine medizinischen Leitlinien): ' + JSON.stringify({
@@ -792,7 +799,7 @@ function buildGenerativeMessages(p) {
           notes: p.lab_guideline_constraints.notes,
         }))
       : '',
-    p.ai_instruction ? 'Zusatz-Instruction (Mengen/Zutaten an Tagesziele anpassen; Schema v9.2 mit Platzhaltern): ' + p.ai_instruction : '',
+    p.ai_instruction ? 'Angefragtes Gericht (Identitaet bewahren; nur Mengen innerhalb des Gerichts variieren; KEINE Fremdzutaten): ' + p.ai_instruction : '',
     themeGuide
       ? ('THEMEN-HINWEIS: Baue ein einfaches 30-Minuten-Rezept (4 Portionen, servings=4) mit Fokus auf ' + themeGuide.label +
         ' unter Nutzung von: ' + themeGuide.foods.slice(0, 6).join(', ') + '.')
