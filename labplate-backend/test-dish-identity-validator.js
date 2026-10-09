@@ -104,6 +104,65 @@ function bad(m) { console.log('FAIL ' + m); fail++; }
   else bad('Leeres Rezept wurde NICHT abgelehnt');
 }
 
+// --- Test 8: Spaghetti mit Tomatensoße + Haehnchen + Tofu
+//               (Protein-Stuffing) -> core_protein_dominance
+{
+  const r = validate('A1_pasta', {
+    ingredients: [
+      { name: 'Spaghetti (trocken)',         amount: 90,  unit: 'g', _catalogKey: 'pasta_dry' },
+      { name: 'Hähnchenbrustfilet',          amount: 125, unit: 'g', _catalogKey: 'chicken_breast' },
+      { name: 'Tofu (fest)',                 amount: 40,  unit: 'g', _catalogKey: 'tofu_firm' },
+      { name: 'Tomaten (frisch, gehackt)',   amount: 150, unit: 'g', _catalogKey: 'tomato' },
+      { name: 'Olivenöl',                    amount: 8,   unit: 'ml', _catalogKey: 'olive_oil' },
+      { name: 'Zwiebel',                     amount: 25,  unit: 'g', _catalogKey: 'onion_yellow' },
+      { name: 'Knoblauchzehe',               amount: 5,   unit: 'g', _catalogKey: 'garlic' },
+      { name: 'Salz',                        amount: 0,   unit: 'prise' },
+      { name: 'Schwarzer Pfeffer',           amount: 0,   unit: 'prise' },
+    ],
+  });
+  if (!r.ok) ok('Spaghetti + Haehnchen + Tofu -> abgelehnt');
+  else bad('Spaghetti + Haehnchen + Tofu wurde NICHT abgelehnt');
+  const hasDom = r.violations.some(v => v.code === 'core_protein_dominance');
+  if (hasDom) ok('Violation core_protein_dominance erkannt');
+  else bad('core_protein_dominance fehlt');
+  const hasForbidden = r.violations.some(v => v.code === 'forbidden_used' && /tofu/.test(v.detail));
+  if (hasForbidden) ok('Violation forbidden_used: tofu');
+  else bad('forbidden_used tofu fehlt');
+}
+
+// --- Test 9: Klassische Carbonara (Ei + Pecorino dominieren nicht) -> OK
+{
+  const r = validate('A1_pasta', {
+    ingredients: [
+      { name: 'Spaghetti',       amount: 100, unit: 'g', _catalogKey: 'pasta_dry' },
+      { name: 'Guanciale',       amount: 60,  unit: 'g', _catalogKey: 'guanciale' },
+      { name: 'Eier',            amount: 100, unit: 'g', _catalogKey: 'egg' },
+      { name: 'Pecorino Romano', amount: 50,  unit: 'g', _catalogKey: 'pecorino' },
+    ],
+  });
+  // Guanciale ist im A1.core.sauce.allowed -> core
+  // Ei und Pecorino ebenfalls core (A1.core.sauce)
+  // Spaghetti ist core.pasta
+  // => alles core, kein tolerated, ok=true erwartet
+  if (r.ok) ok('Carbonara klassisch -> freigegeben');
+  else bad('Carbonara klassisch abgelehnt: ' + JSON.stringify(r.violations));
+}
+
+// --- Test 10: Klassische Tomatensoße ohne Protein-Stuffing -> OK
+{
+  const r = validate('A1_pasta', {
+    ingredients: [
+      { name: 'Spaghetti (trocken)',       amount: 100, unit: 'g', _catalogKey: 'pasta_dry' },
+      { name: 'Tomaten (frisch, gehackt)', amount: 300, unit: 'g', _catalogKey: 'tomato' },
+      { name: 'Olivenöl',                  amount: 15,  unit: 'ml', _catalogKey: 'olive_oil' },
+      { name: 'Knoblauch',                 amount: 5,   unit: 'g', _catalogKey: 'garlic' },
+      { name: 'Basilikum',                 amount: 5,   unit: 'g', _catalogKey: 'basil' },
+    ],
+  });
+  if (r.ok) ok('Klassische Tomatensosse -> freigegeben');
+  else bad('Klassische Tomatensosse abgelehnt: ' + JSON.stringify(r.violations));
+}
+
 console.log();
 console.log('Pass: ' + pass + '  Fail: ' + fail);
 process.exit(fail > 0 ? 1 : 0);

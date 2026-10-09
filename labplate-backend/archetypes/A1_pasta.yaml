@@ -168,6 +168,10 @@ variants:
 
 forbidden:
   # Niemals in einem klassischen Pasta-Gericht.
+  # unrelated_protein_blend als konkrete IDs (sonst schreibt das LLM sie als Text)
+  - tofu
+  - tempeh
+  - seitan
   - oats
   - haferflocken
   - psyllium

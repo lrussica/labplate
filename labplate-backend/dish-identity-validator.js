@@ -224,6 +224,119 @@ function checkSidePolicy(archetype, recipe, candidateSets) {
   return [];
 }
 
+/**
+ * Naehrwert-Beitrag einer Zutat schaetzen.
+ * Nutzt Kandidaten-Kette: yamlId -> Catalog-Key -> Alias -> Catalog.
+ * Menge in g oder ml wird 1:1 gerechnet; prise/messerspitze/stk = 0.
+ */
+function estimateProtein(ing, candidateSets, catalog) {
+  if (!ing || typeof ing !== 'object') return 0;
+  const amount = Number(ing.amount);
+  if (!Number.isFinite(amount) || amount <= 0) return 0;
+  const unit = String(ing.unit || '').toLowerCase();
+  if (unit === 'prise' || unit === 'messerspitze' || unit === 'stk') return 0;
+
+  // Direkter Catalog-Hit aus der Zutat selbst
+  if (ing._catalogKey && catalog.CATALOG[ing._catalogKey]) {
+    const e = catalog.CATALOG[ing._catalogKey];
+    if (e.per100g && Number.isFinite(e.per100g.protein)) {
+      return amount * e.per100g.protein / 100;
+    }
+  }
+  // Fallback: Kandidaten-Kette
+  const cands = candidateSets || [];
+  for (const cand of cands) {
+    const hit = catalog.CATALOG[cand];
+    if (hit && hit.per100g && Number.isFinite(hit.per100g.protein)) {
+      return amount * hit.per100g.protein / 100;
+    }
+  }
+  return 0;
+}
+
+/**
+ * Kern-Regel gegen Protein-Stuffing:
+ * Wenn Protein aus tolerated-Zutaten das Protein aus core-Zutaten
+ * um mehr als Faktor 1.5 uebersteigt, ist das Gericht kein
+ * klassisches Rezept mehr, sondern eine proteinoptimierte Variante.
+ *
+ * Beispiele:
+ *   Spaghetti + Tomate + 125g Haehnchen + 40g Tofu:
+ *     core ~14g, tolerated ~35g, Faktor 2.5 -> Block
+ *   Carbonara (Ei + Pecorino + Guanciale toleriert):
+ *     core ~52g, tolerated ~49g, Faktor 0.94 -> OK
+ */
+function checkCoreShare(archetype, recipe, candidateSets, catalog) {
+  const core = archetype.core || {};
+  const tolerated = archetype.tolerated || {};
+  const coreIds = new Set();
+  const tolIds = new Set();
+
+  function collectIds(map, target) {
+    for (const slotDef of Object.values(map)) {
+      if (!slotDef || !slotDef.allowed) continue;
+      const a = slotDef.allowed;
+      if (Array.isArray(a)) a.forEach(x => target.add(x));
+      else Object.keys(a).forEach(x => target.add(x));
+    }
+  }
+  collectIds(core, coreIds);
+  collectIds(tolerated, tolIds);
+
+  // Set um Alias-Targets erweitern: 'chicken' -> 'chicken_breast'
+  function expandSet(set) {
+    const expanded = new Set(set);
+    for (const id of set) {
+      const r = loader.resolveId(id);
+      if (r && r.target) expanded.add(r.target);
+      if (r && r.catalog_key) expanded.add(r.catalog_key);
+    }
+    return expanded;
+  }
+  const coreIdsExpanded = expandSet(coreIds);
+  const tolIdsExpanded = expandSet(tolIds);
+
+  function isInSet(cands, set) {
+    for (const c of cands) {
+      if (set.has(c)) return true;
+      const r = loader.resolveId(c);
+      if (r && r.target && set.has(r.target)) return true;
+      if (r && r.catalog_key && set.has(r.catalog_key)) return true;
+    }
+    return false;
+  }
+
+  let coreProtein = 0;
+  let tolProtein = 0;
+  for (let i = 0; i < recipe.ingredients.length; i++) {
+    const ing = recipe.ingredients[i];
+    const cands = candidateSets[i] || [];
+    const p = estimateProtein(ing, cands, catalog);
+    if (p <= 0) continue;
+    if (isInSet(cands, coreIdsExpanded)) coreProtein += p;
+    else if (isInSet(cands, tolIdsExpanded)) tolProtein += p;
+    // Zutaten weder core noch tolerated (z.B. basic seasoning) ignoriert
+  }
+
+  const total = coreProtein + tolProtein;
+  if (total < 15) return []; // zu wenig Protein fuers Rezept — keine Aussage
+  if (coreProtein <= 0) return []; // keine core-Protein — Sonderfall, andere Regel greift
+
+  const factor = tolProtein / coreProtein;
+  if (factor > 1.5) {
+    return [{
+      code: 'core_protein_dominance',
+      severity: SEV_BLOCK,
+      detail: 'Protein aus tolerated-Zutaten uebersteigt Protein aus ' +
+              'core-Zutaten um Faktor ' + factor.toFixed(2) +
+              ' (' + tolProtein.toFixed(1) + 'g tolerated vs ' +
+              coreProtein.toFixed(1) + 'g core). Das ist eine ' +
+              'proteinoptimierte Variante, nicht das klassische Gericht.',
+    }];
+  }
+  return [];
+}
+
 function validate(archetypeId, recipe, options) {
   const opts = Object.assign({ strict: true }, options || {});
   const archetype = loader.loadArchetype(archetypeId);
@@ -262,6 +375,9 @@ function validate(archetypeId, recipe, options) {
 
   // 3. side_policy pruefen
   violations.push(...checkSidePolicy(archetype, recipe, candidateSets));
+
+  // 3b. Protein-Dominanz pruefen (Block E, 2026-10-09, spaet)
+  violations.push(...checkCoreShare(archetype, recipe, candidateSets, catalog));
 
   // 4. unknown (nur warn)
   //    Bekannt = entweder Registry kennt den Kandidaten ODER Catalog hat ihn.
