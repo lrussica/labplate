@@ -45,9 +45,11 @@ function ingredientCandidates(ing, catalog) {
   const norm = normalizeName(raw);
   const normSpaced = String(raw).trim().toLowerCase();
   const noParens = normSpaced.replace(/\(.*?\)/g, ' ').replace(/\s+/g, ' ').trim();
+  // Bindestrich -> Leerzeichen: 'chili-flocken' -> 'chili flocken'
+  const hyphenFree = noParens.replace(/-/g, ' ').replace(/\s+/g, ' ').trim();
   // Adjektiv-Suffixe entfernen: 'rote chilischote fein gehackt' -> 'rote chilischote'
-  const ADJ = /\b(fein|grob|fein_gehackt|grob_gehackt|gehackt|geschnitten|gewuerfelt|gerieben|gehobelt|frisch|getrocknet|gemahlen|ganz|halbiert|geviertelt|gewaschen|geputzt|abgetropft)\b/g;
-  const stripped = noParens.replace(ADJ, ' ').replace(/\s+/g, ' ').trim();
+  const ADJ = /\b(fein|grob|fein_gehackt|grob_gehackt|gehackt|geschnitten|gewuerfelt|gerieben|gehobelt|frisch|getrocknet|gemahlen|ganz|halbiert|geviertelt|gewaschen|geputzt|abgetropft|flocken|blaetter|blaetter\b|koerner|samen|pulver|paste|mark|saft|schale|filet|stuecke|streifen|wuerfel|scheiben)\b/g;
+  const stripped = hyphenFree.replace(ADJ, ' ').replace(/\s+/g, ' ').trim();
 
   // 1. Direkt aus Recipe-Metadaten (hoechste Prioritaet):
   //    die v92-Pipeline liefert _catalogKey und _v92_id mit.
@@ -63,8 +65,12 @@ function ingredientCandidates(ing, catalog) {
     out.add(noParens);
     out.add(noParens.replace(/\s+/g, '_'));
   }
-  // 3b. Adjektiv-Strip: "rote chilischote fein gehackt" -> "rote chilischote"
-  if (stripped && stripped !== noParens) {
+  // 3b. Bindestrich-freie und adjektiv-gestrippte Varianten
+  if (hyphenFree && hyphenFree !== noParens) {
+    out.add(hyphenFree);
+    out.add(hyphenFree.replace(/\s+/g, '_'));
+  }
+  if (stripped && stripped !== noParens && stripped !== hyphenFree) {
     out.add(stripped);
     out.add(stripped.replace(/\s+/g, '_'));
     // Farbadjektive entfernen: "rote chilischote" -> "chilischote"
