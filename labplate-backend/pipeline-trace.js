@@ -19,7 +19,9 @@ const fs = require('fs');
 const path = require('path');
 
 const TRACE_FILE_DIR = '/tmp';
-const ENABLED_ENV = process.env.PIPELINE_TRACE === '1';
+const ENABLED_ENV = process.env.PIPELINE_TRACE === '1'
+  || process.env.PIPELINE_TRACE === 'true'
+  || process.env.PIPELINE_TRACE === true;
 
 function isEnabled(payload) {
   if (ENABLED_ENV) return true;

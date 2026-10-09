@@ -1271,6 +1271,7 @@ module.exports = {
     // mit konkreten Zahlen, damit das LLM selbst korrigiert.
     if (typeof o.postValidationHook !== 'function') {
       o.postValidationHook = function (parsedRecipe, attempt, ctx) {
+        console.log('[hook-check] FIRED attempt=' + attempt);
         try {
           const payload = (ctx && ctx.payload) || o.payload || {};
           const dishQuery = String(
