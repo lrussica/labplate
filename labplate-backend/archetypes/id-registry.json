@@ -1545,6 +1545,22 @@
       "kind": "alias",
       "target": "mustard",
       "target_exists": true
+    },
+    "beef_mince": {
+      "kind": "nutrient",
+      "catalog_key": "beef_mince"
+    },
+    "pork_meat": {
+      "kind": "nutrient",
+      "catalog_key": "pork_meat"
+    },
+    "lamb_meat": {
+      "kind": "nutrient",
+      "catalog_key": "lamb_meat"
+    },
+    "mustard": {
+      "kind": "nutrient",
+      "catalog_key": "mustard"
     }
   }
 }

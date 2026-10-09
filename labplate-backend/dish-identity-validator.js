@@ -69,6 +69,31 @@ function ingredientCandidates(ing, catalog) {
     out.add(noParens);
     out.add(noParens.replace(/\s+/g, '_'));
   }
+  // 3a. Klammer-Inhalt als Einzelkandidaten splitten
+  //     'gemischtes ofengemuese (karotten, zucchini, paprika)'
+  //     -> 'karotten', 'zucchini', 'paprika'
+  const parenMatch = normSpaced.match(/\(([^)]+)\)/);
+  if (parenMatch) {
+    const inner = parenMatch[1].split(/[,;]+/).map(s => s.trim()).filter(Boolean);
+    for (const part of inner) {
+      if (!part) continue;
+      out.add(part);
+      out.add(part.replace(/\s+/g, '_'));
+    }
+    // Auch der Kopf ohne Klammer als eigene Variante
+    const head = normSpaced.replace(/\([^)]+\)/g, ' ').replace(/\s+/g, ' ').trim();
+    if (head) {
+      out.add(head);
+      out.add(head.replace(/\s+/g, '_'));
+      // Kopf adjektiv-gestrippt
+      const headStripped = head.replace(/^(gemischtes|gemischte|gemischter|frische|frischer|frisches|feine|feiner|feines|grobe|grober|grobes)\s+/i, '').trim();
+      if (headStripped && headStripped !== head) {
+        out.add(headStripped);
+        out.add(headStripped.replace(/\s+/g, '_'));
+      }
+    }
+  }
+
   // 3b. Bindestrich-freie und adjektiv-gestrippte Varianten
   if (hyphenFree && hyphenFree !== noParens) {
     out.add(hyphenFree);

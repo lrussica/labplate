@@ -76,6 +76,24 @@ core:
         amount_g: [15, 50]
       balsamic_glaze:
         amount_g: [10, 40]
+      # Basis-Bausteine: LLM baut Dressing aus Einzelteilen,
+      # statt Kompositnamen zu waehlen (Vinaigrette = Oel+Essig+Senf).
+      olive_oil:
+        amount_g: [10, 40]
+        notes: "Basis fuer Vinaigrette oder Lemon-Oil."
+      lemon_juice:
+        amount_g: [5, 25]
+      lime_juice:
+        amount_g: [5, 25]
+      vinegar:
+        amount_g: [5, 25]
+      mustard:
+        amount_g: [2, 10]
+        notes: "Emulgator (R9)."
+      salt:
+        amount_g: [0, 5]
+      black_pepper:
+        amount_g: [0, 3]
     notes: >
       Konstitutiv. Ohne Dressing ist es Rohkost, nicht A7.
       R9 (Emulsion) greift bei vinaigrette und lemon_oil.

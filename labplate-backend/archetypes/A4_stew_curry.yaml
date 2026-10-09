@@ -20,6 +20,16 @@ core:
       beef:
         amount_g: [150, 300]
         notes: "Rohgewicht. Gulasch, Rindereintopf, Chili con Carne."
+      beef_mince:
+        amount_g: [150, 300]
+        notes: "Hackfleisch fuer Chili, Bolognese-Eintoepfe."
+      rindfleisch:
+        amount_g: [150, 300]
+        notes: "Alias fuer Rindfleisch-Wuerfel (Gulasch)."
+      pork_meat:
+        amount_g: [150, 300]
+      lamb_meat:
+        amount_g: [150, 300]
       lamb:
         amount_g: [150, 300]
       pork:
