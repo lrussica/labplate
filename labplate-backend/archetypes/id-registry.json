@@ -1561,6 +1561,100 @@
     "mustard": {
       "kind": "nutrient",
       "catalog_key": "mustard"
+    },
+    "vegetable_broth": {
+      "kind": "nutrient",
+      "catalog_key": "vegetable_broth"
+    },
+    "rinderbruehe": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
+    },
+    "rinderbrühe": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
+    },
+    "rinderfond": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
+    },
+    "beef_broth": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
+    },
+    "beef_stock": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
+    },
+    "huehnerbruehe": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
+    },
+    "hühnerbrühe": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
+    },
+    "huehnerfond": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
+    },
+    "chicken_broth": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
+    },
+    "chicken_stock": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
+    },
+    "gemuesebruehe": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
+    },
+    "gemüsebrühe": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
+    },
+    "gemuesefond": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
+    },
+    "vegetable_stock": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
+    },
+    "bruehe": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
+    },
+    "brühe": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
+    },
+    "fond": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
+    },
+    "bouillon": {
+      "kind": "alias",
+      "target": "vegetable_broth",
+      "target_exists": true
     }
   }
 }
