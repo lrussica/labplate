@@ -876,6 +876,7 @@ function isEggIngredientName(name) {
 
 function validateNoFreeNumbersInProse(steps, garnish, chefAnalysis, ingredients, opts) {
   const problems = [];
+  const warnings = [];
   const unitPattern = /\d+[.,]?\d*\s*(ml|g|kg|l|el|tl)\b/i;
   const list = Array.isArray(steps) ? steps : [];
   const o = opts && typeof opts === 'object' ? opts : {};
@@ -907,8 +908,12 @@ function validateNoFreeNumbersInProse(steps, garnish, chefAnalysis, ingredients,
       return !allowFromQuery[normalizeAmountToken(h)];
     });
     if (unexpected.length) {
-      problems.push(
-        "chef_analysis enthält eine eigene Zahl statt Verweis auf 'nutrition': '" + chefAnalysis + "'"
+      // Beschreibungstext ist kein Rezeptbestandteil. Zahlen wie
+      // "rund 40 g Protein" taueschen den Nutzer nicht, weil die echten
+      // Naehrwerte separat in nutrition stehen. Deshalb WARN statt BLOCK.
+      warnings.push(
+        'chef_analysis nennt eine Naehrwert-Zahl (' + unexpected.join(', ') +
+        '). Verbindliche Werte stehen in nutrition.'
       );
     }
   }
@@ -970,7 +975,7 @@ function validateNoFreeNumbersInProse(steps, garnish, chefAnalysis, ingredients,
     problems.push('Zutaten nie referenziert (evtl. überflüssig): ' + unusedMain.join(', '));
   }
 
-  return { ok: problems.length === 0, problems: problems };
+  return { ok: problems.length === 0, problems: problems, warnings: warnings };
 }
 
 /**
@@ -2046,6 +2051,9 @@ function validateRecipeV2(recipe, opts) {
     title: r.title,
   });
   prose.problems.forEach(function (p) { result.addError(p); });
+  if (Array.isArray(prose.warnings)) {
+    prose.warnings.forEach(function (w) { result.addWarning(w); });
+  }
 
   const staples = validateUnlistedStaplesInProse(steps, garnish, ingredientsLive);
   staples.problems.forEach(function (p) { result.addError(p); });
