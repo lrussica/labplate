@@ -163,6 +163,45 @@ function bad(m) { console.log('FAIL ' + m); fail++; }
   else bad('Klassische Tomatensosse abgelehnt: ' + JSON.stringify(r.violations));
 }
 
+// --- Test 11: Linsen in Spaghetti mit Tomatensosse -> unknown_to_profile
+{
+  const r = validate('A1_pasta', {
+    ingredients: [
+      { name: 'Spaghetti (trocken)',    amount: 90,  unit: 'g', _catalogKey: 'pasta_dry' },
+      { name: 'Linsen (trocken)',       amount: 50,  unit: 'g', _catalogKey: 'lentils_dry' },
+      { name: 'Tomaten (frisch)',       amount: 100, unit: 'g', _catalogKey: 'tomato' },
+      { name: 'Zwiebel',                amount: 40,  unit: 'g', _catalogKey: 'onion_yellow' },
+      { name: 'Knoblauch',              amount: 5,   unit: 'g', _catalogKey: 'garlic' },
+      { name: 'Olivenöl',               amount: 13,  unit: 'ml', _catalogKey: 'olive_oil' },
+      { name: 'Salz',                   amount: 0,   unit: 'prise' },
+    ],
+  });
+  if (!r.ok) ok('Linsen in A1 -> abgelehnt');
+  else bad('Linsen in A1 wurden NICHT abgelehnt');
+  const hasFit = r.violations.some(v => v.code === 'unknown_to_profile' && /linsen|lentils/i.test(v.detail));
+  if (hasFit) ok('Violation unknown_to_profile fuer Linsen');
+  else bad('unknown_to_profile fehlt: ' + JSON.stringify(r.violations.map(v => v.detail)));
+}
+
+// --- Test 12: Klassische Carbonara bleibt frei (keine unknown_to_profile)
+{
+  const r = validate('A1_pasta', {
+    ingredients: [
+      { name: 'Spaghetti',       amount: 100, unit: 'g', _catalogKey: 'pasta_dry' },
+      { name: 'Guanciale',       amount: 60,  unit: 'g', _catalogKey: 'guanciale' },
+      { name: 'Eier',            amount: 100, unit: 'g', _catalogKey: 'egg' },
+      { name: 'Pecorino Romano', amount: 50,  unit: 'g', _catalogKey: 'pecorino' },
+      { name: 'Schwarzer Pfeffer', amount: 0, unit: 'prise' },
+    ],
+  });
+  if (r.ok) ok('Carbonara sauber -> freigegeben');
+  else {
+    const hasFit = r.violations.some(v => v.code === 'unknown_to_profile');
+    if (hasFit) bad('Carbonara faelschlich unknown_to_profile: ' + JSON.stringify(r.violations));
+    else ok('Carbonara -> abgelehnt, aber NICHT wegen unknown_to_profile');
+  }
+}
+
 console.log();
 console.log('Pass: ' + pass + '  Fail: ' + fail);
 process.exit(fail > 0 ? 1 : 0);

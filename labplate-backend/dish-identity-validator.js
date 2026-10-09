@@ -337,6 +337,73 @@ function checkCoreShare(archetype, recipe, candidateSets, catalog) {
   return [];
 }
 
+/**
+ * Prueft, ob jede Zutat im Rezept in irgendeinem Slot von
+ * core.allowed oder tolerated.allowed steht.
+ *
+ * Erfundene Zutaten (z.B. Linsen in A1 'Spaghetti mit Tomatensoße')
+ * sind damit blockierbar, unabhaengig von Naehrwerten.
+ *
+ * SEVERITY_BLOCK, wenn die Zutat auch nicht in Registry als
+ * 'nutrient' oder 'alias' mit Ziel in allowed steht.
+ */
+function checkProfileFit(archetype, recipe, candidateSets) {
+  const violations = [];
+  const allAllowed = new Set();
+  function collect(map) {
+    for (const slotDef of Object.values(map || {})) {
+      if (!slotDef || !slotDef.allowed) continue;
+      const a = slotDef.allowed;
+      if (Array.isArray(a)) a.forEach(x => allAllowed.add(x));
+      else Object.keys(a).forEach(x => allAllowed.add(x));
+    }
+  }
+  collect(archetype.core);
+  collect(archetype.tolerated);
+  collect(archetype.variants); // Varianten-Additions zaehlen mit
+
+  // Alias-Targets expandieren
+  const expanded = new Set(allAllowed);
+  for (const id of allAllowed) {
+    const r = loader.resolveId(id);
+    if (r && r.target) expanded.add(r.target);
+    if (r && r.catalog_key) expanded.add(r.catalog_key);
+  }
+
+  // Whitelist generischer Zutaten (Salz, Wasser, Pfeffer, Oel)
+  const BASIC = new Set([
+    'salt', 'water', 'black_pepper', 'white_pepper', 'pepper',
+    'olive_oil', 'sunflower_oil', 'rapeseed_oil',
+  ]);
+
+  for (let i = 0; i < recipe.ingredients.length; i++) {
+    const ing = recipe.ingredients[i];
+    const cands = candidateSets[i] || [];
+    if (cands.length === 0) continue;
+
+    let matched = false;
+    for (const c of cands) {
+      if (expanded.has(c)) { matched = true; break; }
+      if (BASIC.has(c)) { matched = true; break; }
+      const r = loader.resolveId(c);
+      if (r) {
+        if (r.target && expanded.has(r.target)) { matched = true; break; }
+        if (r.catalog_key && expanded.has(r.catalog_key)) { matched = true; break; }
+      }
+    }
+    if (!matched) {
+      violations.push({
+        code: 'unknown_to_profile',
+        severity: SEV_BLOCK,
+        detail: 'Zutat "' + (ing.name || cands[0]) +
+                '" steht in keinem core- oder tolerated-Slot dieses Profils. ' +
+                'Erfundene Zutat, kein klassischer Bestandteil.',
+      });
+    }
+  }
+  return violations;
+}
+
 function validate(archetypeId, recipe, options) {
   const opts = Object.assign({ strict: true }, options || {});
   const archetype = loader.loadArchetype(archetypeId);
@@ -378,6 +445,9 @@ function validate(archetypeId, recipe, options) {
 
   // 3b. Protein-Dominanz pruefen (Block E, 2026-10-09, spaet)
   violations.push(...checkCoreShare(archetype, recipe, candidateSets, catalog));
+
+  // 3c. Profil-Treue: jede Zutat muss in core/tolerated erlaubt sein
+  violations.push(...checkProfileFit(archetype, recipe, candidateSets));
 
   // 4. unknown (nur warn)
   //    Bekannt = entweder Registry kennt den Kandidaten ODER Catalog hat ihn.
