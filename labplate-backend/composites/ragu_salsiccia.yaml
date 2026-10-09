@@ -48,6 +48,10 @@ tolerated:
     roles: [finishing_technique]
     allowed: [whole_milk, milk_whole]
     amount_g: [0, 80]
+  parmesan:
+    roles: [finish, umami]
+    allowed: [parmesan, parmigiano_reggiano, pecorino]
+    amount_g: [0, 40]
 
 forbidden:
   - beef_mince

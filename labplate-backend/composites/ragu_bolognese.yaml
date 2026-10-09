@@ -31,8 +31,9 @@ core:
     amount_g: [80, 200]
   tomato_passata:
     roles: [base]
-    allowed: [tomato_passata, tomato_canned, tomato_puree]
+    allowed: [tomato_passata, tomato_canned, tomato_puree, tomato]
     amount_g: [300, 600]
+    notes: "Frische Tomaten sind tolerated, aber Passata ist die Referenz."
   tomato_paste:
     roles: [umami, thickener]
     allowed: [tomato_paste]
@@ -63,6 +64,13 @@ tolerated:
     roles: [technique, finish]
     allowed: [butter]
     amount_g: [0, 20]
+  parmesan:
+    roles: [finish, umami]
+    allowed: [parmesan, parmigiano_reggiano, pecorino]
+    amount_g: [0, 40]
+    notes: >
+      Als Finish ueber die fertige Pasta. Nicht in die Sauce
+      einruehren, das ist nicht klassisch bolognesisch."
 
 forbidden:
   - sausage
