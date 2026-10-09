@@ -677,6 +677,99 @@ const CATALOG = {
     source: 'USDA FDC 169975 (Cabbage, raw)',
   },
 
+  // ---------- WELLE 2b (Block E, 2026-10-09) ----------
+  // Fleisch & Fisch. Naehrwerte USDA FoodData Central (roh, ohne Haut).
+  beef_steak: {
+    displayName: 'Rumpsteak (roh)',
+    aliases: ['rumpsteak', 'steak', 'rindersteak', 'entrecote', 'beef steak'],
+    per100g: { protein: 21.5, fat: 5.4, netCarbs: 0.0, fiber: 0.0, kcal: 140 },
+    source: 'USDA FDC 168608 (Beef, round, top round, separable lean and fat, trimmed to 0\' fat, select, raw)',
+  },
+  beef_roast: {
+    displayName: 'Rinderbraten (roh)',
+    aliases: ['rinderbraten', 'rinderbrust', 'beef roast', 'pot roast'],
+    per100g: { protein: 21.0, fat: 8.0, netCarbs: 0.0, fiber: 0.0, kcal: 160 },
+    source: 'USDA FDC 168634 (Beef, chuck, arm pot roast, separable lean and fat, trimmed to 1/8\' fat, select, raw)',
+  },
+  chicken_thigh: {
+    displayName: 'Haehnchenschenkel (roh)',
+    aliases: ['haehnchenschenkel', 'haehnchenkeule', 'chicken thigh'],
+    per100g: { protein: 18.6, fat: 8.5, netCarbs: 0.0, fiber: 0.0, kcal: 155 },
+    source: 'USDA FDC 171471 (Chicken, broilers or fryers, thigh, meat and skin, raw)',
+  },
+  duck_breast: {
+    displayName: 'Entenbrust (roh, ohne Haut)',
+    aliases: ['entenbrust', 'ente', 'duck breast', 'duck'],
+    per100g: { protein: 23.5, fat: 4.0, netCarbs: 0.0, fiber: 0.0, kcal: 135 },
+    source: 'USDA FDC 172843 (Duck, domesticated, meat only, raw)',
+  },
+  lamb_chop: {
+    displayName: 'Lammkotelett (roh)',
+    aliases: ['lammkotelett', 'lammkarree', 'lamb chop'],
+    per100g: { protein: 20.5, fat: 12.0, netCarbs: 0.0, fiber: 0.0, kcal: 200 },
+    source: 'USDA FDC 174345 (Lamb, domestic, loin, separable lean and fat, trimmed to 1/4\' fat, choice, raw)',
+  },
+  lamb_leg: {
+    displayName: 'Lammkeule (roh)',
+    aliases: ['lammkeule', 'lammfleisch (keule)', 'lamb leg'],
+    per100g: { protein: 20.0, fat: 8.8, netCarbs: 0.0, fiber: 0.0, kcal: 162 },
+    source: 'USDA FDC 172620 (Lamb, Australian, imported, fresh, composite of trimmed retail cuts, separable lean and fat, raw)',
+  },
+  pork_chop: {
+    displayName: 'Schweinekotelett (roh)',
+    aliases: ['schweinekotelett', 'kotelett', 'pork chop', 'schweinekarree'],
+    per100g: { protein: 21.5, fat: 7.0, netCarbs: 0.0, fiber: 0.0, kcal: 155 },
+    source: 'USDA FDC 168262 (Pork, fresh, loin, blade (chops), separable lean and fat, raw)',
+  },
+  cod: {
+    displayName: 'Kabeljau (roh)',
+    aliases: ['kabeljau', 'dorsch', 'cod', 'codfish'],
+    per100g: { protein: 17.8, fat: 0.7, netCarbs: 0.0, fiber: 0.0, kcal: 82 },
+    source: 'USDA FDC 171953 (Fish, cod, Pacific, raw)',
+  },
+  trout: {
+    displayName: 'Forelle (roh)',
+    aliases: ['forelle', 'regenbogenforelle', 'trout'],
+    per100g: { protein: 20.5, fat: 6.2, netCarbs: 0.0, fiber: 0.0, kcal: 148 },
+    source: 'USDA FDC 173716 (Fish, trout, rainbow, farmed, raw)',
+  },
+  sea_bass: {
+    displayName: 'Wolfsbarsch (roh)',
+    aliases: ['wolfsbarsch', 'seebarsch', 'branzino', 'sea bass', 'loup de mer'],
+    per100g: { protein: 18.4, fat: 2.0, netCarbs: 0.0, fiber: 0.0, kcal: 97 },
+    source: 'USDA FDC 174233 (Fish, bass, striped, raw)',
+  },
+  tuna_steak: {
+    displayName: 'Thunfisch (frisch, roh)',
+    aliases: ['thunfisch', 'thunfischsteak', 'tuna steak', 'tuna fresh', 'ahi'],
+    per100g: { protein: 23.3, fat: 4.9, netCarbs: 0.0, fiber: 0.0, kcal: 144 },
+    source: 'USDA FDC 175159 (Fish, tuna, yellowfin, fresh, raw)',
+  },
+  scallop: {
+    displayName: 'Jakobsmuschel (roh)',
+    aliases: ['jakobsmuschel', 'muschel', 'scallop', 'coquille saint-jacques'],
+    per100g: { protein: 20.5, fat: 0.8, netCarbs: 3.2, fiber: 0.0, kcal: 111 },
+    source: 'USDA FDC 175168 (Mollusks, scallop, mixed species, raw)',
+  },
+  goat_cheese: {
+    displayName: 'Ziegenkaese',
+    aliases: ['ziegenkaese', 'ziegenfrischkaese', 'goat cheese', 'chevre'],
+    per100g: { protein: 21.0, fat: 30.0, netCarbs: 0.9, fiber: 0.0, kcal: 364 },
+    source: 'USDA FDC 171258 (Cheese, goat, semisoft type)',
+  },
+  seitan: {
+    displayName: 'Seitan (Weizeneiweiss)',
+    aliases: ['seitan', 'weizeneiweiss', 'weizengluten', 'wheat gluten'],
+    per100g: { protein: 25.0, fat: 1.9, netCarbs: 9.0, fiber: 0.6, kcal: 145 },
+    source: 'USDA FDC 168146 (Vital wheat gluten)',
+  },
+  noodle_cooked: {
+    displayName: 'Nudeln (gekocht, generisch)',
+    aliases: ['nudeln (gekocht)', 'noodle', 'noodles', 'wok-nudeln', 'ei-nudeln'],
+    per100g: { protein: 5.0, fat: 1.0, netCarbs: 24.0, fiber: 1.0, kcal: 131 },
+    source: 'USDA FDC 168927 (Pasta, cooked, unenriched, without added salt)',
+  },
+
   // ---------- WELLE 1 (Block E, 2026-10-09) ----------
   // Vier Ziel-Keys, die als Alias-Ziele gebraucht werden.
   // Quellen: USDA FoodData Central.
