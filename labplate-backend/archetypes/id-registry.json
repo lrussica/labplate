@@ -1280,6 +1280,151 @@
       "kind": "alias",
       "target": "chili",
       "target_exists": true
+    },
+    "roemersalat": {
+      "kind": "alias",
+      "target": "romaine",
+      "target_exists": true
+    },
+    "römersalat": {
+      "kind": "alias",
+      "target": "romaine",
+      "target_exists": true
+    },
+    "romana_salat": {
+      "kind": "alias",
+      "target": "romaine",
+      "target_exists": true
+    },
+    "haehnchenbrustfilet": {
+      "kind": "alias",
+      "target": "chicken_breast",
+      "target_exists": true
+    },
+    "hähnchenbrustfilet": {
+      "kind": "alias",
+      "target": "chicken_breast",
+      "target_exists": true
+    },
+    "haehnchenbrust": {
+      "kind": "alias",
+      "target": "chicken_breast",
+      "target_exists": true
+    },
+    "hähnchenbrust": {
+      "kind": "alias",
+      "target": "chicken_breast",
+      "target_exists": true
+    },
+    "croutons": {
+      "kind": "alias",
+      "target": "bread",
+      "target_exists": true
+    },
+    "croûtons": {
+      "kind": "alias",
+      "target": "bread",
+      "target_exists": true
+    },
+    "anchovisfilets": {
+      "kind": "alias",
+      "target": "anchovy",
+      "target_exists": true
+    },
+    "anchovisfilet": {
+      "kind": "alias",
+      "target": "anchovy",
+      "target_exists": true
+    },
+    "sardellenfilets": {
+      "kind": "alias",
+      "target": "anchovy",
+      "target_exists": true
+    },
+    "sardellenfilet": {
+      "kind": "alias",
+      "target": "anchovy",
+      "target_exists": true
+    },
+    "worcestershiresauce": {
+      "kind": "alias",
+      "target": "fish_sauce",
+      "target_exists": true
+    },
+    "worcestershire": {
+      "kind": "alias",
+      "target": "fish_sauce",
+      "target_exists": true
+    },
+    "parmigiano_reggiano": {
+      "kind": "alias",
+      "target": "parmesan",
+      "target_exists": true
+    },
+    "parmigiano": {
+      "kind": "alias",
+      "target": "parmesan",
+      "target_exists": true
+    },
+    "zitronensaft": {
+      "kind": "alias",
+      "target": "lemon_juice",
+      "target_exists": true
+    },
+    "olivenoel": {
+      "kind": "alias",
+      "target": "olive_oil",
+      "target_exists": true
+    },
+    "olivenöl": {
+      "kind": "alias",
+      "target": "olive_oil",
+      "target_exists": true
+    },
+    "knoblauchzehe": {
+      "kind": "alias",
+      "target": "garlic",
+      "target_exists": true
+    },
+    "knoblauchzehen": {
+      "kind": "alias",
+      "target": "garlic",
+      "target_exists": true
+    },
+    "zwiebel_gelb": {
+      "kind": "alias",
+      "target": "onion_yellow",
+      "target_exists": true
+    },
+    "fruehlingszwiebel": {
+      "kind": "alias",
+      "target": "spring_onion",
+      "target_exists": true
+    },
+    "frühlingszwiebel": {
+      "kind": "alias",
+      "target": "spring_onion",
+      "target_exists": true
+    },
+    "caesar_dressing": {
+      "kind": "alias",
+      "target": "caesar",
+      "target_exists": true
+    },
+    "caesar-dressing": {
+      "kind": "alias",
+      "target": "caesar",
+      "target_exists": true
+    },
+    "ranch_dressing": {
+      "kind": "alias",
+      "target": "ranch",
+      "target_exists": true
+    },
+    "ranch-dressing": {
+      "kind": "alias",
+      "target": "ranch",
+      "target_exists": true
     }
   }
 }

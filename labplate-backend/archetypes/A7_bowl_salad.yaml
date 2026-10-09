@@ -29,6 +29,9 @@ core:
         amount_g: [80, 200]
       kale:
         amount_g: [60, 150]
+      roemersalat:
+        amount_g: [80, 200]
+        notes: "Alias fuer romaine." 
       rice:
         amount_g: [120, 250]
         notes: "Gekocht. Bowl-Basis."
@@ -49,6 +52,14 @@ core:
     roles: [dressing]
     cardinality: one
     allowed:
+      caesar:
+        amount_g: [30, 70]
+        notes: "R9: braucht Ei. R14 greift."
+      caesar_dressing:
+        amount_g: [30, 70]
+        notes: "Alternative Schreibweise zu caesar."
+      ranch:
+        amount_g: [30, 70]
       vinaigrette:
         amount_g: [15, 50]
         notes: "Oel + Essig. R9: braucht Senf als Emulgator."
@@ -61,11 +72,6 @@ core:
         amount_g: [20, 60]
       peanut_dressing:
         amount_g: [20, 60]
-      caesar:
-        amount_g: [30, 70]
-        notes: "R9: braucht Ei. R14 greift."
-      ranch:
-        amount_g: [30, 70]
       soy_sesame:
         amount_g: [15, 50]
       balsamic_glaze:
