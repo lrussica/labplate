@@ -73,7 +73,7 @@ const CHEF_FRAMEWORK_RULES = [
   '0p-KALORIEN (STRIKT, NACHRECHENBAR): Jede Einzelportion MUSS im Alltagsrahmen 400–700 kcal liegen. '
   + 'PRUEFE NACH dem Setzen aller amounts (mental oder im Kopf): Summe(Kalorien) / 4 >= 400 kcal. '
   + 'Wenn ein Hauptgericht diese Untergrenze NICHT erreicht, erhoehe NUR die Mengen der Zutaten, '
-  + 'die bereits im Rezept stehen (mehr Pasta, mehr Oel, mehr Kaese — soweit zum Gericht passend). '
+  + 'die bereits im Rezept stehen (mehr Pasta, mehr Oel — soweit zum Gericht passend). '
   + 'VERBOTEN: eine neue Zutat hinzuzufuegen, um die Kalorien oder das Protein zu erhoehen. '
   + 'NIEMALS die kcal im nutrition-Objekt kuenstlich aufblaehen. '
   + 'Fuer dessert/soup/salad gilt die Untergrenze 200/150/150 kcal. '
@@ -99,7 +99,9 @@ const CHEF_FRAMEWORK_RULES = [
   '"die Mischung" in die heisse Pfanne geben — auch wenn die sensible Zutat im Hitze-Step nicht mehr ' +
   'namentlich/{id} genannt wird. Stattdessen: erst garen (Herd AUS), DANN sensible Zutat unterruehren.',
   '3) Mengen nur nacktes {ingredient_id} in content/garnish – nie freie g/ml und nie Name/Einheit neben dem Platzhalter.',
-  '4) MAXIMAL 2 PRIMÄERE Proteinquellen (culinaryRole: main_protein | secondary_protein | protein_supplement). ' +
+  '4) PROTEINQUELLEN: nur die, die der Titel nennt; hoechstens 2 gleichzeitig. '
+  + 'Wenn der Titel keine Proteinquelle nennt: KEINE zusaetzliche Proteinquelle hinzufuegen. '
+  + '(culinaryRole: main_protein | secondary_protein | protein_supplement). ' +
   'Unterscheide: ernaehrungsphysiologischer Proteinbeitrag vs. kulinarische Hauptproteinquelle. ' +
   'Nuesse/Samen/Toppings = topping (countsAsPrimaryProteinSource:false) — sie duerfen Protein zu nutrition beitragen. ' +
   'Joghurt/Joghurt-Alternative = base (countsAsPrimaryProteinSource:false), sofern nicht ausdruecklich Hauptprotein. ' +
@@ -115,11 +117,10 @@ const CHEF_FRAMEWORK_RULES = [
   'Beispiel RICHTIG: nur Kichererbsen als Proteinquelle, Menge erhoeht (z. B. 600–800 g gekocht fuer 4 Portionen). ' +
   'Traegt der Titel ein Diaet-Label (vegetarisch/vegan): keine widersprechenden Zutaten ' +
   '(kein Ei bei vegan; kein Fleisch/Fisch bei vegetarisch) — zusaetzlich zu Regel 5.',
-  'Gilt auch fuer Eier, Huelsenfruechte, Milchprodukte und Tofu: '
-  + 'wenn der Titel sie nicht nennt, duerfen sie NICHT als zusaetzliche Proteinquelle ins Rezept. '
-  + 'Konkret VERBOTEN bei "Spaghetti mit Tomatensosse": Kidneybohnen, Kichererbsen, Linsen, '
-  + 'Tofu, Ei, Haehnchen, Hackfleisch, griechischer Joghurt oder Quark als Zutat. '
-  + 'VERBOTEN ebenso: Parmesan als Proteinquelle zweckentfremden (Parmesan ist Finish, nicht Proteinlieferant).',
+  'Gilt fuer alle Protein- und Ballaststoff-Traeger: Eier, Huelsenfruechte, '
+  + 'Milchprodukte, Tofu, Kaese, Fleisch, Fisch und Getreide. '
+  + 'Wenn der Titel sie nicht nennt, duerfen sie NICHT als zusaetzliche Zutat ins Rezept. '
+  + 'Auch nicht als Kalorien- oder Proteinauffueller.',
   '5) DIÄT- & KETO-EHRLEICHKEIT: diet_labels keto nur bei netto_kh_g <10; high_protein nur ab protein_g ≥25; vegan ohne Ei/Milch.',
   '6) Eier & Stueckware: unit "stk", amount GANZE Zahl (fuer 4 Portionen typisch 3–4), name "Ei (Groesse M, ca. 60 g)". ' +
   'VERBOTEN: Kommastellen, "0.5 Ei", "30g Ei", unit g fuer Eier. Inhalt nur via {id}.',
@@ -713,7 +714,18 @@ function buildGenerativeMessages(p) {
     'Beispiel "Joghurt und Nüsse": MUSS Joghurt (ggf. laktosefrei/Soja) UND Nüsse (unit=g) enthalten —',
     'VERBOTEN: Hähnchen/Fleisch/Haferflocken als Ersatzkonzept ohne Nüsse. Nur Mengen/Gewürze variieren.',
   ].join(' ') : '';
-  const themeRules = themeGuide
+  // Claude-Regel 10. Okt: wenn ein Gerichtsname da ist, ist der Theme-Block
+  // tabu (er wuerde Zutaten wie Tofu/Ei/Haferflocken vorschlagen).
+  const dishNameEarly = (function () {
+    const s = String(p.ai_instruction || '').trim();
+    if (!s) return '';
+    if (s.length <= 80 && !/[\n\r]/.test(s)) return s;
+    const m = s.match(/[\"\u201e\u201c\u2018\u2019']([^\"\u201e\u201c\u2018\u2019']{2,80})[\"\u201e\u201c\u2018\u2019']/);
+    if (m && m[1]) return m[1].trim();
+    const first = s.split(/[\n\r]/)[0].trim();
+    return first && first.length <= 80 ? first : '';
+  })();
+  const themeRules = (themeGuide && !dishNameEarly)
     ? [
       'THEMEN-REZEPT (vom Kollegen-Brief / Suchkontext):',
       'Thema erkannt: ' + themeGuide.label + '.',
@@ -723,13 +735,15 @@ function buildGenerativeMessages(p) {
       'VERBOTEN: medizinische Aussagen, Dosierungen (mg/IE), Diagnosen, Heilversprechen, Supplement-Empfehlungen.',
       'Kein Coaching-Text – nur Rezept-JSON.',
     ].join(' ')
-    : 'Wenn kein Naehrstoff-Thema im Brief/Suchbegriff steht: normales Standardrezept wie bisher.';
+    : (dishNameEarly
+      ? 'GERICHT GEBUNDEN: Halte dich strikt an den Titel. Nur Mengen innerhalb des Gerichts variieren. KEINE Fremdzutaten.'
+      : 'Wenn kein Naehrstoff-Thema im Brief/Suchbegriff steht: normales Standardrezept wie bisher.');
   const system = [
     strictPrompt.loadStrictConstraintsForGenerative(),
     'MODUS: GENERATIV / FREISUCHE / SHOPPING – bewusst kreativ (NICHT Eigenrezept-Modus).',
     isOriginalMode
       ? 'Du bist ein Rezept-Koch fuer klassische Originalrezepte. Erstelle EINE landestypische Rezeptidee als JSON gemaess Schema.'
-      : 'Du bist ein hyper-intelligenter System-Chefkoch und Ernaehrungs-Wissenschaftler der Spitzenklasse. Rezepte vereinen Food-Pairing, Sensorik, makellose Konsistenz und exakte Naehrwert-Mathematik – an Tages-Makros angepasst, ohne Halluzinationen. JSON gemaess Schema.',
+      : 'Du bist ein hyper-intelligenter System-Chefkoch und Ernaehrungs-Wissenschaftler der Spitzenklasse. Rezepte vereinen Food-Pairing, Sensorik, makellose Konsistenz und exakte Naehrwert-Mathematik – kein Zielwert-Rueckwaertsdenken, keine Halluzinationen. JSON gemaess Schema.',
     // Klassiker: keine "kreativen" Abweichungen am Kern — Variation-Regel abschwächen
     (function () {
       try {
@@ -746,7 +760,7 @@ function buildGenerativeMessages(p) {
       } catch (_) { /* optional */ }
       return 'VARIATION: Liefere bei gleichen Suchbegriffen bewusst unterschiedliche Gerichte (andere Hauptzutat, Kueche oder Zubereitung). Wiederhole keine frueheren Titel aus der Zusatz-Instruction.';
     }()),
-    'ERLAUBT: Zutaten vorschlagen, Mengen waehlen und an Nutzer-Tagesziele anpassen, Schritte neu formulieren.',
+    'ERLAUBT: Mengen der Zutaten waehlen, die zum Gericht gehoeren; Zutaten weglassen; Schritte formulieren. VERBOTEN: Zutaten hinzufuegen, die nicht zum Gericht gehoeren, und Mengen oder Zutaten an Tagesziele anpassen.',
     'KRITISCH – Schema v9.2: ingredients[].unit NUR "g"|"ml"|"stk"|"prise"|"messerspitze". content/garnish ohne freie Mengen-Zahlen – nur {0001}-Platzhalter.',
     'Mengen in ingredients: Eier unit=stk; Gewuerze amount=0 unit=prise|messerspitze; Fluessigkeiten ml; Festes g. netCarbs/fat/protein/fiber je 100 g/ml.',
     'Beispiel Ei (4 Portionen): {"id":"0002","name":"Ei (Groesse M, ca. 60 g)","amount":4,"unit":"stk","protein_source":true}. Olivenoel: unit ml. Salz: unit prise, amount 0.',
@@ -799,11 +813,29 @@ function buildGenerativeMessages(p) {
           notes: p.lab_guideline_constraints.notes,
         }))
       : '',
-    p.ai_instruction ? 'Angefragtes Gericht (Identitaet bewahren; nur Mengen innerhalb des Gerichts variieren; KEINE Fremdzutaten): ' + p.ai_instruction : '',
-    themeGuide
-      ? ('THEMEN-HINWEIS: Baue ein einfaches 30-Minuten-Rezept (4 Portionen, servings=4) mit Fokus auf ' + themeGuide.label +
-        ' unter Nutzung von: ' + themeGuide.foods.slice(0, 6).join(', ') + '.')
-      : '',
+    (function () {
+      const dishName = extractDishName(p.ai_instruction);
+      const dietFlags = extractDietFlags(p.ai_instruction);
+      const parts = [];
+      if (dishName) {
+        parts.push('Angefragtes Gericht: ' + dishName + '. Verwende ausschliesslich Zutaten, die zu diesem Gericht gehoeren. Variiere nur Mengen innerhalb des Gerichts. Fuege KEINE Fremdzutat hinzu.');
+      }
+      if (dietFlags.length) {
+        parts.push('Diaet-Vorgaben (aus Nutzer-Anfrage): ' + dietFlags.join(', ') + '.');
+      }
+      return parts.join(' ');
+    })(),
+    (function () {
+      // Claude-Regel 10. Okt: wenn ein Gerichtsname da ist, ist das
+      // Theme tabu. Nur im Ideen-Flow (kein Gericht) darf das Theme
+      // Zutaten vorschlagen.
+      const hasDish = !!extractDishName(p.ai_instruction);
+      if (hasDish) return '';
+      return themeGuide
+        ? ('THEMEN-HINWEIS: Baue ein einfaches 30-Minuten-Rezept (4 Portionen, servings=4) mit Fokus auf ' + themeGuide.label +
+          ' unter Nutzung von: ' + themeGuide.foods.slice(0, 6).join(', ') + '.')
+        : '';
+    })(),
     p.allergens.length ? 'Allergene strikt meiden: ' + p.allergens.join(', ') : '',
     (function () {
       try {
@@ -822,6 +854,45 @@ function buildGenerativeMessages(p) {
     { role: 'system', content: system },
     { role: 'user', content: user },
   ];
+}
+
+/**
+ * Extrahiert einen kurzen Gerichtsnamen aus ai_instruction.
+ * Claude-Diagnose 10. Okt: der Client sendet teils seitenlange
+ * Instruktionstexte mit "Du DARFST Zutaten anpassen". Die KI liest
+ * das und verfaelscht. Wir reduzieren auf den reinen Gerichtsnamen.
+ *
+ * Reihenfolge:
+ *   1. kurzer Text (<= 80 Zeichen, keine Newlines) -> nehmen
+ *   2. Text in Anfuehrungszeichen ("..." / „...")     -> nehmen
+ *   3. erste Zeile (<= 80 Zeichen)                    -> nehmen
+ *   4. sonst: '' -> Ideen-Flow
+ */
+function extractDishName(aiInstruction) {
+  const s = String(aiInstruction || '').trim();
+  if (!s) return '';
+  if (s.length <= 80 && !/[\n\r]/.test(s)) return s;
+  const m = s.match(/[\"\u201e\u201c\u2018\u2019']([^\"\u201e\u201c\u2018\u2019']{2,80})[\"\u201e\u201c\u2018\u2019']/);
+  if (m && m[1]) return m[1].trim();
+  const firstLine = s.split(/[\n\r]/)[0].trim();
+  if (firstLine && firstLine.length <= 80) return firstLine;
+  return '';
+}
+
+/**
+ * Extrahiert Diaet-Marker aus dem Fliesstext, damit sie beim
+ * Kuerzen von ai_instruction nicht verloren gehen.
+ * Rueckgabe: Array wie ['vegan'], ['glutenfrei'], ['laktosefrei','vegetarisch']
+ */
+function extractDietFlags(text) {
+  const s = String(text || '').toLowerCase();
+  const out = [];
+  if (/\bvegan\b/.test(s)) out.push('vegan');
+  if (/\bvegetarisch\b|\bvegetarian\b/.test(s)) out.push('vegetarisch');
+  if (/\bglutenfrei\b|\bgluten[-\s]?free\b/.test(s)) out.push('glutenfrei');
+  if (/\blaktosefrei\b|\blactose[-\s]?free\b/.test(s)) out.push('laktosefrei');
+  if (/\bketo\b|\bketogen\b/.test(s)) out.push('keto');
+  return out;
 }
 
 function langName(code) {
