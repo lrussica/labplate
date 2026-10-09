@@ -15,8 +15,7 @@
     },
     "apple": {
       "kind": "nutrient",
-      "catalog_key": "apple",
-      "needs_catalog": true
+      "catalog_key": "apple"
     },
     "arrabbiata": {
       "kind": "composite",
@@ -25,8 +24,7 @@
     },
     "arugula": {
       "kind": "nutrient",
-      "catalog_key": "arugula",
-      "needs_catalog": true
+      "catalog_key": "arugula"
     },
     "asparagus": {
       "kind": "nutrient",
@@ -53,18 +51,15 @@
     },
     "beef_roast": {
       "kind": "nutrient",
-      "catalog_key": "beef_roast",
-      "needs_catalog": true
+      "catalog_key": "beef_roast"
     },
     "beef_steak": {
       "kind": "nutrient",
-      "catalog_key": "beef_steak",
-      "needs_catalog": true
+      "catalog_key": "beef_steak"
     },
     "beetroot": {
       "kind": "nutrient",
-      "catalog_key": "beetroot",
-      "needs_catalog": true
+      "catalog_key": "beetroot"
     },
     "bell_pepper": {
       "kind": "alias",
@@ -73,8 +68,7 @@
     },
     "bread": {
       "kind": "nutrient",
-      "catalog_key": "bread",
-      "needs_catalog": true
+      "catalog_key": "bread"
     },
     "broccoli": {
       "kind": "nutrient",
@@ -97,12 +91,11 @@
     "bucatini": {
       "kind": "alias",
       "target": "pasta_dry",
-      "target_exists": false
+      "target_exists": true
     },
     "bulgur": {
       "kind": "nutrient",
-      "catalog_key": "bulgur",
-      "needs_catalog": true
+      "catalog_key": "bulgur"
     },
     "burro_parmigiano": {
       "kind": "composite",
@@ -140,7 +133,7 @@
     "cavatappi": {
       "kind": "alias",
       "target": "pasta_dry",
-      "target_exists": false
+      "target_exists": true
     },
     "chia": {
       "kind": "forbidden"
@@ -156,8 +149,7 @@
     },
     "chicken_thigh": {
       "kind": "nutrient",
-      "catalog_key": "chicken_thigh",
-      "needs_catalog": true
+      "catalog_key": "chicken_thigh"
     },
     "chickpea": {
       "kind": "alias",
@@ -181,23 +173,20 @@
     },
     "cod": {
       "kind": "nutrient",
-      "catalog_key": "cod",
-      "needs_catalog": true
+      "catalog_key": "cod"
     },
     "conchiglie": {
       "kind": "alias",
       "target": "pasta_dry",
-      "target_exists": false
+      "target_exists": true
     },
     "corn": {
       "kind": "nutrient",
-      "catalog_key": "corn",
-      "needs_catalog": true
+      "catalog_key": "corn"
     },
     "couscous": {
       "kind": "nutrient",
-      "catalog_key": "couscous",
-      "needs_catalog": true
+      "catalog_key": "couscous"
     },
     "cream_sauce": {
       "kind": "composite",
@@ -220,18 +209,15 @@
     },
     "dried_cranberry": {
       "kind": "nutrient",
-      "catalog_key": "dried_cranberry",
-      "needs_catalog": true
+      "catalog_key": "dried_cranberry"
     },
     "duck_breast": {
       "kind": "nutrient",
-      "catalog_key": "duck_breast",
-      "needs_catalog": true
+      "catalog_key": "duck_breast"
     },
     "edamame": {
       "kind": "nutrient",
-      "catalog_key": "edamame",
-      "needs_catalog": true
+      "catalog_key": "edamame"
     },
     "egg": {
       "kind": "nutrient",
@@ -244,7 +230,7 @@
     "elbow_macaroni": {
       "kind": "alias",
       "target": "pasta_dry",
-      "target_exists": false
+      "target_exists": true
     },
     "extra_protein": {
       "kind": "placeholder"
@@ -252,17 +238,15 @@
     "farfalle": {
       "kind": "alias",
       "target": "pasta_dry",
-      "target_exists": false
+      "target_exists": true
     },
     "farro": {
       "kind": "nutrient",
-      "catalog_key": "farro",
-      "needs_catalog": true
+      "catalog_key": "farro"
     },
     "fennel": {
       "kind": "nutrient",
-      "catalog_key": "fennel",
-      "needs_catalog": true
+      "catalog_key": "fennel"
     },
     "feta": {
       "kind": "nutrient",
@@ -271,7 +255,7 @@
     "fettuccine": {
       "kind": "alias",
       "target": "pasta_dry",
-      "target_exists": false
+      "target_exists": true
     },
     "flaxseed": {
       "kind": "forbidden"
@@ -279,22 +263,20 @@
     "fusilli": {
       "kind": "alias",
       "target": "pasta_dry",
-      "target_exists": false
+      "target_exists": true
     },
     "gemelli": {
       "kind": "alias",
       "target": "pasta_dry",
-      "target_exists": false
+      "target_exists": true
     },
     "goat_cheese": {
       "kind": "nutrient",
-      "catalog_key": "goat_cheese",
-      "needs_catalog": true
+      "catalog_key": "goat_cheese"
     },
     "grape": {
       "kind": "nutrient",
-      "catalog_key": "grape",
-      "needs_catalog": true
+      "catalog_key": "grape"
     },
     "greek_yogurt_dressing": {
       "kind": "placeholder"
@@ -304,8 +286,7 @@
     },
     "green_beans": {
       "kind": "nutrient",
-      "catalog_key": "green_beans",
-      "needs_catalog": true
+      "catalog_key": "green_beans"
     },
     "haferflocken": {
       "kind": "forbidden"
@@ -324,13 +305,11 @@
     },
     "lamb_chop": {
       "kind": "nutrient",
-      "catalog_key": "lamb_chop",
-      "needs_catalog": true
+      "catalog_key": "lamb_chop"
     },
     "lamb_leg": {
       "kind": "nutrient",
-      "catalog_key": "lamb_leg",
-      "needs_catalog": true
+      "catalog_key": "lamb_leg"
     },
     "leek": {
       "kind": "nutrient",
@@ -357,12 +336,11 @@
     "linguine": {
       "kind": "alias",
       "target": "pasta_dry",
-      "target_exists": false
+      "target_exists": true
     },
     "mango": {
       "kind": "nutrient",
-      "catalog_key": "mango",
-      "needs_catalog": true
+      "catalog_key": "mango"
     },
     "meal_replacement": {
       "kind": "forbidden"
@@ -428,18 +406,17 @@
     },
     "orange": {
       "kind": "nutrient",
-      "catalog_key": "orange",
-      "needs_catalog": true
+      "catalog_key": "orange"
     },
     "orecchiette": {
       "kind": "alias",
       "target": "pasta_dry",
-      "target_exists": false
+      "target_exists": true
     },
     "pappardelle": {
       "kind": "alias",
       "target": "pasta_dry",
-      "target_exists": false
+      "target_exists": true
     },
     "parmesan": {
       "kind": "nutrient",
@@ -457,18 +434,16 @@
     },
     "pear": {
       "kind": "nutrient",
-      "catalog_key": "pear",
-      "needs_catalog": true
+      "catalog_key": "pear"
     },
     "peas": {
       "kind": "nutrient",
-      "catalog_key": "peas",
-      "needs_catalog": true
+      "catalog_key": "peas"
     },
     "penne": {
       "kind": "alias",
       "target": "pasta_dry",
-      "target_exists": false
+      "target_exists": true
     },
     "pesto": {
       "kind": "composite",
@@ -477,13 +452,11 @@
     },
     "polenta": {
       "kind": "nutrient",
-      "catalog_key": "polenta",
-      "needs_catalog": true
+      "catalog_key": "polenta"
     },
     "pomegranate": {
       "kind": "nutrient",
-      "catalog_key": "pomegranate",
-      "needs_catalog": true
+      "catalog_key": "pomegranate"
     },
     "pork": {
       "kind": "nutrient",
@@ -492,8 +465,7 @@
     },
     "pork_chop": {
       "kind": "nutrient",
-      "catalog_key": "pork_chop",
-      "needs_catalog": true
+      "catalog_key": "pork_chop"
     },
     "pork_tenderloin": {
       "kind": "nutrient",
@@ -550,8 +522,7 @@
     },
     "radish": {
       "kind": "nutrient",
-      "catalog_key": "radish",
-      "needs_catalog": true
+      "catalog_key": "radish"
     },
     "ragu": {
       "kind": "composite",
@@ -571,7 +542,7 @@
     "rigatoni": {
       "kind": "alias",
       "target": "pasta_dry",
-      "target_exists": false
+      "target_exists": true
     },
     "risotto": {
       "kind": "composite",
@@ -591,8 +562,7 @@
     },
     "romaine": {
       "kind": "nutrient",
-      "catalog_key": "romaine",
-      "needs_catalog": true
+      "catalog_key": "romaine"
     },
     "salmon": {
       "kind": "nutrient",
@@ -600,13 +570,11 @@
     },
     "scallop": {
       "kind": "nutrient",
-      "catalog_key": "scallop",
-      "needs_catalog": true
+      "catalog_key": "scallop"
     },
     "sea_bass": {
       "kind": "nutrient",
-      "catalog_key": "sea_bass",
-      "needs_catalog": true
+      "catalog_key": "sea_bass"
     },
     "seed": {
       "kind": "selector",
@@ -619,8 +587,7 @@
     },
     "seitan": {
       "kind": "nutrient",
-      "catalog_key": "seitan",
-      "needs_catalog": true
+      "catalog_key": "seitan"
     },
     "shrimp": {
       "kind": "nutrient",
@@ -637,7 +604,7 @@
     "spaghetti": {
       "kind": "alias",
       "target": "pasta_dry",
-      "target_exists": false
+      "target_exists": true
     },
     "spinach": {
       "kind": "nutrient",
@@ -650,7 +617,7 @@
     "tagliatelle": {
       "kind": "alias",
       "target": "pasta_dry",
-      "target_exists": false
+      "target_exists": true
     },
     "tahini_dressing": {
       "kind": "composite",
@@ -668,8 +635,7 @@
     },
     "tomato_canned": {
       "kind": "nutrient",
-      "catalog_key": "tomato_canned",
-      "needs_catalog": true
+      "catalog_key": "tomato_canned"
     },
     "tomato_fresh": {
       "kind": "alias",
@@ -689,12 +655,11 @@
     "trofie": {
       "kind": "alias",
       "target": "pasta_dry",
-      "target_exists": false
+      "target_exists": true
     },
     "trout": {
       "kind": "nutrient",
-      "catalog_key": "trout",
-      "needs_catalog": true
+      "catalog_key": "trout"
     },
     "tuna_canned": {
       "kind": "nutrient",
@@ -702,8 +667,7 @@
     },
     "tuna_steak": {
       "kind": "nutrient",
-      "catalog_key": "tuna_steak",
-      "needs_catalog": true
+      "catalog_key": "tuna_steak"
     },
     "turkey_breast": {
       "kind": "nutrient",
@@ -756,7 +720,7 @@
     "ziti": {
       "kind": "alias",
       "target": "pasta_dry",
-      "target_exists": false
+      "target_exists": true
     },
     "zucchini": {
       "kind": "nutrient",

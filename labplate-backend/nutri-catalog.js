@@ -670,12 +670,6 @@ const CATALOG = {
     per100g: { protein: 1.6, fat: 0.3, netCarbs: 3.3, fiber: 1.9, kcal: 32 },
     source: 'USDA FDC 170457 (Tomatoes, red, ripe, canned, whole, no salt added)',
   },
-  cabbage_white_new: {
-    displayName: 'Weisskohl (roh)',
-    aliases: ['weisskohl', 'weisskraut', 'white cabbage'],
-    per100g: { protein: 1.3, fat: 0.1, netCarbs: 3.3, fiber: 2.5, kcal: 25 },
-    source: 'USDA FDC 169975 (Cabbage, raw)',
-  },
 
   // ---------- WELLE 2b (Block E, 2026-10-09) ----------
   // Fleisch & Fisch. Naehrwerte USDA FoodData Central (roh, ohne Haut).
@@ -768,6 +762,39 @@ const CATALOG = {
     aliases: ['nudeln (gekocht)', 'noodle', 'noodles', 'wok-nudeln', 'ei-nudeln'],
     per100g: { protein: 5.0, fat: 1.0, netCarbs: 24.0, fiber: 1.0, kcal: 131 },
     source: 'USDA FDC 168927 (Pasta, cooked, unenriched, without added salt)',
+  },
+
+  // ---------- WELLE 2c (Block E, 2026-10-09) ----------
+  // Beilagen-Getreide (A10.side). USDA FoodData Central, trocken.
+  bread: {
+    displayName: 'Brot (Weissbrot)',
+    aliases: ['brot', 'weissbrot', 'baguette', 'bauernbrot', 'bread'],
+    per100g: { protein: 9.0, fat: 3.2, netCarbs: 49.0, fiber: 2.7, kcal: 265 },
+    source: 'USDA FDC 174928 (Bread, white, commercially prepared)',
+  },
+  bulgur: {
+    displayName: 'Bulgur (trocken)',
+    aliases: ['bulgur', 'burghul', 'bulgurweizen'],
+    per100g: { protein: 12.3, fat: 1.3, netCarbs: 63.4, fiber: 12.5, kcal: 342 },
+    source: 'USDA FDC 170688 (Bulgur, dry)',
+  },
+  couscous: {
+    displayName: 'Couscous (trocken)',
+    aliases: ['couscous', 'cous cous'],
+    per100g: { protein: 12.8, fat: 0.6, netCarbs: 72.4, fiber: 5.0, kcal: 376 },
+    source: 'USDA FDC 169702 (Couscous, dry)',
+  },
+  farro: {
+    displayName: 'Farro / Emmer (trocken)',
+    aliases: ['farro', 'emmer', 'emmerweizen'],
+    per100g: { protein: 15.0, fat: 2.5, netCarbs: 59.5, fiber: 8.5, kcal: 353 },
+    source: 'USDA FDC (geschaetzt, zu verifizieren: Emmer wheat, dry)',
+  },
+  polenta: {
+    displayName: 'Polenta (Maisgriess, trocken)',
+    aliases: ['polenta', 'maisgriess', 'maisgries', 'cornmeal'],
+    per100g: { protein: 8.1, fat: 1.2, netCarbs: 77.0, fiber: 3.9, kcal: 370 },
+    source: 'USDA FDC 168922 (Cornmeal, degermed, unenriched, yellow)',
   },
 
   // ---------- WELLE 1 (Block E, 2026-10-09) ----------
