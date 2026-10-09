@@ -1,0 +1,75 @@
+composite: ragu_salsiccia
+version: 1
+displayName: "Ragù di Salsiccia"
+category: pasta_sauce
+aliases: ["ragu salsiccia", "salsiccia ragu", "wurst ragout"]
+
+core:
+  sausage:
+    roles: [protein, base, fat]
+    allowed: [sausage, italian_sausage]
+    amount_g: [250, 500]
+  soffritto_onion:
+    roles: [aromatic]
+    allowed: [onion, onion_yellow, shallot]
+    amount_g: [40, 100]
+  wine:
+    roles: [acid, liquid]
+    allowed: [red_wine, white_wine]
+    amount_g: [80, 200]
+  tomato_passata:
+    roles: [base]
+    allowed: [tomato_passata, tomato_canned, tomato_puree]
+    amount_g: [300, 600]
+  stock:
+    roles: [liquid]
+    allowed: [vegetable_broth, beef_broth, water]
+    amount_g: [200, 400]
+  seasoning:
+    roles: [seasoning]
+    cardinality: one_or_more
+    allowed: [salt, black_pepper]
+    amount_g: [1, 6]
+
+tolerated:
+  soffritto_carrot:
+    roles: [aromatic, sweet]
+    allowed: [carrot]
+    amount_g: [0, 80]
+  soffritto_celery:
+    roles: [aromatic]
+    allowed: [celery]
+    amount_g: [0, 60]
+  olive_oil:
+    roles: [technique]
+    allowed: [olive_oil]
+    amount_g: [0, 20]
+  whole_milk:
+    roles: [finishing_technique]
+    allowed: [whole_milk, milk_whole]
+    amount_g: [0, 80]
+
+forbidden:
+  - beef_mince
+  - pancetta
+  - guanciale
+  - cream_heavy
+  - garlic
+  - oregano
+
+ratios:
+  sausage_to_tomato: [0.4, 1.0]
+
+technique:
+  - step: remove_sausage_casing
+  - step: prepare_soffritto
+  - step: brown_sausage
+  - step: add_soffritto
+  - step: deglaze_with_wine
+  - step: add_tomato_and_stock
+  - step: simmer_long
+    params: { duration_min: [60, 120] }
+
+notes:
+  - "Eigenstaendiges Ragù-Profil, keine Bolognese-Variante."
+  - "Salsiccia bringt eigenes Fett und Wuerzung."

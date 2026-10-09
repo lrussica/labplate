@@ -1,0 +1,97 @@
+composite: ragu_bolognese
+version: 1
+displayName: "Ragù alla Bolognese"
+category: pasta_sauce
+aliases: ["ragu bolognese", "bolognese", "ragu alla bolognese", "bologneser ragout"]
+
+core:
+  beef_mince:
+    roles: [protein, base]
+    allowed: [beef_mince, beef]
+    amount_g: [200, 400]
+  pancetta:
+    roles: [fat, umami]
+    allowed: [pancetta, guanciale]
+    amount_g: [50, 120]
+  soffritto_onion:
+    roles: [aromatic]
+    allowed: [onion, onion_yellow, shallot]
+    amount_g: [40, 100]
+  soffritto_carrot:
+    roles: [aromatic, sweet]
+    allowed: [carrot]
+    amount_g: [40, 100]
+  soffritto_celery:
+    roles: [aromatic]
+    allowed: [celery]
+    amount_g: [30, 80]
+  wine:
+    roles: [acid, liquid]
+    allowed: [red_wine, white_wine]
+    amount_g: [80, 200]
+  tomato_passata:
+    roles: [base]
+    allowed: [tomato_passata, tomato_canned, tomato_puree]
+    amount_g: [300, 600]
+  tomato_paste:
+    roles: [umami, thickener]
+    allowed: [tomato_paste]
+    amount_g: [15, 50]
+  stock:
+    roles: [liquid]
+    allowed: [vegetable_broth, beef_broth, water]
+    amount_g: [200, 500]
+  seasoning:
+    roles: [seasoning]
+    cardinality: one_or_more
+    allowed: [salt, black_pepper]
+    amount_g: [1, 6]
+
+tolerated:
+  whole_milk:
+    roles: [finishing_technique]
+    allowed: [whole_milk, milk_whole]
+    amount_g: [0, 100]
+    notes: >
+      Traditionell, optional. Gegen Ende der Garzeit vollstaendig
+      einkochen lassen. Reduziert die Saeure der Tomate.
+  olive_oil:
+    roles: [technique]
+    allowed: [olive_oil]
+    amount_g: [0, 20]
+  butter:
+    roles: [technique, finish]
+    allowed: [butter]
+    amount_g: [0, 20]
+
+forbidden:
+  - sausage
+  - italian_sausage
+  - cream_heavy
+  - garlic
+  - oregano
+
+ratios:
+  beef_to_tomato: [0.4, 0.9]
+  soffritto_to_beef: [0.3, 0.7]
+  wine_to_beef: [0.2, 0.5]
+
+technique:
+  - step: prepare_soffritto
+    notes: "Zwiebel, Karotte, Sellerie fein wuerfeln."
+  - step: render_pancetta
+  - step: add_soffritto
+  - step: brown_beef
+    notes: "R5: Maillard vor Schmoren."
+  - step: deglaze_with_wine
+    notes: "R8: Deglassatura."
+  - step: add_tomato_and_stock
+  - step: simmer_long
+    params: { duration_min: [120, 240] }
+  - step: finish_with_milk_optional
+    notes: "Ganz am Ende, einkochen lassen."
+
+notes:
+  - "Accademia Italiana della Cucina: Milch traditionell, optional."
+  - "Salsiccia ist eine eigene Variante (ragu_salsiccia), kein Bolognese."
+  - "Ragù bianco ist ein eigenes Profil."

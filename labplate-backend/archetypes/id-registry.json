@@ -1,5 +1,5 @@
 {
-  "version": 6,
+  "version": 8,
   "generated": "2026-10-09",
   "note": "Registry v3: alle in YAMLs referenzierten IDs. nutrient-Eintraege mit needs_catalog:true sind als TODO markiert — Welle 3+ fuellt die Naehrwerte nach.",
   "ids": {
@@ -114,8 +114,8 @@
     },
     "caesar": {
       "kind": "composite",
-      "ref": null,
-      "needs_recipe": true
+      "ref": "composites/caesar.yaml",
+      "needs_recipe": false
     },
     "carbonara": {
       "kind": "composite",
@@ -697,8 +697,8 @@
     },
     "vinaigrette": {
       "kind": "composite",
-      "ref": null,
-      "needs_recipe": true
+      "ref": "composites/vinaigrette.yaml",
+      "needs_recipe": false
     },
     "vodka_sauce": {
       "kind": "composite",
@@ -1709,6 +1709,68 @@
     "napoletana": {
       "kind": "composite",
       "ref": "composites/napoletana.yaml",
+      "needs_recipe": false
+    },
+    "tomato_passata": {
+      "kind": "alias",
+      "target": "tomato_canned",
+      "target_exists": true
+    },
+    "whole_milk": {
+      "kind": "alias",
+      "target": "milk_whole",
+      "target_exists": true
+    },
+    "dijon_mustard": {
+      "kind": "alias",
+      "target": "mustard",
+      "target_exists": true
+    },
+    "red_wine_vinegar": {
+      "kind": "alias",
+      "target": "vinegar",
+      "target_exists": true
+    },
+    "white_wine_vinegar": {
+      "kind": "alias",
+      "target": "vinegar",
+      "target_exists": true
+    },
+    "italian_sausage": {
+      "kind": "alias",
+      "target": "sausage",
+      "target_exists": true
+    },
+    "pasteurized_egg_yolk": {
+      "kind": "alias",
+      "target": "egg",
+      "target_exists": true
+    },
+    "honey": {
+      "kind": "nutrient",
+      "catalog_key": "honey"
+    },
+    "sausage": {
+      "kind": "nutrient",
+      "catalog_key": "sausage"
+    },
+    "cream_heavy": {
+      "kind": "nutrient",
+      "catalog_key": "cream_heavy"
+    },
+    "ragu_bolognese": {
+      "kind": "composite",
+      "ref": "composites/ragu_bolognese.yaml",
+      "needs_recipe": false
+    },
+    "ragu_bianco": {
+      "kind": "composite",
+      "ref": "composites/ragu_bianco.yaml",
+      "needs_recipe": false
+    },
+    "ragu_salsiccia": {
+      "kind": "composite",
+      "ref": "composites/ragu_salsiccia.yaml",
       "needs_recipe": false
     }
   }

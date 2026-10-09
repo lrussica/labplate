@@ -14,7 +14,7 @@
  */
 const ALIASES = [
   // A1 Pasta — Substring-Match (Vollkornnudeln, Pastasauce, ...)
-  { pattern: /(spaghetti|penne|rigatoni|fusilli|tagliatelle|linguine|farfalle|orecchiette|bucatini|conchiglie|gemelli|trofie|fettuccine|pappardelle|ziti|cavatappi|pasta|nudeln|cacio\s*e\s*pepe|aglio\s*e\s*olio|pesto|puttanesca|alla\s+norma|alla\s+vodka)/i,
+  { pattern: /(spaghetti|penne|rigatoni|fusilli|tagliatelle|linguine|farfalle|orecchiette|bucatini|conchiglie|gemelli|trofie|fettuccine|pappardelle|ziti|cavatappi|pasta|nudeln|cacio\s*e\s*pepe|aglio\s*e\s*olio|pesto|puttanesca|alla\s+norma|alla\s+vodka|rag[uù](?=\s|$))/i,
     archetypeId: 'A1_pasta', dishId: 'pasta.generic', confidence: 0.85 },
   // A3 Pfanne — "hash" mit rechter Grenze (sonst "Hashtag")
   { pattern: /(bratkartoffeln|wok|shakshuka|fried rice|pfannengericht|ruehrei|omelett|hash(?![a-zäöüß]))/i,
@@ -45,6 +45,11 @@ const COMPOSITE_ALIASES = [
   { pattern: /(pasta\s+alla\s+norma|\bnorma\b)/i, compositeId: 'norma', confidence: 0.85 },
   { pattern: /(vodka[\s-]?sauce|alla\s+vodka|penne\s+alla\s+vodka)/i, compositeId: 'vodka_sauce', confidence: 0.9 },
   { pattern: /(mushroom\s+sauce|sugo\s+ai\s+funghi|funghi|pilzsauce)/i, compositeId: 'mushroom_sauce', confidence: 0.85 },
+  { pattern: /(rag[uù]\s+bianco|weisses\s+ragout|white\s+rag[uù])/i, compositeId: 'ragu_bianco', confidence: 0.9 },
+  { pattern: /(rag[uù][\s-]*(di[\s-]*)?salsiccia|salsiccia[\s-]*rag[uù])/i, compositeId: 'ragu_salsiccia', confidence: 0.9 },
+  { pattern: /(rag[uù]\s+(alla\s+)?bolognese|bolognese|bologneser)/i, compositeId: 'ragu_bolognese', confidence: 0.9 },
+  { pattern: /(caesar\s+dressing|caesar\s+sauce)/i, compositeId: 'caesar', confidence: 0.9 },
+  { pattern: /(vinaigrette)/i, compositeId: 'vinaigrette', confidence: 0.95 },
 ];
 
 function resolveComposite(query) {

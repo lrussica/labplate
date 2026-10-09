@@ -1,0 +1,82 @@
+composite: caesar
+version: 1
+displayName: "Caesar Dressing"
+category: salad_dressing
+aliases: ["caesar dressing", "caesar sauce", "caesar"]
+
+core:
+  pasteurized_egg_yolk:
+    roles: [binder, base]
+    allowed: [pasteurized_egg_yolk, egg, mayonnaise]
+    amount_g: [20, 60]
+    notes: >
+      R14 (Eier-Sicherheit): Nur pasteurisiertes Eigelb oder
+      Mayonnaise als Ersatz. Rohes Eigelb nicht zulaessig.
+  anchovy:
+    roles: [umami, flavor]
+    allowed: [anchovy, anchovies]
+    amount_g: [10, 40]
+    notes: "Cardini-Linie. Definierend."
+  garlic:
+    roles: [aromatic]
+    allowed: [garlic]
+    amount_g: [2, 10]
+  lemon_juice:
+    roles: [acid]
+    allowed: [lemon_juice]
+    amount_g: [10, 30]
+  dijon_mustard:
+    roles: [emulsifier, acid]
+    allowed: [dijon_mustard, mustard]
+    amount_g: [5, 15]
+  parmesan:
+    roles: [umami, finish]
+    allowed: [parmesan, parmigiano_reggiano]
+    amount_g: [30, 70]
+  olive_oil:
+    roles: [fat]
+    allowed: [olive_oil]
+    amount_g: [80, 150]
+  worcestershire_sauce:
+    roles: [umami, flavor]
+    allowed: [worcestershire_sauce, fish_sauce]
+    amount_g: [5, 20]
+    notes: "Ersetzt Sardellen nicht vollstaendig, ergaenzt sie."
+  black_pepper:
+    roles: [seasoning]
+    allowed: [black_pepper, pepper]
+    amount_g: [1, 4]
+
+tolerated:
+  red_wine_vinegar:
+    roles: [acid]
+    allowed: [red_wine_vinegar, white_wine_vinegar, vinegar]
+    amount_g: [0, 15]
+  salt:
+    roles: [seasoning]
+    allowed: [salt]
+    amount_g: [0, 3]
+
+forbidden:
+  - raw_egg_yolk_unpasteurized
+  - cream_heavy
+  - yogurt
+  - milk_whole
+
+ratios:
+  oil_to_yolk: [2.0, 5.0]
+  parmesan_to_yolk: [0.8, 2.5]
+
+technique:
+  - step: mash_anchovy_and_garlic
+  - step: add_yolk_and_mustard
+  - step: emulsify_with_oil
+    notes: "Öl langsam einlaufen lassen."
+  - step: add_lemon_and_worcestershire
+  - step: fold_in_parmesan
+  - step: season_black_pepper
+
+notes:
+  - "Sardellen in core. Nicht optional."
+  - "R14: pasteurisiertes Eigelb oder Mayonnaise, kein rohes Eigelb."
+  - "Worcestershire historisch nah an Cardini."

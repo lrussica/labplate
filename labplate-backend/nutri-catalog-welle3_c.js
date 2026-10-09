@@ -131,4 +131,17 @@ module.exports = {
     source: 'USDA FDC 169094 (Olives, ripe, canned (small-extra large))',
   },
 
+  honey: {
+    displayName: 'Honig',
+    aliases: ['honig', 'honey', 'bienenhonig'],
+    per100g: { protein: 0.3, fat: 0.0, netCarbs: 82.4, fiber: 0.2, kcal: 304 },
+    source: 'USDA FDC 169640 (Honey)',
+  },
+  sausage: {
+    displayName: 'Wurst (italienisch, roh)',
+    aliases: ['salsiccia', 'italienische wurst', 'sausage', 'italian sausage'],
+    per100g: { protein: 16.0, fat: 30.0, netCarbs: 1.0, fiber: 0.0, kcal: 340 },
+    source: 'USDA FDC (geschaetzt: Italian sausage, pork, raw)',
+  },
+
 };

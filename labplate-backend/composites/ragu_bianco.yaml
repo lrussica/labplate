@@ -1,0 +1,77 @@
+composite: ragu_bianco
+version: 1
+displayName: "Ragù Bianco"
+category: pasta_sauce
+aliases: ["ragu bianco", "weisses ragout", "white ragu"]
+
+core:
+  beef_mince:
+    roles: [protein, base]
+    allowed: [beef_mince, beef, pork_meat]
+    amount_g: [200, 400]
+  pancetta:
+    roles: [fat, umami]
+    allowed: [pancetta, guanciale]
+    amount_g: [50, 120]
+  soffritto_onion:
+    roles: [aromatic]
+    allowed: [onion, onion_yellow, shallot]
+    amount_g: [40, 100]
+  soffritto_carrot:
+    roles: [aromatic, sweet]
+    allowed: [carrot]
+    amount_g: [40, 100]
+  soffritto_celery:
+    roles: [aromatic]
+    allowed: [celery]
+    amount_g: [30, 80]
+  wine:
+    roles: [acid, liquid]
+    allowed: [white_wine, red_wine]
+    amount_g: [80, 200]
+  stock:
+    roles: [liquid]
+    allowed: [vegetable_broth, beef_broth, water]
+    amount_g: [300, 600]
+  seasoning:
+    roles: [seasoning]
+    cardinality: one_or_more
+    allowed: [salt, black_pepper]
+    amount_g: [1, 6]
+
+tolerated:
+  whole_milk:
+    roles: [finishing_technique]
+    allowed: [whole_milk, milk_whole]
+    amount_g: [0, 100]
+  olive_oil:
+    roles: [technique]
+    allowed: [olive_oil]
+    amount_g: [0, 20]
+
+forbidden:
+  - tomato
+  - tomato_canned
+  - tomato_passata
+  - tomato_puree
+  - tomato_paste
+  - cream_heavy
+  - garlic
+  - oregano
+
+ratios:
+  beef_to_stock: [0.4, 0.9]
+
+technique:
+  - step: prepare_soffritto
+  - step: render_pancetta
+  - step: add_soffritto
+  - step: brown_beef
+  - step: deglaze_with_wine
+  - step: add_stock
+  - step: simmer_long
+    params: { duration_min: [120, 240] }
+
+notes:
+  - "Gleiche DNA wie Bolognese, aber ohne Tomate."
+  - "Klassisch weisses Ragout."
