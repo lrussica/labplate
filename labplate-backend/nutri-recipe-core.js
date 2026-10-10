@@ -1450,8 +1450,7 @@ module.exports = {
         if (dishQuery) {
           const guard = require('./dish-identity-guard');
           const g = guard.checkQuery(dishQuery, result.recipe);
-          const _blockRaw = String(process.env.DISH_IDENTITY_BLOCK || '').trim().toLowerCase();
-          const blockMode = _blockRaw === '1' || _blockRaw === 'true' || _blockRaw === 'yes' || _blockRaw === 'on';
+          const blockMode = process.env.DISH_IDENTITY_BLOCK === '1';
           result.dish_identity = {
             mode: g.mode,
             archetypeId: g.resolved && g.resolved.archetypeId,
