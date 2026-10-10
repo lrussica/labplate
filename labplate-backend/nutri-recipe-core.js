@@ -837,7 +837,7 @@ function buildGenerativeMessages(p) {
       : '',
     (function () {
       const dishName = extractDishName(p.ai_instruction);
-      const dietFlags = extractDietFlags(p.ai_instruction);
+      const dietFlags = extractDietFlags(dishName);
       const parts = [];
       if (dishName) {
         parts.push('Angefragtes Gericht: ' + dishName + '. Verwende ausschliesslich Zutaten, die zu diesem Gericht gehoeren. Variiere nur Mengen innerhalb des Gerichts. Fuege KEINE Fremdzutat hinzu.');
