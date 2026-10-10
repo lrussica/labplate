@@ -1208,11 +1208,24 @@ async function generateValidatedRecipe(opts) {
   let lastRaw = null;
   const attemptRaws = [];
 
-  // ——— MASTER-CLASSIC HIT: ausschließlich im expliziten Originalmodus ———
+  // ——— MASTER-CLASSIC HIT ———
+  // Fix 2026-10-10: Auch im pantry-Modus greifen, wenn nur ein kurzer
+  // Klassiker-Suchbegriff (<= 40 Zeichen, keine Mengen) eingegeben wurde.
+  // Sonst landet 'Lasagne' im LLM statt im Master-Store.
   const originalMode = !!(payload && payload.original_mode);
+  const pantryClassicCandidate = (function () {
+    if (originalMode) return true;
+    if (!payload || payload.mode !== 'pantry') return false;
+    const ing = Array.isArray(payload.pantry_ingredients) ? payload.pantry_ingredients : [];
+    if (ing.length !== 1) return false;
+    const q = String(ing[0] || '').trim();
+    if (!q || q.length > 40) return false;
+    if (/\d/.test(q)) return false;
+    return true;
+  }());
   try {
     const masterStore = require('./classic-master-store');
-    const masterHit = originalMode
+    const masterHit = pantryClassicCandidate
       ? masterStore.tryMasterClassic(payload, {
           targetServings: payload && (payload.target_servings || payload.targetServings),
         })
