@@ -411,7 +411,13 @@ function renderRecipeForDisplay(recipe, renderOpts) {
   });
 
   // Zweite Sicherheits-Klemme nach Display-Mapping (deckt g-Eier / „10 Eier“-Namen ab)
-  if (scaledOk) {
+  // Fix 2026-10-10: Nur bei finalServings === 1 anwenden, und nie bei Master-Klassikern.
+  const _isMasterClassicForClamp = !!recipe.immutableCore
+    || recipe.recipeSource === 'master-classic';
+  const _clampSecondPass = scaledOk
+    && finalServings === 1
+    && !_isMasterClassicForClamp;
+  if (_clampSecondPass) {
     const enforcedDisplay = portions.enforceSinglePortionBaseAmounts(ingredients, {
       dietLabels: recipe.diet_labels,
       aiInstruction: o.aiInstruction || recipe.ai_instruction,
