@@ -94,16 +94,10 @@ const STAPLE_CATALOG = [
     culinaryRole: 'seasoning',
     netCarbs: 0, fat: 0, protein: 0, fiber: 0,
   },
-  {
-    label: 'Essig',
-    stems: ['essig', 'balsamico'],
-    name: 'Essig',
-    amount: 15,
-    unit: 'ml',
-    unitKind: 'volume',
-    culinaryRole: 'seasoning',
-    netCarbs: 0.5, fat: 0, protein: 0, fiber: 0,
-  },
+  // Fix 2026-10-10: Essig ist kein Reparatur-Staple. Er ist ein
+  // Geschmacksgeber und darf nicht automatisch eingefuegt werden.
+  // Nur explizit genannte Saucen (Vinaigrette etc.) fuehren Essig.
+
   {
     label: 'Knoblauch',
     stems: ['knoblauch'],
