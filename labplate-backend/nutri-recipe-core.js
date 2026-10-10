@@ -377,6 +377,8 @@ function validateIncoming(body) {
     team_ai,
     theme: null,
     handoff_brief: null,
+    trace: body.trace === 1 || body.trace === '1' || body.trace === true,
+    trace_id: typeof body.trace_id === 'string' ? body.trace_id.slice(0, 80) : null,
   };
   if (out.original_mode && mode !== 'pantry') return null;
 

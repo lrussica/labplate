@@ -34,6 +34,29 @@ function makeTraceId() {
   return 'tr-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
 }
 
+function _clipTraceValue(v, max) {
+  if (v == null) return 'null';
+  const s = typeof v === 'string' ? v : JSON.stringify(v);
+  if (s == null) return 'null';
+  return s.length > max ? s.slice(0, max) + '…' : s;
+}
+
+function logRequestStart(traceId, payload) {
+  if (!traceId || !payload) return;
+  const p = payload;
+  const parts = [
+    'ai_instruction=' + _clipTraceValue(p.ai_instruction || p.aiInstruction, 250),
+    'pantry=' + _clipTraceValue(p.pantry_ingredients || [], 200),
+    'theme=' + _clipTraceValue(p.theme, 120),
+    'handoff_brief=' + _clipTraceValue(p.handoff_brief, 250),
+    'macros=' + _clipTraceValue(p.macros, 250),
+    'lab_guideline_constraints=' + _clipTraceValue(p.lab_guideline_constraints, 400),
+    'target_servings=' + _clipTraceValue(p.target_servings, 20),
+    'allergens=' + _clipTraceValue(p.allergens, 150),
+  ];
+  console.log('[pipeline-trace] ' + traceId + ' REQUEST-START ' + parts.join(' '));
+}
+
 function compact(recipe) {
   if (!recipe || typeof recipe !== 'object') return { note: 'no recipe object' };
   const ings = Array.isArray(recipe.ingredients) ? recipe.ingredients : [];
@@ -118,4 +141,5 @@ module.exports = {
   recordStage: recordStage,
   getTrace: getTrace,
   endTrace: endTrace,
+  logRequestStart: logRequestStart,
 };

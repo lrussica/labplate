@@ -1196,9 +1196,7 @@ async function generateValidatedRecipe(opts) {
   const ptId = traceActive ? pipelineTrace.makeTraceId() : null;
   if (ptId) pipelineTrace.startTrace(ptId);
   if (traceActive) {
-    console.log('[pipeline-trace] ' + ptId + ' REQUEST-START ai_instruction=' +
-      JSON.stringify(payload && (payload.ai_instruction || payload.aiInstruction) || null) +
-      ' pantry=' + JSON.stringify(payload && payload.pantry_ingredients || []));
+    pipelineTrace.logRequestStart(ptId, payload);
   }
   const aiInstructionForLog = payload && (payload.ai_instruction || payload.aiInstruction);
   const groqOpts = o.groqOpts || {};
