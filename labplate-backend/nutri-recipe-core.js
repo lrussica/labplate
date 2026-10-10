@@ -399,6 +399,14 @@ function validateIncoming(body) {
     handoff_brief: null,
     trace: body.trace === 1 || body.trace === '1' || body.trace === true,
     trace_id: typeof body.trace_id === 'string' ? body.trace_id.slice(0, 80) : null,
+    // Fix 2026-10-10: target_servings durchreichen, sonst rechnet die
+    // Pipeline immer auf 1 Portion runter.
+    target_servings: Number(body.target_servings || body.targetServings) > 0
+      ? Number(body.target_servings || body.targetServings)
+      : null,
+    targetServings: Number(body.target_servings || body.targetServings) > 0
+      ? Number(body.target_servings || body.targetServings)
+      : null,
   };
   if (out.original_mode && mode !== 'pantry') return null;
 
