@@ -276,6 +276,10 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     targetServings: targetServings,
     title: recipe.title,
     steps: recipe.steps,
+    // Fix 2026-10-10: Master-Kennzeichen durchreichen, damit die
+    // Single-Portion-Clamps nicht auf Master-Rezepte angewendet werden.
+    immutableCore: !!recipe.immutableCore,
+    recipeSource: recipe.recipeSource || null,
   });
 
   // Bei unbekannter Ausgangsportion: Rohmengen anzeigen, aber nie als sichere 1-Portion markieren.

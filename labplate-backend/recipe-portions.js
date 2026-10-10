@@ -1022,14 +1022,22 @@ function buildFinalPortionedRecipe(opts) {
   );
   finalIngredients = applyPracticalRounding(finalIngredients);
 
+  // Fix 2026-10-10: Master-Rezepte haben bereits korrekte Mengen.
+  // Single-Portion-Clamps wuerden sie verfaelschen (500g Hack -> 180g etc.).
+  const _skipSinglePortionClamps = !!o.immutableCore
+    || o.recipeSource === 'master-classic'
+    || o.sourceServingsMethod === 'master_explicit';
+
   const enforceWarnings = [];
   let hasHardClamp = false;
 
-  // Kochwasser-Minimum (Technik-Zutat, skaliert nicht linear)
-  const waterEnforce = enforceCookingWaterMinimum(finalIngredients);
-  finalIngredients = waterEnforce.ingredients;
-  (waterEnforce.warnings || []).forEach(function (w) { enforceWarnings.push(w); });
-  if (targetServings === 1) {
+  if (!_skipSinglePortionClamps) {
+    // Kochwasser-Minimum (Technik-Zutat, skaliert nicht linear)
+    const waterEnforce = enforceCookingWaterMinimum(finalIngredients);
+    finalIngredients = waterEnforce.ingredients;
+    (waterEnforce.warnings || []).forEach(function (w) { enforceWarnings.push(w); });
+  }
+  if (targetServings === 1 && !_skipSinglePortionClamps) {
     const enforced = enforceSinglePortionBaseAmounts(finalIngredients, {
       dietLabels: o.dietLabels,
       aiInstruction: o.aiInstruction,
