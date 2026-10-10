@@ -332,6 +332,26 @@ function looksStructured(pantry) {
 // ---------------------------------------------------------------------------
 // Payload-Validierung (Client -> Server)
 // ---------------------------------------------------------------------------
+/**
+ * Bereinigt einen pantry_ingredients-Eintrag im mode=ai.
+ * Der Client sendet dort oft den kompletten Freisuchetext inkl.
+ * Tagesziel- und Variation-Seed-Phrasen. Nur der Gerichtsname
+ * darf in den Prompt. Kurze, saubere Eintraege bleiben unveraendert.
+ */
+function sanitizePantryEntryAi(entry) {
+  const s = String(entry == null ? '' : entry).trim();
+  if (!s) return '';
+  if (s.length <= 60 && !/DARFST|DURFST|Variation[-\s]?Seed|Tagesziel|Tagesziele|low[_\s-]?carb|Hauptziel|HANDOFF/i.test(s)) {
+    return s;
+  }
+  const bySentence = s.split(/[.!?]\s+/).map(function(x){return x.trim();}).filter(Boolean);
+  const candidate = (bySentence[bySentence.length - 1] || s).trim();
+  if (candidate.length >= 3 && candidate.length <= 80 && !/DARFST|DURFST|Variation[-\s]?Seed|Tagesziel|low[_\s-]?carb|Hauptziel|HANDOFF/i.test(candidate)) {
+    return candidate;
+  }
+  return '';
+}
+
 function validateIncoming(body) {
   if (!body || typeof body !== 'object') return null;
   const mode = body.mode === 'ai' ? 'ai' : body.mode === 'pantry' ? 'pantry' : body.mode === 'shopping' ? 'shopping' : null;
@@ -398,7 +418,7 @@ function validateIncoming(body) {
 
   if (mode === 'ai') {
     out.pantry_ingredients = Array.isArray(body.pantry_ingredients)
-      ? body.pantry_ingredients.map(sanitizeLine).filter(Boolean).slice(0, MAX_INGREDIENTS)
+      ? body.pantry_ingredients.map(sanitizeLine).filter(Boolean).map(sanitizePantryEntryAi).filter(Boolean).slice(0, MAX_INGREDIENTS)
       : [];
     out.structured = false;
     return out;
