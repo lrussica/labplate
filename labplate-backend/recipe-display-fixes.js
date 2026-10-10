@@ -29,6 +29,36 @@ const FALLBACK_MACROS_PER_100 = {
   default: { protein: 5, fat: 5, netCarbs: 5, fiber: 1 },
 };
 
+/**
+ * Entfernt reine Zustandsklammern aus Zutatennamen.
+ * "Spaghetti (trocken)" -> "Spaghetti"
+ * "Tomaten (getrocknet)" -> bleibt (andere Zutat!)
+ * "Zwiebel (gelb, fein gehackt)" -> "Zwiebel"
+ */
+const PAREN_STRIP_TERMS = new Set([
+  'trocken', 'frisch', 'gehackt', 'gewuerfelt', 'gewürfelt', 'gerieben',
+  'gemahlen', 'fein', 'grob', 'mittelgross', 'mittelgroß', 'mittel',
+  'gross', 'groß', 'klein', 'zehen', 'zehe', 'gelb', 'rot', 'weiss', 'weiß',
+  'ganz', 'halb', 'stange', 'stangen', 'reif', 'roh', 'gekocht',
+  'geschnitten', 'gehobelt', 'gefroren', 'zimmerwarm', 'zimmertemperatur',
+  'geschält', 'geschaeltt', 'entkernt', 'entstielt', 'kleingeschnitten',
+  'fein gehackt', 'grob gehackt', 'in scheiben', 'in wuerfeln', 'in würfeln',
+  'nach geschmack', 'zum kochen', 'zum braten', 'zum bestreuen',
+])
+function stripStateParentheticals(name) {
+  if (!name || typeof name !== 'string') return name;
+  return name.replace(/\s*\(([^)]+)\)/g, function (match, inner) {
+    const parts = String(inner).split(',').map(function (p) { return p.trim().toLowerCase(); });
+    const hasMeaningful = parts.some(function (p) {
+      if (PAREN_STRIP_TERMS.has(p)) return false;
+      if (/^\d+([.,]\d+)?\s*(g|ml|kg|l|stk|stueck|stück|el|tl)$/.test(p)) return false;
+      if (/^ca\.?\s+\d+/.test(p)) return false;
+      return true;
+    });
+    return hasMeaningful ? match : "";
+  }).replace(/\s{2,}/g, ' ').trim();
+}
+
 function nameOf(ing) {
   return String((ing && (ing.displayName || ing.name)) || '');
 }
@@ -586,6 +616,23 @@ function applyRecipeDisplayFixes(recipe, opts) {
   }
 
   normalizeWaterDisplay(recipe);
+
+  // Fix 2026-10-10: Zustandsklammern aus Zutatennamen entfernen
+  (function () {
+    const list = finalList(recipe);
+    if (!Array.isArray(list)) return;
+    list.forEach(function (ing) {
+      if (!ing) return;
+      if (typeof ing.name === 'string') {
+        const cleaned = stripStateParentheticals(ing.name);
+        if (cleaned) ing.name = cleaned;
+      }
+      if (typeof ing.displayName === 'string' && ing.displayName) {
+        const cleaned = stripStateParentheticals(ing.displayName);
+        if (cleaned) ing.displayName = cleaned;
+      }
+    });
+  }());
 
   recipe.shopping_list = finalList(recipe)
     .filter(function (ing) { return !isStapleForShoppingList(nameOf(ing)); })
