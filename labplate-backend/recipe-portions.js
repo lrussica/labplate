@@ -118,6 +118,60 @@ function isSpecialDietKcalExempt(dietLabels, aiInstruction) {
  * Klemmt Mengen einer 1-Portions-Basis auf realistische Alltagsgrenzen.
  * Ändert nur finale 1-Portions-Mengen; Listen-Skalierung danach bleibt Multiplikation.
  */
+/**
+ * Kochwasser ist eine Technik-Zutat. Es skaliert NICHT linear mit
+ * der Portionszahl, sondern richtet sich nach der Pasta-Menge:
+ * mindestens 1 Liter pro 100 g Pasta, mindestens 2 Liter gesamt.
+ * Wird nach der Skalierung angewendet, damit ein 1-Portions-Rezept
+ * nicht auf 125 ml heruntergerechnet wird.
+ */
+function _isPastaName(name) {
+  const n = String(name || '').toLowerCase();
+  return /spaghetti|penne|rigatoni|fusilli|tagliatelle|linguine|farfalle|orecchiette|bucatini|conchiglie|gemelli|trofie|fettuccine|pappardelle|ziti|cavatappi|elbow|macaroni|pasta|nudel|noodle|lasagne|lasagna/.test(n);
+}
+function _isCookingWaterName(name) {
+  const n = String(name || '').toLowerCase();
+  return /wasser.*koch|koch.*wasser|nudelwasser|pasta.?water|kochfl|wasser\s*\(/.test(n) || /^wasser$/.test(n.trim());
+}
+function enforceCookingWaterMinimum(ingredients) {
+  const list = Array.isArray(ingredients) ? ingredients : [];
+  const warnings = [];
+  const clamps = [];
+  let pastaG = 0;
+  list.forEach(function (ing) {
+    if (!ing) return;
+    const name = String(ing.displayName || ing.name || '');
+    const amount = Number(ing.amount);
+    const unit = String(ing.unit || '').toLowerCase();
+    if (!Number.isFinite(amount)) return;
+    if (_isPastaName(name) && (unit === 'g' || unit === 'kg')) {
+      pastaG += unit === 'kg' ? amount * 1000 : amount;
+    }
+  });
+  if (pastaG <= 0) return { ingredients: list, warnings: warnings, clamps: clamps };
+  const minTotal = Math.max(2000, Math.ceil(pastaG * 10));
+  const out = list.map(function (ing) {
+    if (!ing) return ing;
+    const name = String(ing.displayName || ing.name || '');
+    if (!_isCookingWaterName(name)) return ing;
+    const unit = String(ing.unit || '').toLowerCase();
+    if (unit !== 'ml' && unit !== 'l') return ing;
+    const amount = Number(ing.amount);
+    if (!Number.isFinite(amount)) return ing;
+    const ml = unit === 'l' ? amount * 1000 : amount;
+    if (ml >= minTotal) return ing;
+    const next = Object.assign({}, ing);
+    next.amount = minTotal;
+    next.unit = 'ml';
+    clamps.push({ kind: 'water', name: name, from: ml, to: minTotal });
+    warnings.push(
+      'Kochwasser auf kochfachliches Minimum angehoben (' + name + ': ' + Math.round(ml) + ' ml → ' + minTotal + ' ml für ' + Math.round(pastaG) + ' g Pasta).'
+    );
+    return next;
+  });
+  return { ingredients: out, warnings: warnings, clamps: clamps };
+}
+
 function enforceSinglePortionBaseAmounts(ingredients, opts) {
   const o = opts || {};
   const warnings = [];
@@ -960,6 +1014,11 @@ function buildFinalPortionedRecipe(opts) {
 
   const enforceWarnings = [];
   let hasHardClamp = false;
+
+  // Kochwasser-Minimum (Technik-Zutat, skaliert nicht linear)
+  const waterEnforce = enforceCookingWaterMinimum(finalIngredients);
+  finalIngredients = waterEnforce.ingredients;
+  (waterEnforce.warnings || []).forEach(function (w) { enforceWarnings.push(w); });
   if (targetServings === 1) {
     const enforced = enforceSinglePortionBaseAmounts(finalIngredients, {
       dietLabels: o.dietLabels,
