@@ -326,7 +326,8 @@ function sanitizeIngredientMacros(recipe) {
   let ok = true;
 
   // Protein-Bremse: Gesamtprotein darf Fleischmasse nicht physikalisch sprengen
-  const proteinCap = meatGrams > 0 ? meatGrams * 0.35 + 8 : null;
+  // Fix 2026-10-10: Cap beruecksichtigt Protein aus Kaese/Milch/Pasta/Ei.
+  const proteinCap = meatGrams > 0 ? meatGrams * 0.5 + 25 : null;
   if (proteinCap != null && nutrition.protein_g > proteinCap) {
     clamped = true;
     ok = false;

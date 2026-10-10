@@ -173,7 +173,8 @@ function validateNutrition(recipe) {
       meatGrams += amt;
     }
   });
-  if (meatGrams > 0 && Number.isFinite(protein) && protein > meatGrams * 0.4) {
+  // Fix 2026-10-10: Protein-Cap auch hier grosszuegiger (Kaese/Milch/Pasta zaehlen mit).
+  if (meatGrams > 0 && Number.isFinite(protein) && protein > meatGrams * 0.55 + 20) {
     issues.push('Nutrition data does not plausibly match the stated ingredient amounts.');
   }
   if (recipe._nutritionImplausible) {
