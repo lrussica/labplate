@@ -127,7 +127,9 @@ function isSpecialDietKcalExempt(dietLabels, aiInstruction) {
  */
 function _isPastaName(name) {
   const n = String(name || '').toLowerCase();
-  return /spaghetti|penne|rigatoni|fusilli|tagliatelle|linguine|farfalle|orecchiette|bucatini|conchiglie|gemelli|trofie|fettuccine|pappardelle|ziti|cavatappi|elbow|macaroni|pasta|nudel|noodle|lasagne|lasagna/.test(n);
+  // Fix 2026-10-10: Lasagneplatten werden geschichtet, nicht gekocht — Wasser-Sonderregel gilt nicht.
+  if (/lasagne|lasagna/.test(n)) return false;
+  return /spaghetti|penne|rigatoni|fusilli|tagliatelle|linguine|farfalle|orecchiette|bucatini|conchiglie|gemelli|trofie|fettuccine|pappardelle|ziti|cavatappi|elbow|macaroni|pasta|nudel|noodle/.test(n);
 }
 function _isCookingWaterName(name) {
   const n = String(name || '').toLowerCase();
