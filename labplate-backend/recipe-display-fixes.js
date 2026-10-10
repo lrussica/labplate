@@ -559,13 +559,42 @@ function applyRecipeDisplayFixes(recipe, opts) {
   rewriteStepsNatural(recipe, { noHerbs: noHerbs });
   applyDairyFreeAdaptation(recipe, opts);
 
-  recipe.shopping_list = finalList(recipe).map(function (ing) {
-    const n = nameOf(ing);
-    const amt = Number(ing.amount);
-    const unit = ing.unit || 'g';
-    if (!amt) return n;
-    return n + ' – ' + amt + ' ' + unit;
-  });
+  function isStapleForShoppingList(name) {
+    const n = String(name || '').toLowerCase();
+    return /^wasser\b|wasser\s*\(|kochwasser|nudelwasser|trinkwasser/.test(n) ||
+      /^salz\b|salz\s*\(/.test(n) ||
+      /^pfeffer\b|pfeffer\s*\(|schwarzer\s+pfeffer/.test(n);
+  }
+  function isCookingWaterName(name) {
+    const n = String(name || '').toLowerCase();
+    return /^wasser\b|wasser\s*\(|kochwasser|nudelwasser|trinkwasser/.test(n);
+  }
+  function normalizeWaterDisplay(rec) {
+    const list = finalList(rec);
+    if (!Array.isArray(list)) return;
+    list.forEach(function (ing) {
+      if (!ing) return;
+      const nm = nameOf(ing);
+      if (!isCookingWaterName(nm)) return;
+      if (/herstellerangabe|packungsanweisung/i.test(String(nm))) return;
+      ing.name = 'Wasser (nach Herstellerangabe)';
+      ing.displayName = 'Wasser (nach Herstellerangabe)';
+      ing.amount = 0;
+      ing.unit = 'ml';
+    });
+  }
+
+  normalizeWaterDisplay(recipe);
+
+  recipe.shopping_list = finalList(recipe)
+    .filter(function (ing) { return !isStapleForShoppingList(nameOf(ing)); })
+    .map(function (ing) {
+      const n = nameOf(ing);
+      const amt = Number(ing.amount);
+      const unit = ing.unit || 'g';
+      if (!amt) return n;
+      return n + ' – ' + amt + ' ' + unit;
+    });
 
   return recipe;
 }
