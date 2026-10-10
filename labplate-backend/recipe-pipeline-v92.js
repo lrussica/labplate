@@ -831,6 +831,8 @@ function renderRecipeForDisplay(recipe, renderOpts) {
     const kcalFinal = Number(n.kcal != null ? n.kcal : n.calories);
     const servingsFinal = Math.max(1, Number(out.finalServings) || 1);
     const kcalPerPortion = kcalFinal > 0 ? kcalFinal / servingsFinal : 0;
+    const isMasterClassicOut = (out.sourceServingsMethod === 'master_explicit') ||
+      (out.recipeSource === 'master-classic');
     const catRange = portions.kcalRangeForCategory
       ? portions.kcalRangeForCategory(out.dishCategory || '', out.title || '')
       : { min: 400, max: 700 };
@@ -840,7 +842,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
       const filtered = out.portionWarnings.filter(function (w) {
         return !/Kalorien der Einzelportion/.test(String(w || ''));
       });
-      if (kcalPerPortion > 0 && (kcalPerPortion < lowBound || kcalPerPortion > highBound)) {
+      if (!isMasterClassicOut && kcalPerPortion > 0 && (kcalPerPortion < lowBound || kcalPerPortion > highBound)) {
         filtered.push(
           'Kalorien der Einzelportion (' + Math.round(kcalPerPortion) +
           ' kcal) außerhalb des Alltagsrahmens ca. 400–700 kcal.'

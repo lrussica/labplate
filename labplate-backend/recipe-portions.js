@@ -317,6 +317,14 @@ function validateSinglePortionKcal(nutrition, opts) {
   if (isSpecialDietKcalExempt(o.dietLabels, o.aiInstruction)) {
     return { warnings: warnings, status: 'exempt' };
   }
+  // Fix 2026-10-10: Klassiker aus dem Master-Store sind reichhaltige
+  // Traditionsgerichte (Lasagne, Boeuf Bourguignon). Der Alltagsrahmen
+  // 400-700 kcal gilt fuer sie nicht.
+  const isMasterClassic = o.sourceServingsMethod === 'master_explicit'
+    || o.recipeSource === 'master-classic';
+  if (isMasterClassic) {
+    return { warnings: warnings, status: 'exempt' };
+  }
   const kcal = Number(
     nutrition && (nutrition.kcal != null ? nutrition.kcal : nutrition.calories)
   );
