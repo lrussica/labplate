@@ -323,10 +323,11 @@ function ingKey(i) {
  */
 function looksStructured(pantry) {
   if (!Array.isArray(pantry) || !pantry.length) return false;
-  if (pantry.length >= 3) return true;
+  // Fix 2026-10-10: structured nur wenn tatsaechlich Mengen drinstehen.
+  // Lose Zutaten (Reis, Linsen, Kurkuma) sind eine Suchanfrage, kein Rezept.
   const text = pantry.join('\n');
   const qty = text.match(/\d+(?:[.,]\d+)?\s*(?:g|ml|kg|l|el|tl)\b/gi);
-  return Boolean(qty && qty.length >= 3);
+  return Boolean(qty && qty.length >= 2);
 }
 
 // ---------------------------------------------------------------------------
