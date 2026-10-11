@@ -10544,6 +10544,1016 @@
         "tomato",
         "pecorino"
       ]
+    },
+    {
+      "id": "cacio_e_pepe",
+      "cuisine": "it",
+      "region": "Roma",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "cacio e pepe",
+          "cacio und pepe"
+        ],
+        "en": [
+          "cacio e pepe"
+        ],
+        "fr": [
+          "cacio e pepe"
+        ],
+        "it": [
+          "cacio e pepe",
+          "tonnarelli cacio e pepe"
+        ],
+        "tr": [
+          "cacio e pepe"
+        ]
+      },
+      "titles": {
+        "de": "Cacio e Pepe",
+        "en": "Cacio e Pepe",
+        "fr": "Cacio e Pepe",
+        "it": "Cacio e Pepe",
+        "tr": "Cacio e Pepe"
+      },
+      "servings": 4,
+      "prep_time_min": 20,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Tonnarelli",
+            "en": "Tonnarelli",
+            "fr": "Tonnarelli",
+            "it": "Tonnarelli",
+            "tr": "Tonnarelli"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 70,
+          "fat": 1.5,
+          "protein": 12,
+          "fiber": 3,
+          "allergenTags": [
+            "gluten"
+          ],
+          "culinaryRole": "base"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Pecorino Romano",
+            "en": "Pecorino Romano",
+            "fr": "Pecorino Romano",
+            "it": "Pecorino Romano",
+            "tr": "Pecorino Romano"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 27,
+          "protein": 32,
+          "fiber": 0,
+          "allergenTags": [
+            "lactose",
+            "milk"
+          ],
+          "culinaryRole": "topping"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Schwarzer Pfeffer",
+            "en": "Black pepper",
+            "fr": "Poivre noir",
+            "it": "Pepe nero",
+            "tr": "Karabiber"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Pfeffer",
+            "en": "Pepper",
+            "fr": "Poivre",
+            "it": "Pepe",
+            "tr": "Biber"
+          },
+          "content": {
+            "de": "{0003} in trockener Pfanne bei mittlerer Hitze 1 Min rösten, bis er duftet.",
+            "en": "Toast {0003} in a dry pan over medium heat for 1 min until fragrant.",
+            "fr": "Torréfier {0003} à sec à feu moyen 1 min jusqu'à parfum.",
+            "it": "Tostare {0003} a secco a fuoco medio per 1 min finché profuma.",
+            "tr": "{0003} kuru tavada orta ateşte 1 dk koku çıkana kadar kavur."
+          },
+          "stove_level": 4,
+          "time_min": 1
+        },
+        {
+          "title": {
+            "de": "Pasta",
+            "en": "Pasta",
+            "fr": "Pâtes",
+            "it": "Pasta",
+            "tr": "Makarna"
+          },
+          "content": {
+            "de": "{0001} in wenig Salzwasser ({0004}) al dente kochen. Nudelwasser ist stärkehaltig — sparsam salzen.",
+            "en": "Cook {0001} al dente in little salted water ({0004}). Pasta water should be starchy — salt sparingly.",
+            "fr": "Cuire {0001} al dente dans peu d'eau salée ({0004}). L'eau doit être riche en amidon.",
+            "it": "Cuocere {0001} al dente in poca acqua salata ({0004}). Acqua amidacea.",
+            "tr": "{0001} az tuzlu suda ({0004}) al dente haşla. Su nişastalı olmalı."
+          },
+          "stove_level": 7,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Creme",
+            "en": "Cream",
+            "fr": "Crème",
+            "it": "Crema",
+            "tr": "Krema"
+          },
+          "content": {
+            "de": "{0002} fein reiben. In einer Schüssel mit etwas lauwarmem Nudelwasser zu einer glatten Creme rühren.",
+            "en": "Finely grate {0002}. In a bowl, mix with a little lukewarm pasta water into a smooth cream.",
+            "fr": "Râper finement {0002}. Dans un bol, mélanger avec un peu d'eau de cuisson tiède.",
+            "it": "Grattugiare {0002}. In una ciotola, mescolare con poca acqua di cottura tiepida.",
+            "tr": "{0002} ince rendele. Bir kasede az ılık makarna suyu ile pürüzsüz krema yap."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Finish",
+            "en": "Finish",
+            "fr": "Finition",
+            "it": "Rifinitura",
+            "tr": "Bitirme"
+          },
+          "content": {
+            "de": "Pasta abtropfen, vom Herd nehmen, mit der Creme und {0003} schnell vermengen. Sofort servieren.",
+            "en": "Drain pasta, off heat, toss quickly with the cream and {0003}. Serve immediately.",
+            "fr": "Égoutter, hors du feu, mélanger vivement avec la crème et {0003}. Servir aussitôt.",
+            "it": "Scolare, fuori dal fuoco, mantecare velocemente con la crema e {0003}. Servire subito.",
+            "tr": "Süz, ateşten al, krema ve {0003} ile hızlıca karıştır. Hemen servis et."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "garnish": {
+        "de": "",
+        "en": "",
+        "fr": "",
+        "it": "",
+        "tr": ""
+      },
+      "chef_analysis": {
+        "de": "Römisch: nur Pecorino, Pfeffer, Nudelwasser. Kein Olivenöl, keine Butter, keine Sahne. Die Creme entsteht aus Stärke und Käse.",
+        "en": "Roman: only pecorino, pepper, pasta water. No oil, no butter, no cream. Cream comes from starch and cheese.",
+        "fr": "Romain : uniquement pecorino, poivre, eau de cuisson. Pas d'huile, pas de beurre, pas de crème.",
+        "it": "Romano: solo pecorino, pepe, acqua di cottura. Niente olio, burro, panna.",
+        "tr": "Roma usulü: sadece pecorino, biber, makarna suyu. Yağ, tereyağı, krema yok."
+      },
+      "diet_labels": [
+        "vegetarian"
+      ],
+      "coreComponents": [
+        "pasta",
+        "pecorino",
+        "pepper"
+      ]
+    },
+    {
+      "id": "pesto_genovese",
+      "cuisine": "it",
+      "region": "Liguria",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "pesto genovese",
+          "pesto",
+          "basilikum pesto"
+        ],
+        "en": [
+          "pesto genovese",
+          "pesto",
+          "basil pesto"
+        ],
+        "fr": [
+          "pesto genovese",
+          "pesto",
+          "pesto au basilic"
+        ],
+        "it": [
+          "pesto genovese",
+          "pesto alla genovese",
+          "pesto"
+        ],
+        "tr": [
+          "pesto genovese",
+          "pesto",
+          "fesleğenli pesto"
+        ]
+      },
+      "titles": {
+        "de": "Pesto Genovese",
+        "en": "Pesto Genovese",
+        "fr": "Pesto genovese",
+        "it": "Pesto Genovese",
+        "tr": "Pesto Genovese"
+      },
+      "servings": 4,
+      "prep_time_min": 15,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Trofie",
+            "en": "Trofie",
+            "fr": "Trofie",
+            "it": "Trofie",
+            "tr": "Trofie"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 70,
+          "fat": 1.5,
+          "protein": 12,
+          "fiber": 3,
+          "allergenTags": [
+            "gluten"
+          ],
+          "culinaryRole": "base"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Basilikum",
+            "en": "Basil",
+            "fr": "Basilic",
+            "it": "Basilico",
+            "tr": "Fesleğen"
+          },
+          "amount": 60,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2.6,
+          "fat": 0.6,
+          "protein": 3.2,
+          "fiber": 1.6,
+          "allergenTags": [],
+          "culinaryRole": "herb"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Pinienkerne",
+            "en": "Pine nuts",
+            "fr": "Pignons de pin",
+            "it": "Pinoli",
+            "tr": "Çam fıstığı"
+          },
+          "amount": 30,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 68,
+          "protein": 14,
+          "fiber": 3.7,
+          "allergenTags": [
+            "nuts"
+          ],
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "culinaryRole": "aromatic"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Parmesan",
+            "en": "Parmesan",
+            "fr": "Parmesan",
+            "it": "Parmigiano",
+            "tr": "Parmesan"
+          },
+          "amount": 60,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 28,
+          "protein": 35,
+          "fiber": 0,
+          "allergenTags": [
+            "lactose",
+            "milk"
+          ],
+          "culinaryRole": "umami"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Pecorino Romano",
+            "en": "Pecorino Romano",
+            "fr": "Pecorino Romano",
+            "it": "Pecorino Romano",
+            "tr": "Pecorino Romano"
+          },
+          "amount": 30,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 27,
+          "protein": 32,
+          "fiber": 0,
+          "allergenTags": [
+            "lactose",
+            "milk"
+          ],
+          "culinaryRole": "umami"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Olivenöl",
+            "en": "Olive oil",
+            "fr": "Huile d'olive",
+            "it": "Olio d'oliva",
+            "tr": "Zeytinyağı"
+          },
+          "amount": 120,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Pesto",
+            "en": "Pesto",
+            "fr": "Pesto",
+            "it": "Pesto",
+            "tr": "Pesto"
+          },
+          "content": {
+            "de": "{0002}, {0003}, {0004} und {0008} im Mörser zu einer Paste zerdrücken. {0005} und {0006} unterrühren.",
+            "en": "Crush {0002}, {0003}, {0004} and {0008} in a mortar to a paste. Stir in {0005} and {0006}.",
+            "fr": "Écraser {0002}, {0003}, {0004} et {0008} au mortier en pâte. Incorporer {0005} et {0006}.",
+            "it": "Pestare {0002}, {0003}, {0004} e {0008} al mortaio. Unire {0005} e {0006}.",
+            "tr": "{0002}, {0003}, {0004} ve {0008} havanla macun yap. {0005} ve {0006} karıştır."
+          },
+          "stove_level": 0,
+          "time_min": 6
+        },
+        {
+          "title": {
+            "de": "Öl",
+            "en": "Oil",
+            "fr": "Huile",
+            "it": "Olio",
+            "tr": "Yağ"
+          },
+          "content": {
+            "de": "{0007} in dünnem Strahl unter Rühren einlaufen lassen, bis eine sämige Sauce entsteht.",
+            "en": "Drizzle in {0007} while stirring, until a creamy sauce forms.",
+            "fr": "Verser {0007} en filet en remuant, jusqu'à obtenir une sauce onctueuse.",
+            "it": "Versare {0007} a filo mescolando, fino a ottenere una salsa cremosa.",
+            "tr": "{0007} ince şerit halinde karıştırarak ekle, kremamsı sos oluşana kadar."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Pasta",
+            "en": "Pasta",
+            "fr": "Pâtes",
+            "it": "Pasta",
+            "tr": "Makarna"
+          },
+          "content": {
+            "de": "{0001} al dente kochen, abtropfen, mit dem Pesto und etwas Nudelwasser vermengen. Nicht erhitzen.",
+            "en": "Cook {0001} al dente, drain, toss with pesto and a splash of pasta water. Do not heat.",
+            "fr": "Cuire {0001} al dente, égoutter, mélanger au pesto et un peu d'eau de cuisson. Ne pas chauffer.",
+            "it": "Cuocere {0001} al dente, scolare, mantecare con pesto e poca acqua di cottura. Non scaldare.",
+            "tr": "{0001} al dente haşla, süz, pesto ve biraz makarna suyu ile karıştır. Isıtma."
+          },
+          "stove_level": 7,
+          "time_min": 10
+        }
+      ],
+      "garnish": {
+        "de": "",
+        "en": "",
+        "fr": "",
+        "it": "",
+        "tr": ""
+      },
+      "chef_analysis": {
+        "de": "Genuesisch: Basilikum, Pinienkerne, Knoblauch, Parmigiano + Pecorino. Nie erhitzen, sonst wird der Basilikum bitter.",
+        "en": "Genoese: basil, pine nuts, garlic, parmigiano + pecorino. Never heat, or basil turns bitter.",
+        "fr": "Gênes : basilic, pignons, ail, parmigiano + pecorino. Ne jamais chauffer.",
+        "it": "Genovese: basilico, pinoli, aglio, parmigiano + pecorino. Mai scaldare.",
+        "tr": "Ceneviz usulü: fesleğen, çam fıstığı, sarımsak, parmigiano + pecorino. Asla ısıtma."
+      },
+      "diet_labels": [
+        "vegetarian"
+      ],
+      "coreComponents": [
+        "pasta",
+        "basil",
+        "pine_nut",
+        "parmesan",
+        "pecorino"
+      ]
+    },
+    {
+      "id": "sugo_marinara",
+      "cuisine": "it",
+      "region": "Napoli",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "marinara",
+          "marinara sauce",
+          "tomatensauce marinara"
+        ],
+        "en": [
+          "marinara",
+          "marinara sauce"
+        ],
+        "fr": [
+          "marinara",
+          "sauce marinara"
+        ],
+        "it": [
+          "marinara",
+          "sugo marinara",
+          "salsa marinara"
+        ],
+        "tr": [
+          "marinara",
+          "marinara sos"
+        ]
+      },
+      "titles": {
+        "de": "Sugo Marinara",
+        "en": "Marinara Sauce",
+        "fr": "Sauce marinara",
+        "it": "Sugo Marinara",
+        "tr": "Marinara Sos"
+      },
+      "servings": 4,
+      "prep_time_min": 25,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Tomaten (gehackt, Dose)",
+            "en": "Canned chopped tomatoes",
+            "fr": "Tomates concassées (boîte)",
+            "it": "Pomodori a pezzi (barattolo)",
+            "tr": "Doğranmış domates (konserve)"
+          },
+          "amount": 800,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 0.2,
+          "protein": 1.2,
+          "fiber": 1.5,
+          "allergenTags": [],
+          "culinaryRole": "base"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 12,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "culinaryRole": "aromatic"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Olivenöl",
+            "en": "Olive oil",
+            "fr": "Huile d'olive",
+            "it": "Olio d'oliva",
+            "tr": "Zeytinyağı"
+          },
+          "amount": 40,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Basilikum",
+            "en": "Basil",
+            "fr": "Basilic",
+            "it": "Basilico",
+            "tr": "Fesleğen"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2.6,
+          "fat": 0.6,
+          "protein": 3.2,
+          "fiber": 1.6,
+          "allergenTags": [],
+          "culinaryRole": "herb"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Getrocknete Chilischoten",
+            "en": "Dried chili",
+            "fr": "Piment séché",
+            "it": "Peperoncino secco",
+            "tr": "Kuru biber"
+          },
+          "amount": 2,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 1,
+          "protein": 1.8,
+          "fiber": 4,
+          "allergenTags": [],
+          "culinaryRole": "heat",
+          "optional": true
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Soffritto",
+            "en": "Soffritto",
+            "fr": "Soffritto",
+            "it": "Soffritto",
+            "tr": "Soffritto"
+          },
+          "content": {
+            "de": "{0003} erhitzen, {0002} darin goldgelb anschwitzen. Nicht braun werden lassen.",
+            "en": "Heat {0003}, sauté {0002} until golden. Do not brown.",
+            "fr": "Chauffer {0003}, faire revenir {0002} jusqu'à dorure.",
+            "it": "Scaldare {0003}, dorare {0002}. Non bruciare.",
+            "tr": "{0003} ısıt, {0002} altın rengi olana kadar sotele."
+          },
+          "stove_level": 4,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Sugo",
+            "en": "Sauce",
+            "fr": "Sauce",
+            "it": "Sugo",
+            "tr": "Sos"
+          },
+          "content": {
+            "de": "Optional {0005} zerbröseln. {0001} zugeben, 20 Min offen köcheln, bis die Sauce sämig ist.",
+            "en": "Optional: crumble {0005}. Add {0001}, simmer uncovered 20 min until thick.",
+            "fr": "Facultatif : émietter {0005}. Ajouter {0001}, mijoter 20 min.",
+            "it": "Facoltativo: sbriciolare {0005}. Aggiungere {0001}, sobbollire 20 min.",
+            "tr": "İsteğe bağlı {0005} ufala. {0001} ekle, 20 dk kaynat."
+          },
+          "stove_level": 4,
+          "time_min": 20
+        },
+        {
+          "title": {
+            "de": "Finish",
+            "en": "Finish",
+            "fr": "Finition",
+            "it": "Rifinitura",
+            "tr": "Bitirme"
+          },
+          "content": {
+            "de": "Vom Herd nehmen, {0004} in Streifen untermischen, mit {0006} abschmecken.",
+            "en": "Off heat, stir in torn {0004}, season with {0006}.",
+            "fr": "Hors du feu, incorporer {0004} déchiré, assaisonner avec {0006}.",
+            "it": "Fuori dal fuoco, unire {0004} a straccetti, regolare con {0006}.",
+            "tr": "Ateşten al, {0004} ekle, {0006} ile tatlandır."
+          },
+          "stove_level": 0,
+          "time_min": 1
+        }
+      ],
+      "garnish": {
+        "de": "",
+        "en": "",
+        "fr": "",
+        "it": "",
+        "tr": ""
+      },
+      "chef_analysis": {
+        "de": "Neapolitanisch: Tomate, Knoblauch, Olivenöl, Basilikum. Kein Zwiebel, kein Käse. Grundlage für Pizza und Pasta.",
+        "en": "Neapolitan: tomato, garlic, olive oil, basil. No onion, no cheese.",
+        "fr": "Napolitain : tomate, ail, huile d'olive, basilic. Sans oignon, sans fromage.",
+        "it": "Napoletano: pomodoro, aglio, olio, basilico. Senza cipolla, senza formaggio.",
+        "tr": "Napoli usulü: domates, sarımsak, zeytinyağı, fesleğen. Soğan, peynir yok."
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian"
+      ],
+      "coreComponents": [
+        "tomato",
+        "garlic",
+        "olive_oil",
+        "basil"
+      ]
+    },
+    {
+      "id": "penne_arrabbiata",
+      "cuisine": "it",
+      "region": "Lazio",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "penne all'arrabbiata",
+          "arrabbiata",
+          "scharfe tomatensauce"
+        ],
+        "en": [
+          "penne all'arrabbiata",
+          "arrabbiata"
+        ],
+        "fr": [
+          "penne all'arrabbiata",
+          "arrabbiata"
+        ],
+        "it": [
+          "penne all'arrabbiata",
+          "arrabbiata",
+          "penne arrabbiata"
+        ],
+        "tr": [
+          "penne all'arrabbiata",
+          "arrabbiata"
+        ]
+      },
+      "titles": {
+        "de": "Penne all'Arrabbiata",
+        "en": "Penne all'Arrabbiata",
+        "fr": "Penne all'arrabbiata",
+        "it": "Penne all'Arrabbiata",
+        "tr": "Penne all'Arrabbiata"
+      },
+      "servings": 4,
+      "prep_time_min": 25,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Penne",
+            "en": "Penne",
+            "fr": "Penne",
+            "it": "Penne",
+            "tr": "Penne"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 70,
+          "fat": 1.5,
+          "protein": 12,
+          "fiber": 3,
+          "allergenTags": [
+            "gluten"
+          ],
+          "culinaryRole": "base"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Tomaten (gehackt, Dose)",
+            "en": "Canned chopped tomatoes",
+            "fr": "Tomates concassées (boîte)",
+            "it": "Pomodori a pezzi (barattolo)",
+            "tr": "Doğranmış domates (konserve)"
+          },
+          "amount": 600,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 0.2,
+          "protein": 1.2,
+          "fiber": 1.5,
+          "allergenTags": [],
+          "culinaryRole": "base"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 12,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "culinaryRole": "aromatic"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Olivenöl",
+            "en": "Olive oil",
+            "fr": "Huile d'olive",
+            "it": "Olio d'oliva",
+            "tr": "Zeytinyağı"
+          },
+          "amount": 40,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Getrocknete Chilischoten",
+            "en": "Dried chili",
+            "fr": "Piment séché",
+            "it": "Peperoncino secco",
+            "tr": "Kuru biber"
+          },
+          "amount": 6,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 1,
+          "protein": 1.8,
+          "fiber": 4,
+          "allergenTags": [],
+          "culinaryRole": "heat"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Petersilie",
+            "en": "Parsley",
+            "fr": "Persil",
+            "it": "Prezzemolo",
+            "tr": "Maydanoz"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0.8,
+          "protein": 3,
+          "fiber": 3.3,
+          "allergenTags": [],
+          "culinaryRole": "herb"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Soffritto",
+            "en": "Soffritto",
+            "fr": "Soffritto",
+            "it": "Soffritto",
+            "tr": "Soffritto"
+          },
+          "content": {
+            "de": "{0004} erhitzen, {0003} und {0005} darin 2 Min anschwitzen, bis es scharf duftet.",
+            "en": "Heat {0004}, sauté {0003} and {0005} for 2 min until pungent.",
+            "fr": "Chauffer {0004}, faire revenir {0003} et {0005} 2 min.",
+            "it": "Scaldare {0004}, soffriggere {0003} e {0005} per 2 min.",
+            "tr": "{0004} ısıt, {0003} ve {0005} 2 dk sotele."
+          },
+          "stove_level": 4,
+          "time_min": 2
+        },
+        {
+          "title": {
+            "de": "Sugo",
+            "en": "Sauce",
+            "fr": "Sauce",
+            "it": "Sugo",
+            "tr": "Sos"
+          },
+          "content": {
+            "de": "{0002} zugeben, 15 Min offen köcheln, bis die Sauce sämig ist.",
+            "en": "Add {0002}, simmer uncovered 15 min until thick.",
+            "fr": "Ajouter {0002}, mijoter 15 min à découvert.",
+            "it": "Aggiungere {0002}, sobbollire 15 min scoperto.",
+            "tr": "{0002} ekle, 15 dk açıkta kaynat."
+          },
+          "stove_level": 4,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Pasta",
+            "en": "Pasta",
+            "fr": "Pâtes",
+            "it": "Pasta",
+            "tr": "Makarna"
+          },
+          "content": {
+            "de": "{0001} in Salzwasser ({0007}) al dente kochen, abtropfen, mit dem Sugo in der Pfanne 1 Min schwenken.",
+            "en": "Cook {0001} al dente in salted water ({0007}), drain, toss with sauce 1 min.",
+            "fr": "Cuire {0001} al dente, égoutter, mélanger à la sauce 1 min.",
+            "it": "Cuocere {0001} al dente, scolare, saltare con il sugo 1 min.",
+            "tr": "{0001} al dente haşla, süz, sosla 1 dk sotele."
+          },
+          "stove_level": 7,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Finish",
+            "en": "Finish",
+            "fr": "Finition",
+            "it": "Rifinitura",
+            "tr": "Bitirme"
+          },
+          "content": {
+            "de": "Vom Herd nehmen, {0006} grob gehackt untermischen, sofort servieren.",
+            "en": "Off heat, fold in chopped {0006}, serve immediately.",
+            "fr": "Hors du feu, incorporer {0006} haché, servir aussitôt.",
+            "it": "Fuori dal fuoco, unire {0006} tritato, servire subito.",
+            "tr": "Ateşten al, kıyılmış {0006} karıştır, hemen servis et."
+          },
+          "stove_level": 0,
+          "time_min": 1
+        }
+      ],
+      "garnish": {
+        "de": "",
+        "en": "",
+        "fr": "",
+        "it": "",
+        "tr": ""
+      },
+      "chef_analysis": {
+        "de": "Römisch, wörtlich \"wütend\": scharfe Tomatensauce mit viel Chili, Knoblauch, Petersilie. Kein Käse klassisch.",
+        "en": "Roman, literally \"angry\": spicy tomato sauce with plenty of chili, garlic, parsley. Classically no cheese.",
+        "fr": "Romaine, littéralement \"en colère\" : sauce tomate épicée, beaucoup de piment, ail, persil.",
+        "it": "Romano, letteralmente \"arrabbiato\": sugo piccante con peperoncino, aglio, prezzemolo.",
+        "tr": "Roma usulü, \"kızgın\" anlamında: bol biberli domates sosu, sarımsak, maydanoz."
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian"
+      ],
+      "coreComponents": [
+        "pasta",
+        "tomato",
+        "chili",
+        "garlic",
+        "olive_oil"
+      ]
     }
   ]
 }
