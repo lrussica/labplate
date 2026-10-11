@@ -1517,7 +1517,7 @@ module.exports = {
         if (dishQuery) {
           const guard = require('./dish-identity-guard');
           const g = guard.checkQuery(dishQuery, result.recipe);
-          const blockMode = process.env.DISH_IDENTITY_BLOCK === '1';
+          const blockMode = (() => { const v = String(process.env.DISH_IDENTITY_BLOCK || "").trim().toLowerCase(); return v === "1" || v === "true" || v === "yes"; })();
           const isImmutableMaster = !!(result.recipe && (result.recipe.immutableCore || result.recipe.masterRecipeId));
           result.dish_identity = {
             mode: g.mode,
