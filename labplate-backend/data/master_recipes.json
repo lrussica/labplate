@@ -17453,6 +17453,25 @@
           "fiber": 0,
           "allergenTags": [],
           "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0019",
+          "names": {
+            "de": "Wasser",
+            "en": "Water",
+            "fr": "Eau",
+            "it": "Acqua",
+            "tr": "Su"
+          },
+          "amount": 3000,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "liquid"
         }
       ],
       "steps": [
@@ -17483,11 +17502,11 @@
             "tr": "Kaynat"
           },
           "content": {
-            "de": "Knochen, Rinderbrust, Zwiebel, Ingwer, {0006}, {0007}, {0008}, {0009} mit 3 L Wasser 90 Min sanft kocheln. Rinderbrust nach 60 Min herausnehmen, kalt stellen, dunn schneiden.",
-            "en": "Bones, brisket, aromatics with 3 L water simmer 90 min. Remove brisket after 60 min, chill, slice.",
-            "fr": "Os, viande, aromates 3 L eau 90 min.",
-            "it": "Ossa, carne, aromi 3 L acqua 90 min.",
-            "tr": "Kemik, et, aromalar 3 L su 90 dk."
+            "de": "Knochen, Rinderbrust, Zwiebel, Ingwer, {0006}, {0007}, {0008}, {0009} mit {0019} 90 Min sanft kocheln. Rinderbrust nach 60 Min herausnehmen, kalt stellen, dunn schneiden.",
+            "en": "Bones, brisket, aromatics with {0019} simmer 90 min. Remove brisket after 60 min, chill, slice.",
+            "fr": "Os, viande, aromates {0019} 90 min.",
+            "it": "Ossa, carne, aromi {0019} 90 min.",
+            "tr": "Kemik, et, aromalar {0019} 90 dk."
           },
           "stove_level": 2,
           "time_min": 90
