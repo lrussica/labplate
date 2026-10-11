@@ -15381,8 +15381,8 @@
             "it": "Zafferano in pistilli",
             "tr": "Safran telleri"
           },
-          "amount": 0.2,
-          "unit": "g",
+          "amount": 0,
+          "unit": "prise",
           "protein_source": false,
           "netCarbs": 60,
           "fat": 6,
@@ -16102,8 +16102,8 @@
             "it": "Noce moscata",
             "tr": "Muskat"
           },
-          "amount": 0.3,
-          "unit": "g",
+          "amount": 0,
+          "unit": "prise",
           "protein_source": false,
           "netCarbs": 49,
           "fat": 36,
