@@ -19,7 +19,7 @@ core:
     amount_g: [40, 100]
   tomato_passata:
     roles: [base]
-    allowed: [tomato_passata, tomato_canned, tomato_puree]
+    allowed: [tomato_passata, tomato_canned, tomato_puree, tomato]
     amount_g: [150, 300]
   stock:
     roles: [liquid]
@@ -32,6 +32,10 @@ core:
     amount_g: [0.4, 3]
 
 tolerated:
+  garlic:
+    roles: [aromatic]
+    allowed: [garlic]
+    amount_g: [0, 5]
   soffritto_carrot:
     roles: [aromatic, sweet]
     allowed: [carrot]
@@ -43,7 +47,7 @@ tolerated:
   olive_oil:
     roles: [technique]
     allowed: [olive_oil]
-    amount_g: [0, 5]
+    amount_g: [0, 10]
   whole_milk:
     roles: [finishing_technique]
     allowed: [whole_milk, milk_whole]
@@ -58,7 +62,6 @@ forbidden:
   - pancetta
   - guanciale
   - cream_heavy
-  - garlic
   - oregano
 
 ratios:

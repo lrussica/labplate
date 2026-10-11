@@ -38,10 +38,6 @@ core:
     roles: [umami, thickener]
     allowed: [tomato_paste]
     amount_g: [8, 24]
-  stock:
-    roles: [liquid]
-    allowed: [vegetable_broth, beef_broth, water]
-    amount_g: [100, 250]
   seasoning:
     roles: [seasoning]
     cardinality: one_or_more
@@ -49,6 +45,10 @@ core:
     amount_g: [0.4, 3]
 
 tolerated:
+  stock:
+    roles: [liquid]
+    allowed: [vegetable_broth, beef_broth, water]
+    amount_g: [100, 250]
   whole_milk:
     roles: [finishing_technique]
     allowed: [whole_milk, milk_whole]
@@ -59,7 +59,7 @@ tolerated:
   olive_oil:
     roles: [technique]
     allowed: [olive_oil]
-    amount_g: [0, 5]
+    amount_g: [0, 10]
   butter:
     roles: [technique, finish]
     allowed: [butter]

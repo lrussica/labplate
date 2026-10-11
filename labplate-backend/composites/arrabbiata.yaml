@@ -8,7 +8,7 @@ core:
   tomato:
     roles: [base]
     allowed: [tomato, tomato_canned, tomato_puree, fresh_tomatoes]
-    amount_g: [150, 300]
+    amount_g: [130, 300]
   garlic:
     roles: [aromatic]
     allowed: [garlic]

@@ -13,7 +13,7 @@ core:
   olive_oil:
     roles: [fat, base]
     allowed: [olive_oil]
-    amount_g: [60, 150]
+    amount_g: [30, 150]
   salt:
     roles: [seasoning]
     allowed: [salt]
@@ -31,6 +31,10 @@ tolerated:
     roles: [acid]
     allowed: [lemon_juice]
     amount_g: [0, 8]
+  mustard:
+    roles: [flavor]
+    allowed: [mustard, dijon_mustard]
+    amount_g: [0, 5]
 
 forbidden:
   - cream_heavy

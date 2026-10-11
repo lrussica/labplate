@@ -8,7 +8,7 @@ core:
   basil:
     roles: [base, flavor]
     allowed: [basil, basil_fresh]
-    amount_g: [20, 40]
+    amount_g: [8, 40]
     notes: "Frisch, trocken getupft."
   pine_nut:
     roles: [fat, texture]

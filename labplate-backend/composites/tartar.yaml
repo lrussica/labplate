@@ -8,22 +8,18 @@ core:
   mayonnaise:
     roles: [base, binder]
     allowed: [mayonnaise, pasteurized_egg_yolk, egg]
-    amount_g: [76, 150]
+    amount_g: [60, 150]
     notes: >
       R14: Mayonnaise als Basis, oder pasteurisiertes Eigelb.
       Rohes Eigelb forbidden.
   caper:
     roles: [flavor, acid]
     allowed: [caper, capers, cornichon]
-    amount_g: [8, 20]
+    amount_g: [6, 20]
   parsley:
     roles: [flavor, finish]
     allowed: [parsley, parsley_fresh]
     amount_g: [2, 10]
-  shallot:
-    roles: [aromatic]
-    allowed: [shallot, onion_yellow]
-    amount_g: [5, 15]
   lemon_juice:
     roles: [acid]
     allowed: [lemon_juice]
@@ -34,6 +30,10 @@ core:
     amount_g: [0.4, 2]
 
 tolerated:
+  shallot:
+    roles: [aromatic]
+    allowed: [shallot, onion_yellow]
+    amount_g: [0, 15]
   tarragon:
     roles: [flavor]
     allowed: [tarragon]

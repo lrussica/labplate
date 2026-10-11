@@ -8,7 +8,7 @@ core:
   tomato:
     roles: [base]
     allowed: [tomato, tomato_canned, tomato_puree]
-    amount_g: [150, 300]
+    amount_g: [100, 300]
   olive:
     roles: [flavor, texture]
     allowed: [olive, black_olive, green_olive]

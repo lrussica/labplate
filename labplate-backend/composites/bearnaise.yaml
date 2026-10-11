@@ -29,7 +29,7 @@ core:
   butter:
     roles: [fat]
     allowed: [butter]
-    amount_g: [76, 150]
+    amount_g: [30, 150]
     notes: "Geklaerte Butter."
   salt:
     roles: [seasoning]

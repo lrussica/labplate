@@ -13,7 +13,7 @@ core:
   tomato:
     roles: [base]
     allowed: [tomato, tomato_canned, tomato_puree]
-    amount_g: [150, 300]
+    amount_g: [100, 300]
   pecorino:
     roles: [umami, finish]
     allowed: [pecorino, pecorino_romano]

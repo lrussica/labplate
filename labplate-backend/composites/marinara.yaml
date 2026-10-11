@@ -27,6 +27,10 @@ core:
     amount_g: [0.4, 3]
 
 tolerated:
+  onion:
+    roles: [aromatic]
+    allowed: [onion, onion_yellow]
+    amount_g: [0, 40]
   basil:
     allowed: [basil, basil_fresh]
     amount_g: [0, 5]

@@ -1815,6 +1815,91 @@
       "kind": "alias",
       "target": "capers",
       "target_exists": true
+    },
+    "passierte_tomaten": {
+      "kind": "alias",
+      "target": "tomato_canned",
+      "target_exists": true
+    },
+    "passata": {
+      "kind": "alias",
+      "target": "tomato_canned",
+      "target_exists": true
+    },
+    "tomaten": {
+      "kind": "alias",
+      "target": "tomato",
+      "target_exists": true
+    },
+    "tomatensauce": {
+      "kind": "alias",
+      "target": "tomato_canned",
+      "target_exists": true
+    },
+    "getrocknete_chilischoten": {
+      "kind": "alias",
+      "target": "chili",
+      "target_exists": true
+    },
+    "chiliflocken": {
+      "kind": "alias",
+      "target": "chili",
+      "target_exists": true
+    },
+    "champignons": {
+      "kind": "alias",
+      "target": "mushroom",
+      "target_exists": true
+    },
+    "schwarze_oliven": {
+      "kind": "alias",
+      "target": "olive",
+      "target_exists": true
+    },
+    "zwiebel": {
+      "kind": "alias",
+      "target": "onion_yellow",
+      "target_exists": true
+    },
+    "gewürzgurke": {
+      "kind": "alias",
+      "target": "capers",
+      "target_exists": true
+    },
+    "mehl": {
+      "kind": "alias",
+      "target": "flour",
+      "target_exists": true
+    },
+    "rotweinessig": {
+      "kind": "alias",
+      "target": "vinegar",
+      "target_exists": true
+    },
+    "dijon‑senf": {
+      "kind": "alias",
+      "target": "mustard",
+      "target_exists": true
+    },
+    "dijon_senf": {
+      "kind": "alias",
+      "target": "mustard",
+      "target_exists": true
+    },
+    "sardellen": {
+      "kind": "alias",
+      "target": "anchovy",
+      "target_exists": true
+    },
+    "pasta": {
+      "kind": "alias",
+      "target": "pasta_dry",
+      "target_exists": true
+    },
+    "lasagneplatten": {
+      "kind": "alias",
+      "target": "pasta_dry",
+      "target_exists": true
     }
   }
 }

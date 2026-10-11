@@ -21,7 +21,7 @@ core:
   olive_oil:
     roles: [fat, base]
     allowed: [olive_oil]
-    amount_g: [40, 100]
+    amount_g: [30, 100]
   red_wine_vinegar:
     roles: [acid]
     allowed: [red_wine_vinegar, vinegar]

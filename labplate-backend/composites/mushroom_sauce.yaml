@@ -8,7 +8,7 @@ core:
   mushroom:
     roles: [base, umami]
     allowed: [mushroom, mushroom_button, champignon, porcini]
-    amount_g: [124, 250]
+    amount_g: [100, 250]
     notes: "Champignons als Basis, Steinpilze fuer Tiefe."
   garlic:
     roles: [aromatic]
@@ -17,7 +17,7 @@ core:
   olive_oil:
     roles: [fat]
     allowed: [olive_oil]
-    amount_g: [12, 28]
+    amount_g: [8, 28]
   parsley:
     roles: [finish]
     allowed: [parsley, parsley_fresh]
@@ -28,6 +28,14 @@ core:
     amount_g: [0.4, 3]
 
 tolerated:
+  flour:
+    roles: [thickener]
+    allowed: [flour]
+    amount_g: [0, 20]
+  vegetable_broth:
+    roles: [liquid]
+    allowed: [vegetable_broth]
+    amount_g: [0, 150]
   dried_porcini:
     roles: [umami]
     allowed: [porcini_dried, mushroom_dried]
