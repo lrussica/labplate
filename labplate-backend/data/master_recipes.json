@@ -9498,6 +9498,1052 @@
         "lemon",
         "court_bouillon"
       ]
+    },
+    {
+      "id": "aioli",
+      "cuisine": "it",
+      "region": "Provenza/Katalonien",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "aioli",
+          "allioli",
+          "knoblauchmayonnaise",
+          "knoblauchsauce"
+        ],
+        "en": [
+          "aioli",
+          "allioli",
+          "garlic mayonnaise"
+        ],
+        "fr": [
+          "aioli",
+          "ailloli"
+        ],
+        "it": [
+          "aioli",
+          "agliata"
+        ],
+        "tr": [
+          "aioli",
+          "sarımsaklı mayonez"
+        ]
+      },
+      "titles": {
+        "de": "Klassische Aioli",
+        "en": "Classic Aioli",
+        "fr": "Aïoli classique",
+        "it": "Aioli classica",
+        "tr": "Klasik Aioli"
+      },
+      "servings": 4,
+      "prep_time_min": 15,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "culinaryRole": "base"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Olivenöl",
+            "en": "Olive oil",
+            "fr": "Huile d'olive",
+            "it": "Olio d'oliva",
+            "tr": "Zeytinyağı"
+          },
+          "amount": 240,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Zitronensaft",
+            "en": "Lemon juice",
+            "fr": "Jus de citron",
+            "it": "Succo di limone",
+            "tr": "Limon suyu"
+          },
+          "amount": 10,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 6.6,
+          "fat": 0.2,
+          "protein": 0.4,
+          "fiber": 0.3,
+          "allergenTags": [],
+          "culinaryRole": "acid",
+          "optional": true
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Pasteurisiertes Eigelb",
+            "en": "Pasteurized egg yolk",
+            "fr": "Jaune d'œuf pasteurisé",
+            "it": "Tuorlo pastorizzato",
+            "tr": "Pastörize yumurta sarısı"
+          },
+          "amount": 1,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 27,
+          "protein": 16,
+          "fiber": 0,
+          "allergenTags": [
+            "egg"
+          ],
+          "culinaryRole": "binder",
+          "optional": true
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "content": {
+            "de": "{0001} schälen, im Mörser mit {0003} zu einer glatten Paste zerdrücken.",
+            "en": "Peel {0001}, crush in a mortar with {0003} to a smooth paste.",
+            "fr": "Peler {0001}, écraser au mortier avec {0003} jusqu'à obtenir une pâte lisse.",
+            "it": "Pelare {0001}, pestare al mortaio con {0003} fino a ottenere una pasta liscia.",
+            "tr": "{0001} soy, havanla {0003} ile pürüzsüz bir macun haline getir."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Emulsion",
+            "en": "Emulsion",
+            "fr": "Émulsion",
+            "it": "Emulsione",
+            "tr": "Emülsiyon"
+          },
+          "content": {
+            "de": "{0002} in sehr dünnem Strahl unter ständigem Rühren einlaufen lassen, bis eine cremige Emulsion entsteht.",
+            "en": "Add {0002} in a very thin stream, whisking constantly, until a creamy emulsion forms.",
+            "fr": "Verser {0002} en filet très fin en fouettant sans cesse, jusqu'à obtenir une émulsion crémeuse.",
+            "it": "Versare {0002} a filo sottilissimo mescolando continuamente, fino a ottenere un'emulsione cremosa.",
+            "tr": "{0002} çok ince bir şerit halinde sürekli karıştırarak ekle, kremamsı bir emülsiyon oluşana kadar."
+          },
+          "stove_level": 0,
+          "time_min": 6
+        },
+        {
+          "title": {
+            "de": "Abschluss",
+            "en": "Finish",
+            "fr": "Finition",
+            "it": "Rifinitura",
+            "tr": "Bitirme"
+          },
+          "content": {
+            "de": "Optional {0005} vorab verquirlen, dann {0004} einrühren, mit {0003} abschmecken.",
+            "en": "Optionally whisk {0005} first, then stir in {0004}, season with {0003}.",
+            "fr": "Facultatif : fouetter {0005} au préalable, incorporer {0004}, assaisonner avec {0003}.",
+            "it": "Facoltativo: sbattere prima {0005}, unire {0004}, regolare con {0003}.",
+            "tr": "İsteğe bağlı önce {0005} çırp, sonra {0004} karıştır, {0003} ile tatlandır."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        }
+      ],
+      "garnish": {
+        "de": "",
+        "en": "",
+        "fr": "",
+        "it": "",
+        "tr": ""
+      },
+      "chef_analysis": {
+        "de": "Klassische Aioli: viel Knoblauch, Olivenöl, Salz. Ei nur optional (provenzalische Modernisierung).",
+        "en": "Classic aioli: plenty of garlic, olive oil, salt. Egg is optional (Provençal modernization).",
+        "fr": "Aïoli classique : beaucoup d'ail, huile d'olive, sel. L'œuf est facultatif.",
+        "it": "Aioli classica: molto aglio, olio d'oliva, sale. L'uovo è facoltativo.",
+        "tr": "Klasik aioli: bol sarımsak, zeytinyağı, tuz. Yumurta isteğe bağlı."
+      },
+      "diet_labels": [
+        "vegetarian",
+        "keto",
+        "low-carb"
+      ],
+      "coreComponents": [
+        "garlic",
+        "olive_oil"
+      ]
+    },
+    {
+      "id": "penne_alla_vodka",
+      "cuisine": "it",
+      "region": "Italo-amerikanisch",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "penne alla vodka",
+          "vodka sauce",
+          "wodka sauce",
+          "sugo alla vodka"
+        ],
+        "en": [
+          "penne alla vodka",
+          "vodka sauce"
+        ],
+        "fr": [
+          "penne à la vodka",
+          "sauce vodka"
+        ],
+        "it": [
+          "penne alla vodka",
+          "sugo alla vodka"
+        ],
+        "tr": [
+          "penne alla vodka",
+          "vodka soslu penne"
+        ]
+      },
+      "titles": {
+        "de": "Penne alla Vodka",
+        "en": "Penne alla Vodka",
+        "fr": "Penne à la vodka",
+        "it": "Penne alla Vodka",
+        "tr": "Penne alla Vodka"
+      },
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Penne",
+            "en": "Penne",
+            "fr": "Penne",
+            "it": "Penne",
+            "tr": "Penne"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 70,
+          "fat": 1.5,
+          "protein": 12,
+          "fiber": 3,
+          "allergenTags": [
+            "gluten"
+          ],
+          "culinaryRole": "base"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Tomaten (gehackt, Dose)",
+            "en": "Canned chopped tomatoes",
+            "fr": "Tomates concassées (boîte)",
+            "it": "Pomodori a pezzi (barattolo)",
+            "tr": "Doğranmış domates (konserve)"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 0.2,
+          "protein": 1.2,
+          "fiber": 1.5,
+          "allergenTags": [],
+          "culinaryRole": "base"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Sahne",
+            "en": "Heavy cream",
+            "fr": "Crème épaisse",
+            "it": "Panna da cucina",
+            "tr": "Krema"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 35,
+          "protein": 2,
+          "fiber": 0,
+          "allergenTags": [
+            "lactose",
+            "milk"
+          ],
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Vodka",
+            "en": "Vodka",
+            "fr": "Vodka",
+            "it": "Vodka",
+            "tr": "Vodka"
+          },
+          "amount": 60,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "flavor"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Parmesan",
+            "en": "Parmesan",
+            "fr": "Parmesan",
+            "it": "Parmigiano",
+            "tr": "Parmesan"
+          },
+          "amount": 60,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 28,
+          "protein": 35,
+          "fiber": 0,
+          "allergenTags": [
+            "lactose",
+            "milk"
+          ],
+          "culinaryRole": "umami"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "culinaryRole": "aromatic"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Olivenöl",
+            "en": "Olive oil",
+            "fr": "Huile d'olive",
+            "it": "Olio d'oliva",
+            "tr": "Zeytinyağı"
+          },
+          "amount": 20,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Soffritto",
+            "en": "Soffritto",
+            "fr": "Soffritto",
+            "it": "Soffritto",
+            "tr": "Soffritto"
+          },
+          "content": {
+            "de": "{0007} erhitzen, {0006} darin kurz anschwitzen.",
+            "en": "Heat {0007}, briefly sauté {0006}.",
+            "fr": "Chauffer {0007}, faire revenir brièvement {0006}.",
+            "it": "Scaldare {0007}, soffriggere brevemente {0006}.",
+            "tr": "{0007} ısıt, {0006} kısaca sotele."
+          },
+          "stove_level": 5,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Tomate + Vodka",
+            "en": "Tomato + vodka",
+            "fr": "Tomate + vodka",
+            "it": "Pomodoro + vodka",
+            "tr": "Domates + vodka"
+          },
+          "content": {
+            "de": "{0002} zugeben, 5 Min köcheln. {0004} angießen, 3 Min weiter köcheln, bis der Alkohol verflogen ist.",
+            "en": "Add {0002}, simmer 5 min. Pour in {0004}, simmer 3 min more until alcohol cooks off.",
+            "fr": "Ajouter {0002}, laisser mijoter 5 min. Verser {0004}, mijoter 3 min de plus jusqu'à évaporation de l'alcool.",
+            "it": "Aggiungere {0002}, sobbollire 5 min. Versare {0004}, sobbollire altri 3 min finché l'alcol evapora.",
+            "tr": "{0002} ekle, 5 dk kaynat. {0004} dök, alkol uçana kadar 3 dk daha kaynat."
+          },
+          "stove_level": 4,
+          "time_min": 8
+        },
+        {
+          "title": {
+            "de": "Sahne",
+            "en": "Cream",
+            "fr": "Crème",
+            "it": "Panna",
+            "tr": "Krema"
+          },
+          "content": {
+            "de": "{0003} einrühren, 4 Min sämig köcheln. Nicht kochen lassen, sonst flockt sie aus.",
+            "en": "Stir in {0003}, simmer 4 min until silky. Do not boil or it will split.",
+            "fr": "Incorporer {0003}, mijoter 4 min jusqu'à onctuosité. Ne pas bouillir.",
+            "it": "Unire {0003}, sobbollire 4 min fino a cremosità. Non bollire.",
+            "tr": "{0003} karıştır, 4 dk kıvam alana kadar kaynat. Kaynatma, yoksa kesilir."
+          },
+          "stove_level": 3,
+          "time_min": 4
+        },
+        {
+          "title": {
+            "de": "Pasta",
+            "en": "Pasta",
+            "fr": "Pâtes",
+            "it": "Pasta",
+            "tr": "Makarna"
+          },
+          "content": {
+            "de": "{0001} in Salzwasser ({0008}) al dente kochen, abtropfen, mit der Sauce vereinen.",
+            "en": "Cook {0001} al dente in salted water ({0008}), drain, toss with sauce.",
+            "fr": "Cuire {0001} al dente dans l'eau salée ({0008}), égoutter, mélanger à la sauce.",
+            "it": "Cuocere {0001} al dente in acqua salata ({0008}), scolare, unire al sugo.",
+            "tr": "{0001} tuzlu suda ({0008}) al dente haşla, süz, sos ile birleştir."
+          },
+          "stove_level": 7,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Finish",
+            "en": "Finish",
+            "fr": "Finition",
+            "it": "Rifinitura",
+            "tr": "Bitirme"
+          },
+          "content": {
+            "de": "Vom Herd nehmen, {0005} unterrühren, sofort servieren.",
+            "en": "Off heat, stir in {0005}, serve immediately.",
+            "fr": "Hors du feu, incorporer {0005}, servir aussitôt.",
+            "it": "Fuori dal fuoco, unire {0005}, servire subito.",
+            "tr": "Ateşten al, {0005} karıştır, hemen servis et."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "garnish": {
+        "de": "",
+        "en": "",
+        "fr": "",
+        "it": "",
+        "tr": ""
+      },
+      "chef_analysis": {
+        "de": "Italo-amerikanischer Klassiker: Tomate, Sahne, Vodka, Parmesan. Sahne erst spät, sonst bricht sie.",
+        "en": "Italo-American classic: tomato, cream, vodka, parmesan. Add cream late so it does not split.",
+        "fr": "Classique italo-américain : tomate, crème, vodka, parmesan. Ajouter la crème en fin de cuisson.",
+        "it": "Classico italo-americano: pomodoro, panna, vodka, parmigiano. Panna solo alla fine.",
+        "tr": "İtalyan-Amerikan klasiği: domates, krema, vodka, parmesan. Krema en sona."
+      },
+      "diet_labels": [
+        "vegetarian"
+      ],
+      "coreComponents": [
+        "tomato",
+        "cream",
+        "vodka",
+        "parmesan"
+      ]
+    },
+    {
+      "id": "spaghetti_aglio_e_olio",
+      "cuisine": "it",
+      "region": "Napoli",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "spaghetti aglio e olio",
+          "aglio e olio",
+          "knoblauch spaghetti"
+        ],
+        "en": [
+          "spaghetti aglio e olio",
+          "garlic and oil pasta"
+        ],
+        "fr": [
+          "spaghetti aglio e olio",
+          "spaghetti ail et huile"
+        ],
+        "it": [
+          "spaghetti aglio e olio",
+          "aglio olio e peperoncino"
+        ],
+        "tr": [
+          "spaghetti aglio e olio",
+          "sarımsaklı zeytinyağlı spagetti"
+        ]
+      },
+      "titles": {
+        "de": "Spaghetti Aglio e Olio",
+        "en": "Spaghetti Aglio e Olio",
+        "fr": "Spaghetti aglio e olio",
+        "it": "Spaghetti Aglio e Olio",
+        "tr": "Spaghetti Aglio e Olio"
+      },
+      "servings": 4,
+      "prep_time_min": 20,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Spaghetti",
+            "en": "Spaghetti",
+            "fr": "Spaghetti",
+            "it": "Spaghetti",
+            "tr": "Spagetti"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 70,
+          "fat": 1.5,
+          "protein": 12,
+          "fiber": 3,
+          "allergenTags": [
+            "gluten"
+          ],
+          "culinaryRole": "base"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Olivenöl",
+            "en": "Olive oil",
+            "fr": "Huile d'olive",
+            "it": "Olio d'oliva",
+            "tr": "Zeytinyağı"
+          },
+          "amount": 80,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "culinaryRole": "aromatic"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Petersilie",
+            "en": "Parsley",
+            "fr": "Persil",
+            "it": "Prezzemolo",
+            "tr": "Maydanoz"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0.8,
+          "protein": 3,
+          "fiber": 3.3,
+          "allergenTags": [],
+          "culinaryRole": "herb"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Getrocknete Chilischoten",
+            "en": "Dried chili",
+            "fr": "Piment séché",
+            "it": "Peperoncino secco",
+            "tr": "Kuru biber"
+          },
+          "amount": 2,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 1,
+          "protein": 1.8,
+          "fiber": 4,
+          "allergenTags": [],
+          "culinaryRole": "heat",
+          "optional": true
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Pasta",
+            "en": "Pasta",
+            "fr": "Pâtes",
+            "it": "Pasta",
+            "tr": "Makarna"
+          },
+          "content": {
+            "de": "{0001} in Salzwasser ({0006}) al dente kochen, 1 Tasse Nudelwasser aufbewahren.",
+            "en": "Cook {0001} al dente in salted water ({0006}); reserve 1 cup pasta water.",
+            "fr": "Cuire {0001} al dente dans l'eau salée ({0006}) ; réserver 1 tasse d'eau de cuisson.",
+            "it": "Cuocere {0001} al dente in acqua salata ({0006}); tenere da parte una tazza di acqua di cottura.",
+            "tr": "{0001} tuzlu suda ({0006}) al dente haşla; 1 bardak makarna suyunu ayır."
+          },
+          "stove_level": 7,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Aglio",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "content": {
+            "de": "{0002} bei mittlerer Hitze erwärmen, {0003} in Scheiben darin goldgelb anschwitzen. Nicht braun werden lassen.",
+            "en": "Warm {0002} over medium heat, sauté sliced {0003} until golden. Do not brown.",
+            "fr": "Chauffer {0002} à feu moyen, faire revenir {0003} en lamelles jusqu'à dorure. Ne pas brunir.",
+            "it": "Scaldare {0002} a fuoco medio, dorare {0003} a fettine. Non bruciare.",
+            "tr": "{0002} orta ateşte ısıt, dilimlenmiş {0003} altın rengi olana kadar sotele. Kahverengileştirme."
+          },
+          "stove_level": 4,
+          "time_min": 4
+        },
+        {
+          "title": {
+            "de": "Emulsion",
+            "en": "Emulsion",
+            "fr": "Émulsion",
+            "it": "Emulsione",
+            "tr": "Emülsiyon"
+          },
+          "content": {
+            "de": "Optional {0005} zerbröseln und mitbraten. Pasta mit etwas Nudelwasser in die Pfanne geben, 1 Min schwenken, bis die Sauce bindet.",
+            "en": "Optional: crumble {0005} and fry along. Add pasta with a splash of pasta water, toss 1 min until sauce clings.",
+            "fr": "Facultatif : émietter {0005} et faire revenir. Ajouter les pâtes avec un peu d'eau de cuisson, mélanger 1 min.",
+            "it": "Facoltativo: sbriciolare {0005} e rosolare. Unire la pasta con poca acqua di cottura, saltare 1 min.",
+            "tr": "İsteğe bağlı: {0005} ufala ve birlikte kavur. Makarnayı biraz makarna suyu ile tavaya ekle, 1 dk sotele."
+          },
+          "stove_level": 4,
+          "time_min": 2
+        },
+        {
+          "title": {
+            "de": "Finish",
+            "en": "Finish",
+            "fr": "Finition",
+            "it": "Rifinitura",
+            "tr": "Bitirme"
+          },
+          "content": {
+            "de": "Vom Herd nehmen, {0004} grob gehackt untermischen, sofort servieren.",
+            "en": "Off heat, fold in roughly chopped {0004}, serve immediately.",
+            "fr": "Hors du feu, incorporer {0004} haché grossièrement, servir aussitôt.",
+            "it": "Fuori dal fuoco, unire {0004} tritato grossolanamente, servire subito.",
+            "tr": "Ateşten al, iri kıyılmış {0004} karıştır, hemen servis et."
+          },
+          "stove_level": 0,
+          "time_min": 1
+        }
+      ],
+      "garnish": {
+        "de": "",
+        "en": "",
+        "fr": "",
+        "it": "",
+        "tr": ""
+      },
+      "chef_analysis": {
+        "de": "Neapolitanischer Alltagsklassiker: Knoblauch in Olivenöl, Chili, Petersilie. Kein Käse.",
+        "en": "Neapolitan everyday classic: garlic in olive oil, chili, parsley. No cheese.",
+        "fr": "Classique napolitain : ail à l'huile d'olive, piment, persil. Sans fromage.",
+        "it": "Classico napoletano quotidiano: aglio in olio, peperoncino, prezzemolo. Senza formaggio.",
+        "tr": "Napoli günlük klasiği: zeytinyağında sarımsak, biber, maydanoz. Peynir yok."
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian"
+      ],
+      "coreComponents": [
+        "pasta",
+        "garlic",
+        "olive_oil"
+      ]
+    },
+    {
+      "id": "bucatini_all_amatriciana",
+      "cuisine": "it",
+      "region": "Amatrice/Lazio",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "bucatini all'amatriciana",
+          "amatriciana",
+          "pasta amatriciana"
+        ],
+        "en": [
+          "bucatini all'amatriciana",
+          "amatriciana"
+        ],
+        "fr": [
+          "bucatini all'amatriciana",
+          "amatriciana"
+        ],
+        "it": [
+          "bucatini all'amatriciana",
+          "amatriciana",
+          "pasta alla amatriciana"
+        ],
+        "tr": [
+          "bucatini all'amatriciana",
+          "amatriciana"
+        ]
+      },
+      "titles": {
+        "de": "Bucatini all'Amatriciana",
+        "en": "Bucatini all'Amatriciana",
+        "fr": "Bucatini all'Amatriciana",
+        "it": "Bucatini all'Amatriciana",
+        "tr": "Bucatini all'Amatriciana"
+      },
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Bucatini",
+            "en": "Bucatini",
+            "fr": "Bucatini",
+            "it": "Bucatini",
+            "tr": "Bucatini"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 70,
+          "fat": 1.5,
+          "protein": 12,
+          "fiber": 3,
+          "allergenTags": [
+            "gluten"
+          ],
+          "culinaryRole": "base"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Guanciale",
+            "en": "Guanciale",
+            "fr": "Guanciale",
+            "it": "Guanciale",
+            "tr": "Guanciale"
+          },
+          "amount": 160,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 40,
+          "protein": 14,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Tomaten (gehackt, Dose)",
+            "en": "Canned chopped tomatoes",
+            "fr": "Tomates concassées (boîte)",
+            "it": "Pomodori a pezzi (barattolo)",
+            "tr": "Doğranmış domates (konserve)"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 0.2,
+          "protein": 1.2,
+          "fiber": 1.5,
+          "allergenTags": [],
+          "culinaryRole": "base"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Pecorino Romano",
+            "en": "Pecorino Romano",
+            "fr": "Pecorino Romano",
+            "it": "Pecorino Romano",
+            "tr": "Pecorino Romano"
+          },
+          "amount": 80,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 27,
+          "protein": 32,
+          "fiber": 0,
+          "allergenTags": [
+            "lactose",
+            "milk"
+          ],
+          "culinaryRole": "topping"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Getrocknete Chilischoten",
+            "en": "Dried chili",
+            "fr": "Piment séché",
+            "it": "Peperoncino secco",
+            "tr": "Kuru biber"
+          },
+          "amount": 2,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 1,
+          "protein": 1.8,
+          "fiber": 4,
+          "allergenTags": [],
+          "culinaryRole": "heat",
+          "optional": true
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Guanciale",
+            "en": "Guanciale",
+            "fr": "Guanciale",
+            "it": "Guanciale",
+            "tr": "Guanciale"
+          },
+          "content": {
+            "de": "{0002} in Streifen schneiden, in trockener Pfanne bei mittlerer Hitze knusprig auslassen. Fett in der Pfanne lassen.",
+            "en": "Cut {0002} into strips, render crisp in a dry pan over medium heat. Keep the fat.",
+            "fr": "Couper {0002} en lanières, faire revenir à sec à feu moyen jusqu'à croustillant. Garder la graisse.",
+            "it": "Tagliare {0002} a striscioline, rosolare a secco a fuoco medio fino a croccantezza. Tenere il grasso.",
+            "tr": "{0002} şeritler halinde kes, kuru tavada orta ateşte çıtır olana kadar kavur. Yağı tavada kalsın."
+          },
+          "stove_level": 5,
+          "time_min": 8
+        },
+        {
+          "title": {
+            "de": "Sugo",
+            "en": "Sauce",
+            "fr": "Sauce",
+            "it": "Sugo",
+            "tr": "Sos"
+          },
+          "content": {
+            "de": "Optional {0005} zerbröseln. {0003} zugeben, 15 Min offen köcheln, bis die Sauce sämig ist.",
+            "en": "Optional: crumble {0005}. Add {0003}, simmer uncovered 15 min until thick.",
+            "fr": "Facultatif : émietter {0005}. Ajouter {0003}, mijoter à découvert 15 min.",
+            "it": "Facoltativo: sbriciolare {0005}. Aggiungere {0003}, sobbollire scoperto 15 min.",
+            "tr": "İsteğe bağlı {0005} ufala. {0003} ekle, açıkta 15 dk koyulaşana kadar kaynat."
+          },
+          "stove_level": 4,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Pasta",
+            "en": "Pasta",
+            "fr": "Pâtes",
+            "it": "Pasta",
+            "tr": "Makarna"
+          },
+          "content": {
+            "de": "{0001} in Salzwasser ({0006}) al dente kochen, abtropfen, mit dem Sugo in der Pfanne 1 Min schwenken.",
+            "en": "Cook {0001} al dente in salted water ({0006}), drain, toss with sauce in pan for 1 min.",
+            "fr": "Cuire {0001} al dente dans l'eau salée ({0006}), égoutter, mélanger à la sauce 1 min.",
+            "it": "Cuocere {0001} al dente in acqua salata ({0006}), scolare, saltare con il sugo 1 min.",
+            "tr": "{0001} tuzlu suda ({0006}) al dente haşla, süz, sosla tavada 1 dk sotele."
+          },
+          "stove_level": 7,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Finish",
+            "en": "Finish",
+            "fr": "Finition",
+            "it": "Rifinitura",
+            "tr": "Bitirme"
+          },
+          "content": {
+            "de": "Vom Herd nehmen, {0004} unterrühren, sofort servieren.",
+            "en": "Off heat, stir in {0004}, serve immediately.",
+            "fr": "Hors du feu, incorporer {0004}, servir aussitôt.",
+            "it": "Fuori dal fuoco, unire {0004}, servire subito.",
+            "tr": "Ateşten al, {0004} karıştır, hemen servis et."
+          },
+          "stove_level": 0,
+          "time_min": 1
+        }
+      ],
+      "garnish": {
+        "de": "",
+        "en": "",
+        "fr": "",
+        "it": "",
+        "tr": ""
+      },
+      "chef_analysis": {
+        "de": "Römischer Klassiker aus Amatrice: Guanciale, Tomate, Pecorino. Kein Knoblauch, keine Zwiebel, kein Parmesan.",
+        "en": "Roman classic from Amatrice: guanciale, tomato, pecorino. No garlic, no onion, no parmesan.",
+        "fr": "Classique romain d'Amatrice : guanciale, tomate, pecorino. Sans ail, sans oignon.",
+        "it": "Classico romano di Amatrice: guanciale, pomodoro, pecorino. Niente aglio, niente cipolla.",
+        "tr": "Amatrice Roma klasiği: guanciale, domates, pecorino. Sarımsak yok, soğan yok."
+      },
+      "diet_labels": [],
+      "coreComponents": [
+        "pasta",
+        "guanciale",
+        "tomato",
+        "pecorino"
+      ]
     }
   ]
 }
