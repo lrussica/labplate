@@ -1462,6 +1462,7 @@ module.exports = {
           const guard = require('./dish-identity-guard');
           const g = guard.checkQuery(dishQuery, result.recipe);
           const blockMode = process.env.DISH_IDENTITY_BLOCK === '1';
+          const isImmutableMaster = !!(result.recipe && (result.recipe.immutableCore || result.recipe.masterRecipeId));
           result.dish_identity = {
             mode: g.mode,
             archetypeId: g.resolved && g.resolved.archetypeId,
@@ -1472,7 +1473,6 @@ module.exports = {
             violations: g.violations,
             blocked: blockMode && !g.ok && !isImmutableMaster,
           };
-          const isImmutableMaster = !!(result.recipe && (result.recipe.immutableCore || result.recipe.masterRecipeId));
           if (!g.ok && blockMode && !isImmutableMaster) {
             console.warn('[dish-identity] BLOCKED',
               JSON.stringify({ q: dishQuery, archetype: g.resolved.archetypeId,
