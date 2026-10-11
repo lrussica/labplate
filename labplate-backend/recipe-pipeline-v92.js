@@ -1227,7 +1227,32 @@ async function generateValidatedRecipe(opts) {
   const originalMode = !!(payload && payload.original_mode);
   const pantryClassicCandidate = (function () {
     if (originalMode) return true;
-    if (!payload || payload.mode !== 'pantry') return false;
+    if (!payload) return false;
+
+    // Fix 2026-10-11: Auch im ai-Modus greifen, wenn im ai_instruction
+    // ein kurzer, sauberer Gerichtsname steckt. Sonst laeuft 'Buddha Bowl'
+    // durch das LLM statt durch den Master-Store.
+    if (payload.mode === 'ai') {
+      const core = require('./nutri-recipe-core');
+      const instruction = String(payload.ai_instruction || payload.aiInstruction || '').trim();
+      if (!instruction) return false;
+      let dishName = '';
+      try {
+        // extractDishName ist in nutri-recipe-core definiert
+        const firstLine = instruction.split(/[\n\r]/)[0].trim();
+        if (firstLine.length > 0 && firstLine.length <= 60) {
+          dishName = firstLine;
+        }
+      } catch (_) { /* fallback leer */ }
+      if (!dishName) return false;
+      if (dishName.length > 60) return false;
+      if (/\d/.test(dishName)) return false;
+      // Nur wenn es wie ein Gerichtsname aussieht (kein Fliesstext)
+      if (/DARFST|DURFST|Variation|Tagesziel|Hauptziel|HANDOFF/i.test(dishName)) return false;
+      return true;
+    }
+
+    if (payload.mode !== 'pantry') return false;
     const ing = Array.isArray(payload.pantry_ingredients) ? payload.pantry_ingredients : [];
     if (ing.length !== 1) return false;
     const q = String(ing[0] || '').trim();
