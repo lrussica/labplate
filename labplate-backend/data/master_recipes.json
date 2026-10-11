@@ -12793,6 +12793,1171 @@
         "soffritto",
         "milk"
       ]
+    },
+    {
+      "id": "sauce_hollandaise",
+      "cuisine": "fr",
+      "region": "Normandie/Paris",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "hollandaise",
+          "sauce hollandaise",
+          "holländische sauce"
+        ],
+        "en": [
+          "hollandaise",
+          "hollandaise sauce"
+        ],
+        "fr": [
+          "hollandaise",
+          "sauce hollandaise"
+        ],
+        "it": [
+          "hollandaise",
+          "salsa olandese"
+        ],
+        "tr": [
+          "hollandaise",
+          "hollandez sos"
+        ]
+      },
+      "titles": {
+        "de": "Sauce Hollandaise",
+        "en": "Hollandaise Sauce",
+        "fr": "Sauce hollandaise",
+        "it": "Salsa Olandese",
+        "tr": "Hollandez Sos"
+      },
+      "servings": 4,
+      "prep_time_min": 20,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Pasteurisiertes Eigelb",
+            "en": "Pasteurized egg yolk",
+            "fr": "Jaune d'œuf pasteurisé",
+            "it": "Tuorlo pastorizzato",
+            "tr": "Pastörize yumurta sarısı"
+          },
+          "amount": 3,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 27,
+          "protein": 16,
+          "fiber": 0,
+          "allergenTags": [
+            "egg"
+          ],
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Butter",
+            "en": "Butter",
+            "fr": "Beurre",
+            "it": "Burro",
+            "tr": "Tereyağı"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0.6,
+          "fat": 82,
+          "protein": 0.7,
+          "fiber": 0,
+          "allergenTags": [
+            "lactose",
+            "milk"
+          ],
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Zitronensaft",
+            "en": "Lemon juice",
+            "fr": "Jus de citron",
+            "it": "Succo di limone",
+            "tr": "Limon suyu"
+          },
+          "amount": 15,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 6.6,
+          "fat": 0.2,
+          "protein": 0.4,
+          "fiber": 0.3,
+          "allergenTags": [],
+          "culinaryRole": "acid"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Weißweinessig",
+            "en": "White wine vinegar",
+            "fr": "Vinaigre de vin blanc",
+            "it": "Aceto di vino bianco",
+            "tr": "Beyaz şarap sirkesi"
+          },
+          "amount": 10,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0.6,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [
+            "sulfites"
+          ],
+          "culinaryRole": "acid"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Wasser",
+            "en": "Water",
+            "fr": "Eau",
+            "it": "Acqua",
+            "tr": "Su"
+          },
+          "amount": 20,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Weißer Pfeffer",
+            "en": "White pepper",
+            "fr": "Poivre blanc",
+            "it": "Pepe bianco",
+            "tr": "Beyaz biber"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "spice"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Vorbereitung",
+            "en": "Prep",
+            "fr": "Préparation",
+            "it": "Preparazione",
+            "tr": "Hazırlık"
+          },
+          "content": {
+            "de": "{0002} schmelzen, abkühlen lassen (lauwarm, nicht heiß). {0003}, {0004} und {0005} verrühren.",
+            "en": "Melt {0002}, let cool to lukewarm. Whisk {0003}, {0004} and {0005}.",
+            "fr": "Faire fondre {0002}, laisser tiédir. Mélanger {0003}, {0004} et {0005}.",
+            "it": "Sciogliere {0002}, intiepidire. Mescolare {0003}, {0004} e {0005}.",
+            "tr": "{0002} erit, ılık olana kadar beklet. {0003}, {0004} ve {0005} karıştır."
+          },
+          "stove_level": 2,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Wasserbad",
+            "en": "Bain-marie",
+            "fr": "Bain-marie",
+            "it": "Bagnomaria",
+            "tr": "Benmari"
+          },
+          "content": {
+            "de": "{0001} mit der Säure-Mischung über einem Wasserbad bei 65–70 °C aufschlagen, bis die Masse hell und dicklich ist.",
+            "en": "Whisk {0001} with acid mix over a bain-marie at 65–70°C until pale and thick.",
+            "fr": "Fouetter {0001} avec le mélange acide au bain-marie à 65–70°C jusqu'à épaississement.",
+            "it": "Sbattere {0001} con la miscela acida a bagnomaria a 65–70°C fino a ispessimento.",
+            "tr": "{0001} asit karışımıyla benmari üzerinde 65–70°C'de koyulaşana kadar çırp."
+          },
+          "stove_level": 3,
+          "time_min": 8
+        },
+        {
+          "title": {
+            "de": "Butter einlaufen",
+            "en": "Butter in",
+            "fr": "Incorporer le beurre",
+            "it": "Unire il burro",
+            "tr": "Tereyağı ekle"
+          },
+          "content": {
+            "de": "Vom Wasserbad nehmen. Butter in dünnem Strahl einlaufen lassen, stetig rühren, bis eine glatte Emulsion entsteht.",
+            "en": "Off the bain-marie. Add butter in a thin stream, whisking constantly, until glossy.",
+            "fr": "Hors du bain-marie. Verser le beurre en filet en fouettant jusqu'à émulsion lisse.",
+            "it": "Fuori dal bagnomaria. Versare il burro a filo mescolando fino a emulsione liscia.",
+            "tr": "Benmariden al. Tereyağını ince şerit halinde sürekli çırparak ekle."
+          },
+          "stove_level": 0,
+          "time_min": 4
+        },
+        {
+          "title": {
+            "de": "Finish",
+            "en": "Finish",
+            "fr": "Finition",
+            "it": "Rifinitura",
+            "tr": "Bitirme"
+          },
+          "content": {
+            "de": "Mit {0006} und {0007} abschmecken. Sofort servieren — Hollandaise darf nicht warten.",
+            "en": "Season with {0006} and {0007}. Serve immediately — hollandaise does not wait.",
+            "fr": "Assaisonner avec {0006} et {0007}. Servir aussitôt.",
+            "it": "Regolare con {0006} e {0007}. Servire subito.",
+            "tr": "{0006} ve {0007} ile tatlandır. Hemen servis et."
+          },
+          "stove_level": 0,
+          "time_min": 1
+        }
+      ],
+      "garnish": {
+        "de": "",
+        "en": "",
+        "fr": "",
+        "it": "",
+        "tr": ""
+      },
+      "chef_analysis": {
+        "de": "Klassisch französisch: Eigelb, Butter, Zitrone, Wasser. Nur pasteurisiertes Eigelb verwenden (Salmonellen). Über Wasserbad bei 65–70°C aufgeschlagen — niemals kochen.",
+        "en": "French classic: egg yolk, butter, lemon, water. Use pasteurized yolk only. Whisk over a bain-marie at 65–70°C — never boil.",
+        "fr": "Classique français : jaune d'œuf, beurre, citron, eau. Jaune pasteurisé uniquement. Au bain-marie à 65–70°C.",
+        "it": "Classico francese: tuorlo, burro, limone, acqua. Solo tuorlo pastorizzato. A bagnomaria 65–70°C.",
+        "tr": "Fransız klasiği: yumurta sarısı, tereyağı, limon, su. Sadece pastörize sarısı. Benmaride 65–70°C."
+      },
+      "diet_labels": [
+        "vegetarian",
+        "keto",
+        "low-carb"
+      ],
+      "coreComponents": [
+        "egg_yolk",
+        "butter",
+        "lemon"
+      ]
+    },
+    {
+      "id": "sauce_bearnaise",
+      "cuisine": "fr",
+      "region": "Béarn/Paris",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "béarnaise",
+          "bearnaise",
+          "sauce béarnaise"
+        ],
+        "en": [
+          "béarnaise",
+          "bearnaise",
+          "bearnaise sauce"
+        ],
+        "fr": [
+          "béarnaise",
+          "sauce béarnaise"
+        ],
+        "it": [
+          "bearnaise",
+          "salsa bernese"
+        ],
+        "tr": [
+          "bearnaise",
+          "bearnez sos"
+        ]
+      },
+      "titles": {
+        "de": "Sauce Béarnaise",
+        "en": "Béarnaise Sauce",
+        "fr": "Sauce béarnaise",
+        "it": "Salsa Bernese",
+        "tr": "Bearnez Sos"
+      },
+      "servings": 4,
+      "prep_time_min": 25,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Pasteurisiertes Eigelb",
+            "en": "Pasteurized egg yolk",
+            "fr": "Jaune d'œuf pasteurisé",
+            "it": "Tuorlo pastorizzato",
+            "tr": "Pastörize yumurta sarısı"
+          },
+          "amount": 3,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 27,
+          "protein": 16,
+          "fiber": 0,
+          "allergenTags": [
+            "egg"
+          ],
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Butter",
+            "en": "Butter",
+            "fr": "Beurre",
+            "it": "Burro",
+            "tr": "Tereyağı"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0.6,
+          "fat": 82,
+          "protein": 0.7,
+          "fiber": 0,
+          "allergenTags": [
+            "lactose",
+            "milk"
+          ],
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Schalotten",
+            "en": "Shallots",
+            "fr": "Échalotes",
+            "it": "Scalogni",
+            "tr": "Arpacık soğan"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 12,
+          "fat": 0.2,
+          "protein": 2.5,
+          "fiber": 2,
+          "allergenTags": [],
+          "culinaryRole": "aromatic"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Weißweinessig",
+            "en": "White wine vinegar",
+            "fr": "Vinaigre de vin blanc",
+            "it": "Aceto di vino bianco",
+            "tr": "Beyaz şarap sirkesi"
+          },
+          "amount": 40,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0.6,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [
+            "sulfites"
+          ],
+          "culinaryRole": "acid"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Weißwein",
+            "en": "White wine",
+            "fr": "Vin blanc",
+            "it": "Vino bianco",
+            "tr": "Beyaz şarap"
+          },
+          "amount": 40,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0,
+          "protein": 0.1,
+          "fiber": 0,
+          "allergenTags": [
+            "sulfites"
+          ],
+          "culinaryRole": "acid"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Estragon",
+            "en": "Tarragon",
+            "fr": "Estragon",
+            "it": "Dragoncello",
+            "tr": "Tarhun"
+          },
+          "amount": 6,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 5,
+          "fat": 0.7,
+          "protein": 3,
+          "fiber": 7,
+          "allergenTags": [],
+          "culinaryRole": "herb"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Kerbel",
+            "en": "Chervil",
+            "fr": "Cerfeuil",
+            "it": "Cerfoglio",
+            "tr": "Frenk maydanozu"
+          },
+          "amount": 3,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3.5,
+          "fat": 0.6,
+          "protein": 3.5,
+          "fiber": 3,
+          "allergenTags": [],
+          "culinaryRole": "herb",
+          "optional": true
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Weißer Pfeffer",
+            "en": "White pepper",
+            "fr": "Poivre blanc",
+            "it": "Pepe bianco",
+            "tr": "Beyaz biber"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Reduktion",
+            "en": "Reduction",
+            "fr": "Réduction",
+            "it": "Riduzione",
+            "tr": "Redüksiyon"
+          },
+          "content": {
+            "de": "{0003} fein hacken. Mit {0004}, {0005} und {0006} auf die Hälfte einkochen. Abseihen, abkühlen.",
+            "en": "Finely chop {0003}. Reduce with {0004}, {0005} and {0006} by half. Strain, cool.",
+            "fr": "Hacher {0003}. Réduire avec {0004}, {0005} et {0006} de moitié. Filtrer, refroidir.",
+            "it": "Tritare {0003}. Ridurre con {0004}, {0005} e {0006} della metà. Filtrare, raffreddare.",
+            "tr": "{0003} ince doğra. {0004}, {0005} ve {0006} ile yarıya indir. Süz, soğut."
+          },
+          "stove_level": 5,
+          "time_min": 6
+        },
+        {
+          "title": {
+            "de": "Wasserbad",
+            "en": "Bain-marie",
+            "fr": "Bain-marie",
+            "it": "Bagnomaria",
+            "tr": "Benmari"
+          },
+          "content": {
+            "de": "{0001} mit der Reduktion über einem Wasserbad bei 65–70 °C aufschlagen, bis hell und dicklich.",
+            "en": "Whisk {0001} with the reduction over a bain-marie at 65–70°C until pale and thick.",
+            "fr": "Fouetter {0001} avec la réduction au bain-marie à 65–70°C.",
+            "it": "Sbattere {0001} con la riduzione a bagnomaria a 65–70°C.",
+            "tr": "{0001} redüksiyonla benmaride 65–70°C'de çırp."
+          },
+          "stove_level": 3,
+          "time_min": 8
+        },
+        {
+          "title": {
+            "de": "Butter einlaufen",
+            "en": "Butter in",
+            "fr": "Incorporer le beurre",
+            "it": "Unire il burro",
+            "tr": "Tereyağı ekle"
+          },
+          "content": {
+            "de": "Butter {0002} in dünnem Strahl einlaufen lassen, stetig rühren.",
+            "en": "Add {0002} in a thin stream, whisking constantly.",
+            "fr": "Verser {0002} en filet en fouettant.",
+            "it": "Versare {0002} a filo mescolando.",
+            "tr": "{0002} ince şerit halinde sürekli çırparak ekle."
+          },
+          "stove_level": 0,
+          "time_min": 4
+        },
+        {
+          "title": {
+            "de": "Finish",
+            "en": "Finish",
+            "fr": "Finition",
+            "it": "Rifinitura",
+            "tr": "Bitirme"
+          },
+          "content": {
+            "de": "Gehackten {0006} und optional {0007} unterrühren, mit {0008} und {0009} abschmecken.",
+            "en": "Stir in chopped {0006} and optional {0007}, season with {0008} and {0009}.",
+            "fr": "Incorporer {0006} haché et {0007}, assaisonner avec {0008} et {0009}.",
+            "it": "Unire {0006} tritato e {0007}, regolare con {0008} e {0009}.",
+            "tr": "Kıyılmış {0006} ve {0007} ekle, {0008} ve {0009} ile tatlandır."
+          },
+          "stove_level": 0,
+          "time_min": 1
+        }
+      ],
+      "garnish": {
+        "de": "",
+        "en": "",
+        "fr": "",
+        "it": "",
+        "tr": ""
+      },
+      "chef_analysis": {
+        "de": "Französisch, Variante der Hollandaise mit Estragon-Schalotten-Reduktion. Pasteurisiertes Eigelb. Zu Steak und Fisch.",
+        "en": "French, hollandaise variant with tarragon-shallot reduction. Pasteurized yolk. For steak and fish.",
+        "fr": "Français, variante de la hollandaise avec réduction estragon-échalote.",
+        "it": "Francese, variante della olandese con riduzione dragoncello-scalogno.",
+        "tr": "Fransız, tarhun-arpacık redüksiyonlu hollandez varyantı."
+      },
+      "diet_labels": [
+        "vegetarian",
+        "keto",
+        "low-carb"
+      ],
+      "coreComponents": [
+        "egg_yolk",
+        "butter",
+        "tarragon",
+        "shallot"
+      ]
+    },
+    {
+      "id": "sauce_tartare",
+      "cuisine": "fr",
+      "region": "Paris",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "tartarsauce",
+          "sauce tartare",
+          "tartar"
+        ],
+        "en": [
+          "tartar sauce",
+          "sauce tartare",
+          "tartare"
+        ],
+        "fr": [
+          "sauce tartare",
+          "tartare"
+        ],
+        "it": [
+          "salsa tartara",
+          "tartara"
+        ],
+        "tr": [
+          "tartar sos",
+          "tartar"
+        ]
+      },
+      "titles": {
+        "de": "Sauce Tartare",
+        "en": "Tartar Sauce",
+        "fr": "Sauce tartare",
+        "it": "Salsa Tartara",
+        "tr": "Tartar Sos"
+      },
+      "servings": 4,
+      "prep_time_min": 15,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Mayonnaise",
+            "en": "Mayonnaise",
+            "fr": "Mayonnaise",
+            "it": "Maionese",
+            "tr": "Mayonez"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1.5,
+          "fat": 75,
+          "protein": 1.2,
+          "fiber": 0,
+          "allergenTags": [
+            "egg"
+          ],
+          "culinaryRole": "base"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Gewürzgurke",
+            "en": "Pickle",
+            "fr": "Cornichon",
+            "it": "Cetriolino",
+            "tr": "Turşu"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 0.2,
+          "protein": 0.5,
+          "fiber": 1.2,
+          "allergenTags": [],
+          "culinaryRole": "flavor"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Kapern",
+            "en": "Capers",
+            "fr": "Câpres",
+            "it": "Capperi",
+            "tr": "Kapari"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 5,
+          "fat": 0.9,
+          "protein": 2.4,
+          "fiber": 3.2,
+          "allergenTags": [],
+          "culinaryRole": "flavor"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Schalotten",
+            "en": "Shallots",
+            "fr": "Échalotes",
+            "it": "Scalogni",
+            "tr": "Arpacık soğan"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 12,
+          "fat": 0.2,
+          "protein": 2.5,
+          "fiber": 2,
+          "allergenTags": [],
+          "culinaryRole": "aromatic"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Petersilie",
+            "en": "Parsley",
+            "fr": "Persil",
+            "it": "Prezzemolo",
+            "tr": "Maydanoz"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0.8,
+          "protein": 3,
+          "fiber": 3.3,
+          "allergenTags": [],
+          "culinaryRole": "herb"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Zitronensaft",
+            "en": "Lemon juice",
+            "fr": "Jus de citron",
+            "it": "Succo di limone",
+            "tr": "Limon suyu"
+          },
+          "amount": 10,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 6.6,
+          "fat": 0.2,
+          "protein": 0.4,
+          "fiber": 0.3,
+          "allergenTags": [],
+          "culinaryRole": "acid"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Dijon-Senf",
+            "en": "Dijon mustard",
+            "fr": "Moutarde de Dijon",
+            "it": "Senape di Digione",
+            "tr": "Dijon hardalı"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 4,
+          "protein": 4,
+          "fiber": 3,
+          "allergenTags": [],
+          "culinaryRole": "flavor",
+          "optional": true
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Weißer Pfeffer",
+            "en": "White pepper",
+            "fr": "Poivre blanc",
+            "it": "Pepe bianco",
+            "tr": "Beyaz biber"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "spice"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Vorbereitung",
+            "en": "Prep",
+            "fr": "Préparation",
+            "it": "Preparazione",
+            "tr": "Hazırlık"
+          },
+          "content": {
+            "de": "{0002}, {0003}, {0004} und {0005} sehr fein hacken.",
+            "en": "Very finely chop {0002}, {0003}, {0004} and {0005}.",
+            "fr": "Hacher très finement {0002}, {0003}, {0004} et {0005}.",
+            "it": "Tritare finissimamente {0002}, {0003}, {0004} e {0005}.",
+            "tr": "{0002}, {0003}, {0004} ve {0005} çok ince doğra."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Mischen",
+            "en": "Mix",
+            "fr": "Mélanger",
+            "it": "Mescolare",
+            "tr": "Karıştır"
+          },
+          "content": {
+            "de": "{0001} mit den gehackten Zutaten, {0006} und optional {0007} verrühren.",
+            "en": "Stir {0001} with the chopped ingredients, {0006} and optional {0007}.",
+            "fr": "Mélanger {0001} avec les ingrédients hachés, {0006} et {0007}.",
+            "it": "Mescolare {0001} con gli ingredienti tritati, {0006} e {0007}.",
+            "tr": "{0001}'i doğranmış malzemeler, {0006} ve {0007} ile karıştır."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Finish",
+            "en": "Finish",
+            "fr": "Finition",
+            "it": "Rifinitura",
+            "tr": "Bitirme"
+          },
+          "content": {
+            "de": "Mit {0008} und {0009} abschmecken. Mindestens 30 Min im Kühlschrank ziehen lassen.",
+            "en": "Season with {0008} and {0009}. Rest in the fridge for at least 30 min.",
+            "fr": "Assaisonner avec {0008} et {0009}. Réserver 30 min au frais.",
+            "it": "Regolare con {0008} e {0009}. Riposare in frigo almeno 30 min.",
+            "tr": "{0008} ve {0009} ile tatlandır. En az 30 dk buzdolabında beklet."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "garnish": {
+        "de": "",
+        "en": "",
+        "fr": "",
+        "it": "",
+        "tr": ""
+      },
+      "chef_analysis": {
+        "de": "Französisch: Mayonnaise, Gewürzgurke, Kapern, Schalotten, Kräuter. Kein rohes Ei — die Basis ist Mayonnaise. Zu Fisch, Pommes, Bratkartoffeln.",
+        "en": "French: mayonnaise, pickle, capers, shallots, herbs. No raw egg — base is mayonnaise.",
+        "fr": "Français : mayonnaise, cornichon, câpres, échalotes, herbes. Pas d'œuf cru.",
+        "it": "Francese: maionese, cetriolino, capperi, scalogni, erbe. Niente uovo crudo.",
+        "tr": "Fransız: mayonez, turşu, kapari, arpacık, otlar. Çiğ yumurta yok."
+      },
+      "diet_labels": [
+        "vegetarian",
+        "keto",
+        "low-carb"
+      ],
+      "coreComponents": [
+        "mayonnaise",
+        "pickle",
+        "caper",
+        "shallot"
+      ]
+    },
+    {
+      "id": "sauce_vierge",
+      "cuisine": "fr",
+      "region": "Provence",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "sauce vierge",
+          "vierge"
+        ],
+        "en": [
+          "sauce vierge"
+        ],
+        "fr": [
+          "sauce vierge"
+        ],
+        "it": [
+          "salsa vierge"
+        ],
+        "tr": [
+          "sauce vierge"
+        ]
+      },
+      "titles": {
+        "de": "Sauce Vierge",
+        "en": "Sauce Vierge",
+        "fr": "Sauce vierge",
+        "it": "Salsa Vierge",
+        "tr": "Sauce Vierge"
+      },
+      "servings": 4,
+      "prep_time_min": 10,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Olivenöl",
+            "en": "Olive oil",
+            "fr": "Huile d'olive",
+            "it": "Olio d'oliva",
+            "tr": "Zeytinyağı"
+          },
+          "amount": 120,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Tomaten",
+            "en": "Tomatoes",
+            "fr": "Tomates",
+            "it": "Pomodori",
+            "tr": "Domates"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3.5,
+          "fat": 0.2,
+          "protein": 0.9,
+          "fiber": 1.2,
+          "allergenTags": [],
+          "culinaryRole": "base"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Zitronensaft",
+            "en": "Lemon juice",
+            "fr": "Jus de citron",
+            "it": "Succo di limone",
+            "tr": "Limon suyu"
+          },
+          "amount": 20,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 6.6,
+          "fat": 0.2,
+          "protein": 0.4,
+          "fiber": 0.3,
+          "allergenTags": [],
+          "culinaryRole": "acid"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Basilikum",
+            "en": "Basil",
+            "fr": "Basilic",
+            "it": "Basilico",
+            "tr": "Fesleğen"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2.6,
+          "fat": 0.6,
+          "protein": 3.2,
+          "fiber": 1.6,
+          "allergenTags": [],
+          "culinaryRole": "herb"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Schalotten",
+            "en": "Shallots",
+            "fr": "Échalotes",
+            "it": "Scalogni",
+            "tr": "Arpacık soğan"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 12,
+          "fat": 0.2,
+          "protein": 2.5,
+          "fiber": 2,
+          "allergenTags": [],
+          "culinaryRole": "aromatic"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 4,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "culinaryRole": "aromatic",
+          "optional": true
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Schwarzer Pfeffer",
+            "en": "Black pepper",
+            "fr": "Poivre noir",
+            "it": "Pepe nero",
+            "tr": "Karabiber"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "spice"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Tomaten",
+            "en": "Tomatoes",
+            "fr": "Tomates",
+            "it": "Pomodori",
+            "tr": "Domates"
+          },
+          "content": {
+            "de": "{0002} entkernen, fein würfeln. {0005} und optional {0006} fein hacken.",
+            "en": "Seed {0002}, finely dice. Finely chop {0005} and optional {0006}.",
+            "fr": "Épépiner {0002}, tailler en petits dés. Hacher {0005} et {0006}.",
+            "it": "Semi {0002}, tagliare a cubetti. Tritare {0005} e {0006}.",
+            "tr": "{0002} çekirdeğini çıkar, ince doğra. {0005} ve {0006} ince kıy."
+          },
+          "stove_level": 0,
+          "time_min": 6
+        },
+        {
+          "title": {
+            "de": "Mischen",
+            "en": "Mix",
+            "fr": "Mélanger",
+            "it": "Mescolare",
+            "tr": "Karıştır"
+          },
+          "content": {
+            "de": "Alles mit {0001} und {0003} verrühren, {0004} in Streifen unterheben. Mit {0007} und {0008} abschmecken.",
+            "en": "Stir everything with {0001} and {0003}, fold in torn {0004}. Season with {0007} and {0008}.",
+            "fr": "Mélanger avec {0001} et {0003}, incorporer {0004} déchiré. Assaisonner avec {0007} et {0008}.",
+            "it": "Mescolare con {0001} e {0003}, unire {0004} a straccetti. Regolare con {0007} e {0008}.",
+            "tr": "Hepsini {0001} ve {0003} ile karıştır, {0004} ekle. {0007} ve {0008} ile tatlandır."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Ziehen lassen",
+            "en": "Rest",
+            "fr": "Repos",
+            "it": "Riposo",
+            "tr": "Dinlendir"
+          },
+          "content": {
+            "de": "Mindestens 20 Min ziehen lassen, damit die Aromen sich verbinden. Nicht erhitzen.",
+            "en": "Rest at least 20 min for flavors to marry. Do not heat.",
+            "fr": "Laisser reposer au moins 20 min. Ne pas chauffer.",
+            "it": "Riposare almeno 20 min. Non scaldare.",
+            "tr": "En az 20 dk dinlendir. Isıtma."
+          },
+          "stove_level": 0,
+          "time_min": 1
+        }
+      ],
+      "garnish": {
+        "de": "",
+        "en": "",
+        "fr": "",
+        "it": "",
+        "tr": ""
+      },
+      "chef_analysis": {
+        "de": "Provenzalisch: rohe Tomatenwürfel in Olivenöl mit Zitrone und Basilikum. Kalte Sauce zu gegartem Fisch oder warmem Gemüse. Nie erhitzen.",
+        "en": "Provençal: raw diced tomato in olive oil with lemon and basil. Cold sauce for cooked fish or warm vegetables.",
+        "fr": "Provençal : tomates crues en dés, huile d'olive, citron, basilic. Sauce froide.",
+        "it": "Provenzale: pomodori crudi a cubetti, olio, limone, basilico. Salsa fredda.",
+        "tr": "Provence: çiğ doğranmış domates, zeytinyağı, limon, fesleğen. Soğuk sos."
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian",
+        "keto",
+        "low-carb"
+      ],
+      "coreComponents": [
+        "tomato",
+        "olive_oil",
+        "lemon",
+        "basil"
+      ]
     }
   ]
 }
