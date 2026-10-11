@@ -23,3 +23,7 @@ node_modules/
 
 # Automatische Backups vom Patch-Script (niemals ins Git)
 *.bak_*
+
+# Lokale Backups
+*.bak
+*.bak[0-9]
