@@ -1,0 +1,4545 @@
+{
+  "version": "2",
+  "languages": [
+    "de",
+    "en",
+    "fr",
+    "it",
+    "tr"
+  ],
+  "recipes": [
+    {
+      "id": "lachs_poke_bowl",
+      "cuisine": "Hawaiianisch",
+      "region": "Hawaii",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "lachs poke bowl",
+          "poke bowl",
+          "lachs bowl"
+        ],
+        "en": [
+          "salmon poke bowl",
+          "poke bowl",
+          "salmon bowl"
+        ]
+      },
+      "titles": {
+        "de": "Lachs-Poké-Bowl",
+        "en": "Salmon Poke Bowl",
+        "fr": "Bol de poké au saumon",
+        "it": "Poke bowl al salmone",
+        "tr": "Somonlu poke bowl"
+      },
+      "servings": 4,
+      "prep_time_min": 25,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Sushi-Reis",
+            "en": "sushi rice",
+            "fr": "riz à sushi",
+            "it": "riso per sushi",
+            "tr": "suşi pirinci"
+          },
+          "amount": 600,
+          "unit": "g",
+          "culinaryRole": "carbohydrate",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Lachs",
+            "en": "salmon",
+            "fr": "saumon",
+            "it": "salmone",
+            "tr": "somon"
+          },
+          "amount": 400,
+          "unit": "g",
+          "culinaryRole": "main_protein",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": true
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Gurke",
+            "en": "cucumber",
+            "fr": "concombre",
+            "it": "cetriolo",
+            "tr": "salatalık"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Edamame",
+            "en": "Edamame",
+            "fr": "Edamame",
+            "it": "Edamame",
+            "tr": "Edamame"
+          },
+          "amount": 160,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Mango",
+            "en": "mango",
+            "fr": "mangue",
+            "it": "mango",
+            "tr": "mango"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "fruit",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Avocado",
+            "en": "avocado",
+            "fr": "avocat",
+            "it": "avocado",
+            "tr": "avokado"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "fruit",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Nori-Blätter",
+            "en": "nori sheets",
+            "fr": "feuilles de nori",
+            "it": "fogli di nori",
+            "tr": "nori yaprakları"
+          },
+          "amount": 10,
+          "unit": "g",
+          "culinaryRole": "topping",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Sesamsamen",
+            "en": "sesame seeds",
+            "fr": "graines de sésame",
+            "it": "semi di sesamo",
+            "tr": "susam tohumları"
+          },
+          "amount": 20,
+          "unit": "g",
+          "culinaryRole": "topping",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Sojasauce",
+            "en": "soy sauce",
+            "fr": "sauce soja",
+            "it": "salsa di soia",
+            "tr": "soya sosu"
+          },
+          "amount": 50,
+          "unit": "ml",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Reisessig",
+            "en": "rice vinegar",
+            "fr": "vinaigre de riz",
+            "it": "aceto di riso",
+            "tr": "pirinç sirkesi"
+          },
+          "amount": 20,
+          "unit": "ml",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Sesamöl",
+            "en": "sesame oil",
+            "fr": "huile de sésame",
+            "it": "olio di sesamo",
+            "tr": "susam yağı"
+          },
+          "amount": 11,
+          "unit": "ml",
+          "culinaryRole": "fat_source",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Limettensaft",
+            "en": "lime juice",
+            "fr": "jus de citron vert",
+            "it": "succo di lime",
+            "tr": "misket limonu suyu"
+          },
+          "amount": 29,
+          "unit": "ml",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0013",
+          "names": {
+            "de": "Ingwer",
+            "en": "ginger",
+            "fr": "gingembre",
+            "it": "zenzero",
+            "tr": "zencefil"
+          },
+          "amount": 20,
+          "unit": "g",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Reis",
+            "en": "Rice",
+            "fr": "Riz",
+            "it": "Riso",
+            "tr": "Pirinç"
+          },
+          "content": {
+            "de": "{0001} garen, mit {0010} abschmecken und abkühlen lassen.",
+            "en": "Cook {0001}, season with {0010}, and let it cool.",
+            "fr": "Faites cuire {0001}, assaisonnez avec {0010}, puis laissez refroidir.",
+            "it": "Cuocete {0001}, conditelo con {0010} e lasciatelo raffreddare.",
+            "tr": "{0001} pişirin, {0010} ile tatlandırıp soğumaya bırakın."
+          },
+          "stove_level": 5,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Lachs",
+            "en": "Salmon",
+            "fr": "Saumon",
+            "it": "Salmone",
+            "tr": "Somon"
+          },
+          "content": {
+            "de": "{0002} würfeln und mit {0009} und {0012} marinieren.",
+            "en": "Dice {0002} and marinate it with {0009} and {0012}.",
+            "fr": "Coupez {0002} en dés et faites-le mariner avec {0009} et {0012}.",
+            "it": "Tagliate {0002} a cubetti e marinatelo con {0009} e {0012}.",
+            "tr": "{0002} küp doğrayıp {0009} ve {0012} ile marine edin."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Frische Zutaten",
+            "en": "Fresh ingredients",
+            "fr": "Ingrédients frais",
+            "it": "Ingredienti freschi",
+            "tr": "Taze malzemeler"
+          },
+          "content": {
+            "de": "{0003} und {0005} würfeln, {0006} schneiden und {0004} garen.",
+            "en": "Dice {0003} and {0005}, slice {0006}, and cook {0004}.",
+            "fr": "Coupez {0003} et {0005} en dés, tranchez {0006} et faites cuire {0004}.",
+            "it": "Tagliate {0003} e {0005} a cubetti, affettate {0006} e cuocete {0004}.",
+            "tr": "{0003} ve {0005} küp, {0006} dilim doğrayın; {0004} pişirin."
+          },
+          "stove_level": 4,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Dressing",
+            "en": "Dressing",
+            "fr": "Sauce",
+            "it": "Condimento",
+            "tr": "Sos"
+          },
+          "content": {
+            "de": "{0009}, {0012}, {0011} und geriebenen {0013} verrühren.",
+            "en": "Whisk together {0009}, {0012}, {0011}, and grated {0013}.",
+            "fr": "Mélangez {0009}, {0012}, {0011} et {0013} râpé.",
+            "it": "Mescolate {0009}, {0012}, {0011} e {0013} grattugiato.",
+            "tr": "{0009}, {0012}, {0011} ve rendelenmiş {0013} karıştırın."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Anrichten",
+            "en": "Assembly",
+            "fr": "Dressage",
+            "it": "Composizione",
+            "tr": "Sunum"
+          },
+          "content": {
+            "de": "{0001} in Schalen geben, {0002}, {0003}, {0004}, {0005} und {0006} darauf anordnen, mit Dressing beträufeln und {0007} sowie {0008} darüberstreuen.",
+            "en": "Divide {0001} among bowls, arrange {0002}, {0003}, {0004}, {0005}, and {0006} on top, drizzle with dressing, and scatter {0007} and {0008}.",
+            "fr": "Répartissez {0001} dans les bols, disposez {0002}, {0003}, {0004}, {0005} et {0006}, nappez de sauce et parsemez de {0007} et {0008}.",
+            "it": "Distribuite {0001} nelle ciotole, disponete {0002}, {0003}, {0004}, {0005} e {0006}, condite e cospargete con {0007} e {0008}.",
+            "tr": "{0001} kaselere paylaştırın, üzerine {0002}, {0003}, {0004}, {0005} ve {0006} yerleştirin; sos gezdirip {0007} ve {0008} serpin."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "garnish": {
+        "de": "Sesam und Nori-Streifen",
+        "en": "sesame and nori strips",
+        "fr": "sésame et lanières de nori",
+        "it": "sesamo e strisce di nori",
+        "tr": "susam ve nori şeritleri"
+      },
+      "chef_analysis": {
+        "de": "Diese hawaiianisch inspirierte Bowl verbindet Sushi-Reis mit rohem Lachs und frischer Frucht. Sojasauce, Limette und Ingwer geben eine salzig-säuerliche Würze.",
+        "en": "This Hawaiian-inspired bowl pairs sushi rice with raw salmon and fresh fruit. Soy sauce, lime, and ginger add a savory, bright dressing.",
+        "fr": "Ce bol inspiré d’Hawaï associe riz à sushi, saumon cru et fruits frais. La sauce soja, le citron vert et le gingembre apportent une note salée et acidulée.",
+        "it": "Questa bowl d’ispirazione hawaiana abbina riso per sushi, salmone crudo e frutta fresca. Salsa di soia, lime e zenzero danno una nota sapida e vivace.",
+        "tr": "Hawaii esintili bu kasede suşi pirinci, çiğ somon ve taze meyve buluşur. Soya sosu, misket limonu ve zencefil lezzete tuzlu ve ferah bir tat verir."
+      },
+      "diet_labels": [
+        "high_protein"
+      ],
+      "coreComponents": [
+        "sushi_rice",
+        "salmon",
+        "dressing"
+      ]
+    },
+    {
+      "id": "vegane_burrito_bowl",
+      "cuisine": "Mexikanisch",
+      "region": "Mexiko",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "vegane burrito bowl",
+          "burrito bowl",
+          "bohnen bowl"
+        ],
+        "en": [
+          "vegan burrito bowl",
+          "burrito bowl",
+          "black bean bowl"
+        ]
+      },
+      "titles": {
+        "de": "Vegane Burrito-Bowl",
+        "en": "Vegan Burrito Bowl",
+        "fr": "Bol burrito végétalien",
+        "it": "Burrito bowl vegana",
+        "tr": "Vegan burrito kasesi"
+      },
+      "servings": 4,
+      "prep_time_min": 25,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Basmatireis",
+            "en": "basmati rice",
+            "fr": "riz basmati",
+            "it": "riso basmati",
+            "tr": "basmati pirinci"
+          },
+          "amount": 600,
+          "unit": "g",
+          "culinaryRole": "carbohydrate",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Schwarze Bohnen",
+            "en": "black beans",
+            "fr": "haricots noirs",
+            "it": "fagioli neri",
+            "tr": "siyah fasulye"
+          },
+          "amount": 400,
+          "unit": "g",
+          "culinaryRole": "secondary_protein",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Mais",
+            "en": "corn",
+            "fr": "maïs",
+            "it": "mais",
+            "tr": "mısır"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Tomaten",
+            "en": "tomatoes",
+            "fr": "tomates",
+            "it": "pomodori",
+            "tr": "domates"
+          },
+          "amount": 240,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Rote Paprika",
+            "en": "red bell pepper",
+            "fr": "poivron rouge",
+            "it": "peperone rosso",
+            "tr": "kırmızı biber"
+          },
+          "amount": 240,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Blattsalat",
+            "en": "lettuce",
+            "fr": "laitue",
+            "it": "lattuga",
+            "tr": "marul"
+          },
+          "amount": 120,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Avocado",
+            "en": "avocado",
+            "fr": "avocat",
+            "it": "avocado",
+            "tr": "avokado"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "fruit",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Koriander",
+            "en": "coriander",
+            "fr": "coriandre",
+            "it": "coriandolo",
+            "tr": "kişniş"
+          },
+          "amount": 20,
+          "unit": "g",
+          "culinaryRole": "herb",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Limettensaft",
+            "en": "lime juice",
+            "fr": "jus de citron vert",
+            "it": "succo di lime",
+            "tr": "misket limonu suyu"
+          },
+          "amount": 39,
+          "unit": "ml",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Olivenöl",
+            "en": "olive oil",
+            "fr": "huile d'olive",
+            "it": "olio d’oliva",
+            "tr": "zeytinyağı"
+          },
+          "amount": 33,
+          "unit": "ml",
+          "culinaryRole": "fat_source",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Zwiebeln",
+            "en": "onions",
+            "fr": "oignons",
+            "it": "cipolle",
+            "tr": "soğan"
+          },
+          "amount": 100,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Knoblauch",
+            "en": "garlic",
+            "fr": "ail",
+            "it": "aglio",
+            "tr": "sarımsak"
+          },
+          "amount": 10,
+          "unit": "g",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Reis und Bohnen",
+            "en": "Rice and beans",
+            "fr": "Riz et haricots",
+            "it": "Riso e fagioli",
+            "tr": "Pirinç ve fasulye"
+          },
+          "content": {
+            "de": "{0001} garen und {0002} mit {0003} erwärmen.",
+            "en": "Cook {0001} and heat {0002} with {0003}.",
+            "fr": "Faites cuire {0001} et réchauffez {0002} avec {0003}.",
+            "it": "Cuocete {0001} e scaldate {0002} con {0003}.",
+            "tr": "{0001} pişirin, {0002} ile {0003} ısıtın."
+          },
+          "stove_level": 5,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Paprika",
+            "en": "Pepper",
+            "fr": "Poivron",
+            "it": "Peperone",
+            "tr": "Biber"
+          },
+          "content": {
+            "de": "{0005} schneiden und mit {0010} anbraten.",
+            "en": "Slice {0005} and sauté it with {0010}.",
+            "fr": "Émincez {0005} et faites-le revenir avec {0010}.",
+            "it": "Affettate {0005} e rosolatelo con {0010}.",
+            "tr": "{0005} dilimleyip {0010} ile soteleyin."
+          },
+          "stove_level": 6,
+          "time_min": 7
+        },
+        {
+          "title": {
+            "de": "Frisches Gemüse",
+            "en": "Fresh vegetables",
+            "fr": "Légumes frais",
+            "it": "Verdure fresche",
+            "tr": "Taze sebzeler"
+          },
+          "content": {
+            "de": "{0004} und {0011} würfeln, {0006} zupfen und {0007} schneiden.",
+            "en": "Dice {0004} and {0011}, tear {0006}, and slice {0007}.",
+            "fr": "Coupez {0004} et {0011} en dés, déchirez {0006} et tranchez {0007}.",
+            "it": "Tagliate {0004} e {0011} a cubetti, spezzettate {0006} e affettate {0007}.",
+            "tr": "{0004} ve {0011} küp doğrayın, {0006} yapraklarını ayırın ve {0007} dilimleyin."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Dressing",
+            "en": "Dressing",
+            "fr": "Sauce",
+            "it": "Condimento",
+            "tr": "Sos"
+          },
+          "content": {
+            "de": "{0009}, {0010} und gepressten {0012} verrühren.",
+            "en": "Whisk together {0009}, {0010}, and pressed {0012}.",
+            "fr": "Mélangez {0009}, {0010} et {0012} pressé.",
+            "it": "Mescolate {0009}, {0010} e {0012} schiacciato.",
+            "tr": "{0009}, {0010} ve ezilmiş {0012} karıştırın."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Anrichten",
+            "en": "Assembly",
+            "fr": "Dressage",
+            "it": "Composizione",
+            "tr": "Sunum"
+          },
+          "content": {
+            "de": "{0001}, {0002}, {0003}, {0004}, {0005}, {0006} und {0007} in Schalen anrichten, Dressing darübergeben und mit {0008} abschließen.",
+            "en": "Arrange {0001}, {0002}, {0003}, {0004}, {0005}, {0006}, and {0007} in bowls, add the dressing, and finish with {0008}.",
+            "fr": "Répartissez {0001}, {0002}, {0003}, {0004}, {0005}, {0006} et {0007} dans les bols, ajoutez la sauce et terminez avec {0008}.",
+            "it": "Disponete {0001}, {0002}, {0003}, {0004}, {0005}, {0006} e {0007} nelle ciotole, condite e completate con {0008}.",
+            "tr": "{0001}, {0002}, {0003}, {0004}, {0005}, {0006} ve {0007} kaselere yerleştirin, sosu ekleyip {0008} ile tamamlayın."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        }
+      ],
+      "garnish": {
+        "de": "Koriander",
+        "en": "coriander",
+        "fr": "coriandre",
+        "it": "coriandolo",
+        "tr": "kişniş"
+      },
+      "chef_analysis": {
+        "de": "Reis, schwarze Bohnen und knackiges Gemüse bilden die herzhafte Basis. Avocado und Limette sorgen für Frische.",
+        "en": "Rice, black beans, and crisp vegetables make a hearty base. Avocado and lime bring freshness.",
+        "fr": "Le riz, les haricots noirs et les légumes croquants forment une base généreuse. L’avocat et le citron vert apportent de la fraîcheur.",
+        "it": "Riso, fagioli neri e verdure croccanti formano una base sostanziosa. Avocado e lime aggiungono freschezza.",
+        "tr": "Pirinç, siyah fasulye ve diri sebzeler doyurucu bir temel oluşturur. Avokado ve misket limonu ferahlık katar."
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian",
+        "glutenfree"
+      ],
+      "coreComponents": [
+        "basmati_rice",
+        "black_beans",
+        "vegetables"
+      ]
+    },
+    {
+      "id": "falafel_mediterran_bowl",
+      "cuisine": "Mediterran",
+      "region": "Östliches Mittelmeer",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "falafel bowl",
+          "mediterrane falafel bowl",
+          "couscous falafel bowl"
+        ],
+        "en": [
+          "falafel bowl",
+          "mediterranean falafel bowl",
+          "falafel couscous bowl"
+        ]
+      },
+      "titles": {
+        "de": "Falafel-Mediterran-Bowl",
+        "en": "Mediterranean Falafel Bowl",
+        "fr": "Bol méditerranéen au falafel",
+        "it": "Bowl mediterranea con falafel",
+        "tr": "Akdeniz usulü falafel kasesi"
+      },
+      "servings": 4,
+      "prep_time_min": 20,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Couscous",
+            "en": "couscous",
+            "fr": "couscous",
+            "it": "couscous",
+            "tr": "kuskus"
+          },
+          "amount": 560,
+          "unit": "g",
+          "culinaryRole": "carbohydrate",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Falafel",
+            "en": "Falafel",
+            "fr": "Falafel",
+            "it": "Falafel",
+            "tr": "Falafel"
+          },
+          "amount": 360,
+          "unit": "g",
+          "culinaryRole": "secondary_protein",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Gurke",
+            "en": "cucumber",
+            "fr": "concombre",
+            "it": "cetriolo",
+            "tr": "salatalık"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Tomaten",
+            "en": "tomatoes",
+            "fr": "tomates",
+            "it": "pomodori",
+            "tr": "domates"
+          },
+          "amount": 240,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Rotkohl",
+            "en": "red cabbage",
+            "fr": "chou rouge",
+            "it": "cavolo rosso",
+            "tr": "kırmızı lahana"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Schwarze Oliven",
+            "en": "black olives",
+            "fr": "olives noires",
+            "it": "olive nere",
+            "tr": "siyah zeytin"
+          },
+          "amount": 100,
+          "unit": "g",
+          "culinaryRole": "fruit",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Petersilie",
+            "en": "parsley",
+            "fr": "persil",
+            "it": "prezzemolo",
+            "tr": "maydanoz"
+          },
+          "amount": 30,
+          "unit": "g",
+          "culinaryRole": "herb",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Joghurt 1,5 %",
+            "en": "1.5% yogurt",
+            "fr": "yaourt à 1,5 %",
+            "it": "yogurt 1,5%",
+            "tr": "%1,5 yoğurt"
+          },
+          "amount": 240,
+          "unit": "g",
+          "culinaryRole": "secondary_protein",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Zitronensaft",
+            "en": "lemon juice",
+            "fr": "jus de citron",
+            "it": "succo di limone",
+            "tr": "limon suyu"
+          },
+          "amount": 29,
+          "unit": "ml",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Olivenöl",
+            "en": "olive oil",
+            "fr": "huile d'olive",
+            "it": "olio d’oliva",
+            "tr": "zeytinyağı"
+          },
+          "amount": 22,
+          "unit": "ml",
+          "culinaryRole": "fat_source",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Knoblauch",
+            "en": "garlic",
+            "fr": "ail",
+            "it": "aglio",
+            "tr": "sarımsak"
+          },
+          "amount": 10,
+          "unit": "g",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Minze",
+            "en": "mint",
+            "fr": "menthe",
+            "it": "menta",
+            "tr": "nane"
+          },
+          "amount": 20,
+          "unit": "g",
+          "culinaryRole": "herb",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Couscous",
+            "en": "Couscous",
+            "fr": "Couscous",
+            "it": "Couscous",
+            "tr": "Kuskus"
+          },
+          "content": {
+            "de": "{0001} quellen lassen und auflockern.",
+            "en": "Let {0001} absorb water and fluff it.",
+            "fr": "Faites gonfler {0001}, puis égrenez-le.",
+            "it": "Lasciate gonfiare {0001} e sgranatelo.",
+            "tr": "{0001} şişirip havalandırın."
+          },
+          "stove_level": 5,
+          "time_min": 8
+        },
+        {
+          "title": {
+            "de": "Falafel",
+            "en": "Falafel",
+            "fr": "Falafel",
+            "it": "Falafel",
+            "tr": "Falafel"
+          },
+          "content": {
+            "de": "{0002} knusprig backen oder anbraten.",
+            "en": "Bake or pan-fry {0002} until crisp.",
+            "fr": "Faites cuire {0002} au four ou à la poêle jusqu’à ce qu’il soit croustillant.",
+            "it": "Cuocete {0002} al forno o in padella finché è croccante.",
+            "tr": "{0002} çıtır olana kadar fırında veya tavada pişirin."
+          },
+          "stove_level": 6,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Gemüse",
+            "en": "Vegetables",
+            "fr": "Légumes",
+            "it": "Verdure",
+            "tr": "Sebzeler"
+          },
+          "content": {
+            "de": "{0003} und {0004} würfeln, {0005} fein schneiden und mit {0009} marinieren.",
+            "en": "Dice {0003} and {0004}, finely slice {0005}, and dress it with {0009}.",
+            "fr": "Coupez {0003} et {0004} en dés, émincez {0005} et assaisonnez-le avec {0009}.",
+            "it": "Tagliate {0003} e {0004} a cubetti, affettate finemente {0005} e conditelo con {0009}.",
+            "tr": "{0003} ve {0004} küp, {0005} ince doğrayıp {0009} ile tatlandırın."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Kräuterdip",
+            "en": "Herb dip",
+            "fr": "Sauce aux herbes",
+            "it": "Salsa alle erbe",
+            "tr": "Otlu sos"
+          },
+          "content": {
+            "de": "{0008}, {0009}, {0011} und gehackte {0012} mit {0010} verrühren.",
+            "en": "Mix {0008}, {0009}, {0011}, and chopped {0012} with {0010}.",
+            "fr": "Mélangez {0008}, {0009}, {0011} et {0012} hachée avec {0010}.",
+            "it": "Mescolate {0008}, {0009}, {0011} e {0012} tritata con {0010}.",
+            "tr": "{0008}, {0009}, {0011} ve doğranmış {0012} ile {0010} karıştırın."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Anrichten",
+            "en": "Assembly",
+            "fr": "Dressage",
+            "it": "Composizione",
+            "tr": "Sunum"
+          },
+          "content": {
+            "de": "{0001}, {0002}, {0003}, {0004} und {0005} anrichten, mit Dip ergänzen und {0006} sowie {0007} darübergeben.",
+            "en": "Arrange {0001}, {0002}, {0003}, {0004}, and {0005}, add the dip, and top with {0006} and {0007}.",
+            "fr": "Dressez {0001}, {0002}, {0003}, {0004} et {0005}, ajoutez la sauce et parsemez de {0006} et {0007}.",
+            "it": "Disponete {0001}, {0002}, {0003}, {0004} e {0005}, aggiungete la salsa e completate con {0006} e {0007}.",
+            "tr": "{0001}, {0002}, {0003}, {0004} ve {0005} yerleştirin, sosu ekleyip {0006} ve {0007} serpin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        }
+      ],
+      "garnish": {
+        "de": "Oliven, Petersilie und Minze",
+        "en": "olives, parsley, and mint",
+        "fr": "olives, persil et menthe",
+        "it": "olive, prezzemolo e menta",
+        "tr": "zeytin, maydanoz ve nane"
+      },
+      "chef_analysis": {
+        "de": "Falafel und Couscous treffen auf frisches Gemüse und einen cremigen Kräuterdip. Zitrone und Minze bringen eine frische, mediterrane Note.",
+        "en": "Falafel and couscous meet fresh vegetables and a creamy herb dip. Lemon and mint add a bright Mediterranean note.",
+        "fr": "Le falafel et le couscous s’associent à des légumes frais et à une sauce crémeuse aux herbes. Le citron et la menthe apportent une note méditerranéenne fraîche.",
+        "it": "Falafel e couscous si uniscono a verdure fresche e a una salsa cremosa alle erbe. Limone e menta danno una nota mediterranea fresca.",
+        "tr": "Falafel ve kuskus, taze sebzeler ve kremalı otlu sosla buluşur. Limon ve nane ferah bir Akdeniz lezzeti verir."
+      },
+      "diet_labels": [
+        "vegetarian"
+      ],
+      "coreComponents": [
+        "falafel",
+        "couscous",
+        "yogurt_dip"
+      ]
+    },
+    {
+      "id": "teriyaki_haehnchen_bowl",
+      "cuisine": "Japanisch",
+      "region": "Japan",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "teriyaki haehnchen bowl",
+          "haehnchen teriyaki bowl",
+          "japanische haehnchen bowl"
+        ],
+        "en": [
+          "teriyaki chicken bowl",
+          "chicken teriyaki bowl",
+          "japanese chicken bowl"
+        ]
+      },
+      "titles": {
+        "de": "Teriyaki-Hähnchen-Bowl",
+        "en": "Teriyaki Chicken Bowl",
+        "fr": "Bol de poulet teriyaki",
+        "it": "Bowl di pollo teriyaki",
+        "tr": "Teriyaki tavuk kasesi"
+      },
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Basmatireis",
+            "en": "basmati rice",
+            "fr": "riz basmati",
+            "it": "riso basmati",
+            "tr": "basmati pirinci"
+          },
+          "amount": 600,
+          "unit": "g",
+          "culinaryRole": "carbohydrate",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Hähnchenbrust",
+            "en": "chicken breast",
+            "fr": "blanc de poulet",
+            "it": "petto di pollo",
+            "tr": "tavuk göğsü"
+          },
+          "amount": 600,
+          "unit": "g",
+          "culinaryRole": "main_protein",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": true
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Brokkoli",
+            "en": "broccoli",
+            "fr": "brocoli",
+            "it": "broccoli",
+            "tr": "brokoli"
+          },
+          "amount": 300,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Karotten",
+            "en": "carrots",
+            "fr": "carottes",
+            "it": "carote",
+            "tr": "havuç"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Pak Choi",
+            "en": "bok choy",
+            "fr": "pak-choï",
+            "it": "pak choi",
+            "tr": "pak choi"
+          },
+          "amount": 240,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Sesamsamen",
+            "en": "sesame seeds",
+            "fr": "graines de sésame",
+            "it": "semi di sesamo",
+            "tr": "susam tohumları"
+          },
+          "amount": 16,
+          "unit": "g",
+          "culinaryRole": "topping",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Sojasauce",
+            "en": "soy sauce",
+            "fr": "sauce soja",
+            "it": "salsa di soia",
+            "tr": "soya sosu"
+          },
+          "amount": 89,
+          "unit": "ml",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Honig",
+            "en": "honey",
+            "fr": "miel",
+            "it": "miele",
+            "tr": "bal"
+          },
+          "amount": 21,
+          "unit": "ml",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Sesamöl",
+            "en": "sesame oil",
+            "fr": "huile de sésame",
+            "it": "olio di sesamo",
+            "tr": "susam yağı"
+          },
+          "amount": 11,
+          "unit": "ml",
+          "culinaryRole": "fat_source",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Ingwer",
+            "en": "ginger",
+            "fr": "gingembre",
+            "it": "zenzero",
+            "tr": "zencefil"
+          },
+          "amount": 20,
+          "unit": "g",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Knoblauch",
+            "en": "garlic",
+            "fr": "ail",
+            "it": "aglio",
+            "tr": "sarımsak"
+          },
+          "amount": 10,
+          "unit": "g",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Neutrales Bratöl",
+            "en": "neutral cooking oil",
+            "fr": "huile de cuisson neutre",
+            "it": "olio neutro per cottura",
+            "tr": "nötr kızartma yağı"
+          },
+          "amount": 11,
+          "unit": "ml",
+          "culinaryRole": "fat_source",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Reis und Hähnchen",
+            "en": "Rice and chicken",
+            "fr": "Riz et poulet",
+            "it": "Riso e pollo",
+            "tr": "Pirinç ve tavuk"
+          },
+          "content": {
+            "de": "{0001} garen. {0002} in Streifen schneiden und mit {0009} und {0012} anbraten.",
+            "en": "Cook {0001}. Slice {0002} and sauté it with {0009} and {0012}.",
+            "fr": "Faites cuire {0001}. Coupez {0002} en lamelles et faites-le revenir avec {0009} et {0012}.",
+            "it": "Cuocete {0001}. Tagliate {0002} a strisce e rosolatelo con {0009} e {0012}.",
+            "tr": "{0001} pişirin. {0002} şerit doğrayıp {0009} ve {0012} ile soteleyin."
+          },
+          "stove_level": 7,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Teriyaki-Sauce",
+            "en": "Teriyaki sauce",
+            "fr": "Sauce teriyaki",
+            "it": "Salsa teriyaki",
+            "tr": "Teriyaki sosu"
+          },
+          "content": {
+            "de": "{0007}, {0008}, geriebenen {0010} und gepressten {0011} verrühren.",
+            "en": "Whisk {0007} and {0008} with grated {0010} and pressed {0011}.",
+            "fr": "Mélangez {0007} et {0008} avec {0010} râpé et {0011} pressé.",
+            "it": "Mescolate {0007} e {0008} con {0010} grattugiato e {0011} schiacciato.",
+            "tr": "{0007} ve {0008} ile rendelenmiş {0010} ve ezilmiş {0011} karıştırın."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Glasieren",
+            "en": "Glazing",
+            "fr": "Glaçage",
+            "it": "Glassatura",
+            "tr": "Sosla kaplama"
+          },
+          "content": {
+            "de": "{0002} mit der Sauce glasieren und kurz einkochen lassen.",
+            "en": "Glaze {0002} with the sauce and reduce briefly.",
+            "fr": "Enrobez {0002} de sauce et faites réduire brièvement.",
+            "it": "Glassate {0002} con la salsa e fate restringere brevemente.",
+            "tr": "{0002} sosla kaplayıp kısa süre çektirin."
+          },
+          "stove_level": 5,
+          "time_min": 4
+        },
+        {
+          "title": {
+            "de": "Gemüse",
+            "en": "Vegetables",
+            "fr": "Légumes",
+            "it": "Verdure",
+            "tr": "Sebzeler"
+          },
+          "content": {
+            "de": "{0003}, {0004} und {0005} bissfest garen.",
+            "en": "Cook {0003}, {0004}, and {0005} until just tender.",
+            "fr": "Faites cuire {0003}, {0004} et {0005} jusqu’à ce qu’ils restent légèrement croquants.",
+            "it": "Cuocete {0003}, {0004} e {0005} lasciandoli leggermente croccanti.",
+            "tr": "{0003}, {0004} ve {0005} diri kalacak şekilde pişirin."
+          },
+          "stove_level": 5,
+          "time_min": 7
+        },
+        {
+          "title": {
+            "de": "Anrichten",
+            "en": "Assembly",
+            "fr": "Dressage",
+            "it": "Composizione",
+            "tr": "Sunum"
+          },
+          "content": {
+            "de": "{0001} und {0002} mit {0003}, {0004} und {0005} in Schalen anrichten und mit {0006} bestreuen.",
+            "en": "Arrange {0001} and {0002} in bowls with {0003}, {0004}, and {0005}; sprinkle with {0006}.",
+            "fr": "Répartissez {0001} et {0002} dans les bols avec {0003}, {0004} et {0005}, puis parsemez de {0006}.",
+            "it": "Disponete {0001} e {0002} nelle ciotole con {0003}, {0004} e {0005}, poi cospargete con {0006}.",
+            "tr": "{0001} ve {0002} ile {0003}, {0004}, {0005} kaselere yerleştirip {0006} serpin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        }
+      ],
+      "garnish": {
+        "de": "Sesamsamen",
+        "en": "sesame seeds",
+        "fr": "graines de sésame",
+        "it": "semi di sesamo",
+        "tr": "susam tohumları"
+      },
+      "chef_analysis": {
+        "de": "Süß-salzige Teriyaki-Sauce glasiert zarte Hähnchenbrust und verbindet sie mit Reis und knackigem Gemüse. Ingwer und Sesam runden das Aroma ab.",
+        "en": "A sweet-savory teriyaki glaze coats tender chicken and pairs it with rice and crisp vegetables. Ginger and sesame round out the flavor.",
+        "fr": "Une sauce teriyaki douce et salée enrobe le poulet tendre, servi avec du riz et des légumes croquants. Le gingembre et le sésame complètent les saveurs.",
+        "it": "Una glassa teriyaki agrodolce avvolge il pollo tenero, accompagnato da riso e verdure croccanti. Zenzero e sesamo completano il gusto.",
+        "tr": "Tatlı-tuzlu teriyaki sosu yumuşak tavuğu kaplar; pirinç ve diri sebzelerle sunulur. Zencefil ve susam lezzeti tamamlar."
+      },
+      "diet_labels": [
+        "high_protein"
+      ],
+      "coreComponents": [
+        "basmati_rice",
+        "chicken",
+        "teriyaki_sauce"
+      ]
+    },
+    {
+      "id": "buddha_bowl_suesskartoffel",
+      "cuisine": "Modern",
+      "region": null,
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "buddha bowl",
+          "suesskartoffel bowl",
+          "quinoa tahini bowl"
+        ],
+        "en": [
+          "buddha bowl",
+          "sweet potato bowl",
+          "quinoa tahini bowl"
+        ]
+      },
+      "titles": {
+        "de": "Buddha-Bowl mit Süßkartoffel",
+        "en": "Sweet Potato Buddha Bowl",
+        "fr": "Bol Buddha à la patate douce",
+        "it": "Buddha bowl con patata dolce",
+        "tr": "Tatlı patatesli Buddha kasesi"
+      },
+      "servings": 4,
+      "prep_time_min": 40,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Quinoa",
+            "en": "quinoa",
+            "fr": "quinoa",
+            "it": "quinoa",
+            "tr": "kinoa"
+          },
+          "amount": 600,
+          "unit": "g",
+          "culinaryRole": "carbohydrate",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Süßkartoffel",
+            "en": "sweet potato",
+            "fr": "patate douce",
+            "it": "patata dolce",
+            "tr": "tatlı patates"
+          },
+          "amount": 500,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Kichererbsen",
+            "en": "chickpeas",
+            "fr": "pois chiches",
+            "it": "ceci",
+            "tr": "nohut"
+          },
+          "amount": 300,
+          "unit": "g",
+          "culinaryRole": "secondary_protein",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Blattspinat",
+            "en": "baby spinach",
+            "fr": "jeunes pousses d’épinards",
+            "it": "spinaci freschi",
+            "tr": "taze ıspanak"
+          },
+          "amount": 160,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Avocado",
+            "en": "avocado",
+            "fr": "avocat",
+            "it": "avocado",
+            "tr": "avokado"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "fruit",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Radieschen",
+            "en": "radishes",
+            "fr": "radis",
+            "it": "ravanelli",
+            "tr": "turp"
+          },
+          "amount": 120,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Kürbiskerne",
+            "en": "pumpkin seeds",
+            "fr": "graines de courge",
+            "it": "semi di zucca",
+            "tr": "kabak çekirdeği"
+          },
+          "amount": 30,
+          "unit": "g",
+          "culinaryRole": "topping",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Tahini",
+            "en": "Tahini",
+            "fr": "Tahini",
+            "it": "Tahini",
+            "tr": "Tahini"
+          },
+          "amount": 50,
+          "unit": "g",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Zitronensaft",
+            "en": "lemon juice",
+            "fr": "jus de citron",
+            "it": "succo di limone",
+            "tr": "limon suyu"
+          },
+          "amount": 39,
+          "unit": "ml",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Knoblauch",
+            "en": "garlic",
+            "fr": "ail",
+            "it": "aglio",
+            "tr": "sarımsak"
+          },
+          "amount": 10,
+          "unit": "g",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Olivenöl",
+            "en": "olive oil",
+            "fr": "huile d'olive",
+            "it": "olio d’oliva",
+            "tr": "zeytinyağı"
+          },
+          "amount": 22,
+          "unit": "ml",
+          "culinaryRole": "fat_source",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Quinoa und Süßkartoffel",
+            "en": "Quinoa and sweet potato",
+            "fr": "Quinoa et patate douce",
+            "it": "Quinoa e patata dolce",
+            "tr": "Kinoa ve tatlı patates"
+          },
+          "content": {
+            "de": "{0001} garen. {0002} würfeln und mit {0011} im Ofen rösten.",
+            "en": "Cook {0001}. Dice {0002} and roast it in the oven with {0011}.",
+            "fr": "Faites cuire {0001}. Coupez {0002} en dés et faites-le rôtir au four avec {0011}.",
+            "it": "Cuocete {0001}. Tagliate {0002} a cubetti e cuocetela in forno con {0011}.",
+            "tr": "{0001} pişirin. {0002} küp doğrayıp {0011} ile fırında kızartın."
+          },
+          "stove_level": 6,
+          "time_min": 25
+        },
+        {
+          "title": {
+            "de": "Kichererbsen",
+            "en": "Chickpeas",
+            "fr": "Pois chiches",
+            "it": "Ceci",
+            "tr": "Nohut"
+          },
+          "content": {
+            "de": "{0003} abspülen, abtrocknen und im Ofen knusprig rösten.",
+            "en": "Rinse {0003}, pat dry, and roast until crisp.",
+            "fr": "Rincez {0003}, séchez-les et faites-les rôtir jusqu’à ce qu’ils soient croustillants.",
+            "it": "Sciacquate {0003}, asciugateli e arrostite finché diventano croccanti.",
+            "tr": "{0003} durulayıp kurulayın ve çıtır olana kadar fırında kızartın."
+          },
+          "stove_level": 6,
+          "time_min": 20
+        },
+        {
+          "title": {
+            "de": "Frische Zutaten",
+            "en": "Fresh ingredients",
+            "fr": "Ingrédients frais",
+            "it": "Ingredienti freschi",
+            "tr": "Taze malzemeler"
+          },
+          "content": {
+            "de": "{0004} waschen, {0005} schneiden und {0006} in Scheiben schneiden.",
+            "en": "Wash {0004}, slice {0005}, and cut {0006} into slices.",
+            "fr": "Lavez {0004}, tranchez {0005} et coupez {0006} en rondelles.",
+            "it": "Lavate {0004}, affettate {0005} e tagliate {0006} a rondelle.",
+            "tr": "{0004} yıkayın, {0005} ve {0006} dilimleyin."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Tahini-Dressing",
+            "en": "Tahini dressing",
+            "fr": "Sauce au tahini",
+            "it": "Salsa tahini",
+            "tr": "Tahinli sos"
+          },
+          "content": {
+            "de": "{0008}, {0009}, {0010} und {0011} glatt verrühren.",
+            "en": "Whisk {0008}, {0009}, {0010}, and {0011} until smooth.",
+            "fr": "Fouettez {0008}, {0009}, {0010} et {0011} jusqu’à obtenir une sauce lisse.",
+            "it": "Mescolate {0008}, {0009}, {0010} e {0011} fino a ottenere una salsa liscia.",
+            "tr": "{0008}, {0009}, {0010} ve {0011} pürüzsüz olana kadar karıştırın."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Anrichten",
+            "en": "Assembly",
+            "fr": "Dressage",
+            "it": "Composizione",
+            "tr": "Sunum"
+          },
+          "content": {
+            "de": "{0001}, {0002}, {0003}, {0004}, {0005} und {0006} in Schalen anrichten, Dressing darübergeben und mit {0007} bestreuen.",
+            "en": "Arrange {0001}, {0002}, {0003}, {0004}, {0005}, and {0006} in bowls, drizzle with the dressing, and top with {0007}.",
+            "fr": "Dressez {0001}, {0002}, {0003}, {0004}, {0005} et {0006}, nappez de sauce et parsemez de {0007}.",
+            "it": "Disponete {0001}, {0002}, {0003}, {0004}, {0005} e {0006}, condite con la salsa e completate con {0007}.",
+            "tr": "{0001}, {0002}, {0003}, {0004}, {0005} ve {0006} kaselere yerleştirin, sos gezdirip {0007} serpin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        }
+      ],
+      "garnish": {
+        "de": "Kürbiskerne und Tahini-Dressing",
+        "en": "pumpkin seeds and tahini dressing",
+        "fr": "graines de courge et sauce au tahini",
+        "it": "semi di zucca e salsa tahini",
+        "tr": "kabak çekirdeği ve tahinli sos"
+      },
+      "chef_analysis": {
+        "de": "Quinoa, geröstete Süßkartoffel und Kichererbsen sorgen für eine sättigende Basis. Tahini und Zitrone verbinden die warmen und frischen Komponenten.",
+        "en": "Quinoa, roasted sweet potato, and chickpeas create a filling base. Tahini and lemon tie the warm and fresh elements together.",
+        "fr": "Le quinoa, la patate douce rôtie et les pois chiches forment une base nourrissante. Le tahini et le citron relient les éléments chauds et frais.",
+        "it": "Quinoa, patata dolce arrostita e ceci creano una base saziante. Tahini e limone legano gli elementi caldi e freschi.",
+        "tr": "Kinoa, fırınlanmış tatlı patates ve nohut doyurucu bir temel oluşturur. Tahin ve limon sıcak ve taze malzemeleri birleştirir."
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian",
+        "glutenfree"
+      ],
+      "coreComponents": [
+        "quinoa",
+        "sweet_potato",
+        "tahini_dressing"
+      ]
+    },
+    {
+      "id": "griechische_gyros_bowl",
+      "cuisine": "Griechisch",
+      "region": "Griechenland",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "gyros bowl",
+          "griechische gyros bowl",
+          "haehnchen gyros bowl"
+        ],
+        "en": [
+          "gyros bowl",
+          "greek gyros bowl",
+          "chicken gyros bowl"
+        ]
+      },
+      "titles": {
+        "de": "Griechische Gyros-Bowl",
+        "en": "Greek Gyros Bowl",
+        "fr": "Bol grec au gyros",
+        "it": "Bowl greca con gyros",
+        "tr": "Yunan usulü gyros kasesi"
+      },
+      "servings": 4,
+      "prep_time_min": 25,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Kartoffeln",
+            "en": "potatoes",
+            "fr": "pommes de terre",
+            "it": "patate",
+            "tr": "patates"
+          },
+          "amount": 500,
+          "unit": "g",
+          "culinaryRole": "carbohydrate",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Hähnchen-Gyros",
+            "en": "chicken gyros",
+            "fr": "gyros de poulet",
+            "it": "gyros di pollo",
+            "tr": "tavuk gyrosu"
+          },
+          "amount": 500,
+          "unit": "g",
+          "culinaryRole": "main_protein",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": true
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Tzatziki",
+            "en": "Tzatziki",
+            "fr": "Tzatziki",
+            "it": "Tzatziki",
+            "tr": "Tzatziki"
+          },
+          "amount": 240,
+          "unit": "g",
+          "culinaryRole": "secondary_protein",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Gurke",
+            "en": "cucumber",
+            "fr": "concombre",
+            "it": "cetriolo",
+            "tr": "salatalık"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Tomaten",
+            "en": "tomatoes",
+            "fr": "tomates",
+            "it": "pomodori",
+            "tr": "domates"
+          },
+          "amount": 240,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Zwiebeln",
+            "en": "onions",
+            "fr": "oignons",
+            "it": "cipolle",
+            "tr": "soğan"
+          },
+          "amount": 100,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Feta",
+            "en": "feta",
+            "fr": "feta",
+            "it": "feta",
+            "tr": "beyaz peynir"
+          },
+          "amount": 100,
+          "unit": "g",
+          "culinaryRole": "secondary_protein",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Oliven",
+            "en": "olives",
+            "fr": "olives",
+            "it": "olive",
+            "tr": "zeytin"
+          },
+          "amount": 80,
+          "unit": "g",
+          "culinaryRole": "fruit",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Olivenöl",
+            "en": "olive oil",
+            "fr": "huile d'olive",
+            "it": "olio d’oliva",
+            "tr": "zeytinyağı"
+          },
+          "amount": 22,
+          "unit": "ml",
+          "culinaryRole": "fat_source",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Knoblauch",
+            "en": "garlic",
+            "fr": "ail",
+            "it": "aglio",
+            "tr": "sarımsak"
+          },
+          "amount": 10,
+          "unit": "g",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Neutrales Bratöl",
+            "en": "neutral cooking oil",
+            "fr": "huile de cuisson neutre",
+            "it": "olio neutro per cottura",
+            "tr": "nötr kızartma yağı"
+          },
+          "amount": 11,
+          "unit": "ml",
+          "culinaryRole": "fat_source",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Kartoffeln",
+            "en": "Potatoes",
+            "fr": "Pommes de terre",
+            "it": "Patate",
+            "tr": "Patates"
+          },
+          "content": {
+            "de": "{0001} in Spalten schneiden, mit {0011} vermengen und goldbraun backen.",
+            "en": "Cut {0001} into wedges, toss with {0011}, and roast until golden.",
+            "fr": "Coupez {0001} en quartiers, mélangez avec {0011} et faites dorer au four.",
+            "it": "Tagliate {0001} a spicchi, conditeli con {0011} e cuoceteli al forno fino a doratura.",
+            "tr": "{0001} elma dilim kesin, {0011} ile harmanlayıp altın rengi olana kadar fırınlayın."
+          },
+          "stove_level": 6,
+          "time_min": 20
+        },
+        {
+          "title": {
+            "de": "Hähnchen-Gyros",
+            "en": "Chicken gyros",
+            "fr": "Gyros de poulet",
+            "it": "Gyros di pollo",
+            "tr": "Tavuk gyros"
+          },
+          "content": {
+            "de": "{0002} mit {0010} und {0009} würzen und scharf anbraten.",
+            "en": "Season {0002} with {0010} and {0009}, then sear.",
+            "fr": "Assaisonnez {0002} avec {0010} et {0009}, puis saisissez-le.",
+            "it": "Insaporite {0002} con {0010} e {0009}, poi rosolatelo a fuoco vivo.",
+            "tr": "{0002} ürününü {0010} ve {0009} ile tatlandırıp yüksek ateşte kızartın."
+          },
+          "stove_level": 7,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Tzatziki und Gemüse",
+            "en": "Tzatziki and vegetables",
+            "fr": "Tzatziki et légumes",
+            "it": "Tzatziki e verdure",
+            "tr": "Tzatziki ve sebzeler"
+          },
+          "content": {
+            "de": "{0003} anrühren. {0004}, {0005} und {0006} schneiden.",
+            "en": "Stir {0003}. Slice {0004}, {0005}, and {0006}.",
+            "fr": "Mélangez {0003}. Coupez {0004}, {0005} et {0006}.",
+            "it": "Mescolate {0003}. Affettate {0004}, {0005} e {0006}.",
+            "tr": "{0003} karıştırın. {0004}, {0005} ve {0006} dilimleyin."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Anrichten",
+            "en": "Assembly",
+            "fr": "Dressage",
+            "it": "Composizione",
+            "tr": "Sunum"
+          },
+          "content": {
+            "de": "{0001} und {0002} in Schalen geben, mit {0003}, {0004}, {0005}, {0006}, {0007} und {0008} ergänzen und mit {0009} beträufeln.",
+            "en": "Divide {0001} and {0002} among bowls, add {0003}, {0004}, {0005}, {0006}, {0007}, and {0008}, and drizzle with {0009}.",
+            "fr": "Répartissez {0001} et {0002} dans les bols, ajoutez {0003}, {0004}, {0005}, {0006}, {0007} et {0008}, puis arrosez de {0009}.",
+            "it": "Distribuite {0001} e {0002} nelle ciotole, aggiungete {0003}, {0004}, {0005}, {0006}, {0007} e {0008}, poi condite con {0009}.",
+            "tr": "{0001} ve {0002} kaselere paylaştırın, {0003}, {0004}, {0005}, {0006}, {0007} ve {0008} ekleyip {0009} gezdirin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        }
+      ],
+      "garnish": {
+        "de": "Tzatziki, Feta und Oliven",
+        "en": "tzatziki, feta, and olives",
+        "fr": "tzatziki, feta et olives",
+        "it": "tzatziki, feta e olive",
+        "tr": "tzatziki, feta ve zeytin"
+      },
+      "chef_analysis": {
+        "de": "Knusprige Kartoffeln und gewürztes Hähnchen-Gyros werden mit Tzatziki, Feta und Oliven kombiniert. Gurke und Tomate bringen frische Kontraste.",
+        "en": "Crisp potatoes and seasoned chicken gyros are paired with tzatziki, feta, and olives. Cucumber and tomato add freshness.",
+        "fr": "Les pommes de terre croustillantes et le gyros de poulet assaisonné s’accompagnent de tzatziki, de feta et d’olives. Le concombre et la tomate apportent de la fraîcheur.",
+        "it": "Patate croccanti e gyros di pollo speziato sono abbinati a tzatziki, feta e olive. Cetriolo e pomodoro aggiungono freschezza.",
+        "tr": "Çıtır patates ve baharatlı tavuk gyros, tzatziki, feta ve zeytinle birleşir. Salatalık ve domates ferahlık verir."
+      },
+      "diet_labels": [
+        "high_protein"
+      ],
+      "coreComponents": [
+        "potatoes",
+        "chicken_gyros",
+        "tzatziki"
+      ]
+    },
+    {
+      "id": "koreanische_bibimbap_bowl",
+      "cuisine": "Koreanisch",
+      "region": "Korea",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "bibimbap",
+          "koreanische bibimbap bowl",
+          "bibimbap mit rind"
+        ],
+        "en": [
+          "bibimbap",
+          "korean bibimbap bowl",
+          "beef bibimbap"
+        ]
+      },
+      "titles": {
+        "de": "Koreanische Bibimbap-Bowl",
+        "en": "Korean Bibimbap Bowl",
+        "fr": "Bol de bibimbap coréen",
+        "it": "Bowl bibimbap coreana",
+        "tr": "Kore usulü bibimbap kasesi"
+      },
+      "servings": 4,
+      "prep_time_min": 35,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Basmatireis",
+            "en": "basmati rice",
+            "fr": "riz basmati",
+            "it": "riso basmati",
+            "tr": "basmati pirinci"
+          },
+          "amount": 600,
+          "unit": "g",
+          "culinaryRole": "carbohydrate",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Mageres Rindfleisch",
+            "en": "lean beef",
+            "fr": "bœuf maigre",
+            "it": "manzo magro",
+            "tr": "yağsız dana eti"
+          },
+          "amount": 400,
+          "unit": "g",
+          "culinaryRole": "main_protein",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": true
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Spinat",
+            "en": "spinach",
+            "fr": "épinards",
+            "it": "spinaci",
+            "tr": "ıspanak"
+          },
+          "amount": 300,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Karotten",
+            "en": "carrots",
+            "fr": "carottes",
+            "it": "carote",
+            "tr": "havuç"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Zucchini",
+            "en": "zucchini",
+            "fr": "courgette",
+            "it": "zucchine",
+            "tr": "kabak"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Shiitake-Pilze",
+            "en": "shiitake mushrooms",
+            "fr": "champignons shiitake",
+            "it": "funghi shiitake",
+            "tr": "shiitake mantarı"
+          },
+          "amount": 160,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Ei",
+            "en": "egg",
+            "fr": "œuf",
+            "it": "uovo",
+            "tr": "yumurta"
+          },
+          "amount": 240,
+          "unit": "g",
+          "culinaryRole": "secondary_protein",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Gochujang",
+            "en": "Gochujang",
+            "fr": "Gochujang",
+            "it": "Gochujang",
+            "tr": "Gochujang"
+          },
+          "amount": 40,
+          "unit": "g",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Sesamöl",
+            "en": "sesame oil",
+            "fr": "huile de sésame",
+            "it": "olio di sesamo",
+            "tr": "susam yağı"
+          },
+          "amount": 17,
+          "unit": "ml",
+          "culinaryRole": "fat_source",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Reisessig",
+            "en": "rice vinegar",
+            "fr": "vinaigre de riz",
+            "it": "aceto di riso",
+            "tr": "pirinç sirkesi"
+          },
+          "amount": 20,
+          "unit": "ml",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Sojasauce",
+            "en": "soy sauce",
+            "fr": "sauce soja",
+            "it": "salsa di soia",
+            "tr": "soya sosu"
+          },
+          "amount": 40,
+          "unit": "ml",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Zucker",
+            "en": "sugar",
+            "fr": "sucre",
+            "it": "zucchero",
+            "tr": "şeker"
+          },
+          "amount": 6,
+          "unit": "g",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0013",
+          "names": {
+            "de": "Neutrales Bratöl",
+            "en": "neutral cooking oil",
+            "fr": "huile de cuisson neutre",
+            "it": "olio neutro per cottura",
+            "tr": "nötr kızartma yağı"
+          },
+          "amount": 11,
+          "unit": "ml",
+          "culinaryRole": "fat_source",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0014",
+          "names": {
+            "de": "Knoblauch",
+            "en": "garlic",
+            "fr": "ail",
+            "it": "aglio",
+            "tr": "sarımsak"
+          },
+          "amount": 10,
+          "unit": "g",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Reis und Rindfleisch",
+            "en": "Rice and beef",
+            "fr": "Riz et bœuf",
+            "it": "Riso e manzo",
+            "tr": "Pirinç ve dana eti"
+          },
+          "content": {
+            "de": "{0001} garen. {0002} in Streifen schneiden und mit {0011}, {0014}, {0012} und {0013} anbraten.",
+            "en": "Cook {0001}. Slice {0002} and sauté it with {0011}, {0014}, {0012}, and {0013}.",
+            "fr": "Faites cuire {0001}. Coupez {0002} en lamelles et faites-le revenir avec {0011}, {0014}, {0012} et {0013}.",
+            "it": "Cuocete {0001}. Tagliate {0002} a strisce e rosolatelo con {0011}, {0014}, {0012} e {0013}.",
+            "tr": "{0001} pişirin. {0002} şerit doğrayıp {0011}, {0014}, {0012} ve {0013} ile soteleyin."
+          },
+          "stove_level": 7,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Gemüse",
+            "en": "Vegetables",
+            "fr": "Légumes",
+            "it": "Verdure",
+            "tr": "Sebzeler"
+          },
+          "content": {
+            "de": "{0003} blanchieren und {0004}, {0005} sowie {0006} getrennt in {0009} anbraten.",
+            "en": "Blanch {0003}; sauté {0004}, {0005}, and {0006} separately in {0009}.",
+            "fr": "Blanchissez {0003}, puis faites revenir séparément {0004}, {0005} et {0006} dans {0009}.",
+            "it": "Sbollentate {0003}; rosolate separatamente {0004}, {0005} e {0006} in {0009}.",
+            "tr": "{0003} haşlayın; {0004}, {0005} ve {0006} ayrı ayrı {0009} ile soteleyin."
+          },
+          "stove_level": 5,
+          "time_min": 12
+        },
+        {
+          "title": {
+            "de": "Ei und Sauce",
+            "en": "Egg and sauce",
+            "fr": "Œuf et sauce",
+            "it": "Uovo e salsa",
+            "tr": "Yumurta ve sos"
+          },
+          "content": {
+            "de": "{0007} in {0009} braten. {0008}, {0009} und {0010} verrühren.",
+            "en": "Fry {0007} in {0009}. Mix {0008}, {0009}, and {0010}.",
+            "fr": "Faites frire {0007} dans {0009}. Mélangez {0008}, {0009} et {0010}.",
+            "it": "Cuocete {0007} in {0009}. Mescolate {0008}, {0009} e {0010}.",
+            "tr": "{0007} ürününü {0009} ile kızartın. {0008}, {0009} ve {0010} karıştırın."
+          },
+          "stove_level": 6,
+          "time_min": 6
+        },
+        {
+          "title": {
+            "de": "Anrichten",
+            "en": "Assembly",
+            "fr": "Dressage",
+            "it": "Composizione",
+            "tr": "Sunum"
+          },
+          "content": {
+            "de": "{0001} in Schalen geben und {0002}, {0003}, {0004}, {0005} und {0006} farblich getrennt darauf anrichten.",
+            "en": "Divide {0001} among bowls and arrange {0002}, {0003}, {0004}, {0005}, and {0006} in separate sections.",
+            "fr": "Répartissez {0001} dans les bols et disposez {0002}, {0003}, {0004}, {0005} et {0006} en sections distinctes.",
+            "it": "Distribuite {0001} nelle ciotole e disponete {0002}, {0003}, {0004}, {0005} e {0006} in sezioni separate.",
+            "tr": "{0001} kaselere paylaştırıp {0002}, {0003}, {0004}, {0005} ve {0006} ürünlerini ayrı bölümlere yerleştirin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Servieren",
+            "en": "Serving",
+            "fr": "Service",
+            "it": "Servizio",
+            "tr": "Servis"
+          },
+          "content": {
+            "de": "{0007} auflegen und mit der Sauce aus {0008}, {0009} und {0010} servieren.",
+            "en": "Top with {0007} and serve with the sauce made from {0008}, {0009}, and {0010}.",
+            "fr": "Déposez {0007} dessus et servez avec la sauce composée de {0008}, {0009} et {0010}.",
+            "it": "Adagiate {0007} sopra e servite con la salsa preparata con {0008}, {0009} e {0010}.",
+            "tr": "Üzerine {0007} koyup {0008}, {0009} ve {0010} sosuyla servis edin."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "garnish": {
+        "de": "Gochujang-Sauce",
+        "en": "Gochujang sauce",
+        "fr": "sauce au Gochujang",
+        "it": "salsa al Gochujang",
+        "tr": "Gochujang sosu"
+      },
+      "chef_analysis": {
+        "de": "Bibimbap ordnet Reis, kurz gegartes Gemüse und Rindfleisch getrennt an und verbindet sie mit Gochujang. Das Spiegelei ergänzt das Gericht mit einer cremigen Komponente.",
+        "en": "Bibimbap arranges rice, quickly cooked vegetables, and beef separately, then brings them together with Gochujang. A fried egg adds a creamy element.",
+        "fr": "Le bibimbap dispose séparément le riz, les légumes rapidement cuits et le bœuf, puis les lie avec du Gochujang. L’œuf au plat apporte une texture crémeuse.",
+        "it": "Il bibimbap dispone separatamente riso, verdure cotte rapidamente e manzo, poi li unisce con il Gochujang. L’uovo all’occhio di bue aggiunge una nota cremosa.",
+        "tr": "Bibimbap pirinç, kısa süre pişirilmiş sebzeler ve dana etini ayrı ayrı sunup Gochujang ile birleştirir. Üzerindeki yumurta kremamsı bir doku katar."
+      },
+      "diet_labels": [
+        "high_protein"
+      ],
+      "coreComponents": [
+        "basmati_rice",
+        "beef",
+        "gochujang"
+      ]
+    },
+    {
+      "id": "lachs_avocado_sushi_bowl",
+      "cuisine": "Japanisch",
+      "region": "Japan",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "lachs avocado sushi bowl",
+          "sushi bowl mit lachs",
+          "lachs sushi bowl"
+        ],
+        "en": [
+          "salmon avocado sushi bowl",
+          "salmon sushi bowl",
+          "sushi bowl"
+        ]
+      },
+      "titles": {
+        "de": "Lachs-Avocado-Sushi-Bowl",
+        "en": "Salmon Avocado Sushi Bowl",
+        "fr": "Bol sushi au saumon et à l’avocat",
+        "it": "Bowl sushi con salmone e avocado",
+        "tr": "Somonlu avokadolu suşi kasesi"
+      },
+      "servings": 4,
+      "prep_time_min": 20,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Sushi-Reis",
+            "en": "sushi rice",
+            "fr": "riz à sushi",
+            "it": "riso per sushi",
+            "tr": "suşi pirinci"
+          },
+          "amount": 600,
+          "unit": "g",
+          "culinaryRole": "carbohydrate",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Lachs",
+            "en": "salmon",
+            "fr": "saumon",
+            "it": "salmone",
+            "tr": "somon"
+          },
+          "amount": 400,
+          "unit": "g",
+          "culinaryRole": "main_protein",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": true
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Avocado",
+            "en": "avocado",
+            "fr": "avocat",
+            "it": "avocado",
+            "tr": "avokado"
+          },
+          "amount": 240,
+          "unit": "g",
+          "culinaryRole": "fruit",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Gurke",
+            "en": "cucumber",
+            "fr": "concombre",
+            "it": "cetriolo",
+            "tr": "salatalık"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Karotten",
+            "en": "carrots",
+            "fr": "carottes",
+            "it": "carote",
+            "tr": "havuç"
+          },
+          "amount": 160,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Nori-Blätter",
+            "en": "nori sheets",
+            "fr": "feuilles de nori",
+            "it": "fogli di nori",
+            "tr": "nori yaprakları"
+          },
+          "amount": 10,
+          "unit": "g",
+          "culinaryRole": "topping",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Sesamsamen",
+            "en": "sesame seeds",
+            "fr": "graines de sésame",
+            "it": "semi di sesamo",
+            "tr": "susam tohumları"
+          },
+          "amount": 20,
+          "unit": "g",
+          "culinaryRole": "topping",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Sojasauce",
+            "en": "soy sauce",
+            "fr": "sauce soja",
+            "it": "salsa di soia",
+            "tr": "soya sosu"
+          },
+          "amount": 50,
+          "unit": "ml",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Wasabi",
+            "en": "Wasabi",
+            "fr": "Wasabi",
+            "it": "Wasabi",
+            "tr": "Wasabi"
+          },
+          "amount": 6,
+          "unit": "g",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Reisessig",
+            "en": "rice vinegar",
+            "fr": "vinaigre de riz",
+            "it": "aceto di riso",
+            "tr": "pirinç sirkesi"
+          },
+          "amount": 20,
+          "unit": "ml",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Neutrales Bratöl",
+            "en": "neutral cooking oil",
+            "fr": "huile de cuisson neutre",
+            "it": "olio neutro per cottura",
+            "tr": "nötr kızartma yağı"
+          },
+          "amount": 11,
+          "unit": "ml",
+          "culinaryRole": "fat_source",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Reis",
+            "en": "Rice",
+            "fr": "Riz",
+            "it": "Riso",
+            "tr": "Pirinç"
+          },
+          "content": {
+            "de": "{0001} garen, mit {0010} abschmecken und abkühlen lassen.",
+            "en": "Cook {0001}, season with {0010}, and let it cool.",
+            "fr": "Faites cuire {0001}, assaisonnez avec {0010}, puis laissez refroidir.",
+            "it": "Cuocete {0001}, conditelo con {0010} e lasciatelo raffreddare.",
+            "tr": "{0001} pişirin, {0010} ile tatlandırıp soğumaya bırakın."
+          },
+          "stove_level": 5,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Lachs",
+            "en": "Salmon",
+            "fr": "Saumon",
+            "it": "Salmone",
+            "tr": "Somon"
+          },
+          "content": {
+            "de": "{0002} in {0011} braten, bis er innen saftig bleibt.",
+            "en": "Sear {0002} in {0011} until just cooked through and moist.",
+            "fr": "Faites saisir {0002} dans {0011} jusqu’à ce qu’il soit cuit tout en restant moelleux.",
+            "it": "Rosolate {0002} in {0011} finché è cotto ma ancora morbido.",
+            "tr": "{0002} ürününü {0011} ile içi sulu kalacak şekilde kızartın."
+          },
+          "stove_level": 6,
+          "time_min": 8
+        },
+        {
+          "title": {
+            "de": "Gemüse",
+            "en": "Vegetables",
+            "fr": "Légumes",
+            "it": "Verdure",
+            "tr": "Sebzeler"
+          },
+          "content": {
+            "de": "{0003} schneiden, {0004} in Stifte und {0005} in feine Streifen schneiden.",
+            "en": "Slice {0003}, cut {0004} into sticks, and finely julienne {0005}.",
+            "fr": "Tranchez {0003}, coupez {0004} en bâtonnets et {0005} en fines lamelles.",
+            "it": "Affettate {0003}, tagliate {0004} a bastoncini e {0005} a striscioline sottili.",
+            "tr": "{0003} dilimleyin, {0004} çubuk, {0005} ince şerit doğrayın."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Wasabi-Dressing",
+            "en": "Wasabi dressing",
+            "fr": "Sauce au wasabi",
+            "it": "Condimento al wasabi",
+            "tr": "Wasabili sos"
+          },
+          "content": {
+            "de": "{0008}, {0009} und {0010} verrühren.",
+            "en": "Whisk together {0008}, {0009}, and {0010}.",
+            "fr": "Mélangez {0008}, {0009} et {0010}.",
+            "it": "Mescolate {0008}, {0009} e {0010}.",
+            "tr": "{0008}, {0009} ve {0010} karıştırın."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        },
+        {
+          "title": {
+            "de": "Anrichten",
+            "en": "Assembly",
+            "fr": "Dressage",
+            "it": "Composizione",
+            "tr": "Sunum"
+          },
+          "content": {
+            "de": "{0001}, {0002}, {0003}, {0004} und {0005} in Schalen anrichten, mit Dressing beträufeln und {0006} sowie {0007} darübergeben.",
+            "en": "Arrange {0001}, {0002}, {0003}, {0004}, and {0005} in bowls, drizzle with dressing, and top with {0006} and {0007}.",
+            "fr": "Dressez {0001}, {0002}, {0003}, {0004} et {0005}, nappez de sauce et ajoutez {0006} et {0007}.",
+            "it": "Disponete {0001}, {0002}, {0003}, {0004} e {0005}, condite e completate con {0006} e {0007}.",
+            "tr": "{0001}, {0002}, {0003}, {0004} ve {0005} kaselere yerleştirin, sos gezdirip {0006} ve {0007} ekleyin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        }
+      ],
+      "garnish": {
+        "de": "Nori-Streifen und Sesam",
+        "en": "nori strips and sesame",
+        "fr": "lanières de nori et sésame",
+        "it": "strisce di nori e sesamo",
+        "tr": "nori şeritleri ve susam"
+      },
+      "chef_analysis": {
+        "de": "Diese Sushi-Bowl kombiniert gebratenen Lachs mit Sushi-Reis, Avocado und knackigem Gemüse. Wasabi und Sojasauce geben eine klare, würzige Note.",
+        "en": "This sushi bowl combines seared salmon with sushi rice, avocado, and crisp vegetables. Wasabi and soy sauce provide a sharp, savory note.",
+        "fr": "Ce bol sushi associe du saumon poêlé au riz à sushi, à l’avocat et à des légumes croquants. Le wasabi et la sauce soja apportent une note vive et relevée.",
+        "it": "Questa bowl sushi abbina salmone rosolato, riso per sushi, avocado e verdure croccanti. Wasabi e salsa di soia aggiungono una nota decisa e sapida.",
+        "tr": "Bu suşi kasesi kızarmış somon, suşi pirinci, avokado ve diri sebzeleri birleştirir. Wasabi ve soya sosu belirgin, baharatlı bir tat verir."
+      },
+      "diet_labels": [
+        "high_protein"
+      ],
+      "coreComponents": [
+        "sushi_rice",
+        "salmon",
+        "wasabi_dressing"
+      ]
+    },
+    {
+      "id": "orientalische_linsen_bowl",
+      "cuisine": "Levantinisch",
+      "region": "Levante",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "linsen bowl",
+          "orientalische linsen bowl",
+          "bulgur linsen bowl"
+        ],
+        "en": [
+          "lentil bowl",
+          "middle eastern lentil bowl",
+          "bulgur lentil bowl"
+        ]
+      },
+      "titles": {
+        "de": "Orientalische Linsen-Bowl",
+        "en": "Middle Eastern Lentil Bowl",
+        "fr": "Bol de lentilles du Moyen-Orient",
+        "it": "Bowl mediorientale di lenticchie",
+        "tr": "Orta Doğu usulü mercimek kasesi"
+      },
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Bulgur",
+            "en": "bulgur",
+            "fr": "boulgour",
+            "it": "bulgur",
+            "tr": "bulgur"
+          },
+          "amount": 500,
+          "unit": "g",
+          "culinaryRole": "carbohydrate",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Braune Linsen",
+            "en": "brown lentils",
+            "fr": "lentilles brunes",
+            "it": "lenticchie brune",
+            "tr": "kahverengi mercimek"
+          },
+          "amount": 400,
+          "unit": "g",
+          "culinaryRole": "secondary_protein",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Aubergine",
+            "en": "eggplant",
+            "fr": "aubergine",
+            "it": "melanzana",
+            "tr": "patlıcan"
+          },
+          "amount": 300,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Granatapfelkerne",
+            "en": "pomegranate seeds",
+            "fr": "graines de grenade",
+            "it": "semi di melagrana",
+            "tr": "nar taneleri"
+          },
+          "amount": 100,
+          "unit": "g",
+          "culinaryRole": "fruit",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Petersilie",
+            "en": "parsley",
+            "fr": "persil",
+            "it": "prezzemolo",
+            "tr": "maydanoz"
+          },
+          "amount": 30,
+          "unit": "g",
+          "culinaryRole": "herb",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Minze",
+            "en": "mint",
+            "fr": "menthe",
+            "it": "menta",
+            "tr": "nane"
+          },
+          "amount": 20,
+          "unit": "g",
+          "culinaryRole": "herb",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Walnüsse",
+            "en": "walnuts",
+            "fr": "noix",
+            "it": "noci",
+            "tr": "ceviz"
+          },
+          "amount": 40,
+          "unit": "g",
+          "culinaryRole": "topping",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Zitronensaft",
+            "en": "lemon juice",
+            "fr": "jus de citron",
+            "it": "succo di limone",
+            "tr": "limon suyu"
+          },
+          "amount": 39,
+          "unit": "ml",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Olivenöl",
+            "en": "olive oil",
+            "fr": "huile d'olive",
+            "it": "olio d’oliva",
+            "tr": "zeytinyağı"
+          },
+          "amount": 33,
+          "unit": "ml",
+          "culinaryRole": "fat_source",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Knoblauch",
+            "en": "garlic",
+            "fr": "ail",
+            "it": "aglio",
+            "tr": "sarımsak"
+          },
+          "amount": 10,
+          "unit": "g",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Getreide und Linsen",
+            "en": "Grain and lentils",
+            "fr": "Boulgour et lentilles",
+            "it": "Bulgur e lenticchie",
+            "tr": "Bulgur ve mercimek"
+          },
+          "content": {
+            "de": "{0001} und {0002} garen. {0003} würfeln und mit {0009} goldbraun anbraten.",
+            "en": "Cook {0001} and {0002}. Dice {0003} and sauté it in {0009} until golden.",
+            "fr": "Faites cuire {0001} et {0002}. Coupez {0003} en dés et faites-le dorer avec {0009}.",
+            "it": "Cuocete {0001} e {0002}. Tagliate {0003} a cubetti e rosolatelo con {0009} fino a doratura.",
+            "tr": "{0001} ve {0002} pişirin. {0003} küp doğrayıp {0009} ile altın rengi olana kadar soteleyin."
+          },
+          "stove_level": 6,
+          "time_min": 20
+        },
+        {
+          "title": {
+            "de": "Toppings",
+            "en": "Toppings",
+            "fr": "Garnitures",
+            "it": "Guarnizioni",
+            "tr": "Üst malzemeler"
+          },
+          "content": {
+            "de": "{0004} vorbereiten, {0005} und {0006} grob hacken und {0007} zerstoßen.",
+            "en": "Prepare {0004}; roughly chop {0005} and {0006}, and crush {0007}.",
+            "fr": "Préparez {0004}, hachez grossièrement {0005} et {0006}, puis concassez {0007}.",
+            "it": "Preparate {0004}, tritate grossolanamente {0005} e {0006}, poi pestate {0007}.",
+            "tr": "{0004} hazırlayın; {0005} ve {0006} kabaca, {0007} iri doğrayın."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Zitronendressing",
+            "en": "Lemon dressing",
+            "fr": "Sauce au citron",
+            "it": "Condimento al limone",
+            "tr": "Limonlu sos"
+          },
+          "content": {
+            "de": "{0008}, {0009} und gepressten {0010} verrühren.",
+            "en": "Whisk {0008}, {0009}, and pressed {0010}.",
+            "fr": "Mélangez {0008}, {0009} et {0010} pressé.",
+            "it": "Mescolate {0008}, {0009} e {0010} schiacciato.",
+            "tr": "{0008}, {0009} ve ezilmiş {0010} karıştırın."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Anrichten",
+            "en": "Assembly",
+            "fr": "Dressage",
+            "it": "Composizione",
+            "tr": "Sunum"
+          },
+          "content": {
+            "de": "{0001}, {0002} und {0003} in Schalen anrichten, Dressing darübergeben und mit {0004}, {0005}, {0006} und {0007} abschließen.",
+            "en": "Arrange {0001}, {0002}, and {0003} in bowls, add the dressing, and finish with {0004}, {0005}, {0006}, and {0007}.",
+            "fr": "Dressez {0001}, {0002} et {0003}, ajoutez la sauce et terminez avec {0004}, {0005}, {0006} et {0007}.",
+            "it": "Disponete {0001}, {0002} e {0003}, condite e completate con {0004}, {0005}, {0006} e {0007}.",
+            "tr": "{0001}, {0002} ve {0003} kaselere yerleştirin, sos ekleyip {0004}, {0005}, {0006} ve {0007} ile tamamlayın."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        }
+      ],
+      "garnish": {
+        "de": "Granatapfel, Kräuter und Walnüsse",
+        "en": "pomegranate, herbs, and walnuts",
+        "fr": "grenade, herbes et noix",
+        "it": "melagrana, erbe e noci",
+        "tr": "nar, otlar ve ceviz"
+      },
+      "chef_analysis": {
+        "de": "Bulgur und braune Linsen bilden eine herzhafte Basis, ergänzt durch gebratene Aubergine und Granatapfel. Kräuter, Zitrone und Walnüsse sorgen für Frische und Textur.",
+        "en": "Bulgur and brown lentils form a hearty base with sautéed eggplant and pomegranate. Herbs, lemon, and walnuts add freshness and texture.",
+        "fr": "Le boulgour et les lentilles brunes forment une base généreuse, complétée par l’aubergine poêlée et la grenade. Les herbes, le citron et les noix apportent fraîcheur et texture.",
+        "it": "Bulgur e lenticchie brune creano una base sostanziosa, arricchita da melanzane rosolate e melagrana. Erbe, limone e noci aggiungono freschezza e consistenza.",
+        "tr": "Bulgur ve kahverengi mercimek doyurucu bir temel oluşturur; kızarmış patlıcan ve narla tamamlanır. Otlar, limon ve ceviz tazelik ve doku katar."
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian"
+      ],
+      "coreComponents": [
+        "bulgur",
+        "lentils",
+        "eggplant"
+      ]
+    },
+    {
+      "id": "gruene_power_bowl",
+      "cuisine": "Modern",
+      "region": null,
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "grune power bowl",
+          "grune quinoa bowl",
+          "brokkoli avocado bowl"
+        ],
+        "en": [
+          "green power bowl",
+          "green quinoa bowl",
+          "broccoli avocado bowl"
+        ]
+      },
+      "titles": {
+        "de": "Grüne Power-Bowl",
+        "en": "Green Power Bowl",
+        "fr": "Bol vert énergisant",
+        "it": "Bowl verde energetica",
+        "tr": "Yeşil enerji kasesi"
+      },
+      "servings": 4,
+      "prep_time_min": 20,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Quinoa",
+            "en": "quinoa",
+            "fr": "quinoa",
+            "it": "quinoa",
+            "tr": "kinoa"
+          },
+          "amount": 600,
+          "unit": "g",
+          "culinaryRole": "carbohydrate",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Brokkoli",
+            "en": "broccoli",
+            "fr": "brocoli",
+            "it": "broccoli",
+            "tr": "brokoli"
+          },
+          "amount": 300,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Avocado",
+            "en": "avocado",
+            "fr": "avocat",
+            "it": "avocado",
+            "tr": "avokado"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "fruit",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Gurke",
+            "en": "cucumber",
+            "fr": "concombre",
+            "it": "cetriolo",
+            "tr": "salatalık"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Grünkohl",
+            "en": "kale",
+            "fr": "chou kale",
+            "it": "cavolo riccio",
+            "tr": "kara lahana"
+          },
+          "amount": 160,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Kürbiskerne",
+            "en": "pumpkin seeds",
+            "fr": "graines de courge",
+            "it": "semi di zucca",
+            "tr": "kabak çekirdeği"
+          },
+          "amount": 30,
+          "unit": "g",
+          "culinaryRole": "topping",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Haferflocken",
+            "en": "rolled oats",
+            "fr": "flocons d’avoine",
+            "it": "fiocchi d’avena",
+            "tr": "yulaf ezmesi"
+          },
+          "amount": 40,
+          "unit": "g",
+          "culinaryRole": "carbohydrate",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Zitronensaft",
+            "en": "lemon juice",
+            "fr": "jus de citron",
+            "it": "succo di limone",
+            "tr": "limon suyu"
+          },
+          "amount": 39,
+          "unit": "ml",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Quinoa und Brokkoli",
+            "en": "Quinoa and broccoli",
+            "fr": "Quinoa et brocoli",
+            "it": "Quinoa e broccoli",
+            "tr": "Kinoa ve brokoli"
+          },
+          "content": {
+            "de": "{0001} garen. {0002} in Röschen teilen und bissfest dämpfen.",
+            "en": "Cook {0001}. Divide {0002} into florets and steam until tender-crisp.",
+            "fr": "Faites cuire {0001}. Détaillez {0002} en fleurettes et faites-le cuire à la vapeur en le gardant croquant.",
+            "it": "Cuocete {0001}. Dividete {0002} in cimette e cuocetelo al vapore lasciandolo croccante.",
+            "tr": "{0001} pişirin. {0002} çiçeklere ayırıp diri kalacak şekilde buharda pişirin."
+          },
+          "stove_level": 5,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Grünkohl",
+            "en": "Kale",
+            "fr": "Chou kale",
+            "it": "Cavolo riccio",
+            "tr": "Kara lahana"
+          },
+          "content": {
+            "de": "{0005} fein schneiden und mit {0008} kurz durchkneten.",
+            "en": "Finely slice {0005} and massage briefly with {0008}.",
+            "fr": "Émincez {0005} et massez-le brièvement avec {0008}.",
+            "it": "Affettate finemente {0005} e massaggiatelo brevemente con {0008}.",
+            "tr": "{0005} ince doğrayıp {0008} ile kısa süre ovun."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Avocado-Dressing",
+            "en": "Avocado dressing",
+            "fr": "Sauce à l’avocat",
+            "it": "Salsa all’avocado",
+            "tr": "Avokadolu sos"
+          },
+          "content": {
+            "de": "{0003} mit {0008} zu einem cremigen Dressing pürieren.",
+            "en": "Blend {0003} with {0008} into a creamy dressing.",
+            "fr": "Mixez {0003} avec {0008} pour obtenir une sauce crémeuse.",
+            "it": "Frullate {0003} con {0008} fino a ottenere una salsa cremosa.",
+            "tr": "{0003} ile {0008} ürününü kremamsı sos olana kadar çekin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Anrichten",
+            "en": "Assembly",
+            "fr": "Dressage",
+            "it": "Composizione",
+            "tr": "Sunum"
+          },
+          "content": {
+            "de": "{0001}, {0002}, {0004} und {0005} in Schalen anrichten und mit dem Dressing aus {0003} und {0008} ergänzen.",
+            "en": "Arrange {0001}, {0002}, {0004}, and {0005} in bowls and add the dressing made from {0003} and {0008}.",
+            "fr": "Dressez {0001}, {0002}, {0004} et {0005}, puis ajoutez la sauce préparée avec {0003} et {0008}.",
+            "it": "Disponete {0001}, {0002}, {0004} e {0005} nelle ciotole e aggiungete la salsa preparata con {0003} e {0008}.",
+            "tr": "{0001}, {0002}, {0004} ve {0005} kaselere yerleştirip {0003} ve {0008} ile hazırlanan sosu ekleyin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Toppings",
+            "en": "Toppings",
+            "fr": "Garniture",
+            "it": "Guarnizione",
+            "tr": "Üst malzemeler"
+          },
+          "content": {
+            "de": "Mit {0006} und {0007} bestreuen.",
+            "en": "Top with {0006} and {0007}.",
+            "fr": "Parsemez de {0006} et {0007}.",
+            "it": "Completate con {0006} e {0007}.",
+            "tr": "{0006} ve {0007} serpin."
+          },
+          "stove_level": 0,
+          "time_min": 1
+        }
+      ],
+      "garnish": {
+        "de": "Kürbiskerne und Haferflocken",
+        "en": "pumpkin seeds and oats",
+        "fr": "graines de courge et flocons d’avoine",
+        "it": "semi di zucca e fiocchi d’avena",
+        "tr": "kabak çekirdeği ve yulaf ezmesi"
+      },
+      "chef_analysis": {
+        "de": "Quinoa und Brokkoli bilden die Grundlage dieser grünen Bowl; Avocado dient zugleich als Topping und cremiges Dressing. Grünkohl und Kerne ergänzen Biss und Textur.",
+        "en": "Quinoa and broccoli anchor this green bowl, while avocado serves as both a topping and a creamy dressing. Kale and seeds add texture.",
+        "fr": "Le quinoa et le brocoli constituent la base de ce bol vert ; l’avocat sert à la fois de garniture et de sauce crémeuse. Le chou kale et les graines apportent de la texture.",
+        "it": "Quinoa e broccoli sono la base di questa bowl verde; l’avocado diventa sia guarnizione sia salsa cremosa. Cavolo riccio e semi completano la consistenza.",
+        "tr": "Kinoa ve brokoli bu yeşil kasenin temelidir; avokado hem üst malzeme hem de kremalı sos olur. Kara lahana ve çekirdekler doku katar."
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian"
+      ],
+      "coreComponents": [
+        "quinoa",
+        "broccoli",
+        "avocado_dressing"
+      ]
+    },
+    {
+      "id": "mexikanische_taco_bowl",
+      "cuisine": "Tex-Mex",
+      "region": "Texas und Mexiko",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "taco bowl",
+          "mexikanische taco bowl",
+          "rindfleisch bohnen bowl"
+        ],
+        "en": [
+          "taco bowl",
+          "mexican taco bowl",
+          "beef taco bowl"
+        ]
+      },
+      "titles": {
+        "de": "Mexikanische Taco-Bowl",
+        "en": "Mexican Taco Bowl",
+        "fr": "Bol taco mexicain",
+        "it": "Bowl taco messicana",
+        "tr": "Meksika usulü taco kasesi"
+      },
+      "servings": 4,
+      "prep_time_min": 30,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Basmatireis",
+            "en": "basmati rice",
+            "fr": "riz basmati",
+            "it": "riso basmati",
+            "tr": "basmati pirinci"
+          },
+          "amount": 560,
+          "unit": "g",
+          "culinaryRole": "carbohydrate",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Mageres Rinderhack",
+            "en": "lean ground beef",
+            "fr": "bœuf haché maigre",
+            "it": "macinato magro di manzo",
+            "tr": "yağsız dana kıyma"
+          },
+          "amount": 500,
+          "unit": "g",
+          "culinaryRole": "main_protein",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": true
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Schwarze Bohnen",
+            "en": "black beans",
+            "fr": "haricots noirs",
+            "it": "fagioli neri",
+            "tr": "siyah fasulye"
+          },
+          "amount": 300,
+          "unit": "g",
+          "culinaryRole": "secondary_protein",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Mais",
+            "en": "corn",
+            "fr": "maïs",
+            "it": "mais",
+            "tr": "mısır"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Blattsalat",
+            "en": "lettuce",
+            "fr": "laitue",
+            "it": "lattuga",
+            "tr": "marul"
+          },
+          "amount": 120,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Tomaten",
+            "en": "tomatoes",
+            "fr": "tomates",
+            "it": "pomodori",
+            "tr": "domates"
+          },
+          "amount": 240,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Geriebener Käse",
+            "en": "grated cheese",
+            "fr": "fromage râpé",
+            "it": "formaggio grattugiato",
+            "tr": "rendelenmiş peynir"
+          },
+          "amount": 100,
+          "unit": "g",
+          "culinaryRole": "secondary_protein",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Jalapeños",
+            "en": "jalapeños",
+            "fr": "jalapeños",
+            "it": "jalapeños",
+            "tr": "jalapeños"
+          },
+          "amount": 60,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Limettensaft",
+            "en": "lime juice",
+            "fr": "jus de citron vert",
+            "it": "succo di lime",
+            "tr": "misket limonu suyu"
+          },
+          "amount": 29,
+          "unit": "ml",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Olivenöl",
+            "en": "olive oil",
+            "fr": "huile d'olive",
+            "it": "olio d’oliva",
+            "tr": "zeytinyağı"
+          },
+          "amount": 22,
+          "unit": "ml",
+          "culinaryRole": "fat_source",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Koriander",
+            "en": "coriander",
+            "fr": "coriandre",
+            "it": "coriandolo",
+            "tr": "kişniş"
+          },
+          "amount": 20,
+          "unit": "g",
+          "culinaryRole": "herb",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Knoblauch",
+            "en": "garlic",
+            "fr": "ail",
+            "it": "aglio",
+            "tr": "sarımsak"
+          },
+          "amount": 10,
+          "unit": "g",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0013",
+          "names": {
+            "de": "Neutrales Bratöl",
+            "en": "neutral cooking oil",
+            "fr": "huile de cuisson neutre",
+            "it": "olio neutro per cottura",
+            "tr": "nötr kızartma yağı"
+          },
+          "amount": 11,
+          "unit": "ml",
+          "culinaryRole": "fat_source",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Reis und Hackfleisch",
+            "en": "Rice and beef",
+            "fr": "Riz et bœuf haché",
+            "it": "Riso e macinato",
+            "tr": "Pirinç ve kıyma"
+          },
+          "content": {
+            "de": "{0001} garen. {0002} mit {0012} und {0013} krümelig anbraten.",
+            "en": "Cook {0001}. Brown {0002} with {0012} and {0013}, breaking it up.",
+            "fr": "Faites cuire {0001}. Faites dorer {0002} avec {0012} et {0013} en l’émiettant.",
+            "it": "Cuocete {0001}. Rosolate {0002} con {0012} e {0013}, sgranandolo.",
+            "tr": "{0001} pişirin. {0002} ürününü {0012} ve {0013} ile ufalayarak kavurun."
+          },
+          "stove_level": 7,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Bohnen und Salsa",
+            "en": "Beans and salsa",
+            "fr": "Haricots et salsa",
+            "it": "Fagioli e salsa",
+            "tr": "Fasulye ve salsa"
+          },
+          "content": {
+            "de": "{0003} erwärmen. {0004} und gewürfelte {0006} mit {0009}, {0010} und {0011} vermengen.",
+            "en": "Heat {0003}. Combine {0004} and diced {0006} with {0009}, {0010}, and {0011}.",
+            "fr": "Réchauffez {0003}. Mélangez {0004} et {0006} coupées en dés avec {0009}, {0010} et {0011}.",
+            "it": "Scaldate {0003}. Unite {0004} e {0006} a dadini con {0009}, {0010} e {0011}.",
+            "tr": "{0003} ısıtın. {0004} ve küp doğranmış {0006} ürününü {0009}, {0010} ve {0011} ile karıştırın."
+          },
+          "stove_level": 5,
+          "time_min": 7
+        },
+        {
+          "title": {
+            "de": "Toppings",
+            "en": "Toppings",
+            "fr": "Garnitures",
+            "it": "Guarnizioni",
+            "tr": "Üst malzemeler"
+          },
+          "content": {
+            "de": "{0005} zupfen, {0007} reiben und {0008} in Ringe schneiden.",
+            "en": "Tear {0005}, grate {0007}, and slice {0008} into rings.",
+            "fr": "Déchirez {0005}, râpez {0007} et coupez {0008} en rondelles.",
+            "it": "Spezzettate {0005}, grattugiate {0007} e tagliate {0008} ad anelli.",
+            "tr": "{0005} yapraklarını ayırın, {0007} rendeleyin ve {0008} halka doğrayın."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Anrichten",
+            "en": "Assembly",
+            "fr": "Dressage",
+            "it": "Composizione",
+            "tr": "Sunum"
+          },
+          "content": {
+            "de": "{0001}, {0002}, {0003}, {0005}, {0007} und {0008} in Schalen anrichten und mit der Salsa aus {0004}, {0006}, {0009}, {0010} und {0011} ergänzen.",
+            "en": "Arrange {0001}, {0002}, {0003}, {0005}, {0007}, and {0008} in bowls and add the salsa made from {0004}, {0006}, {0009}, {0010}, and {0011}.",
+            "fr": "Dressez {0001}, {0002}, {0003}, {0005}, {0007} et {0008}, puis ajoutez la salsa préparée avec {0004}, {0006}, {0009}, {0010} et {0011}.",
+            "it": "Disponete {0001}, {0002}, {0003}, {0005}, {0007} e {0008}, poi aggiungete la salsa di {0004}, {0006}, {0009}, {0010} e {0011}.",
+            "tr": "{0001}, {0002}, {0003}, {0005}, {0007} ve {0008} kaselere yerleştirip {0004}, {0006}, {0009}, {0010} ve {0011} ile hazırlanan salsayı ekleyin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        }
+      ],
+      "garnish": {
+        "de": "Salsa und Koriander",
+        "en": "salsa and coriander",
+        "fr": "salsa et coriandre",
+        "it": "salsa e coriandolo",
+        "tr": "salsa ve kişniş"
+      },
+      "chef_analysis": {
+        "de": "Gewürztes Rinderhack, schwarze Bohnen und Reis bilden die herzhafte Basis. Frische Salsa, Jalapeños und Käse bringen Säure, Schärfe und Würze zusammen.",
+        "en": "Seasoned ground beef, black beans, and rice form a hearty base. Fresh salsa, jalapeños, and cheese bring acidity, heat, and savoriness.",
+        "fr": "Le bœuf haché assaisonné, les haricots noirs et le riz forment une base généreuse. La salsa fraîche, les jalapeños et le fromage réunissent acidité, piquant et saveur.",
+        "it": "Manzo macinato speziato, fagioli neri e riso formano una base sostanziosa. Salsa fresca, jalapeños e formaggio uniscono acidità, piccantezza e sapidità.",
+        "tr": "Baharatlı dana kıyma, siyah fasulye ve pirinç doyurucu bir temel oluşturur. Taze salsa, jalapeño ve peynir ekşilik, acılık ve lezzeti bir araya getirir."
+      },
+      "diet_labels": [
+        "high_protein",
+        "glutenfree"
+      ],
+      "coreComponents": [
+        "basmati_rice",
+        "ground_beef",
+        "black_beans"
+      ]
+    },
+    {
+      "id": "acai_fruehstuecks_bowl",
+      "cuisine": "Brasilianisch",
+      "region": "Brasilien",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "acai bowl",
+          "acai fruhstucks bowl",
+          "brasilianische acai bowl"
+        ],
+        "en": [
+          "acai bowl",
+          "acai breakfast bowl",
+          "brazilian acai bowl"
+        ]
+      },
+      "titles": {
+        "de": "Açaí-Frühstücks-Bowl",
+        "en": "Açaí Breakfast Bowl",
+        "fr": "Bol petit-déjeuner à l’açaí",
+        "it": "Bowl per la colazione all’açaí",
+        "tr": "Açaí kahvaltı kasesi"
+      },
+      "servings": 4,
+      "prep_time_min": 10,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Açaí-Püree",
+            "en": "Açaí purée",
+            "fr": "purée d’açaí",
+            "it": "purea di açaí",
+            "tr": "Açaí püresi"
+          },
+          "amount": 400,
+          "unit": "g",
+          "culinaryRole": "base",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Banane",
+            "en": "banana",
+            "fr": "banane",
+            "it": "banana",
+            "tr": "muz"
+          },
+          "amount": 400,
+          "unit": "g",
+          "culinaryRole": "fruit",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Himbeeren",
+            "en": "raspberries",
+            "fr": "framboises",
+            "it": "lamponi",
+            "tr": "ahududu"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "fruit",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Blaubeeren",
+            "en": "blueberries",
+            "fr": "myrtilles",
+            "it": "mirtilli",
+            "tr": "yaban mersini"
+          },
+          "amount": 160,
+          "unit": "g",
+          "culinaryRole": "fruit",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Haferdrink",
+            "en": "oat drink",
+            "fr": "boisson d’avoine",
+            "it": "bevanda d’avena",
+            "tr": "yulaf içeceği"
+          },
+          "amount": 388,
+          "unit": "ml",
+          "culinaryRole": "liquid",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Granola",
+            "en": "Granola",
+            "fr": "Granola",
+            "it": "Granola",
+            "tr": "Granola"
+          },
+          "amount": 120,
+          "unit": "g",
+          "culinaryRole": "topping",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Kokoschips",
+            "en": "coconut chips",
+            "fr": "copeaux de noix de coco",
+            "it": "scaglie di cocco",
+            "tr": "hindistan cevizi cipsi"
+          },
+          "amount": 30,
+          "unit": "g",
+          "culinaryRole": "topping",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Chiasamen",
+            "en": "chia seeds",
+            "fr": "graines de chia",
+            "it": "semi di chia",
+            "tr": "chia tohumu"
+          },
+          "amount": 20,
+          "unit": "g",
+          "culinaryRole": "topping",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Mixen",
+            "en": "Blending",
+            "fr": "Mixage",
+            "it": "Frullare",
+            "tr": "Karıştırma"
+          },
+          "content": {
+            "de": "{0001}, {0002}, {0003}, {0004} und {0005} cremig mixen.",
+            "en": "Blend {0001}, {0002}, {0003}, {0004}, and {0005} until creamy.",
+            "fr": "Mixez {0001}, {0002}, {0003}, {0004} et {0005} jusqu’à obtenir une texture crémeuse.",
+            "it": "Frullate {0001}, {0002}, {0003}, {0004} e {0005} fino a ottenere una crema.",
+            "tr": "{0001}, {0002}, {0003}, {0004} ve {0005} ürünlerini kremamsı olana kadar çekin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Konsistenz",
+            "en": "Texture",
+            "fr": "Texture",
+            "it": "Consistenza",
+            "tr": "Kıvam"
+          },
+          "content": {
+            "de": "Die Mischung dick halten; bei Bedarf gefrorene {0003} oder {0004} ergänzen.",
+            "en": "Keep the mixture thick; add frozen {0003} or {0004} if needed.",
+            "fr": "Gardez une texture épaisse ; ajoutez {0003} ou {0004} congelés si nécessaire.",
+            "it": "Mantenete il composto denso; aggiungete {0003} o {0004} congelati se necessario.",
+            "tr": "Karışımı koyu tutun; gerekirse donmuş {0003} veya {0004} ekleyin."
+          },
+          "stove_level": 0,
+          "time_min": 1
+        },
+        {
+          "title": {
+            "de": "Portionieren",
+            "en": "Portioning",
+            "fr": "Répartition",
+            "it": "Porzionare",
+            "tr": "Porsiyonlama"
+          },
+          "content": {
+            "de": "Die Mischung in Schalen füllen und glatt streichen.",
+            "en": "Divide the mixture among bowls and smooth the surface.",
+            "fr": "Répartissez le mélange dans les bols et lissez la surface.",
+            "it": "Distribuite il composto nelle ciotole e livellatelo.",
+            "tr": "Karışımı kaselere paylaştırıp yüzeyini düzeltin."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        },
+        {
+          "title": {
+            "de": "Toppings",
+            "en": "Toppings",
+            "fr": "Garniture",
+            "it": "Guarnizione",
+            "tr": "Üst malzemeler"
+          },
+          "content": {
+            "de": "Mit {0006}, {0007} und {0008} belegen und mit {0003} sowie {0004} ergänzen.",
+            "en": "Top with {0006}, {0007}, and {0008}, then add {0003} and {0004}.",
+            "fr": "Ajoutez {0006}, {0007} et {0008}, puis complétez avec {0003} et {0004}.",
+            "it": "Completate con {0006}, {0007} e {0008}, poi aggiungete {0003} e {0004}.",
+            "tr": "Üzerine {0006}, {0007} ve {0008} koyup {0003} ve {0004} ile tamamlayın."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "garnish": {
+        "de": "Granola, Kokoschips und Chiasamen",
+        "en": "Granola, coconut chips, and chia seeds",
+        "fr": "Granola, copeaux de noix de coco et graines de chia",
+        "it": "Granola, scaglie di cocco e semi di chia",
+        "tr": "Granola, hindistan cevizi cipsi ve chia tohumu"
+      },
+      "chef_analysis": {
+        "de": "Açaí und gefrorene Früchte ergeben eine dicke, cremige Basis. Granola, Kokos und Chiasamen setzen knusprige Akzente.",
+        "en": "Açaí and frozen fruit create a thick, creamy base. Granola, coconut, and chia add crisp texture.",
+        "fr": "L’açaí et les fruits congelés forment une base épaisse et crémeuse. Le granola, la noix de coco et le chia apportent du croquant.",
+        "it": "Açaí e frutta congelata creano una base densa e cremosa. Granola, cocco e chia aggiungono una nota croccante.",
+        "tr": "Açaí ve donmuş meyveler yoğun, kremamsı bir temel oluşturur. Granola, hindistan cevizi ve chia çıtır bir doku katar."
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian"
+      ],
+      "coreComponents": [
+        "acai",
+        "banana",
+        "granola"
+      ]
+    },
+    {
+      "id": "gruene_smoothie_bowl",
+      "cuisine": "Modern",
+      "region": null,
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "grune smoothie bowl",
+          "spinat banane smoothie bowl",
+          "kiwi mango bowl"
+        ],
+        "en": [
+          "green smoothie bowl",
+          "spinach banana smoothie bowl",
+          "kiwi mango smoothie bowl"
+        ]
+      },
+      "titles": {
+        "de": "Grüne Smoothie-Bowl",
+        "en": "Green Smoothie Bowl",
+        "fr": "Bol smoothie vert",
+        "it": "Bowl smoothie verde",
+        "tr": "Yeşil smoothie kasesi"
+      },
+      "servings": 4,
+      "prep_time_min": 10,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Banane",
+            "en": "banana",
+            "fr": "banane",
+            "it": "banana",
+            "tr": "muz"
+          },
+          "amount": 400,
+          "unit": "g",
+          "culinaryRole": "fruit",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Blattspinat",
+            "en": "baby spinach",
+            "fr": "jeunes pousses d’épinards",
+            "it": "spinaci freschi",
+            "tr": "taze ıspanak"
+          },
+          "amount": 120,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Kiwi",
+            "en": "kiwi",
+            "fr": "kiwi",
+            "it": "kiwi",
+            "tr": "kivi"
+          },
+          "amount": 240,
+          "unit": "g",
+          "culinaryRole": "fruit",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Mango",
+            "en": "mango",
+            "fr": "mangue",
+            "it": "mango",
+            "tr": "mango"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "fruit",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Joghurt 1,5 %",
+            "en": "1.5% yogurt",
+            "fr": "yaourt à 1,5 %",
+            "it": "yogurt 1,5%",
+            "tr": "%1,5 yoğurt"
+          },
+          "amount": 400,
+          "unit": "g",
+          "culinaryRole": "secondary_protein",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Himbeeren",
+            "en": "raspberries",
+            "fr": "framboises",
+            "it": "lamponi",
+            "tr": "ahududu"
+          },
+          "amount": 120,
+          "unit": "g",
+          "culinaryRole": "fruit",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Hanfsamen",
+            "en": "hemp seeds",
+            "fr": "graines de chanvre",
+            "it": "semi di canapa",
+            "tr": "kenevir tohumu"
+          },
+          "amount": 20,
+          "unit": "g",
+          "culinaryRole": "topping",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Haferflocken",
+            "en": "rolled oats",
+            "fr": "flocons d’avoine",
+            "it": "fiocchi d’avena",
+            "tr": "yulaf ezmesi"
+          },
+          "amount": 50,
+          "unit": "g",
+          "culinaryRole": "carbohydrate",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Kokoschips",
+            "en": "coconut chips",
+            "fr": "copeaux de noix de coco",
+            "it": "scaglie di cocco",
+            "tr": "hindistan cevizi cipsi"
+          },
+          "amount": 20,
+          "unit": "g",
+          "culinaryRole": "topping",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Mixen",
+            "en": "Blending",
+            "fr": "Mixage",
+            "it": "Frullare",
+            "tr": "Karıştırma"
+          },
+          "content": {
+            "de": "{0001}, {0002}, {0003}, {0004} und {0005} fein pürieren.",
+            "en": "Blend {0001}, {0002}, {0003}, {0004}, and {0005} until smooth.",
+            "fr": "Mixez finement {0001}, {0002}, {0003}, {0004} et {0005}.",
+            "it": "Frullate finemente {0001}, {0002}, {0003}, {0004} e {0005}.",
+            "tr": "{0001}, {0002}, {0003}, {0004} ve {0005} pürüzsüz olana kadar çekin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Kühlen",
+            "en": "Chilling",
+            "fr": "Refroidissement",
+            "it": "Raffreddamento",
+            "tr": "Soğutma"
+          },
+          "content": {
+            "de": "Die Masse in Schalen füllen und kurz kalt stellen.",
+            "en": "Divide the mixture among bowls and chill briefly.",
+            "fr": "Répartissez le mélange dans les bols et réfrigérez brièvement.",
+            "it": "Distribuite il composto nelle ciotole e raffreddatelo brevemente.",
+            "tr": "Karışımı kaselere paylaştırıp kısa süre soğutun."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Toppings",
+            "en": "Toppings",
+            "fr": "Garniture",
+            "it": "Guarnizione",
+            "tr": "Üst malzemeler"
+          },
+          "content": {
+            "de": "Mit {0006}, {0008}, {0007} und {0009} belegen.",
+            "en": "Top with {0006}, {0008}, {0007}, and {0009}.",
+            "fr": "Ajoutez {0006}, {0008}, {0007} et {0009}.",
+            "it": "Completate con {0006}, {0008}, {0007} e {0009}.",
+            "tr": "Üzerine {0006}, {0008}, {0007} ve {0009} koyun."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "garnish": {
+        "de": "Himbeeren, Haferflocken, Hanfsamen und Kokoschips",
+        "en": "raspberries, oats, hemp seeds, and coconut chips",
+        "fr": "framboises, flocons d’avoine, graines de chanvre et copeaux de noix de coco",
+        "it": "lamponi, fiocchi d’avena, semi di canapa e scaglie di cocco",
+        "tr": "ahududu, yulaf ezmesi, kenevir tohumu ve hindistan cevizi cipsi"
+      },
+      "chef_analysis": {
+        "de": "Banane, Spinat, Kiwi und Mango werden mit Joghurt zu einer frischen, cremigen Basis püriert. Beeren und Samen sorgen für fruchtige und nussige Akzente.",
+        "en": "Banana, spinach, kiwi, and mango blend with yogurt into a fresh, creamy base. Berries and seeds add fruity and nutty notes.",
+        "fr": "La banane, les épinards, le kiwi et la mangue sont mixés avec du yaourt pour former une base fraîche et crémeuse. Les baies et les graines apportent des notes fruitées et noisettées.",
+        "it": "Banana, spinaci, kiwi e mango frullati con yogurt creano una base fresca e cremosa. Frutti di bosco e semi aggiungono note fruttate e tostate.",
+        "tr": "Muz, ıspanak, kivi ve mango yoğurtla taze ve kremamsı bir temel oluşturur. Meyveler ve tohumlar meyvemsi, fındıksı tatlar ekler."
+      },
+      "diet_labels": [
+        "vegetarian"
+      ],
+      "coreComponents": [
+        "spinach",
+        "banana",
+        "yogurt"
+      ]
+    },
+    {
+      "id": "mediterrane_thunfisch_bowl",
+      "cuisine": "Mediterran",
+      "region": "Mittelmeerraum",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "thunfisch bowl",
+          "mediterrane thunfisch bowl",
+          "couscous thunfisch bowl"
+        ],
+        "en": [
+          "tuna bowl",
+          "mediterranean tuna bowl",
+          "couscous tuna bowl"
+        ]
+      },
+      "titles": {
+        "de": "Mediterrane Thunfisch-Bowl",
+        "en": "Mediterranean Tuna Bowl",
+        "fr": "Bol méditerranéen au thon",
+        "it": "Bowl mediterranea al tonno",
+        "tr": "Akdeniz usulü ton balıklı kase"
+      },
+      "servings": 4,
+      "prep_time_min": 20,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Couscous",
+            "en": "couscous",
+            "fr": "couscous",
+            "it": "couscous",
+            "tr": "kuskus"
+          },
+          "amount": 560,
+          "unit": "g",
+          "culinaryRole": "carbohydrate",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Thunfisch",
+            "en": "tuna",
+            "fr": "thon",
+            "it": "tonno",
+            "tr": "ton balığı"
+          },
+          "amount": 320,
+          "unit": "g",
+          "culinaryRole": "main_protein",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": true
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Artischockenherzen",
+            "en": "artichoke hearts",
+            "fr": "cœurs d’artichaut",
+            "it": "cuori di carciofo",
+            "tr": "enginar kalbi"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Tomaten",
+            "en": "tomatoes",
+            "fr": "tomates",
+            "it": "pomodori",
+            "tr": "domates"
+          },
+          "amount": 240,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Gurke",
+            "en": "cucumber",
+            "fr": "concombre",
+            "it": "cetriolo",
+            "tr": "salatalık"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Rucola",
+            "en": "arugula",
+            "fr": "roquette",
+            "it": "rucola",
+            "tr": "roka"
+          },
+          "amount": 100,
+          "unit": "g",
+          "culinaryRole": "herb",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Oliven",
+            "en": "olives",
+            "fr": "olives",
+            "it": "olive",
+            "tr": "zeytin"
+          },
+          "amount": 80,
+          "unit": "g",
+          "culinaryRole": "fruit",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Zitronensaft",
+            "en": "lemon juice",
+            "fr": "jus de citron",
+            "it": "succo di limone",
+            "tr": "limon suyu"
+          },
+          "amount": 39,
+          "unit": "ml",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Olivenöl",
+            "en": "olive oil",
+            "fr": "huile d'olive",
+            "it": "olio d’oliva",
+            "tr": "zeytinyağı"
+          },
+          "amount": 26,
+          "unit": "ml",
+          "culinaryRole": "fat_source",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Dijon-Senf",
+            "en": "Dijon-Senf",
+            "fr": "moutarde de Dijon",
+            "it": "senape di Digione",
+            "tr": "Dijon hardalı"
+          },
+          "amount": 20,
+          "unit": "g",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Couscous und Thunfisch",
+            "en": "Couscous and tuna",
+            "fr": "Couscous et thon",
+            "it": "Couscous e tonno",
+            "tr": "Kuskus ve ton balığı"
+          },
+          "content": {
+            "de": "{0001} quellen lassen und abkühlen. {0002} abtropfen und zerpflücken.",
+            "en": "Prepare {0001} and let it cool. Drain and flake {0002}.",
+            "fr": "Préparez {0001} et laissez-le refroidir. Égouttez et émiettez {0002}.",
+            "it": "Preparate {0001} e lasciatelo raffreddare. Sgocciolate e sminuzzate {0002}.",
+            "tr": "{0001} hazırlayıp soğutun. {0002} süzüp iri parçalara ayırın."
+          },
+          "stove_level": 5,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Gemüse",
+            "en": "Vegetables",
+            "fr": "Légumes",
+            "it": "Verdure",
+            "tr": "Sebzeler"
+          },
+          "content": {
+            "de": "{0004} und {0005} würfeln, {0006} waschen und {0003} vierteln.",
+            "en": "Dice {0004} and {0005}, wash {0006}, and quarter {0003}.",
+            "fr": "Coupez {0004} et {0005} en dés, lavez {0006} et coupez {0003} en quartiers.",
+            "it": "Tagliate {0004} e {0005} a cubetti, lavate {0006} e dividete {0003} in quarti.",
+            "tr": "{0004} ve {0005} küp doğrayın, {0006} yıkayın ve {0003} dörde bölün."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Dressing",
+            "en": "Dressing",
+            "fr": "Sauce",
+            "it": "Condimento",
+            "tr": "Sos"
+          },
+          "content": {
+            "de": "{0008}, {0009} und {0010} verrühren.",
+            "en": "Whisk together {0008}, {0009}, and {0010}.",
+            "fr": "Mélangez {0008}, {0009} et {0010}.",
+            "it": "Mescolate {0008}, {0009} e {0010}.",
+            "tr": "{0008}, {0009} ve {0010} karıştırın."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        },
+        {
+          "title": {
+            "de": "Anrichten",
+            "en": "Assembly",
+            "fr": "Dressage",
+            "it": "Composizione",
+            "tr": "Sunum"
+          },
+          "content": {
+            "de": "{0001}, {0002}, {0003}, {0004}, {0005}, {0006} und {0007} in Schalen anrichten und mit Dressing beträufeln.",
+            "en": "Arrange {0001}, {0002}, {0003}, {0004}, {0005}, {0006}, and {0007} in bowls and drizzle with the dressing.",
+            "fr": "Dressez {0001}, {0002}, {0003}, {0004}, {0005}, {0006} et {0007}, puis nappez de sauce.",
+            "it": "Disponete {0001}, {0002}, {0003}, {0004}, {0005}, {0006} e {0007} e condite con la salsa.",
+            "tr": "{0001}, {0002}, {0003}, {0004}, {0005}, {0006} ve {0007} kaselere yerleştirip sos gezdirin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        }
+      ],
+      "garnish": {
+        "de": "Oliven und Zitronen-Dijon-Dressing",
+        "en": "olives and lemon Dijon dressing",
+        "fr": "olives et sauce citron-Dijon",
+        "it": "olive e condimento al limone e Dijon",
+        "tr": "zeytin ve limonlu Dijon sosu"
+      },
+      "chef_analysis": {
+        "de": "Couscous und Thunfisch werden mit Artischocken, Tomaten, Gurke und Rucola kombiniert. Das Zitronen-Dijon-Dressing hält die Bowl frisch und säuerlich.",
+        "en": "Couscous and tuna are paired with artichokes, tomatoes, cucumber, and arugula. Lemon-Dijon dressing keeps the bowl bright and tangy.",
+        "fr": "Le couscous et le thon s’associent aux artichauts, aux tomates, au concombre et à la roquette. La sauce citron-Dijon garde le bol frais et acidulé.",
+        "it": "Couscous e tonno si abbinano ai carciofi, ai pomodori, al cetriolo e alla rucola. Il condimento al limone e Dijon mantiene la bowl fresca e acidula.",
+        "tr": "Kuskus ve ton balığı enginar, domates, salatalık ve roka ile birleşir. Limonlu Dijon sosu kaseye ferah ve ekşimsi bir tat verir."
+      },
+      "diet_labels": [
+        "high_protein"
+      ],
+      "coreComponents": [
+        "couscous",
+        "tuna",
+        "dijon_dressing"
+      ]
+    },
+    {
+      "id": "erdnuss_nudel_bowl",
+      "cuisine": "Asiatisch inspiriert",
+      "region": null,
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "erdnuss nudel bowl",
+          "tofu nudel bowl",
+          "reisnudel bowl"
+        ],
+        "en": [
+          "peanut noodle bowl",
+          "tofu noodle bowl",
+          "rice noodle bowl"
+        ]
+      },
+      "titles": {
+        "de": "Erdnuss-Nudel-Bowl",
+        "en": "Peanut Noodle Bowl",
+        "fr": "Bol de nouilles à la cacahuète",
+        "it": "Bowl di noodles alle arachidi",
+        "tr": "Fıstık soslu erişte kasesi"
+      },
+      "servings": 4,
+      "prep_time_min": 25,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Reisnudeln",
+            "en": "rice noodles",
+            "fr": "nouilles de riz",
+            "it": "noodles di riso",
+            "tr": "pirinç eriştesi"
+          },
+          "amount": 600,
+          "unit": "g",
+          "culinaryRole": "carbohydrate",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Tofu",
+            "en": "tofu",
+            "fr": "tofu",
+            "it": "tofu",
+            "tr": "tofu"
+          },
+          "amount": 400,
+          "unit": "g",
+          "culinaryRole": "main_protein",
+          "protein_source": true,
+          "countsAsPrimaryProteinSource": true
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Karotten",
+            "en": "carrots",
+            "fr": "carottes",
+            "it": "carote",
+            "tr": "havuç"
+          },
+          "amount": 160,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Rote Paprika",
+            "en": "red bell pepper",
+            "fr": "poivron rouge",
+            "it": "peperone rosso",
+            "tr": "kırmızı biber"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Gurke",
+            "en": "cucumber",
+            "fr": "concombre",
+            "it": "cetriolo",
+            "tr": "salatalık"
+          },
+          "amount": 200,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Frühlingszwiebeln",
+            "en": "spring onions",
+            "fr": "oignons nouveaux",
+            "it": "cipollotti",
+            "tr": "taze soğan"
+          },
+          "amount": 60,
+          "unit": "g",
+          "culinaryRole": "vegetable",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Erdnüsse",
+            "en": "peanuts",
+            "fr": "cacahuètes",
+            "it": "arachidi",
+            "tr": "yer fıstığı"
+          },
+          "amount": 50,
+          "unit": "g",
+          "culinaryRole": "topping",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Erdnussmus",
+            "en": "peanut butter",
+            "fr": "beurre de cacahuète",
+            "it": "burro di arachidi",
+            "tr": "fıstık ezmesi"
+          },
+          "amount": 70,
+          "unit": "g",
+          "culinaryRole": "fat_source",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Sojasauce",
+            "en": "soy sauce",
+            "fr": "sauce soja",
+            "it": "salsa di soia",
+            "tr": "soya sosu"
+          },
+          "amount": 40,
+          "unit": "ml",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Limettensaft",
+            "en": "lime juice",
+            "fr": "jus de citron vert",
+            "it": "succo di lime",
+            "tr": "misket limonu suyu"
+          },
+          "amount": 29,
+          "unit": "ml",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Ingwer",
+            "en": "ginger",
+            "fr": "gingembre",
+            "it": "zenzero",
+            "tr": "zencefil"
+          },
+          "amount": 20,
+          "unit": "g",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Knoblauch",
+            "en": "garlic",
+            "fr": "ail",
+            "it": "aglio",
+            "tr": "sarımsak"
+          },
+          "amount": 10,
+          "unit": "g",
+          "culinaryRole": "seasoning",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        },
+        {
+          "id": "0013",
+          "names": {
+            "de": "Neutrales Bratöl",
+            "en": "neutral cooking oil",
+            "fr": "huile de cuisson neutre",
+            "it": "olio neutro per cottura",
+            "tr": "nötr kızartma yağı"
+          },
+          "amount": 11,
+          "unit": "ml",
+          "culinaryRole": "fat_source",
+          "protein_source": false,
+          "countsAsPrimaryProteinSource": false
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Nudeln und Tofu",
+            "en": "Noodles and tofu",
+            "fr": "Nouilles et tofu",
+            "it": "Noodles e tofu",
+            "tr": "Erişte ve tofu"
+          },
+          "content": {
+            "de": "{0001} garen und abspülen. {0002} würfeln und mit {0013} anbraten.",
+            "en": "Cook and rinse {0001}. Dice {0002} and sauté it in {0013}.",
+            "fr": "Faites cuire et rincez {0001}. Coupez {0002} en dés et faites-le revenir dans {0013}.",
+            "it": "Cuocete e sciacquate {0001}. Tagliate {0002} a cubetti e rosolatelo in {0013}.",
+            "tr": "{0001} pişirip durulayın. {0002} küp doğrayıp {0013} ile soteleyin."
+          },
+          "stove_level": 6,
+          "time_min": 12
+        },
+        {
+          "title": {
+            "de": "Gemüse",
+            "en": "Vegetables",
+            "fr": "Légumes",
+            "it": "Verdure",
+            "tr": "Sebzeler"
+          },
+          "content": {
+            "de": "{0003} und {0004} in Streifen, {0005} in Scheiben und {0006} in Ringe schneiden.",
+            "en": "Cut {0003} and {0004} into strips, {0005} into slices, and {0006} into rings.",
+            "fr": "Coupez {0003} et {0004} en lamelles, {0005} en tranches et {0006} en rondelles.",
+            "it": "Tagliate {0003} e {0004} a strisce, {0005} a fette e {0006} ad anelli.",
+            "tr": "{0003} ve {0004} şerit, {0005} dilim, {0006} halka doğrayın."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Erdnusssauce",
+            "en": "Peanut sauce",
+            "fr": "Sauce aux cacahuètes",
+            "it": "Salsa alle arachidi",
+            "tr": "Fıstık sosu"
+          },
+          "content": {
+            "de": "{0008}, {0009}, {0010}, geriebenen {0011} und gepressten {0012} glatt verrühren.",
+            "en": "Whisk {0008}, {0009}, {0010}, grated {0011}, and pressed {0012} until smooth.",
+            "fr": "Mélangez {0008}, {0009}, {0010}, {0011} râpé et {0012} pressé jusqu’à obtenir une sauce lisse.",
+            "it": "Mescolate {0008}, {0009}, {0010}, {0011} grattugiato e {0012} schiacciato fino a ottenere una salsa liscia.",
+            "tr": "{0008}, {0009}, {0010}, rendelenmiş {0011} ve ezilmiş {0012} pürüzsüz olana kadar karıştırın."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Anrichten",
+            "en": "Assembly",
+            "fr": "Dressage",
+            "it": "Composizione",
+            "tr": "Sunum"
+          },
+          "content": {
+            "de": "{0001} und {0002} in Schalen geben, {0003}, {0004}, {0005} und {0006} ergänzen und mit Sauce überziehen.",
+            "en": "Divide {0001} and {0002} among bowls, add {0003}, {0004}, {0005}, and {0006}, and coat with the sauce.",
+            "fr": "Répartissez {0001} et {0002} dans les bols, ajoutez {0003}, {0004}, {0005} et {0006}, puis nappez de sauce.",
+            "it": "Distribuite {0001} e {0002} nelle ciotole, aggiungete {0003}, {0004}, {0005} e {0006}, poi condite con la salsa.",
+            "tr": "{0001} ve {0002} kaselere paylaştırın, {0003}, {0004}, {0005} ve {0006} ekleyip sosla kaplayın."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Toppings",
+            "en": "Toppings",
+            "fr": "Garniture",
+            "it": "Guarnizione",
+            "tr": "Üst malzemeler"
+          },
+          "content": {
+            "de": "Mit {0007} bestreuen und mit {0006} ergänzen.",
+            "en": "Top with {0007} and {0006}.",
+            "fr": "Parsemez de {0007} et ajoutez {0006}.",
+            "it": "Completate con {0007} e {0006}.",
+            "tr": "{0007} serpip {0006} ile tamamlayın."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "garnish": {
+        "de": "Erdnüsse und Frühlingszwiebeln",
+        "en": "peanuts and spring onions",
+        "fr": "cacahuètes et oignons nouveaux",
+        "it": "arachidi e cipollotti",
+        "tr": "yer fıstığı ve taze soğan"
+      },
+      "chef_analysis": {
+        "de": "Reisnudeln und gebratener Tofu werden mit knackigem Gemüse und cremiger Erdnusssauce serviert. Limette und Ingwer bringen Frische in die würzige Sauce.",
+        "en": "Rice noodles and seared tofu are served with crisp vegetables and creamy peanut sauce. Lime and ginger brighten the savory sauce.",
+        "fr": "Les nouilles de riz et le tofu poêlé sont servis avec des légumes croquants et une sauce crémeuse à la cacahuète. Le citron vert et le gingembre apportent de la fraîcheur.",
+        "it": "Noodles di riso e tofu rosolato sono serviti con verdure croccanti e salsa cremosa alle arachidi. Lime e zenzero danno freschezza alla salsa sapida.",
+        "tr": "Pirinç eriştesi ve kızarmış tofu, diri sebzeler ve kremalı fıstık sosuyla sunulur. Misket limonu ve zencefil sosa ferahlık katar."
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian"
+      ],
+      "coreComponents": [
+        "rice_noodles",
+        "tofu",
+        "peanut_sauce"
+      ]
+    }
+  ]
+}

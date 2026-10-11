@@ -1,0 +1,65 @@
+{
+  "note": "Redaktionelle Einschätzung; Grenzfälle sind großzügig als Nicht-Klassiker aufgenommen.",
+  "non_classics": [
+    {
+      "id": "vegane_burrito_bowl",
+      "title": "Vegane Burrito-Bowl",
+      "reason": "Burrito als Schalenvariante; die konkrete Zusammenstellung ist keine kanonische Einzelrezeptur."
+    },
+    {
+      "id": "falafel_mediterran_bowl",
+      "title": "Falafel-Mediterran-Bowl",
+      "reason": "Generische Kombination bekannter Zutaten, aber kein eigenständiger regionaler Klassiker."
+    },
+    {
+      "id": "teriyaki_haehnchen_bowl",
+      "title": "Teriyaki-Hähnchen-Bowl",
+      "reason": "Teriyaki ist etabliert; die konkrete Hähnchen-Reis-Gemüse-Bowl ist eine moderne Rezeptvariante."
+    },
+    {
+      "id": "buddha_bowl_suesskartoffel",
+      "title": "Buddha-Bowl mit Süßkartoffel",
+      "reason": "Generische moderne Bowl-Zusammenstellung ohne klar abgegrenzte klassische Rezepttradition."
+    },
+    {
+      "id": "griechische_gyros_bowl",
+      "title": "Griechische Gyros-Bowl",
+      "reason": "Gyros ist traditionell; die konkrete Zusammenstellung als Bowl ist eine moderne Servierform."
+    },
+    {
+      "id": "lachs_avocado_sushi_bowl",
+      "title": "Lachs-Avocado-Sushi-Bowl",
+      "reason": "Moderne, dekonstruierte Sushi-Variante statt einer klar umrissenen traditionellen Rezeptur."
+    },
+    {
+      "id": "orientalische_linsen_bowl",
+      "title": "Orientalische Linsen-Bowl",
+      "reason": "Breit-regionale Bezeichnung für eine generische Kombination aus Getreide, Linsen und Gemüse."
+    },
+    {
+      "id": "gruene_power_bowl",
+      "title": "Grüne Power-Bowl",
+      "reason": "Generische, ernährungsorientierte Power-Bowl-Bezeichnung."
+    },
+    {
+      "id": "mexikanische_taco_bowl",
+      "title": "Mexikanische Taco-Bowl",
+      "reason": "Taco-Zutaten als moderne Schalenvariante; keine kanonische Einzelrezeptur."
+    },
+    {
+      "id": "gruene_smoothie_bowl",
+      "title": "Grüne Smoothie-Bowl",
+      "reason": "Moderne Smoothie-Bowl-Kombination statt eines eigenständigen klassischen Gerichts."
+    },
+    {
+      "id": "mediterrane_thunfisch_bowl",
+      "title": "Mediterrane Thunfisch-Bowl",
+      "reason": "Generische mediterrane Kombination ohne klar abgegrenzte klassische Rezepttradition."
+    },
+    {
+      "id": "erdnuss_nudel_bowl",
+      "title": "Erdnuss-Nudel-Bowl",
+      "reason": "Moderne Bowl-Komposition; Erdnusssauce und Nudeln haben Tradition, die Zusammenstellung ist aber nicht als einzelner Klassiker etabliert."
+    }
+  ]
+}
