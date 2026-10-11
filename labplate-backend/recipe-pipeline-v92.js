@@ -295,6 +295,8 @@ function renderRecipeForDisplay(recipe, renderOpts) {
 
   // Display-Mapping (stk → g für Makros; Eier-Name kulinarisch).
   // Unplausible KI-Makros/100g sofort klemmen (z.B. Protein 81 bei Hackfleisch).
+  // Fix 2026-10-11: Master-Store vom Single-Portion-Clamp ausnehmen
+  const isImmutableMaster = !!recipe.immutableCore;
   let ingredients = useIngredients.map(function (ing) {
     const name = String(ing.displayName || ing.name || 'Zutat').trim().slice(0, 200);
     let amount = Number(ing.amount);
@@ -330,7 +332,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
       if (namePieces) {
         pieces = Math.max(pieces, Math.round(Number(namePieces[1])));
       }
-      if (pieces > portions.SINGLE_PORTION_BASE.eggMaxPieces) {
+      if (!isImmutableMaster && pieces > portions.SINGLE_PORTION_BASE.eggMaxPieces) {
         pieces = portions.SINGLE_PORTION_BASE.eggMaxPieces;
       }
       amount = pieces * 60;
@@ -356,7 +358,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
       let pieces = Number.isFinite(grams) && grams >= 40 ? Math.max(1, Math.round(grams / 60)) : 1;
       const namePieces = String(name).match(/^\s*(\d+)\s*eier?\b/i);
       if (namePieces) pieces = Math.max(pieces, Math.round(Number(namePieces[1])));
-      if (pieces > portions.SINGLE_PORTION_BASE.eggMaxPieces) {
+      if (!isImmutableMaster && pieces > portions.SINGLE_PORTION_BASE.eggMaxPieces) {
         pieces = portions.SINGLE_PORTION_BASE.eggMaxPieces;
       }
       return {
