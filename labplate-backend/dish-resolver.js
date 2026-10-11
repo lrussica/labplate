@@ -14,7 +14,7 @@
  */
 const ALIASES = [
   // A1 Pasta — Substring-Match (Vollkornnudeln, Pastasauce, ...)
-  { pattern: /(spaghetti|penne|rigatoni|fusilli|tagliatelle|linguine|farfalle|orecchiette|bucatini|conchiglie|gemelli|trofie|fettuccine|pappardelle|ziti|cavatappi|pasta|nudeln|cacio\s*e\s*pepe|aglio\s*e\s*olio|pesto|puttanesca|alla\s+norma|alla\s+vodka|rag[uù](?=\s|$))/i,
+  { pattern: /(spaghetti|penne|rigatoni|fusilli|tagliatelle|linguine|farfalle|orecchiette|bucatini|conchiglie|gemelli|trofie|fettuccine|pappardelle|ziti|cavatappi|pasta|nudeln|cacio\s*e\s*pepe|aglio\s*e\s*olio|pesto|puttanesca|alla\s+norma|rag[uù](?=\s|$))/i,
     archetypeId: 'A1_pasta', dishId: 'pasta.generic', confidence: 0.85 },
   // A3 Pfanne — "hash" mit rechter Grenze (sonst "Hashtag")
   { pattern: /(bratkartoffeln|wok|shakshuka|fried rice|pfannengericht|ruehrei|omelett|hash(?![a-zäöüß]))/i,

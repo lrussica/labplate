@@ -510,6 +510,12 @@ const CATALOG = {
     per100g: { protein: 0.9, fat: 0.2, netCarbs: 6.8, fiber: 2.8, kcal: 41 },
     source: 'USDA FDC 170393 (Carrots, raw)',
   },
+  vodka: {
+    displayName: "Wodka",
+    aliases: ["vodka", "wodka", "vodka 40%", "vodka 80 proof"],
+    per100g: { protein: 0, fat: 0, netCarbs: 0, fiber: 0, kcal: 231 },
+    source: "USDA FDC 174826 (Alcoholic beverage, distilled, vodka, 80 proof)",
+  },
   cream_heavy: {
     displayName: 'Sahne (Schlagsahne)',
     aliases: ['sahne', 'schlagsahne', 'suesse sahne', 'süße sahne', 'heavy cream', 'whipping cream'],

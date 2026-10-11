@@ -886,6 +886,12 @@
       "category": "liquid",
       "needs_catalog": true
     },
+
+    "vodka": {
+      "kind": "nutrient",
+      "category": "liquid",
+      "needs_catalog": true
+    },
     "red_wine": {
       "kind": "nutrient",
       "category": "liquid",
