@@ -7205,210 +7205,6 @@
         "vegan",
         "vegetarian"
       ],
-      "id": "acai_bowl",
-      "cuisine": "br",
-      "region": "Brasilien",
-      "aliases": {
-        "de": [
-          "açaí bowl",
-          "acai bowl",
-          "acai-bowl"
-        ],
-        "en": [
-          "acai bowl",
-          "açaí bowl"
-        ],
-        "fr": [
-          "bol açaí",
-          "acai bowl"
-        ],
-        "it": [
-          "ciotola açaí",
-          "acai bowl"
-        ],
-        "tr": [
-          "açaí bowl",
-          "acai kasesi"
-        ]
-      },
-      "titles": {
-        "de": "Açaí Bowl",
-        "en": "Açaí Bowl",
-        "fr": "Bol Açaí",
-        "it": "Ciotola Açaí",
-        "tr": "Açaí Bowl"
-      },
-      "prep_time_min": 15,
-      "ingredients": [
-        {
-          "id": "0001",
-          "names": {
-            "de": "Açaí-Püree",
-            "en": "Açaí puree",
-            "fr": "Purée d'açaí",
-            "it": "Purea di açaí",
-            "tr": "Açaí püresi"
-          },
-          "amount": 400,
-          "unit": "g",
-          "protein_source": false,
-          "netCarbs": 10,
-          "fat": 5,
-          "protein": 1.5,
-          "fiber": 5,
-          "allergenTags": [],
-          "lactoseSwap": null
-        },
-        {
-          "id": "0002",
-          "names": {
-            "de": "Banane",
-            "en": "Banana",
-            "fr": "Banane",
-            "it": "Banana",
-            "tr": "Muz"
-          },
-          "amount": 200,
-          "unit": "g",
-          "protein_source": false,
-          "netCarbs": 20,
-          "fat": 0.3,
-          "protein": 1.1,
-          "fiber": 2.5,
-          "allergenTags": [],
-          "lactoseSwap": null
-        },
-        {
-          "id": "0003",
-          "names": {
-            "de": "Beeren",
-            "en": "Berries",
-            "fr": "Baies",
-            "it": "Frutti di bosco",
-            "tr": "Orman meyveleri"
-          },
-          "amount": 200,
-          "unit": "g",
-          "protein_source": false,
-          "netCarbs": 8,
-          "fat": 0.3,
-          "protein": 1,
-          "fiber": 4,
-          "allergenTags": [],
-          "lactoseSwap": null
-        },
-        {
-          "id": "0004",
-          "names": {
-            "de": "Granola",
-            "en": "Granola",
-            "fr": "Granola",
-            "it": "Granola",
-            "tr": "Granola"
-          },
-          "amount": 80,
-          "unit": "g",
-          "protein_source": false,
-          "netCarbs": 55,
-          "fat": 15,
-          "protein": 10,
-          "fiber": 8,
-          "allergenTags": [
-            "gluten"
-          ],
-          "lactoseSwap": null
-        },
-        {
-          "id": "0005",
-          "names": {
-            "de": "Erdnussmus",
-            "en": "Peanut butter",
-            "fr": "Beurre de cacahuète",
-            "it": "Burro di arachidi",
-            "tr": "Fıstık ezmesi"
-          },
-          "amount": 40,
-          "unit": "g",
-          "protein_source": false,
-          "netCarbs": 10,
-          "fat": 50,
-          "protein": 25,
-          "fiber": 6,
-          "allergenTags": [
-            "peanut"
-          ],
-          "lactoseSwap": null
-        },
-        {
-          "id": "0006",
-          "names": {
-            "de": "Chia",
-            "en": "Chia seeds",
-            "fr": "Graines de chia",
-            "it": "Semi di chia",
-            "tr": "Chia tohumu"
-          },
-          "amount": 20,
-          "unit": "g",
-          "protein_source": false,
-          "netCarbs": 5,
-          "fat": 30,
-          "protein": 17,
-          "fiber": 34,
-          "allergenTags": [],
-          "lactoseSwap": null
-        }
-      ],
-      "steps": [
-        {
-          "title": {
-            "de": "Mix",
-            "en": "Blend",
-            "fr": "Mixer",
-            "it": "Frullare",
-            "tr": "Karıştır"
-          },
-          "content": {
-            "de": "{0001} mit {0002} pürieren; mit {0003}, {0004}, {0005}, {0006} toppen.",
-            "en": "Blend {0001} with {0002}; top with {0003},{0004},{0005},{0006}.",
-            "fr": "Mixer {0001} et {0002}; garnir.",
-            "it": "Frullare {0001} e {0002}; guarnire.",
-            "tr": "{0001} ve {0002} blender; üstüne garnitür."
-          },
-          "stove_level": 0,
-          "time_min": 10
-        }
-      ],
-      "chef_analysis": {
-        "de": "Açaí Bowl: Açaí-Püree, Banane, Beeren, Granola, Erdnussmus, Chia.",
-        "en": "Açaí bowl: puree, banana, berries, granola, peanut butter, chia.",
-        "fr": "Bol açaí: purée, banane, baies, granola, beurre de cacahuète, chia.",
-        "it": "Ciotola açaí: purea, banana, frutti, granola, burro di arachidi, chia.",
-        "tr": "Açaí bowl: püre, muz, meyve, granola, fıstık ezmesi, chia."
-      },
-      "coreComponents": [
-        "acai",
-        "banana",
-        "berries",
-        "granola",
-        "peanut_butter",
-        "chia"
-      ]
-    },
-    {
-      "immutable": true,
-      "servings": 4,
-      "garnish": {
-        "de": "",
-        "en": "",
-        "fr": "",
-        "it": "",
-        "tr": ""
-      },
-      "diet_labels": [
-        "vegan",
-        "vegetarian"
-      ],
       "id": "chana_masala",
       "cuisine": "in",
       "region": "Nordindien",
@@ -19024,12 +18820,16 @@
       "immutable": true,
       "aliases": {
         "de": [
+          "açaí bowl",
           "acai bowl",
+          "acai-bowl",
           "acai fruhstucks bowl",
           "brasilianische acai bowl"
         ],
         "en": [
+          "açaí bowl",
           "acai bowl",
+          "acai-bowl",
           "acai breakfast bowl",
           "brazilian acai bowl"
         ]
