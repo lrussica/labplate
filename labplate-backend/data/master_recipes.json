@@ -13958,6 +13958,1249 @@
         "lemon",
         "basil"
       ]
+    },
+    {
+      "id": "ragu_di_salsiccia",
+      "cuisine": "it",
+      "region": "Emilia-Romagna",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "ragù di salsiccia",
+          "ragu di salsiccia",
+          "salsiccia ragù"
+        ],
+        "en": [
+          "ragu di salsiccia",
+          "sausage ragu"
+        ],
+        "fr": [
+          "ragù di salsiccia",
+          "ragù de saucisse"
+        ],
+        "it": [
+          "ragù di salsiccia",
+          "sugo di salsiccia"
+        ],
+        "tr": [
+          "ragu di salsiccia",
+          "sosisli ragu"
+        ]
+      },
+      "titles": {
+        "de": "Ragù di Salsiccia",
+        "en": "Sausage Ragù",
+        "fr": "Ragù di salsiccia",
+        "it": "Ragù di Salsiccia",
+        "tr": "Sosisli Ragù"
+      },
+      "servings": 4,
+      "prep_time_min": 40,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Spaghetti",
+            "en": "Spaghetti",
+            "fr": "Spaghetti",
+            "it": "Spaghetti",
+            "tr": "Spagetti"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 70,
+          "fat": 1.5,
+          "protein": 12,
+          "fiber": 3,
+          "allergenTags": [
+            "gluten"
+          ],
+          "culinaryRole": "base"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Italienische Salsiccia",
+            "en": "Italian sausage",
+            "fr": "Saucisse italienne",
+            "it": "Salsiccia italiana",
+            "tr": "İtalyan sosisi"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 1,
+          "fat": 25,
+          "protein": 18,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Weißwein",
+            "en": "White wine",
+            "fr": "Vin blanc",
+            "it": "Vino bianco",
+            "tr": "Beyaz şarap"
+          },
+          "amount": 100,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0,
+          "protein": 0.1,
+          "fiber": 0,
+          "allergenTags": [
+            "sulfites"
+          ],
+          "culinaryRole": "acid"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Tomaten (gehackt, Dose)",
+            "en": "Canned chopped tomatoes",
+            "fr": "Tomates concassées (boîte)",
+            "it": "Pomodori a pezzi (barattolo)",
+            "tr": "Doğranmış domates (konserve)"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 0.2,
+          "protein": 1.2,
+          "fiber": 1.5,
+          "allergenTags": [],
+          "culinaryRole": "base"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Zwiebel",
+            "en": "Onion",
+            "fr": "Oignon",
+            "it": "Cipolla",
+            "tr": "Soğan"
+          },
+          "amount": 80,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 9,
+          "fat": 0.1,
+          "protein": 1.1,
+          "fiber": 1.7,
+          "allergenTags": [],
+          "culinaryRole": "aromatic"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "culinaryRole": "aromatic"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Olivenöl",
+            "en": "Olive oil",
+            "fr": "Huile d'olive",
+            "it": "Olio d'oliva",
+            "tr": "Zeytinyağı"
+          },
+          "amount": 30,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Parmesan",
+            "en": "Parmesan",
+            "fr": "Parmesan",
+            "it": "Parmigiano",
+            "tr": "Parmesan"
+          },
+          "amount": 60,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 28,
+          "protein": 35,
+          "fiber": 0,
+          "allergenTags": [
+            "lactose",
+            "milk"
+          ],
+          "culinaryRole": "umami"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Soffritto",
+            "en": "Soffritto",
+            "fr": "Soffritto",
+            "it": "Soffritto",
+            "tr": "Soffritto"
+          },
+          "content": {
+            "de": "{0007} erhitzen, {0005} und {0006} fein gehackt 5 Min glasig dünsten.",
+            "en": "Heat {0007}, sweat finely chopped {0005} and {0006} for 5 min.",
+            "fr": "Chauffer {0007}, suer {0005} et {0006} hachés 5 min.",
+            "it": "Scaldare {0007}, stufare {0005} e {0006} tritati per 5 min.",
+            "tr": "{0007} ısıt, ince doğranmış {0005} ve {0006} 5 dk kavur."
+          },
+          "stove_level": 4,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Salsiccia",
+            "en": "Sausage",
+            "fr": "Saucisse",
+            "it": "Salsiccia",
+            "tr": "Sosis"
+          },
+          "content": {
+            "de": "{0002} aus der Pelle drücken, krümelig anbraten, bis es braun ist.",
+            "en": "Squeeze {0002} from casing, brown until crumbly.",
+            "fr": "Débarasser {0002} de sa peau, faire revenir jusqu'à dorure.",
+            "it": "Sgranare {0002}, rosolare fino a doratura.",
+            "tr": "{0002} kılıfından çıkar, kavur."
+          },
+          "stove_level": 5,
+          "time_min": 8
+        },
+        {
+          "title": {
+            "de": "Wein",
+            "en": "Wine",
+            "fr": "Vin",
+            "it": "Vino",
+            "tr": "Şarap"
+          },
+          "content": {
+            "de": "{0003} angießen, 4 Min einkochen lassen.",
+            "en": "Pour in {0003}, reduce 4 min.",
+            "fr": "Verser {0003}, réduire 4 min.",
+            "it": "Versare {0003}, ridurre 4 min.",
+            "tr": "{0003} dök, 4 dk çektir."
+          },
+          "stove_level": 5,
+          "time_min": 4
+        },
+        {
+          "title": {
+            "de": "Sugo",
+            "en": "Sauce",
+            "fr": "Sauce",
+            "it": "Sugo",
+            "tr": "Sos"
+          },
+          "content": {
+            "de": "{0004} zugeben, 15 Min offen köcheln, bis sämig.",
+            "en": "Add {0004}, simmer uncovered 15 min until thick.",
+            "fr": "Ajouter {0004}, mijoter 15 min à découvert.",
+            "it": "Aggiungere {0004}, sobbollire 15 min.",
+            "tr": "{0004} ekle, 15 dk açıkta kaynat."
+          },
+          "stove_level": 4,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Pasta",
+            "en": "Pasta",
+            "fr": "Pâtes",
+            "it": "Pasta",
+            "tr": "Makarna"
+          },
+          "content": {
+            "de": "{0001} in Salzwasser ({0009}) al dente kochen, mit Sugo und {0008} vermengen.",
+            "en": "Cook {0001} al dente in salted water ({0009}), toss with sauce and {0008}.",
+            "fr": "Cuire {0001} al dente, mélanger au ragù et {0008}.",
+            "it": "Cuocere {0001} al dente, mantecare con ragù e {0008}.",
+            "tr": "{0001} al dente haşla, sos ve {0008} ile karıştır."
+          },
+          "stove_level": 7,
+          "time_min": 10
+        }
+      ],
+      "garnish": {
+        "de": "",
+        "en": "",
+        "fr": "",
+        "it": "",
+        "tr": ""
+      },
+      "chef_analysis": {
+        "de": "Bologneser Variante mit italienischer Salsiccia statt Hackfleisch. Fenchel-Note aus der Salsiccia prägt das Gericht.",
+        "en": "Bolognese variant with Italian sausage instead of ground beef. Fennel notes define the dish.",
+        "fr": "Variante bolognaise avec saucisse italienne. Notes de fenouil.",
+        "it": "Variante bolognese con salsiccia italiana. Note di finocchio.",
+        "tr": "İtalyan sosisi ile Bolognese varyantı. Rezene notu."
+      },
+      "diet_labels": [],
+      "coreComponents": [
+        "pasta",
+        "sausage",
+        "tomato",
+        "wine"
+      ]
+    },
+    {
+      "id": "sauce_aux_champignons",
+      "cuisine": "fr",
+      "region": "Frankreich",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "pilzsauce",
+          "champignon sauce",
+          "sauce aux champignons"
+        ],
+        "en": [
+          "mushroom sauce",
+          "sauce aux champignons"
+        ],
+        "fr": [
+          "sauce aux champignons",
+          "sauce champignons"
+        ],
+        "it": [
+          "salsa ai funghi"
+        ],
+        "tr": [
+          "mantar sosu"
+        ]
+      },
+      "titles": {
+        "de": "Sauce aux Champignons",
+        "en": "Mushroom Sauce",
+        "fr": "Sauce aux champignons",
+        "it": "Salsa ai Funghi",
+        "tr": "Mantar Sosu"
+      },
+      "servings": 4,
+      "prep_time_min": 25,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Champignons",
+            "en": "Mushrooms",
+            "fr": "Champignons",
+            "it": "Funghi",
+            "tr": "Mantar"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 0.3,
+          "protein": 3,
+          "fiber": 1,
+          "allergenTags": [],
+          "culinaryRole": "base"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Butter",
+            "en": "Butter",
+            "fr": "Beurre",
+            "it": "Burro",
+            "tr": "Tereyağı"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0.6,
+          "fat": 82,
+          "protein": 0.7,
+          "fiber": 0,
+          "allergenTags": [
+            "lactose",
+            "milk"
+          ],
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Schalotten",
+            "en": "Shallots",
+            "fr": "Échalotes",
+            "it": "Scalogni",
+            "tr": "Arpacık soğan"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 12,
+          "fat": 0.2,
+          "protein": 2.5,
+          "fiber": 2,
+          "allergenTags": [],
+          "culinaryRole": "aromatic"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Weißwein",
+            "en": "White wine",
+            "fr": "Vin blanc",
+            "it": "Vino bianco",
+            "tr": "Beyaz şarap"
+          },
+          "amount": 100,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0,
+          "protein": 0.1,
+          "fiber": 0,
+          "allergenTags": [
+            "sulfites"
+          ],
+          "culinaryRole": "acid"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Sahne",
+            "en": "Heavy cream",
+            "fr": "Crème épaisse",
+            "it": "Panna da cucina",
+            "tr": "Krema"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 35,
+          "protein": 2,
+          "fiber": 0,
+          "allergenTags": [
+            "lactose",
+            "milk"
+          ],
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Thymian",
+            "en": "Thyme",
+            "fr": "Thym",
+            "it": "Timo",
+            "tr": "Kekik"
+          },
+          "amount": 2,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 24,
+          "fat": 1.7,
+          "protein": 5.6,
+          "fiber": 14,
+          "allergenTags": [],
+          "culinaryRole": "herb"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Petersilie",
+            "en": "Parsley",
+            "fr": "Persil",
+            "it": "Prezzemolo",
+            "tr": "Maydanoz"
+          },
+          "amount": 6,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0.8,
+          "protein": 3,
+          "fiber": 3.3,
+          "allergenTags": [],
+          "culinaryRole": "herb"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Schwarzer Pfeffer",
+            "en": "Black pepper",
+            "fr": "Poivre noir",
+            "it": "Pepe nero",
+            "tr": "Karabiber"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "spice"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Champignons",
+            "en": "Mushrooms",
+            "fr": "Champignons",
+            "it": "Funghi",
+            "tr": "Mantar"
+          },
+          "content": {
+            "de": "{0002} in einer großen Pfanne erhitzen. {0001} in Scheiben scharf anbraten, bis sie Wasser verlieren und braun werden. Herausnehmen.",
+            "en": "Heat {0002} in a large pan. Sear sliced {0001} until water evaporates and they brown. Remove.",
+            "fr": "Chauffer {0002}. Saisir {0001} émincés jusqu'à évaporation et dorure. Retirer.",
+            "it": "Scaldare {0002}. Rosolare {0001} a fette fino a doratura. Togliere.",
+            "tr": "{0002} ısıt. Dilimlenmiş {0001} suyunu salıp kahverengileşene kadar kızart. Çıkar."
+          },
+          "stove_level": 6,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Soffritto",
+            "en": "Soffritto",
+            "fr": "Soffritto",
+            "it": "Soffritto",
+            "tr": "Soffritto"
+          },
+          "content": {
+            "de": "{0003} in derselben Pfanne 4 Min glasig dünsten. {0004} angießen, 3 Min einkochen.",
+            "en": "Sweat {0003} in the same pan 4 min. Pour in {0004}, reduce 3 min.",
+            "fr": "Suer {0003} dans la même poêle 4 min. Verser {0004}, réduire 3 min.",
+            "it": "Stufare {0003} nella stessa padella per 4 min. Versare {0004}, ridurre 3 min.",
+            "tr": "Aynı tavada {0003} 4 dk kavur. {0004} dök, 3 dk çektir."
+          },
+          "stove_level": 4,
+          "time_min": 7
+        },
+        {
+          "title": {
+            "de": "Sahne",
+            "en": "Cream",
+            "fr": "Crème",
+            "it": "Panna",
+            "tr": "Krema"
+          },
+          "content": {
+            "de": "{0005} und {0006} einrühren, 5 Min sanft köcheln. Champignons zurück in die Pfanne.",
+            "en": "Stir in {0005} and {0006}, gently simmer 5 min. Return mushrooms to the pan.",
+            "fr": "Incorporer {0005} et {0006}, mijoter doucement 5 min. Remettre les champignons.",
+            "it": "Unire {0005} e {0006}, sobbollire 5 min. Rimettere i funghi.",
+            "tr": "{0005} ve {0006} ekle, 5 dk kaynat. Mantarları tavaya geri koy."
+          },
+          "stove_level": 3,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Finish",
+            "en": "Finish",
+            "fr": "Finition",
+            "it": "Rifinitura",
+            "tr": "Bitirme"
+          },
+          "content": {
+            "de": "Mit {0008} und {0009} abschmecken. {0007} gehackt untermischen und sofort servieren.",
+            "en": "Season with {0008} and {0009}. Fold in chopped {0007}, serve immediately.",
+            "fr": "Assaisonner avec {0008} et {0009}. Incorporer {0007} haché, servir aussitôt.",
+            "it": "Regolare con {0008} e {0009}. Unire {0007} tritato, servire subito.",
+            "tr": "{0008} ve {0009} ile tatlandır. Kıyılmış {0007} ekle, hemen servis et."
+          },
+          "stove_level": 0,
+          "time_min": 1
+        }
+      ],
+      "garnish": {
+        "de": "",
+        "en": "",
+        "fr": "",
+        "it": "",
+        "tr": ""
+      },
+      "chef_analysis": {
+        "de": "Französisch: braune Champignons, Schalotten, Weißwein, Sahne, Thymian. Zu Steak, Huhn, Kalb oder Kartoffelpüree.",
+        "en": "French: browned mushrooms, shallots, white wine, cream, thyme. For steak, chicken, veal or mash.",
+        "fr": "Français : champignons saisis, échalotes, vin blanc, crème, thym.",
+        "it": "Francese: funghi rosolati, scalogni, vino bianco, panna, timo.",
+        "tr": "Fransız: kızarmış mantar, arpacık, beyaz şarap, krema, kekik."
+      },
+      "diet_labels": [
+        "vegetarian",
+        "keto",
+        "low-carb"
+      ],
+      "coreComponents": [
+        "mushroom",
+        "cream",
+        "shallot",
+        "wine"
+      ]
+    },
+    {
+      "id": "vinaigrette",
+      "cuisine": "fr",
+      "region": "Frankreich",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "vinaigrette",
+          "französische vinaigrette"
+        ],
+        "en": [
+          "vinaigrette",
+          "french vinaigrette"
+        ],
+        "fr": [
+          "vinaigrette",
+          "sauce vinaigrette"
+        ],
+        "it": [
+          "vinaigrette",
+          "salsa vinaigrette"
+        ],
+        "tr": [
+          "vinegret",
+          "vinaigrette"
+        ]
+      },
+      "titles": {
+        "de": "Vinaigrette",
+        "en": "Vinaigrette",
+        "fr": "Vinaigrette",
+        "it": "Vinaigrette",
+        "tr": "Vinegret"
+      },
+      "servings": 4,
+      "prep_time_min": 5,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Olivenöl",
+            "en": "Olive oil",
+            "fr": "Huile d'olive",
+            "it": "Olio d'oliva",
+            "tr": "Zeytinyağı"
+          },
+          "amount": 90,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Rotweinessig",
+            "en": "Red wine vinegar",
+            "fr": "Vinaigre de vin rouge",
+            "it": "Aceto di vino rosso",
+            "tr": "Kırmızı şarap sirkesi"
+          },
+          "amount": 30,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0.6,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [
+            "sulfites"
+          ],
+          "culinaryRole": "acid"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Dijon-Senf",
+            "en": "Dijon mustard",
+            "fr": "Moutarde de Dijon",
+            "it": "Senape di Digione",
+            "tr": "Dijon hardalı"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 4,
+          "protein": 4,
+          "fiber": 3,
+          "allergenTags": [],
+          "culinaryRole": "emulsifier"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Schalotten",
+            "en": "Shallots",
+            "fr": "Échalotes",
+            "it": "Scalogni",
+            "tr": "Arpacık soğan"
+          },
+          "amount": 15,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 12,
+          "fat": 0.2,
+          "protein": 2.5,
+          "fiber": 2,
+          "allergenTags": [],
+          "culinaryRole": "aromatic",
+          "optional": true
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Schwarzer Pfeffer",
+            "en": "Black pepper",
+            "fr": "Poivre noir",
+            "it": "Pepe nero",
+            "tr": "Karabiber"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "spice"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Basis",
+            "en": "Base",
+            "fr": "Base",
+            "it": "Base",
+            "tr": "Baz"
+          },
+          "content": {
+            "de": "{0002}, {0003}, {0005} und {0006} in einer Schüssel verrühren, bis das Salz gelöst ist. Optional {0004} fein gehackt zugeben.",
+            "en": "Whisk {0002}, {0003}, {0005} and {0006} in a bowl until salt dissolves. Optional: add chopped {0004}.",
+            "fr": "Mélanger {0002}, {0003}, {0005} et {0006} jusqu'à dissolution du sel. Ajouter {0004}.",
+            "it": "Mescolare {0002}, {0003}, {0005} e {0006} fino a sciogliere il sale. Aggiungere {0004}.",
+            "tr": "{0002}, {0003}, {0005} ve {0006}'yı tuz çözülene kadar karıştır. {0004} ekle."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        },
+        {
+          "title": {
+            "de": "Emulsion",
+            "en": "Emulsion",
+            "fr": "Émulsion",
+            "it": "Emulsione",
+            "tr": "Emülsiyon"
+          },
+          "content": {
+            "de": "{0001} in dünnem Strahl unter ständigem Rühren einlaufen lassen, bis die Vinaigrette bindet.",
+            "en": "Add {0001} in a thin stream, whisking constantly, until emulsified.",
+            "fr": "Verser {0001} en filet en fouettant jusqu'à émulsion.",
+            "it": "Versare {0001} a filo mescolando fino a emulsione.",
+            "tr": "{0001} ince şerit halinde sürekli çırparak ekle."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "garnish": {
+        "de": "",
+        "en": "",
+        "fr": "",
+        "it": "",
+        "tr": ""
+      },
+      "chef_analysis": {
+        "de": "Französisch. Grundverhältnis Öl zu Essig 3:1. Dijon-Senf als Emulgator. Klassisch zu Salat, auch zu warmem Gemüse.",
+        "en": "French. Oil-to-vinegar ratio 3:1. Dijon mustard as emulsifier.",
+        "fr": "Français. Ratio huile/vinaigre 3:1. Moutarde comme émulsifiant.",
+        "it": "Francese. Rapporto olio/aceto 3:1. Senape come emulsionante.",
+        "tr": "Fransız. Yağ/sirke oranı 3:1. Hardal emülgatör."
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian",
+        "keto",
+        "low-carb"
+      ],
+      "coreComponents": [
+        "olive_oil",
+        "vinegar",
+        "mustard"
+      ]
+    },
+    {
+      "id": "chimichurri",
+      "cuisine": "ar",
+      "region": "Argentinien",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "chimichurri",
+          "argentinische kräutersauce"
+        ],
+        "en": [
+          "chimichurri",
+          "argentinian herb sauce"
+        ],
+        "fr": [
+          "chimichurri",
+          "sauce aux herbes argentine"
+        ],
+        "it": [
+          "chimichurri",
+          "salsa argentina"
+        ],
+        "tr": [
+          "chimichurri",
+          "arjantin ot sosu"
+        ]
+      },
+      "titles": {
+        "de": "Chimichurri",
+        "en": "Chimichurri",
+        "fr": "Chimichurri",
+        "it": "Chimichurri",
+        "tr": "Chimichurri"
+      },
+      "servings": 4,
+      "prep_time_min": 10,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Petersilie",
+            "en": "Parsley",
+            "fr": "Persil",
+            "it": "Prezzemolo",
+            "tr": "Maydanoz"
+          },
+          "amount": 60,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0.8,
+          "protein": 3,
+          "fiber": 3.3,
+          "allergenTags": [],
+          "culinaryRole": "herb"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Olivenöl",
+            "en": "Olive oil",
+            "fr": "Huile d'olive",
+            "it": "Olio d'oliva",
+            "tr": "Zeytinyağı"
+          },
+          "amount": 120,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Rotweinessig",
+            "en": "Red wine vinegar",
+            "fr": "Vinaigre de vin rouge",
+            "it": "Aceto di vino rosso",
+            "tr": "Kırmızı şarap sirkesi"
+          },
+          "amount": 40,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0.6,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [
+            "sulfites"
+          ],
+          "culinaryRole": "acid"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 12,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "culinaryRole": "aromatic"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Getrockneter Oregano",
+            "en": "Dried oregano",
+            "fr": "Origan séché",
+            "it": "Origano secco",
+            "tr": "Kuru kekik"
+          },
+          "amount": 3,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 26,
+          "fat": 4.3,
+          "protein": 9,
+          "fiber": 42,
+          "allergenTags": [],
+          "culinaryRole": "herb"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Getrocknete Chilischoten",
+            "en": "Dried chili",
+            "fr": "Piment séché",
+            "it": "Peperoncino secco",
+            "tr": "Kuru biber"
+          },
+          "amount": 3,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 1,
+          "protein": 1.8,
+          "fiber": 4,
+          "allergenTags": [],
+          "culinaryRole": "heat"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Kräuter",
+            "en": "Herbs",
+            "fr": "Herbes",
+            "it": "Erbe",
+            "tr": "Otlar"
+          },
+          "content": {
+            "de": "{0001}, {0004}, {0005}, {0006} sehr fein hacken.",
+            "en": "Very finely chop {0001}, {0004}, {0005}, {0006}.",
+            "fr": "Hacher très finement {0001}, {0004}, {0005}, {0006}.",
+            "it": "Tritare finissimamente {0001}, {0004}, {0005}, {0006}.",
+            "tr": "{0001}, {0004}, {0005}, {0006} çok ince doğra."
+          },
+          "stove_level": 0,
+          "time_min": 6
+        },
+        {
+          "title": {
+            "de": "Mischen",
+            "en": "Mix",
+            "fr": "Mélanger",
+            "it": "Mescolare",
+            "tr": "Karıştır"
+          },
+          "content": {
+            "de": "Mit {0002}, {0003} und {0007} verrühren. Mindestens 30 Min ziehen lassen.",
+            "en": "Stir with {0002}, {0003} and {0007}. Rest at least 30 min.",
+            "fr": "Mélanger avec {0002}, {0003} et {0007}. Reposer au moins 30 min.",
+            "it": "Mescolare con {0002}, {0003} e {0007}. Riposare almeno 30 min.",
+            "tr": "{0002}, {0003} ve {0007} ile karıştır. En az 30 dk dinlendir."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        }
+      ],
+      "garnish": {
+        "de": "",
+        "en": "",
+        "fr": "",
+        "it": "",
+        "tr": ""
+      },
+      "chef_analysis": {
+        "de": "Argentinisch: Petersilie, Olivenöl, Rotweinessig, Knoblauch, Oregano, Chili. Zu gegrilltem Fleisch (Asado). Kräuter werden gehackt, nicht püriert.",
+        "en": "Argentine: parsley, olive oil, red wine vinegar, garlic, oregano, chili. For grilled meat (asado).",
+        "fr": "Argentin : persil, huile d'olive, vinaigre, ail, origan, piment.",
+        "it": "Argentino: prezzemolo, olio, aceto, aglio, origano, peperoncino.",
+        "tr": "Arjantin: maydanoz, zeytinyağı, sirke, sarımsak, kekik, biber."
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian",
+        "keto",
+        "low-carb"
+      ],
+      "coreComponents": [
+        "parsley",
+        "olive_oil",
+        "vinegar",
+        "garlic"
+      ]
+    },
+    {
+      "id": "balsamic_glaze",
+      "cuisine": "it",
+      "region": "Modena",
+      "immutable": true,
+      "aliases": {
+        "de": [
+          "balsamico glasur",
+          "balsamico-glace",
+          "balsamico reduktion"
+        ],
+        "en": [
+          "balsamic glaze",
+          "balsamic reduction"
+        ],
+        "fr": [
+          "glaçage balsamique",
+          "réduction balsamique"
+        ],
+        "it": [
+          "glassa di balsamico",
+          "riduzione di balsamico"
+        ],
+        "tr": [
+          "balsamik glazür",
+          "balsamik redüksiyon"
+        ]
+      },
+      "titles": {
+        "de": "Balsamico-Glasur",
+        "en": "Balsamic Glaze",
+        "fr": "Glaçage balsamique",
+        "it": "Glassa di Balsamico",
+        "tr": "Balsamik Glazür"
+      },
+      "servings": 4,
+      "prep_time_min": 20,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Balsamico-Essig",
+            "en": "Balsamic vinegar",
+            "fr": "Vinaigre balsamique",
+            "it": "Aceto balsamico",
+            "tr": "Balsamik sirke"
+          },
+          "amount": 200,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 15,
+          "fat": 0,
+          "protein": 0.5,
+          "fiber": 0,
+          "allergenTags": [
+            "sulfites"
+          ],
+          "culinaryRole": "base"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Honig",
+            "en": "Honey",
+            "fr": "Miel",
+            "it": "Miele",
+            "tr": "Bal"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 82,
+          "fat": 0,
+          "protein": 0.3,
+          "fiber": 0,
+          "allergenTags": [],
+          "culinaryRole": "sweetener",
+          "optional": true
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Reduktion",
+            "en": "Reduce",
+            "fr": "Réduire",
+            "it": "Ridurre",
+            "tr": "İndirgeme"
+          },
+          "content": {
+            "de": "{0001} in einem kleinen Topf bei mittlerer Hitze langsam auf ein Drittel einkochen (ca. 10–15 Min), bis die Glasur den Löffel überzieht.",
+            "en": "Slowly reduce {0001} in a small pan over medium heat to one third (approx. 10–15 min) until it coats a spoon.",
+            "fr": "Réduire {0001} à feu moyen à un tiers (10–15 min) jusqu'à nappe.",
+            "it": "Ridurre {0001} a fuoco medio a un terzo (10–15 min) fino a velare il cucchiaio.",
+            "tr": "{0001}'yı orta ateşte üçte bire indir (10–15 dk)."
+          },
+          "stove_level": 3,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Finish",
+            "en": "Finish",
+            "fr": "Finition",
+            "it": "Rifinitura",
+            "tr": "Bitirme"
+          },
+          "content": {
+            "de": "Optional {0002} einrühren. Abkühlen lassen — die Glasur wird beim Abkühlen dicker.",
+            "en": "Optional: stir in {0002}. Let cool — the glaze thickens as it cools.",
+            "fr": "Facultatif : incorporer {0002}. Laisser refroidir.",
+            "it": "Facoltativo: unire {0002}. Raffreddare.",
+            "tr": "İsteğe bağlı {0002} ekle. Soğumaya bırak."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        }
+      ],
+      "garnish": {
+        "de": "",
+        "en": "",
+        "fr": "",
+        "it": "",
+        "tr": ""
+      },
+      "chef_analysis": {
+        "de": "Modena: Balsamico-Essig langsam reduziert. Sirupartig, süß-säuerlich. Über Tomate-Mozzarella, Gegrilltes, Erdbeeren.",
+        "en": "Modena: balsamic slowly reduced. Syrupy, sweet-sour. Over tomato-mozzarella, grilled food, strawberries.",
+        "fr": "Modène : vinaigre balsamique réduit. Sirupeux, aigre-doux.",
+        "it": "Modena: aceto balsamico ridotto. Sciropposo, agrodolce.",
+        "tr": "Modena: yavaşça indirgenmiş balsamik sirke. Şurupsu, tatlı-ekşi."
+      },
+      "diet_labels": [
+        "vegetarian"
+      ],
+      "coreComponents": [
+        "balsamic_vinegar"
+      ]
     }
   ]
 }
