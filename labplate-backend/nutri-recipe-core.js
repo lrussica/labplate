@@ -1392,6 +1392,8 @@ module.exports = {
           const guard = require('./dish-identity-guard');
           const g = guard.checkQuery(dishQuery, parsedRecipe);
           if (!g || !Array.isArray(g.violations)) return null;
+          const _isImmutableMaster = !!(parsedRecipe && (parsedRecipe.immutableCore || parsedRecipe.masterRecipeId));
+          if (_isImmutableMaster) return null;
 
           const blockers = [];
           const warnings = [];
@@ -1468,9 +1470,10 @@ module.exports = {
             compositeConfidence: g.resolved && g.resolved.compositeConfidence,
             confidence: g.resolved && g.resolved.confidence,
             violations: g.violations,
-            blocked: blockMode && !g.ok,
+            blocked: blockMode && !g.ok && !isImmutableMaster,
           };
-          if (!g.ok && blockMode) {
+          const isImmutableMaster = !!(result.recipe && (result.recipe.immutableCore || result.recipe.masterRecipeId));
+          if (!g.ok && blockMode && !isImmutableMaster) {
             console.warn('[dish-identity] BLOCKED',
               JSON.stringify({ q: dishQuery, archetype: g.resolved.archetypeId,
                                violations: g.violations }));
