@@ -719,6 +719,52 @@ function buildThemeRecipeGuidance(textOrOpts) {
   return themeGuidanceFromTheme(detectNutrientTheme(textOrOpts));
 }
 
+// --- P4: Composite-Profil als Prompt-Hinweis (2026-10-11) ---
+function _findCompositeForQuery(query) {
+  try {
+    const cl = require('./composite-loader');
+    const ids = cl.listComposites();
+    const q = String(query || '').toLowerCase();
+    if (!q) return null;
+    for (const id of ids) {
+      let comp;
+      try { comp = cl.loadComposite(id); } catch (_) { continue; }
+      const aliases = Array.isArray(comp.aliases) ? comp.aliases : [];
+      for (const a of aliases) {
+        const aa = String(a || '').toLowerCase().trim();
+        if (aa && aa.length >= 4 && q.includes(aa)) return comp;
+      }
+      const idWords = id.replace(/_/g, ' ');
+      if (idWords.length >= 5 && q.includes(idWords)) return comp;
+    }
+  } catch (_) {}
+  return null;
+}
+function _formatCompositeHint(comp) {
+  if (!comp || typeof comp !== 'object') return '';
+  const lines = [];
+  const label = comp.displayName || comp.composite || '';
+  lines.push('PROFIL-KENNTNIS (verbindlich): Du kochst ' + label + '.');
+  const core = comp.core || {};
+  const coreLines = [];
+  for (const [slot, def] of Object.entries(core)) {
+    if (!def || typeof def !== 'object') continue;
+    let allowed = [];
+    if (Array.isArray(def.allowed)) allowed = def.allowed;
+    else if (def.allowed && typeof def.allowed === 'object') allowed = Object.keys(def.allowed);
+    const rng = Array.isArray(def.amount_g) && def.amount_g.length === 2
+      ? ' [' + def.amount_g[0] + '-' + def.amount_g[1] + 'g/4P]' : '';
+    if (allowed.length) coreLines.push(slot + ': ' + allowed.join(' | ') + rng);
+  }
+  if (coreLines.length) lines.push('PFLICHT-Kern: ' + coreLines.join(' || '));
+  const forb = Array.isArray(comp.forbidden) ? comp.forbidden : [];
+  if (forb.length) lines.push('VERBOTEN: ' + forb.join(', '));
+  const tol = comp.tolerated && typeof comp.tolerated === 'object' ? Object.keys(comp.tolerated) : [];
+  if (tol.length) lines.push('Optional: ' + tol.join(', '));
+  lines.push('Halte dich strikt an dieses Profil. Keine Kern-Zutat ersetzen, keine verbotene Zutat hinzufuegen.');
+  return lines.join('\n');
+}
+// --- /P4 ---
 function buildGenerativeMessages(p) {
   const teamOn = p.team_ai !== false;
   const themeBlob = [p.ai_instruction, ...(Array.isArray(p.pantry_ingredients) ? p.pantry_ingredients : [])].join(' ');
@@ -731,6 +777,15 @@ function buildGenerativeMessages(p) {
   });
   // Original/klassisch: keine Fitness-Shake-Regeln (wuerden Tradition/Passthrough stoeren).
   const isOriginalMode = /MODUS ORIGINALREZEPT|MODE ORIGINAL RECIPE/i.test(String(p.ai_instruction || ''));
+  // P4: Composite-Profil fuer den LLM-Prompt ableiten (2026-10-11)
+  const _dishQueryForComposite = Array.isArray(p.pantry_ingredients)
+    ? p.pantry_ingredients.join(' ')
+    : String(p.ai_instruction || '');
+  const compositeHint = (function () {
+    if (isOriginalMode) return '';
+    try { return _formatCompositeHint(_findCompositeForQuery(_dishQueryForComposite)); }
+    catch (_) { return ''; }
+  })();
   const emotionRules = teamOn ? [
     'TEAM-HANDOFF AN DEN MENTAL-COACH (Phase 2): Wenn der Nutzer klar resigniert, ueberfordert, frustriert oder emotional blockiert ist',
     '(z.B. "schaff ich eh nicht", "zu kompliziert", "nervt", "keine Energie") UND kein konkretes Rezept/Gericht verlangt:',
@@ -826,6 +881,7 @@ function buildGenerativeMessages(p) {
         });
       } catch (_) { return ''; }
     }()),
+    compositeHint,
     emotionRules,
     themeRules,
     'HANDOFF: Lies brief.theme (z.B. eisen, vitamin_b) aus dem Supplement-Handoff aktiv. Wenn ai_instruction mit "HANDOFF VOM MENTAL-COACH" oder "HANDOFF VOM SUPPLEMENT-COACH" beginnt, priorisiere passende Lebensmittel – trotzdem nur Rezept-JSON, kein Coaching.',
