@@ -35,7 +35,7 @@ const CATALOG = {
   },
   beef_mince: {
     displayName: 'Rinderhackfleisch',
-    aliases: ['rinderhack', 'rinderhackfleisch', 'hackfleisch', 'rind', 'beef mince'],
+    aliases: ['rinderhack', 'rinderhackfleisch', 'hackfleisch', 'rind', 'beef mince', 'mageres rinderhack', 'mageres rindfleisch'],
     per100g: { protein: 17.7, fat: 18.1, netCarbs: 0.0, fiber: 0.0, kcal: 239 },
     source: 'USDA FDC 173068 (Beef, Australian, grass-fed, ground, 85/15, raw)',
   },
@@ -123,7 +123,7 @@ const CATALOG = {
   },
   spinach: {
     displayName: 'Spinat',
-    aliases: ['spinat', 'spinat (frisch)', 'babyspinat'],
+    aliases: ['spinat', 'spinat (frisch)', 'babyspinat', 'blattspinat'],
     per100g: { protein: 2.9, fat: 0.4, netCarbs: 1.4, fiber: 2.2, kcal: 23 },
     source: 'USDA FDC 168462',
   },
@@ -218,7 +218,7 @@ const CATALOG = {
   // ---------- ERWEITERUNG 2026-10-06 (USDA-verifiziert) ----------
   onion_yellow: {
     displayName: 'Zwiebel (gelb)',
-    aliases: ['zwiebel', 'zwiebel (gelb)', 'zwiebel gelb', 'gelbe zwiebel', 'onion'],
+    aliases: ['zwiebel', 'zwiebel (gelb)', 'zwiebel gelb', 'gelbe zwiebel', 'onion', 'zwiebeln'],
     per100g: { protein: 1.1, fat: 0.1, netCarbs: 7.6, fiber: 1.7, kcal: 40 },
     source: 'USDA FDC 170000 (Onions, raw)',
   },
@@ -515,6 +515,25 @@ const CATALOG = {
     aliases: ["vodka", "wodka", "vodka 40%", "vodka 80 proof"],
     per100g: { protein: 0, fat: 0, netCarbs: 0, fiber: 0, kcal: 231 },
     source: "USDA FDC 174826 (Alcoholic beverage, distilled, vodka, 80 proof)",
+  },
+
+  tahini: {
+    displayName: "Tahini",
+    aliases: ["tahini", "sesammus", "sesampaste", "tahina"],
+    per100g: { protein: 17.0, fat: 53.8, netCarbs: 11.9, fiber: 9.3, kcal: 595 },
+    source: "USDA FDC 170189 (Seeds, sesame butter, tahini)",
+  },
+  banana: {
+    displayName: "Banane",
+    aliases: ["banane", "bananen", "banana", "bananas"],
+    per100g: { protein: 1.1, fat: 0.3, netCarbs: 20.2, fiber: 2.6, kcal: 89 },
+    source: "USDA FDC 110531 (Bananas, raw)",
+  },
+  sugar: {
+    displayName: "Zucker",
+    aliases: ["zucker", "haushaltszucker", "sugar", "weisszucker"],
+    per100g: { protein: 0, fat: 0, netCarbs: 100, fiber: 0, kcal: 387 },
+    source: "USDA FDC 193821 (Sugars, granulated)",
   },
   cream_heavy: {
     displayName: 'Sahne (Schlagsahne)',

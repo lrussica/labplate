@@ -108,7 +108,7 @@ module.exports = {
   },
   yogurt: {
     displayName: 'Joghurt (natur, 3,5%)',
-    aliases: ['joghurt', 'naturjoghurt', 'yogurt', 'yoghurt'],
+    aliases: ['joghurt', 'naturjoghurt', 'yogurt', 'yoghurt', 'joghurt 1,5 %', 'joghurt 1.5 %', 'joghurt 1,5%'],
     per100g: { protein: 3.5, fat: 3.3, netCarbs: 4.7, fiber: 0.0, kcal: 61 },
     source: 'USDA FDC 170886 (Yogurt, plain, whole milk)',
   },
@@ -126,7 +126,7 @@ module.exports = {
   },
   olive: {
     displayName: 'Oliven (gruen/schwarz)',
-    aliases: ['oliven', 'olive', 'olives'],
+    aliases: ['oliven', 'olive', 'olives', 'schwarze oliven', 'schwarze olive'],
     per100g: { protein: 1.0, fat: 15.3, netCarbs: 3.1, fiber: 3.2, kcal: 145 },
     source: 'USDA FDC 169094 (Olives, ripe, canned (small-extra large))',
   },
