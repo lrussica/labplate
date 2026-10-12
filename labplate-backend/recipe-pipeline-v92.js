@@ -1460,6 +1460,38 @@ async function generateValidatedRecipe(opts) {
       continue;
     }
 
+    // Degenerations-Check: Rezept braucht mind. 2 echte Zutaten ODER makro-relevante Naehrwerte.
+    // Faengt "Wasser"-Rezepte ab, die formal valide sind, aber inhaltlich leer.
+    const _degenIngList = Array.isArray(parsed.ingredients) ? parsed.ingredients : [];
+    const _degenStapleRe = /^(wasser|water|salz|salt|pfeffer|pepper|schwarz(er)? pfeffer|white pepper|weiss(er)? pfeffer|wei(ss|ß)er pfeffer)$/i;
+    const _degenRealIngs = _degenIngList.filter(function (ing) {
+      const nm = String((ing && (ing.name || (ing.names && ing.names.de))) || "").trim();
+      const stripped = nm.replace(/\s*\(.*?\)\s*/g, "").trim();
+      return stripped.length > 0 && !_degenStapleRe.test(stripped);
+    });
+    const _degenN = parsed.nutrition || {};
+    const _degenKcal = Number(_degenN.kcal != null ? _degenN.kcal : _degenN.calories) || 0;
+    const _degenProt = Number(_degenN.protein_g != null ? _degenN.protein_g : _degenN.protein) || 0;
+    const _degenFat = Number(_degenN.fat_g != null ? _degenN.fat_g : _degenN.fat) || 0;
+    const _degenKh = Number(_degenN.netto_kh_g != null ? _degenN.netto_kh_g : _degenN.netCarbs) || 0;
+    const _degenHasNuts = (_degenKcal + _degenProt + _degenFat + _degenKh) > 0;
+    const _isDegenerate = _degenRealIngs.length < 2 && !_degenHasNuts;
+    if (_isDegenerate && attempt < MAX_VALIDATION_ATTEMPTS) {
+      lastErrors = [
+        "Rezept zu duenn: mind. 3 echte Zutaten (kein Wasser/Salz/Pfeffer allein) und ein erkennbares Gericht. " +
+        "Beispiel: Lachs mit Brokkoli und Kraeuterbutter. Kein Wasser als Gericht."
+      ];
+      logValidationFailure({
+        attempt: attempt,
+        errors: lastErrors,
+        warnings: [],
+        parsed: parsed,
+        traceId: traceId,
+        aiInstruction: aiInstructionForLog,
+      });
+      continue;
+    }
+
     // Optionaler Post-Validation-Hook (Block E): laeuft nach der formalen
     // Validierung. Liefert er Blocker, wird ein Retry ausgeloest mit
     // konkreten Korrektur-Anweisungen (z.B. Mengen ausserhalb des Profils).
