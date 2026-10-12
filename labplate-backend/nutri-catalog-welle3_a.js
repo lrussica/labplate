@@ -34,7 +34,7 @@ module.exports = {
   },
   cheddar: {
     displayName: 'Cheddar',
-    aliases: ['cheddar', 'cheddar (gereift)'],
+    aliases: ['cheddar', 'cheddar (gereift)', 'geriebener käse', 'geriebener cheddar', 'käse (gerieben)', 'cheese grated', 'grated cheese'],
     per100g: { protein: 24.9, fat: 33.1, netCarbs: 1.3, fiber: 0.0, kcal: 402 },
     source: 'USDA FDC 173414 (Cheese, cheddar)',
   },
@@ -112,7 +112,7 @@ module.exports = {
   },
   rice_vinegar: {
     displayName: 'Reisessig',
-    aliases: ['reisesessig', 'rice vinegar'],
+    aliases: ['reisessig', 'reisesessig', 'rice vinegar', 'essig (reis)'],
     per100g: { protein: 0.0, fat: 0.0, netCarbs: 0.5, fiber: 0.0, kcal: 18 },
     source: 'USDA (geschaetzt: Rice vinegar)',
   },

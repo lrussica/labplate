@@ -510,31 +510,216 @@ const CATALOG = {
     per100g: { protein: 0.9, fat: 0.2, netCarbs: 6.8, fiber: 2.8, kcal: 41 },
     source: 'USDA FDC 170393 (Carrots, raw)',
   },
-  vodka: {
-    displayName: "Wodka",
-    aliases: ["vodka", "wodka", "vodka 40%", "vodka 80 proof"],
-    per100g: { protein: 0, fat: 0, netCarbs: 0, fiber: 0, kcal: 231 },
-    source: "USDA FDC 174826 (Alcoholic beverage, distilled, vodka, 80 proof)",
+  sushi_rice: {
+    displayName: "Sushi-Reis (gekocht)",
+    aliases: ['sushi-reis', 'sushi reis', 'sushi rice', 'reis (sushi)'],
+    per100g: { protein: 2.4, fat: 0.2, netCarbs: 28.6, fiber: 0.4, kcal: 130 },
+    source: "USDA FDC 168878 (Rice, white, glutinous, cooked)",
+  },
+
+  rice_vinegar: {
+    displayName: "Reisessig",
+    aliases: ['reisessig', 'rice vinegar', 'essig (reis)'],
+    per100g: { protein: 0, fat: 0, netCarbs: 0.04, fiber: 0, kcal: 18 },
+    source: "USDA FDC 172240 (Vinegar, rice)",
+  },
+
+  nori: {
+    displayName: "Nori",
+    aliases: ['nori', 'nori-blätter', 'nori blätter', 'nori sheets', 'algenblatt'],
+    per100g: { protein: 5.8, fat: 0.3, netCarbs: 1.4, fiber: 0.3, kcal: 35 },
+    source: "USDA FDC 170497 (Seaweed, laver, raw)",
+  },
+
+  pak_choi: {
+    displayName: "Pak Choi",
+    aliases: ['pak choi', 'pak-choi', 'pakchoi', 'bok choy'],
+    per100g: { protein: 1.5, fat: 0.2, netCarbs: 2.2, fiber: 1, kcal: 13 },
+    source: "USDA FDC 170391 (Cabbage, chinese, pak-choi, raw)",
+  },
+
+  shiitake: {
+    displayName: "Shiitake-Pilze",
+    aliases: ['shiitake', 'shiitake-pilze', 'shiitakepilze'],
+    per100g: { protein: 2.2, fat: 0.5, netCarbs: 4.3, fiber: 2.5, kcal: 34 },
+    source: "USDA FDC 169390 (Mushrooms, shiitake, raw)",
+  },
+
+  gochujang: {
+    displayName: "Gochujang",
+    aliases: ['gochujang', 'koreanische chilippaste'],
+    per100g: { protein: 5.6, fat: 0.7, netCarbs: 41.6, fiber: 3, kcal: 207 },
+    source: "USDA FDC 174529 (Gochujang)",
+  },
+
+  wasabi: {
+    displayName: "Wasabi",
+    aliases: ['wasabi', 'wasabipaste'],
+    per100g: { protein: 4.8, fat: 0.6, netCarbs: 22, fiber: 1.5, kcal: 109 },
+    source: "USDA FDC 168580 (Wasabi, root, raw)",
+  },
+
+  jalapeno: {
+    displayName: "Jalapeños",
+    aliases: ['jalapeños', 'jalapenos', 'jalapeño', 'jalapeno'],
+    per100g: { protein: 0.9, fat: 0.4, netCarbs: 4.4, fiber: 2.1, kcal: 29 },
+    source: "USDA FDC 168570 (Peppers, jalapeno, raw)",
+  },
+
+  rotkohl: {
+    displayName: "Rotkohl",
+    aliases: ['rotkohl', 'rot-kohl', 'red cabbage'],
+    per100g: { protein: 1.4, fat: 0.2, netCarbs: 5, fiber: 2.4, kcal: 31 },
+    source: "USDA FDC 169975 (Cabbage, red, raw)",
+  },
+
+  blattsalat: {
+    displayName: "Blattsalat",
+    aliases: ['blattsalat', 'kopfsalat', 'salat (blätter)', 'lettuce'],
+    per100g: { protein: 1.35, fat: 0.15, netCarbs: 1.6, fiber: 1.3, kcal: 15 },
+    source: "USDA FDC 169247 (Lettuce, cos or romaine, raw)",
+  },
+
+  artischocke_herz: {
+    displayName: "Artischockenherzen",
+    aliases: ['artischockenherzen', 'artischockenherz', 'artischocke', 'artichoke hearts'],
+    per100g: { protein: 3.3, fat: 0.2, netCarbs: 5.5, fiber: 5, kcal: 47 },
+    source: "USDA FDC 169216 (Artichokes, raw)",
+  },
+
+  braune_linsen: {
+    displayName: "Braune Linsen (gekocht)",
+    aliases: ['braune linsen', 'linsen (braun)', 'linsen gekocht', 'braune-linsen'],
+    per100g: { protein: 9, fat: 0.4, netCarbs: 20.1, fiber: 7.9, kcal: 116 },
+    source: "USDA FDC 172421 (Lentils, mature seeds, cooked, boiled, without salt)",
+  },
+
+  himbeeren: {
+    displayName: "Himbeeren",
+    aliases: ['himbeeren', 'himbeere', 'raspberries'],
+    per100g: { protein: 1.2, fat: 0.65, netCarbs: 5.4, fiber: 6.5, kcal: 52 },
+    source: "USDA FDC 112136 (Raspberries, raw)",
+  },
+
+  blaubeeren: {
+    displayName: "Blaubeeren",
+    aliases: ['blaubeeren', 'blaubeere', 'blueberries'],
+    per100g: { protein: 0.74, fat: 0.33, netCarbs: 12.1, fiber: 2.4, kcal: 57 },
+    source: "USDA FDC 110466 (Blueberries, raw)",
+  },
+
+  kiwi: {
+    displayName: "Kiwi",
+    aliases: ['kiwi', 'kiwis', 'kiwifrucht'],
+    per100g: { protein: 1.1, fat: 0.5, netCarbs: 12.6, fiber: 2.1, kcal: 61 },
+    source: "USDA FDC 110265 (Kiwifruit, green, raw)",
+  },
+
+  acai_puree: {
+    displayName: "Açaí-Püree (ungesüßt)",
+    aliases: ['açaí-püree', 'acai-puree', 'açaí', 'acai', 'acai-beere'],
+    per100g: { protein: 1, fat: 5, netCarbs: 2, fiber: 2, kcal: 70 },
+    source: "Herstellerangabe (Sambazon-Püree ungesüßt) — Schaetzung",
+  },
+
+  hanfsamen: {
+    displayName: "Hanfsamen",
+    aliases: ['hanfsamen', 'hanf-samen', 'hemp seeds', 'hanf'],
+    per100g: { protein: 31.6, fat: 48.8, netCarbs: 4.7, fiber: 4, kcal: 559 },
+    source: "USDA FDC 170148 (Seeds, hemp seed, hulled)",
+  },
+
+  erdnussmus: {
+    displayName: "Erdnussmus",
+    aliases: ['erdnussmus', 'erdnussbutter', 'peanut butter'],
+    per100g: { protein: 25.1, fat: 51.4, netCarbs: 11.6, fiber: 6, kcal: 598 },
+    source: "USDA FDC 172470 (Peanut butter, smooth style, salt added)",
+  },
+
+  kokoschips: {
+    displayName: "Kokoschips",
+    aliases: ['kokoschips', 'kokos-chips', 'coconut chips', 'kokosflocken'],
+    per100g: { protein: 6.9, fat: 64.5, netCarbs: 7.6, fiber: 16.3, kcal: 660 },
+    source: "USDA FDC 170170 (Nuts, coconut meat, dried, creamed)",
+  },
+
+  haferdrink: {
+    displayName: "Haferdrink",
+    aliases: ['haferdrink', 'hafermilch', 'oat drink', 'oat milk'],
+    per100g: { protein: 1, fat: 1.5, netCarbs: 7, fiber: 0.8, kcal: 45 },
+    source: "Herstellerangabe (Oatly Barista) — Schaetzung",
+  },
+
+  granola: {
+    displayName: "Granola",
+    aliases: ['granola', 'müsli (knusper)', 'knuspermüsli'],
+    per100g: { protein: 10, fat: 20, netCarbs: 55, fiber: 6, kcal: 471 },
+    source: "USDA FDC 170287 (Cereals ready-to-eat, granola, homemade) — Schaetzung",
+  },
+
+  falafel: {
+    displayName: "Falafel (gebraten)",
+    aliases: ['falafel', 'falafeln', 'falafelbällchen'],
+    per100g: { protein: 13.3, fat: 17.8, netCarbs: 20.5, fiber: 4.9, kcal: 333 },
+    source: "USDA FDC 174287 (Falafel, home-prepared)",
+  },
+
+  tzatziki: {
+    displayName: "Tzatziki",
+    aliases: ['tzatziki', 'tsatsiki', 'griechischer joghurt-dip'],
+    per100g: { protein: 4, fat: 7, netCarbs: 3.5, fiber: 0.3, kcal: 100 },
+    source: "Schaetzung aus Joghurt+Gurke+Olivenöl (BLS-nah)",
+  },
+
+  haehnchen_gyros: {
+    displayName: "Hähnchen-Gyros (roh)",
+    aliases: ['hähnchen-gyros', 'haehnchen-gyros', 'gyros', 'chicken gyros'],
+    per100g: { protein: 20, fat: 6, netCarbs: 1, fiber: 0.2, kcal: 140 },
+    source: "Schaetzung (Hähnchenbrust mariniert, USDA-nah)",
+  },
+
+  neutrales_bratoel: {
+    displayName: "Neutrales Bratöl",
+    aliases: ['neutrales bratöl', 'bratöl', 'neutral frying oil', 'vegetable oil'],
+    per100g: { protein: 0, fat: 100, netCarbs: 0, fiber: 0, kcal: 884 },
+    source: "USDA FDC 171413 (Oil, canola)",
+  },
+
+  cheddar: {
+    displayName: "Cheddar (gerieben)",
+    aliases: ['cheddar', 'geriebener käse', 'geriebener cheddar', 'käse (gerieben)', 'cheese grated', 'grated cheese'],
+    per100g: { protein: 22.9, fat: 33.1, netCarbs: 3.1, fiber: 0, kcal: 403 },
+    source: "USDA FDC 173414 (Cheese, cheddar)",
   },
 
   tahini: {
     displayName: "Tahini",
-    aliases: ["tahini", "sesammus", "sesampaste", "tahina"],
-    per100g: { protein: 17.0, fat: 53.8, netCarbs: 11.9, fiber: 9.3, kcal: 595 },
+    aliases: ['tahini', 'sesammus', 'sesampaste', 'tahina'],
+    per100g: { protein: 17, fat: 53.8, netCarbs: 11.9, fiber: 9.3, kcal: 595 },
     source: "USDA FDC 170189 (Seeds, sesame butter, tahini)",
   },
+
   banana: {
     displayName: "Banane",
-    aliases: ["banane", "bananen", "banana", "bananas"],
+    aliases: ['banane', 'bananen', 'banana', 'bananas'],
     per100g: { protein: 1.1, fat: 0.3, netCarbs: 20.2, fiber: 2.6, kcal: 89 },
     source: "USDA FDC 110531 (Bananas, raw)",
   },
+
   sugar: {
     displayName: "Zucker",
-    aliases: ["zucker", "haushaltszucker", "sugar", "weisszucker"],
+    aliases: ['zucker', 'haushaltszucker', 'sugar', 'weisszucker'],
     per100g: { protein: 0, fat: 0, netCarbs: 100, fiber: 0, kcal: 387 },
     source: "USDA FDC 193821 (Sugars, granulated)",
   },
+
+  rice_noodles: {
+    displayName: "Reisnudeln (gekocht)",
+    aliases: ['reisnudeln', 'reis-nudeln', 'rice noodles', 'rice noodle'],
+    per100g: { protein: 1.8, fat: 0.2, netCarbs: 24.9, fiber: 0.9, kcal: 109 },
+    source: "USDA FDC 168407 (Rice noodles, cooked)",
+  },
+
   cream_heavy: {
     displayName: 'Sahne (Schlagsahne)',
     aliases: ['sahne', 'schlagsahne', 'suesse sahne', 'süße sahne', 'heavy cream', 'whipping cream'],
