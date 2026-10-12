@@ -1002,6 +1002,26 @@
           "fiber": 0,
           "allergenTags": [],
           "lactoseSwap": null
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Wasser",
+            "en": "Water",
+            "fr": "Eau",
+            "it": "Acqua",
+            "tr": "Su"
+          },
+          "amount": 3000,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
         }
       ],
       "steps": [
@@ -1032,11 +1052,11 @@
             "tr": "Makarna"
           },
           "content": {
-            "de": "{0001} in Salzwasser ({0006}) al dente kochen.",
-            "en": "Cook {0001} al dente in salted water ({0006}).",
-            "fr": "Cuire {0001} al dente dans l'eau salée ({0006}).",
-            "it": "Cuocere {0001} al dente in acqua salata ({0006}).",
-            "tr": "{0001} tuzlu suda ({0006}) al dente haşla."
+            "de": "{0001} in {0007} mit {0006} al dente kochen.",
+            "en": "Cook {0001} in {0007} with {0006} until al dente.",
+            "fr": "Cuire {0001} dans {0007} avec {0006} al dente.",
+            "it": "Cuocere {0001} in {0007} con {0006} al dente.",
+            "tr": "{0001}'i {0007} ve {0006} ile al dente hasla."
           },
           "stove_level": 7,
           "time_min": 10
@@ -1050,11 +1070,11 @@
             "tr": "Emülsiyon"
           },
           "content": {
-            "de": "{0003} mit {0004} und {0005} verquirlen, mit heißer Pasta und {0002} ohne direkte Hitze emulgieren.",
-            "en": "Whisk {0003} with {0004} and {0005}; emulsify off heat with hot pasta and {0002}.",
-            "fr": "Fouetter {0003} avec {0004} et {0005}; émulsionner hors feu avec pâtes et {0002}.",
-            "it": "Sbattere {0003} con {0004} e {0005}; emulsionare fuori dal fuoco con pasta e {0002}.",
-            "tr": "{0003} ile {0004} ve {0005} çırp; ateşten uzak sıcakta makarna ve {0002} ile emülsiyon yap."
+            "de": "{0003} mit {0004} und {0005} verquirlen, mit heisser Pasta und {0002} ohne direkte Hitze emulgieren.",
+            "en": "Whisk {0003} with {0004} and {0005}, emulsify with hot pasta and {0002} off heat.",
+            "fr": "Fouetter {0003} avec {0004} et {0005}, emusionner hors du feu avec pates chaudes et {0002}.",
+            "it": "Sbattere {0003} con {0004} e {0005}, emulsionare fuori dal fuoco con pasta calda e {0002}.",
+            "tr": "{0003}'u {0004} ve {0005} ile cirp, sicak makarna ve {0002} ile atesten cekip emulsiyon yap."
           },
           "stove_level": 0,
           "time_min": 5
@@ -9985,6 +10005,26 @@
           "fiber": 0,
           "allergenTags": [],
           "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Wasser",
+            "en": "Water",
+            "fr": "Eau",
+            "it": "Acqua",
+            "tr": "Su"
+          },
+          "amount": 3000,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
         }
       ],
       "steps": [
@@ -10015,11 +10055,11 @@
             "tr": "Makarna"
           },
           "content": {
-            "de": "{0001} in Salzwasser ({0006}) al dente kochen, 1 Tasse Nudelwasser aufbewahren.",
-            "en": "Cook {0001} al dente in salted water ({0006}); reserve 1 cup pasta water.",
-            "fr": "Cuire {0001} al dente dans l'eau salée ({0006}) ; réserver 1 tasse d'eau de cuisson.",
-            "it": "Cuocere {0001} al dente in acqua salata ({0006}); tenere da parte una tazza di acqua di cottura.",
-            "tr": "{0001} tuzlu suda ({0006}) al dente haşla; 1 bardak makarna suyunu ayır."
+            "de": "{0001} in {0007} mit {0006} al dente kochen, 1 Tasse Nudelwasser aufbewahren.",
+            "en": "Cook {0001} in {0007} with {0006} until al dente; reserve 1 cup pasta water.",
+            "fr": "Cuire {0001} dans {0007} avec {0006} al dente; garder 1 tasse d'eau de cuisson.",
+            "it": "Cuocere {0001} in {0007} con {0006} al dente; tenere 1 tazza di acqua di cottura.",
+            "tr": "{0001}'i {0007} ve {0006} ile al dente hasla; 1 bardak haslama suyu ayir."
           },
           "stove_level": 7,
           "time_min": 10
@@ -10455,6 +10495,26 @@
           "fiber": 0,
           "allergenTags": [],
           "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Wasser",
+            "en": "Water",
+            "fr": "Eau",
+            "it": "Acqua",
+            "tr": "Su"
+          },
+          "amount": 2500,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
         }
       ],
       "steps": [
@@ -10503,11 +10563,11 @@
             "tr": "Makarna"
           },
           "content": {
-            "de": "{0001} in wenig Salzwasser ({0004}) al dente kochen. Nudelwasser ist stärkehaltig — sparsam salzen.",
-            "en": "Cook {0001} al dente in little salted water ({0004}). Pasta water should be starchy — salt sparingly.",
-            "fr": "Cuire {0001} al dente dans peu d'eau salée ({0004}). L'eau doit être riche en amidon.",
-            "it": "Cuocere {0001} al dente in poca acqua salata ({0004}). Acqua amidacea.",
-            "tr": "{0001} az tuzlu suda ({0004}) al dente haşla. Su nişastalı olmalı."
+            "de": "{0001} in {0005} mit {0004} al dente kochen. Nudelwasser ist staerkehaltig — sparsam salzen.",
+            "en": "Cook {0001} in {0005} with {0004} until al dente. Pasta water is starchy — salt sparingly.",
+            "fr": "Cuire {0001} dans {0005} avec {0004} al dente. L'eau de cuisson est riche en amidon — peu saler.",
+            "it": "Cuocere {0001} in {0005} con {0004} al dente. L'acqua di cottura e amidacea — salare poco.",
+            "tr": "{0001}'i {0005} ve {0004} ile al dente hasla. Haslama suyu nisastali — az tuzla."
           },
           "stove_level": 7,
           "time_min": 10
