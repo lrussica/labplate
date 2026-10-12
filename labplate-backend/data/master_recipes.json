@@ -22658,6 +22658,374 @@
         "tofu",
         "peanut_sauce"
       ]
+    },
+    {
+      "immutable": true,
+      "servings": 4,
+      "garnish": {
+        "de": "",
+        "en": "",
+        "fr": "",
+        "it": "",
+        "tr": ""
+      },
+      "diet_labels": [],
+      "id": "pad_see_ew",
+      "cuisine": "th",
+      "region": "Thailand",
+      "aliases": {
+        "de": [
+          "pad see ew",
+          "pad see ew nudeln",
+          "gebratene reisnudeln"
+        ],
+        "en": [
+          "pad see ew",
+          "pad see ew noodles",
+          "thai stir-fried noodles"
+        ],
+        "fr": [
+          "pad see ew",
+          "nouilles sautées pad see ew"
+        ],
+        "it": [
+          "pad see ew"
+        ],
+        "tr": [
+          "pad see ew"
+        ]
+      },
+      "titles": {
+        "de": "Pad See Ew",
+        "en": "Pad See Ew",
+        "fr": "Pad See Ew",
+        "it": "Pad See Ew",
+        "tr": "Pad See Ew"
+      },
+      "prep_time_min": 25,
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Breite Reisnudeln",
+            "en": "Wide rice noodles",
+            "fr": "Nouilles de riz larges",
+            "it": "Noodles di riso larghi",
+            "tr": "Geniş pirinç eriştesi"
+          },
+          "amount": 320,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 78,
+          "fat": 1,
+          "protein": 7,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "carbohydrate"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Hähnchenbrust",
+            "en": "Chicken breast",
+            "fr": "Blanc de poulet",
+            "it": "Petto di pollo",
+            "tr": "Tavuk göğsü"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 2.6,
+          "protein": 22.5,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Eier",
+            "en": "Eggs",
+            "fr": "Œufs",
+            "it": "Uova",
+            "tr": "Yumurta"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 0.7,
+          "fat": 9.5,
+          "protein": 12.6,
+          "fiber": 0,
+          "allergenTags": [
+            "egg"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "protein"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Chinesisches Brokkoli (Gai Lan)",
+            "en": "Chinese broccoli (Gai Lan)",
+            "fr": "Brocoli chinois (Gai Lan)",
+            "it": "Broccolo cinese (Gai Lan)",
+            "tr": "Çin brokolisi (Gai Lan)"
+          },
+          "amount": 300,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1.5,
+          "fat": 0.7,
+          "protein": 1.2,
+          "fiber": 2.6,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 12,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromatic"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Dunkle Sojasauce",
+            "en": "Dark soy sauce",
+            "fr": "Sauce soja foncée",
+            "it": "Salsa di soia scura",
+            "tr": "Koyu soya sosu"
+          },
+          "amount": 40,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 10,
+          "fat": 0,
+          "protein": 8,
+          "fiber": 0,
+          "allergenTags": [
+            "soy"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Süße Sojasauce",
+            "en": "Sweet soy sauce",
+            "fr": "Sauce soja sucrée",
+            "it": "Salsa di soia dolce",
+            "tr": "Tatlı soya sosu"
+          },
+          "amount": 40,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 60,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 0,
+          "allergenTags": [
+            "soy"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Austernsauce",
+            "en": "Oyster sauce",
+            "fr": "Sauce d'huître",
+            "it": "Salsa di ostriche",
+            "tr": "İstiridye sosu"
+          },
+          "amount": 40,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 11,
+          "fat": 0.3,
+          "protein": 2,
+          "fiber": 0,
+          "allergenTags": [
+            "mollusc"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Fischsauce",
+            "en": "Fish sauce",
+            "fr": "Sauce de poisson",
+            "it": "Salsa di pesce",
+            "tr": "Balık sosu"
+          },
+          "amount": 20,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 5,
+          "fiber": 0,
+          "allergenTags": [
+            "fish"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Weißer Pfeffer",
+            "en": "White pepper",
+            "fr": "Poivre blanc",
+            "it": "Pepe bianco",
+            "tr": "Beyaz biber"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Öl",
+            "en": "Oil",
+            "fr": "Huile",
+            "it": "Olio",
+            "tr": "Yağ"
+          },
+          "amount": 40,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Wasser",
+            "en": "Water",
+            "fr": "Eau",
+            "it": "Acqua",
+            "tr": "Su"
+          },
+          "amount": 2000,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Sauce anrühren",
+            "en": "Mix sauce",
+            "fr": "Préparer la sauce",
+            "it": "Preparare la salsa",
+            "tr": "Sosu karıştır"
+          },
+          "content": {
+            "de": "{0006}, {0007}, {0008}, {0009} und {0010} in einer Schale verrühren.",
+            "en": "Whisk {0006}, {0007}, {0008}, {0009} and {0010} in a bowl.",
+            "fr": "Mélanger {0006}, {0007}, {0008}, {0009} et {0010}.",
+            "it": "Mescolare {0006}, {0007}, {0008}, {0009} e {0010}.",
+            "tr": "{0006}, {0007}, {0008}, {0009} ve {0010}'i karıştır."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Nudeln einweichen",
+            "en": "Soak noodles",
+            "fr": "Tremper les nouilles",
+            "it": "Ammollare i noodles",
+            "tr": "Erişteyi ıslat"
+          },
+          "content": {
+            "de": "{0001} in {0012} 20 Minuten einweichen, dann abtropfen lassen.",
+            "en": "Soak {0001} in {0012} for 20 minutes, then drain.",
+            "fr": "Tremper {0001} dans {0012} 20 minutes, puis égoutter.",
+            "it": "Ammollare {0001} in {0012} per 20 minuti, poi scolare.",
+            "tr": "{0001}'i {0012} içinde 20 dakika ıslat, süz."
+          },
+          "stove_level": 0,
+          "time_min": 20
+        },
+        {
+          "title": {
+            "de": "Wok",
+            "en": "Wok",
+            "fr": "Wok",
+            "it": "Wok",
+            "tr": "Wok"
+          },
+          "content": {
+            "de": "{0005} in {0011} anbraten, {0002} zugeben und durchgaren. {0003} einrühren, {0004} zugeben, dann {0001} und die Sauce unterheben und heiß durchschwenken.",
+            "en": "Stir-fry {0005} in {0011}, add {0002} and cook through. Fold in {0003}, add {0004}, then {0001} and the sauce, toss until hot.",
+            "fr": "Sauter {0005} dans {0011}, ajouter {0002}. Incorporer {0003}, ajouter {0004}, puis {0001} et la sauce, faire sauter.",
+            "it": "Saltare {0005} in {0011}, aggiungere {0002}. Unire {0003}, {0004}, poi {0001} e la salsa, saltare.",
+            "tr": "{0005}'i {0011}'de kavur, {0002} ekle. {0003}'yü karıştır, {0004} ekle, sonra {0001} ve sosu ekleyip sıcak servis yap."
+          },
+          "stove_level": 8,
+          "time_min": 10
+        }
+      ],
+      "chef_analysis": {
+        "de": "Pad See Ew: breite Reisnudeln, Huhn, Ei, chinesisches Brokkoli, dunkle und süße Sojasauce, Austern- und Fischsauce.",
+        "en": "Pad See Ew: wide rice noodles, chicken, egg, Chinese broccoli, dark and sweet soy, oyster and fish sauce.",
+        "fr": "Pad See Ew: nouilles de riz larges, poulet, œuf, brocoli chinois, sauces soja et huître.",
+        "it": "Pad See Ew: noodles di riso larghi, pollo, uovo, broccolo cinese, salse di soia e ostriche.",
+        "tr": "Pad See Ew: geniş pirinç eriştesi, tavuk, yumurta, Çin brokolisi, soya ve istiridye sosu."
+      },
+      "coreComponents": [
+        "rice_noodles",
+        "chicken",
+        "egg",
+        "gai_lan",
+        "dark_soy",
+        "oyster_sauce"
+      ]
     }
   ]
 }
