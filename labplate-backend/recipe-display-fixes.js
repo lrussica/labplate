@@ -608,8 +608,9 @@ function applyRecipeDisplayFixes(recipe, opts) {
       const nm = nameOf(ing);
       if (!isCookingWaterName(nm)) return;
       if (/herstellerangabe|packungsanweisung/i.test(String(nm))) return;
-      ing.name = 'Wasser (nach Herstellerangabe)';
-      ing.displayName = 'Wasser (nach Herstellerangabe)';
+      // Wasser kommt nicht aus der Packung — kein Herstellerangabe-Suffix.
+      ing.name = 'Wasser';
+      ing.displayName = 'Wasser';
       ing.amount = 0;
       ing.unit = 'ml';
     });
