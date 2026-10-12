@@ -1007,24 +1007,6 @@
       "steps": [
         {
           "title": {
-            "de": "Pasta",
-            "en": "Pasta",
-            "fr": "Pâtes",
-            "it": "Pasta",
-            "tr": "Makarna"
-          },
-          "content": {
-            "de": "{0001} in Salzwasser ({0006}) al dente kochen.",
-            "en": "Cook {0001} al dente in salted water ({0006}).",
-            "fr": "Cuire {0001} al dente dans l'eau salée ({0006}).",
-            "it": "Cuocere {0001} al dente in acqua salata ({0006}).",
-            "tr": "{0001} tuzlu suda ({0006}) al dente haşla."
-          },
-          "stove_level": 7,
-          "time_min": 10
-        },
-        {
-          "title": {
             "de": "Guanciale",
             "en": "Guanciale",
             "fr": "Guanciale",
@@ -1040,6 +1022,24 @@
           },
           "stove_level": 5,
           "time_min": 8
+        },
+        {
+          "title": {
+            "de": "Pasta",
+            "en": "Pasta",
+            "fr": "Pâtes",
+            "it": "Pasta",
+            "tr": "Makarna"
+          },
+          "content": {
+            "de": "{0001} in Salzwasser ({0006}) al dente kochen.",
+            "en": "Cook {0001} al dente in salted water ({0006}).",
+            "fr": "Cuire {0001} al dente dans l'eau salée ({0006}).",
+            "it": "Cuocere {0001} al dente in acqua salata ({0006}).",
+            "tr": "{0001} tuzlu suda ({0006}) al dente haşla."
+          },
+          "stove_level": 7,
+          "time_min": 10
         },
         {
           "title": {
@@ -9990,24 +9990,6 @@
       "steps": [
         {
           "title": {
-            "de": "Pasta",
-            "en": "Pasta",
-            "fr": "Pâtes",
-            "it": "Pasta",
-            "tr": "Makarna"
-          },
-          "content": {
-            "de": "{0001} in Salzwasser ({0006}) al dente kochen, 1 Tasse Nudelwasser aufbewahren.",
-            "en": "Cook {0001} al dente in salted water ({0006}); reserve 1 cup pasta water.",
-            "fr": "Cuire {0001} al dente dans l'eau salée ({0006}) ; réserver 1 tasse d'eau de cuisson.",
-            "it": "Cuocere {0001} al dente in acqua salata ({0006}); tenere da parte una tazza di acqua di cottura.",
-            "tr": "{0001} tuzlu suda ({0006}) al dente haşla; 1 bardak makarna suyunu ayır."
-          },
-          "stove_level": 7,
-          "time_min": 10
-        },
-        {
-          "title": {
             "de": "Aglio",
             "en": "Garlic",
             "fr": "Ail",
@@ -10023,6 +10005,24 @@
           },
           "stove_level": 4,
           "time_min": 4
+        },
+        {
+          "title": {
+            "de": "Pasta",
+            "en": "Pasta",
+            "fr": "Pâtes",
+            "it": "Pasta",
+            "tr": "Makarna"
+          },
+          "content": {
+            "de": "{0001} in Salzwasser ({0006}) al dente kochen, 1 Tasse Nudelwasser aufbewahren.",
+            "en": "Cook {0001} al dente in salted water ({0006}); reserve 1 cup pasta water.",
+            "fr": "Cuire {0001} al dente dans l'eau salée ({0006}) ; réserver 1 tasse d'eau de cuisson.",
+            "it": "Cuocere {0001} al dente in acqua salata ({0006}); tenere da parte una tazza di acqua di cottura.",
+            "tr": "{0001} tuzlu suda ({0006}) al dente haşla; 1 bardak makarna suyunu ayır."
+          },
+          "stove_level": 7,
+          "time_min": 10
         },
         {
           "title": {
@@ -10478,24 +10478,6 @@
         },
         {
           "title": {
-            "de": "Pasta",
-            "en": "Pasta",
-            "fr": "Pâtes",
-            "it": "Pasta",
-            "tr": "Makarna"
-          },
-          "content": {
-            "de": "{0001} in wenig Salzwasser ({0004}) al dente kochen. Nudelwasser ist stärkehaltig — sparsam salzen.",
-            "en": "Cook {0001} al dente in little salted water ({0004}). Pasta water should be starchy — salt sparingly.",
-            "fr": "Cuire {0001} al dente dans peu d'eau salée ({0004}). L'eau doit être riche en amidon.",
-            "it": "Cuocere {0001} al dente in poca acqua salata ({0004}). Acqua amidacea.",
-            "tr": "{0001} az tuzlu suda ({0004}) al dente haşla. Su nişastalı olmalı."
-          },
-          "stove_level": 7,
-          "time_min": 10
-        },
-        {
-          "title": {
             "de": "Creme",
             "en": "Cream",
             "fr": "Crème",
@@ -10511,6 +10493,24 @@
           },
           "stove_level": 0,
           "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Pasta",
+            "en": "Pasta",
+            "fr": "Pâtes",
+            "it": "Pasta",
+            "tr": "Makarna"
+          },
+          "content": {
+            "de": "{0001} in wenig Salzwasser ({0004}) al dente kochen. Nudelwasser ist stärkehaltig — sparsam salzen.",
+            "en": "Cook {0001} al dente in little salted water ({0004}). Pasta water should be starchy — salt sparingly.",
+            "fr": "Cuire {0001} al dente dans peu d'eau salée ({0004}). L'eau doit être riche en amidon.",
+            "it": "Cuocere {0001} al dente in poca acqua salata ({0004}). Acqua amidacea.",
+            "tr": "{0001} az tuzlu suda ({0004}) al dente haşla. Su nişastalı olmalı."
+          },
+          "stove_level": 7,
+          "time_min": 10
         },
         {
           "title": {

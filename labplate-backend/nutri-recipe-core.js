@@ -157,6 +157,7 @@ const CHEF_FRAMEWORK_RULES = [
   'separater Garnitur-Schritt; erfundene nutrition-Werte.',
   '21) ORIGINALITAETS-ABSICHERUNG: Formuliere Titel, Zubereitungsschritte (content) und Chef-Analyse IMMER in ' +
   'eigenen, originalen Worten — auch bei bekannten Standardgerichten (z. B. "klassische Bolognese", "Caesar Salad"). ' +
+  '22) PASTA-TIMING (verbindlich fuer alle Nudelgerichte): Die Pasta (Spaghetti/Penne/Rigatoni/… /auch Reisnudeln) wird NIEMALS als erster Step gekocht. Reihenfolge: (a) Wasser aufsetzen (eigener Step oder zusammen mit Mise en Place, NICHT die Pasta), (b) Sauce/Protein fertigstellen, (c) Pasta ins kochende Wasser geben und al dente kochen, (d) sofort mit der Sauce vermengen und servieren. Der Pasta-Koch-Step ist IMMER der vorletzte oder letzte Step. WARUM: Pasta wird innerhalb von 1–2 Minuten weich, wenn sie wartet — al dente bleibt nur, wenn sie direkt mit der heissen Sauce serviert wird. VERBOTEN: Step 1 „Pasta kochen, Beiseite stellen, Sauce machen“. Wenn Nudelwasser gebraucht wird (Emulsion, Cacio e Pepe, Aglio e Olio): 1 Tasse in Step (c) zurueckbehalten und in Step (d) verwenden.',
   'Orientiere dich an der allgemeinen, weit verbreiteten Zubereitungsart eines Gerichts, nicht an der spezifischen ' +
   'Formulierung eines einzelnen Kochbuchs, Blogs oder einer bestimmten Foodseite. Vermeide auffaellig literarische, ' +
   'persoenliche oder stilistisch sehr individuelle Formulierungen, die nach einem Zitat aus einer konkreten Quelle ' +
