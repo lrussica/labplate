@@ -283,7 +283,11 @@ function renderRecipeForDisplay(recipe, renderOpts) {
   });
 
   // Bei unbekannter Ausgangsportion: Rohmengen anzeigen, aber nie als sichere 1-Portion markieren.
-  const scaledOk = !!(portioned.ok && portioned.finalIngredients);
+  // Fix 2026-10-13: Falls der Validator portioned.ok=false liefert, aber die
+  // Skalierung klar berechnet wurde (Zutaten + scalingFactor), nutzen wir sie.
+  const _hasScaledIngr = !!(portioned.finalIngredients && portioned.finalIngredients.length > 0);
+  const _hasScaleFactor = Number.isFinite(portioned.scalingFactor) && portioned.scalingFactor > 0;
+  const scaledOk = !!((portioned.ok || (_hasScaledIngr && _hasScaleFactor)) && portioned.finalIngredients);
   const useIngredients = scaledOk ? portioned.finalIngredients : sourceIngredients;
   const finalServings = scaledOk ? portioned.finalServings : null;
   const servingsStatus = portioned.servingsStatus || portions.SERVINGS_STATUS.UNKNOWN;
