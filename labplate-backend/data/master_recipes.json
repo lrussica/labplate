@@ -27772,6 +27772,887 @@
         "carrot",
         "red_wine"
       ]
+    },
+    {
+      "id": "tom_kha_gai",
+      "immutable": true,
+      "cuisine": "th",
+      "region": "Zentralthailand",
+      "servings": 4,
+      "prep_time_min": 40,
+      "aliases": {
+        "de": [
+          "tom kha gai",
+          "tom kha",
+          "thailaendische kokossuppe mit haehnchen"
+        ],
+        "en": [
+          "tom kha gai",
+          "tom kha",
+          "thai coconut chicken soup"
+        ],
+        "fr": [
+          "tom kha gai",
+          "soupe coco poulet thaie"
+        ],
+        "it": [
+          "tom kha gai",
+          "zuppa di cocco e pollo thai"
+        ],
+        "tr": [
+          "tom kha gai",
+          "tayland hindistan cevizli tavuk corbasi"
+        ]
+      },
+      "titles": {
+        "de": "Tom Kha Gai",
+        "en": "Tom Kha Gai",
+        "fr": "Tom Kha Gai",
+        "it": "Tom Kha Gai",
+        "tr": "Tom Kha Gai"
+      },
+      "garnish": {
+        "de": "Mit Thai-Basilikum und Koriander bestreuen, mit Limettensaft abschmecken.",
+        "en": "Top with Thai basil and cilantro, finish with lime juice.",
+        "fr": "Parsemer de basilic thai et coriandre, finir au jus de citron vert.",
+        "it": "Cospargere con basilico thai e coriandolo, finire con succo di lime.",
+        "tr": "Thai feslegeni ve kisnis ile susleyin, limon suyu ile bitirin."
+      },
+      "diet_labels": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Haehnchenschenkel (ohne Knochen)",
+            "en": "Boneless chicken thigh",
+            "fr": "Cuisse de poulet desossee",
+            "it": "Sovracoscia di pollo disossata",
+            "tr": "Kemiksiz tavuk but"
+          },
+          "amount": 500,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 8.5,
+          "protein": 18.6,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Kokosmilch (Dose)",
+            "en": "Coconut milk (canned)",
+            "fr": "Lait de coco (boite)",
+            "it": "Latte di cocco (scatola)",
+            "tr": "Hindistan cevizi sutu (konserve)"
+          },
+          "amount": 600,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 2.2,
+          "fat": 23.8,
+          "protein": 2.3,
+          "fiber": 2.2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Galangal (Thai-Ingwer)",
+            "en": "Galangal",
+            "fr": "Galanga",
+            "it": "Galangal",
+            "tr": "Galangal"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 12,
+          "fat": 0.5,
+          "protein": 1.5,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Zitronengras",
+            "en": "Lemongrass",
+            "fr": "Citronnelle",
+            "it": "Citronella",
+            "tr": "Limon otu"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 25.3,
+          "fat": 0.5,
+          "protein": 1.8,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Kaffir-Limettenblaetter",
+            "en": "Kaffir lime leaves",
+            "fr": "Feuilles de combava",
+            "it": "Foglie di combava",
+            "tr": "Kaffir limon yapraklari"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 10,
+          "fat": 1,
+          "protein": 4,
+          "fiber": 8,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Champignons",
+            "en": "Button mushrooms",
+            "fr": "Champignons de Paris",
+            "it": "Funghi champignon",
+            "tr": "Kultur mantari"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2.3,
+          "fat": 0.3,
+          "protein": 3.1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Fischsauce",
+            "en": "Fish sauce",
+            "fr": "Sauce de poisson",
+            "it": "Salsa di pesce",
+            "tr": "Balik sosu"
+          },
+          "amount": 60,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 3.6,
+          "fat": 0,
+          "protein": 5.1,
+          "fiber": 0,
+          "allergenTags": [
+            "fish"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Limettensaft",
+            "en": "Lime juice",
+            "fr": "Jus de citron vert",
+            "it": "Succo di lime",
+            "tr": "Misket limonu suyu"
+          },
+          "amount": 60,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 0.1,
+          "protein": 0.4,
+          "fiber": 0.4,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Chili (frisch)",
+            "en": "Fresh chili",
+            "fr": "Piment frais",
+            "it": "Peperoncino fresco",
+            "tr": "Taze aci biber"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 7.3,
+          "fat": 0.4,
+          "protein": 1.9,
+          "fiber": 1.5,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Thai-Basilikum",
+            "en": "Thai basil",
+            "fr": "Basilic thai",
+            "it": "Basilico thai",
+            "tr": "Thai feslegeni"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 0.6,
+          "protein": 3.2,
+          "fiber": 1.6,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "garnish"
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Koriander (frisch)",
+            "en": "Fresh cilantro",
+            "fr": "Coriandre fraiche",
+            "it": "Coriandolo fresco",
+            "tr": "Kisnis"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0.9,
+          "fat": 0.5,
+          "protein": 2.1,
+          "fiber": 2.8,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "garnish"
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Fruehlingszwiebeln",
+            "en": "Scallions",
+            "fr": "Oignons verts",
+            "it": "Cipollotti",
+            "tr": "Yesil sogan"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 4.7,
+          "fat": 0.2,
+          "protein": 1.8,
+          "fiber": 2.6,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "garnish"
+        },
+        {
+          "id": "0013",
+          "names": {
+            "de": "Zucker",
+            "en": "Sugar",
+            "fr": "Sucre",
+            "it": "Zucchero",
+            "tr": "Seker"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 100,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Aromaten antoasten",
+            "en": "Bloom aromatics",
+            "fr": "Chauffer les aromates",
+            "it": "Tostare gli aromi",
+            "tr": "Aromatikleri kavur"
+          },
+          "content": {
+            "de": "{0002} in einem Topf bei mittlerer Hitze erhitzen. {0003}, {0004} und {0005} zugeben und 5 Minuten ziehen lassen, ohne zu kochen.",
+            "en": "Heat {0002} in a pot over medium heat. Add {0003}, {0004} and {0005} and steep for 5 minutes without boiling.",
+            "fr": "Chauffer {0002} dans une casserole a feu moyen. Ajouter {0003}, {0004} et {0005} et laisser infuser 5 minutes sans bouillir.",
+            "it": "Scaldare {0002} in una pentola a fuoco medio. Aggiungere {0003}, {0004} e {0005} e lasciare in infusione 5 minuti senza bollire.",
+            "tr": "{0002}'yi orta ateste bir tencerede isitin. {0003}, {0004} ve {0005}'i ekleyip kaynatmadan 5 dakika demleyin."
+          },
+          "stove_level": 2,
+          "time_min": 6
+        },
+        {
+          "title": {
+            "de": "Haehnchen garen",
+            "en": "Cook chicken",
+            "fr": "Cuire le poulet",
+            "it": "Cuocere il pollo",
+            "tr": "Tavugu pisir"
+          },
+          "content": {
+            "de": "{0001} in duenne Streifen schneiden, zugeben und 8 Minuten sanft garen, bis es durch ist.",
+            "en": "Slice {0001} thinly, add and simmer gently for 8 minutes until cooked through.",
+            "fr": "Emincer {0001} finement, ajouter et laisser fremir doucement 8 minutes jusqu'a cuisson complete.",
+            "it": "Affettare {0001} sottilmente, aggiungere e sobbollire dolcemente per 8 minuti fino a cottura.",
+            "tr": "{0001}'i ince seritler halinde kesin, ekleyin ve tamamen pisene kadar 8 dakika kisik ateste pisirin."
+          },
+          "stove_level": 2,
+          "time_min": 9
+        },
+        {
+          "title": {
+            "de": "Pilze und Wuerzung",
+            "en": "Mushrooms and seasoning",
+            "fr": "Champignons et assaisonnement",
+            "it": "Funghi e condimento",
+            "tr": "Mantarlar ve tatlandirma"
+          },
+          "content": {
+            "de": "{0006} in Scheiben zugeben und 4 Minuten mitgaren. {0007}, {0008}, {0009} und {0013} einruehren.",
+            "en": "Add sliced {0006} and cook 4 minutes. Stir in {0007}, {0008}, {0009} and {0013}.",
+            "fr": "Ajouter {0006} eminces et cuire 4 minutes. Incorporer {0007}, {0008}, {0009} et {0013}.",
+            "it": "Aggiungere {0006} a fette e cuocere 4 minuti. Incorporare {0007}, {0008}, {0009} e {0013}.",
+            "tr": "Dilimlenmis {0006}'i ekleyip 4 dakika pisirin. {0007}, {0008}, {0009} ve {0013}'u karistirin."
+          },
+          "stove_level": 2,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Finish",
+            "en": "Finish",
+            "fr": "Finition",
+            "it": "Finitura",
+            "tr": "Bitis"
+          },
+          "content": {
+            "de": "Vom Herd nehmen. Aromaten (Galangal, Zitronengras, Limettenblaetter) herausfischen. Mit {0010}, {0011} und {0012} bestreuen.",
+            "en": "Take off the heat. Fish out the aromatics (galangal, lemongrass, lime leaves). Top with {0010}, {0011} and {0012}.",
+            "fr": "Retirer du feu. Retirer les aromates (galanga, citronnelle, feuilles de combava). Parsemer de {0010}, {0011} et {0012}.",
+            "it": "Togliere dal fuoco. Eliminare gli aromi (galangal, citronella, foglie di combava). Cospargere con {0010}, {0011} e {0012}.",
+            "tr": "Atesten alin. Aromatikleri (galangal, limon otu, limon yapraklari) cikarin. {0010}, {0011} ve {0012} ile susleyin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        }
+      ],
+      "chef_analysis": {
+        "de": "Tom Kha Gai: Galangal, Zitronengras und Kaffir-Limettenblaetter werden nur zum Aromatisieren mitgekocht und am Ende herausgefischt. Die Kokosmilch darf nie stark kochen, sonst flockt sie aus. Limettensaft kommt erst zum Schluss, damit das Aroma frisch bleibt.",
+        "en": "Tom kha gai: galangal, lemongrass and kaffir lime leaves are simmered for aroma only and fished out at the end. Coconut milk must never boil hard or it will split. Lime juice goes in only at the end so its aroma stays fresh.",
+        "fr": "Tom kha gai : galanga, citronnelle et feuilles de combava infusent seulement et sont retires a la fin. Le lait de coco ne doit jamais bouillir fort. Le jus de citron vert vient a la fin.",
+        "it": "Tom kha gai: galangal, citronella e foglie di combava si lasciano in infusione e si tolgono alla fine. Il latte di cocco non deve mai bollire forte. Il succo di lime va solo alla fine.",
+        "tr": "Tom kha gai: galangal, limon otu ve kaffir limon yapraklari sadece aroma icin kaynatilir ve sonda cikarilir. Hindistan cevizi sutu asla kuvvetli kaynatilmaz. Limon suyu sadece sonda eklenir."
+      },
+      "coreComponents": [
+        "coconut_milk_full",
+        "chicken_thigh",
+        "galangal",
+        "lemongrass",
+        "kaffir_lime",
+        "fish_sauce",
+        "lime_juice",
+        "mushroom_button"
+      ]
+    },
+    {
+      "id": "linsensuppe",
+      "immutable": true,
+      "cuisine": "de",
+      "region": "Klassisch",
+      "servings": 4,
+      "prep_time_min": 60,
+      "aliases": {
+        "de": [
+          "linsensuppe",
+          "linseneintopf",
+          "deutsche linsensuppe"
+        ],
+        "en": [
+          "lentil soup",
+          "german lentil soup"
+        ],
+        "fr": [
+          "soupe de lentilles",
+          "veloute de lentilles"
+        ],
+        "it": [
+          "zuppa di lenticchie"
+        ],
+        "tr": [
+          "mercimek corbasi"
+        ]
+      },
+      "titles": {
+        "de": "Linsensuppe",
+        "en": "Lentil Soup",
+        "fr": "Soupe de Lentilles",
+        "it": "Zuppa di Lenticchie",
+        "tr": "Mercimek Corbasi"
+      },
+      "garnish": {
+        "de": "Mit einem Spritzer Apfelessig und frischer Petersilie abschmecken.",
+        "en": "Finish with a splash of apple cider vinegar and fresh parsley.",
+        "fr": "Finir avec un filet de vinaigre de cidre et du persil frais.",
+        "it": "Finire con un goccio di aceto di mele e prezzemolo fresco.",
+        "tr": "Bir tutam elma sirkesi ve taze maydanoz ile bitirin."
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian"
+      ],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Tellerlinsen (getrocknet)",
+            "en": "Brown lentils (dried)",
+            "fr": "Lentilles brunes (seches)",
+            "it": "Lenticchie brune (secche)",
+            "tr": "Kahverengi mercimek (kuru)"
+          },
+          "amount": 300,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 48,
+          "fat": 1.1,
+          "protein": 24.6,
+          "fiber": 10.7,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Karotten",
+            "en": "Carrots",
+            "fr": "Carottes",
+            "it": "Carote",
+            "tr": "Havuc"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 6.8,
+          "fat": 0.2,
+          "protein": 0.9,
+          "fiber": 2.8,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Zwiebeln",
+            "en": "Onions",
+            "fr": "Oignons",
+            "it": "Cipolle",
+            "tr": "Sogan"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 7.6,
+          "fat": 0.1,
+          "protein": 1.1,
+          "fiber": 1.7,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarimsak"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Sellerie",
+            "en": "Celery",
+            "fr": "Celeri",
+            "it": "Sedano",
+            "tr": "Kereviz sapi"
+          },
+          "amount": 160,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1.4,
+          "fat": 0.2,
+          "protein": 0.7,
+          "fiber": 1.6,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Kartoffeln",
+            "en": "Potatoes",
+            "fr": "Pommes de terre",
+            "it": "Patate",
+            "tr": "Patates"
+          },
+          "amount": 300,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15.4,
+          "fat": 0.1,
+          "protein": 2.1,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Tomatenmark",
+            "en": "Tomato paste",
+            "fr": "Concentre de tomate",
+            "it": "Concentrato di pomodoro",
+            "tr": "Domates salcasi"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15.5,
+          "fat": 0.7,
+          "protein": 4.2,
+          "fiber": 4.7,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Gemuesebruehe",
+            "en": "Vegetable broth",
+            "fr": "Bouillon de legumes",
+            "it": "Brodo vegetale",
+            "tr": "Sebze suyu"
+          },
+          "amount": 1200,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0.9,
+          "fat": 0.1,
+          "protein": 0.2,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Olivenoel",
+            "en": "Olive oil",
+            "fr": "Huile d'olive",
+            "it": "Olio d'oliva",
+            "tr": "Zeytinyagi"
+          },
+          "amount": 24,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Kreuzkuemmel (gemahlen)",
+            "en": "Ground cumin",
+            "fr": "Cumin moulu",
+            "it": "Cumino macinato",
+            "tr": "Kimyon"
+          },
+          "amount": 4,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 33.7,
+          "fat": 22.3,
+          "protein": 17.8,
+          "fiber": 10.5,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Paprikapulver (geraeuchert)",
+            "en": "Smoked paprika",
+            "fr": "Paprika fume",
+            "it": "Paprika affumicato",
+            "tr": "Isli kirmizi biber"
+          },
+          "amount": 6,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 23.2,
+          "fat": 12.9,
+          "protein": 14.1,
+          "fiber": 34.9,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Lorbeerblaetter",
+            "en": "Bay leaves",
+            "fr": "Feuilles de laurier",
+            "it": "Foglie di alloro",
+            "tr": "Defne yapragi"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 48.6,
+          "fat": 8.4,
+          "protein": 7.6,
+          "fiber": 26.3,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0013",
+          "names": {
+            "de": "Thymian (frisch)",
+            "en": "Fresh thyme",
+            "fr": "Thym frais",
+            "it": "Timo fresco",
+            "tr": "Kekik"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 10.4,
+          "fat": 1.7,
+          "protein": 5.6,
+          "fiber": 14,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0014",
+          "names": {
+            "de": "Apfelessig",
+            "en": "Apple cider vinegar",
+            "fr": "Vinaigre de cidre",
+            "it": "Aceto di mele",
+            "tr": "Elma sirkesi"
+          },
+          "amount": 20,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0.9,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0015",
+          "names": {
+            "de": "Petersilie (frisch)",
+            "en": "Fresh parsley",
+            "fr": "Persil frais",
+            "it": "Prezzemolo fresco",
+            "tr": "Maydanoz"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0.8,
+          "protein": 3,
+          "fiber": 3.3,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "garnish"
+        },
+        {
+          "id": "0016",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0017",
+          "names": {
+            "de": "Schwarzer Pfeffer",
+            "en": "Black pepper",
+            "fr": "Poivre noir",
+            "it": "Pepe nero",
+            "tr": "Karabiber"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 38.7,
+          "fat": 3.3,
+          "protein": 10.4,
+          "fiber": 25.3,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Gemuese anbraten",
+            "en": "Sweat vegetables",
+            "fr": "Faire suer les legumes",
+            "it": "Appassire le verdure",
+            "tr": "Sebzeleri kavur"
+          },
+          "content": {
+            "de": "{0009} in einem grossen Topf erhitzen. {0003}, {0002} und {0005} in feinen Wuerfeln zugeben und 8 Minuten anduensten. {0004} zugeben, 1 Minute mitbraten.",
+            "en": "Heat {0009} in a large pot. Add finely diced {0003}, {0002} and {0005} and sweat for 8 minutes. Add {0004}, cook 1 minute.",
+            "fr": "Chauffer {0009} dans une grande casserole. Ajouter {0003}, {0002} et {0005} finement haches et faire suer 8 minutes. Ajouter {0004}, cuire 1 minute.",
+            "it": "Scaldare {0009} in una pentola grande. Aggiungere {0003}, {0002} e {0005} a dadini fini e appassire 8 minuti. Aggiungere {0004}, cuocere 1 minuto.",
+            "tr": "{0009}'u buyuk bir tencerede kizdirin. Ince dogranmis {0003}, {0002} ve {0005}'i ekleyip 8 dakika kavurun. {0004}'u ekleyip 1 dakika pisirin."
+          },
+          "stove_level": 2,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Gewuerze und Linsen",
+            "en": "Spices and lentils",
+            "fr": "Epices et lentilles",
+            "it": "Spezie e lenticchie",
+            "tr": "Baharat ve mercimek"
+          },
+          "content": {
+            "de": "{0007}, {0010}, {0011}, {0012} und {0013} zugeben und 1 Minute roesten. {0001} abspuelen, zugeben und mit {0008} angiessen.",
+            "en": "Add {0007}, {0010}, {0011}, {0012} and {0013}, toast 1 minute. Rinse {0001}, add and pour in {0008}.",
+            "fr": "Ajouter {0007}, {0010}, {0011}, {0012} et {0013}, torrefier 1 minute. Rincer {0001}, ajouter et verser {0008}.",
+            "it": "Aggiungere {0007}, {0010}, {0011}, {0012} e {0013}, tostare 1 minuto. Sciacquare {0001}, aggiungere e versare {0008}.",
+            "tr": "{0007}, {0010}, {0011}, {0012} ve {0013}'u ekleyip 1 dakika kavurun. {0001}'i yikayin, ekleyin ve {0008}'i dokun."
+          },
+          "stove_level": 2,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Kochen",
+            "en": "Simmer",
+            "fr": "Mijoter",
+            "it": "Sobbollire",
+            "tr": "Kaynat"
+          },
+          "content": {
+            "de": "Aufkochen, dann bei niedriger Hitze zugedeckt 30 Minuten koecheln. {0006} in Wuerfeln zugeben und weitere 15 Minuten kochen, bis Linsen und Kartoffeln weich sind.",
+            "en": "Bring to a boil, then simmer covered on low heat for 30 minutes. Add cubed {0006} and cook another 15 minutes until lentils and potatoes are tender.",
+            "fr": "Porter a ebullition, puis laisser mijoter a couvert 30 minutes. Ajouter {0006} en cubes et cuire 15 minutes de plus jusqu'a tenderete.",
+            "it": "Portare a bollore, poi sobbollire coperto a fuoco basso per 30 minuti. Aggiungere {0006} a cubetti e cuocere altri 15 minuti fino a tenerezza.",
+            "tr": "Kaynatin, sonra kisik ateste kapali olarak 30 dakika pisirin. Kupler halinde {0006}'yi ekleyip mercimek ve patatesler yumusayana kadar 15 dakika daha pisirin."
+          },
+          "stove_level": 2,
+          "time_min": 45
+        },
+        {
+          "title": {
+            "de": "Finish",
+            "en": "Finish",
+            "fr": "Finition",
+            "it": "Finitura",
+            "tr": "Bitis"
+          },
+          "content": {
+            "de": "{0012} entfernen. Mit {0014}, {0016} und {0017} abschmecken. Mit {0015} bestreuen und servieren.",
+            "en": "Remove {0012}. Season with {0014}, {0016} and {0017}. Sprinkle with {0015} and serve.",
+            "fr": "Retirer {0012}. Assaisonner avec {0014}, {0016} et {0017}. Parsemer de {0015} et servir.",
+            "it": "Rimuovere {0012}. Condire con {0014}, {0016} e {0017}. Cospargere con {0015} e servire.",
+            "tr": "{0012}'yi cikarin. {0014}, {0016} und {0017} ile tatlandirin. {0015} serpin ve servis edin."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "chef_analysis": {
+        "de": "Linsensuppe: Tellerlinsen brauchen keine Einweichzeit und behalten Biss. Apfelessig erst zum Schluss gibt die typische Frische. Thymian und geraeucherter Paprika liefern die Tiefe ohne Fleisch.",
+        "en": "Lentil soup: brown lentils need no soaking and keep a bite. Apple cider vinegar only at the end adds the signature freshness. Thyme and smoked paprika give depth without meat.",
+        "fr": "Soupe de lentilles : les lentilles brunes ne necessitent pas de trempage. Le vinaigre de cidre a la fin apporte la fraicheur typique. Thym et paprika fume donnent la profondeur sans viande.",
+        "it": "Zuppa di lenticchie: le lenticchie brune non richiedono ammollo e mantengono il morso. L'aceto di mele solo alla fine da la freschezza tipica. Timo e paprica affumicata danno profondita senza carne.",
+        "tr": "Mercimek corbasi: kahverengi mercimek islatma gerektirmez ve disini korur. Elma sirkesi sadece sonda tipik tazeligi verir. Kekik ve isli kirmizi biber etsiz derinlik saglar."
+      },
+      "coreComponents": [
+        "brown_lentils",
+        "carrot",
+        "onion_yellow",
+        "celery",
+        "potato",
+        "tomato_paste",
+        "vegetable_broth"
+      ]
     }
   ]
 }
