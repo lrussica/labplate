@@ -23164,7 +23164,7 @@
             "it": "Carne di maiale macinata",
             "tr": "Kıyma (domuz)"
           },
-          "amount": 150,
+          "amount": 160,
           "unit": "g",
           "protein_source": true,
           "netCarbs": 0,
@@ -23184,7 +23184,7 @@
             "it": "Doubanjiang (pasta di peperoncino)",
             "tr": "Doubanjiang (biber ezmesi)"
           },
-          "amount": 45,
+          "amount": 40,
           "unit": "g",
           "protein_source": false,
           "netCarbs": 12,
@@ -23206,7 +23206,7 @@
             "it": "Douchi (fagioli neri fermentati)",
             "tr": "Douchi (fermente siyah fasulye)"
           },
-          "amount": 15,
+          "amount": 16,
           "unit": "g",
           "protein_source": false,
           "netCarbs": 20,
@@ -23288,7 +23288,7 @@
             "it": "Vino di riso Shaoxing",
             "tr": "Shaoxing pirinç şarabı"
           },
-          "amount": 30,
+          "amount": 32,
           "unit": "ml",
           "protein_source": false,
           "netCarbs": 4,
@@ -23328,7 +23328,7 @@
             "it": "Salsa di soia scura",
             "tr": "Koyu soya sosu"
           },
-          "amount": 15,
+          "amount": 16,
           "unit": "ml",
           "protein_source": false,
           "netCarbs": 15,
@@ -23350,7 +23350,7 @@
             "it": "Salsa di soia",
             "tr": "Soya sosu"
           },
-          "amount": 15,
+          "amount": 16,
           "unit": "ml",
           "protein_source": false,
           "netCarbs": 4.1,
@@ -23372,7 +23372,7 @@
             "it": "Olio di peperoncino",
             "tr": "Acı biber yağı"
           },
-          "amount": 10,
+          "amount": 12,
           "unit": "ml",
           "protein_source": false,
           "netCarbs": 0,
@@ -23392,7 +23392,7 @@
             "it": "Amido di mais",
             "tr": "Mısır nişastası"
           },
-          "amount": 15,
+          "amount": 16,
           "unit": "g",
           "protein_source": false,
           "netCarbs": 91.3,
