@@ -24678,6 +24678,539 @@
         "mustard",
         "tomato_paste"
       ]
+    },
+    {
+      "id": "chili_con_carne",
+      "immutable": true,
+      "cuisine": "mx",
+      "region": "Tex-Mex",
+      "servings": 4,
+      "prep_time_min": 45,
+      "aliases": {
+        "de": [
+          "chili con carne",
+          "chili",
+          "tex-mex chili"
+        ],
+        "en": [
+          "chili con carne",
+          "chili"
+        ],
+        "fr": [
+          "chili con carne",
+          "chili"
+        ],
+        "it": [
+          "chili con carne",
+          "chili"
+        ],
+        "tr": [
+          "chili con carne",
+          "chili"
+        ]
+      },
+      "titles": {
+        "de": "Chili con Carne",
+        "en": "Chili con Carne",
+        "fr": "Chili con Carne",
+        "it": "Chili con Carne",
+        "tr": "Chili con Carne"
+      },
+      "garnish": {
+        "de": "Mit Sauerrahm, geriebenem Cheddar und Koriander servieren.",
+        "en": "Serve with sour cream, grated cheddar and cilantro.",
+        "fr": "Servir avec crème fraîche, cheddar râpé et coriandre.",
+        "it": "Servire con panna acida, cheddar grattugiato e coriandolo.",
+        "tr": "Ekşi krema, rendelenmiş cheddar ve kişniş ile servis edin."
+      },
+      "diet_labels": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Rinderhackfleisch",
+            "en": "Ground beef",
+            "fr": "Bœuf haché",
+            "it": "Manzo macinato",
+            "tr": "Dana kıyma"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 18.1,
+          "protein": 17.7,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Kidneybohnen (gekocht, abgetropft)",
+            "en": "Kidney beans (cooked, drained)",
+            "fr": "Haricots rouges (cuits, égouttés)",
+            "it": "Fagioli rossi (cotti, sgocciolati)",
+            "tr": "Barbunya fasulyesi (haşlanmış, süzülmüş)"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 14.5,
+          "fat": 0.5,
+          "protein": 8.7,
+          "fiber": 6.4,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Zwiebeln",
+            "en": "Onions",
+            "fr": "Oignons",
+            "it": "Cipolle",
+            "tr": "Soğan"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 7.6,
+          "fat": 0.1,
+          "protein": 1.1,
+          "fiber": 1.7,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Paprika (rot)",
+            "en": "Red bell pepper",
+            "fr": "Poivron rouge",
+            "it": "Peperone rosso",
+            "tr": "Kırmızı biber"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4.2,
+          "fat": 0.3,
+          "protein": 1,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Stückige Tomaten (Dose)",
+            "en": "Chopped tomatoes (canned)",
+            "fr": "Tomates concassées (boîte)",
+            "it": "Pomodori a pezzi (scatola)",
+            "tr": "Doğranmış domates (konserve)"
+          },
+          "amount": 600,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3.3,
+          "fat": 0.3,
+          "protein": 1.6,
+          "fiber": 1.9,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Tomatenmark",
+            "en": "Tomato paste",
+            "fr": "Concentré de tomate",
+            "it": "Concentrato di pomodoro",
+            "tr": "Domates salçası"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15.5,
+          "fat": 0.7,
+          "protein": 4.2,
+          "fiber": 4.7,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Rinderbrühe",
+            "en": "Beef stock",
+            "fr": "Bouillon de bœuf",
+            "it": "Brodo di manzo",
+            "tr": "Dana suyu"
+          },
+          "amount": 400,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0.4,
+          "fat": 0.2,
+          "protein": 1.1,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Rotwein (trocken)",
+            "en": "Dry red wine",
+            "fr": "Vin rouge sec",
+            "it": "Vino rosso secco",
+            "tr": "Sek kırmızı şarap"
+          },
+          "amount": 100,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 2.6,
+          "fat": 0,
+          "protein": 0.1,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Mais (Dose, abgetropft)",
+            "en": "Canned corn (drained)",
+            "fr": "Maïs en boîte (égoutté)",
+            "it": "Mais in scatola (sgocciolato)",
+            "tr": "Konserve mısır (süzülmüş)"
+          },
+          "amount": 160,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 14.7,
+          "fat": 1.2,
+          "protein": 3.3,
+          "fiber": 2.4,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Kreuzkümmel (gemahlen)",
+            "en": "Ground cumin",
+            "fr": "Cumin moulu",
+            "it": "Cumino macinato",
+            "tr": "Kimyon"
+          },
+          "amount": 4,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 33.7,
+          "fat": 22.3,
+          "protein": 17.8,
+          "fiber": 10.5,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Chilipulver",
+            "en": "Chili powder",
+            "fr": "Poudre de piment",
+            "it": "Peperoncino in polvere",
+            "tr": "Acı biber tozu"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 29.7,
+          "fat": 14.3,
+          "protein": 13.5,
+          "fiber": 34.8,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0013",
+          "names": {
+            "de": "Paprikapulver (geräuchert)",
+            "en": "Smoked paprika",
+            "fr": "Paprika fumé",
+            "it": "Paprika affumicato",
+            "tr": "İsli kırmızı biber"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 23.2,
+          "fat": 12.9,
+          "protein": 14.1,
+          "fiber": 34.9,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0014",
+          "names": {
+            "de": "Oregano (getrocknet)",
+            "en": "Dried oregano",
+            "fr": "Origan séché",
+            "it": "Origano secco",
+            "tr": "Kuru kekik"
+          },
+          "amount": 4,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 26.4,
+          "fat": 4.3,
+          "protein": 9,
+          "fiber": 42.5,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0015",
+          "names": {
+            "de": "Lorbeerblätter",
+            "en": "Bay leaves",
+            "fr": "Feuilles de laurier",
+            "it": "Foglie di alloro",
+            "tr": "Defne yaprağı"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 48.6,
+          "fat": 8.4,
+          "protein": 7.6,
+          "fiber": 26.3,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0016",
+          "names": {
+            "de": "Neutrales Bratöl",
+            "en": "Neutral frying oil",
+            "fr": "Huile neutre",
+            "it": "Olio neutro",
+            "tr": "Nötr yağ"
+          },
+          "amount": 20,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0017",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0018",
+          "names": {
+            "de": "Schwarzer Pfeffer",
+            "en": "Black pepper",
+            "fr": "Poivre noir",
+            "it": "Pepe nero",
+            "tr": "Karabiber"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 38.7,
+          "fat": 3.3,
+          "protein": 10.4,
+          "fiber": 25.3,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Aromaten anbraten",
+            "en": "Sauté aromatics",
+            "fr": "Faire revenir les aromates",
+            "it": "Soffriggere gli aromi",
+            "tr": "Aromatikleri kavur"
+          },
+          "content": {
+            "de": "{0016} in einem schweren Topf erhitzen. {0003} 4 Minuten glasig braten. {0004} zugeben, 30 Sekunden mitbraten.",
+            "en": "Heat {0016} in a heavy pot. Sauté {0003} for 4 minutes until translucent. Add {0004}, cook 30 seconds.",
+            "fr": "Chauffer {0016} dans une cocotte. Faire revenir {0003} 4 minutes. Ajouter {0004}, cuire 30 secondes.",
+            "it": "Scaldare {0016} in una pentola pesante. Soffriggere {0003} per 4 minuti. Aggiungere {0004}, cuocere 30 secondi.",
+            "tr": "{0016}'yı ağır bir tencerede ısıtın. {0003}'ı 4 dakika kavurun. {0004}'ü ekleyip 30 saniye pişirin."
+          },
+          "stove_level": 2,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Fleisch anbraten",
+            "en": "Brown beef",
+            "fr": "Saisir la viande",
+            "it": "Rosolare la carne",
+            "tr": "Eti kavur"
+          },
+          "content": {
+            "de": "{0001} zugeben und krümelig braun braten, ca. 6 Minuten.",
+            "en": "Add {0001} and brown, breaking it up, about 6 minutes.",
+            "fr": "Ajouter {0001} et faire revenir en l'émiettant, environ 6 minutes.",
+            "it": "Aggiungere {0001} e rosolare sbriciolandolo, circa 6 minuti.",
+            "tr": "{0001}'i ekleyin ve ufalayarak yaklaşık 6 dakika kavurun."
+          },
+          "stove_level": 3,
+          "time_min": 6
+        },
+        {
+          "title": {
+            "de": "Gewürze rösten",
+            "en": "Toast spices",
+            "fr": "Torréfier les épices",
+            "it": "Tostare le spezie",
+            "tr": "Baharatları kavur"
+          },
+          "content": {
+            "de": "{0007}, {0011}, {0012}, {0013} und {0014} zugeben und 1 Minute rösten.",
+            "en": "Add {0007}, {0011}, {0012}, {0013} and {0014} and toast for 1 minute.",
+            "fr": "Ajouter {0007}, {0011}, {0012}, {0013} et {0014} et torréfier 1 minute.",
+            "it": "Aggiungere {0007}, {0011}, {0012}, {0013} e {0014} e tostare 1 minuto.",
+            "tr": "{0007}, {0011}, {0012}, {0013} ve {0014}'ü ekleyip 1 dakika kavurun."
+          },
+          "stove_level": 2,
+          "time_min": 2
+        },
+        {
+          "title": {
+            "de": "Ablöschen",
+            "en": "Deglaze",
+            "fr": "Déglacer",
+            "it": "Sfumare",
+            "tr": "Sotele"
+          },
+          "content": {
+            "de": "Mit {0009} ablöschen, 1 Minute einkochen. {0005} zugeben und 3 Minuten mitbraten.",
+            "en": "Deglaze with {0009}, reduce 1 minute. Add {0005} and cook 3 minutes.",
+            "fr": "Déglacer avec {0009}, réduire 1 minute. Ajouter {0005} et cuire 3 minutes.",
+            "it": "Sfumare con {0009}, ridurre 1 minuto. Aggiungere {0005} e cuocere 3 minuti.",
+            "tr": "{0009} ile soteleyin, 1 dakika çektirin. {0005}'i ekleyip 3 dakika pişirin."
+          },
+          "stove_level": 2,
+          "time_min": 4
+        },
+        {
+          "title": {
+            "de": "Köcheln",
+            "en": "Simmer",
+            "fr": "Mijoter",
+            "it": "Sobbollire",
+            "tr": "Kaynat"
+          },
+          "content": {
+            "de": "{0006}, {0008} und {0015} zugeben, aufkochen, Hitze reduzieren und 25 Minuten offen köcheln lassen. Gelegentlich umrühren.",
+            "en": "Add {0006}, {0008} and {0015}, bring to a boil, reduce heat and simmer uncovered for 25 minutes, stirring occasionally.",
+            "fr": "Ajouter {0006}, {0008} et {0015}, porter à ébullition, réduire et laisser mijoter 25 minutes à découvert en remuant de temps en temps.",
+            "it": "Aggiungere {0006}, {0008} e {0015}, portare a bollore, ridurre e sobbollire 25 minuti senza coperchio, mescolando ogni tanto.",
+            "tr": "{0006}, {0008} ve {0015}'i ekleyip kaynatın, ateşi kısın ve 25 dakika açıkta kaynatın, ara sıra karıştırın."
+          },
+          "stove_level": 2,
+          "time_min": 25
+        },
+        {
+          "title": {
+            "de": "Bohnen und Mais",
+            "en": "Add beans and corn",
+            "fr": "Ajouter haricots et maïs",
+            "it": "Aggiungere fagioli e mais",
+            "tr": "Fasulye ve mısır ekle"
+          },
+          "content": {
+            "de": "{0002} und {0010} zugeben, weitere 10 Minuten köcheln. Mit {0017} und {0018} abschmecken.",
+            "en": "Add {0002} and {0010}, simmer another 10 minutes. Season with {0017} and {0018}.",
+            "fr": "Ajouter {0002} et {0010}, laisser mijoter 10 minutes de plus. Assaisonner avec {0017} et {0018}.",
+            "it": "Aggiungere {0002} e {0010}, sobbollire altri 10 minuti. Condire con {0017} e {0018}.",
+            "tr": "{0002} ve {0010}'u ekleyip 10 dakika daha kaynatın. {0017} ve {0018} ile tatlandırın."
+          },
+          "stove_level": 2,
+          "time_min": 10
+        }
+      ],
+      "chef_analysis": {
+        "de": "Echtes Chili con Carne: Kreuzkümmel und geräuchertes Paprikapulver liefern die Tiefe, Kidneybohnen kommen erst am Ende dazu, damit sie nicht zerfallen. Bohnen sind im Original umstritten, in der Tex-Mex-Tradition aber Standard. Sauerrahm und Cheddar gehören zum Servieren.",
+        "en": "Real chili con carne: cumin and smoked paprika provide the depth, kidney beans go in at the end so they don't break apart. Beans are debated in the original, but standard in Tex-Mex. Sour cream and cheddar belong at serving.",
+        "fr": "Vrai chili con carne : le cumin et le paprika fumé apportent la profondeur, les haricots rouges s'ajoutent à la fin pour ne pas s'écraser. Les haricots sont débattus, mais standard en Tex-Mex. Crème fraîche et cheddar à table.",
+        "it": "Vero chili con carne: cumino e paprica affumicata danno profondità, i fagioli rossi vanno aggiunti alla fine per non sfaldarsi. I fagioli sono discussi, ma standard nel Tex-Mex. Panna acida e cheddar a tavola.",
+        "tr": "Gerçek chili con carne: kimyon ve isli kırmızı biber derinliği verir, barbunya dağılmasın diye sonda eklenir. Fasulye tartışmalıdır, ama Tex-Mex geleneğinde standarttır. Ekşi krema ve cheddar sofraya gelir."
+      },
+      "coreComponents": [
+        "beef_mince",
+        "kidney_beans",
+        "tomato_canned",
+        "cumin_ground",
+        "chili_powder",
+        "bell_pepper_red"
+      ]
     }
   ]
 }
