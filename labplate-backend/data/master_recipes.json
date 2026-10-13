@@ -24194,6 +24194,490 @@
         "butter",
         "bean_sprouts"
       ]
+    },
+    {
+      "id": "boeuf_stroganoff",
+      "immutable": true,
+      "cuisine": "ru",
+      "region": "Klassisch",
+      "servings": 4,
+      "prep_time_min": 30,
+      "aliases": {
+        "de": [
+          "boeuf stroganoff",
+          "bœuf stroganoff",
+          "rindfleisch stroganoff",
+          "stroganoff"
+        ],
+        "en": [
+          "beef stroganoff",
+          "stroganoff"
+        ],
+        "fr": [
+          "bœuf stroganoff",
+          "stroganoff"
+        ],
+        "it": [
+          "manzo stroganoff",
+          "stroganoff"
+        ],
+        "tr": [
+          "biftek stroganoff",
+          "stroganoff"
+        ]
+      },
+      "titles": {
+        "de": "Boeuf Stroganoff",
+        "en": "Beef Stroganoff",
+        "fr": "Bœuf Stroganoff",
+        "it": "Manzo Stroganoff",
+        "tr": "Biftek Stroganoff"
+      },
+      "garnish": {
+        "de": "Mit gehackter Petersilie bestreut, mit Butter-Nudeln oder Kartoffelpüree servieren.",
+        "en": "Sprinkle with chopped parsley, serve with buttered noodles or mashed potatoes.",
+        "fr": "Parsemer de persil haché, servir avec des nouilles au beurre ou une purée de pommes de terre.",
+        "it": "Cospargere con prezzemolo tritato, servire con noodles al burro o purè di patate.",
+        "tr": "Kıyılmış maydanoz serpin, tereyağlı erişte veya patates püresi ile servis edin."
+      },
+      "diet_labels": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Rumpsteak (Rind)",
+            "en": "Beef sirloin",
+            "fr": "Bœuf (rumsteck)",
+            "it": "Manzo (girello)",
+            "tr": "Dana (bonfile)"
+          },
+          "amount": 480,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 5.4,
+          "protein": 21.5,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Champignons",
+            "en": "Button mushrooms",
+            "fr": "Champignons de Paris",
+            "it": "Funghi champignon",
+            "tr": "Kültür mantarı"
+          },
+          "amount": 300,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2.3,
+          "fat": 0.3,
+          "protein": 3.1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Zwiebeln",
+            "en": "Onions",
+            "fr": "Oignons",
+            "it": "Cipolle",
+            "tr": "Soğan"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 7.6,
+          "fat": 0.1,
+          "protein": 1.1,
+          "fiber": 1.7,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Butter",
+            "en": "Butter",
+            "fr": "Beurre",
+            "it": "Burro",
+            "tr": "Tereyağı"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0.1,
+          "fat": 81.1,
+          "protein": 0.9,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Neutrales Bratöl",
+            "en": "Neutral frying oil",
+            "fr": "Huile neutre",
+            "it": "Olio neutro",
+            "tr": "Nötr yağ"
+          },
+          "amount": 20,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Mehl (Weizen)",
+            "en": "Wheat flour",
+            "fr": "Farine de blé",
+            "it": "Farina di grano",
+            "tr": "Buğday unu"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 74.4,
+          "fat": 1,
+          "protein": 10.3,
+          "fiber": 2.7,
+          "allergenTags": [
+            "gluten"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Rinderbrühe",
+            "en": "Beef stock",
+            "fr": "Bouillon de bœuf",
+            "it": "Brodo di manzo",
+            "tr": "Dana suyu"
+          },
+          "amount": 400,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0.4,
+          "fat": 0.2,
+          "protein": 1.1,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Weißwein (trocken)",
+            "en": "Dry white wine",
+            "fr": "Vin blanc sec",
+            "it": "Vino bianco secco",
+            "tr": "Sek beyaz şarap"
+          },
+          "amount": 100,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 2.6,
+          "fat": 0,
+          "protein": 0.1,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Tomatenmark",
+            "en": "Tomato paste",
+            "fr": "Concentré de tomate",
+            "it": "Concentrato di pomodoro",
+            "tr": "Domates salçası"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15.5,
+          "fat": 0.7,
+          "protein": 4.2,
+          "fiber": 4.7,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Senf",
+            "en": "Mustard",
+            "fr": "Moutarde",
+            "it": "Senape",
+            "tr": "Hardal"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1.8,
+          "fat": 3.3,
+          "protein": 3.7,
+          "fiber": 4,
+          "allergenTags": [
+            "mustard"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Worcestershire-Sauce",
+            "en": "Worcestershire sauce",
+            "fr": "Sauce Worcestershire",
+            "it": "Salsa Worcestershire",
+            "tr": "Worcestershire sosu"
+          },
+          "amount": 20,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 19,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [
+            "fish"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Schmand / Creme fraiche",
+            "en": "Sour cream / crème fraîche",
+            "fr": "Crème fraîche",
+            "it": "Panna acida",
+            "tr": "Ekşi krema"
+          },
+          "amount": 160,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4.6,
+          "fat": 19.4,
+          "protein": 2.4,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "sauce"
+        },
+        {
+          "id": "0013",
+          "names": {
+            "de": "Petersilie (frisch)",
+            "en": "Fresh parsley",
+            "fr": "Persil frais",
+            "it": "Prezzemolo fresco",
+            "tr": "Maydanoz"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0.8,
+          "protein": 3,
+          "fiber": 3.3,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "garnish"
+        },
+        {
+          "id": "0014",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0015",
+          "names": {
+            "de": "Schwarzer Pfeffer",
+            "en": "Black pepper",
+            "fr": "Poivre noir",
+            "it": "Pepe nero",
+            "tr": "Karabiber"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 38.7,
+          "fat": 3.3,
+          "protein": 10.4,
+          "fiber": 25.3,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Fleisch schneiden",
+            "en": "Cut beef",
+            "fr": "Couper la viande",
+            "it": "Tagliare la carne",
+            "tr": "Eti kes"
+          },
+          "content": {
+            "de": "{0001} in 1 cm breite, 5 cm lange Streifen schneiden. Mit {0014} und {0015} würzen.",
+            "en": "Cut {0001} into 1 cm wide, 5 cm long strips. Season with {0014} and {0015}.",
+            "fr": "Couper {0001} en lanières de 1 cm sur 5 cm. Assaisonner avec {0014} et {0015}.",
+            "it": "Tagliare {0001} a striscioline di 1 cm per 5 cm. Condire con {0014} e {0015}.",
+            "tr": "{0001}'i 1 cm genişliğinde, 5 cm uzunluğunda şeritler halinde kesin. {0014} ve {0015} ile tatlandırın."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Fleisch scharf anbraten",
+            "en": "Sear beef",
+            "fr": "Saisir la viande",
+            "it": "Rosolare la carne",
+            "tr": "Eti mühürle"
+          },
+          "content": {
+            "de": "{0004} und {0005} in einer großen Pfanne stark erhitzen. {0001} portionsweise 1 Minute pro Seite scharf anbraten, herausnehmen und beiseitestellen.",
+            "en": "Heat {0004} and {0005} in a large pan over high heat. Sear {0001} in batches for 1 minute per side, remove and set aside.",
+            "fr": "Chauffer {0004} et {0005} dans une grande poêle à feu vif. Saisir {0001} par portions 1 minute par face, retirer et réserver.",
+            "it": "Scaldare {0004} e {0005} in una padella grande a fuoco vivo. Rosolare {0001} a porzioni 1 minuto per lato, togliere e tenere da parte.",
+            "tr": "{0004} ve {0005}'i geniş bir tavada yüksek ateşte kızdırın. {0001}'i partiler halinde her yüzü 1 dakika mühürleyin, alıp bir kenara koyun."
+          },
+          "stove_level": 3,
+          "time_min": 4
+        },
+        {
+          "title": {
+            "de": "Gemüse anbraten",
+            "en": "Sauté vegetables",
+            "fr": "Faire revenir les légumes",
+            "it": "Rosolare le verdure",
+            "tr": "Sebzeleri kavur"
+          },
+          "content": {
+            "de": "{0003} in derselben Pfanne 3 Minuten glasig braten. {0002} in Scheiben zugeben und 4 Minuten goldbraun braten.",
+            "en": "In the same pan, sauté {0003} for 3 minutes until translucent. Add sliced {0002} and cook 4 minutes until golden.",
+            "fr": "Dans la même poêle, faire revenir {0003} 3 minutes. Ajouter {0002} émincés et cuire 4 minutes jusqu'à coloration.",
+            "it": "Nella stessa padella, soffriggere {0003} per 3 minuti. Aggiungere {0002} a fette e cuocere 4 minuti fino a doratura.",
+            "tr": "Aynı tavada {0003}'ı 3 dakika kavurun. Dilimlenmiş {0002}'i ekleyip 4 dakika altın rengi olana kadar pişirin."
+          },
+          "stove_level": 2,
+          "time_min": 7
+        },
+        {
+          "title": {
+            "de": "Sauce ansetzen",
+            "en": "Build sauce",
+            "fr": "Monter la sauce",
+            "it": "Costruire la salsa",
+            "tr": "Sosu oluştur"
+          },
+          "content": {
+            "de": "Mit {0008} ablöschen und 2 Minuten einkochen. {0009}, {0010} und {0011} einrühren, 1 Minute rösten.",
+            "en": "Deglaze with {0008} and reduce for 2 minutes. Stir in {0009}, {0010} and {0011}, cook 1 minute.",
+            "fr": "Déglacer avec {0008} et réduire 2 minutes. Incorporer {0009}, {0010} et {0011}, cuire 1 minute.",
+            "it": "Sfumare con {0008} e ridurre per 2 minuti. Incorporare {0009}, {0010} e {0011}, cuocere 1 minuto.",
+            "tr": "{0008} ile soteleyin ve 2 dakika çektirin. {0009}, {0010} ve {0011}'i karıştırıp 1 dakika pişirin."
+          },
+          "stove_level": 2,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Abbinden",
+            "en": "Thicken",
+            "fr": "Lier",
+            "it": "Addensare",
+            "tr": "Bağla"
+          },
+          "content": {
+            "de": "{0006} darüberstäuben, 1 Minute rösten, dann {0007} unter Rühren angießen und 3 Minuten köcheln, bis die Sauce leicht bindet.",
+            "en": "Sprinkle {0006} over, cook 1 minute, then whisk in {0007} and simmer 3 minutes until the sauce lightly thickens.",
+            "fr": "Saupoudrer {0006}, cuire 1 minute, puis verser {0007} en fouettant et laisser mijoter 3 minutes.",
+            "it": "Cospargere {0006}, cuocere 1 minuto, poi versare {0007} mescolando e sobbollire 3 minuti.",
+            "tr": "{0006}'yı serpin, 1 dakika kavurun, ardından {0007}'yi karıştırarak ekleyin ve 3 dakika kaynatın."
+          },
+          "stove_level": 2,
+          "time_min": 4
+        },
+        {
+          "title": {
+            "de": "Fertigstellen",
+            "en": "Finish",
+            "fr": "Finir",
+            "it": "Finire",
+            "tr": "Bitir"
+          },
+          "content": {
+            "de": "{0012} einrühren, Fleisch zurück in die Pfanne geben, 2 Minuten sanft ziehen lassen (nicht kochen). Mit {0013} bestreuen.",
+            "en": "Stir in {0012}, return the beef to the pan, warm gently for 2 minutes (do not boil). Sprinkle with {0013}.",
+            "fr": "Incorporer {0012}, remettre la viande dans la poêle, réchauffer doucement 2 minutes (ne pas bouillir). Parsemer de {0013}.",
+            "it": "Incorporare {0012}, rimettere la carne in padella, scaldare dolcemente 2 minuti (non bollire). Cospargere con {0013}.",
+            "tr": "{0012}'yi karıştırın, eti tavaya geri koyun, 2 dakika hafifçe ısıtın (kaynatmayın). {0013} serpin."
+          },
+          "stove_level": 1,
+          "time_min": 3
+        }
+      ],
+      "chef_analysis": {
+        "de": "Klassisches Boeuf Stroganoff: Rindstreifen werden scharf angebraten und erst am Ende zur Sauce zurückgegeben, damit sie zart bleiben. Schmand kommt zum Schluss, er darf nicht kochen. Tomatenmark und Worcestershire liefern die Tiefe — Ketchup oder Paprika gehören nicht hinein.",
+        "en": "Classic beef stroganoff: sear the beef strips and return them only at the end so they stay tender. Sour cream goes in last and must not boil. Tomato paste and Worcestershire provide depth — no ketchup or paprika.",
+        "fr": "Bœuf Stroganoff classique : saisir les lanières et les remettre seulement à la fin pour qu'elles restent tendres. La crème fraîche s'ajoute en dernier, sans bouillir. Concentré de tomate et Worcestershire apportent la profondeur.",
+        "it": "Manzo Stroganoff classico: rosolare le striscioline e rimetterle solo alla fine per mantenerle tenere. La panna acida va aggiunta alla fine, senza bollire. Concentrato di pomodoro e Worcestershire danno profondità.",
+        "tr": "Klasik Biftek Stroganoff: et şeritlerini mühürleyin ve sadece sonda tavaya geri koyun ki yumuşak kalsın. Ekşi krema en sonda eklenir, kaynatılmaz. Domates salçası ve Worcestershire derinliği verir."
+      },
+      "coreComponents": [
+        "beef_steak",
+        "mushroom_button",
+        "onion_yellow",
+        "creme_fraiche",
+        "mustard",
+        "tomato_paste"
+      ]
     }
   ]
 }
