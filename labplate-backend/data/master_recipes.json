@@ -23593,6 +23593,607 @@
         "chicken_stock",
         "dark_soy"
       ]
+    },
+    {
+      "id": "miso_ramen",
+      "immutable": true,
+      "cuisine": "jp",
+      "region": "Hokkaido",
+      "servings": 4,
+      "prep_time_min": 40,
+      "aliases": {
+        "de": [
+          "miso ramen",
+          "miso-ramen",
+          "ramen mit miso"
+        ],
+        "en": [
+          "miso ramen"
+        ],
+        "fr": [
+          "ramen au miso"
+        ],
+        "it": [
+          "ramen al miso"
+        ],
+        "tr": [
+          "miso ramen"
+        ]
+      },
+      "titles": {
+        "de": "Miso Ramen",
+        "en": "Miso Ramen",
+        "fr": "Ramen au Miso",
+        "it": "Ramen al Miso",
+        "tr": "Miso Ramen"
+      },
+      "garnish": {
+        "de": "Mit Frühlingszwiebeln, Mais, Wakame und halbem Ei servieren.",
+        "en": "Serve with scallions, corn, wakame and halved egg.",
+        "fr": "Servir avec oignons verts, maïs, wakame et demi-œuf.",
+        "it": "Servire con cipollotto, mais, wakame e mezzo uovo.",
+        "tr": "Yeşil soğan, mısır, wakame ve yarım yumurta ile servis edin."
+      },
+      "diet_labels": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Schweinebauch",
+            "en": "Pork belly",
+            "fr": "Poitrine de porc",
+            "it": "Pancetta di maiale",
+            "tr": "Domuz göbeği"
+          },
+          "amount": 160,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 53,
+          "protein": 9.3,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Ramen-Nudeln (frisch)",
+            "en": "Fresh ramen noodles",
+            "fr": "Nouilles ramen fraîches",
+            "it": "Noodles ramen freschi",
+            "tr": "Taze ramen eriştesi"
+          },
+          "amount": 240,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 52,
+          "fat": 1.5,
+          "protein": 9,
+          "fiber": 2.5,
+          "allergenTags": [
+            "gluten"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "carbohydrate"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Miso-Paste (rot)",
+            "en": "Red miso paste",
+            "fr": "Pâte miso rouge",
+            "it": "Pasta miso rossa",
+            "tr": "Kırmızı miso ezmesi"
+          },
+          "amount": 80,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 26.5,
+          "fat": 6,
+          "protein": 12.8,
+          "fiber": 5.4,
+          "allergenTags": [
+            "soy"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Kombu (getrocknet)",
+            "en": "Dried kombu",
+            "fr": "Kombu séché",
+            "it": "Kombu secco",
+            "tr": "Kuru kombu"
+          },
+          "amount": 16,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 30,
+          "fat": 1,
+          "protein": 8,
+          "fiber": 30,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Katsuobushi (Bonitoflocken)",
+            "en": "Katsuobushi (bonito flakes)",
+            "fr": "Katsuobushi (flocons de bonite)",
+            "it": "Katsuobushi (fiocchi di bonito)",
+            "tr": "Katsuobushi (bonito pulu)"
+          },
+          "amount": 16,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 5,
+          "protein": 78,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Ingwer (frisch)",
+            "en": "Fresh ginger",
+            "fr": "Gingembre frais",
+            "it": "Zenzero fresco",
+            "tr": "Taze zencefil"
+          },
+          "amount": 16,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15.8,
+          "fat": 0.8,
+          "protein": 1.8,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Frühlingszwiebeln",
+            "en": "Scallions",
+            "fr": "Oignons verts",
+            "it": "Cipollotti",
+            "tr": "Yeşil soğan"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 4.7,
+          "fat": 0.2,
+          "protein": 1.8,
+          "fiber": 2.6,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Sojasauce",
+            "en": "Soy sauce",
+            "fr": "Sauce soja",
+            "it": "Salsa di soia",
+            "tr": "Soya sosu"
+          },
+          "amount": 32,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 4.1,
+          "fat": 0.6,
+          "protein": 8.1,
+          "fiber": 0.8,
+          "allergenTags": [
+            "soy"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Sesamöl",
+            "en": "Sesame oil",
+            "fr": "Huile de sésame",
+            "it": "Olio di sesamo",
+            "tr": "Susam yağı"
+          },
+          "amount": 8,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Hühnerbrühe",
+            "en": "Chicken stock",
+            "fr": "Bouillon de volaille",
+            "it": "Brodo di pollo",
+            "tr": "Tavuk suyu"
+          },
+          "amount": 1600,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0.5,
+          "fat": 0.5,
+          "protein": 2.5,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Mungobohnensprossen",
+            "en": "Bean sprouts",
+            "fr": "Pousses de soja",
+            "it": "Germogli di fagioli mungo",
+            "tr": "Fasulye filizi"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0.2,
+          "protein": 3,
+          "fiber": 1.8,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0013",
+          "names": {
+            "de": "Mais (Dose, abgetropft)",
+            "en": "Canned corn (drained)",
+            "fr": "Maïs en boîte (égoutté)",
+            "it": "Mais in scatola (sgocciolato)",
+            "tr": "Konserve mısır (süzülmüş)"
+          },
+          "amount": 120,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 14.7,
+          "fat": 1.2,
+          "protein": 3.3,
+          "fiber": 2.4,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0014",
+          "names": {
+            "de": "Wakame (getrocknet)",
+            "en": "Dried wakame",
+            "fr": "Wakame séché",
+            "it": "Wakame secco",
+            "tr": "Kuru wakame"
+          },
+          "amount": 16,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 12.5,
+          "fat": 4.3,
+          "protein": 17,
+          "fiber": 30,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0015",
+          "names": {
+            "de": "Bambussprossen (Menma)",
+            "en": "Bamboo shoots (menma)",
+            "fr": "Pousses de bambou (menma)",
+            "it": "Germogli di bambù (menma)",
+            "tr": "Bambu filizi (menma)"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0.2,
+          "protein": 2.5,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0016",
+          "names": {
+            "de": "Eier",
+            "en": "Eggs",
+            "fr": "Œufs",
+            "it": "Uova",
+            "tr": "Yumurta"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": true,
+          "netCarbs": 0.7,
+          "fat": 9.5,
+          "protein": 12.6,
+          "fiber": 0,
+          "allergenTags": [
+            "egg"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0017",
+          "names": {
+            "de": "Butter",
+            "en": "Butter",
+            "fr": "Beurre",
+            "it": "Burro",
+            "tr": "Tereyağı"
+          },
+          "amount": 4,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0.1,
+          "fat": 81.1,
+          "protein": 0.9,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0018",
+          "names": {
+            "de": "Nori",
+            "en": "Nori",
+            "fr": "Nori",
+            "it": "Nori",
+            "tr": "Nori"
+          },
+          "amount": 4,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1.4,
+          "fat": 0.3,
+          "protein": 5.8,
+          "fiber": 0.3,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "garnish"
+        },
+        {
+          "id": "0019",
+          "names": {
+            "de": "Sesamsamen",
+            "en": "Sesame seeds",
+            "fr": "Graines de sésame",
+            "it": "Semi di sesamo",
+            "tr": "Susam"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 11.6,
+          "fat": 49.7,
+          "protein": 17.7,
+          "fiber": 11.8,
+          "allergenTags": [
+            "sesame"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "garnish"
+        },
+        {
+          "id": "0020",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Dashi ansetzen",
+            "en": "Make dashi",
+            "fr": "Préparer le dashi",
+            "it": "Preparare il dashi",
+            "tr": "Dashi hazırla"
+          },
+          "content": {
+            "de": "{0004} mit {0011} in einem Topf 10 Minuten ziehen lassen, kurz vor dem Kochen herausnehmen. {0005} zugeben, 2 Minuten ziehen, durch ein Sieb gießen.",
+            "en": "Steep {0004} with {0011} in a pot for 10 minutes, remove just before boiling. Add {0005}, steep 2 minutes, strain.",
+            "fr": "Laisser infuser {0004} avec {0011} 10 minutes, retirer juste avant ébullition. Ajouter {0005}, infuser 2 minutes, filtrer.",
+            "it": "Lasciar in infusione {0004} con {0011} per 10 minuti, togliere poco prima del bollore. Aggiungere {0005}, infondere 2 minuti, filtrare.",
+            "tr": "{0004}'ü {0011} ile 10 dakika demleyin, kaynama öncesi çıkarın. {0005}'i ekleyip 2 dakika demleyin, süzün."
+          },
+          "stove_level": 2,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Chashu braten",
+            "en": "Sear chashu",
+            "fr": "Saisir le chashu",
+            "it": "Rosolare il chashu",
+            "tr": "Chashu kavur"
+          },
+          "content": {
+            "de": "{0001} in 1 cm dicke Scheiben schneiden. In einer heißen Pfanne ohne Öl beidseitig goldbraun braten.",
+            "en": "Cut {0001} into 1 cm slices. Sear both sides golden brown in a hot pan without oil.",
+            "fr": "Couper {0001} en tranches de 1 cm. Saisir des deux côtés dans une poêle chaude sans huile.",
+            "it": "Tagliare {0001} a fette di 1 cm. Rosolare su entrambi i lati in padella calda senza olio.",
+            "tr": "{0001}'i 1 cm dilimler halinde kesin. Sıcak tavada yağsız iki tarafını altın rengi olana kadar kızartın."
+          },
+          "stove_level": 3,
+          "time_min": 6
+        },
+        {
+          "title": {
+            "de": "Aromaten anbraten",
+            "en": "Fry aromatics",
+            "fr": "Faire revenir les aromates",
+            "it": "Rosolare gli aromi",
+            "tr": "Aromatikleri kavur"
+          },
+          "content": {
+            "de": "{0007} und {0006} in {0010} 30 Sekunden anbraten. {0003} zugeben und 1 Minute rösten, bis die Paste dunkel wird.",
+            "en": "Fry {0007} and {0006} in {0010} for 30 seconds. Add {0003} and toast 1 minute until the paste darkens.",
+            "fr": "Faire revenir {0007} et {0006} dans {0010} 30 secondes. Ajouter {0003} et torréfier 1 minute.",
+            "it": "Rosolare {0007} e {0006} in {0010} per 30 secondi. Aggiungere {0003} e tostare 1 minuto.",
+            "tr": "{0007} ve {0006}'yı {0010}'de 30 saniye kavurun. {0003}'ü ekleyip 1 dakika kavurun."
+          },
+          "stove_level": 3,
+          "time_min": 2
+        },
+        {
+          "title": {
+            "de": "Brühe aufbauen",
+            "en": "Build broth",
+            "fr": "Monter le bouillon",
+            "it": "Costruire il brodo",
+            "tr": "Suyu oluştur"
+          },
+          "content": {
+            "de": "Mit {0009} ablöschen. Dashi durch ein Sieb zugeben und 5 Minuten köcheln. Mit {0020} abschmecken.",
+            "en": "Deglaze with {0009}. Strain in the dashi and simmer 5 minutes. Season with {0020}.",
+            "fr": "Déglacer avec {0009}. Ajouter le dashi filtré et mijoter 5 minutes. Assaisonner avec {0020}.",
+            "it": "Sfumare con {0009}. Aggiungere il dashi filtrato e sobbollire 5 minuti. Condire con {0020}.",
+            "tr": "{0009} ile soteleyin. Süzülen dashi'yi ekleyip 5 dakika kaynatın. {0020} ile tatlandırın."
+          },
+          "stove_level": 2,
+          "time_min": 6
+        },
+        {
+          "title": {
+            "de": "Toppings vorbereiten",
+            "en": "Prep toppings",
+            "fr": "Préparer les garnitures",
+            "it": "Preparare i condimenti",
+            "tr": "Garnitürleri hazırla"
+          },
+          "content": {
+            "de": "{0014} in warmem Wasser 5 Minuten einweichen. {0013} abtropfen. {0016} 6 Minuten kochen, abschrecken, halbieren.",
+            "en": "Soak {0014} in warm water for 5 minutes. Drain {0013}. Boil {0016} for 6 minutes, cool, halve.",
+            "fr": "Tremper {0014} 5 minutes dans l'eau tiède. Égoutter {0013}. Cuire {0016} 6 minutes, refroidir, couper en deux.",
+            "it": "Ammollare {0014} in acqua tiepida per 5 minuti. Scolare {0013}. Bollire {0016} per 6 minuti, raffreddare, dimezzare.",
+            "tr": "{0014}'ü ılık suda 5 dakika bekletin. {0013}'ü süzün. {0016}'yı 6 dakika haşlayın, soğutun, ikiye bölün."
+          },
+          "stove_level": 2,
+          "time_min": 8
+        },
+        {
+          "title": {
+            "de": "Nudeln und Sprossen",
+            "en": "Cook noodles and sprouts",
+            "fr": "Cuire nouilles et pousses",
+            "it": "Cuocere noodles e germogli",
+            "tr": "Erişte ve filizleri pişir"
+          },
+          "content": {
+            "de": "{0002} nach Packungsangabe kochen, abgießen. {0012} 30 Sekunden in kochendem Wasser blanchieren.",
+            "en": "Cook {0002} per package directions, drain. Blanch {0012} in boiling water for 30 seconds.",
+            "fr": "Cuire {0002} selon l'emballage, égoutter. Blanchir {0012} 30 secondes.",
+            "it": "Cuocere {0002} secondo la confezione, scolare. Scottare {0012} 30 secondi.",
+            "tr": "{0002}'yi paket talimatına göre haşlayın, süzün. {0012}'yi 30 saniye kaynar suda bekletin."
+          },
+          "stove_level": 3,
+          "time_min": 4
+        },
+        {
+          "title": {
+            "de": "Anrichten",
+            "en": "Assemble",
+            "fr": "Dresser",
+            "it": "Comporre",
+            "tr": "Sunum"
+          },
+          "content": {
+            "de": "Nudeln auf Schalen verteilen, heiße Brühe angießen. {0001}, {0012}, {0013}, {0015}, {0014} und {0016} daraufsetzen. {0017} und {0018} auf die Brühe geben, mit {0019} und den grünen Ringen von {0008} bestreuen.",
+            "en": "Divide noodles among bowls, ladle hot broth over. Top with {0001}, {0012}, {0013}, {0015}, {0014} and {0016}. Add {0017} and {0018} to the broth, sprinkle with {0019} and green rings of {0008}.",
+            "fr": "Répartir les nouilles, verser le bouillon chaud. Garnir de {0001}, {0012}, {0013}, {0015}, {0014} et {0016}. Ajouter {0017} et {0018}, parsemer de {0019} et des rondelles vertes de {0008}.",
+            "it": "Distribuire i noodles, versare il brodo caldo. Guarnire con {0001}, {0012}, {0013}, {0015}, {0014} e {0016}. Aggiungere {0017} e {0018}, cospargere con {0019} e gli anelli verdi di {0008}.",
+            "tr": "Erişteleri kaselere paylaştırın, sıcak suyu üzerine dökün. {0001}, {0012}, {0013}, {0015}, {0014} ve {0016} ile süsleyin. {0017} ve {0018}'i ekleyin, {0019} ve {0008}'in yeşil halkalarıyla süsleyin."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "chef_analysis": {
+        "de": "Miso Ramen aus Hokkaido: Kombu und Katsuobushi liefern die Dashi-Basis, geröstete Miso-Paste die Tiefe. Butter und Mais sind Hokkaido-Klassiker, kein Kompromiss. Die Nudeln werden separat gekocht, damit die Brühe klar bleibt.",
+        "en": "Hokkaido-style miso ramen: kombu and katsuobushi form the dashi base, toasted miso paste the depth. Butter and corn are Hokkaido classics, not a compromise. Noodles are cooked separately to keep the broth clear.",
+        "fr": "Ramen au miso de Hokkaido : le kombu et le katsuobushi forment la base dashi, la pâte miso torréfiée la profondeur. Beurre et maïs sont des classiques de Hokkaido. Les nouilles sont cuites à part.",
+        "it": "Ramen al miso in stile Hokkaido: kombu e katsuobushi formano la base dashi, la pasta miso tostata la profondità. Burro e mais sono classici di Hokkaido. I noodles sono cotti a parte.",
+        "tr": "Hokkaido usulü miso ramen: kombu ve katsuobushi dashi temelini, kavrulmuş miso ezmesi derinliği verir. Tereyağı ve mısır Hokkaido klasiğidir. Erişteler ayrı pişirilir."
+      },
+      "coreComponents": [
+        "ramen_noodles",
+        "miso_paste",
+        "pork_belly",
+        "kombu",
+        "katsuobushi",
+        "corn_canned",
+        "butter",
+        "bean_sprouts"
+      ]
     }
   ]
 }
