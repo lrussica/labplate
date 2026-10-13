@@ -27294,6 +27294,488 @@
         "potato",
         "beef_stock"
       ]
+    },
+    {
+      "id": "gulasch",
+      "immutable": true,
+      "cuisine": "hu",
+      "region": "Ungarn",
+      "servings": 4,
+      "prep_time_min": 120,
+      "aliases": {
+        "de": [
+          "gulasch",
+          "gulyas",
+          "ungarisches gulasch",
+          "rindergulasch"
+        ],
+        "en": [
+          "goulash",
+          "gulyas",
+          "hungarian goulash"
+        ],
+        "fr": [
+          "goulash",
+          "gulyas",
+          "goulash hongrois"
+        ],
+        "it": [
+          "gulasch",
+          "gulyas",
+          "gulasch ungherese"
+        ],
+        "tr": [
+          "gulas",
+          "gulyas",
+          "Macar gulas"
+        ]
+      },
+      "titles": {
+        "de": "Gulasch",
+        "en": "Goulash",
+        "fr": "Goulash",
+        "it": "Gulasch",
+        "tr": "Gulas"
+      },
+      "garnish": {
+        "de": "Mit frischem Brot und einem Klecks Sauerrahm servieren.",
+        "en": "Serve with fresh bread and a dollop of sour cream.",
+        "fr": "Servir avec du pain frais et une cuillere de creme fraiche.",
+        "it": "Servire con pane fresco e un cucchiaio di panna acida.",
+        "tr": "Taze ekmek ve bir kasik ekşi krema ile servis edin."
+      },
+      "diet_labels": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Rinderbeinscheibe",
+            "en": "Beef shank",
+            "fr": "Jarret de boeuf",
+            "it": "Ossobuco di manzo",
+            "tr": "Dana incik"
+          },
+          "amount": 800,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 4.4,
+          "protein": 21.4,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Zwiebeln",
+            "en": "Onions",
+            "fr": "Oignons",
+            "it": "Cipolle",
+            "tr": "Sogan"
+          },
+          "amount": 600,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 7.6,
+          "fat": 0.1,
+          "protein": 1.1,
+          "fiber": 1.7,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarimsak"
+          },
+          "amount": 6,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Schweineschmalz",
+            "en": "Pork lard",
+            "fr": "Saindoux",
+            "it": "Strutto",
+            "tr": "Domuz yagi"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Tomatenmark",
+            "en": "Tomato paste",
+            "fr": "Concentre de tomate",
+            "it": "Concentrato di pomodoro",
+            "tr": "Domates salcasi"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15.5,
+          "fat": 0.7,
+          "protein": 4.2,
+          "fiber": 4.7,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Paprikapulver (edelsuess)",
+            "en": "Sweet paprika",
+            "fr": "Paprika doux",
+            "it": "Paprika dolce",
+            "tr": "Tatli kirmizi biber"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 19.1,
+          "fat": 12.9,
+          "protein": 14.1,
+          "fiber": 34.9,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Kuemmel (gemahlen)",
+            "en": "Ground caraway",
+            "fr": "Cumin des pres moulu",
+            "it": "Cumino dei prati macinato",
+            "tr": "Kimyon (frenk)"
+          },
+          "amount": 4,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 11.9,
+          "fat": 14.6,
+          "protein": 19.8,
+          "fiber": 38,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Majoran (getrocknet)",
+            "en": "Dried marjoram",
+            "fr": "Marjolaine seche",
+            "it": "Maggiorana secca",
+            "tr": "Kuru mercankosk"
+          },
+          "amount": 4,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 20.3,
+          "fat": 7,
+          "protein": 12.7,
+          "fiber": 40.3,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Lorbeerblaetter",
+            "en": "Bay leaves",
+            "fr": "Feuilles de laurier",
+            "it": "Foglie di alloro",
+            "tr": "Defne yapragi"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 48.6,
+          "fat": 8.4,
+          "protein": 7.6,
+          "fiber": 26.3,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Rotwein (trocken)",
+            "en": "Dry red wine",
+            "fr": "Vin rouge sec",
+            "it": "Vino rosso secco",
+            "tr": "Sek kirmizi sarap"
+          },
+          "amount": 200,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 2.6,
+          "fat": 0,
+          "protein": 0.1,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Rinderbruehe",
+            "en": "Beef stock",
+            "fr": "Bouillon de boeuf",
+            "it": "Brodo di manzo",
+            "tr": "Dana suyu"
+          },
+          "amount": 600,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0.4,
+          "fat": 0.2,
+          "protein": 1.1,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Apfelessig",
+            "en": "Apple cider vinegar",
+            "fr": "Vinaigre de cidre",
+            "it": "Aceto di mele",
+            "tr": "Elma sirkesi"
+          },
+          "amount": 20,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0.9,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0013",
+          "names": {
+            "de": "Kartoffeln",
+            "en": "Potatoes",
+            "fr": "Pommes de terre",
+            "it": "Patate",
+            "tr": "Patates"
+          },
+          "amount": 600,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15.4,
+          "fat": 0.1,
+          "protein": 2.1,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0014",
+          "names": {
+            "de": "Karotten",
+            "en": "Carrots",
+            "fr": "Carottes",
+            "it": "Carote",
+            "tr": "Havuc"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 6.8,
+          "fat": 0.2,
+          "protein": 0.9,
+          "fiber": 2.8,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0015",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0016",
+          "names": {
+            "de": "Schwarzer Pfeffer",
+            "en": "Black pepper",
+            "fr": "Poivre noir",
+            "it": "Pepe nero",
+            "tr": "Karabiber"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 38.7,
+          "fat": 3.3,
+          "protein": 10.4,
+          "fiber": 25.3,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Zwiebeln schmoren",
+            "en": "Sweat onions",
+            "fr": "Faire suer les oignons",
+            "it": "Appassire le cipolle",
+            "tr": "Soganlari kavur"
+          },
+          "content": {
+            "de": "{0004} in einem schweren Topf schmelzen. {0002} in feinen Wuerfeln zugeben und 15 Minuten bei mittlerer Hitze goldbraun schmoren.",
+            "en": "Melt {0004} in a heavy pot. Add finely diced {0002} and sweat over medium heat for 15 minutes until golden.",
+            "fr": "Faire fondre {0004} dans une cocotte. Ajouter {0002} finement haches et faire suer 15 minutes a feu moyen jusqu'a dore.",
+            "it": "Sciogliere {0004} in una pentola pesante. Aggiungere {0002} a dadini fini e appassire 15 minuti a fuoco medio fino a doratura.",
+            "tr": "{0004}'u agir bir tencerede eritin. Ince dogranmis {0002}'i ekleyin ve orta ateste 15 dakika altin rengi olana kadar kavurun."
+          },
+          "stove_level": 2,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Fleisch anbraten",
+            "en": "Sear beef",
+            "fr": "Saisir le boeuf",
+            "it": "Rosolare il manzo",
+            "tr": "Eti muhurle"
+          },
+          "content": {
+            "de": "{0001} in 3 cm Wuerfel schneiden. Hitze erhoehen, Fleisch zugeben und 8 Minuten scharf anbraten. {0003} zugeben, 1 Minute mitbraten.",
+            "en": "Cut {0001} into 3 cm cubes. Raise heat, add beef and sear for 8 minutes. Add {0003}, cook 1 minute.",
+            "fr": "Couper {0001} en cubes de 3 cm. Augmenter le feu, saisir 8 minutes. Ajouter {0003}, cuire 1 minute.",
+            "it": "Tagliare {0001} a cubetti di 3 cm. Alzare il fuoco, rosolare 8 minuti. Aggiungere {0003}, cuocere 1 minuto.",
+            "tr": "{0001}'i 3 cm kupler halinde kesin. Atesi yukseltin, 8 dakika muhurleyin. {0003}'u ekleyip 1 dakika kavurun."
+          },
+          "stove_level": 3,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Paprika und Gewuerze",
+            "en": "Paprika and spices",
+            "fr": "Paprika et epices",
+            "it": "Paprika e spezie",
+            "tr": "Paprika ve baharatlar"
+          },
+          "content": {
+            "de": "Topf vom Herd nehmen. {0005}, {0006}, {0007} und {0008} einruehren (Paprika darf nicht verbrennen). {0009} zugeben.",
+            "en": "Take the pot off the heat. Stir in {0005}, {0006}, {0007} and {0008} (paprika must not burn). Add {0009}.",
+            "fr": "Retirer la cocotte du feu. Incorporer {0005}, {0006}, {0007} et {0008} (le paprika ne doit pas bruler). Ajouter {0009}.",
+            "it": "Togliere la pentola dal fuoco. Incorporare {0005}, {0006}, {0007} e {0008} (la paprica non deve bruciare). Aggiungere {0009}.",
+            "tr": "Tencereyi atesten alin. {0005}, {0006}, {0007} ve {0008}'i karistirin (paprika yanmamali). {0009}'u ekleyin."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        },
+        {
+          "title": {
+            "de": "Abloeschen und schmoren",
+            "en": "Deglaze and braise",
+            "fr": "Deglacer et braiser",
+            "it": "Sfumare e brasare",
+            "tr": "Sotele ve pisir"
+          },
+          "content": {
+            "de": "Mit {0010} abloeschen, 2 Minuten einkochen. {0011} und {0012} zugeben, aufkochen, dann zugedeckt bei niedriger Hitze 90 Minuten schmoren.",
+            "en": "Deglaze with {0010}, reduce 2 minutes. Add {0011} and {0012}, bring to a boil, then braise covered on low heat for 90 minutes.",
+            "fr": "Deglacer avec {0010}, reduire 2 minutes. Ajouter {0011} et {0012}, porter a ebullition, puis braiser a couvert 90 minutes a feu doux.",
+            "it": "Sfumare con {0010}, ridurre 2 minuti. Aggiungere {0011} e {0012}, portare a bollore, poi brasare coperto a fuoco basso per 90 minuti.",
+            "tr": "{0010} ile soteleyin, 2 dakika cektirin. {0011} ve {0012}'yi ekleyip kaynatin, sonra kapali olarak kisik ateste 90 dakika pisirin."
+          },
+          "stove_level": 2,
+          "time_min": 92
+        },
+        {
+          "title": {
+            "de": "Gemuese und Finish",
+            "en": "Vegetables and finish",
+            "fr": "Legumes et finition",
+            "it": "Verdure e finitura",
+            "tr": "Sebzeler ve bitis"
+          },
+          "content": {
+            "de": "{0013} und {0014} in Stuecke schneiden, zugeben und weitere 25 Minuten schmoren, bis Fleisch und Kartoffeln weich sind. Mit {0015} und {0016} abschmecken.",
+            "en": "Cut {0013} and {0014} into chunks, add and braise another 25 minutes until beef and potatoes are tender. Season with {0015} and {0016}.",
+            "fr": "Couper {0013} et {0014} en morceaux, ajouter et braiser 25 minutes de plus jusqu'a tenderete. Assaisonner avec {0015} et {0016}.",
+            "it": "Tagliare {0013} e {0014} a pezzi, aggiungere e brasare altri 25 minuti fino a tenerezza. Condire con {0015} e {0016}.",
+            "tr": "{0013} ve {0014}'u parcalar halinde kesin, ekleyin ve et ve patatesler yumusayana kadar 25 dakika daha pisirin. {0015} ve {0016} ile tatlandirin."
+          },
+          "stove_level": 2,
+          "time_min": 25
+        }
+      ],
+      "chef_analysis": {
+        "de": "Gulasch: Zwiebeln und Fleisch werden in Schmalz geschmort, dann kommt edelsuesses Paprikapulver vom Herd genommen dazu - verbrennt es, wird das Gulasch bitter. Kuemmel und Majoran sind ungarische Pflicht, Kartoffeln kommen erst zum Schluss dazu.",
+        "en": "Goulash: onions and beef are braised in lard, then sweet paprika is stirred in off the heat - if it burns, the goulash turns bitter. Caraway and marjoram are Hungarian essentials; potatoes go in only at the end.",
+        "fr": "Goulash : oignons et boeuf mijotent dans le saindoux, puis le paprika doux est incorpore hors du feu - s'il brule, le goulash devient amer. Cumin des pres et marjolaine sont incontournables, les pommes de terre viennent a la fin.",
+        "it": "Gulasch: cipolle e manzo brasano nello strutto, poi la paprica dolce si incorpora fuori dal fuoco - se brucia, il gulasch diventa amaro. Cumino dei prati e maggiorana sono irrinunciabili; le patate vanno solo alla fine.",
+        "tr": "Gulas: sogan ve dana domuz yaginda pisirilir, sonra tatli kirmizi biber atesten alinmis tencerede eklenir - yanarsa gulas aci olur. Frenk kimyonu ve mercankosk Macar mutfaginin olmazlari; patates sadece sonda eklenir."
+      },
+      "coreComponents": [
+        "beef_shank",
+        "onion_yellow",
+        "paprika_powder",
+        "caraway",
+        "marjoram",
+        "potato",
+        "carrot",
+        "red_wine"
+      ]
     }
   ]
 }
