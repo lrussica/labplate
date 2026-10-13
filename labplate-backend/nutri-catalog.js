@@ -1051,6 +1051,7 @@ const CATALOG = {
 Object.assign(CATALOG, require('./nutri-catalog-welle3_a.js'));
 Object.assign(CATALOG, require('./nutri-catalog-welle3_b.js'));
 Object.assign(CATALOG, require('./nutri-catalog-welle3_c.js'));
+Object.assign(CATALOG, require('./nutri-catalog-welle3_d.js'));
 
 
 // ---------- Matching ----------

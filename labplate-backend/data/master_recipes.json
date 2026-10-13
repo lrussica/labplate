@@ -23086,6 +23086,513 @@
         "dark_soy",
         "oyster_sauce"
       ]
+    },
+    {
+      "id": "mapo_tofu",
+      "immutable": true,
+      "cuisine": "cn",
+      "region": "Sichuan",
+      "servings": 4,
+      "prep_time_min": 20,
+      "aliases": {
+        "de": [
+          "mapo tofu",
+          "mapo doufu",
+          "scharfer tofu mit hackfleisch"
+        ],
+        "en": [
+          "mapo tofu",
+          "mapo doufu"
+        ],
+        "fr": [
+          "mapo tofu",
+          "tofu du Sichuan"
+        ],
+        "it": [
+          "mapo tofu",
+          "tofu del Sichuan"
+        ],
+        "tr": [
+          "mapo tofu",
+          "Sichuan usulü tofu"
+        ]
+      },
+      "titles": {
+        "de": "Mapo Tofu",
+        "en": "Mapo Tofu",
+        "fr": "Mapo Tofu",
+        "it": "Mapo Tofu",
+        "tr": "Mapo Tofu"
+      },
+      "garnish": {
+        "de": "Mit Frühlingszwiebelringen und gemahlenem Sichuan-Pfeffer bestreuen.",
+        "en": "Sprinkle with scallion rings and ground Sichuan pepper.",
+        "fr": "Parsemer d'oignons verts et de poivre du Sichuan moulu.",
+        "it": "Cospargere con anelli di cipollotto e pepe del Sichuan macinato.",
+        "tr": "Yeşil soğan halkaları ve öğütülmüş Sichuan biberi ile süsleyin."
+      },
+      "diet_labels": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Tofu, fest",
+            "en": "Firm tofu",
+            "fr": "Tofu ferme",
+            "it": "Tofu sodo",
+            "tr": "Sert tofu"
+          },
+          "amount": 500,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0.5,
+          "fat": 8.7,
+          "protein": 17.3,
+          "fiber": 2.3,
+          "allergenTags": [
+            "soy"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Schweinehackfleisch",
+            "en": "Ground pork",
+            "fr": "Porc haché",
+            "it": "Carne di maiale macinata",
+            "tr": "Kıyma (domuz)"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 20.7,
+          "protein": 17.2,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Doubanjiang (Chili-Bohnenpaste)",
+            "en": "Doubanjiang (chili bean paste)",
+            "fr": "Doubanjiang (pâte pimentée)",
+            "it": "Doubanjiang (pasta di peperoncino)",
+            "tr": "Doubanjiang (biber ezmesi)"
+          },
+          "amount": 45,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 12,
+          "fat": 5,
+          "protein": 12,
+          "fiber": 6,
+          "allergenTags": [
+            "soy"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Douchi (fermentierte schwarze Bohnen)",
+            "en": "Douchi (fermented black beans)",
+            "fr": "Douchi (haricots noirs fermentés)",
+            "it": "Douchi (fagioli neri fermentati)",
+            "tr": "Douchi (fermente siyah fasulye)"
+          },
+          "amount": 15,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 20,
+          "fat": 7,
+          "protein": 20,
+          "fiber": 12,
+          "allergenTags": [
+            "soy"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Ingwer (frisch)",
+            "en": "Fresh ginger",
+            "fr": "Gingembre frais",
+            "it": "Zenzero fresco",
+            "tr": "Taze zencefil"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15.8,
+          "fat": 0.8,
+          "protein": 1.8,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Frühlingszwiebeln",
+            "en": "Scallions",
+            "fr": "Oignons verts",
+            "it": "Cipollotti",
+            "tr": "Yeşil soğan"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 4.7,
+          "fat": 0.2,
+          "protein": 1.8,
+          "fiber": 2.6,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Shaoxing-Reiswein",
+            "en": "Shaoxing rice wine",
+            "fr": "Vin de riz Shaoxing",
+            "it": "Vino di riso Shaoxing",
+            "tr": "Shaoxing pirinç şarabı"
+          },
+          "amount": 30,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 0,
+          "protein": 0.5,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Hühnerbrühe",
+            "en": "Chicken stock",
+            "fr": "Bouillon de volaille",
+            "it": "Brodo di pollo",
+            "tr": "Tavuk suyu"
+          },
+          "amount": 300,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0.5,
+          "fat": 0.5,
+          "protein": 2.5,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Dunkle Sojasauce",
+            "en": "Dark soy sauce",
+            "fr": "Sauce soja foncée",
+            "it": "Salsa di soia scura",
+            "tr": "Koyu soya sosu"
+          },
+          "amount": 15,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 15,
+          "fat": 0,
+          "protein": 6,
+          "fiber": 0,
+          "allergenTags": [
+            "soy"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Sojasauce",
+            "en": "Soy sauce",
+            "fr": "Sauce soja",
+            "it": "Salsa di soia",
+            "tr": "Soya sosu"
+          },
+          "amount": 15,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 4.1,
+          "fat": 0.6,
+          "protein": 8.1,
+          "fiber": 0.8,
+          "allergenTags": [
+            "soy"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Chiliöl",
+            "en": "Chili oil",
+            "fr": "Huile pimentée",
+            "it": "Olio di peperoncino",
+            "tr": "Acı biber yağı"
+          },
+          "amount": 10,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0013",
+          "names": {
+            "de": "Speisestärke",
+            "en": "Cornstarch",
+            "fr": "Fécule de maïs",
+            "it": "Amido di mais",
+            "tr": "Mısır nişastası"
+          },
+          "amount": 15,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 91.3,
+          "fat": 0.1,
+          "protein": 0.3,
+          "fiber": 0.9,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0014",
+          "names": {
+            "de": "Wasser",
+            "en": "Water",
+            "fr": "Eau",
+            "it": "Acqua",
+            "tr": "Su"
+          },
+          "amount": 1500,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0015",
+          "names": {
+            "de": "Neutrales Bratöl",
+            "en": "Neutral frying oil",
+            "fr": "Huile neutre",
+            "it": "Olio neutro",
+            "tr": "Nötr yağ"
+          },
+          "amount": 20,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0016",
+          "names": {
+            "de": "Sichuan-Pfeffer (gemahlen)",
+            "en": "Ground Sichuan pepper",
+            "fr": "Poivre du Sichuan moulu",
+            "it": "Pepe del Sichuan macinato",
+            "tr": "Öğütülmüş Sichuan biberi"
+          },
+          "amount": 4,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 20,
+          "fat": 8,
+          "protein": 6,
+          "fiber": 30,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0017",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Tofu blanchieren",
+            "en": "Blanch tofu",
+            "fr": "Blanchir le tofu",
+            "it": "Scottare il tofu",
+            "tr": "Tofuyu haşla"
+          },
+          "content": {
+            "de": "{0001} in 2 cm große Würfel schneiden. In {0014} mit {0017} 2 Minuten blanchieren, mit der Schaumkelle herausheben und abtropfen lassen.",
+            "en": "Cut {0001} into 2 cm cubes. Blanch in {0014} with {0017} for 2 minutes, lift out with a slotted spoon and drain.",
+            "fr": "Couper {0001} en cubes de 2 cm. Blanchir 2 minutes dans {0014} avec {0017}, égoutter à l'écumoire.",
+            "it": "Tagliare {0001} a cubetti di 2 cm. Scottare 2 minuti in {0014} con {0017}, scolare con la schiumarola.",
+            "tr": "{0001}'i 2 cm küpler halinde kesin. {0014} ve {0017} ile 2 dakika haşlayın, kevgirle çıkarıp süzün."
+          },
+          "stove_level": 2,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Aromaten anbraten",
+            "en": "Fry aromatics",
+            "fr": "Faire revenir les aromates",
+            "it": "Rosolare gli aromi",
+            "tr": "Aromatikleri kavur"
+          },
+          "content": {
+            "de": "{0015} im Wok stark erhitzen. {0002} krümelig anbraten. {0003} und {0004} zugeben und 1 Minute rösten, bis das Öl rot wird. {0005}, {0006} und die weißen Teile von {0007} zugeben, 30 Sekunden mitbraten.",
+            "en": "Heat {0015} in a wok over high heat. Fry {0002} until crumbly. Add {0003} and {0004}, roast 1 minute until the oil turns red. Add {0005}, {0006} and the white parts of {0007}, stir-fry 30 seconds.",
+            "fr": "Chauffer {0015} dans un wok à feu vif. Faire revenir {0002} jusqu'à ce qu'il s'effrite. Ajouter {0003} et {0004}, torréfier 1 minute. Ajouter {0005}, {0006} et les parties blanches de {0007}, sauter 30 secondes.",
+            "it": "Scaldare {0015} nel wok a fuoco vivo. Rosolare {0002} fino a sbriciolarlo. Aggiungere {0003} e {0004}, tostare 1 minuto. Aggiungere {0005}, {0006} e le parti bianche di {0007}, saltare 30 secondi.",
+            "tr": "Wokta {0015}'i yüksek ateşte kızdırın. {0002}'yi ufalana kadar kavurun. {0003} ve {0004}'ü ekleyip 1 dakika kavurun. {0005}, {0006} ve {0007}'nin beyaz kısımlarını ekleyip 30 saniye karıştırın."
+          },
+          "stove_level": 3,
+          "time_min": 4
+        },
+        {
+          "title": {
+            "de": "Ablöschen und köcheln",
+            "en": "Deglaze and simmer",
+            "fr": "Déglacer et mijoter",
+            "it": "Sfumare e sobbollire",
+            "tr": "Soteleyip kaynat"
+          },
+          "content": {
+            "de": "Mit {0008} ablöschen. {0009}, {0010} und {0011} zugeben und aufkochen. {0001} vorsichtig unterheben und 5 Minuten sanft köcheln lassen.",
+            "en": "Deglaze with {0008}. Add {0009}, {0010} and {0011}, bring to a boil. Gently fold in {0001} and simmer softly for 5 minutes.",
+            "fr": "Déglacer avec {0008}. Ajouter {0009}, {0010} et {0011}, porter à ébullition. Incorporer délicatement {0001} et laisser mijoter 5 minutes.",
+            "it": "Sfumare con {0008}. Aggiungere {0009}, {0010} e {0011}, portare a bollore. Incorporare delicatamente {0001} e sobbollire 5 minuti.",
+            "tr": "{0008} ile soteleyin. {0009}, {0010} ve {0011}'i ekleyip kaynatın. {0001}'i nazikçe karıştırın ve 5 dakika kısık ateşte pişirin."
+          },
+          "stove_level": 2,
+          "time_min": 7
+        },
+        {
+          "title": {
+            "de": "Binden",
+            "en": "Thicken",
+            "fr": "Lier",
+            "it": "Addensare",
+            "tr": "Kıvam ver"
+          },
+          "content": {
+            "de": "{0013} mit kaltem Wasser glatt rühren. In die Sauce einrühren und 1 Minute köcheln, bis die Sauce glänzt und leicht bindet.",
+            "en": "Stir {0013} with cold water until smooth. Stir into the sauce and simmer 1 minute until glossy and lightly thickened.",
+            "fr": "Délayer {0013} dans un peu d'eau froide. Incorporer à la sauce et laisser mijoter 1 minute.",
+            "it": "Sciogliere {0013} in poca acqua fredda. Versare nella salsa e sobbollire 1 minuto.",
+            "tr": "{0013}'ü az soğuk suyla pürüzsüz hale getirin. Sosa karıştırıp 1 dakika kaynatın."
+          },
+          "stove_level": 2,
+          "time_min": 2
+        },
+        {
+          "title": {
+            "de": "Finish",
+            "en": "Finish",
+            "fr": "Finir",
+            "it": "Finire",
+            "tr": "Bitir"
+          },
+          "content": {
+            "de": "{0012} einrühren. Mit {0016} und den grünen Ringen von {0007} bestreuen. Sofort servieren.",
+            "en": "Stir in {0012}. Sprinkle with {0016} and the green rings of {0007}. Serve immediately.",
+            "fr": "Incorporer {0012}. Parsemer de {0016} et des rondelles vertes de {0007}. Servir aussitôt.",
+            "it": "Incorporare {0012}. Cospargere con {0016} e gli anelli verdi di {0007}. Servire subito.",
+            "tr": "{0012}'yi karıştırın. {0016} ve {0007}'nin yeşil halkalarıyla süsleyin. Hemen servis edin."
+          },
+          "stove_level": 0,
+          "time_min": 1
+        }
+      ],
+      "chef_analysis": {
+        "de": "Klassiker aus Sichuan: Doubanjiang und Douchi liefern die rote, fermentierte Tiefe — nicht austauschbar. Sichuan-Pfeffer kommt erst am Ende, sonst verfliegt das betäubende Aroma. Tofu wird blanchiert, damit er beim Köcheln nicht bricht.",
+        "en": "Sichuan classic: doubanjiang and douchi deliver the red, fermented depth — not interchangeable. Sichuan pepper goes in at the end or its numbing aroma fades. Tofu is blanched so it doesn't break while simmering.",
+        "fr": "Classique du Sichuan : le doubanjiang et le douchi apportent la profondeur rouge et fermentée — non substituables. Le poivre du Sichuan s'ajoute en fin de cuisson sinon son parfum s'estompe. Le tofu est blanchi pour ne pas se casser.",
+        "it": "Classico del Sichuan: doubanjiang e douchi danno la profondità rossa e fermentata — non sostituibili. Il pepe del Sichuan va aggiunto alla fine, altrimenti l'aroma si perde. Il tofu va scottato per non rompersi.",
+        "tr": "Sichuan klasiği: doubanjiang ve douchi kırmızı, fermente derinliği verir — ikamesi yoktur. Sichuan biberi en sona eklenir, yoksa uyuşturucu aroması kaçar. Tofu, pişerken dağılmasın diye haşlanır."
+      },
+      "coreComponents": [
+        "tofu_firm",
+        "pork_mince",
+        "doubanjiang",
+        "douchi",
+        "sichuan_pepper",
+        "shaoxing_wine",
+        "chicken_stock",
+        "dark_soy"
+      ]
     }
   ]
 }
