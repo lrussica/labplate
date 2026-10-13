@@ -26211,6 +26211,449 @@
         "bean_sprouts",
         "shiitake"
       ]
+    },
+    {
+      "id": "empanadas_de_carne",
+      "immutable": true,
+      "cuisine": "ar",
+      "region": "Argentinien",
+      "servings": 4,
+      "prep_time_min": 60,
+      "aliases": {
+        "de": [
+          "empanadas",
+          "empanadas de carne",
+          "argentinische empanadas"
+        ],
+        "en": [
+          "empanadas",
+          "beef empanadas"
+        ],
+        "fr": [
+          "empanadas",
+          "empanadas à la viande"
+        ],
+        "it": [
+          "empanadas",
+          "empanadas di carne"
+        ],
+        "tr": [
+          "empanadas",
+          "kıymalı empanadas"
+        ]
+      },
+      "titles": {
+        "de": "Empanadas de Carne",
+        "en": "Beef Empanadas",
+        "fr": "Empanadas à la Viande",
+        "it": "Empanadas di Carne",
+        "tr": "Kıymalı Empanadas"
+      },
+      "garnish": {
+        "de": "Mit Chimichurri oder Salsa Criolla servieren.",
+        "en": "Serve with chimichurri or salsa criolla.",
+        "fr": "Servir avec du chimichurri ou de la salsa criolla.",
+        "it": "Servire con chimichurri o salsa criolla.",
+        "tr": "Chimichurri veya salsa criolla ile servis edin."
+      },
+      "diet_labels": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Mehl (Weizen)",
+            "en": "Wheat flour",
+            "fr": "Farine de blé",
+            "it": "Farina di grano",
+            "tr": "Buğday unu"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 74.4,
+          "fat": 1,
+          "protein": 10.3,
+          "fiber": 2.7,
+          "allergenTags": [
+            "gluten"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "carbohydrate"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Butter",
+            "en": "Butter",
+            "fr": "Beurre",
+            "it": "Burro",
+            "tr": "Tereyağı"
+          },
+          "amount": 60,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0.1,
+          "fat": 81.1,
+          "protein": 0.9,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Eier",
+            "en": "Eggs",
+            "fr": "Œufs",
+            "it": "Uova",
+            "tr": "Yumurta"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": true,
+          "netCarbs": 0.7,
+          "fat": 9.5,
+          "protein": 12.6,
+          "fiber": 0,
+          "allergenTags": [
+            "egg"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Rinderhackfleisch",
+            "en": "Ground beef",
+            "fr": "Bœuf haché",
+            "it": "Manzo macinato",
+            "tr": "Dana kıyma"
+          },
+          "amount": 280,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 18.1,
+          "protein": 17.7,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Zwiebeln",
+            "en": "Onions",
+            "fr": "Oignons",
+            "it": "Cipolle",
+            "tr": "Soğan"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 7.6,
+          "fat": 0.1,
+          "protein": 1.1,
+          "fiber": 1.7,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Paprika (rot)",
+            "en": "Red bell pepper",
+            "fr": "Poivron rouge",
+            "it": "Peperone rosso",
+            "tr": "Kırmızı biber"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4.2,
+          "fat": 0.3,
+          "protein": 1,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Oliven",
+            "en": "Olives",
+            "fr": "Olives",
+            "it": "Olive",
+            "tr": "Zeytin"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3.1,
+          "fat": 15.3,
+          "protein": 1,
+          "fiber": 3.2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Rosinen",
+            "en": "Raisins",
+            "fr": "Raisins secs",
+            "it": "Uvetta",
+            "tr": "Kuru üzüm"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 75,
+          "fat": 0.5,
+          "protein": 3.1,
+          "fiber": 3.7,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Kreuzkümmel (gemahlen)",
+            "en": "Ground cumin",
+            "fr": "Cumin moulu",
+            "it": "Cumino macinato",
+            "tr": "Kimyon"
+          },
+          "amount": 4,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 33.7,
+          "fat": 22.3,
+          "protein": 17.8,
+          "fiber": 10.5,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Paprikapulver (geräuchert)",
+            "en": "Smoked paprika",
+            "fr": "Paprika fumé",
+            "it": "Paprika affumicato",
+            "tr": "İsli kırmızı biber"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 23.2,
+          "fat": 12.9,
+          "protein": 14.1,
+          "fiber": 34.9,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Oregano (getrocknet)",
+            "en": "Dried oregano",
+            "fr": "Origan séché",
+            "it": "Origano secco",
+            "tr": "Kuru kekik"
+          },
+          "amount": 4,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 26.4,
+          "fat": 4.3,
+          "protein": 9,
+          "fiber": 42.5,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Wasser",
+            "en": "Water",
+            "fr": "Eau",
+            "it": "Acqua",
+            "tr": "Su"
+          },
+          "amount": 100,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0013",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0014",
+          "names": {
+            "de": "Schwarzer Pfeffer",
+            "en": "Black pepper",
+            "fr": "Poivre noir",
+            "it": "Pepe nero",
+            "tr": "Karabiber"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 38.7,
+          "fat": 3.3,
+          "protein": 10.4,
+          "fiber": 25.3,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Teig knetten",
+            "en": "Knead dough",
+            "fr": "Pétrir la pâte",
+            "it": "Impastare",
+            "tr": "Hamuru yoğur"
+          },
+          "content": {
+            "de": "{0001} mit {0002}, {0003}, {0012} und {0013} zu einem glatten Teig verknetten. In Frischhaltefolie wickeln und 30 Minuten kühlen.",
+            "en": "Knead {0001} with {0002}, {0003}, {0012} and {0013} into a smooth dough. Wrap in cling film and chill for 30 minutes.",
+            "fr": "Pétrir {0001} avec {0002}, {0003}, {0012} et {0013} en une pâte lisse. Filmer et réfrigérer 30 minutes.",
+            "it": "Impastare {0001} con {0002}, {0003}, {0012} e {0013} fino a ottenere un impasto liscio. Avvolgere nella pellicola e raffreddare 30 minuti.",
+            "tr": "{0001}'i {0002}, {0003}, {0012} ve {0013} ile pürüzsüz bir hamur olana kadar yoğurun. Streç filme sarıp 30 dakika buzdolabında bekletin."
+          },
+          "stove_level": 0,
+          "time_min": 35
+        },
+        {
+          "title": {
+            "de": "Füllung anbraten",
+            "en": "Cook filling",
+            "fr": "Cuire la farce",
+            "it": "Cuocere il ripieno",
+            "tr": "İç harcı pişir"
+          },
+          "content": {
+            "de": "{0004} in einer Pfanne krümelig anbraten. {0005} zugeben und 5 Minuten glasig braten. {0006}, {0009}, {0010}, {0011}, {0013} und {0014} einrühren, 3 Minuten weiterbraten.",
+            "en": "Brown {0004} in a pan. Add {0005} and cook 5 minutes until soft. Stir in {0006}, {0009}, {0010}, {0011}, {0013} and {0014}, cook 3 more minutes.",
+            "fr": "Faire revenir {0004} dans une poêle. Ajouter {0005} et cuire 5 minutes. Incorporer {0006}, {0009}, {0010}, {0011}, {0013} et {0014}, cuire 3 minutes de plus.",
+            "it": "Rosolare {0004} in padella. Aggiungere {0005} e cuocere 5 minuti. Incorporare {0006}, {0009}, {0010}, {0011}, {0013} e {0014}, cuocere altri 3 minuti.",
+            "tr": "{0004}'ü tavada kavurun. {0005}'i ekleyip 5 dakika pişirin. {0006}, {0009}, {0010}, {0011}, {0013} ve {0014}'ü karıştırıp 3 dakika daha pişirin."
+          },
+          "stove_level": 3,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Füllung abkühlen",
+            "en": "Cool filling",
+            "fr": "Refroidir la farce",
+            "it": "Raffreddare il ripieno",
+            "tr": "İç harcı soğut"
+          },
+          "content": {
+            "de": "{0007} in Ringe und {0008} grob hacken, unter die Füllung mischen. 15 Minuten abkühlen lassen.",
+            "en": "Slice {0007} into rings, roughly chop {0008}, fold into the filling. Cool for 15 minutes.",
+            "fr": "Couper {0007} en rondelles, hacher grossièrement {0008}, incorporer à la farce. Laisser refroidir 15 minutes.",
+            "it": "Tagliare {0007} a rondelle, tritare grossolanamente {0008}, incorporare al ripieno. Raffreddare 15 minuti.",
+            "tr": "{0007}'i halka halka kesin, {0008}'i iri doğrayın, iç harca karıştırın. 15 dakika soğutun."
+          },
+          "stove_level": 0,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Empanadas formen",
+            "en": "Shape empanadas",
+            "fr": "Façonner les empanadas",
+            "it": "Formare le empanadas",
+            "tr": "Empanadas şekillendir"
+          },
+          "content": {
+            "de": "Teig auf bemehlter Fläche 3 mm dünn ausrollen. Kreise von 12 cm ausstechen, 1 EL Füllung auf die Hälfte geben, Rand mit Wasser befeuchten und mit einer Gabel festdrücken. Mit verquirltem {0003} bestreichen.",
+            "en": "Roll dough 3 mm thin on a floured surface. Cut 12 cm circles, spoon 1 tbsp filling onto half, wet the edge with water, crimp with a fork. Brush with beaten {0003}.",
+            "fr": "Étaler la pâte à 3 mm sur un plan fariné. Découper des cercles de 12 cm, déposer 1 c. à s. de farce sur la moitié, humidifier le bord, souder à la fourchette. Badigeonner d'{0003} battu.",
+            "it": "Stendere l'impasto a 3 mm su piano infarinato. Ritagliare cerchi da 12 cm, mettere 1 cucchiaio di ripieno su metà, inumidire il bordo, sigillare con la forchetta. Spennellare con {0003} sbattuto.",
+            "tr": "Hamuru unlanmış yüzeyde 3 mm kalınlığında açın. 12 cm daireler kesin, yarısına 1 yemek kaşığı harç koyun, kenarını suyla ıslatıp çatalla bastırın. Çırpılmış {0003} ile üzerine sürün."
+          },
+          "stove_level": 0,
+          "time_min": 20
+        },
+        {
+          "title": {
+            "de": "Backen",
+            "en": "Bake",
+            "fr": "Cuire au four",
+            "it": "Cuocere al forno",
+            "tr": "Fırında pişir"
+          },
+          "content": {
+            "de": "Backofen auf 200 °C Ober-/Unterhitze vorheizen. Empanadas auf Backpapier 20 Minuten goldbraun backen. 5 Minuten ruhen lassen.",
+            "en": "Preheat oven to 200 °C. Bake empanadas on parchment for 20 minutes until golden. Rest for 5 minutes.",
+            "fr": "Préchauffer le four à 200 °C. Cuire les empanadas sur papier sulfurisé 20 minutes jusqu'à dorure. Laisser reposer 5 minutes.",
+            "it": "Preriscaldare il forno a 200 °C. Cuocere le empanadas su carta forno per 20 minuti fino a doratura. Riposare 5 minuti.",
+            "tr": "Fırını 200 °C'ye ısıtın. Empanadas'ları yağlı kağıtta 20 dakika altın rengi olana kadar pişirin. 5 dakika dinlendirin."
+          },
+          "stove_level": 0,
+          "time_min": 25
+        }
+      ],
+      "chef_analysis": {
+        "de": "Empanadas Argentinas: Der Teig wird mit Butter statt Lard gemacht (etwas leichter), die Füllung klassisch mit Kreuzkümmel, geräuchertem Paprika und Oliven. Rosinen sind umstritten, gehören aber zur Criolla-Variante. Backen statt frittieren ist der kalorienärmere, alltagstauglichere Weg.",
+        "en": "Argentinian empanadas: dough with butter instead of lard (a little lighter), classic filling with cumin, smoked paprika and olives. Raisins are debated but belong to the criolla variation. Baking instead of frying is the lighter, everyday approach.",
+        "fr": "Empanadas argentines : pâte au beurre au lieu du saindoux (un peu plus léger), farce classique au cumin, paprika fumé et olives. Les raisins secs sont débattus mais appartiennent à la version criolla. Cuire au four plutôt que frire est plus léger.",
+        "it": "Empanadas argentine: impasto con burro invece dello strutto (un po' più leggero), ripieno classico con cumino, paprica affumicata e olive. L'uvetta è discussa ma appartiene alla variante criolla. Cuocere al forno invece di friggere è più leggero.",
+        "tr": "Arjantin empanadas: hamur iç yağı yerine tereyağı ile (biraz daha hafif), klasik iç harç kimyon, isli kırmızı biber ve zeytinli. Kuru üzüm tartışmalıdır ama criolla versiyonuna aittir. Kızartmak yerine fırında pişirmek daha hafif ve gündelik."
+      },
+      "coreComponents": [
+        "flour",
+        "butter",
+        "beef_mince",
+        "onion_yellow",
+        "bell_pepper_red",
+        "olive",
+        "raisins",
+        "cumin_ground"
+      ]
     }
   ]
 }
