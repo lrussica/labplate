@@ -15,7 +15,7 @@ const RETRIES_429 = 6;
 const RETRY_BASE_MS = 8000;
 const EGG_GRAMS = 60;
 
-const STAPLE_RE = /(wasser|salz|pfeffer|herstellerangabe)/i;
+const STAPLE_RE = /\b(wasser|salz|pfeffer|herstellerangabe)\b/i;
 
 const filter = process.argv[2] || null;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
