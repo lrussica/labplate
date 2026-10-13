@@ -25211,6 +25211,370 @@
         "chili_powder",
         "bell_pepper_red"
       ]
+    },
+    {
+      "id": "kaesefondue",
+      "immutable": true,
+      "cuisine": "ch",
+      "region": "Neuchatel",
+      "servings": 4,
+      "prep_time_min": 25,
+      "aliases": {
+        "de": [
+          "kaesefondue",
+          "käsefondue",
+          "fondue",
+          "fondue neuchateloise",
+          "schweizer kaesefondue"
+        ],
+        "en": [
+          "cheese fondue",
+          "fondue"
+        ],
+        "fr": [
+          "fondue au fromage",
+          "fondue savoyarde",
+          "fondue neuchateloise"
+        ],
+        "it": [
+          "fonduta di formaggio",
+          "fondue"
+        ],
+        "tr": [
+          "peynir fondu",
+          "fondü"
+        ]
+      },
+      "titles": {
+        "de": "Kaesefondue",
+        "en": "Cheese Fondue",
+        "fr": "Fondue au Fromage",
+        "it": "Fonduta di Formaggio",
+        "tr": "Peynir Fondu"
+      },
+      "garnish": {
+        "de": "Mit gewuerfelten Weissbrotstuecken zum Eintauchen servieren.",
+        "en": "Serve with cubed white bread for dipping.",
+        "fr": "Servir avec des cubes de pain blanc pour tremper.",
+        "it": "Servire con cubetti di pane bianco per intingere.",
+        "tr": "Baton ekmek kupleriyle servis edin."
+      },
+      "diet_labels": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Gruyere (gerieben)",
+            "en": "Gruyere (grated)",
+            "fr": "Gruyere (rape)",
+            "it": "Gruyere (grattugiato)",
+            "tr": "Gruyere (rendelenmis)"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0.4,
+          "fat": 32.3,
+          "protein": 29.8,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Emmentaler (gerieben)",
+            "en": "Emmental (grated)",
+            "fr": "Emmental (rape)",
+            "it": "Emmental (grattugiato)",
+            "tr": "Emmental (rendelenmis)"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0.7,
+          "fat": 30.4,
+          "protein": 28.4,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Weissbrot (altbacken)",
+            "en": "Day-old white bread",
+            "fr": "Pain blanc (rassis)",
+            "it": "Pane bianco (raffermo)",
+            "tr": "Bayat beyaz ekmek"
+          },
+          "amount": 240,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 49,
+          "fat": 3.2,
+          "protein": 9,
+          "fiber": 2.7,
+          "allergenTags": [
+            "gluten"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "carbohydrate"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Weisswein (trocken)",
+            "en": "Dry white wine",
+            "fr": "Vin blanc sec",
+            "it": "Vino bianco secco",
+            "tr": "Sek beyaz sarap"
+          },
+          "amount": 200,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 2.6,
+          "fat": 0,
+          "protein": 0.1,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Kirsch (Kirschwasser)",
+            "en": "Kirsch",
+            "fr": "Kirsch",
+            "it": "Kirsch",
+            "tr": "Kirsch"
+          },
+          "amount": 40,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarimsak"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Speisestaerke",
+            "en": "Cornstarch",
+            "fr": "Fecule de mais",
+            "it": "Amido di mais",
+            "tr": "Misir nisastasi"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 91.3,
+          "fat": 0.1,
+          "protein": 0.3,
+          "fiber": 0.9,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Zitronensaft",
+            "en": "Lemon juice",
+            "fr": "Jus de citron",
+            "it": "Succo di limone",
+            "tr": "Limon suyu"
+          },
+          "amount": 20,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 6.6,
+          "fat": 0.2,
+          "protein": 0.4,
+          "fiber": 0.3,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Muskatnuss (gemahlen)",
+            "en": "Ground nutmeg",
+            "fr": "Noix de muscade moulue",
+            "it": "Noce moscata macinata",
+            "tr": "Muskat rendesi"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 28.5,
+          "fat": 36.3,
+          "protein": 5.8,
+          "fiber": 20.8,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Schwarzer Pfeffer",
+            "en": "Black pepper",
+            "fr": "Poivre noir",
+            "it": "Pepe nero",
+            "tr": "Karabiber"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 38.7,
+          "fat": 3.3,
+          "protein": 10.4,
+          "fiber": 25.3,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Caquelon vorbereiten",
+            "en": "Prep caquelon",
+            "fr": "Préparer le caquelon",
+            "it": "Preparare il caquelon",
+            "tr": "Caquelon'u hazirla"
+          },
+          "content": {
+            "de": "{0006} halbieren und das Caquelon (Fonduetopf) damit kräftig ausreiben. Knoblauch entfernen.",
+            "en": "Halve {0006} and rub the caquelon (fondue pot) thoroughly with it. Discard the garlic.",
+            "fr": "Couper {0006} en deux et frotter vigoureusement le caquelon avec. Retirer l'ail.",
+            "it": "Tagliare {0006} a metà e strofinare energicamente il caquelon. Rimuovere l'aglio.",
+            "tr": "{0006}'i ikiye bölün ve caquelon'u (fondü tenceresi) iyice ovalayin. Sarimsagi çikarin."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        },
+        {
+          "title": {
+            "de": "Wein erhitzen",
+            "en": "Heat wine",
+            "fr": "Chauffer le vin",
+            "it": "Scaldare il vino",
+            "tr": "Sarabi isit"
+          },
+          "content": {
+            "de": "{0004} und {0008} im Caquelon bei mittlerer Hitze erhitzen, bis der Wein gerade zu simmern beginnt.",
+            "en": "Heat {0004} and {0008} in the caquelon over medium heat until the wine just begins to simmer.",
+            "fr": "Chauffer {0004} et {0008} dans le caquelon à feu moyen jusqu'à léger frémissement.",
+            "it": "Scaldare {0004} e {0008} nel caquelon a fuoco medio finché il vino inizia appena a sobbollire.",
+            "tr": "{0004} ve {0008}'i caquelon'da orta ateste kaynamaya baslayana kadar isitin."
+          },
+          "stove_level": 2,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Käse schmelzen",
+            "en": "Melt cheese",
+            "fr": "Faire fondre le fromage",
+            "it": "Sciogliere il formaggio",
+            "tr": "Peyniri erit"
+          },
+          "content": {
+            "de": "{0001} und {0002} portionsweise zugeben und mit dem Schneebesen in Achterbewegungen einrühren, bis der Käse vollstaendig geschmolzen ist. Hitze niedrig halten, nicht kochen.",
+            "en": "Add {0001} and {0002} in batches, stirring in a figure-eight with a whisk until fully melted. Keep heat low, do not boil.",
+            "fr": "Ajouter {0001} et {0002} par portions en remuant en huit avec le fouet jusqu'à fonte complète. Feu doux, ne pas bouillir.",
+            "it": "Aggiungere {0001} e {0002} a porzioni, mescolando a otto con la frusta fino a completo scioglimento. Fuoco basso, non bollire.",
+            "tr": "{0001} ve {0002}'yi partiler halinde ekleyin, çirpma teliyle sekiz hareketi yaparak tamamen eriyene kadar karistirin. Atesi kisik tutun, kaynatmayin."
+          },
+          "stove_level": 1,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Kirsch einrühren",
+            "en": "Stir in kirsch",
+            "fr": "Incorporer le kirsch",
+            "it": "Incorporare il kirsch",
+            "tr": "Kirsch'i ekle"
+          },
+          "content": {
+            "de": "{0007} mit {0005} glatt ruehren, in die Käsemasse einruehren und 1 Minute sanft weiterruehren, bis die Masse glatt und glänzend ist.",
+            "en": "Whisk {0007} with {0005}, stir into the cheese and continue stirring gently for 1 minute until smooth and glossy.",
+            "fr": "Melanger {0007} avec {0005}, incorporer au fromage et remuer doucement 1 minute jusqu'à consistance lisse et brillante.",
+            "it": "Mescolare {0007} con {0005}, incorporare al formaggio e mescolare delicatamente 1 minuto fino a rendere liscio e lucido.",
+            "tr": "{0007}'yi {0005} ile karistirin, peynire ekleyin ve 1 dakika nazikçe karistirip pürüzsüz ve parlak hale getirin."
+          },
+          "stove_level": 1,
+          "time_min": 2
+        },
+        {
+          "title": {
+            "de": "Wuerzen und servieren",
+            "en": "Season and serve",
+            "fr": "Assaisonner et servir",
+            "it": "Condire e servire",
+            "tr": "Tatlandir ve servis et"
+          },
+          "content": {
+            "de": "Mit {0009} und {0010} abschmecken. Caquelon auf den Rechaud setzen, {0003} in Wuerfel schneiden und sofort servieren.",
+            "en": "Season with {0009} and {0010}. Transfer the caquelon to the burner, cube {0003} and serve immediately.",
+            "fr": "Assaisonner avec {0009} et {0010}. Poser le caquelon sur le réchaud, couper {0003} en cubes et servir aussitôt.",
+            "it": "Condire con {0009} e {0010}. Mettere il caquelon sul fornelletto, tagliare {0003} a cubetti e servire subito.",
+            "tr": "{0009} ve {0010} ile tatlandirin. Caquelon'u ocaga koyun, {0003}'ü küp seklinde kesin ve hemen servis edin."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "chef_analysis": {
+        "de": "Klassisches Käsefondue nach Neuchâteloise-Art: Gruyère und Emmentaler zu gleichen Teilen, trockener Weißwein als Basis, Kirsch und Speisestärke für Bindung und Aroma. Der Wein darf nie kochen, sonst trennt sich der Käse. Knoblauch nur zum Ausreiben, nicht im Topf.",
+        "en": "Classic Neuchâteloise-style cheese fondue: equal parts Gruyère and Emmental, dry white wine as the base, kirsch and cornstarch for binding and aroma. The wine must never boil or the cheese will split. Garlic is only for rubbing, not in the pot.",
+        "fr": "Fondue au fromage classique à la Neuchâteloise : Gruyère et Emmental à parts égales, vin blanc sec comme base, kirsch et fécule pour la liaison et l'arôme. Le vin ne doit jamais bouillir sinon le fromage se sépare. L'ail sert uniquement à frotter.",
+        "it": "Fonduta di formaggio classica alla Neuchâteloise: Gruyère ed Emmental in parti uguali, vino bianco secco come base, kirsch e amido per legare e aromatizzare. Il vino non deve mai bollire, altrimenti il formaggio si separa. L'aglio serve solo per strofinare.",
+        "tr": "Klasik Neuchâteloise usulü peynir fondu: esit oranda Gruyère ve Emmental, temel olarak sek beyaz sarap, baglayici ve aroma için kirsch ve misir nisastasi. Sarap asla kaynatilmamali, yoksa peynir ayrilir. Sarimsak sadece ovalamak için, tencereye girmez."
+      },
+      "coreComponents": [
+        "gruyere",
+        "emmentaler",
+        "white_wine",
+        "kirsch",
+        "bread",
+        "garlic"
+      ]
     }
   ]
 }
