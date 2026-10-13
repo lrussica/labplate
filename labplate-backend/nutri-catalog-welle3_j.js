@@ -6,9 +6,9 @@ module.exports = {
     per100g: { protein: 17.6, fat: 15.9, netCarbs: 35.0, fiber: 14.6, kcal: 337 },
     source: 'USDA FDC 171325 (Spices, anise seed) — Sternanis genaehert',
   },
-  coconut_milk: {
+  coconut_milk_full: {
     displayName: 'Kokosmilch (Dose)',
-    aliases: ['kokosmilch', 'kokosmilch (dose)', 'coconut milk'],
+    aliases: ['kokosmilch', 'kokosmilch (dose)', 'coconut milk', 'coconut milk full'],
     per100g: { protein: 2.3, fat: 23.8, netCarbs: 2.2, fiber: 2.2, kcal: 230 },
     source: 'USDA FDC 170172 (Nuts, coconut milk, raw)',
   },
