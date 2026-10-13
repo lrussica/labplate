@@ -25575,6 +25575,646 @@
         "bread",
         "garlic"
       ]
+    },
+    {
+      "id": "bibimbap",
+      "immutable": true,
+      "cuisine": "kr",
+      "region": "Klassisch",
+      "servings": 4,
+      "prep_time_min": 40,
+      "aliases": {
+        "de": [
+          "bibimbap",
+          "bibim bap",
+          "koreanischer reis mit gemuese"
+        ],
+        "en": [
+          "bibimbap",
+          "bibim bap"
+        ],
+        "fr": [
+          "bibimbap"
+        ],
+        "it": [
+          "bibimbap"
+        ],
+        "tr": [
+          "bibimbap"
+        ]
+      },
+      "titles": {
+        "de": "Bibimbap",
+        "en": "Bibimbap",
+        "fr": "Bibimbap",
+        "it": "Bibimbap",
+        "tr": "Bibimbap"
+      },
+      "garnish": {
+        "de": "Mit Sesamsamen bestreuen, Gochujang-Sauce separat reichen. Beim Essen alles vermischen.",
+        "en": "Sprinkle with sesame seeds, serve gochujang sauce on the side. Mix everything when eating.",
+        "fr": "Parsemer de graines de sésame, servir la sauce gochujang à part. Mélanger avant de manger.",
+        "it": "Cospargere con semi di sesamo, servire la salsa gochujang a parte. Mescolare prima di mangiare.",
+        "tr": "Susam serpin, gochujang sosunu ayrı servis edin. Yemeden önce karıştırın."
+      },
+      "diet_labels": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Sushi-Reis",
+            "en": "Sushi rice",
+            "fr": "Riz à sushi",
+            "it": "Riso per sushi",
+            "tr": "Sushi pirinci"
+          },
+          "amount": 320,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 28.6,
+          "fat": 0.2,
+          "protein": 2.4,
+          "fiber": 0.4,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "carbohydrate"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Rinderhackfleisch",
+            "en": "Ground beef",
+            "fr": "Bœuf haché",
+            "it": "Manzo macinato",
+            "tr": "Dana kıyma"
+          },
+          "amount": 240,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 18.1,
+          "protein": 17.7,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Eier",
+            "en": "Eggs",
+            "fr": "Œufs",
+            "it": "Uova",
+            "tr": "Yumurta"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": true,
+          "netCarbs": 0.7,
+          "fat": 9.5,
+          "protein": 12.6,
+          "fiber": 0,
+          "allergenTags": [
+            "egg"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Tofu, fest",
+            "en": "Firm tofu",
+            "fr": "Tofu ferme",
+            "it": "Tofu sodo",
+            "tr": "Sert tofu"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0.5,
+          "fat": 8.7,
+          "protein": 17.3,
+          "fiber": 2.3,
+          "allergenTags": [
+            "soy"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "main_protein"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Spinat",
+            "en": "Spinach",
+            "fr": "Épinards",
+            "it": "Spinaci",
+            "tr": "Ispanak"
+          },
+          "amount": 300,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1.4,
+          "fat": 0.4,
+          "protein": 2.9,
+          "fiber": 2.2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Mungobohnensprossen",
+            "en": "Bean sprouts",
+            "fr": "Pousses de soja",
+            "it": "Germogli di fagioli mungo",
+            "tr": "Fasulye filizi"
+          },
+          "amount": 300,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0.2,
+          "protein": 3,
+          "fiber": 1.8,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Karotten",
+            "en": "Carrots",
+            "fr": "Carottes",
+            "it": "Carote",
+            "tr": "Havuç"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 6.8,
+          "fat": 0.2,
+          "protein": 0.9,
+          "fiber": 2.8,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Zucchini",
+            "en": "Zucchini",
+            "fr": "Courgettes",
+            "it": "Zucchine",
+            "tr": "Kabak"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2.1,
+          "fat": 0.3,
+          "protein": 1.2,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Shiitake-Pilze",
+            "en": "Shiitake mushrooms",
+            "fr": "Champignons shiitake",
+            "it": "Funghi shiitake",
+            "tr": "Shiitake mantarı"
+          },
+          "amount": 160,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4.3,
+          "fat": 0.5,
+          "protein": 2.2,
+          "fiber": 2.5,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Gochujang (koreanische Chilipaste)",
+            "en": "Gochujang (Korean chili paste)",
+            "fr": "Gochujang (pâte de piment coréenne)",
+            "it": "Gochujang (pasta di peperoncino coreana)",
+            "tr": "Gochujang (Kore acı biber ezmesi)"
+          },
+          "amount": 60,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 41.6,
+          "fat": 0.7,
+          "protein": 5.6,
+          "fiber": 3,
+          "allergenTags": [
+            "soy"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Sojasauce",
+            "en": "Soy sauce",
+            "fr": "Sauce soja",
+            "it": "Salsa di soia",
+            "tr": "Soya sosu"
+          },
+          "amount": 60,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 4.1,
+          "fat": 0.6,
+          "protein": 8.1,
+          "fiber": 0.8,
+          "allergenTags": [
+            "soy"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Sesamöl",
+            "en": "Sesame oil",
+            "fr": "Huile de sésame",
+            "it": "Olio di sesamo",
+            "tr": "Susam yağı"
+          },
+          "amount": 32,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0013",
+          "names": {
+            "de": "Neutrales Bratöl",
+            "en": "Neutral frying oil",
+            "fr": "Huile neutre",
+            "it": "Olio neutro",
+            "tr": "Nötr yağ"
+          },
+          "amount": 20,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0014",
+          "names": {
+            "de": "Reisessig",
+            "en": "Rice vinegar",
+            "fr": "Vinaigre de riz",
+            "it": "Aceto di riso",
+            "tr": "Pirinç sirkesi"
+          },
+          "amount": 40,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0.5,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0015",
+          "names": {
+            "de": "Zucker",
+            "en": "Sugar",
+            "fr": "Sucre",
+            "it": "Zucchero",
+            "tr": "Şeker"
+          },
+          "amount": 12,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 100,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0016",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0017",
+          "names": {
+            "de": "Ingwer (frisch)",
+            "en": "Fresh ginger",
+            "fr": "Gingembre frais",
+            "it": "Zenzero fresco",
+            "tr": "Taze zencefil"
+          },
+          "amount": 16,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15.8,
+          "fat": 0.8,
+          "protein": 1.8,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0018",
+          "names": {
+            "de": "Frühlingszwiebeln",
+            "en": "Scallions",
+            "fr": "Oignons verts",
+            "it": "Cipollotti",
+            "tr": "Yeşil soğan"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 4.7,
+          "fat": 0.2,
+          "protein": 1.8,
+          "fiber": 2.6,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0019",
+          "names": {
+            "de": "Sesamsamen",
+            "en": "Sesame seeds",
+            "fr": "Graines de sésame",
+            "it": "Semi di sesamo",
+            "tr": "Susam"
+          },
+          "amount": 12,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 11.6,
+          "fat": 49.7,
+          "protein": 17.7,
+          "fiber": 11.8,
+          "allergenTags": [
+            "sesame"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "garnish"
+        },
+        {
+          "id": "0020",
+          "names": {
+            "de": "Nori",
+            "en": "Nori",
+            "fr": "Nori",
+            "it": "Nori",
+            "tr": "Nori"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1.4,
+          "fat": 0.3,
+          "protein": 5.8,
+          "fiber": 0.3,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "garnish"
+        },
+        {
+          "id": "0021",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0022",
+          "names": {
+            "de": "Schwarzer Pfeffer",
+            "en": "Black pepper",
+            "fr": "Poivre noir",
+            "it": "Pepe nero",
+            "tr": "Karabiber"
+          },
+          "amount": 0,
+          "unit": "prise",
+          "protein_source": false,
+          "netCarbs": 38.7,
+          "fat": 3.3,
+          "protein": 10.4,
+          "fiber": 25.3,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Reis kochen",
+            "en": "Cook rice",
+            "fr": "Cuire le riz",
+            "it": "Cuocere il riso",
+            "tr": "Pirinci pişir"
+          },
+          "content": {
+            "de": "{0001} waschen, bis das Wasser klar ist. Mit der 1,2-fachen Menge Wasser aufkochen, dann bei niedrigster Hitze 12 Minuten zugedeckt garen. Vom Herd nehmen, 5 Minuten ruhen lassen.",
+            "en": "Rinse {0001} until the water runs clear. Bring to a boil with 1.2x its volume of water, then cook covered on lowest heat for 12 minutes. Remove from heat, rest 5 minutes.",
+            "fr": "Rincer {0001} jusqu'à ce que l'eau soit claire. Porter à ébullition avec 1,2 fois son volume d'eau, puis cuire à couvert à feu très doux 12 minutes. Retirer du feu, laisser reposer 5 minutes.",
+            "it": "Sciacquare {0001} finché l'acqua non è limpida. Portare a bollore con 1,2 volte il suo volume d'acqua, poi cuocere coperto a fuoco bassissimo per 12 minuti. Togliere dal fuoco, riposare 5 minuti.",
+            "tr": "{0001}'i su berrak olana kadar yıkayın. 1,2 katı su ile kaynatın, ardından en kısık ateşte kapalı olarak 12 dakika pişirin. Ateşten alın, 5 dakika dinlendirin."
+          },
+          "stove_level": 2,
+          "time_min": 20
+        },
+        {
+          "title": {
+            "de": "Sauce anrühren",
+            "en": "Mix sauce",
+            "fr": "Préparer la sauce",
+            "it": "Preparare la salsa",
+            "tr": "Sosu hazırla"
+          },
+          "content": {
+            "de": "{0010}, {0011}, {0014}, {0015}, die Hälfte von {0012}, {0016} und {0017} in einer Schale verrühren.",
+            "en": "Whisk {0010}, {0011}, {0014}, {0015}, half of {0012}, {0016} and {0017} in a bowl.",
+            "fr": "Mélanger {0010}, {0011}, {0014}, {0015}, la moitié de {0012}, {0016} et {0017} dans un bol.",
+            "it": "Mescolare {0010}, {0011}, {0014}, {0015}, metà di {0012}, {0016} e {0017} in una ciotola.",
+            "tr": "{0010}, {0011}, {0014}, {0015}, {0012}'nin yarısı, {0016} ve {0017}'yi bir kasede karıştırın."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Fleisch marinieren und anbraten",
+            "en": "Marinate and brown beef",
+            "fr": "Mariner et saisir le bœuf",
+            "it": "Marinare e rosolare il manzo",
+            "tr": "Eti marine edip kavur"
+          },
+          "content": {
+            "de": "{0002} mit 2 EL der Sauce und {0011} 10 Minuten marinieren. {0013} in einer Pfanne erhitzen, Fleisch krümelig goldbraun braten.",
+            "en": "Marinate {0002} with 2 tbsp of the sauce and {0011} for 10 minutes. Heat {0013} in a pan, brown the beef until crumbly and golden.",
+            "fr": "Mariner {0002} avec 2 c. à s. de sauce et {0011} pendant 10 minutes. Chauffer {0013} dans une poêle, saisir la viande en l'émiettant.",
+            "it": "Marinare {0002} con 2 cucchiai di salsa e {0011} per 10 minuti. Scaldare {0013} in padella, rosolare la carne sbriciolandola.",
+            "tr": "{0002}'yi 2 yemek kaşığı sos ve {0011} ile 10 dakika marine edin. {0013}'yı tavada kızdırın, eti ufalayarak kavurun."
+          },
+          "stove_level": 3,
+          "time_min": 12
+        },
+        {
+          "title": {
+            "de": "Gemüse vorbereiten",
+            "en": "Prep vegetables",
+            "fr": "Préparer les légumes",
+            "it": "Preparare le verdure",
+            "tr": "Sebzeleri hazırla"
+          },
+          "content": {
+            "de": "{0005} 30 Sekunden blanchieren, kalt abschrecken, ausdrücken. {0006} 1 Minute blanchieren. {0007} und {0008} in feine Streifen, {0009} in Scheiben schneiden.",
+            "en": "Blanch {0005} for 30 seconds, cool, squeeze. Blanch {0006} for 1 minute. Cut {0007} and {0008} into fine strips, slice {0009}.",
+            "fr": "Blanchir {0005} 30 secondes, refroidir, essorer. Blanchir {0006} 1 minute. Couper {0007} et {0008} en fines lanières, émincer {0009}.",
+            "it": "Scottare {0005} per 30 secondi, raffreddare, strizzare. Scottare {0006} per 1 minuto. Tagliare {0007} e {0008} a striscioline, affettare {0009}.",
+            "tr": "{0005}'i 30 saniye haşlayın, soğutun, sıkın. {0006}'yı 1 dakika haşlayın. {0007} ve {0008}'i ince şeritler, {0009}'u dilimler halinde kesin."
+          },
+          "stove_level": 2,
+          "time_min": 8
+        },
+        {
+          "title": {
+            "de": "Gemüse separat anbraten",
+            "en": "Sauté vegetables separately",
+            "fr": "Sauter les légumes séparément",
+            "it": "Saltare le verdure separatamente",
+            "tr": "Sebzeleri ayrı ayrı kavur"
+          },
+          "content": {
+            "de": "Restliches {0012} in einer Pfanne erhitzen. {0005}, {0006}, {0007}, {0008} und {0009} jeweils 2 Minuten separat anbraten, mit {0021} und {0022} würzen.",
+            "en": "Heat remaining {0012} in a pan. Sauté {0005}, {0006}, {0007}, {0008} and {0009} separately for 2 minutes each, season with {0021} and {0022}.",
+            "fr": "Chauffer le reste de {0012} dans une poêle. Sauter {0005}, {0006}, {0007}, {0008} et {0009} séparément 2 minutes chacun, assaisonner avec {0021} et {0022}.",
+            "it": "Scaldare il resto di {0012} in padella. Saltare {0005}, {0006}, {0007}, {0008} e {0009} separatamente 2 minuti ciascuno, condire con {0021} e {0022}.",
+            "tr": "Kalan {0012}'yi tavada kızdırın. {0005}, {0006}, {0007}, {0008} ve {0009}'u ayrı ayrı 2 dakika kavurun, {0021} ve {0022} ile tatlandırın."
+          },
+          "stove_level": 3,
+          "time_min": 12
+        },
+        {
+          "title": {
+            "de": "Tofu und Eier braten",
+            "en": "Fry tofu and eggs",
+            "fr": "Sauter tofu et œufs",
+            "it": "Saltare tofu e uova",
+            "tr": "Tofu ve yumurtayı pişir"
+          },
+          "content": {
+            "de": "{0004} in 1 cm Würfel schneiden und in derselben Pfanne goldbraun braten. {0003} als Spiegelei braten, Eigelb weich lassen.",
+            "en": "Cut {0004} into 1 cm cubes and brown in the same pan. Fry {0003} sunny-side up, keeping yolks runny.",
+            "fr": "Couper {0004} en cubes de 1 cm et dorer dans la même poêle. Cuire {0003} au plat, jaunes coulants.",
+            "it": "Tagliare {0004} a cubetti di 1 cm e dorare nella stessa padella. Cuocere {0003} all'occhio di bue, tuorli morbidi.",
+            "tr": "{0004}'ü 1 cm küp kesin ve aynı tavada kızartın. {0003}'yı göz yumurta olarak pişirin, sarısı akışkan kalsın."
+          },
+          "stove_level": 2,
+          "time_min": 8
+        },
+        {
+          "title": {
+            "de": "Anrichten",
+            "en": "Assemble",
+            "fr": "Dresser",
+            "it": "Comporre",
+            "tr": "Sunum"
+          },
+          "content": {
+            "de": "Reis auf Schalen verteilen. Fleisch, Gemüse, Tofu und Ei kreisförmig darauf anordnen. Sauce in die Mitte geben. Mit {0018} in Ringen, {0019} und zerkleinertem {0020} bestreuen.",
+            "en": "Divide rice among bowls. Arrange beef, vegetables, tofu and egg in a circle. Spoon sauce in the center. Top with ringed {0018}, {0019} and crushed {0020}.",
+            "fr": "Répartir le riz. Disposer viande, légumes, tofu et œuf en cercle. Mettre la sauce au centre. Garnir de {0018} en rondelles, {0019} et {0020} émietté.",
+            "it": "Distribuire il riso. Disporre carne, verdure, tofu e uovo a cerchio. Mettere la salsa al centro. Guarnire con {0018} ad anelli, {0019} e {0020} sbriciolato.",
+            "tr": "Pirinci kaselere paylaştırın. Et, sebze, tofu ve yumurtayı çember halinde dizin. Sosu ortaya koyun. Halka halinde {0018}, {0019} ve ufalanmış {0020} ile süsleyin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        }
+      ],
+      "chef_analysis": {
+        "de": "Bibimbap: Gochujang ist die Seele der Sauce, nicht austauschbar. Jedes Gemüse wird separat gewürzt, damit die Aromen klar bleiben. Das Ei kommt als Spiegelei obenauf, das Eigelb wird beim Mischen zur Sauce.",
+        "en": "Bibimbap: gochujang is the soul of the sauce, not interchangeable. Each vegetable is seasoned separately so the flavors stay distinct. The egg goes on top sunny-side up, the yolk becomes part of the sauce when mixed.",
+        "fr": "Bibimbap : le gochujang est l'âme de la sauce, non substituable. Chaque légume est assaisonné séparément pour garder des saveurs distinctes. L'œuf au plat sur le dessus, le jaune devient sauce au mélange.",
+        "it": "Bibimbap: il gochujang è l'anima della salsa, non sostituibile. Ogni verdura è condita separatamente per mantenere i sapori distinti. L'uovo all'occhio di bue sopra, il tuorlo diventa salsa mescolando.",
+        "tr": "Bibimbap: gochujang sosun ruhudur, ikamesi yoktur. Her sebze ayrı ayrı tatlandırılır ki tatlar net kalsın. Yumurta göz yumurta olarak üste, sarısı karıştırınca sosa dönüşür."
+      },
+      "coreComponents": [
+        "sushi_rice",
+        "beef_mince",
+        "gochujang",
+        "egg",
+        "tofu_firm",
+        "spinach",
+        "bean_sprouts",
+        "shiitake"
+      ]
     }
   ]
 }
