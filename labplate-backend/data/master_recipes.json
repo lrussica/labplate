@@ -29563,7 +29563,7 @@
       ]
     },
     {
-      "id": "ossobuco",
+      "id": "ossobuco_lombardo",
       "immutable": true,
       "cuisine": "it",
       "region": "Lombardei",
@@ -29571,27 +29571,18 @@
       "prep_time_min": 120,
       "aliases": {
         "de": [
-          "ossobuco",
-          "osso buco",
           "geschmorte kalbsbeinscheibe"
         ],
         "en": [
-          "ossobuco",
-          "osso buco",
           "braised veal shank"
         ],
         "fr": [
-          "osso buco",
           "jarret de veau braise"
         ],
         "it": [
-          "ossobuco",
           "osso buco alla milanese"
         ],
-        "tr": [
-          "ossobuco",
-          "osso buco"
-        ]
+        "tr": []
       },
       "titles": {
         "de": "Ossobuco",
