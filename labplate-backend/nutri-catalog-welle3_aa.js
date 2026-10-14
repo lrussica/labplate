@@ -1,6 +1,6 @@
 'use strict';
 module.exports = {
-  coconut_milk: { displayName: 'Kokosmilch (Dose)', aliases: ['kokosmilch','coconut milk','lait de coco','latte di cocco','hindistan cevizi sutu'],
+  coconut_milk_full: { displayName: 'Kokosmilch (Dose)', aliases: ['kokosmilch','coconut milk','lait de coco','latte di cocco','hindistan cevizi sutu'],
     per100g: { protein: 2.0, fat: 17.0, netCarbs: 3.0, fiber: 0.5, kcal: 170 }, source: 'USDA FDC 170173 (Coconut milk, canned)' },
   peanut_butter: { displayName: 'Erdnussbutter', aliases: ['erdnussbutter','peanut butter','beurre de cacahuete','burro di arachidi','findik ezmesi'],
     per100g: { protein: 25.0, fat: 50.0, netCarbs: 12.0, fiber: 6.0, kcal: 590 }, source: 'USDA FDC 172470 (Peanut butter, smooth)' },
