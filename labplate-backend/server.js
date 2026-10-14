@@ -399,7 +399,9 @@ app.get('/health', (req, res) => {
     groq429Diagnostics: true,
     groqDebugKeyRouting: true,
   });
+});
 
+// Lexikon-Begriffe aus SQLite lexicon_terms (kein KI-Call zur Laufzeit).
 app.get('/api/debug/master-info', (req, res) => {
   try {
     const store = require('./classic-master-store');
@@ -417,9 +419,6 @@ app.get('/api/debug/master-info', (req, res) => {
   }
 });
 
-});
-
-// Lexikon-Begriffe aus SQLite lexicon_terms (kein KI-Call zur Laufzeit).
 app.get('/api/lexicon-terms', (req, res) => {
   try {
     const lexiconDb = require('./lexicon-db');
