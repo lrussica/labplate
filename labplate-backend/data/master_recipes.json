@@ -40797,6 +40797,1234 @@
     "salt",
     "black_pepper"
    ]
+  },
+  {
+   "id": "kung_pao_chicken",
+   "immutable": true,
+   "cuisine": "cn",
+   "region": "Sichuan",
+   "servings": 4,
+   "prep_time_min": 45,
+   "aliases": {
+    "de": [
+     "kung pao chicken",
+     "kung pao huhn",
+     "gong bao jiding"
+    ],
+    "en": [
+     "kung pao chicken",
+     "gong bao chicken"
+    ],
+    "fr": [
+     "poulet kung pao"
+    ],
+    "it": [
+     "pollo kung pao"
+    ],
+    "tr": [
+     "kung pao tavuk"
+    ]
+   },
+   "titles": {
+    "de": "Kung Pao Chicken",
+    "en": "Kung Pao Chicken",
+    "fr": "Poulet Kung Pao",
+    "it": "Pollo Kung Pao",
+    "tr": "Kung Pao Tavuk"
+   },
+   "garnish": {
+    "de": "Mit Reis servieren und mit Erdnüssen bestreuen.",
+    "en": "Serve with rice, sprinkle with peanuts.",
+    "fr": "Servir avec du riz, parsemer d’arachides.",
+    "it": "Servire con riso, cospargere di arachidi.",
+    "tr": "Pilav ile servis edin, yer fıstığı serpin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Hähnchenschenkel",
+      "en": "Chicken thigh",
+      "fr": "Cuisse de poulet",
+      "it": "Sovracoscia di pollo",
+      "tr": "Tavuk but"
+     },
+     "amount": 400,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 8.5,
+     "protein": 18.6,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Erdnüsse",
+      "en": "Peanuts",
+      "fr": "Arachides",
+      "it": "Arachidi",
+      "tr": "Yer fıstığı"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 8,
+     "fat": 48.8,
+     "protein": 25.2,
+     "fiber": 8.5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "garnish"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Getrocknete Chilis",
+      "en": "Dried chilis",
+      "fr": "Piments séchés",
+      "it": "Peperoncini secchi",
+      "tr": "Kuru kırmızı biber"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 25,
+     "fat": 14,
+     "protein": 12,
+     "fiber": 27,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Sichuan-Pfeffer",
+      "en": "Sichuan pepper",
+      "fr": "Poivre de Sichuan",
+      "it": "Pepe di Sichuan",
+      "tr": "Sichuan biberi"
+     },
+     "amount": 5,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 20,
+     "fat": 8,
+     "protein": 6,
+     "fiber": 30,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Sojasauce",
+      "en": "Soy sauce",
+      "fr": "Sauce soja",
+      "it": "Salsa di soia",
+      "tr": "Soya sosu"
+     },
+     "amount": 60,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 4.1,
+     "fat": 0.6,
+     "protein": 8.1,
+     "fiber": 0.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Reisessig",
+      "en": "Rice vinegar",
+      "fr": "Vinaigre de riz",
+      "it": "Aceto di riso",
+      "tr": "Pirinç sirkesi"
+     },
+     "amount": 40,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 0.5,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Zucker",
+      "en": "Sugar",
+      "fr": "Sucre",
+      "it": "Zucchero",
+      "tr": "Şeker"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 100,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Knoblauch",
+      "en": "Garlic",
+      "fr": "Ail",
+      "it": "Aglio",
+      "tr": "Sarımsak"
+     },
+     "amount": 4,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 31,
+     "fat": 0.5,
+     "protein": 6.4,
+     "fiber": 2.1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Ingwer, frisch",
+      "en": "Fresh ginger",
+      "fr": "Gingembre frais",
+      "it": "Zenzero fresco",
+      "tr": "Taze zencefil"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 15.8,
+     "fat": 0.8,
+     "protein": 1.8,
+     "fiber": 2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Frühlingszwiebeln",
+      "en": "Spring onions",
+      "fr": "Oignons nouveaux",
+      "it": "Cipollotti",
+      "tr": "Taze soğan"
+     },
+     "amount": 60,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 4.7,
+     "fat": 0.2,
+     "protein": 1.8,
+     "fiber": 2.6,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0011",
+     "names": {
+      "de": "Speisestärke",
+      "en": "Cornstarch",
+      "fr": "Fécule de maïs",
+      "it": "Amido di mais",
+      "tr": "Mısır nişastası"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 91.3,
+     "fat": 0.1,
+     "protein": 0.3,
+     "fiber": 0.9,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "binder"
+    },
+    {
+     "id": "0012",
+     "names": {
+      "de": "Sesamöl",
+      "en": "Sesame oil",
+      "fr": "Huile de sésame",
+      "it": "Olio di sesamo",
+      "tr": "Susam yağı"
+     },
+     "amount": 20,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 100,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "fat"
+    },
+    {
+     "id": "0013",
+     "names": {
+      "de": "Reis (trocken)",
+      "en": "Rice (dry)",
+      "fr": "Riz (sec)",
+      "it": "Riso (secco)",
+      "tr": "Pirinç (kuru)"
+     },
+     "amount": 140,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 78.7,
+     "fat": 0.7,
+     "protein": 7.1,
+     "fiber": 1.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Marinade",
+      "en": "Marinade",
+      "fr": "Marinade",
+      "it": "Marinata",
+      "tr": "Marinat"
+     },
+     "content": {
+      "de": "{0001} in 2 cm Würfel schneiden. Mit 30 ml {0005}, {0011} und 1 EL Wasser 20 Min. marinieren.",
+      "en": "Cube {0001}. Marinate with 30 ml {0005}, {0011} and 1 tbsp water 20 min.",
+      "fr": "Couper {0001}. Mariner avec 30 ml {0005}, {0011}, 1 c. à s. d’eau 20 min.",
+      "it": "Cubetti {0001}. Marinare con 30 ml {0005}, {0011}, 1 cucchiaio d’acqua 20 min.",
+      "tr": "{0001}ı küp kes. 30 ml {0005}, {0011} ve 1 yk su ile 20 dk marine et."
+     },
+     "stove_level": 0,
+     "time_min": 22
+    },
+    {
+     "title": {
+      "de": "Sauce",
+      "en": "Sauce",
+      "fr": "Sauce",
+      "it": "Sugo",
+      "tr": "Sos"
+     },
+     "content": {
+      "de": "Restliche {0005}, {0006}, {0007}, 60 ml Wasser und restliche Stärke verrühren.",
+      "en": "Whisk remaining {0005}, {0006}, {0007}, 60 ml water and remaining starch.",
+      "fr": "Mélanger le reste de {0005}, {0006}, {0007}, 60 ml d’eau et fécule.",
+      "it": "Mescolare resto {0005}, {0006}, {0007}, 60 ml acqua e amido.",
+      "tr": "Kalan {0005}, {0006}, {0007}, 60 ml su ve nişastayı karıştır."
+     },
+     "stove_level": 0,
+     "time_min": 3
+    },
+    {
+     "title": {
+      "de": "Aromaten",
+      "en": "Aromatics",
+      "fr": "Aromates",
+      "it": "Aromi",
+      "tr": "Aromatikler"
+     },
+     "content": {
+      "de": "{0012} im Wok stark erhitzen. {0003} und {0004} 30 Sek. rösten (nicht verbrennen). {0008}, {0009} zugeben, 30 Sek.",
+      "en": "Heat {0012} in wok over high heat. Toast {0003}, {0004} 30 sec (do not burn). Add {0008}, {0009}, 30 sec.",
+      "fr": "Chauffer {0012} au wok. Torréfier {0003}, {0004} 30 s. Ajouter {0008}, {0009}, 30 s.",
+      "it": "Scaldare {0012} nel wok. Tostare {0003}, {0004} 30 s. Aggiungere {0008}, {0009}, 30 s.",
+      "tr": "{0012}ı wokta kızdır. {0003}, {0004} 30 sn kavur. {0008}, {0009} ekle, 30 sn."
+     },
+     "stove_level": 4,
+     "time_min": 3
+    },
+    {
+     "title": {
+      "de": "Anbraten",
+      "en": "Sear",
+      "fr": "Saisir",
+      "it": "Rosolare",
+      "tr": "Mühürle"
+     },
+     "content": {
+      "de": "Hähnchen zugeben, 3–4 Min. scharf anbraten, bis es Farbe hat. Sauce angießen, 1 Min. einkochen.",
+      "en": "Add chicken, sear 3–4 min until coloured. Pour in sauce, reduce 1 min.",
+      "fr": "Ajouter le poulet, saisir 3–4 min. Verser la sauce, réduire 1 min.",
+      "it": "Aggiungere pollo, rosolare 3–4 min. Versare la salsa, ridurre 1 min.",
+      "tr": "Tavuğu ekle, 3–4 dk mühürle. Sosu dök, 1 dk çektir."
+     },
+     "stove_level": 4,
+     "time_min": 6
+    },
+    {
+     "title": {
+      "de": "Finish",
+      "en": "Finish",
+      "fr": "Finition",
+      "it": "Finitura",
+      "tr": "Final"
+     },
+     "content": {
+      "de": "{0002} und {0010} unterheben, 30 Sek. Mit Reis servieren.",
+      "en": "Fold in {0002}, {0010}, 30 sec. Serve with rice.",
+      "fr": "Incorporer {0002}, {0010}, 30 s. Servir avec riz.",
+      "it": "Unire {0002}, {0010}, 30 s. Servire con riso.",
+      "tr": "{0002}, {0010} karıştır, 30 sn. Pilav ile servis et."
+     },
+     "stove_level": 4,
+     "time_min": 2
+    }
+   ],
+   "chef_analysis": {
+    "de": "Kung Pao: Sichuan-Pfeffer und Chilis NUR kurz rösten — verbrannt sind sie bitter. Sauce erst ganz am Ende, sonst wird das Hähnchen weich statt knusprig.",
+    "en": "Kung Pao: toast sichuan pepper and chilis briefly only — burnt they turn bitter. Sauce at the very end or the chicken steams instead of crisping.",
+    "fr": "Kung Pao : torréfier brièvement le poivre et les piments. Sauce à la fin.",
+    "it": "Kung Pao: tostare brevemente pepe e peperoncini. Salsa alla fine.",
+    "tr": "Kung Pao: Sichuan biberi ve chili kısa kavur. Sos en sonda."
+   },
+   "coreComponents": [
+    "chicken_thigh",
+    "peanuts",
+    "dried_chili",
+    "sichuan_pepper",
+    "soy_sauce",
+    "rice_vinegar",
+    "sugar",
+    "garlic",
+    "ginger_fresh",
+    "spring_onion",
+    "cornstarch",
+    "sesame_oil",
+    "rice_dry"
+   ]
+  },
+  {
+   "id": "larb_gai",
+   "immutable": true,
+   "cuisine": "th",
+   "region": "Isan",
+   "servings": 4,
+   "prep_time_min": 30,
+   "aliases": {
+    "de": [
+     "larb gai",
+     "laab gai",
+     "thailändischer hähnchensalat"
+    ],
+    "en": [
+     "larb gai",
+     "laab gai",
+     "thai chicken salad"
+    ],
+    "fr": [
+     "larb gai",
+     "salade thaïe au poulet"
+    ],
+    "it": [
+     "larb gai",
+     "insalata thai di pollo"
+    ],
+    "tr": [
+     "larb gai",
+     "tayland tavuk salatası"
+    ]
+   },
+   "titles": {
+    "de": "Larb Gai",
+    "en": "Larb Gai",
+    "fr": "Larb Gai",
+    "it": "Larb Gai",
+    "tr": "Larb Gai"
+   },
+   "garnish": {
+    "de": "Mit Klebreis und frischem Gemüse servieren.",
+    "en": "Serve with sticky rice and fresh vegetables.",
+    "fr": "Servir avec riz gluant et légumes frais.",
+    "it": "Servire con riso glutinoso e verdure fresche.",
+    "tr": "Yapışkan pirinç ve taze sebze ile servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Hähnchenhackfleisch",
+      "en": "Ground chicken",
+      "fr": "Poulet haché",
+      "it": "Pollo macinato",
+      "tr": "Tavuk kıyma"
+     },
+     "amount": 400,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 8,
+     "protein": 18.5,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Schalotten",
+      "en": "Shallots",
+      "fr": "Échalotes",
+      "it": "Scalogni",
+      "tr": "Arpacık soğan"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 13.6,
+     "fat": 0.1,
+     "protein": 2.5,
+     "fiber": 3.2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Frühlingszwiebeln",
+      "en": "Spring onions",
+      "fr": "Oignons nouveaux",
+      "it": "Cipollotti",
+      "tr": "Taze soğan"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 4.7,
+     "fat": 0.2,
+     "protein": 1.8,
+     "fiber": 2.6,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Koriander (frisch)",
+      "en": "Cilantro",
+      "fr": "Coriandre",
+      "it": "Coriandolo",
+      "tr": "Kişniş"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0.9,
+     "fat": 0.5,
+     "protein": 2.1,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Minze",
+      "en": "Mint",
+      "fr": "Menthe",
+      "it": "Menta",
+      "tr": "Nane"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 5,
+     "fat": 0.9,
+     "protein": 3.8,
+     "fiber": 8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Fischsauce",
+      "en": "Fish sauce",
+      "fr": "Sauce de poisson",
+      "it": "Salsa di pesce",
+      "tr": "Balık sosu"
+     },
+     "amount": 40,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 3.6,
+     "fat": 0,
+     "protein": 5.1,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Limette",
+      "en": "Lime",
+      "fr": "Citron vert",
+      "it": "Lime",
+      "tr": "Misket limonu"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 6,
+     "fat": 0.2,
+     "protein": 0.7,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Chili",
+      "en": "Red chili",
+      "fr": "Piment rouge",
+      "it": "Peperoncino rosso",
+      "tr": "Kırmızı biber"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.3,
+     "fat": 0.4,
+     "protein": 1.9,
+     "fiber": 1.5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Geröstetes Reispulver",
+      "en": "Toasted rice powder",
+      "fr": "Poudre de riz grillé",
+      "it": "Polvere di riso tostato",
+      "tr": "Kavrulmuş pirinç tozu"
+     },
+     "amount": 10,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 78,
+     "fat": 0.6,
+     "protein": 7,
+     "fiber": 1.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Blattsalat",
+      "en": "Lettuce",
+      "fr": "Laitue",
+      "it": "Lattuga",
+      "tr": "Marul"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 1.6,
+     "fat": 0.15,
+     "protein": 1.35,
+     "fiber": 1.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0011",
+     "names": {
+      "de": "Reis (trocken)",
+      "en": "Rice (dry)",
+      "fr": "Riz (sec)",
+      "it": "Riso (secco)",
+      "tr": "Pirinç (kuru)"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 78.7,
+     "fat": 0.7,
+     "protein": 7.1,
+     "fiber": 1.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Reis",
+      "en": "Rice",
+      "fr": "Riz",
+      "it": "Riso",
+      "tr": "Pilav"
+     },
+     "content": {
+      "de": "{0011} nach Packung garen (für Klebreis: einweichen + dämpfen).",
+      "en": "Cook {0011} per package (sticky: soak + steam).",
+      "fr": "Cuire {0011} selon paquet.",
+      "it": "Cuocere {0011} per confezione.",
+      "tr": "{0011}ı pakete göre pişir."
+     },
+     "stove_level": 2,
+     "time_min": 20
+    },
+    {
+     "title": {
+      "de": "Toast-Reis",
+      "en": "Toasted rice",
+      "fr": "Riz grillé",
+      "it": "Riso tostato",
+      "tr": "Kavrulmuş pirinç"
+     },
+     "content": {
+      "de": "{0009} in trockener Pfanne 2 Min. rösten, bis es duftet. Abkühlen, im Mörser fein mahlen.",
+      "en": "Toast {0009} in dry pan 2 min until fragrant. Cool, grind fine in mortar.",
+      "fr": "Torréfier {0009} 2 min. Refroidir, moudre au mortier.",
+      "it": "Tostare {0009} 2 min. Raffreddare, macinare al mortaio.",
+      "tr": "{0009}ı kuru tavada 2 dk kavur. Soğut, havanda ez."
+     },
+     "stove_level": 3,
+     "time_min": 4
+    },
+    {
+     "title": {
+      "de": "Fleisch",
+      "en": "Meat",
+      "fr": "Viande",
+      "it": "Carne",
+      "tr": "Et"
+     },
+     "content": {
+      "de": "{0001} in heißem Wok 3–4 Min. krümelig braten, bis es gar ist. Kein Fett nötig.",
+      "en": "Cook {0001} in hot wok 3–4 min until done. No fat needed.",
+      "fr": "Cuire {0001} au wok 3–4 min.",
+      "it": "Cuocere {0001} nel wok 3–4 min.",
+      "tr": "{0001}ı wokta 3–4 dk kavur."
+     },
+     "stove_level": 4,
+     "time_min": 5
+    },
+    {
+     "title": {
+      "de": "Würzen und Finish",
+      "en": "Season and finish",
+      "fr": "Assaisonner et finir",
+      "it": "Condire e finire",
+      "tr": "Tatlandır ve bitir"
+     },
+     "content": {
+      "de": "Fleisch aus dem Wok, mit {0006}, Saft von {0007} und {0008} mischen. {0002}, {0003}, {0004}, {0005} unterheben. Mit {0009} bestreuen. Auf {0010} servieren.",
+      "en": "Remove from wok, mix with {0006}, juice of {0007}, {0008}. Fold in {0002}, {0003}, {0004}, {0005}. Sprinkle {0009}. Serve on {0010}.",
+      "fr": "Sortir, mélanger avec {0006}, jus de {0007}, {0008}. Incorporer {0002}-{0005}. Saupoudrer {0009}. Servir sur {0010}.",
+      "it": "Togliere, mescolare con {0006}, succo di {0007}, {0008}. Unire {0002}-{0005}. Cospargere {0009}. Servire su {0010}.",
+      "tr": "Çıkar, {0006}, {0007} suyu, {0008} ile karıştır. {0002}-{0005} ekle. {0009} serp. {0010} üzerine servis et."
+     },
+     "stove_level": 0,
+     "time_min": 5
+    }
+   ],
+   "chef_analysis": {
+    "de": "Larb Gai: Das Fleisch darf nicht zu lange braten — es soll saftig bleiben. Toast-Reis am Ende gibt das typische rauchige Aroma und die leichte Bindung. Limette erst am Schluss.",
+    "en": "Larb Gai: do not overcook the meat — it should stay juicy. Toasted rice at the end gives the smoky aroma and slight binding. Lime only at the very end.",
+    "fr": "Larb Gai : ne pas trop cuire la viande. Le riz grillé à la fin apporte l’arôme fumé. Citron vert en toute fin.",
+    "it": "Larb Gai: non cuocere troppo la carne. Il riso tostato alla fine dà l’aroma affumicato. Lime solo alla fine.",
+    "tr": "Larb Gai: eti fazla pişirme. Kavrulmuş pirinç dumanlı aroma verir. Misket limonu en sonda."
+   },
+   "coreComponents": [
+    "chicken_mince",
+    "shallot",
+    "spring_onion",
+    "cilantro",
+    "mint",
+    "fish_sauce",
+    "lime",
+    "chili",
+    "toasted_rice_powder",
+    "blattsalat",
+    "rice_dry"
+   ]
+  },
+  {
+   "id": "bun_cha",
+   "immutable": true,
+   "cuisine": "vn",
+   "region": "Hanoi",
+   "servings": 4,
+   "prep_time_min": 60,
+   "aliases": {
+    "de": [
+     "bun cha",
+     "bún chả",
+     "vietnamesische fleischbällchen"
+    ],
+    "en": [
+     "bun cha",
+     "vietnamese grilled pork"
+    ],
+    "fr": [
+     "bun cha",
+     "porc grillé vietnamien"
+    ],
+    "it": [
+     "bun cha",
+     "maiale grigliato vietnamita"
+    ],
+    "tr": [
+     "bun cha",
+     "vietnam ızgara domuz"
+    ]
+   },
+   "titles": {
+    "de": "Bun Cha",
+    "en": "Bun Cha",
+    "fr": "Bun Cha",
+    "it": "Bun Cha",
+    "tr": "Bun Cha"
+   },
+   "garnish": {
+    "de": "Mit Reisnudeln, Kräutern und Nuoc-Cham-Dip servieren.",
+    "en": "Serve with rice noodles, herbs and nuoc cham dip.",
+    "fr": "Servir avec nouilles de riz, herbes et sauce nuoc cham.",
+    "it": "Servire con noodles di riso, erbe e salsa nuoc cham.",
+    "tr": "Pirinç eriştesi, otlar ve nuoc cham sos ile servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Schweinebauch",
+      "en": "Pork belly",
+      "fr": "Poitrine de porc",
+      "it": "Pancetta di maiale",
+      "tr": "Domuz göbeği"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 53,
+     "protein": 9.3,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Schweinehackfleisch",
+      "en": "Ground pork",
+      "fr": "Porc haché",
+      "it": "Carne di maiale macinata",
+      "tr": "Domuz kıyma"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 20.7,
+     "protein": 17.2,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Fischsauce",
+      "en": "Fish sauce",
+      "fr": "Sauce de poisson",
+      "it": "Salsa di pesce",
+      "tr": "Balık sosu"
+     },
+     "amount": 60,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 3.6,
+     "fat": 0,
+     "protein": 5.1,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Zucker",
+      "en": "Sugar",
+      "fr": "Sucre",
+      "it": "Zucchero",
+      "tr": "Şeker"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 100,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Knoblauch",
+      "en": "Garlic",
+      "fr": "Ail",
+      "it": "Aglio",
+      "tr": "Sarımsak"
+     },
+     "amount": 4,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 31,
+     "fat": 0.5,
+     "protein": 6.4,
+     "fiber": 2.1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Schalotten",
+      "en": "Shallots",
+      "fr": "Échalotes",
+      "it": "Scalogni",
+      "tr": "Arpacık soğan"
+     },
+     "amount": 60,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 13.6,
+     "fat": 0.1,
+     "protein": 2.5,
+     "fiber": 3.2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Limette",
+      "en": "Lime",
+      "fr": "Citron vert",
+      "it": "Lime",
+      "tr": "Misket limonu"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 6,
+     "fat": 0.2,
+     "protein": 0.7,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Chili",
+      "en": "Red chili",
+      "fr": "Piment rouge",
+      "it": "Peperoncino rosso",
+      "tr": "Kırmızı biber"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.3,
+     "fat": 0.4,
+     "protein": 1.9,
+     "fiber": 1.5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Reisnudeln",
+      "en": "Rice noodles",
+      "fr": "Nouilles de riz",
+      "it": "Noodles di riso",
+      "tr": "Pirinç eriştesi"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 24.9,
+     "fat": 0.2,
+     "protein": 1.8,
+     "fiber": 0.9,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Blattsalat",
+      "en": "Lettuce",
+      "fr": "Laitue",
+      "it": "Lattuga",
+      "tr": "Marul"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 1.6,
+     "fat": 0.15,
+     "protein": 1.35,
+     "fiber": 1.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0011",
+     "names": {
+      "de": "Minze",
+      "en": "Mint",
+      "fr": "Menthe",
+      "it": "Menta",
+      "tr": "Nane"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 5,
+     "fat": 0.9,
+     "protein": 3.8,
+     "fiber": 8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0012",
+     "names": {
+      "de": "Koriander (frisch)",
+      "en": "Cilantro",
+      "fr": "Coriandre",
+      "it": "Coriandolo",
+      "tr": "Kişniş"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0.9,
+     "fat": 0.5,
+     "protein": 2.1,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0013",
+     "names": {
+      "de": "Karotten",
+      "en": "Carrots",
+      "fr": "Carottes",
+      "it": "Carote",
+      "tr": "Havuç"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 6.8,
+     "fat": 0.2,
+     "protein": 0.9,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0014",
+     "names": {
+      "de": "Daikon (Rettich)",
+      "en": "Daikon",
+      "fr": "Daïkon",
+      "it": "Daikon",
+      "tr": "Daikon"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 2.5,
+     "fat": 0.1,
+     "protein": 0.6,
+     "fiber": 1.6,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0015",
+     "names": {
+      "de": "Reisessig",
+      "en": "Rice vinegar",
+      "fr": "Vinaigre de riz",
+      "it": "Aceto di riso",
+      "tr": "Pirinç sirkesi"
+     },
+     "amount": 40,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 0.5,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Marinade",
+      "en": "Marinade",
+      "fr": "Marinade",
+      "it": "Marinata",
+      "tr": "Marinat"
+     },
+     "content": {
+      "de": "{0003}, {0004}, {0005}, {0006}, 20 ml Wasser verrühren. Hälfte für {0001} (in dünnen Scheiben), Hälfte für {0002} (Hackbällchen). 30 Min. marinieren.",
+      "en": "Mix {0003}, {0004}, {0005}, {0006}, 20 ml water. Half for sliced {0001}, half for {0002} (small patties). Marinate 30 min.",
+      "fr": "Mélanger {0003}, {0004}, {0005}, {0006}, 20 ml d’eau. Moitié pour {0001}, moitié pour {0002}. Mariner 30 min.",
+      "it": "Mescolare {0003}, {0004}, {0005}, {0006}, 20 ml acqua. Metà per {0001}, metà per {0002}. Marinare 30 min.",
+      "tr": "{0003}, {0004}, {0005}, {0006}, 20 ml su karıştır. Yarısı {0001}, yarısı {0002} için. 30 dk marine et."
+     },
+     "stove_level": 0,
+     "time_min": 32
+    },
+    {
+     "title": {
+      "de": "Dip",
+      "en": "Dip",
+      "fr": "Sauce",
+      "it": "Salsa",
+      "tr": "Sos"
+     },
+     "content": {
+      "de": "Restliche Fischsauce mit Saft von {0007}, {0008}, 60 ml Wasser mischen. {0013} und {0014} in feinen Streifen zugeben.",
+      "en": "Mix remaining fish sauce with juice of {0007}, {0008}, 60 ml water. Add julienned {0013}, {0014}.",
+      "fr": "Mélanger le reste de sauce poisson avec {0007}, {0008}, 60 ml d’eau. Ajouter {0013}, {0014} émincés.",
+      "it": "Mescolare resto salsa pesce con {0007}, {0008}, 60 ml acqua. Aggiungere {0013}, {0014} a julienne.",
+      "tr": "Kalan balık sosunu {0007} suyu, {0008}, 60 ml su ile karıştır. {0013}, {0014}ı ince şerit ekle."
+     },
+     "stove_level": 0,
+     "time_min": 8
+    },
+    {
+     "title": {
+      "de": "Grillen",
+      "en": "Grill",
+      "fr": "Griller",
+      "it": "Grigliare",
+      "tr": "Izgara"
+     },
+     "content": {
+      "de": "{0001} und {0002} auf heißem Grill (oder Grillpfanne) 3–4 Min./Seite braten, bis sie Farbe haben.",
+      "en": "Grill {0001} and {0002} on hot grill (or pan) 3–4 min/side until coloured.",
+      "fr": "Griller {0001} et {0002} 3–4 min/face.",
+      "it": "Grigliare {0001} e {0002} 3–4 min/lato.",
+      "tr": "{0001}, {0002}ı ızgarada 3–4 dk/yüz pişir."
+     },
+     "stove_level": 4,
+     "time_min": 10
+    },
+    {
+     "title": {
+      "de": "Nudeln und Anrichten",
+      "en": "Noodles and plate",
+      "fr": "Nouilles et dressage",
+      "it": "Noodles e impiattare",
+      "tr": "Noodle ve servis"
+     },
+     "content": {
+      "de": "{0009} nach Packung garen. In Schalen mit {0010}, {0011}, {0012} und dem Dip servieren.",
+      "en": "Cook {0009} per package. Serve in bowls with {0010}, {0011}, {0012} and dip.",
+      "fr": "Cuire {0009}. Servir en bols avec {0010}, {0011}, {0012} et la sauce.",
+      "it": "Cuocere {0009}. Servire in ciotole con {0010}, {0011}, {0012} e salsa.",
+      "tr": "{0009}ı pakete göre pişir. Kâselerde {0010}, {0011}, {0012} ve sos ile servis et."
+     },
+     "stove_level": 2,
+     "time_min": 15
+    }
+   ],
+   "chef_analysis": {
+    "de": "Bun Cha: Das Fleisch MUSS mariniert werden, sonst schmeckt es flach. Gegrillt wird es erst kurz vor dem Servieren — lauwarm ist typisch. Kräuter in Mengen gehören dazu.",
+    "en": "Bun Cha: the meat MUST be marinated or it tastes flat. Grill just before serving — warm is the tradition. Herbs in large amounts are essential.",
+    "fr": "Bun Cha : la viande doit être marinée. Griller juste avant. Beaucoup d’herbes.",
+    "it": "Bun Cha: la carne va marinata. Grigliare subito prima. Molte erbe.",
+    "tr": "Bun Cha: et marine şart. Servisten hemen önce ızgara. Bol ot."
+   },
+   "coreComponents": [
+    "pork_belly",
+    "pork_mince",
+    "fish_sauce",
+    "sugar",
+    "garlic",
+    "shallot",
+    "lime",
+    "chili",
+    "rice_noodles",
+    "blattsalat",
+    "mint",
+    "cilantro",
+    "carrot",
+    "daikon",
+    "rice_vinegar"
+   ]
   }
  ]
 }
