@@ -1067,6 +1067,7 @@ Object.assign(CATALOG, require('./nutri-catalog-welle3_p.js'));
 Object.assign(CATALOG, require('./nutri-catalog-welle3_q.js'));
 Object.assign(CATALOG, require('./nutri-catalog-welle3_r.js'));
 Object.assign(CATALOG, require('./nutri-catalog-welle3_s.js'));
+Object.assign(CATALOG, require('./nutri-catalog-welle3_t.js'));
 
 
 // ---------- Matching ----------

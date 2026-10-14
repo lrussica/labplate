@@ -39533,6 +39533,1654 @@
     "chicken_stock",
     "salt"
    ]
+  },
+  {
+   "id": "sauerbraten",
+   "immutable": true,
+   "cuisine": "de",
+   "region": "Rheinland",
+   "servings": 4,
+   "prep_time_min": 240,
+   "aliases": {
+    "de": [
+     "sauerbraten",
+     "rheinischer sauerbraten"
+    ],
+    "en": [
+     "sauerbraten",
+     "german pot roast"
+    ],
+    "fr": [
+     "sauerbraten"
+    ],
+    "it": [
+     "sauerbraten"
+    ],
+    "tr": [
+     "sauerbraten"
+    ]
+   },
+   "titles": {
+    "de": "Sauerbraten",
+    "en": "Sauerbraten",
+    "fr": "Sauerbraten",
+    "it": "Sauerbraten",
+    "tr": "Sauerbraten"
+   },
+   "garnish": {
+    "de": "Mit Kartoffelklößen und Rotkohl servieren.",
+    "en": "Serve with potato dumplings and red cabbage.",
+    "fr": "Servir avec quenelles et chou rouge.",
+    "it": "Servire con canederli e cavolo rosso.",
+    "tr": "Patates mantısı ve kırmızı lahana ile servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Rinderschulter (Chuck)",
+      "en": "Beef chuck",
+      "fr": "Épaule de bœuf",
+      "it": "Spalla di manzo",
+      "tr": "Dana omuz"
+     },
+     "amount": 480,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 10,
+     "protein": 19,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Rotwein",
+      "en": "Red wine",
+      "fr": "Vin rouge",
+      "it": "Vino rosso",
+      "tr": "Kırmızı şarap"
+     },
+     "amount": 200,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 2.6,
+     "fat": 0,
+     "protein": 0.1,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Essig",
+      "en": "Vinegar",
+      "fr": "Vinaigre",
+      "it": "Aceto",
+      "tr": "Sirke"
+     },
+     "amount": 200,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 0.9,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Zwiebeln",
+      "en": "Onions",
+      "fr": "Oignons",
+      "it": "Cipolle",
+      "tr": "Soğan"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.6,
+     "fat": 0.1,
+     "protein": 1.1,
+     "fiber": 1.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Karotten",
+      "en": "Carrots",
+      "fr": "Carottes",
+      "it": "Carote",
+      "tr": "Havuç"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 6.8,
+     "fat": 0.2,
+     "protein": 0.9,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Lorbeerblätter",
+      "en": "Bay leaves",
+      "fr": "Feuilles de laurier",
+      "it": "Foglie di alloro",
+      "tr": "Defne yaprağı"
+     },
+     "amount": 3,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 48.6,
+     "fat": 8.4,
+     "protein": 7.6,
+     "fiber": 26.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Wacholderbeeren",
+      "en": "Juniper berries",
+      "fr": "Baies de genièvre",
+      "it": "Bacche di ginepro",
+      "tr": "Ardıç meyvesi"
+     },
+     "amount": 10,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 20,
+     "fat": 3,
+     "protein": 1,
+     "fiber": 25,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Nelken (Gewürz)",
+      "en": "Cloves",
+      "fr": "Clous de girofle",
+      "it": "Chiodi di garofano",
+      "tr": "Karanfil"
+     },
+     "amount": 3,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 30,
+     "fat": 13,
+     "protein": 6,
+     "fiber": 34,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Lebkuchen",
+      "en": "Gingerbread",
+      "fr": "Pain d’épices",
+      "it": "Panpepato",
+      "tr": "Lebkuchen"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 62,
+     "fat": 12,
+     "protein": 6,
+     "fiber": 3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "binder"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Rosinen",
+      "en": "Raisins",
+      "fr": "Raisins secs",
+      "it": "Uvetta",
+      "tr": "Kuru üzüm"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 75,
+     "fat": 0.5,
+     "protein": 3.1,
+     "fiber": 3.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0011",
+     "names": {
+      "de": "Saure Sahne",
+      "en": "Sour cream",
+      "fr": "Crème fraîche",
+      "it": "Panna acida",
+      "tr": "Ekşi krema"
+     },
+     "amount": 60,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 3,
+     "fat": 20,
+     "protein": 2.4,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0012",
+     "names": {
+      "de": "Mehl",
+      "en": "Flour",
+      "fr": "Farine",
+      "it": "Farina",
+      "tr": "Un"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 74.4,
+     "fat": 1,
+     "protein": 10.3,
+     "fiber": 2.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0013",
+     "names": {
+      "de": "Salz",
+      "en": "Salt",
+      "fr": "Sel",
+      "it": "Sale",
+      "tr": "Tuz"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0014",
+     "names": {
+      "de": "Pfeffer (schwarz)",
+      "en": "Black pepper",
+      "fr": "Poivre noir",
+      "it": "Pepe nero",
+      "tr": "Karabiber"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 38.7,
+     "fat": 3.3,
+     "protein": 10.4,
+     "fiber": 25.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Marinade",
+      "en": "Marinade",
+      "fr": "Marinade",
+      "it": "Marinata",
+      "tr": "Marinat"
+     },
+     "content": {
+      "de": "{0002}, {0003}, {0004}, {0005}, {0006}, {0007}, {0008} und 500 ml Wasser aufkochen, abkühlen lassen. {0001} 3 Tage marinieren, täglich wenden.",
+      "en": "Boil {0002}, {0003}, {0004}, {0005}, {0006}, {0007}, {0008} with 500 ml water, cool. Marinate {0001} 3 days, turn daily.",
+      "fr": "Bouillir {0002}-{0008} avec 500 ml d’eau, refroidir. Mariner {0001} 3 jours.",
+      "it": "Bollire {0002}-{0008} con 500 ml acqua, raffreddare. Marinare {0001} 3 giorni.",
+      "tr": "{0002}-{0008} ve 500 ml suyu kaynat, soğut. {0001}ı 3 gün marine et."
+     },
+     "stove_level": 2,
+     "time_min": 15
+    },
+    {
+     "title": {
+      "de": "Anbraten",
+      "en": "Sear",
+      "fr": "Saisir",
+      "it": "Rosolare",
+      "tr": "Mühürle"
+     },
+     "content": {
+      "de": "Fleisch trocken tupfen, in heißem Topf rundum scharf anbraten.",
+      "en": "Pat dry, sear all over in hot pot.",
+      "fr": "Éponger, saisir.",
+      "it": "Asciugare, rosolare.",
+      "tr": "Kurula, her yönden mühürle."
+     },
+     "stove_level": 4,
+     "time_min": 12
+    },
+    {
+     "title": {
+      "de": "Schmoren",
+      "en": "Simmer",
+      "fr": "Mijoter",
+      "it": "Cuocere",
+      "tr": "Pişir"
+     },
+     "content": {
+      "de": "Marinade angießen, aufkochen, zugedeckt 2 Std. sanft schmoren.",
+      "en": "Add marinade, boil, cover and simmer 2 h.",
+      "fr": "Ajouter marinade, mijoter 2 h.",
+      "it": "Aggiungere marinata, cuocere 2 h.",
+      "tr": "Marinatı ekle, kapalı 2 saat pişir."
+     },
+     "stove_level": 2,
+     "time_min": 125
+    },
+    {
+     "title": {
+      "de": "Sauce",
+      "en": "Sauce",
+      "fr": "Sauce",
+      "it": "Sugo",
+      "tr": "Sos"
+     },
+     "content": {
+      "de": "{0009} fein reiben, in die Sauce, 10 Min. köcheln. {0010}, {0011} einrühren. Mit Salz und {0014} abschmecken.",
+      "en": "Grate {0009} fine, add to sauce, simmer 10 min. Stir in {0010}, {0011}. Season with salt, {0014}.",
+      "fr": "Râper {0009}, ajouter, mijoter 10 min. Incorporer {0010}, {0011}.",
+      "it": "Grattugiare {0009}, cuocere 10 min. Unire {0010}, {0011}.",
+      "tr": "{0009}ı rendele, 10 dk pişir. {0010}, {0011} karıştır."
+     },
+     "stove_level": 2,
+     "time_min": 12
+    },
+    {
+     "title": {
+      "de": "Finish",
+      "en": "Finish",
+      "fr": "Finition",
+      "it": "Finitura",
+      "tr": "Final"
+     },
+     "content": {
+      "de": "Fleisch in Scheiben schneiden, Sauce darüber. Mit Klößen servieren.",
+      "en": "Slice meat, spoon sauce over. Serve with dumplings.",
+      "fr": "Trancher, napper. Servir avec quenelles.",
+      "it": "Affettare, nappare. Servire con canederli.",
+      "tr": "Dilimle, sos dök. Mantı ile servis et."
+     },
+     "stove_level": 0,
+     "time_min": 5
+    }
+   ],
+   "chef_analysis": {
+    "de": "Sauerbraten: 3 Tage marinieren ist Pflicht — der Essig braucht Zeit. Lebkuchen ist der klassische Saucenbinder. Saure Sahne erst ganz am Ende, sonst flockt sie.",
+    "en": "Sauerbraten: 3 days of marinating is mandatory. Gingerbread is the classic thickener. Add sour cream at the very end or it curdles.",
+    "fr": "Sauerbraten : 3 jours de marinade obligatoires. Le pain d’épices est le liant classique. Crème en toute fin.",
+    "it": "Sauerbraten: 3 giorni di marinata obbligatori. Il panpepato è il legante. Panna alla fine.",
+    "tr": "Sauerbraten: 3 gün marine şart. Lebkuchen klasik bağlayıcı. Ekşi krema en sonda."
+   },
+   "coreComponents": [
+    "beef_chuck",
+    "red_wine",
+    "vinegar",
+    "onion_yellow",
+    "carrot",
+    "bay_leaf",
+    "juniper_berries",
+    "cloves",
+    "gingerbread",
+    "raisins",
+    "sour_cream",
+    "flour",
+    "salt",
+    "black_pepper"
+   ]
+  },
+  {
+   "id": "schweinshaxe",
+   "immutable": true,
+   "cuisine": "de",
+   "region": "Bayern",
+   "servings": 4,
+   "prep_time_min": 180,
+   "aliases": {
+    "de": [
+     "schweinshaxe",
+     "schweinshaxn",
+     "eisbein",
+     "bayerische schweinshaxe"
+    ],
+    "en": [
+     "pork knuckle",
+     "roasted pork knuckle",
+     "pork hock"
+    ],
+    "fr": [
+     "jarret de porc"
+    ],
+    "it": [
+     "stinco di maiale"
+    ],
+    "tr": [
+     "domuz incik"
+    ]
+   },
+   "titles": {
+    "de": "Schweinshaxe",
+    "en": "Roasted Pork Knuckle",
+    "fr": "Jarret de Porc Rôti",
+    "it": "Stinco di Maiale",
+    "tr": "Domuz İncik"
+   },
+   "garnish": {
+    "de": "Mit dunklem Bier, Kartoffelknödeln und Sauerkraut servieren.",
+    "en": "Serve with dark beer, potato dumplings and sauerkraut.",
+    "fr": "Servir avec bière brune, quenelles et choucroute.",
+    "it": "Servire con birra scura, canederli e crauti.",
+    "tr": "Koyu bira, patates mantısı ve lahana turşusu ile servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Schweinshaxe",
+      "en": "Pork knuckle",
+      "fr": "Jarret de porc",
+      "it": "Stinco di maiale",
+      "tr": "Domuz incik"
+     },
+     "amount": 700,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 18,
+     "protein": 19,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Zwiebeln",
+      "en": "Onions",
+      "fr": "Oignons",
+      "it": "Cipolle",
+      "tr": "Soğan"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.6,
+     "fat": 0.1,
+     "protein": 1.1,
+     "fiber": 1.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Karotten",
+      "en": "Carrots",
+      "fr": "Carottes",
+      "it": "Carote",
+      "tr": "Havuç"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 6.8,
+     "fat": 0.2,
+     "protein": 0.9,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Sellerie",
+      "en": "Celery",
+      "fr": "Céleri",
+      "it": "Sedano",
+      "tr": "Kereviz sapı"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 1.4,
+     "fat": 0.2,
+     "protein": 0.7,
+     "fiber": 1.6,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Lauch",
+      "en": "Leek",
+      "fr": "Poireau",
+      "it": "Porro",
+      "tr": "Pırasa"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 12.4,
+     "fat": 0.3,
+     "protein": 1.5,
+     "fiber": 1.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Dunkles Bier",
+      "en": "Dark beer",
+      "fr": "Bière brune",
+      "it": "Birra scura",
+      "tr": "Koyu bira"
+     },
+     "amount": 300,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 4,
+     "fat": 0,
+     "protein": 0.5,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Rinderbrühe",
+      "en": "Beef stock",
+      "fr": "Bouillon de bœuf",
+      "it": "Brodo di manzo",
+      "tr": "Dana suyu"
+     },
+     "amount": 200,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 0.4,
+     "fat": 0.2,
+     "protein": 1.1,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Kümmel (Kümmelkörner)",
+      "en": "Caraway",
+      "fr": "Cumin des prés",
+      "it": "Cumino dei prati",
+      "tr": "Kimyon"
+     },
+     "amount": 10,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 11.9,
+     "fat": 14.6,
+     "protein": 19.8,
+     "fiber": 38,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Knoblauch",
+      "en": "Garlic",
+      "fr": "Ail",
+      "it": "Aglio",
+      "tr": "Sarımsak"
+     },
+     "amount": 3,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 31,
+     "fat": 0.5,
+     "protein": 6.4,
+     "fiber": 2.1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Senf",
+      "en": "Mustard",
+      "fr": "Moutarde",
+      "it": "Senape",
+      "tr": "Hardal"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 1.8,
+     "fat": 3.3,
+     "protein": 3.7,
+     "fiber": 4,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0011",
+     "names": {
+      "de": "Salz",
+      "en": "Salt",
+      "fr": "Sel",
+      "it": "Sale",
+      "tr": "Tuz"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0012",
+     "names": {
+      "de": "Pfeffer (schwarz)",
+      "en": "Black pepper",
+      "fr": "Poivre noir",
+      "it": "Pepe nero",
+      "tr": "Karabiber"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 38.7,
+     "fat": 3.3,
+     "protein": 10.4,
+     "fiber": 25.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Vorbereiten",
+      "en": "Prep",
+      "fr": "Préparer",
+      "it": "Preparare",
+      "tr": "Hazırla"
+     },
+     "content": {
+      "de": "{0001} mit Salz, {0008} und {0012} einreiben. Haut rautenförmig einschneiden.",
+      "en": "Rub {0001} with salt, {0008}, {0012}. Score skin.",
+      "fr": "Frotter {0001} avec sel, {0008}, {0012}. Quadriller la peau.",
+      "it": "Strofinare {0001} con sale, {0008}, {0012}. Incidere la cotenna.",
+      "tr": "{0001}ı tuz, {0008} ve {0012} ile ov. Deriyi çiz."
+     },
+     "stove_level": 0,
+     "time_min": 15
+    },
+    {
+     "title": {
+      "de": "Gemüsebett",
+      "en": "Vegetable bed",
+      "fr": "Lit de légumes",
+      "it": "Letto di verdure",
+      "tr": "Sebze yatağı"
+     },
+     "content": {
+      "de": "{0002}, {0003}, {0004}, {0005}, {0009} in einen Bräter. Haxe darauf. {0006} und {0007} angießen.",
+      "en": "{0002}-{0005}, {0009} in pan. Knuckle on top. Pour {0006}, {0007}.",
+      "fr": "{0002}-{0005}, {0009} dans un plat. Verser {0006}, {0007}.",
+      "it": "{0002}-{0005}, {0009} in teglia. Versare {0006}, {0007}.",
+      "tr": "{0002}-{0005}, {0009} tepsiye. {0006}, {0007} dök."
+     },
+     "stove_level": 0,
+     "time_min": 10
+    },
+    {
+     "title": {
+      "de": "Schmoren",
+      "en": "Roast",
+      "fr": "Rôtir",
+      "it": "Arrostire",
+      "tr": "Pişir"
+     },
+     "content": {
+      "de": "Zugedeckt bei 180 °C 2 Std. schmoren. Deckel ab, 230 °C, 30 Min. knusprig.",
+      "en": "Cover, 180 °C 2 h. Uncover, 230 °C 30 min until crisp.",
+      "fr": "Couvrir, 180 °C 2 h. Découvrir, 230 °C 30 min.",
+      "it": "Coperto, 180 °C 2 h. Scoprire, 230 °C 30 min.",
+      "tr": "Kapalı 180 °C 2 saat. Aç, 230 °C 30 dk."
+     },
+     "stove_level": 4,
+     "time_min": 150
+    },
+    {
+     "title": {
+      "de": "Sauce",
+      "en": "Sauce",
+      "fr": "Sauce",
+      "it": "Sugo",
+      "tr": "Sos"
+     },
+     "content": {
+      "de": "Gemüse durch ein Sieb streichen, Fond mit {0010} verrühren.",
+      "en": "Press vegetables through sieve, stir fond with {0010}.",
+      "fr": "Passer les légumes, mélanger avec {0010}.",
+      "it": "Passare le verdure, unire {0010}.",
+      "tr": "Sebzeleri süzgeçten geçir, {0010} ile karıştır."
+     },
+     "stove_level": 2,
+     "time_min": 10
+    }
+   ],
+   "chef_analysis": {
+    "de": "Schweinshaxe: Die Haut muss trocken sein beim Einschneiden. Niedrig garen, dann hoch — das Geheimnis. 5 Min. länger unter dem Grill für mehr Kruste.",
+    "en": "Schweinshaxe: skin must be dry when scoring. Low then high heat — the secret. 5 min more under broiler for more crust.",
+    "fr": "Schweinshaxe : la peau doit être sèche. Cuisson basse puis haute.",
+    "it": "Schweinshaxe: la cotenna deve essere asciutta. Cottura bassa poi alta.",
+    "tr": "Schweinshaxe: deri kuru olmalı. Düşük sonra yüksek ısı."
+   },
+   "coreComponents": [
+    "pork_knuckle",
+    "onion_yellow",
+    "carrot",
+    "celery",
+    "leek",
+    "dark_beer",
+    "beef_stock",
+    "caraway",
+    "garlic",
+    "mustard",
+    "salt",
+    "black_pepper"
+   ]
+  },
+  {
+   "id": "koenigsberger_klopse",
+   "immutable": true,
+   "cuisine": "de",
+   "region": "Ostpreußen",
+   "servings": 4,
+   "prep_time_min": 90,
+   "aliases": {
+    "de": [
+     "koenigsberger klopse",
+     "königsberger klopse",
+     "klopse"
+    ],
+    "en": [
+     "koenigsberger klopse",
+     "german meatballs in caper sauce"
+    ],
+    "fr": [
+     "koenigsberger klopse"
+    ],
+    "it": [
+     "koenigsberger klopse"
+    ],
+    "tr": [
+     "koenigsberger klopse"
+    ]
+   },
+   "titles": {
+    "de": "Königsberger Klopse",
+    "en": "Königsberger Klopse",
+    "fr": "Königsberger Klopse",
+    "it": "Königsberger Klopse",
+    "tr": "Königsberger Klopse"
+   },
+   "garnish": {
+    "de": "Mit Salzkartoffeln und Roter Bete servieren.",
+    "en": "Serve with boiled potatoes and beetroot.",
+    "fr": "Servir avec pommes de terre et betterave.",
+    "it": "Servire con patate lesse e barbabietola.",
+    "tr": "Haşlanmış patates ve pancar ile servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Rinderhackfleisch",
+      "en": "Ground beef",
+      "fr": "Bœuf haché",
+      "it": "Manzo macinato",
+      "tr": "Dana kıyma"
+     },
+     "amount": 240,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 18.1,
+     "protein": 17.7,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Schweinehackfleisch",
+      "en": "Ground pork",
+      "fr": "Porc haché",
+      "it": "Carne di maiale macinata",
+      "tr": "Domuz kıyması"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 20.7,
+     "protein": 17.2,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Zwiebeln",
+      "en": "Onions",
+      "fr": "Oignons",
+      "it": "Cipolle",
+      "tr": "Soğan"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.6,
+     "fat": 0.1,
+     "protein": 1.1,
+     "fiber": 1.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Eier",
+      "en": "Eggs",
+      "fr": "Œufs",
+      "it": "Uova",
+      "tr": "Yumurta"
+     },
+     "amount": 2,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 0.7,
+     "fat": 9.5,
+     "protein": 12.6,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "binder"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Semmelbrösel",
+      "en": "Bread crumbs",
+      "fr": "Chapelure",
+      "it": "Pangrattato",
+      "tr": "Galeta unu"
+     },
+     "amount": 60,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 70,
+     "fat": 5,
+     "protein": 11,
+     "fiber": 4,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Sardellen",
+      "en": "Anchovies",
+      "fr": "Anchois",
+      "it": "Acciughe",
+      "tr": "Hamsi"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 9.7,
+     "protein": 28.9,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Kapern",
+      "en": "Capers",
+      "fr": "Câpres",
+      "it": "Capperi",
+      "tr": "Kapari"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 1.7,
+     "fat": 0.9,
+     "protein": 2.4,
+     "fiber": 3.2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Zitrone",
+      "en": "Lemon",
+      "fr": "Citron",
+      "it": "Limone",
+      "tr": "Limon"
+     },
+     "amount": 1,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 6.5,
+     "fat": 0.3,
+     "protein": 1.1,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Mehl",
+      "en": "Flour",
+      "fr": "Farine",
+      "it": "Farina",
+      "tr": "Un"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 74.4,
+     "fat": 1,
+     "protein": 10.3,
+     "fiber": 2.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Butter",
+      "en": "Butter",
+      "fr": "Beurre",
+      "it": "Burro",
+      "tr": "Tereyağı"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0.1,
+     "fat": 81.1,
+     "protein": 0.9,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "fat"
+    },
+    {
+     "id": "0011",
+     "names": {
+      "de": "Weisswein",
+      "en": "White wine",
+      "fr": "Vin blanc",
+      "it": "Vino bianco",
+      "tr": "Beyaz şarap"
+     },
+     "amount": 100,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 2.6,
+     "fat": 0,
+     "protein": 0.1,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0012",
+     "names": {
+      "de": "Rinderbrühe",
+      "en": "Beef stock",
+      "fr": "Bouillon de bœuf",
+      "it": "Brodo di manzo",
+      "tr": "Dana suyu"
+     },
+     "amount": 300,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 0.4,
+     "fat": 0.2,
+     "protein": 1.1,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0013",
+     "names": {
+      "de": "Saure Sahne",
+      "en": "Sour cream",
+      "fr": "Crème fraîche",
+      "it": "Panna acida",
+      "tr": "Ekşi krema"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 3,
+     "fat": 20,
+     "protein": 2.4,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0014",
+     "names": {
+      "de": "Salz",
+      "en": "Salt",
+      "fr": "Sel",
+      "it": "Sale",
+      "tr": "Tuz"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0015",
+     "names": {
+      "de": "Pfeffer (schwarz)",
+      "en": "Black pepper",
+      "fr": "Poivre noir",
+      "it": "Pepe nero",
+      "tr": "Karabiber"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 38.7,
+     "fat": 3.3,
+     "protein": 10.4,
+     "fiber": 25.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Klopse",
+      "en": "Meatballs",
+      "fr": "Boulettes",
+      "it": "Polpette",
+      "tr": "Köfte"
+     },
+     "content": {
+      "de": "{0001}, {0002}, {0003}, {0004}, {0005}, {0006} und 100 ml {0012} verkneten. 12 Klopse formen.",
+      "en": "Knead {0001}, {0002}, {0003}, {0004}, {0005}, {0006} with 100 ml {0012}. Form 12.",
+      "fr": "Pétrir {0001}, {0002}, {0003}, {0004}, {0005}, {0006} avec 100 ml {0012}.",
+      "it": "Impastare {0001}, {0002}, {0003}, {0004}, {0005}, {0006} con 100 ml {0012}.",
+      "tr": "{0001}, {0002}, {0003}, {0004}, {0005}, {0006} ve 100 ml {0012} yoğur."
+     },
+     "stove_level": 0,
+     "time_min": 15
+    },
+    {
+     "title": {
+      "de": "Garen",
+      "en": "Cook",
+      "fr": "Cuire",
+      "it": "Cuocere",
+      "tr": "Pişir"
+     },
+     "content": {
+      "de": "Klopse in kochender Brühe 15 Min. ziehen lassen. Herausnehmen.",
+      "en": "Poach meatballs in stock 15 min. Lift out.",
+      "fr": "Pocher 15 min. Réserver.",
+      "it": "Sbollentare 15 min. Togliere.",
+      "tr": "15 dk haşla. Çıkar."
+     },
+     "stove_level": 2,
+     "time_min": 18
+    },
+    {
+     "title": {
+      "de": "Sauce",
+      "en": "Sauce",
+      "fr": "Sauce",
+      "it": "Sugo",
+      "tr": "Sos"
+     },
+     "content": {
+      "de": "{0010} schmelzen, {0009} einrühren. {0011} und Brühe angießen, 10 Min. kochen. {0007}, Saft von {0008} zugeben.",
+      "en": "Melt {0010}, stir in {0009}. Add {0011} and stock, cook 10 min. Add {0007}, juice of {0008}.",
+      "fr": "Fondre {0010}, incorporer {0009}. Ajouter {0011} et bouillon, 10 min. Ajouter {0007}, {0008}.",
+      "it": "Sciogliere {0010}, unire {0009}. Aggiungere {0011} e brodo, 10 min. Unire {0007}, {0008}.",
+      "tr": "{0010}ı erit, {0009} karıştır. {0011} ve suyu ekle, 10 dk. {0007}, {0008} suyu ekle."
+     },
+     "stove_level": 2,
+     "time_min": 15
+    },
+    {
+     "title": {
+      "de": "Finish",
+      "en": "Finish",
+      "fr": "Finition",
+      "it": "Finitura",
+      "tr": "Final"
+     },
+     "content": {
+      "de": "{0013} einrühren (nicht mehr kochen). Klopse zurück, mit Salz und {0015} abschmecken.",
+      "en": "Stir in {0013} (do not boil). Return meatballs, season salt, {0015}.",
+      "fr": "Incorporer {0013} (ne pas bouillir). Remettre les boulettes.",
+      "it": "Unire {0013} (non bollire). Rimettere le polpette.",
+      "tr": "{0013} karıştır (kaynatma). Köfteleri geri koy."
+     },
+     "stove_level": 2,
+     "time_min": 5
+    }
+   ],
+   "chef_analysis": {
+    "de": "Königsberger Klopse: Sardellen im Fleischteig — nicht weglassen, das ist das Aroma. Sauce darf nach saurer Sahne nicht kochen, sonst flockt sie.",
+    "en": "Königsberger Klopse: anchovies in the mix are essential — signature flavour. Sauce must not boil after sour cream.",
+    "fr": "Klopse : les anchois sont essentiels. La sauce ne doit pas bouillir après la crème.",
+    "it": "Klopse: le acciughe sono essenziali. La salsa non deve bollire dopo la panna.",
+    "tr": "Königsberger Klopse: kıymada hamsi şart. Ekşi krema girdikten sonra kaynatma."
+   },
+   "coreComponents": [
+    "beef_mince",
+    "pork_mince",
+    "onion_yellow",
+    "egg",
+    "bread_crumbs",
+    "anchovy",
+    "capers",
+    "lemon",
+    "flour",
+    "butter",
+    "white_wine",
+    "beef_stock",
+    "sour_cream",
+    "salt",
+    "black_pepper"
+   ]
+  },
+  {
+   "id": "rouladen",
+   "immutable": true,
+   "cuisine": "de",
+   "region": "Klassisch",
+   "servings": 4,
+   "prep_time_min": 120,
+   "aliases": {
+    "de": [
+     "rouladen",
+     "rinderrouladen",
+     "rinderroulade"
+    ],
+    "en": [
+     "rouladen",
+     "beef rouladen",
+     "german beef rolls"
+    ],
+    "fr": [
+     "rouladen",
+     "paupiettes de bœuf"
+    ],
+    "it": [
+     "rouladen",
+     "involtini di manzo"
+    ],
+    "tr": [
+     "rouladen",
+     "dana rulo"
+    ]
+   },
+   "titles": {
+    "de": "Rinderrouladen",
+    "en": "Beef Rouladen",
+    "fr": "Paupiettes de Bœuf",
+    "it": "Involtini di Manzo",
+    "tr": "Dana Rulo"
+   },
+   "garnish": {
+    "de": "Mit Rotkohl, Klößen und Bratensauce servieren.",
+    "en": "Serve with red cabbage, dumplings and gravy.",
+    "fr": "Servir avec chou rouge, quenelles et sauce.",
+    "it": "Servire con cavolo rosso, canederli e sugo.",
+    "tr": "Kırmızı lahana, mantı ve sos ile servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Rouladenfleisch (Rinderroulade)",
+      "en": "Beef rouladen",
+      "fr": "Paupiette de bœuf",
+      "it": "Involtino di manzo",
+      "tr": "Dana rulo"
+     },
+     "amount": 480,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 8,
+     "protein": 20,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Speck",
+      "en": "Bacon",
+      "fr": "Lard",
+      "it": "Pancetta",
+      "tr": "Pastırma"
+     },
+     "amount": 60,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 1.4,
+     "fat": 42,
+     "protein": 37,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "fat"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Zwiebeln",
+      "en": "Onions",
+      "fr": "Oignons",
+      "it": "Cipolle",
+      "tr": "Soğan"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.6,
+     "fat": 0.1,
+     "protein": 1.1,
+     "fiber": 1.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Gewürzgurke",
+      "en": "Pickle",
+      "fr": "Cornichon",
+      "it": "Cetriolino",
+      "tr": "Turşu"
+     },
+     "amount": 100,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 1.5,
+     "fat": 0.2,
+     "protein": 0.5,
+     "fiber": 1.2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Senf",
+      "en": "Mustard",
+      "fr": "Moutarde",
+      "it": "Senape",
+      "tr": "Hardal"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 1.8,
+     "fat": 3.3,
+     "protein": 3.7,
+     "fiber": 4,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Rotwein",
+      "en": "Red wine",
+      "fr": "Vin rouge",
+      "it": "Vino rosso",
+      "tr": "Kırmızı şarap"
+     },
+     "amount": 200,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 2.6,
+     "fat": 0,
+     "protein": 0.1,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Rinderbrühe",
+      "en": "Beef stock",
+      "fr": "Bouillon de bœuf",
+      "it": "Brodo di manzo",
+      "tr": "Dana suyu"
+     },
+     "amount": 300,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 0.4,
+     "fat": 0.2,
+     "protein": 1.1,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Tomatenmark",
+      "en": "Tomato paste",
+      "fr": "Concentré de tomate",
+      "it": "Concentrato di pomodoro",
+      "tr": "Domates salçası"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 15.5,
+     "fat": 0.7,
+     "protein": 4.2,
+     "fiber": 4.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Karotten",
+      "en": "Carrots",
+      "fr": "Carottes",
+      "it": "Carote",
+      "tr": "Havuç"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 6.8,
+     "fat": 0.2,
+     "protein": 0.9,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Lorbeerblätter",
+      "en": "Bay leaves",
+      "fr": "Feuilles de laurier",
+      "it": "Foglie di alloro",
+      "tr": "Defne yaprağı"
+     },
+     "amount": 3,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 48.6,
+     "fat": 8.4,
+     "protein": 7.6,
+     "fiber": 26.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0011",
+     "names": {
+      "de": "Salz",
+      "en": "Salt",
+      "fr": "Sel",
+      "it": "Sale",
+      "tr": "Tuz"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0012",
+     "names": {
+      "de": "Pfeffer (schwarz)",
+      "en": "Black pepper",
+      "fr": "Poivre noir",
+      "it": "Pepe nero",
+      "tr": "Karabiber"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 38.7,
+     "fat": 3.3,
+     "protein": 10.4,
+     "fiber": 25.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Vorbereiten",
+      "en": "Prep",
+      "fr": "Préparer",
+      "it": "Preparare",
+      "tr": "Hazırla"
+     },
+     "content": {
+      "de": "{0001} flach klopfen, salzen, pfeffern. Mit {0005} bestreichen, mit {0002}, {0003}, {0004} belegen. Aufrollen, fixieren.",
+      "en": "Flatten {0001}, season. Brush {0005}, top {0002}, {0003}, {0004}. Roll up, secure.",
+      "fr": "Aplatir {0001}, assaisonner. Badigeonner {0005}, garnir. Rouler, fixer.",
+      "it": "Appiattire {0001}, condire. Spennellare {0005}, farcire. Arrotolare.",
+      "tr": "{0001}ı incelt. {0005} sür, {0002}, {0003}, {0004} koy. Rulo yap, sabitle."
+     },
+     "stove_level": 0,
+     "time_min": 25
+    },
+    {
+     "title": {
+      "de": "Anbraten",
+      "en": "Sear",
+      "fr": "Saisir",
+      "it": "Rosolare",
+      "tr": "Mühürle"
+     },
+     "content": {
+      "de": "Rouladen rundum scharf anbraten. Herausnehmen. {0009} und {0008} anbraten, mit {0006} ablöschen.",
+      "en": "Sear rouladen. Remove. Sauté {0009}, {0008}, deglaze with {0006}.",
+      "fr": "Saisir. Réserver. Faire revenir {0009}, {0008}, déglacer {0006}.",
+      "it": "Rosolare. Togliere. Soffriggere {0009}, {0008}, sfumare {0006}.",
+      "tr": "Mühürle. Çıkar. {0009}, {0008} sotele, {0006} ile söndür."
+     },
+     "stove_level": 4,
+     "time_min": 15
+    },
+    {
+     "title": {
+      "de": "Schmoren",
+      "en": "Simmer",
+      "fr": "Mijoter",
+      "it": "Cuocere",
+      "tr": "Pişir"
+     },
+     "content": {
+      "de": "Rouladen zurück, {0007}, {0010} zugeben, aufkochen. Zugedeckt 90 Min. schmoren.",
+      "en": "Return rouladen, add {0007}, {0010}, boil. Cover, simmer 90 min.",
+      "fr": "Remettre, ajouter {0007}, {0010}, bouillir. Mijoter 90 min.",
+      "it": "Rimettere, aggiungere {0007}, {0010}. Cuocere 90 min.",
+      "tr": "Geri koy, {0007}, {0010} ekle. Kapalı 90 dk pişir."
+     },
+     "stove_level": 2,
+     "time_min": 95
+    },
+    {
+     "title": {
+      "de": "Finish",
+      "en": "Finish",
+      "fr": "Finition",
+      "it": "Finitura",
+      "tr": "Final"
+     },
+     "content": {
+      "de": "Rouladen herausnehmen, Sauce abschmecken. Mit Salz und {0012} würzen.",
+      "en": "Lift, season sauce. Salt, {0012}.",
+      "fr": "Réserver, assaisonner. Sel, {0012}.",
+      "it": "Togliere, condire. Sale, {0012}.",
+      "tr": "Çıkar, tatlandır. Tuz, {0012}."
+     },
+     "stove_level": 2,
+     "time_min": 5
+    }
+   ],
+   "chef_analysis": {
+    "de": "Rinderrouladen: Fleisch flach klopfen macht es zart und rollbar. Senf gibt Säure und Bindung, Gurke das Aroma. Fixieren mit Zahnstochern oder Garn — ohne platzen sie.",
+    "en": "Beef Rouladen: pounding makes it tender and rollable. Mustard adds acidity, pickle gives flavour. Pin with toothpicks or twine or they burst.",
+    "fr": "Rouladen : aplatir la viande. La moutarde apporte l’acidité, le cornichon l’arôme. Fixer ou elles éclatent.",
+    "it": "Rouladen: battere la carne. La senape dà acidità, il cetriolino l’aroma. Fissare o scoppiano.",
+    "tr": "Rouladen: eti inceltmek. Hardal asit, turşu aroma. Sabitlemezsen patlar."
+   },
+   "coreComponents": [
+    "beef_rouladen",
+    "bacon",
+    "onion_yellow",
+    "pickle",
+    "mustard",
+    "red_wine",
+    "beef_stock",
+    "tomato_paste",
+    "carrot",
+    "bay_leaf",
+    "salt",
+    "black_pepper"
+   ]
   }
  ]
 }
