@@ -31869,6 +31869,1212 @@
     "salt",
     "pepper_black"
    ]
+  },
+  {
+   "id": "beef_wellington",
+   "immutable": true,
+   "cuisine": "gb",
+   "region": "Klassisch",
+   "servings": 4,
+   "prep_time_min": 120,
+   "aliases": {
+    "de": [
+     "beef wellington",
+     "rinderfilet im blaetterteig",
+     "rinderfilet im blätterteig"
+    ],
+    "en": [
+     "beef wellington",
+     "wellington beef"
+    ],
+    "fr": [
+     "beef wellington",
+     "filet de bœuf en croûte"
+    ],
+    "it": [
+     "beef wellington",
+     "filetto di manzo in crosta"
+    ],
+    "tr": [
+     "beef wellington",
+     "milföy kaplı biftek"
+    ]
+   },
+   "titles": {
+    "de": "Beef Wellington",
+    "en": "Beef Wellington",
+    "fr": "Beef Wellington",
+    "it": "Beef Wellington",
+    "tr": "Beef Wellington"
+   },
+   "garnish": {
+    "de": "In dicken Scheiben mit Madeira-Jus servieren.",
+    "en": "Slice thick, serve with Madeira jus.",
+    "fr": "Trancher épais, servir avec jus au madère.",
+    "it": "Tagliare spesso, servire con jus al madeira.",
+    "tr": "Kalın dilimleyin, madeira soslu servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Rinderfilet",
+      "en": "Beef tenderloin",
+      "fr": "Filet de bœuf",
+      "it": "Filetto di manzo",
+      "tr": "Biftek fileto"
+     },
+     "amount": 500,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 6.5,
+     "protein": 20.5,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Blätterteig",
+      "en": "Puff pastry",
+      "fr": "Pâte feuilletée",
+      "it": "Pasta sfoglia",
+      "tr": "Milföy hamuru"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 45,
+     "fat": 30,
+     "protein": 7,
+     "fiber": 1.5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Champignons",
+      "en": "Button mushrooms",
+      "fr": "Champignons de Paris",
+      "it": "Champignon",
+      "tr": "Kültür mantarı"
+     },
+     "amount": 400,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 2.3,
+     "fat": 0.3,
+     "protein": 3.1,
+     "fiber": 1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Prosciutto",
+      "en": "Prosciutto",
+      "fr": "Prosciutto",
+      "it": "Prosciutto",
+      "tr": "Prosciutto"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 14,
+     "protein": 26,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Dijon-Senf",
+      "en": "Dijon mustard",
+      "fr": "Moutarde de Dijon",
+      "it": "Senape di Dijon",
+      "tr": "Dijon hardalı"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 3,
+     "fat": 3.5,
+     "protein": 4,
+     "fiber": 2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Schalotten",
+      "en": "Shallots",
+      "fr": "Échalotes",
+      "it": "Scalogni",
+      "tr": "Arpacık soğan"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 13.6,
+     "fat": 0.1,
+     "protein": 2.5,
+     "fiber": 3.2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Butter",
+      "en": "Butter",
+      "fr": "Beurre",
+      "it": "Burro",
+      "tr": "Tereyağı"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0.1,
+     "fat": 81.1,
+     "protein": 0.9,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "fat"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Madeira",
+      "en": "Madeira",
+      "fr": "Madère",
+      "it": "Madeira",
+      "tr": "Madeira"
+     },
+     "amount": 40,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 5,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Ei",
+      "en": "Egg",
+      "fr": "Œuf",
+      "it": "Uovo",
+      "tr": "Yumurta"
+     },
+     "amount": 1,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 0.7,
+     "fat": 9.5,
+     "protein": 12.6,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "binder"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Thymian, frisch",
+      "en": "Fresh thyme",
+      "fr": "Thym frais",
+      "it": "Timo fresco",
+      "tr": "Taze kekik"
+     },
+     "amount": 5,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 10.4,
+     "fat": 1.7,
+     "protein": 5.6,
+     "fiber": 14,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0011",
+     "names": {
+      "de": "Salz",
+      "en": "Salt",
+      "fr": "Sel",
+      "it": "Sale",
+      "tr": "Tuz"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0012",
+     "names": {
+      "de": "Pfeffer (schwarz)",
+      "en": "Black pepper",
+      "fr": "Poivre noir",
+      "it": "Pepe nero",
+      "tr": "Karabiber"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 38.7,
+     "fat": 3.3,
+     "protein": 10.4,
+     "fiber": 25.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Filet anbraten",
+      "en": "Sear tenderloin",
+      "fr": "Saisir le filet",
+      "it": "Rosolare il filetto",
+      "tr": "Filetoyu mühürle"
+     },
+     "content": {
+      "de": "{0001} salzen, pfeffern, in heißer Pfanne rundum scharf anbraten (2 Min./Seite). Abkühlen lassen, mit {0005} bestreichen.",
+      "en": "Season {0001}, sear all over in hot pan (2 min/side). Cool, brush with {0005}.",
+      "fr": "Assaisonner {0001}, saisir (2 min/face). Refroidir, badigeonner de {0005}.",
+      "it": "Condire {0001}, rosolare (2 min/lato). Raffreddare, spennellare con {0005}.",
+      "tr": "{0001}ı baharatla, her yönden mühürle (2 dk/yüz). Soğut, {0005} sür."
+     },
+     "stove_level": 4,
+     "time_min": 10
+    },
+    {
+     "title": {
+      "de": "Duxelles",
+      "en": "Duxelles",
+      "fr": "Duxelles",
+      "it": "Duxelles",
+      "tr": "Duxelles"
+     },
+     "content": {
+      "de": "{0003} fein hacken, in {0007} mit {0006} 10 Min. trocken dünsten, mit {0008} ablöschen, einkochen.",
+      "en": "Finely chop {0003}, sweat in {0007} with {0006} 10 min, deglaze with {0008}, reduce.",
+      "fr": "Hacher {0003}, suer dans {0007} avec {0006} 10 min, déglacer au {0008}, réduire.",
+      "it": "Tritare {0003}, stufare in {0007} con {0006} 10 min, sfumare con {0008}, ridurre.",
+      "tr": "{0003}ı ince kıy, {0007} ve {0006} ile 10 dk sotele, {0008} ile söndür, çektir."
+     },
+     "stove_level": 3,
+     "time_min": 15
+    },
+    {
+     "title": {
+      "de": "Wickeln",
+      "en": "Wrap",
+      "fr": "Enrouler",
+      "it": "Avvolgere",
+      "tr": "Sar"
+     },
+     "content": {
+      "de": "{0004} auf Frischhaltefolie auslegen. Duxelles darauf, Filet einrollen, fest verschließen, 30 Min. kühlen.",
+      "en": "Lay {0004} on cling film. Spread duxelles, roll tenderloin tight, chill 30 min.",
+      "fr": "Étaler {0004} sur film. Étaler duxelles, rouler le filet serré, réfrigérer 30 min.",
+      "it": "Stendere {0004} su pellicola. Duxelles sopra, arrotolare stretto, freddo 30 min.",
+      "tr": "{0004}ı streç filme yay. Duxelles üzerine, filetoyu sıkı sar, 30 dk soğut."
+     },
+     "stove_level": 0,
+     "time_min": 30
+    },
+    {
+     "title": {
+      "de": "In Blätterteig",
+      "en": "In pastry",
+      "fr": "En pâte",
+      "it": "In pasta",
+      "tr": "Hamurda"
+     },
+     "content": {
+      "de": "{0002} ausrollen, Filet auswickeln und einpacken, Ränder mit {0009} verschließen, mit {0009} bestreichen.",
+      "en": "Roll out {0002}, unwrap filet and wrap, seal edges with {0009}, brush with {0009}.",
+      "fr": "Étaler {0002}, déballer et enrober, souder avec {0009}, badigeonner de {0009}.",
+      "it": "Stendere {0002}, srotolare e avvolgere, sigillare con {0009}, spennellare con {0009}.",
+      "tr": "{0002}ı aç, filetoyu sar, kenarları {0009} ile yapıştır, {0009} sür."
+     },
+     "stove_level": 0,
+     "time_min": 10
+    },
+    {
+     "title": {
+      "de": "Backen",
+      "en": "Bake",
+      "fr": "Cuire",
+      "it": "Cuocere",
+      "tr": "Pişir"
+     },
+     "content": {
+      "de": "Bei 200 °C 25–30 Min. backen bis der Teig goldbraun ist. 10 Min. ruhen lassen, dann in 3 cm Scheiben schneiden.",
+      "en": "Bake at 200 °C 25–30 min until golden. Rest 10 min, slice into 3 cm pieces.",
+      "fr": "Cuire à 200 °C 25–30 min. Repos 10 min, trancher en 3 cm.",
+      "it": "Cuocere a 200 °C 25–30 min. Riposo 10 min, tagliare a 3 cm.",
+      "tr": "200 °C fırında 25–30 dk altın rengi olana kadar pişir. 10 dk dinlendir, 3 cm dilimle."
+     },
+     "stove_level": 4,
+     "time_min": 30
+    }
+   ],
+   "chef_analysis": {
+    "de": "Beef Wellington: Filet vor dem Wickeln komplett abkühlen lassen, sonst weicht der Blätterteig durch. Duxelles muss trocken sein — feuchte Pilze ruinieren die Kruste.",
+    "en": "Beef Wellington: cool the tenderloin completely before wrapping or pastry gets soggy. Duxelles must be dry — wet mushrooms ruin the crust.",
+    "fr": "Beef Wellington : refroidir le filet avant d’enrouler sinon la pâte ramollit. La duxelles doit être sèche — champignons humides ruinent la croûte.",
+    "it": "Beef Wellington: raffreddare il filetto prima di avvolgere o la sfoglia si bagna. La duxelles deve essere asciutta — funghi umidi rovinano la crosta.",
+    "tr": "Beef Wellington: filetoyu sarmadan önce tamamen soğut, yoksa milföy ıslanır. Duxelles kuru olmalı — ıslak mantar hamuru bozar."
+   },
+   "coreComponents": [
+    "beef_tenderloin",
+    "puff_pastry",
+    "button_mushroom",
+    "prosciutto",
+    "dijon_mustard",
+    "shallot",
+    "butter",
+    "madeira",
+    "egg",
+    "thyme_fresh",
+    "salt",
+    "black_pepper"
+   ]
+  },
+  {
+   "id": "cassoulet",
+   "immutable": true,
+   "cuisine": "fr",
+   "region": "Languedoc",
+   "servings": 4,
+   "prep_time_min": 240,
+   "aliases": {
+    "de": [
+     "cassoulet",
+     "cassoulet de toulouse",
+     "franzoesischer bohnentopf"
+    ],
+    "en": [
+     "cassoulet",
+     "french bean casserole"
+    ],
+    "fr": [
+     "cassoulet",
+     "cassoulet de toulouse"
+    ],
+    "it": [
+     "cassoulet",
+     "stufato di fagioli francese"
+    ],
+    "tr": [
+     "cassoulet",
+     "fransız fasulye güveci"
+    ]
+   },
+   "titles": {
+    "de": "Cassoulet",
+    "en": "Cassoulet",
+    "fr": "Cassoulet",
+    "it": "Cassoulet",
+    "tr": "Cassoulet"
+   },
+   "garnish": {
+    "de": "Mit Semmelbrösel-Kruste und Petersilie servieren.",
+    "en": "Serve with bread-crumb crust and parsley.",
+    "fr": "Servir avec croûte de chapelure et persil.",
+    "it": "Servire con crosta di pangrattato e prezzemolo.",
+    "tr": "Galeta kabuğu ve maydanoz ile servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Weisse Bohnen (getrocknet)",
+      "en": "White beans (dried)",
+      "fr": "Haricots blancs (secs)",
+      "it": "Fagioli bianchi (secchi)",
+      "tr": "Beyaz fasulye (kuru)"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 47,
+     "fat": 0.8,
+     "protein": 21,
+     "fiber": 15,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Entenconfit",
+      "en": "Duck confit",
+      "fr": "Confit de canard",
+      "it": "Confit d anatra",
+      "tr": "Ördek konfi"
+     },
+     "amount": 60,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0.5,
+     "fat": 30,
+     "protein": 25,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Toulouse-Wurst",
+      "en": "Toulouse sausage",
+      "fr": "Saucisse de Toulouse",
+      "it": "Salsiccia di Tolosa",
+      "tr": "Toulouse sosisi"
+     },
+     "amount": 60,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 1,
+     "fat": 25,
+     "protein": 17,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Schweinebauch",
+      "en": "Pork belly",
+      "fr": "Poitrine de porc",
+      "it": "Pancetta di maiale",
+      "tr": "Domuz göbeği"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 53,
+     "protein": 9.3,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Lammsschulter",
+      "en": "Lamb shoulder",
+      "fr": "Épaule d agneau",
+      "it": "Spalla di agnello",
+      "tr": "Kuzu omuz"
+     },
+     "amount": 60,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 16,
+     "protein": 17,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Zwiebeln",
+      "en": "Onions",
+      "fr": "Oignons",
+      "it": "Cipolle",
+      "tr": "Soğan"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.6,
+     "fat": 0.1,
+     "protein": 1.1,
+     "fiber": 1.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Knoblauch",
+      "en": "Garlic",
+      "fr": "Ail",
+      "it": "Aglio",
+      "tr": "Sarımsak"
+     },
+     "amount": 3,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 31,
+     "fat": 0.5,
+     "protein": 6.4,
+     "fiber": 2.1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Tomatenmark",
+      "en": "Tomato paste",
+      "fr": "Concentré de tomate",
+      "it": "Concentrato di pomodoro",
+      "tr": "Domates salçası"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 15.5,
+     "fat": 0.7,
+     "protein": 4.2,
+     "fiber": 4.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Karotten",
+      "en": "Carrots",
+      "fr": "Carottes",
+      "it": "Carote",
+      "tr": "Havuç"
+     },
+     "amount": 100,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 6.8,
+     "fat": 0.2,
+     "protein": 0.9,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Sellerie",
+      "en": "Celery",
+      "fr": "Céleri",
+      "it": "Sedano",
+      "tr": "Kereviz sapı"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 1.4,
+     "fat": 0.2,
+     "protein": 0.7,
+     "fiber": 1.6,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0011",
+     "names": {
+      "de": "Thymian, frisch",
+      "en": "Fresh thyme",
+      "fr": "Thym frais",
+      "it": "Timo fresco",
+      "tr": "Taze kekik"
+     },
+     "amount": 5,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 10.4,
+     "fat": 1.7,
+     "protein": 5.6,
+     "fiber": 14,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0012",
+     "names": {
+      "de": "Lorbeerblätter",
+      "en": "Bay leaves",
+      "fr": "Feuilles de laurier",
+      "it": "Foglie di alloro",
+      "tr": "Defne yaprağı"
+     },
+     "amount": 2,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 48.6,
+     "fat": 8.4,
+     "protein": 7.6,
+     "fiber": 26.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0013",
+     "names": {
+      "de": "Semmelbrösel",
+      "en": "Bread crumbs",
+      "fr": "Chapelure",
+      "it": "Pangrattato",
+      "tr": "Galeta unu"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 70,
+     "fat": 5,
+     "protein": 11,
+     "fiber": 4,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "garnish"
+    },
+    {
+     "id": "0014",
+     "names": {
+      "de": "Gänsefett",
+      "en": "Goose fat",
+      "fr": "Graisse d oie",
+      "it": "Grasso d oca",
+      "tr": "Kaz yağı"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 100,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "fat"
+    },
+    {
+     "id": "0015",
+     "names": {
+      "de": "Salz",
+      "en": "Salt",
+      "fr": "Sel",
+      "it": "Sale",
+      "tr": "Tuz"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0016",
+     "names": {
+      "de": "Pfeffer (schwarz)",
+      "en": "Black pepper",
+      "fr": "Poivre noir",
+      "it": "Pepe nero",
+      "tr": "Karabiber"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 38.7,
+     "fat": 3.3,
+     "protein": 10.4,
+     "fiber": 25.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Bohnen einweichen",
+      "en": "Soak beans",
+      "fr": "Tremper haricots",
+      "it": "Ammollare fagioli",
+      "tr": "Fasulyeyi ıslat"
+     },
+     "content": {
+      "de": "{0001} über Nacht in kaltem Wasser einweichen, abgießen.",
+      "en": "Soak {0001} overnight in cold water, drain.",
+      "fr": "Tremper {0001} une nuit, égoutter.",
+      "it": "Ammollare {0001} una notte, scolare.",
+      "tr": "{0001}ı bir gece ıslat, süz."
+     },
+     "stove_level": 0,
+     "time_min": 720
+    },
+    {
+     "title": {
+      "de": "Fleisch anbraten",
+      "en": "Sear meats",
+      "fr": "Saisir viandes",
+      "it": "Rosolare carni",
+      "tr": "Etleri mühürle"
+     },
+     "content": {
+      "de": "{0002}, {0003}, {0004}, {0005} in {0014} portionsweise anbraten, beiseitestellen.",
+      "en": "Sear {0002}, {0003}, {0004}, {0005} in {0014} in batches, set aside.",
+      "fr": "Saisir {0002}, {0003}, {0004}, {0005} dans {0014} par lots.",
+      "it": "Rosolare {0002}, {0003}, {0004}, {0005} in {0014} a lotti.",
+      "tr": "{0002}, {0003}, {0004}, {0005}ı {0014} içinde partiler halinde mühürle."
+     },
+     "stove_level": 4,
+     "time_min": 15
+    },
+    {
+     "title": {
+      "de": "Gemüsebett",
+      "en": "Vegetable base",
+      "fr": "Base de légumes",
+      "it": "Base di verdure",
+      "tr": "Sebze yatağı"
+     },
+     "content": {
+      "de": "{0006}, {0009}, {0010} anbraten. {0007}, {0008} zugeben, 2 Min. rösten.",
+      "en": "Sauté {0006}, {0009}, {0010}. Add {0007}, {0008}, toast 2 min.",
+      "fr": "Sauter {0006}, {0009}, {0010}. Ajouter {0007}, {0008}, torréfier 2 min.",
+      "it": "Soffriggere {0006}, {0009}, {0010}. Aggiungere {0007}, {0008}, tostare 2 min.",
+      "tr": "{0006}, {0009}, {0010} sotele. {0007}, {0008} ekle, 2 dk kavur."
+     },
+     "stove_level": 3,
+     "time_min": 8
+    },
+    {
+     "title": {
+      "de": "Schmoren",
+      "en": "Simmer",
+      "fr": "Mijoter",
+      "it": "Cuocere",
+      "tr": "Pişir"
+     },
+     "content": {
+      "de": "Fleisch und Bohnen zurück, mit Wasser bedecken, {0011} und {0012} zugeben. 2 Std. sanft schmoren.",
+      "en": "Return meat and beans, cover with water, add {0011}, {0012}. Simmer gently 2 h.",
+      "fr": "Remettre viandes et haricots, couvrir d’eau, ajouter {0011}, {0012}. Mijoter 2 h.",
+      "it": "Rimettere carni e fagioli, coprire d’acqua, aggiungere {0011}, {0012}. Cuocere 2 h.",
+      "tr": "Etleri ve fasulyeyi geri koy, suyla ört, {0011}, {0012} ekle. 2 saat kısık ateşte pişir."
+     },
+     "stove_level": 2,
+     "time_min": 120
+    },
+    {
+     "title": {
+      "de": "Kruste",
+      "en": "Crust",
+      "fr": "Croûte",
+      "it": "Crosta",
+      "tr": "Kabuk"
+     },
+     "content": {
+      "de": "{0013} über den Eintopf streuen, im Ofen bei 200 °C 20 Min. goldbraun gratinieren.",
+      "en": "Sprinkle {0013} on top, bake at 200 °C 20 min until golden.",
+      "fr": "Saupoudrer {0013}, gratiner à 200 °C 20 min.",
+      "it": "Cospargere {0013}, gratinare a 200 °C 20 min.",
+      "tr": "{0013} serp, 200 °C fırında 20 dk altın rengi gratine et."
+     },
+     "stove_level": 4,
+     "time_min": 20
+    }
+   ],
+   "chef_analysis": {
+    "de": "Cassoulet: Bohnen müssen weich sein, bevor sie mit dem Fleisch in den Ofen gehen. Die Kruste mehrfach eindrücken — das gibt die typische Textur.",
+    "en": "Cassoulet: beans must be tender before going in the oven with the meat. Press the crust in several times for the classic texture.",
+    "fr": "Cassoulet : les haricots doivent être tendres avant le four. Enfoncer la croûte plusieurs fois pour la texture classique.",
+    "it": "Cassoulet: i fagioli devono essere teneri prima del forno. Premere la crosta più volte per la texture classica.",
+    "tr": "Cassoulet: fasulye fırına girmeden yumuşamış olmalı. Kabuğu birkaç kez bastır, klasik doku için."
+   },
+   "coreComponents": [
+    "white_beans",
+    "duck_confit",
+    "toulouse_sausage",
+    "pork_belly",
+    "lamb_shoulder",
+    "onion_yellow",
+    "garlic",
+    "tomato_paste",
+    "carrot",
+    "celery",
+    "thyme_fresh",
+    "bay_leaf",
+    "bread_crumbs",
+    "goose_fat",
+    "salt",
+    "black_pepper"
+   ]
+  },
+  {
+   "id": "ceviche",
+   "immutable": true,
+   "cuisine": "pe",
+   "region": "Peru",
+   "servings": 4,
+   "prep_time_min": 40,
+   "aliases": {
+    "de": [
+     "ceviche",
+     "cebiche",
+     "peruanisches ceviche"
+    ],
+    "en": [
+     "ceviche",
+     "cebiche"
+    ],
+    "fr": [
+     "ceviche",
+     "cebiche"
+    ],
+    "it": [
+     "ceviche",
+     "cebiche"
+    ],
+    "tr": [
+     "ceviche",
+     "cebiche"
+    ]
+   },
+   "titles": {
+    "de": "Ceviche",
+    "en": "Ceviche",
+    "fr": "Ceviche",
+    "it": "Ceviche",
+    "tr": "Ceviche"
+   },
+   "garnish": {
+    "de": "Mit Süsskartoffel, Mais und Koriander servieren.",
+    "en": "Serve with sweet potato, corn and cilantro.",
+    "fr": "Servir avec patate douce, maïs et coriandre.",
+    "it": "Servire con patata dolce, mais e coriandolo.",
+    "tr": "Tatlı patates, mısır ve kişniş ile servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Weissfischfilet (Kabeljau)",
+      "en": "White fish fillet (cod)",
+      "fr": "Filet de poisson blanc",
+      "it": "Filetto di pesce bianco",
+      "tr": "Beyaz balık filetosu"
+     },
+     "amount": 400,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 0.7,
+     "protein": 17.8,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Limette",
+      "en": "Lime",
+      "fr": "Citron vert",
+      "it": "Lime",
+      "tr": "Misket limonu"
+     },
+     "amount": 120,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 6,
+     "fat": 0.2,
+     "protein": 0.7,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Rote Zwiebel",
+      "en": "Red onion",
+      "fr": "Oignon rouge",
+      "it": "Cipolla rossa",
+      "tr": "Kırmızı soğan"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.6,
+     "fat": 0.1,
+     "protein": 1.1,
+     "fiber": 1.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Koriander (frisch)",
+      "en": "Cilantro",
+      "fr": "Coriandre",
+      "it": "Coriandolo",
+      "tr": "Kişniş"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0.9,
+     "fat": 0.5,
+     "protein": 2.1,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Aji-Chili",
+      "en": "Aji chili",
+      "fr": "Aji amarillo",
+      "it": "Aji",
+      "tr": "Aji biberi"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 5,
+     "fat": 0.4,
+     "protein": 1.9,
+     "fiber": 1.5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Süsskartoffel",
+      "en": "Sweet potato",
+      "fr": "Patate douce",
+      "it": "Patata dolce",
+      "tr": "Tatlı patates"
+     },
+     "amount": 320,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 17.1,
+     "fat": 0.1,
+     "protein": 1.6,
+     "fiber": 3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Mais",
+      "en": "Corn",
+      "fr": "Maïs",
+      "it": "Mais",
+      "tr": "Mısır"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 16.7,
+     "fat": 1.5,
+     "protein": 3.4,
+     "fiber": 2.4,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Olivenöl",
+      "en": "Olive oil",
+      "fr": "Huile d olive",
+      "it": "Olio d oliva",
+      "tr": "Zeytinyağı"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 100,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "fat"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Salz",
+      "en": "Salt",
+      "fr": "Sel",
+      "it": "Sale",
+      "tr": "Tuz"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Fisch vorbereiten",
+      "en": "Prep fish",
+      "fr": "Préparer poisson",
+      "it": "Preparare pesce",
+      "tr": "Balığı hazırla"
+     },
+     "content": {
+      "de": "{0001} in 2 cm Würfel schneiden, kalt stellen.",
+      "en": "Cut {0001} into 2 cm cubes, refrigerate.",
+      "fr": "Couper {0001} en cubes de 2 cm, réfrigérer.",
+      "it": "Tagliare {0001} a cubetti di 2 cm, freddo.",
+      "tr": "{0001}ı 2 cm küp kes, soğut."
+     },
+     "stove_level": 0,
+     "time_min": 10
+    },
+    {
+     "title": {
+      "de": "Tiger-Milch",
+      "en": "Tiger milk",
+      "fr": "Lait de tigre",
+      "it": "Latte di tigre",
+      "tr": "Kaplan sütü"
+     },
+     "content": {
+      "de": "{0002} auspressen, Saft mit {0005}, {0004} (Hälfte) und 1 EL Fischwürfeln mixen, salzen.",
+      "en": "Squeeze {0002}, blend juice with {0005}, half {0004} and 1 tbsp fish cubes, salt.",
+      "fr": "Presser {0002}, mixer jus avec {0005}, moitié {0004} et 1 c. à s. de poisson, saler.",
+      "it": "Spremere {0002}, frullare succo con {0005}, metà {0004} e 1 cucchiaio di pesce, salare.",
+      "tr": "{0002}ı sık, suyu {0005}, yarım {0004} ve 1 yk balıkla blend et, tuzla."
+     },
+     "stove_level": 0,
+     "time_min": 5
+    },
+    {
+     "title": {
+      "de": "Marinieren",
+      "en": "Marinate",
+      "fr": "Mariner",
+      "it": "Marinare",
+      "tr": "Marine et"
+     },
+     "content": {
+      "de": "Fischwürfel 10–15 Min. in der Tiger-Milch marinieren — nicht länger, sonst wird der Fisch matschig.",
+      "en": "Marinate fish cubes 10–15 min in tiger milk — no longer or fish turns mushy.",
+      "fr": "Mariner 10–15 min — pas plus sinon le poisson devient pâteux.",
+      "it": "Marinare 10–15 min — non di più o il pesce diventa molle.",
+      "tr": "Balık küplerini 10–15 dk marine et — daha uzun olmaz, yoksa balık dağılır."
+     },
+     "stove_level": 0,
+     "time_min": 12
+    },
+    {
+     "title": {
+      "de": "Anrichten",
+      "en": "Plate",
+      "fr": "Dresser",
+      "it": "Impiattare",
+      "tr": "Servis"
+     },
+     "content": {
+      "de": "{0003} in feine Ringe schneiden, unterheben. Mit {0006} (gekocht) und {0007} (geröstet) servieren, mit {0004} und {0008} bestreuen.",
+      "en": "Thinly slice {0003}, fold in. Serve with cooked {0006} and toasted {0007}, sprinkle {0004}, {0008}.",
+      "fr": "Émincer {0003}, incorporer. Servir avec {0006} cuit et {0007} grillé, parsemer {0004}, {0008}.",
+      "it": "Affettare {0003}, unire. Servire con {0006} cotta e {0007} tostato, cospargere {0004}, {0008}.",
+      "tr": "{0003}ı ince halka kes, karıştır. Haşlanmış {0006} ve kavrulmuş {0007} ile servis et, {0004}, {0008} serp."
+     },
+     "stove_level": 0,
+     "time_min": 8
+    }
+   ],
+   "chef_analysis": {
+    "de": "Ceviche: Frische ist alles — der Fisch muss sushi-tauglich sein. Limettensaft und Chili erst kurz vor dem Servieren, sonst wird der Fisch durchgegart.",
+    "en": "Ceviche: freshness is everything — fish must be sushi-grade. Lime juice and chili just before serving or the fish overcooks.",
+    "fr": "Ceviche : la fraîcheur est tout — le poisson doit être extra-frais. Jus de citron vert et chili juste avant de servir.",
+    "it": "Ceviche: la freschezza è tutto — pesce da sushi. Succo di lime e chili solo prima di servire.",
+    "tr": "Ceviche: tazelik her şeydir — balık sushi kalitesinde olmalı. Misket limonu ve chili servisten hemen önce."
+   },
+   "coreComponents": [
+    "fish_fillet",
+    "lime",
+    "red_onion",
+    "cilantro",
+    "aji_chili",
+    "sweet_potato",
+    "corn",
+    "olive_oil",
+    "salt"
+   ]
   }
  ]
 }
