@@ -4735,19 +4735,19 @@
      wirksam - die globale .meal-list-toggle-Klasse (u.a. Startseiten-Kachel) bleibt ansonsten
      unveraendert, da die Bubble/Badge-Elemente selbst nur hier ueberhaupt existieren. */
   .day-actions-areas .mlt-icon-bubble{
-    flex:0 0 auto; width:44px; height:44px; border-radius:50%; background:var(--purple-soft); color:var(--icon-on-purple-soft);
+    flex:0 0 auto; width:44px; height:44px; border-radius:50%; background:var(--purple); color:#fff;
     display:flex; align-items:center; justify-content:center;
   }
   .day-actions-areas .mlt-icon-bubble svg{ width:20px; height:20px; display:block; }
 
   /* Kartentitel wie Meine Rezepte (.localrecipe-list-name): var(--ink) = weiß im Dark Mode */
   .day-actions-areas .meal-list-toggle .mlt-text{
-    flex:1 1 auto; min-width:0; color:var(--purple); font-weight:450;
+    flex:1 1 auto; min-width:0; color:#fff; font-weight:450;
     white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
   }
 
   .day-actions-areas .mlt-count-badge{
-    flex:0 0 auto; background:var(--purple-soft); color:var(--purple); font-family:var(--font-ui);
+    flex:0 0 auto; background:var(--purple); color:#fff; font-family:var(--font-ui);
     font-weight:450; font-size:12px; padding:4px 10px; border-radius:14px; white-space:nowrap;
   }
 
@@ -12171,7 +12171,7 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
              Routine (meal-list-toggle + mlt-icon-bubble). Kochmuetze: Koerper in App-Lila,
              Streifen unten in hellerem Lila (#A78BFA). -->
         <button type="button" class="meal-list-toggle" id="day-actions-save-recipe-btn">
-          <span class="mlt-icon-bubble" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z"/><path d="M6 17h12" stroke="#A78BFA"/></svg></span>
+          <span class="mlt-icon-bubble" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z"/><path d="M6 17h12" stroke="currentColor"/></svg></span>
           <span class="mlt-text">Als Rezept speichern</span>
           <span class="mlt-chevron">›</span>
         </button>
