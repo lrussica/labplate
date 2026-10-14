@@ -43665,6 +43665,1556 @@
     "salt",
     "black_pepper"
    ]
+  },
+  {
+   "id": "harira",
+   "immutable": true,
+   "cuisine": "ma",
+   "region": "Marokko",
+   "servings": 4,
+   "prep_time_min": 90,
+   "aliases": {
+    "de": [
+     "harira",
+     "marokkanische linsensuppe"
+    ],
+    "en": [
+     "harira",
+     "moroccan lentil soup"
+    ],
+    "fr": [
+     "harira"
+    ],
+    "it": [
+     "harira"
+    ],
+    "tr": [
+     "harira"
+    ]
+   },
+   "titles": {
+    "de": "Harira",
+    "en": "Harira",
+    "fr": "Harira",
+    "it": "Harira",
+    "tr": "Harira"
+   },
+   "garnish": {
+    "de": "Mit Zitronenspalten und frischem Koriander servieren.",
+    "en": "Serve with lemon wedges and fresh cilantro.",
+    "fr": "Servir avec quartiers de citron et coriandre fraîche.",
+    "it": "Servire con spicchi di limone e coriandolo fresco.",
+    "tr": "Limon dilimleri ve taze kişniş ile servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Lammsschulter",
+      "en": "Lamb shoulder",
+      "fr": "Épaule d’agneau",
+      "it": "Spalla di agnello",
+      "tr": "Kuzu omuz"
+     },
+     "amount": 300,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 16,
+     "protein": 17,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Kichererbsen (gekocht)",
+      "en": "Chickpeas (cooked)",
+      "fr": "Pois chiches (cuits)",
+      "it": "Ceci (cotti)",
+      "tr": "Nohut (haşlanmış)"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 19.8,
+     "fat": 2.6,
+     "protein": 8.9,
+     "fiber": 7.6,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Tellerlinsen",
+      "en": "Brown lentils",
+      "fr": "Lentilles brunes",
+      "it": "Lenticchie brune",
+      "tr": "Kahverengi mercimek"
+     },
+     "amount": 100,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 48,
+     "fat": 1.1,
+     "protein": 24.6,
+     "fiber": 10.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Tomaten",
+      "en": "Tomatoes",
+      "fr": "Tomates",
+      "it": "Pomodori",
+      "tr": "Domates"
+     },
+     "amount": 400,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 2.8,
+     "fat": 0.2,
+     "protein": 0.9,
+     "fiber": 1.2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Sellerie",
+      "en": "Celery",
+      "fr": "Céleri",
+      "it": "Sedano",
+      "tr": "Kereviz sapı"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 1.4,
+     "fat": 0.2,
+     "protein": 0.7,
+     "fiber": 1.6,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Koriander (frisch)",
+      "en": "Cilantro",
+      "fr": "Coriandre",
+      "it": "Coriandolo",
+      "tr": "Kişniş"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0.9,
+     "fat": 0.5,
+     "protein": 2.1,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Petersilie (frisch)",
+      "en": "Fresh parsley",
+      "fr": "Persil frais",
+      "it": "Prezzemolo fresco",
+      "tr": "Taze maydanoz"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 3,
+     "fat": 0.8,
+     "protein": 3,
+     "fiber": 3.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Zwiebeln",
+      "en": "Onions",
+      "fr": "Oignons",
+      "it": "Cipolle",
+      "tr": "Soğan"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.6,
+     "fat": 0.1,
+     "protein": 1.1,
+     "fiber": 1.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Ingwer, frisch",
+      "en": "Fresh ginger",
+      "fr": "Gingembre frais",
+      "it": "Zenzero fresco",
+      "tr": "Taze zencefil"
+     },
+     "amount": 10,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 15.8,
+     "fat": 0.8,
+     "protein": 1.8,
+     "fiber": 2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Kurkuma",
+      "en": "Turmeric",
+      "fr": "Curcuma",
+      "it": "Curcuma",
+      "tr": "Zerdeçal"
+     },
+     "amount": 5,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 44.4,
+     "fat": 3.2,
+     "protein": 9.7,
+     "fiber": 22.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0011",
+     "names": {
+      "de": "Zimt",
+      "en": "Cinnamon",
+      "fr": "Cannelle",
+      "it": "Cannella",
+      "tr": "Tarçın"
+     },
+     "amount": 5,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 27.5,
+     "fat": 1.2,
+     "protein": 4,
+     "fiber": 53.1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0012",
+     "names": {
+      "de": "Mehl",
+      "en": "Flour",
+      "fr": "Farine",
+      "it": "Farina",
+      "tr": "Un"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 74.4,
+     "fat": 1,
+     "protein": 10.3,
+     "fiber": 2.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0013",
+     "names": {
+      "de": "Zitrone",
+      "en": "Lemon",
+      "fr": "Citron",
+      "it": "Limone",
+      "tr": "Limon"
+     },
+     "amount": 1,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 6.5,
+     "fat": 0.3,
+     "protein": 1.1,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0014",
+     "names": {
+      "de": "Fadennudeln (Vermicelli)",
+      "en": "Vermicelli",
+      "fr": "Vermicelles",
+      "it": "Vermicelli",
+      "tr": "Tel şehriye"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 71,
+     "fat": 1.5,
+     "protein": 12,
+     "fiber": 3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0015",
+     "names": {
+      "de": "Salz",
+      "en": "Salt",
+      "fr": "Sel",
+      "it": "Sale",
+      "tr": "Tuz"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Fleisch und Aromaten",
+      "en": "Meat and aromatics",
+      "fr": "Viande et aromates",
+      "it": "Carne e aromi",
+      "tr": "Et ve aromatikler"
+     },
+     "content": {
+      "de": "{0001} würfeln, mit {0008}, {0009}, {0010}, {0011} in Öl 10 Min. anbraten. {0004} und {0005} zugeben, 5 Min. mitbraten.",
+      "en": "Cube {0001}, sear with {0008}, {0009}, {0010}, {0011} in oil 10 min. Add {0004}, {0005}, cook 5 min.",
+      "fr": "Couper {0001}, saisir avec {0008}-{0011} 10 min. Ajouter {0004}, {0005}, 5 min.",
+      "it": "Cubetti {0001}, rosolare con {0008}-{0011} 10 min. Aggiungere {0004}, {0005}.",
+      "tr": "{0001}ı küp kes, {0008}-{0011} ile 10 dk mühürle. {0004}, {0005} ekle."
+     },
+     "stove_level": 3,
+     "time_min": 15
+    },
+    {
+     "title": {
+      "de": "Kochen",
+      "en": "Simmer",
+      "fr": "Mijoter",
+      "it": "Cuocere",
+      "tr": "Pişir"
+     },
+     "content": {
+      "de": "1,5 L Wasser angießen, aufkochen. {0002}, {0003} zugeben, 40 Min. sanft köcheln.",
+      "en": "Add 1.5 L water, boil. Add {0002}, {0003}, simmer 40 min.",
+      "fr": "Ajouter 1,5 L d’eau, bouillir. Ajouter {0002}, {0003}, mijoter 40 min.",
+      "it": "Aggiungere 1,5 L acqua, bollire. Aggiungere {0002}, {0003}, cuocere 40 min.",
+      "tr": "1,5 L su ekle, kaynat. {0002}, {0003} ekle, 40 dk pişir."
+     },
+     "stove_level": 2,
+     "time_min": 40
+    },
+    {
+     "title": {
+      "de": "Finish",
+      "en": "Finish",
+      "fr": "Finition",
+      "it": "Finitura",
+      "tr": "Final"
+     },
+     "content": {
+      "de": "{0012} mit Wasser verrühren, einrühren, 5 Min. köcheln. {0014} zugeben, 5 Min. ziehen lassen. Mit Saft von {0013}, {0006}, {0007} und Salz abschmecken.",
+      "en": "Whisk {0012} with water, stir in, simmer 5 min. Add {0014}, rest 5 min. Season with juice of {0013}, {0006}, {0007}, salt.",
+      "fr": "Délayer {0012}, incorporer, mijoter 5 min. Ajouter {0014}, 5 min. Assaisonner avec {0013}, {0006}, {0007}.",
+      "it": "Sciogliere {0012}, unire, cuocere 5 min. Aggiungere {0014}, 5 min. Condire con {0013}, {0006}, {0007}.",
+      "tr": "{0012}ı suyla aç, karıştır, 5 dk pişir. {0014} ekle, 5 dk beklet. {0013}, {0006}, {0007} ile tatlandır."
+     },
+     "stove_level": 2,
+     "time_min": 12
+    }
+   ],
+   "chef_analysis": {
+    "de": "Harira: Linsen und Kichererbsen geben unterschiedlich viel Stärke — sie machen die Suppe sämig. Vermicelli erst zum Schluss, sonst zerfallen sie. Zitrone am Ende gibt Frische.",
+    "en": "Harira: lentils and chickpeas release different starches — they thicken the soup. Add vermicelli at the end or they fall apart. Lemon at the end adds freshness.",
+    "fr": "Harira : lentilles et pois chiches apportent l’onctuosité. Vermicelles à la fin. Citron pour la fraîcheur.",
+    "it": "Harira: lenticchie e ceci rendono densa la zuppa. Vermicelli alla fine. Limone per freschezza.",
+    "tr": "Harira: mercimek ve nohut kıvam verir. Tel şehriye en sonda. Limon tazelik katar."
+   },
+   "coreComponents": [
+    "lamb_shoulder",
+    "chickpeas_cooked",
+    "brown_lentils",
+    "tomato",
+    "celery",
+    "cilantro",
+    "parsley_fresh",
+    "onion_yellow",
+    "ginger_fresh",
+    "turmeric",
+    "cinnamon",
+    "flour",
+    "lemon",
+    "vermicelli",
+    "salt"
+   ]
+  },
+  {
+   "id": "pastilla",
+   "immutable": true,
+   "cuisine": "ma",
+   "region": "Fès",
+   "servings": 4,
+   "prep_time_min": 150,
+   "aliases": {
+    "de": [
+     "pastilla",
+     "basteeya",
+     "marokkanische taubenpastete"
+    ],
+    "en": [
+     "pastilla",
+     "basteeya",
+     "moroccan pie"
+    ],
+    "fr": [
+     "pastilla"
+    ],
+    "it": [
+     "pastilla"
+    ],
+    "tr": [
+     "pastilla"
+    ]
+   },
+   "titles": {
+    "de": "Pastilla",
+    "en": "Pastilla",
+    "fr": "Pastilla",
+    "it": "Pastilla",
+    "tr": "Pastilla"
+   },
+   "garnish": {
+    "de": "Mit Puderzucker und Zimt bestreuen.",
+    "en": "Sprinkle with powdered sugar and cinnamon.",
+    "fr": "Saupoudrer de sucre glace et cannelle.",
+    "it": "Cospargere di zucchero a velo e cannella.",
+    "tr": "Pudra şeker ve tarçın serpin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Hähnchenschenkel",
+      "en": "Chicken thigh",
+      "fr": "Cuisse de poulet",
+      "it": "Sovracoscia di pollo",
+      "tr": "Tavuk but"
+     },
+     "amount": 400,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 8.5,
+     "protein": 18.6,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Mandeln",
+      "en": "Almonds",
+      "fr": "Amandes",
+      "it": "Mandorle",
+      "tr": "Badem"
+     },
+     "amount": 60,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 9.1,
+     "fat": 49.9,
+     "protein": 21.2,
+     "fiber": 12.5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Zwiebeln",
+      "en": "Onions",
+      "fr": "Oignons",
+      "it": "Cipolle",
+      "tr": "Soğan"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.6,
+     "fat": 0.1,
+     "protein": 1.1,
+     "fiber": 1.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Ingwer, frisch",
+      "en": "Fresh ginger",
+      "fr": "Gingembre frais",
+      "it": "Zenzero fresco",
+      "tr": "Taze zencefil"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 15.8,
+     "fat": 0.8,
+     "protein": 1.8,
+     "fiber": 2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Zimt",
+      "en": "Cinnamon",
+      "fr": "Cannelle",
+      "it": "Cannella",
+      "tr": "Tarçın"
+     },
+     "amount": 5,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 27.5,
+     "fat": 1.2,
+     "protein": 4,
+     "fiber": 53.1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Safran",
+      "en": "Saffron",
+      "fr": "Safran",
+      "it": "Zafferano",
+      "tr": "Safran"
+     },
+     "amount": 1,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 57,
+     "fat": 5.9,
+     "protein": 11.4,
+     "fiber": 3.9,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Petersilie (frisch)",
+      "en": "Fresh parsley",
+      "fr": "Persil frais",
+      "it": "Prezzemolo fresco",
+      "tr": "Taze maydanoz"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 3,
+     "fat": 0.8,
+     "protein": 3,
+     "fiber": 3.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Koriander (frisch)",
+      "en": "Cilantro",
+      "fr": "Coriandre",
+      "it": "Coriandolo",
+      "tr": "Kişniş"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0.9,
+     "fat": 0.5,
+     "protein": 2.1,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Eier",
+      "en": "Eggs",
+      "fr": "Œufs",
+      "it": "Uova",
+      "tr": "Yumurta"
+     },
+     "amount": 2,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 0.7,
+     "fat": 9.5,
+     "protein": 12.6,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "binder"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Filoteig",
+      "en": "Filo dough",
+      "fr": "Pâte filo",
+      "it": "Pasta fillo",
+      "tr": "Yufka"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 60,
+     "fat": 3,
+     "protein": 8,
+     "fiber": 2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0011",
+     "names": {
+      "de": "Butter",
+      "en": "Butter",
+      "fr": "Beurre",
+      "it": "Burro",
+      "tr": "Tereyağı"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0.1,
+     "fat": 81.1,
+     "protein": 0.9,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "fat"
+    },
+    {
+     "id": "0012",
+     "names": {
+      "de": "Puderzucker",
+      "en": "Powdered sugar",
+      "fr": "Sucre glace",
+      "it": "Zucchero a velo",
+      "tr": "Pudra şekeri"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 100,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "garnish"
+    },
+    {
+     "id": "0013",
+     "names": {
+      "de": "Salz",
+      "en": "Salt",
+      "fr": "Sel",
+      "it": "Sale",
+      "tr": "Tuz"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Füllung",
+      "en": "Filling",
+      "fr": "Garniture",
+      "it": "Ripieno",
+      "tr": "İç harç"
+     },
+     "content": {
+      "de": "{0001} mit {0003}, {0004}, {0005}, {0006} und {0007} 40 Min. sanft schmoren. Fleisch herausnehmen, zerpflücken.",
+      "en": "Simmer {0001} with {0003}, {0004}, {0005}, {0006}, {0007} 40 min. Lift, shred.",
+      "fr": "Mijoter {0001} avec {0003}-{0007} 40 min. Effilocher.",
+      "it": "Cuocere {0001} con {0003}-{0007} 40 min. Sfilacciare.",
+      "tr": "{0001}ı {0003}-{0007} ile 40 dk pişir. Didikle."
+     },
+     "stove_level": 2,
+     "time_min": 40
+    },
+    {
+     "title": {
+      "de": "Eier und Mandeln",
+      "en": "Eggs and almonds",
+      "fr": "Œufs et amandes",
+      "it": "Uova e mandorle",
+      "tr": "Yumurta ve badem"
+     },
+     "content": {
+      "de": "Sauce mit {0009} binden. {0002} rösten, grob hacken.",
+      "en": "Bind sauce with {0009}. Toast {0002}, chop coarsely.",
+      "fr": "Lier la sauce avec {0009}. Torréfier {0002}.",
+      "it": "Legare la salsa con {0009}. Tostare {0002}.",
+      "tr": "Sosu {0009} ile bağla. {0002}ı kavur."
+     },
+     "stove_level": 2,
+     "time_min": 8
+    },
+    {
+     "title": {
+      "de": "Schichten und backen",
+      "en": "Layer and bake",
+      "fr": "Monter et cuire",
+      "it": "Stratificare e cuocere",
+      "tr": "Katmanla ve pişir"
+     },
+     "content": {
+      "de": "{0010} mit {0011} bestreichen, abwechselnd mit Füllung schichten. Bei 180 °C 25 Min. goldbraun backen. Mit {0012} und {0005} bestreuen.",
+      "en": "Brush {0010} with {0011}, layer with filling. Bake at 180 °C 25 min until golden. Sprinkle {0012}, {0005}.",
+      "fr": "Badigeonner {0010} avec {0011}, alterner. Cuire à 180 °C 25 min. Saupoudrer {0012}, {0005}.",
+      "it": "Spennellare {0010} con {0011}, alternare. Cuocere a 180 °C 25 min. Cospargere {0012}, {0005}.",
+      "tr": "{0010}ı {0011} ile yağla, katmanla. 180 °C 25 dk. {0012}, {0005} serp."
+     },
+     "stove_level": 4,
+     "time_min": 30
+    }
+   ],
+   "chef_analysis": {
+    "de": "Pastilla: Fleisch muss kalt sein vor dem Schichten, sonst weicht der Filo durch. Mandeln grob hacken für Biss. Zum Schluss Puderzucker und Zimt — süß-herzhaft ist die typische Balance.",
+    "en": "Pastilla: filling must be cold before layering or the filo sogs. Chop almonds coarsely for bite. Powdered sugar and cinnamon at the end — that sweet-savoury balance is the signature.",
+    "fr": "Pastilla : la farce froide avant de monter. Amandes grossièrement hachées. Sucre glace et cannelle à la fin.",
+    "it": "Pastilla: ripieno freddo prima di montare. Mandorle tritate grossolane. Zucchero a velo e cannella alla fine.",
+    "tr": "Pastilla: iç soğuk olmalı. Badem iri kıyılmalı. Pudra şeker ve tarçın en sonda."
+   },
+   "coreComponents": [
+    "chicken_thigh",
+    "almonds",
+    "onion_yellow",
+    "ginger_fresh",
+    "cinnamon",
+    "saffron",
+    "parsley_fresh",
+    "cilantro",
+    "egg",
+    "filo_dough",
+    "butter",
+    "powdered_sugar",
+    "salt"
+   ]
+  },
+  {
+   "id": "menemen",
+   "immutable": true,
+   "cuisine": "tr",
+   "region": "Türkei",
+   "servings": 4,
+   "prep_time_min": 25,
+   "aliases": {
+    "de": [
+     "menemen",
+     "türkisches rührei",
+     "tuerkisches ruehrei"
+    ],
+    "en": [
+     "menemen",
+     "turkish scrambled eggs"
+    ],
+    "fr": [
+     "menemen"
+    ],
+    "it": [
+     "menemen"
+    ],
+    "tr": [
+     "menemen"
+    ]
+   },
+   "titles": {
+    "de": "Menemen",
+    "en": "Menemen",
+    "fr": "Menemen",
+    "it": "Menemen",
+    "tr": "Menemen"
+   },
+   "garnish": {
+    "de": "Mit warmem Fladenbrot servieren.",
+    "en": "Serve with warm flatbread.",
+    "fr": "Servir avec pain plat chaud.",
+    "it": "Servire con pane piatto caldo.",
+    "tr": "Sıcak pide ile servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Eier",
+      "en": "Eggs",
+      "fr": "Œufs",
+      "it": "Uova",
+      "tr": "Yumurta"
+     },
+     "amount": 6,
+     "unit": "stk",
+     "protein_source": true,
+     "netCarbs": 0.7,
+     "fat": 9.5,
+     "protein": 12.6,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Tomaten",
+      "en": "Tomatoes",
+      "fr": "Tomates",
+      "it": "Pomodori",
+      "tr": "Domates"
+     },
+     "amount": 400,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 2.8,
+     "fat": 0.2,
+     "protein": 0.9,
+     "fiber": 1.2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Grüne Paprika",
+      "en": "Green bell pepper",
+      "fr": "Poivron vert",
+      "it": "Peperone verde",
+      "tr": "Yeşil biber"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 2.9,
+     "fat": 0.2,
+     "protein": 0.9,
+     "fiber": 1.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Zwiebeln",
+      "en": "Onions",
+      "fr": "Oignons",
+      "it": "Cipolle",
+      "tr": "Soğan"
+     },
+     "amount": 100,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.6,
+     "fat": 0.1,
+     "protein": 1.1,
+     "fiber": 1.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Butter",
+      "en": "Butter",
+      "fr": "Beurre",
+      "it": "Burro",
+      "tr": "Tereyağı"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0.1,
+     "fat": 81.1,
+     "protein": 0.9,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "fat"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Olivenöl",
+      "en": "Olive oil",
+      "fr": "Huile d’olive",
+      "it": "Olio d’oliva",
+      "tr": "Zeytinyağı"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 100,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "fat"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Chili",
+      "en": "Red chili",
+      "fr": "Piment rouge",
+      "it": "Peperoncino rosso",
+      "tr": "Kırmızı biber"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.3,
+     "fat": 0.4,
+     "protein": 1.9,
+     "fiber": 1.5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Brot",
+      "en": "Bread",
+      "fr": "Pain",
+      "it": "Pane",
+      "tr": "Ekmek"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 49,
+     "fat": 3.2,
+     "protein": 9,
+     "fiber": 2.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Salz",
+      "en": "Salt",
+      "fr": "Sel",
+      "it": "Sale",
+      "tr": "Tuz"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Pfeffer (schwarz)",
+      "en": "Black pepper",
+      "fr": "Poivre noir",
+      "it": "Pepe nero",
+      "tr": "Karabiber"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 38.7,
+     "fat": 3.3,
+     "protein": 10.4,
+     "fiber": 25.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Gemüse",
+      "en": "Vegetables",
+      "fr": "Légumes",
+      "it": "Verdure",
+      "tr": "Sebzeler"
+     },
+     "content": {
+      "de": "{0004} würfeln, in {0005} und {0006} glasig dünsten. {0003} und {0007} zugeben, 8 Min. anbraten. {0002} zugeben, 5 Min. köcheln.",
+      "en": "Dice {0004}, sweat in {0005}, {0006}. Add {0003}, {0007}, cook 8 min. Add {0002}, simmer 5 min.",
+      "fr": "Émincer {0004}, suer dans {0005}, {0006}. Ajouter {0003}, {0007}, 8 min. Ajouter {0002}, 5 min.",
+      "it": "Dadolino {0004}, stufare in {0005}, {0006}. Aggiungere {0003}, {0007}, 8 min. Aggiungere {0002}, 5 min.",
+      "tr": "{0004}ı küp kes, {0005}, {0006}da sotele. {0003}, {0007} ekle, 8 dk. {0002} ekle, 5 dk."
+     },
+     "stove_level": 3,
+     "time_min": 15
+    },
+    {
+     "title": {
+      "de": "Eier",
+      "en": "Eggs",
+      "fr": "Œufs",
+      "it": "Uova",
+      "tr": "Yumurta"
+     },
+     "content": {
+      "de": "{0001} verquirlen, mit Salz und {0010} würzen. Über das Gemüse gießen, bei kleiner Hitze stocken lassen, dabei mit dem Löffel durchziehen.",
+      "en": "Whisk {0001}, season salt, {0010}. Pour over veg, let set over low heat, stirring with spoon.",
+      "fr": "Battre {0001}, assaisonner. Verser sur légumes, laisser prendre à feu doux.",
+      "it": "Sbattere {0001}, condire. Versare sulle verdure, lasciar rapprendere a fuoco basso.",
+      "tr": "{0001}ı çırp, tuz ve {0010} ekle. Sebzelerin üzerine dök, kısık ateşte karıştırarak pişir."
+     },
+     "stove_level": 2,
+     "time_min": 8
+    },
+    {
+     "title": {
+      "de": "Servieren",
+      "en": "Serve",
+      "fr": "Servir",
+      "it": "Servire",
+      "tr": "Servis"
+     },
+     "content": {
+      "de": "Mit warmem {0008} servieren.",
+      "en": "Serve with warm {0008}.",
+      "fr": "Servir avec {0008} chaud.",
+      "it": "Servire con {0008} caldo.",
+      "tr": "Sıcak {0008} ile servis et."
+     },
+     "stove_level": 0,
+     "time_min": 2
+    }
+   ],
+   "chef_analysis": {
+    "de": "Menemen: Eier erst am Ende — bei kleiner Hitze stocken lassen, nicht austrocknen. Tomaten vorher einkochen, sonst wird es wässrig. Fladenbrot ist Pflicht.",
+    "en": "Menemen: eggs last — set over low heat, don’t dry out. Reduce tomatoes first or it turns watery. Flatbread is mandatory.",
+    "fr": "Menemen : œufs à la fin, feu doux. Réduire les tomates. Pain plat obligatoire.",
+    "it": "Menemen: uova alla fine, fuoco basso. Ridurre i pomodori. Pane piatto obbligatorio.",
+    "tr": "Menemen: yumurta en sonda, kısık ateşte. Domatesleri çektir. Pide şart."
+   },
+   "coreComponents": [
+    "egg",
+    "tomato",
+    "bell_pepper_green",
+    "onion_yellow",
+    "butter",
+    "olive_oil",
+    "chili",
+    "bread",
+    "salt",
+    "black_pepper"
+   ]
+  },
+  {
+   "id": "chili_colorado",
+   "immutable": true,
+   "cuisine": "mx",
+   "region": "Nordmexiko",
+   "servings": 4,
+   "prep_time_min": 120,
+   "aliases": {
+    "de": [
+     "chili colorado",
+     "rotes chili con carne",
+     "chili colorado de res"
+    ],
+    "en": [
+     "chili colorado",
+     "red chili beef stew"
+    ],
+    "fr": [
+     "chili colorado"
+    ],
+    "it": [
+     "chili colorado"
+    ],
+    "tr": [
+     "chili colorado"
+    ]
+   },
+   "titles": {
+    "de": "Chili Colorado",
+    "en": "Chili Colorado",
+    "fr": "Chili Colorado",
+    "it": "Chili Colorado",
+    "tr": "Chili Colorado"
+   },
+   "garnish": {
+    "de": "Mit Reis, Koriander und Limette servieren.",
+    "en": "Serve with rice, cilantro and lime.",
+    "fr": "Servir avec riz, coriandre et citron vert.",
+    "it": "Servire con riso, coriandolo e lime.",
+    "tr": "Pilav, kişniş ve limon ile servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Rinderschulter (Chuck)",
+      "en": "Beef chuck",
+      "fr": "Épaule de bœuf",
+      "it": "Spalla di manzo",
+      "tr": "Dana omuz"
+     },
+     "amount": 600,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 10,
+     "protein": 19,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Ancho-Chili",
+      "en": "Ancho chili",
+      "fr": "Chile ancho",
+      "it": "Ancho",
+      "tr": "Ancho biberi"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 30,
+     "fat": 8,
+     "protein": 11,
+     "fiber": 15,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Guajillo-Chili",
+      "en": "Guajillo chili",
+      "fr": "Chile guajillo",
+      "it": "Guajillo",
+      "tr": "Guajillo biberi"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 30,
+     "fat": 5,
+     "protein": 10,
+     "fiber": 12,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Zwiebeln",
+      "en": "Onions",
+      "fr": "Oignons",
+      "it": "Cipolle",
+      "tr": "Soğan"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.6,
+     "fat": 0.1,
+     "protein": 1.1,
+     "fiber": 1.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Knoblauch",
+      "en": "Garlic",
+      "fr": "Ail",
+      "it": "Aglio",
+      "tr": "Sarımsak"
+     },
+     "amount": 4,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 31,
+     "fat": 0.5,
+     "protein": 6.4,
+     "fiber": 2.1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Kreuzkümmel",
+      "en": "Cumin",
+      "fr": "Cumin",
+      "it": "Cumino",
+      "tr": "Kimyon"
+     },
+     "amount": 10,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 33.7,
+     "fat": 22.3,
+     "protein": 17.8,
+     "fiber": 10.5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Oregano (getrocknet)",
+      "en": "Dried oregano",
+      "fr": "Origan séché",
+      "it": "Origano secco",
+      "tr": "Kuru oregano"
+     },
+     "amount": 5,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 26,
+     "fat": 4.3,
+     "protein": 9,
+     "fiber": 42.5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Tomaten",
+      "en": "Tomatoes",
+      "fr": "Tomates",
+      "it": "Pomodori",
+      "tr": "Domates"
+     },
+     "amount": 240,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 2.8,
+     "fat": 0.2,
+     "protein": 0.9,
+     "fiber": 1.2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Rinderbrühe",
+      "en": "Beef stock",
+      "fr": "Bouillon de bœuf",
+      "it": "Brodo di manzo",
+      "tr": "Dana suyu"
+     },
+     "amount": 600,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 0.4,
+     "fat": 0.2,
+     "protein": 1.1,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Mehl",
+      "en": "Flour",
+      "fr": "Farine",
+      "it": "Farina",
+      "tr": "Un"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 74.4,
+     "fat": 1,
+     "protein": 10.3,
+     "fiber": 2.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0011",
+     "names": {
+      "de": "Limette",
+      "en": "Lime",
+      "fr": "Citron vert",
+      "it": "Lime",
+      "tr": "Misket limonu"
+     },
+     "amount": 60,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 6,
+     "fat": 0.2,
+     "protein": 0.7,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0012",
+     "names": {
+      "de": "Koriander (frisch)",
+      "en": "Cilantro",
+      "fr": "Coriandre",
+      "it": "Coriandolo",
+      "tr": "Kişniş"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0.9,
+     "fat": 0.5,
+     "protein": 2.1,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "garnish"
+    },
+    {
+     "id": "0013",
+     "names": {
+      "de": "Reis (trocken)",
+      "en": "Rice (dry)",
+      "fr": "Riz (sec)",
+      "it": "Riso (secco)",
+      "tr": "Pirinç (kuru)"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 78.7,
+     "fat": 0.7,
+     "protein": 7.1,
+     "fiber": 1.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0014",
+     "names": {
+      "de": "Salz",
+      "en": "Salt",
+      "fr": "Sel",
+      "it": "Sale",
+      "tr": "Tuz"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Chilisauce",
+      "en": "Chili sauce",
+      "fr": "Sauce chili",
+      "it": "Salsa chili",
+      "tr": "Chili sosu"
+     },
+     "content": {
+      "de": "{0002} und {0003} in warmem Wasser 20 Min. einweichen, abgießen. Mit {0008}, {0004}, {0005}, {0006}, {0007} und 200 ml {0009} fein pürieren.",
+      "en": "Soak {0002}, {0003} in warm water 20 min, drain. Blend with {0008}, {0004}, {0005}, {0006}, {0007} and 200 ml {0009}.",
+      "fr": "Tremper {0002}, {0003} 20 min, égoutter. Mixer avec {0008}-{0007} et 200 ml {0009}.",
+      "it": "Ammollare {0002}, {0003} 20 min, scolare. Frullare con {0008}-{0007} e 200 ml {0009}.",
+      "tr": "{0002}, {0003}ı 20 dk ıslat, süz. {0008}-{0007} ve 200 ml {0009} ile püre yap."
+     },
+     "stove_level": 0,
+     "time_min": 25
+    },
+    {
+     "title": {
+      "de": "Fleisch anbraten",
+      "en": "Sear meat",
+      "fr": "Saisir la viande",
+      "it": "Rosolare la carne",
+      "tr": "Eti mühürle"
+     },
+     "content": {
+      "de": "{0001} in 3 cm Würfel schneiden, in heißem Topf portionsweise scharf anbraten. {0010} darüberstäuben, 2 Min. rösten.",
+      "en": "Cube {0001}, sear in batches. Sprinkle {0010}, toast 2 min.",
+      "fr": "Couper {0001}, saisir par lots. Saupoudrer {0010}, 2 min.",
+      "it": "Cubetti {0001}, rosolare a lotti. Cospargere {0010}, 2 min.",
+      "tr": "{0001}ı küp kes, partiler halinde mühürle. {0010} serp, 2 dk kavur."
+     },
+     "stove_level": 4,
+     "time_min": 15
+    },
+    {
+     "title": {
+      "de": "Schmoren",
+      "en": "Simmer",
+      "fr": "Mijoter",
+      "it": "Cuocere",
+      "tr": "Pişir"
+     },
+     "content": {
+      "de": "Chilisauce und restlichen {0009} angießen, aufkochen, zugedeckt 90 Min. sanft schmoren bis das Fleisch zerfällt.",
+      "en": "Add chili sauce and remaining {0009}, boil, cover and simmer 90 min until meat falls apart.",
+      "fr": "Ajouter sauce chili et reste de {0009}, bouillir, mijoter 90 min couvert.",
+      "it": "Aggiungere salsa e {0009}, bollire, cuocere 90 min coperto.",
+      "tr": "Chili sosu ve kalan {0009}ı ekle, kaynat, kapalı 90 dk pişir."
+     },
+     "stove_level": 2,
+     "time_min": 95
+    },
+    {
+     "title": {
+      "de": "Reis und Finish",
+      "en": "Rice and finish",
+      "fr": "Riz et finition",
+      "it": "Riso e finitura",
+      "tr": "Pilav ve final"
+     },
+     "content": {
+      "de": "{0013} nach Packung garen. Chili mit Salz und Saft von {0011} abschmecken. Mit {0012} bestreuen.",
+      "en": "Cook {0013} per package. Season chili with salt and juice of {0011}. Sprinkle {0012}.",
+      "fr": "Cuire {0013}. Assaisonner avec sel et jus de {0011}. Parsemer {0012}.",
+      "it": "Cuocere {0013}. Condire con sale e succo di {0011}. Cospargere {0012}.",
+      "tr": "{0013}ı pişir. Tuz ve {0011} suyu ile tatlandır. {0012} serp."
+     },
+     "stove_level": 2,
+     "time_min": 20
+    }
+   ],
+   "chef_analysis": {
+    "de": "Chili Colorado: Chilis einweichen und pürieren — nicht mit Pulver ersetzen, sonst fehlt die Tiefe. Schmorzeit ist entscheidend: 90 Minuten Minimum, besser 2 Std. Limette erst am Tisch.",
+    "en": "Chili Colorado: soak and blend the chilis — don’t substitute powder or you lose depth. Simmer time matters: 90 minutes minimum, 2 h better. Lime at the table only.",
+    "fr": "Chili Colorado : tremper et mixer les piments — pas de poudre. Mijoter 90 min minimum. Citron vert à table.",
+    "it": "Chili Colorado: ammollare e frullare i peperoncini. Cuocere almeno 90 min. Lime a tavola.",
+    "tr": "Chili Colorado: biberleri ıslat ve püre yap. En az 90 dk pişir. Misket limonu sofrada."
+   },
+   "coreComponents": [
+    "beef_chuck",
+    "ancho",
+    "guajillo",
+    "onion_yellow",
+    "garlic",
+    "cumin",
+    "oregano",
+    "tomato",
+    "beef_stock",
+    "flour",
+    "lime",
+    "cilantro",
+    "rice_dry",
+    "salt"
+   ]
   }
  ]
 }
