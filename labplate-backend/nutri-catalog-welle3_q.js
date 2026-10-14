@@ -2,6 +2,7 @@
 module.exports = {
   laksa_paste: { displayName: 'Laksa-Paste', aliases: ['laksa-paste','laksa paste','laksa curry paste'],
     per100g: { protein: 5.0, fat: 15.0, netCarbs: 12.0, fiber: 4.0, kcal: 205 }, source: 'Schaetzung (laksa paste)' },
+  tofu_firm: { displayName: 'Tofu, fest', aliases: ['tofu', 'tofu fest', 'tofu firm', 'firm tofu', 'bean curd'], per100g: { protein: 17.3, fat: 8.7, netCarbs: 0.5, fiber: 2.3, kcal: 150 }, source: 'USDA FDC 172476' },
   tofu: { displayName: 'Tofu, fest', aliases: ['tofu','firm tofu','tofu fest','bean curd'],
     per100g: { protein: 17.3, fat: 8.7, netCarbs: 0.5, fiber: 2.3, kcal: 150 }, source: 'USDA FDC 172476 (Tofu, firm)' },
   rendang_paste: { displayName: 'Rendang-Paste', aliases: ['rendang-paste','rendang paste','rendang curry paste'],
