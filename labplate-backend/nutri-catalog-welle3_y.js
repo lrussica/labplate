@@ -1,0 +1,23 @@
+'use strict';
+module.exports = {
+  pork_bones: { displayName: 'Schweineknochen', aliases: ['schweineknochen','pork bones','os de porc','ossa di maiale','domuz kemikleri'],
+    per100g: { protein: 15.0, fat: 4.0, netCarbs: 0, fiber: 0, kcal: 100 }, source: 'Schaetzung (Pork bones, stock)' },
+  miso: { displayName: 'Miso-Paste', aliases: ['miso','miso-paste','miso paste','pate miso','pasta di miso'],
+    per100g: { protein: 12.0, fat: 6.0, netCarbs: 15.0, fiber: 5.0, kcal: 200 }, source: 'USDA FDC 172453 (Miso)' },
+  mirin: { displayName: 'Mirin', aliases: ['mirin','mirin (reiswein)','sweet rice wine','vin de riz doux'],
+    per100g: { protein: 0.2, fat: 0, netCarbs: 43.0, fiber: 0, kcal: 260 }, source: 'USDA FDC 170203 (Mirin)' },
+  corn_flour_masarepa: { displayName: 'Mais-Mehl (Masarepa)', aliases: ['masarepa','maismehl masarepa','corn flour masarepa','masa harina','harina pan'],
+    per100g: { protein: 8.0, fat: 3.0, netCarbs: 72.0, fiber: 4.0, kcal: 350 }, source: 'Schaetzung (PAN precooked corn flour)' },
+  cheese_white: { displayName: 'Frischkaese (weiss)', aliases: ['frischkaese','queso fresco','white cheese','fromage frais','formaggio fresco'],
+    per100g: { protein: 18.0, fat: 22.0, netCarbs: 2.0, fiber: 0, kcal: 270 }, source: 'Schaetzung (Queso fresco)' },
+  pistachios: { displayName: 'Pistazien', aliases: ['pistazien','pistachios','pistaches','pistacchi','antep fistigi'],
+    per100g: { protein: 20.0, fat: 45.0, netCarbs: 8.0, fiber: 10.0, kcal: 570 }, source: 'USDA FDC 170184 (Pistachios, raw)' },
+  rice_cakes: { displayName: 'Reiskuchen (Garaetteok)', aliases: ['reiskuchen','garaetteok','tteok','rice cakes','gateau de riz','torta di riso'],
+    per100g: { protein: 4.0, fat: 0.5, netCarbs: 50.0, fiber: 1.0, kcal: 220 }, source: 'Schaetzung (Korean rice cakes, fresh)' },
+  gochugaru: { displayName: 'Gochugaru (Chiliflocken)', aliases: ['gochugaru','korean chili flakes','koreanische chiliflocken','piment coreen'],
+    per100g: { protein: 13.0, fat: 12.0, netCarbs: 30.0, fiber: 30.0, kcal: 280 }, source: 'Schaetzung (Korean chili flakes)' },
+  fish_cake: { displayName: 'Fischkuchen (asiatisch)', aliases: ['fischkuchen','fish cake','kamaboko','surimi','gateau de poisson','torta di pesce'],
+    per100g: { protein: 12.0, fat: 3.0, netCarbs: 12.0, fiber: 0.5, kcal: 130 }, source: 'Schaetzung (Asian fish cake)' },
+  kimchi: { displayName: 'Kimchi', aliases: ['kimchi','kimchi (kohl)','chou kimchi','kimchi di cavolo'],
+    per100g: { protein: 1.1, fat: 0.5, netCarbs: 2.0, fiber: 2.0, kcal: 20 }, source: 'USDA FDC 169256 (Kimchi)' },
+};

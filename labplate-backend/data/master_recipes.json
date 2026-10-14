@@ -47678,6 +47678,2193 @@
     "rice_dry",
     "salt"
    ]
+  },
+  {
+   "id": "boerek",
+   "immutable": true,
+   "cuisine": "tr",
+   "region": "Tuerkei/Balkan",
+   "servings": 4,
+   "prep_time_min": 60,
+   "aliases": {
+    "de": [
+     "boerek",
+     "burek",
+     "tuerkische teigrolle"
+    ],
+    "en": [
+     "borek",
+     "burek",
+     "turkish filo pie"
+    ],
+    "fr": [
+     "borek",
+     "burek"
+    ],
+    "it": [
+     "borek",
+     "burek"
+    ],
+    "tr": [
+     "borek",
+     "burek"
+    ]
+   },
+   "titles": {
+    "de": "Boerek",
+    "en": "Boerek",
+    "fr": "Borek",
+    "it": "Borek",
+    "tr": "Boerek"
+   },
+   "garnish": {
+    "de": "Warm servieren, evtl. mit Joghurt.",
+    "en": "Serve warm, optionally with yogurt.",
+    "fr": "Servir chaud, eventuellement avec yaourt.",
+    "it": "Servire caldo, eventualmente con yogurt.",
+    "tr": "Sicak servis edin, istege gore yogurt ile."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Filoteig",
+      "en": "Filo dough",
+      "fr": "Pate filo",
+      "it": "Pasta fillo",
+      "tr": "Yufka"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 60,
+     "fat": 3,
+     "protein": 8,
+     "fiber": 2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Feta",
+      "en": "Feta",
+      "fr": "Feta",
+      "it": "Feta",
+      "tr": "Beyaz peynir"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 3.9,
+     "fat": 21.5,
+     "protein": 14.2,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Spinat",
+      "en": "Spinach",
+      "fr": "Epinards",
+      "it": "Spinaci",
+      "tr": "IsPanak"
+     },
+     "amount": 400,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 1.4,
+     "fat": 0.4,
+     "protein": 2.9,
+     "fiber": 2.2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Eier",
+      "en": "Eggs",
+      "fr": "Oeufs",
+      "it": "Uova",
+      "tr": "Yumurta"
+     },
+     "amount": 2,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 0.7,
+     "fat": 9.5,
+     "protein": 12.6,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "binder"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Butter",
+      "en": "Butter",
+      "fr": "Beurre",
+      "it": "Burro",
+      "tr": "Tereyagi"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0.1,
+     "fat": 81.1,
+     "protein": 0.9,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "fat"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Zwiebeln",
+      "en": "Onions",
+      "fr": "Oignons",
+      "it": "Cipolle",
+      "tr": "Sogan"
+     },
+     "amount": 120,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.6,
+     "fat": 0.1,
+     "protein": 1.1,
+     "fiber": 1.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Petersilie (frisch)",
+      "en": "Fresh parsley",
+      "fr": "Persil frais",
+      "it": "Prezzemolo fresco",
+      "tr": "Taze maydanoz"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 3,
+     "fat": 0.8,
+     "protein": 3,
+     "fiber": 3.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Salz",
+      "en": "Salt",
+      "fr": "Sel",
+      "it": "Sale",
+      "tr": "Tuz"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Fuellung",
+      "en": "Filling",
+      "fr": "Garniture",
+      "it": "Ripieno",
+      "tr": "Ic harci"
+     },
+     "content": {
+      "de": "{0006} fein wuerfeln, in etwas {0005} glasig duensten. {0003} kurz mitbraten, abkuehlen. Mit {0002}, {0007} und {0004} mischen.",
+      "en": "Dice {0006}, sweat in some {0005}. Add {0003}, cook briefly, cool. Mix with {0002}, {0007}, {0004}.",
+      "fr": "Emincer {0006}, suer dans un peu de {0005}. Ajouter {0003}, refroidir. Melanger avec {0002}, {0007}, {0004}.",
+      "it": "Tritare {0006}, stufare in poco {0005}. Aggiungere {0003}, raffreddare. Mescolare con {0002}, {0007}, {0004}.",
+      "tr": "{0006}i ince dogra, biraz {0005}da sotele. {0003} ekle, sogut. {0002}, {0007}, {0004} ile karistir."
+     },
+     "stove_level": 2,
+     "time_min": 10
+    },
+    {
+     "title": {
+      "de": "Rollen",
+      "en": "Roll",
+      "fr": "Rouler",
+      "it": "Arrotolare",
+      "tr": "Sar"
+     },
+     "content": {
+      "de": "{0001} mit {0005} bestreichen. Fuellung aufstreichen, aufrollen. Rolle auf ein Blech legen, mit restlicher {0005} bestreichen.",
+      "en": "Brush {0001} with {0005}. Spread filling, roll up. Place on tray, brush with remaining {0005}.",
+      "fr": "Badigeonner {0001} avec {0005}. Etaler la garniture, rouler. Badigeonner du reste de {0005}.",
+      "it": "Spennellare {0001} con {0005}. Stendere il ripieno, arrotolare. Spennellare col resto.",
+      "tr": "{0001}i {0005} ile yagla. Harcı yay, sar. Tepsiye al, kalan {0005} ile yagla."
+     },
+     "stove_level": 0,
+     "time_min": 15
+    },
+    {
+     "title": {
+      "de": "Backen",
+      "en": "Bake",
+      "fr": "Cuire",
+      "it": "Cuocere",
+      "tr": "Pisir"
+     },
+     "content": {
+      "de": "Bei 180 °C ca. 30 Min. goldbraun backen. Vor dem Schneiden 5 Min. ruhen lassen.",
+      "en": "Bake at 180 °C for about 30 min until golden. Rest 5 min before slicing.",
+      "fr": "Cuire a 180 °C environ 30 min. Reposer 5 min avant de trancher.",
+      "it": "Cuocere a 180 °C circa 30 min. Riposare 5 min prima di tagliare.",
+      "tr": "180 °C yaklasik 30 dk pisir. Kesmeden once 5 dk dinlendir."
+     },
+     "stove_level": 4,
+     "time_min": 32
+    }
+   ],
+   "chef_analysis": {
+    "de": "Boerek: Spinat vorher gut abtropfen lassen, sonst wird der Filo durch. Feta nicht zu fein zerdruecken, sonst verliert er Biss. Butter heiss aufschmelzen, damit der Filo nicht klebt.",
+    "en": "Boerek: drain the spinach well or the filo sogs. Do not crumble the feta too finely or it loses bite. Melt butter hot so the filo does not stick.",
+    "fr": "Borek : bien egoutter les epinards. Ne pas trop ecraser la feta. Beurre chaud.",
+    "it": "Borek: scolare bene gli spinaci. Non sbriciolare la feta troppo. Burro caldo.",
+    "tr": "Boerek: ispanagi iyice suz. Fetayi cok ufalamayin. Tereyagi sicak olsun."
+   },
+   "coreComponents": [
+    "filo_dough",
+    "feta",
+    "spinach",
+    "egg",
+    "butter",
+    "onion_yellow",
+    "parsley_fresh",
+    "salt"
+   ]
+  },
+  {
+   "id": "baklava",
+   "immutable": true,
+   "cuisine": "tr",
+   "region": "Tuerkei",
+   "servings": 4,
+   "prep_time_min": 90,
+   "aliases": {
+    "de": [
+     "baklava",
+     "tuerkische baklava",
+     "pistazien-baklava"
+    ],
+    "en": [
+     "baklava",
+     "turkish baklava"
+    ],
+    "fr": [
+     "baklava"
+    ],
+    "it": [
+     "baklava"
+    ],
+    "tr": [
+     "baklava"
+    ]
+   },
+   "titles": {
+    "de": "Baklava",
+    "en": "Baklava",
+    "fr": "Baklava",
+    "it": "Baklava",
+    "tr": "Baklava"
+   },
+   "garnish": {
+    "de": "In Rauten schneiden und abkuehlen lassen.",
+    "en": "Cut into diamonds and let cool.",
+    "fr": "Couper en losanges et laisser refroidir.",
+    "it": "Tagliare a rombi e lasciar raffreddare.",
+    "tr": "Baklava dilimi kesin ve sogumaya birakin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Filoteig",
+      "en": "Filo dough",
+      "fr": "Pate filo",
+      "it": "Pasta fillo",
+      "tr": "Yufka"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 60,
+     "fat": 3,
+     "protein": 8,
+     "fiber": 2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Walnuesse",
+      "en": "Walnuts",
+      "fr": "Noix",
+      "it": "Noci",
+      "tr": "Ceviz"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 7,
+     "fat": 65.2,
+     "protein": 15.2,
+     "fiber": 6.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Pistazien",
+      "en": "Pistachios",
+      "fr": "Pistaches",
+      "it": "Pistacchi",
+      "tr": "Antep fistigi"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 8,
+     "fat": 45,
+     "protein": 20,
+     "fiber": 10,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Butter",
+      "en": "Butter",
+      "fr": "Beurre",
+      "it": "Burro",
+      "tr": "Tereyagi"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0.1,
+     "fat": 81.1,
+     "protein": 0.9,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "fat"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Zucker",
+      "en": "Sugar",
+      "fr": "Sucre",
+      "it": "Zucchero",
+      "tr": "Seker"
+     },
+     "amount": 100,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 100,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Honig",
+      "en": "Honey",
+      "fr": "Miel",
+      "it": "Miele",
+      "tr": "Bal"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 82.4,
+     "fat": 0,
+     "protein": 0.3,
+     "fiber": 0.2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Zimt",
+      "en": "Cinnamon",
+      "fr": "Cannelle",
+      "it": "Cannella",
+      "tr": "Tarcin"
+     },
+     "amount": 5,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 27.5,
+     "fat": 1.2,
+     "protein": 4,
+     "fiber": 53.1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Zitrone",
+      "en": "Lemon",
+      "fr": "Citron",
+      "it": "Limone",
+      "tr": "Limon"
+     },
+     "amount": 1,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 6.5,
+     "fat": 0.3,
+     "protein": 1.1,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Sirup",
+      "en": "Syrup",
+      "fr": "Sirop",
+      "it": "Sciroppo",
+      "tr": "Surup"
+     },
+     "content": {
+      "de": "{0005} mit 300 ml Wasser und Saft von {0008} 10 Min. koecheln. {0006} einruehren, abkuehlen lassen.",
+      "en": "Simmer {0005} with 300 ml water and juice of {0008} 10 min. Stir in {0006}, cool.",
+      "fr": "Mijoter {0005} avec 300 ml d eau et jus de {0008} 10 min. Ajouter {0006}, refroidir.",
+      "it": "Cuocere {0005} con 300 ml acqua e succo di {0008} 10 min. Unire {0006}, raffreddare.",
+      "tr": "{0005}, 300 ml su ve {0008} suyu ile 10 dk kaynat. {0006} ekle, sogut."
+     },
+     "stove_level": 2,
+     "time_min": 12
+    },
+    {
+     "title": {
+      "de": "Schichten",
+      "en": "Layer",
+      "fr": "Monter",
+      "it": "Stratificare",
+      "tr": "Katmanla"
+     },
+     "content": {
+      "de": "{0002} und {0003} grob hacken, mit {0007} mischen. {0001} mit {0004} buttern, im Wechsel mit der Nussmischung schichten (mind. 8 Lagen).",
+      "en": "Chop {0002}, {0003} coarsely, mix with {0007}. Butter {0001} with {0004}, layer alternately with nut mix (min. 8 layers).",
+      "fr": "Hacher {0002}, {0003}, melanger avec {0007}. Beurrer {0001}, alterner avec le melange (min. 8 couches).",
+      "it": "Tritare {0002}, {0003}, mescolare con {0007}. Imburrare {0001}, alternare (min. 8 strati).",
+      "tr": "{0002}, {0003} iri kiy, {0007} ile karistir. {0001}i {0004} ile yagla, findik karisimiyla katmanla (en az 8 kat)."
+     },
+     "stove_level": 0,
+     "time_min": 25
+    },
+    {
+     "title": {
+      "de": "Backen und Finish",
+      "en": "Bake and finish",
+      "fr": "Cuire et finir",
+      "it": "Cuocere e finire",
+      "tr": "Pisir ve bitir"
+     },
+     "content": {
+      "de": "In Rauten schneiden. Bei 170 °C 45 Min. goldbraun backen. Heissen Sirup ueber die kalte Baklava giessen, 4 Std. ziehen lassen.",
+      "en": "Cut into diamonds. Bake at 170 °C 45 min until golden. Pour hot syrup over cold baklava, rest 4 h.",
+      "fr": "Couper en losanges. Cuire a 170 °C 45 min. Verser le sirop chaud sur la baklava froide, reposer 4 h.",
+      "it": "Tagliare a rombi. Cuocere a 170 °C 45 min. Versare lo sciroppo caldo sulla baklava fredda, riposare 4 h.",
+      "tr": "Baklava dilimi kes. 170 °C 45 dk pisir. Sicak surubu soguk baklavaya dok, 4 saat beklet."
+     },
+     "stove_level": 4,
+     "time_min": 45
+    }
+   ],
+   "chef_analysis": {
+    "de": "Baklava: Sirup heiss, Baklava kalt - nur so zieht der Sirup ein und die Schichten bleiben knusprig. Mindestens 8 Filolagen. Walnuesse grob hacken, nicht mahlen.",
+    "en": "Baklava: hot syrup, cold baklava - only then the syrup soaks in and layers stay crisp. At least 8 filo layers. Chop walnuts coarsely, never grind.",
+    "fr": "Baklava : sirop chaud, baklava froide. Min. 8 couches. Noix grossierement hachees.",
+    "it": "Baklava: sciroppo caldo, baklava fredda. Almeno 8 strati. Noci grossolane.",
+    "tr": "Baklava: surup sicak, baklava soguk. En az 8 kat. Ceviz iri kiyilmis."
+   },
+   "coreComponents": [
+    "filo_dough",
+    "walnuts",
+    "pistachios",
+    "butter",
+    "sugar",
+    "honey",
+    "cinnamon",
+    "lemon"
+   ]
+  },
+  {
+   "id": "arepas",
+   "immutable": true,
+   "cuisine": "ve",
+   "region": "Venezuela/Kolumbien",
+   "servings": 4,
+   "prep_time_min": 40,
+   "aliases": {
+    "de": [
+     "arepas",
+     "arepa",
+     "venezolanische arepas"
+    ],
+    "en": [
+     "arepas",
+     "arepa",
+     "venezuelan arepas"
+    ],
+    "fr": [
+     "arepas"
+    ],
+    "it": [
+     "arepas"
+    ],
+    "tr": [
+     "arepas"
+    ]
+   },
+   "titles": {
+    "de": "Arepas",
+    "en": "Arepas",
+    "fr": "Arepas",
+    "it": "Arepas",
+    "tr": "Arepas"
+   },
+   "garnish": {
+    "de": "Mit Avocado, Bohnen und gebratenem Plantain servieren.",
+    "en": "Serve with avocado, beans and fried plantain.",
+    "fr": "Servir avec avocat, haricots et plantain frit.",
+    "it": "Servire con avocado, fagioli e platano fritto.",
+    "tr": "Avokado, fasulye ve kizarmis plantain ile servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Mais-Mehl (Masarepa)",
+      "en": "Masarepa corn flour",
+      "fr": "Farine de mais (masarepa)",
+      "it": "Farina di mais (masarepa)",
+      "tr": "Mis unu (masarepa)"
+     },
+     "amount": 240,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 72,
+     "fat": 3,
+     "protein": 8,
+     "fiber": 4,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Wasser",
+      "en": "Water",
+      "fr": "Eau",
+      "it": "Acqua",
+      "tr": "Su"
+     },
+     "amount": 280,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Salz",
+      "en": "Salt",
+      "fr": "Sel",
+      "it": "Sale",
+      "tr": "Tuz"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Frischkaese (weiss)",
+      "en": "White fresh cheese",
+      "fr": "Fromage frais",
+      "it": "Formaggio fresco",
+      "tr": "Beyaz peynir"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 2,
+     "fat": 22,
+     "protein": 18,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Butter",
+      "en": "Butter",
+      "fr": "Beurre",
+      "it": "Burro",
+      "tr": "Tereyagi"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0.1,
+     "fat": 81.1,
+     "protein": 0.9,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "fat"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Avocado",
+      "en": "Avocado",
+      "fr": "Avocat",
+      "it": "Avocado",
+      "tr": "Avokado"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 1.8,
+     "fat": 14.7,
+     "protein": 2,
+     "fiber": 6.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Schwarze Bohnen",
+      "en": "Black beans",
+      "fr": "Haricots noirs",
+      "it": "Fagioli neri",
+      "tr": "Siyah fasulye"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 47,
+     "fat": 1.4,
+     "protein": 21.6,
+     "fiber": 15.5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Kochbanane",
+      "en": "Plantain",
+      "fr": "Banane plantain",
+      "it": "Platano",
+      "tr": "Muz plantain"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 30,
+     "fat": 0.4,
+     "protein": 1.3,
+     "fiber": 2.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Teig",
+      "en": "Dough",
+      "fr": "Pate",
+      "it": "Impasto",
+      "tr": "Hamur"
+     },
+     "content": {
+      "de": "{0001} mit {0002} und {0003} verruehren, 2 Min. ruhen lassen. Zu 8 flachen Scheiben formen.",
+      "en": "Mix {0001} with {0002}, {0003}, rest 2 min. Shape into 8 flat discs.",
+      "fr": "Melanger {0001} avec {0002}, {0003}, reposer 2 min. Former 8 galettes.",
+      "it": "Mescolare {0001} con {0002}, {0003}, riposare 2 min. Formare 8 dischi.",
+      "tr": "{0001}i {0002} ve {0003} ile karistir, 2 dk dinlendir. 8 yassi daire yap."
+     },
+     "stove_level": 0,
+     "time_min": 10
+    },
+    {
+     "title": {
+      "de": "Braten",
+      "en": "Fry",
+      "fr": "Cuire",
+      "it": "Cuocere",
+      "tr": "Kizart"
+     },
+     "content": {
+      "de": "{0005} in einer Pfanne schmelzen. Arepas je Seite 5 Min. bei mittlerer Hitze goldbraun braten.",
+      "en": "Melt {0005} in a pan. Fry arepas 5 min per side over medium heat until golden.",
+      "fr": "Fondre {0005}. Cuire les arepas 5 min par face a feu moyen.",
+      "it": "Sciogliere {0005}. Cuocere le arepas 5 min per lato.",
+      "tr": "{0005}i tavada erit. Arepaslari her yuz 5 dk kizart."
+     },
+     "stove_level": 3,
+     "time_min": 15
+    },
+    {
+     "title": {
+      "de": "Fuellen und Beilagen",
+      "en": "Fill and sides",
+      "fr": "Garnir et accompagnements",
+      "it": "Farcire e contorni",
+      "tr": "Doldur ve garnitur"
+     },
+     "content": {
+      "de": "Arepas aufschneiden, mit {0004} fuellen. {0006} in Scheiben schneiden, {0007} erwaermen, {0008} in Scheiben braten.",
+      "en": "Split arepas, fill with {0004}. Slice {0006}, warm {0007}, fry {0008} in slices.",
+      "fr": "Ouvrir les arepas, garnir de {0004}. Trancher {0006}, rechauffer {0007}, frire {0008}.",
+      "it": "Aprire le arepas, farcire con {0004}. Affettare {0006}, scaldare {0007}, friggere {0008}.",
+      "tr": "Arepaslari ac, {0004} ile doldur. {0006}i dilimle, {0007}i isit, {0008}i kizart."
+     },
+     "stove_level": 2,
+     "time_min": 12
+    }
+   ],
+   "chef_analysis": {
+    "de": "Arepas: Masarepa ist vorgekochtes Maismehl - kein normales Maismehl verwenden. Teig muss geschmeidig sein, nicht kruemelig. Frisch essen, sie werden schnell trocken.",
+    "en": "Arepas: masarepa is precooked corn flour - never use regular cornmeal. Dough must be smooth, not crumbly. Eat fresh, they dry out fast.",
+    "fr": "Arepas : la masarepa est precuite. Pate lisse. A manger frais.",
+    "it": "Arepas: la masarepa e precotta. Impasto liscio. Mangiare fresco.",
+    "tr": "Arepas: masarepa onceden pisirilmis misir unu. Hamur puruzsuz olmali. Taze yenmeli."
+   },
+   "coreComponents": [
+    "corn_flour_masarepa",
+    "water",
+    "salt",
+    "cheese_white",
+    "butter",
+    "avocado",
+    "black_beans",
+    "plantain"
+   ]
+  },
+  {
+   "id": "pupusas",
+   "immutable": true,
+   "cuisine": "sv",
+   "region": "El Salvador",
+   "servings": 4,
+   "prep_time_min": 60,
+   "aliases": {
+    "de": [
+     "pupusas",
+     "pupusa",
+     "salvadorianische pupusas"
+    ],
+    "en": [
+     "pupusas",
+     "pupusa",
+     "salvadoran pupusas"
+    ],
+    "fr": [
+     "pupusas"
+    ],
+    "it": [
+     "pupusas"
+    ],
+    "tr": [
+     "pupusas"
+    ]
+   },
+   "titles": {
+    "de": "Pupusas",
+    "en": "Pupusas",
+    "fr": "Pupusas",
+    "it": "Pupusas",
+    "tr": "Pupusas"
+   },
+   "garnish": {
+    "de": "Mit Curtido (Krautsalat) und Tomatensauce servieren.",
+    "en": "Serve with curtido (cabbage slaw) and tomato sauce.",
+    "fr": "Servir avec curtido et sauce tomate.",
+    "it": "Servire con curtido e salsa di pomodoro.",
+    "tr": "Curtido ve domates sosu ile servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Mais-Mehl (Masarepa)",
+      "en": "Masarepa corn flour",
+      "fr": "Farine de mais (masarepa)",
+      "it": "Farina di mais (masarepa)",
+      "tr": "Mis unu (masarepa)"
+     },
+     "amount": 320,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 72,
+     "fat": 3,
+     "protein": 8,
+     "fiber": 4,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Wasser",
+      "en": "Water",
+      "fr": "Eau",
+      "it": "Acqua",
+      "tr": "Su"
+     },
+     "amount": 400,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Frischkaese (weiss)",
+      "en": "White fresh cheese",
+      "fr": "Fromage frais",
+      "it": "Formaggio fresco",
+      "tr": "Beyaz peynir"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 2,
+     "fat": 22,
+     "protein": 18,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Schweineschulter",
+      "en": "Pork shoulder",
+      "fr": "Epaule de porc",
+      "it": "Spalla di maiale",
+      "tr": "Domuz omuz"
+     },
+     "amount": 240,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 13,
+     "protein": 19,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Schwarze Bohnen",
+      "en": "Black beans",
+      "fr": "Haricots noirs",
+      "it": "Fagioli neri",
+      "tr": "Siyah fasulye"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 47,
+     "fat": 1.4,
+     "protein": 21.6,
+     "fiber": 15.5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Weisskohl",
+      "en": "Cabbage",
+      "fr": "Chou",
+      "it": "Cavolo",
+      "tr": "Lahana"
+     },
+     "amount": 240,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 3.2,
+     "fat": 0.1,
+     "protein": 1.3,
+     "fiber": 2.5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Tomaten",
+      "en": "Tomatoes",
+      "fr": "Tomates",
+      "it": "Pomodori",
+      "tr": "Domates"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 2.8,
+     "fat": 0.2,
+     "protein": 0.9,
+     "fiber": 1.2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Zwiebeln",
+      "en": "Onions",
+      "fr": "Oignons",
+      "it": "Cipolle",
+      "tr": "Sogan"
+     },
+     "amount": 120,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.6,
+     "fat": 0.1,
+     "protein": 1.1,
+     "fiber": 1.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Oregano (getrocknet)",
+      "en": "Dried oregano",
+      "fr": "Origan seche",
+      "it": "Origano secco",
+      "tr": "Kuru oregano"
+     },
+     "amount": 5,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 26,
+     "fat": 4.3,
+     "protein": 9,
+     "fiber": 42.5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Limette",
+      "en": "Lime",
+      "fr": "Citron vert",
+      "it": "Lime",
+      "tr": "Misket limonu"
+     },
+     "amount": 60,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 6,
+     "fat": 0.2,
+     "protein": 0.7,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0011",
+     "names": {
+      "de": "Salz",
+      "en": "Salt",
+      "fr": "Sel",
+      "it": "Sale",
+      "tr": "Tuz"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Curtido",
+      "en": "Curtido slaw",
+      "fr": "Curtido",
+      "it": "Curtido",
+      "tr": "Curtido"
+     },
+     "content": {
+      "de": "{0006} fein hobeln, mit {0010} und etwas Salz 30 Min. ziehen lassen.",
+      "en": "Shred {0006}, toss with {0010}, salt, rest 30 min.",
+      "fr": "Emincer {0006}, melanger avec {0010}, sel, reposer 30 min.",
+      "it": "Affettare {0006}, mescolare con {0010}, sale, riposare 30 min.",
+      "tr": "{0006}i ince dogra, {0010} ve tuz ile karistir, 30 dk beklet."
+     },
+     "stove_level": 0,
+     "time_min": 5
+    },
+    {
+     "title": {
+      "de": "Fuellung",
+      "en": "Filling",
+      "fr": "Garniture",
+      "it": "Ripieno",
+      "tr": "Ic harci"
+     },
+     "content": {
+      "de": "{0004} mit {0008} anbraten, abkuehlen. Mit {0003} und {0005} mischen.",
+      "en": "Sear {0004} with {0008}, cool. Mix with {0003}, {0005}.",
+      "fr": "Saisir {0004} avec {0008}, refroidir. Melanger avec {0003}, {0005}.",
+      "it": "Rosolare {0004} con {0008}, raffreddare. Mescolare con {0003}, {0005}.",
+      "tr": "{0004}i {0008} ile kavur, sogut. {0003}, {0005} ile karistir."
+     },
+     "stove_level": 3,
+     "time_min": 12
+    },
+    {
+     "title": {
+      "de": "Teig und Braten",
+      "en": "Dough and fry",
+      "fr": "Pate et cuire",
+      "it": "Impasto e cuocere",
+      "tr": "Hamur ve kizart"
+     },
+     "content": {
+      "de": "{0001} mit {0002} und Salz verruehren. Kugeln formen, Fuellung einlegen, verschliessen. In Pfanne trocken je Seite 5 Min. braten. Mit {0009} servieren.",
+      "en": "Mix {0001} with {0002}, salt. Form balls, fill, seal. Dry-fry in pan 5 min per side. Serve with {0009}.",
+      "fr": "Melanger {0001}, {0002}, sel. Former des boules, garnir, fermer. Cuire a sec 5 min par face. Servir avec {0009}.",
+      "it": "Mescolare {0001}, {0002}, sale. Formare palle, farcire, chiudere. Cuocere a secco 5 min per lato. Servire con {0009}.",
+      "tr": "{0001}i {0002} ve tuz ile karistir. Top yap, doldur, kapat. Tavada kuru her yuz 5 dk pisir. {0009} ile servis et."
+     },
+     "stove_level": 3,
+     "time_min": 20
+    }
+   ],
+   "chef_analysis": {
+    "de": "Pupusas: Teig muss feucht sein, darf nicht reissen beim Formen. Trocken braten - kein Fett in der Pfanne. Curtido vorher ansetzen, es braucht 30 Min.",
+    "en": "Pupusas: dough must be moist, it must not tear when shaping. Dry-fry - no fat in the pan. Make the curtido ahead, it needs 30 min.",
+    "fr": "Pupusas : pate humide. Cuire a sec. Preparer le curtido 30 min avant.",
+    "it": "Pupusas: impasto umido. Cuocere a secco. Preparare il curtido prima.",
+    "tr": "Pupusas: hamur nemli olmali. Kuru tavada pisir. Curtido onceden hazirlanmali."
+   },
+   "coreComponents": [
+    "corn_flour_masarepa",
+    "water",
+    "cheese_white",
+    "pork_shoulder",
+    "black_beans",
+    "cabbage",
+    "tomato",
+    "onion_yellow",
+    "oregano",
+    "lime",
+    "salt"
+   ]
+  },
+  {
+   "id": "tteokbokki",
+   "immutable": true,
+   "cuisine": "kr",
+   "region": "Korea",
+   "servings": 4,
+   "prep_time_min": 30,
+   "aliases": {
+    "de": [
+     "tteokbokki",
+     "koreanische reiskuchen",
+     "ddukbokki"
+    ],
+    "en": [
+     "tteokbokki",
+     "korean rice cakes",
+     "ddukbokki"
+    ],
+    "fr": [
+     "tteokbokki"
+    ],
+    "it": [
+     "tteokbokki"
+    ],
+    "tr": [
+     "tteokbokki"
+    ]
+   },
+   "titles": {
+    "de": "Tteokbokki",
+    "en": "Tteokbokki",
+    "fr": "Tteokbokki",
+    "it": "Tteokbokki",
+    "tr": "Tteokbokki"
+   },
+   "garnish": {
+    "de": "Mit Sesam und Fruehlingszwiebeln bestreuen.",
+    "en": "Sprinkle with sesame and scallions.",
+    "fr": "Parsemer de sesame et ciboule.",
+    "it": "Cospargere di sesamo e cipollotto.",
+    "tr": "Susam ve yesil sogan serpin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Reiskuchen (Garaetteok)",
+      "en": "Korean rice cakes",
+      "fr": "Gateaux de riz coreens",
+      "it": "Torte di riso coreane",
+      "tr": "Garaetteok"
+     },
+     "amount": 600,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 50,
+     "fat": 0.5,
+     "protein": 4,
+     "fiber": 1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Gochujang",
+      "en": "Gochujang",
+      "fr": "Gochujang",
+      "it": "Gochujang",
+      "tr": "Gochujang"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 41.6,
+     "fat": 0.7,
+     "protein": 5.6,
+     "fiber": 3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Gochugaru (Chiliflocken)",
+      "en": "Gochugaru",
+      "fr": "Gochugaru",
+      "it": "Gochugaru",
+      "tr": "Gochugaru"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 30,
+     "fat": 12,
+     "protein": 13,
+     "fiber": 30,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Zucker",
+      "en": "Sugar",
+      "fr": "Sucre",
+      "it": "Zucchero",
+      "tr": "Seker"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 100,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Sojasauce",
+      "en": "Soy sauce",
+      "fr": "Sauce soja",
+      "it": "Salsa di soia",
+      "tr": "Soya sosu"
+     },
+     "amount": 40,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 4.1,
+     "fat": 0.6,
+     "protein": 8.1,
+     "fiber": 0.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Fischkuchen (asiatisch)",
+      "en": "Fish cake",
+      "fr": "Gateau de poisson",
+      "it": "Torta di pesce",
+      "tr": "Balik keki"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 12,
+     "fat": 3,
+     "protein": 12,
+     "fiber": 0.5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Fruehlingszwiebel",
+      "en": "Scallion",
+      "fr": "Oignon vert",
+      "it": "Cipollotto",
+      "tr": "Yesil sogan"
+     },
+     "amount": 60,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 3,
+     "fat": 0.2,
+     "protein": 1.8,
+     "fiber": 2.6,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Sesam",
+      "en": "Sesame seeds",
+      "fr": "Graines de sesame",
+      "it": "Semi di sesamo",
+      "tr": "Susam"
+     },
+     "amount": 10,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 11.6,
+     "fat": 49.7,
+     "protein": 17.7,
+     "fiber": 11.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "garnish"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Eier",
+      "en": "Eggs",
+      "fr": "Oeufs",
+      "it": "Uova",
+      "tr": "Yumurta"
+     },
+     "amount": 2,
+     "unit": "stk",
+     "protein_source": true,
+     "netCarbs": 0.7,
+     "fat": 9.5,
+     "protein": 12.6,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Sauce",
+      "en": "Sauce",
+      "fr": "Sauce",
+      "it": "Salsa",
+      "tr": "Sos"
+     },
+     "content": {
+      "de": "{0002}, {0003}, {0004}, {0005} und 500 ml Wasser in einer Pfanne verruehren, aufkochen.",
+      "en": "Whisk {0002}, {0003}, {0004}, {0005} and 500 ml water in a pan, bring to boil.",
+      "fr": "Melanger {0002}, {0003}, {0004}, {0005} et 500 ml d eau, porter a ebullition.",
+      "it": "Mescolare {0002}, {0003}, {0004}, {0005} e 500 ml acqua, portare a bollore.",
+      "tr": "{0002}, {0003}, {0004}, {0005} ve 500 ml suyu tavada karistir, kaynat."
+     },
+     "stove_level": 3,
+     "time_min": 6
+    },
+    {
+     "title": {
+      "de": "Kochen",
+      "en": "Simmer",
+      "fr": "Mijoter",
+      "it": "Cuocere",
+      "tr": "Pisir"
+     },
+     "content": {
+      "de": "{0001} und {0006} zugeben, 10 Min. bei mittlerer Hitze koecheln, bis die Sauce eindickt.",
+      "en": "Add {0001}, {0006}, simmer 10 min over medium heat until sauce thickens.",
+      "fr": "Ajouter {0001}, {0006}, mijoter 10 min jusqu a epaississement.",
+      "it": "Aggiungere {0001}, {0006}, cuocere 10 min fino a addensare.",
+      "tr": "{0001}, {0006} ekle, sos koyulasana kadar 10 dk pisir."
+     },
+     "stove_level": 2,
+     "time_min": 12
+    },
+    {
+     "title": {
+      "de": "Finish",
+      "en": "Finish",
+      "fr": "Finition",
+      "it": "Finitura",
+      "tr": "Final"
+     },
+     "content": {
+      "de": "{0009} hart kochen, halbieren. {0007} in Streifen zugeben, 3 Min. mitkochen. Mit {0008} bestreuen.",
+      "en": "Hard-boil {0009}, halve. Add {0007} in strips, cook 3 min. Sprinkle {0008}.",
+      "fr": "Cuire dur {0009}, couper. Ajouter {0007} en lamelles, 3 min. Parsemer {0008}.",
+      "it": "Sodo {0009}, tagliare. Aggiungere {0007} a strisce, 3 min. Cospargere {0008}.",
+      "tr": "{0009}i hasla, ikiye bol. {0007}i serit ekle, 3 dk pisir. {0008} serp."
+     },
+     "stove_level": 2,
+     "time_min": 8
+    }
+   ],
+   "chef_analysis": {
+    "de": "Tteokbokki: Gochujang gibt Tiefe, Gochugaru die Schaerfe - beide sind Pflicht, kein Ersatz. Reiskuchen nicht zu lange kochen, sonst matschig. Sauce soll sirupartig sein.",
+    "en": "Tteokbokki: gochujang gives depth, gochugaru the heat - both essential, no substitutes. Do not overcook rice cakes or they get mushy. Sauce should be syrupy.",
+    "fr": "Tteokbokki : gochujang et gochugaru indispensables. Ne pas trop cuire les gateaux de riz.",
+    "it": "Tteokbokki: gochujang e gochugaru indispensabili. Non cuocere troppo le torte di riso.",
+    "tr": "Tteokbokki: gochujang ve gochugaru sart. Reiskuchen fazla pisirmeyin."
+   },
+   "coreComponents": [
+    "rice_cakes",
+    "gochujang",
+    "gochugaru",
+    "sugar",
+    "soy_sauce",
+    "fish_cake",
+    "scallion",
+    "sesame_seeds",
+    "egg"
+   ]
+  },
+  {
+   "id": "ramen_tonkotsu",
+   "immutable": true,
+   "cuisine": "jp",
+   "region": "Kyushu",
+   "servings": 4,
+   "prep_time_min": 240,
+   "aliases": {
+    "de": [
+     "ramen tonkotsu",
+     "tonkotsu ramen",
+     "schweineknochen-ramen"
+    ],
+    "en": [
+     "tonkotsu ramen",
+     "pork bone ramen"
+    ],
+    "fr": [
+     "ramen tonkotsu",
+     "tonkotsu ramen"
+    ],
+    "it": [
+     "ramen tonkotsu",
+     "tonkotsu ramen"
+    ],
+    "tr": [
+     "tonkotsu ramen"
+    ]
+   },
+   "titles": {
+    "de": "Ramen Tonkotsu",
+    "en": "Tonkotsu Ramen",
+    "fr": "Ramen Tonkotsu",
+    "it": "Ramen Tonkotsu",
+    "tr": "Tonkotsu Ramen"
+   },
+   "garnish": {
+    "de": "Mit Nori, Fruehlingszwiebeln und Ajitama (Eingelegtes Ei) servieren.",
+    "en": "Serve with nori, scallions and ajitama (marinated egg).",
+    "fr": "Servir avec nori, ciboule et ajitama.",
+    "it": "Servire con nori, cipollotto e ajitama.",
+    "tr": "Nori, yesil sogan ve ajitama ile servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Schweineknochen",
+      "en": "Pork bones",
+      "fr": "Os de porc",
+      "it": "Ossa di maiale",
+      "tr": "Domuz kemikleri"
+     },
+     "amount": 600,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 4,
+     "protein": 15,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Schweinebauch",
+      "en": "Pork belly",
+      "fr": "Poitrine de porc",
+      "it": "Pancetta di maiale",
+      "tr": "Domuz karni"
+     },
+     "amount": 120,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 53,
+     "protein": 9.3,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Ramen-Nudeln",
+      "en": "Ramen noodles",
+      "fr": "Nouilles ramen",
+      "it": "Noodles ramen",
+      "tr": "Ramen noodle"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 52,
+     "fat": 1.5,
+     "protein": 9,
+     "fiber": 2.5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Miso-Paste",
+      "en": "Miso paste",
+      "fr": "Pate miso",
+      "it": "Pasta di miso",
+      "tr": "Miso"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 15,
+     "fat": 6,
+     "protein": 12,
+     "fiber": 5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Sojasauce",
+      "en": "Soy sauce",
+      "fr": "Sauce soja",
+      "it": "Salsa di soia",
+      "tr": "Soya sosu"
+     },
+     "amount": 40,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 4.1,
+     "fat": 0.6,
+     "protein": 8.1,
+     "fiber": 0.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Mirin",
+      "en": "Mirin",
+      "fr": "Mirin",
+      "it": "Mirin",
+      "tr": "Mirin"
+     },
+     "amount": 20,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 43,
+     "fat": 0,
+     "protein": 0.2,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Ingwer, frisch",
+      "en": "Fresh ginger",
+      "fr": "Gingembre frais",
+      "it": "Zenzero fresco",
+      "tr": "Taze zencefil"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 15.8,
+     "fat": 0.8,
+     "protein": 1.8,
+     "fiber": 2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Knoblauch",
+      "en": "Garlic",
+      "fr": "Ail",
+      "it": "Aglio",
+      "tr": "Sarimsak"
+     },
+     "amount": 2,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 31,
+     "fat": 0.5,
+     "protein": 6.4,
+     "fiber": 2.1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Fruehlingszwiebel",
+      "en": "Scallion",
+      "fr": "Oignon vert",
+      "it": "Cipollotto",
+      "tr": "Yesil sogan"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 3,
+     "fat": 0.2,
+     "protein": 1.8,
+     "fiber": 2.6,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Eier",
+      "en": "Eggs",
+      "fr": "Oeufs",
+      "it": "Uova",
+      "tr": "Yumurta"
+     },
+     "amount": 2,
+     "unit": "stk",
+     "protein_source": true,
+     "netCarbs": 0.7,
+     "fat": 9.5,
+     "protein": 12.6,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0011",
+     "names": {
+      "de": "Nori",
+      "en": "Nori",
+      "fr": "Nori",
+      "it": "Nori",
+      "tr": "Nori"
+     },
+     "amount": 10,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 1.4,
+     "fat": 0.3,
+     "protein": 5.8,
+     "fiber": 0.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "garnish"
+    },
+    {
+     "id": "0012",
+     "names": {
+      "de": "Bambussprossen",
+      "en": "Bamboo shoots",
+      "fr": "Pousses de bambou",
+      "it": "Germogli di bambu",
+      "tr": "Bambu filizleri"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 3,
+     "fat": 0.2,
+     "protein": 2.5,
+     "fiber": 2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0013",
+     "names": {
+      "de": "Salz",
+      "en": "Salt",
+      "fr": "Sel",
+      "it": "Sale",
+      "tr": "Tuz"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Bruhe",
+      "en": "Broth",
+      "fr": "Bouillon",
+      "it": "Brodo",
+      "tr": "Corba"
+     },
+     "content": {
+      "de": "{0001} 5 Min. in kochendem Wasser blanchieren, abspuelen. Mit 4 L Wasser, {0007}, halben {0008} 6 Std. stark koecheln bis die Bruhe milchig ist.",
+      "en": "Blanch {0001} in boiling water 5 min, rinse. Boil with 4 L water, {0007}, half {0008} for 6 h until broth is milky.",
+      "fr": "Blanchir {0001} 5 min, rincer. Bouillir avec 4 L eau, {0007}, moitie {0008} 6 h jusqu a laitiness.",
+      "it": "Sbollentare {0001} 5 min, sciacquare. Bollire con 4 L acqua, {0007}, meta {0008} 6 h.",
+      "tr": "{0001}i 5 dk hasla, yika. 4 L su, {0007}, yarim {0008} ile 6 saat kaynat."
+     },
+     "stove_level": 3,
+     "time_min": 360
+    },
+    {
+     "title": {
+      "de": "Chashu",
+      "en": "Chashu",
+      "fr": "Chashu",
+      "it": "Chashu",
+      "tr": "Chashu"
+     },
+     "content": {
+      "de": "{0002} aufrollen, mit {0005}, {0006}, restlichem {0008} 90 Min. sanft schmoren. Abkuehlen, in Scheiben schneiden.",
+      "en": "Roll {0002}, simmer with {0005}, {0006}, remaining {0008} 90 min. Cool, slice.",
+      "fr": "Rouler {0002}, mijoter avec {0005}, {0006}, reste {0008} 90 min. Refroidir, trancher.",
+      "it": "Arrotolare {0002}, cuocere con {0005}, {0006}, resto {0008} 90 min. Raffreddare, affettare.",
+      "tr": "{0002}i rulo yap, {0005}, {0006}, kalan {0008} ile 90 dk pisir. Sogut, dilimle."
+     },
+     "stove_level": 2,
+     "time_min": 95
+    },
+    {
+     "title": {
+      "de": "Tare und Finish",
+      "en": "Tare and finish",
+      "fr": "Tare et finition",
+      "it": "Tare e finitura",
+      "tr": "Tare ve final"
+     },
+     "content": {
+      "de": "{0004} mit etwas Bruhe zu Tare verruehren. {0003} nach Packung garen. Tare in Schalen, Bruhe angiessen, Nudeln einlegen. Mit Chashu, {0009}, {0010}, {0011}, {0012} anrichten.",
+      "en": "Whisk {0004} with some broth to tare. Cook {0003} per package. Tare in bowls, pour broth, add noodles. Top with chashu, {0009}, {0010}, {0011}, {0012}.",
+      "fr": "Melanger {0004} avec bouillon pour tare. Cuire {0003}. Tare dans bols, bouillon, nouilles. Garnir.",
+      "it": "Mescolare {0004} con brodo per tare. Cuocere {0003}. Tare nelle ciotole, brodo, noodles. Guarnire.",
+      "tr": "{0004}i biraz corba ile tare yap. {0003}i pisir. Tare kaselere, corba, noodle. Chashu, {0009}, {0010}, {0011}, {0012} ile susle."
+     },
+     "stove_level": 3,
+     "time_min": 20
+    }
+   ],
+   "chef_analysis": {
+    "de": "Tonkotsu: 6 Stunden sind Minimum, besser 10 - die Kollagenkraft macht die milchige Bruhe. Knochen vorher blanchieren, sonst wird die Bruhe grau-bitter. Tare ist der Geschmackstraeger, nicht die Bruhe selbst.",
+    "en": "Tonkotsu: 6 hours minimum, 10 better - the collagen is what makes the broth milky. Blanch the bones first or the broth turns grey-bitter. Tare carries the seasoning, not the broth itself.",
+    "fr": "Tonkotsu : 6 h minimum, mieux 10. Blanchir les os. Le tare porte l assaisonnement.",
+    "it": "Tonkotsu: minimo 6 h. Sbollentare le ossa. Il tare porta il condimento.",
+    "tr": "Tonkotsu: en az 6 saat. Kemikleri hasla. Tare tadi tasir."
+   },
+   "coreComponents": [
+    "pork_bones",
+    "pork_belly",
+    "ramen_noodles",
+    "miso",
+    "soy_sauce",
+    "mirin",
+    "ginger_fresh",
+    "garlic",
+    "scallion",
+    "egg",
+    "nori",
+    "bamboo_shoots",
+    "salt"
+   ]
+  },
+  {
+   "id": "kimchi_jjigae",
+   "immutable": true,
+   "cuisine": "kr",
+   "region": "Korea",
+   "servings": 4,
+   "prep_time_min": 40,
+   "aliases": {
+    "de": [
+     "kimchi-jjigae",
+     "kimchi jjigae",
+     "kimchi eintopf",
+     "kimchi-suppe"
+    ],
+    "en": [
+     "kimchi jjigae",
+     "kimchi stew"
+    ],
+    "fr": [
+     "kimchi jjigae"
+    ],
+    "it": [
+     "kimchi jjigae"
+    ],
+    "tr": [
+     "kimchi jjigae"
+    ]
+   },
+   "titles": {
+    "de": "Kimchi-Jjigae",
+    "en": "Kimchi Jjigae",
+    "fr": "Kimchi Jjigae",
+    "it": "Kimchi Jjigae",
+    "tr": "Kimchi Jjigae"
+   },
+   "garnish": {
+    "de": "Mit Reis servieren.",
+    "en": "Serve with rice.",
+    "fr": "Servir avec riz.",
+    "it": "Servire con riso.",
+    "tr": "Pilav ile servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Kimchi",
+      "en": "Kimchi",
+      "fr": "Kimchi",
+      "it": "Kimchi",
+      "tr": "Kimchi"
+     },
+     "amount": 300,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 2,
+     "fat": 0.5,
+     "protein": 1.1,
+     "fiber": 2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Schweinebauch",
+      "en": "Pork belly",
+      "fr": "Poitrine de porc",
+      "it": "Pancetta di maiale",
+      "tr": "Domuz karni"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 53,
+     "protein": 9.3,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Tofu (fest)",
+      "en": "Firm tofu",
+      "fr": "Tofu ferme",
+      "it": "Tofu sodo",
+      "tr": "Sert tofu"
+     },
+     "amount": 240,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0.5,
+     "fat": 8.7,
+     "protein": 17.3,
+     "fiber": 2.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Fruehlingszwiebel",
+      "en": "Scallion",
+      "fr": "Oignon vert",
+      "it": "Cipollotto",
+      "tr": "Yesil sogan"
+     },
+     "amount": 60,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 3,
+     "fat": 0.2,
+     "protein": 1.8,
+     "fiber": 2.6,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Gochugaru (Chiliflocken)",
+      "en": "Gochugaru",
+      "fr": "Gochugaru",
+      "it": "Gochugaru",
+      "tr": "Gochugaru"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 30,
+     "fat": 12,
+     "protein": 13,
+     "fiber": 30,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Knoblauch",
+      "en": "Garlic",
+      "fr": "Ail",
+      "it": "Aglio",
+      "tr": "Sarimsak"
+     },
+     "amount": 2,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 31,
+     "fat": 0.5,
+     "protein": 6.4,
+     "fiber": 2.1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Ingwer, frisch",
+      "en": "Fresh ginger",
+      "fr": "Gingembre frais",
+      "it": "Zenzero fresco",
+      "tr": "Taze zencefil"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 15.8,
+     "fat": 0.8,
+     "protein": 1.8,
+     "fiber": 2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Sojasauce",
+      "en": "Soy sauce",
+      "fr": "Sauce soja",
+      "it": "Salsa di soia",
+      "tr": "Soya sosu"
+     },
+     "amount": 40,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 4.1,
+     "fat": 0.6,
+     "protein": 8.1,
+     "fiber": 0.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Sesamoel",
+      "en": "Sesame oil",
+      "fr": "Huile de sesame",
+      "it": "Olio di sesamo",
+      "tr": "Susam yagi"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 100,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "fat"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Reis (trocken)",
+      "en": "Rice (dry)",
+      "fr": "Riz (sec)",
+      "it": "Riso (secco)",
+      "tr": "Pirinc (kuru)"
+     },
+     "amount": 120,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 78.7,
+     "fat": 0.7,
+     "protein": 7.1,
+     "fiber": 1.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Fleisch und Kimchi",
+      "en": "Meat and kimchi",
+      "fr": "Viande et kimchi",
+      "it": "Carne e kimchi",
+      "tr": "Et ve kimchi"
+     },
+     "content": {
+      "de": "{0002} in Streifen schneiden, in {0009} anbraten. {0001} grob schneiden, mit {0006} und {0007} 5 Min. mitbraten.",
+      "en": "Slice {0002}, sear in {0009}. Chop {0001}, add with {0006}, {0007}, cook 5 min.",
+      "fr": "Trancher {0002}, saisir dans {0009}. Couper {0001}, ajouter avec {0006}, {0007}, 5 min.",
+      "it": "Affettare {0002}, rosolare in {0009}. Tagliare {0001}, aggiungere con {0006}, {0007}, 5 min.",
+      "tr": "{0002}i serit kes, {0009}da kavur. {0001}i dogra, {0006}, {0007} ile 5 dk pisir."
+     },
+     "stove_level": 3,
+     "time_min": 12
+    },
+    {
+     "title": {
+      "de": "Kochen",
+      "en": "Simmer",
+      "fr": "Mijoter",
+      "it": "Cuocere",
+      "tr": "Pisir"
+     },
+     "content": {
+      "de": "600 ml Wasser und {0008} zugeben, aufkochen. {0005} einruehren, 15 Min. sanft koecheln.",
+      "en": "Add 600 ml water and {0008}, boil. Stir in {0005}, simmer 15 min.",
+      "fr": "Ajouter 600 ml eau et {0008}, bouillir. Incorporer {0005}, mijoter 15 min.",
+      "it": "Aggiungere 600 ml acqua e {0008}, bollire. Unire {0005}, cuocere 15 min.",
+      "tr": "600 ml su ve {0008} ekle, kaynat. {0005} ekle, 15 dk pisir."
+     },
+     "stove_level": 2,
+     "time_min": 18
+    },
+    {
+     "title": {
+      "de": "Finish",
+      "en": "Finish",
+      "fr": "Finition",
+      "it": "Finitura",
+      "tr": "Final"
+     },
+     "content": {
+      "de": "{0003} in Wuerfeln zugeben, 5 Min. mitkoecheln. {0004} in Ringen zugeben, mit Reis servieren.",
+      "en": "Add {0003} cubed, simmer 5 min. Add {0004} in rings, serve with rice.",
+      "fr": "Ajouter {0003}, mijoter 5 min. Ajouter {0004}, servir avec riz.",
+      "it": "Aggiungere {0003}, cuocere 5 min. Aggiungere {0004}, servire con riso.",
+      "tr": "{0003} kup ekle, 5 dk pisir. {0004} halka ekle, pilav ile servis et."
+     },
+     "stove_level": 2,
+     "time_min": 10
+    }
+   ],
+   "chef_analysis": {
+    "de": "Kimchi-Jjigae: Altes, saures Kimchi ist besser als frisches - es hat mehr Umami und Saeure. Gochugaru gibt Farbe und Schaerfe, aber sparsam dosieren, Kimchi bringt schon Schaerfe mit. Tofu erst am Ende, sonst zerfaellt er.",
+    "en": "Kimchi Jjigae: old, sour kimchi is better than fresh - it has more umami and acidity. Gochugaru adds colour and heat, use sparingly, kimchi already brings heat. Add tofu at the end or it falls apart.",
+    "fr": "Kimchi Jjigae : kimchi vieux et acide preferable. Gochugaru avec parcimonie. Tofu a la fin.",
+    "it": "Kimchi Jjigae: kimchi vecchio e acido preferibile. Gochugaru con parsimonia. Tofu alla fine.",
+    "tr": "Kimchi Jjigae: eski, eksi kimchi daha iyi. Gochugaru az kullanin. Tofu en sonda."
+   },
+   "coreComponents": [
+    "kimchi",
+    "pork_belly",
+    "tofu_firm",
+    "scallion",
+    "gochugaru",
+    "garlic",
+    "ginger_fresh",
+    "soy_sauce",
+    "sesame_oil",
+    "rice_dry"
+   ]
   }
  ]
 }
