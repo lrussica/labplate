@@ -1,0 +1,23 @@
+'use strict';
+module.exports = {
+  gyoza_wrapper: { displayName: 'Gyoza-Teigblaetter', aliases: ['gyoza-teig','gyoza wrapper','gyoza skin','gyoza dough','pate gyoza'],
+    per100g: { protein: 8.0, fat: 2.0, netCarbs: 68.0, fiber: 2.0, kcal: 320 }, source: 'Schaetzung (Gyoza wrapper)' },
+  dashi: { displayName: 'Dashi (Bruhe)', aliases: ['dashi','dashi-bruhe','japanische bruhe','dashi stock'],
+    per100g: { protein: 0.5, fat: 0.1, netCarbs: 0.5, fiber: 0, kcal: 5 }, source: 'Schaetzung (Dashi stock)' },
+  okonomiyaki_sauce: { displayName: 'Okonomiyaki-Sauce', aliases: ['okonomiyaki-sauce','okonomiyaki sauce','okonomi sauce'],
+    per100g: { protein: 2.0, fat: 0.5, netCarbs: 45.0, fiber: 1.0, kcal: 200 }, source: 'Schaetzung (Okonomiyaki sauce)' },
+  bonito_flakes: { displayName: 'Bonito-Flocken', aliases: ['bonito-flocken','bonito flakes','katsuobushi','flocons de bonite','fiocchi di bonito'],
+    per100g: { protein: 78.0, fat: 3.0, netCarbs: 3.0, fiber: 0, kcal: 350 }, source: 'Schaetzung (Katsuobushi)' },
+  aonori: { displayName: 'Aonori (Algenpulver)', aliases: ['aonori','algenpulver','green nori','seaweed powder'],
+    per100g: { protein: 20.0, fat: 3.0, netCarbs: 15.0, fiber: 20.0, kcal: 180 }, source: 'Schaetzung (Aonori)' },
+  ginger_pickled: { displayName: 'Eingelegter Ingwer (Gari)', aliases: ['gari','eingelegter ingwer','pickled ginger','gingembre marine'],
+    per100g: { protein: 0.5, fat: 0.1, netCarbs: 8.0, fiber: 0.5, kcal: 35 }, source: 'Schaetzung (Gari pickled ginger)' },
+  baguette: { displayName: 'Baguette', aliases: ['baguette','baguette brot','franzoesisches stangenweissbrot'],
+    per100g: { protein: 9.0, fat: 1.5, netCarbs: 55.0, fiber: 2.5, kcal: 275 }, source: 'USDA FDC 172675 (Bread, french)' },
+  sriracha: { displayName: 'Sriracha', aliases: ['sriracha','sriracha sauce','thai chili sauce'],
+    per100g: { protein: 1.5, fat: 0.5, netCarbs: 18.0, fiber: 1.0, kcal: 90 }, source: 'USDA FDC 175832 (Sriracha)' },
+  sake: { displayName: 'Sake (Kochsake)', aliases: ['sake','kochsake','rice wine','japanischer reiswein','sake de cuisine'],
+    per100g: { protein: 0.5, fat: 0, netCarbs: 5.0, fiber: 0, kcal: 130 }, source: 'Schaetzung (Sake, cooking)' },
+  shichimi: { displayName: 'Shichimi Togarashi', aliases: ['shichimi','shichimi togarashi','japanisches siebengewuerz'],
+    per100g: { protein: 12.0, fat: 10.0, netCarbs: 40.0, fiber: 25.0, kcal: 270 }, source: 'Schaetzung (Shichimi togarashi)' },
+};
