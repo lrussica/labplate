@@ -36,6 +36,4 @@ module.exports = {
     per100g: { protein: 0.0, fat: 100.0, netCarbs: 0.0, fiber: 0.0, kcal: 884 }, source: 'USDA FDC 171413 (Oil, vegetable, canola)' },
   salt: { displayName: 'Salz', aliases: ['salz','salt'],
     per100g: { protein: 0.0, fat: 0.0, netCarbs: 0.0, fiber: 0.0, kcal: 0 }, source: 'n/a' },
-  pepper_black: { displayName: 'Schwarzer Pfeffer', aliases: ['schwarzer pfeffer','pfeffer','black pepper','pepper'],
-    per100g: { protein: 10.4, fat: 3.3, netCarbs: 38.7, fiber: 25.2, kcal: 251 }, source: 'USDA FDC 170931 (Spices, pepper, black)' },
 };
