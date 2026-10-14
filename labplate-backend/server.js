@@ -399,6 +399,26 @@ app.get('/health', (req, res) => {
     groq429Diagnostics: true,
     groqDebugKeyRouting: true,
   });
+
+app.get('/api/debug/master-info', (req, res) => {
+  try {
+    const store = require('./classic-master-store');
+    store.reloadMaster();
+    const ids = store.listMasterIds();
+    res.json({
+      build: (typeof BUILD_ID !== 'undefined') ? BUILD_ID : null,
+      pid: process.pid,
+      count: ids.length,
+      hasClam: ids.includes('clam_chowder'),
+      hasGulasch: ids.includes('goulash'),
+      hasTomYum: ids.includes('tom_yum'),
+      lastIds: ids.slice(-10),
+    });
+  } catch (e) {
+    res.status(500).json({ error: String(e && e.message || e) });
+  }
+});
+
 });
 
 // Lexikon-Begriffe aus SQLite lexicon_terms (kein KI-Call zur Laufzeit).
