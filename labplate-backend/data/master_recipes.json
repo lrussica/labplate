@@ -34391,6 +34391,1258 @@
     "salt",
     "black_pepper"
    ]
+  },
+  {
+   "id": "laksa",
+   "immutable": true,
+   "cuisine": "my",
+   "region": "Malaysia",
+   "servings": 4,
+   "prep_time_min": 45,
+   "aliases": {
+    "de": [
+     "laksa",
+     "kurkuma-kokos-suppe",
+     "malaysische laksa"
+    ],
+    "en": [
+     "laksa",
+     "malaysian laksa",
+     "curry laksa"
+    ],
+    "fr": [
+     "laksa",
+     "soupe laksa"
+    ],
+    "it": [
+     "laksa",
+     "zuppa laksa"
+    ],
+    "tr": [
+     "laksa",
+     "laksa çorbası"
+    ]
+   },
+   "titles": {
+    "de": "Laksa",
+    "en": "Laksa",
+    "fr": "Laksa",
+    "it": "Laksa",
+    "tr": "Laksa"
+   },
+   "garnish": {
+    "de": "Mit Koriander, Limettenspalte und Chili-Ringen servieren.",
+    "en": "Top with cilantro, lime wedge and chili rings.",
+    "fr": "Garnir de coriandre, quartier de citron vert et rondelles de piment.",
+    "it": "Guarnire con coriandolo, spicchio di lime e anelli di peperoncino.",
+    "tr": "Kişniş, misket limonu ve chili halkaları ile servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Reisnudeln",
+      "en": "Rice noodles",
+      "fr": "Nouilles de riz",
+      "it": "Noodles di riso",
+      "tr": "Pirinç eriştesi"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 24.9,
+     "fat": 0.2,
+     "protein": 1.8,
+     "fiber": 0.9,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Kokosmilch (Dose)",
+      "en": "Coconut milk",
+      "fr": "Lait de coco",
+      "it": "Latte di cocco",
+      "tr": "Hindistan cevizi sütü"
+     },
+     "amount": 400,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 2.2,
+     "fat": 23.8,
+     "protein": 2.3,
+     "fiber": 2.2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Laksa-Paste",
+      "en": "Laksa paste",
+      "fr": "Pâte laksa",
+      "it": "Pasta laksa",
+      "tr": "Laksa ezmesi"
+     },
+     "amount": 60,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 12,
+     "fat": 15,
+     "protein": 5,
+     "fiber": 4,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Garnelen",
+      "en": "Shrimp",
+      "fr": "Crevettes",
+      "it": "Gamberi",
+      "tr": "Karides"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 0.5,
+     "protein": 20.1,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Tofu, fest",
+      "en": "Firm tofu",
+      "fr": "Tofu ferme",
+      "it": "Tofu sodo",
+      "tr": "Sert tofu"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0.5,
+     "fat": 8.7,
+     "protein": 17.3,
+     "fiber": 2.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Sojasprossen",
+      "en": "Bean sprouts",
+      "fr": "Pousses de soja",
+      "it": "Germogli di soia",
+      "tr": "Soya filizi"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 3,
+     "fat": 0.2,
+     "protein": 3,
+     "fiber": 1.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Fischsauce",
+      "en": "Fish sauce",
+      "fr": "Sauce de poisson",
+      "it": "Salsa di pesce",
+      "tr": "Balık sosu"
+     },
+     "amount": 20,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 3.6,
+     "fat": 0,
+     "protein": 5.1,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Limette",
+      "en": "Lime",
+      "fr": "Citron vert",
+      "it": "Lime",
+      "tr": "Misket limonu"
+     },
+     "amount": 60,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 6,
+     "fat": 0.2,
+     "protein": 0.7,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Koriander (frisch)",
+      "en": "Cilantro",
+      "fr": "Coriandre",
+      "it": "Coriandolo",
+      "tr": "Kişniş"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0.9,
+     "fat": 0.5,
+     "protein": 2.1,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Chili",
+      "en": "Red chili",
+      "fr": "Piment rouge",
+      "it": "Peperoncino rosso",
+      "tr": "Kırmızı biber"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.3,
+     "fat": 0.4,
+     "protein": 1.9,
+     "fiber": 1.5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0011",
+     "names": {
+      "de": "Schalotten",
+      "en": "Shallots",
+      "fr": "Échalotes",
+      "it": "Scalogni",
+      "tr": "Arpacık soğan"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 13.6,
+     "fat": 0.1,
+     "protein": 2.5,
+     "fiber": 3.2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0012",
+     "names": {
+      "de": "Knoblauch",
+      "en": "Garlic",
+      "fr": "Ail",
+      "it": "Aglio",
+      "tr": "Sarımsak"
+     },
+     "amount": 3,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 31,
+     "fat": 0.5,
+     "protein": 6.4,
+     "fiber": 2.1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0013",
+     "names": {
+      "de": "Galangal",
+      "en": "Galangal",
+      "fr": "Galanga",
+      "it": "Galanga",
+      "tr": "Galangal"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 12,
+     "fat": 0.5,
+     "protein": 1.5,
+     "fiber": 2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0014",
+     "names": {
+      "de": "Zitronengras",
+      "en": "Lemongrass",
+      "fr": "Citronnelle",
+      "it": "Citronella",
+      "tr": "Limon otu"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 25.3,
+     "fat": 0.5,
+     "protein": 1.8,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0015",
+     "names": {
+      "de": "Eier",
+      "en": "Eggs",
+      "fr": "Œufs",
+      "it": "Uova",
+      "tr": "Yumurta"
+     },
+     "amount": 2,
+     "unit": "stk",
+     "protein_source": true,
+     "netCarbs": 0.7,
+     "fat": 9.5,
+     "protein": 12.6,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Brühe",
+      "en": "Broth",
+      "fr": "Bouillon",
+      "it": "Brodo",
+      "tr": "Et suyu"
+     },
+     "content": {
+      "de": "{0003} in etwas Öl 2 Min. anbraten bis es duftet. {0002} angießen, 10 Min. köcheln. Mit {0007} abschmecken.",
+      "en": "Fry {0003} in a little oil 2 min until fragrant. Add {0002}, simmer 10 min. Season with {0007}.",
+      "fr": "Faire revenir {0003} 2 min. Ajouter {0002}, mijoter 10 min. Assaisonner avec {0007}.",
+      "it": "Soffriggere {0003} 2 min. Aggiungere {0002}, cuocere 10 min. Condire con {0007}.",
+      "tr": "{0003}ı az yağda 2 dk kavur. {0002} ekle, 10 dk pişir. {0007} ile tatlandır."
+     },
+     "stove_level": 3,
+     "time_min": 15
+    },
+    {
+     "title": {
+      "de": "Aromaten",
+      "en": "Aromatics",
+      "fr": "Aromates",
+      "it": "Aromi",
+      "tr": "Aromatikler"
+     },
+     "content": {
+      "de": "{0011}, {0012}, {0013}, {0014} fein hacken bzw. in Streifen schneiden. {0010} in Ringe schneiden.",
+      "en": "Finely chop {0011}, {0012}, {0013}, {0014}. Slice {0010} into rings.",
+      "fr": "Hacher {0011}, {0012}, {0013}, {0014}. Émincer {0010}.",
+      "it": "Tritare {0011}, {0012}, {0013}, {0014}. Affettare {0010}.",
+      "tr": "{0011}, {0012}, {0013}, {0014} doğra. {0010}ı halka kes."
+     },
+     "stove_level": 1,
+     "time_min": 8
+    },
+    {
+     "title": {
+      "de": "Garnelen und Tofu",
+      "en": "Shrimp and tofu",
+      "fr": "Crevettes et tofu",
+      "it": "Gamberi e tofu",
+      "tr": "Karides ve tofu"
+     },
+     "content": {
+      "de": "{0004} 2 Min. in der Brühe garen, herausnehmen. {0005} würfeln, 3 Min. mitgaren.",
+      "en": "Cook {0004} in broth 2 min, remove. Cube {0005}, cook 3 min.",
+      "fr": "Cuire {0004} 2 min dans le bouillon, retirer. Cubes {0005}, cuire 3 min.",
+      "it": "Cuocere {0004} 2 min nel brodo, togliere. Cubetti {0005}, cuocere 3 min.",
+      "tr": "{0004}ı 2 dk suda pişir, çıkar. {0005}ı küp kes, 3 dk pişir."
+     },
+     "stove_level": 3,
+     "time_min": 6
+    },
+    {
+     "title": {
+      "de": "Nudeln und Ei",
+      "en": "Noodles and egg",
+      "fr": "Nouilles et œuf",
+      "it": "Noodles e uovo",
+      "tr": "Noodle ve yumurta"
+     },
+     "content": {
+      "de": "{0001} nach Packung garen, abgießen. {0015} 7 Min. kochen, pellen, halbieren.",
+      "en": "Cook {0001} per package, drain. Boil {0015} 7 min, peel, halve.",
+      "fr": "Cuire {0001} selon paquet, égoutter. Cuire {0015} 7 min, peler, couper.",
+      "it": "Cuocere {0001} per confezione, scolare. Bollire {0015} 7 min, sbucciare, dimezzare.",
+      "tr": "{0001}ı pakete göre pişir, süz. {0015}ı 7 dk haşla, soy, ikiye böl."
+     },
+     "stove_level": 2,
+     "time_min": 10
+    },
+    {
+     "title": {
+      "de": "Anrichten",
+      "en": "Plate",
+      "fr": "Dresser",
+      "it": "Impiattare",
+      "tr": "Servis"
+     },
+     "content": {
+      "de": "Nudeln in Schalen, Brühe angießen, Garnelen, Tofu, {0006} und Ei darauf. Mit {0008} und {0009} bestreuen.",
+      "en": "Noodles in bowls, ladle broth, top with shrimp, tofu, {0006}, egg. Sprinkle {0008}, {0009}.",
+      "fr": "Nouilles dans les bols, verser le bouillon, garnir. Parsemer {0008}, {0009}.",
+      "it": "Noodles nelle ciotole, versare il brodo, guarnire. Cospargere {0008}, {0009}.",
+      "tr": "Noodle kâselere, et suyu dök, üzerine karides, tofu, {0006}, yumurta. {0008}, {0009} serp."
+     },
+     "stove_level": 0,
+     "time_min": 5
+    }
+   ],
+   "chef_analysis": {
+    "de": "Laksa: Paste zuerst in Öl anbraten, sonst schmeckt sie roh. Kokosmilch erst nach dem Anbraten, sonst bricht die Emulsion. Frischer Limettensaft am Ende ist Pflicht.",
+    "en": "Laksa: fry the paste first or it tastes raw. Add coconut milk after frying or the emulsion breaks. Fresh lime juice at the end is mandatory.",
+    "fr": "Laksa : faire revenir la pâte d’abord sinon elle a un goût cru. Lait de coco après, sinon l’émulsion casse. Jus de citron vert obligatoire.",
+    "it": "Laksa: soffriggere prima la pasta o sa di crudo. Latte di cocco dopo o l’emulsione si rompe. Succo di lime finale obbligatorio.",
+    "tr": "Laksa: ezmeyi önce kavur, yoksa çiğ tat verir. Hindistan cevizi sütünü sonra ekle, yoksa emülsiyon bozulur. Misket limonu şart."
+   },
+   "coreComponents": [
+    "rice_noodles",
+    "coconut_milk_full",
+    "laksa_paste",
+    "shrimp",
+    "tofu",
+    "bean_sprouts",
+    "fish_sauce",
+    "lime",
+    "cilantro",
+    "chili",
+    "shallot",
+    "garlic",
+    "galangal",
+    "lemongrass",
+    "egg"
+   ]
+  },
+  {
+   "id": "rendang",
+   "immutable": true,
+   "cuisine": "id",
+   "region": "Sumatra",
+   "servings": 4,
+   "prep_time_min": 180,
+   "aliases": {
+    "de": [
+     "rendang",
+     "rindfleisch in kokos",
+     "beef rendang"
+    ],
+    "en": [
+     "rendang",
+     "beef rendang"
+    ],
+    "fr": [
+     "rendang",
+     "bœuf rendang"
+    ],
+    "it": [
+     "rendang",
+     "manzo rendang"
+    ],
+    "tr": [
+     "rendang",
+     "dana rendang"
+    ]
+   },
+   "titles": {
+    "de": "Rendang",
+    "en": "Rendang",
+    "fr": "Rendang",
+    "it": "Rendang",
+    "tr": "Rendang"
+   },
+   "garnish": {
+    "de": "Mit Reis servieren und mit Kokosflocken bestreuen.",
+    "en": "Serve with rice and sprinkle with coconut flakes.",
+    "fr": "Servir avec du riz, parsemer de coco.",
+    "it": "Servire con riso, cospargere di cocco.",
+    "tr": "Pilav ile servis edin, hindistan cevizi serpin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Rinderbrust",
+      "en": "Beef brisket",
+      "fr": "Poitrine de bœuf",
+      "it": "Petto di manzo",
+      "tr": "Dana göğsü"
+     },
+     "amount": 400,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 7.4,
+     "protein": 20.7,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Kokosmilch (Dose)",
+      "en": "Coconut milk",
+      "fr": "Lait de coco",
+      "it": "Latte di cocco",
+      "tr": "Hindistan cevizi sütü"
+     },
+     "amount": 400,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 2.2,
+     "fat": 23.8,
+     "protein": 2.3,
+     "fiber": 2.2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Rendang-Paste",
+      "en": "Rendang paste",
+      "fr": "Pâte rendang",
+      "it": "Pasta rendang",
+      "tr": "Rendang ezmesi"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 15,
+     "fat": 12,
+     "protein": 4,
+     "fiber": 5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Zitronengras",
+      "en": "Lemongrass",
+      "fr": "Citronnelle",
+      "it": "Citronella",
+      "tr": "Limon otu"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 25.3,
+     "fat": 0.5,
+     "protein": 1.8,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Galangal",
+      "en": "Galangal",
+      "fr": "Galanga",
+      "it": "Galanga",
+      "tr": "Galangal"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 12,
+     "fat": 0.5,
+     "protein": 1.5,
+     "fiber": 2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Kaffir-Limettenblätter",
+      "en": "Kaffir lime leaves",
+      "fr": "Feuilles de combava",
+      "it": "Foglie di kaffir",
+      "tr": "Kaffir yaprağı"
+     },
+     "amount": 5,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 10,
+     "fat": 1,
+     "protein": 4,
+     "fiber": 8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Kurkuma",
+      "en": "Turmeric",
+      "fr": "Curcuma",
+      "it": "Curcuma",
+      "tr": "Zerdeçal"
+     },
+     "amount": 10,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 44.4,
+     "fat": 3.2,
+     "protein": 9.7,
+     "fiber": 22.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Chili",
+      "en": "Red chili",
+      "fr": "Piment rouge",
+      "it": "Peperoncino rosso",
+      "tr": "Kırmızı biber"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.3,
+     "fat": 0.4,
+     "protein": 1.9,
+     "fiber": 1.5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Schalotten",
+      "en": "Shallots",
+      "fr": "Échalotes",
+      "it": "Scalogni",
+      "tr": "Arpacık soğan"
+     },
+     "amount": 80,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 13.6,
+     "fat": 0.1,
+     "protein": 2.5,
+     "fiber": 3.2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Knoblauch",
+      "en": "Garlic",
+      "fr": "Ail",
+      "it": "Aglio",
+      "tr": "Sarımsak"
+     },
+     "amount": 3,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 31,
+     "fat": 0.5,
+     "protein": 6.4,
+     "fiber": 2.1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0011",
+     "names": {
+      "de": "Tamarindenpaste",
+      "en": "Tamarind paste",
+      "fr": "Pâte de tamarin",
+      "it": "Pasta di tamarindo",
+      "tr": "Tamarind ezmesi"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 57,
+     "fat": 0.6,
+     "protein": 2.8,
+     "fiber": 5.1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0012",
+     "names": {
+      "de": "Palmzucker",
+      "en": "Palm sugar",
+      "fr": "Sucre de palme",
+      "it": "Zucchero di palma",
+      "tr": "Palmiye şekeri"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 95,
+     "fat": 0,
+     "protein": 0.5,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0013",
+     "names": {
+      "de": "Kokosflocken",
+      "en": "Coconut flakes",
+      "fr": "Coco râpé",
+      "it": "Cocco grattugiato",
+      "tr": "Hindistan cevizi rendesi"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.3,
+     "fat": 64.5,
+     "protein": 6.9,
+     "fiber": 16.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "garnish"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Paste anbraten",
+      "en": "Fry paste",
+      "fr": "Saisir la pâte",
+      "it": "Soffriggere la pasta",
+      "tr": "Ezmeyi kavur"
+     },
+     "content": {
+      "de": "{0003} mit {0004}, {0005}, {0006}, {0007}, {0008}, {0009}, {0010} in etwas Öl 5 Min. anbraten bis es duftet.",
+      "en": "Fry {0003} with {0004}, {0005}, {0006}, {0007}, {0008}, {0009}, {0010} in oil 5 min until fragrant.",
+      "fr": "Faire revenir {0003} avec {0004}, {0005}, {0006}, {0007}, {0008}, {0009}, {0010} 5 min.",
+      "it": "Soffriggere {0003} con {0004}, {0005}, {0006}, {0007}, {0008}, {0009}, {0010} 5 min.",
+      "tr": "{0003}ı {0004}, {0005}, {0006}, {0007}, {0008}, {0009}, {0010} ile 5 dk kavur."
+     },
+     "stove_level": 3,
+     "time_min": 6
+    },
+    {
+     "title": {
+      "de": "Fleisch anbraten",
+      "en": "Sear beef",
+      "fr": "Saisir la viande",
+      "it": "Rosolare la carne",
+      "tr": "Eti mühürle"
+     },
+     "content": {
+      "de": "{0001} in 3 cm Würfel schneiden, zugeben, rundum anbraten.",
+      "en": "Cube {0001}, add, sear all over.",
+      "fr": "Couper {0001}, ajouter, saisir.",
+      "it": "Cubetti {0001}, aggiungere, rosolare.",
+      "tr": "{0001}ı küp kes, ekle, her yönden mühürle."
+     },
+     "stove_level": 4,
+     "time_min": 8
+    },
+    {
+     "title": {
+      "de": "Schmoren",
+      "en": "Simmer",
+      "fr": "Mijoter",
+      "it": "Cuocere",
+      "tr": "Pişir"
+     },
+     "content": {
+      "de": "{0002} angießen, aufkochen, dann bei kleiner Hitze 2 Std. offen einkochen, bis die Sauce fast trocken ist.",
+      "en": "Pour in {0002}, boil, then simmer uncovered 2 h until sauce is nearly dry.",
+      "fr": "Verser {0002}, bouillir, mijoter 2 h à découvert jusqu’à presque sec.",
+      "it": "Versare {0002}, bollire, cuocere 2 h scoperto fino a quasi asciutto.",
+      "tr": "{0002} ekle, kaynat, 2 saat açık kısık ateşte neredeyse kuru kalana kadar pişir."
+     },
+     "stove_level": 2,
+     "time_min": 120
+    },
+    {
+     "title": {
+      "de": "Finish",
+      "en": "Finish",
+      "fr": "Finition",
+      "it": "Finitura",
+      "tr": "Final"
+     },
+     "content": {
+      "de": "{0011} und {0012} einrühren, 5 Min. weiter einkochen. {0013} in trockener Pfanne rösten, darüberstreuen.",
+      "en": "Stir in {0011}, {0012}, cook 5 min more. Toast {0013} dry, sprinkle over.",
+      "fr": "Incorporer {0011}, {0012}, cuire 5 min. Torréfier {0013}, saupoudrer.",
+      "it": "Unire {0011}, {0012}, cuocere 5 min. Tostare {0013}, cospargere.",
+      "tr": "{0011}, {0012} karıştır, 5 dk daha pişir. {0013}ı kavur, üzerine serp."
+     },
+     "stove_level": 3,
+     "time_min": 6
+    }
+   ],
+   "chef_analysis": {
+    "de": "Rendang: Einkochen ist alles — die Sauce wird dunkel und ölig, wenn sie richtig ist. Fleisch erst nach dem Anbraten der Paste, sonst verbrennen die Aromaten.",
+    "en": "Rendang: reduction is everything — the sauce turns dark and oily when right. Add beef after frying the paste or the aromatics burn.",
+    "fr": "Rendang : la réduction est tout — la sauce devient sombre et huileuse. Viande après la pâte sinon les aromates brûlent.",
+    "it": "Rendang: la riduzione è tutto — la salsa diventa scura e oleosa. Carne dopo la pasta o gli aromi bruciano.",
+    "tr": "Rendang: çektirme her şey — sos koyulaşıp yağlanır. Ezmeyi kavurduktan sonra eti ekle, yoksa aromatikler yanar."
+   },
+   "coreComponents": [
+    "beef_brisket",
+    "coconut_milk_full",
+    "rendang_paste",
+    "lemongrass",
+    "galangal",
+    "kaffir_lime",
+    "turmeric",
+    "chili",
+    "shallot",
+    "garlic",
+    "tamarind",
+    "palm_sugar",
+    "coconut_flakes"
+   ]
+  },
+  {
+   "id": "tacos_al_pastor",
+   "immutable": true,
+   "cuisine": "mx",
+   "region": "Mexico",
+   "servings": 4,
+   "prep_time_min": 60,
+   "aliases": {
+    "de": [
+     "tacos al pastor",
+     "tacos vom schwein",
+     "pastor-tacos"
+    ],
+    "en": [
+     "tacos al pastor",
+     "al pastor tacos"
+    ],
+    "fr": [
+     "tacos al pastor",
+     "tacos au porc"
+    ],
+    "it": [
+     "tacos al pastor",
+     "tacos di maiale"
+    ],
+    "tr": [
+     "tacos al pastor",
+     "al pastor taco"
+    ]
+   },
+   "titles": {
+    "de": "Tacos al Pastor",
+    "en": "Tacos al Pastor",
+    "fr": "Tacos al Pastor",
+    "it": "Tacos al Pastor",
+    "tr": "Tacos al Pastor"
+   },
+   "garnish": {
+    "de": "Mit Koriander, Zwiebel, Ananas und Limette servieren.",
+    "en": "Top with cilantro, onion, pineapple and lime.",
+    "fr": "Garnir de coriandre, oignon, ananas et citron vert.",
+    "it": "Guarnire con coriandolo, cipolla, ananas e lime.",
+    "tr": "Kişniş, soğan, ananas ve misket limonu ile servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Schweineschulter",
+      "en": "Pork shoulder",
+      "fr": "Épaule de porc",
+      "it": "Spalla di maiale",
+      "tr": "Domuz omuz"
+     },
+     "amount": 500,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 13,
+     "protein": 19,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Achiote-Paste",
+      "en": "Achiote paste",
+      "fr": "Pâte achiote",
+      "it": "Pasta achiote",
+      "tr": "Achiote ezmesi"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 20,
+     "fat": 8,
+     "protein": 4,
+     "fiber": 8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Guajillo-Chili",
+      "en": "Guajillo chili",
+      "fr": "Chile guajillo",
+      "it": "Guajillo",
+      "tr": "Guajillo biberi"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 30,
+     "fat": 5,
+     "protein": 10,
+     "fiber": 12,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Ancho-Chili",
+      "en": "Ancho chili",
+      "fr": "Chile ancho",
+      "it": "Ancho",
+      "tr": "Ancho biberi"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 30,
+     "fat": 8,
+     "protein": 11,
+     "fiber": 15,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Ananas",
+      "en": "Pineapple",
+      "fr": "Ananas",
+      "it": "Ananas",
+      "tr": "Ananas"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 11,
+     "fat": 0.1,
+     "protein": 0.5,
+     "fiber": 1.4,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Mais-Tortillas",
+      "en": "Corn tortillas",
+      "fr": "Tortillas de maïs",
+      "it": "Tortillas di mais",
+      "tr": "Mısır tortilla"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 45,
+     "fat": 3,
+     "protein": 7,
+     "fiber": 5,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Zwiebeln",
+      "en": "Onions",
+      "fr": "Oignons",
+      "it": "Cipolle",
+      "tr": "Soğan"
+     },
+     "amount": 100,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.6,
+     "fat": 0.1,
+     "protein": 1.1,
+     "fiber": 1.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Koriander (frisch)",
+      "en": "Cilantro",
+      "fr": "Coriandre",
+      "it": "Coriandolo",
+      "tr": "Kişniş"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0.9,
+     "fat": 0.5,
+     "protein": 2.1,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Limette",
+      "en": "Lime",
+      "fr": "Citron vert",
+      "it": "Lime",
+      "tr": "Misket limonu"
+     },
+     "amount": 60,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 6,
+     "fat": 0.2,
+     "protein": 0.7,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Orange",
+      "en": "Orange",
+      "fr": "Orange",
+      "it": "Arancia",
+      "tr": "Portakal"
+     },
+     "amount": 1,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 9.4,
+     "fat": 0.1,
+     "protein": 0.9,
+     "fiber": 2.4,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0011",
+     "names": {
+      "de": "Essig",
+      "en": "Vinegar",
+      "fr": "Vinaigre",
+      "it": "Aceto",
+      "tr": "Sirke"
+     },
+     "amount": 40,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 0.9,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0012",
+     "names": {
+      "de": "Knoblauch",
+      "en": "Garlic",
+      "fr": "Ail",
+      "it": "Aglio",
+      "tr": "Sarımsak"
+     },
+     "amount": 3,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 31,
+     "fat": 0.5,
+     "protein": 6.4,
+     "fiber": 2.1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Adobo",
+      "en": "Adobo",
+      "fr": "Adobo",
+      "it": "Adobo",
+      "tr": "Adobo"
+     },
+     "content": {
+      "de": "{0003} und {0004} in heißem Wasser 10 Min. einweichen, abgießen. Mit {0002}, Saft von {0010}, {0011}, {0012} und 1 Prise Salz pürieren.",
+      "en": "Soak {0003}, {0004} in hot water 10 min, drain. Blend with {0002}, juice of {0010}, {0011}, {0012}, salt.",
+      "fr": "Tremper {0003}, {0004}, égoutter. Mixer avec {0002}, jus de {0010}, {0011}, {0012}, sel.",
+      "it": "Ammollare {0003}, {0004}, scolare. Frullare con {0002}, succo di {0010}, {0011}, {0012}, sale.",
+      "tr": "{0003}, {0004}ı sıcak suda 10 dk beklet, süz. {0002}, {0010} suyu, {0011}, {0012} ve tuz ile blenderdan geçir."
+     },
+     "stove_level": 2,
+     "time_min": 15
+    },
+    {
+     "title": {
+      "de": "Marinieren",
+      "en": "Marinate",
+      "fr": "Mariner",
+      "it": "Marinare",
+      "tr": "Marine et"
+     },
+     "content": {
+      "de": "{0001} in 1 cm Streifen schneiden, mit der Adobo-Mischung 30 Min. (besser über Nacht) marinieren.",
+      "en": "Slice {0001} into 1 cm strips, marinate in adobo 30 min (better overnight).",
+      "fr": "Émincer {0001} en lanières 1 cm, mariner 30 min (mieux une nuit).",
+      "it": "Tagliare {0001} a strisce 1 cm, marinare 30 min (meglio una notte).",
+      "tr": "{0001}ı 1 cm şerit kes, adobo ile 30 dk (tercihen gece boyu) marine et."
+     },
+     "stove_level": 0,
+     "time_min": 30
+    },
+    {
+     "title": {
+      "de": "Anbraten",
+      "en": "Sear",
+      "fr": "Saisir",
+      "it": "Rosolare",
+      "tr": "Mühürle"
+     },
+     "content": {
+      "de": "Fleisch in heißer Pfanne portionsweise scharf anbraten, bis es karamellisiert. {0005} in Würfeln dazugeben, kurz mitbraten.",
+      "en": "Sear meat in batches until caramelised. Add cubed {0005}, fry briefly.",
+      "fr": "Saisir par lots jusqu’à caramélisation. Ajouter {0005}, saisir.",
+      "it": "Rosolare a lotti. Aggiungere {0005}, rosolare.",
+      "tr": "Eti partiler halinde karamelize olana kadar mühürle. {0005}ı ekle, kısa kavur."
+     },
+     "stove_level": 4,
+     "time_min": 10
+    },
+    {
+     "title": {
+      "de": "Tortillas und Anrichten",
+      "en": "Tortillas and plate",
+      "fr": "Tortillas et dressage",
+      "it": "Tortillas e impiattare",
+      "tr": "Tortilla ve servis"
+     },
+     "content": {
+      "de": "{0006} in trockener Pfanne erwärmen. Fleisch darauf, mit {0007}, {0008}, {0005} und {0009} garnieren.",
+      "en": "Warm {0006} in dry pan. Top with meat, garnish {0007}, {0008}, {0005}, {0009}.",
+      "fr": "Chauffer {0006}. Garnir avec viande, {0007}, {0008}, {0005}, {0009}.",
+      "it": "Scaldare {0006}. Guarnire con carne, {0007}, {0008}, {0005}, {0009}.",
+      "tr": "{0006}ı kuru tavada ısıt. Üzerine et, {0007}, {0008}, {0005}, {0009} ile süsle."
+     },
+     "stove_level": 2,
+     "time_min": 5
+    }
+   ],
+   "chef_analysis": {
+    "de": "Tacos al Pastor: Der Adobo muss dick sein — sonst wässert das Fleisch. Ananas ganz am Ende, sonst wird sie matschig. Echte al Pastor werden am vertikalen Spieß gegart, in der Pfanne geht’s auch — dann mit hoher Hitze für Kruste.",
+    "en": "Tacos al Pastor: the adobo must be thick or the meat waters out. Pineapple only at the very end or it turns mushy. Real al pastor comes off a vertical spit; in a pan, use high heat for crust.",
+    "fr": "Tacos al Pastor : l’adobo doit être épais. Ananas à la toute fin. Vrai al pastor à la broche verticale ; à la poêle, feu vif pour la croûte.",
+    "it": "Tacos al Pastor: l’adobo deve essere denso. Ananas solo alla fine. Vero al pastor allo spiedo verticale; in padella, fuoco vivo per la crosta.",
+    "tr": "Tacos al Pastor: adobo koyu olmalı. Ananas en sonda. Gerçek al pastor dikey şişte; tavada yüksek ateşle kabuk yap."
+   },
+   "coreComponents": [
+    "pork_shoulder",
+    "achiote",
+    "guajillo",
+    "ancho",
+    "pineapple",
+    "corn_tortilla",
+    "onion_yellow",
+    "cilantro",
+    "lime",
+    "orange",
+    "vinegar",
+    "garlic"
+   ]
   }
  ]
 }
