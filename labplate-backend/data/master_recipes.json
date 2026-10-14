@@ -35643,6 +35643,1485 @@
     "vinegar",
     "garlic"
    ]
+  },
+  {
+   "id": "pierogi_ruskie",
+   "immutable": true,
+   "cuisine": "pl",
+   "region": "Polen",
+   "servings": 4,
+   "prep_time_min": 90,
+   "aliases": {
+    "de": [
+     "pierogi ruskie",
+     "polnische teigtaschen",
+     "pierogi mit kartoffeln"
+    ],
+    "en": [
+     "pierogi ruskie",
+     "polish dumplings",
+     "ruskie pierogi"
+    ],
+    "fr": [
+     "pierogi ruskie",
+     "raviolis polonais"
+    ],
+    "it": [
+     "pierogi ruskie",
+     "ravioli polacchi"
+    ],
+    "tr": [
+     "pierogi ruskie",
+     "polonya mantısı"
+    ]
+   },
+   "titles": {
+    "de": "Pierogi Ruskie",
+    "en": "Pierogi Ruskie",
+    "fr": "Pierogi Ruskie",
+    "it": "Pierogi Ruskie",
+    "tr": "Pierogi Ruskie"
+   },
+   "garnish": {
+    "de": "Mit saurer Sahne und gerösteten Zwiebeln servieren.",
+    "en": "Serve with sour cream and fried onions.",
+    "fr": "Servir avec crème fraîche et oignons frits.",
+    "it": "Servire con panna acida e cipolle fritte.",
+    "tr": "Ekşi krema ve kavrulmuş soğan ile servis edin."
+   },
+   "diet_labels": [
+    "vegetarian"
+   ],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Mehl",
+      "en": "Flour",
+      "fr": "Farine",
+      "it": "Farina",
+      "tr": "Un"
+     },
+     "amount": 320,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 74.4,
+     "fat": 1,
+     "protein": 10.3,
+     "fiber": 2.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Ei",
+      "en": "Egg",
+      "fr": "Œuf",
+      "it": "Uovo",
+      "tr": "Yumurta"
+     },
+     "amount": 2,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 0.7,
+     "fat": 9.5,
+     "protein": 12.6,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "binder"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Wasser",
+      "en": "Water",
+      "fr": "Eau",
+      "it": "Acqua",
+      "tr": "Su"
+     },
+     "amount": 160,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Kartoffeln",
+      "en": "Potatoes",
+      "fr": "Pommes de terre",
+      "it": "Patate",
+      "tr": "Patates"
+     },
+     "amount": 400,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 15.4,
+     "fat": 0.1,
+     "protein": 2.1,
+     "fiber": 2.1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Quark (20%)",
+      "en": "Quark",
+      "fr": "Fromage frais",
+      "it": "Quark",
+      "tr": "Süzme lor"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 3.5,
+     "fat": 20,
+     "protein": 12,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Zwiebeln",
+      "en": "Onions",
+      "fr": "Oignons",
+      "it": "Cipolle",
+      "tr": "Soğan"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.6,
+     "fat": 0.1,
+     "protein": 1.1,
+     "fiber": 1.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Butter",
+      "en": "Butter",
+      "fr": "Beurre",
+      "it": "Burro",
+      "tr": "Tereyağı"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0.1,
+     "fat": 81.1,
+     "protein": 0.9,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "fat"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Salz",
+      "en": "Salt",
+      "fr": "Sel",
+      "it": "Sale",
+      "tr": "Tuz"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Pfeffer (schwarz)",
+      "en": "Black pepper",
+      "fr": "Poivre noir",
+      "it": "Pepe nero",
+      "tr": "Karabiber"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 38.7,
+     "fat": 3.3,
+     "protein": 10.4,
+     "fiber": 25.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Saure Sahne",
+      "en": "Sour cream",
+      "fr": "Crème fraîche",
+      "it": "Panna acida",
+      "tr": "Ekşi krema"
+     },
+     "amount": 60,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 3,
+     "fat": 20,
+     "protein": 2.4,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "garnish"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Teig",
+      "en": "Dough",
+      "fr": "Pâte",
+      "it": "Impasto",
+      "tr": "Hamur"
+     },
+     "content": {
+      "de": "{0001} mit {0002}, {0003} und 1 Prise {0008} zu einem glatten Teig kneten. 30 Min. ruhen lassen.",
+      "en": "Knead {0001} with {0002}, {0003}, pinch of {0008} to smooth dough. Rest 30 min.",
+      "fr": "Pétrir {0001} avec {0002}, {0003}, {0008}. Repos 30 min.",
+      "it": "Impastare {0001} con {0002}, {0003}, {0008}. Riposo 30 min.",
+      "tr": "{0001}ı {0002}, {0003}, {0008} ile yoğur. 30 dk dinlendir."
+     },
+     "stove_level": 0,
+     "time_min": 35
+    },
+    {
+     "title": {
+      "de": "Füllung",
+      "en": "Filling",
+      "fr": "Garniture",
+      "it": "Ripieno",
+      "tr": "İç harç"
+     },
+     "content": {
+      "de": "{0004} kochen, schälen, zerdrücken. {0006} würfeln, in {0007} goldbraun braten. Mit {0005}, Salz und {0009} mischen.",
+      "en": "Boil {0004}, peel, mash. Dice {0006}, brown in {0007}. Mix with {0005}, salt, {0009}.",
+      "fr": "Cuire {0004}, éplucher, écraser. Faire dorer {0006} dans {0007}. Mélanger avec {0005}, sel, {0009}.",
+      "it": "Bollire {0004}, sbucciare, schiacciare. Dorare {0006} in {0007}. Mescolare con {0005}, sale, {0009}.",
+      "tr": "{0004}ı haşla, soy, ez. {0006}ı küp kes, {0007}de kızart. {0005}, tuz, {0009} ile karıştır."
+     },
+     "stove_level": 3,
+     "time_min": 25
+    },
+    {
+     "title": {
+      "de": "Füllen",
+      "en": "Fill",
+      "fr": "Garnir",
+      "it": "Farcire",
+      "tr": "Doldur"
+     },
+     "content": {
+      "de": "Teig dünn ausrollen, Kreise (8 cm) ausstechen, Füllung aufsetzen, Ränder fest verschließen.",
+      "en": "Roll dough thin, cut 8 cm circles, fill, seal edges well.",
+      "fr": "Étaler fin, découper 8 cm, garnir, souder.",
+      "it": "Stendere, tagliare 8 cm, farcire, sigillare.",
+      "tr": "İnce aç, 8 cm daire kes, doldur, kenarları kapat."
+     },
+     "stove_level": 0,
+     "time_min": 30
+    },
+    {
+     "title": {
+      "de": "Kochen",
+      "en": "Boil",
+      "fr": "Cuire",
+      "it": "Cuocere",
+      "tr": "Haşla"
+     },
+     "content": {
+      "de": "In Salzwasser 3–4 Min. ziehen lassen, bis sie an die Oberfläche steigen. Mit {0007} schwenken. Mit {0010} servieren.",
+      "en": "Simmer in salted water 3–4 min until floating. Toss with {0007}. Serve with {0010}.",
+      "fr": "Cuire 3–4 min. Rouler dans {0007}. Servir avec {0010}.",
+      "it": "Cuocere 3–4 min. Saltare con {0007}. Servire con {0010}.",
+      "tr": "Tuzlu suda 3–4 dk haşla. {0007} ile çevir. {0010} ile servis et."
+     },
+     "stove_level": 3,
+     "time_min": 8
+    }
+   ],
+   "chef_analysis": {
+    "de": "Pierogi Ruskie: Füllung muss kalt sein, sonst weicht der Teig durch. Ränder gut andrücken, sonst platzen sie im Wasser. Nach dem Kochen in Butter schwenken — das ist der Trick.",
+    "en": "Pierogi Ruskie: filling must be cold or dough gets soggy. Press edges well or they burst. Toss in butter after boiling — that is the trick.",
+    "fr": "Pierogi Ruskie : farce froide sinon la pâte ramollit. Bien souder les bords. Rouler dans le beurre après cuisson.",
+    "it": "Pierogi Ruskie: ripieno freddo o la pasta si bagna. Sigillare bene. Saltare nel burro dopo la cottura.",
+    "tr": "Pierogi Ruskie: iç soğuk olmalı, yoksa hamur ıslanır. Kenarları iyi kapat. Piştikten sonra tereyağında çevir."
+   },
+   "coreComponents": [
+    "flour",
+    "egg",
+    "water",
+    "potato",
+    "quark",
+    "onion_yellow",
+    "butter",
+    "salt",
+    "black_pepper",
+    "sour_cream"
+   ]
+  },
+  {
+   "id": "khachapuri",
+   "immutable": true,
+   "cuisine": "ge",
+   "region": "Georgien",
+   "servings": 4,
+   "prep_time_min": 120,
+   "aliases": {
+    "de": [
+     "khachapuri",
+     "georgisches kaesebrot",
+     "chatschapuri"
+    ],
+    "en": [
+     "khachapuri",
+     "georgian cheese bread"
+    ],
+    "fr": [
+     "khachapuri",
+     "pain géorgien au fromage"
+    ],
+    "it": [
+     "khachapuri",
+     "pane georgiano al formaggio"
+    ],
+    "tr": [
+     "haçapuri",
+     "gürcü peynirli ekmeği"
+    ]
+   },
+   "titles": {
+    "de": "Khachapuri",
+    "en": "Khachapuri",
+    "fr": "Khachapuri",
+    "it": "Khachapuri",
+    "tr": "Haçapuri"
+   },
+   "garnish": {
+    "de": "Heiss servieren und mit Butter bestreichen.",
+    "en": "Serve hot, brush with butter.",
+    "fr": "Servir chaud, badigeonner de beurre.",
+    "it": "Servire caldo, spennellare di burro.",
+    "tr": "Sıcak servis, tereyağı sür."
+   },
+   "diet_labels": [
+    "vegetarian"
+   ],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Mehl",
+      "en": "Flour",
+      "fr": "Farine",
+      "it": "Farina",
+      "tr": "Un"
+     },
+     "amount": 320,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 74.4,
+     "fat": 1,
+     "protein": 10.3,
+     "fiber": 2.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Hefe (frisch)",
+      "en": "Fresh yeast",
+      "fr": "Levure fraîche",
+      "it": "Lievito fresco",
+      "tr": "Yaş maya"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 11,
+     "fat": 1,
+     "protein": 12,
+     "fiber": 6,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "binder"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Milch (3,5%)",
+      "en": "Whole milk",
+      "fr": "Lait entier",
+      "it": "Latte intero",
+      "tr": "Tam yağlı süt"
+     },
+     "amount": 200,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 4.8,
+     "fat": 3.5,
+     "protein": 3.4,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Eier",
+      "en": "Eggs",
+      "fr": "Œufs",
+      "it": "Uova",
+      "tr": "Yumurta"
+     },
+     "amount": 2,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 0.7,
+     "fat": 9.5,
+     "protein": 12.6,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "binder"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Mozzarella",
+      "en": "Mozzarella",
+      "fr": "Mozzarella",
+      "it": "Mozzarella",
+      "tr": "Mozzarella"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 2.4,
+     "fat": 22.1,
+     "protein": 22.2,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Feta",
+      "en": "Feta",
+      "fr": "Feta",
+      "it": "Feta",
+      "tr": "Beyaz peynir"
+     },
+     "amount": 120,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 3.9,
+     "fat": 21.5,
+     "protein": 14.2,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Butter",
+      "en": "Butter",
+      "fr": "Beurre",
+      "it": "Burro",
+      "tr": "Tereyağı"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 0.1,
+     "fat": 81.1,
+     "protein": 0.9,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "fat"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Zucker",
+      "en": "Sugar",
+      "fr": "Sucre",
+      "it": "Zucchero",
+      "tr": "Şeker"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 100,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Salz",
+      "en": "Salt",
+      "fr": "Sel",
+      "it": "Sale",
+      "tr": "Tuz"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Teig",
+      "en": "Dough",
+      "fr": "Pâte",
+      "it": "Impasto",
+      "tr": "Hamur"
+     },
+     "content": {
+      "de": "{0002} in lauwarmer {0003} mit {0008} auflösen. Mit {0001}, 1 {0004} und Salz verkneten. 1 Std. gehen lassen.",
+      "en": "Dissolve {0002} in warm {0003} with {0008}. Knead with {0001}, 1 {0004}, salt. Rise 1 h.",
+      "fr": "Dissoudre {0002} dans {0003} tiède avec {0008}. Pétrir avec {0001}, 1 {0004}, sel. Lever 1 h.",
+      "it": "Sciogliere {0002} in {0003} tiepido con {0008}. Impastare con {0001}, 1 {0004}, sale. Lievitare 1 h.",
+      "tr": "{0002}ı ılık {0003} ve {0008}de çöz. {0001}, 1 {0004} ve tuzla yoğur. 1 saat mayalandır."
+     },
+     "stove_level": 0,
+     "time_min": 70
+    },
+    {
+     "title": {
+      "de": "Käsefüllung",
+      "en": "Cheese filling",
+      "fr": "Garniture fromage",
+      "it": "Ripieno di formaggio",
+      "tr": "Peynir harcı"
+     },
+     "content": {
+      "de": "{0005} und {0006} reiben, mit 1 {0004} mischen.",
+      "en": "Grate {0005}, {0006}, mix with 1 {0004}.",
+      "fr": "Râper {0005}, {0006}, mélanger avec 1 {0004}.",
+      "it": "Grattugiare {0005}, {0006}, mescolare con 1 {0004}.",
+      "tr": "{0005}, {0006}ı rendele, 1 {0004} ile karıştır."
+     },
+     "stove_level": 0,
+     "time_min": 5
+    },
+    {
+     "title": {
+      "de": "Formen",
+      "en": "Shape",
+      "fr": "Former",
+      "it": "Formare",
+      "tr": "Şekillendir"
+     },
+     "content": {
+      "de": "Teig in 4 Stücke teilen. Zu Ovalen (25×15 cm) ausrollen, Käse in die Mitte, Ränder hochziehen und zu Booten formen.",
+      "en": "Divide into 4. Roll ovals 25×15 cm, cheese in middle, fold edges up into boats.",
+      "fr": "Diviser en 4. Étaler en ovales 25×15 cm, fromage au milieu, former des barques.",
+      "it": "Dividere in 4. Stendere ovali 25×15 cm, formaggio al centro, formare barchette.",
+      "tr": "4 parçaya böl. 25×15 cm oval aç, peyniri ortaya koy, kenarları kayık şeklinde kıvır."
+     },
+     "stove_level": 0,
+     "time_min": 15
+    },
+    {
+     "title": {
+      "de": "Backen",
+      "en": "Bake",
+      "fr": "Cuire",
+      "it": "Cuocere",
+      "tr": "Pişir"
+     },
+     "content": {
+      "de": "Bei 230 °C 15 Min. backen. Herausnehmen, Mulde in die Mitte drücken, 1 {0004} hineingeben, weitere 3 Min. backen. Mit {0007} bestreichen.",
+      "en": "Bake at 230 °C 15 min. Press well in middle, crack 1 {0004}, bake 3 min more. Brush with {0007}.",
+      "fr": "Cuire à 230 °C 15 min. Creuser, casser 1 {0004}, cuire 3 min. Badigeonner de {0007}.",
+      "it": "Cuocere a 230 °C 15 min. Incavare, rompere 1 {0004}, cuocere 3 min. Spennellare con {0007}.",
+      "tr": "230 °C 15 dk pişir. Ortasını çukurlaştır, 1 {0004} kır, 3 dk daha pişir. {0007} sür."
+     },
+     "stove_level": 4,
+     "time_min": 20
+    }
+   ],
+   "chef_analysis": {
+    "de": "Khachapuri: Die Käse-Mischung braucht salzigen Feta — nur Mozzarella schmeckt flach. Am besten direkt aus dem Ofen essen, solange das Eigelb noch flüssig ist.",
+    "en": "Khachapuri: the cheese mix needs salty feta — mozzarella alone tastes flat. Best eaten straight from the oven while the yolk is runny.",
+    "fr": "Khachapuri : le mélange a besoin de feta salée — mozzarella seule est fade. À manger aussitôt, jaune coulant.",
+    "it": "Khachapuri: il mix di formaggi vuole feta salata — solo mozzarella è insipido. Da mangiare subito, tuorlo liquido.",
+    "tr": "Khachapuri: peynir karışımı tuzlu beyaz peynir ister — sadece mozzarella yavan olur. Yumurta akışkan iken hemen yenir."
+   },
+   "coreComponents": [
+    "flour",
+    "yeast",
+    "milk",
+    "egg",
+    "mozzarella",
+    "feta",
+    "butter",
+    "sugar",
+    "salt"
+   ]
+  },
+  {
+   "id": "bobotie",
+   "immutable": true,
+   "cuisine": "za",
+   "region": "Südafrika",
+   "servings": 4,
+   "prep_time_min": 75,
+   "aliases": {
+    "de": [
+     "bobotie",
+     "suedafrikanischer hackauflauf",
+     "südafrikanischer hackauflauf"
+    ],
+    "en": [
+     "bobotie",
+     "south african bobotie"
+    ],
+    "fr": [
+     "bobotie",
+     "bobotie sud-africain"
+    ],
+    "it": [
+     "bobotie",
+     "bobotie sudafricano"
+    ],
+    "tr": [
+     "bobotie",
+     "güney afrika bobotie"
+    ]
+   },
+   "titles": {
+    "de": "Bobotie",
+    "en": "Bobotie",
+    "fr": "Bobotie",
+    "it": "Bobotie",
+    "tr": "Bobotie"
+   },
+   "garnish": {
+    "de": "Mit gelbem Reis und Chutney servieren.",
+    "en": "Serve with yellow rice and chutney.",
+    "fr": "Servir avec riz jaune et chutney.",
+    "it": "Servire con riso giallo e chutney.",
+    "tr": "Sarı pilav ve chutney ile servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Rinderhackfleisch",
+      "en": "Ground beef",
+      "fr": "Bœuf haché",
+      "it": "Manzo macinato",
+      "tr": "Dana kıyma"
+     },
+     "amount": 320,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 18.1,
+     "protein": 17.7,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Zwiebeln",
+      "en": "Onions",
+      "fr": "Oignons",
+      "it": "Cipolle",
+      "tr": "Soğan"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.6,
+     "fat": 0.1,
+     "protein": 1.1,
+     "fiber": 1.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Knoblauch",
+      "en": "Garlic",
+      "fr": "Ail",
+      "it": "Aglio",
+      "tr": "Sarımsak"
+     },
+     "amount": 3,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 31,
+     "fat": 0.5,
+     "protein": 6.4,
+     "fiber": 2.1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Currypulver",
+      "en": "Curry powder",
+      "fr": "Curry en poudre",
+      "it": "Curry in polvere",
+      "tr": "Köri tozu"
+     },
+     "amount": 15,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 2.6,
+     "fat": 14,
+     "protein": 14.3,
+     "fiber": 53.2,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Kurkuma",
+      "en": "Turmeric",
+      "fr": "Curcuma",
+      "it": "Curcuma",
+      "tr": "Zerdeçal"
+     },
+     "amount": 5,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 44.4,
+     "fat": 3.2,
+     "protein": 9.7,
+     "fiber": 22.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Chutney (Frucht)",
+      "en": "Chutney",
+      "fr": "Chutney",
+      "it": "Chutney",
+      "tr": "Chutney"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 60,
+     "fat": 0.2,
+     "protein": 0.5,
+     "fiber": 1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Rosinen",
+      "en": "Raisins",
+      "fr": "Raisins secs",
+      "it": "Uvetta",
+      "tr": "Kuru üzüm"
+     },
+     "amount": 20,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 75,
+     "fat": 0.5,
+     "protein": 3.1,
+     "fiber": 3.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Semmelbrösel",
+      "en": "Bread crumbs",
+      "fr": "Chapelure",
+      "it": "Pangrattato",
+      "tr": "Galeta unu"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 70,
+     "fat": 5,
+     "protein": 11,
+     "fiber": 4,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "starch"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Milch (3,5%)",
+      "en": "Whole milk",
+      "fr": "Lait entier",
+      "it": "Latte intero",
+      "tr": "Tam yağlı süt"
+     },
+     "amount": 160,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 4.8,
+     "fat": 3.5,
+     "protein": 3.4,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Eier",
+      "en": "Eggs",
+      "fr": "Œufs",
+      "it": "Uova",
+      "tr": "Yumurta"
+     },
+     "amount": 2,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 0.7,
+     "fat": 9.5,
+     "protein": 12.6,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "binder"
+    },
+    {
+     "id": "0011",
+     "names": {
+      "de": "Lorbeerblätter",
+      "en": "Bay leaves",
+      "fr": "Feuilles de laurier",
+      "it": "Foglie di alloro",
+      "tr": "Defne yaprağı"
+     },
+     "amount": 2,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 48.6,
+     "fat": 8.4,
+     "protein": 7.6,
+     "fiber": 26.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0012",
+     "names": {
+      "de": "Zitrone",
+      "en": "Lemon",
+      "fr": "Citron",
+      "it": "Limone",
+      "tr": "Limon"
+     },
+     "amount": 1,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 6.5,
+     "fat": 0.3,
+     "protein": 1.1,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0013",
+     "names": {
+      "de": "Salz",
+      "en": "Salt",
+      "fr": "Sel",
+      "it": "Sale",
+      "tr": "Tuz"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0014",
+     "names": {
+      "de": "Pfeffer (schwarz)",
+      "en": "Black pepper",
+      "fr": "Poivre noir",
+      "it": "Pepe nero",
+      "tr": "Karabiber"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 38.7,
+     "fat": 3.3,
+     "protein": 10.4,
+     "fiber": 25.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Fleisch",
+      "en": "Meat",
+      "fr": "Viande",
+      "it": "Carne",
+      "tr": "Et"
+     },
+     "content": {
+      "de": "{0002} und {0003} in Öl andünsten. {0001} zugeben, krümelig braten. {0004}, {0005} einrühren, 1 Min. rösten.",
+      "en": "Sweat {0002}, {0003} in oil. Add {0001}, brown. Stir in {0004}, {0005}, toast 1 min.",
+      "fr": "Faire suer {0002}, {0003}. Ajouter {0001}, saisir. Incorporer {0004}, {0005}.",
+      "it": "Stufare {0002}, {0003}. Aggiungere {0001}, rosolare. Unire {0004}, {0005}.",
+      "tr": "{0002}, {0003}ı yağda sotele. {0001} ekle, kavur. {0004}, {0005} karıştır."
+     },
+     "stove_level": 3,
+     "time_min": 12
+    },
+    {
+     "title": {
+      "de": "Sauce",
+      "en": "Sauce",
+      "fr": "Sauce",
+      "it": "Sugo",
+      "tr": "Sos"
+     },
+     "content": {
+      "de": "{0006}, {0007}, {0008}, Saft von {0012}, Salz und {0014} zugeben. 10 Min. köcheln. {0011} zugeben.",
+      "en": "Add {0006}, {0007}, {0008}, juice of {0012}, salt, {0014}. Simmer 10 min. Add {0011}.",
+      "fr": "Ajouter {0006}, {0007}, {0008}, jus de {0012}, sel, {0014}. Mijoter 10 min. Ajouter {0011}.",
+      "it": "Aggiungere {0006}, {0007}, {0008}, succo di {0012}, sale, {0014}. Cuocere 10 min. Aggiungere {0011}.",
+      "tr": "{0006}, {0007}, {0008}, {0012} suyu, tuz, {0014} ekle. 10 dk pişir. {0011} ekle."
+     },
+     "stove_level": 2,
+     "time_min": 12
+    },
+    {
+     "title": {
+      "de": "Auflauf",
+      "en": "Bake",
+      "fr": "Cuire",
+      "it": "Cuocere",
+      "tr": "Pişir"
+     },
+     "content": {
+      "de": "Masse in Auflaufform. {0009} mit {0010} verquirlen, darüber gießen. Bei 180 °C 35–40 Min. goldbraun backen.",
+      "en": "Pour into dish. Whisk {0009} with {0010}, pour over. Bake at 180 °C 35–40 min until golden.",
+      "fr": "Verser dans un plat. Battre {0009} avec {0010}, verser. Cuire à 180 °C 35–40 min.",
+      "it": "Versare in teglia. Sbattere {0009} con {0010}, versare. Cuocere a 180 °C 35–40 min.",
+      "tr": "Kalıba dök. {0009}ı {0010} ile çırp, üzerine dök. 180 °C 35–40 dk pişir."
+     },
+     "stove_level": 4,
+     "time_min": 40
+    }
+   ],
+   "chef_analysis": {
+    "de": "Bobotie: Die Eier-Milch-Schicht darf nicht kochen — sonst gerinnt sie flockig. Chutney ist Pflicht, es gibt die typische süß-saure Note. Rosinen nicht weglassen, sie gehören dazu.",
+    "en": "Bobotie: the egg-milk layer must not boil or it curdles. Chutney is mandatory for the sweet-sour note. Do not skip raisins.",
+    "fr": "Bobotie : la couche œuf-lait ne doit pas bouillir. Le chutney est obligatoire. Ne pas omettre les raisins.",
+    "it": "Bobotie: lo strato uovo-latte non deve bollire. Il chutney è obbligatorio. Non omettere l’uvetta.",
+    "tr": "Bobotie: yumurta-süt katmanı kaynamamalı. Chutney şart. Kuru üzüm atlanmaz."
+   },
+   "coreComponents": [
+    "beef_mince",
+    "onion_yellow",
+    "garlic",
+    "curry_powder",
+    "turmeric",
+    "chutney",
+    "raisins",
+    "bread_crumbs",
+    "milk",
+    "egg",
+    "bay_leaf",
+    "lemon",
+    "salt",
+    "black_pepper"
+   ]
+  },
+  {
+   "id": "poerkolt",
+   "immutable": true,
+   "cuisine": "hu",
+   "region": "Ungarn",
+   "servings": 4,
+   "prep_time_min": 120,
+   "aliases": {
+    "de": [
+     "poerkoelt",
+     "pörkölt",
+     "ungarisches paprikagulasch",
+     "rindergulasch mit paprikasauce"
+    ],
+    "en": [
+     "porkolt",
+     "hungarian beef stew",
+     "paprika beef stew"
+    ],
+    "fr": [
+     "porkolt",
+     "ragoût hongrois au paprika"
+    ],
+    "it": [
+     "porkolt",
+     "spezzatino ungherese al paprika"
+    ],
+    "tr": [
+     "pörkölt",
+     "macar paprikalı dana"
+    ]
+   },
+   "titles": {
+    "de": "Pörkölt",
+    "en": "Pörkölt",
+    "fr": "Pörkölt",
+    "it": "Pörkölt",
+    "tr": "Pörkölt"
+   },
+   "garnish": {
+    "de": "Mit Nokedli (Spätzle) oder Salzkartoffeln servieren.",
+    "en": "Serve with nokedli (small dumplings) or boiled potatoes.",
+    "fr": "Servir avec nokedli ou pommes de terre.",
+    "it": "Servire con nokedli o patate lesse.",
+    "tr": "Nokedli veya haşlanmış patates ile servis edin."
+   },
+   "diet_labels": [],
+   "ingredients": [
+    {
+     "id": "0001",
+     "names": {
+      "de": "Rinderschulter (Chuck)",
+      "en": "Beef chuck",
+      "fr": "Épaule de bœuf",
+      "it": "Spalla di manzo",
+      "tr": "Dana omuz"
+     },
+     "amount": 600,
+     "unit": "g",
+     "protein_source": true,
+     "netCarbs": 0,
+     "fat": 10,
+     "protein": 19,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "main_protein"
+    },
+    {
+     "id": "0002",
+     "names": {
+      "de": "Zwiebeln",
+      "en": "Onions",
+      "fr": "Oignons",
+      "it": "Cipolle",
+      "tr": "Soğan"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 7.6,
+     "fat": 0.1,
+     "protein": 1.1,
+     "fiber": 1.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0003",
+     "names": {
+      "de": "Knoblauch",
+      "en": "Garlic",
+      "fr": "Ail",
+      "it": "Aglio",
+      "tr": "Sarımsak"
+     },
+     "amount": 4,
+     "unit": "stk",
+     "protein_source": false,
+     "netCarbs": 31,
+     "fat": 0.5,
+     "protein": 6.4,
+     "fiber": 2.1,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "aromat"
+    },
+    {
+     "id": "0004",
+     "names": {
+      "de": "Paprikapulver (edelsüss)",
+      "en": "Sweet paprika",
+      "fr": "Paprika doux",
+      "it": "Paprika dolce",
+      "tr": "Tatlı kırmızı biber"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 20,
+     "fat": 12.9,
+     "protein": 14.1,
+     "fiber": 35,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0005",
+     "names": {
+      "de": "Tomatenmark",
+      "en": "Tomato paste",
+      "fr": "Concentré de tomate",
+      "it": "Concentrato di pomodoro",
+      "tr": "Domates salçası"
+     },
+     "amount": 40,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 15.5,
+     "fat": 0.7,
+     "protein": 4.2,
+     "fiber": 4.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0006",
+     "names": {
+      "de": "Grüne Paprika",
+      "en": "Green bell pepper",
+      "fr": "Poivron vert",
+      "it": "Peperone verde",
+      "tr": "Yeşil biber"
+     },
+     "amount": 200,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 2.9,
+     "fat": 0.2,
+     "protein": 0.9,
+     "fiber": 1.7,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0007",
+     "names": {
+      "de": "Karotten",
+      "en": "Carrots",
+      "fr": "Carottes",
+      "it": "Carote",
+      "tr": "Havuç"
+     },
+     "amount": 160,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 6.8,
+     "fat": 0.2,
+     "protein": 0.9,
+     "fiber": 2.8,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "vegetable"
+    },
+    {
+     "id": "0008",
+     "names": {
+      "de": "Rinderbrühe",
+      "en": "Beef stock",
+      "fr": "Bouillon de bœuf",
+      "it": "Brodo di manzo",
+      "tr": "Dana suyu"
+     },
+     "amount": 400,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 0.4,
+     "fat": 0.2,
+     "protein": 1.1,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0009",
+     "names": {
+      "de": "Rotwein",
+      "en": "Red wine",
+      "fr": "Vin rouge",
+      "it": "Vino rosso",
+      "tr": "Kırmızı şarap"
+     },
+     "amount": 100,
+     "unit": "ml",
+     "protein_source": false,
+     "netCarbs": 2.6,
+     "fat": 0,
+     "protein": 0.1,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "sauce"
+    },
+    {
+     "id": "0010",
+     "names": {
+      "de": "Kümmel (Kümmelkörner)",
+      "en": "Caraway",
+      "fr": "Cumin des prés",
+      "it": "Cumino dei prati",
+      "tr": "Kimyon"
+     },
+     "amount": 5,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 11.9,
+     "fat": 14.6,
+     "protein": 19.8,
+     "fiber": 38,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0011",
+     "names": {
+      "de": "Majoran",
+      "en": "Marjoram",
+      "fr": "Marjolaine",
+      "it": "Maggiorana",
+      "tr": "Mercanköşk"
+     },
+     "amount": 5,
+     "unit": "g",
+     "protein_source": false,
+     "netCarbs": 20.3,
+     "fat": 7,
+     "protein": 12.7,
+     "fiber": 40.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0012",
+     "names": {
+      "de": "Salz",
+      "en": "Salt",
+      "fr": "Sel",
+      "it": "Sale",
+      "tr": "Tuz"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 0,
+     "fat": 0,
+     "protein": 0,
+     "fiber": 0,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    },
+    {
+     "id": "0013",
+     "names": {
+      "de": "Pfeffer (schwarz)",
+      "en": "Black pepper",
+      "fr": "Poivre noir",
+      "it": "Pepe nero",
+      "tr": "Karabiber"
+     },
+     "amount": 0,
+     "unit": "prise",
+     "protein_source": false,
+     "netCarbs": 38.7,
+     "fat": 3.3,
+     "protein": 10.4,
+     "fiber": 25.3,
+     "allergenTags": [],
+     "lactoseSwap": null,
+     "culinaryRole": "spice"
+    }
+   ],
+   "steps": [
+    {
+     "title": {
+      "de": "Zwiebeln",
+      "en": "Onions",
+      "fr": "Oignons",
+      "it": "Cipolle",
+      "tr": "Soğan"
+     },
+     "content": {
+      "de": "{0002} fein würfeln, in Schmalz oder Öl 10 Min. goldbraun dünsten. Topf vom Herd nehmen.",
+      "en": "Dice {0002}, sweat in lard or oil 10 min golden. Take pot off heat.",
+      "fr": "Dicer {0002}, suer 10 min. Retirer du feu.",
+      "it": "Dadolino {0002}, stufare 10 min. Togliere dal fuoco.",
+      "tr": "{0002}ı küp kes, 10 dk sotele. Tencereyi ateşten al."
+     },
+     "stove_level": 3,
+     "time_min": 10
+    },
+    {
+     "title": {
+      "de": "Paprika einrühren",
+      "en": "Stir in paprika",
+      "fr": "Incorporer le paprika",
+      "it": "Unire la paprica",
+      "tr": "Paprikayı karıştır"
+     },
+     "content": {
+      "de": "{0004} einrühren (Topf ist vom Herd — Paprika darf nicht verbrennen). {0001} in Würfeln zugeben, mit {0010}, {0011}, Salz und {0013} würzen.",
+      "en": "Stir in {0004} (pot off heat — paprika must not burn). Add cubed {0001}, season {0010}, {0011}, salt, {0013}.",
+      "fr": "Incorporer {0004} (hors du feu). Ajouter {0001}, assaisonner {0010}, {0011}, sel, {0013}.",
+      "it": "Unire {0004} (fuori fuoco). Aggiungere {0001}, condire {0010}, {0011}, sale, {0013}.",
+      "tr": "{0004}ı karıştır (ateşten uzakta). {0001} ekle, {0010}, {0011}, tuz, {0013} ile tatlandır."
+     },
+     "stove_level": 3,
+     "time_min": 8
+    },
+    {
+     "title": {
+      "de": "Anbraten und Schmoren",
+      "en": "Sear and simmer",
+      "fr": "Saisir et mijoter",
+      "it": "Rosolare e cuocere",
+      "tr": "Mühürle ve pişir"
+     },
+     "content": {
+      "de": "Topf zurück auf den Herd, Fleisch rundum anbraten. {0005}, {0006}, {0007} zugeben, mit {0009} ablöschen, {0008} angießen. Zugedeckt 90 Min. sanft schmoren.",
+      "en": "Return pot to heat, sear meat all over. Add {0005}, {0006}, {0007}, deglaze with {0009}, add {0008}. Cover, simmer 90 min.",
+      "fr": "Remettre sur le feu, saisir. Ajouter {0005}, {0006}, {0007}, déglacer {0009}, ajouter {0008}. Mijoter 90 min.",
+      "it": "Rimettere sul fuoco, rosolare. Aggiungere {0005}, {0006}, {0007}, sfumare {0009}, aggiungere {0008}. Cuocere 90 min.",
+      "tr": "Ateşe geri koy, eti mühürle. {0005}, {0006}, {0007} ekle, {0009} ile söndür, {0008} ekle. Kapalı 90 dk pişir."
+     },
+     "stove_level": 2,
+     "time_min": 100
+    },
+    {
+     "title": {
+      "de": "Finish",
+      "en": "Finish",
+      "fr": "Finition",
+      "it": "Finitura",
+      "tr": "Final"
+     },
+     "content": {
+      "de": "Sauce abschmecken, evtl. einkochen. Mit Nokedli oder Kartoffeln servieren.",
+      "en": "Season sauce, reduce if needed. Serve with nokedli or potatoes.",
+      "fr": "Assaisonner, réduire si besoin. Servir avec nokedli ou pommes de terre.",
+      "it": "Condire, ridurre se serve. Servire con nokedli o patate.",
+      "tr": "Sosu tatlandır, gerekirse çektir. Nokedli veya patates ile servis et."
+     },
+     "stove_level": 2,
+     "time_min": 8
+    }
+   ],
+   "chef_analysis": {
+    "de": "Pörkölt: Paprika kommt NUR bei vom Herd genommenem Topf ins Spiel — verbrannt wird er bitter. Die Sauce ist das Ziel: sämig, dunkelrot, ohne Mehl. Schmorzeit ist entscheidend: 90 Minuten Minimum.",
+    "en": "Pörkölt: paprika goes in ONLY off the heat — burnt it turns bitter. The sauce is the goal: silky, dark red, no flour. Simmer time matters: 90 minutes minimum.",
+    "fr": "Pörkölt : le paprika hors du feu — brûlé il devient amer. La sauce est le but : onctueuse, rouge foncé, sans farine. Mijoter 90 min minimum.",
+    "it": "Pörkölt: la paprica solo fuori dal fuoco — bruciata diventa amara. La salsa è il fine: vellutata, rosso scuro, senza farina. Minimo 90 min.",
+    "tr": "Pörkölt: paprika sadece ateşten indirilmiş tencerede — yanarsa acı olur. Sos hedef: ipeksi, koyu kırmızı, un yok. En az 90 dk."
+   },
+   "coreComponents": [
+    "beef_chuck",
+    "onion_yellow",
+    "garlic",
+    "paprika_powder",
+    "tomato_paste",
+    "bell_pepper_green",
+    "carrot",
+    "beef_stock",
+    "red_wine",
+    "caraway",
+    "marjoram",
+    "salt",
+    "black_pepper"
+   ]
   }
  ]
 }
