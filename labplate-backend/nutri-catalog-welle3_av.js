@@ -3,8 +3,8 @@ module.exports = {
   tofu_firm: {
     displayName: 'Tofu (fest)',
     aliases: ['tofu','bohnenquark','bean curd','tofu ferme','tofu sodo','sert tofu'],
-    per100g: { protein: 12.7, fat: 8.0, netCarbs: 2.0, fiber: 1.5, kcal: 144 },
-    source: 'USDA FDC 172476 (Tofu, firm, prepared with calcium sulfate)'
+    per100g: { protein: 17.3, fat: 8.7, netCarbs: 2.0, fiber: 1.5, kcal: 145 },
+    source: 'USDA FDC 172475 (Tofu, firm, prepared with calcium sulfate and magnesium chloride)'
   },
   enoki: {
     displayName: 'Enoki-Pilze',
