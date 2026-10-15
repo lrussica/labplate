@@ -1,6 +1,6 @@
 // welle3_av.js — Batch 38
 module.exports = {
-  tofu: {
+  tofu_firm: {
     displayName: 'Tofu (fest)',
     aliases: ['tofu','bohnenquark','bean curd','tofu ferme','tofu sodo','sert tofu'],
     per100g: { protein: 12.7, fat: 8.0, netCarbs: 2.0, fiber: 1.5, kcal: 144 },
