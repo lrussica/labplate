@@ -66,7 +66,7 @@ module.exports = {
     per100g: { protein: 25.0, fat: 33.0, netCarbs: 0.5, fiber: 0.0, kcal: 392 },
     source: 'USDA FDC 171245 (Cheese, manchego)'
   },
-  pepper: {
+  bell_pepper_red: {
     displayName: 'Paprika (rot, roh)',
     aliases: ['paprika rot','rote paprika','red pepper','bell pepper','poivron rouge','peperone rosso','kırmızı biber'],
     per100g: { protein: 1.0, fat: 0.3, netCarbs: 6.0, fiber: 2.1, kcal: 31 },
