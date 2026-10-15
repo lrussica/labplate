@@ -2,7 +2,7 @@
 module.exports = {
   tofu_firm: {
     displayName: 'Tofu (fest)',
-    aliases: ['tofu','bohnenquark','bean curd','tofu ferme','tofu sodo','sert tofu'],
+    aliases: ['tofu','tofu fest','bohnenquark','bean curd','firm tofu','tofu ferme','tofu sodo','sert tofu'],
     per100g: { protein: 17.3, fat: 8.7, netCarbs: 2.0, fiber: 1.5, kcal: 145 },
     source: 'USDA FDC 172475 (Tofu, firm, prepared with calcium sulfate and magnesium chloride)'
   },
