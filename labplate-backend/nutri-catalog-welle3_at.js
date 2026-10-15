@@ -36,7 +36,7 @@ module.exports = {
     per100g: { protein: 18.0, fat: 24.0, netCarbs: 3.5, fiber: 0.0, kcal: 300 },
     source: 'Schaetzung (Queso Fresco)'
   },
-  walnut: {
+  walnuts: {
     displayName: 'Walnüsse',
     aliases: ['walnüsse','walnut','walnuts','noix','noci','ceviz'],
     per100g: { protein: 15.2, fat: 65.2, netCarbs: 7.0, fiber: 6.7, kcal: 654 },
