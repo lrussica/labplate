@@ -1080,6 +1080,7 @@ Object.assign(CATALOG, require('./nutri-catalog-welle3_ac.js'));
 Object.assign(CATALOG, require('./nutri-catalog-welle3_ad.js'));
 Object.assign(CATALOG, require('./nutri-catalog-welle3_ae.js'));
 Object.assign(CATALOG, require('./nutri-catalog-welle3_af.js'));
+Object.assign(CATALOG, require('./nutri-catalog-welle3_ag.js'));
 
 
 // ---------- Matching ----------
