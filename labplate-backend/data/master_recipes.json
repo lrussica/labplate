@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "languages": [
     "de",
     "en",
@@ -63870,6 +63870,2545 @@
         "soy_sauce",
         "mirin",
         "daikon"
+      ]
+    },
+    {
+      "id": "korma",
+      "immutable": true,
+      "cuisine": "in",
+      "region": "Nordindien",
+      "servings": 4,
+      "prep_time_min": 50,
+      "aliases": {
+        "de": [
+          "korma",
+          "hühner korma",
+          "chicken korma",
+          "mildes indisches curry"
+        ],
+        "en": [
+          "korma",
+          "chicken korma",
+          "mild indian curry"
+        ],
+        "fr": [
+          "korma",
+          "poulet korma",
+          "curry indien doux"
+        ],
+        "it": [
+          "korma",
+          "pollo korma",
+          "curry indiano delicato"
+        ],
+        "tr": [
+          "korma",
+          "tavuklu korma",
+          "hafif hint curry"
+        ]
+      },
+      "titles": {
+        "de": "Korma (Mildes Hähnchen-Curry)",
+        "en": "Korma (Mild Chicken Curry)",
+        "fr": "Korma (Curry de poulet doux)",
+        "it": "Korma (Curry di pollo delicato)",
+        "tr": "Korma (Hafif Tavuk Curry)"
+      },
+      "garnish": {
+        "de": "Mit Mandeln und Koriander bestreuen, mit Naan servieren.",
+        "en": "Sprinkle with almonds and coriander, serve with naan.",
+        "fr": "Parsemer d'amandes et coriandre, servir avec naan.",
+        "it": "Cospargere con mandorle e coriandolo, servire con naan.",
+        "tr": "Badem ve kişniş serpip naan ile servis edin."
+      },
+      "diet_labels": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Hähnchenschenkel (ohne Knochen)",
+            "en": "Chicken thigh (boneless)",
+            "fr": "Cuisse de poulet (sans os)",
+            "it": "Coscia di pollo (disossata)",
+            "tr": "Tavuk but (kemiksiz)"
+          },
+          "amount": 600,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 8.5,
+          "protein": 18.6,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "protein"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Joghurt",
+            "en": "Yogurt",
+            "fr": "Yaourt",
+            "it": "Yogurt",
+            "tr": "Yoğurt"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4.7,
+          "fat": 3.3,
+          "protein": 3.5,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "coconut_milk_full",
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Sahne",
+            "en": "Cream",
+            "fr": "Crème",
+            "it": "Panna",
+            "tr": "Krema"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 34,
+          "protein": 2.1,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "coconut_milk_full",
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Zwiebel",
+            "en": "Onion",
+            "fr": "Oignon",
+            "it": "Cipolla",
+            "tr": "Soğan"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 6.7,
+          "fat": 0.1,
+          "protein": 1.1,
+          "fiber": 1.7,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Ingwer",
+            "en": "Ginger",
+            "fr": "Gingembre",
+            "it": "Zenzero",
+            "tr": "Zencefil"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15.8,
+          "fat": 0.8,
+          "protein": 1.8,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Cashews",
+            "en": "Cashews",
+            "fr": "Noix de cajou",
+            "it": "Anacardi",
+            "tr": "Kaju"
+          },
+          "amount": 60,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 26,
+          "fat": 44,
+          "protein": 18,
+          "fiber": 3.3,
+          "allergenTags": [
+            "nuts"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Garam Masala",
+            "en": "Garam masala",
+            "fr": "Garam masala",
+            "it": "Garam masala",
+            "tr": "Garam masala"
+          },
+          "amount": 15,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 28,
+          "fat": 15,
+          "protein": 14,
+          "fiber": 24,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Kurkuma",
+            "en": "Turmeric",
+            "fr": "Curcuma",
+            "it": "Curcuma",
+            "tr": "Zerdeçal"
+          },
+          "amount": 5,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 44.4,
+          "fat": 3.2,
+          "protein": 9.7,
+          "fiber": 22.7,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Kreuzkümmel",
+            "en": "Cumin",
+            "fr": "Cumin",
+            "it": "Cumino",
+            "tr": "Kimyon"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 33.7,
+          "fat": 22.3,
+          "protein": 17.8,
+          "fiber": 10.5,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Koriander (gemahlen)",
+            "en": "Coriander (ground)",
+            "fr": "Coriandre (moulue)",
+            "it": "Coriandolo (macinato)",
+            "tr": "Kişniş (öğülmüş)"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 13.1,
+          "fat": 17.8,
+          "protein": 12.4,
+          "fiber": 41.9,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Ghee",
+            "en": "Ghee",
+            "fr": "Ghee",
+            "it": "Ghee",
+            "tr": "Ghee"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "vegetable_oil",
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0013",
+          "names": {
+            "de": "Koriander (frisch)",
+            "en": "Coriander (fresh)",
+            "fr": "Coriandre (fraîche)",
+            "it": "Coriandolo (fresco)",
+            "tr": "Kişniş (taze)"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 13.1,
+          "fat": 17.8,
+          "protein": 12.4,
+          "fiber": 41.9,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "herb"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Zwiebeln braten",
+            "en": "Fry onions",
+            "fr": "Faire revenir les oignons",
+            "it": "Rosolare le cipolle",
+            "tr": "Soğanları kavur"
+          },
+          "content": {
+            "de": "{0012} in einem schweren Topf erhitzen, {0004} in 8 Minuten goldbraun braten.",
+            "en": "Heat {0012} in a heavy pot, brown {0004} for 8 minutes.",
+            "fr": "Chauffer {0012}, faire dorer {0004} 8 minutes.",
+            "it": "Scaldare {0012}, rosolare {0004} per 8 minuti.",
+            "tr": "{0012}'ı ısıtın, {0004}'ü 8 dakika kavurun."
+          },
+          "stove_level": 3,
+          "time_min": 8
+        },
+        {
+          "title": {
+            "de": "Aromen",
+            "en": "Aromatics",
+            "fr": "Aromates",
+            "it": "Aromi",
+            "tr": "Aromalar"
+          },
+          "content": {
+            "de": "{0005} und {0006} zugeben, 2 Minuten mitbraten. {0007} grob hacken und zugeben.",
+            "en": "Add {0005} and {0006}, cook 2 minutes. Roughly chop {0007} and add.",
+            "fr": "Ajouter {0005} et {0006}, cuire 2 minutes. Concasser {0007} et ajouter.",
+            "it": "Aggiungere {0005} e {0006}, cuocere 2 minuti. Tritare {0007} e aggiungere.",
+            "tr": "{0005} ve {0006}'i ekleyip 2 dakika pişirin. {0007}'yi iri doğrayıp ekleyin."
+          },
+          "stove_level": 3,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Gewürze",
+            "en": "Spices",
+            "fr": "Épices",
+            "it": "Spezie",
+            "tr": "Baharatlar"
+          },
+          "content": {
+            "de": "{0008}, {0009}, {0010}, {0011} einrühren, 1 Minute rösten bis es duftet.",
+            "en": "Stir in {0008}, {0009}, {0010}, {0011}, toast 1 minute until fragrant.",
+            "fr": "Incorporer {0008}, {0009}, {0010}, {0011}, torréfier 1 minute.",
+            "it": "Unire {0008}, {0009}, {0010}, {0011}, tostare 1 minuto.",
+            "tr": "{0008}, {0009}, {0010}, {0011}'i karıştırıp 1 dakika kavurun."
+          },
+          "stove_level": 2,
+          "time_min": 1
+        },
+        {
+          "title": {
+            "de": "Huhn & Joghurt",
+            "en": "Chicken & yogurt",
+            "fr": "Poulet et yaourt",
+            "it": "Pollo e yogurt",
+            "tr": "Tavuk ve yoğurt"
+          },
+          "content": {
+            "de": "{0001} zugeben, 4 Minuten anbraten, dann {0002} esslöffelweise einrühren.",
+            "en": "Add {0001}, sear 4 minutes, then stir in {0002} spoon by spoon.",
+            "fr": "Ajouter {0001}, saisir 4 minutes, puis incorporer {0002} cuillère par cuillère.",
+            "it": "Aggiungere {0001}, rosolare 4 minuti, poi incorporare {0002} un cucchiaio alla volta.",
+            "tr": "{0001}'i ekleyip 4 dakika kavurun, sonra {0002}'ı kaşık kaşık ekleyin."
+          },
+          "stove_level": 3,
+          "time_min": 6
+        },
+        {
+          "title": {
+            "de": "Schmoren",
+            "en": "Simmer",
+            "fr": "Mijoter",
+            "it": "Cuocere",
+            "tr": "Pişir"
+          },
+          "content": {
+            "de": "200 g Wasser zugeben, zudecken und 20 Minuten schmoren lassen.",
+            "en": "Add 200 g water, cover and simmer for 20 minutes.",
+            "fr": "Ajouter 200 g d'eau, couvrir et mijoter 20 minutes.",
+            "it": "Aggiungere 200 g d'acqua, coprire e cuocere 20 minuti.",
+            "tr": "200 g su ekleyip kapatın ve 20 dakika pişirin."
+          },
+          "stove_level": 2,
+          "time_min": 20
+        },
+        {
+          "title": {
+            "de": "Sahne & Finish",
+            "en": "Cream & finish",
+            "fr": "Crème et finition",
+            "it": "Panna e finitura",
+            "tr": "Krema ve bitiş"
+          },
+          "content": {
+            "de": "{0003} einrühren, 3 Minuten sanft köcheln lassen, dann mit {0013} bestreuen.",
+            "en": "Stir in {0003}, simmer gently 3 minutes, then sprinkle {0013}.",
+            "fr": "Incorporer {0003}, mijoter doucement 3 minutes, parsemer {0013}.",
+            "it": "Incorporare {0003}, cuocere dolcemente 3 minuti, cospargere {0013}.",
+            "tr": "{0003}'ü ekleyip 3 dakika kısık ateşte pişirin, {0013} serpin."
+          },
+          "stove_level": 2,
+          "time_min": 3
+        }
+      ],
+      "chef_analysis": {
+        "de": "Korma ist die milde Seite der indischen Küche: Cashews und Sahne machen die Sauce samtig, kein Chili. Perfekt für empfindliche Gaumen.",
+        "en": "Korma is the mild side of Indian cooking: cashews and cream make a silky sauce, no chili. Perfect for sensitive palates.",
+        "fr": "Le korma est le côté doux de la cuisine indienne : noix de cajou et crème donnent une sauce soyeuse, sans piment.",
+        "it": "Il korma è il lato delicato della cucina indiana: anacardi e panna creano una salsa vellutata, senza peperoncino.",
+        "tr": "Korma, Hint mutfağının hafif yüzüdür: kaju ve krema ipeksi bir sos yapar, acı yok."
+      },
+      "coreComponents": [
+        "chicken_thigh",
+        "yogurt",
+        "cream",
+        "onion",
+        "garlic",
+        "ginger",
+        "garam_masala",
+        "turmeric",
+        "cumin",
+        "coriander",
+        "ghee"
+      ]
+    },
+    {
+      "id": "palak_chicken",
+      "immutable": true,
+      "cuisine": "in",
+      "region": "Nordindien",
+      "servings": 4,
+      "prep_time_min": 45,
+      "aliases": {
+        "de": [
+          "palak chicken",
+          "spinat hühnchen curry",
+          "hühnchen mit spinat"
+        ],
+        "en": [
+          "palak chicken",
+          "spinach chicken curry",
+          "chicken with spinach"
+        ],
+        "fr": [
+          "palak chicken",
+          "poulet aux épinards",
+          "curry de poulet aux épinards"
+        ],
+        "it": [
+          "palak chicken",
+          "pollo agli spinaci",
+          "curry di pollo e spinaci"
+        ],
+        "tr": [
+          "palak chicken",
+          "ıspanaklı tavuk curry"
+        ]
+      },
+      "titles": {
+        "de": "Palak Chicken (Hähnchen in Spinatsauce)",
+        "en": "Palak Chicken (Chicken in Spinach Sauce)",
+        "fr": "Palak Chicken (Poulet aux épinards)",
+        "it": "Palak Chicken (Pollo agli spinaci)",
+        "tr": "Palak Chicken (Ispanaklı Tavuk)"
+      },
+      "garnish": {
+        "de": "Mit einem Klecks Joghurt und Naan servieren.",
+        "en": "Serve with a dollop of yogurt and naan.",
+        "fr": "Servir avec une cuillère de yaourt et du naan.",
+        "it": "Servire con un cucchiaio di yogurt e naan.",
+        "tr": "Bir kaşık yoğurt ve naan ile servis edin."
+      },
+      "diet_labels": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Hähnchenschenkel (ohne Knochen)",
+            "en": "Chicken thigh (boneless)",
+            "fr": "Cuisse de poulet (sans os)",
+            "it": "Coscia di pollo (disossata)",
+            "tr": "Tavuk but (kemiksiz)"
+          },
+          "amount": 600,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 8.5,
+          "protein": 18.6,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "protein"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Spinat",
+            "en": "Spinach",
+            "fr": "Épinards",
+            "it": "Spinaci",
+            "tr": "Ispanak"
+          },
+          "amount": 500,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1.4,
+          "fat": 0.4,
+          "protein": 2.9,
+          "fiber": 2.2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Zwiebel",
+            "en": "Onion",
+            "fr": "Oignon",
+            "it": "Cipolla",
+            "tr": "Soğan"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 6.7,
+          "fat": 0.1,
+          "protein": 1.1,
+          "fiber": 1.7,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Tomate",
+            "en": "Tomato",
+            "fr": "Tomate",
+            "it": "Pomodoro",
+            "tr": "Domates"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2.8,
+          "fat": 0.2,
+          "protein": 0.9,
+          "fiber": 1.2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Ingwer",
+            "en": "Ginger",
+            "fr": "Gingembre",
+            "it": "Zenzero",
+            "tr": "Zencefil"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15.8,
+          "fat": 0.8,
+          "protein": 1.8,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Grüne Chili",
+            "en": "Green chili",
+            "fr": "Piment vert",
+            "it": "Peperoncino verde",
+            "tr": "Yeşil biber"
+          },
+          "amount": 15,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4.5,
+          "fat": 0.3,
+          "protein": 1.4,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Garam Masala",
+            "en": "Garam masala",
+            "fr": "Garam masala",
+            "it": "Garam masala",
+            "tr": "Garam masala"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 28,
+          "fat": 15,
+          "protein": 14,
+          "fiber": 24,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Kreuzkümmel",
+            "en": "Cumin",
+            "fr": "Cumin",
+            "it": "Cumino",
+            "tr": "Kimyon"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 33.7,
+          "fat": 22.3,
+          "protein": 17.8,
+          "fiber": 10.5,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Kurkuma",
+            "en": "Turmeric",
+            "fr": "Curcuma",
+            "it": "Curcuma",
+            "tr": "Zerdeçal"
+          },
+          "amount": 5,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 44.4,
+          "fat": 3.2,
+          "protein": 9.7,
+          "fiber": 22.7,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Ghee",
+            "en": "Ghee",
+            "fr": "Ghee",
+            "it": "Ghee",
+            "tr": "Ghee"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "vegetable_oil",
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Sahne",
+            "en": "Cream",
+            "fr": "Crème",
+            "it": "Panna",
+            "tr": "Krema"
+          },
+          "amount": 60,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 34,
+          "protein": 2.1,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "coconut_milk_full",
+          "culinaryRole": "liquid"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Spinat blanchieren",
+            "en": "Blanch spinach",
+            "fr": "Blanchir les épinards",
+            "it": "Sbollentare gli spinaci",
+            "tr": "Ispanağı haşla"
+          },
+          "content": {
+            "de": "{0002} 2 Minuten in kochendem Wasser blanchieren, kalt abschrecken, gut ausdrücken und pürieren.",
+            "en": "Blanch {0002} in boiling water 2 minutes, shock in cold water, squeeze well and blend.",
+            "fr": "Blanchir {0002} 2 minutes, refroidir, essorer et mixer.",
+            "it": "Sbollentare {0002} 2 minuti, raffreddare, strizzare e frullare.",
+            "tr": "{0002}'ı kaynar suda 2 dakika haşlayın, soğuk suya alın, sıkın ve püre yapın."
+          },
+          "stove_level": 4,
+          "time_min": 4
+        },
+        {
+          "title": {
+            "de": "Basis anbraten",
+            "en": "Fry base",
+            "fr": "Base",
+            "it": "Base",
+            "tr": "Taban"
+          },
+          "content": {
+            "de": "{0011} erhitzen, {0003} 6 Minuten goldbraun, {0005}, {0006}, {0007} 2 Minuten mitbraten.",
+            "en": "Heat {0011}, brown {0003} for 6 minutes, add {0005}, {0006}, {0007} for 2 minutes.",
+            "fr": "Chauffer {0011}, dorer {0003} 6 minutes, ajouter {0005}, {0006}, {0007} 2 minutes.",
+            "it": "Scaldare {0011}, rosolare {0003} 6 minuti, aggiungere {0005}, {0006}, {0007} per 2 minuti.",
+            "tr": "{0011}'ı ısıtın, {0003}'ü 6 dakika kavurun, {0005}, {0006}, {0007}'yi 2 dakika ekleyin."
+          },
+          "stove_level": 3,
+          "time_min": 8
+        },
+        {
+          "title": {
+            "de": "Tomaten & Gewürze",
+            "en": "Tomato & spices",
+            "fr": "Tomate et épices",
+            "it": "Pomodoro e spezie",
+            "tr": "Domates ve baharat"
+          },
+          "content": {
+            "de": "{0004}, {0008}, {0009}, {0010} zugeben, 5 Minuten einkochen.",
+            "en": "Add {0004}, {0008}, {0009}, {0010}, cook 5 minutes.",
+            "fr": "Ajouter {0004}, {0008}, {0009}, {0010}, cuire 5 minutes.",
+            "it": "Aggiungere {0004}, {0008}, {0009}, {0010}, cuocere 5 minuti.",
+            "tr": "{0004}, {0008}, {0009}, {0010}'u ekleyip 5 dakika pişirin."
+          },
+          "stove_level": 3,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Huhn garen",
+            "en": "Cook chicken",
+            "fr": "Cuire le poulet",
+            "it": "Cuocere il pollo",
+            "tr": "Tavuğu pişir"
+          },
+          "content": {
+            "de": "{0001} zugeben, 8 Minuten anbraten, 100 g Wasser zugeben, 10 Minuten schmoren.",
+            "en": "Add {0001}, sear 8 minutes, add 100 g water, simmer 10 minutes.",
+            "fr": "Ajouter {0001}, saisir 8 minutes, ajouter 100 g d'eau, mijoter 10 minutes.",
+            "it": "Aggiungere {0001}, rosolare 8 minuti, aggiungere 100 g d'acqua, cuocere 10 minuti.",
+            "tr": "{0001}'i ekleyip 8 dakika kavurun, 100 g su ekleyip 10 dakika pişirin."
+          },
+          "stove_level": 3,
+          "time_min": 18
+        },
+        {
+          "title": {
+            "de": "Spinat & Sahne",
+            "en": "Spinach & cream",
+            "fr": "Épinards et crème",
+            "it": "Spinaci e panna",
+            "tr": "Ispanak ve krema"
+          },
+          "content": {
+            "de": "Spinatpüree und {0012} einrühren, 5 Minuten sanft köcheln lassen.",
+            "en": "Stir in spinach purée and {0012}, simmer gently 5 minutes.",
+            "fr": "Incorporer la purée d'épinards et {0012}, mijoter 5 minutes.",
+            "it": "Incorporare la purea di spinaci e {0012}, cuocere 5 minuti.",
+            "tr": "Ispanak püresi ve {0012}'ü karıştırıp 5 dakika pişirin."
+          },
+          "stove_level": 2,
+          "time_min": 5
+        }
+      ],
+      "chef_analysis": {
+        "de": "Palak Chicken: Spinat darf nicht zu lange kochen, sonst verliert er Farbe und Frische. Am Ende einrühren und nur kurz ziehen lassen.",
+        "en": "Palak chicken: spinach shouldn't cook too long or it loses colour and freshness. Stir in at the end and let it just warm through.",
+        "fr": "Palak chicken : les épinards ne doivent pas trop cuire, sinon ils perdent couleur et fraîcheur. Incorporer en fin de cuisson.",
+        "it": "Palak chicken: gli spinaci non devono cuocere troppo, altrimenti perdono colore e freschezza. Incorporare alla fine.",
+        "tr": "Palak chicken: ıspanak uzun pişerse rengini ve tazeliğini kaybeder. En sonda karıştırıp kısa süre ısıtın."
+      },
+      "coreComponents": [
+        "chicken_thigh",
+        "spinach",
+        "onion",
+        "tomato",
+        "garlic",
+        "ginger",
+        "green_chili",
+        "garam_masala",
+        "cumin",
+        "turmeric",
+        "ghee",
+        "cream"
+      ]
+    },
+    {
+      "id": "tandoori_chicken",
+      "immutable": true,
+      "cuisine": "in",
+      "region": "Punjab",
+      "servings": 4,
+      "prep_time_min": 60,
+      "aliases": {
+        "de": [
+          "tandoori chicken",
+          "tandoori hähnchen",
+          "indisches grillhähnchen"
+        ],
+        "en": [
+          "tandoori chicken",
+          "tandoori grilled chicken",
+          "indian roast chicken"
+        ],
+        "fr": [
+          "poulet tandoori",
+          "tandoori chicken",
+          "poulet grillé indien"
+        ],
+        "it": [
+          "pollo tandoori",
+          "tandoori chicken",
+          "pollo grigliato indiano"
+        ],
+        "tr": [
+          "tandoori tavuk",
+          "tandoori chicken",
+          "hint ızgara tavuk"
+        ]
+      },
+      "titles": {
+        "de": "Tandoori Chicken (Indisches Grillhähnchen)",
+        "en": "Tandoori Chicken",
+        "fr": "Poulet Tandoori",
+        "it": "Pollo Tandoori",
+        "tr": "Tandoori Tavuk"
+      },
+      "garnish": {
+        "de": "Mit Zitronenspalten, Zwiebelringen und Minz-Chutney servieren.",
+        "en": "Serve with lemon wedges, onion rings and mint chutney.",
+        "fr": "Servir avec quartiers de citron, rondelles d'oignon et chutney à la menthe.",
+        "it": "Servire con spicchi di limone, anelli di cipolla e chutney alla menta.",
+        "tr": "Limon dilimleri, soğan halkaları ve nane chutney ile servis edin."
+      },
+      "diet_labels": [
+        "gluten_free"
+      ],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Hähnchenschenkel (mit Knochen)",
+            "en": "Chicken legs (bone-in)",
+            "fr": "Cuisses de poulet (avec os)",
+            "it": "Cosce di pollo (con osso)",
+            "tr": "Tavuk but (kemikli)"
+          },
+          "amount": 800,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 8.5,
+          "protein": 18.6,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "protein"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Joghurt",
+            "en": "Yogurt",
+            "fr": "Yaourt",
+            "it": "Yogurt",
+            "tr": "Yoğurt"
+          },
+          "amount": 250,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4.7,
+          "fat": 3.3,
+          "protein": 3.5,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "coconut_milk_full",
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Zitrone",
+            "en": "Lemon",
+            "fr": "Citron",
+            "it": "Limone",
+            "tr": "Limon"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 6.5,
+          "fat": 0.3,
+          "protein": 1.1,
+          "fiber": 2.8,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "acid"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Ingwer",
+            "en": "Ginger",
+            "fr": "Gingembre",
+            "it": "Zenzero",
+            "tr": "Zencefil"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15.8,
+          "fat": 0.8,
+          "protein": 1.8,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Kashmiri-Chili",
+            "en": "Kashmiri chili",
+            "fr": "Piment du Cachemire",
+            "it": "Peperoncino del Kashmir",
+            "tr": "Kaşmir biberi"
+          },
+          "amount": 15,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 30,
+          "fat": 15,
+          "protein": 14,
+          "fiber": 28,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Garam Masala",
+            "en": "Garam masala",
+            "fr": "Garam masala",
+            "it": "Garam masala",
+            "tr": "Garam masala"
+          },
+          "amount": 15,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 28,
+          "fat": 15,
+          "protein": 14,
+          "fiber": 24,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Kreuzkümmel",
+            "en": "Cumin",
+            "fr": "Cumin",
+            "it": "Cumino",
+            "tr": "Kimyon"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 33.7,
+          "fat": 22.3,
+          "protein": 17.8,
+          "fiber": 10.5,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Koriander (gemahlen)",
+            "en": "Coriander (ground)",
+            "fr": "Coriandre (moulue)",
+            "it": "Coriandolo (macinato)",
+            "tr": "Kişniş (öğülmüş)"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 13.1,
+          "fat": 17.8,
+          "protein": 12.4,
+          "fiber": 41.9,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Kurkuma",
+            "en": "Turmeric",
+            "fr": "Curcuma",
+            "it": "Curcuma",
+            "tr": "Zerdeçal"
+          },
+          "amount": 5,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 44.4,
+          "fat": 3.2,
+          "protein": 9.7,
+          "fiber": 22.7,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Pflanzenöl",
+            "en": "Vegetable oil",
+            "fr": "Huile végétale",
+            "it": "Olio vegetale",
+            "tr": "Bitkisel yağ"
+          },
+          "amount": 30,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Huhn einritzen",
+            "en": "Score chicken",
+            "fr": "Entailler le poulet",
+            "it": "Incidere il pollo",
+            "tr": "Tavuğu çentikle"
+          },
+          "content": {
+            "de": "{0001} mit einem Messer 2–3 mal tief einritzen, damit die Marinade eindringt.",
+            "en": "Score {0001} 2–3 times deeply so the marinade penetrates.",
+            "fr": "Entailler {0001} 2–3 fois pour faire pénétrer la marinade.",
+            "it": "Incidere {0001} 2–3 volte per far penetrare la marinata.",
+            "tr": "{0001}'i 2–3 kez derin çentikleyin ki marinasyon işlesin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Marinade",
+            "en": "Marinade",
+            "fr": "Marinade",
+            "it": "Marinata",
+            "tr": "Marinasyon"
+          },
+          "content": {
+            "de": "{0002}, Saft von {0003}, {0004}, {0005}, {0006}, {0007}, {0008}, {0009}, {0010} und {0011} in einer Schüssel verrühren.",
+            "en": "Whisk {0002}, juice of {0003}, {0004}, {0005}, {0006}, {0007}, {0008}, {0009}, {0010} and {0011} in a bowl.",
+            "fr": "Mélanger {0002}, jus de {0003}, {0004}, {0005}, {0006}, {0007}, {0008}, {0009}, {0010} et {0011}.",
+            "it": "Mescolare {0002}, succo di {0003}, {0004}, {0005}, {0006}, {0007}, {0008}, {0009}, {0010} e {0011}.",
+            "tr": "{0002}, {0003} suyu, {0004}, {0005}, {0006}, {0007}, {0008}, {0009}, {0010} ve {0011}'i karıştırın."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Marinieren",
+            "en": "Marinate",
+            "fr": "Mariner",
+            "it": "Marinare",
+            "tr": "Marine et"
+          },
+          "content": {
+            "de": "Huhn in der Marinade wenden und mindestens 4 Stunden (idealerweise über Nacht) im Kühlschrank ziehen lassen.",
+            "en": "Coat chicken in marinade and refrigerate at least 4 hours (ideally overnight).",
+            "fr": "Enrober le poulet et réfrigérer au moins 4 heures (idéalement une nuit).",
+            "it": "Avvolgere il pollo e refrigerare almeno 4 ore (meglio tutta la notte).",
+            "tr": "Tavuğu marine edip en az 4 saat (ideali bir gece) buzdolabında bekletin."
+          },
+          "stove_level": 0,
+          "time_min": 240
+        },
+        {
+          "title": {
+            "de": "Grillen",
+            "en": "Grill",
+            "fr": "Griller",
+            "it": "Grillare",
+            "tr": "Izgara"
+          },
+          "content": {
+            "de": "Ofen auf 220°C vorheizen, Huhn auf einem Gitter 25 Minuten grillen, einmal wenden.",
+            "en": "Preheat oven to 220°C, grill chicken on a rack for 25 minutes, turning once.",
+            "fr": "Préchauffer à 220°C, griller le poulet 25 minutes, retourner une fois.",
+            "it": "Preriscaldare a 220°C, grigliare il pollo 25 minuti, girare una volta.",
+            "tr": "Fırını 220°C'ye ısıtın, tavuğu ızgarada 25 dakika pişirin, bir kez çevirin."
+          },
+          "stove_level": 4,
+          "time_min": 25
+        },
+        {
+          "title": {
+            "de": "Finish",
+            "en": "Finish",
+            "fr": "Finition",
+            "it": "Finitura",
+            "tr": "Bitiş"
+          },
+          "content": {
+            "de": "Huhn mit restlicher Marinade bestreichen und weitere 5 Minuten grillen, bis es leicht verkohlt.",
+            "en": "Brush with remaining marinade and grill another 5 minutes until lightly charred.",
+            "fr": "Badigeonner du reste de marinade et griller 5 minutes de plus.",
+            "it": "Spennellare con la marinata rimasta e grigliare altri 5 minuti.",
+            "tr": "Kalan marinasyonu sürüp 5 dakika daha hafif yanık olana kadar pişirin."
+          },
+          "stove_level": 4,
+          "time_min": 5
+        }
+      ],
+      "chef_analysis": {
+        "de": "Tandoori: Joghurt und Säure zart machen das Fleisch, Kashmiri-Chili liefert die typische rote Farbe ohne extreme Schärfe. Ohne Tandoor-Ofen funktioniert ein normaler Backofen mit Grillfunktion.",
+        "en": "Tandoori: yogurt and acid tenderise the meat, Kashmiri chili gives the signature red without extreme heat. Without a tandoor, a regular oven with grill works.",
+        "fr": "Tandoori : le yaourt et l'acidité attendrissent la viande, le piment du Cachemire donne le rouge caractéristique sans feu extrême. Un four avec gril suffit.",
+        "it": "Tandoori: yogurt e acidità inteneriscono la carne, il peperoncino del Kashmir dà il rosso tipico senza fuoco estremo. Un forno con grill basta.",
+        "tr": "Tandoori: yoğurt ve asit eti yumuşatır, Kaşmir biberi aşırı acı olmadan kırmızı rengi verir. Tandoor olmadan fırın ızgarası yeter."
+      },
+      "coreComponents": [
+        "chicken_thigh",
+        "yogurt",
+        "lemon",
+        "garlic",
+        "ginger",
+        "kashmiri_chili",
+        "garam_masala",
+        "cumin",
+        "coriander",
+        "turmeric",
+        "vegetable_oil"
+      ]
+    },
+    {
+      "id": "naan",
+      "immutable": true,
+      "cuisine": "in",
+      "region": "Südasien",
+      "servings": 4,
+      "prep_time_min": 90,
+      "aliases": {
+        "de": [
+          "naan",
+          "naan brot",
+          "indisches fladenbrot",
+          "naanbrot"
+        ],
+        "en": [
+          "naan",
+          "naan bread",
+          "indian flatbread"
+        ],
+        "fr": [
+          "naan",
+          "pain naan",
+          "pain plat indien"
+        ],
+        "it": [
+          "naan",
+          "pane naan",
+          "pane piatto indiano"
+        ],
+        "tr": [
+          "naan",
+          "naan ekmeği",
+          "hint yassı ekmeği"
+        ]
+      },
+      "titles": {
+        "de": "Naan (Indisches Fladenbrot)",
+        "en": "Naan (Indian Flatbread)",
+        "fr": "Naan (Pain plat indien)",
+        "it": "Naan (Pane piatto indiano)",
+        "tr": "Naan (Hint Yassı Ekmeği)"
+      },
+      "garnish": {
+        "de": "Mit geschmolzener Butter bestreichen und warm servieren.",
+        "en": "Brush with melted butter and serve warm.",
+        "fr": "Badigeonner de beurre fondu et servir chaud.",
+        "it": "Spennellare con burro fuso e servire caldo.",
+        "tr": "Eritilmiş tereyağı sürüp sıcak servis edin."
+      },
+      "diet_labels": [
+        "vegetarian"
+      ],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Weizenmehl",
+            "en": "Wheat flour",
+            "fr": "Farine de blé",
+            "it": "Farina di grano",
+            "tr": "Buğday unu"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 74,
+          "fat": 1,
+          "protein": 10.3,
+          "fiber": 2.7,
+          "allergenTags": [
+            "gluten"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Joghurt",
+            "en": "Yogurt",
+            "fr": "Yaourt",
+            "it": "Yogurt",
+            "tr": "Yoğurt"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4.7,
+          "fat": 3.3,
+          "protein": 3.5,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "coconut_milk_full",
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Hefe",
+            "en": "Yeast",
+            "fr": "Levure",
+            "it": "Lievito",
+            "tr": "Maya"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 20,
+          "fat": 2,
+          "protein": 40,
+          "fiber": 20,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Natron",
+            "en": "Baking soda",
+            "fr": "Bicarbonate de soude",
+            "it": "Bicarbonato di sodio",
+            "tr": "Karbonat"
+          },
+          "amount": 3,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Butter",
+            "en": "Butter",
+            "fr": "Beurre",
+            "it": "Burro",
+            "tr": "Tereyağı"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0.1,
+          "fat": 81,
+          "protein": 0.9,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "vegetable_oil",
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Pflanzenöl",
+            "en": "Vegetable oil",
+            "fr": "Huile végétale",
+            "it": "Olio vegetale",
+            "tr": "Bitkisel yağ"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Teig kneten",
+            "en": "Knead dough",
+            "fr": "Pétrir",
+            "it": "Impastare",
+            "tr": "Yoğur"
+          },
+          "content": {
+            "de": "{0001}, {0002}, {0003}, {0004}, {0005}, {0007} und 150 g Wasser zu einem glatten Teig verkneten.",
+            "en": "Knead {0001}, {0002}, {0003}, {0004}, {0005}, {0007} and 150 g water into a smooth dough.",
+            "fr": "Pétrir {0001}, {0002}, {0003}, {0004}, {0005}, {0007} et 150 g d'eau en pâte lisse.",
+            "it": "Impastare {0001}, {0002}, {0003}, {0004}, {0005}, {0007} e 150 g d'acqua fino a pasta liscia.",
+            "tr": "{0001}, {0002}, {0003}, {0004}, {0005}, {0007} ve 150 g suyu pürüzsüz bir hamur yapın."
+          },
+          "stove_level": 0,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Gehen lassen",
+            "en": "Proof",
+            "fr": "Pousse",
+            "it": "Lievitazione",
+            "tr": "Mayalandır"
+          },
+          "content": {
+            "de": "Teig abdecken und 1 Stunde an einem warmen Ort gehen lassen, bis er sich verdoppelt hat.",
+            "en": "Cover and proof 1 hour in a warm place until doubled.",
+            "fr": "Couvrir et laisser pousser 1 heure jusqu'à doublement.",
+            "it": "Coprire e lievitare 1 ora fino al raddoppio.",
+            "tr": "Üzerini kapatıp 1 saat sıcak yerde iki katına çıkana kadar bekletin."
+          },
+          "stove_level": 0,
+          "time_min": 60
+        },
+        {
+          "title": {
+            "de": "Teig teilen",
+            "en": "Divide",
+            "fr": "Diviser",
+            "it": "Dividere",
+            "tr": "Böl"
+          },
+          "content": {
+            "de": "Teig in 8 Kugeln teilen und 10 Minuten ruhen lassen.",
+            "en": "Divide dough into 8 balls, rest 10 minutes.",
+            "fr": "Diviser en 8 boules, reposer 10 minutes.",
+            "it": "Dividere in 8 palline, riposare 10 minuti.",
+            "tr": "Hamuru 8 bezeye ayırın, 10 dakika dinlendirin."
+          },
+          "stove_level": 0,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Ausrollen",
+            "en": "Roll out",
+            "fr": "Étaler",
+            "it": "Stendere",
+            "tr": "Aç"
+          },
+          "content": {
+            "de": "Jede Kugel zu einem ovalen Fladen (ca. 3 mm dünn) ausrollen.",
+            "en": "Roll each ball into an oval about 3 mm thick.",
+            "fr": "Étaler chaque boule en ovale de 3 mm.",
+            "it": "Stendere ogni pallina in ovale di 3 mm.",
+            "tr": "Her bezeyi yaklaşık 3 mm oval şeklinde açın."
+          },
+          "stove_level": 0,
+          "time_min": 8
+        },
+        {
+          "title": {
+            "de": "Backen",
+            "en": "Bake",
+            "fr": "Cuire",
+            "it": "Cuocere",
+            "tr": "Pişir"
+          },
+          "content": {
+            "de": "Eine gusseiserne Pfanne stark erhitzen, Naan 1–2 Minuten pro Seite backen, bis Blasen entstehen.",
+            "en": "Heat a cast-iron pan until very hot, bake naan 1–2 minutes per side until blistered.",
+            "fr": "Chauffer une poêle en fonte, cuire le naan 1–2 minutes par face.",
+            "it": "Scaldare una padella in ghisa, cuocere il naan 1–2 minuti per lato.",
+            "tr": "Dökme demir tavayı iyice ısıtın, naanı her yüzü 1–2 dakika pişirin."
+          },
+          "stove_level": 4,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Buttern",
+            "en": "Butter",
+            "fr": "Beurrer",
+            "it": "Imburrare",
+            "tr": "Tereyağla"
+          },
+          "content": {
+            "de": "Warme Naan mit {0006} bestreichen und sofort servieren.",
+            "en": "Brush warm naan with {0006} and serve immediately.",
+            "fr": "Badigeonner le naan chaud de {0006} et servir.",
+            "it": "Spennellare il naan caldo con {0006} e servire.",
+            "tr": "Sıcak naanı {0006} ile yağlayıp hemen servis edin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        }
+      ],
+      "chef_analysis": {
+        "de": "Naan braucht starke Hitze — die Pfanne sollte fast rauchen, damit die typischen dunklen Blasen entstehen. Joghurt macht den Teig weich und leicht säuerlich.",
+        "en": "Naan needs high heat — the pan should be almost smoking to get those signature dark blisters. Yogurt makes the dough soft and slightly tangy.",
+        "fr": "Le naan exige une forte chaleur — la poêle doit presque fumer pour créer les cloques caractéristiques. Le yaourt rend la pâte souple et légèrement acidulée.",
+        "it": "Il naan richiede calore forte — la padella deve quasi fumare per creare le tipiche bolle scure. Lo yogurt rende l'impasto morbido e leggermente acidulo.",
+        "tr": "Naan yüksek ateş ister — tava neredeyse tütmeli ki o koyu kabarcıklar oluşsun. Yoğurt hamuru yumuşak ve hafif mayhoş yapar."
+      },
+      "coreComponents": [
+        "wheat_flour",
+        "yogurt",
+        "yeast",
+        "baking_soda",
+        "salt",
+        "butter",
+        "vegetable_oil"
+      ]
+    },
+    {
+      "id": "idli",
+      "immutable": true,
+      "cuisine": "in",
+      "region": "Südindien",
+      "servings": 4,
+      "prep_time_min": 60,
+      "aliases": {
+        "de": [
+          "idli",
+          "idlis",
+          "indische gedämpfte reiskuchen",
+          "südindische idli"
+        ],
+        "en": [
+          "idli",
+          "idlis",
+          "indian steamed rice cakes",
+          "south indian idli"
+        ],
+        "fr": [
+          "idli",
+          "gateaux de riz vapeur indiens"
+        ],
+        "it": [
+          "idli",
+          "tortini di riso al vapore indiani"
+        ],
+        "tr": [
+          "idli",
+          "buharda hint pirinç keki"
+        ]
+      },
+      "titles": {
+        "de": "Idli (Südindische gedämpfte Reiskuchen)",
+        "en": "Idli (South Indian Steamed Rice Cakes)",
+        "fr": "Idli (Gâteaux de riz vapeur)",
+        "it": "Idli (Tortini di riso al vapore)",
+        "tr": "Idli (Buharda Pirinç Keki)"
+      },
+      "garnish": {
+        "de": "Mit Sambar und Kokos-Chutney servieren.",
+        "en": "Serve with sambar and coconut chutney.",
+        "fr": "Servir avec sambar et chutney à la noix de coco.",
+        "it": "Servire con sambar e chutney di cocco.",
+        "tr": "Sambar ve hindistan cevizi chutney ile servis edin."
+      },
+      "diet_labels": [
+        "vegetarian",
+        "gluten_free"
+      ],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Reismehl (Idli-Reis)",
+            "en": "Rice flour (idli rice)",
+            "fr": "Farine de riz",
+            "it": "Farina di riso",
+            "tr": "Pirinç unu"
+          },
+          "amount": 300,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 79,
+          "fat": 0.5,
+          "protein": 6.5,
+          "fiber": 1.2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "carbohydrate"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Urad Dal",
+            "en": "Urad dal",
+            "fr": "Urad dal",
+            "it": "Urad dal",
+            "tr": "Urad dal"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 59,
+          "fat": 1.5,
+          "protein": 25,
+          "fiber": 18,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "protein"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Natron",
+            "en": "Baking soda",
+            "fr": "Bicarbonate de soude",
+            "it": "Bicarbonato di sodio",
+            "tr": "Karbonat"
+          },
+          "amount": 2,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Einweichen",
+            "en": "Soak",
+            "fr": "Tremper",
+            "it": "Ammollare",
+            "tr": "Islat"
+          },
+          "content": {
+            "de": "{0001} und {0002} getrennt 6 Stunden in kaltem Wasser einweichen.",
+            "en": "Soak {0001} and {0002} separately in cold water for 6 hours.",
+            "fr": "Faire tremper {0001} et {0002} séparément 6 heures.",
+            "it": "Ammollare {0001} e {0002} separatamente in acqua fredda 6 ore.",
+            "tr": "{0001} ve {0002}'yi ayrı ayrı 6 saat soğuk suda bekletin."
+          },
+          "stove_level": 0,
+          "time_min": 360
+        },
+        {
+          "title": {
+            "de": "Mahlen",
+            "en": "Grind",
+            "fr": "Moudre",
+            "it": "Macinare",
+            "tr": "Öğüt"
+          },
+          "content": {
+            "de": "{0002} mit etwas Wasser zu einer luftigen Paste mixen, {0001} zu einem feinen Grieß mixen.",
+            "en": "Blend {0002} with a little water into a fluffy paste, blend {0001} into a fine semolina.",
+            "fr": "Mixer {0002} avec un peu d'eau en pâte mousseuse, {0001} en semoule fine.",
+            "it": "Frullare {0002} con poca acqua in pasta soffice, {0001} in semolino fine.",
+            "tr": "{0002}'yi az su ile kabarık bir macun, {0001}'i ince irmik yapın."
+          },
+          "stove_level": 0,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Teig mischen",
+            "en": "Mix batter",
+            "fr": "Mélanger la pâte",
+            "it": "Mescolare la pastella",
+            "tr": "Harcı karıştır"
+          },
+          "content": {
+            "de": "Beide Massen vereinen, {0003} und {0004} unterrühren, mit Wasser zu einer dicken, gießfähigen Konsistenz anrühren.",
+            "en": "Combine both, stir in {0003} and {0004}, thin with water to a thick pourable batter.",
+            "fr": "Réunir les deux, incorporer {0003} et {0004}, détendre à l'eau.",
+            "it": "Unire i due composti, incorporare {0003} e {0004}, diluire con acqua.",
+            "tr": "İkisini birleştirin, {0003} ve {0004}'ü karıştırın, suyla koyu akışkan kıvam yapın."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Fermentieren",
+            "en": "Ferment",
+            "fr": "Fermenter",
+            "it": "Fermentare",
+            "tr": "Fermente et"
+          },
+          "content": {
+            "de": "Teig abdecken und 8–12 Stunden an warmem Ort fermentieren, bis er luftig und leicht säuerlich riecht.",
+            "en": "Cover and ferment 8–12 hours in a warm place until airy and slightly sour.",
+            "fr": "Couvrir et fermenter 8–12 heures jusqu'à ce qu'elle soit aérienne.",
+            "it": "Coprire e fermentare 8–12 ore finché non è ariosa.",
+            "tr": "Kapatıp 8–12 saat sıcak yerde fermente edin."
+          },
+          "stove_level": 0,
+          "time_min": 480
+        },
+        {
+          "title": {
+            "de": "Dämpfen",
+            "en": "Steam",
+            "fr": "Cuire à la vapeur",
+            "it": "Cuocere a vapore",
+            "tr": "Buharda pişir"
+          },
+          "content": {
+            "de": "Idli-Formen einfetten, Teig einfüllen und 10–12 Minuten dämpfen, bis sie fest sind.",
+            "en": "Grease idli moulds, fill with batter and steam 10–12 minutes until firm.",
+            "fr": "Graisser les moules, remplir et cuire à la vapeur 10–12 minutes.",
+            "it": "Ungere gli stampi, riempire e cuocere a vapore 10–12 minuti.",
+            "tr": "Idli kalıplarını yağlayın, harcı doldurun, 10–12 dakika buharda pişirin."
+          },
+          "stove_level": 3,
+          "time_min": 12
+        },
+        {
+          "title": {
+            "de": "Stürzen",
+            "en": "Unmould",
+            "fr": "Démouler",
+            "it": "Sformare",
+            "tr": "Kalıptan çıkar"
+          },
+          "content": {
+            "de": "5 Minuten abkühlen lassen, dann aus den Formen lösen und heiß servieren.",
+            "en": "Cool 5 minutes, unmould and serve hot.",
+            "fr": "Refroidir 5 minutes, démouler et servir chaud.",
+            "it": "Raffreddare 5 minuti, sformare e servire caldo.",
+            "tr": "5 dakika soğutun, kalıptan çıkarıp sıcak servis edin."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        }
+      ],
+      "chef_analysis": {
+        "de": "Idli gelingen nur mit ausreichender Fermentation — 8–12 Stunden bei 25–30°C. Zu kalt = flach, zu warm = übersäuert.",
+        "en": "Idli only work with proper fermentation — 8–12 hours at 25–30°C. Too cool = flat, too warm = overly sour.",
+        "fr": "Les idli exigent une fermentation suffisante — 8–12 heures à 25–30°C. Trop froid = plats, trop chaud = trop acides.",
+        "it": "Gli idli riescono solo con fermentazione adeguata — 8–12 ore a 25–30°C. Troppo freddo = piatti, troppo caldo = acidi.",
+        "tr": "Idli sadece düzgün fermantasyonla olur — 25–30°C'de 8–12 saat. Soğuk = yavan, sıcak = fazla ekşi."
+      },
+      "coreComponents": [
+        "rice_flour",
+        "urad_dal",
+        "salt",
+        "baking_soda"
+      ]
+    },
+    {
+      "id": "dosa",
+      "immutable": true,
+      "cuisine": "in",
+      "region": "Südindien",
+      "servings": 4,
+      "prep_time_min": 45,
+      "aliases": {
+        "de": [
+          "dosa",
+          "dosas",
+          "indische reiscrêpes",
+          "südindische dosa"
+        ],
+        "en": [
+          "dosa",
+          "dosas",
+          "indian rice crepes",
+          "south indian dosa"
+        ],
+        "fr": [
+          "dosa",
+          "crêpes de riz indiennes"
+        ],
+        "it": [
+          "dosa",
+          "crêpe di riso indiane"
+        ],
+        "tr": [
+          "dosa",
+          "hint pirinç krep"
+        ]
+      },
+      "titles": {
+        "de": "Dosa (Südindische Reiscrêpes)",
+        "en": "Dosa (South Indian Rice Crepes)",
+        "fr": "Dosa (Crêpes de riz indiennes)",
+        "it": "Dosa (Crêpe di riso indiane)",
+        "tr": "Dosa (Hint Pirinç Krep)"
+      },
+      "garnish": {
+        "de": "Mit Kartoffel-Masala und Kokos-Chutney servieren.",
+        "en": "Serve with potato masala and coconut chutney.",
+        "fr": "Servir avec masala de pommes de terre et chutney à la noix de coco.",
+        "it": "Servire con masala di patate e chutney di cocco.",
+        "tr": "Patates masala ve hindistan cevizi chutney ile servis edin."
+      },
+      "diet_labels": [
+        "vegetarian",
+        "gluten_free"
+      ],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Reismehl (Dosa-Reis)",
+            "en": "Rice flour (dosa rice)",
+            "fr": "Farine de riz",
+            "it": "Farina di riso",
+            "tr": "Pirinç unu"
+          },
+          "amount": 300,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 79,
+          "fat": 0.5,
+          "protein": 6.5,
+          "fiber": 1.2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "carbohydrate"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Urad Dal",
+            "en": "Urad dal",
+            "fr": "Urad dal",
+            "it": "Urad dal",
+            "tr": "Urad dal"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 59,
+          "fat": 1.5,
+          "protein": 25,
+          "fiber": 18,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "protein"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Fenugreek",
+            "en": "Fenugreek",
+            "fr": "Fenugrec",
+            "it": "Fieno greco",
+            "tr": "Çemen otu"
+          },
+          "amount": 5,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 33,
+          "fat": 6.4,
+          "protein": 23,
+          "fiber": 24.6,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "spice"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Pflanzenöl",
+            "en": "Vegetable oil",
+            "fr": "Huile végétale",
+            "it": "Olio vegetale",
+            "tr": "Bitkisel yağ"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Einweichen",
+            "en": "Soak",
+            "fr": "Tremper",
+            "it": "Ammollare",
+            "tr": "Islat"
+          },
+          "content": {
+            "de": "{0001}, {0002} und {0003} 6 Stunden in kaltem Wasser einweichen.",
+            "en": "Soak {0001}, {0002} and {0003} in cold water for 6 hours.",
+            "fr": "Faire tremper {0001}, {0002} et {0003} 6 heures.",
+            "it": "Ammollare {0001}, {0002} e {0003} 6 ore.",
+            "tr": "{0001}, {0002} ve {0003}'ü 6 saat soğuk suda bekletin."
+          },
+          "stove_level": 0,
+          "time_min": 360
+        },
+        {
+          "title": {
+            "de": "Mahlen",
+            "en": "Grind",
+            "fr": "Moudre",
+            "it": "Macinare",
+            "tr": "Öğüt"
+          },
+          "content": {
+            "de": "Alles mit Wasser zu einem glatten, dünnen Teig mixen.",
+            "en": "Blend with water into a smooth, thin batter.",
+            "fr": "Mixer avec de l'eau en pâte lisse et fine.",
+            "it": "Frullare con acqua in una pastella liscia e sottile.",
+            "tr": "Su ile pürüzsüz, ince bir harç yapın."
+          },
+          "stove_level": 0,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Fermentieren",
+            "en": "Ferment",
+            "fr": "Fermenter",
+            "it": "Fermentare",
+            "tr": "Fermente et"
+          },
+          "content": {
+            "de": "{0004} einrühren und 8–12 Stunden bei Zimmertemperatur fermentieren lassen.",
+            "en": "Stir in {0004} and ferment 8–12 hours at room temperature.",
+            "fr": "Incorporer {0004} et fermenter 8–12 heures à température ambiante.",
+            "it": "Incorporare {0004} e fermentare 8–12 ore a temperatura ambiente.",
+            "tr": "{0004}'ü karıştırıp 8–12 saat oda sıcaklığında fermente edin."
+          },
+          "stove_level": 0,
+          "time_min": 480
+        },
+        {
+          "title": {
+            "de": "Dünn ausbacken",
+            "en": "Cook thin",
+            "fr": "Cuire fin",
+            "it": "Cuocere sottile",
+            "tr": "İnce pişir"
+          },
+          "content": {
+            "de": "Flache Pfanne stark erhitzen, etwas {0005} verteilen, eine Kelle Teig dünn ausstreichen.",
+            "en": "Heat a flat pan, spread a little {0005}, ladle batter thinly.",
+            "fr": "Chauffer une poêle plate, étaler un peu de {0005}, verser une louche de pâte finement.",
+            "it": "Scaldare una padella piatta, stendere poco {0005}, versare un mestolo di pastella sottile.",
+            "tr": "Yassı tavayı ısıtın, biraz {0005} sürün, bir kepçe harcı ince yayın."
+          },
+          "stove_level": 4,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Knusprig backen",
+            "en": "Crisp",
+            "fr": "Croustillant",
+            "it": "Croccante",
+            "tr": "Çıtır"
+          },
+          "content": {
+            "de": "Mit etwas {0005} beträufeln und 2 Minuten backen, bis der Rand goldbraun ist.",
+            "en": "Drizzle a little {0005} and cook 2 minutes until the edge is golden.",
+            "fr": "Arroser d'un peu de {0005} et cuire 2 minutes jusqu'à bord doré.",
+            "it": "Irrorare con poco {0005} e cuocere 2 minuti fino a bordo dorato.",
+            "tr": "Biraz {0005} gezdirin ve kenarı altın rengi olana kadar 2 dakika pişirin."
+          },
+          "stove_level": 4,
+          "time_min": 2
+        },
+        {
+          "title": {
+            "de": "Falten & Servieren",
+            "en": "Fold & serve",
+            "fr": "Plier et servir",
+            "it": "Piegare e servire",
+            "tr": "Katla ve servis et"
+          },
+          "content": {
+            "de": "Dosa halbieren, zusammenklappen und sofort servieren.",
+            "en": "Fold dosa in half and serve immediately.",
+            "fr": "Plier la dosa en deux et servir aussitôt.",
+            "it": "Piegare la dosa a metà e servire subito.",
+            "tr": "Dosayı ikiye katlayıp hemen servis edin."
+          },
+          "stove_level": 0,
+          "time_min": 1
+        }
+      ],
+      "chef_analysis": {
+        "de": "Dosa lebt von der Pfannentemperatur: zu heiß = verbrannt bevor der Teig durch ist, zu kalt = kein knuspriger Rand. Ein angefeuchteter Lappen hilft, die Pfanne zwischen den Dosas abzukühlen.",
+        "en": "Dosa lives from pan temperature: too hot = burnt before set, too cool = no crisp edge. A damp cloth helps cool the pan between dosas.",
+        "fr": "La dosa dépend de la température de la poêle : trop chaude = brûlée, trop froide = pas de bord croustillant. Un chiffon humide aide à refroidir entre les dosas.",
+        "it": "La dosa vive della temperatura della padella: troppo calda = bruciata, troppo fredda = niente bordo croccante. Un panno umido aiuta a raffreddare tra le dosa.",
+        "tr": "Dosa tava sıcaklığına bağlıdır: çok sıcak = yanar, çok soğuk = çıtır kenar olmaz. Dosalar arasında tavayı soğutmak için nemli bez kullanın."
+      },
+      "coreComponents": [
+        "rice_flour",
+        "urad_dal",
+        "fenugreek",
+        "salt",
+        "vegetable_oil"
+      ]
+    },
+    {
+      "id": "wonton_soup",
+      "immutable": true,
+      "cuisine": "cn",
+      "region": "China",
+      "servings": 4,
+      "prep_time_min": 50,
+      "aliases": {
+        "de": [
+          "wonton suppe",
+          "wontonsuppe",
+          "chinesische teigtaschensuppe"
+        ],
+        "en": [
+          "wonton soup",
+          "chinese wonton soup",
+          "wontons in broth"
+        ],
+        "fr": [
+          "soupe wonton",
+          "soupe de raviolis chinois",
+          "wonton en bouillon"
+        ],
+        "it": [
+          "zuppa di wonton",
+          "ravioli cinesi in brodo"
+        ],
+        "tr": [
+          "wonton çorbası",
+          "çin mantı çorbası"
+        ]
+      },
+      "titles": {
+        "de": "Wonton-Suppe (Chinesische Teigtaschensuppe)",
+        "en": "Wonton Soup (Chinese Dumpling Soup)",
+        "fr": "Soupe Wonton (Raviolis chinois en bouillon)",
+        "it": "Zuppa di Wonton (Ravioli cinesi in brodo)",
+        "tr": "Wonton Çorbası"
+      },
+      "garnish": {
+        "de": "Mit Sesamöl, Frühlingszwiebeln und Chiliöl servieren.",
+        "en": "Serve with sesame oil, scallions and chili oil.",
+        "fr": "Servir avec huile de sésame, oignons verts et huile de piment.",
+        "it": "Servire con olio di sesamo, cipollotti e olio di peperoncino.",
+        "tr": "Susam yağı, yeşil soğan ve acı biber yağı ile servis edin."
+      },
+      "diet_labels": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Schweinehackfleisch",
+            "en": "Pork mince",
+            "fr": "Porc haché",
+            "it": "Macinato di maiale",
+            "tr": "Kıyma domuz"
+          },
+          "amount": 250,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 21,
+          "protein": 17,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "protein"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Garnelen (gehackt)",
+            "en": "Shrimp (chopped)",
+            "fr": "Crevettes (hachées)",
+            "it": "Gamberi (tritati)",
+            "tr": "Karides (doğranmış)"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 0.5,
+          "protein": 20.1,
+          "fiber": 0,
+          "allergenTags": [
+            "crustaceans"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "protein"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Wonton-Teigblätter",
+            "en": "Wonton wrappers",
+            "fr": "Feuilles de wonton",
+            "it": "Sfoglie wonton",
+            "tr": "Wonton hamuru"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 55,
+          "fat": 2,
+          "protein": 9,
+          "fiber": 1.5,
+          "allergenTags": [
+            "gluten"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Hühnerbrühe",
+            "en": "Chicken stock",
+            "fr": "Bouillon de poulet",
+            "it": "Brodo di pollo",
+            "tr": "Tavuk suyu"
+          },
+          "amount": 1200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 0.5,
+          "protein": 2,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Ingwer",
+            "en": "Ginger",
+            "fr": "Gingembre",
+            "it": "Zenzero",
+            "tr": "Zencefil"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15.8,
+          "fat": 0.8,
+          "protein": 1.8,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 15,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Frühlingszwiebeln",
+            "en": "Scallions",
+            "fr": "Oignons verts",
+            "it": "Cipollotti",
+            "tr": "Yeşil soğan"
+          },
+          "amount": 60,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0.2,
+          "protein": 1.8,
+          "fiber": 2.6,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Sojasauce",
+            "en": "Soy sauce",
+            "fr": "Sauce soja",
+            "it": "Salsa di soia",
+            "tr": "Soya sosu"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4.1,
+          "fat": 0.6,
+          "protein": 8.1,
+          "fiber": 0.8,
+          "allergenTags": [
+            "soy",
+            "gluten"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Sesamöl",
+            "en": "Sesame oil",
+            "fr": "Huile de sésame",
+            "it": "Olio di sesamo",
+            "tr": "Susam yağı"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [
+            "sesame"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Reisessig",
+            "en": "Rice vinegar",
+            "fr": "Vinaigre de riz",
+            "it": "Aceto di riso",
+            "tr": "Pirinç sirkesi"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "acid"
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Napa-Kohl",
+            "en": "Napa cabbage",
+            "fr": "Chou chinois",
+            "it": "Cavolo cinese",
+            "tr": "Çin lahanası"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2.2,
+          "fat": 0.2,
+          "protein": 1.2,
+          "fiber": 1.2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0012",
+          "names": {
+            "de": "Shiitake-Pilze",
+            "en": "Shiitake mushrooms",
+            "fr": "Champignons shiitake",
+            "it": "Funghi shiitake",
+            "tr": "Shiitake mantarı"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 0.5,
+          "protein": 2.2,
+          "fiber": 2.5,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Füllung mischen",
+            "en": "Mix filling",
+            "fr": "Mélanger la farce",
+            "it": "Mescolare il ripieno",
+            "tr": "İç harcı karıştır"
+          },
+          "content": {
+            "de": "{0001}, {0002}, gehackten {0005}, {0006}, die Hälfte von {0007}, die Hälfte von {0008}, {0009} und {0010} zu einer klebrigen Masse verkneten.",
+            "en": "Knead {0001}, {0002}, chopped {0005}, {0006}, half of {0007}, half of {0008}, {0009} and {0010} into a sticky filling.",
+            "fr": "Pétrir {0001}, {0002}, {0005} haché, {0006}, moitié de {0007}, moitié de {0008}, {0009} et {0010} en farce collante.",
+            "it": "Impastare {0001}, {0002}, {0005} tritato, {0006}, metà di {0007}, metà di {0008}, {0009} e {0010} in ripieno appiccicoso.",
+            "tr": "{0001}, {0002}, doğranmış {0005}, {0006}, {0007}'nin yarısı, {0008}'in yarısı, {0009} ve {0010}'u yapışkan bir harç yapın."
+          },
+          "stove_level": 0,
+          "time_min": 8
+        },
+        {
+          "title": {
+            "de": "Wontons formen",
+            "en": "Fold wontons",
+            "fr": "Former les wontons",
+            "it": "Formare i wonton",
+            "tr": "Wonton şekillendir"
+          },
+          "content": {
+            "de": "Je 1 TL Füllung auf ein {0003} geben, Ränder mit Wasser befeuchten, zu Dreiecken falten und Enden zusammendrücken.",
+            "en": "Place 1 tsp filling on each {0003}, wet edges, fold into triangles and pinch ends together.",
+            "fr": "Mettre 1 c. à c. de farce sur chaque {0003}, humecter les bords, plier en triangle et pincer les extrémités.",
+            "it": "Mettere 1 cucchiaino di ripieno su ogni {0003}, inumidire i bordi, piegare a triangolo e pizzicare le estremità.",
+            "tr": "Her {0003} üzerine 1 çay kaşığı harç koyun, kenarları ıslatın, üçgen şeklinde katlayıp uçları sıkıştırın."
+          },
+          "stove_level": 0,
+          "time_min": 20
+        },
+        {
+          "title": {
+            "de": "Brühe würzen",
+            "en": "Season broth",
+            "fr": "Assaisonner le bouillon",
+            "it": "Condire il brodo",
+            "tr": "Suyu tatlandır"
+          },
+          "content": {
+            "de": "{0004} mit restlichem {0005}, {0006}, {0008} und {0011} 10 Minuten köcheln lassen.",
+            "en": "Simmer {0004} with remaining {0005}, {0006}, {0008} and {0011} for 10 minutes.",
+            "fr": "Mijoter {0004} avec le reste de {0005}, {0006}, {0008} et {0011} 10 minutes.",
+            "it": "Cuocere {0004} con il resto di {0005}, {0006}, {0008} e {0011} per 10 minuti.",
+            "tr": "{0004}'ü kalan {0005}, {0006}, {0008} ve {0011} ile 10 dakika pişirin."
+          },
+          "stove_level": 3,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Pilze & Kohl",
+            "en": "Mushrooms & cabbage",
+            "fr": "Champignons et chou",
+            "it": "Funghi e cavolo",
+            "tr": "Mantar ve lahana"
+          },
+          "content": {
+            "de": "{0012} in Scheiben schneiden und 3 Minuten in der Brühe garen, dann {0011} zugeben.",
+            "en": "Slice {0012}, cook in broth 3 minutes, then add {0011}.",
+            "fr": "Émincer {0012}, cuire 3 minutes dans le bouillon, ajouter {0011}.",
+            "it": "Affettare {0012}, cuocere 3 minuti nel brodo, aggiungere {0011}.",
+            "tr": "{0012}'yi dilimleyip 3 dakika suda pişirin, sonra {0011}'i ekleyin."
+          },
+          "stove_level": 3,
+          "time_min": 4
+        },
+        {
+          "title": {
+            "de": "Wontons garen",
+            "en": "Cook wontons",
+            "fr": "Cuire les wontons",
+            "it": "Cuocere i wonton",
+            "tr": "Wontonları pişir"
+          },
+          "content": {
+            "de": "Wontons in die siedende Brühe geben und 4–5 Minuten garen, bis sie an die Oberfläche steigen.",
+            "en": "Add wontons to the simmering broth and cook 4–5 minutes until they float.",
+            "fr": "Ajouter les wontons dans le bouillon frémissant et cuire 4–5 minutes jusqu'à ce qu'ils flottent.",
+            "it": "Aggiungere i wonton al brodo e cuocere 4–5 minuti finché salgono a galla.",
+            "tr": "Wontonları kaynayan suya ekleyip yüzeye çıkana kadar 4–5 dakika pişirin."
+          },
+          "stove_level": 3,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Servieren",
+            "en": "Serve",
+            "fr": "Servir",
+            "it": "Servire",
+            "tr": "Servis et"
+          },
+          "content": {
+            "de": "Suppe in Schalen füllen, mit restlichen {0007} und {0009} beträufeln.",
+            "en": "Ladle soup into bowls, top with remaining {0007} and drizzle {0009}.",
+            "fr": "Verser la soupe dans des bols, garnir du reste de {0007} et arroser de {0009}.",
+            "it": "Versare la zuppa nelle ciotole, guarnire con il resto di {0007} e irrorare con {0009}.",
+            "tr": "Çorbayı kaselere alın, kalan {0007} ile süsleyin ve {0009} gezdirin."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "chef_analysis": {
+        "de": "Wontons gelingen nur mit klebriger Füllung — Schweinehack und Garnelen binden sich gegenseitig. Wichtig: nicht zu lange kochen, sonst werden die Teigblätter matschig.",
+        "en": "Wontons need a sticky filling — pork mince and shrimp bind each other. Important: don't overcook or the wrappers turn mushy.",
+        "fr": "Les wontons exigent une farce collante — porc et crevettes se lient. Important : ne pas trop cuire sinon les feuilles deviennent molles.",
+        "it": "I wonton richiedono un ripieno appiccicoso — maiale e gamberi si legano. Importante: non cuocere troppo o le sfoglie diventano molli.",
+        "tr": "Wonton yapışkan bir harç ister — domuz kıyması ve karides birbirine bağlanır. Önemli: fazla pişirmeyin, yoksa hamurlar yumuşar."
+      },
+      "coreComponents": [
+        "pork_mince",
+        "shrimp",
+        "wonton_wrapper",
+        "chicken_stock",
+        "ginger",
+        "garlic",
+        "scallion",
+        "soy_sauce",
+        "sesame_oil",
+        "rice_vinegar",
+        "napa_cabbage",
+        "shiitake"
       ]
     }
   ]
