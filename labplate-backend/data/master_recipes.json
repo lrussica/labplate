@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "languages": [
     "de",
     "en",
@@ -66409,6 +66409,2050 @@
         "rice_vinegar",
         "napa_cabbage",
         "shiitake"
+      ]
+    },
+    {
+      "id": "chapati",
+      "immutable": true,
+      "cuisine": "in",
+      "region": "Südasien",
+      "servings": 4,
+      "prep_time_min": 40,
+      "aliases": {
+        "de": [
+          "chapati",
+          "roti",
+          "indisches weizenfladenbrot",
+          "chapathi"
+        ],
+        "en": [
+          "chapati",
+          "roti",
+          "indian whole wheat flatbread",
+          "chapathi"
+        ],
+        "fr": [
+          "chapati",
+          "roti",
+          "galette de blé indienne"
+        ],
+        "it": [
+          "chapati",
+          "roti",
+          "pane azzimo indiano"
+        ],
+        "tr": [
+          "chapati",
+          "roti",
+          "hint tam buğday yassı ekmeği"
+        ]
+      },
+      "titles": {
+        "de": "Chapati (Indisches Weizenfladenbrot)",
+        "en": "Chapati (Indian Whole Wheat Flatbread)",
+        "fr": "Chapati (Galette de blé indienne)",
+        "it": "Chapati (Pane azzimo indiano)",
+        "tr": "Chapati (Hint Tam Buğday Yassı Ekmeği)"
+      },
+      "garnish": {
+        "de": "Warm mit Ghee bestrichen servieren.",
+        "en": "Serve warm, brushed with ghee.",
+        "fr": "Servir chaud, badigeonné de ghee.",
+        "it": "Servire caldo, spennellato di ghee.",
+        "tr": "Sıcak, ghee sürülmüş olarak servis edin."
+      },
+      "diet_labels": [
+        "vegetarian"
+      ],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Weizenmehl (Vollkorn)",
+            "en": "Whole wheat flour",
+            "fr": "Farine de blé complet",
+            "it": "Farina integrale",
+            "tr": "Tam buğday unu"
+          },
+          "amount": 300,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 65,
+          "fat": 1.5,
+          "protein": 12,
+          "fiber": 8,
+          "allergenTags": [
+            "gluten"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 6,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Ghee",
+            "en": "Ghee",
+            "fr": "Ghee",
+            "it": "Ghee",
+            "tr": "Ghee"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "vegetable_oil",
+          "culinaryRole": "fat"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Teig kneten",
+            "en": "Knead dough",
+            "fr": "Pétrir",
+            "it": "Impastare",
+            "tr": "Yoğur"
+          },
+          "content": {
+            "de": "{0001}, {0002} und 180 g Wasser zu einem weichen Teig verkneten.",
+            "en": "Knead {0001}, {0002} and 180 g water into a soft dough.",
+            "fr": "Pétrir {0001}, {0002} et 180 g d'eau en pâte souple.",
+            "it": "Impastare {0001}, {0002} e 180 g d'acqua in pasta morbida.",
+            "tr": "{0001}, {0002} ve 180 g suyu yumuşak bir hamur yapın."
+          },
+          "stove_level": 0,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Ruhen lassen",
+            "en": "Rest",
+            "fr": "Repos",
+            "it": "Riposo",
+            "tr": "Dinlendir"
+          },
+          "content": {
+            "de": "Teig abdecken und 20 Minuten ruhen lassen.",
+            "en": "Cover and rest dough 20 minutes.",
+            "fr": "Couvrir et laisser reposer 20 minutes.",
+            "it": "Coprire e lasciare riposare 20 minuti.",
+            "tr": "Üzerini kapatıp 20 dakika dinlendirin."
+          },
+          "stove_level": 0,
+          "time_min": 20
+        },
+        {
+          "title": {
+            "de": "Ausrollen",
+            "en": "Roll out",
+            "fr": "Étaler",
+            "it": "Stendere",
+            "tr": "Aç"
+          },
+          "content": {
+            "de": "Teig in 8 Kugeln teilen und zu dünnen Fladen (2 mm) ausrollen.",
+            "en": "Divide into 8 balls and roll into thin rounds (2 mm).",
+            "fr": "Diviser en 8 boules, étaler finement (2 mm).",
+            "it": "Dividere in 8 palline, stendere sottile (2 mm).",
+            "tr": "8 bezeye bölün ve ince (2 mm) açın."
+          },
+          "stove_level": 0,
+          "time_min": 8
+        },
+        {
+          "title": {
+            "de": "Backen",
+            "en": "Cook",
+            "fr": "Cuire",
+            "it": "Cuocere",
+            "tr": "Pişir"
+          },
+          "content": {
+            "de": "Trockene Pfanne stark erhitzen, Chapati 1 Minute pro Seite backen, bis braune Flecken entstehen.",
+            "en": "Heat a dry pan, cook chapati 1 minute per side until brown spots form.",
+            "fr": "Chauffer une poêle sèche, cuire 1 minute par face jusqu'à taches brunes.",
+            "it": "Scaldare una padella asciutta, cuocere 1 minuto per lato fino a macchie brune.",
+            "tr": "Kuru tavayı ısıtın, chapatiyi her yüzü 1 dakika kahverengi lekeler oluşana kadar pişirin."
+          },
+          "stove_level": 4,
+          "time_min": 12
+        },
+        {
+          "title": {
+            "de": "Buttern",
+            "en": "Butter",
+            "fr": "Beurrer",
+            "it": "Imburrare",
+            "tr": "Yağla"
+          },
+          "content": {
+            "de": "Fertige Chapati mit {0003} bestreichen und warm halten.",
+            "en": "Brush finished chapati with {0003} and keep warm.",
+            "fr": "Badigeonner de {0003} et garder au chaud.",
+            "it": "Spennellare con {0003} e tenere caldi.",
+            "tr": "Pişen chapatiyi {0003} ile yağlayıp sıcak tutun."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "chef_analysis": {
+        "de": "Chapati brauchen keinen Ofen — eine trockene, heiße Pfanne reicht. Der Teig muss weich sein, sonst reißen die Fladen beim Ausrollen.",
+        "en": "Chapati need no oven — a dry hot pan does the job. The dough must be soft or the rounds tear when rolling.",
+        "fr": "Les chapati n'ont pas besoin de four — une poêle sèche et chaude suffit. La pâte doit être souple sinon les galettes se déchirent.",
+        "it": "I chapati non richiedono forno — basta una padella asciutta e calda. La pasta deve essere morbida o si strappa.",
+        "tr": "Chapati fırın istemez — kuru sıcak tava yeter. Hamur yumuşak olmalı, yoksa açarken yırtılır."
+      },
+      "coreComponents": [
+        "wheat_flour",
+        "salt",
+        "ghee"
+      ]
+    },
+    {
+      "id": "paratha",
+      "immutable": true,
+      "cuisine": "in",
+      "region": "Südasien",
+      "servings": 4,
+      "prep_time_min": 50,
+      "aliases": {
+        "de": [
+          "paratha",
+          "parathas",
+          "geschichtetes indisches fladenbrot"
+        ],
+        "en": [
+          "paratha",
+          "parathas",
+          "layered indian flatbread"
+        ],
+        "fr": [
+          "paratha",
+          "parathas",
+          "galette feuilletée indienne"
+        ],
+        "it": [
+          "paratha",
+          "parathas",
+          "pane stratificato indiano"
+        ],
+        "tr": [
+          "paratha",
+          "parathas",
+          "katmanlı hint yassı ekmeği"
+        ]
+      },
+      "titles": {
+        "de": "Paratha (Geschichtetes indisches Fladenbrot)",
+        "en": "Paratha (Layered Indian Flatbread)",
+        "fr": "Paratha (Galette feuilletée indienne)",
+        "it": "Paratha (Pane stratificato indiano)",
+        "tr": "Paratha (Katmanlı Hint Yassı Ekmeği)"
+      },
+      "garnish": {
+        "de": "Mit Joghurt und Pickles servieren.",
+        "en": "Serve with yogurt and pickles.",
+        "fr": "Servir avec yaourt et pickles.",
+        "it": "Servire con yogurt e sottaceti.",
+        "tr": "Yoğurt ve turşu ile servis edin."
+      },
+      "diet_labels": [
+        "vegetarian"
+      ],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Weizenmehl (Vollkorn)",
+            "en": "Whole wheat flour",
+            "fr": "Farine de blé complet",
+            "it": "Farina integrale",
+            "tr": "Tam buğday unu"
+          },
+          "amount": 300,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 65,
+          "fat": 1.5,
+          "protein": 12,
+          "fiber": 8,
+          "allergenTags": [
+            "gluten"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Ghee",
+            "en": "Ghee",
+            "fr": "Ghee",
+            "it": "Ghee",
+            "tr": "Ghee"
+          },
+          "amount": 60,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "vegetable_oil",
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 6,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Teig knetten",
+            "en": "Knead dough",
+            "fr": "Pétrir",
+            "it": "Impastare",
+            "tr": "Yoğur"
+          },
+          "content": {
+            "de": "{0001}, {0003}, 1 EL {0002} und 180 g Wasser zu einem weichen Teig verkneten.",
+            "en": "Knead {0001}, {0003}, 1 tbsp {0002} and 180 g water into a soft dough.",
+            "fr": "Pétrir {0001}, {0003}, 1 c. à s. {0002} et 180 g d'eau.",
+            "it": "Impastare {0001}, {0003}, 1 cucchiaio {0002} e 180 g d'acqua.",
+            "tr": "{0001}, {0003}, 1 yk {0002} ve 180 g su ile yumuşak hamur yapın."
+          },
+          "stove_level": 0,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Ruhen lassen",
+            "en": "Rest",
+            "fr": "Repos",
+            "it": "Riposo",
+            "tr": "Dinlendir"
+          },
+          "content": {
+            "de": "Teig 30 Minuten abgedeckt ruhen lassen.",
+            "en": "Rest dough covered 30 minutes.",
+            "fr": "Laisser reposer couvert 30 minutes.",
+            "it": "Lasciare riposare coperto 30 minuti.",
+            "tr": "Kapatıp 30 dakika dinlendirin."
+          },
+          "stove_level": 0,
+          "time_min": 30
+        },
+        {
+          "title": {
+            "de": "Schichten",
+            "en": "Layer",
+            "fr": "Feuilleter",
+            "it": "Stratificare",
+            "tr": "Katmanla"
+          },
+          "content": {
+            "de": "Teig in 8 Kugeln teilen, jede dünn ausrollen, mit {0002} bestreichen, aufrollen und zur Schnecke drehen, dann erneut ausrollen.",
+            "en": "Divide into 8 balls, roll thin, brush with {0002}, roll up, coil into a spiral, then roll again.",
+            "fr": "Diviser en 8 boules, étaler fin, badigeonner de {0002}, rouler, enrouler en spirale et réétaler.",
+            "it": "Dividere in 8 palline, stendere, spennellare con {0002}, arrotolare, arrotolare a spirale e stendere di nuovo.",
+            "tr": "8 bezeye bölün, ince açın, {0002} sürün, sarın, spiral şeklinde kıvırın ve tekrar açın."
+          },
+          "stove_level": 0,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Backen",
+            "en": "Cook",
+            "fr": "Cuire",
+            "it": "Cuocere",
+            "tr": "Pişir"
+          },
+          "content": {
+            "de": "Pfanne erhitzen, Paratha 2 Minuten pro Seite mit etwas {0002} goldbraun backen.",
+            "en": "Heat a pan, cook paratha 2 minutes per side with a little {0002} until golden.",
+            "fr": "Chauffer une poêle, cuire 2 minutes par face avec un peu de {0002} jusqu'à doré.",
+            "it": "Scaldare una padella, cuocere 2 minuti per lato con poco {0002} fino a doratura.",
+            "tr": "Tavayı ısıtın, parathayı biraz {0002} ile her yüzü 2 dakika altın rengi olana kadar pişirin."
+          },
+          "stove_level": 3,
+          "time_min": 16
+        },
+        {
+          "title": {
+            "de": "Servieren",
+            "en": "Serve",
+            "fr": "Servir",
+            "it": "Servire",
+            "tr": "Servis et"
+          },
+          "content": {
+            "de": "Parathas kurz mit Küchenpapier abtupfen und sofort servieren.",
+            "en": "Blot parathas briefly with paper towel and serve immediately.",
+            "fr": "Éponger brièvement et servir aussitôt.",
+            "it": "Tamponare brevemente e servire subito.",
+            "tr": "Kısaca kağıt havluyla tamponlayıp hemen servis edin."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "chef_analysis": {
+        "de": "Paratha lebt von der Schichttechnik: Einrollen, spiralisieren, erneut ausrollen — dadurch blättert das Brot beim Backen auf. Ghee ist Pflicht, Öl funktioniert nicht so gut.",
+        "en": "Paratha is about layering: roll, coil, roll again — that makes it flake when cooked. Ghee is essential; oil doesn't work as well.",
+        "fr": "Le paratha repose sur la technique du feuilletage : rouler, enrouler, réétaler — d'où les couches croustillantes. Le ghee est essentiel.",
+        "it": "Il paratha si basa sulla stratificazione: arrotolare, avvolgere, stendere di nuovo — da lì le sfoglie. Il ghee è essenziale.",
+        "tr": "Paratha katman tekniğiyle olur: sar, kıvır, tekrar aç — böylece pişerken katmanlanır. Ghee şart, yağ iyi sonuç vermez."
+      },
+      "coreComponents": [
+        "wheat_flour",
+        "ghee",
+        "salt"
+      ]
+    },
+    {
+      "id": "fish_and_chips",
+      "immutable": true,
+      "cuisine": "gb",
+      "region": "Großbritannien",
+      "servings": 4,
+      "prep_time_min": 50,
+      "aliases": {
+        "de": [
+          "fish and chips",
+          "fisch und chips",
+          "britischer fisch mit pommes"
+        ],
+        "en": [
+          "fish and chips",
+          "british fish and chips",
+          "fried fish and chips"
+        ],
+        "fr": [
+          "fish and chips",
+          "poisson frit et frites"
+        ],
+        "it": [
+          "fish and chips",
+          "pesce fritto e patatine"
+        ],
+        "tr": [
+          "fish and chips",
+          "balık ve patates kızartması"
+        ]
+      },
+      "titles": {
+        "de": "Fish and Chips (Britischer Backfisch mit Pommes)",
+        "en": "Fish and Chips",
+        "fr": "Fish and Chips",
+        "it": "Fish and Chips",
+        "tr": "Fish and Chips"
+      },
+      "garnish": {
+        "de": "Mit Malzessig, Zitrone und Tartarsauce servieren.",
+        "en": "Serve with malt vinegar, lemon and tartar sauce.",
+        "fr": "Servir avec vinaigre de malt, citron et sauce tartare.",
+        "it": "Servire con aceto di malto, limone e salsa tartara.",
+        "tr": "Malt sirkesi, limon ve tartar sos ile servis edin."
+      },
+      "diet_labels": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Kabeljaufilet",
+            "en": "Cod fillet",
+            "fr": "Filet de cabillaud",
+            "it": "Filetto di merluzzo",
+            "tr": "Morina fileto"
+          },
+          "amount": 600,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 0.7,
+          "protein": 17.8,
+          "fiber": 0,
+          "allergenTags": [
+            "fish"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "protein"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Kartoffeln (mehlig)",
+            "en": "Potatoes (floury)",
+            "fr": "Pommes de terre farineuses",
+            "it": "Patate farinose",
+            "tr": "Unlu patates"
+          },
+          "amount": 800,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15.4,
+          "fat": 0.1,
+          "protein": 2.1,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "carbohydrate"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Weizenmehl",
+            "en": "Wheat flour",
+            "fr": "Farine de blé",
+            "it": "Farina di grano",
+            "tr": "Buğday unu"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 74,
+          "fat": 1,
+          "protein": 10.3,
+          "fiber": 2.7,
+          "allergenTags": [
+            "gluten"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Bier (hell)",
+            "en": "Beer (lager)",
+            "fr": "Bière blonde",
+            "it": "Birra chiara",
+            "tr": "Açık bira"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0,
+          "protein": 0.5,
+          "fiber": 0,
+          "allergenTags": [
+            "gluten"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Ei",
+            "en": "Egg",
+            "fr": "Oeuf",
+            "it": "Uovo",
+            "tr": "Yumurta"
+          },
+          "amount": 1,
+          "unit": "stk",
+          "protein_source": true,
+          "netCarbs": 0.7,
+          "fat": 9.5,
+          "protein": 12.6,
+          "fiber": 0,
+          "allergenTags": [
+            "egg"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Pflanzenöl (zum Frittieren)",
+            "en": "Vegetable oil (for frying)",
+            "fr": "Huile végétale (pour friture)",
+            "it": "Olio vegetale (per friggere)",
+            "tr": "Bitkisel yağ (kızartma için)"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Zitrone",
+            "en": "Lemon",
+            "fr": "Citron",
+            "it": "Limone",
+            "tr": "Limon"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 6.5,
+          "fat": 0.3,
+          "protein": 1.1,
+          "fiber": 2.8,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "acid"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Pommes vorbereiten",
+            "en": "Prep chips",
+            "fr": "Préparer les frites",
+            "it": "Preparare le patatine",
+            "tr": "Patatesleri hazırla"
+          },
+          "content": {
+            "de": "{0002} schälen, in 1,5 cm dicke Stifte schneiden, 10 Minuten in kaltem Wasser wässern, gut abtrocknen.",
+            "en": "Peel {0002}, cut into 1.5 cm chips, soak in cold water 10 minutes, dry well.",
+            "fr": "Éplucher {0002}, couper en frites de 1,5 cm, tremper 10 minutes, sécher.",
+            "it": "Pelare {0002}, tagliare a bastoncini di 1,5 cm, ammollare 10 minuti, asciugare.",
+            "tr": "{0002}'yi soyun, 1,5 cm çubuklar halinde kesin, 10 dakika soğuk suda bekletip kurulayın."
+          },
+          "stove_level": 0,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Teig anrühren",
+            "en": "Make batter",
+            "fr": "Préparer la pâte",
+            "it": "Preparare la pastella",
+            "tr": "Harcı hazırla"
+          },
+          "content": {
+            "de": "{0003}, {0005}, {0004} und eine Prise {0008} zu einem glatten Teig verrühren, 15 Minuten ruhen lassen.",
+            "en": "Whisk {0003}, {0005}, {0004} and a pinch of {0008} into a smooth batter, rest 15 minutes.",
+            "fr": "Mélanger {0003}, {0005}, {0004} et {0008} en pâte lisse, reposer 15 minutes.",
+            "it": "Mescolare {0003}, {0005}, {0004} e un pizzico di {0008} in pastella liscia, riposare 15 minuti.",
+            "tr": "{0003}, {0005}, {0004} ve bir tutam {0008}'i pürüzsüz harç yapın, 15 dakika dinlendirin."
+          },
+          "stove_level": 0,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Pommes vorfrittieren",
+            "en": "Blanch chips",
+            "fr": "Pré-cuire les frites",
+            "it": "Pre-friggere le patatine",
+            "tr": "Patatesleri ön kızart"
+          },
+          "content": {
+            "de": "{0006} auf 150°C erhitzen, Pommes 5 Minuten vorfrittieren, abtropfen lassen.",
+            "en": "Heat {0006} to 150°C, blanch chips 5 minutes, drain.",
+            "fr": "Chauffer {0006} à 150°C, précuire les frites 5 minutes, égoutter.",
+            "it": "Scaldare {0006} a 150°C, pre-friggere le patatine 5 minuti, scolare.",
+            "tr": "{0006}'i 150°C'ye ısıtın, patatesleri 5 dakika ön kızartın, süzün."
+          },
+          "stove_level": 4,
+          "time_min": 6
+        },
+        {
+          "title": {
+            "de": "Fisch frittieren",
+            "en": "Fry fish",
+            "fr": "Frire le poisson",
+            "it": "Friggere il pesce",
+            "tr": "Balığı kızart"
+          },
+          "content": {
+            "de": "Öl auf 180°C erhöhen, {0001} in den Teig tauchen und 4–5 Minuten goldbraun frittieren.",
+            "en": "Raise oil to 180°C, dip {0001} in batter and fry 4–5 minutes until golden.",
+            "fr": "Monter à 180°C, tremper {0001} dans la pâte et frire 4–5 minutes.",
+            "it": "Portare a 180°C, immergere {0001} nella pastella e friggere 4–5 minuti.",
+            "tr": "Yağı 180°C'ye çıkarın, {0001}'i harca batırıp 4–5 dakika altın rengi olana kadar kızartın."
+          },
+          "stove_level": 4,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Pommes fertig frittieren",
+            "en": "Finish chips",
+            "fr": "Frire les frites",
+            "it": "Friggere le patatine",
+            "tr": "Patatesleri bitir"
+          },
+          "content": {
+            "de": "Pommes 3 Minuten bei 180°C knusprig frittieren, mit {0008} bestreuen.",
+            "en": "Fry chips 3 minutes at 180°C until crisp, sprinkle with {0008}.",
+            "fr": "Frire les frites 3 minutes à 180°C, parsemer de {0008}.",
+            "it": "Friggere le patatine 3 minuti a 180°C, cospargere di {0008}.",
+            "tr": "Patatesleri 180°C'de 3 dakika çıtır olana kadar kızartın, {0008} serpin."
+          },
+          "stove_level": 4,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Servieren",
+            "en": "Serve",
+            "fr": "Servir",
+            "it": "Servire",
+            "tr": "Servis et"
+          },
+          "content": {
+            "de": "Fisch und Pommes mit {0007} und Malzessig servieren.",
+            "en": "Serve fish and chips with {0007} and malt vinegar.",
+            "fr": "Servir poisson et frites avec {0007} et vinaigre de malt.",
+            "it": "Servire pesce e patatine con {0007} e aceto di malto.",
+            "tr": "Balık ve patatesi {0007} ve malt sirkesi ile servis edin."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "chef_analysis": {
+        "de": "Fish and Chips braucht zwei Öltemperaturen: 150°C zum Vorgaren der Pommes, 180°C zum Fertigfrittieren und für den Fisch. Der Bierteig muss eiskalt sein — sonst wird er weich.",
+        "en": "Fish and chips needs two oil temperatures: 150°C to blanch chips, 180°C to finish and fry the fish. Beer batter must be ice-cold or it goes soft.",
+        "fr": "Fish and chips exige deux températures : 150°C pour précuire les frites, 180°C pour finir et frire le poisson. La pâte à la bière doit être glacée.",
+        "it": "Fish and chips richiede due temperature: 150°C per pre-friggere, 180°C per finire e friggere il pesce. La pastella alla birra deve essere ghiacciata.",
+        "tr": "Fish and chips iki sıcaklık ister: 150°C patatesi ön pişirme, 180°C bitirme ve balık. Bira harcı buz gibi olmalı."
+      },
+      "coreComponents": [
+        "cod_fillet",
+        "potato",
+        "wheat_flour",
+        "beer",
+        "egg",
+        "vegetable_oil",
+        "lemon",
+        "salt"
+      ]
+    },
+    {
+      "id": "shepherd_pie",
+      "immutable": true,
+      "cuisine": "gb",
+      "region": "Großbritannien",
+      "servings": 4,
+      "prep_time_min": 70,
+      "aliases": {
+        "de": [
+          "shepherd s pie",
+          "hirtenpastete",
+          "hirtentopf",
+          "lammhackfleischauflauf mit kartoffelpüree"
+        ],
+        "en": [
+          "shepherd s pie",
+          "shepherds pie",
+          "cottage pie with lamb"
+        ],
+        "fr": [
+          "shepherd s pie",
+          "tourte du berger",
+          "hachis d agneau"
+        ],
+        "it": [
+          "shepherd s pie",
+          "torta del pastore"
+        ],
+        "tr": [
+          "shepherd s pie",
+          "çoban böreği"
+        ]
+      },
+      "titles": {
+        "de": "Shepherd's Pie (Hirtenpastete)",
+        "en": "Shepherd's Pie",
+        "fr": "Shepherd's Pie (Tourte du berger)",
+        "it": "Shepherd's Pie (Torta del pastore)",
+        "tr": "Shepherd's Pie (Çoban Böreği)"
+      },
+      "garnish": {
+        "de": "Mit Erbsen und Karotten servieren.",
+        "en": "Serve with peas and carrots.",
+        "fr": "Servir avec petits pois et carottes.",
+        "it": "Servire con piselli e carote.",
+        "tr": "Bezelye ve havuç ile servis edin."
+      },
+      "diet_labels": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Lammhackfleisch",
+            "en": "Lamb mince",
+            "fr": "Agneau haché",
+            "it": "Macinato di agnello",
+            "tr": "Kuzu kıyma"
+          },
+          "amount": 500,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 21,
+          "protein": 17,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "protein"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Kartoffeln (mehlig)",
+            "en": "Potatoes (floury)",
+            "fr": "Pommes de terre farineuses",
+            "it": "Patate farinose",
+            "tr": "Unlu patates"
+          },
+          "amount": 800,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15.4,
+          "fat": 0.1,
+          "protein": 2.1,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "carbohydrate"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Zwiebel",
+            "en": "Onion",
+            "fr": "Oignon",
+            "it": "Cipolla",
+            "tr": "Soğan"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 6.7,
+          "fat": 0.1,
+          "protein": 1.1,
+          "fiber": 1.7,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Karotte",
+            "en": "Carrot",
+            "fr": "Carotte",
+            "it": "Carota",
+            "tr": "Havuç"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 6.8,
+          "fat": 0.2,
+          "protein": 0.9,
+          "fiber": 2.8,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Grüne Erbsen",
+            "en": "Green peas",
+            "fr": "Petits pois",
+            "it": "Piselli",
+            "tr": "Bezelye"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 8.6,
+          "fat": 0.4,
+          "protein": 5.4,
+          "fiber": 5.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Tomatenmark",
+            "en": "Tomato paste",
+            "fr": "Concentré de tomate",
+            "it": "Concentrato di pomodoro",
+            "tr": "Domates salçası"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15,
+          "fat": 0.5,
+          "protein": 4.3,
+          "fiber": 4.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Worcestershiresauce",
+            "en": "Worcestershire sauce",
+            "fr": "Sauce Worcestershire",
+            "it": "Salsa Worcestershire",
+            "tr": "Worcestershire sosu"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 19,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Rinderbrühe",
+            "en": "Beef stock",
+            "fr": "Bouillon de boeuf",
+            "it": "Brodo di manzo",
+            "tr": "Dana suyu"
+          },
+          "amount": 300,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0.5,
+          "fat": 0.3,
+          "protein": 1,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Butter",
+            "en": "Butter",
+            "fr": "Beurre",
+            "it": "Burro",
+            "tr": "Tereyağı"
+          },
+          "amount": 30,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0.1,
+          "fat": 81,
+          "protein": 0.9,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "vegetable_oil",
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Sahne",
+            "en": "Cream",
+            "fr": "Crème",
+            "it": "Panna",
+            "tr": "Krema"
+          },
+          "amount": 60,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 34,
+          "protein": 2.1,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "coconut_milk_full",
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0011",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Kartoffelpüree",
+            "en": "Mashed potato",
+            "fr": "Purée de pommes de terre",
+            "it": "Purè di patate",
+            "tr": "Patates püresi"
+          },
+          "content": {
+            "de": "{0002} in Salzwasser 15 Minuten kochen, abgießen, mit {0009}, {0010} und {0011} zu Püree stampfen.",
+            "en": "Boil {0002} in salted water 15 minutes, drain, mash with {0009}, {0010} and {0011}.",
+            "fr": "Cuire {0002} 15 minutes, égoutter, écraser avec {0009}, {0010} et {0011}.",
+            "it": "Lessare {0002} 15 minuti, scolare, schiacciare con {0009}, {0010} e {0011}.",
+            "tr": "{0002}'yi tuzlu suda 15 dakika haşlayın, süzün, {0009}, {0010} ve {0011} ile püre yapın."
+          },
+          "stove_level": 3,
+          "time_min": 20
+        },
+        {
+          "title": {
+            "de": "Füllung anbraten",
+            "en": "Cook filling",
+            "fr": "Cuire la farce",
+            "it": "Cuocere il ripieno",
+            "tr": "İç harcı pişir"
+          },
+          "content": {
+            "de": "{0001} in einer Pfanne 6 Minuten krümelig anbraten, {0003} und {0004} zugeben, 5 Minuten mitbraten.",
+            "en": "Fry {0001} in a pan 6 minutes until crumbly, add {0003} and {0004}, cook 5 minutes.",
+            "fr": "Faire revenir {0001} 6 minutes, ajouter {0003} et {0004}, cuire 5 minutes.",
+            "it": "Rosolare {0001} 6 minuti, aggiungere {0003} e {0004}, cuocere 5 minuti.",
+            "tr": "{0001}'i tavada 6 dakika kavurun, {0003} ve {0004}'ü ekleyip 5 dakika pişirin."
+          },
+          "stove_level": 3,
+          "time_min": 11
+        },
+        {
+          "title": {
+            "de": "Würzen & Einkochen",
+            "en": "Season & reduce",
+            "fr": "Assaisonner et réduire",
+            "it": "Condire e ridurre",
+            "tr": "Tatlandır ve pişir"
+          },
+          "content": {
+            "de": "{0006}, {0007}, {0008} und {0005} zugeben, 10 Minuten köcheln lassen, bis die Flüssigkeit dick ist.",
+            "en": "Add {0006}, {0007}, {0008} and {0005}, simmer 10 minutes until thick.",
+            "fr": "Ajouter {0006}, {0007}, {0008} et {0005}, mijoter 10 minutes.",
+            "it": "Aggiungere {0006}, {0007}, {0008} e {0005}, cuocere 10 minuti.",
+            "tr": "{0006}, {0007}, {0008} ve {0005}'i ekleyip 10 dakika koyulaşana kadar pişirin."
+          },
+          "stove_level": 3,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Schichten",
+            "en": "Assemble",
+            "fr": "Assembler",
+            "it": "Assemblare",
+            "tr": "Katmanla"
+          },
+          "content": {
+            "de": "Fleischmasse in eine Auflaufform geben, Kartoffelpüree darüber glatt streichen, mit einer Gabel Rillen ziehen.",
+            "en": "Place meat in a baking dish, spread mashed potato on top, fork ridges into it.",
+            "fr": "Mettre la viande dans un plat, étaler la purée, tracer des sillons à la fourchette.",
+            "it": "Mettere la carne in teglia, stendere il purè, tracciare solchi con la forchetta.",
+            "tr": "Eti bir fırın kabına alın, üzerine patates püresini yayın, çatalla çizikler açın."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Backen",
+            "en": "Bake",
+            "fr": "Cuire au four",
+            "it": "Cuocere al forno",
+            "tr": "Fırında pişir"
+          },
+          "content": {
+            "de": "Bei 200°C 25 Minuten backen, bis die Oberfläche goldbraun ist.",
+            "en": "Bake at 200°C for 25 minutes until golden on top.",
+            "fr": "Cuire à 200°C 25 minutes jusqu'à dorure.",
+            "it": "Cuocere a 200°C per 25 minuti fino a doratura.",
+            "tr": "200°C'de 25 dakika üzeri altın rengi olana kadar pişirin."
+          },
+          "stove_level": 3,
+          "time_min": 25
+        }
+      ],
+      "chef_analysis": {
+        "de": "Shepherd's Pie ist traditionell mit Lamm (Cottage Pie mit Rind). Die Fleischmasse muss vor dem Backen dick sein, sonst schwimmt das Püree auf.",
+        "en": "Shepherd's Pie is traditionally made with lamb (Cottage Pie with beef). The meat must be thick before baking or the mash will sink.",
+        "fr": "Le shepherd's pie se fait traditionnellement à l'agneau (cottage pie au boeuf). La viande doit être épaisse avant cuisson sinon la purée coule.",
+        "it": "Lo shepherd's pie si fa tradizionalmente con agnello (cottage pie con manzo). La carne deve essere densa prima della cottura.",
+        "tr": "Shepherd's pie geleneksel olarak kuzuyla yapılır (Cottage Pie dana ile). Et fırına girmeden önce koyu olmalı."
+      },
+      "coreComponents": [
+        "lamb_mince",
+        "potato",
+        "onion",
+        "carrot",
+        "green_peas",
+        "tomato_paste",
+        "worcestershire_sauce",
+        "beef_stock",
+        "butter",
+        "cream",
+        "salt"
+      ]
+    },
+    {
+      "id": "gazpacho",
+      "immutable": true,
+      "cuisine": "es",
+      "region": "Andalusien",
+      "servings": 4,
+      "prep_time_min": 25,
+      "aliases": {
+        "de": [
+          "gazpacho",
+          "andalusische kalte tomatensuppe",
+          "spanische kalte gemüsesuppe"
+        ],
+        "en": [
+          "gazpacho",
+          "andalusian cold tomato soup",
+          "spanish cold soup"
+        ],
+        "fr": [
+          "gazpacho",
+          "soupe froide de tomate andalouse"
+        ],
+        "it": [
+          "gazpacho",
+          "zuppa fredda di pomodoro andalusa"
+        ],
+        "tr": [
+          "gazpacho",
+          "endülüs soğuk domates çorbası"
+        ]
+      },
+      "titles": {
+        "de": "Gazpacho (Andalusische kalte Tomatensuppe)",
+        "en": "Gazpacho (Andalusian Cold Tomato Soup)",
+        "fr": "Gazpacho (Soupe froide andalouse)",
+        "it": "Gazpacho (Zuppa fredda andalusa)",
+        "tr": "Gazpacho (Endülüs Soğuk Domates Çorbası)"
+      },
+      "garnish": {
+        "de": "Mit gewürfeltem Gemüse, Olivenöl und Croutons servieren.",
+        "en": "Serve with diced vegetables, olive oil and croutons.",
+        "fr": "Servir avec légumes en dés, huile d'olive et croûtons.",
+        "it": "Servire con verdure a cubetti, olio d'oliva e crostini.",
+        "tr": "Küp doğranmış sebze, zeytinyağı ve kruton ile servis edin."
+      },
+      "diet_labels": [
+        "vegetarian",
+        "vegan",
+        "gluten_free"
+      ],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Tomaten (reif)",
+            "en": "Tomatoes (ripe)",
+            "fr": "Tomates (mûres)",
+            "it": "Pomodori (maturi)",
+            "tr": "Domates (olgun)"
+          },
+          "amount": 800,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2.8,
+          "fat": 0.2,
+          "protein": 0.9,
+          "fiber": 1.2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Gurke",
+            "en": "Cucumber",
+            "fr": "Concombre",
+            "it": "Cetriolo",
+            "tr": "Salatalık"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3.1,
+          "fat": 0.1,
+          "protein": 0.7,
+          "fiber": 0.5,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Grüne Paprika",
+            "en": "Green pepper",
+            "fr": "Poivron vert",
+            "it": "Peperone verde",
+            "tr": "Yeşil biber"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4.6,
+          "fat": 0.2,
+          "protein": 0.9,
+          "fiber": 1.7,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Zwiebel",
+            "en": "Onion",
+            "fr": "Oignon",
+            "it": "Cipolla",
+            "tr": "Soğan"
+          },
+          "amount": 80,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 6.7,
+          "fat": 0.1,
+          "protein": 1.1,
+          "fiber": 1.7,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 15,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Olivenöl",
+            "en": "Olive oil",
+            "fr": "Huile d'olive",
+            "it": "Olio d'oliva",
+            "tr": "Zeytinyağı"
+          },
+          "amount": 60,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Rotweinessig",
+            "en": "Red wine vinegar",
+            "fr": "Vinaigre de vin rouge",
+            "it": "Aceto di vino rosso",
+            "tr": "Kırmızı şarap sirkesi"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0.3,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "acid"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 8,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Gemüse vorbereiten",
+            "en": "Prep vegetables",
+            "fr": "Préparer les légumes",
+            "it": "Preparare le verdure",
+            "tr": "Sebzeleri hazırla"
+          },
+          "content": {
+            "de": "{0001} häuten, {0002}, {0003}, {0004} und {0005} grob hacken.",
+            "en": "Peel {0001}, roughly chop {0002}, {0003}, {0004} and {0005}.",
+            "fr": "Peler {0001}, hacher {0002}, {0003}, {0004} et {0005}.",
+            "it": "Pelare {0001}, tritare {0002}, {0003}, {0004} e {0005}.",
+            "tr": "{0001}'in kabuğunu soyun, {0002}, {0003}, {0004} ve {0005}'i iri doğrayın."
+          },
+          "stove_level": 0,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Mixen",
+            "en": "Blend",
+            "fr": "Mixer",
+            "it": "Frullare",
+            "tr": "Blend et"
+          },
+          "content": {
+            "de": "Alles mit {0006}, {0007} und {0008} fein pürieren.",
+            "en": "Blend everything with {0006}, {0007} and {0008} until smooth.",
+            "fr": "Mixer avec {0006}, {0007} et {0008} jusqu'à lisse.",
+            "it": "Frullare con {0006}, {0007} e {0008} fino a liscio.",
+            "tr": "Hepsini {0006}, {0007} ve {0008} ile pürüzsüz olana kadar blend edin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Kühlen",
+            "en": "Chill",
+            "fr": "Refroidir",
+            "it": "Raffreddare",
+            "tr": "Soğut"
+          },
+          "content": {
+            "de": "Mindestens 2 Stunden im Kühlschrank kalt stellen.",
+            "en": "Chill at least 2 hours in the fridge.",
+            "fr": "Réfrigérer au moins 2 heures.",
+            "it": "Raffreddare almeno 2 ore in frigo.",
+            "tr": "En az 2 saat buzdolabında soğutun."
+          },
+          "stove_level": 0,
+          "time_min": 120
+        },
+        {
+          "title": {
+            "de": "Abschmecken & Servieren",
+            "en": "Season & serve",
+            "fr": "Ajuster et servir",
+            "it": "Aggiustare e servire",
+            "tr": "Tatlandır ve servis et"
+          },
+          "content": {
+            "de": "Mit {0008} und {0007} abschmecken, in Gläser füllen, mit einem Schuss {0006} servieren.",
+            "en": "Adjust with {0008} and {0007}, pour into glasses, drizzle {0006}.",
+            "fr": "Ajuster avec {0008} et {0007}, verser en verres, arroser de {0006}.",
+            "it": "Aggiustare con {0008} e {0007}, versare in bicchieri, irrorare con {0006}.",
+            "tr": "{0008} ve {0007} ile tatlandırın, bardaklara doldurun, {0006} gezdirin."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "chef_analysis": {
+        "de": "Gazpacho ist besser am zweiten Tag. Reife, süße Tomaten sind Pflicht — sonst wird die Suppe wässrig-sauer. Rotweinessig sparsam dosieren.",
+        "en": "Gazpacho tastes better on day two. Ripe, sweet tomatoes are essential — otherwise the soup turns watery and sour. Use red wine vinegar sparingly.",
+        "fr": "Le gazpacho est meilleur le lendemain. Des tomates mûres et sucrées sont essentielles. Vinaigre avec parcimonie.",
+        "it": "Il gazpacho è meglio il giorno dopo. Pomodori maturi e dolci sono essenziali. Aceto con moderazione.",
+        "tr": "Gazpacho ikinci gün daha iyi. Olgun tatlı domates şart. Sirkeyi az kullanın."
+      },
+      "coreComponents": [
+        "tomato",
+        "cucumber",
+        "green_pepper",
+        "onion",
+        "garlic",
+        "olive_oil",
+        "red_wine_vinegar",
+        "salt"
+      ]
+    },
+    {
+      "id": "bruschetta",
+      "immutable": true,
+      "cuisine": "it",
+      "region": "Italien",
+      "servings": 4,
+      "prep_time_min": 20,
+      "aliases": {
+        "de": [
+          "bruschetta",
+          "bruschetta al pomodoro",
+          "italienisches knoblauchbrot mit tomaten"
+        ],
+        "en": [
+          "bruschetta",
+          "tomato bruschetta",
+          "italian garlic bread with tomatoes"
+        ],
+        "fr": [
+          "bruschetta",
+          "bruschetta aux tomates"
+        ],
+        "it": [
+          "bruschetta",
+          "bruschetta al pomodoro"
+        ],
+        "tr": [
+          "bruschetta",
+          "domatesli bruschetta"
+        ]
+      },
+      "titles": {
+        "de": "Bruschetta (Italienisches Tomatenbrot)",
+        "en": "Bruschetta (Italian Tomato Bread)",
+        "fr": "Bruschetta (Pain italien aux tomates)",
+        "it": "Bruschetta al Pomodoro",
+        "tr": "Bruschetta (İtalyan Domatesli Ekmek)"
+      },
+      "garnish": {
+        "de": "Sofort servieren, sonst weicht das Brot durch.",
+        "en": "Serve immediately or the bread will go soggy.",
+        "fr": "Servir aussitôt sinon le pain ramollit.",
+        "it": "Servire subito o il pane si ammolla.",
+        "tr": "Hemen servis edin, yoksa ekmek yumuşar."
+      },
+      "diet_labels": [
+        "vegetarian",
+        "vegan"
+      ],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Baguette",
+            "en": "Baguette",
+            "fr": "Baguette",
+            "it": "Baguette",
+            "tr": "Baget"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 53,
+          "fat": 1.2,
+          "protein": 9,
+          "fiber": 2.2,
+          "allergenTags": [
+            "gluten"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "carbohydrate"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Tomaten (reif)",
+            "en": "Tomatoes (ripe)",
+            "fr": "Tomates (mûres)",
+            "it": "Pomodori (maturi)",
+            "tr": "Domates (olgun)"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2.8,
+          "fat": 0.2,
+          "protein": 0.9,
+          "fiber": 1.2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "vegetable"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Knoblauch",
+            "en": "Garlic",
+            "fr": "Ail",
+            "it": "Aglio",
+            "tr": "Sarımsak"
+          },
+          "amount": 15,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 31,
+          "fat": 0.5,
+          "protein": 6.4,
+          "fiber": 2.1,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "aromat"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Basilikum (frisch)",
+            "en": "Basil (fresh)",
+            "fr": "Basilic (frais)",
+            "it": "Basilico (fresco)",
+            "tr": "Fesleğen (taze)"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2.7,
+          "fat": 0.6,
+          "protein": 3.2,
+          "fiber": 1.6,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "herb"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Olivenöl",
+            "en": "Olive oil",
+            "fr": "Huile d'olive",
+            "it": "Olio d'oliva",
+            "tr": "Zeytinyağı"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 5,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Tomaten würfeln",
+            "en": "Dice tomatoes",
+            "fr": "Couper les tomates",
+            "it": "Tagliare i pomodori",
+            "tr": "Domatesleri doğra"
+          },
+          "content": {
+            "de": "{0002} entkernen und fein würfeln, {0003} pressen, {0004} in Streifen schneiden.",
+            "en": "Seed and finely dice {0002}, press {0003}, slice {0004}.",
+            "fr": "Épépiner et couper {0002} finement, presser {0003}, émincer {0004}.",
+            "it": "Eliminare i semi e tagliare {0002} finemente, schiacciare {0003}, affettare {0004}.",
+            "tr": "{0002}'nin çekirdeklerini çıkarıp ince doğrayın, {0003}'ü ezin, {0004}'i şeritler halinde kesin."
+          },
+          "stove_level": 0,
+          "time_min": 8
+        },
+        {
+          "title": {
+            "de": "Topping mischen",
+            "en": "Mix topping",
+            "fr": "Mélanger la garniture",
+            "it": "Mescolare il condimento",
+            "tr": "Üst malzemeyi karıştır"
+          },
+          "content": {
+            "de": "Tomaten, {0003}, {0004}, {0005} und {0006} verrühren, 10 Minuten ziehen lassen.",
+            "en": "Mix tomatoes, {0003}, {0004}, {0005} and {0006}, rest 10 minutes.",
+            "fr": "Mélanger tomates, {0003}, {0004}, {0005} et {0006}, laisser 10 minutes.",
+            "it": "Mescolare pomodori, {0003}, {0004}, {0005} e {0006}, riposare 10 minuti.",
+            "tr": "Domates, {0003}, {0004}, {0005} ve {0006}'i karıştırıp 10 dakika bekletin."
+          },
+          "stove_level": 0,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Brot rösten",
+            "en": "Toast bread",
+            "fr": "Griller le pain",
+            "it": "Tostare il pane",
+            "tr": "Ekmeği kızart"
+          },
+          "content": {
+            "de": "{0001} in 2 cm dicke Scheiben schneiden und beidseitig goldbraun rösten.",
+            "en": "Cut {0001} into 2 cm slices and toast both sides until golden.",
+            "fr": "Couper {0001} en tranches de 2 cm et griller des deux côtés.",
+            "it": "Tagliare {0001} a fette di 2 cm e tostare entrambi i lati.",
+            "tr": "{0001}'i 2 cm dilimler halinde kesin ve iki yüzünü kızartın."
+          },
+          "stove_level": 4,
+          "time_min": 4
+        },
+        {
+          "title": {
+            "de": "Belegen & Servieren",
+            "en": "Top & serve",
+            "fr": "Garnir et servir",
+            "it": "Condire e servire",
+            "tr": "Üzerine koy ve servis et"
+          },
+          "content": {
+            "de": "Brot mit Knoblauch einreiben, Tomatenmischung darauf geben, sofort servieren.",
+            "en": "Rub bread with garlic, spoon tomato mix on top, serve immediately.",
+            "fr": "Frotter le pain d'ail, garnir de tomates, servir aussitôt.",
+            "it": "Strofinare il pane con aglio, condire con pomodori, servire subito.",
+            "tr": "Ekmeği sarımsakla ovalayın, domates karışımını koyun, hemen servis edin."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "chef_analysis": {
+        "de": "Bruschetta lebt von reifen Tomaten und gutem Olivenöl — nicht am Salz sparen. Das Brot muss kräftig geröstet sein, sonst weicht es sofort durch.",
+        "en": "Bruschetta lives from ripe tomatoes and good olive oil — don't skimp on salt. The bread must be well toasted or it goes soggy instantly.",
+        "fr": "La bruschetta dépend de tomates mûres et d'une bonne huile d'olive — ne pas lésiner sur le sel. Le pain doit être bien grillé.",
+        "it": "La bruschetta vive di pomodori maturi e buon olio d'oliva — non lesinare sul sale. Il pane deve essere ben tostato.",
+        "tr": "Bruschetta olgun domates ve kaliteli zeytinyağıyla olur — tuzdan kaçmayın. Ekmek iyi kızarmalı."
+      },
+      "coreComponents": [
+        "baguette",
+        "tomato",
+        "garlic",
+        "basil",
+        "olive_oil",
+        "salt"
+      ]
+    },
+    {
+      "id": "creme_brulee",
+      "immutable": true,
+      "cuisine": "fr",
+      "region": "Frankreich",
+      "servings": 4,
+      "prep_time_min": 45,
+      "aliases": {
+        "de": [
+          "creme brulee",
+          "crème brûlée",
+          "französische vanillecreme mit karamellkruste"
+        ],
+        "en": [
+          "creme brulee",
+          "crème brûlée",
+          "french vanilla custard with caramel crust"
+        ],
+        "fr": [
+          "crème brûlée",
+          "creme brulee",
+          "crème au caramel"
+        ],
+        "it": [
+          "creme brulee",
+          "crème brûlée",
+          "crema catalana francese"
+        ],
+        "tr": [
+          "creme brulee",
+          "krem brule",
+          "karamel kaplı vanilya kreması"
+        ]
+      },
+      "titles": {
+        "de": "Crème Brûlée (Französische Vanillecreme mit Karamellkruste)",
+        "en": "Crème Brûlée (French Vanilla Custard)",
+        "fr": "Crème Brûlée",
+        "it": "Crème Brûlée",
+        "tr": "Crème Brûlée (Karamel Kaplı Vanilya Kreması)"
+      },
+      "garnish": {
+        "de": "Mit frischen Beeren servieren.",
+        "en": "Serve with fresh berries.",
+        "fr": "Servir avec fruits rouges frais.",
+        "it": "Servire con frutti di bosco freschi.",
+        "tr": "Taze meyvelerle servis edin."
+      },
+      "diet_labels": [
+        "vegetarian",
+        "gluten_free"
+      ],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Sahne",
+            "en": "Cream",
+            "fr": "Crème",
+            "it": "Panna",
+            "tr": "Krema"
+          },
+          "amount": 500,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 34,
+          "protein": 2.1,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Eigelb",
+            "en": "Egg yolk",
+            "fr": "Jaune d'oeuf",
+            "it": "Tuorlo",
+            "tr": "Yumurta sarısı"
+          },
+          "amount": 120,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 3.6,
+          "fat": 26.5,
+          "protein": 15.9,
+          "fiber": 0,
+          "allergenTags": [
+            "egg"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "protein"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Zucker",
+            "en": "Sugar",
+            "fr": "Sucre",
+            "it": "Zucchero",
+            "tr": "Şeker"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 100,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Vanilleextrakt",
+            "en": "Vanilla extract",
+            "fr": "Extrait de vanille",
+            "it": "Estratto di vaniglia",
+            "tr": "Vanilya özütü"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 12.7,
+          "fat": 0.1,
+          "protein": 0.1,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Zucker (für die Kruste)",
+            "en": "Sugar (for the crust)",
+            "fr": "Sucre (pour la croûte)",
+            "it": "Zucchero (per la crosta)",
+            "tr": "Şeker (kabuk için)"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 100,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Ofen vorheizen",
+            "en": "Preheat oven",
+            "fr": "Préchauffer",
+            "it": "Preriscaldare",
+            "tr": "Fırını ısıt"
+          },
+          "content": {
+            "de": "Ofen auf 150°C vorheizen und 4 ofenfeste Förmchen bereitstellen.",
+            "en": "Preheat oven to 150°C and prepare 4 ramekins.",
+            "fr": "Préchauffer à 150°C et préparer 4 ramequins.",
+            "it": "Preriscaldare a 150°C e preparare 4 ramekins.",
+            "tr": "Fırını 150°C'ye ısıtın, 4 ramekin hazırlayın."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Sahne erwärmen",
+            "en": "Warm cream",
+            "fr": "Chauffer la crème",
+            "it": "Scaldare la panna",
+            "tr": "Kremayı ısıt"
+          },
+          "content": {
+            "de": "{0001} mit {0004} in einem Topf erhitzen, bis sie fast kocht, dann vom Herd nehmen.",
+            "en": "Heat {0001} with {0004} until almost boiling, then remove from heat.",
+            "fr": "Chauffer {0001} avec {0004} jusqu'à presque ébullition, retirer.",
+            "it": "Scaldare {0001} con {0004} fino a quasi bollore, togliere.",
+            "tr": "{0001}'i {0004} ile neredeyse kaynayana kadar ısıtın, ocaktan alın."
+          },
+          "stove_level": 2,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Eigelb aufschlagen",
+            "en": "Whisk yolks",
+            "fr": "Fouetter les jaunes",
+            "it": "Sbattere i tuorli",
+            "tr": "Sarıları çırp"
+          },
+          "content": {
+            "de": "{0002} und {0003} in einer Schüssel hell und cremig aufschlagen.",
+            "en": "Whisk {0002} and {0003} in a bowl until pale and creamy.",
+            "fr": "Fouetter {0002} et {0003} jusqu'à pâle et crémeux.",
+            "it": "Sbattere {0002} e {0003} fino a chiaro e cremoso.",
+            "tr": "{0002} ve {0003}'ü açık renk ve kremamsı olana kadar çırpın."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Verquirlen",
+            "en": "Temper",
+            "fr": "Tempérer",
+            "it": "Temperare",
+            "tr": "Ilıt"
+          },
+          "content": {
+            "de": "Warme Sahne langsam unter Rühren zur Eimasse giessen, dann durch ein Sieb in die Förmchen füllen.",
+            "en": "Slowly pour warm cream into egg mix while whisking, then strain into ramekins.",
+            "fr": "Verser la crème chaude lentement dans les oeufs en fouettant, filtrer dans les ramequins.",
+            "it": "Versare la panna calda lentamente nelle uova sbattendo, filtrare nei ramekins.",
+            "tr": "Sıcak kremayı yumurtalara yavaşça döküp çırpın, süzgeçten geçirip ramekinlere doldurun."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Wasserbad",
+            "en": "Water bath",
+            "fr": "Bain-marie",
+            "it": "Bagnomaria",
+            "tr": "Su banyosu"
+          },
+          "content": {
+            "de": "Förmchen in eine Auflaufform setzen, heisses Wasser bis zur halben Höhe angiessen, 35 Minuten backen.",
+            "en": "Set ramekins in a baking dish, add hot water halfway up, bake 35 minutes.",
+            "fr": "Placer les ramequins dans un plat, ajouter de l'eau chaude à mi-hauteur, cuire 35 minutes.",
+            "it": "Mettere i ramekins in una teglia, aggiungere acqua calda a metà, cuocere 35 minuti.",
+            "tr": "Ramekinleri fırın kabına koyun, yarısına kadar sıcak su ekleyin, 35 dakika pişirin."
+          },
+          "stove_level": 3,
+          "time_min": 35
+        },
+        {
+          "title": {
+            "de": "Kühlen",
+            "en": "Chill",
+            "fr": "Refroidir",
+            "it": "Raffreddare",
+            "tr": "Soğut"
+          },
+          "content": {
+            "de": "Förmchen herausnehmen und mindestens 4 Stunden im Kühlschrank fest werden lassen.",
+            "en": "Remove ramekins and chill at least 4 hours until set.",
+            "fr": "Retirer et réfrigérer au moins 4 heures.",
+            "it": "Togliere e raffreddare almeno 4 ore.",
+            "tr": "Ramekinleri çıkarıp en az 4 saat buzdolabında katılaştırın."
+          },
+          "stove_level": 0,
+          "time_min": 240
+        },
+        {
+          "title": {
+            "de": "Karamellisieren",
+            "en": "Caramelise",
+            "fr": "Caraméliser",
+            "it": "Caramellare",
+            "tr": "Karamelize et"
+          },
+          "content": {
+            "de": "{0005} dünn auf die Creme streuen und mit einem Brenner goldbraun karamellisieren, sofort servieren.",
+            "en": "Sprinkle {0005} thinly on the custard and caramelise with a torch until golden, serve at once.",
+            "fr": "Saupoudrer {0005} finement et caraméliser au chalumeau, servir aussitôt.",
+            "it": "Cospargere {0005} sottilmente e caramellare con il cannello, servire subito.",
+            "tr": "{0005}'i ince serpin ve pürmüzle altın rengi karamelize edin, hemen servis edin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        }
+      ],
+      "chef_analysis": {
+        "de": "Crème Brûlée lebt von der Temperaturkontrolle: Sahne darf nicht kochen, sonst gerinnt das Eigelb. Die Creme muss vor dem Karamellisieren eiskalt sein.",
+        "en": "Crème brûlée is all about temperature control: the cream must not boil or the yolks curdle. The custard must be ice-cold before caramelising.",
+        "fr": "La crème brûlée repose sur la maîtrise des températures : la crème ne doit pas bouillir sinon les jaunes coagulent. La crème doit être glacée avant de caraméliser.",
+        "it": "La crème brûlée è questione di temperatura: la panna non deve bollire o i tuorli coagulano. La crema deve essere ghiacciata prima di caramellare.",
+        "tr": "Crème brûlée sıcaklık kontrolü ister: krema kaynamamalı yoksa sarılar kesilir. Karamelize etmeden önce krema buz gibi olmalı."
+      },
+      "coreComponents": [
+        "cream",
+        "egg_yolk",
+        "sugar",
+        "vanilla"
       ]
     }
   ]
