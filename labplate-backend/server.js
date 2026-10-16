@@ -406,9 +406,18 @@ app.get('/api/debug/master-info', (req, res) => {
   try {
     const store = require('./classic-master-store');
     const ids = store.listMasterIds();
+    const _mj = require("./data/master_recipes.json");
+    let _arCount = 0;
+    for (const _r of (_mj.recipes || [])) {
+      for (const _ing of (_r.ingredients || [])) {
+        if (_ing && _ing.absorbedRatio != null) _arCount++;
+      }
+    }
     res.json({
       pid: process.pid,
       count: ids.length,
+      version: _mj.version || null,
+      absorbedRatioCount: _arCount,
       hasClam: ids.includes('clam_chowder'),
       hasTomYum: ids.includes('tom_yum'),
       hasSpanakopita: ids.includes('spanakopita'),
