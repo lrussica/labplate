@@ -12,7 +12,7 @@ module.exports = {
     per100g: { protein: 1.0, fat: 0.1, netCarbs: 6.0, fiber: 0.5, kcal: 26 },
     source: 'USDA FDC 168448 (Pumpkin, raw)'
   },
-  oil: {
+  canola_oil: {
     displayName: 'Pflanzenöl',
     aliases: ['pflanzenöl','pflanzenoel','rapsöl','sonnenblumenöl','vegetable oil','huile végétale','olio vegetale','bitkisel yağ'],
     per100g: { protein: 0.0, fat: 100.0, netCarbs: 0.0, fiber: 0.0, kcal: 884 },
