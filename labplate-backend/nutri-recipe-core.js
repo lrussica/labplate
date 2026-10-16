@@ -1043,6 +1043,7 @@ function normalizeIng(item, fallbackName, opts) {
     name: (typeof src.name === 'string' && src.name.trim()) ? src.name.trim().slice(0, 200) : (fallbackName || 'Zutat'),
     amount: normalizedAmount,
     unit: src.unit === 'ml' ? 'ml' : 'g',
+    absorbedRatio: Number.isFinite(Number(src.absorbedRatio)) ? Number(src.absorbedRatio) : 1,
     status: src.status === 'vorhanden' ? 'vorhanden' : 'benoetigt',
     macrosPer100g: zeroMacros
       ? { netCarbs: 0, fat: 0, protein: 0, fiber: 0 }
