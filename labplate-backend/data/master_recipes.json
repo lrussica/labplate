@@ -1,5 +1,5 @@
 {
-  "version": 20,
+  "version": 21,
   "languages": [
     "de",
     "en",
@@ -106404,6 +106404,2526 @@
         "bay_leaf",
         "salt",
         "black_pepper"
+      ]
+    },
+    {
+      "id": "mille_feuille",
+      "immutable": true,
+      "cuisine": "fr",
+      "region": "Frankreich",
+      "servings": 8,
+      "prep_time_min": 75,
+      "aliases": {
+        "de": [
+          "mille-feuille",
+          "napoleon",
+          "tausendblaetter"
+        ],
+        "en": [
+          "mille-feuille",
+          "napoleon",
+          "thousand leaves"
+        ],
+        "fr": [
+          "mille-feuille",
+          "napoleon"
+        ],
+        "it": [
+          "millefoglie",
+          "napoleon"
+        ],
+        "tr": [
+          "mille-feuille",
+          "napolyon pastasi"
+        ]
+      },
+      "titles": {
+        "de": "Mille-Feuille (Franzoesische Tausendblaetter-Torte)",
+        "en": "Mille-Feuille (French Thousand Leaves)",
+        "fr": "Mille-Feuille Classique",
+        "it": "Millefoglie alla Crema",
+        "tr": "Mille-Feuille (Fransiz Bin Yaprak)"
+      },
+      "garnish": {
+        "de": "Mit Schokoladenglasur und Puderzucker bestreut servieren.",
+        "en": "Serve topped with chocolate icing and dusted icing sugar.",
+        "fr": "Servir glace au chocolat et saupoudre de sucre glace.",
+        "it": "Servire con glassa al cioccolato e zucchero a velo.",
+        "tr": "Cikolata kaplamasi ve pudra sekeri ile servis edin."
+      },
+      "diet_labels": [
+        "vegetarian"
+      ],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Blaetterteig",
+            "en": "Puff pastry",
+            "fr": "Pate feuilletee",
+            "it": "Pasta sfoglia",
+            "tr": "Milfoey hamuru"
+          },
+          "amount": 500,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 43,
+          "fat": 42,
+          "protein": 7,
+          "fiber": 2,
+          "allergenTags": [
+            "gluten",
+            "milk"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Milch",
+            "en": "Milk",
+            "fr": "Lait",
+            "it": "Latte",
+            "tr": "Sut"
+          },
+          "amount": 500,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4.8,
+          "fat": 3.5,
+          "protein": 3.4,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "coconut_milk_full",
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Eigelb",
+            "en": "Egg yolk",
+            "fr": "Jaune d oeuf",
+            "it": "Tuorlo",
+            "tr": "Yumurta sarisi"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": true,
+          "netCarbs": 3.6,
+          "fat": 26.5,
+          "protein": 15.9,
+          "fiber": 0,
+          "allergenTags": [
+            "egg"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "protein"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Zucker",
+            "en": "Sugar",
+            "fr": "Sucre",
+            "it": "Zucchero",
+            "tr": "Seker"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 100,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Speisestaerke",
+            "en": "Cornstarch",
+            "fr": "Fecule de mais",
+            "it": "Amido di mais",
+            "tr": "Misir nisastasi"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 91,
+          "fat": 0.1,
+          "protein": 0.3,
+          "fiber": 0.9,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Vanilleextrakt",
+            "en": "Vanilla extract",
+            "fr": "Extrait de vanille",
+            "it": "Estratto di vaniglia",
+            "tr": "Vanilya ozutu"
+          },
+          "amount": 5,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 12.7,
+          "fat": 0.1,
+          "protein": 0.1,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Butter",
+            "en": "Butter",
+            "fr": "Beurre",
+            "it": "Burro",
+            "tr": "Tereyagi"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0.1,
+          "fat": 81.1,
+          "protein": 0.9,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "vegetable_oil",
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Zartbitterschokolade",
+            "en": "Dark chocolate",
+            "fr": "Chocolat noir",
+            "it": "Cioccolato fondente",
+            "tr": "Bitter cikolata"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 45,
+          "fat": 43,
+          "protein": 7.8,
+          "fiber": 11,
+          "allergenTags": [
+            "milk",
+            "soy"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Puderzucker",
+            "en": "Powdered sugar",
+            "fr": "Sucre glace",
+            "it": "Zucchero a velo",
+            "tr": "Pudra sekeri"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 100,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 2,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Blaetterteig backen",
+            "en": "Bake pastry",
+            "fr": "Cuire la pate",
+            "it": "Cuocere la sfoglia",
+            "tr": "Hamuru pisir"
+          },
+          "content": {
+            "de": "{0001} auf Backblech legen, mit Gabel einstechen, bei 200 Grad 20 Minuten goldbraun backen, abkuehlen.",
+            "en": "Place {0001} on tray, prick with fork, bake at 200C for 20 minutes until golden, cool.",
+            "fr": "Poser {0001} sur plaque, piquer, cuire a 200C 20 minutes dore, refroidir.",
+            "it": "Mettere {0001} su teglia, bucherellare, cuocere a 200C 20 minuti dorata, raffreddare.",
+            "tr": "{0001}i tepsiye koyun, catal ile delin, 200C 20 dakika pisirin, sogutun."
+          },
+          "stove_level": 0,
+          "time_min": 20
+        },
+        {
+          "title": {
+            "de": "Vanillecreme kochen",
+            "en": "Cook pastry cream",
+            "fr": "Cuire la creme",
+            "it": "Cuocere la crema",
+            "tr": "Muhallebi pisir"
+          },
+          "content": {
+            "de": "{0002}, {0003}, {0004}, {0005}, {0006} verquirlen, unter Ruehren aufkochen bis dick, {0007} einruehren.",
+            "en": "Whisk {0002}, {0003}, {0004}, {0005}, {0006}, cook stirring until thick, stir in {0007}.",
+            "fr": "Fouetter {0002}, {0003}, {0004}, {0005}, {0006}, cuire en remuant jusqu a epaississement, incorporer {0007}.",
+            "it": "Sbattere {0002}, {0003}, {0004}, {0005}, {0006}, cuocere mescolando fino a densita, unire {0007}.",
+            "tr": "{0002}, {0003}, {0004}, {0005}, {0006}i cirpin, koyulayana kadar karistirarak pisirin, {0007} ekleyin."
+          },
+          "stove_level": 4,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Schichtung",
+            "en": "Layer",
+            "fr": "Montage",
+            "it": "Assemblare",
+            "tr": "Katmanla"
+          },
+          "content": {
+            "de": "Blaetterteig in 3 gleich grosse Streifen schneiden, abwechselnd mit Creme schichten.",
+            "en": "Cut pastry into 3 equal strips, layer alternating with cream.",
+            "fr": "Couper la pate en 3 bandes egales, alterner avec la creme.",
+            "it": "Tagliare la sfoglia in 3 strisce uguali, alternare con la crema.",
+            "tr": "Hamuru 3 esit seride kesin, kremayla sirayla katmanlayin."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Glasur",
+            "en": "Glaze",
+            "fr": "Glaçage",
+            "it": "Glassatura",
+            "tr": "Kaplama"
+          },
+          "content": {
+            "de": "{0008} schmelzen, oberste Schicht damit bestreichen.",
+            "en": "Melt {0008}, spread over top layer.",
+            "fr": "Faire fondre {0008}, etaler sur la couche superieure.",
+            "it": "Sciogliere {0008}, stendere sullo strato superiore.",
+            "tr": "{0008}i eritin, ust katmana surun."
+          },
+          "stove_level": 1,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Servieren",
+            "en": "Serve",
+            "fr": "Servir",
+            "it": "Servire",
+            "tr": "Servis et"
+          },
+          "content": {
+            "de": "Mit {0009} bestreuen, in Stuecke schneiden, sofort servieren.",
+            "en": "Dust with {0009}, slice, serve immediately.",
+            "fr": "Saupoudrer de {0009}, couper, servir aussitot.",
+            "it": "Spolverare con {0009}, tagliare, servire subito.",
+            "tr": "{0009} serpin, dilimleyin, hemen servis edin."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "chef_analysis": {
+        "de": "Der Blätterteig muss vor dem Schichten komplett kalt sein, sonst weicht die Creme durch. Creme am besten 2 Stunden kühlen.",
+        "en": "The puff pastry must be completely cold before layering, otherwise the cream soaks through. Best to chill the cream 2 hours.",
+        "fr": "La pate doit etre completement froide avant le montage, sinon la creme detrempe. Refroidir la creme 2 heures.",
+        "it": "La sfoglia deve essere completamente fredda prima di assemblare, altrimenti la crema bagna. Raffreddare la crema 2 ore.",
+        "tr": "Milfoey hamuru katmanlamadan once tamamen soguk olmali, yoksa krema islatir. Kreamayi 2 saat sogutun."
+      },
+      "coreComponents": [
+        "puff_pastry",
+        "milk",
+        "egg",
+        "sugar",
+        "cornstarch",
+        "vanilla",
+        "butter",
+        "dark_chocolate",
+        "powdered_sugar",
+        "salt"
+      ]
+    },
+    {
+      "id": "opera_cake",
+      "immutable": true,
+      "cuisine": "fr",
+      "region": "Frankreich",
+      "servings": 10,
+      "prep_time_min": 90,
+      "aliases": {
+        "de": [
+          "opera",
+          "opera-torte",
+          "operntorte"
+        ],
+        "en": [
+          "opera cake",
+          "opera torte"
+        ],
+        "fr": [
+          "opera",
+          "gateau opera"
+        ],
+        "it": [
+          "opera",
+          "torta opera"
+        ],
+        "tr": [
+          "opera pastasi",
+          "opera torte"
+        ]
+      },
+      "titles": {
+        "de": "Opera-Torte (Franzoesischer Schichttorte)",
+        "en": "Opera Cake (French Layered Cake)",
+        "fr": "Gateau Opera",
+        "it": "Torta Opera",
+        "tr": "Opera Pastasi"
+      },
+      "garnish": {
+        "de": "Mit Goldblaettchen und Schokoschriftzug servieren.",
+        "en": "Serve with gold leaf and chocolate lettering.",
+        "fr": "Servir avec feuille d or et lettrage en chocolat.",
+        "it": "Servire con foglia d oro e scritta al cioccolato.",
+        "tr": "Altin varak ve cikolata yazi ile servis edin."
+      },
+      "diet_labels": [
+        "vegetarian"
+      ],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Mandelmehl",
+            "en": "Almond flour",
+            "fr": "Farine d amande",
+            "it": "Farina di mandorle",
+            "tr": "Badem unu"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 10,
+          "fat": 55,
+          "protein": 21,
+          "fiber": 10,
+          "allergenTags": [
+            "nuts"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Puderzucker",
+            "en": "Powdered sugar",
+            "fr": "Sucre glace",
+            "it": "Zucchero a velo",
+            "tr": "Pudra sekeri"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 100,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Eier",
+            "en": "Eggs",
+            "fr": "Oeufs",
+            "it": "Uova",
+            "tr": "Yumurta"
+          },
+          "amount": 6,
+          "unit": "stk",
+          "protein_source": true,
+          "netCarbs": 0.7,
+          "fat": 9.5,
+          "protein": 12.6,
+          "fiber": 0,
+          "allergenTags": [
+            "egg"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "protein"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Mehl",
+            "en": "Flour",
+            "fr": "Farine",
+            "it": "Farina",
+            "tr": "Un"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 74,
+          "fat": 1,
+          "protein": 10.3,
+          "fiber": 2.7,
+          "allergenTags": [
+            "gluten"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Espresso (gebrueht)",
+            "en": "Espresso (brewed)",
+            "fr": "Espresso (prepare)",
+            "it": "Espresso (preparato)",
+            "tr": "Espresso (demlenmis)"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1.7,
+          "fat": 0.2,
+          "protein": 0.1,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Butter",
+            "en": "Butter",
+            "fr": "Beurre",
+            "it": "Burro",
+            "tr": "Tereyagi"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0.1,
+          "fat": 81.1,
+          "protein": 0.9,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "vegetable_oil",
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Zartbitterschokolade",
+            "en": "Dark chocolate",
+            "fr": "Chocolat noir",
+            "it": "Cioccolato fondente",
+            "tr": "Bitter cikolata"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 45,
+          "fat": 43,
+          "protein": 7.8,
+          "fiber": 11,
+          "allergenTags": [
+            "milk",
+            "soy"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Sahne",
+            "en": "Heavy cream",
+            "fr": "Creme liquide",
+            "it": "Panna",
+            "tr": "Krema"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 36,
+          "protein": 2.1,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "coconut_milk_full",
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Zucker",
+            "en": "Sugar",
+            "fr": "Sucre",
+            "it": "Zucchero",
+            "tr": "Seker"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 100,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Wasser",
+            "en": "Water",
+            "fr": "Eau",
+            "it": "Acqua",
+            "tr": "Su"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Biskuit backen",
+            "en": "Bake joconde",
+            "fr": "Cuire la joconde",
+            "it": "Cuocere la joconde",
+            "tr": "Jokond pisir"
+          },
+          "content": {
+            "de": "{0001}, {0002}, {0003}, {0004} zu einem Biskuit verarbeiten, bei 200 Grad 10 Minuten backen.",
+            "en": "Combine {0001}, {0002}, {0003}, {0004} into a sponge, bake at 200C for 10 minutes.",
+            "fr": "Melanger {0001}, {0002}, {0003}, {0004} en biscuit, cuire a 200C 10 minutes.",
+            "it": "Unire {0001}, {0002}, {0003}, {0004} in un biscuit, cuocere a 200C 10 minuti.",
+            "tr": "{0001}, {0002}, {0003}, {0004}i biskivi yapin, 200C 10 dakika pisirin."
+          },
+          "stove_level": 0,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Espresso-Sirup",
+            "en": "Espresso syrup",
+            "fr": "Sirop espresso",
+            "it": "Sciroppo espresso",
+            "tr": "Espresso surubu"
+          },
+          "content": {
+            "de": "{0005}, {0009} und {0010} aufkochen, abkuehlen lassen, Biskuit damit trueanken.",
+            "en": "Boil {0005}, {0009}, {0010}, cool, soak the sponge.",
+            "fr": "Porter a ebullition {0005}, {0009}, {0010}, refroidir, imbiber le biscuit.",
+            "it": "Bollire {0005}, {0009}, {0010}, raffreddare, bagnare il biscuit.",
+            "tr": "{0005}, {0009}, {0010}i kaynatin, sogutun, biskivi islatin."
+          },
+          "stove_level": 4,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Espresso-Buttercreme",
+            "en": "Espresso buttercream",
+            "fr": "Creme au beurre espresso",
+            "it": "Crema al burro espresso",
+            "tr": "Espresso tereyagli krema"
+          },
+          "content": {
+            "de": "{0006} schaumig schlagen, restlichen Espressosirup einarbeiten.",
+            "en": "Cream {0006}, incorporate remaining espresso syrup.",
+            "fr": "Cremer {0006}, incorporer le reste du sirop.",
+            "it": "Montare {0006}, unire il resto dello sciroppo.",
+            "tr": "{0006}i krema haline getirin, kalan surubu ekleyin."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Ganache",
+            "en": "Ganache",
+            "fr": "Ganache",
+            "it": "Ganache",
+            "tr": "Ganaj"
+          },
+          "content": {
+            "de": "{0007} schmelzen, {0008} einruehren, glatt ruehren.",
+            "en": "Melt {0007}, stir in {0008}, smooth.",
+            "fr": "Faire fondre {0007}, incorporer {0008}, lisser.",
+            "it": "Sciogliere {0007}, unire {0008}, lisciare.",
+            "tr": "{0007}i eritin, {0008}i ekleyin, puruzsuz karistirin."
+          },
+          "stove_level": 1,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Schichten und Servieren",
+            "en": "Layer and serve",
+            "fr": "Monter et servir",
+            "it": "Assemblare e servire",
+            "tr": "Katmanla ve servis et"
+          },
+          "content": {
+            "de": "Biskuit, Creme, Ganache abwechselnd schichten, kalt stellen, in Stuecke schneiden.",
+            "en": "Layer sponge, cream, ganache alternately, chill, slice.",
+            "fr": "Alterner biscuit, creme, ganache, refroidir, couper.",
+            "it": "Alternare biscuit, crema, ganache, raffreddare, tagliare.",
+            "tr": "Biskivi, kremayi, ganaji sirayla katmanlayin, sogutun, dilimleyin."
+          },
+          "stove_level": 0,
+          "time_min": 120
+        }
+      ],
+      "chef_analysis": {
+        "de": "Der Espressosirup muss komplett kalt sein, sonst zerfaellt der Biskuit. Die Torte 2 Stunden kuehlen, dann mit warmem Messer schneiden.",
+        "en": "The espresso syrup must be completely cold or the sponge falls apart. Chill the cake 2 hours, then slice with a warm knife.",
+        "fr": "Le sirop doit etre froid sinon le biscuit s effondre. Refroidir 2 heures, couper au couteau chaud.",
+        "it": "Lo sciroppo deve essere freddo o il biscuit si sfalda. Raffreddare 2 ore, tagliare con coltello caldo.",
+        "tr": "Espresso surubu tamamen soguk olmali yoksa biskivi dagilir. Pastayi 2 saat sogutun, sicak bicakla dilimleyin."
+      },
+      "coreComponents": [
+        "almond_flour",
+        "powdered_sugar",
+        "egg",
+        "flour",
+        "espresso",
+        "butter",
+        "dark_chocolate",
+        "cream_heavy",
+        "sugar",
+        "water"
+      ]
+    },
+    {
+      "id": "paris_brest",
+      "immutable": true,
+      "cuisine": "fr",
+      "region": "Frankreich",
+      "servings": 8,
+      "prep_time_min": 75,
+      "aliases": {
+        "de": [
+          "paris-brest",
+          "pariser brest"
+        ],
+        "en": [
+          "paris-brest",
+          "paris brest"
+        ],
+        "fr": [
+          "paris-brest",
+          "paris brest"
+        ],
+        "it": [
+          "paris-brest",
+          "parigi brest"
+        ],
+        "tr": [
+          "paris-brest",
+          "paris brest"
+        ]
+      },
+      "titles": {
+        "de": "Paris-Brest (Haselnuss-Ringgebaeck)",
+        "en": "Paris-Brest (Hazelnut Choux Ring)",
+        "fr": "Paris-Brest Classique",
+        "it": "Paris-Brest (Anello di Choux)",
+        "tr": "Paris-Brest (Findikli Choux Halkasi)"
+      },
+      "garnish": {
+        "de": "Mit Puderzucker bestreut und gehackten Haselnuessen servieren.",
+        "en": "Dust with powdered sugar and serve with chopped hazelnuts.",
+        "fr": "Saupoudrer de sucre glace et parsemer de noisettes.",
+        "it": "Spolverare con zucchero a velo e guarnire con nocciole.",
+        "tr": "Pudra sekeri serpin ve kiydilmis findikla servis edin."
+      },
+      "diet_labels": [
+        "vegetarian"
+      ],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Wasser",
+            "en": "Water",
+            "fr": "Eau",
+            "it": "Acqua",
+            "tr": "Su"
+          },
+          "amount": 250,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Butter",
+            "en": "Butter",
+            "fr": "Beurre",
+            "it": "Burro",
+            "tr": "Tereyagi"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0.1,
+          "fat": 81.1,
+          "protein": 0.9,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "vegetable_oil",
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Mehl",
+            "en": "Flour",
+            "fr": "Farine",
+            "it": "Farina",
+            "tr": "Un"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 74,
+          "fat": 1,
+          "protein": 10.3,
+          "fiber": 2.7,
+          "allergenTags": [
+            "gluten"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Eier",
+            "en": "Eggs",
+            "fr": "Oeufs",
+            "it": "Uova",
+            "tr": "Yumurta"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": true,
+          "netCarbs": 0.7,
+          "fat": 9.5,
+          "protein": 12.6,
+          "fiber": 0,
+          "allergenTags": [
+            "egg"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "protein"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 3,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Haselnuesse",
+            "en": "Hazelnuts",
+            "fr": "Noisettes",
+            "it": "Nocciole",
+            "tr": "Findik"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 7,
+          "fat": 61,
+          "protein": 15,
+          "fiber": 10,
+          "allergenTags": [
+            "nuts"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Puderzucker",
+            "en": "Powdered sugar",
+            "fr": "Sucre glace",
+            "it": "Zucchero a velo",
+            "tr": "Pudra sekeri"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 100,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Eigelb",
+            "en": "Egg yolk",
+            "fr": "Jaune d oeuf",
+            "it": "Tuorlo",
+            "tr": "Yumurta sarisi"
+          },
+          "amount": 3,
+          "unit": "stk",
+          "protein_source": true,
+          "netCarbs": 3.6,
+          "fat": 26.5,
+          "protein": 15.9,
+          "fiber": 0,
+          "allergenTags": [
+            "egg"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "protein"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Speisestaerke",
+            "en": "Cornstarch",
+            "fr": "Fecule de mais",
+            "it": "Amido di mais",
+            "tr": "Misir nisastasi"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 91,
+          "fat": 0.1,
+          "protein": 0.3,
+          "fiber": 0.9,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Sahne",
+            "en": "Heavy cream",
+            "fr": "Creme liquide",
+            "it": "Panna",
+            "tr": "Krema"
+          },
+          "amount": 300,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 36,
+          "protein": 2.1,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "coconut_milk_full",
+          "culinaryRole": "liquid"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Brandteig",
+            "en": "Choux pastry",
+            "fr": "Pate a choux",
+            "it": "Pasta choux",
+            "tr": "Choux hamuru"
+          },
+          "content": {
+            "de": "{0001}, {0002}, {0005} aufkochen, {0003} einruehren, bis sich ein Teigball bildet, abkuehlen.",
+            "en": "Boil {0001}, {0002}, {0005}, stir in {0003} until a ball forms, cool.",
+            "fr": "Porter a ebullition {0001}, {0002}, {0005}, incorporer {0003} jusqu a former une boule, refroidir.",
+            "it": "Bollire {0001}, {0002}, {0005}, unire {0003} fino a formare una palla, raffreddare.",
+            "tr": "{0001}, {0002}, {0005}i kaynatin, top haline gelene kadar {0003} ekleyin, sogutun."
+          },
+          "stove_level": 3,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Eier einarbeiten",
+            "en": "Add eggs",
+            "fr": "Incorporer les oeufs",
+            "it": "Aggiungere le uova",
+            "tr": "Yumurtalari ekle"
+          },
+          "content": {
+            "de": "{0004} einzeln einruehren bis der Teig glatt und glänzend ist.",
+            "en": "Beat in {0004} one at a time until smooth and glossy.",
+            "fr": "Incorporer {0004} un a un jusqu a obtenir une pate lisse.",
+            "it": "Unire {0004} uno alla volta fino a impasto liscio.",
+            "tr": "{0004}i teker teker ekleyin, puruzsuz olana kadar."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Backen",
+            "en": "Bake",
+            "fr": "Cuire",
+            "it": "Cuocere",
+            "tr": "Pisir"
+          },
+          "content": {
+            "de": "Teig als Ring auf Blech spritzen, mit Ei bestreichen, bei 200 Grad 30 Minuten backen, abkuehlen.",
+            "en": "Pipe as a ring on tray, brush with egg, bake at 200C for 30 minutes, cool.",
+            "fr": "Pocher en couronne, dorer a l oeuf, cuire a 200C 30 minutes, refroidir.",
+            "it": "Formare un anello, spennellare con uovo, cuocere a 200C 30 minuti, raffreddare.",
+            "tr": "Halka seklinde sikma torbasiyla sikun, yumurta surun, 200C 30 dakika pisirin, sogutun."
+          },
+          "stove_level": 0,
+          "time_min": 30
+        },
+        {
+          "title": {
+            "de": "Praline-Creme",
+            "en": "Praline cream",
+            "fr": "Creme praline",
+            "it": "Crema pralina",
+            "tr": "Pralin kremasi"
+          },
+          "content": {
+            "de": "{0006} roesten, mahlen, mit {0007}, {0008}, {0009} und {0010} zu einer Creme verarbeiten.",
+            "en": "Roast {0006}, grind, mix with {0007}, {0008}, {0009}, {0010} into a cream.",
+            "fr": "Torrefier {0006}, moudre, melanger avec {0007}, {0008}, {0009}, {0010} en creme.",
+            "it": "Tostare {0006}, macinare, unire con {0007}, {0008}, {0009}, {0010} in crema.",
+            "tr": "{0006}i kavurun, ogutun, {0007}, {0008}, {0009}, {0010} ile krema yapin."
+          },
+          "stove_level": 0,
+          "time_min": 8
+        },
+        {
+          "title": {
+            "de": "Fuellen und Servieren",
+            "en": "Fill and serve",
+            "fr": "Garnir et servir",
+            "it": "Farcire e servire",
+            "tr": "Doldur ve servis et"
+          },
+          "content": {
+            "de": "Ring horizontal aufschneiden, Creme einspritzen, mit {0007} bestreuen, sofort servieren.",
+            "en": "Slice ring horizontally, pipe cream, dust with {0007}, serve immediately.",
+            "fr": "Couper le ring, garnir de creme, saupoudrer de {0007}, servir.",
+            "it": "Tagliare l anello, farcire con crema, spolverare {0007}, servire.",
+            "tr": "Halkayi yatay kesin, krema sikun, {0007} serpin, hemen servis edin."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        }
+      ],
+      "chef_analysis": {
+        "de": "Der Brandteig braucht Eier nach Gefuehl: zuerst 3, dann das 4. nur bei Bedarf, damit die Masse glänzt und nicht zu weich wird.",
+        "en": "Choux needs eggs by feel: add 3, then the 4th only if needed so the dough is glossy and not too soft.",
+        "fr": "La pate a choux demande des oeufs au feeling : 3 puis le 4e seulement si besoin.",
+        "it": "La pasta choux richiede uova a occhio: 3 poi la 4a solo se serve.",
+        "tr": "Choux yumurtayi goz karariyla ister: once 3, gerekirse 4."
+      },
+      "coreComponents": [
+        "water",
+        "butter",
+        "flour",
+        "egg",
+        "salt",
+        "hazelnuts",
+        "powdered_sugar",
+        "cornstarch",
+        "cream_heavy"
+      ]
+    },
+    {
+      "id": "sfogliatella",
+      "immutable": true,
+      "cuisine": "it",
+      "region": "Italien / Kampanien",
+      "servings": 10,
+      "prep_time_min": 120,
+      "aliases": {
+        "de": [
+          "sfogliatella",
+          "sfogliatelle",
+          "muschelgebaeck"
+        ],
+        "en": [
+          "sfogliatella",
+          "sfogliatelle",
+          "neapolitan shell pastry"
+        ],
+        "fr": [
+          "sfogliatella",
+          "sfogliatelle"
+        ],
+        "it": [
+          "sfogliatella",
+          "sfogliatelle",
+          "sfogliatella riccia"
+        ],
+        "tr": [
+          "sfogliatella",
+          "sfogliatelle"
+        ]
+      },
+      "titles": {
+        "de": "Sfogliatella (Neapolitanisches Muschelgebaeck)",
+        "en": "Sfogliatella (Neapolitan Shell Pastry)",
+        "fr": "Sfogliatella (Patisserie napolitaine)",
+        "it": "Sfogliatella Riccia",
+        "tr": "Sfogliatella (Napoli Kabuk Pastasi)"
+      },
+      "garnish": {
+        "de": "Mit Puderzucker bestreut noch warm servieren.",
+        "en": "Dust with powdered sugar and serve while warm.",
+        "fr": "Saupoudrer de sucre glace, servir tiede.",
+        "it": "Spolverare con zucchero a velo, servire tiepido.",
+        "tr": "Pudra sekeri serpin, ilik servis edin."
+      },
+      "diet_labels": [
+        "vegetarian"
+      ],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Mehl",
+            "en": "Flour",
+            "fr": "Farine",
+            "it": "Farina",
+            "tr": "Un"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 74,
+          "fat": 1,
+          "protein": 10.3,
+          "fiber": 2.7,
+          "allergenTags": [
+            "gluten"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Wasser",
+            "en": "Water",
+            "fr": "Eau",
+            "it": "Acqua",
+            "tr": "Su"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Butter",
+            "en": "Butter",
+            "fr": "Beurre",
+            "it": "Burro",
+            "tr": "Tereyagi"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0.1,
+          "fat": 81.1,
+          "protein": 0.9,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "vegetable_oil",
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 5,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Ricotta",
+            "en": "Ricotta",
+            "fr": "Ricotta",
+            "it": "Ricotta",
+            "tr": "Ricotta"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 3,
+          "fat": 13,
+          "protein": 11,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "protein"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Grieß",
+            "en": "Semolina",
+            "fr": "Semoule",
+            "it": "Semolino",
+            "tr": "Irmik"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 73,
+          "fat": 1.1,
+          "protein": 12.7,
+          "fiber": 3.9,
+          "allergenTags": [
+            "gluten"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Zucker",
+            "en": "Sugar",
+            "fr": "Sucre",
+            "it": "Zucchero",
+            "tr": "Seker"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 100,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Orange (Abrieb)",
+            "en": "Orange (zest)",
+            "fr": "Orange (zeste)",
+            "it": "Arancia (scorza)",
+            "tr": "Portakal kabugu"
+          },
+          "amount": 1,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0.1,
+          "protein": 0.5,
+          "fiber": 1.5,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Zimt",
+            "en": "Cinnamon",
+            "fr": "Cannelle",
+            "it": "Cannella",
+            "tr": "Tarcin"
+          },
+          "amount": 3,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 56,
+          "fat": 1.2,
+          "protein": 4,
+          "fiber": 53,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Vanilleextrakt",
+            "en": "Vanilla extract",
+            "fr": "Extrait de vanille",
+            "it": "Estratto di vaniglia",
+            "tr": "Vanilya ozutu"
+          },
+          "amount": 5,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 12.7,
+          "fat": 0.1,
+          "protein": 0.1,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Teig kneten",
+            "en": "Knead dough",
+            "fr": "Petrir la pate",
+            "it": "Impastare",
+            "tr": "Hamuru yogur"
+          },
+          "content": {
+            "de": "{0001}, {0002}, {0004} zu einem glatten Teig kneten, 30 Minuten ruhen lassen.",
+            "en": "Knead {0001}, {0002}, {0004} into a smooth dough, rest 30 minutes.",
+            "fr": "Petrir {0001}, {0002}, {0004} en pate lisse, reposer 30 minutes.",
+            "it": "Impastare {0001}, {0002}, {0004} fino a impasto liscio, riposare 30 minuti.",
+            "tr": "{0001}, {0002}, {0004}i puruzsuz hamur yapin, 30 dakika dinlendirin."
+          },
+          "stove_level": 0,
+          "time_min": 30
+        },
+        {
+          "title": {
+            "de": "Butterschichten",
+            "en": "Butter layers",
+            "fr": "Couches de beurre",
+            "it": "Strati di burro",
+            "tr": "Tereyagi katmanlari"
+          },
+          "content": {
+            "de": "Teig sehr duenn ausrollen, mit {0003} bestreichen, aufrollen, wiederholen (3-4 Schichten).",
+            "en": "Roll dough very thin, brush with {0003}, roll up, repeat 3-4 times.",
+            "fr": "Etaler fin, badigeonner de {0003}, rouler, repeter 3-4 fois.",
+            "it": "Stendere sottile, spennellare con {0003}, arrotolare, ripetere 3-4 volte.",
+            "tr": "Cok ince acin, {0003} surun, rulo yapin, 3-4 kez tekrarlayin."
+          },
+          "stove_level": 0,
+          "time_min": 20
+        },
+        {
+          "title": {
+            "de": "Fuellung",
+            "en": "Filling",
+            "fr": "Garniture",
+            "it": "Ripieno",
+            "tr": "Ic harci"
+          },
+          "content": {
+            "de": "{0005}, {0006}, {0007}, {0008}, {0009}, {0010} zu einer glatten Masse verruehren.",
+            "en": "Mix {0005}, {0006}, {0007}, {0008}, {0009}, {0010} into a smooth filling.",
+            "fr": "Melanger {0005}, {0006}, {0007}, {0008}, {0009}, {0010} en farce lisse.",
+            "it": "Mescolare {0005}, {0006}, {0007}, {0008}, {0009}, {0010} in ripieno liscio.",
+            "tr": "{0005}, {0006}, {0007}, {0008}, {0009}, {0010}i puruzsuz harç yapin."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Formen",
+            "en": "Shape",
+            "fr": "Former",
+            "it": "Formare",
+            "tr": "Sekillendir"
+          },
+          "content": {
+            "de": "Teigrolle in Scheiben schneiden, zu Taschen formen, mit Fuellung fuellen, verschliessen.",
+            "en": "Slice dough roll, shape into pockets, fill, seal.",
+            "fr": "Trancher le rouleau, former des poches, garnir, fermer.",
+            "it": "Tagliare il rotolo, formare tasche, riempire, chiudere.",
+            "tr": "Ruloyu dilimleyin, cep seklinde acin, doldurun, kapatin."
+          },
+          "stove_level": 0,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Backen und Servieren",
+            "en": "Bake and serve",
+            "fr": "Cuire et servir",
+            "it": "Cuocere e servire",
+            "tr": "Pisir ve servis et"
+          },
+          "content": {
+            "de": "Bei 200 Grad 20 Minuten goldbraun backen, mit Puderzucker bestreuen, warm servieren.",
+            "en": "Bake at 200C for 20 minutes until golden, dust with powdered sugar, serve warm.",
+            "fr": "Cuire a 200C 20 minutes dore, saupoudrer de sucre glace, servir tiede.",
+            "it": "Cuocere a 200C 20 minuti dorata, spolverare di zucchero a velo, servire tiepido.",
+            "tr": "200C 20 dakika altin rengi alana kadar pisirin, pudra sekeri serpin, ilik servis edin."
+          },
+          "stove_level": 0,
+          "time_min": 20
+        }
+      ],
+      "chef_analysis": {
+        "de": "Das Teigrollen ist die Kunst: je duenner die Butterschichten, desto blättriger das Gebaeck. Nach dem Rollen 1 Stunde kühlen macht das Schneiden leichter.",
+        "en": "Rolling is the art: the thinner the butter layers, the flakier the pastry. Chill 1 hour after rolling for easier slicing.",
+        "fr": "Le roulage est l art : plus les couches sont fines, plus la pate est feuilletee. Refroidir 1 heure apres le roulage.",
+        "it": "Arrotolare e l arte: strati sottili significano sfoglia friabile. Raffreddare 1 ora dopo il rotolo.",
+        "tr": "Rulolama sanattir: ne kadar ince katman, o kadar gevrek. Rulodan sonra 1 saat sogutun."
+      },
+      "coreComponents": [
+        "flour",
+        "water",
+        "butter",
+        "salt",
+        "ricotta",
+        "semolina",
+        "sugar",
+        "orange",
+        "cinnamon",
+        "vanilla"
+      ]
+    },
+    {
+      "id": "zeppole",
+      "immutable": true,
+      "cuisine": "it",
+      "region": "Italien / Kampanien",
+      "servings": 10,
+      "prep_time_min": 90,
+      "aliases": {
+        "de": [
+          "zeppole",
+          "italienische krapfen",
+          "zeppole di san giuseppe"
+        ],
+        "en": [
+          "zeppole",
+          "italian donuts",
+          "st joseph fritters"
+        ],
+        "fr": [
+          "zeppole",
+          "beignets italiens"
+        ],
+        "it": [
+          "zeppole",
+          "zeppole di san giuseppe",
+          "zeppole napoletane"
+        ],
+        "tr": [
+          "zeppole",
+          "italyan lokmasi"
+        ]
+      },
+      "titles": {
+        "de": "Zeppole (Italienische Brandteigkrapfen)",
+        "en": "Zeppole (Italian Choux Fritters)",
+        "fr": "Zeppole (Beignets italiens)",
+        "it": "Zeppole di San Giuseppe",
+        "tr": "Zeppole (Italyan Choux Lokmasi)"
+      },
+      "garnish": {
+        "de": "Mit Puderzucker bestreut und Amarena-Kirsche garniert servieren.",
+        "en": "Dust with powdered sugar, top with amarena cherry.",
+        "fr": "Saupoudrer de sucre glace, garnir d une cerise amarena.",
+        "it": "Spolverare con zucchero a velo, guarnire con amarena.",
+        "tr": "Pudra sekeri serpin, amarena visne ile susleyin."
+      },
+      "diet_labels": [
+        "vegetarian"
+      ],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Wasser",
+            "en": "Water",
+            "fr": "Eau",
+            "it": "Acqua",
+            "tr": "Su"
+          },
+          "amount": 250,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Butter",
+            "en": "Butter",
+            "fr": "Beurre",
+            "it": "Burro",
+            "tr": "Tereyagi"
+          },
+          "amount": 80,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0.1,
+          "fat": 81.1,
+          "protein": 0.9,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "vegetable_oil",
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Mehl",
+            "en": "Flour",
+            "fr": "Farine",
+            "it": "Farina",
+            "tr": "Un"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 74,
+          "fat": 1,
+          "protein": 10.3,
+          "fiber": 2.7,
+          "allergenTags": [
+            "gluten"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Eier",
+            "en": "Eggs",
+            "fr": "Oeufs",
+            "it": "Uova",
+            "tr": "Yumurta"
+          },
+          "amount": 4,
+          "unit": "stk",
+          "protein_source": true,
+          "netCarbs": 0.7,
+          "fat": 9.5,
+          "protein": 12.6,
+          "fiber": 0,
+          "allergenTags": [
+            "egg"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "protein"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Salz",
+            "en": "Salt",
+            "fr": "Sel",
+            "it": "Sale",
+            "tr": "Tuz"
+          },
+          "amount": 3,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Zucker",
+            "en": "Sugar",
+            "fr": "Sucre",
+            "it": "Zucchero",
+            "tr": "Seker"
+          },
+          "amount": 30,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 100,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Zitrone (Abrieb)",
+            "en": "Lemon (zest)",
+            "fr": "Citron (zeste)",
+            "it": "Limone (scorza)",
+            "tr": "Limon kabugu"
+          },
+          "amount": 1,
+          "unit": "stk",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0.3,
+          "protein": 1.1,
+          "fiber": 2.8,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Pflanzenoel (zum Frittieren)",
+            "en": "Vegetable oil (for frying)",
+            "fr": "Huile vegetale (pour friture)",
+            "it": "Olio vegetale (per friggere)",
+            "tr": "Bitkisel yag (kizartma icin)"
+          },
+          "amount": 300,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 100,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0009",
+          "names": {
+            "de": "Puderzucker",
+            "en": "Powdered sugar",
+            "fr": "Sucre glace",
+            "it": "Zucchero a velo",
+            "tr": "Pudra sekeri"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 100,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0010",
+          "names": {
+            "de": "Amarena-Kirschen",
+            "en": "Amarena cherries",
+            "fr": "Cerises amarena",
+            "it": "Amarene",
+            "tr": "Amarena visne"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 30,
+          "fat": 0.2,
+          "protein": 0.5,
+          "fiber": 1.5,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Brandteig",
+            "en": "Choux pastry",
+            "fr": "Pate a choux",
+            "it": "Pasta choux",
+            "tr": "Choux hamuru"
+          },
+          "content": {
+            "de": "{0001}, {0002}, {0005} aufkochen, {0003} einruehren bis ein Teigball entsteht, abkuehlen.",
+            "en": "Boil {0001}, {0002}, {0005}, stir in {0003} until ball forms, cool.",
+            "fr": "Porter a ebullition {0001}, {0002}, {0005}, incorporer {0003} jusqu a former une boule, refroidir.",
+            "it": "Bollire {0001}, {0002}, {0005}, unire {0003} fino a formare una palla, raffreddare.",
+            "tr": "{0001}, {0002}, {0005}i kaynatin, top haline gelinceye kadar {0003} ekleyin, sogutun."
+          },
+          "stove_level": 3,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Eier einarbeiten",
+            "en": "Add eggs",
+            "fr": "Incorporer les oeufs",
+            "it": "Aggiungere le uova",
+            "tr": "Yumurtalari ekle"
+          },
+          "content": {
+            "de": "{0004} eines nach dem anderen einruehren, {0006} und {0007} unterheben.",
+            "en": "Beat in {0004} one by one, fold in {0006} and {0007}.",
+            "fr": "Incorporer {0004} un a un, ajouter {0006} et {0007}.",
+            "it": "Aggiungere {0004} uno alla volta, unire {0006} e {0007}.",
+            "tr": "{0004}i teker teker ekleyin, {0006} ve {0007} ekleyin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        },
+        {
+          "title": {
+            "de": "Frittieren",
+            "en": "Fry",
+            "fr": "Frire",
+            "it": "Friggere",
+            "tr": "Kizart"
+          },
+          "content": {
+            "de": "{0008} auf 175 Grad erhitzen, Teig mit Loeffel als Ringe ins Oel geben, goldbraun frittieren.",
+            "en": "Heat {0008} to 175C, drop dough as rings into oil, fry until golden.",
+            "fr": "Chauffer {0008} a 175C, pocher des couronnes, frire jusqu a dorer.",
+            "it": "Scaldare {0008} a 175C, formare anelli, friggere fino a dorare.",
+            "tr": "{0008}i 175C isitin, halka seklinde dokun, altin rengi alana kadar kizartin."
+          },
+          "stove_level": 4,
+          "time_min": 15
+        },
+        {
+          "title": {
+            "de": "Abtropfen",
+            "en": "Drain",
+            "fr": "Egoutter",
+            "it": "Scolare",
+            "tr": "Suzdur"
+          },
+          "content": {
+            "de": "Auf Kuechenpapier abtropfen lassen.",
+            "en": "Drain on paper towels.",
+            "fr": "Egoutter sur papier absorbant.",
+            "it": "Scolare su carta assorbente.",
+            "tr": "Kagit havlu uzerinde suzdurun."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Servieren",
+            "en": "Serve",
+            "fr": "Servir",
+            "it": "Servire",
+            "tr": "Servis et"
+          },
+          "content": {
+            "de": "Mit {0009} bestreuen, mit {0010} garnieren, lauwarm servieren.",
+            "en": "Dust with {0009}, top with {0010}, serve warm.",
+            "fr": "Saupoudrer de {0009}, garnir de {0010}, servir tiede.",
+            "it": "Spolverare con {0009}, guarnire con {0010}, servire tiepido.",
+            "tr": "{0009} serpin, {0010} ile susleyin, ilik servis edin."
+          },
+          "stove_level": 0,
+          "time_min": 2
+        }
+      ],
+      "chef_analysis": {
+        "de": "Das Oel muss konstant 175 Grad haben, sonst saugen die Zeppole Fett. Amarena-Kirsche nicht weglassen — sie ist Pflicht bei Zeppole di San Giuseppe.",
+        "en": "Oil must stay at 175C or zeppole soak fat. Dont skip the amarena cherry — it is mandatory for Zeppole di San Giuseppe.",
+        "fr": "L huile doit rester a 175C sinon les zeppole absorbent le gras. Ne pas omettre la cerise amarena.",
+        "it": "L olio deve restare a 175C o le zeppole si impregnano di grasso. Non omettere l amarena.",
+        "tr": "Yag 175C sabit kalmali yoksa zeppole yag ceker. Amarena visneyi atlamayin."
+      },
+      "coreComponents": [
+        "water",
+        "butter",
+        "flour",
+        "egg",
+        "salt",
+        "sugar",
+        "lemon",
+        "canola_oil",
+        "powdered_sugar"
+      ]
+    },
+    {
+      "id": "cassata",
+      "immutable": true,
+      "cuisine": "it",
+      "region": "Italien / Sizilien",
+      "servings": 12,
+      "prep_time_min": 120,
+      "aliases": {
+        "de": [
+          "cassata",
+          "sizilianische cassata",
+          "cassata siciliana"
+        ],
+        "en": [
+          "cassata",
+          "sicilian cassata",
+          "cassata siciliana"
+        ],
+        "fr": [
+          "cassata",
+          "cassata sicilienne"
+        ],
+        "it": [
+          "cassata",
+          "cassata siciliana"
+        ],
+        "tr": [
+          "cassata",
+          "sicilya cassatasi"
+        ]
+      },
+      "titles": {
+        "de": "Cassata Siciliana (Sizilianische Ricottatorte)",
+        "en": "Cassata Siciliana (Sicilian Ricotta Cake)",
+        "fr": "Cassata Sicilienne",
+        "it": "Cassata Siciliana",
+        "tr": "Cassata Siciliana (Sicilya Ricotta Pastasi)"
+      },
+      "garnish": {
+        "de": "Mit kandierten Fruechten und Schokoladenstueckchen garniert servieren.",
+        "en": "Serve garnished with candied fruit and chocolate shavings.",
+        "fr": "Servir garni de fruits confits et copeaux de chocolat.",
+        "it": "Servire guarnita con frutta candita e scaglie di cioccolato.",
+        "tr": "Kandi meyve ve cikolata rendesi ile susleyerek servis edin."
+      },
+      "diet_labels": [
+        "vegetarian"
+      ],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Biskuitboden",
+            "en": "Sponge cake",
+            "fr": "Biscuit",
+            "it": "Pan di Spagna",
+            "tr": "Pandispanya"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 60,
+          "fat": 8,
+          "protein": 6,
+          "fiber": 1,
+          "allergenTags": [
+            "gluten",
+            "egg"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Ricotta",
+            "en": "Ricotta",
+            "fr": "Ricotta",
+            "it": "Ricotta",
+            "tr": "Ricotta"
+          },
+          "amount": 800,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 3,
+          "fat": 13,
+          "protein": 11,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "protein"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Puderzucker",
+            "en": "Powdered sugar",
+            "fr": "Sucre glace",
+            "it": "Zucchero a velo",
+            "tr": "Pudra sekeri"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 100,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Kandierte Fruechte",
+            "en": "Candied fruit",
+            "fr": "Fruits confits",
+            "it": "Frutta candita",
+            "tr": "Kandi meyve"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 80,
+          "fat": 0.1,
+          "protein": 0.5,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Marzipan",
+            "en": "Marzipan",
+            "fr": "Marzipan",
+            "it": "Marzapane",
+            "tr": "Badem ezmesi"
+          },
+          "amount": 300,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 59.5,
+          "fat": 24.6,
+          "protein": 6.8,
+          "fiber": 5.9,
+          "allergenTags": [
+            "nuts"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Zartbitterschokolade",
+            "en": "Dark chocolate",
+            "fr": "Chocolat noir",
+            "it": "Cioccolato fondente",
+            "tr": "Bitter cikolata"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 45,
+          "fat": 43,
+          "protein": 7.8,
+          "fiber": 11,
+          "allergenTags": [
+            "milk",
+            "soy"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Vanilleextrakt",
+            "en": "Vanilla extract",
+            "fr": "Extrait de vanille",
+            "it": "Estratto di vaniglia",
+            "tr": "Vanilya ozutu"
+          },
+          "amount": 5,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 12.7,
+          "fat": 0.1,
+          "protein": 0.1,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Zimt",
+            "en": "Cinnamon",
+            "fr": "Cannelle",
+            "it": "Cannella",
+            "tr": "Tarcin"
+          },
+          "amount": 2,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 56,
+          "fat": 1.2,
+          "protein": 4,
+          "fiber": 53,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Ricottacreme",
+            "en": "Ricotta cream",
+            "fr": "Creme de ricotta",
+            "it": "Crema di ricotta",
+            "tr": "Ricotta kremasi"
+          },
+          "content": {
+            "de": "{0002} durch ein Sieb streichen, mit {0003}, {0007}, {0008} glatt ruehren.",
+            "en": "Strain {0002} through a sieve, mix smooth with {0003}, {0007}, {0008}.",
+            "fr": "Passer {0002} au tamis, melanger avec {0003}, {0007}, {0008}.",
+            "it": "Setacciare {0002}, mescolare con {0003}, {0007}, {0008}.",
+            "tr": "{0002}i suzgeçten gecirin, {0003}, {0007}, {0008} ile puruzsuz karistirin."
+          },
+          "stove_level": 0,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Biskuit auslegen",
+            "en": "Line with sponge",
+            "fr": "Garnir de biscuit",
+            "it": "Foderare con pan di Spagna",
+            "tr": "Pandispanya ile kapla"
+          },
+          "content": {
+            "de": "Eine Form mit {0001} auslegen.",
+            "en": "Line a mold with {0001}.",
+            "fr": "Chemiser un moule avec {0001}.",
+            "it": "Foderare uno stampo con {0001}.",
+            "tr": "Bir kalibi {0001} ile kaplayin."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Fuellen",
+            "en": "Fill",
+            "fr": "Garnir",
+            "it": "Riempire",
+            "tr": "Doldur"
+          },
+          "content": {
+            "de": "Ricottacreme einfuellen, {0004} und {0006} in Stueckchen darueber verteilen, mit Biskuit abdecken.",
+            "en": "Fill with ricotta cream, scatter {0004} and {0006} pieces, cover with sponge.",
+            "fr": "Garnir de creme, repartir {0004} et {0006}, couvrir de biscuit.",
+            "it": "Riempire con crema, distribuire {0004} e {0006}, coprire con pan di Spagna.",
+            "tr": "Ricotta kremasini doldurun, {0004} ve {0006} parcalarini serpin, pandispanya ile kapatin."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Kuehlen",
+            "en": "Chill",
+            "fr": "Refroidir",
+            "it": "Raffreddare",
+            "tr": "Sogut"
+          },
+          "content": {
+            "de": "Mindestens 4 Stunden kalt stellen.",
+            "en": "Chill at least 4 hours.",
+            "fr": "Refroidir au moins 4 heures.",
+            "it": "Raffreddare almeno 4 ore.",
+            "tr": "En az 4 saat sogutun."
+          },
+          "stove_level": 0,
+          "time_min": 240
+        },
+        {
+          "title": {
+            "de": "Marzipandecke",
+            "en": "Marzipan top",
+            "fr": "Couverture marzipan",
+            "it": "Copertura di marzapane",
+            "tr": "Badem ezmesi kaplama"
+          },
+          "content": {
+            "de": "{0005} ausrollen, Torte damit abdecken, mit {0004} garnieren.",
+            "en": "Roll out {0005}, cover cake, garnish with {0004}.",
+            "fr": "Etaler {0005}, couvrir le gateau, garnir de {0004}.",
+            "it": "Stendere {0005}, coprire la torta, guarnire con {0004}.",
+            "tr": "{0005}i acin, pastayi kaplayin, {0004} ile susleyin."
+          },
+          "stove_level": 0,
+          "time_min": 10
+        }
+      ],
+      "chef_analysis": {
+        "de": "Ricotta muss gut abgetropft sein, sonst wird die Cassata matschig. Ueber Nacht kuehlen ist besser als 4 Stunden. Marzipan vor dem Ausrollen leicht anwaermen.",
+        "en": "Ricotta must be well drained or cassata gets mushy. Overnight chilling is better than 4 hours. Warm marzipan slightly before rolling.",
+        "fr": "La ricotta doit etre bien egouttee sinon la cassata est detrempee. Refroidir une nuit. Tiedir le marzipan avant de l etaler.",
+        "it": "La ricotta deve essere ben scolata o la cassata diventa molle. Raffreddare tutta la notte. Scaldare leggermente il marzapane prima di stenderlo.",
+        "tr": "Ricotta iyi suzulmeli yoksa cassata lapa olur. Gece boyunca sogutmak daha iyi. Badem ezmesini acmadan once hafif isitin."
+      },
+      "coreComponents": [
+        "sponge_cake",
+        "ricotta",
+        "powdered_sugar",
+        "candied_fruit",
+        "marzipan",
+        "dark_chocolate",
+        "vanilla",
+        "cinnamon"
+      ]
+    },
+    {
+      "id": "bolo_de_bolacha",
+      "immutable": true,
+      "cuisine": "br",
+      "region": "Brasilien",
+      "servings": 12,
+      "prep_time_min": 45,
+      "aliases": {
+        "de": [
+          "bolo de bolacha",
+          "kekstorte",
+          "brasilianische kekstorte"
+        ],
+        "en": [
+          "bolo de bolacha",
+          "biscuit cake",
+          "brazilian cookie cake"
+        ],
+        "fr": [
+          "bolo de bolacha",
+          "gateau de biscuits"
+        ],
+        "it": [
+          "bolo de bolacha",
+          "torta di biscotti"
+        ],
+        "tr": [
+          "bolo de bolacha",
+          "biskuvi pastasi"
+        ]
+      },
+      "titles": {
+        "de": "Bolo de Bolacha (Brasilianische Kekstorte)",
+        "en": "Bolo de Bolacha (Brazilian Biscuit Cake)",
+        "fr": "Bolo de Bolacha (Gateau de biscuits bresilien)",
+        "it": "Bolo de Bolacha (Torta di biscotti)",
+        "tr": "Bolo de Bolacha (Brezilya Biskuvi Pastasi)"
+      },
+      "garnish": {
+        "de": "Mit Keksbroeseln und Schokoladenraspeln garniert servieren.",
+        "en": "Serve garnished with biscuit crumbs and chocolate shavings.",
+        "fr": "Servir garni de miettes de biscuits et copeaux de chocolat.",
+        "it": "Servire guarnita con briciole di biscotti e scaglie di cioccolato.",
+        "tr": "Biskuvi kirintisi ve cikolata rendesi ile susleyerek servis edin."
+      },
+      "diet_labels": [
+        "vegetarian"
+      ],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Maria-Kekse",
+            "en": "Maria biscuits",
+            "fr": "Biscuits Marie",
+            "it": "Biscotti Maria",
+            "tr": "Maria biskuvisi"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 73,
+          "fat": 12.5,
+          "protein": 7,
+          "fiber": 3,
+          "allergenTags": [
+            "gluten",
+            "milk"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "binder"
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Gezuckerte Kondensmilch",
+            "en": "Sweetened condensed milk",
+            "fr": "Lait condense sucre",
+            "it": "Latte condensato zuccherato",
+            "tr": "Sekerli yogunlastirilmis sut"
+          },
+          "amount": 400,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 54,
+          "fat": 8.7,
+          "protein": 7.9,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Butter (weich)",
+            "en": "Butter (soft)",
+            "fr": "Beurre (mou)",
+            "it": "Burro (morbido)",
+            "tr": "Tereyagi (yumusak)"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0.1,
+          "fat": 81.1,
+          "protein": 0.9,
+          "fiber": 0,
+          "allergenTags": [
+            "milk"
+          ],
+          "lactoseSwap": "vegetable_oil",
+          "culinaryRole": "fat"
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Eigelb",
+            "en": "Egg yolk",
+            "fr": "Jaune d oeuf",
+            "it": "Tuorlo",
+            "tr": "Yumurta sarisi"
+          },
+          "amount": 3,
+          "unit": "stk",
+          "protein_source": true,
+          "netCarbs": 3.6,
+          "fat": 26.5,
+          "protein": 15.9,
+          "fiber": 0,
+          "allergenTags": [
+            "egg"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "protein"
+        },
+        {
+          "id": "0005",
+          "names": {
+            "de": "Puderzucker",
+            "en": "Powdered sugar",
+            "fr": "Sucre glace",
+            "it": "Zucchero a velo",
+            "tr": "Pudra sekeri"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 100,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0006",
+          "names": {
+            "de": "Espresso (gebrueht, abgekuehlt)",
+            "en": "Espresso (brewed, cooled)",
+            "fr": "Espresso (prepare, refroidi)",
+            "it": "Espresso (preparato, raffreddato)",
+            "tr": "Espresso (demlenmis, sogutulmus)"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1.7,
+          "fat": 0.2,
+          "protein": 0.1,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "liquid"
+        },
+        {
+          "id": "0007",
+          "names": {
+            "de": "Zartbitterschokolade",
+            "en": "Dark chocolate",
+            "fr": "Chocolat noir",
+            "it": "Cioccolato fondente",
+            "tr": "Bitter cikolata"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 45,
+          "fat": 43,
+          "protein": 7.8,
+          "fiber": 11,
+          "allergenTags": [
+            "milk",
+            "soy"
+          ],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        },
+        {
+          "id": "0008",
+          "names": {
+            "de": "Vanilleextrakt",
+            "en": "Vanilla extract",
+            "fr": "Extrait de vanille",
+            "it": "Estratto di vaniglia",
+            "tr": "Vanilya ozutu"
+          },
+          "amount": 5,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 12.7,
+          "fat": 0.1,
+          "protein": 0.1,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null,
+          "culinaryRole": "seasoning"
+        }
+      ],
+      "steps": [
+        {
+          "title": {
+            "de": "Creme vorbereiten",
+            "en": "Make cream",
+            "fr": "Preparer la creme",
+            "it": "Preparare la crema",
+            "tr": "Krema hazirla"
+          },
+          "content": {
+            "de": "{0003}, {0005}, {0004} und {0008} 8 Minuten schaumig schlagen, {0002} langsam einarbeiten.",
+            "en": "Beat {0003}, {0005}, {0004}, {0008} for 8 minutes until fluffy, slowly incorporate {0002}.",
+            "fr": "Battre {0003}, {0005}, {0004}, {0008} 8 minutes, incorporer {0002}.",
+            "it": "Sbattere {0003}, {0005}, {0004}, {0008} per 8 minuti, unire {0002}.",
+            "tr": "{0003}, {0005}, {0004}, {0008}i 8 dakika cirpin, {0002}i yavasça ekleyin."
+          },
+          "stove_level": 0,
+          "time_min": 10
+        },
+        {
+          "title": {
+            "de": "Kekse tunken",
+            "en": "Dip biscuits",
+            "fr": "Tremper les biscuits",
+            "it": "Inzuppare i biscotti",
+            "tr": "Biskuvileri batir"
+          },
+          "content": {
+            "de": "{0001} kurz in {0006} tunken, nicht durchweichen.",
+            "en": "Briefly dip {0001} in {0006}, dont soak through.",
+            "fr": "Tremper {0001} dans {0006}, sans detremper.",
+            "it": "Inzuppare {0001} in {0006}, senza ammollare.",
+            "tr": "{0001}i kisa sure {0006} icine batirin, islatmayin."
+          },
+          "stove_level": 0,
+          "time_min": 5
+        },
+        {
+          "title": {
+            "de": "Schichten",
+            "en": "Layer",
+            "fr": "Monter",
+            "it": "Stratificare",
+            "tr": "Katmanla"
+          },
+          "content": {
+            "de": "Abwechselnd Kekse und Creme in eine Form schichten, mit Creme abschliessen.",
+            "en": "Alternate biscuits and cream in a mold, finish with cream.",
+            "fr": "Alterner biscuits et creme dans un moule, finir par la creme.",
+            "it": "Alternare biscotti e crema in uno stampo, terminare con crema.",
+            "tr": "Bir kaliba sirayla biskuvi ve krema koyun, kremayla bitirin."
+          },
+          "stove_level": 0,
+          "time_min": 8
+        },
+        {
+          "title": {
+            "de": "Kuehlen",
+            "en": "Chill",
+            "fr": "Refroidir",
+            "it": "Raffreddare",
+            "tr": "Sogut"
+          },
+          "content": {
+            "de": "Mindestens 6 Stunden kalt stellen, am besten ueber Nacht.",
+            "en": "Chill at least 6 hours, ideally overnight.",
+            "fr": "Refroidir au moins 6 heures, idealement une nuit.",
+            "it": "Raffreddare almeno 6 ore, idealmente tutta la notte.",
+            "tr": "En az 6 saat, ideali gece boyunca sogutun."
+          },
+          "stove_level": 0,
+          "time_min": 360
+        },
+        {
+          "title": {
+            "de": "Garnieren und Servieren",
+            "en": "Garnish and serve",
+            "fr": "Garnir et servir",
+            "it": "Guarnire e servire",
+            "tr": "Susle ve servis et"
+          },
+          "content": {
+            "de": "{0007} reiben, ueber die Torte streuen, in Stuecke schneiden, servieren.",
+            "en": "Grate {0007}, sprinkle over cake, slice, serve.",
+            "fr": "Raper {0007}, parsemer, couper, servir.",
+            "it": "Grattugiare {0007}, spolverare, tagliare, servire.",
+            "tr": "{0007}i rendeleyin, pastanin uzerine serpin, dilimleyin, servis edin."
+          },
+          "stove_level": 0,
+          "time_min": 3
+        }
+      ],
+      "chef_analysis": {
+        "de": "Die Kekse nur kurz tunken — zu lange im Espresso und die Torte wird matschig. Ueber Nacht kuehlen ist Pflicht fuer den richtigen Schnitt.",
+        "en": "Dip biscuits briefly — too long in espresso and the cake gets mushy. Overnight chilling is required for clean slices.",
+        "fr": "Tremper brievement les biscuits — trop longtemps et le gateau est detrempe. Refroidir une nuit.",
+        "it": "Inzuppare brevemente i biscotti — troppo tempo e la torta diventa molle. Raffreddare tutta la notte.",
+        "tr": "Biskuvileri kisa sure batirin — cok uzun espresso pastayi lapa yapar. Gece boyunca sogutmak sart."
+      },
+      "coreComponents": [
+        "maria_biscuit",
+        "condensed_milk",
+        "butter",
+        "egg",
+        "powdered_sugar",
+        "espresso",
+        "dark_chocolate",
+        "vanilla"
       ]
     }
   ]
