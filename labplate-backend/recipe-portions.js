@@ -1245,6 +1245,7 @@ function normalizeRecipeToFinalModel(recipe, opts) {
       name: ing.name || ing.displayName || 'Zutat',
       displayName: ing.displayName || ing.name || 'Zutat',
       amount: Number(ing.amount),
+      absorbedRatio: ing.absorbedRatio,
       unit: ing.unit === 'ml' ? 'ml' : (ing.unit === 'stk' ? 'stk' : 'g'),
       macrosPer100g: ing.macrosPer100g,
       netCarbs: ing.macrosPer100g ? ing.macrosPer100g.netCarbs : ing.netCarbs,

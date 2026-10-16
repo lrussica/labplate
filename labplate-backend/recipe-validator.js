@@ -850,7 +850,8 @@ const pipelineTrace = require('./pipeline-trace');
   (Array.isArray(ingredients) ? ingredients : []).forEach(function (ing) {
     if (!ing) return;
     unitModel.annotateIngredientUnits(ing);
-    const grams = unitModel.ingredientAmountGrams(ing);
+    const _ar = Number.isFinite(Number(ing.absorbedRatio)) ? Number(ing.absorbedRatio) : 1;
+    const grams = unitModel.ingredientAmountGrams(ing) * _ar;
     const factor = grams / 100;
     protein += factor * Math.max(0, Number(ing.protein) || 0);
     fat += factor * Math.max(0, Number(ing.fat) || 0);

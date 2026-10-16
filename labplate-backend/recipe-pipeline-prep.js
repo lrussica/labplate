@@ -418,7 +418,8 @@ function renderPrepClientRecipe(prepInput, aiParsed) {
     let nettoKh = 0;
     let fiber = 0;
     client.ingredients.forEach(function (ing) {
-      const grams = Number(ing.amount) || 0;
+      const _ar = Number.isFinite(Number(ing.absorbedRatio)) ? Number(ing.absorbedRatio) : 1;
+      const grams = (Number(ing.amount) || 0) * _ar;
       const m = ing.macrosPer100g || {};
       const f = grams / 100;
       protein += (Number(m.protein) || 0) * f;

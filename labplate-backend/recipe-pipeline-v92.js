@@ -246,6 +246,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
       name: name,
       displayName: name,
       amount: amount,
+      absorbedRatio: ing.absorbedRatio,
       unit: unit,
       protein_source: !!ing.protein_source,
       culinaryRole: ing.culinaryRole || ing.role || null,
@@ -348,6 +349,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
         amount: amount,
         unit: 'g',
         status: 'benoetigt',
+        absorbedRatio: ing.absorbedRatio,
         macrosPer100g: { netCarbs: netCarbs, fat: fat, protein: protein, fiber: fiber },
         _v92_id: ing.id,
         _protein_source: !!ing.protein_source,
@@ -370,6 +372,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
         amount: pieces * 60,
         unit: 'g',
         status: 'benoetigt',
+        absorbedRatio: ing.absorbedRatio,
         macrosPer100g: { netCarbs: netCarbs, fat: fat, protein: protein, fiber: fiber },
         _v92_id: ing.id,
         _protein_source: !!ing.protein_source,
@@ -384,6 +387,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
         amount: 0,
         unit: unit,
         status: 'benoetigt',
+        absorbedRatio: ing.absorbedRatio,
         macrosPer100g: { netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
         _v92_id: ing.id,
         _protein_source: !!ing.protein_source,
@@ -397,6 +401,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
         amount: pieces,
         unit: 'stk',
         status: 'benoetigt',
+        absorbedRatio: ing.absorbedRatio,
         macrosPer100g: { netCarbs: netCarbs, fat: fat, protein: protein, fiber: fiber },
         _v92_id: ing.id,
         _protein_source: !!ing.protein_source,
@@ -410,6 +415,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
       amount: amount > 0 ? Math.round(amount * 10) / 10 : 0,
       unit: unit === 'ml' ? 'ml' : 'g',
       status: 'benoetigt',
+      absorbedRatio: ing.absorbedRatio,
       macrosPer100g: { netCarbs: netCarbs, fat: fat, protein: protein, fiber: fiber },
       _v92_id: ing.id,
       _protein_source: !!ing.protein_source,
@@ -454,7 +460,8 @@ function renderRecipeForDisplay(recipe, renderOpts) {
   let nettoKh = 0;
   let fiber = 0;
   ingredients.forEach(function (ing) {
-    const grams = Number(ing.amount) || 0;
+    const _ar = Number.isFinite(Number(ing.absorbedRatio)) ? Number(ing.absorbedRatio) : 1;
+    const grams = (Number(ing.amount) || 0) * _ar;
     const m = ing.macrosPer100g || {};
     const f = grams / 100;
     protein += (Number(m.protein) || 0) * f;
