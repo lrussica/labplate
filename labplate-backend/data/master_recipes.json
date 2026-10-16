@@ -1,5 +1,5 @@
 {
-  "version": 24,
+  "version": 25,
   "languages": [
     "de",
     "en",
@@ -7351,7 +7351,8 @@
           "protein": 0,
           "fiber": 0,
           "allergenTags": [],
-          "lactoseSwap": null
+          "lactoseSwap": null,
+          "absorbedRatio": 0.1
         },
         {
           "id": "0009",
@@ -62838,7 +62839,8 @@
           "fiber": 0,
           "allergenTags": [],
           "lactoseSwap": null,
-          "culinaryRole": "fat"
+          "culinaryRole": "fat",
+          "absorbedRatio": 0.1
         },
         {
           "id": "0013",
@@ -63616,7 +63618,8 @@
           "fiber": 0,
           "allergenTags": [],
           "lactoseSwap": null,
-          "culinaryRole": "fat"
+          "culinaryRole": "fat",
+          "absorbedRatio": 0.1
         },
         {
           "id": "0006",
@@ -67030,7 +67033,8 @@
           "fiber": 0,
           "allergenTags": [],
           "lactoseSwap": null,
-          "culinaryRole": "fat"
+          "culinaryRole": "fat",
+          "absorbedRatio": 0.1
         },
         {
           "id": "0007",
@@ -69375,7 +69379,8 @@
           "fiber": 0,
           "allergenTags": [],
           "lactoseSwap": null,
-          "culinaryRole": "fat"
+          "culinaryRole": "fat",
+          "absorbedRatio": 0.1
         },
         {
           "id": "0007",
@@ -79303,7 +79308,8 @@
           "fiber": 0,
           "allergenTags": [],
           "lactoseSwap": null,
-          "culinaryRole": "fat"
+          "culinaryRole": "fat",
+          "absorbedRatio": 0.1
         },
         {
           "id": "0008",
@@ -81657,7 +81663,8 @@
           "fiber": 0,
           "allergenTags": [],
           "lactoseSwap": null,
-          "culinaryRole": "fat"
+          "culinaryRole": "fat",
+          "absorbedRatio": 0.1
         },
         {
           "id": "0007",
@@ -85317,7 +85324,8 @@
           "fiber": 0,
           "allergenTags": [],
           "lactoseSwap": null,
-          "culinaryRole": "fat"
+          "culinaryRole": "fat",
+          "absorbedRatio": 0.1
         },
         {
           "id": "0013",
@@ -87588,7 +87596,8 @@
           "fiber": 0,
           "allergenTags": [],
           "lactoseSwap": null,
-          "culinaryRole": "fat"
+          "culinaryRole": "fat",
+          "absorbedRatio": 0.1
         },
         {
           "id": "0008",
@@ -92302,7 +92311,8 @@
           "fiber": 0,
           "allergenTags": [],
           "lactoseSwap": null,
-          "culinaryRole": "fat"
+          "culinaryRole": "fat",
+          "absorbedRatio": 0.1
         },
         {
           "id": "0015",
@@ -93928,7 +93938,8 @@
           "fiber": 0,
           "allergenTags": [],
           "lactoseSwap": null,
-          "culinaryRole": "fat"
+          "culinaryRole": "fat",
+          "absorbedRatio": 0.1
         },
         {
           "id": "0012",
@@ -95813,7 +95824,8 @@
           "fiber": 0,
           "allergenTags": [],
           "lactoseSwap": null,
-          "culinaryRole": "fat"
+          "culinaryRole": "fat",
+          "absorbedRatio": 0.1
         },
         {
           "id": "0009",
@@ -100798,7 +100810,8 @@
           "fiber": 0,
           "allergenTags": [],
           "lactoseSwap": null,
-          "culinaryRole": "fat"
+          "culinaryRole": "fat",
+          "absorbedRatio": 0.1
         },
         {
           "id": "0010",
@@ -105583,7 +105596,8 @@
           "fiber": 0,
           "allergenTags": [],
           "lactoseSwap": null,
-          "culinaryRole": "fat"
+          "culinaryRole": "fat",
+          "absorbedRatio": 0.1
         }
       ],
       "steps": [
@@ -108110,7 +108124,8 @@
           "fiber": 0,
           "allergenTags": [],
           "lactoseSwap": null,
-          "culinaryRole": "fat"
+          "culinaryRole": "fat",
+          "absorbedRatio": 0.1
         },
         {
           "id": "0009",
