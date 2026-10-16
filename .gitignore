@@ -20,6 +20,8 @@ node_modules/
 # Environment
 .env
 .env.local
+.env.*
+!.env.example
 
 # Automatische Backups vom Patch-Script (niemals ins Git)
 *.bak_*

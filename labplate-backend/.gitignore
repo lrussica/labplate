@@ -14,3 +14,4 @@ yarn-error.log*
 # Editor-/OS-Artefakte
 .vscode/
 *.log
+.env
