@@ -1437,6 +1437,38 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
 });
 
 // 1:1-Proxy fuer die KI-Lebensmittelsuche (Client baut den Chat-Completion-Request selbst).
+app.get('/api/master-recipes', limiter, (req, res) => {
+  try {
+    const store = require('./classic-master-store');
+    const master = store.loadMaster();
+    let recipes = (master.recipes || []).filter(r => !r.archived);
+
+    const { course, collection } = req.query;
+
+    if (course) {
+      recipes = recipes.filter(r => r.course === course);
+    }
+    if (collection) {
+      recipes = recipes.filter(r => r.collections && r.collections.includes(collection));
+    }
+
+    res.json({
+      count: recipes.length,
+      recipes: recipes.map(r => ({
+        id: r.id,
+        title: (r.titles && r.titles.de) || (r.titles && r.titles.en) || r.id,
+        prepTimeMin: r.prepTimeMin || r.prep_time_min || 30,
+        course: r.course,
+        collections: r.collections || [],
+        dietLabels: r.diet_labels || []
+      }))
+    });
+  } catch (err) {
+    console.error('[api/master-recipes] error', err);
+    res.status(500).json({ error: 'internal_error' });
+  }
+});
+
 app.post('/api/food-lookup', limiter, async (req, res) => {
   const startedAt = Date.now();
   if (!GROQ_API_KEY) return res.status(500).json({ error: 'server_not_configured' });
