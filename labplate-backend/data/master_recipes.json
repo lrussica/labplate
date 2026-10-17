@@ -1,5 +1,5 @@
 {
-  "version": 25,
+  "version": 30,
   "languages": [
     "de",
     "en",
@@ -472,7 +472,15 @@
         "ragu",
         "cheese",
         "sheets"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": []
     },
     {
       "id": "ragu_bolognese",
@@ -838,7 +846,15 @@
         "soffritto",
         "meat",
         "tomato"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 150,
+      "dietaryTags": []
     },
     {
       "id": "carbonara",
@@ -1101,7 +1117,15 @@
         "egg",
         "pecorino"
       ],
-      "lactosePolicy": "impossible_swap"
+      "lactosePolicy": "impossible_swap",
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 25,
+      "dietaryTags": []
     },
     {
       "id": "coq_au_vin",
@@ -1461,7 +1485,15 @@
         "wine",
         "bacon",
         "mushrooms"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": []
     },
     {
       "id": "wiener_schnitzel",
@@ -1714,7 +1746,15 @@
         "breading",
         "fat",
         "lemon"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 35,
+      "dietaryTags": []
     },
     {
       "id": "karniyarik",
@@ -2005,7 +2045,15 @@
         "beef",
         "onion",
         "tomato"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 70,
+      "dietaryTags": []
     },
     {
       "id": "koefte",
@@ -2286,7 +2334,15 @@
         "onion",
         "egg",
         "spice"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "immutable": true,
@@ -2509,7 +2565,14 @@
         "fr": "Tiramisu classique: biscuits, mascarpone, œuf, espresso, cacao.",
         "it": "Tiramisù classico: savoiardi, mascarpone, uova, caffè, cacao.",
         "tr": "Klasik tiramisu: kedi dili, maskarpone, yumurta, espresso, kakao."
-      }
+      },
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "immutable": true,
@@ -2788,7 +2851,15 @@
         "fr": "Risotto milanais: Carnaroli, safran, bouillon, beurre, parmesan.",
         "it": "Risotto milanese: Carnaroli, zafferano, brodo, burro, parmigiano.",
         "tr": "Milano risotto: Carnaroli, safran, et suyu, tereyağı, parmesan."
-      }
+      },
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "immutable": true,
@@ -3056,7 +3127,15 @@
         "fr": "Margherita napolitaine: pâte, San Marzano, bufala, basilic, huile.",
         "it": "Margherita napoletana: impasto, San Marzano, bufala, basilico, olio.",
         "tr": "Napoliten Margherita: mayalı hamur, San Marzano, bufala, fesleğen, zeytinyağı."
-      }
+      },
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "immutable": true,
@@ -3381,7 +3460,15 @@
         "fr": "Bœuf bourguignon: bœuf, vin rouge, lardons, légumes, champignons.",
         "it": "Boeuf bourguignon: manzo, vino, pancetta, verdure, funghi.",
         "tr": "Burgonya yahnisi: dana, kırmızı şarap, pastırma, sebze, mantar."
-      }
+      },
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 180,
+      "dietaryTags": []
     },
     {
       "immutable": true,
@@ -3655,7 +3742,18 @@
         "fr": "Ratatouille provençale vegan.",
         "it": "Ratatouille provenzale vegana.",
         "tr": "Provence ratatuy — vegan."
-      }
+      },
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
+      ]
     },
     {
       "immutable": true,
@@ -3935,7 +4033,15 @@
         "fr": "Quiche Lorraine classique: pâte, lardons, œufs, crème, muscade.",
         "it": "Quiche Lorraine: pasta, pancetta, uova, panna, noce moscata.",
         "tr": "Quiche Lorraine: hamur, pastırma, yumurta, krema, muskat."
-      }
+      },
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 55,
+      "dietaryTags": []
     },
     {
       "immutable": true,
@@ -4160,7 +4266,15 @@
         "fr": "İskender: viande döner, pide, sauce tomate, beurre noisette, yaourt.",
         "it": "İskender: carne döner, pide, salsa, burro, yogurt.",
         "tr": "İskender: döner, pide, domates sosu, tereyağı, yoğurt."
-      }
+      },
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 50,
+      "dietaryTags": []
     },
     {
       "immutable": true,
@@ -4440,7 +4554,18 @@
         "fr": "Soupe de lentilles corail turque.",
         "it": "Zuppa di lenticchie rosse turca.",
         "tr": "Klasik mercimek çorbası."
-      }
+      },
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 35,
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
+      ]
     },
     {
       "immutable": true,
@@ -4696,7 +4821,15 @@
         "fr": "Lahmacun classique.",
         "it": "Lahmacun classico.",
         "tr": "Klasik lahmacun."
-      }
+      },
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 50,
+      "dietaryTags": []
     },
     {
       "immutable": true,
@@ -4966,7 +5099,15 @@
         "fr": "Goulasch: bœuf et oignons 1:1, paprika, concentré, carvi, marjolaine.",
         "it": "Gulasch: manzo e cipolle 1:1, paprika, concentrato, cumino, maggiorana.",
         "tr": "Dana gulaş: et ve soğan 1:1, paprika, salça, kimyon, mercanköşk."
-      }
+      },
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 150,
+      "dietaryTags": []
     },
     {
       "immutable": true,
@@ -5243,7 +5384,15 @@
         "mushrooms",
         "white_wine",
         "cream"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "immutable": true,
@@ -5505,7 +5654,15 @@
         "alpine_cheese",
         "fried_onion",
         "butter"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "immutable": true,
@@ -5821,7 +5978,15 @@
         "tofu_or_shrimp",
         "peanut",
         "sprouts"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 35,
+      "dietaryTags": []
     },
     {
       "immutable": true,
@@ -6072,7 +6237,15 @@
         "potato_bun",
         "burger_sauce",
         "pickles"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 25,
+      "dietaryTags": []
     },
     {
       "immutable": true,
@@ -6380,6 +6553,15 @@
         "cumin",
         "coriander",
         "feta"
+      ],
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 35,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -6628,7 +6810,15 @@
         "onion",
         "coriander",
         "consomme"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 180,
+      "dietaryTags": []
     },
     {
       "immutable": true,
@@ -6890,7 +7080,15 @@
         "ajitsuke_tamago",
         "chashu",
         "nori"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "immutable": true,
@@ -7149,6 +7347,17 @@
         "garlic",
         "garam_masala",
         "coriander"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
       ]
     },
     {
@@ -7426,6 +7635,17 @@
         "cumin",
         "garlic",
         "tahini"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
       ]
     },
     {
@@ -7678,6 +7898,16 @@
         "feta_block",
         "oregano",
         "olive_oil"
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 15,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -7987,6 +8217,17 @@
         "garlic",
         "chili",
         "coriander"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
       ]
     },
     {
@@ -8248,6 +8489,17 @@
         "ragu",
         "ricotta_or_bechamel",
         "parmesan"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": [
+        "keto",
+        "low-carb"
       ]
     },
     {
@@ -8561,6 +8813,17 @@
         "egg_yolk",
         "anchovy",
         "dijon"
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 25,
+      "dietaryTags": [
+        "low-carb",
+        "keto"
       ]
     },
     {
@@ -8995,7 +9258,15 @@
         "anchovy",
         "lemon",
         "court_bouillon"
-      ]
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 100,
+      "dietaryTags": []
     },
     {
       "id": "aioli",
@@ -9215,6 +9486,17 @@
       "coreComponents": [
         "garlic",
         "olive_oil"
+      ],
+      "course": "side_sauce",
+      "mealOccasions": [
+        "side"
+      ],
+      "collections": [],
+      "prepTimeMin": 15,
+      "dietaryTags": [
+        "vegetarian",
+        "keto",
+        "low-carb"
       ]
     },
     {
@@ -9531,6 +9813,16 @@
         "cream",
         "vodka",
         "parmesan"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -9805,6 +10097,17 @@
         "pasta",
         "garlic",
         "olive_oil"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 20,
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
       ]
     },
     {
@@ -10061,7 +10364,15 @@
         "guanciale",
         "tomato",
         "pecorino"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": []
     },
     {
       "id": "cacio_e_pepe",
@@ -10294,6 +10605,16 @@
         "pasta",
         "pecorino",
         "pepper"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 20,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -10580,6 +10901,15 @@
         "pine_nut",
         "parmesan",
         "pecorino"
+      ],
+      "course": "side_sauce",
+      "mealOccasions": [
+        "side"
+      ],
+      "collections": [],
+      "prepTimeMin": 15,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -10816,6 +11146,17 @@
         "garlic",
         "olive_oil",
         "basil"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 25,
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
       ]
     },
     {
@@ -11091,6 +11432,17 @@
         "chili",
         "garlic",
         "olive_oil"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 25,
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
       ]
     },
     {
@@ -11423,7 +11775,15 @@
         "olive",
         "caper",
         "anchovy"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 25,
+      "dietaryTags": []
     },
     {
       "id": "pasta_alla_norma",
@@ -11716,6 +12076,16 @@
         "tomato",
         "ricotta_salata",
         "basil"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -11972,6 +12342,17 @@
         "garlic",
         "olive_oil",
         "oregano"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
       ]
     },
     {
@@ -12330,7 +12711,15 @@
         "wine",
         "soffritto",
         "milk"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "sauce_hollandaise",
@@ -12608,6 +12997,17 @@
         "egg_yolk",
         "butter",
         "lemon"
+      ],
+      "course": "side_sauce",
+      "mealOccasions": [
+        "side"
+      ],
+      "collections": [],
+      "prepTimeMin": 20,
+      "dietaryTags": [
+        "vegetarian",
+        "keto",
+        "low-carb"
       ]
     },
     {
@@ -12929,6 +13329,17 @@
         "butter",
         "tarragon",
         "shallot"
+      ],
+      "course": "side_sauce",
+      "mealOccasions": [
+        "side"
+      ],
+      "collections": [],
+      "prepTimeMin": 25,
+      "dietaryTags": [
+        "vegetarian",
+        "keto",
+        "low-carb"
       ]
     },
     {
@@ -13225,6 +13636,17 @@
         "pickle",
         "caper",
         "shallot"
+      ],
+      "course": "side_sauce",
+      "mealOccasions": [
+        "side"
+      ],
+      "collections": [],
+      "prepTimeMin": 15,
+      "dietaryTags": [
+        "vegetarian",
+        "keto",
+        "low-carb"
       ]
     },
     {
@@ -13495,6 +13917,18 @@
         "olive_oil",
         "lemon",
         "basil"
+      ],
+      "course": "side_sauce",
+      "mealOccasions": [
+        "side"
+      ],
+      "collections": [],
+      "prepTimeMin": 10,
+      "dietaryTags": [
+        "vegan",
+        "vegetarian",
+        "keto",
+        "low-carb"
       ]
     },
     {
@@ -13826,7 +14260,15 @@
         "sausage",
         "tomato",
         "wine"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "sauce_aux_champignons",
@@ -14142,6 +14584,17 @@
         "cream",
         "shallot",
         "wine"
+      ],
+      "course": "side_sauce",
+      "mealOccasions": [
+        "side"
+      ],
+      "collections": [],
+      "prepTimeMin": 25,
+      "dietaryTags": [
+        "vegetarian",
+        "keto",
+        "low-carb"
       ]
     },
     {
@@ -14361,6 +14814,19 @@
         "olive_oil",
         "vinegar",
         "mustard"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 5,
+      "dietaryTags": [
+        "vegan",
+        "vegetarian",
+        "keto",
+        "low-carb"
       ]
     },
     {
@@ -14599,6 +15065,19 @@
         "olive_oil",
         "vinegar",
         "garlic"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 10,
+      "dietaryTags": [
+        "vegan",
+        "vegetarian",
+        "keto",
+        "low-carb"
       ]
     },
     {
@@ -14738,6 +15217,16 @@
       ],
       "coreComponents": [
         "balsamic_vinegar"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 20,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -15101,7 +15590,15 @@
         "rabbit",
         "saffron",
         "green_beans"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 50,
+      "dietaryTags": []
     },
     {
       "id": "rindfleischrouladen",
@@ -15488,7 +15985,14 @@
         "mustard",
         "bacon",
         "pickle"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "flammkuchen",
@@ -15765,7 +16269,14 @@
         "cream",
         "bacon",
         "onion"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "kaiserschmarrn",
@@ -16099,6 +16610,16 @@
         "milk",
         "egg",
         "raisin"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -16605,7 +17126,15 @@
         "beef",
         "tomato",
         "bechamel"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "ossobuco_alla_milanese",
@@ -17049,7 +17578,15 @@
         "veal",
         "white_wine",
         "gremolata"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": []
     },
     {
       "id": "saltimbocca_alla_romana",
@@ -17360,7 +17897,15 @@
         "prosciutto",
         "sage",
         "white_wine"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 25,
+      "dietaryTags": []
     },
     {
       "id": "lachs_poke_bowl",
@@ -17698,6 +18243,18 @@
         "sushi_rice",
         "salmon",
         "dressing"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 25,
+      "dietaryTags": [
+        "high_protein"
       ]
     },
     {
@@ -18047,6 +18604,18 @@
         "basmati_rice",
         "beef",
         "gochujang"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 35,
+      "dietaryTags": [
+        "high_protein"
       ]
     },
     {
@@ -18297,6 +18866,16 @@
         "acai",
         "banana",
         "granola"
+      ],
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 10,
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
       ]
     },
     {
@@ -18622,6 +19201,20 @@
         "basmati_rice",
         "black_beans",
         "vegetables"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 25,
+      "dietaryTags": [
+        "vegan",
+        "vegetarian",
+        "glutenfree"
       ]
     },
     {
@@ -18945,6 +19538,19 @@
         "falafel",
         "couscous",
         "yogurt_dip"
+      ],
+      "canonicalRecipeId": null,
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 20,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -19268,6 +19874,18 @@
         "basmati_rice",
         "chicken",
         "teriyaki_sauce"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 30,
+      "dietaryTags": [
+        "high_protein"
       ]
     },
     {
@@ -19578,6 +20196,17 @@
         "quinoa",
         "sweet_potato",
         "tahini_dressing"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": [
+        "vegan",
+        "vegetarian",
+        "glutenfree"
       ]
     },
     {
@@ -19868,6 +20497,18 @@
         "potatoes",
         "chicken_gyros",
         "tzatziki"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 25,
+      "dietaryTags": [
+        "high_protein"
       ]
     },
     {
@@ -20176,6 +20817,18 @@
         "sushi_rice",
         "salmon",
         "wasabi_dressing"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 20,
+      "dietaryTags": [
+        "high_protein"
       ]
     },
     {
@@ -20452,6 +21105,19 @@
         "bulgur",
         "lentils",
         "eggplant"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 30,
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
       ]
     },
     {
@@ -20716,6 +21382,19 @@
         "quinoa",
         "broccoli",
         "avocado_dressing"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 20,
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
       ]
     },
     {
@@ -21037,6 +21716,19 @@
         "basmati_rice",
         "ground_beef",
         "black_beans"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 30,
+      "dietaryTags": [
+        "high_protein",
+        "glutenfree"
       ]
     },
     {
@@ -21279,6 +21971,18 @@
         "spinach",
         "banana",
         "yogurt"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 10,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -21554,6 +22258,18 @@
         "couscous",
         "tuna",
         "dijon_dressing"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 20,
+      "dietaryTags": [
+        "high_protein"
       ]
     },
     {
@@ -21893,6 +22609,19 @@
         "rice_noodles",
         "tofu",
         "peanut_sauce"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 25,
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
       ]
     },
     {
@@ -22261,7 +22990,15 @@
         "gai_lan",
         "dark_soy",
         "oyster_sauce"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 25,
+      "dietaryTags": []
     },
     {
       "id": "mapo_tofu",
@@ -22768,7 +23505,17 @@
         "shaoxing_wine",
         "chicken_stock",
         "dark_soy"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 20,
+      "dietaryTags": []
     },
     {
       "id": "miso_ramen",
@@ -23369,7 +24116,15 @@
         "corn_canned",
         "butter",
         "bean_sprouts"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "boeuf_stroganoff",
@@ -23853,7 +24608,15 @@
         "creme_fraiche",
         "mustard",
         "tomato_paste"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": []
     },
     {
       "id": "chili_con_carne",
@@ -24386,7 +25149,15 @@
         "cumin_ground",
         "chili_powder",
         "bell_pepper_red"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "bibimbap",
@@ -25026,7 +25797,15 @@
         "spinach",
         "bean_sprouts",
         "shiitake"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "empanadas_de_carne",
@@ -25464,7 +26243,9 @@
         "olive",
         "raisins",
         "cumin_ground"
-      ]
+      ],
+      "canonicalRecipeId": "empanadas_argentinas",
+      "archived": true
     },
     {
       "id": "bo_kho",
@@ -26104,7 +26885,15 @@
         "carrot",
         "potato",
         "beef_stock"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 100,
+      "dietaryTags": []
     },
     {
       "id": "tom_kha_gai",
@@ -26506,7 +27295,15 @@
         "fish_sauce",
         "lime_juice",
         "mushroom_button"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "linsensuppe",
@@ -26985,6 +27782,17 @@
         "potato",
         "tomato_paste",
         "vegetable_broth"
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
       ]
     },
     {
@@ -27468,7 +28276,15 @@
         "saffron",
         "white_wine",
         "orange_zest"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "massaman_curry",
@@ -27893,7 +28709,15 @@
         "tamarind",
         "palm_sugar",
         "cinnamon_stick"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 75,
+      "dietaryTags": []
     },
     {
       "id": "ossobuco_lombardo",
@@ -28368,7 +29192,16 @@
         "tomato_canned",
         "lemon",
         "parsley_fresh"
-      ]
+      ],
+      "variantOf": "ossobuco_alla_milanese",
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": []
     },
     {
       "id": "mushroom_risotto",
@@ -28806,6 +29639,16 @@
         "white_wine",
         "parmesan",
         "butter"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -29270,7 +30113,15 @@
         "vegetable_oil",
         "salt",
         "pepper_black"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "feijoada",
@@ -29712,7 +30563,15 @@
         "vegetable_oil",
         "salt",
         "pepper_black"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 180,
+      "dietaryTags": []
     },
     {
       "id": "jambalaya",
@@ -30196,7 +31055,15 @@
         "vegetable_oil",
         "salt",
         "pepper_black"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 55,
+      "dietaryTags": []
     },
     {
       "id": "beef_wellington",
@@ -30597,7 +31464,15 @@
         "thyme_fresh",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": []
     },
     {
       "id": "cassoulet",
@@ -31082,7 +31957,15 @@
         "goose_fat",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 240,
+      "dietaryTags": []
     },
     {
       "id": "ceviche",
@@ -31402,7 +32285,9 @@
         "corn",
         "olive_oil",
         "salt"
-      ]
+      ],
+      "canonicalRecipeId": "ceviche_clasico",
+      "archived": true
     },
     {
       "id": "borscht",
@@ -31889,7 +32774,15 @@
         "bay_leaf",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": []
     },
     {
       "id": "gumbo",
@@ -32396,7 +33289,15 @@
         "file_powder",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "poutine",
@@ -32718,7 +33619,15 @@
         "vegetable_oil",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "laksa",
@@ -33183,7 +34092,15 @@
         "galangal",
         "lemongrass",
         "egg"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "tacos_al_pastor",
@@ -33566,7 +34483,15 @@
         "orange",
         "vinegar",
         "garlic"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "pierogi_ruskie",
@@ -33910,6 +34835,15 @@
         "salt",
         "black_pepper",
         "sour_cream"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -34232,6 +35166,16 @@
         "butter",
         "sugar",
         "salt"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -34639,7 +35583,15 @@
         "lemon",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 75,
+      "dietaryTags": []
     },
     {
       "id": "poerkolt",
@@ -35045,7 +35997,15 @@
         "marjoram",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": []
     },
     {
       "id": "baeckeoffe",
@@ -35475,7 +36435,15 @@
         "butter",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 240,
+      "dietaryTags": []
     },
     {
       "id": "pastitsio",
@@ -35963,7 +36931,15 @@
         "nutmeg",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": []
     },
     {
       "id": "chili_verde",
@@ -36369,7 +37345,15 @@
         "corn_tortilla",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "cochinita_pibil",
@@ -36773,7 +37757,15 @@
         "bay_leaf",
         "corn_tortilla",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 180,
+      "dietaryTags": []
     },
     {
       "id": "chicken_adobo",
@@ -37093,7 +38085,15 @@
         "sugar",
         "rice_dry",
         "black_pepper"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "hainanese_chicken_rice",
@@ -37456,7 +38456,15 @@
         "cucumber",
         "chicken_stock",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "sauerbraten",
@@ -37895,7 +38903,15 @@
         "flour",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 240,
+      "dietaryTags": []
     },
     {
       "id": "schweinshaxe",
@@ -38277,7 +39293,15 @@
         "mustard",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 180,
+      "dietaryTags": []
     },
     {
       "id": "koenigsberger_klopse",
@@ -38720,7 +39744,15 @@
         "sour_cream",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "kung_pao_chicken",
@@ -39139,7 +40171,15 @@
         "cornstarch",
         "sesame_oil",
         "rice_dry"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "larb_gai",
@@ -39502,7 +40542,15 @@
         "toasted_rice_powder",
         "blattsalat",
         "rice_dry"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": []
     },
     {
       "id": "bun_cha",
@@ -39948,7 +40996,15 @@
         "carrot",
         "daikon",
         "rice_vinegar"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "fesenjan",
@@ -40291,7 +41347,15 @@
         "chicken_stock",
         "rice_dry",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "tagine",
@@ -40736,7 +41800,15 @@
         "couscous",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": []
     },
     {
       "id": "mole_poblano",
@@ -41180,7 +42252,15 @@
         "onion_yellow",
         "garlic",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 150,
+      "dietaryTags": []
     },
     {
       "id": "sancocho",
@@ -41588,7 +42668,15 @@
         "avocado",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": []
     },
     {
       "id": "harira",
@@ -42012,7 +43100,15 @@
         "lemon",
         "vermicelli",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "pastilla",
@@ -42396,7 +43492,15 @@
         "butter",
         "powdered_sugar",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 150,
+      "dietaryTags": []
     },
     {
       "id": "menemen",
@@ -42716,7 +43820,14 @@
         "bread",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 25,
+      "dietaryTags": []
     },
     {
       "id": "chili_colorado",
@@ -43138,7 +44249,15 @@
         "cilantro",
         "rice_dry",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": []
     },
     {
       "id": "cordon_bleu",
@@ -43457,7 +44576,15 @@
         "lemon",
         "parsley_fresh",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "szegediner_gulasch",
@@ -43819,7 +44946,15 @@
         "sour_cream",
         "potato",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "pozole_rojo",
@@ -44220,7 +45355,15 @@
         "radish",
         "lime",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 150,
+      "dietaryTags": []
     },
     {
       "id": "bacalhau_a_bras",
@@ -44518,7 +45661,15 @@
         "black_olives",
         "parsley_fresh",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "vindaloo",
@@ -44898,7 +46049,15 @@
         "potato",
         "rice_dry",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "chicken_katsu_curry",
@@ -45239,7 +46398,15 @@
         "butter",
         "rice_dry",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "bulgogi",
@@ -45601,7 +46768,15 @@
         "pear",
         "rice_dry",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "boerek",
@@ -45883,7 +47058,15 @@
         "onion_yellow",
         "parsley_fresh",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "baklava",
@@ -46161,7 +47344,14 @@
         "honey",
         "cinnamon",
         "lemon"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "arepas",
@@ -46440,7 +47630,15 @@
         "avocado",
         "black_beans",
         "plantain"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "pupusas",
@@ -46782,7 +47980,15 @@
         "oregano",
         "lime",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "tteokbokki",
@@ -47082,7 +48288,15 @@
         "scallion",
         "sesame_seeds",
         "egg"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": []
     },
     {
       "id": "ramen_tonkotsu",
@@ -47467,7 +48681,15 @@
         "nori",
         "bamboo_shoots",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 240,
+      "dietaryTags": []
     },
     {
       "id": "kimchi_jjigae",
@@ -47788,7 +49010,15 @@
         "soy_sauce",
         "sesame_oil",
         "rice_dry"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "gyoza",
@@ -48109,7 +49339,15 @@
         "gyoza_wrapper",
         "rice_vinegar",
         "chili_oil"
-      ]
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "okonomiyaki",
@@ -48430,7 +49668,15 @@
         "mayonnaise",
         "bonito_flakes",
         "aonori"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "sushi_lachs",
@@ -48750,7 +49996,15 @@
         "ginger_pickled",
         "avocado",
         "cucumber"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "miso_suppe",
@@ -48964,7 +50218,15 @@
         "tofu_firm",
         "wakame",
         "scallion"
-      ]
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 20,
+      "dietaryTags": []
     },
     {
       "id": "banh_mi",
@@ -49305,7 +50567,15 @@
         "soy_sauce",
         "rice_vinegar",
         "sugar"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "yakitori",
@@ -49562,7 +50832,15 @@
         "sake",
         "sugar",
         "shichimi"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 35,
+      "dietaryTags": []
     },
     {
       "id": "lomo_saltado",
@@ -49881,7 +51159,15 @@
         "cilantro",
         "potato",
         "rice_dry"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "chicken_satay",
@@ -50222,7 +51508,15 @@
         "lime",
         "sugar",
         "chili"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 50,
+      "dietaryTags": []
     },
     {
       "id": "chiles_rellenos",
@@ -50542,7 +51836,15 @@
         "cumin",
         "oregano",
         "olive_oil"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 70,
+      "dietaryTags": []
     },
     {
       "id": "ropa_vieja",
@@ -50904,7 +52206,15 @@
         "white_wine",
         "capers",
         "rice_dry"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 150,
+      "dietaryTags": []
     },
     {
       "id": "pollo_a_la_brasa",
@@ -51203,7 +52513,15 @@
         "lime",
         "vinegar",
         "potato"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "enchiladas_verdes",
@@ -51523,7 +52841,15 @@
         "chicken_stock",
         "cheese_white",
         "sour_cream"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "anticuchos",
@@ -51801,7 +53127,15 @@
         "oregano",
         "chili",
         "potato"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 70,
+      "dietaryTags": []
     },
     {
       "id": "causa_limena",
@@ -52100,7 +53434,15 @@
         "olive_oil",
         "egg",
         "black_olives"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "sopa_de_tortilla",
@@ -52441,7 +53783,15 @@
         "sour_cream",
         "cilantro",
         "chili"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "chicken_karahi",
@@ -52762,7 +54112,15 @@
         "garam_masala",
         "yogurt",
         "butter"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "nikujaga",
@@ -53061,7 +54419,15 @@
         "sugar",
         "dashi",
         "peas"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "mofongo",
@@ -53318,7 +54684,15 @@
         "chicken_stock",
         "cilantro",
         "lime"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "ajiaco",
@@ -53639,7 +55013,15 @@
         "chicken_stock",
         "onion_yellow",
         "garlic"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "pabellon_criollo",
@@ -53938,7 +55320,15 @@
         "tomato",
         "cumin",
         "bell_pepper_green"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": []
     },
     {
       "id": "bandeja_paisa",
@@ -54259,7 +55649,15 @@
         "arepa",
         "onion_yellow",
         "tomato"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "moqueca",
@@ -54536,7 +55934,15 @@
         "onion_yellow",
         "garlic",
         "cilantro"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "beef_rendang",
@@ -54854,7 +56260,15 @@
         "shallot",
         "chili",
         "kaffir_lime"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 180,
+      "dietaryTags": []
     },
     {
       "id": "pho",
@@ -55195,7 +56609,9 @@
         "bean_sprouts",
         "thai_basil",
         "lime"
-      ]
+      ],
+      "canonicalRecipeId": "pho_bo",
+      "archived": true
     },
     {
       "id": "pao_de_queijo",
@@ -55409,7 +56825,15 @@
         "egg",
         "milk",
         "olive_oil"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 50,
+      "dietaryTags": []
     },
     {
       "id": "banh_xeo",
@@ -55647,7 +57071,15 @@
         "bean_sprouts",
         "scallion",
         "fish_sauce"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "butter_chicken",
@@ -55966,7 +57398,15 @@
         "yogurt",
         "cumin",
         "coriander"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 70,
+      "dietaryTags": []
     },
     {
       "id": "kung_pao",
@@ -56265,7 +57705,9 @@
         "sugar",
         "scallion",
         "garlic"
-      ]
+      ],
+      "canonicalRecipeId": "kung_pao_chicken",
+      "archived": true
     },
     {
       "id": "goulash",
@@ -56522,7 +57964,15 @@
         "caraway",
         "tomato",
         "garlic"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 150,
+      "dietaryTags": []
     },
     {
       "id": "empanadas",
@@ -56778,7 +58228,9 @@
         "olive_oil",
         "paprika",
         "cumin"
-      ]
+      ],
+      "canonicalRecipeId": "empanadas_argentinas",
+      "archived": true
     },
     {
       "id": "fondue",
@@ -57014,7 +58466,15 @@
         "garlic",
         "flour",
         "nutmeg"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": []
     },
     {
       "id": "linsen_curry",
@@ -57313,7 +58773,15 @@
         "turmeric",
         "cumin",
         "garam_masala"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "hummus",
@@ -57549,7 +59017,14 @@
         "lemon",
         "olive_oil",
         "cumin"
-      ]
+      ],
+      "course": "side_sauce",
+      "mealOccasions": [
+        "side"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": []
     },
     {
       "id": "risotto",
@@ -57783,7 +59258,9 @@
         "parmesan",
         "butter",
         "beef_stock"
-      ]
+      ],
+      "canonicalRecipeId": "risotto_milanese",
+      "archived": true
     },
     {
       "id": "tikka_masala",
@@ -58060,7 +59537,15 @@
         "ginger_fresh",
         "garlic",
         "cumin"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "clam_chowder",
@@ -58429,7 +59914,15 @@
         "flour",
         "butter",
         "milk_whole"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 50,
+      "dietaryTags": []
     },
     {
       "id": "tortilla_espanola",
@@ -58667,6 +60160,17 @@
         "egg",
         "onion_yellow",
         "olive_oil"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -58931,6 +60435,17 @@
         "chili",
         "parsley",
         "white_wine"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 25,
+      "dietaryTags": [
+        "gluten_free",
+        "pescatarian"
       ]
     },
     {
@@ -59320,6 +60835,18 @@
         "coconut_milk_full",
         "chili_paste",
         "chicken_stock"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 35,
+      "dietaryTags": [
+        "gluten_free",
+        "pescatarian",
+        "dairy_free"
       ]
     },
     {
@@ -59662,6 +61189,16 @@
         "tomato",
         "cucumber",
         "greek_yogurt"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": [
+        "gluten_free"
       ]
     },
     {
@@ -59989,6 +61526,16 @@
         "dill",
         "butter",
         "olive_oil"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -60357,6 +61904,17 @@
         "garam_masala",
         "cumin_ground",
         "ghee"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -60705,6 +62263,17 @@
         "ginger_fresh",
         "garam_masala",
         "cumin_ground"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 70,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -61136,7 +62705,17 @@
         "vegetable_oil",
         "jasmine_rice",
         "egg"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 25,
+      "dietaryTags": []
     },
     {
       "id": "japchae",
@@ -61586,7 +63165,15 @@
         "garlic",
         "sesame_seeds",
         "vegetable_oil"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 35,
+      "dietaryTags": []
     },
     {
       "id": "shawarma",
@@ -62035,7 +63622,14 @@
         "tomato",
         "cucumber",
         "pita"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": []
     },
     {
       "id": "biryani",
@@ -62542,7 +64136,14 @@
         "green_peas",
         "green_chili",
         "coriander"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "samosa",
@@ -63012,6 +64613,15 @@
         "ghee",
         "vegetable_oil",
         "lemon"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -63461,7 +65071,15 @@
         "turmeric",
         "tomato",
         "ghee"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 70,
+      "dietaryTags": []
     },
     {
       "id": "tempura",
@@ -63873,7 +65491,15 @@
         "soy_sauce",
         "mirin",
         "daikon"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "korma",
@@ -64324,7 +65950,15 @@
         "cumin",
         "coriander",
         "ghee"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 50,
+      "dietaryTags": []
     },
     {
       "id": "palak_chicken",
@@ -64732,7 +66366,15 @@
         "turmeric",
         "ghee",
         "cream"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "tandoori_chicken",
@@ -65120,6 +66762,16 @@
         "coriander",
         "turmeric",
         "vegetable_oil"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": [
+        "gluten_free"
       ]
     },
     {
@@ -65447,6 +67099,16 @@
         "salt",
         "butter",
         "vegetable_oil"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -65704,6 +67366,16 @@
         "urad_dal",
         "salt",
         "baking_soda"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -65982,6 +67654,16 @@
         "fenugreek",
         "salt",
         "vegetable_oil"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -66412,7 +68094,15 @@
         "rice_vinegar",
         "napa_cabbage",
         "shiitake"
-      ]
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 50,
+      "dietaryTags": []
     },
     {
       "id": "chapati",
@@ -66636,6 +68326,16 @@
         "wheat_flour",
         "salt",
         "ghee"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -66858,6 +68558,16 @@
         "wheat_flour",
         "ghee",
         "salt"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 50,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -67203,7 +68913,15 @@
         "vegetable_oil",
         "lemon",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 50,
+      "dietaryTags": []
     },
     {
       "id": "shepherd_pie",
@@ -67590,7 +69308,14 @@
         "butter",
         "cream",
         "salt"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 70,
+      "dietaryTags": []
     },
     {
       "id": "gazpacho",
@@ -67894,6 +69619,18 @@
         "olive_oil",
         "red_wine_vinegar",
         "salt"
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 25,
+      "dietaryTags": [
+        "vegetarian",
+        "vegan",
+        "gluten_free"
       ]
     },
     {
@@ -68157,6 +69894,17 @@
         "basil",
         "olive_oil",
         "salt"
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 20,
+      "dietaryTags": [
+        "vegetarian",
+        "vegan"
       ]
     },
     {
@@ -68457,6 +70205,16 @@
         "egg_yolk",
         "sugar",
         "vanilla"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -68871,6 +70629,15 @@
         "cashews",
         "lemon",
         "salt"
+      ],
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -69204,6 +70971,16 @@
         "ginger",
         "curry_leaves",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -69528,6 +71305,16 @@
         "curry_leaves",
         "vegetable_oil",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 300,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -69914,7 +71701,14 @@
         "butter",
         "cream",
         "salt"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 70,
+      "dietaryTags": []
     },
     {
       "id": "patatas_bravas",
@@ -70255,6 +72049,17 @@
         "olive_oil",
         "red_wine_vinegar",
         "salt"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": [
+        "vegetarian",
+        "vegan"
       ]
     },
     {
@@ -70559,6 +72364,17 @@
         "salt",
         "rosemary",
         "olive"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 150,
+      "dietaryTags": [
+        "vegetarian",
+        "vegan"
       ]
     },
     {
@@ -70799,6 +72615,16 @@
         "sugar",
         "gelatin",
         "vanilla"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -71084,6 +72910,16 @@
         "paprika",
         "parsley",
         "salt"
+      ],
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -71368,6 +73204,16 @@
         "paprika",
         "olive_oil",
         "salt"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": [
+        "gluten_free"
       ]
     },
     {
@@ -71922,7 +73768,15 @@
         "ghee",
         "salt",
         "parsley"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "dolma",
@@ -72329,6 +74183,17 @@
         "lemon",
         "cinnamon",
         "salt"
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 70,
+      "dietaryTags": [
+        "vegetarian",
+        "vegan"
       ]
     },
     {
@@ -72777,7 +74642,14 @@
         "lime",
         "sesame_oil",
         "salt"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "blanquette_de_veau",
@@ -73208,7 +75080,15 @@
         "lemon",
         "salt",
         "parsley"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 100,
+      "dietaryTags": []
     },
     {
       "id": "sachertorte",
@@ -73575,6 +75455,15 @@
         "cream",
         "vanilla",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -73901,6 +75790,18 @@
         "olive_oil",
         "egg",
         "salt"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": [
+        "vegetarian",
+        "vegan",
+        "gluten_free"
       ]
     },
     {
@@ -74300,7 +76201,14 @@
         "mayonnaise",
         "butter",
         "salt"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": []
     },
     {
       "id": "buffalo_wings",
@@ -74646,7 +76554,15 @@
         "celery",
         "vegetable_oil",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "mac_and_cheese",
@@ -74981,6 +76897,15 @@
         "breadcrumbs",
         "mustard",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -75392,7 +77317,14 @@
         "wheat_flour",
         "thyme",
         "salt"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 70,
+      "dietaryTags": []
     },
     {
       "id": "sticky_toffee_pudding",
@@ -75741,6 +77673,15 @@
         "vanilla",
         "cream",
         "sugar"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -76027,6 +77968,16 @@
         "lemon",
         "mint",
         "salt"
+      ],
+      "course": "side_sauce",
+      "mealOccasions": [
+        "side"
+      ],
+      "collections": [],
+      "prepTimeMin": 20,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -76266,6 +78217,16 @@
         "liquid_smoke",
         "banana_leaf",
         "garlic"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 300,
+      "dietaryTags": [
+        "gluten_free"
       ]
     },
     {
@@ -76567,6 +78528,16 @@
         "garlic",
         "cayenne",
         "brown_sugar"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 300,
+      "dietaryTags": [
+        "gluten_free"
       ]
     },
     {
@@ -76876,6 +78847,15 @@
         "lime",
         "sugar",
         "cream"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -77162,6 +79142,15 @@
         "banana",
         "cream",
         "sugar"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -77468,7 +79457,15 @@
         "wheat_flour",
         "beef_stock",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "saganaki",
@@ -77711,6 +79708,16 @@
         "olive_oil",
         "lemon",
         "ouzo"
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 20,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -78082,7 +80089,15 @@
         "ginger",
         "red_fermented_bean_curd",
         "sugar"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "philly_cheesesteak",
@@ -78406,7 +80421,15 @@
         "butter",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": []
     },
     {
       "id": "weinerschnitzel",
@@ -78718,7 +80741,15 @@
         "lemon",
         "parsley",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": []
     },
     {
       "id": "xiaolongbao",
@@ -79110,7 +81141,15 @@
         "soy_sauce",
         "rice_wine",
         "sesame_oil"
-      ]
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": []
     },
     {
       "id": "churros",
@@ -79440,6 +81479,15 @@
         "milk",
         "vegetable_oil",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -79833,7 +81881,15 @@
         "bonito_flakes",
         "vegetable_oil",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "apple_crumble",
@@ -80119,6 +82175,16 @@
         "oats",
         "cinnamon",
         "lemon"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -80406,6 +82472,15 @@
         "lemon",
         "onion",
         "salt"
+      ],
+      "course": "side_sauce",
+      "mealOccasions": [
+        "side"
+      ],
+      "collections": [],
+      "prepTimeMin": 20,
+      "dietaryTags": [
+        "gluten_free"
       ]
     },
     {
@@ -80773,7 +82848,14 @@
         "butter",
         "black_pudding",
         "salt"
-      ]
+      ],
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "soutzoukakia",
@@ -81205,7 +83287,14 @@
         "red_wine",
         "parsley",
         "salt"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "mochi",
@@ -81488,6 +83577,17 @@
         "cornstarch",
         "red_bean_paste",
         "matcha"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": [
+        "vegetarian",
+        "vegan",
+        "gluten_free"
       ]
     },
     {
@@ -81776,7 +83876,14 @@
         "parsley",
         "olive_oil",
         "salt"
-      ]
+      ],
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 35,
+      "dietaryTags": []
     },
     {
       "id": "cevapi",
@@ -82098,7 +84205,14 @@
         "paprika",
         "black_pepper",
         "salt"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "peking_duck",
@@ -82508,7 +84622,15 @@
         "cucumber",
         "wheat_flour",
         "maltose"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 180,
+      "dietaryTags": []
     },
     {
       "id": "rendang_beef",
@@ -82999,6 +85121,15 @@
         "palm_sugar",
         "salt",
         "vegetable_oil"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 180,
+      "dietaryTags": [
+        "gluten_free"
       ]
     },
     {
@@ -83260,6 +85391,16 @@
         "meringue",
         "sugar",
         "vanilla"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 20,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -83605,7 +85746,15 @@
         "egg",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 80,
+      "dietaryTags": []
     },
     {
       "id": "matcha_cheesecake",
@@ -83978,6 +86127,15 @@
         "egg",
         "gelatin",
         "vanilla"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -84344,7 +86502,15 @@
         "egg",
         "paprika",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "gyudon",
@@ -84712,7 +86878,14 @@
         "rice_flour",
         "scallion",
         "dashi"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": []
     },
     {
       "id": "creme_caramel",
@@ -85023,6 +87196,16 @@
         "egg_yolk",
         "sugar",
         "vanilla"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -85502,7 +87685,15 @@
         "vegetable_oil",
         "sesame_seeds",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "trifle",
@@ -85809,6 +88000,15 @@
         "cream",
         "sugar",
         "vanilla"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -86213,7 +88413,15 @@
         "vegetable_oil",
         "ao_nori",
         "beni_shoga"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": []
     },
     {
       "id": "sarma",
@@ -86659,7 +88867,15 @@
         "beef_stock",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "pilaf",
@@ -87050,6 +89266,15 @@
         "raisins",
         "almonds",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 35,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -87403,6 +89628,15 @@
         "lemon",
         "cream",
         "cornstarch"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -87749,7 +89983,15 @@
         "vegetable_oil",
         "lemon",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "pintxos",
@@ -88102,7 +90344,15 @@
         "olive_oil",
         "bell_pepper_red",
         "salt"
-      ]
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 25,
+      "dietaryTags": []
     },
     {
       "id": "onigiri",
@@ -88382,7 +90632,14 @@
         "umeboshi",
         "sesame_seeds",
         "salt"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "japanese_curry",
@@ -88788,7 +91045,14 @@
         "vegetable_oil",
         "rice_flour",
         "salt"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "khao_soi",
@@ -89278,7 +91542,15 @@
         "scallion",
         "coriander",
         "pickled_mustard_green"
-      ]
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "som_tam",
@@ -89666,7 +91938,15 @@
         "lime",
         "palm_sugar",
         "carrot"
-      ]
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 25,
+      "dietaryTags": []
     },
     {
       "id": "larb_moo",
@@ -90033,7 +92313,14 @@
         "mint",
         "coriander",
         "toasted_rice_powder"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 25,
+      "dietaryTags": []
     },
     {
       "id": "chocolate_mousse",
@@ -90359,6 +92646,16 @@
         "cream",
         "vanilla",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -90704,7 +93001,14 @@
         "beef_stock",
         "thyme",
         "salt"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "wonton_noodles",
@@ -91159,7 +93463,15 @@
         "oyster_sauce",
         "sesame_oil",
         "rice_wine"
-      ]
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "oyakodon",
@@ -91547,7 +93859,14 @@
         "rice_flour",
         "scallion",
         "nori"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 25,
+      "dietaryTags": []
     },
     {
       "id": "green_curry",
@@ -91973,7 +94292,15 @@
         "green_chili",
         "vegetable_oil",
         "rice_flour"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "fish_tacos",
@@ -92469,7 +94796,15 @@
         "tomato",
         "jalapeno",
         "vegetable_oil"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "carnitas",
@@ -92814,6 +95149,15 @@
         "oregano",
         "bay_leaf",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 180,
+      "dietaryTags": [
+        "gluten_free"
       ]
     },
     {
@@ -93166,6 +95510,15 @@
         "vanilla",
         "salt",
         "maple_syrup"
+      ],
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -93657,6 +96010,15 @@
         "baking_soda",
         "cream_cheese",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -94092,7 +96454,14 @@
         "rice_flour",
         "vegetable_oil",
         "scallion"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "panang_curry",
@@ -94482,7 +96851,15 @@
         "red_chili",
         "vegetable_oil",
         "rice_flour"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "chilaquiles",
@@ -94869,7 +97246,14 @@
         "avocado",
         "jalapeno",
         "vegetable_oil"
-      ]
+      ],
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 35,
+      "dietaryTags": []
     },
     {
       "id": "banana_bread",
@@ -95260,6 +97644,15 @@
         "walnuts",
         "cinnamon",
         "salt"
+      ],
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 75,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -95609,6 +98002,16 @@
         "cream",
         "butter",
         "food_coloring"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -95978,6 +98381,15 @@
         "vegetable_oil",
         "cinnamon",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -96348,6 +98760,16 @@
         "kiwi",
         "passion_fruit",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -96735,7 +99157,17 @@
         "sesame_seeds",
         "scallion",
         "rice_flour"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 30,
+      "dietaryTags": []
     },
     {
       "id": "chawanmushi",
@@ -97105,7 +99537,14 @@
         "scallion",
         "mitsuba",
         "salt"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 35,
+      "dietaryTags": []
     },
     {
       "id": "eggs_benedict",
@@ -97432,7 +99871,14 @@
         "vinegar",
         "chives",
         "black_pepper"
-      ]
+      ],
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 35,
+      "dietaryTags": []
     },
     {
       "id": "huevos_rancheros",
@@ -97799,7 +100245,14 @@
         "jalapeno",
         "vegetable_oil",
         "lime"
-      ]
+      ],
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": []
     },
     {
       "id": "chocolate_lava_cake",
@@ -98149,6 +100602,15 @@
         "wheat_flour",
         "vanilla",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -98481,6 +100943,15 @@
         "vanilla",
         "sugar",
         "cinnamon"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -98851,6 +101322,15 @@
         "vanilla",
         "lemon",
         "cinnamon"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -99195,6 +101675,16 @@
         "cocoa_powder",
         "vanilla",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 50,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -99562,6 +102052,15 @@
         "vanilla",
         "walnuts",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -99918,6 +102417,15 @@
         "butter",
         "maple_syrup",
         "salt"
+      ],
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 20,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -100240,6 +102748,15 @@
         "vanilla",
         "lemon",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 70,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -100572,6 +103089,15 @@
         "vanilla",
         "lemon",
         "raisins"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -100961,7 +103487,15 @@
         "black_pepper",
         "vegetable_oil",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "sukiyaki",
@@ -101455,7 +103989,14 @@
         "egg",
         "rice_flour",
         "udon"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "carrot_cake",
@@ -101970,6 +104511,15 @@
         "powdered_sugar",
         "butter",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 75,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -102341,6 +104891,15 @@
         "corn_syrup",
         "vanilla",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -102564,6 +105123,17 @@
         "cocoa_powder",
         "butter",
         "chocolate_sprinkles"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -103020,7 +105590,14 @@
         "sesame_sauce",
         "dashi",
         "rice_flour"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": []
     },
     {
       "id": "blondies",
@@ -103371,6 +105948,15 @@
         "walnuts",
         "white_chocolate",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -103782,6 +106368,15 @@
         "nutmeg",
         "vanilla",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -104136,6 +106731,15 @@
         "paprika",
         "bread",
         "black_pepper"
+      ],
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 20,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -104503,6 +107107,15 @@
         "maple_syrup",
         "vanilla",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 25,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -104957,6 +107570,15 @@
         "vanilla",
         "dark_chocolate",
         "cream"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -105201,6 +107823,16 @@
         "shredded_coconut",
         "coconut_milk_full",
         "butter"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -105423,6 +108055,17 @@
         "condensed_milk",
         "shredded_coconut",
         "butter"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 40,
+      "dietaryTags": [
+        "vegetarian",
+        "gluten_free"
       ]
     },
     {
@@ -105706,6 +108349,16 @@
         "baking_powder",
         "salt",
         "canola_oil"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -105989,6 +108642,16 @@
         "chili_flakes",
         "salt",
         "black_pepper"
+      ],
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 10,
+      "dietaryTags": [
+        "vegetarian",
+        "vegan"
       ]
     },
     {
@@ -106418,7 +109081,15 @@
         "bay_leaf",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "mille_feuille",
@@ -106792,6 +109463,15 @@
         "dark_chocolate",
         "powdered_sugar",
         "salt"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 75,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -107166,6 +109846,15 @@
         "cream_heavy",
         "sugar",
         "water"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -107537,6 +110226,16 @@
         "powdered_sugar",
         "cornstarch",
         "cream_heavy"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 75,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -107908,6 +110607,15 @@
         "orange",
         "cinnamon",
         "vanilla"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -108277,6 +110985,15 @@
         "lemon",
         "canola_oil",
         "powdered_sugar"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -108607,6 +111324,15 @@
         "dark_chocolate",
         "vanilla",
         "cinnamon"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -108939,6 +111665,15 @@
         "espresso",
         "dark_chocolate",
         "vanilla"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -109345,7 +112080,14 @@
         "beef_stock",
         "worcestershire",
         "salt"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 70,
+      "dietaryTags": []
     },
     {
       "id": "fish_pie",
@@ -109714,7 +112456,14 @@
         "parsley",
         "lemon",
         "salt"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "steak_and_kidney_pie",
@@ -110146,7 +112895,14 @@
         "puff_pastry",
         "egg",
         "salt"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 150,
+      "dietaryTags": []
     },
     {
       "id": "ploughmans_lunch",
@@ -110476,7 +113232,15 @@
         "apple",
         "mustard",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 15,
+      "dietaryTags": []
     },
     {
       "id": "black_pudding_full",
@@ -110795,7 +113559,14 @@
         "onion",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 180,
+      "dietaryTags": []
     },
     {
       "id": "bubble_and_squeak",
@@ -111076,6 +113847,16 @@
         "salt",
         "black_pepper",
         "canola_oil"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -111505,7 +114286,15 @@
         "cream_heavy",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "variantOf": "coq_au_vin",
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "choucroute_garnie",
@@ -111952,7 +114741,15 @@
         "mustard",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": []
     },
     {
       "id": "caldo_verde",
@@ -112289,7 +115086,15 @@
         "chicken_stock",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "arroz_de_pato",
@@ -112689,7 +115494,14 @@
         "parsley",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "francesinha",
@@ -113099,7 +115911,15 @@
         "flour",
         "salt",
         "chili"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "pastel_de_belem",
@@ -113468,6 +116288,15 @@
         "cinnamon",
         "vanilla",
         "powdered_sugar"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -113915,7 +116744,14 @@
         "bean_sprouts",
         "lime",
         "sugar"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "yorkshire_pudding",
@@ -114180,6 +117016,15 @@
         "suet",
         "salt",
         "water"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 35,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -114607,7 +117452,15 @@
         "parsley",
         "cinnamon",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "ceviche_clasico",
@@ -114927,7 +117780,15 @@
         "sweet_potato",
         "corn",
         "salt"
-      ]
+      ],
+      "course": "starter_soup",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": []
     },
     {
       "id": "empanadas_argentinas",
@@ -115336,7 +118197,14 @@
         "paprika",
         "cumin",
         "oregano"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 90,
+      "dietaryTags": []
     },
     {
       "id": "asado_argentino",
@@ -115591,7 +118459,15 @@
         "chorizo",
         "chimichurri",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 180,
+      "dietaryTags": []
     },
     {
       "id": "ossobuco",
@@ -116041,7 +118917,9 @@
         "lemon",
         "garlic",
         "salt"
-      ]
+      ],
+      "canonicalRecipeId": "ossobuco_alla_milanese",
+      "archived": true
     },
     {
       "id": "saltimbocca",
@@ -116347,7 +119225,9 @@
         "white_wine",
         "lemon",
         "salt"
-      ]
+      ],
+      "canonicalRecipeId": "saltimbocca_alla_romana",
+      "archived": true
     },
     {
       "id": "gulasch",
@@ -116709,7 +119589,15 @@
         "beef_stock",
         "potato",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 150,
+      "dietaryTags": []
     },
     {
       "id": "bigos",
@@ -117155,7 +120043,15 @@
         "bay_leaf",
         "allspice",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 180,
+      "dietaryTags": []
     },
     {
       "id": "pierogi",
@@ -117527,7 +120423,9 @@
         "butter",
         "sour_cream",
         "black_pepper"
-      ]
+      ],
+      "canonicalRecipeId": "pierogi_ruskie",
+      "archived": true
     },
     {
       "id": "gravlax",
@@ -117851,7 +120749,15 @@
         "black_pepper",
         "mustard",
         "rye_bread"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 45,
+      "dietaryTags": []
     },
     {
       "id": "smorrebrod",
@@ -118222,7 +121128,15 @@
         "pickle",
         "lemon",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": []
     },
     {
       "id": "kottbullar",
@@ -118635,7 +121549,14 @@
         "beef_stock",
         "salt",
         "black_pepper"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": []
     },
     {
       "id": "tagine_lamb",
@@ -119079,7 +122000,15 @@
         "cilantro",
         "olive_oil",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": []
     },
     {
       "id": "pho_bo",
@@ -119546,7 +122475,14 @@
         "lime",
         "chili",
         "salt"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 240,
+      "dietaryTags": []
     },
     {
       "id": "birria",
@@ -120010,7 +122946,15 @@
         "cilantro",
         "lime",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 180,
+      "dietaryTags": []
     },
     {
       "id": "tamales",
@@ -120388,7 +123332,14 @@
         "cumin",
         "baking_powder",
         "salt"
-      ]
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 150,
+      "dietaryTags": []
     },
     {
       "id": "elote",
@@ -120696,6 +123647,16 @@
         "lime",
         "cilantro",
         "salt"
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -120977,6 +123938,16 @@
         "cilantro",
         "lime",
         "salt"
+      ],
+      "course": "side_sauce",
+      "mealOccasions": [
+        "side"
+      ],
+      "collections": [],
+      "prepTimeMin": 15,
+      "dietaryTags": [
+        "vegetarian",
+        "vegan"
       ]
     },
     {
@@ -121444,7 +124415,15 @@
         "fish_sauce",
         "shredded_coconut",
         "salt"
-      ]
+      ],
+      "course": "main",
+      "mealOccasions": [
+        "lunch",
+        "dinner"
+      ],
+      "collections": [],
+      "prepTimeMin": 180,
+      "dietaryTags": []
     },
     {
       "id": "jollof_rice",
@@ -121910,6 +124889,15 @@
         "bay_leaf",
         "salt",
         "cilantro"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 60,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -122261,6 +125249,15 @@
         "vanilla",
         "lemon",
         "cornstarch"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 120,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -122634,6 +125631,15 @@
         "vanilla",
         "salt",
         "powdered_sugar"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 50,
+      "dietaryTags": [
+        "vegetarian"
       ]
     },
     {
@@ -122990,6 +125996,3263 @@
         "lemon",
         "orange_blossom",
         "pistachios"
+      ],
+      "course": "dessert",
+      "mealOccasions": [
+        "dessert"
+      ],
+      "collections": [],
+      "prepTimeMin": 80,
+      "dietaryTags": [
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "overnight_oats_berry",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Overnight Oats mit Beeren",
+        "en": "Overnight Oats mit Beeren"
+      },
+      "prep_time_min": 5,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 5,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Haferflocken",
+            "en": "Haferflocken"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 30,
+          "fat": 3,
+          "protein": 6,
+          "fiber": 5,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Skyr",
+            "en": "Skyr"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 6,
+          "fat": 0,
+          "protein": 15,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Beeren",
+            "en": "Beeren"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 5,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 3,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Haferflocken mit Skyr und Beeren vermengen. Über Nacht kalt stellen."
+        }
+      ]
+    },
+    {
+      "id": "bircher_muesli",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Bircher Müsli",
+        "en": "Bircher Müsli"
+      },
+      "prep_time_min": 10,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 10,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Haferflocken",
+            "en": "Haferflocken"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 30,
+          "fat": 3,
+          "protein": 6,
+          "fiber": 5,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Apfel",
+            "en": "Apfel"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 10,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Joghurt",
+            "en": "Joghurt"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 6,
+          "fat": 3,
+          "protein": 5,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Mandeln",
+            "en": "Mandeln"
+          },
+          "amount": 15,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 8,
+          "protein": 3,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Apfel reiben. Mit Haferflocken, Joghurt und Mandeln vermengen."
+        }
+      ]
+    },
+    {
+      "id": "shakshuka_beans",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Shakshuka mit weißen Bohnen",
+        "en": "Shakshuka mit weißen Bohnen"
+      },
+      "prep_time_min": 20,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 20,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Eier",
+            "en": "Eier"
+          },
+          "amount": 2,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 10,
+          "protein": 12,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Tomaten",
+            "en": "Tomaten"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Weiße Bohnen",
+            "en": "Weiße Bohnen"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 15,
+          "fat": 1,
+          "protein": 7,
+          "fiber": 5,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Zwiebel",
+            "en": "Zwiebel"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 5,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Zwiebel anbraten, Tomaten und Bohnen dazu. Eier in Mulden aufschlagen und stocken lassen."
+        }
+      ]
+    },
+    {
+      "id": "ruehrei_spinat_feta",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Rührei mit Spinat und Feta",
+        "en": "Rührei mit Spinat und Feta"
+      },
+      "prep_time_min": 10,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 10,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Eier",
+            "en": "Eier"
+          },
+          "amount": 3,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 15,
+          "protein": 18,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Spinat",
+            "en": "Spinat"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Feta",
+            "en": "Feta"
+          },
+          "amount": 30,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 7,
+          "protein": 5,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Eier verquirlen, mit Spinat und Feta in der Pfanne stocken lassen."
+        }
+      ]
+    },
+    {
+      "id": "avocado_toast_egg",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Avocado Toast mit Ei",
+        "en": "Avocado Toast mit Ei"
+      },
+      "prep_time_min": 10,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 10,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Vollkornbrot",
+            "en": "Vollkornbrot"
+          },
+          "amount": 2,
+          "unit": "Scheiben",
+          "protein_source": true,
+          "netCarbs": 20,
+          "fat": 2,
+          "protein": 6,
+          "fiber": 4,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Avocado",
+            "en": "Avocado"
+          },
+          "amount": 1,
+          "unit": "Stk",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 15,
+          "protein": 2,
+          "fiber": 7,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Ei",
+            "en": "Ei"
+          },
+          "amount": 1,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 5,
+          "protein": 6,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Brot toasten, Avocado darauf zerdrücken. Ei pochiert oder gebraten darauf legen."
+        }
+      ]
+    },
+    {
+      "id": "skyr_bowl_walnut",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Skyr-Bowl mit Walnüssen",
+        "en": "Skyr-Bowl mit Walnüssen"
+      },
+      "prep_time_min": 5,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 5,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Skyr",
+            "en": "Skyr"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 8,
+          "fat": 0,
+          "protein": 20,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Walnüsse",
+            "en": "Walnüsse"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 13,
+          "protein": 3,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Honig",
+            "en": "Honig"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Skyr in eine Schüssel geben, mit Walnüssen und Honig toppen."
+        }
+      ]
+    },
+    {
+      "id": "banana_oat_pancakes",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Bananen-Hafer-Pancakes",
+        "en": "Bananen-Hafer-Pancakes"
+      },
+      "prep_time_min": 15,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 15,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Banane",
+            "en": "Banane"
+          },
+          "amount": 1,
+          "unit": "Stk",
+          "protein_source": false,
+          "netCarbs": 20,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Haferflocken",
+            "en": "Haferflocken"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 30,
+          "fat": 3,
+          "protein": 6,
+          "fiber": 5,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Ei",
+            "en": "Ei"
+          },
+          "amount": 2,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 10,
+          "protein": 12,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Alles zu einem Teig pürieren. In der Pfanne kleine Pancakes ausbacken."
+        }
+      ]
+    },
+    {
+      "id": "savory_porridge_mushroom",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Herzhafte Haferflocken mit Pilzen",
+        "en": "Herzhafte Haferflocken mit Pilzen"
+      },
+      "prep_time_min": 15,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 15,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Haferflocken",
+            "en": "Haferflocken"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 30,
+          "fat": 3,
+          "protein": 6,
+          "fiber": 5,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Pilze",
+            "en": "Pilze"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 1,
+          "protein": 3,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Brühe",
+            "en": "Brühe"
+          },
+          "amount": 200,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Haferflocken in Brühe kochen. Pilze separat anbraten und unterheben."
+        }
+      ]
+    },
+    {
+      "id": "tamago_sando",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Tamago Sando (Japanisches Eiersandwich)",
+        "en": "Tamago Sando (Japanisches Eiersandwich)"
+      },
+      "prep_time_min": 10,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 10,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Toastbrot",
+            "en": "Toastbrot"
+          },
+          "amount": 2,
+          "unit": "Scheiben",
+          "protein_source": true,
+          "netCarbs": 25,
+          "fat": 3,
+          "protein": 6,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Eier",
+            "en": "Eier"
+          },
+          "amount": 2,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 10,
+          "protein": 12,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Mayonnaise",
+            "en": "Mayonnaise"
+          },
+          "amount": 15,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 12,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Eier hart kochen und mit Mayo zerdrücken. Auf getoastetem Brot servieren."
+        }
+      ]
+    },
+    {
+      "id": "chia_yogurt_cherry",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Chia-Joghurt mit Kirschen",
+        "en": "Chia-Joghurt mit Kirschen"
+      },
+      "prep_time_min": 5,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 5,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Joghurt",
+            "en": "Joghurt"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 6,
+          "fat": 3,
+          "protein": 5,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Chiasamen",
+            "en": "Chiasamen"
+          },
+          "amount": 15,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 5,
+          "protein": 3,
+          "fiber": 6,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Kirschen",
+            "en": "Kirschen"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 12,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Joghurt mit Chiasamen vermengen, 10 Min quellen lassen. Mit Kirschen toppen."
+        }
+      ]
+    },
+    {
+      "id": "quark_parfait_almond",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Quark-Parfait mit Mandelmus",
+        "en": "Quark-Parfait mit Mandelmus"
+      },
+      "prep_time_min": 5,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 5,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Magerquark",
+            "en": "Magerquark"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 8,
+          "fat": 1,
+          "protein": 24,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Mandelmus",
+            "en": "Mandelmus"
+          },
+          "amount": 15,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 9,
+          "protein": 3,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Beeren",
+            "en": "Beeren"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 5,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 3,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Quark mit Mandelmus verrühren, mit Beeren schichten."
+        }
+      ]
+    },
+    {
+      "id": "rye_cottage_cheese",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Vollkornbrot mit Hüttenkäse und Gurke",
+        "en": "Vollkornbrot mit Hüttenkäse und Gurke"
+      },
+      "prep_time_min": 5,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 5,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Vollkornbrot",
+            "en": "Vollkornbrot"
+          },
+          "amount": 2,
+          "unit": "Scheiben",
+          "protein_source": true,
+          "netCarbs": 20,
+          "fat": 2,
+          "protein": 6,
+          "fiber": 4,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Hüttenkäse",
+            "en": "Hüttenkäse"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 3,
+          "fat": 4,
+          "protein": 12,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Gurke",
+            "en": "Gurke"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Brot bestreichen, Gurke in Scheiben darauf legen."
+        }
+      ]
+    },
+    {
+      "id": "egg_bean_burrito",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Eier-Bohnen-Burrito",
+        "en": "Eier-Bohnen-Burrito"
+      },
+      "prep_time_min": 15,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 15,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Tortilla",
+            "en": "Tortilla"
+          },
+          "amount": 1,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 30,
+          "fat": 5,
+          "protein": 6,
+          "fiber": 3,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Eier",
+            "en": "Eier"
+          },
+          "amount": 2,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 10,
+          "protein": 12,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Schwarze Bohnen",
+            "en": "Schwarze Bohnen"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 15,
+          "fat": 1,
+          "protein": 7,
+          "fiber": 5,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Salsa",
+            "en": "Salsa"
+          },
+          "amount": 30,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Eier rühren, mit Bohnen und Salsa in die Tortilla wickeln."
+        }
+      ]
+    },
+    {
+      "id": "apple_walnut_baked_oats",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Apfel-Walnuss-Baked-Oats",
+        "en": "Apfel-Walnuss-Baked-Oats"
+      },
+      "prep_time_min": 30,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 30,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Haferflocken",
+            "en": "Haferflocken"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 30,
+          "fat": 3,
+          "protein": 6,
+          "fiber": 5,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Apfel",
+            "en": "Apfel"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 10,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Walnüsse",
+            "en": "Walnüsse"
+          },
+          "amount": 15,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 10,
+          "protein": 2,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Milch",
+            "en": "Milch"
+          },
+          "amount": 100,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 5,
+          "fat": 3,
+          "protein": 3,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Alles vermengen, in eine Form geben und bei 180 Grad 20 Min backen."
+        }
+      ]
+    },
+    {
+      "id": "tofu_scramble_veg",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Tofu-Rührei mit Gemüse",
+        "en": "Tofu-Rührei mit Gemüse"
+      },
+      "prep_time_min": 10,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 10,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Tofu",
+            "en": "Tofu"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 3,
+          "fat": 8,
+          "protein": 12,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Paprika",
+            "en": "Paprika"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Kurkuma",
+            "en": "Kurkuma"
+          },
+          "amount": 2,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Tofu mit einer Gabel zerdrücken, mit Gemüse und Kurkuma in der Pfanne braten."
+        }
+      ]
+    },
+    {
+      "id": "mexican_breakfast_tacos",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Mexican Breakfast Tacos",
+        "en": "Mexican Breakfast Tacos"
+      },
+      "prep_time_min": 15,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 15,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Tortilla",
+            "en": "Tortilla"
+          },
+          "amount": 2,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 60,
+          "fat": 10,
+          "protein": 12,
+          "fiber": 6,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Eier",
+            "en": "Eier"
+          },
+          "amount": 2,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 10,
+          "protein": 12,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Avocado",
+            "en": "Avocado"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 8,
+          "protein": 1,
+          "fiber": 4,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Eier rühren, in Tortillas füllen, mit Avocado toppen."
+        }
+      ]
+    },
+    {
+      "id": "herb_omelette",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Omelett mit Kräutern",
+        "en": "Omelett mit Kräutern"
+      },
+      "prep_time_min": 10,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 10,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Eier",
+            "en": "Eier"
+          },
+          "amount": 3,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 15,
+          "protein": 18,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Kräuter",
+            "en": "Kräuter"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Butter",
+            "en": "Butter"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 8,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Eier verquirlen, in Butter stocken lassen, Kräuter unterheben."
+        }
+      ]
+    },
+    {
+      "id": "apple_cinnamon_porridge",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Porridge mit Apfel und Zimt",
+        "en": "Porridge mit Apfel und Zimt"
+      },
+      "prep_time_min": 10,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 10,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Haferflocken",
+            "en": "Haferflocken"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 30,
+          "fat": 3,
+          "protein": 6,
+          "fiber": 5,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Milch",
+            "en": "Milch"
+          },
+          "amount": 200,
+          "unit": "ml",
+          "protein_source": true,
+          "netCarbs": 10,
+          "fat": 6,
+          "protein": 6,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Apfel",
+            "en": "Apfel"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 10,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Zimt",
+            "en": "Zimt"
+          },
+          "amount": 2,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Haferflocken in Milch kochen, Apfel und Zimt unterrühren."
+        }
+      ]
+    },
+    {
+      "id": "labneh_bowl_olives",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Labneh-Bowl mit Oliven",
+        "en": "Labneh-Bowl mit Oliven"
+      },
+      "prep_time_min": 5,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 5,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Labneh",
+            "en": "Labneh"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 5,
+          "fat": 10,
+          "protein": 10,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Oliven",
+            "en": "Oliven"
+          },
+          "amount": 30,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 5,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Tomaten",
+            "en": "Tomaten"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Labneh in eine Schüssel streichen, mit Oliven und Tomaten anrichten."
+        }
+      ]
+    },
+    {
+      "id": "roesti_salmon",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Kartoffel-Rösti mit Räucherlachs",
+        "en": "Kartoffel-Rösti mit Räucherlachs"
+      },
+      "prep_time_min": 15,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 15,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Kartoffeln",
+            "en": "Kartoffeln"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 30,
+          "fat": 1,
+          "protein": 4,
+          "fiber": 3,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Räucherlachs",
+            "en": "Räucherlachs"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 5,
+          "protein": 11,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Ei",
+            "en": "Ei"
+          },
+          "amount": 1,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 5,
+          "protein": 6,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Kartoffeln reiben, mit Ei vermengen und als Rösti braten. Mit Lachs servieren."
+        }
+      ]
+    },
+    {
+      "id": "tomato_lentil_soup",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Tomaten-Linsen-Suppe mit Spinat",
+        "en": "Tomaten-Linsen-Suppe mit Spinat"
+      },
+      "prep_time_min": 25,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 25,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Rote Linsen",
+            "en": "Rote Linsen"
+          },
+          "amount": 80,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 45,
+          "fat": 2,
+          "protein": 20,
+          "fiber": 8,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Passierte Tomaten",
+            "en": "Passierte Tomaten"
+          },
+          "amount": 300,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15,
+          "fat": 1,
+          "protein": 4,
+          "fiber": 4,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Spinat",
+            "en": "Spinat"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Gemüsebrühe",
+            "en": "Gemüsebrühe"
+          },
+          "amount": 400,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Linsen in Brühe kochen. Tomaten und Spinat unterrühren, abschmecken."
+        }
+      ]
+    },
+    {
+      "id": "minestrone_beans",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Minestrone mit weißen Bohnen",
+        "en": "Minestrone mit weißen Bohnen"
+      },
+      "prep_time_min": 30,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 30,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Weiße Bohnen",
+            "en": "Weiße Bohnen"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 22,
+          "fat": 1,
+          "protein": 10,
+          "fiber": 7,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Kartoffeln",
+            "en": "Kartoffeln"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Karotten",
+            "en": "Karotten"
+          },
+          "amount": 80,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 7,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Gemüsebrühe",
+            "en": "Gemüsebrühe"
+          },
+          "amount": 500,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 10,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Gemüse in Brühe kochen. Bohnen zugeben und kurz mitkochen."
+        }
+      ]
+    },
+    {
+      "id": "chickpea_bowl_roasted_veg",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Warmer Kichererbsen-Bowl mit Ofengemüse",
+        "en": "Warmer Kichererbsen-Bowl mit Ofengemüse"
+      },
+      "prep_time_min": 30,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 30,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Kichererbsen",
+            "en": "Kichererbsen"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 27,
+          "fat": 3,
+          "protein": 8,
+          "fiber": 7,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Zucchini",
+            "en": "Zucchini"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Paprika",
+            "en": "Paprika"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 6,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Joghurt",
+            "en": "Joghurt"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 2,
+          "protein": 4,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Gemüse im Ofen rösten. Kichererbsen und Joghurt darauf anrichten."
+        }
+      ]
+    },
+    {
+      "id": "white_bean_tuna_salad",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Weiße-Bohnen-Salat mit Thunfisch",
+        "en": "Weiße-Bohnen-Salat mit Thunfisch"
+      },
+      "prep_time_min": 10,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 10,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Weiße Bohnen",
+            "en": "Weiße Bohnen"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 22,
+          "fat": 1,
+          "protein": 10,
+          "fiber": 7,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Thunfisch",
+            "en": "Thunfisch"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 5,
+          "protein": 23,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Tomaten",
+            "en": "Tomaten"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Zitrone",
+            "en": "Zitrone"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Alles vermengen, mit Zitronensaft und Olivenöl abschmecken."
+        }
+      ]
+    },
+    {
+      "id": "salmon_tray_broccoli",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Lachs vom Blech mit Brokkoli",
+        "en": "Lachs vom Blech mit Brokkoli"
+      },
+      "prep_time_min": 25,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 25,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Lachsfilet",
+            "en": "Lachsfilet"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 10,
+          "protein": 30,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Brokkoli",
+            "en": "Brokkoli"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 0,
+          "protein": 4,
+          "fiber": 5,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Kartoffeln",
+            "en": "Kartoffeln"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 22,
+          "fat": 0,
+          "protein": 3,
+          "fiber": 3,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Alles auf ein Blech geben, würzen und bei 200 Grad 20 Min backen."
+        }
+      ]
+    },
+    {
+      "id": "miso_noodle_soup_tofu",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Miso-Nudelsuppe mit Tofu",
+        "en": "Miso-Nudelsuppe mit Tofu"
+      },
+      "prep_time_min": 15,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 15,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Miso-Paste",
+            "en": "Miso-Paste"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 1,
+          "protein": 2,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Tofu",
+            "en": "Tofu"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 2,
+          "fat": 5,
+          "protein": 8,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Nudeln",
+            "en": "Nudeln"
+          },
+          "amount": 60,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 40,
+          "fat": 1,
+          "protein": 5,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Gemüsebrühe",
+            "en": "Gemüsebrühe"
+          },
+          "amount": 400,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Brühe erhitzen, Miso einrühren. Nudeln, Tofu und Gemüse darin garen."
+        }
+      ]
+    },
+    {
+      "id": "cabbage_mushroom_tofu",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Kohl-Pilz-Pfanne mit Tofu",
+        "en": "Kohl-Pilz-Pfanne mit Tofu"
+      },
+      "prep_time_min": 20,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 20,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Weißkohl",
+            "en": "Weißkohl"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 10,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 4,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Pilze",
+            "en": "Pilze"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 1,
+          "protein": 3,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Tofu",
+            "en": "Tofu"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 3,
+          "fat": 8,
+          "protein": 12,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Tofu anbraten, Kohl und Pilze zugeben und bissfest garen."
+        }
+      ]
+    },
+    {
+      "id": "zucchini_frittata_salad",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Zucchini-Frittata mit Tomatensalat",
+        "en": "Zucchini-Frittata mit Tomatensalat"
+      },
+      "prep_time_min": 20,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 20,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Eier",
+            "en": "Eier"
+          },
+          "amount": 3,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 15,
+          "protein": 18,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Zucchini",
+            "en": "Zucchini"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 5,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Tomaten",
+            "en": "Tomaten"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Zucchini anbraten, Eier darüber geben und stocken lassen. Mit Salat servieren."
+        }
+      ]
+    },
+    {
+      "id": "cod_tomato_olives",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Kabeljau mit Tomaten und Oliven",
+        "en": "Kabeljau mit Tomaten und Oliven"
+      },
+      "prep_time_min": 25,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 25,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Kabeljau",
+            "en": "Kabeljau"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 2,
+          "protein": 25,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Tomaten",
+            "en": "Tomaten"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 6,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Oliven",
+            "en": "Oliven"
+          },
+          "amount": 30,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 5,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Fisch in Tomaten und Oliven garen, mit Kräutern abschmecken."
+        }
+      ]
+    },
+    {
+      "id": "stuffed_peppers_lentils",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Gefüllte Paprika mit Linsen",
+        "en": "Gefüllte Paprika mit Linsen"
+      },
+      "prep_time_min": 35,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 35,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Paprika",
+            "en": "Paprika"
+          },
+          "amount": 2,
+          "unit": "Stk",
+          "protein_source": false,
+          "netCarbs": 12,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 4,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Rote Linsen",
+            "en": "Rote Linsen"
+          },
+          "amount": 80,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 45,
+          "fat": 2,
+          "protein": 20,
+          "fiber": 8,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Tomaten",
+            "en": "Tomaten"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Linsen kochen, Paprika füllen und im Ofen 20 Min backen."
+        }
+      ]
+    },
+    {
+      "id": "chicken_caesar_salad",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Hähnchen-Caesar-Salat",
+        "en": "Hähnchen-Caesar-Salat"
+      },
+      "prep_time_min": 20,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 20,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Hähnchenbrust",
+            "en": "Hähnchenbrust"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 3,
+          "protein": 31,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Römersalat",
+            "en": "Römersalat"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Parmesan",
+            "en": "Parmesan"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 1,
+          "fat": 5,
+          "protein": 7,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Joghurt-Dressing",
+            "en": "Joghurt-Dressing"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 2,
+          "protein": 2,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Hähnchen braten und in Streifen schneiden. Mit Salat und Dressing anrichten."
+        }
+      ]
+    },
+    {
+      "id": "falafel_bowl_yogurt",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Falafel-Bowl mit Joghurt-Dressing",
+        "en": "Falafel-Bowl mit Joghurt-Dressing"
+      },
+      "prep_time_min": 25,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 25,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Falafel",
+            "en": "Falafel"
+          },
+          "amount": 4,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 20,
+          "fat": 10,
+          "protein": 8,
+          "fiber": 5,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Bulgur",
+            "en": "Bulgur"
+          },
+          "amount": 60,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 40,
+          "fat": 1,
+          "protein": 5,
+          "fiber": 3,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Salat",
+            "en": "Salat"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Joghurt",
+            "en": "Joghurt"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 2,
+          "protein": 4,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Bulgur kochen. Falafel erwärmen und mit Salat und Joghurt in einer Bowl anrichten."
+        }
+      ]
+    },
+    {
+      "id": "vegetable_quesadilla",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Gemüse-Quesadilla",
+        "en": "Gemüse-Quesadilla"
+      },
+      "prep_time_min": 15,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 15,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Tortilla",
+            "en": "Tortilla"
+          },
+          "amount": 1,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 30,
+          "fat": 5,
+          "protein": 6,
+          "fiber": 3,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Käse",
+            "en": "Käse"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 1,
+          "fat": 12,
+          "protein": 12,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Paprika",
+            "en": "Paprika"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 6,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Zucchini",
+            "en": "Zucchini"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Gemüse anbraten, mit Käse in die Tortilla füllen und goldbraun backen."
+        }
+      ]
+    },
+    {
+      "id": "chicken_wrap_greek",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Hähnchen-Wrap mit Griechischem Joghurt",
+        "en": "Hähnchen-Wrap mit Griechischem Joghurt"
+      },
+      "prep_time_min": 15,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 15,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Tortilla",
+            "en": "Tortilla"
+          },
+          "amount": 1,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 30,
+          "fat": 5,
+          "protein": 6,
+          "fiber": 3,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Hähnchenbrust",
+            "en": "Hähnchenbrust"
+          },
+          "amount": 120,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 2,
+          "protein": 25,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Joghurt",
+            "en": "Joghurt"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 1,
+          "protein": 2,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Gurke",
+            "en": "Gurke"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Hähnchen braten, in Streifen schneiden. Mit Joghurt und Gurke in die Tortilla wickeln."
+        }
+      ]
+    },
+    {
+      "id": "salmon_tacos_light",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Lachs-Tacos",
+        "en": "Lachs-Tacos"
+      },
+      "prep_time_min": 20,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 20,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Tortilla",
+            "en": "Tortilla"
+          },
+          "amount": 2,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 60,
+          "fat": 10,
+          "protein": 12,
+          "fiber": 6,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Lachs",
+            "en": "Lachs"
+          },
+          "amount": 120,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 8,
+          "protein": 24,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Kohl",
+            "en": "Kohl"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Joghurt",
+            "en": "Joghurt"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 1,
+          "protein": 2,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Lachs würfeln und braten. Mit Kohl und Joghurt in Tortillas füllen."
+        }
+      ]
+    },
+    {
+      "id": "zucchini_noodles_feta",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Zucchini-Nudeln mit Tomate und Feta",
+        "en": "Zucchini-Nudeln mit Tomate und Feta"
+      },
+      "prep_time_min": 15,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 15,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Zucchini",
+            "en": "Zucchini"
+          },
+          "amount": 2,
+          "unit": "Stk",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Tomaten",
+            "en": "Tomaten"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Feta",
+            "en": "Feta"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 1,
+          "fat": 9,
+          "protein": 6,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Zucchini spiralisieren, kurz anbraten. Mit Tomaten und Feta mischen."
+        }
+      ]
+    },
+    {
+      "id": "wholegrain_pasta_pea_pesto",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Vollkornpasta mit Erbsen-Minz-Pesto",
+        "en": "Vollkornpasta mit Erbsen-Minz-Pesto"
+      },
+      "prep_time_min": 20,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 20,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Vollkornpasta",
+            "en": "Vollkornpasta"
+          },
+          "amount": 80,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 55,
+          "fat": 3,
+          "protein": 10,
+          "fiber": 6,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Erbsen",
+            "en": "Erbsen"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 14,
+          "fat": 0,
+          "protein": 5,
+          "fiber": 5,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Minze",
+            "en": "Minze"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Olivenöl",
+            "en": "Olivenöl"
+          },
+          "amount": 10,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 0,
+          "fat": 10,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Pasta kochen. Erbsen und Minze pürieren, mit Öl vermengen und unter die Pasta heben."
+        }
+      ]
+    },
+    {
+      "id": "soba_noodles_veg",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Soba-Nudeln mit Gemüse",
+        "en": "Soba-Nudeln mit Gemüse"
+      },
+      "prep_time_min": 20,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 20,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Soba-Nudeln",
+            "en": "Soba-Nudeln"
+          },
+          "amount": 80,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 55,
+          "fat": 2,
+          "protein": 10,
+          "fiber": 4,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Brokkoli",
+            "en": "Brokkoli"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 3,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Karotten",
+            "en": "Karotten"
+          },
+          "amount": 80,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 7,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Sojasauce",
+            "en": "Sojasauce"
+          },
+          "amount": 15,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Nudeln kochen. Gemüse anbraten, mit Nudeln und Sojasauce mischen."
+        }
+      ]
+    },
+    {
+      "id": "omelette_mushrooms",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Omelett mit Pilzen",
+        "en": "Omelett mit Pilzen"
+      },
+      "prep_time_min": 15,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 15,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Eier",
+            "en": "Eier"
+          },
+          "amount": 3,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 15,
+          "protein": 18,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Pilze",
+            "en": "Pilze"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 3,
+          "fat": 1,
+          "protein": 3,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Kräuter",
+            "en": "Kräuter"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Pilze anbraten. Eier darüber geben und stocken lassen."
+        }
+      ]
+    },
+    {
+      "id": "chicken_veg_stew",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Hähnchen-Gemüse-Eintopf",
+        "en": "Hähnchen-Gemüse-Eintopf"
+      },
+      "prep_time_min": 30,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 30,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Hähnchenbrust",
+            "en": "Hähnchenbrust"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 3,
+          "protein": 31,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Karotten",
+            "en": "Karotten"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Kartoffeln",
+            "en": "Kartoffeln"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0004",
+          "names": {
+            "de": "Gemüsebrühe",
+            "en": "Gemüsebrühe"
+          },
+          "amount": 400,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Alles in Brühe 20 Min köcheln lassen, abschmecken."
+        }
       ]
     }
   ]
