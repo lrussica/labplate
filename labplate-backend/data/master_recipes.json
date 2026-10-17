@@ -1,5 +1,5 @@
 {
-  "version": 31,
+  "version": 32,
   "languages": [
     "de",
     "en",
@@ -17947,7 +17947,11 @@
           "unit": "g",
           "culinaryRole": "carbohydrate",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.55,
+          "protein": 6.81,
+          "netCarbs": 78.9,
+          "fiber": 2.8
         },
         {
           "id": "0002",
@@ -17962,7 +17966,11 @@
           "unit": "g",
           "culinaryRole": "main_protein",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": true
+          "countsAsPrimaryProteinSource": true,
+          "fat": 13.4,
+          "protein": 20.4,
+          "netCarbs": 0,
+          "fiber": 0
         },
         {
           "id": "0003",
@@ -17977,7 +17985,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.11,
+          "protein": 0.65,
+          "netCarbs": 3.13,
+          "fiber": 0.5
         },
         {
           "id": "0004",
@@ -17992,7 +18004,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 5.2,
+          "protein": 11.9,
+          "netCarbs": 3.71,
+          "fiber": 5.2
         },
         {
           "id": "0005",
@@ -18007,7 +18023,11 @@
           "unit": "g",
           "culinaryRole": "fruit",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.38,
+          "protein": 0.82,
+          "netCarbs": 13.4,
+          "fiber": 1.6
         },
         {
           "id": "0006",
@@ -18022,7 +18042,11 @@
           "unit": "g",
           "culinaryRole": "fruit",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 14.7,
+          "protein": 2,
+          "netCarbs": 1.83,
+          "fiber": 6.7
         },
         {
           "id": "0007",
@@ -18037,7 +18061,11 @@
           "unit": "g",
           "culinaryRole": "topping",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 4.01,
+          "protein": 31.8,
+          "netCarbs": 46.8,
+          "fiber": 5.6
         },
         {
           "id": "0008",
@@ -18052,7 +18080,11 @@
           "unit": "g",
           "culinaryRole": "topping",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 49.7,
+          "protein": 17.7,
+          "netCarbs": 11.6,
+          "fiber": 11.8
         },
         {
           "id": "0009",
@@ -18067,7 +18099,11 @@
           "unit": "ml",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.61,
+          "protein": 8.65,
+          "netCarbs": 4.39,
+          "fiber": 0.85
         },
         {
           "id": "0010",
@@ -18082,7 +18118,11 @@
           "unit": "ml",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0,
+          "protein": 0,
+          "netCarbs": 0.04,
+          "fiber": 0
         },
         {
           "id": "0011",
@@ -18097,7 +18137,11 @@
           "unit": "ml",
           "culinaryRole": "fat_source",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 93.33,
+          "protein": 0,
+          "netCarbs": 0,
+          "fiber": 0
         },
         {
           "id": "0012",
@@ -18112,7 +18156,11 @@
           "unit": "ml",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.07,
+          "protein": 0.42,
+          "netCarbs": 8.09,
+          "fiber": 0.4
         },
         {
           "id": "0013",
@@ -18127,7 +18175,11 @@
           "unit": "g",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.75,
+          "protein": 1.82,
+          "netCarbs": 15.8,
+          "fiber": 2
         }
       ],
       "steps": [
@@ -18293,7 +18345,11 @@
           "unit": "g",
           "culinaryRole": "carbohydrate",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.66,
+          "protein": 7.13,
+          "netCarbs": 78.7,
+          "fiber": 1.3
         },
         {
           "id": "0002",
@@ -18308,7 +18364,11 @@
           "unit": "g",
           "culinaryRole": "main_protein",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": true
+          "countsAsPrimaryProteinSource": true,
+          "fat": 5,
+          "protein": 21.4,
+          "netCarbs": 0,
+          "fiber": 0
         },
         {
           "id": "0003",
@@ -18323,7 +18383,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.39,
+          "protein": 2.86,
+          "netCarbs": 1.43,
+          "fiber": 2.2
         },
         {
           "id": "0004",
@@ -18338,7 +18402,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.24,
+          "protein": 0.93,
+          "netCarbs": 6.78,
+          "fiber": 2.8
         },
         {
           "id": "0005",
@@ -18353,7 +18421,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.32,
+          "protein": 1.21,
+          "netCarbs": 2.11,
+          "fiber": 1
         },
         {
           "id": "0006",
@@ -18368,7 +18440,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.49,
+          "protein": 2.24,
+          "netCarbs": 4.29,
+          "fiber": 2.5
         },
         {
           "id": "0007",
@@ -18383,7 +18459,11 @@
           "unit": "g",
           "culinaryRole": "secondary_protein",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 9.51,
+          "protein": 12.6,
+          "netCarbs": 0.72,
+          "fiber": 0
         },
         {
           "id": "0008",
@@ -18398,7 +18478,11 @@
           "unit": "g",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 5,
+          "protein": 3.33,
+          "netCarbs": 53.3,
+          "fiber": 0
         },
         {
           "id": "0009",
@@ -18413,7 +18497,11 @@
           "unit": "ml",
           "culinaryRole": "fat_source",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 93.33,
+          "protein": 0,
+          "netCarbs": 0,
+          "fiber": 0
         },
         {
           "id": "0010",
@@ -18428,7 +18516,11 @@
           "unit": "ml",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0,
+          "protein": 0,
+          "netCarbs": 0.04,
+          "fiber": 0
         },
         {
           "id": "0011",
@@ -18443,7 +18535,11 @@
           "unit": "ml",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.61,
+          "protein": 8.65,
+          "netCarbs": 4.39,
+          "fiber": 0.85
         },
         {
           "id": "0012",
@@ -18458,7 +18554,11 @@
           "unit": "g",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.32,
+          "protein": 0,
+          "netCarbs": 99.6,
+          "fiber": 0
         },
         {
           "id": "0013",
@@ -18473,7 +18573,11 @@
           "unit": "ml",
           "culinaryRole": "fat_source",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 93.33,
+          "protein": 0,
+          "netCarbs": 0,
+          "fiber": 0
         },
         {
           "id": "0014",
@@ -18488,7 +18592,11 @@
           "unit": "g",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.38,
+          "protein": 6.62,
+          "netCarbs": 25.5,
+          "fiber": 2.7
         }
       ],
       "steps": [
@@ -18662,7 +18770,11 @@
           "unit": "g",
           "culinaryRole": "base",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 6,
+          "protein": 2,
+          "netCarbs": 1,
+          "fiber": 4
         },
         {
           "id": "0002",
@@ -18677,7 +18789,11 @@
           "unit": "g",
           "culinaryRole": "fruit",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.28,
+          "protein": 0.74,
+          "netCarbs": 21,
+          "fiber": 1.7
         },
         {
           "id": "0003",
@@ -18692,7 +18808,11 @@
           "unit": "g",
           "culinaryRole": "fruit",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.65,
+          "protein": 1.2,
+          "netCarbs": 5.4,
+          "fiber": 6.5
         },
         {
           "id": "0004",
@@ -18707,7 +18827,11 @@
           "unit": "g",
           "culinaryRole": "fruit",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.33,
+          "protein": 0.74,
+          "netCarbs": 12.1,
+          "fiber": 2.4
         },
         {
           "id": "0005",
@@ -18722,7 +18846,11 @@
           "unit": "ml",
           "culinaryRole": "liquid",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 2.37,
+          "protein": 0.67,
+          "netCarbs": 4.95,
+          "fiber": 0.51
         },
         {
           "id": "0006",
@@ -18737,7 +18865,11 @@
           "unit": "g",
           "culinaryRole": "topping",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 24.3,
+          "protein": 13.7,
+          "netCarbs": 45,
+          "fiber": 8.9
         },
         {
           "id": "0007",
@@ -18752,7 +18884,11 @@
           "unit": "g",
           "culinaryRole": "topping",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 64.5,
+          "protein": 6.88,
+          "netCarbs": 7.3,
+          "fiber": 16.3
         },
         {
           "id": "0008",
@@ -18767,7 +18903,11 @@
           "unit": "g",
           "culinaryRole": "topping",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 30.7,
+          "protein": 16.5,
+          "netCarbs": 7.7,
+          "fiber": 34.4
         }
       ],
       "steps": [
@@ -18918,7 +19058,11 @@
           "unit": "g",
           "culinaryRole": "carbohydrate",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.66,
+          "protein": 7.13,
+          "netCarbs": 78.7,
+          "fiber": 1.3
         },
         {
           "id": "0002",
@@ -18933,7 +19077,11 @@
           "unit": "g",
           "culinaryRole": "secondary_protein",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.54,
+          "protein": 8.86,
+          "netCarbs": 15,
+          "fiber": 8.7
         },
         {
           "id": "0003",
@@ -18948,7 +19096,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 1.22,
+          "protein": 2.29,
+          "netCarbs": 12.3,
+          "fiber": 2
         },
         {
           "id": "0004",
@@ -18963,7 +19115,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.2,
+          "protein": 0.88,
+          "netCarbs": 2.69,
+          "fiber": 1.2
         },
         {
           "id": "0005",
@@ -18978,7 +19134,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.3,
+          "protein": 0.99,
+          "netCarbs": 3.93,
+          "fiber": 2.1
         },
         {
           "id": "0006",
@@ -18993,7 +19153,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.15,
+          "protein": 1.36,
+          "netCarbs": 1.57,
+          "fiber": 1.3
         },
         {
           "id": "0007",
@@ -19008,7 +19172,11 @@
           "unit": "g",
           "culinaryRole": "fruit",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 14.7,
+          "protein": 2,
+          "netCarbs": 1.83,
+          "fiber": 6.7
         },
         {
           "id": "0008",
@@ -19023,7 +19191,11 @@
           "unit": "g",
           "culinaryRole": "herb",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.52,
+          "protein": 2.13,
+          "netCarbs": 0.87,
+          "fiber": 2.8
         },
         {
           "id": "0009",
@@ -19038,7 +19210,11 @@
           "unit": "ml",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.07,
+          "protein": 0.42,
+          "netCarbs": 8.09,
+          "fiber": 0.4
         },
         {
           "id": "0010",
@@ -19053,7 +19229,11 @@
           "unit": "ml",
           "culinaryRole": "fat_source",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 93.33,
+          "protein": 0,
+          "netCarbs": 0,
+          "fiber": 0
         },
         {
           "id": "0011",
@@ -19068,7 +19248,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.1,
+          "protein": 1.1,
+          "netCarbs": 7.64,
+          "fiber": 1.7
         },
         {
           "id": "0012",
@@ -19083,7 +19267,11 @@
           "unit": "g",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.38,
+          "protein": 6.62,
+          "netCarbs": 25.5,
+          "fiber": 2.7
         }
       ],
       "steps": [
@@ -19257,7 +19445,11 @@
           "unit": "g",
           "culinaryRole": "carbohydrate",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.64,
+          "protein": 12.8,
+          "netCarbs": 72.4,
+          "fiber": 5
         },
         {
           "id": "0002",
@@ -19272,7 +19464,11 @@
           "unit": "g",
           "culinaryRole": "secondary_protein",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 17.8,
+          "protein": 13.31,
+          "netCarbs": 26.94,
+          "fiber": 4.9
         },
         {
           "id": "0003",
@@ -19287,7 +19483,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.11,
+          "protein": 0.65,
+          "netCarbs": 3.13,
+          "fiber": 0.5
         },
         {
           "id": "0004",
@@ -19302,7 +19502,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.2,
+          "protein": 0.88,
+          "netCarbs": 2.69,
+          "fiber": 1.2
         },
         {
           "id": "0005",
@@ -19317,7 +19521,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.16,
+          "protein": 1.43,
+          "netCarbs": 5.27,
+          "fiber": 2.1
         },
         {
           "id": "0006",
@@ -19332,7 +19540,11 @@
           "unit": "g",
           "culinaryRole": "fruit",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 10.9,
+          "protein": 0.84,
+          "netCarbs": 4.44,
+          "fiber": 1.6
         },
         {
           "id": "0007",
@@ -19347,7 +19559,11 @@
           "unit": "g",
           "culinaryRole": "herb",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.79,
+          "protein": 2.97,
+          "netCarbs": 3.03,
+          "fiber": 3.3
         },
         {
           "id": "0008",
@@ -19362,7 +19578,11 @@
           "unit": "g",
           "culinaryRole": "secondary_protein",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 1.55,
+          "protein": 5.25,
+          "netCarbs": 7.04,
+          "fiber": 0
         },
         {
           "id": "0009",
@@ -19377,7 +19597,11 @@
           "unit": "ml",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.24,
+          "protein": 0.36,
+          "netCarbs": 6.71,
+          "fiber": 0.3
         },
         {
           "id": "0010",
@@ -19392,7 +19616,11 @@
           "unit": "ml",
           "culinaryRole": "fat_source",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 93.33,
+          "protein": 0,
+          "netCarbs": 0,
+          "fiber": 0
         },
         {
           "id": "0011",
@@ -19407,7 +19635,11 @@
           "unit": "g",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.38,
+          "protein": 6.62,
+          "netCarbs": 25.5,
+          "fiber": 2.7
         },
         {
           "id": "0012",
@@ -19422,7 +19654,11 @@
           "unit": "g",
           "culinaryRole": "herb",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.73,
+          "protein": 3.29,
+          "netCarbs": 1.61,
+          "fiber": 6.8
         }
       ],
       "steps": [
@@ -19593,7 +19829,11 @@
           "unit": "g",
           "culinaryRole": "carbohydrate",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.66,
+          "protein": 7.13,
+          "netCarbs": 78.7,
+          "fiber": 1.3
         },
         {
           "id": "0002",
@@ -19608,7 +19848,11 @@
           "unit": "g",
           "culinaryRole": "main_protein",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": true
+          "countsAsPrimaryProteinSource": true,
+          "fat": 2.62,
+          "protein": 22.5,
+          "netCarbs": 0,
+          "fiber": 0
         },
         {
           "id": "0003",
@@ -19623,7 +19867,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.34,
+          "protein": 2.57,
+          "netCarbs": 3.87,
+          "fiber": 2.4
         },
         {
           "id": "0004",
@@ -19638,7 +19886,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.24,
+          "protein": 0.93,
+          "netCarbs": 6.78,
+          "fiber": 2.8
         },
         {
           "id": "0005",
@@ -19653,7 +19905,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.2,
+          "protein": 1.5,
+          "netCarbs": 1.18,
+          "fiber": 1
         },
         {
           "id": "0006",
@@ -19668,7 +19924,11 @@
           "unit": "g",
           "culinaryRole": "topping",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 49.7,
+          "protein": 17.7,
+          "netCarbs": 11.6,
+          "fiber": 11.8
         },
         {
           "id": "0007",
@@ -19683,7 +19943,11 @@
           "unit": "ml",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.61,
+          "protein": 8.65,
+          "netCarbs": 4.39,
+          "fiber": 0.85
         },
         {
           "id": "0008",
@@ -19698,7 +19962,11 @@
           "unit": "ml",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0,
+          "protein": 0.42,
+          "netCarbs": 116.11,
+          "fiber": 0.28
         },
         {
           "id": "0009",
@@ -19713,7 +19981,11 @@
           "unit": "ml",
           "culinaryRole": "fat_source",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 93.33,
+          "protein": 0,
+          "netCarbs": 0,
+          "fiber": 0
         },
         {
           "id": "0010",
@@ -19728,7 +20000,11 @@
           "unit": "g",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.75,
+          "protein": 1.82,
+          "netCarbs": 15.8,
+          "fiber": 2
         },
         {
           "id": "0011",
@@ -19743,7 +20019,11 @@
           "unit": "g",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.38,
+          "protein": 6.62,
+          "netCarbs": 25.5,
+          "fiber": 2.7
         },
         {
           "id": "0012",
@@ -19758,7 +20038,11 @@
           "unit": "ml",
           "culinaryRole": "fat_source",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 93.33,
+          "protein": 0,
+          "netCarbs": 0,
+          "fiber": 0
         }
       ],
       "steps": [
@@ -19928,7 +20212,11 @@
           "unit": "g",
           "culinaryRole": "carbohydrate",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 6.07,
+          "protein": 14.1,
+          "netCarbs": 57.2,
+          "fiber": 7
         },
         {
           "id": "0002",
@@ -19943,7 +20231,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.05,
+          "protein": 1.57,
+          "netCarbs": 17.1,
+          "fiber": 3
         },
         {
           "id": "0003",
@@ -19958,7 +20250,11 @@
           "unit": "g",
           "culinaryRole": "secondary_protein",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 2.59,
+          "protein": 8.86,
+          "netCarbs": 19.8,
+          "fiber": 7.6
         },
         {
           "id": "0004",
@@ -19973,7 +20269,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.39,
+          "protein": 2.86,
+          "netCarbs": 1.43,
+          "fiber": 2.2
         },
         {
           "id": "0005",
@@ -19988,7 +20288,11 @@
           "unit": "g",
           "culinaryRole": "fruit",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 14.7,
+          "protein": 2,
+          "netCarbs": 1.83,
+          "fiber": 6.7
         },
         {
           "id": "0006",
@@ -20003,7 +20307,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.1,
+          "protein": 0.68,
+          "netCarbs": 1.8,
+          "fiber": 1.6
         },
         {
           "id": "0007",
@@ -20018,7 +20326,11 @@
           "unit": "g",
           "culinaryRole": "topping",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 49,
+          "protein": 30.2,
+          "netCarbs": 4.7,
+          "fiber": 6
         },
         {
           "id": "0008",
@@ -20033,7 +20345,11 @@
           "unit": "g",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 53,
+          "protein": 17.4,
+          "netCarbs": 16.8,
+          "fiber": 4.7
         },
         {
           "id": "0009",
@@ -20048,7 +20364,11 @@
           "unit": "ml",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.24,
+          "protein": 0.36,
+          "netCarbs": 6.71,
+          "fiber": 0.3
         },
         {
           "id": "0010",
@@ -20063,7 +20383,11 @@
           "unit": "g",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.38,
+          "protein": 6.62,
+          "netCarbs": 25.5,
+          "fiber": 2.7
         },
         {
           "id": "0011",
@@ -20078,7 +20402,11 @@
           "unit": "ml",
           "culinaryRole": "fat_source",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 93.33,
+          "protein": 0,
+          "netCarbs": 0,
+          "fiber": 0
         }
       ],
       "steps": [
@@ -20249,7 +20577,11 @@
           "unit": "g",
           "culinaryRole": "carbohydrate",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.09,
+          "protein": 2.05,
+          "netCarbs": 15.4,
+          "fiber": 2.1
         },
         {
           "id": "0002",
@@ -20264,7 +20596,11 @@
           "unit": "g",
           "culinaryRole": "main_protein",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": true
+          "countsAsPrimaryProteinSource": true,
+          "fat": 14.29,
+          "protein": 20.24,
+          "netCarbs": 2,
+          "fiber": 0
         },
         {
           "id": "0003",
@@ -20279,7 +20615,11 @@
           "unit": "g",
           "culinaryRole": "secondary_protein",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 6,
+          "protein": 5.22,
+          "netCarbs": 3.9,
+          "fiber": 0.2
         },
         {
           "id": "0004",
@@ -20294,7 +20634,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.11,
+          "protein": 0.65,
+          "netCarbs": 3.13,
+          "fiber": 0.5
         },
         {
           "id": "0005",
@@ -20309,7 +20653,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.2,
+          "protein": 0.88,
+          "netCarbs": 2.69,
+          "fiber": 1.2
         },
         {
           "id": "0006",
@@ -20324,7 +20672,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.1,
+          "protein": 1.1,
+          "netCarbs": 7.64,
+          "fiber": 1.7
         },
         {
           "id": "0007",
@@ -20339,7 +20691,11 @@
           "unit": "g",
           "culinaryRole": "secondary_protein",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 21.5,
+          "protein": 14.2,
+          "netCarbs": 3.88,
+          "fiber": 0
         },
         {
           "id": "0008",
@@ -20354,7 +20710,11 @@
           "unit": "g",
           "culinaryRole": "fruit",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 10.9,
+          "protein": 0.84,
+          "netCarbs": 4.44,
+          "fiber": 1.6
         },
         {
           "id": "0009",
@@ -20369,7 +20729,11 @@
           "unit": "ml",
           "culinaryRole": "fat_source",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 93.33,
+          "protein": 0,
+          "netCarbs": 0,
+          "fiber": 0
         },
         {
           "id": "0010",
@@ -20384,7 +20748,11 @@
           "unit": "g",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.38,
+          "protein": 6.62,
+          "netCarbs": 25.5,
+          "fiber": 2.7
         },
         {
           "id": "0011",
@@ -20399,7 +20767,11 @@
           "unit": "ml",
           "culinaryRole": "fat_source",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 93.33,
+          "protein": 0,
+          "netCarbs": 0,
+          "fiber": 0
         }
       ],
       "steps": [
@@ -20551,7 +20923,11 @@
           "unit": "g",
           "culinaryRole": "carbohydrate",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.55,
+          "protein": 6.81,
+          "netCarbs": 78.9,
+          "fiber": 2.8
         },
         {
           "id": "0002",
@@ -20566,7 +20942,11 @@
           "unit": "g",
           "culinaryRole": "main_protein",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": true
+          "countsAsPrimaryProteinSource": true,
+          "fat": 13.4,
+          "protein": 20.4,
+          "netCarbs": 0,
+          "fiber": 0
         },
         {
           "id": "0003",
@@ -20581,7 +20961,11 @@
           "unit": "g",
           "culinaryRole": "fruit",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 14.7,
+          "protein": 2,
+          "netCarbs": 1.83,
+          "fiber": 6.7
         },
         {
           "id": "0004",
@@ -20596,7 +20980,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.11,
+          "protein": 0.65,
+          "netCarbs": 3.13,
+          "fiber": 0.5
         },
         {
           "id": "0005",
@@ -20611,7 +20999,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.24,
+          "protein": 0.93,
+          "netCarbs": 6.78,
+          "fiber": 2.8
         },
         {
           "id": "0006",
@@ -20626,7 +21018,11 @@
           "unit": "g",
           "culinaryRole": "topping",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 4.01,
+          "protein": 31.8,
+          "netCarbs": 46.8,
+          "fiber": 5.6
         },
         {
           "id": "0007",
@@ -20641,7 +21037,11 @@
           "unit": "g",
           "culinaryRole": "topping",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 49.7,
+          "protein": 17.7,
+          "netCarbs": 11.6,
+          "fiber": 11.8
         },
         {
           "id": "0008",
@@ -20656,7 +21056,11 @@
           "unit": "ml",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.61,
+          "protein": 8.65,
+          "netCarbs": 4.39,
+          "fiber": 0.85
         },
         {
           "id": "0009",
@@ -20671,7 +21075,11 @@
           "unit": "g",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 10.9,
+          "protein": 2.23,
+          "netCarbs": 40,
+          "fiber": 6.1
         },
         {
           "id": "0010",
@@ -20686,7 +21094,11 @@
           "unit": "ml",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0,
+          "protein": 0,
+          "netCarbs": 0.04,
+          "fiber": 0
         },
         {
           "id": "0011",
@@ -20701,7 +21113,11 @@
           "unit": "ml",
           "culinaryRole": "fat_source",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 93.33,
+          "protein": 0,
+          "netCarbs": 0,
+          "fiber": 0
         }
       ],
       "steps": [
@@ -20871,7 +21287,11 @@
           "unit": "g",
           "culinaryRole": "carbohydrate",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 1.33,
+          "protein": 12.3,
+          "netCarbs": 63.4,
+          "fiber": 12.5
         },
         {
           "id": "0002",
@@ -20886,7 +21306,11 @@
           "unit": "g",
           "culinaryRole": "secondary_protein",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.38,
+          "protein": 9.02,
+          "netCarbs": 12.2,
+          "fiber": 7.9
         },
         {
           "id": "0003",
@@ -20901,7 +21325,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.18,
+          "protein": 0.98,
+          "netCarbs": 2.88,
+          "fiber": 3
         },
         {
           "id": "0004",
@@ -20916,7 +21344,11 @@
           "unit": "g",
           "culinaryRole": "fruit",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 1.17,
+          "protein": 1.67,
+          "netCarbs": 14.7,
+          "fiber": 4
         },
         {
           "id": "0005",
@@ -20931,7 +21363,11 @@
           "unit": "g",
           "culinaryRole": "herb",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.79,
+          "protein": 2.97,
+          "netCarbs": 3.03,
+          "fiber": 3.3
         },
         {
           "id": "0006",
@@ -20946,7 +21382,11 @@
           "unit": "g",
           "culinaryRole": "herb",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.73,
+          "protein": 3.29,
+          "netCarbs": 1.61,
+          "fiber": 6.8
         },
         {
           "id": "0007",
@@ -20961,7 +21401,11 @@
           "unit": "g",
           "culinaryRole": "topping",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 65.2,
+          "protein": 15.2,
+          "netCarbs": 7,
+          "fiber": 6.7
         },
         {
           "id": "0008",
@@ -20976,7 +21420,11 @@
           "unit": "ml",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.24,
+          "protein": 0.36,
+          "netCarbs": 6.71,
+          "fiber": 0.3
         },
         {
           "id": "0009",
@@ -20991,7 +21439,11 @@
           "unit": "ml",
           "culinaryRole": "fat_source",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 93.33,
+          "protein": 0,
+          "netCarbs": 0,
+          "fiber": 0
         },
         {
           "id": "0010",
@@ -21006,7 +21458,11 @@
           "unit": "g",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.38,
+          "protein": 6.62,
+          "netCarbs": 25.5,
+          "fiber": 2.7
         }
       ],
       "steps": [
@@ -21160,7 +21616,11 @@
           "unit": "g",
           "culinaryRole": "carbohydrate",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 6.07,
+          "protein": 14.1,
+          "netCarbs": 57.2,
+          "fiber": 7
         },
         {
           "id": "0002",
@@ -21175,7 +21635,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.34,
+          "protein": 2.57,
+          "netCarbs": 3.87,
+          "fiber": 2.4
         },
         {
           "id": "0003",
@@ -21190,7 +21654,11 @@
           "unit": "g",
           "culinaryRole": "fruit",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 14.7,
+          "protein": 2,
+          "netCarbs": 1.83,
+          "fiber": 6.7
         },
         {
           "id": "0004",
@@ -21205,7 +21673,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.11,
+          "protein": 0.65,
+          "netCarbs": 3.13,
+          "fiber": 0.5
         },
         {
           "id": "0005",
@@ -21220,7 +21692,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 1.49,
+          "protein": 2.92,
+          "netCarbs": 0.32,
+          "fiber": 4.1
         },
         {
           "id": "0006",
@@ -21235,7 +21711,11 @@
           "unit": "g",
           "culinaryRole": "topping",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 49,
+          "protein": 30.2,
+          "netCarbs": 4.7,
+          "fiber": 6
         },
         {
           "id": "0007",
@@ -21250,7 +21730,11 @@
           "unit": "g",
           "culinaryRole": "carbohydrate",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 6.52,
+          "protein": 13.2,
+          "netCarbs": 57.6,
+          "fiber": 10.1
         },
         {
           "id": "0008",
@@ -21265,7 +21749,11 @@
           "unit": "ml",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.24,
+          "protein": 0.36,
+          "netCarbs": 6.71,
+          "fiber": 0.3
         }
       ],
       "steps": [
@@ -21437,7 +21925,11 @@
           "unit": "g",
           "culinaryRole": "carbohydrate",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.66,
+          "protein": 7.13,
+          "netCarbs": 78.7,
+          "fiber": 1.3
         },
         {
           "id": "0002",
@@ -21452,7 +21944,11 @@
           "unit": "g",
           "culinaryRole": "main_protein",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": true
+          "countsAsPrimaryProteinSource": true,
+          "fat": 5,
+          "protein": 21.4,
+          "netCarbs": 0,
+          "fiber": 0
         },
         {
           "id": "0003",
@@ -21467,7 +21963,11 @@
           "unit": "g",
           "culinaryRole": "secondary_protein",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.54,
+          "protein": 8.86,
+          "netCarbs": 15,
+          "fiber": 8.7
         },
         {
           "id": "0004",
@@ -21482,7 +21982,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 1.22,
+          "protein": 2.29,
+          "netCarbs": 12.3,
+          "fiber": 2
         },
         {
           "id": "0005",
@@ -21497,7 +22001,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.15,
+          "protein": 1.36,
+          "netCarbs": 1.57,
+          "fiber": 1.3
         },
         {
           "id": "0006",
@@ -21512,7 +22020,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.2,
+          "protein": 0.88,
+          "netCarbs": 2.69,
+          "fiber": 1.2
         },
         {
           "id": "0007",
@@ -21527,7 +22039,11 @@
           "unit": "g",
           "culinaryRole": "secondary_protein",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 33.8,
+          "protein": 24.2,
+          "netCarbs": 2.13,
+          "fiber": 0
         },
         {
           "id": "0008",
@@ -21542,7 +22058,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.94,
+          "protein": 0.92,
+          "netCarbs": 2.14,
+          "fiber": 2.6
         },
         {
           "id": "0009",
@@ -21557,7 +22077,11 @@
           "unit": "ml",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.07,
+          "protein": 0.42,
+          "netCarbs": 8.09,
+          "fiber": 0.4
         },
         {
           "id": "0010",
@@ -21572,7 +22096,11 @@
           "unit": "ml",
           "culinaryRole": "fat_source",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 93.33,
+          "protein": 0,
+          "netCarbs": 0,
+          "fiber": 0
         },
         {
           "id": "0011",
@@ -21587,7 +22115,11 @@
           "unit": "g",
           "culinaryRole": "herb",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.52,
+          "protein": 2.13,
+          "netCarbs": 0.87,
+          "fiber": 2.8
         },
         {
           "id": "0012",
@@ -21602,7 +22134,11 @@
           "unit": "g",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.38,
+          "protein": 6.62,
+          "netCarbs": 25.5,
+          "fiber": 2.7
         },
         {
           "id": "0013",
@@ -21617,7 +22153,11 @@
           "unit": "ml",
           "culinaryRole": "fat_source",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 93.33,
+          "protein": 0,
+          "netCarbs": 0,
+          "fiber": 0
         }
       ],
       "steps": [
@@ -21771,7 +22311,11 @@
           "unit": "g",
           "culinaryRole": "fruit",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.28,
+          "protein": 0.74,
+          "netCarbs": 21,
+          "fiber": 1.7
         },
         {
           "id": "0002",
@@ -21786,7 +22330,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.39,
+          "protein": 2.86,
+          "netCarbs": 1.43,
+          "fiber": 2.2
         },
         {
           "id": "0003",
@@ -21801,7 +22349,11 @@
           "unit": "g",
           "culinaryRole": "fruit",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.44,
+          "protein": 1.06,
+          "netCarbs": 11,
+          "fiber": 3
         },
         {
           "id": "0004",
@@ -21816,7 +22368,11 @@
           "unit": "g",
           "culinaryRole": "fruit",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.38,
+          "protein": 0.82,
+          "netCarbs": 13.4,
+          "fiber": 1.6
         },
         {
           "id": "0005",
@@ -21831,7 +22387,11 @@
           "unit": "g",
           "culinaryRole": "secondary_protein",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 1.55,
+          "protein": 5.25,
+          "netCarbs": 7.04,
+          "fiber": 0
         },
         {
           "id": "0006",
@@ -21846,7 +22406,11 @@
           "unit": "g",
           "culinaryRole": "fruit",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.65,
+          "protein": 1.2,
+          "netCarbs": 5.4,
+          "fiber": 6.5
         },
         {
           "id": "0007",
@@ -21861,7 +22425,11 @@
           "unit": "g",
           "culinaryRole": "topping",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 48.8,
+          "protein": 31.6,
+          "netCarbs": 4.67,
+          "fiber": 4
         },
         {
           "id": "0008",
@@ -21876,7 +22444,11 @@
           "unit": "g",
           "culinaryRole": "carbohydrate",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 6.52,
+          "protein": 13.2,
+          "netCarbs": 57.6,
+          "fiber": 10.1
         },
         {
           "id": "0009",
@@ -21891,7 +22463,11 @@
           "unit": "g",
           "culinaryRole": "topping",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 64.5,
+          "protein": 6.88,
+          "netCarbs": 7.3,
+          "fiber": 16.3
         }
       ],
       "steps": [
@@ -22025,7 +22601,11 @@
           "unit": "g",
           "culinaryRole": "carbohydrate",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.64,
+          "protein": 12.8,
+          "netCarbs": 72.4,
+          "fiber": 5
         },
         {
           "id": "0002",
@@ -22040,7 +22620,11 @@
           "unit": "g",
           "culinaryRole": "main_protein",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": true
+          "countsAsPrimaryProteinSource": true,
+          "fat": 0.96,
+          "protein": 19.4,
+          "netCarbs": 0,
+          "fiber": 0
         },
         {
           "id": "0003",
@@ -22055,7 +22639,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.34,
+          "protein": 2.89,
+          "netCarbs": 6.3,
+          "fiber": 5.7
         },
         {
           "id": "0004",
@@ -22070,7 +22658,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.2,
+          "protein": 0.88,
+          "netCarbs": 2.69,
+          "fiber": 1.2
         },
         {
           "id": "0005",
@@ -22085,7 +22677,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.11,
+          "protein": 0.65,
+          "netCarbs": 3.13,
+          "fiber": 0.5
         },
         {
           "id": "0006",
@@ -22100,7 +22696,11 @@
           "unit": "g",
           "culinaryRole": "herb",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.66,
+          "protein": 2.58,
+          "netCarbs": 2.05,
+          "fiber": 1.6
         },
         {
           "id": "0007",
@@ -22115,7 +22715,11 @@
           "unit": "g",
           "culinaryRole": "fruit",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 10.9,
+          "protein": 0.84,
+          "netCarbs": 4.44,
+          "fiber": 1.6
         },
         {
           "id": "0008",
@@ -22130,7 +22734,11 @@
           "unit": "ml",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.24,
+          "protein": 0.36,
+          "netCarbs": 6.71,
+          "fiber": 0.3
         },
         {
           "id": "0009",
@@ -22145,7 +22753,11 @@
           "unit": "ml",
           "culinaryRole": "fat_source",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 93.33,
+          "protein": 0,
+          "netCarbs": 0,
+          "fiber": 0
         },
         {
           "id": "0010",
@@ -22160,7 +22772,11 @@
           "unit": "g",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 3.34,
+          "protein": 3.74,
+          "netCarbs": 1.83,
+          "fiber": 4
         }
       ],
       "steps": [
@@ -22312,7 +22928,11 @@
           "unit": "g",
           "culinaryRole": "carbohydrate",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.56,
+          "protein": 5.95,
+          "netCarbs": 78.6,
+          "fiber": 1.6
         },
         {
           "id": "0002",
@@ -22327,7 +22947,11 @@
           "unit": "g",
           "culinaryRole": "main_protein",
           "protein_source": true,
-          "countsAsPrimaryProteinSource": true
+          "countsAsPrimaryProteinSource": true,
+          "fat": 8.72,
+          "protein": 17.3,
+          "netCarbs": 0.48,
+          "fiber": 2.3
         },
         {
           "id": "0003",
@@ -22342,7 +22966,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.24,
+          "protein": 0.93,
+          "netCarbs": 6.78,
+          "fiber": 2.8
         },
         {
           "id": "0004",
@@ -22357,7 +22985,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.3,
+          "protein": 0.99,
+          "netCarbs": 3.93,
+          "fiber": 2.1
         },
         {
           "id": "0005",
@@ -22372,7 +23004,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.11,
+          "protein": 0.65,
+          "netCarbs": 3.13,
+          "fiber": 0.5
         },
         {
           "id": "0006",
@@ -22387,7 +23023,11 @@
           "unit": "g",
           "culinaryRole": "vegetable",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.19,
+          "protein": 1.83,
+          "netCarbs": 4.74,
+          "fiber": 2.6
         },
         {
           "id": "0007",
@@ -22402,7 +23042,11 @@
           "unit": "g",
           "culinaryRole": "topping",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 49.2,
+          "protein": 25.8,
+          "netCarbs": 7.6,
+          "fiber": 8.5
         },
         {
           "id": "0008",
@@ -22417,7 +23061,11 @@
           "unit": "g",
           "culinaryRole": "fat_source",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 51.4,
+          "protein": 22.2,
+          "netCarbs": 17.3,
+          "fiber": 5
         },
         {
           "id": "0009",
@@ -22432,7 +23080,11 @@
           "unit": "ml",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.61,
+          "protein": 8.65,
+          "netCarbs": 4.39,
+          "fiber": 0.85
         },
         {
           "id": "0010",
@@ -22447,7 +23099,11 @@
           "unit": "ml",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.07,
+          "protein": 0.42,
+          "netCarbs": 8.09,
+          "fiber": 0.4
         },
         {
           "id": "0011",
@@ -22462,7 +23118,11 @@
           "unit": "g",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.75,
+          "protein": 1.82,
+          "netCarbs": 15.8,
+          "fiber": 2
         },
         {
           "id": "0012",
@@ -22477,7 +23137,11 @@
           "unit": "g",
           "culinaryRole": "seasoning",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 0.38,
+          "protein": 6.62,
+          "netCarbs": 25.5,
+          "fiber": 2.7
         },
         {
           "id": "0013",
@@ -22492,7 +23156,11 @@
           "unit": "ml",
           "culinaryRole": "fat_source",
           "protein_source": false,
-          "countsAsPrimaryProteinSource": false
+          "countsAsPrimaryProteinSource": false,
+          "fat": 93.33,
+          "protein": 0,
+          "netCarbs": 0,
+          "fiber": 0
         }
       ],
       "steps": [
