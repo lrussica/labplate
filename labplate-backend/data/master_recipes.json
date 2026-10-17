@@ -1,5 +1,5 @@
 {
-  "version": 30,
+  "version": 31,
   "languages": [
     "de",
     "en",
@@ -129252,6 +129252,1121 @@
         {
           "stepNumber": 1,
           "instruction": "Alles in Brühe 20 Min köcheln lassen, abschmecken."
+        }
+      ]
+    },
+    {
+      "id": "chia_pudding_mango",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Chia-Pudding mit Mango",
+        "en": "Chia-Pudding mit Mango"
+      },
+      "prep_time_min": 5,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 5,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Chiasamen",
+            "en": "Chiasamen"
+          },
+          "amount": 20,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 6,
+          "protein": 4,
+          "fiber": 8,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Kokosmilch",
+            "en": "Kokosmilch"
+          },
+          "amount": 150,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 5,
+          "fat": 10,
+          "protein": 2,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Mango",
+            "en": "Mango"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 12,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Chiasamen in Kokosmilch quellen lassen (mind. 2 Std). Mit Mango toppen."
+        }
+      ]
+    },
+    {
+      "id": "egg_muffins_spinach",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Eier-Muffins mit Spinat",
+        "en": "Eier-Muffins mit Spinat"
+      },
+      "prep_time_min": 20,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 20,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Eier",
+            "en": "Eier"
+          },
+          "amount": 4,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 20,
+          "protein": 24,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Spinat",
+            "en": "Spinat"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Feta",
+            "en": "Feta"
+          },
+          "amount": 30,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 7,
+          "protein": 5,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Eier verquirlen, mit Spinat und Feta in Muffinform füllen. Bei 180 Grad 15 Min backen."
+        }
+      ]
+    },
+    {
+      "id": "sweet_potato_toast_avocado",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Süßkartoffel-Toast mit Avocado",
+        "en": "Süßkartoffel-Toast mit Avocado"
+      },
+      "prep_time_min": 15,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 15,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Süßkartoffel",
+            "en": "Süßkartoffel"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 30,
+          "fat": 0,
+          "protein": 3,
+          "fiber": 4,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Avocado",
+            "en": "Avocado"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 8,
+          "protein": 1,
+          "fiber": 4,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Ei",
+            "en": "Ei"
+          },
+          "amount": 1,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 5,
+          "protein": 6,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Süßkartoffel in Scheiben schneiden und toasten. Mit Avocado und Ei belegen."
+        }
+      ]
+    },
+    {
+      "id": "greek_yogurt_granola",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Griechischer Joghurt mit Granola",
+        "en": "Griechischer Joghurt mit Granola"
+      },
+      "prep_time_min": 5,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 5,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Griechischer Joghurt",
+            "en": "Griechischer Joghurt"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 8,
+          "fat": 10,
+          "protein": 10,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Granola",
+            "en": "Granola"
+          },
+          "amount": 30,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 20,
+          "fat": 6,
+          "protein": 4,
+          "fiber": 3,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Honig",
+            "en": "Honig"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 0,
+          "protein": 0,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Joghurt in Schüssel geben, mit Granola und Honig toppen."
+        }
+      ]
+    },
+    {
+      "id": "spinach_feta_wrap",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Spinat-Feta-Wrap",
+        "en": "Spinat-Feta-Wrap"
+      },
+      "prep_time_min": 10,
+      "course": "breakfast",
+      "mealOccasions": [
+        "breakfast"
+      ],
+      "collections": [],
+      "prepTimeMin": 10,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Tortilla",
+            "en": "Tortilla"
+          },
+          "amount": 1,
+          "unit": "Stk",
+          "protein_source": true,
+          "netCarbs": 30,
+          "fat": 5,
+          "protein": 6,
+          "fiber": 3,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Spinat",
+            "en": "Spinat"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Feta",
+            "en": "Feta"
+          },
+          "amount": 40,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 1,
+          "fat": 9,
+          "protein": 6,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Spinat anbraten, mit Feta in Tortilla füllen und zusammenrollen."
+        }
+      ]
+    },
+    {
+      "id": "shrimp_zucchini_pasta",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Garnelen-Zucchini-Pasta",
+        "en": "Garnelen-Zucchini-Pasta"
+      },
+      "prep_time_min": 20,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 20,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Zucchini",
+            "en": "Zucchini"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Garnelen",
+            "en": "Garnelen"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 2,
+          "protein": 30,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Vollkornpasta",
+            "en": "Vollkornpasta"
+          },
+          "amount": 60,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 40,
+          "fat": 2,
+          "protein": 8,
+          "fiber": 4,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Pasta kochen. Zucchini und Garnelen anbraten, mit Pasta mischen."
+        }
+      ]
+    },
+    {
+      "id": "turkey_lettuce_wraps",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Putenhack-Lettuce-Wraps",
+        "en": "Putenhack-Lettuce-Wraps"
+      },
+      "prep_time_min": 15,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 15,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Putenhack",
+            "en": "Putenhack"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 5,
+          "protein": 30,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Eisbergsalat",
+            "en": "Eisbergsalat"
+          },
+          "amount": 4,
+          "unit": "Blätter",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Tomaten",
+            "en": "Tomaten"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Putenhack anbraten und würzen. In Salatblättern mit Tomaten servieren."
+        }
+      ]
+    },
+    {
+      "id": "cauliflower_steak_herb",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Blumenkohl-Steak mit Kräuterquark",
+        "en": "Blumenkohl-Steak mit Kräuterquark"
+      },
+      "prep_time_min": 25,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 25,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Blumenkohl",
+            "en": "Blumenkohl"
+          },
+          "amount": 300,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 15,
+          "fat": 2,
+          "protein": 8,
+          "fiber": 6,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Quark",
+            "en": "Quark"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 4,
+          "fat": 1,
+          "protein": 12,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Kräuter",
+            "en": "Kräuter"
+          },
+          "amount": 10,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Blumenkohl in Scheiben schneiden und im Ofen rösten. Mit Kräuterquark servieren."
+        }
+      ]
+    },
+    {
+      "id": "mushroom_barley_risotto",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Pilz-Gersten-Risotto",
+        "en": "Pilz-Gersten-Risotto"
+      },
+      "prep_time_min": 30,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 30,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Gerste",
+            "en": "Gerste"
+          },
+          "amount": 80,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 55,
+          "fat": 2,
+          "protein": 8,
+          "fiber": 6,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Pilze",
+            "en": "Pilze"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 5,
+          "fat": 2,
+          "protein": 5,
+          "fiber": 3,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Gemüsebrühe",
+            "en": "Gemüsebrühe"
+          },
+          "amount": 400,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Gerste in Brühe kochen. Pilze anbraten und unterheben."
+        }
+      ]
+    },
+    {
+      "id": "baked_feta_tomato_pasta",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Ofen-Feta-Tomaten-Pasta",
+        "en": "Ofen-Feta-Tomaten-Pasta"
+      },
+      "prep_time_min": 25,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 25,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Feta",
+            "en": "Feta"
+          },
+          "amount": 100,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 2,
+          "fat": 20,
+          "protein": 12,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Tomaten",
+            "en": "Tomaten"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Vollkornpasta",
+            "en": "Vollkornpasta"
+          },
+          "amount": 60,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 40,
+          "fat": 2,
+          "protein": 8,
+          "fiber": 4,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Feta und Tomaten im Ofen rösten (200 Grad, 15 Min). Mit Pasta mischen."
+        }
+      ]
+    },
+    {
+      "id": "chicken_broccoli_stirfry",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Hähnchen-Brokkoli-Pfanne",
+        "en": "Hähnchen-Brokkoli-Pfanne"
+      },
+      "prep_time_min": 15,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 15,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Hähnchenbrust",
+            "en": "Hähnchenbrust"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 3,
+          "protein": 30,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Brokkoli",
+            "en": "Brokkoli"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 0,
+          "protein": 4,
+          "fiber": 5,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Sojasauce",
+            "en": "Sojasauce"
+          },
+          "amount": 15,
+          "unit": "ml",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Hähnchen anbraten, Brokkoli zugeben und mit Sojasauce ablöschen."
+        }
+      ]
+    },
+    {
+      "id": "lentil_bolo_pasta",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Linsen-Bolognese mit Vollkornpasta",
+        "en": "Linsen-Bolognese mit Vollkornpasta"
+      },
+      "prep_time_min": 25,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 25,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Rote Linsen",
+            "en": "Rote Linsen"
+          },
+          "amount": 80,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 45,
+          "fat": 2,
+          "protein": 20,
+          "fiber": 8,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Tomaten",
+            "en": "Tomaten"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Vollkornpasta",
+            "en": "Vollkornpasta"
+          },
+          "amount": 60,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 40,
+          "fat": 2,
+          "protein": 8,
+          "fiber": 4,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Linsen in Tomatensauce kochen. Mit Pasta servieren."
+        }
+      ]
+    },
+    {
+      "id": "salmon_cucumber_salad",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Lachs-Gurken-Salat",
+        "en": "Lachs-Gurken-Salat"
+      },
+      "prep_time_min": 15,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 15,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Lachs",
+            "en": "Lachs"
+          },
+          "amount": 120,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 0,
+          "fat": 8,
+          "protein": 24,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Gurke",
+            "en": "Gurke"
+          },
+          "amount": 150,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 4,
+          "fat": 0,
+          "protein": 1,
+          "fiber": 1,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Joghurt",
+            "en": "Joghurt"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 2,
+          "fat": 1,
+          "protein": 2,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Lachs braten und in Stücke schneiden. Mit Gurke und Joghurt-Dressing anrichten."
+        }
+      ]
+    },
+    {
+      "id": "stuffed_zucchini_quinoa",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Gefüllte Zucchini mit Quinoa",
+        "en": "Gefüllte Zucchini mit Quinoa"
+      },
+      "prep_time_min": 30,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 30,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Zucchini",
+            "en": "Zucchini"
+          },
+          "amount": 1,
+          "unit": "Stk",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Quinoa",
+            "en": "Quinoa"
+          },
+          "amount": 60,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 40,
+          "fat": 3,
+          "protein": 8,
+          "fiber": 4,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Feta",
+            "en": "Feta"
+          },
+          "amount": 30,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 1,
+          "fat": 7,
+          "protein": 5,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Zucchini aushöhlen. Quinoa kochen und mit Feta mischen. Füllen und backen (200 Grad, 20 Min)."
+        }
+      ]
+    },
+    {
+      "id": "eggplant_tomato_bake",
+      "immutable": false,
+      "servings": 1,
+      "titles": {
+        "de": "Auberginen-Tomaten-Auflauf",
+        "en": "Auberginen-Tomaten-Auflauf"
+      },
+      "prep_time_min": 30,
+      "course": "main",
+      "mealOccasions": [
+        "dinner"
+      ],
+      "collections": [
+        "light_dinner"
+      ],
+      "prepTimeMin": 30,
+      "dietaryTags": [],
+      "ingredients": [
+        {
+          "id": "0001",
+          "names": {
+            "de": "Aubergine",
+            "en": "Aubergine"
+          },
+          "amount": 300,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 15,
+          "fat": 2,
+          "protein": 4,
+          "fiber": 5,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0002",
+          "names": {
+            "de": "Tomaten",
+            "en": "Tomaten"
+          },
+          "amount": 200,
+          "unit": "g",
+          "protein_source": false,
+          "netCarbs": 8,
+          "fat": 0,
+          "protein": 2,
+          "fiber": 2,
+          "allergenTags": [],
+          "lactoseSwap": null
+        },
+        {
+          "id": "0003",
+          "names": {
+            "de": "Mozzarella",
+            "en": "Mozzarella"
+          },
+          "amount": 50,
+          "unit": "g",
+          "protein_source": true,
+          "netCarbs": 1,
+          "fat": 10,
+          "protein": 10,
+          "fiber": 0,
+          "allergenTags": [],
+          "lactoseSwap": null
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Aubergine und Tomaten schichten. Mit Mozzarella bestreuen und backen (200 Grad, 20 Min)."
         }
       ]
     }
