@@ -25160,7 +25160,12 @@ initBarcodeEvents();
       );
     }
 
-    function renderNutriRecipeBody() {
+    function _fmtAbsorbedBadge(ing) {
+      if (!ing || ing.absorbedRatio == null || ing.absorbedRatio >= 1) return "";
+      var _pct = Math.round(ing.absorbedRatio * 100);
+      return " <span style=\"display:inline-block;margin-left:6px;padding:1px 6px;font-size:11px;font-weight:600;color:#fff;background:#c6893a;border-radius:9px;letter-spacing:.02em\" title=\"Nur " + _pct + " % dieser Menge werden tatsaechlich aufgenommen\">" + _pct + " % Aufnahme</span>";
+    }
+        function renderNutriRecipeBody() {
       var body = ovRecipes._body;
       // NEU (KI-Rezept-Chat): das flexible Chat-Layout (siehe "#lp-ov-recipes.lp-chat-open"
       // im CSS) gilt ausschliesslich fuer den Chat-Bildschirm selbst - Lade-/Fehler-/
@@ -25268,7 +25273,7 @@ initBarcodeEvents();
                     return '<li>' + escNutri(i.name) + '</li>';
                   }
                   var q = formatIngredientQty(i.amount, i.unit);
-                  return '<li>' + escNutri(i.name) + ' <span class="nutri-recipe-ing-amount">' + escNutri(q.amount) + ' ' + escNutri(q.unit) + '</span></li>';
+                  return '<li>' + escNutri(i.name) + ' <span class="nutri-recipe-ing-amount">' + escNutri(q.amount) + ' ' + escNutri(q.unit) + '</span>' + _fmtAbsorbedBadge(i) + '</li>';
                 }).join('') +
               '</ul>' +
             '</div>' +
@@ -26650,7 +26655,7 @@ initBarcodeEvents();
             '<div class="nutri-recipe-ing-group"><h4 class="nutri-recipe-ing-group-title">' + escNutri(pick(LBL_LOCALRECIPE_INGREDIENTS_TITLE)) + '</h4><ul class="nutri-recipe-ing-list">' +
               sr.ingredients.map(function (ing) {
                 var q = formatIngredientQty(ing.amount, ing.unit);
-                return '<li>' + escNutri(pick(ing.name)) + ' <span class="nutri-recipe-ing-amount">' + q.amount + ' ' + escNutri(q.unit) + '</span></li>';
+                return '<li>' + escNutri(pick(ing.name)) + ' <span class="nutri-recipe-ing-amount">' + q.amount + ' ' + escNutri(q.unit) + '</span>' + _fmtAbsorbedBadge(ing) + '</li>';
               }).join('') +
             '</ul></div>' +
             '<div class="nutri-recipe-ing-group"><h4 class="nutri-recipe-ing-group-title">' + escNutri(pick(LBL_RECIPE_PREP_TITLE)) + '</h4><ol class="nutri-recipe-steps">' +
