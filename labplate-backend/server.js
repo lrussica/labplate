@@ -1109,7 +1109,21 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   }
 
   // Generativ (nicht structured/coach): v9.2 Validierung + Retry (max 3)
-  const useV92Pipeline = !payload.structured && flow !== 'coach' && flow !== 'nutri-coach' && flow !== 'core';
+  // Pantry-Klassiker (1 kurze Zutat, keine Ziffern) muessen immer den Master-Store treffen,
+  // auch wenn der Client flow=coach/nutri-coach sendet (was v92 sonst ueberspringt).
+  const isPantryClassicCandidate = (function () {
+    if (!payload || payload.mode !== "pantry") return false;
+    if (payload.original_mode) return true;
+    const ings = Array.isArray(payload.pantry_ingredients) ? payload.pantry_ingredients : [];
+    if (ings.length !== 1) return false;
+    const q = String(ings[0] || "").trim();
+    if (!q || q.length > 40) return false;
+    if (/\d/.test(q)) return false;
+    return true;
+  })();
+  const useV92Pipeline = flow === "core" ? false
+    : isPantryClassicCandidate ? true
+    : (!payload.structured && flow !== "coach" && flow !== "nutri-coach");
   console.log('[BRANCH_DIAG] V92_CHECK mode=' + req.body.mode + ' useV92=' + useV92Pipeline + ' flow=' + flow + ' structured=' + payload.structured);
   if (useV92Pipeline) {
     const pipelineResult = await core.generateValidatedRecipe({
