@@ -19693,7 +19693,7 @@
       "diet_labels": [
         "vegan",
         "vegetarian",
-        "glutenfree"
+        "gluten_free"
       ],
       "coreComponents": [
         "basmati_rice",
@@ -19712,7 +19712,7 @@
       "dietaryTags": [
         "vegan",
         "vegetarian",
-        "glutenfree"
+        "gluten_free"
       ],
       "timeTotal": 25,
       "timeActive": null,
@@ -20843,7 +20843,7 @@
       "diet_labels": [
         "vegan",
         "vegetarian",
-        "glutenfree"
+        "gluten_free"
       ],
       "coreComponents": [
         "quinoa",
@@ -20859,7 +20859,7 @@
       "dietaryTags": [
         "vegan",
         "vegetarian",
-        "glutenfree"
+        "gluten_free"
       ],
       "timeTotal": 40,
       "timeActive": null,
@@ -22600,7 +22600,7 @@
       },
       "diet_labels": [
         "high_protein",
-        "glutenfree"
+        "gluten_free"
       ],
       "coreComponents": [
         "basmati_rice",
@@ -22618,7 +22618,7 @@
       "prepTimeMin": 30,
       "dietaryTags": [
         "high_protein",
-        "glutenfree"
+        "gluten_free"
       ],
       "timeTotal": 30,
       "timeActive": null,
