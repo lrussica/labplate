@@ -126755,7 +126755,9 @@
           "stepNumber": 1,
           "instruction": "Haferflocken mit Skyr und Beeren vermengen. Über Nacht kalt stellen."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "bircher_muesli",
@@ -126844,7 +126846,9 @@
           "stepNumber": 1,
           "instruction": "Apfel reiben. Mit Haferflocken, Joghurt und Mandeln vermengen."
         }
-      ]
+      ],
+      "cuisine": "ch",
+      "cuisineNeedsReview": false
     },
     {
       "id": "shakshuka_beans",
@@ -126933,7 +126937,9 @@
           "stepNumber": 1,
           "instruction": "Zwiebel anbraten, Tomaten und Bohnen dazu. Eier in Mulden aufschlagen und stocken lassen."
         }
-      ]
+      ],
+      "cuisine": "maghrebi",
+      "cuisineNeedsReview": false
     },
     {
       "id": "ruehrei_spinat_feta",
@@ -127006,7 +127012,9 @@
           "stepNumber": 1,
           "instruction": "Eier verquirlen, mit Spinat und Feta in der Pfanne stocken lassen."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "avocado_toast_egg",
@@ -127079,7 +127087,9 @@
           "stepNumber": 1,
           "instruction": "Brot toasten, Avocado darauf zerdrücken. Ei pochiert oder gebraten darauf legen."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "skyr_bowl_walnut",
@@ -127152,7 +127162,9 @@
           "stepNumber": 1,
           "instruction": "Skyr in eine Schüssel geben, mit Walnüssen und Honig toppen."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "banana_oat_pancakes",
@@ -127225,7 +127237,9 @@
           "stepNumber": 1,
           "instruction": "Alles zu einem Teig pürieren. In der Pfanne kleine Pancakes ausbacken."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "savory_porridge_mushroom",
@@ -127298,7 +127312,9 @@
           "stepNumber": 1,
           "instruction": "Haferflocken in Brühe kochen. Pilze separat anbraten und unterheben."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "tamago_sando",
@@ -127371,7 +127387,9 @@
           "stepNumber": 1,
           "instruction": "Eier hart kochen und mit Mayo zerdrücken. Auf getoastetem Brot servieren."
         }
-      ]
+      ],
+      "cuisine": "jp",
+      "cuisineNeedsReview": false
     },
     {
       "id": "chia_yogurt_cherry",
@@ -127444,7 +127462,9 @@
           "stepNumber": 1,
           "instruction": "Joghurt mit Chiasamen vermengen, 10 Min quellen lassen. Mit Kirschen toppen."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "quark_parfait_almond",
@@ -127517,7 +127537,9 @@
           "stepNumber": 1,
           "instruction": "Quark mit Mandelmus verrühren, mit Beeren schichten."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "rye_cottage_cheese",
@@ -127590,7 +127612,9 @@
           "stepNumber": 1,
           "instruction": "Brot bestreichen, Gurke in Scheiben darauf legen."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "egg_bean_burrito",
@@ -127679,7 +127703,9 @@
           "stepNumber": 1,
           "instruction": "Eier rühren, mit Bohnen und Salsa in die Tortilla wickeln."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "apple_walnut_baked_oats",
@@ -127768,7 +127794,9 @@
           "stepNumber": 1,
           "instruction": "Alles vermengen, in eine Form geben und bei 180 Grad 20 Min backen."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "tofu_scramble_veg",
@@ -127841,7 +127869,9 @@
           "stepNumber": 1,
           "instruction": "Tofu mit einer Gabel zerdrücken, mit Gemüse und Kurkuma in der Pfanne braten."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "mexican_breakfast_tacos",
@@ -127914,7 +127944,9 @@
           "stepNumber": 1,
           "instruction": "Eier rühren, in Tortillas füllen, mit Avocado toppen."
         }
-      ]
+      ],
+      "cuisine": "mx",
+      "cuisineNeedsReview": false
     },
     {
       "id": "herb_omelette",
@@ -127987,7 +128019,9 @@
           "stepNumber": 1,
           "instruction": "Eier verquirlen, in Butter stocken lassen, Kräuter unterheben."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "apple_cinnamon_porridge",
@@ -128076,7 +128110,9 @@
           "stepNumber": 1,
           "instruction": "Haferflocken in Milch kochen, Apfel und Zimt unterrühren."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "labneh_bowl_olives",
@@ -128149,7 +128185,9 @@
           "stepNumber": 1,
           "instruction": "Labneh in eine Schüssel streichen, mit Oliven und Tomaten anrichten."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "roesti_salmon",
@@ -128222,7 +128260,9 @@
           "stepNumber": 1,
           "instruction": "Kartoffeln reiben, mit Ei vermengen und als Rösti braten. Mit Lachs servieren."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "tomato_lentil_soup",
@@ -128313,7 +128353,9 @@
           "stepNumber": 1,
           "instruction": "Linsen in Brühe kochen. Tomaten und Spinat unterrühren, abschmecken."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "minestrone_beans",
@@ -128404,7 +128446,9 @@
           "stepNumber": 1,
           "instruction": "Gemüse in Brühe kochen. Bohnen zugeben und kurz mitkochen."
         }
-      ]
+      ],
+      "cuisine": "it",
+      "cuisineNeedsReview": false
     },
     {
       "id": "chickpea_bowl_roasted_veg",
@@ -128495,7 +128539,9 @@
           "stepNumber": 1,
           "instruction": "Gemüse im Ofen rösten. Kichererbsen und Joghurt darauf anrichten."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "white_bean_tuna_salad",
@@ -128586,7 +128632,9 @@
           "stepNumber": 1,
           "instruction": "Alles vermengen, mit Zitronensaft und Olivenöl abschmecken."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "salmon_tray_broccoli",
@@ -128661,7 +128709,9 @@
           "stepNumber": 1,
           "instruction": "Alles auf ein Blech geben, würzen und bei 200 Grad 20 Min backen."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "miso_noodle_soup_tofu",
@@ -128752,7 +128802,9 @@
           "stepNumber": 1,
           "instruction": "Brühe erhitzen, Miso einrühren. Nudeln, Tofu und Gemüse darin garen."
         }
-      ]
+      ],
+      "cuisine": "jp",
+      "cuisineNeedsReview": false
     },
     {
       "id": "cabbage_mushroom_tofu",
@@ -128827,7 +128879,9 @@
           "stepNumber": 1,
           "instruction": "Tofu anbraten, Kohl und Pilze zugeben und bissfest garen."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "zucchini_frittata_salad",
@@ -128902,7 +128956,9 @@
           "stepNumber": 1,
           "instruction": "Zucchini anbraten, Eier darüber geben und stocken lassen. Mit Salat servieren."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "cod_tomato_olives",
@@ -128977,7 +129033,9 @@
           "stepNumber": 1,
           "instruction": "Fisch in Tomaten und Oliven garen, mit Kräutern abschmecken."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "stuffed_peppers_lentils",
@@ -129052,7 +129110,9 @@
           "stepNumber": 1,
           "instruction": "Linsen kochen, Paprika füllen und im Ofen 20 Min backen."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "chicken_caesar_salad",
@@ -129143,7 +129203,9 @@
           "stepNumber": 1,
           "instruction": "Hähnchen braten und in Streifen schneiden. Mit Salat und Dressing anrichten."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "falafel_bowl_yogurt",
@@ -129234,7 +129296,9 @@
           "stepNumber": 1,
           "instruction": "Bulgur kochen. Falafel erwärmen und mit Salat und Joghurt in einer Bowl anrichten."
         }
-      ]
+      ],
+      "cuisine": "lb",
+      "cuisineNeedsReview": false
     },
     {
       "id": "vegetable_quesadilla",
@@ -129325,7 +129389,9 @@
           "stepNumber": 1,
           "instruction": "Gemüse anbraten, mit Käse in die Tortilla füllen und goldbraun backen."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "chicken_wrap_greek",
@@ -129416,7 +129482,9 @@
           "stepNumber": 1,
           "instruction": "Hähnchen braten, in Streifen schneiden. Mit Joghurt und Gurke in die Tortilla wickeln."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "salmon_tacos_light",
@@ -129507,7 +129575,9 @@
           "stepNumber": 1,
           "instruction": "Lachs würfeln und braten. Mit Kohl und Joghurt in Tortillas füllen."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "zucchini_noodles_feta",
@@ -129582,7 +129652,9 @@
           "stepNumber": 1,
           "instruction": "Zucchini spiralisieren, kurz anbraten. Mit Tomaten und Feta mischen."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "wholegrain_pasta_pea_pesto",
@@ -129673,7 +129745,9 @@
           "stepNumber": 1,
           "instruction": "Pasta kochen. Erbsen und Minze pürieren, mit Öl vermengen und unter die Pasta heben."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "soba_noodles_veg",
@@ -129764,7 +129838,9 @@
           "stepNumber": 1,
           "instruction": "Nudeln kochen. Gemüse anbraten, mit Nudeln und Sojasauce mischen."
         }
-      ]
+      ],
+      "cuisine": "jp",
+      "cuisineNeedsReview": false
     },
     {
       "id": "omelette_mushrooms",
@@ -129839,7 +129915,9 @@
           "stepNumber": 1,
           "instruction": "Pilze anbraten. Eier darüber geben und stocken lassen."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "chicken_veg_stew",
@@ -129930,7 +130008,9 @@
           "stepNumber": 1,
           "instruction": "Alles in Brühe 20 Min köcheln lassen, abschmecken."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "chia_pudding_mango",
@@ -130003,7 +130083,9 @@
           "stepNumber": 1,
           "instruction": "Chiasamen in Kokosmilch quellen lassen (mind. 2 Std). Mit Mango toppen."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "egg_muffins_spinach",
@@ -130076,7 +130158,9 @@
           "stepNumber": 1,
           "instruction": "Eier verquirlen, mit Spinat und Feta in Muffinform füllen. Bei 180 Grad 15 Min backen."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "sweet_potato_toast_avocado",
@@ -130149,7 +130233,9 @@
           "stepNumber": 1,
           "instruction": "Süßkartoffel in Scheiben schneiden und toasten. Mit Avocado und Ei belegen."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "greek_yogurt_granola",
@@ -130222,7 +130308,9 @@
           "stepNumber": 1,
           "instruction": "Joghurt in Schüssel geben, mit Granola und Honig toppen."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "spinach_feta_wrap",
@@ -130295,7 +130383,9 @@
           "stepNumber": 1,
           "instruction": "Spinat anbraten, mit Feta in Tortilla füllen und zusammenrollen."
         }
-      ]
+      ],
+      "cuisine": null,
+      "cuisineNeedsReview": true
     },
     {
       "id": "shrimp_zucchini_pasta",
@@ -130370,7 +130460,9 @@
           "stepNumber": 1,
           "instruction": "Pasta kochen. Zucchini und Garnelen anbraten, mit Pasta mischen."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "turkey_lettuce_wraps",
@@ -130445,7 +130537,9 @@
           "stepNumber": 1,
           "instruction": "Putenhack anbraten und würzen. In Salatblättern mit Tomaten servieren."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "cauliflower_steak_herb",
@@ -130520,7 +130614,9 @@
           "stepNumber": 1,
           "instruction": "Blumenkohl in Scheiben schneiden und im Ofen rösten. Mit Kräuterquark servieren."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "mushroom_barley_risotto",
@@ -130595,7 +130691,9 @@
           "stepNumber": 1,
           "instruction": "Gerste in Brühe kochen. Pilze anbraten und unterheben."
         }
-      ]
+      ],
+      "cuisine": "it",
+      "cuisineNeedsReview": false
     },
     {
       "id": "baked_feta_tomato_pasta",
@@ -130670,7 +130768,9 @@
           "stepNumber": 1,
           "instruction": "Feta und Tomaten im Ofen rösten (200 Grad, 15 Min). Mit Pasta mischen."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "chicken_broccoli_stirfry",
@@ -130745,7 +130845,9 @@
           "stepNumber": 1,
           "instruction": "Hähnchen anbraten, Brokkoli zugeben und mit Sojasauce ablöschen."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "lentil_bolo_pasta",
@@ -130820,7 +130922,9 @@
           "stepNumber": 1,
           "instruction": "Linsen in Tomatensauce kochen. Mit Pasta servieren."
         }
-      ]
+      ],
+      "cuisine": "it",
+      "cuisineNeedsReview": false
     },
     {
       "id": "salmon_cucumber_salad",
@@ -130895,7 +130999,9 @@
           "stepNumber": 1,
           "instruction": "Lachs braten und in Stücke schneiden. Mit Gurke und Joghurt-Dressing anrichten."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "stuffed_zucchini_quinoa",
@@ -130970,7 +131076,9 @@
           "stepNumber": 1,
           "instruction": "Zucchini aushöhlen. Quinoa kochen und mit Feta mischen. Füllen und backen (200 Grad, 20 Min)."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     },
     {
       "id": "eggplant_tomato_bake",
@@ -131045,7 +131153,9 @@
           "stepNumber": 1,
           "instruction": "Aubergine und Tomaten schichten. Mit Mozzarella bestreuen und backen (200 Grad, 20 Min)."
         }
-      ]
+      ],
+      "cuisine": "modern",
+      "cuisineNeedsReview": false
     }
   ]
 }
