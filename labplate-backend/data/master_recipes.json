@@ -127918,7 +127918,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "international",
+      "cuisineStyle": "modern"
     },
     {
       "id": "mexican_breakfast_tacos",
@@ -128420,7 +128422,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "mediterranean",
+      "cuisineStyle": "modern"
     },
     {
       "id": "minestrone_beans",
@@ -128612,7 +128616,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "mediterranean",
+      "cuisineStyle": "modern"
     },
     {
       "id": "white_bean_tuna_salad",
@@ -128708,7 +128714,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "italian",
+      "cuisineStyle": "modern"
     },
     {
       "id": "salmon_tray_broccoli",
@@ -128788,7 +128796,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "international",
+      "cuisineStyle": "modern"
     },
     {
       "id": "miso_noodle_soup_tofu",
@@ -128964,7 +128974,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "asian",
+      "cuisineStyle": "modern"
     },
     {
       "id": "zucchini_frittata_salad",
@@ -129044,7 +129056,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "italian",
+      "cuisineStyle": "modern"
     },
     {
       "id": "cod_tomato_olives",
@@ -129124,7 +129138,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "mediterranean",
+      "cuisineStyle": "modern"
     },
     {
       "id": "stuffed_peppers_lentils",
@@ -129204,7 +129220,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "mediterranean",
+      "cuisineStyle": "modern"
     },
     {
       "id": "chicken_caesar_salad",
@@ -129300,7 +129318,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "american",
+      "cuisineStyle": "modern"
     },
     {
       "id": "falafel_bowl_yogurt",
@@ -129492,7 +129512,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "mexican",
+      "cuisineStyle": "modern"
     },
     {
       "id": "chicken_wrap_greek",
@@ -129588,7 +129610,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "greek",
+      "cuisineStyle": "modern"
     },
     {
       "id": "salmon_tacos_light",
@@ -129684,7 +129708,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "mexican",
+      "cuisineStyle": "modern"
     },
     {
       "id": "zucchini_noodles_feta",
@@ -129764,7 +129790,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "mediterranean",
+      "cuisineStyle": "modern"
     },
     {
       "id": "wholegrain_pasta_pea_pesto",
@@ -129860,7 +129888,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "italian",
+      "cuisineStyle": "modern"
     },
     {
       "id": "soba_noodles_veg",
@@ -130036,7 +130066,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "international",
+      "cuisineStyle": "modern"
     },
     {
       "id": "chicken_veg_stew",
@@ -130132,7 +130164,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "international",
+      "cuisineStyle": "modern"
     },
     {
       "id": "chia_pudding_mango",
@@ -130602,7 +130636,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "italian",
+      "cuisineStyle": "modern"
     },
     {
       "id": "turkey_lettuce_wraps",
@@ -130682,7 +130718,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "american",
+      "cuisineStyle": "modern"
     },
     {
       "id": "cauliflower_steak_herb",
@@ -130762,7 +130800,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "international",
+      "cuisineStyle": "modern"
     },
     {
       "id": "mushroom_barley_risotto",
@@ -130922,7 +130962,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "mediterranean",
+      "cuisineStyle": "modern"
     },
     {
       "id": "chicken_broccoli_stirfry",
@@ -131002,7 +131044,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "asian",
+      "cuisineStyle": "modern"
     },
     {
       "id": "lentil_bolo_pasta",
@@ -131162,7 +131206,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "international",
+      "cuisineStyle": "modern"
     },
     {
       "id": "stuffed_zucchini_quinoa",
@@ -131242,7 +131288,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "mediterranean",
+      "cuisineStyle": "modern"
     },
     {
       "id": "eggplant_tomato_bake",
@@ -131322,7 +131370,9 @@
         }
       ],
       "cuisine": "modern",
-      "cuisineNeedsReview": false
+      "cuisineNeedsReview": false,
+      "cuisineOrigin": "mediterranean",
+      "cuisineStyle": "modern"
     }
   ]
 }
