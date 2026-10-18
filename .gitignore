@@ -29,3 +29,7 @@ node_modules/
 # Lokale Backups
 *.bak
 *.bak[0-9]
+
+# Local review artifacts
+labplate-backend/data/_titles_review_*.tsv
+labplate-backend/data/*.bak_*
