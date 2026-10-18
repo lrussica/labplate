@@ -482,7 +482,10 @@
       "prepTimeMin": 120,
       "dietaryTags": [],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "ragu_bolognese",
@@ -858,7 +861,10 @@
       "prepTimeMin": 150,
       "dietaryTags": [],
       "timeTotal": 150,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "carbonara",
@@ -1131,7 +1137,10 @@
       "prepTimeMin": 25,
       "dietaryTags": [],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": false,
+      "halalStatus": "not_halal"
     },
     {
       "id": "coq_au_vin",
@@ -1501,7 +1510,10 @@
       "prepTimeMin": 120,
       "dietaryTags": [],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "wiener_schnitzel",
@@ -1764,7 +1776,10 @@
       "prepTimeMin": 35,
       "dietaryTags": [],
       "timeTotal": 35,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "karniyarik",
@@ -2065,7 +2080,10 @@
       "prepTimeMin": 70,
       "dietaryTags": [],
       "timeTotal": 70,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "koefte",
@@ -2356,7 +2374,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "immutable": true,
@@ -2588,7 +2609,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "immutable": true,
@@ -2877,7 +2901,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "immutable": true,
@@ -3155,7 +3182,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "immutable": true,
@@ -3490,7 +3520,10 @@
       "prepTimeMin": 180,
       "dietaryTags": [],
       "timeTotal": 180,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "immutable": true,
@@ -3777,7 +3810,10 @@
         "vegetarian"
       ],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "immutable": true,
@@ -4067,7 +4103,10 @@
       "prepTimeMin": 55,
       "dietaryTags": [],
       "timeTotal": 55,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": false,
+      "halalStatus": "not_halal"
     },
     {
       "immutable": true,
@@ -4302,7 +4341,10 @@
       "prepTimeMin": 50,
       "dietaryTags": [],
       "timeTotal": 50,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "immutable": true,
@@ -4595,7 +4637,10 @@
         "vegetarian"
       ],
       "timeTotal": 35,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "immutable": true,
@@ -4861,7 +4906,10 @@
       "prepTimeMin": 50,
       "dietaryTags": [],
       "timeTotal": 50,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "immutable": true,
@@ -5141,7 +5189,10 @@
       "prepTimeMin": 150,
       "dietaryTags": [],
       "timeTotal": 150,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "immutable": true,
@@ -5428,7 +5479,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "immutable": true,
@@ -5700,7 +5754,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "immutable": true,
@@ -6026,7 +6083,10 @@
       "prepTimeMin": 35,
       "dietaryTags": [],
       "timeTotal": 35,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "immutable": true,
@@ -6287,7 +6347,10 @@
       "prepTimeMin": 25,
       "dietaryTags": [],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "immutable": true,
@@ -6606,7 +6669,10 @@
         "vegetarian"
       ],
       "timeTotal": 35,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "immutable": true,
@@ -6864,7 +6930,10 @@
       "prepTimeMin": 180,
       "dietaryTags": [],
       "timeTotal": 180,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "immutable": true,
@@ -7136,7 +7205,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "immutable": true,
@@ -7408,7 +7480,10 @@
         "vegetarian"
       ],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "immutable": true,
@@ -7698,7 +7773,10 @@
         "vegetarian"
       ],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "immutable": true,
@@ -7962,7 +8040,10 @@
         "vegetarian"
       ],
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "immutable": true,
@@ -8284,7 +8365,10 @@
         "vegetarian"
       ],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "immutable": true,
@@ -8558,7 +8642,10 @@
         "low-carb"
       ],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "immutable": true,
@@ -8884,7 +8971,10 @@
         "keto"
       ],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "vitello_tonnato",
@@ -9328,7 +9418,10 @@
       "prepTimeMin": 100,
       "dietaryTags": [],
       "timeTotal": 100,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "aioli",
@@ -9561,7 +9654,10 @@
         "low-carb"
       ],
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "penne_alla_vodka",
@@ -9889,7 +9985,10 @@
         "vegetarian"
       ],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "spaghetti_aglio_e_olio",
@@ -10176,7 +10275,10 @@
         "vegetarian"
       ],
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "bucatini_all_amatriciana",
@@ -10442,7 +10544,10 @@
       "prepTimeMin": 30,
       "dietaryTags": [],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": false,
+      "halalStatus": "not_halal"
     },
     {
       "id": "cacio_e_pepe",
@@ -10687,7 +10792,10 @@
         "vegetarian"
       ],
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "pesto_genovese",
@@ -10984,7 +11092,10 @@
         "vegetarian"
       ],
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "sugo_marinara",
@@ -11233,7 +11344,10 @@
         "vegetarian"
       ],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "penne_arrabbiata",
@@ -11521,7 +11635,10 @@
         "vegetarian"
       ],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "spaghetti_alla_puttanesca",
@@ -11863,7 +11980,10 @@
       "prepTimeMin": 25,
       "dietaryTags": [],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "pasta_alla_norma",
@@ -12168,7 +12288,10 @@
         "vegetarian"
       ],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "sugo_napoletana",
@@ -12437,7 +12560,10 @@
         "vegetarian"
       ],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "ragu_bianco",
@@ -12805,7 +12931,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "sauce_hollandaise",
@@ -13096,7 +13225,10 @@
         "low-carb"
       ],
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "sauce_bearnaise",
@@ -13430,7 +13562,10 @@
         "low-carb"
       ],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "sauce_tartare",
@@ -13739,7 +13874,10 @@
         "low-carb"
       ],
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "sauce_vierge",
@@ -14023,7 +14161,10 @@
         "low-carb"
       ],
       "timeTotal": 10,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "ragu_di_salsiccia",
@@ -14364,7 +14505,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "sauce_aux_champignons",
@@ -14693,7 +14837,10 @@
         "low-carb"
       ],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "vinaigrette",
@@ -14927,7 +15074,10 @@
         "low-carb"
       ],
       "timeTotal": 5,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "chimichurri",
@@ -15180,7 +15330,10 @@
         "low-carb"
       ],
       "timeTotal": 10,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "balsamic_glaze",
@@ -15331,7 +15484,10 @@
         "vegetarian"
       ],
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "paella_valenciana",
@@ -15704,7 +15860,10 @@
       "prepTimeMin": 50,
       "dietaryTags": [],
       "timeTotal": 50,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "rindfleischrouladen",
@@ -16100,7 +16259,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "flammkuchen",
@@ -16386,7 +16548,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": false,
+      "halalStatus": "not_halal"
     },
     {
       "id": "kaiserschmarrn",
@@ -16732,7 +16897,10 @@
         "vegetarian"
       ],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "moussaka",
@@ -17248,7 +17416,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "ossobuco_alla_milanese",
@@ -17702,7 +17873,10 @@
       "prepTimeMin": 120,
       "dietaryTags": [],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "saltimbocca_alla_romana",
@@ -18023,7 +18197,10 @@
       "prepTimeMin": 25,
       "dietaryTags": [],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "lachs_poke_bowl",
@@ -18427,7 +18604,10 @@
         "high_protein"
       ],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "koreanische_bibimbap_bowl",
@@ -18846,7 +19026,10 @@
         "high_protein"
       ],
       "timeTotal": 35,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "acai_fruehstuecks_bowl",
@@ -19140,7 +19323,10 @@
         "vegetarian"
       ],
       "timeTotal": 10,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "vegane_burrito_bowl",
@@ -19529,7 +19715,10 @@
         "glutenfree"
       ],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "falafel_mediterran_bowl",
@@ -19915,7 +20104,10 @@
         "vegetarian"
       ],
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "teriyaki_haehnchen_bowl",
@@ -20300,7 +20492,10 @@
         "high_protein"
       ],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "buddha_bowl_suesskartoffel",
@@ -20667,7 +20862,10 @@
         "glutenfree"
       ],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "griechische_gyros_bowl",
@@ -21015,7 +21213,10 @@
         "high_protein"
       ],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "lachs_avocado_sushi_bowl",
@@ -21381,7 +21582,10 @@
         "high_protein"
       ],
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "orientalische_linsen_bowl",
@@ -21712,7 +21916,10 @@
         "vegetarian"
       ],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "gruene_power_bowl",
@@ -22023,7 +22230,10 @@
         "vegetarian"
       ],
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "mexikanische_taco_bowl",
@@ -22411,7 +22621,10 @@
         "glutenfree"
       ],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "gruene_smoothie_bowl",
@@ -22703,7 +22916,10 @@
         "vegetarian"
       ],
       "timeTotal": 10,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "mediterrane_thunfisch_bowl",
@@ -23032,7 +23248,10 @@
         "high_protein"
       ],
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "erdnuss_nudel_bowl",
@@ -23438,7 +23657,10 @@
         "vegetarian"
       ],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "immutable": true,
@@ -23816,7 +24038,10 @@
       "prepTimeMin": 25,
       "dietaryTags": [],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "mapo_tofu",
@@ -24335,7 +24560,10 @@
       "prepTimeMin": 20,
       "dietaryTags": [],
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "miso_ramen",
@@ -24946,7 +25174,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "boeuf_stroganoff",
@@ -25440,7 +25671,10 @@
       "prepTimeMin": 30,
       "dietaryTags": [],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "chili_con_carne",
@@ -25983,7 +26217,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "bibimbap",
@@ -26633,7 +26870,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "empanadas_de_carne",
@@ -27076,7 +27316,10 @@
       "archived": true,
       "course": "main",
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "bo_kho",
@@ -27726,7 +27969,10 @@
       "prepTimeMin": 100,
       "dietaryTags": [],
       "timeTotal": 100,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "tom_kha_gai",
@@ -28138,7 +28384,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "linsensuppe",
@@ -28630,7 +28879,10 @@
         "vegetarian"
       ],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "bouillabaisse",
@@ -29123,7 +29375,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "massaman_curry",
@@ -29558,7 +29813,10 @@
       "prepTimeMin": 75,
       "dietaryTags": [],
       "timeTotal": 75,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "ossobuco_lombardo",
@@ -30044,7 +30302,10 @@
       "prepTimeMin": 120,
       "dietaryTags": [],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "mushroom_risotto",
@@ -30494,7 +30755,10 @@
         "vegetarian"
       ],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "nasi_goreng",
@@ -30968,7 +31232,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "feijoada",
@@ -31420,7 +31687,10 @@
       "prepTimeMin": 180,
       "dietaryTags": [],
       "timeTotal": 180,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "jambalaya",
@@ -31914,7 +32184,10 @@
       "prepTimeMin": 55,
       "dietaryTags": [],
       "timeTotal": 55,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": false,
+      "halalStatus": "not_halal"
     },
     {
       "id": "beef_wellington",
@@ -32325,7 +32598,10 @@
       "prepTimeMin": 120,
       "dietaryTags": [],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "cassoulet",
@@ -32820,7 +33096,10 @@
       "prepTimeMin": 240,
       "dietaryTags": [],
       "timeTotal": 240,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "ceviche",
@@ -33145,7 +33424,10 @@
       "archived": true,
       "course": "starter_soup",
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "borscht",
@@ -33642,7 +33924,10 @@
       "prepTimeMin": 120,
       "dietaryTags": [],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "gumbo",
@@ -34159,7 +34444,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": false,
+      "halalStatus": "not_halal"
     },
     {
       "id": "poutine",
@@ -34491,7 +34779,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "laksa",
@@ -34966,7 +35257,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "tacos_al_pastor",
@@ -35359,7 +35653,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "pierogi_ruskie",
@@ -35714,7 +36011,10 @@
         "vegetarian"
       ],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "khachapuri",
@@ -36048,7 +36348,10 @@
         "vegetarian"
       ],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "bobotie",
@@ -36465,7 +36768,10 @@
       "prepTimeMin": 75,
       "dietaryTags": [],
       "timeTotal": 75,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "poerkolt",
@@ -36881,7 +37187,10 @@
       "prepTimeMin": 120,
       "dietaryTags": [],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "baeckeoffe",
@@ -37321,7 +37630,10 @@
       "prepTimeMin": 240,
       "dietaryTags": [],
       "timeTotal": 240,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "pastitsio",
@@ -37819,7 +38131,10 @@
       "prepTimeMin": 120,
       "dietaryTags": [],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "chili_verde",
@@ -38235,7 +38550,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "cochinita_pibil",
@@ -38649,7 +38967,10 @@
       "prepTimeMin": 180,
       "dietaryTags": [],
       "timeTotal": 180,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "chicken_adobo",
@@ -38979,7 +39300,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "hainanese_chicken_rice",
@@ -39352,7 +39676,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "sauerbraten",
@@ -39801,7 +40128,10 @@
       "prepTimeMin": 240,
       "dietaryTags": [],
       "timeTotal": 240,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "schweinshaxe",
@@ -40193,7 +40523,10 @@
       "prepTimeMin": 180,
       "dietaryTags": [],
       "timeTotal": 180,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "koenigsberger_klopse",
@@ -40646,7 +40979,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "kung_pao_chicken",
@@ -41075,7 +41411,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "larb_gai",
@@ -41448,7 +41787,10 @@
       "prepTimeMin": 30,
       "dietaryTags": [],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "bun_cha",
@@ -41904,7 +42246,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "fesenjan",
@@ -42257,7 +42602,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "tagine",
@@ -42712,7 +43060,10 @@
       "prepTimeMin": 120,
       "dietaryTags": [],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "mole_poblano",
@@ -43166,7 +43517,10 @@
       "prepTimeMin": 150,
       "dietaryTags": [],
       "timeTotal": 150,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "sancocho",
@@ -43584,7 +43938,10 @@
       "prepTimeMin": 120,
       "dietaryTags": [],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "harira",
@@ -44018,7 +44375,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "pastilla",
@@ -44412,7 +44772,10 @@
       "prepTimeMin": 150,
       "dietaryTags": [],
       "timeTotal": 150,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "menemen",
@@ -44741,7 +45104,10 @@
       "prepTimeMin": 25,
       "dietaryTags": [],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "chili_colorado",
@@ -45173,7 +45539,10 @@
       "prepTimeMin": 120,
       "dietaryTags": [],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "cordon_bleu",
@@ -45502,7 +45871,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "szegediner_gulasch",
@@ -45874,7 +46246,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "pozole_rojo",
@@ -46285,7 +46660,10 @@
       "prepTimeMin": 150,
       "dietaryTags": [],
       "timeTotal": 150,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "bacalhau_a_bras",
@@ -46593,7 +46971,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "vindaloo",
@@ -46983,7 +47364,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "chicken_katsu_curry",
@@ -47334,7 +47718,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "bulgogi",
@@ -47706,7 +48093,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "boerek",
@@ -47998,7 +48388,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "baklava",
@@ -48285,7 +48678,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "arepas",
@@ -48574,7 +48970,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "pupusas",
@@ -48926,7 +49325,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "tteokbokki",
@@ -49236,7 +49638,10 @@
       "prepTimeMin": 30,
       "dietaryTags": [],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "ramen_tonkotsu",
@@ -49631,7 +50036,10 @@
       "prepTimeMin": 240,
       "dietaryTags": [],
       "timeTotal": 240,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "kimchi_jjigae",
@@ -49962,7 +50370,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "gyoza",
@@ -50293,7 +50704,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "okonomiyaki",
@@ -50624,7 +51038,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "sushi_lachs",
@@ -50954,7 +51371,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "miso_suppe",
@@ -51178,7 +51598,10 @@
       "prepTimeMin": 20,
       "dietaryTags": [],
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "banh_mi",
@@ -51529,7 +51952,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "yakitori",
@@ -51796,7 +52222,10 @@
       "prepTimeMin": 35,
       "dietaryTags": [],
       "timeTotal": 35,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "lomo_saltado",
@@ -52125,7 +52554,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "chicken_satay",
@@ -52476,7 +52908,10 @@
       "prepTimeMin": 50,
       "dietaryTags": [],
       "timeTotal": 50,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "chiles_rellenos",
@@ -52806,7 +53241,10 @@
       "prepTimeMin": 70,
       "dietaryTags": [],
       "timeTotal": 70,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "ropa_vieja",
@@ -53178,7 +53616,10 @@
       "prepTimeMin": 150,
       "dietaryTags": [],
       "timeTotal": 150,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "pollo_a_la_brasa",
@@ -53487,7 +53928,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "enchiladas_verdes",
@@ -53817,7 +54261,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "anticuchos",
@@ -54105,7 +54552,10 @@
       "prepTimeMin": 70,
       "dietaryTags": [],
       "timeTotal": 70,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "causa_limena",
@@ -54414,7 +54864,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "sopa_de_tortilla",
@@ -54765,7 +55218,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "chicken_karahi",
@@ -55096,7 +55552,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "nikujaga",
@@ -55405,7 +55864,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "mofongo",
@@ -55672,7 +56134,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "ajiaco",
@@ -56003,7 +56468,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "pabellon_criollo",
@@ -56312,7 +56780,10 @@
       "prepTimeMin": 120,
       "dietaryTags": [],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "bandeja_paisa",
@@ -56643,7 +57114,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "moqueca",
@@ -56930,7 +57404,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "beef_rendang",
@@ -57258,7 +57735,10 @@
       "prepTimeMin": 180,
       "dietaryTags": [],
       "timeTotal": 180,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "pho",
@@ -57604,7 +58084,10 @@
       "archived": true,
       "course": "main",
       "timeTotal": 240,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "pao_de_queijo",
@@ -57828,7 +58311,10 @@
       "prepTimeMin": 50,
       "dietaryTags": [],
       "timeTotal": 50,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "banh_xeo",
@@ -58076,7 +58562,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "butter_chicken",
@@ -58405,7 +58894,10 @@
       "prepTimeMin": 70,
       "dietaryTags": [],
       "timeTotal": 70,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "kung_pao",
@@ -58709,7 +59201,10 @@
       "archived": true,
       "course": "main",
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "goulash",
@@ -58976,7 +59471,10 @@
       "prepTimeMin": 150,
       "dietaryTags": [],
       "timeTotal": 150,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "empanadas",
@@ -59237,7 +59735,10 @@
       "archived": true,
       "course": "main",
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "fondue",
@@ -59483,7 +59984,10 @@
       "prepTimeMin": 30,
       "dietaryTags": [],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "linsen_curry",
@@ -59792,7 +60296,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "hummus",
@@ -60037,7 +60544,10 @@
       "prepTimeMin": 30,
       "dietaryTags": [],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "risotto",
@@ -60276,7 +60786,10 @@
       "archived": true,
       "course": "main",
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "tikka_masala",
@@ -60563,7 +61076,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "clam_chowder",
@@ -60942,7 +61458,10 @@
       "prepTimeMin": 50,
       "dietaryTags": [],
       "timeTotal": 50,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": false,
+      "halalStatus": "not_halal"
     },
     {
       "id": "tortilla_espanola",
@@ -61193,7 +61712,10 @@
         "gluten_free"
       ],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "gambas_al_ajillo",
@@ -61470,7 +61992,10 @@
         "pescatarian"
       ],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "tom_yum",
@@ -61873,7 +62398,10 @@
         "dairy_free"
       ],
       "timeTotal": 35,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "souvlaki",
@@ -62227,7 +62755,10 @@
         "gluten_free"
       ],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "spanakopita",
@@ -62566,7 +63097,10 @@
         "vegetarian"
       ],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "palak_paneer",
@@ -62947,7 +63481,10 @@
         "gluten_free"
       ],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "dal_makhani",
@@ -63308,7 +63845,10 @@
         "gluten_free"
       ],
       "timeTotal": 70,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "pad_kra_pao",
@@ -63751,7 +64291,10 @@
       "prepTimeMin": 25,
       "dietaryTags": [],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "japchae",
@@ -64211,7 +64754,10 @@
       "prepTimeMin": 35,
       "dietaryTags": [],
       "timeTotal": 35,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "shawarma",
@@ -64669,7 +65215,10 @@
       "prepTimeMin": 30,
       "dietaryTags": [],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "biryani",
@@ -65185,7 +65734,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "samosa",
@@ -65666,7 +66218,10 @@
         "vegetarian"
       ],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "rogan_josh",
@@ -66125,7 +66680,10 @@
       "prepTimeMin": 70,
       "dietaryTags": [],
       "timeTotal": 70,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "tempura",
@@ -66547,7 +67105,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "korma",
@@ -67008,7 +67569,10 @@
       "prepTimeMin": 50,
       "dietaryTags": [],
       "timeTotal": 50,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "palak_chicken",
@@ -67426,7 +67990,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "tandoori_chicken",
@@ -67826,7 +68393,10 @@
         "gluten_free"
       ],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "naan",
@@ -68165,7 +68735,10 @@
         "vegetarian"
       ],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "idli",
@@ -68434,7 +69007,10 @@
         "gluten_free"
       ],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "dosa",
@@ -68724,7 +69300,10 @@
         "gluten_free"
       ],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "wonton_soup",
@@ -69164,7 +69743,10 @@
       "prepTimeMin": 50,
       "dietaryTags": [],
       "timeTotal": 50,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "chapati",
@@ -69400,7 +69982,10 @@
         "vegetarian"
       ],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "paratha",
@@ -69634,7 +70219,10 @@
         "vegetarian"
       ],
       "timeTotal": 50,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "fish_and_chips",
@@ -69989,7 +70577,10 @@
       "prepTimeMin": 50,
       "dietaryTags": [],
       "timeTotal": 50,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "shepherd_pie",
@@ -70385,7 +70976,10 @@
       "prepTimeMin": 70,
       "dietaryTags": [],
       "timeTotal": 70,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "gazpacho",
@@ -70703,7 +71297,10 @@
         "gluten_free"
       ],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "bruschetta",
@@ -70979,7 +71576,10 @@
         "vegan"
       ],
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "creme_brulee",
@@ -71291,7 +71891,10 @@
         "gluten_free"
       ],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "upma",
@@ -71716,7 +72319,10 @@
         "vegetarian"
       ],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "pongal",
@@ -72061,7 +72667,10 @@
         "gluten_free"
       ],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "vada",
@@ -72397,7 +73006,10 @@
         "gluten_free"
       ],
       "timeTotal": 300,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "cottage_pie",
@@ -72792,7 +73404,10 @@
       "prepTimeMin": 70,
       "dietaryTags": [],
       "timeTotal": 70,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "patatas_bravas",
@@ -73146,7 +73761,10 @@
         "vegan"
       ],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "focaccia",
@@ -73463,7 +74081,10 @@
         "vegan"
       ],
       "timeTotal": 150,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "panna_cotta",
@@ -73715,7 +74336,10 @@
         "gluten_free"
       ],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "huevos_rotos",
@@ -74012,7 +74636,10 @@
         "gluten_free"
       ],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "pulpo_a_la_gallega",
@@ -74308,7 +74935,10 @@
         "gluten_free"
       ],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "couscous_royal",
@@ -74872,7 +75502,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "dolma",
@@ -75292,7 +75925,10 @@
         "vegan"
       ],
       "timeTotal": 70,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "bun_bo_hue",
@@ -75749,7 +76385,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "blanquette_de_veau",
@@ -76190,7 +76829,10 @@
       "prepTimeMin": 100,
       "dietaryTags": [],
       "timeTotal": 100,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "sachertorte",
@@ -76568,7 +77210,10 @@
         "vegetarian"
       ],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "pisto",
@@ -76908,7 +77553,10 @@
         "gluten_free"
       ],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "hamburger",
@@ -77316,7 +77964,10 @@
       "prepTimeMin": 30,
       "dietaryTags": [],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "buffalo_wings",
@@ -77672,7 +78323,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "mac_and_cheese",
@@ -78018,7 +78672,10 @@
         "vegetarian"
       ],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "chicken_pot_pie",
@@ -78438,7 +79095,10 @@
       "prepTimeMin": 70,
       "dietaryTags": [],
       "timeTotal": 70,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "sticky_toffee_pudding",
@@ -78798,7 +79458,10 @@
         "vegetarian"
       ],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "tzatziki",
@@ -79096,7 +79759,10 @@
         "gluten_free"
       ],
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "kalua_pork",
@@ -79347,7 +80013,10 @@
         "gluten_free"
       ],
       "timeTotal": 300,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "texas_brisket",
@@ -79660,7 +80329,10 @@
         "gluten_free"
       ],
       "timeTotal": 300,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "key_lime_pie",
@@ -79980,7 +80652,10 @@
         "vegetarian"
       ],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "banoffee_pie",
@@ -80277,7 +80952,10 @@
         "vegetarian"
       ],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "bangers_and_mash",
@@ -80593,7 +81271,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "saganaki",
@@ -80848,7 +81529,10 @@
         "vegetarian"
       ],
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "char_siu",
@@ -81229,7 +81913,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "philly_cheesesteak",
@@ -81563,7 +82250,10 @@
       "prepTimeMin": 30,
       "dietaryTags": [],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "weinerschnitzel",
@@ -81885,7 +82575,10 @@
       "prepTimeMin": 30,
       "dietaryTags": [],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "xiaolongbao",
@@ -82287,7 +82980,10 @@
       "prepTimeMin": 120,
       "dietaryTags": [],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "churros",
@@ -82628,7 +83324,10 @@
         "vegetarian"
       ],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "takoyaki",
@@ -83031,7 +83730,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "apple_crumble",
@@ -83329,7 +84031,10 @@
         "vegetarian"
       ],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "taramasalata",
@@ -83627,7 +84332,10 @@
         "gluten_free"
       ],
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "full_english_breakfast",
@@ -84003,7 +84711,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "soutzoukakia",
@@ -84444,7 +85155,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "mochi",
@@ -84740,7 +85454,10 @@
         "gluten_free"
       ],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "tortilla_de_camaron",
@@ -85037,7 +85754,10 @@
       "prepTimeMin": 35,
       "dietaryTags": [],
       "timeTotal": 35,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "cevapi",
@@ -85368,7 +86088,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "peking_duck",
@@ -85788,7 +86511,10 @@
       "prepTimeMin": 180,
       "dietaryTags": [],
       "timeTotal": 180,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "rendang_beef",
@@ -86290,7 +87016,10 @@
         "gluten_free"
       ],
       "timeTotal": 180,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "eton_mess",
@@ -86563,7 +87292,10 @@
         "gluten_free"
       ],
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "cornish_pasty",
@@ -86918,7 +87650,10 @@
       "prepTimeMin": 80,
       "dietaryTags": [],
       "timeTotal": 80,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "matcha_cheesecake",
@@ -87302,7 +88037,10 @@
         "vegetarian"
       ],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "empanada_gallega",
@@ -87678,7 +88416,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "gyudon",
@@ -88055,7 +88796,10 @@
       "prepTimeMin": 30,
       "dietaryTags": [],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "creme_caramel",
@@ -88378,7 +89122,10 @@
         "gluten_free"
       ],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "korean_fried_chicken",
@@ -88867,7 +89614,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "trifle",
@@ -89185,7 +89935,10 @@
         "vegetarian"
       ],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "yakisoba",
@@ -89599,7 +90352,10 @@
       "prepTimeMin": 30,
       "dietaryTags": [],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "sarma",
@@ -90055,7 +90811,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "pilaf",
@@ -90457,7 +91216,10 @@
         "vegetarian"
       ],
       "timeTotal": 35,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "lemon_tart",
@@ -90821,7 +91583,10 @@
         "vegetarian"
       ],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "karaage",
@@ -91177,7 +91942,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "pintxos",
@@ -91540,7 +92308,10 @@
       "prepTimeMin": 25,
       "dietaryTags": [],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": false,
+      "halalStatus": "not_halal"
     },
     {
       "id": "onigiri",
@@ -91829,7 +92600,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "japanese_curry",
@@ -92244,7 +93018,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "khao_soi",
@@ -92744,7 +93521,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "som_tam",
@@ -93142,7 +93922,10 @@
       "prepTimeMin": 25,
       "dietaryTags": [],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "larb_moo",
@@ -93518,7 +94301,10 @@
       "prepTimeMin": 25,
       "dietaryTags": [],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "chocolate_mousse",
@@ -93856,7 +94642,10 @@
         "gluten_free"
       ],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "toad_in_the_hole",
@@ -94210,7 +94999,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "wonton_noodles",
@@ -94675,7 +95467,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "oyakodon",
@@ -95072,7 +95867,10 @@
       "prepTimeMin": 25,
       "dietaryTags": [],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "green_curry",
@@ -95508,7 +96306,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "fish_tacos",
@@ -96014,7 +96815,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "carnitas",
@@ -96370,7 +97174,10 @@
         "gluten_free"
       ],
       "timeTotal": 180,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "waffles",
@@ -96733,7 +97540,10 @@
         "vegetarian"
       ],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "red_velvet_cake",
@@ -97235,7 +98045,10 @@
         "vegetarian"
       ],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "katsu_don",
@@ -97679,7 +98492,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "panang_curry",
@@ -98079,7 +98895,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "chilaquiles",
@@ -98475,7 +99294,10 @@
       "prepTimeMin": 35,
       "dietaryTags": [],
       "timeTotal": 35,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "banana_bread",
@@ -98877,7 +99699,10 @@
         "vegetarian"
       ],
       "timeTotal": 75,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "macarons",
@@ -99238,7 +100063,10 @@
         "gluten_free"
       ],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "cannoli",
@@ -99618,7 +100446,10 @@
         "vegetarian"
       ],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "pavlova",
@@ -100000,7 +100831,10 @@
         "gluten_free"
       ],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "salmon_teriyaki",
@@ -100399,7 +101233,10 @@
       "prepTimeMin": 30,
       "dietaryTags": [],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "chawanmushi",
@@ -100778,7 +101615,10 @@
       "prepTimeMin": 35,
       "dietaryTags": [],
       "timeTotal": 35,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "eggs_benedict",
@@ -101114,7 +101954,10 @@
       "prepTimeMin": 35,
       "dietaryTags": [],
       "timeTotal": 35,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "huevos_rancheros",
@@ -101490,7 +102333,10 @@
       "prepTimeMin": 30,
       "dietaryTags": [],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "chocolate_lava_cake",
@@ -101851,7 +102697,10 @@
         "vegetarian"
       ],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "tres_leches",
@@ -102194,7 +103043,10 @@
         "vegetarian"
       ],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "pastel_de_nata",
@@ -102575,7 +103427,10 @@
         "vegetarian"
       ],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "flourless_chocolate_cake",
@@ -102931,7 +103786,10 @@
         "gluten_free"
       ],
       "timeTotal": 50,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "brownies",
@@ -103309,7 +104167,10 @@
         "vegetarian"
       ],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "french_toast",
@@ -103676,7 +104537,10 @@
         "vegetarian"
       ],
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "tarte_tatin",
@@ -104009,7 +104873,10 @@
         "vegetarian"
       ],
       "timeTotal": 70,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "arroz_con_leche",
@@ -104352,7 +105219,10 @@
         "vegetarian"
       ],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "scotch_egg",
@@ -104751,7 +105621,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "sukiyaki",
@@ -105254,7 +106127,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "carrot_cake",
@@ -105780,7 +106656,10 @@
         "vegetarian"
       ],
       "timeTotal": 75,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "pecan_pie",
@@ -106162,7 +107041,10 @@
         "vegetarian"
       ],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "brigadeiro",
@@ -106398,7 +107280,10 @@
         "gluten_free"
       ],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "shabu_shabu",
@@ -106863,7 +107748,10 @@
       "prepTimeMin": 40,
       "dietaryTags": [],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "blondies",
@@ -107225,7 +108113,10 @@
         "vegetarian"
       ],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "pumpkin_pie",
@@ -107647,7 +108538,10 @@
         "vegetarian"
       ],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "welsh_rarebit",
@@ -108012,7 +108906,10 @@
         "vegetarian"
       ],
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "maple_syrup_pancakes",
@@ -108390,7 +109287,10 @@
         "vegetarian"
       ],
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "eclairs",
@@ -108855,7 +109755,10 @@
         "vegetarian"
       ],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "quindim",
@@ -109111,7 +110014,10 @@
         "gluten_free"
       ],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "beijinho",
@@ -109346,7 +110252,10 @@
         "gluten_free"
       ],
       "timeTotal": 40,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "sopaipillas",
@@ -109641,7 +110550,10 @@
         "vegetarian"
       ],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "avocado_toast",
@@ -109938,7 +110850,10 @@
       "cuisineOrigin": "international",
       "cuisineStyle": "modern",
       "timeTotal": 10,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "fish_soup",
@@ -110377,7 +111292,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "mille_feuille",
@@ -110762,7 +111680,10 @@
         "vegetarian"
       ],
       "timeTotal": 75,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "opera_cake",
@@ -111147,7 +112068,10 @@
         "vegetarian"
       ],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "paris_brest",
@@ -111530,7 +112454,10 @@
         "vegetarian"
       ],
       "timeTotal": 75,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "sfogliatella",
@@ -111912,7 +112839,10 @@
         "vegetarian"
       ],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "zeppole",
@@ -112292,7 +113222,10 @@
         "vegetarian"
       ],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "cassata",
@@ -112633,7 +113566,10 @@
         "vegetarian"
       ],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "bolo_de_bolacha",
@@ -112976,7 +113912,10 @@
         "vegetarian"
       ],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "sheperds_pie_v",
@@ -113391,7 +114330,10 @@
       "prepTimeMin": 70,
       "dietaryTags": [],
       "timeTotal": 70,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "fish_pie",
@@ -113769,7 +114711,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "steak_and_kidney_pie",
@@ -114210,7 +115155,10 @@
       "prepTimeMin": 150,
       "dietaryTags": [],
       "timeTotal": 150,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "ploughmans_lunch",
@@ -114550,7 +115498,10 @@
       "prepTimeMin": 15,
       "dietaryTags": [],
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "black_pudding_full",
@@ -114878,7 +115829,10 @@
       "prepTimeMin": 180,
       "dietaryTags": [],
       "timeTotal": 180,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "bubble_and_squeak",
@@ -115171,7 +116125,10 @@
         "vegetarian"
       ],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "coq_au_vin_blanc",
@@ -115610,7 +116567,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "choucroute_garnie",
@@ -116067,7 +117027,10 @@
       "prepTimeMin": 120,
       "dietaryTags": [],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "caldo_verde",
@@ -116414,7 +117377,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": false,
+      "halalStatus": "not_halal"
     },
     {
       "id": "arroz_de_pato",
@@ -116823,7 +117789,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": false,
+      "halalStatus": "not_halal"
     },
     {
       "id": "francesinha",
@@ -117243,7 +118212,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "pastel_de_belem",
@@ -117623,7 +118595,10 @@
         "vegetarian"
       ],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "boat_noodles",
@@ -118079,7 +119054,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "yorkshire_pudding",
@@ -118355,7 +119333,10 @@
         "vegetarian"
       ],
       "timeTotal": 35,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "chiles_en_nogada",
@@ -118792,7 +119773,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "ceviche_clasico",
@@ -119122,7 +120106,10 @@
       "prepTimeMin": 30,
       "dietaryTags": [],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "empanadas_argentinas",
@@ -119540,7 +120527,10 @@
       "prepTimeMin": 90,
       "dietaryTags": [],
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "asado_argentino",
@@ -119805,7 +120795,10 @@
       "prepTimeMin": 180,
       "dietaryTags": [],
       "timeTotal": 180,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": false,
+      "halalStatus": "not_halal"
     },
     {
       "id": "ossobuco",
@@ -120260,7 +121253,10 @@
       "archived": true,
       "course": "main",
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "saltimbocca",
@@ -120571,7 +121567,10 @@
       "archived": true,
       "course": "main",
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "gulasch",
@@ -120943,7 +121942,10 @@
       "prepTimeMin": 150,
       "dietaryTags": [],
       "timeTotal": 150,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "bigos",
@@ -121399,7 +122401,10 @@
       "prepTimeMin": 180,
       "dietaryTags": [],
       "timeTotal": 180,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "pierogi",
@@ -121776,7 +122781,10 @@
       "archived": true,
       "course": "main",
       "timeTotal": 90,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "gravlax",
@@ -122110,7 +123118,10 @@
       "prepTimeMin": 45,
       "dietaryTags": [],
       "timeTotal": 45,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "smorrebrod",
@@ -122491,7 +123502,10 @@
       "prepTimeMin": 30,
       "dietaryTags": [],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "kottbullar",
@@ -122913,7 +123927,10 @@
       "prepTimeMin": 60,
       "dietaryTags": [],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "tagine_lamb",
@@ -123367,7 +124384,10 @@
       "prepTimeMin": 120,
       "dietaryTags": [],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "pho_bo",
@@ -123843,7 +124863,10 @@
       "prepTimeMin": 240,
       "dietaryTags": [],
       "timeTotal": 240,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "birria",
@@ -124317,7 +125340,10 @@
       "prepTimeMin": 180,
       "dietaryTags": [],
       "timeTotal": 180,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "tamales",
@@ -124704,7 +125730,10 @@
       "prepTimeMin": 150,
       "dietaryTags": [],
       "timeTotal": 150,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": true,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "elote",
@@ -125024,7 +126053,10 @@
         "vegetarian"
       ],
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "guacamole",
@@ -125317,7 +126349,10 @@
         "vegan"
       ],
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "rendang",
@@ -125794,7 +126829,10 @@
       "prepTimeMin": 180,
       "dietaryTags": [],
       "timeTotal": 180,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "jollof_rice",
@@ -126271,7 +127309,10 @@
         "vegetarian"
       ],
       "timeTotal": 60,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "cheesecake_ny",
@@ -126633,7 +127674,10 @@
         "vegetarian"
       ],
       "timeTotal": 120,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "brownie",
@@ -127017,7 +128061,10 @@
         "vegetarian"
       ],
       "timeTotal": 50,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "knafeh",
@@ -127384,7 +128431,10 @@
         "vegetarian"
       ],
       "timeTotal": 80,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "overnight_oats_berry",
@@ -127464,7 +128514,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 5,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "bircher_muesli",
@@ -127560,7 +128613,10 @@
       "cuisine": "ch",
       "cuisineNeedsReview": false,
       "timeTotal": 10,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "shakshuka_beans",
@@ -127656,7 +128712,10 @@
       "cuisine": "maghrebi",
       "cuisineNeedsReview": false,
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "ruehrei_spinat_feta",
@@ -127736,7 +128795,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 10,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "avocado_toast_egg",
@@ -127816,7 +128878,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 10,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "skyr_bowl_walnut",
@@ -127896,7 +128961,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 5,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "banana_oat_pancakes",
@@ -127976,7 +129044,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "savory_porridge_mushroom",
@@ -128056,7 +129127,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "tamago_sando",
@@ -128136,7 +129210,10 @@
       "cuisine": "jp",
       "cuisineNeedsReview": false,
       "timeTotal": 10,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "chia_yogurt_cherry",
@@ -128216,7 +129293,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 5,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": true,
+      "halalStatus": "not_halal"
     },
     {
       "id": "quark_parfait_almond",
@@ -128296,7 +129376,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 5,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "rye_cottage_cheese",
@@ -128376,7 +129459,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 5,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "egg_bean_burrito",
@@ -128472,7 +129558,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "apple_walnut_baked_oats",
@@ -128568,7 +129657,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "tofu_scramble_veg",
@@ -128650,7 +129742,10 @@
       "cuisineOrigin": "international",
       "cuisineStyle": "modern",
       "timeTotal": 10,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "mexican_breakfast_tacos",
@@ -128730,7 +129825,10 @@
       "cuisine": "mx",
       "cuisineNeedsReview": false,
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "herb_omelette",
@@ -128810,7 +129908,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 10,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "apple_cinnamon_porridge",
@@ -128906,7 +130007,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 10,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "labneh_bowl_olives",
@@ -128986,7 +130090,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 5,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "roesti_salmon",
@@ -129066,7 +130173,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "tomato_lentil_soup",
@@ -129166,7 +130276,10 @@
       "cuisineOrigin": "mediterranean",
       "cuisineStyle": "modern",
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "minestrone_beans",
@@ -129264,7 +130377,10 @@
       "cuisine": "it",
       "cuisineNeedsReview": false,
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "chickpea_bowl_roasted_veg",
@@ -129364,7 +130480,10 @@
       "cuisineOrigin": "mediterranean",
       "cuisineStyle": "modern",
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "white_bean_tuna_salad",
@@ -129464,7 +130583,10 @@
       "cuisineOrigin": "italian",
       "cuisineStyle": "modern",
       "timeTotal": 10,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "salmon_tray_broccoli",
@@ -129548,7 +130670,10 @@
       "cuisineOrigin": "international",
       "cuisineStyle": "modern",
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "miso_noodle_soup_tofu",
@@ -129646,7 +130771,10 @@
       "cuisine": "jp",
       "cuisineNeedsReview": false,
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "cabbage_mushroom_tofu",
@@ -129730,7 +130858,10 @@
       "cuisineOrigin": "asian",
       "cuisineStyle": "modern",
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "zucchini_frittata_salad",
@@ -129814,7 +130945,10 @@
       "cuisineOrigin": "italian",
       "cuisineStyle": "modern",
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "cod_tomato_olives",
@@ -129898,7 +131032,10 @@
       "cuisineOrigin": "mediterranean",
       "cuisineStyle": "modern",
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "stuffed_peppers_lentils",
@@ -129982,7 +131119,10 @@
       "cuisineOrigin": "mediterranean",
       "cuisineStyle": "modern",
       "timeTotal": 35,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "chicken_caesar_salad",
@@ -130082,7 +131222,10 @@
       "cuisineOrigin": "american",
       "cuisineStyle": "modern",
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "falafel_bowl_yogurt",
@@ -130180,7 +131323,10 @@
       "cuisine": "lb",
       "cuisineNeedsReview": false,
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "vegetable_quesadilla",
@@ -130280,7 +131426,10 @@
       "cuisineOrigin": "mexican",
       "cuisineStyle": "modern",
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "chicken_wrap_greek",
@@ -130380,7 +131529,10 @@
       "cuisineOrigin": "greek",
       "cuisineStyle": "modern",
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "salmon_tacos_light",
@@ -130480,7 +131632,10 @@
       "cuisineOrigin": "mexican",
       "cuisineStyle": "modern",
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "zucchini_noodles_feta",
@@ -130564,7 +131719,10 @@
       "cuisineOrigin": "mediterranean",
       "cuisineStyle": "modern",
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "wholegrain_pasta_pea_pesto",
@@ -130664,7 +131822,10 @@
       "cuisineOrigin": "italian",
       "cuisineStyle": "modern",
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "soba_noodles_veg",
@@ -130762,7 +131923,10 @@
       "cuisine": "jp",
       "cuisineNeedsReview": false,
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "omelette_mushrooms",
@@ -130846,7 +132010,10 @@
       "cuisineOrigin": "international",
       "cuisineStyle": "modern",
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "chicken_veg_stew",
@@ -130946,7 +132113,10 @@
       "cuisineOrigin": "international",
       "cuisineStyle": "modern",
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "chia_pudding_mango",
@@ -131026,7 +132196,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 5,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "egg_muffins_spinach",
@@ -131106,7 +132279,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "sweet_potato_toast_avocado",
@@ -131186,7 +132362,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "greek_yogurt_granola",
@@ -131266,7 +132445,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 5,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "spinach_feta_wrap",
@@ -131346,7 +132528,10 @@
       "cuisine": null,
       "cuisineNeedsReview": true,
       "timeTotal": 10,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "shrimp_zucchini_pasta",
@@ -131430,7 +132615,10 @@
       "cuisineOrigin": "italian",
       "cuisineStyle": "modern",
       "timeTotal": 20,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "turkey_lettuce_wraps",
@@ -131514,7 +132702,10 @@
       "cuisineOrigin": "american",
       "cuisineStyle": "modern",
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "cauliflower_steak_herb",
@@ -131598,7 +132789,10 @@
       "cuisineOrigin": "international",
       "cuisineStyle": "modern",
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "mushroom_barley_risotto",
@@ -131680,7 +132874,10 @@
       "cuisine": "it",
       "cuisineNeedsReview": false,
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "baked_feta_tomato_pasta",
@@ -131764,7 +132961,10 @@
       "cuisineOrigin": "mediterranean",
       "cuisineStyle": "modern",
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "chicken_broccoli_stirfry",
@@ -131848,7 +133048,10 @@
       "cuisineOrigin": "asian",
       "cuisineStyle": "modern",
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "lentil_bolo_pasta",
@@ -131930,7 +133133,10 @@
       "cuisine": "it",
       "cuisineNeedsReview": false,
       "timeTotal": 25,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "salmon_cucumber_salad",
@@ -132014,7 +133220,10 @@
       "cuisineOrigin": "international",
       "cuisineStyle": "modern",
       "timeTotal": 15,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "stuffed_zucchini_quinoa",
@@ -132098,7 +133307,10 @@
       "cuisineOrigin": "mediterranean",
       "cuisineStyle": "modern",
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     },
     {
       "id": "eggplant_tomato_bake",
@@ -132182,7 +133394,10 @@
       "cuisineOrigin": "mediterranean",
       "cuisineStyle": "modern",
       "timeTotal": 30,
-      "timeActive": null
+      "timeActive": null,
+      "containsPork": false,
+      "containsAlcohol": false,
+      "halalStatus": "unverified"
     }
   ]
 }
