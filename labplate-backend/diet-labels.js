@@ -7,6 +7,7 @@
 // Schwellen (pro Portion)
 const KETO_MAX_NET_CARBS_G = 10;
 const HIGH_PROTEIN_MIN_G = 25;
+const LOW_CARB_MAX_NET_CARBS_G = 20;
 
 // Regex auf Zutatennamen. Wortgrenzen verhindern Fehltreffer
 // ("Kokosmilch" matcht nicht \bmilch\b, "Erdnussbutter" nicht \bbutter\b).
@@ -56,6 +57,7 @@ function computeDietLabels(nutrition, ingredients) {
   const netCarbsSafe = Number.isFinite(netCarbs) ? netCarbs : 999;
 
   if (netCarbsSafe < KETO_MAX_NET_CARBS_G) labels.push('keto');
+  if (netCarbsSafe <= LOW_CARB_MAX_NET_CARBS_G) labels.push('low-carb');
   if (protein >= HIGH_PROTEIN_MIN_G) labels.push('high_protein');
 
   const cls = classifyByIngredients(ingredients);
@@ -73,4 +75,5 @@ module.exports = {
   classifyByIngredients: classifyByIngredients,
   KETO_MAX_NET_CARBS_G: KETO_MAX_NET_CARBS_G,
   HIGH_PROTEIN_MIN_G: HIGH_PROTEIN_MIN_G,
+  LOW_CARB_MAX_NET_CARBS_G: LOW_CARB_MAX_NET_CARBS_G,
 };
