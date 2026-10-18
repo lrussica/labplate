@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vorschau: Rezepte entdecken V9</title>
+<style>
+  :root {
+    --bg: #000000; --card-bg: #1c1c1e;
+    --text: #ffffff; --text-muted: #8e8e93;
+  }
+  body {
+    background-color: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0; display: flex; justify-content: center; height: 100vh; overflow: hidden;
+  }
+  .sheet {
+    background-color: var(--bg); width: 100%; max-width: 500px;
+    height: 92vh; border-radius: 24px 24px 0 0; align-self: flex-end;
+    display: flex; flex-direction: column; box-shadow: 0 -10px 40px rgba(0,0,0,0.8);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    position: relative; overflow: hidden;
+  }
+  .drag-handle {
+    width: 40px; height: 5px; background: #333; border-radius: 10px;
+    margin: 12px auto 24px auto;
+  }
+  .header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding: 0 24px; margin-bottom: 20px;
+  }
+  .header h1 { margin: 0; font-size: 28px; font-weight: 600; letter-spacing: -0.5px; }
+  .header .count { color: var(--text-muted); font-size: 15px; margin-top: 4px; }
+  .close-btn {
+    background: var(--card-bg); border: none; color: var(--text-muted);
+    width: 36px; height: 36px; border-radius: 50%; font-size: 18px;
+    display: flex; justify-content: center; align-items: center; cursor: pointer;
+  }
+  
+  .search-container { padding: 0 24px; margin-bottom: 24px; }
+  .search-bar {
+    background: var(--card-bg); border-radius: 16px; padding: 16px;
+    display: flex; align-items: center; gap: 12px; border: none;
+  }
+  .search-bar input {
+    background: transparent; border: none; color: var(--text); font-size: 16px;
+    flex: 1; outline: none;
+  }
+  .search-bar input::placeholder { color: var(--text-muted); }
+  
+  .tabs-wrapper {
+    position: relative; margin-bottom: 24px;
+  }
+  .tabs-container {
+    display: flex; gap: 10px; overflow-x: auto; padding: 0 24px;
+    scrollbar-width: none; scroll-behavior: smooth;
+  }
+  .tabs-container::-webkit-scrollbar { display: none; }
+  
+  /* WEISSE SCHRIFT IN DEN PILLS */
+  .tab {
+    background: var(--card-bg); color: #ffffff; border-radius: 24px;
+    padding: 10px 20px; font-size: 15px; font-weight: 400;
+    white-space: nowrap; cursor: pointer; border: none;
+  }
+  .tab.active { 
+    background: rgba(124, 58, 237, 0.25); /* Etwas kräftigeres Lila im Hintergrund, damit es sich abhebt */
+    color: #ffffff; 
+  }
+
+  .scroll-hint {
+    position: absolute; top: 0; bottom: 0; width: 40px;
+    display: flex; align-items: center; justify-content: center;
+    pointer-events: none; color: #8e8e93;
+  }
+  .scroll-hint.left {
+    left: 0;
+    background: linear-gradient(to right, var(--bg) 20%, transparent);
+    justify-content: flex-start; padding-left: 8px;
+  }
+  .scroll-hint.right {
+    right: 0;
+    background: linear-gradient(to left, var(--bg) 20%, transparent);
+    justify-content: flex-end; padding-right: 8px;
+  }
+
+  .list-header { padding: 0 24px 12px 24px; color: var(--text-muted); font-size: 14px; }
+  .list { flex: 1; overflow-y: auto; padding: 0 24px 24px 24px; display: flex; flex-direction: column; gap: 12px; }
+  
+  .recipe-card {
+    display: flex; align-items: center; padding: 20px;
+    background: var(--card-bg); border-radius: 16px; cursor: pointer;
+    border: none;
+  }
+  
+  .recipe-info { flex: 1; }
+  .recipe-title { font-size: 17px; font-weight: 500; margin-bottom: 6px; color: #ffffff; }
+  .recipe-meta { color: var(--text-muted); font-size: 14px; }
+  .recipe-chevron { color: #555; font-size: 22px; margin-left: 12px; }
+</style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="drag-handle"></div>
+    
+    <div class="header">
+      <div>
+        <h1>Rezepte entdecken</h1>
+        <div class="count">400 Rezepte</div>
+      </div>
+      <button class="close-btn">✕</button>
+    </div>
+
+    <div class="search-container">
+      <div class="search-bar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8e8e93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" placeholder="Rezept oder Zutat suchen">
+      </div>
+    </div>
+
+    <div class="tabs-wrapper">
+      <div class="tabs-container">
+        <div class="tab active">Alle</div>
+        <div class="tab">Frühstück</div>
+        <div class="tab">Hauptgang</div>
+        <div class="tab">Leichtes Abendessen</div>
+        <div class="tab">Nachspeise</div>
+      </div>
+      
+      <div class="scroll-hint left">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+          <polyline points="19 18 13 12 19 6"></polyline>
+        </svg>
+      </div>
+      
+      <div class="scroll-hint right">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+          <polyline points="5 18 11 12 5 6"></polyline>
+        </svg>
+      </div>
+    </div>
+
+    <div class="list-header">400 Treffer</div>
+
+    <div class="list">
+      <div class="recipe-card">
+        <div class="recipe-info">
+          <div class="recipe-title">Shakshuka mit weißen Bohnen</div>
+          <div class="recipe-meta">25 Min · 420 kcal pro Portion</div>
+        </div>
+        <div class="recipe-chevron">›</div>
+      </div>
+      
+      <div class="recipe-card">
+        <div class="recipe-info">
+          <div class="recipe-title">Lachs vom Blech mit Brokkoli</div>
+          <div class="recipe-meta">30 Min · 510 kcal pro Portion</div>
+        </div>
+        <div class="recipe-chevron">›</div>
+      </div>
+
+      <div class="recipe-card">
+        <div class="recipe-info">
+          <div class="recipe-title">Kichererbsen-Bowl mit Kräuterjoghurt</div>
+          <div class="recipe-meta">20 Min · 460 kcal pro Portion</div>
+        </div>
+        <div class="recipe-chevron">›</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

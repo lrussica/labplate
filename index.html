@@ -34015,6 +34015,117 @@ initBarcodeEvents();
   });
 })();
 </script>
+
+<style>
+  
+  .discover-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5); z-index: 9999;
+    display: none; align-items: flex-end; justify-content: center;
+  }
+  .discover-overlay.show { display: flex; }
+  .discover-card {
+    background: var(--bg, #fff); width: 100%; max-width: 600px;
+    border-radius: 20px 20px 0 0; padding: 20px;
+    max-height: 85vh; display: flex; flex-direction: column;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  }
+  .discover-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  .discover-header h2 { margin: 0; font-size: 20px; color: var(--ink, #000); }
+  .discover-close { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--ink-soft, #666); }
+  .discover-pills { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 12px; border-bottom: 1px solid rgba(0,0,0,0.1); }
+  .discover-pill {
+    padding: 8px 16px; border-radius: 20px; border: none; background: rgba(0,0,0,0.05); color: var(--ink-soft, #666);
+    font-weight: 500; white-space: nowrap; cursor: pointer; transition: 0.2s; font-family: var(--font-ui, inherit);
+  }
+  .discover-pill.active { background: var(--purple, #8b5cf6); color: #fff; }
+  .discover-list { flex: 1; overflow-y: auto; margin-top: 12px; }
+  .discover-item {
+    display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05); cursor: pointer;
+  }
+  .discover-item:hover { background: rgba(0,0,0,0.02); }
+  .discover-item-title { font-weight: 600; color: var(--ink, #000); font-size: 16px; }
+  .discover-item-time { font-size: 13px; color: var(--ink-soft, #666); }
+</style>
+
+
+
+<div id="discover-overlay" class="discover-overlay">
+  <div class="discover-card">
+    <div class="discover-header">
+      <h2>Rezepte entdecken</h2>
+      <button class="discover-close" onclick="document.getElementById('discover-overlay').classList.remove('show')">✕</button>
+    </div>
+    <div class="discover-pills">
+      <button class="discover-pill active" data-filter="breakfast">Frühstück</button>
+      <button class="discover-pill" data-filter="main">Hauptgang</button>
+      <button class="discover-pill" data-filter="collection:light_dinner">Leichtes Abendessen</button>
+      <button class="discover-pill" data-filter="dessert">Nachspeise</button>
+      <button class="discover-pill" data-filter="starter_soup">Vorspeise</button>
+    </div>
+    <div id="discover-list" class="discover-list">
+      <div style="text-align:center; padding:20px; color:#888;">Lade...</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const overlay = document.getElementById('discover-overlay');
+  const list = document.getElementById('discover-list');
+  
+
+  
+
+  document.querySelectorAll('.discover-pill').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      document.querySelectorAll('.discover-pill').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      loadDiscover(e.target.dataset.filter);
+    });
+  });
+
+  async function loadDiscover(filter) {
+    list.innerHTML = '<div style="text-align:center; padding:20px; color:#888;">Lade...</div>';
+    let url = 'https://labplate.onrender.com/api/master-recipes?';
+    if (filter.startsWith('collection:')) {
+       url += 'collection=' + filter.split(':')[1];
+    } else {
+       url += 'course=' + filter;
+    }
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      if (!data.recipes || data.recipes.length === 0) {
+        list.innerHTML = '<div style="text-align:center; padding:20px; color:#888;">Keine Rezepte gefunden.</div>';
+        return;
+      }
+      list.innerHTML = data.recipes.map(function(r) {
+        return '<div class="discover-item" onclick="window.__discoverSelect(\'' + r.title.replace(/'/g, "\\'") + '\')">' +
+          '<div>' +
+            '<div class="discover-item-title">' + r.title + '</div>' +
+            '<div class="discover-item-time">' + r.prepTimeMin + ' Min</div>' +
+          '</div>' +
+          '<div style="color:var(--purple); font-size: 20px;">→</div>' +
+        '</div>';
+      }).join('');
+    } catch (err) {
+      list.innerHTML = '<div style="text-align:center; padding:20px; color:#888;">Fehler beim Laden.</div>';
+    }
+  }
+
+  window.__discoverSelect = function(title) {
+    overlay.classList.remove('show');
+    const input = document.getElementById('food-search');
+    if (input) {
+      input.value = title;
+      input.dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter', keyCode: 13, which: 13, bubbles: true, cancelable: true}));
+    }
+  };
+})();
+</script>
+
 </body>
 </html>
 

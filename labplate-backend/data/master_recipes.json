@@ -1,5 +1,5 @@
 {
-  "version": 32,
+  "version": 33,
   "languages": [
     "de",
     "en",
@@ -14815,7 +14815,7 @@
         "vinegar",
         "mustard"
       ],
-      "course": "main",
+      "course": "side_sauce",
       "mealOccasions": [
         "lunch",
         "dinner"
@@ -15066,7 +15066,7 @@
         "vinegar",
         "garlic"
       ],
-      "course": "main",
+      "course": "side_sauce",
       "mealOccasions": [
         "lunch",
         "dinner"
@@ -15218,7 +15218,7 @@
       "coreComponents": [
         "balsamic_vinegar"
       ],
-      "course": "main",
+      "course": "side_sauce",
       "mealOccasions": [
         "lunch",
         "dinner"
@@ -23500,7 +23500,7 @@
           "protein": 2,
           "fiber": 0,
           "allergenTags": [
-            "mollusc"
+            "molluscs"
           ],
           "lactoseSwap": null,
           "culinaryRole": "seasoning"
@@ -26913,7 +26913,8 @@
         "cumin_ground"
       ],
       "canonicalRecipeId": "empanadas_argentinas",
-      "archived": true
+      "archived": true,
+      "course": "main"
     },
     {
       "id": "bo_kho",
@@ -32955,7 +32956,8 @@
         "salt"
       ],
       "canonicalRecipeId": "ceviche_clasico",
-      "archived": true
+      "archived": true,
+      "course": "starter_soup"
     },
     {
       "id": "borscht",
@@ -57279,7 +57281,8 @@
         "lime"
       ],
       "canonicalRecipeId": "pho_bo",
-      "archived": true
+      "archived": true,
+      "course": "main"
     },
     {
       "id": "pao_de_queijo",
@@ -58375,7 +58378,8 @@
         "garlic"
       ],
       "canonicalRecipeId": "kung_pao_chicken",
-      "archived": true
+      "archived": true,
+      "course": "main"
     },
     {
       "id": "goulash",
@@ -58898,7 +58902,8 @@
         "cumin"
       ],
       "canonicalRecipeId": "empanadas_argentinas",
-      "archived": true
+      "archived": true,
+      "course": "main"
     },
     {
       "id": "fondue",
@@ -59928,7 +59933,8 @@
         "beef_stock"
       ],
       "canonicalRecipeId": "risotto_milanese",
-      "archived": true
+      "archived": true,
+      "course": "main"
     },
     {
       "id": "tikka_masala",
@@ -60278,7 +60284,7 @@
           "protein": 12.8,
           "fiber": 0,
           "allergenTags": [
-            "mollusks"
+            "molluscs"
           ],
           "lactoseSwap": null,
           "culinaryRole": "protein"
@@ -82844,7 +82850,7 @@
         "cinnamon",
         "lemon"
       ],
-      "course": "main",
+      "course": "dessert",
       "mealOccasions": [
         "lunch",
         "dinner"
@@ -105792,7 +105798,7 @@
         "butter",
         "chocolate_sprinkles"
       ],
-      "course": "main",
+      "course": "dessert",
       "mealOccasions": [
         "lunch",
         "dinner"
@@ -108724,7 +108730,7 @@
         "shredded_coconut",
         "butter"
       ],
-      "course": "main",
+      "course": "dessert",
       "mealOccasions": [
         "lunch",
         "dinner"
@@ -110895,7 +110901,7 @@
         "cornstarch",
         "cream_heavy"
       ],
-      "course": "main",
+      "course": "dessert",
       "mealOccasions": [
         "lunch",
         "dinner"
@@ -119587,7 +119593,8 @@
         "salt"
       ],
       "canonicalRecipeId": "ossobuco_alla_milanese",
-      "archived": true
+      "archived": true,
+      "course": "main"
     },
     {
       "id": "saltimbocca",
@@ -119895,7 +119902,8 @@
         "salt"
       ],
       "canonicalRecipeId": "saltimbocca_alla_romana",
-      "archived": true
+      "archived": true,
+      "course": "main"
     },
     {
       "id": "gulasch",
@@ -121093,7 +121101,8 @@
         "black_pepper"
       ],
       "canonicalRecipeId": "pierogi_ruskie",
-      "archived": true
+      "archived": true,
+      "course": "main"
     },
     {
       "id": "gravlax",
@@ -129766,7 +129775,7 @@
         "en": "Omelett mit Pilzen"
       },
       "prep_time_min": 15,
-      "course": "main",
+      "course": "breakfast",
       "mealOccasions": [
         "dinner"
       ],
