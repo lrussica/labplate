@@ -466,7 +466,9 @@
         "it": "Lasagne autentiche con ragù, besciamella, mozzarella e Parmigiano — struttura immutabile.",
         "tr": "Ragù, beşamel, mozzarella ve Parmigiano ile otantik lazanya — değiştirilemez çekirdek."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "high_protein"
+      ],
       "coreComponents": [
         "bechamel",
         "ragu",
@@ -480,7 +482,9 @@
       ],
       "collections": [],
       "prepTimeMin": 120,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "high_protein"
+      ],
       "timeTotal": 120,
       "timeActive": null,
       "containsPork": false,
@@ -852,7 +856,10 @@
         "it": "Ragù alla Bolognese classico con soffritto, pancetta e latte — senza alleggerimenti.",
         "tr": "Soffritto, pancetta ve süt ile klasik bolonez — light kesinti yok."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "keto",
+        "low-carb"
+      ],
       "coreComponents": [
         "soffritto",
         "meat",
@@ -865,7 +872,10 @@
       ],
       "collections": [],
       "prepTimeMin": 150,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb"
+      ],
       "timeTotal": 150,
       "timeActive": null,
       "containsPork": true,
@@ -1512,7 +1522,11 @@
         "it": "Coq au vin borgognone con vino rosso, pancetta e funghi.",
         "tr": "Kırmızı şarap, pastırma ve mantarlı Bourgogne coq au vin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "high_protein"
+      ],
       "coreComponents": [
         "chicken",
         "wine",
@@ -1526,7 +1540,11 @@
       ],
       "collections": [],
       "prepTimeMin": 120,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "high_protein"
+      ],
       "timeTotal": 120,
       "timeActive": null,
       "containsPork": true,
@@ -2094,7 +2112,9 @@
         "it": "Karnıyarık turco classico: melanzana, macinato, cipolla, pomodoro, peperone.",
         "tr": "Klasik Karnıyarık: patlıcan, kıyma, soğan, domates, biber."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb"
+      ],
       "coreComponents": [
         "eggplant",
         "beef",
@@ -2108,7 +2128,9 @@
       ],
       "collections": [],
       "prepTimeMin": 70,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb"
+      ],
       "timeTotal": 70,
       "timeActive": null,
       "containsPork": false,
@@ -2394,7 +2416,10 @@
         "it": "Köfte turco classico: macinato, cipolla, uovo e spezie.",
         "tr": "Klasik Türk köftesi: kıyma, soğan, yumurta ve baharat."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "keto",
+        "low-carb"
+      ],
       "coreComponents": [
         "beef",
         "onion",
@@ -2408,7 +2433,10 @@
       ],
       "collections": [],
       "prepTimeMin": 40,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb"
+      ],
       "timeTotal": 40,
       "timeActive": null,
       "containsPork": false,
@@ -2431,7 +2459,9 @@
         "it": "",
         "tr": ""
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "vegetarian"
+      ],
       "coreComponents": [
         "ladyfingers",
         "mascarpone",
@@ -2649,7 +2679,9 @@
       ],
       "collections": [],
       "prepTimeMin": 40,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "timeTotal": 40,
       "timeActive": null,
       "containsPork": false,
@@ -2970,7 +3002,9 @@
         "it": "",
         "tr": ""
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "vegetarian"
+      ],
       "coreComponents": [
         "dough",
         "san_marzano",
@@ -3234,7 +3268,9 @@
       ],
       "collections": [],
       "prepTimeMin": 90,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "timeTotal": 90,
       "timeActive": null,
       "containsPork": false,
@@ -3257,7 +3293,10 @@
         "it": "",
         "tr": ""
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb",
+        "high_protein"
+      ],
       "coreComponents": [
         "beef",
         "wine",
@@ -3578,7 +3617,10 @@
       ],
       "collections": [],
       "prepTimeMin": 180,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "high_protein"
+      ],
       "timeTotal": 180,
       "timeActive": null,
       "containsPork": true,
@@ -3602,6 +3644,7 @@
         "tr": ""
       },
       "diet_labels": [
+        "low-carb",
         "vegan",
         "vegetarian"
       ],
@@ -3872,6 +3915,7 @@
       "collections": [],
       "prepTimeMin": 60,
       "dietaryTags": [
+        "low-carb",
         "vegan",
         "vegetarian"
       ],
@@ -4742,7 +4786,9 @@
         "it": "",
         "tr": ""
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "vegetarian"
+      ],
       "coreComponents": [
         "dough",
         "mince",
@@ -4994,7 +5040,9 @@
       ],
       "collections": [],
       "prepTimeMin": 50,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "timeTotal": 50,
       "timeActive": null,
       "containsPork": false,
@@ -5017,7 +5065,10 @@
         "it": "",
         "tr": ""
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb",
+        "high_protein"
+      ],
       "coreComponents": [
         "beef",
         "onion_1to1",
@@ -5283,7 +5334,10 @@
       ],
       "collections": [],
       "prepTimeMin": 150,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "high_protein"
+      ],
       "timeTotal": 150,
       "timeActive": null,
       "containsPork": false,
@@ -5306,7 +5360,10 @@
         "it": "",
         "tr": ""
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "keto",
+        "low-carb"
+      ],
       "id": "zuercher_geschnetzeltes",
       "cuisine": "ch",
       "region": "Zürich",
@@ -5579,7 +5636,10 @@
       ],
       "collections": [],
       "prepTimeMin": 40,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb"
+      ],
       "timeTotal": 40,
       "timeActive": null,
       "containsPork": false,
@@ -5602,7 +5662,9 @@
         "it": "",
         "tr": ""
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "vegetarian"
+      ],
       "id": "kaesespaetzle",
       "cuisine": "de",
       "region": "Schwaben / Allgäu",
@@ -5860,7 +5922,9 @@
       ],
       "collections": [],
       "prepTimeMin": 45,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "timeTotal": 45,
       "timeActive": null,
       "containsPork": false,
@@ -6218,7 +6282,10 @@
         "it": "",
         "tr": ""
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb",
+        "vegetarian"
+      ],
       "id": "smash_burger",
       "cuisine": "us",
       "region": "USA",
@@ -6465,7 +6532,10 @@
       ],
       "collections": [],
       "prepTimeMin": 25,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "vegetarian"
+      ],
       "timeTotal": 25,
       "timeActive": null,
       "containsPork": false,
@@ -6489,6 +6559,7 @@
         "tr": ""
       },
       "diet_labels": [
+        "low-carb",
         "vegetarian"
       ],
       "id": "shakshuka",
@@ -6792,6 +6863,7 @@
       "collections": [],
       "prepTimeMin": 35,
       "dietaryTags": [
+        "low-carb",
         "vegetarian"
       ],
       "timeTotal": 35,
@@ -6816,7 +6888,11 @@
         "it": "",
         "tr": ""
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "high_protein"
+      ],
       "id": "birria_tacos",
       "cuisine": "mx",
       "region": "Jalisco",
@@ -7060,7 +7136,11 @@
       ],
       "collections": [],
       "prepTimeMin": 180,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "high_protein"
+      ],
       "timeTotal": 180,
       "timeActive": null,
       "containsPork": false,
@@ -7646,7 +7726,7 @@
         "tr": ""
       },
       "diet_labels": [
-        "vegan",
+        "low-carb",
         "vegetarian"
       ],
       "id": "falafel",
@@ -7919,7 +7999,7 @@
       "collections": [],
       "prepTimeMin": 40,
       "dietaryTags": [
-        "vegan",
+        "low-carb",
         "vegetarian"
       ],
       "timeTotal": 40,
@@ -7945,6 +8025,8 @@
         "tr": ""
       },
       "diet_labels": [
+        "keto",
+        "low-carb",
         "vegetarian"
       ],
       "id": "choriatiki",
@@ -8193,6 +8275,8 @@
       "collections": [],
       "prepTimeMin": 15,
       "dietaryTags": [
+        "keto",
+        "low-carb",
         "vegetarian"
       ],
       "timeTotal": 15,
@@ -8218,7 +8302,6 @@
         "tr": ""
       },
       "diet_labels": [
-        "vegan",
         "vegetarian"
       ],
       "id": "dal_tadka",
@@ -8523,7 +8606,6 @@
       "collections": [],
       "prepTimeMin": 40,
       "dietaryTags": [
-        "vegan",
         "vegetarian"
       ],
       "timeTotal": 40,
@@ -8549,8 +8631,8 @@
         "tr": ""
       },
       "diet_labels": [
-        "keto",
-        "low-carb"
+        "low-carb",
+        "vegetarian"
       ],
       "id": "keto_zucchini_lasagne",
       "cuisine": "it",
@@ -8806,8 +8888,8 @@
       "collections": [],
       "prepTimeMin": 90,
       "dietaryTags": [
-        "keto",
-        "low-carb"
+        "low-carb",
+        "vegetarian"
       ],
       "timeTotal": 90,
       "timeActive": null,
@@ -8832,8 +8914,8 @@
         "tr": ""
       },
       "diet_labels": [
-        "low-carb",
-        "keto"
+        "keto",
+        "low-carb"
       ],
       "id": "caesar_salad",
       "cuisine": "us",
@@ -9141,8 +9223,8 @@
       "collections": [],
       "prepTimeMin": 25,
       "dietaryTags": [
-        "low-carb",
-        "keto"
+        "keto",
+        "low-carb"
       ],
       "timeTotal": 25,
       "timeActive": null,
@@ -9579,7 +9661,11 @@
         "it": "Classico piemontese: vitello lessato, salsa tonno-capperi (maionese, acciughe, limone).",
         "tr": "Piemonte klasiği: haşlanmış dana, ton-kapari sosu (mayonez, hamsi, limon)."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "high_protein"
+      ],
       "coreComponents": [
         "veal",
         "tuna",
@@ -9596,7 +9682,11 @@
       ],
       "collections": [],
       "prepTimeMin": 100,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "high_protein"
+      ],
       "timeTotal": 100,
       "timeActive": null,
       "containsPork": false,
@@ -9820,9 +9910,9 @@
         "tr": "Klasik aioli: bol sarımsak, zeytinyağı, tuz. Yumurta isteğe bağlı."
       },
       "diet_labels": [
-        "vegetarian",
         "keto",
-        "low-carb"
+        "low-carb",
+        "vegetarian"
       ],
       "coreComponents": [
         "garlic",
@@ -9835,9 +9925,9 @@
       "collections": [],
       "prepTimeMin": 15,
       "dietaryTags": [
-        "vegetarian",
         "keto",
-        "low-carb"
+        "low-carb",
+        "vegetarian"
       ],
       "timeTotal": 15,
       "timeActive": null,
@@ -11545,6 +11635,8 @@
         "tr": "Napoli usulü: domates, sarımsak, zeytinyağı, fesleğen. Soğan, peynir yok."
       },
       "diet_labels": [
+        "keto",
+        "low-carb",
         "vegan",
         "vegetarian"
       ],
@@ -11562,6 +11654,8 @@
       "collections": [],
       "prepTimeMin": 25,
       "dietaryTags": [
+        "keto",
+        "low-carb",
         "vegan",
         "vegetarian"
       ],
@@ -12197,7 +12291,9 @@
         "it": "Napoletano: pomodoro, olive, capperi, acciughe, aglio, peperoncino. Senza formaggio.",
         "tr": "Napoli usulü: domates, zeytin, kapari, hamsi, sarımsak, biber. Peynir yok."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "coreComponents": [
         "pasta",
         "tomato",
@@ -12212,7 +12308,9 @@
       ],
       "collections": [],
       "prepTimeMin": 25,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "timeTotal": 25,
       "timeActive": null,
       "containsPork": false,
@@ -12784,6 +12882,7 @@
         "tr": "Napoli usulü: domates, soğan, sarımsak, kekik, fesleğen. Pizza bazı."
       },
       "diet_labels": [
+        "low-carb",
         "vegan",
         "vegetarian"
       ],
@@ -12802,6 +12901,7 @@
       "collections": [],
       "prepTimeMin": 30,
       "dietaryTags": [
+        "low-carb",
         "vegan",
         "vegetarian"
       ],
@@ -13166,7 +13266,9 @@
         "it": "Ragù bolognese senza pomodoro: manzo, vino bianco, latte, soffritto.",
         "tr": "Domatessiz Bolognese: dana eti, beyaz şarap, süt, soffritto."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "high_protein"
+      ],
       "coreComponents": [
         "pasta",
         "beef",
@@ -13181,7 +13283,9 @@
       ],
       "collections": [],
       "prepTimeMin": 45,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "high_protein"
+      ],
       "timeTotal": 45,
       "timeActive": null,
       "containsPork": false,
@@ -13462,9 +13566,9 @@
         "tr": "Fransız klasiği: yumurta sarısı, tereyağı, limon, su. Sadece pastörize sarısı. Benmaride 65–70°C."
       },
       "diet_labels": [
-        "vegetarian",
         "keto",
-        "low-carb"
+        "low-carb",
+        "vegetarian"
       ],
       "coreComponents": [
         "egg_yolk",
@@ -13478,9 +13582,9 @@
       "collections": [],
       "prepTimeMin": 20,
       "dietaryTags": [
-        "vegetarian",
         "keto",
-        "low-carb"
+        "low-carb",
+        "vegetarian"
       ],
       "timeTotal": 20,
       "timeActive": null,
@@ -13804,9 +13908,9 @@
         "tr": "Fransız, tarhun-arpacık redüksiyonlu hollandez varyantı."
       },
       "diet_labels": [
-        "vegetarian",
         "keto",
-        "low-carb"
+        "low-carb",
+        "vegetarian"
       ],
       "coreComponents": [
         "egg_yolk",
@@ -13821,9 +13925,9 @@
       "collections": [],
       "prepTimeMin": 25,
       "dietaryTags": [
-        "vegetarian",
         "keto",
-        "low-carb"
+        "low-carb",
+        "vegetarian"
       ],
       "timeTotal": 25,
       "timeActive": null,
@@ -14122,9 +14226,9 @@
         "tr": "Fransız: mayonez, turşu, kapari, arpacık, otlar. Çiğ yumurta yok."
       },
       "diet_labels": [
-        "vegetarian",
         "keto",
-        "low-carb"
+        "low-carb",
+        "vegetarian"
       ],
       "coreComponents": [
         "mayonnaise",
@@ -14139,9 +14243,9 @@
       "collections": [],
       "prepTimeMin": 15,
       "dietaryTags": [
-        "vegetarian",
         "keto",
-        "low-carb"
+        "low-carb",
+        "vegetarian"
       ],
       "timeTotal": 15,
       "timeActive": null,
@@ -14413,10 +14517,10 @@
         "tr": "Provence: çiğ doğranmış domates, zeytinyağı, limon, fesleğen. Soğuk sos."
       },
       "diet_labels": [
-        "vegan",
-        "vegetarian",
         "keto",
-        "low-carb"
+        "low-carb",
+        "vegan",
+        "vegetarian"
       ],
       "coreComponents": [
         "tomato",
@@ -14431,10 +14535,10 @@
       "collections": [],
       "prepTimeMin": 10,
       "dietaryTags": [
-        "vegan",
-        "vegetarian",
         "keto",
-        "low-carb"
+        "low-carb",
+        "vegan",
+        "vegetarian"
       ],
       "timeTotal": 10,
       "timeActive": null,
@@ -14771,7 +14875,9 @@
         "it": "Variante bolognese con salsiccia italiana. Note di finocchio.",
         "tr": "İtalyan sosisi ile Bolognese varyantı. Rezene notu."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "vegetarian"
+      ],
       "coreComponents": [
         "pasta",
         "sausage",
@@ -14785,7 +14891,9 @@
       ],
       "collections": [],
       "prepTimeMin": 40,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "timeTotal": 40,
       "timeActive": null,
       "containsPork": false,
@@ -15103,9 +15211,9 @@
         "tr": "Fransız: kızarmış mantar, arpacık, beyaz şarap, krema, kekik."
       },
       "diet_labels": [
-        "vegetarian",
         "keto",
-        "low-carb"
+        "low-carb",
+        "vegetarian"
       ],
       "coreComponents": [
         "mushroom",
@@ -15120,9 +15228,9 @@
       "collections": [],
       "prepTimeMin": 25,
       "dietaryTags": [
-        "vegetarian",
         "keto",
-        "low-carb"
+        "low-carb",
+        "vegetarian"
       ],
       "timeTotal": 25,
       "timeActive": null,
@@ -15344,10 +15452,9 @@
         "tr": "Fransız. Yağ/sirke oranı 3:1. Hardal emülgatör."
       },
       "diet_labels": [
-        "vegan",
-        "vegetarian",
         "keto",
-        "low-carb"
+        "low-carb",
+        "vegetarian"
       ],
       "coreComponents": [
         "olive_oil",
@@ -15362,10 +15469,9 @@
       "collections": [],
       "prepTimeMin": 5,
       "dietaryTags": [
-        "vegan",
-        "vegetarian",
         "keto",
-        "low-carb"
+        "low-carb",
+        "vegetarian"
       ],
       "timeTotal": 5,
       "timeActive": null,
@@ -15605,10 +15711,9 @@
         "tr": "Arjantin: maydanoz, zeytinyağı, sirke, sarımsak, kekik, biber."
       },
       "diet_labels": [
-        "vegan",
-        "vegetarian",
         "keto",
-        "low-carb"
+        "low-carb",
+        "vegetarian"
       ],
       "coreComponents": [
         "parsley",
@@ -15624,10 +15729,9 @@
       "collections": [],
       "prepTimeMin": 10,
       "dietaryTags": [
-        "vegan",
-        "vegetarian",
         "keto",
-        "low-carb"
+        "low-carb",
+        "vegetarian"
       ],
       "timeTotal": 10,
       "timeActive": null,
@@ -15774,6 +15878,7 @@
         "tr": "Modena: yavaşça indirgenmiş balsamik sirke. Şurupsu, tatlı-ekşi."
       },
       "diet_labels": [
+        "low-carb",
         "vegetarian"
       ],
       "coreComponents": [
@@ -15787,6 +15892,7 @@
       "collections": [],
       "prepTimeMin": 20,
       "dietaryTags": [
+        "low-carb",
         "vegetarian"
       ],
       "timeTotal": 20,
@@ -16155,7 +16261,9 @@
         "it": "Valenciana: pollo, coniglio, fagioli, zafferano, riso bomba. Senza chorizo.",
         "tr": "Valensiya: tavuk, tavşan, fasulye, safran, bomba pirinci. Chorizo yok."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "high_protein"
+      ],
       "coreComponents": [
         "rice",
         "chicken",
@@ -16170,7 +16278,9 @@
       ],
       "collections": [],
       "prepTimeMin": 50,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "high_protein"
+      ],
       "timeTotal": 50,
       "timeActive": null,
       "containsPork": false,
@@ -16562,7 +16672,10 @@
         "it": "Tedesco: manzo arrotolato con lardo, senape, cetriolino, brasato.",
         "tr": "Alman: hardal, pastırma, turşu ile sarılı dana, kırmızı şaraplı."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb",
+        "high_protein"
+      ],
       "coreComponents": [
         "beef",
         "mustard",
@@ -16575,7 +16688,10 @@
       ],
       "collections": [],
       "prepTimeMin": 90,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "high_protein"
+      ],
       "timeTotal": 90,
       "timeActive": null,
       "containsPork": true,
@@ -18200,7 +18316,10 @@
         "it": "Ossobuco significa osso bucato. Ossobuchi brasati, gremolata.",
         "tr": "Ossobuco delikli kemik. Incikler beyaz Sarapli, gremolata ile."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb",
+        "high_protein"
+      ],
       "coreComponents": [
         "veal",
         "white_wine",
@@ -18213,7 +18332,10 @@
       ],
       "collections": [],
       "prepTimeMin": 120,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "high_protein"
+      ],
       "timeTotal": 120,
       "timeActive": null,
       "containsPork": false,
@@ -18529,7 +18651,11 @@
         "it": "Romano: fette vitello, prosciutto, salvia, salsa vino bianco-burro.",
         "tr": "Roma: dana schnitzel, prosciutto, adacayi, beyaz sarap-tereyagi sosu."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "high_protein"
+      ],
       "coreComponents": [
         "veal",
         "prosciutto",
@@ -18543,7 +18669,11 @@
       ],
       "collections": [],
       "prepTimeMin": 25,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "high_protein"
+      ],
       "timeTotal": 25,
       "timeActive": null,
       "containsPork": true,
@@ -18938,7 +19068,7 @@
         "tr": "Hawaii esintili bu kasede suşi pirinci, çiğ somon ve taze meyve buluşur. Soya sosu, misket limonu ve zencefil lezzete tuzlu ve ferah bir tat verir."
       },
       "diet_labels": [
-        "high_protein"
+        "pescatarian"
       ],
       "coreComponents": [
         "sushi_rice",
@@ -18955,7 +19085,7 @@
       ],
       "prepTimeMin": 25,
       "dietaryTags": [
-        "high_protein"
+        "pescatarian"
       ],
       "timeTotal": 25,
       "timeActive": null,
@@ -20063,7 +20193,6 @@
         "tr": "Pirinç, siyah fasulye ve diri sebzeler doyurucu bir temel oluşturur. Avokado ve misket limonu ferahlık katar."
       },
       "diet_labels": [
-        "vegan",
         "vegetarian",
         "gluten_free"
       ],
@@ -20082,7 +20211,6 @@
       ],
       "prepTimeMin": 25,
       "dietaryTags": [
-        "vegan",
         "vegetarian",
         "gluten_free"
       ],
@@ -21588,9 +21716,7 @@
         "it": "Patate croccanti e gyros di pollo speziato sono abbinati a tzatziki, feta e olive. Cetriolo e pomodoro aggiungono freschezza.",
         "tr": "Çıtır patates ve baharatlı tavuk gyros, tzatziki, feta ve zeytinle birleşir. Salatalık ve domates ferahlık verir."
       },
-      "diet_labels": [
-        "high_protein"
-      ],
+      "diet_labels": [],
       "coreComponents": [
         "potatoes",
         "chicken_gyros",
@@ -21605,9 +21731,7 @@
         "light_dinner"
       ],
       "prepTimeMin": 25,
-      "dietaryTags": [
-        "high_protein"
-      ],
+      "dietaryTags": [],
       "timeTotal": 25,
       "timeActive": null,
       "containsPork": false,
@@ -21964,7 +22088,7 @@
         "tr": "Bu suşi kasesi kızarmış somon, suşi pirinci, avokado ve diri sebzeleri birleştirir. Wasabi ve soya sosu belirgin, baharatlı bir tat verir."
       },
       "diet_labels": [
-        "high_protein"
+        "pescatarian"
       ],
       "coreComponents": [
         "sushi_rice",
@@ -21981,7 +22105,7 @@
       ],
       "prepTimeMin": 20,
       "dietaryTags": [
-        "high_protein"
+        "pescatarian"
       ],
       "timeTotal": 20,
       "timeActive": null,
@@ -23660,7 +23784,7 @@
         "tr": "Kuskus ve ton balığı enginar, domates, salatalık ve roka ile birleşir. Limonlu Dijon sosu kaseye ferah ve ekşimsi bir tat verir."
       },
       "diet_labels": [
-        "high_protein"
+        "pescatarian"
       ],
       "coreComponents": [
         "couscous",
@@ -23677,7 +23801,7 @@
       ],
       "prepTimeMin": 20,
       "dietaryTags": [
-        "high_protein"
+        "pescatarian"
       ],
       "timeTotal": 20,
       "timeActive": null,
@@ -24073,7 +24197,6 @@
         "tr": "Pirinç eriştesi ve kızarmış tofu, diri sebzeler ve kremalı fıstık sosuyla sunulur. Misket limonu ve zencefil sosa ferahlık katar."
       },
       "diet_labels": [
-        "vegan",
         "vegetarian"
       ],
       "coreComponents": [
@@ -24091,7 +24214,6 @@
       ],
       "prepTimeMin": 25,
       "dietaryTags": [
-        "vegan",
         "vegetarian"
       ],
       "timeTotal": 25,
@@ -24537,7 +24659,10 @@
         "it": "Cospargere con anelli di cipollotto e pepe del Sichuan macinato.",
         "tr": "Yeşil soğan halkaları ve öğütülmüş Sichuan biberi ile süsleyin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "keto",
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -25008,7 +25133,10 @@
         "light_dinner"
       ],
       "prepTimeMin": 20,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb"
+      ],
       "timeTotal": 20,
       "timeActive": null,
       "containsPork": true,
@@ -25686,7 +25814,9 @@
         "it": "Cospargere con prezzemolo tritato, servire con noodles al burro o purè di patate.",
         "tr": "Kıyılmış maydanoz serpin, tereyağlı erişte veya patates püresi ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -26131,7 +26261,9 @@
       ],
       "collections": [],
       "prepTimeMin": 30,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb"
+      ],
       "timeTotal": 30,
       "timeActive": null,
       "containsPork": false,
@@ -27805,7 +27937,8 @@
         "fat": 27.7,
         "protein": 19.6,
         "fiber": 4.6
-      }
+      },
+      "dietaryTags": []
     },
     {
       "id": "bo_kho",
@@ -27852,7 +27985,9 @@
         "it": "Cospargere con basilico thai e coriandolo, servire con baguette o noodles di riso.",
         "tr": "Thai fesleğeni ve kişniş ile süsleyin, baget veya pirinç eriştesi ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -28453,7 +28588,9 @@
       ],
       "collections": [],
       "prepTimeMin": 100,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "high_protein"
+      ],
       "timeTotal": 100,
       "timeActive": null,
       "containsPork": false,
@@ -28511,7 +28648,9 @@
         "it": "Cospargere con basilico thai e coriandolo, finire con succo di lime.",
         "tr": "Thai feslegeni ve kisnis ile susleyin, limon suyu ile bitirin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -28874,7 +29013,9 @@
       ],
       "collections": [],
       "prepTimeMin": 40,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb"
+      ],
       "timeTotal": 40,
       "timeActive": null,
       "containsPork": false,
@@ -29430,7 +29571,10 @@
         "it": "Servire con rouille e crostini.",
         "tr": "Rouille ve kruton ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb",
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -29877,7 +30021,10 @@
       ],
       "collections": [],
       "prepTimeMin": 60,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "pescatarian"
+      ],
       "timeTotal": 60,
       "timeActive": null,
       "containsPork": false,
@@ -30370,7 +30517,9 @@
         "it": "Cospargere con gremolata (scorza di limone, aglio, prezzemolo). Servire con risotto alla milanese.",
         "tr": "Limon kabugu, sarimsak ve maydanozdan gremolata serpin. Milanese risotto ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -30816,7 +30965,9 @@
       ],
       "collections": [],
       "prepTimeMin": 120,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "high_protein"
+      ],
       "timeTotal": 120,
       "timeActive": null,
       "containsPork": false,
@@ -33703,7 +33854,9 @@
         "it": "Servire con patata dolce, mais e coriandolo.",
         "tr": "Tatlı patates, mısır ve kişniş ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -33991,7 +34144,10 @@
         "fat": 6.7,
         "protein": 21.4,
         "fiber": 5
-      }
+      },
+      "dietaryTags": [
+        "pescatarian"
+      ]
     },
     {
       "id": "borscht",
@@ -35411,7 +35567,9 @@
         "it": "Guarnire con coriandolo, spicchio di lime e anelli di peperoncino.",
         "tr": "Kişniş, misket limonu ve chili halkaları ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -35837,7 +35995,9 @@
       ],
       "collections": [],
       "prepTimeMin": 45,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "timeTotal": 45,
       "timeActive": null,
       "containsPork": false,
@@ -37003,7 +37163,9 @@
         "it": "Servire con riso giallo e chutney.",
         "tr": "Sarı pilav ve chutney ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -37372,7 +37534,9 @@
       ],
       "collections": [],
       "prepTimeMin": 75,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb"
+      ],
       "timeTotal": 75,
       "timeActive": null,
       "containsPork": false,
@@ -37431,7 +37595,9 @@
         "it": "Servire con nokedli o patate lesse.",
         "tr": "Nokedli veya haşlanmış patates ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -37797,7 +37963,9 @@
       ],
       "collections": [],
       "prepTimeMin": 120,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb"
+      ],
       "timeTotal": 120,
       "timeActive": null,
       "containsPork": false,
@@ -39235,7 +39403,9 @@
         "it": "Servire con cipolla rossa marinata, coriandolo e tortillas.",
         "tr": "Turşu kırmızı soğan, kişniş ve mısır tortillası ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -39601,7 +39771,9 @@
       ],
       "collections": [],
       "prepTimeMin": 180,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb"
+      ],
       "timeTotal": 180,
       "timeActive": null,
       "containsPork": true,
@@ -40836,7 +41008,9 @@
         "it": "Servire con birra scura, canederli e crauti.",
         "tr": "Koyu bira, patates mantısı ve lahana turşusu ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -41181,7 +41355,9 @@
       ],
       "collections": [],
       "prepTimeMin": 180,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb"
+      ],
       "timeTotal": 180,
       "timeActive": null,
       "containsPork": true,
@@ -45544,7 +45720,9 @@
         "it": "Servire con pane piatto caldo.",
         "tr": "Sıcak pide ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -45828,7 +46006,9 @@
       ],
       "collections": [],
       "prepTimeMin": 25,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "timeTotal": 25,
       "timeActive": null,
       "containsPork": false,
@@ -47042,7 +47222,9 @@
         "it": "Servire con cavolo, ravanelli, lime e origano.",
         "tr": "Lahana, turp, limon ve kekik ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -47408,7 +47590,9 @@
       ],
       "collections": [],
       "prepTimeMin": 150,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "high_protein"
+      ],
       "timeTotal": 150,
       "timeActive": null,
       "containsPork": true,
@@ -47461,7 +47645,9 @@
         "it": "Guarnire con olive nere e prezzemolo.",
         "tr": "Siyah zeytin ve maydanoz ile susleyin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -47725,7 +47911,9 @@
       ],
       "collections": [],
       "prepTimeMin": 40,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "timeTotal": 40,
       "timeActive": null,
       "containsPork": false,
@@ -48538,7 +48726,9 @@
         "it": "Cospargere di sesamo, servire con riso.",
         "tr": "Susam serp, pilav ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -48865,7 +49055,9 @@
       ],
       "collections": [],
       "prepTimeMin": 45,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "timeTotal": 45,
       "timeActive": null,
       "containsPork": false,
@@ -48923,7 +49115,9 @@
         "it": "Servire caldo, eventualmente con yogurt.",
         "tr": "Sicak servis edin, istege gore yogurt ile."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -49166,7 +49360,9 @@
       ],
       "collections": [],
       "prepTimeMin": 60,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "timeTotal": 60,
       "timeActive": null,
       "containsPork": false,
@@ -49220,7 +49416,9 @@
         "it": "Tagliare a rombi e lasciar raffreddare.",
         "tr": "Baklava dilimi kesin ve sogumaya birakin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -49462,7 +49660,9 @@
       ],
       "collections": [],
       "prepTimeMin": 90,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "timeTotal": 90,
       "timeActive": null,
       "containsPork": false,
@@ -49517,7 +49717,9 @@
         "it": "Servire con avocado, fagioli e platano fritto.",
         "tr": "Avokado, fasulye ve kizarmis plantain ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -49760,7 +49962,9 @@
       ],
       "collections": [],
       "prepTimeMin": 40,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "timeTotal": 40,
       "timeActive": null,
       "containsPork": false,
@@ -50176,7 +50380,9 @@
         "it": "Cospargere di sesamo e cipollotto.",
         "tr": "Susam ve yesil sogan serpin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -50440,7 +50646,9 @@
       ],
       "collections": [],
       "prepTimeMin": 30,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "timeTotal": 30,
       "timeActive": null,
       "containsPork": false,
@@ -51918,7 +52126,9 @@
         "it": "Servire con salsa di soia, wasabi e zenzero marinato.",
         "tr": "Soya sosu, wasabi ve gari ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -52203,7 +52413,9 @@
       ],
       "collections": [],
       "prepTimeMin": 60,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "timeTotal": 60,
       "timeActive": null,
       "containsPork": false,
@@ -52256,7 +52468,12 @@
         "it": "Cospargere di cipollotto, servire subito.",
         "tr": "Yesil sogan serpin, hemen servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "vegan",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -52436,7 +52653,12 @@
       ],
       "collections": [],
       "prepTimeMin": 20,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "vegan",
+        "vegetarian"
+      ],
       "timeTotal": 20,
       "timeActive": null,
       "containsPork": false,
@@ -53125,7 +53347,9 @@
         "it": "Servire con coriandolo e riso.",
         "tr": "Kisnis ve pilav ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -53410,7 +53634,9 @@
       ],
       "collections": [],
       "prepTimeMin": 40,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "timeTotal": 40,
       "timeActive": null,
       "containsPork": false,
@@ -53464,7 +53690,9 @@
         "it": "Servire con salsa di arachidi e cetriolo.",
         "tr": "Findik sosu ve salatalik ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -53770,7 +53998,9 @@
       ],
       "collections": [],
       "prepTimeMin": 50,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb"
+      ],
       "timeTotal": 50,
       "timeActive": null,
       "containsPork": false,
@@ -53824,7 +54054,9 @@
         "it": "Servire con salsa roja e riso.",
         "tr": "Salsa roja ve pilav ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -54109,7 +54341,9 @@
       ],
       "collections": [],
       "prepTimeMin": 70,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "timeTotal": 70,
       "timeActive": null,
       "containsPork": false,
@@ -54163,7 +54397,9 @@
         "it": "Servire con riso, platano fritto e coriandolo.",
         "tr": "Pilav, kizarmis plantain ve kisnis ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -54490,7 +54726,9 @@
       ],
       "collections": [],
       "prepTimeMin": 150,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb"
+      ],
       "timeTotal": 150,
       "timeActive": null,
       "containsPork": false,
@@ -54862,7 +55100,10 @@
         "it": "Guarnire con panna acida, cipolla e coriandolo.",
         "tr": "Eksi krema, sogan ve kisnis ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "keto",
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -55147,7 +55388,10 @@
       ],
       "collections": [],
       "prepTimeMin": 60,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb"
+      ],
       "timeTotal": 60,
       "timeActive": null,
       "containsPork": false,
@@ -55816,7 +56060,9 @@
         "it": "Guarnire con avocado, formaggio, panna acida e coriandolo.",
         "tr": "Avokado, peynir, eksi krema ve kisnis ile susleyin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -56122,7 +56368,9 @@
       ],
       "collections": [],
       "prepTimeMin": 60,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "high_protein"
+      ],
       "timeTotal": 60,
       "timeActive": null,
       "containsPork": false,
@@ -56177,7 +56425,10 @@
         "it": "Guarnire con zenzero e coriandolo fresco.",
         "tr": "Zencefil ve taze kisnis ile susleyin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb",
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -56462,7 +56713,10 @@
       ],
       "collections": [],
       "prepTimeMin": 45,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "high_protein"
+      ],
       "timeTotal": 45,
       "timeActive": null,
       "containsPork": false,
@@ -57111,7 +57365,9 @@
         "it": "Guarnire con avocado, capperi e panna acida.",
         "tr": "Avokado, kapari ve eksi krema ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -57396,7 +57652,9 @@
       ],
       "collections": [],
       "prepTimeMin": 90,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "high_protein"
+      ],
       "timeTotal": 90,
       "timeActive": null,
       "containsPork": false,
@@ -58107,7 +58365,11 @@
         "it": "Servire con coriandolo e riso.",
         "tr": "Kisnis ve pilav ile servis et."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb",
+        "high_protein",
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -58350,7 +58612,11 @@
       ],
       "collections": [],
       "prepTimeMin": 45,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "high_protein",
+        "pescatarian"
+      ],
       "timeTotal": 45,
       "timeActive": null,
       "containsPork": false,
@@ -58402,7 +58668,10 @@
         "it": "Servire con riso al gelsomino.",
         "tr": "Yasemin pirinci ile servis et."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb",
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -58687,7 +58956,10 @@
       ],
       "collections": [],
       "prepTimeMin": 180,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "high_protein"
+      ],
       "timeTotal": 180,
       "timeActive": null,
       "containsPork": false,
@@ -58741,7 +59013,9 @@
         "it": "Servire con basilico thai, germogli e lime.",
         "tr": "Thai feslegeni, fasulye filizi ve misket limonu ile servis et."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -59053,7 +59327,10 @@
         "fat": 16.8,
         "protein": 52.8,
         "fiber": 5.3
-      }
+      },
+      "dietaryTags": [
+        "high_protein"
+      ]
     },
     {
       "id": "pao_de_queijo",
@@ -59095,7 +59372,9 @@
         "it": "Servire caldo.",
         "tr": "Sicak servis et."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -59275,7 +59554,9 @@
       ],
       "collections": [],
       "prepTimeMin": 50,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "timeTotal": 50,
       "timeActive": null,
       "containsPork": false,
@@ -59328,7 +59609,9 @@
         "it": "Servire con carta di riso, erbe e nuoc cham.",
         "tr": "Pirinç kagidi, otlar ve nuoc cham ile servis et."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -59532,7 +59815,9 @@
       ],
       "collections": [],
       "prepTimeMin": 45,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "timeTotal": 45,
       "timeActive": null,
       "containsPork": false,
@@ -59585,7 +59870,10 @@
         "it": "Servire con naan e coriandolo.",
         "tr": "Naan ve kisnis ile servis et."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb",
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -59870,7 +60158,10 @@
       ],
       "collections": [],
       "prepTimeMin": 70,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "high_protein"
+      ],
       "timeTotal": 70,
       "timeActive": null,
       "containsPork": false,
@@ -59924,7 +60215,10 @@
         "it": "Servire con riso al gelsomino.",
         "tr": "Yasemin pirinci ile servis et."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb",
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -60194,7 +60488,11 @@
         "fat": 14.7,
         "protein": 41.3,
         "fiber": 4.4
-      }
+      },
+      "dietaryTags": [
+        "low-carb",
+        "high_protein"
+      ]
     },
     {
       "id": "goulash",
@@ -60237,7 +60535,9 @@
         "it": "Servire con pane o canederli.",
         "tr": "Ekmek veya hamur ile servis et."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -60459,7 +60759,9 @@
       ],
       "collections": [],
       "prepTimeMin": 150,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "high_protein"
+      ],
       "timeTotal": 150,
       "timeActive": null,
       "containsPork": false,
@@ -60740,7 +61042,8 @@
         "fat": 29.7,
         "protein": 24.8,
         "fiber": 4.1
-      }
+      },
+      "dietaryTags": []
     },
     {
       "id": "fondue",
@@ -60783,7 +61086,12 @@
         "it": "Servire con cubetti di pane e vino bianco.",
         "tr": "Ekmek kupleri ve beyaz sarap ile servis et."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "high_protein",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -60984,7 +61292,12 @@
       ],
       "collections": [],
       "prepTimeMin": 30,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "high_protein",
+        "vegetarian"
+      ],
       "timeTotal": 30,
       "timeActive": null,
       "containsPork": false,
@@ -61038,7 +61351,9 @@
         "it": "Servire con naan o riso basmati.",
         "tr": "Naan veya basmati ile servis et."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -61302,7 +61617,9 @@
       ],
       "collections": [],
       "prepTimeMin": 45,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "timeTotal": 45,
       "timeActive": null,
       "containsPork": false,
@@ -61356,7 +61673,10 @@
         "it": "Servire con olio d oliva, paprika e pane piatto.",
         "tr": "Zeytinyagi, paprika ve pide ile servis et."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "vegan",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -61556,7 +61876,10 @@
       ],
       "collections": [],
       "prepTimeMin": 30,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
+      ],
       "timeTotal": 30,
       "timeActive": null,
       "containsPork": false,
@@ -61608,7 +61931,9 @@
         "it": "Servire con parmigiano e prezzemolo.",
         "tr": "Parmesan ve maydanoz ile servis et."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -61815,7 +62140,10 @@
         "fat": 24.9,
         "protein": 20.3,
         "fiber": 1.6
-      }
+      },
+      "dietaryTags": [
+        "vegetarian"
+      ]
     },
     {
       "id": "tikka_masala",
@@ -61857,7 +62185,10 @@
         "it": "Servire con riso basmati e coriandolo.",
         "tr": "Basmati ve kisnis ile servis et."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb",
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -62100,7 +62431,10 @@
       ],
       "collections": [],
       "prepTimeMin": 60,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "high_protein"
+      ],
       "timeTotal": 60,
       "timeActive": null,
       "containsPork": false,
@@ -62806,8 +63140,10 @@
         "tr": "Kiyilmis maydanoz serpin, baget ile servis edin."
       },
       "diet_labels": [
-        "gluten_free",
-        "pescatarian"
+        "keto",
+        "low-carb",
+        "pescatarian",
+        "gluten_free"
       ],
       "ingredients": [
         {
@@ -63032,8 +63368,10 @@
       "collections": [],
       "prepTimeMin": 25,
       "dietaryTags": [
-        "gluten_free",
-        "pescatarian"
+        "keto",
+        "low-carb",
+        "pescatarian",
+        "gluten_free"
       ],
       "timeTotal": 25,
       "timeActive": null,
@@ -63093,8 +63431,10 @@
         "tr": "Taze kisnis ve misket limonu ile servis edin."
       },
       "diet_labels": [
-        "gluten_free",
+        "keto",
+        "low-carb",
         "pescatarian",
+        "gluten_free",
         "dairy_free"
       ],
       "ingredients": [
@@ -63443,8 +63783,10 @@
       "collections": [],
       "prepTimeMin": 35,
       "dietaryTags": [
-        "gluten_free",
+        "keto",
+        "low-carb",
         "pescatarian",
+        "gluten_free",
         "dairy_free"
       ],
       "timeTotal": 35,
@@ -63504,6 +63846,9 @@
         "tr": "Tzatziki, pita ve limon ile servis edin."
       },
       "diet_labels": [
+        "keto",
+        "low-carb",
+        "high_protein",
         "gluten_free"
       ],
       "ingredients": [
@@ -63808,6 +64153,9 @@
       "collections": [],
       "prepTimeMin": 40,
       "dietaryTags": [
+        "keto",
+        "low-carb",
+        "high_protein",
         "gluten_free"
       ],
       "timeTotal": 40,
@@ -64215,6 +64563,7 @@
         "tr": "Bir kasik krema ve naan ile servis edin."
       },
       "diet_labels": [
+        "low-carb",
         "vegetarian",
         "gluten_free"
       ],
@@ -64545,6 +64894,7 @@
       "collections": [],
       "prepTimeMin": 40,
       "dietaryTags": [
+        "low-carb",
         "vegetarian",
         "gluten_free"
       ],
@@ -67383,7 +67733,10 @@
         "it": "Servire con riso basmati o naan e coriandolo fresco.",
         "tr": "Basmati pirinç veya naan ve taze kişniş ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb",
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -67788,7 +68141,10 @@
       ],
       "collections": [],
       "prepTimeMin": 70,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "high_protein"
+      ],
       "timeTotal": 70,
       "timeActive": null,
       "containsPork": false,
@@ -67850,7 +68206,9 @@
         "it": "Servire con salsa tentsuyu e daikon grattugiato.",
         "tr": "Tentsuyu sosu ve rendelenmiş daikon ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -68219,7 +68577,9 @@
       ],
       "collections": [],
       "prepTimeMin": 40,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "timeTotal": 40,
       "timeActive": null,
       "containsPork": false,
@@ -68281,7 +68641,9 @@
         "it": "Cospargere con mandorle e coriandolo, servire con naan.",
         "tr": "Badem ve kişniş serpip naan ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -68689,7 +69051,9 @@
       ],
       "collections": [],
       "prepTimeMin": 50,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb"
+      ],
       "timeTotal": 50,
       "timeActive": null,
       "containsPork": false,
@@ -68749,7 +69113,9 @@
         "it": "Servire con un cucchiaio di yogurt e naan.",
         "tr": "Bir kaşık yoğurt ve naan ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -69116,7 +69482,9 @@
       ],
       "collections": [],
       "prepTimeMin": 45,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb"
+      ],
       "timeTotal": 45,
       "timeActive": null,
       "containsPork": false,
@@ -69178,6 +69546,9 @@
         "tr": "Limon dilimleri, soğan halkaları ve nane chutney ile servis edin."
       },
       "diet_labels": [
+        "keto",
+        "low-carb",
+        "high_protein",
         "gluten_free"
       ],
       "ingredients": [
@@ -69524,6 +69895,9 @@
       "collections": [],
       "prepTimeMin": 60,
       "dietaryTags": [
+        "keto",
+        "low-carb",
+        "high_protein",
         "gluten_free"
       ],
       "timeTotal": 60,
@@ -71445,7 +71819,9 @@
         "it": "Servire con aceto di malto, limone e salsa tartara.",
         "tr": "Malt sirkesi, limon ve tartar sos ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -71751,7 +72127,9 @@
       ],
       "collections": [],
       "prepTimeMin": 50,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "timeTotal": 50,
       "timeActive": null,
       "containsPork": false,
@@ -72215,8 +72593,8 @@
         "tr": "Küp doğranmış sebze, zeytinyağı ve kruton ile servis edin."
       },
       "diet_labels": [
+        "low-carb",
         "vegetarian",
-        "vegan",
         "gluten_free"
       ],
       "ingredients": [
@@ -72480,8 +72858,8 @@
       "collections": [],
       "prepTimeMin": 25,
       "dietaryTags": [
+        "low-carb",
         "vegetarian",
-        "vegan",
         "gluten_free"
       ],
       "timeTotal": 25,
@@ -72542,8 +72920,7 @@
         "tr": "Hemen servis edin, yoksa ekmek yumuşar."
       },
       "diet_labels": [
-        "vegetarian",
-        "vegan"
+        "vegetarian"
       ],
       "ingredients": [
         {
@@ -72766,8 +73143,7 @@
       "collections": [],
       "prepTimeMin": 20,
       "dietaryTags": [
-        "vegetarian",
-        "vegan"
+        "vegetarian"
       ],
       "timeTotal": 20,
       "timeActive": null,
@@ -73941,6 +74317,7 @@
         "tr": "Hindistan cevizi chutney ve sambar ile servis edin."
       },
       "diet_labels": [
+        "vegan",
         "vegetarian",
         "gluten_free"
       ],
@@ -74220,6 +74597,7 @@
       "collections": [],
       "prepTimeMin": 300,
       "dietaryTags": [
+        "vegan",
         "vegetarian",
         "gluten_free"
       ],
@@ -74684,8 +75062,7 @@
         "tr": "Aioli ve maydanoz ile servis edin."
       },
       "diet_labels": [
-        "vegetarian",
-        "vegan"
+        "vegetarian"
       ],
       "ingredients": [
         {
@@ -74987,8 +75364,7 @@
       "collections": [],
       "prepTimeMin": 45,
       "dietaryTags": [
-        "vegetarian",
-        "vegan"
+        "vegetarian"
       ],
       "timeTotal": 45,
       "timeActive": null,
@@ -75053,8 +75429,7 @@
         "tr": "Zeytinyağı ve deniz tuzu ile servis edin."
       },
       "diet_labels": [
-        "vegetarian",
-        "vegan"
+        "vegetarian"
       ],
       "ingredients": [
         {
@@ -75313,8 +75688,7 @@
       "collections": [],
       "prepTimeMin": 150,
       "dietaryTags": [
-        "vegetarian",
-        "vegan"
+        "vegetarian"
       ],
       "timeTotal": 150,
       "timeActive": null,
@@ -75942,6 +76316,8 @@
         "tr": "İri deniz tuzu, paprika ve zeytinyağı ile servis edin."
       },
       "diet_labels": [
+        "high_protein",
+        "pescatarian",
         "gluten_free"
       ],
       "ingredients": [
@@ -76186,6 +76562,8 @@
       "collections": [],
       "prepTimeMin": 90,
       "dietaryTags": [
+        "high_protein",
+        "pescatarian",
         "gluten_free"
       ],
       "timeTotal": 90,
@@ -76823,8 +77201,7 @@
         "tr": "Limon dilimleri ve yoğurt ile servis edin."
       },
       "diet_labels": [
-        "vegetarian",
-        "vegan"
+        "vegetarian"
       ],
       "ingredients": [
         {
@@ -77187,8 +77564,7 @@
       "collections": [],
       "prepTimeMin": 70,
       "dietaryTags": [
-        "vegetarian",
-        "vegan"
+        "vegetarian"
       ],
       "timeTotal": 70,
       "timeActive": null,
@@ -77713,7 +78089,9 @@
         "it": "Servire con riso o purè di patate.",
         "tr": "Pirinç veya patates püresi ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -78105,7 +78483,9 @@
       ],
       "collections": [],
       "prepTimeMin": 100,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "high_protein"
+      ],
       "timeTotal": 100,
       "timeActive": null,
       "containsPork": false,
@@ -78553,8 +78933,8 @@
         "tr": "Kızarmış yumurta ve ekmek ile servis edin."
       },
       "diet_labels": [
+        "low-carb",
         "vegetarian",
-        "vegan",
         "gluten_free"
       ],
       "ingredients": [
@@ -78838,8 +79218,8 @@
       "collections": [],
       "prepTimeMin": 40,
       "dietaryTags": [
+        "low-carb",
         "vegetarian",
-        "vegan",
         "gluten_free"
       ],
       "timeTotal": 40,
@@ -79320,7 +79700,10 @@
         "it": "Servire con salsa blue cheese e bastoncini di sedano.",
         "tr": "Blue cheese dip ve kereviz çubukları ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "keto",
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -79623,7 +80006,10 @@
       ],
       "collections": [],
       "prepTimeMin": 45,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb"
+      ],
       "timeTotal": 45,
       "timeActive": null,
       "containsPork": false,
@@ -80837,6 +81223,8 @@
         "tr": "Zeytinyağı gezdirip pide ile servis edin."
       },
       "diet_labels": [
+        "keto",
+        "low-carb",
         "vegetarian",
         "gluten_free"
       ],
@@ -81081,6 +81469,8 @@
       "collections": [],
       "prepTimeMin": 20,
       "dietaryTags": [
+        "keto",
+        "low-carb",
         "vegetarian",
         "gluten_free"
       ],
@@ -81142,6 +81532,9 @@
         "tr": "Pirinç ve makarna salatası ile servis edin."
       },
       "diet_labels": [
+        "keto",
+        "low-carb",
+        "high_protein",
         "gluten_free"
       ],
       "ingredients": [
@@ -81342,6 +81735,9 @@
       "collections": [],
       "prepTimeMin": 300,
       "dietaryTags": [
+        "keto",
+        "low-carb",
+        "high_protein",
         "gluten_free"
       ],
       "timeTotal": 300,
@@ -81404,6 +81800,9 @@
         "tr": "BBQ sos, turşu ve beyaz ekmek ile servis edin."
       },
       "diet_labels": [
+        "keto",
+        "low-carb",
+        "high_protein",
         "gluten_free"
       ],
       "ingredients": [
@@ -81664,6 +82063,9 @@
       "collections": [],
       "prepTimeMin": 300,
       "dietaryTags": [
+        "keto",
+        "low-carb",
+        "high_protein",
         "gluten_free"
       ],
       "timeTotal": 300,
@@ -82684,6 +83086,8 @@
         "tr": "Limon sıkın ve hemen ekmekle servis edin."
       },
       "diet_labels": [
+        "keto",
+        "low-carb",
         "vegetarian"
       ],
       "ingredients": [
@@ -82888,6 +83292,8 @@
       "collections": [],
       "prepTimeMin": 20,
       "dietaryTags": [
+        "keto",
+        "low-carb",
         "vegetarian"
       ],
       "timeTotal": 20,
@@ -82951,7 +83357,9 @@
         "it": "Affettare finemente, servire con riso o bao.",
         "tr": "İnce dilimleyin, pirinç veya bao ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -83279,7 +83687,9 @@
       ],
       "collections": [],
       "prepTimeMin": 90,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "high_protein"
+      ],
       "timeTotal": 90,
       "timeActive": null,
       "containsPork": true,
@@ -83337,7 +83747,10 @@
         "it": "Servire con patatine e jalapeños.",
         "tr": "Patates kızartması ve jalapeño ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "high_protein",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -83622,7 +84035,10 @@
       ],
       "collections": [],
       "prepTimeMin": 30,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "high_protein",
+        "vegetarian"
+      ],
       "timeTotal": 30,
       "timeActive": null,
       "containsPork": false,
@@ -84772,7 +85188,9 @@
         "it": "Servire con salsa takoyaki, kewpie mayo e fiocchi di bonito.",
         "tr": "Takoyaki sosu, kewpie mayo ve bonito pulu ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -85126,7 +85544,9 @@
       ],
       "collections": [],
       "prepTimeMin": 40,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "timeTotal": 40,
       "timeActive": null,
       "containsPork": false,
@@ -85497,6 +85917,8 @@
         "tr": "Zeytinyağı gezdirin, pide ve zeytin ile servis edin."
       },
       "diet_labels": [
+        "low-carb",
+        "pescatarian",
         "gluten_free"
       ],
       "ingredients": [
@@ -85739,6 +86161,8 @@
       "collections": [],
       "prepTimeMin": 20,
       "dietaryTags": [
+        "low-carb",
+        "pescatarian",
         "gluten_free"
       ],
       "timeTotal": 20,
@@ -86638,7 +87062,6 @@
       },
       "diet_labels": [
         "vegetarian",
-        "vegan",
         "gluten_free"
       ],
       "ingredients": [
@@ -86878,7 +87301,6 @@
       "prepTimeMin": 40,
       "dietaryTags": [
         "vegetarian",
-        "vegan",
         "gluten_free"
       ],
       "timeTotal": 40,
@@ -86940,7 +87362,9 @@
         "it": "Servire con limone e maionese.",
         "tr": "Limon ve mayonez ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -87186,7 +87610,9 @@
       ],
       "collections": [],
       "prepTimeMin": 35,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "timeTotal": 35,
       "timeActive": null,
       "containsPork": false,
@@ -87248,7 +87674,10 @@
         "it": "Servire con pane piatto (somun), cipolle e ajvar.",
         "tr": "Pide (somun), soğan ve ajvar ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "keto",
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -87526,7 +87955,10 @@
       ],
       "collections": [],
       "prepTimeMin": 40,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb"
+      ],
       "timeTotal": 40,
       "timeActive": null,
       "containsPork": false,
@@ -88018,6 +88450,8 @@
         "tr": "Yasemin pirinci ve turşu ile servis edin."
       },
       "diet_labels": [
+        "low-carb",
+        "high_protein",
         "gluten_free"
       ],
       "ingredients": [
@@ -88465,6 +88899,8 @@
       "collections": [],
       "prepTimeMin": 180,
       "dietaryTags": [
+        "low-carb",
+        "high_protein",
         "gluten_free"
       ],
       "timeTotal": 180,
@@ -89566,7 +90002,9 @@
         "it": "Servire tiepida, tagliata a quadretti.",
         "tr": "Ilık, kareler halinde servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -89890,7 +90328,9 @@
       ],
       "collections": [],
       "prepTimeMin": 90,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "timeTotal": 90,
       "timeActive": null,
       "containsPork": false,
@@ -93900,7 +94340,9 @@
         "it": "Avvolgere nel nori e servire con salsa di soia.",
         "tr": "Nori şeritleriyle sarıp soya sosu ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -94140,7 +94582,9 @@
       ],
       "collections": [],
       "prepTimeMin": 40,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "timeTotal": 40,
       "timeActive": null,
       "containsPork": false,
@@ -95132,7 +95576,9 @@
         "it": "Servire con riso glutinoso.",
         "tr": "Yapışkan pirinç ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -95480,7 +95926,9 @@
       ],
       "collections": [],
       "prepTimeMin": 25,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "timeTotal": 25,
       "timeActive": null,
       "containsPork": false,
@@ -95543,7 +95991,9 @@
         "it": "Servire con riso glutinoso e verdure fresche.",
         "tr": "Yapışkan pirinç ve taze sebze ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -95865,7 +96315,9 @@
       ],
       "collections": [],
       "prepTimeMin": 25,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb"
+      ],
       "timeTotal": 25,
       "timeActive": null,
       "containsPork": true,
@@ -97961,7 +98413,9 @@
         "it": "Servire con spicchi di lime, coriandolo e salsa.",
         "tr": "Misket limonu, kişniş ve salsa ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -98415,7 +98869,9 @@
       ],
       "collections": [],
       "prepTimeMin": 40,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "timeTotal": 40,
       "timeActive": null,
       "containsPork": false,
@@ -98475,6 +98931,8 @@
         "tr": "Sıcak tortillalarda kişniş, soğan ve misket limonu ile servis edin."
       },
       "diet_labels": [
+        "keto",
+        "low-carb",
         "gluten_free"
       ],
       "ingredients": [
@@ -98779,6 +99237,8 @@
       "collections": [],
       "prepTimeMin": 180,
       "dietaryTags": [
+        "keto",
+        "low-carb",
         "gluten_free"
       ],
       "timeTotal": 180,
@@ -102548,7 +103008,9 @@
         "it": "Cospargere con sesamo e cipollotti, servire con riso.",
         "tr": "Susam ve yeşil soğan serpin, pirinç ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -102899,7 +103361,9 @@
         "light_dinner"
       ],
       "prepTimeMin": 30,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "timeTotal": 30,
       "timeActive": null,
       "containsPork": false,
@@ -102958,7 +103422,10 @@
         "it": "Guarnire con mitsuba e scorza di limone.",
         "tr": "Mitsuba ve limon kabuğu ile süsleyin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "keto",
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -103287,7 +103754,10 @@
       ],
       "collections": [],
       "prepTimeMin": 35,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb"
+      ],
       "timeTotal": 35,
       "timeActive": null,
       "containsPork": false,
@@ -103345,7 +103815,9 @@
         "it": "Cospargere con erba cipollina e servire subito.",
         "tr": "Frenk soğanı serpin ve hemen servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -103632,7 +104104,9 @@
       ],
       "collections": [],
       "prepTimeMin": 35,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "timeTotal": 35,
       "timeActive": null,
       "containsPork": false,
@@ -103690,7 +104164,9 @@
         "it": "Servire con avocado, coriandolo e lime.",
         "tr": "Avokado, kişniş ve misket limonu ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -104017,7 +104493,9 @@
       ],
       "collections": [],
       "prepTimeMin": 30,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "timeTotal": 30,
       "timeActive": null,
       "containsPork": false,
@@ -108856,6 +109334,7 @@
         "tr": "Çikolata serpmeye bulayın ve kağıt kaplarda servis edin."
       },
       "diet_labels": [
+        "low-carb",
         "vegetarian",
         "gluten_free"
       ],
@@ -109040,6 +109519,7 @@
       "collections": [],
       "prepTimeMin": 40,
       "dietaryTags": [
+        "low-carb",
         "vegetarian",
         "gluten_free"
       ],
@@ -111877,6 +112357,7 @@
         "tr": "Hindistan cevizine bulayin ve kagit kaplarda servis edin."
       },
       "diet_labels": [
+        "low-carb",
         "vegetarian",
         "gluten_free"
       ],
@@ -112060,6 +112541,7 @@
       "collections": [],
       "prepTimeMin": 40,
       "dietaryTags": [
+        "low-carb",
         "vegetarian",
         "gluten_free"
       ],
@@ -112424,8 +112906,7 @@
         "tr": "Pul biber, limon ve tere ile serpin."
       },
       "diet_labels": [
-        "vegetarian",
-        "vegan"
+        "vegetarian"
       ],
       "ingredients": [
         {
@@ -112668,8 +113149,7 @@
       "collections": [],
       "prepTimeMin": 10,
       "dietaryTags": [
-        "vegetarian",
-        "vegan"
+        "vegetarian"
       ],
       "cuisineOrigin": "international",
       "cuisineStyle": "modern",
@@ -112730,7 +113210,11 @@
         "it": "Servire con rouille, crostini e formaggio grattugiato.",
         "tr": "Rouille, kruton ve rendelenmis peynir ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -113120,7 +113604,11 @@
       ],
       "collections": [],
       "prepTimeMin": 60,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "pescatarian"
+      ],
       "timeTotal": 60,
       "timeActive": null,
       "containsPork": false,
@@ -116263,7 +116751,9 @@
         "it": "Servire con spicchi di limone e prezzemolo.",
         "tr": "Limon dilimleri ve maydanoz ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -116593,7 +117083,9 @@
       ],
       "collections": [],
       "prepTimeMin": 60,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "timeTotal": 60,
       "timeActive": null,
       "containsPork": false,
@@ -117100,7 +117592,9 @@
         "it": "Guarnire con spicchi di mela e uva.",
         "tr": "Elma dilimleri ve uzum ile susleyin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -117392,7 +117886,9 @@
       ],
       "collections": [],
       "prepTimeMin": 15,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "timeTotal": 15,
       "timeActive": null,
       "containsPork": false,
@@ -118087,7 +118583,10 @@
         "it": "Servire con prezzemolo e baguette.",
         "tr": "Maydanoz ve baget ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb",
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -118479,7 +118978,10 @@
       ],
       "collections": [],
       "prepTimeMin": 90,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "high_protein"
+      ],
       "timeTotal": 90,
       "timeActive": null,
       "containsPork": true,
@@ -119775,7 +120277,10 @@
         "it": "Servire con patatine fritte e birra.",
         "tr": "Patates kizartmasi ve bira ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "keto",
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -120148,7 +120653,10 @@
       ],
       "collections": [],
       "prepTimeMin": 60,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb"
+      ],
       "timeTotal": 60,
       "timeActive": null,
       "containsPork": true,
@@ -121059,9 +121567,7 @@
         "it": "Servire con sugo e roast beef.",
         "tr": "Et sosu ve rozbif ile servis edin."
       },
-      "diet_labels": [
-        "vegetarian"
-      ],
+      "diet_labels": [],
       "ingredients": [
         {
           "id": "0001",
@@ -121285,9 +121791,7 @@
       ],
       "collections": [],
       "prepTimeMin": 35,
-      "dietaryTags": [
-        "vegetarian"
-      ],
+      "dietaryTags": [],
       "timeTotal": 35,
       "timeActive": null,
       "containsPork": false,
@@ -121343,7 +121847,10 @@
         "it": "Guarnire con semi di melograno e prezzemolo.",
         "tr": "Nar taneleri ve maydanoz ile susleyin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "keto",
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -121733,7 +122240,10 @@
       ],
       "collections": [],
       "prepTimeMin": 60,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb"
+      ],
       "timeTotal": 60,
       "timeActive": null,
       "containsPork": true,
@@ -121791,7 +122301,9 @@
         "it": "Servire con patata dolce, mais e coriandolo.",
         "tr": "Tatli patates, misir ve kisnis ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -122072,7 +122584,9 @@
       ],
       "collections": [],
       "prepTimeMin": 30,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "timeTotal": 30,
       "timeActive": null,
       "containsPork": false,
@@ -122557,7 +123071,11 @@
         "it": "Servire con chimichurri e insalata.",
         "tr": "Chimichurri ve salata ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -122773,7 +123291,11 @@
       ],
       "collections": [],
       "prepTimeMin": 180,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "high_protein"
+      ],
       "timeTotal": 180,
       "timeActive": null,
       "containsPork": true,
@@ -122831,7 +123353,10 @@
         "it": "Spolverare con gremolata, servire con risotto alla milanese.",
         "tr": "Gremolata serpin, milano risottosu ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb",
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -123248,7 +123773,11 @@
         "fat": 14.4,
         "protein": 42.3,
         "fiber": 3
-      }
+      },
+      "dietaryTags": [
+        "low-carb",
+        "high_protein"
+      ]
     },
     {
       "id": "saltimbocca",
@@ -123295,7 +123824,10 @@
         "it": "Servire con foglie di salvia e limone.",
         "tr": "Adacayi yapraklari ve limon ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "keto",
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -123568,7 +124100,11 @@
         "fat": 20,
         "protein": 37.4,
         "fiber": 2.2
-      }
+      },
+      "dietaryTags": [
+        "keto",
+        "low-carb"
+      ]
     },
     {
       "id": "gulasch",
@@ -123615,7 +124151,9 @@
         "it": "Servire con nockerl o canederli.",
         "tr": "Nockerl veya ekmek yumagi ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -123938,7 +124476,9 @@
       ],
       "collections": [],
       "prepTimeMin": 150,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "high_protein"
+      ],
       "timeTotal": 150,
       "timeActive": null,
       "containsPork": false,
@@ -123996,7 +124536,10 @@
         "it": "Servire con pane di segale e patate.",
         "tr": "Cavdar ekmegi ve patates ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb",
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -124403,7 +124946,10 @@
       ],
       "collections": [],
       "prepTimeMin": 180,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "high_protein"
+      ],
       "timeTotal": 180,
       "timeActive": null,
       "containsPork": true,
@@ -124800,7 +125346,10 @@
         "fat": 21.8,
         "protein": 20.3,
         "fiber": 5.5
-      }
+      },
+      "dietaryTags": [
+        "vegetarian"
+      ]
     },
     {
       "id": "gravlax",
@@ -124847,7 +125396,9 @@
         "it": "Servire con salsa alla senape e pane di segale.",
         "tr": "Hardal sosu ve cavdar ekmegi ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -125132,7 +125683,9 @@
       ],
       "collections": [],
       "prepTimeMin": 45,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "timeTotal": 45,
       "timeActive": null,
       "containsPork": false,
@@ -125189,7 +125742,9 @@
         "it": "Guarnire con aneto e limone.",
         "tr": "Dere otu ve limon ile susleyin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -125522,7 +126077,9 @@
       ],
       "collections": [],
       "prepTimeMin": 30,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "timeTotal": 30,
       "timeActive": null,
       "containsPork": false,
@@ -125579,7 +126136,9 @@
         "it": "Servire con salsa di panna, pure e mirtilli rossi.",
         "tr": "Krema sos, patates puresi ve yaban mersini ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -125953,7 +126512,9 @@
       ],
       "collections": [],
       "prepTimeMin": 60,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb"
+      ],
       "timeTotal": 60,
       "timeActive": null,
       "containsPork": true,
@@ -126474,7 +127035,9 @@
         "it": "Servire con basilico thai, germogli, peperoncino e lime.",
         "tr": "Thai feslegeni, soya filizi, aci biber ve misket limonu ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -126901,7 +127464,9 @@
       ],
       "collections": [],
       "prepTimeMin": 240,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "high_protein"
+      ],
       "timeTotal": 240,
       "timeActive": null,
       "containsPork": false,
@@ -126959,7 +127524,10 @@
         "it": "Servire con coriandolo, cipolle e lime in tortillas calde.",
         "tr": "Kisnis, sogan ve misket limonu ile sicak tortillada servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb",
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -127384,7 +127952,10 @@
       ],
       "collections": [],
       "prepTimeMin": 180,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "high_protein"
+      ],
       "timeTotal": 180,
       "timeActive": null,
       "containsPork": false,
@@ -127839,6 +128410,8 @@
         "tr": "Misket limonu, aci biber ve kisnis serpin."
       },
       "diet_labels": [
+        "keto",
+        "low-carb",
         "vegetarian"
       ],
       "ingredients": [
@@ -128108,6 +128681,8 @@
       "collections": [],
       "prepTimeMin": 30,
       "dietaryTags": [
+        "keto",
+        "low-carb",
         "vegetarian"
       ],
       "timeTotal": 30,
@@ -128167,8 +128742,9 @@
         "tr": "Kisnis ve pul biber serpin."
       },
       "diet_labels": [
-        "vegetarian",
-        "vegan"
+        "keto",
+        "low-carb",
+        "vegetarian"
       ],
       "ingredients": [
         {
@@ -128409,8 +128985,9 @@
       "collections": [],
       "prepTimeMin": 15,
       "dietaryTags": [
-        "vegetarian",
-        "vegan"
+        "keto",
+        "low-carb",
+        "vegetarian"
       ],
       "timeTotal": 15,
       "timeActive": null,
@@ -128469,7 +129046,9 @@
         "it": "Servire con riso jasmine e scalogno fritto.",
         "tr": "Yasemin pirinci ve kizarmis arpacik sogani ile servis edin."
       },
-      "diet_labels": [],
+      "diet_labels": [
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -128897,7 +129476,9 @@
       ],
       "collections": [],
       "prepTimeMin": 180,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb"
+      ],
       "timeTotal": 180,
       "timeActive": null,
       "containsPork": false,
@@ -130554,7 +131135,9 @@
       ],
       "collections": [],
       "prepTimeMin": 5,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -130623,7 +131206,10 @@
         "fat": 1.5,
         "protein": 26.5,
         "fiber": 5.5
-      }
+      },
+      "diet_labels": [
+        "vegetarian"
+      ]
     },
     {
       "id": "bircher_muesli",
@@ -130643,7 +131229,9 @@
       ],
       "collections": [],
       "prepTimeMin": 10,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -130728,7 +131316,10 @@
         "fat": 7.2,
         "protein": 11.9,
         "fiber": 4.8
-      }
+      },
+      "diet_labels": [
+        "vegetarian"
+      ]
     },
     {
       "id": "shakshuka_beans",
@@ -130748,7 +131339,9 @@
       ],
       "collections": [],
       "prepTimeMin": 20,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -130833,7 +131426,10 @@
         "fat": 1.2,
         "protein": 11.7,
         "fiber": 9.5
-      }
+      },
+      "diet_labels": [
+        "vegetarian"
+      ]
     },
     {
       "id": "ruehrei_spinat_feta",
@@ -130853,7 +131449,11 @@
       ],
       "collections": [],
       "prepTimeMin": 10,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -130922,7 +131522,12 @@
         "fat": 2.5,
         "protein": 4,
         "fiber": 2
-      }
+      },
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ]
     },
     {
       "id": "avocado_toast_egg",
@@ -130942,7 +131547,11 @@
       ],
       "collections": [],
       "prepTimeMin": 10,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -131011,7 +131620,12 @@
         "fat": 0.2,
         "protein": 0.2,
         "fiber": 0.2
-      }
+      },
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ]
     },
     {
       "id": "skyr_bowl_walnut",
@@ -131031,7 +131645,11 @@
       ],
       "collections": [],
       "prepTimeMin": 5,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "high_protein",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -131100,7 +131718,12 @@
         "fat": 2.6,
         "protein": 40.6,
         "fiber": 0.4
-      }
+      },
+      "diet_labels": [
+        "low-carb",
+        "high_protein",
+        "vegetarian"
+      ]
     },
     {
       "id": "banana_oat_pancakes",
@@ -131120,7 +131743,10 @@
       ],
       "collections": [],
       "prepTimeMin": 15,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -131189,7 +131815,11 @@
         "fat": 1.7,
         "protein": 3.2,
         "fiber": 2.5
-      }
+      },
+      "diet_labels": [
+        "low-carb",
+        "vegetarian"
+      ]
     },
     {
       "id": "savory_porridge_mushroom",
@@ -131209,7 +131839,11 @@
       ],
       "collections": [],
       "prepTimeMin": 15,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "vegan",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -131278,7 +131912,12 @@
         "fat": 2.5,
         "protein": 8,
         "fiber": 4.5
-      }
+      },
+      "diet_labels": [
+        "low-carb",
+        "vegan",
+        "vegetarian"
+      ]
     },
     {
       "id": "tamago_sando",
@@ -131298,7 +131937,11 @@
       ],
       "collections": [],
       "prepTimeMin": 10,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -131367,7 +132010,12 @@
         "fat": 2.1,
         "protein": 0.4,
         "fiber": 0
-      }
+      },
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ]
     },
     {
       "id": "chia_yogurt_cherry",
@@ -131387,7 +132035,9 @@
       ],
       "collections": [],
       "prepTimeMin": 5,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -131456,7 +132106,10 @@
         "fat": 5.2,
         "protein": 8.9,
         "fiber": 2.9
-      }
+      },
+      "diet_labels": [
+        "vegetarian"
+      ]
     },
     {
       "id": "quark_parfait_almond",
@@ -131476,7 +132129,10 @@
       ],
       "collections": [],
       "prepTimeMin": 5,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "high_protein",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -131545,7 +132201,11 @@
         "fat": 3.3,
         "protein": 49.5,
         "fiber": 3.3
-      }
+      },
+      "diet_labels": [
+        "high_protein",
+        "vegetarian"
+      ]
     },
     {
       "id": "rye_cottage_cheese",
@@ -131565,7 +132225,11 @@
       ],
       "collections": [],
       "prepTimeMin": 5,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -131634,7 +132298,12 @@
         "fat": 4,
         "protein": 12.1,
         "fiber": 0.6
-      }
+      },
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ]
     },
     {
       "id": "egg_bean_burrito",
@@ -131654,7 +132323,10 @@
       ],
       "collections": [],
       "prepTimeMin": 15,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -131739,7 +132411,11 @@
         "fat": 1.2,
         "protein": 7.6,
         "fiber": 5.3
-      }
+      },
+      "diet_labels": [
+        "low-carb",
+        "vegetarian"
+      ]
     },
     {
       "id": "apple_walnut_baked_oats",
@@ -131759,7 +132435,9 @@
       ],
       "collections": [],
       "prepTimeMin": 30,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -131844,7 +132522,10 @@
         "fat": 6,
         "protein": 7.3,
         "fiber": 4.8
-      }
+      },
+      "diet_labels": [
+        "vegetarian"
+      ]
     },
     {
       "id": "tofu_scramble_veg",
@@ -131864,7 +132545,12 @@
       ],
       "collections": [],
       "prepTimeMin": 10,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "vegan",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -131935,7 +132621,13 @@
         "fat": 12,
         "protein": 18.5,
         "fiber": 3.5
-      }
+      },
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "vegan",
+        "vegetarian"
+      ]
     },
     {
       "id": "mexican_breakfast_tacos",
@@ -131955,7 +132647,11 @@
       ],
       "collections": [],
       "prepTimeMin": 15,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -132024,7 +132720,12 @@
         "fat": 4.4,
         "protein": 1,
         "fiber": 2.1
-      }
+      },
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ]
     },
     {
       "id": "herb_omelette",
@@ -132044,7 +132745,11 @@
       ],
       "collections": [],
       "prepTimeMin": 10,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -132113,7 +132818,12 @@
         "fat": 1.2,
         "protein": 0.6,
         "fiber": 0.1
-      }
+      },
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ]
     },
     {
       "id": "apple_cinnamon_porridge",
@@ -132133,7 +132843,9 @@
       ],
       "collections": [],
       "prepTimeMin": 10,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -132218,7 +132930,10 @@
         "fat": 13.5,
         "protein": 16,
         "fiber": 4.5
-      }
+      },
+      "diet_labels": [
+        "vegetarian"
+      ]
     },
     {
       "id": "labneh_bowl_olives",
@@ -132238,7 +132953,10 @@
       ],
       "collections": [],
       "prepTimeMin": 5,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -132307,7 +133025,11 @@
         "fat": 21.5,
         "protein": 21.3,
         "fiber": 1.3
-      }
+      },
+      "diet_labels": [
+        "low-carb",
+        "vegetarian"
+      ]
     },
     {
       "id": "roesti_salmon",
@@ -132327,7 +133049,9 @@
       ],
       "collections": [],
       "prepTimeMin": 15,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -132396,7 +133120,10 @@
         "fat": 4.5,
         "protein": 13.6,
         "fiber": 6
-      }
+      },
+      "diet_labels": [
+        "pescatarian"
+      ]
     },
     {
       "id": "tomato_lentil_soup",
@@ -132418,7 +133145,10 @@
         "light_dinner"
       ],
       "prepTimeMin": 25,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -132505,7 +133235,11 @@
         "fat": 4.6,
         "protein": 38,
         "fiber": 24.4
-      }
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian"
+      ]
     },
     {
       "id": "minestrone_beans",
@@ -132527,7 +133261,9 @@
         "light_dinner"
       ],
       "prepTimeMin": 30,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -132612,7 +133348,10 @@
         "fat": 1.5,
         "protein": 27.8,
         "fiber": 19.1
-      }
+      },
+      "diet_labels": [
+        "vegetarian"
+      ]
     },
     {
       "id": "chickpea_bowl_roasted_veg",
@@ -132634,7 +133373,9 @@
         "light_dinner"
       ],
       "prepTimeMin": 30,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -132721,7 +133462,10 @@
         "fat": 6.5,
         "protein": 18,
         "fiber": 13.5
-      }
+      },
+      "diet_labels": [
+        "vegetarian"
+      ]
     },
     {
       "id": "white_bean_tuna_salad",
@@ -132743,7 +133487,9 @@
         "light_dinner"
       ],
       "prepTimeMin": 10,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -132830,7 +133576,10 @@
         "fat": 6.5,
         "protein": 39,
         "fiber": 11.5
-      }
+      },
+      "diet_labels": [
+        "pescatarian"
+      ]
     },
     {
       "id": "salmon_tray_broccoli",
@@ -132852,7 +133601,10 @@
         "light_dinner"
       ],
       "prepTimeMin": 25,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "high_protein",
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -132923,7 +133675,11 @@
         "fat": 15,
         "protein": 57.5,
         "fiber": 14.5
-      }
+      },
+      "diet_labels": [
+        "high_protein",
+        "pescatarian"
+      ]
     },
     {
       "id": "miso_noodle_soup_tofu",
@@ -132945,7 +133701,10 @@
         "light_dinner"
       ],
       "prepTimeMin": 15,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -133030,7 +133789,11 @@
         "fat": 5.8,
         "protein": 19.4,
         "fiber": 6.4
-      }
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian"
+      ]
     },
     {
       "id": "cabbage_mushroom_tofu",
@@ -133052,7 +133815,9 @@
         "light_dinner"
       ],
       "prepTimeMin": 20,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -133123,7 +133888,10 @@
         "fat": 13,
         "protein": 25,
         "fiber": 13
-      }
+      },
+      "diet_labels": [
+        "vegetarian"
+      ]
     },
     {
       "id": "zucchini_frittata_salad",
@@ -133145,7 +133913,10 @@
         "light_dinner"
       ],
       "prepTimeMin": 20,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -133216,7 +133987,11 @@
         "fat": 0.4,
         "protein": 3,
         "fiber": 2.5
-      }
+      },
+      "diet_labels": [
+        "low-carb",
+        "vegetarian"
+      ]
     },
     {
       "id": "cod_tomato_olives",
@@ -133238,7 +134013,11 @@
         "light_dinner"
       ],
       "prepTimeMin": 25,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -133309,7 +134088,12 @@
         "fat": 4.5,
         "protein": 39.3,
         "fiber": 3.3
-      }
+      },
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "pescatarian"
+      ]
     },
     {
       "id": "stuffed_peppers_lentils",
@@ -133331,7 +134115,10 @@
         "light_dinner"
       ],
       "prepTimeMin": 35,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -133402,7 +134189,11 @@
         "fat": 1.6,
         "protein": 17,
         "fiber": 7.5
-      }
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian"
+      ]
     },
     {
       "id": "chicken_caesar_salad",
@@ -133424,7 +134215,11 @@
         "light_dinner"
       ],
       "prepTimeMin": 20,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -133511,7 +134306,12 @@
         "fat": 6.5,
         "protein": 49.9,
         "fiber": 2
-      }
+      },
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "high_protein"
+      ]
     },
     {
       "id": "falafel_bowl_yogurt",
@@ -133533,7 +134333,9 @@
         "light_dinner"
       ],
       "prepTimeMin": 25,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -133618,7 +134420,10 @@
         "fat": 3,
         "protein": 8.3,
         "fiber": 3
-      }
+      },
+      "diet_labels": [
+        "vegetarian"
+      ]
     },
     {
       "id": "vegetable_quesadilla",
@@ -133640,7 +134445,11 @@
         "light_dinner"
       ],
       "prepTimeMin": 15,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -133727,7 +134536,12 @@
         "fat": 6,
         "protein": 8.1,
         "fiber": 3
-      }
+      },
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ]
     },
     {
       "id": "chicken_wrap_greek",
@@ -133749,7 +134563,10 @@
         "light_dinner"
       ],
       "prepTimeMin": 15,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -133836,7 +134653,11 @@
         "fat": 2.9,
         "protein": 31.1,
         "fiber": 0.5
-      }
+      },
+      "diet_labels": [
+        "keto",
+        "low-carb"
+      ]
     },
     {
       "id": "salmon_tacos_light",
@@ -133858,7 +134679,11 @@
         "light_dinner"
       ],
       "prepTimeMin": 20,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -133945,7 +134770,12 @@
         "fat": 10.3,
         "protein": 30.5,
         "fiber": 0.6
-      }
+      },
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "pescatarian"
+      ]
     },
     {
       "id": "zucchini_noodles_feta",
@@ -133967,7 +134797,11 @@
         "light_dinner"
       ],
       "prepTimeMin": 15,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -134038,7 +134872,12 @@
         "fat": 3.6,
         "protein": 3.4,
         "fiber": 1
-      }
+      },
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ]
     },
     {
       "id": "wholegrain_pasta_pea_pesto",
@@ -134060,7 +134899,10 @@
         "light_dinner"
       ],
       "prepTimeMin": 20,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -134147,7 +134989,11 @@
         "fat": 3.4,
         "protein": 13,
         "fiber": 9.9
-      }
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian"
+      ]
     },
     {
       "id": "soba_noodles_veg",
@@ -134169,7 +135015,10 @@
         "light_dinner"
       ],
       "prepTimeMin": 20,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -134254,7 +135103,11 @@
         "fat": 1.6,
         "protein": 11,
         "fiber": 7.8
-      }
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian"
+      ]
     },
     {
       "id": "omelette_mushrooms",
@@ -134276,7 +135129,11 @@
         "light_dinner"
       ],
       "prepTimeMin": 15,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -134347,7 +135204,12 @@
         "fat": 1.4,
         "protein": 3.6,
         "fiber": 2.1
-      }
+      },
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ]
     },
     {
       "id": "chicken_veg_stew",
@@ -134369,7 +135231,9 @@
         "light_dinner"
       ],
       "prepTimeMin": 30,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -134456,7 +135320,10 @@
         "fat": 4.5,
         "protein": 57.5,
         "fiber": 8
-      }
+      },
+      "diet_labels": [
+        "high_protein"
+      ]
     },
     {
       "id": "chia_pudding_mango",
@@ -134476,7 +135343,10 @@
       ],
       "collections": [],
       "prepTimeMin": 5,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -134545,7 +135415,11 @@
         "fat": 16.2,
         "protein": 4.8,
         "fiber": 6.6
-      }
+      },
+      "diet_labels": [
+        "low-carb",
+        "vegetarian"
+      ]
     },
     {
       "id": "egg_muffins_spinach",
@@ -134565,7 +135439,11 @@
       ],
       "collections": [],
       "prepTimeMin": 20,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -134634,7 +135512,12 @@
         "fat": 2.9,
         "protein": 4.5,
         "fiber": 2
-      }
+      },
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ]
     },
     {
       "id": "sweet_potato_toast_avocado",
@@ -134654,7 +135537,9 @@
       ],
       "collections": [],
       "prepTimeMin": 15,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -134723,7 +135608,10 @@
         "fat": 4,
         "protein": 6.6,
         "fiber": 10
-      }
+      },
+      "diet_labels": [
+        "vegetarian"
+      ]
     },
     {
       "id": "greek_yogurt_granola",
@@ -134743,7 +135631,9 @@
       ],
       "collections": [],
       "prepTimeMin": 5,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -134812,7 +135702,10 @@
         "fat": 21.8,
         "protein": 21.2,
         "fiber": 0.9
-      }
+      },
+      "diet_labels": [
+        "vegetarian"
+      ]
     },
     {
       "id": "spinach_feta_wrap",
@@ -134832,7 +135725,11 @@
       ],
       "collections": [],
       "prepTimeMin": 10,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -134901,7 +135798,12 @@
         "fat": 3.6,
         "protein": 4.5,
         "fiber": 2
-      }
+      },
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "vegetarian"
+      ]
     },
     {
       "id": "shrimp_zucchini_pasta",
@@ -134923,7 +135825,10 @@
         "light_dinner"
       ],
       "prepTimeMin": 20,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "high_protein",
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -134994,7 +135899,11 @@
         "fat": 4.2,
         "protein": 53.8,
         "fiber": 6.4
-      }
+      },
+      "diet_labels": [
+        "high_protein",
+        "pescatarian"
+      ]
     },
     {
       "id": "turkey_lettuce_wraps",
@@ -135016,7 +135925,11 @@
         "light_dinner"
       ],
       "prepTimeMin": 15,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -135087,7 +136000,12 @@
         "fat": 7.5,
         "protein": 46,
         "fiber": 1
-      }
+      },
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "high_protein"
+      ]
     },
     {
       "id": "cauliflower_steak_herb",
@@ -135109,7 +136027,9 @@
         "light_dinner"
       ],
       "prepTimeMin": 25,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -135180,7 +136100,10 @@
         "fat": 7,
         "protein": 36.1,
         "fiber": 18.1
-      }
+      },
+      "diet_labels": [
+        "vegetarian"
+      ]
     },
     {
       "id": "mushroom_barley_risotto",
@@ -135202,7 +136125,10 @@
         "light_dinner"
       ],
       "prepTimeMin": 30,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -135271,7 +136197,11 @@
         "fat": 4.6,
         "protein": 21.9,
         "fiber": 13.3
-      }
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian"
+      ]
     },
     {
       "id": "baked_feta_tomato_pasta",
@@ -135293,7 +136223,9 @@
         "light_dinner"
       ],
       "prepTimeMin": 25,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -135364,7 +136296,10 @@
         "fat": 21.2,
         "protein": 20.8,
         "fiber": 6.4
-      }
+      },
+      "diet_labels": [
+        "vegetarian"
+      ]
     },
     {
       "id": "chicken_broccoli_stirfry",
@@ -135386,7 +136321,10 @@
         "light_dinner"
       ],
       "prepTimeMin": 15,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "low-carb",
+        "high_protein"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -135457,7 +136395,11 @@
         "fat": 4.5,
         "protein": 53.1,
         "fiber": 10
-      }
+      },
+      "diet_labels": [
+        "low-carb",
+        "high_protein"
+      ]
     },
     {
       "id": "lentil_bolo_pasta",
@@ -135479,7 +136421,10 @@
         "light_dinner"
       ],
       "prepTimeMin": 25,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegan",
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -135548,7 +136493,11 @@
         "fat": 2.8,
         "protein": 24.8,
         "fiber": 12.8
-      }
+      },
+      "diet_labels": [
+        "vegan",
+        "vegetarian"
+      ]
     },
     {
       "id": "salmon_cucumber_salad",
@@ -135570,7 +136519,11 @@
         "light_dinner"
       ],
       "prepTimeMin": 15,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "keto",
+        "low-carb",
+        "pescatarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -135641,7 +136594,12 @@
         "fat": 10.1,
         "protein": 31.3,
         "fiber": 1.5
-      }
+      },
+      "diet_labels": [
+        "keto",
+        "low-carb",
+        "pescatarian"
+      ]
     },
     {
       "id": "stuffed_zucchini_quinoa",
@@ -135663,7 +136621,9 @@
         "light_dinner"
       ],
       "prepTimeMin": 30,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -135734,7 +136694,10 @@
         "fat": 3.9,
         "protein": 6.3,
         "fiber": 2.4
-      }
+      },
+      "diet_labels": [
+        "vegetarian"
+      ]
     },
     {
       "id": "eggplant_tomato_bake",
@@ -135756,7 +136719,9 @@
         "light_dinner"
       ],
       "prepTimeMin": 30,
-      "dietaryTags": [],
+      "dietaryTags": [
+        "vegetarian"
+      ],
       "ingredients": [
         {
           "id": "0001",
@@ -135827,7 +136792,10 @@
         "fat": 11,
         "protein": 21,
         "fiber": 19
-      }
+      },
+      "diet_labels": [
+        "vegetarian"
+      ]
     }
   ]
 }

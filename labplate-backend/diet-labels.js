@@ -6,7 +6,7 @@
 
 // Schwellen (pro Portion)
 const KETO_MAX_NET_CARBS_G = 10;
-const HIGH_PROTEIN_MIN_G = 25;
+const HIGH_PROTEIN_MIN_G = 40;
 const LOW_CARB_MAX_NET_CARBS_G = 20;
 
 // Regex auf Zutatennamen. Wortgrenzen verhindern Fehltreffer
