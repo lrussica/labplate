@@ -485,7 +485,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 75.3,
+        "fat": 53.1,
+        "protein": 55.2,
+        "fiber": 5.7
+      }
     },
     {
       "id": "ragu_bolognese",
@@ -864,7 +870,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 7.3,
+        "fat": 28.6,
+        "protein": 25.9,
+        "fiber": 2.1
+      }
     },
     {
       "id": "carbonara",
@@ -1140,7 +1152,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": false,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 70,
+        "fat": 22,
+        "protein": 23.8,
+        "fiber": 3
+      }
     },
     {
       "id": "coq_au_vin",
@@ -1513,7 +1531,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 9.7,
+        "fat": 47,
+        "protein": 67.4,
+        "fiber": 2
+      }
     },
     {
       "id": "wiener_schnitzel",
@@ -1779,7 +1803,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 41.3,
+        "fat": 36.8,
+        "protein": 39.2,
+        "fiber": 2.3
+      }
     },
     {
       "id": "karniyarik",
@@ -2083,7 +2113,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 11.8,
+        "fat": 30.6,
+        "protein": 23.3,
+        "fiber": 7.6
+      }
     },
     {
       "id": "koefte",
@@ -2377,7 +2413,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 8.9,
+        "fat": 22.8,
+        "protein": 26.5,
+        "fiber": 0.9
+      }
     },
     {
       "immutable": true,
@@ -2612,7 +2654,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 62,
+        "fat": 55.3,
+        "protein": 14,
+        "fiber": 2.5
+      }
     },
     {
       "immutable": true,
@@ -2904,7 +2952,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 65.4,
+        "fat": 18.9,
+        "protein": 15.5,
+        "fiber": 1.5
+      }
     },
     {
       "immutable": true,
@@ -3185,7 +3239,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 94.6,
+        "fat": 21.5,
+        "protein": 24.1,
+        "fiber": 4.7
+      }
     },
     {
       "immutable": true,
@@ -3523,7 +3583,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 14.3,
+        "fat": 46.7,
+        "protein": 64.2,
+        "fiber": 3
+      }
     },
     {
       "immutable": true,
@@ -3813,7 +3879,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 15.5,
+        "fat": 15.9,
+        "protein": 4.6,
+        "fiber": 7
+      }
     },
     {
       "immutable": true,
@@ -4106,7 +4178,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": false,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 39.9,
+        "fat": 58.9,
+        "protein": 14.6,
+        "fiber": 1.5
+      }
     },
     {
       "immutable": true,
@@ -4344,7 +4422,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 47.3,
+        "fat": 36.7,
+        "protein": 38.3,
+        "fiber": 3.4
+      }
     },
     {
       "immutable": true,
@@ -4640,7 +4724,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 38.6,
+        "fat": 8.3,
+        "protein": 16.8,
+        "fiber": 9
+      }
     },
     {
       "immutable": true,
@@ -4909,7 +4999,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 59.1,
+        "fat": 13.4,
+        "protein": 25.1,
+        "fiber": 3.4
+      }
     },
     {
       "immutable": true,
@@ -5192,7 +5288,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 18.1,
+        "fat": 31.1,
+        "protein": 48,
+        "fiber": 5.9
+      }
     },
     {
       "immutable": true,
@@ -5482,7 +5584,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 5,
+        "fat": 29.4,
+        "protein": 36.2,
+        "fiber": 0.9
+      }
     },
     {
       "immutable": true,
@@ -5757,7 +5865,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 78.4,
+        "fat": 39.8,
+        "protein": 33.2,
+        "fiber": 3.8
+      }
     },
     {
       "immutable": true,
@@ -6086,7 +6200,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 75.5,
+        "fat": 18.5,
+        "protein": 20.1,
+        "fiber": 3.9
+      }
     },
     {
       "immutable": true,
@@ -6350,7 +6470,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 16.2,
+        "fat": 22.8,
+        "protein": 17.7,
+        "fiber": 0.7
+      }
     },
     {
       "immutable": true,
@@ -6672,7 +6798,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 13.2,
+        "fat": 18.7,
+        "protein": 8.8,
+        "fiber": 4.3
+      }
     },
     {
       "immutable": true,
@@ -6933,7 +7065,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 5.5,
+        "fat": 34.6,
+        "protein": 53.8,
+        "fiber": 0.7
+      }
     },
     {
       "immutable": true,
@@ -7208,7 +7346,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 68.5,
+        "fat": 32.4,
+        "protein": 32.4,
+        "fiber": 2.2
+      }
     },
     {
       "immutable": true,
@@ -7483,7 +7627,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 25.9,
+        "fat": 11.3,
+        "protein": 12.1,
+        "fiber": 11.4
+      }
     },
     {
       "immutable": true,
@@ -7776,7 +7926,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 18.6,
+        "fat": 135.9,
+        "protein": 11.8,
+        "fiber": 9.1
+      }
     },
     {
       "immutable": true,
@@ -8043,7 +8199,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 7.5,
+        "fat": 29.9,
+        "protein": 9.1,
+        "fiber": 2.9
+      }
     },
     {
       "immutable": true,
@@ -8368,7 +8530,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 38.8,
+        "fat": 10.8,
+        "protein": 18.4,
+        "fiber": 8.5
+      }
     },
     {
       "immutable": true,
@@ -8645,7 +8813,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 11.8,
+        "fat": 33.7,
+        "protein": 35.5,
+        "fiber": 3.5
+      }
     },
     {
       "immutable": true,
@@ -8974,7 +9148,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 1.8,
+        "fat": 27,
+        "protein": 31.7,
+        "fiber": 2
+      }
     },
     {
       "id": "vitello_tonnato",
@@ -9421,7 +9601,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 4.4,
+        "fat": 52.2,
+        "protein": 54.4,
+        "fiber": 1.6
+      }
     },
     {
       "id": "aioli",
@@ -9657,7 +9843,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 3.3,
+        "fat": 60.1,
+        "protein": 0.7,
+        "fiber": 0.2
+      }
     },
     {
       "id": "penne_alla_vodka",
@@ -9988,7 +10180,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 76.1,
+        "fat": 28.4,
+        "protein": 19.6,
+        "fiber": 4.5
+      }
     },
     {
       "id": "spaghetti_aglio_e_olio",
@@ -10278,7 +10476,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 71.7,
+        "fat": 21.5,
+        "protein": 12.4,
+        "fiber": 3.2
+      }
     },
     {
       "id": "bucatini_all_amatriciana",
@@ -10547,7 +10751,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": false,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 74,
+        "fat": 23.1,
+        "protein": 25.2,
+        "fiber": 4.5
+      }
     },
     {
       "id": "cacio_e_pepe",
@@ -10795,7 +11005,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 70,
+        "fat": 15,
+        "protein": 28,
+        "fiber": 3
+      }
     },
     {
       "id": "pesto_genovese",
@@ -11095,7 +11311,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 71.3,
+        "fat": 42.9,
+        "protein": 21.3,
+        "fiber": 3.6
+      }
     },
     {
       "id": "sugo_marinara",
@@ -11347,7 +11569,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 9,
+        "fat": 10.4,
+        "protein": 2.7,
+        "fiber": 3.1
+      }
     },
     {
       "id": "penne_arrabbiata",
@@ -11638,7 +11866,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 77.1,
+        "fat": 11.8,
+        "protein": 14.1,
+        "fiber": 5.4
+      }
     },
     {
       "id": "spaghetti_alla_puttanesca",
@@ -11983,7 +12217,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 76.6,
+        "fat": 20.2,
+        "protein": 15.3,
+        "fiber": 5.5
+      }
     },
     {
       "id": "pasta_alla_norma",
@@ -12291,7 +12531,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 79.2,
+        "fat": 34.8,
+        "protein": 20.3,
+        "fiber": 9.1
+      }
     },
     {
       "id": "sugo_napoletana",
@@ -12563,7 +12809,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 11.1,
+        "fat": 10.5,
+        "protein": 2.9,
+        "fiber": 3.7
+      }
     },
     {
       "id": "ragu_bianco",
@@ -12934,7 +13186,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 76,
+        "fat": 29.6,
+        "protein": 45,
+        "fiber": 4
+      }
     },
     {
       "id": "sauce_hollandaise",
@@ -13228,7 +13486,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 0.6,
+        "fat": 41.2,
+        "protein": 0.5,
+        "fiber": 0
+      }
     },
     {
       "id": "sauce_bearnaise",
@@ -13565,7 +13829,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 2,
+        "fat": 41.2,
+        "protein": 0.8,
+        "fiber": 0.3
+      }
     },
     {
       "id": "sauce_tartare",
@@ -13877,7 +14147,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 2.1,
+        "fat": 37.7,
+        "protein": 1.1,
+        "fiber": 0.5
+      }
     },
     {
       "id": "sauce_vierge",
@@ -14164,7 +14440,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 3.1,
+        "fat": 30.1,
+        "protein": 0.7,
+        "fiber": 0.8
+      }
     },
     {
       "id": "ragu_di_salsiccia",
@@ -14508,7 +14790,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 78.2,
+        "fat": 38.4,
+        "protein": 36.8,
+        "fiber": 4.9
+      }
     },
     {
       "id": "sauce_aux_champignons",
@@ -14840,7 +15128,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 5.3,
+        "fat": 21.7,
+        "protein": 4.2,
+        "fiber": 1.3
+      }
     },
     {
       "id": "vinaigrette",
@@ -15077,7 +15371,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 0.6,
+        "fat": 22.6,
+        "protein": 0.2,
+        "fiber": 0.2
+      }
     },
     {
       "id": "chimichurri",
@@ -15333,7 +15633,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 1.7,
+        "fat": 30.2,
+        "protein": 0.7,
+        "fiber": 0.9
+      }
     },
     {
       "id": "balsamic_glaze",
@@ -15487,7 +15793,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 11.6,
+        "fat": 0,
+        "protein": 0.3,
+        "fiber": 0
+      }
     },
     {
       "id": "paella_valenciana",
@@ -15863,7 +16175,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 82.5,
+        "fat": 35.1,
+        "protein": 58.6,
+        "fiber": 7.8
+      }
     },
     {
       "id": "rindfleischrouladen",
@@ -16262,7 +16580,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 12.3,
+        "fat": 45.3,
+        "protein": 59.1,
+        "fiber": 2.2
+      }
     },
     {
       "id": "flammkuchen",
@@ -16551,7 +16875,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": false,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 61.9,
+        "fat": 38,
+        "protein": 14.9,
+        "fiber": 3.4
+      }
     },
     {
       "id": "kaiserschmarrn",
@@ -16900,7 +17230,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 72.5,
+        "fat": 14.1,
+        "protein": 8.7,
+        "fiber": 1.9
+      }
     },
     {
       "id": "moussaka",
@@ -17419,7 +17755,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 29.2,
+        "fat": 57.4,
+        "protein": 39.9,
+        "fiber": 8.3
+      }
     },
     {
       "id": "ossobuco_alla_milanese",
@@ -17876,7 +18218,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 15.4,
+        "fat": 44.4,
+        "protein": 87.7,
+        "fiber": 2
+      }
     },
     {
       "id": "saltimbocca_alla_romana",
@@ -18200,7 +18548,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 7,
+        "fat": 27.2,
+        "protein": 44.8,
+        "fiber": 1.7
+      }
     },
     {
       "id": "lachs_poke_bowl",
@@ -18607,7 +18961,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 60.1,
+        "fat": 21.6,
+        "protein": 32.8,
+        "fiber": 8
+      }
     },
     {
       "id": "koreanische_bibimbap_bowl",
@@ -19029,7 +19389,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 56.6,
+        "fat": 25,
+        "protein": 43.2,
+        "fiber": 5.9
+      }
     },
     {
       "id": "acai_fruehstuecks_bowl",
@@ -19326,7 +19692,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 62.7,
+        "fat": 13.7,
+        "protein": 8.3,
+        "fiber": 16.6
+      }
     },
     {
       "id": "vegane_burrito_bowl",
@@ -19718,7 +20090,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 84.9,
+        "fat": 17.9,
+        "protein": 17.7,
+        "fiber": 17.3
+      }
     },
     {
       "id": "falafel_mediterran_bowl",
@@ -20107,7 +20485,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 61,
+        "fat": 20.3,
+        "protein": 16.3,
+        "fiber": 10.3
+      }
     },
     {
       "id": "teriyaki_haehnchen_bowl",
@@ -20495,7 +20879,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 55.4,
+        "fat": 13.9,
+        "protein": 56.8,
+        "fiber": 6.2
+      }
     },
     {
       "id": "buddha_bowl_suesskartoffel",
@@ -20865,7 +21255,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 68.4,
+        "fat": 26.9,
+        "protein": 18.3,
+        "fiber": 17.8
+      }
     },
     {
       "id": "griechische_gyros_bowl",
@@ -21216,7 +21612,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 35.6,
+        "fat": 25.2,
+        "protein": 36.9,
+        "fiber": 4.5
+      }
     },
     {
       "id": "lachs_avocado_sushi_bowl",
@@ -21585,7 +21987,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 54.7,
+        "fat": 20.9,
+        "protein": 28.5,
+        "fiber": 6.9
+      }
     },
     {
       "id": "orientalische_linsen_bowl",
@@ -21919,7 +22327,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 56.1,
+        "fat": 16,
+        "protein": 16.7,
+        "fiber": 18.4
+      }
     },
     {
       "id": "gruene_power_bowl",
@@ -22233,7 +22647,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 34.4,
+        "fat": 13.8,
+        "protein": 11.2,
+        "fiber": 11
+      }
     },
     {
       "id": "mexikanische_taco_bowl",
@@ -22624,7 +23044,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 66.8,
+        "fat": 29.3,
+        "protein": 52.2,
+        "fiber": 10.5
+      }
     },
     {
       "id": "gruene_smoothie_bowl",
@@ -22919,7 +23345,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 52.8,
+        "fat": 9.2,
+        "protein": 11,
+        "fiber": 10.1
+      }
     },
     {
       "id": "mediterrane_thunfisch_bowl",
@@ -23251,7 +23683,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 40.2,
+        "fat": 11.7,
+        "protein": 28.8,
+        "fiber": 7.1
+      }
     },
     {
       "id": "erdnuss_nudel_bowl",
@@ -23660,7 +24098,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 40.4,
+        "fat": 26.2,
+        "protein": 24.9,
+        "fiber": 7.1
+      }
     },
     {
       "immutable": true,
@@ -24041,7 +24485,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 72.6,
+        "fat": 14.1,
+        "protein": 30.7,
+        "fiber": 3.6
+      }
     },
     {
       "id": "mapo_tofu",
@@ -24563,7 +25013,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 9.1,
+        "fat": 28.5,
+        "protein": 33.2,
+        "fiber": 4.5
+      }
     },
     {
       "id": "miso_ramen",
@@ -25177,7 +25633,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 48.4,
+        "fat": 30.2,
+        "protein": 30.3,
+        "fiber": 7.5
+      }
     },
     {
       "id": "boeuf_stroganoff",
@@ -25674,7 +26136,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 14.9,
+        "fat": 24.1,
+        "protein": 32.1,
+        "fiber": 2.6
+      }
     },
     {
       "id": "chili_con_carne",
@@ -26220,7 +26688,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 36.3,
+        "fat": 25.9,
+        "protein": 33.7,
+        "fiber": 14.8
+      }
     },
     {
       "id": "bibimbap",
@@ -26873,7 +27347,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 43.9,
+        "fat": 31.1,
+        "protein": 30.5,
+        "fiber": 8.4
+      }
     },
     {
       "id": "empanadas_de_carne",
@@ -27319,7 +27799,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 50.9,
+        "fat": 27.7,
+        "protein": 19.6,
+        "fiber": 4.6
+      }
     },
     {
       "id": "bo_kho",
@@ -27972,7 +28458,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 41,
+        "fat": 35.7,
+        "protein": 41.7,
+        "fiber": 9.4
+      }
     },
     {
       "id": "tom_kha_gai",
@@ -28387,7 +28879,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 12.7,
+        "fat": 46.7,
+        "protein": 29.9,
+        "fiber": 4.5
+      }
     },
     {
       "id": "linsensuppe",
@@ -28882,7 +29380,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 61.4,
+        "fat": 8.1,
+        "protein": 23.1,
+        "fiber": 14.3
+      }
     },
     {
       "id": "bouillabaisse",
@@ -29378,7 +29882,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 16.6,
+        "fat": 9,
+        "protein": 37.1,
+        "fiber": 6.3
+      }
     },
     {
       "id": "massaman_curry",
@@ -29816,7 +30326,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 32.8,
+        "fat": 43.6,
+        "protein": 36.8,
+        "fiber": 8.3
+      }
     },
     {
       "id": "ossobuco_lombardo",
@@ -30305,7 +30821,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 20.2,
+        "fat": 18,
+        "protein": 45.1,
+        "fiber": 5.3
+      }
     },
     {
       "id": "mushroom_risotto",
@@ -30758,7 +31280,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 73.8,
+        "fat": 18,
+        "protein": 15.9,
+        "fiber": 4.2
+      }
     },
     {
       "id": "nasi_goreng",
@@ -31235,7 +31763,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 56.1,
+        "fat": 13.6,
+        "protein": 21,
+        "fiber": 2.2
+      }
     },
     {
       "id": "feijoada",
@@ -31690,7 +32224,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 25.7,
+        "fat": 15.8,
+        "protein": 23,
+        "fiber": 8.9
+      }
     },
     {
       "id": "jambalaya",
@@ -32187,7 +32727,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": false,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 52.1,
+        "fat": 19.7,
+        "protein": 36.3,
+        "fiber": 5.4
+      }
     },
     {
       "id": "beef_wellington",
@@ -32601,7 +33147,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 26.9,
+        "fat": 30.5,
+        "protein": 38,
+        "fiber": 2.3
+      }
     },
     {
       "id": "cassoulet",
@@ -33099,7 +33651,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 20.3,
+        "fat": 19,
+        "protein": 15.4,
+        "fiber": 5.7
+      }
     },
     {
       "id": "ceviche",
@@ -33427,7 +33985,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 25.6,
+        "fat": 6.7,
+        "protein": 21.4,
+        "fiber": 5
+      }
     },
     {
       "id": "borscht",
@@ -33927,7 +34491,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 30.6,
+        "fat": 10.9,
+        "protein": 24,
+        "fiber": 7.6
+      }
     },
     {
       "id": "gumbo",
@@ -34447,7 +35017,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": false,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 33.5,
+        "fat": 17.8,
+        "protein": 21.8,
+        "fiber": 4.9
+      }
     },
     {
       "id": "poutine",
@@ -34782,7 +35358,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 42.2,
+        "fat": 36.6,
+        "protein": 17.7,
+        "fiber": 4.9
+      }
     },
     {
       "id": "laksa",
@@ -35260,7 +35842,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 24.5,
+        "fat": 31,
+        "protein": 25.5,
+        "fiber": 6.7
+      }
     },
     {
       "id": "tacos_al_pastor",
@@ -35656,7 +36244,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 36.2,
+        "fat": 19.3,
+        "protein": 29.5,
+        "fiber": 6.4
+      }
     },
     {
       "id": "pierogi_ruskie",
@@ -36014,7 +36608,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 80.2,
+        "fat": 22.1,
+        "protein": 17.3,
+        "fiber": 4.9
+      }
     },
     {
       "id": "khachapuri",
@@ -36351,7 +36951,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 69.8,
+        "fat": 24.2,
+        "protein": 26,
+        "fiber": 2.5
+      }
     },
     {
       "id": "bobotie",
@@ -36771,7 +37377,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 19.9,
+        "fat": 17.1,
+        "protein": 18,
+        "fiber": 3.7
+      }
     },
     {
       "id": "poerkolt",
@@ -37190,7 +37802,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 13.3,
+        "fat": 17.1,
+        "protein": 33.3,
+        "fiber": 7.8
+      }
     },
     {
       "id": "baeckeoffe",
@@ -37633,7 +38251,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 28.9,
+        "fat": 24.1,
+        "protein": 31.8,
+        "fiber": 5.2
+      }
     },
     {
       "id": "pastitsio",
@@ -38134,7 +38758,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 54,
+        "fat": 23.6,
+        "protein": 21.9,
+        "fiber": 4.8
+      }
     },
     {
       "id": "chili_verde",
@@ -38553,7 +39183,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 29.7,
+        "fat": 19.8,
+        "protein": 32,
+        "fiber": 7
+      }
     },
     {
       "id": "cochinita_pibil",
@@ -38970,7 +39606,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 18.3,
+        "fat": 12.2,
+        "protein": 18.4,
+        "fiber": 4.2
+      }
     },
     {
       "id": "chicken_adobo",
@@ -39303,7 +39945,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 20.3,
+        "fat": 5.4,
+        "protein": 13.9,
+        "fiber": 1
+      }
     },
     {
       "id": "hainanese_chicken_rice",
@@ -39679,7 +40327,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 52.6,
+        "fat": 19.1,
+        "protein": 36.3,
+        "fiber": 1.7
+      }
     },
     {
       "id": "sauerbraten",
@@ -40131,7 +40785,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 30.2,
+        "fat": 16.7,
+        "protein": 26.1,
+        "fiber": 3.8
+      }
     },
     {
       "id": "schweinshaxe",
@@ -40526,7 +41186,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 12.3,
+        "fat": 32.4,
+        "protein": 36.1,
+        "fiber": 3.6
+      }
     },
     {
       "id": "koenigsberger_klopse",
@@ -40982,7 +41648,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 22.7,
+        "fat": 32.9,
+        "protein": 23.8,
+        "fiber": 1.9
+      }
     },
     {
       "id": "kung_pao_chicken",
@@ -41414,7 +42086,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 41.9,
+        "fat": 19.6,
+        "protein": 25.9,
+        "fiber": 3.7
+      }
     },
     {
       "id": "larb_gai",
@@ -41790,7 +42468,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 47.6,
+        "fat": 8.6,
+        "protein": 24.7,
+        "fiber": 3.5
+      }
     },
     {
       "id": "bun_cha",
@@ -42249,7 +42933,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 31.6,
+        "fat": 35.2,
+        "protein": 15.3,
+        "fiber": 4.4
+      }
     },
     {
       "id": "fesenjan",
@@ -42605,7 +43295,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 49.2,
+        "fat": 25.7,
+        "protein": 28.1,
+        "fiber": 3.8
+      }
     },
     {
       "id": "tagine",
@@ -43063,7 +43759,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 50.2,
+        "fat": 22,
+        "protein": 28.5,
+        "fiber": 7.1
+      }
     },
     {
       "id": "mole_poblano",
@@ -43520,7 +44222,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 20.3,
+        "fat": 18.2,
+        "protein": 28.3,
+        "fiber": 6.6
+      }
     },
     {
       "id": "sancocho",
@@ -43941,7 +44649,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 49.1,
+        "fat": 19.1,
+        "protein": 34.2,
+        "fiber": 6.8
+      }
     },
     {
       "id": "harira",
@@ -44378,7 +45092,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 40.3,
+        "fat": 14.2,
+        "protein": 27,
+        "fiber": 10.4
+      }
     },
     {
       "id": "pastilla",
@@ -44775,7 +45495,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 34.9,
+        "fat": 25.5,
+        "protein": 26,
+        "fiber": 4.4
+      }
     },
     {
       "id": "menemen",
@@ -45107,7 +45833,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 31,
+        "fat": 11.1,
+        "protein": 6.5,
+        "fiber": 3.9
+      }
     },
     {
       "id": "chili_colorado",
@@ -45542,7 +46274,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 48.9,
+        "fat": 17.8,
+        "protein": 37.4,
+        "fiber": 6.1
+      }
     },
     {
       "id": "cordon_bleu",
@@ -45874,7 +46612,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 22.1,
+        "fat": 22,
+        "protein": 33.9,
+        "fiber": 1.2
+      }
     },
     {
       "id": "szegediner_gulasch",
@@ -46249,7 +46993,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 29.3,
+        "fat": 26.1,
+        "protein": 36.2,
+        "fiber": 10.1
+      }
     },
     {
       "id": "pozole_rojo",
@@ -46663,7 +47413,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 31.1,
+        "fat": 24,
+        "protein": 42.4,
+        "fiber": 10
+      }
     },
     {
       "id": "bacalhau_a_bras",
@@ -46974,7 +47730,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 27.6,
+        "fat": 18.6,
+        "protein": 27.3,
+        "fiber": 4.8
+      }
     },
     {
       "id": "vindaloo",
@@ -47367,7 +48129,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 52.7,
+        "fat": 15.2,
+        "protein": 25.9,
+        "fiber": 5.7
+      }
     },
     {
       "id": "chicken_katsu_curry",
@@ -47721,7 +48489,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 79.6,
+        "fat": 14,
+        "protein": 38.6,
+        "fiber": 7.9
+      }
     },
     {
       "id": "bulgogi",
@@ -48096,7 +48870,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 45.2,
+        "fat": 25.5,
+        "protein": 29.6,
+        "fiber": 2.9
+      }
     },
     {
       "id": "boerek",
@@ -48391,7 +49171,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 35.8,
+        "fat": 29,
+        "protein": 14.7,
+        "fiber": 3.9
+      }
     },
     {
       "id": "baklava",
@@ -48681,7 +49467,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 59.8,
+        "fat": 35,
+        "protein": 8.5,
+        "fiber": 3.8
+      }
     },
     {
       "id": "arepas",
@@ -48973,7 +49765,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 83.4,
+        "fat": 22.9,
+        "protein": 24.5,
+        "fiber": 14.7
+      }
     },
     {
       "id": "pupusas",
@@ -49328,7 +50126,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 84,
+        "fat": 19.8,
+        "protein": 35.4,
+        "fiber": 13
+      }
     },
     {
       "id": "tteokbokki",
@@ -49641,7 +50445,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 102,
+        "fat": 4.4,
+        "protein": 15.4,
+        "fiber": 4.6
+      }
     },
     {
       "id": "ramen_tonkotsu",
@@ -50039,7 +50849,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 33,
+        "fat": 23.5,
+        "protein": 33.1,
+        "fiber": 3
+      }
     },
     {
       "id": "kimchi_jjigae",
@@ -50373,7 +51189,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 28.7,
+        "fat": 38,
+        "protein": 19.8,
+        "fiber": 5.4
+      }
     },
     {
       "id": "gyoza",
@@ -50707,7 +51529,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 38.6,
+        "fat": 31.9,
+        "protein": 23.5,
+        "fiber": 3.6
+      }
     },
     {
       "id": "okonomiyaki",
@@ -51041,7 +51869,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 43.2,
+        "fat": 38.6,
+        "protein": 13.6,
+        "fiber": 4.5
+      }
     },
     {
       "id": "sushi_lachs",
@@ -51374,7 +52208,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 44.3,
+        "fat": 21.2,
+        "protein": 26.4,
+        "fiber": 4.3
+      }
     },
     {
       "id": "miso_suppe",
@@ -51601,7 +52441,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 4.9,
+        "fat": 5.9,
+        "protein": 12.7,
+        "fiber": 3.2
+      }
     },
     {
       "id": "banh_mi",
@@ -51955,7 +52801,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 73.9,
+        "fat": 26.1,
+        "protein": 30.8,
+        "fiber": 5.5
+      }
     },
     {
       "id": "yakitori",
@@ -52225,7 +53077,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 25,
+        "fat": 13.2,
+        "protein": 31.5,
+        "fiber": 1.9
+      }
     },
     {
       "id": "lomo_saltado",
@@ -52557,7 +53415,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 50.4,
+        "fat": 19.4,
+        "protein": 30.9,
+        "fiber": 4.2
+      }
     },
     {
       "id": "chicken_satay",
@@ -52911,7 +53775,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 11.2,
+        "fat": 22.9,
+        "protein": 29.5,
+        "fiber": 3.4
+      }
     },
     {
       "id": "chiles_rellenos",
@@ -53244,7 +54114,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 21.9,
+        "fat": 24.3,
+        "protein": 15.3,
+        "fiber": 6
+      }
     },
     {
       "id": "ropa_vieja",
@@ -53619,7 +54495,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 19.7,
+        "fat": 15.5,
+        "protein": 15.6,
+        "fiber": 3.3
+      }
     },
     {
       "id": "pollo_a_la_brasa",
@@ -53931,7 +54813,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 21.2,
+        "fat": 14.4,
+        "protein": 33.7,
+        "fiber": 6.1
+      }
     },
     {
       "id": "enchiladas_verdes",
@@ -54264,7 +55152,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 7,
+        "fat": 13.4,
+        "protein": 17.7,
+        "fiber": 2.1
+      }
     },
     {
       "id": "anticuchos",
@@ -54555,7 +55449,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 30.3,
+        "fat": 9.6,
+        "protein": 39.1,
+        "fiber": 6.1
+      }
     },
     {
       "id": "causa_limena",
@@ -54867,7 +55767,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 26.9,
+        "fat": 31.8,
+        "protein": 18.6,
+        "fiber": 7.9
+      }
     },
     {
       "id": "sopa_de_tortilla",
@@ -55221,7 +56127,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 33,
+        "fat": 33.9,
+        "protein": 40.5,
+        "fiber": 8.5
+      }
     },
     {
       "id": "chicken_karahi",
@@ -55555,7 +56467,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 11.9,
+        "fat": 32.6,
+        "protein": 42.1,
+        "fiber": 4.2
+      }
     },
     {
       "id": "nikujaga",
@@ -55867,7 +56785,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 45.8,
+        "fat": 10.7,
+        "protein": 26.9,
+        "fiber": 6.9
+      }
     },
     {
       "id": "mofongo",
@@ -56137,7 +57061,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 47.6,
+        "fat": 37.1,
+        "protein": 7.4,
+        "fiber": 4.1
+      }
     },
     {
       "id": "ajiaco",
@@ -56471,7 +57401,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 47.6,
+        "fat": 22.9,
+        "protein": 52.6,
+        "fiber": 10.5
+      }
     },
     {
       "id": "pabellon_criollo",
@@ -56783,7 +57719,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 88,
+        "fat": 9.7,
+        "protein": 39.9,
+        "fiber": 14.5
+      }
     },
     {
       "id": "bandeja_paisa",
@@ -57117,7 +58059,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 68.2,
+        "fat": 18.6,
+        "protein": 18.6,
+        "fiber": 10.8
+      }
     },
     {
       "id": "moqueca",
@@ -57407,7 +58355,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 12.7,
+        "fat": 31.5,
+        "protein": 40.4,
+        "fiber": 3.9
+      }
     },
     {
       "id": "beef_rendang",
@@ -57738,7 +58692,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 14,
+        "fat": 42.3,
+        "protein": 51.3,
+        "fiber": 2.5
+      }
     },
     {
       "id": "pho",
@@ -58087,7 +59047,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 38.6,
+        "fat": 16.8,
+        "protein": 52.8,
+        "fiber": 5.3
+      }
     },
     {
       "id": "pao_de_queijo",
@@ -58314,7 +59280,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 73,
+        "fat": 29.3,
+        "protein": 12.5,
+        "fiber": 0.7
+      }
     },
     {
       "id": "banh_xeo",
@@ -58565,7 +59537,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 52,
+        "fat": 18.4,
+        "protein": 23.2,
+        "fiber": 3.8
+      }
     },
     {
       "id": "butter_chicken",
@@ -58897,7 +59875,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 11.9,
+        "fat": 47,
+        "protein": 42.8,
+        "fiber": 3.9
+      }
     },
     {
       "id": "kung_pao",
@@ -59204,7 +60188,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 10.9,
+        "fat": 14.7,
+        "protein": 41.3,
+        "fiber": 4.4
+      }
     },
     {
       "id": "goulash",
@@ -59474,7 +60464,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 26.7,
+        "fat": 21.1,
+        "protein": 42.8,
+        "fiber": 6.7
+      }
     },
     {
       "id": "empanadas",
@@ -59738,7 +60734,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 64.5,
+        "fat": 29.7,
+        "protein": 24.8,
+        "fiber": 4.1
+      }
     },
     {
       "id": "fondue",
@@ -59987,7 +60989,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 7,
+        "fat": 49.3,
+        "protein": 47,
+        "fiber": 0.3
+      }
     },
     {
       "id": "linsen_curry",
@@ -60299,7 +61307,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 62.4,
+        "fat": 19.4,
+        "protein": 29.4,
+        "fiber": 14.9
+      }
     },
     {
       "id": "hummus",
@@ -60547,7 +61561,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 41.1,
+        "fat": 31.5,
+        "protein": 22.3,
+        "fiber": 13.4
+      }
     },
     {
       "id": "risotto",
@@ -60789,7 +61809,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 68.5,
+        "fat": 24.9,
+        "protein": 20.3,
+        "fiber": 1.6
+      }
     },
     {
       "id": "tikka_masala",
@@ -61079,7 +62105,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 13.1,
+        "fat": 27.1,
+        "protein": 51.3,
+        "fiber": 3
+      }
     },
     {
       "id": "clam_chowder",
@@ -61461,7 +62493,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": false,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 31.4,
+        "fat": 25.4,
+        "protein": 34.8,
+        "fiber": 2.8
+      }
     },
     {
       "id": "tortilla_espanola",
@@ -61715,7 +62753,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 25.7,
+        "fat": 15.4,
+        "protein": 3.6,
+        "fiber": 3.8
+      }
     },
     {
       "id": "gambas_al_ajillo",
@@ -61995,7 +63039,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 4,
+        "fat": 26.8,
+        "protein": 31.2,
+        "fiber": 0.4
+      }
     },
     {
       "id": "tom_yum",
@@ -62401,7 +63451,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 7.5,
+        "fat": 14.2,
+        "protein": 25.5,
+        "fiber": 0.8
+      }
     },
     {
       "id": "souvlaki",
@@ -62758,7 +63814,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 8.7,
+        "fat": 49.3,
+        "protein": 44,
+        "fiber": 1.8
+      }
     },
     {
       "id": "spanakopita",
@@ -63100,7 +64162,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 36.1,
+        "fat": 37.1,
+        "protein": 15.9,
+        "fiber": 5
+      }
     },
     {
       "id": "palak_paneer",
@@ -63484,7 +64552,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 14.6,
+        "fat": 35.1,
+        "protein": 21.8,
+        "fiber": 6.4
+      }
     },
     {
       "id": "dal_makhani",
@@ -63848,7 +64922,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 44.4,
+        "fat": 25.8,
+        "protein": 21.4,
+        "fiber": 11.7
+      }
     },
     {
       "id": "pad_kra_pao",
@@ -64294,7 +65374,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 67.2,
+        "fat": 16.4,
+        "protein": 30.5,
+        "fiber": 1.5
+      }
     },
     {
       "id": "japchae",
@@ -64757,7 +65843,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 54,
+        "fat": 16.9,
+        "protein": 14.7,
+        "fiber": 3.3
+      }
     },
     {
       "id": "shawarma",
@@ -65218,7 +66310,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 36.7,
+        "fat": 26.6,
+        "protein": 36.5,
+        "fiber": 6
+      }
     },
     {
       "id": "biryani",
@@ -65737,7 +66835,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 91.7,
+        "fat": 20,
+        "protein": 37.2,
+        "fiber": 9
+      }
     },
     {
       "id": "samosa",
@@ -66221,7 +67325,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 59.7,
+        "fat": 37.2,
+        "protein": 10.3,
+        "fiber": 7.6
+      }
     },
     {
       "id": "rogan_josh",
@@ -66683,7 +67793,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 18,
+        "fat": 47.7,
+        "protein": 41,
+        "fiber": 9.3
+      }
     },
     {
       "id": "tempura",
@@ -67108,7 +68224,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 53.7,
+        "fat": 31.4,
+        "protein": 28.3,
+        "fiber": 4.9
+      }
     },
     {
       "id": "korma",
@@ -67572,7 +68694,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 16.1,
+        "fat": 42.1,
+        "protein": 35.9,
+        "fiber": 6.1
+      }
     },
     {
       "id": "palak_chicken",
@@ -67993,7 +69121,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 10.7,
+        "fat": 29.5,
+        "protein": 34.1,
+        "fiber": 5.4
+      }
     },
     {
       "id": "tandoori_chicken",
@@ -68396,7 +69530,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 9.8,
+        "fat": 28.8,
+        "protein": 41.8,
+        "fiber": 4
+      }
     },
     {
       "id": "naan",
@@ -68738,7 +69878,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 76.3,
+        "fat": 15.4,
+        "protein": 12.7,
+        "fiber": 3.2
+      }
     },
     {
       "id": "idli",
@@ -69010,7 +70156,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 74,
+        "fat": 0.8,
+        "protein": 11.1,
+        "fiber": 5.4
+      }
     },
     {
       "id": "dosa",
@@ -69303,7 +70455,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 74.4,
+        "fat": 10.8,
+        "protein": 11.4,
+        "fiber": 5.7
+      }
     },
     {
       "id": "wonton_soup",
@@ -69746,7 +70904,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 35.6,
+        "fat": 21.2,
+        "protein": 31.2,
+        "fiber": 2.6
+      }
     },
     {
       "id": "chapati",
@@ -69985,7 +71149,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 48.8,
+        "fat": 6.1,
+        "protein": 9,
+        "fiber": 6
+      }
     },
     {
       "id": "paratha",
@@ -70222,7 +71392,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 48.8,
+        "fat": 16.1,
+        "protein": 9,
+        "fiber": 6
+      }
     },
     {
       "id": "fish_and_chips",
@@ -70580,7 +71756,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 60.4,
+        "fat": 26.7,
+        "protein": 35.1,
+        "fiber": 5.4
+      }
     },
     {
       "id": "shepherd_pie",
@@ -70979,7 +72161,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 42.4,
+        "fat": 38.2,
+        "protein": 29.8,
+        "fiber": 8.2
+      }
     },
     {
       "id": "gazpacho",
@@ -71300,7 +72488,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 11.4,
+        "fat": 15.6,
+        "protein": 2.9,
+        "fiber": 3.7
+      }
     },
     {
       "id": "bruschetta",
@@ -71579,7 +72773,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 30.6,
+        "fat": 10.8,
+        "protein": 5.8,
+        "fiber": 2.5
+      }
     },
     {
       "id": "creme_brulee",
@@ -71894,7 +73094,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 40.1,
+        "fat": 50.5,
+        "protein": 7.4,
+        "fiber": 0
+      }
     },
     {
       "id": "upma",
@@ -72322,7 +73528,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 43.9,
+        "fat": 13.1,
+        "protein": 10,
+        "fiber": 4.5
+      }
     },
     {
       "id": "pongal",
@@ -72670,7 +73882,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 59.4,
+        "fat": 15.7,
+        "protein": 11.5,
+        "fiber": 5.5
+      }
     },
     {
       "id": "vada",
@@ -73009,7 +74227,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 31.8,
+        "fat": 25.8,
+        "protein": 12.9,
+        "fiber": 9.6
+      }
     },
     {
       "id": "cottage_pie",
@@ -73407,7 +74631,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 42.4,
+        "fat": 33.2,
+        "protein": 32.3,
+        "fiber": 8.2
+      }
     },
     {
       "id": "patatas_bravas",
@@ -73764,7 +74994,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 38,
+        "fat": 21.3,
+        "protein": 6.5,
+        "fiber": 7.9
+      }
     },
     {
       "id": "focaccia",
@@ -74084,7 +75320,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 94,
+        "fat": 24.4,
+        "protein": 14.2,
+        "fiber": 4.9
+      }
     },
     {
       "id": "panna_cotta",
@@ -74339,7 +75581,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 24.1,
+        "fat": 42.5,
+        "protein": 4.3,
+        "fiber": 0
+      }
     },
     {
       "id": "huevos_rotos",
@@ -74639,7 +75887,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 25.4,
+        "fat": 15.6,
+        "protein": 4,
+        "fiber": 4.6
+      }
     },
     {
       "id": "pulpo_a_la_gallega",
@@ -74938,7 +76192,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 32.2,
+        "fat": 18.5,
+        "protein": 48.5,
+        "fiber": 4.6
+      }
     },
     {
       "id": "couscous_royal",
@@ -75505,7 +76765,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 79.3,
+        "fat": 25.9,
+        "protein": 33.6,
+        "fiber": 12.7
+      }
     },
     {
       "id": "dolma",
@@ -75928,7 +77194,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 48.6,
+        "fat": 27.8,
+        "protein": 9.8,
+        "fiber": 8.3
+      }
     },
     {
       "id": "bun_bo_hue",
@@ -76388,7 +77660,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 71,
+        "fat": 16.1,
+        "protein": 32.1,
+        "fiber": 4.7
+      }
     },
     {
       "id": "blanquette_de_veau",
@@ -76832,7 +78110,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 22.5,
+        "fat": 36.3,
+        "protein": 48.8,
+        "fiber": 3.8
+      }
     },
     {
       "id": "sachertorte",
@@ -77213,7 +78497,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 32.6,
+        "fat": 18.4,
+        "protein": 2.4,
+        "fiber": 1.7
+      }
     },
     {
       "id": "pisto",
@@ -77556,7 +78846,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 11.8,
+        "fat": 13.3,
+        "protein": 3.5,
+        "fiber": 4.1
+      }
     },
     {
       "id": "hamburger",
@@ -77967,7 +79263,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 30,
+        "fat": 43.8,
+        "protein": 31.5,
+        "fiber": 2.2
+      }
     },
     {
       "id": "buffalo_wings",
@@ -78326,7 +79628,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 0.8,
+        "fat": 39.7,
+        "protein": 27.1,
+        "fiber": 0.6
+      }
     },
     {
       "id": "mac_and_cheese",
@@ -78675,7 +79983,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 67.9,
+        "fat": 24,
+        "protein": 23.8,
+        "fiber": 2.9
+      }
     },
     {
       "id": "chicken_pot_pie",
@@ -79098,7 +80412,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 43.4,
+        "fat": 40.8,
+        "protein": 33.6,
+        "fiber": 4.6
+      }
     },
     {
       "id": "sticky_toffee_pudding",
@@ -79461,7 +80781,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 66.2,
+        "fat": 16.8,
+        "protein": 3.5,
+        "fiber": 2.6
+      }
     },
     {
       "id": "tzatziki",
@@ -79762,7 +81088,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 9.4,
+        "fat": 22.7,
+        "protein": 12.4,
+        "fiber": 1
+      }
     },
     {
       "id": "kalua_pork",
@@ -80016,7 +81348,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 2.3,
+        "fat": 39.1,
+        "protein": 57.4,
+        "fiber": 0.6
+      }
     },
     {
       "id": "texas_brisket",
@@ -80332,7 +81670,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 6.4,
+        "fat": 19.1,
+        "protein": 52.8,
+        "fiber": 2.4
+      }
     },
     {
       "id": "key_lime_pie",
@@ -80655,7 +81999,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 53.2,
+        "fat": 27.8,
+        "protein": 7.9,
+        "fiber": 1.3
+      }
     },
     {
       "id": "banoffee_pie",
@@ -80955,7 +82305,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 63.1,
+        "fat": 39.3,
+        "protein": 7.8,
+        "fiber": 2.3
+      }
     },
     {
       "id": "bangers_and_mash",
@@ -81274,7 +82630,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 39.4,
+        "fat": 43.4,
+        "protein": 24.6,
+        "fiber": 5.1
+      }
     },
     {
       "id": "saganaki",
@@ -81532,7 +82894,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 9.9,
+        "fat": 45.1,
+        "protein": 26.2,
+        "fiber": 0.7
+      }
     },
     {
       "id": "char_siu",
@@ -81916,7 +83284,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 35.5,
+        "fat": 27.3,
+        "protein": 40.7,
+        "fiber": 1.3
+      }
     },
     {
       "id": "philly_cheesesteak",
@@ -82253,7 +83627,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 36.6,
+        "fat": 33.6,
+        "protein": 40,
+        "fiber": 3
+      }
     },
     {
       "id": "weinerschnitzel",
@@ -82578,7 +83958,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 33.2,
+        "fat": 20.6,
+        "protein": 30.1,
+        "fiber": 2
+      }
     },
     {
       "id": "xiaolongbao",
@@ -82983,7 +84369,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 58.2,
+        "fat": 24.7,
+        "protein": 32.4,
+        "fiber": 2.5
+      }
     },
     {
       "id": "churros",
@@ -83327,7 +84719,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 73.3,
+        "fat": 35.2,
+        "protein": 10.3,
+        "fiber": 5
+      }
     },
     {
       "id": "takoyaki",
@@ -83733,7 +85131,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 45.6,
+        "fat": 22.2,
+        "protein": 18.7,
+        "fiber": 1.8
+      }
     },
     {
       "id": "apple_crumble",
@@ -84034,7 +85438,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 59.5,
+        "fat": 14.9,
+        "protein": 4.6,
+        "fiber": 5.7
+      }
     },
     {
       "id": "taramasalata",
@@ -84335,7 +85745,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 12.3,
+        "fat": 36.6,
+        "protein": 9.4,
+        "fiber": 0.8
+      }
     },
     {
       "id": "full_english_breakfast",
@@ -84714,7 +86130,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 32.1,
+        "fat": 38.9,
+        "protein": 29.7,
+        "fiber": 4.5
+      }
     },
     {
       "id": "soutzoukakia",
@@ -85158,7 +86580,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 22.1,
+        "fat": 44.4,
+        "protein": 32.4,
+        "fiber": 3.9
+      }
     },
     {
       "id": "mochi",
@@ -85457,7 +86885,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 68.4,
+        "fat": 0.4,
+        "protein": 3.8,
+        "fiber": 2
+      }
     },
     {
       "id": "tortilla_de_camaron",
@@ -85757,7 +87191,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 23.4,
+        "fat": 20.7,
+        "protein": 16,
+        "fiber": 1.2
+      }
     },
     {
       "id": "cevapi",
@@ -86091,7 +87531,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 3.8,
+        "fat": 33.2,
+        "protein": 32.7,
+        "fiber": 1.7
+      }
     },
     {
       "id": "peking_duck",
@@ -86514,7 +87960,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 46.7,
+        "fat": 38.2,
+        "protein": 36.5,
+        "fiber": 1.9
+      }
     },
     {
       "id": "rendang_beef",
@@ -87019,7 +88471,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 19.2,
+        "fat": 45.3,
+        "protein": 40.2,
+        "fiber": 3.2
+      }
     },
     {
       "id": "eton_mess",
@@ -87295,7 +88753,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 44.1,
+        "fat": 36.5,
+        "protein": 3.9,
+        "fiber": 2.5
+      }
     },
     {
       "id": "cornish_pasty",
@@ -87653,7 +89117,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 41.1,
+        "fat": 35.6,
+        "protein": 19.1,
+        "fiber": 3.2
+      }
     },
     {
       "id": "matcha_cheesecake",
@@ -88040,7 +89510,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 32.9,
+        "fat": 43.3,
+        "protein": 7.3,
+        "fiber": 1.2
+      }
     },
     {
       "id": "empanada_gallega",
@@ -88419,7 +89895,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 85.2,
+        "fat": 22.4,
+        "protein": 32.7,
+        "fiber": 6.9
+      }
     },
     {
       "id": "gyudon",
@@ -88799,7 +90281,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 96.4,
+        "fat": 11,
+        "protein": 36.3,
+        "fiber": 2.7
+      }
     },
     {
       "id": "creme_caramel",
@@ -89125,7 +90613,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 35.5,
+        "fat": 17.6,
+        "protein": 5.2,
+        "fiber": 0
+      }
     },
     {
       "id": "korean_fried_chicken",
@@ -89617,7 +91111,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 43,
+        "fat": 35.5,
+        "protein": 27.6,
+        "fiber": 1.3
+      }
     },
     {
       "id": "trifle",
@@ -89938,7 +91438,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 44.8,
+        "fat": 24.3,
+        "protein": 6.6,
+        "fiber": 3
+      }
     },
     {
       "id": "yakisoba",
@@ -90355,7 +91861,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 69.8,
+        "fat": 20,
+        "protein": 23.8,
+        "fiber": 6.6
+      }
     },
     {
       "id": "sarma",
@@ -90814,7 +92326,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 30.8,
+        "fat": 19.5,
+        "protein": 24.1,
+        "fiber": 6.7
+      }
     },
     {
       "id": "pilaf",
@@ -91219,7 +92737,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 68.9,
+        "fat": 16.4,
+        "protein": 11.1,
+        "fiber": 4
+      }
     },
     {
       "id": "lemon_tart",
@@ -91586,7 +93110,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 59.3,
+        "fat": 26,
+        "protein": 5,
+        "fiber": 1.6
+      }
     },
     {
       "id": "karaage",
@@ -91945,7 +93475,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 25.4,
+        "fat": 32.9,
+        "protein": 29.6,
+        "fiber": 0.7
+      }
     },
     {
       "id": "pintxos",
@@ -92311,7 +93847,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": false,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 31.4,
+        "fat": 27.2,
+        "protein": 23.2,
+        "fiber": 3.1
+      }
     },
     {
       "id": "onigiri",
@@ -92603,7 +94145,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 80.8,
+        "fat": 9.7,
+        "protein": 18.4,
+        "fiber": 2.4
+      }
     },
     {
       "id": "japanese_curry",
@@ -93021,7 +94569,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 80.4,
+        "fat": 17.6,
+        "protein": 26.3,
+        "fiber": 4.7
+      }
     },
     {
       "id": "khao_soi",
@@ -93524,7 +95078,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 60.9,
+        "fat": 27.4,
+        "protein": 27.1,
+        "fiber": 5.7
+      }
     },
     {
       "id": "som_tam",
@@ -93925,7 +95485,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 23.2,
+        "fat": 7.9,
+        "protein": 9.7,
+        "fiber": 6
+      }
     },
     {
       "id": "larb_moo",
@@ -94304,7 +95870,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 14.9,
+        "fat": 22.1,
+        "protein": 19.5,
+        "fiber": 4.2
+      }
     },
     {
       "id": "chocolate_mousse",
@@ -94645,7 +96217,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 22.4,
+        "fat": 31.7,
+        "protein": 3.4,
+        "fiber": 3.6
+      }
     },
     {
       "id": "toad_in_the_hole",
@@ -95002,7 +96580,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 36,
+        "fat": 46.2,
+        "protein": 24.7,
+        "fiber": 2
+      }
     },
     {
       "id": "wonton_noodles",
@@ -95470,7 +97054,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 85.8,
+        "fat": 20,
+        "protein": 39.6,
+        "fiber": 3.8
+      }
     },
     {
       "id": "oyakodon",
@@ -95870,7 +97460,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 94.5,
+        "fat": 11.7,
+        "protein": 33.4,
+        "fiber": 2.7
+      }
     },
     {
       "id": "green_curry",
@@ -96309,7 +97905,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 64.1,
+        "fat": 29.1,
+        "protein": 24.2,
+        "fiber": 3.5
+      }
     },
     {
       "id": "fish_tacos",
@@ -96818,7 +98420,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 45,
+        "fat": 30.4,
+        "protein": 25.8,
+        "fiber": 8.1
+      }
     },
     {
       "id": "carnitas",
@@ -97177,7 +98785,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 7.2,
+        "fat": 50,
+        "protein": 36.9,
+        "fiber": 2.1
+      }
     },
     {
       "id": "waffles",
@@ -97543,7 +99157,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 89,
+        "fat": 24.2,
+        "protein": 11,
+        "fiber": 2
+      }
     },
     {
       "id": "red_velvet_cake",
@@ -98048,7 +99668,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 65.7,
+        "fat": 32.3,
+        "protein": 6.9,
+        "fiber": 1.5
+      }
     },
     {
       "id": "katsu_don",
@@ -98495,7 +100121,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 84.2,
+        "fat": 26.4,
+        "protein": 27.3,
+        "fiber": 2.8
+      }
     },
     {
       "id": "panang_curry",
@@ -98898,7 +100530,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 64.1,
+        "fat": 34,
+        "protein": 27.8,
+        "fiber": 3
+      }
     },
     {
       "id": "chilaquiles",
@@ -99297,7 +100935,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 43.2,
+        "fat": 43.7,
+        "protein": 28.1,
+        "fiber": 11.3
+      }
     },
     {
       "id": "banana_bread",
@@ -99702,7 +101346,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 53.1,
+        "fat": 19.2,
+        "protein": 5.5,
+        "fiber": 3
+      }
     },
     {
       "id": "macarons",
@@ -100066,7 +101716,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 41.2,
+        "fat": 24.2,
+        "protein": 6.5,
+        "fiber": 3.8
+      }
     },
     {
       "id": "cannoli",
@@ -100449,7 +102105,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 58.7,
+        "fat": 29.1,
+        "protein": 13.3,
+        "fiber": 2.7
+      }
     },
     {
       "id": "pavlova",
@@ -100834,7 +102496,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 47.5,
+        "fat": 22.9,
+        "protein": 5.4,
+        "fiber": 2.7
+      }
     },
     {
       "id": "salmon_teriyaki",
@@ -101236,7 +102904,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 64.2,
+        "fat": 18.2,
+        "protein": 26.6,
+        "fiber": 1.6
+      }
     },
     {
       "id": "chawanmushi",
@@ -101618,7 +103292,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 4.1,
+        "fat": 2.6,
+        "protein": 12.1,
+        "fiber": 0.8
+      }
     },
     {
       "id": "eggs_benedict",
@@ -101957,7 +103637,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 23.9,
+        "fat": 44,
+        "protein": 20.1,
+        "fiber": 1.5
+      }
     },
     {
       "id": "huevos_rancheros",
@@ -102336,7 +104022,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 45.9,
+        "fat": 27,
+        "protein": 18.9,
+        "fiber": 16.3
+      }
     },
     {
       "id": "chocolate_lava_cake",
@@ -102700,7 +104392,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 34.6,
+        "fat": 28.2,
+        "protein": 4.6,
+        "fiber": 3.5
+      }
     },
     {
       "id": "tres_leches",
@@ -103046,7 +104744,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 41.5,
+        "fat": 16.4,
+        "protein": 7.2,
+        "fiber": 0.4
+      }
     },
     {
       "id": "pastel_de_nata",
@@ -103430,7 +105134,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 33.9,
+        "fat": 18.1,
+        "protein": 5.2,
+        "fiber": 0.5
+      }
     },
     {
       "id": "flourless_chocolate_cake",
@@ -103789,7 +105499,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 30.8,
+        "fat": 30.4,
+        "protein": 4.2,
+        "fiber": 4.6
+      }
     },
     {
       "id": "brownies",
@@ -104170,7 +105886,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 22.2,
+        "fat": 16.4,
+        "protein": 2.7,
+        "fiber": 2.3
+      }
     },
     {
       "id": "french_toast",
@@ -104540,7 +106262,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 57.1,
+        "fat": 22.2,
+        "protein": 7.6,
+        "fiber": 1.4
+      }
     },
     {
       "id": "tarte_tatin",
@@ -104876,7 +106604,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 60.2,
+        "fat": 23.9,
+        "protein": 3.2,
+        "fiber": 4.2
+      }
     },
     {
       "id": "arroz_con_leche",
@@ -105222,7 +106956,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 75.7,
+        "fat": 10.4,
+        "protein": 12.2,
+        "fiber": 1.1
+      }
     },
     {
       "id": "scotch_egg",
@@ -105624,7 +107364,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 23,
+        "fat": 36.2,
+        "protein": 13.2,
+        "fiber": 1.3
+      }
     },
     {
       "id": "sukiyaki",
@@ -106130,7 +107876,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 78.2,
+        "fat": 10.4,
+        "protein": 31.4,
+        "fiber": 5
+      }
     },
     {
       "id": "carrot_cake",
@@ -106659,7 +108411,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 52.9,
+        "fat": 36.3,
+        "protein": 5.3,
+        "fiber": 2.1
+      }
     },
     {
       "id": "pecan_pie",
@@ -107044,7 +108802,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 56.8,
+        "fat": 32.9,
+        "protein": 5.1,
+        "fiber": 3.1
+      }
     },
     {
       "id": "brigadeiro",
@@ -107283,7 +109047,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 15.3,
+        "fat": 4.1,
+        "protein": 2.4,
+        "fiber": 1.1
+      }
     },
     {
       "id": "shabu_shabu",
@@ -107751,7 +109521,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 62.8,
+        "fat": 14.7,
+        "protein": 34.2,
+        "fiber": 5.9
+      }
     },
     {
       "id": "blondies",
@@ -108116,7 +109892,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 28.8,
+        "fat": 14.8,
+        "protein": 2.7,
+        "fiber": 0.8
+      }
     },
     {
       "id": "pumpkin_pie",
@@ -108541,7 +110323,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 45.6,
+        "fat": 12.5,
+        "protein": 5.3,
+        "fiber": 2.1
+      }
     },
     {
       "id": "welsh_rarebit",
@@ -108909,7 +110697,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 31.7,
+        "fat": 32.1,
+        "protein": 23.9,
+        "fiber": 1.6
+      }
     },
     {
       "id": "maple_syrup_pancakes",
@@ -109290,7 +111084,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 75.9,
+        "fat": 13.9,
+        "protein": 9.6,
+        "fiber": 1.7
+      }
     },
     {
       "id": "eclairs",
@@ -109758,7 +111558,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 27.8,
+        "fat": 18.2,
+        "protein": 4.8,
+        "fiber": 1.7
+      }
     },
     {
       "id": "quindim",
@@ -110017,7 +111823,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 34.5,
+        "fat": 27.3,
+        "protein": 6.6,
+        "fiber": 3.2
+      }
     },
     {
       "id": "beijinho",
@@ -110255,7 +112067,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 11.7,
+        "fat": 10.4,
+        "protein": 2.4,
+        "fiber": 1.9
+      }
     },
     {
       "id": "sopaipillas",
@@ -110553,7 +112371,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 52.8,
+        "fat": 25.5,
+        "protein": 7.5,
+        "fiber": 2.1
+      }
     },
     {
       "id": "avocado_toast",
@@ -110853,7 +112677,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 41.6,
+        "fat": 34.2,
+        "protein": 9.7,
+        "fiber": 12.2
+      }
     },
     {
       "id": "fish_soup",
@@ -111295,7 +113125,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 7.9,
+        "fat": 11.6,
+        "protein": 27.1,
+        "fiber": 2.4
+      }
     },
     {
       "id": "mille_feuille",
@@ -111683,7 +113519,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 58.9,
+        "fat": 39,
+        "protein": 7.6,
+        "fiber": 2.7
+      }
     },
     {
       "id": "opera_cake",
@@ -112071,7 +113913,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 45.2,
+        "fat": 39.5,
+        "protein": 6.8,
+        "fiber": 4.3
+      }
     },
     {
       "id": "paris_brest",
@@ -112457,7 +114305,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 37.8,
+        "fat": 39.2,
+        "protein": 6.7,
+        "fiber": 3
+      }
     },
     {
       "id": "sfogliatella",
@@ -112842,7 +114696,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 53.3,
+        "fat": 17.9,
+        "protein": 9.9,
+        "fiber": 1.6
+      }
     },
     {
       "id": "zeppole",
@@ -113225,7 +115085,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 22.1,
+        "fat": 36.7,
+        "protein": 1.7,
+        "fiber": 0.6
+      }
     },
     {
       "id": "cassata",
@@ -113569,7 +115435,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 70.8,
+        "fat": 21.1,
+        "protein": 11.8,
+        "fiber": 3.1
+      }
     },
     {
       "id": "bolo_de_bolacha",
@@ -113915,7 +115787,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 52.8,
+        "fat": 22.5,
+        "protein": 5.5,
+        "fiber": 1.5
+      }
     },
     {
       "id": "sheperds_pie_v",
@@ -114333,7 +116211,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 33.2,
+        "fat": 26.2,
+        "protein": 24.3,
+        "fiber": 5.7
+      }
     },
     {
       "id": "fish_pie",
@@ -114714,7 +116598,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 35.3,
+        "fat": 13.1,
+        "protein": 31,
+        "fiber": 3.9
+      }
     },
     {
       "id": "steak_and_kidney_pie",
@@ -115158,7 +117048,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 30.5,
+        "fat": 36.6,
+        "protein": 32.7,
+        "fiber": 2.2
+      }
     },
     {
       "id": "ploughmans_lunch",
@@ -115501,7 +117397,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 39.6,
+        "fat": 31.6,
+        "protein": 23.8,
+        "fiber": 3.5
+      }
     },
     {
       "id": "black_pudding_full",
@@ -115832,7 +117734,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 31.7,
+        "fat": 39.2,
+        "protein": 25.4,
+        "fiber": 5.7
+      }
     },
     {
       "id": "bubble_and_squeak",
@@ -116128,7 +118036,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 31,
+        "fat": 20,
+        "protein": 4.8,
+        "fiber": 6.4
+      }
     },
     {
       "id": "coq_au_vin_blanc",
@@ -116570,7 +118484,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 11.1,
+        "fat": 38.6,
+        "protein": 45.3,
+        "fiber": 1.5
+      }
     },
     {
       "id": "choucroute_garnie",
@@ -117030,7 +118950,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 23.5,
+        "fat": 50.9,
+        "protein": 27.7,
+        "fiber": 7.2
+      }
     },
     {
       "id": "caldo_verde",
@@ -117380,7 +119306,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": false,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 30.1,
+        "fat": 20.9,
+        "protein": 18.3,
+        "fiber": 5.9
+      }
     },
     {
       "id": "arroz_de_pato",
@@ -117792,7 +119724,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": false,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 28.5,
+        "fat": 38.1,
+        "protein": 26.8,
+        "fiber": 0.9
+      }
     },
     {
       "id": "francesinha",
@@ -118215,7 +120153,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 7,
+        "fat": 28.9,
+        "protein": 37.5,
+        "fiber": 0.5
+      }
     },
     {
       "id": "pastel_de_belem",
@@ -118598,7 +120542,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 39,
+        "fat": 15.6,
+        "protein": 3.9,
+        "fiber": 1.1
+      }
     },
     {
       "id": "boat_noodles",
@@ -119057,7 +121007,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 70.9,
+        "fat": 7.9,
+        "protein": 35.6,
+        "fiber": 3
+      }
     },
     {
       "id": "yorkshire_pudding",
@@ -119336,7 +121292,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 20.5,
+        "fat": 14.3,
+        "protein": 4.3,
+        "fiber": 0.7
+      }
     },
     {
       "id": "chiles_en_nogada",
@@ -119776,7 +121738,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 8.9,
+        "fat": 50.8,
+        "protein": 26.9,
+        "fiber": 3.8
+      }
     },
     {
       "id": "ceviche_clasico",
@@ -120109,7 +122077,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 27.6,
+        "fat": 3.1,
+        "protein": 33.7,
+        "fiber": 5.1
+      }
     },
     {
       "id": "empanadas_argentinas",
@@ -120530,7 +122504,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 50.2,
+        "fat": 24.4,
+        "protein": 21.7,
+        "fiber": 3.5
+      }
     },
     {
       "id": "asado_argentino",
@@ -120798,7 +122778,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": false,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 1.1,
+        "fat": 52.9,
+        "protein": 42.6,
+        "fiber": 0.2
+      }
     },
     {
       "id": "ossobuco",
@@ -121256,7 +123242,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 14.3,
+        "fat": 14.4,
+        "protein": 42.3,
+        "fiber": 3
+      }
     },
     {
       "id": "saltimbocca",
@@ -121570,7 +123562,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 6.5,
+        "fat": 20,
+        "protein": 37.4,
+        "fiber": 2.2
+      }
     },
     {
       "id": "gulasch",
@@ -121945,7 +123943,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 27.7,
+        "fat": 33.2,
+        "protein": 46.2,
+        "fiber": 5.9
+      }
     },
     {
       "id": "bigos",
@@ -122404,7 +124408,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 18.3,
+        "fat": 44.3,
+        "protein": 45.4,
+        "fiber": 10.4
+      }
     },
     {
       "id": "pierogi",
@@ -122784,7 +124794,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 88,
+        "fat": 21.8,
+        "protein": 20.3,
+        "fiber": 5.5
+      }
     },
     {
       "id": "gravlax",
@@ -123121,7 +125137,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 23.9,
+        "fat": 17.7,
+        "protein": 28.6,
+        "fiber": 2.6
+      }
     },
     {
       "id": "smorrebrod",
@@ -123505,7 +125527,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 32,
+        "fat": 26.8,
+        "protein": 23.4,
+        "fiber": 4.6
+      }
     },
     {
       "id": "kottbullar",
@@ -123930,7 +125958,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 16.8,
+        "fat": 48.3,
+        "protein": 26.1,
+        "fiber": 1.1
+      }
     },
     {
       "id": "tagine_lamb",
@@ -124387,7 +126421,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 21.6,
+        "fat": 35.7,
+        "protein": 34.7,
+        "fiber": 5
+      }
     },
     {
       "id": "pho_bo",
@@ -124866,7 +126906,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 45.8,
+        "fat": 34.9,
+        "protein": 42.4,
+        "fiber": 2.9
+      }
     },
     {
       "id": "birria",
@@ -125343,7 +127389,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 11.3,
+        "fat": 24.6,
+        "protein": 44.6,
+        "fiber": 5.2
+      }
     },
     {
       "id": "tamales",
@@ -125733,7 +127785,13 @@
       "timeActive": null,
       "containsPork": true,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 48.6,
+        "fat": 42.2,
+        "protein": 29.2,
+        "fiber": 5.6
+      }
     },
     {
       "id": "elote",
@@ -126056,7 +128114,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 2.1,
+        "fat": 28.9,
+        "protein": 5.5,
+        "fiber": 0.4
+      }
     },
     {
       "id": "guacamole",
@@ -126352,7 +128416,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 2.9,
+        "fat": 0.3,
+        "protein": 0.7,
+        "fiber": 1.2
+      }
     },
     {
       "id": "rendang",
@@ -126832,7 +128902,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 16,
+        "fat": 48.9,
+        "protein": 34.2,
+        "fiber": 3.2
+      }
     },
     {
       "id": "jollof_rice",
@@ -127312,7 +129388,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 80.2,
+        "fat": 15,
+        "protein": 11.5,
+        "fiber": 5.8
+      }
     },
     {
       "id": "cheesecake_ny",
@@ -127677,7 +129759,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 39.5,
+        "fat": 42.1,
+        "protein": 6.4,
+        "fiber": 0.6
+      }
     },
     {
       "id": "brownie",
@@ -128064,7 +130152,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 30.9,
+        "fat": 21.4,
+        "protein": 3.6,
+        "fiber": 3.2
+      }
     },
     {
       "id": "knafeh",
@@ -128434,7 +130528,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 70.5,
+        "fat": 37.2,
+        "protein": 20.4,
+        "fiber": 1.6
+      }
     },
     {
       "id": "overnight_oats_berry",
@@ -128517,7 +130617,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 29,
+        "fat": 1.5,
+        "protein": 26.5,
+        "fiber": 5.5
+      }
     },
     {
       "id": "bircher_muesli",
@@ -128616,7 +130722,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 34.3,
+        "fat": 7.2,
+        "protein": 11.9,
+        "fiber": 4.8
+      }
     },
     {
       "id": "shakshuka_beans",
@@ -128715,7 +130827,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 33.5,
+        "fat": 1.2,
+        "protein": 11.7,
+        "fiber": 9.5
+      }
     },
     {
       "id": "ruehrei_spinat_feta",
@@ -128798,7 +130916,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 2.3,
+        "fat": 2.5,
+        "protein": 4,
+        "fiber": 2
+      }
     },
     {
       "id": "avocado_toast_egg",
@@ -128881,7 +131005,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 0.4,
+        "fat": 0.2,
+        "protein": 0.2,
+        "fiber": 0.2
+      }
     },
     {
       "id": "skyr_bowl_walnut",
@@ -128964,7 +131094,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 17.2,
+        "fat": 2.6,
+        "protein": 40.6,
+        "fiber": 0.4
+      }
     },
     {
       "id": "banana_oat_pancakes",
@@ -129047,7 +131183,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 15.2,
+        "fat": 1.7,
+        "protein": 3.2,
+        "fiber": 2.5
+      }
     },
     {
       "id": "savory_porridge_mushroom",
@@ -129130,7 +131272,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 20,
+        "fat": 2.5,
+        "protein": 8,
+        "fiber": 4.5
+      }
     },
     {
       "id": "tamago_sando",
@@ -129213,7 +131361,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 0.7,
+        "fat": 2.1,
+        "protein": 0.4,
+        "fiber": 0
+      }
     },
     {
       "id": "chia_yogurt_cherry",
@@ -129296,7 +131450,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": true,
-      "halalStatus": "not_halal"
+      "halalStatus": "not_halal",
+      "nutrition": {
+        "netCarbs": 21.3,
+        "fat": 5.2,
+        "protein": 8.9,
+        "fiber": 2.9
+      }
     },
     {
       "id": "quark_parfait_almond",
@@ -129379,7 +131539,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 21.3,
+        "fat": 3.3,
+        "protein": 49.5,
+        "fiber": 3.3
+      }
     },
     {
       "id": "rye_cottage_cheese",
@@ -129462,7 +131628,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 4.4,
+        "fat": 4,
+        "protein": 12.1,
+        "fiber": 0.6
+      }
     },
     {
       "id": "egg_bean_burrito",
@@ -129561,7 +131733,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 16.2,
+        "fat": 1.2,
+        "protein": 7.6,
+        "fiber": 5.3
+      }
     },
     {
       "id": "apple_walnut_baked_oats",
@@ -129660,7 +131838,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 30.1,
+        "fat": 6,
+        "protein": 7.3,
+        "fiber": 4.8
+      }
     },
     {
       "id": "tofu_scramble_veg",
@@ -129745,7 +131929,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 6,
+        "fat": 12,
+        "protein": 18.5,
+        "fiber": 3.5
+      }
     },
     {
       "id": "mexican_breakfast_tacos",
@@ -129828,7 +132018,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 1.7,
+        "fat": 4.4,
+        "protein": 1,
+        "fiber": 2.1
+      }
     },
     {
       "id": "herb_omelette",
@@ -129911,7 +132107,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 0.1,
+        "fat": 1.2,
+        "protein": 0.6,
+        "fiber": 0.1
+      }
     },
     {
       "id": "apple_cinnamon_porridge",
@@ -130010,7 +132212,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 45,
+        "fat": 13.5,
+        "protein": 16,
+        "fiber": 4.5
+      }
     },
     {
       "id": "labneh_bowl_olives",
@@ -130093,7 +132301,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 14.3,
+        "fat": 21.5,
+        "protein": 21.3,
+        "fiber": 1.3
+      }
     },
     {
       "id": "roesti_salmon",
@@ -130176,7 +132390,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 60,
+        "fat": 4.5,
+        "protein": 13.6,
+        "fiber": 6
+      }
     },
     {
       "id": "tomato_lentil_soup",
@@ -130279,7 +132499,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 115,
+        "fat": 4.6,
+        "protein": 38,
+        "fiber": 24.4
+      }
     },
     {
       "id": "minestrone_beans",
@@ -130380,7 +132606,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 103.6,
+        "fat": 1.5,
+        "protein": 27.8,
+        "fiber": 19.1
+      }
     },
     {
       "id": "chickpea_bowl_roasted_veg",
@@ -130483,7 +132715,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 53.5,
+        "fat": 6.5,
+        "protein": 18,
+        "fiber": 13.5
+      }
     },
     {
       "id": "white_bean_tuna_salad",
@@ -130586,7 +132824,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 37.4,
+        "fat": 6.5,
+        "protein": 39,
+        "fiber": 11.5
+      }
     },
     {
       "id": "salmon_tray_broccoli",
@@ -130673,7 +132917,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 49,
+        "fat": 15,
+        "protein": 57.5,
+        "fiber": 14.5
+      }
     },
     {
       "id": "miso_noodle_soup_tofu",
@@ -130774,7 +133024,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 58.6,
+        "fat": 5.8,
+        "protein": 19.4,
+        "fiber": 6.4
+      }
     },
     {
       "id": "cabbage_mushroom_tofu",
@@ -130861,7 +133117,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 27.5,
+        "fat": 13,
+        "protein": 25,
+        "fiber": 13
+      }
     },
     {
       "id": "zucchini_frittata_salad",
@@ -130948,7 +133210,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 11.5,
+        "fat": 0.4,
+        "protein": 3,
+        "fiber": 2.5
+      }
     },
     {
       "id": "cod_tomato_olives",
@@ -131035,7 +133303,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 9.3,
+        "fat": 4.5,
+        "protein": 39.3,
+        "fiber": 3.3
+      }
     },
     {
       "id": "stuffed_peppers_lentils",
@@ -131122,7 +133396,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 40.2,
+        "fat": 1.6,
+        "protein": 17,
+        "fiber": 7.5
+      }
     },
     {
       "id": "chicken_caesar_salad",
@@ -131225,7 +133505,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 4.7,
+        "fat": 6.5,
+        "protein": 49.9,
+        "fiber": 2
+      }
     },
     {
       "id": "falafel_bowl_yogurt",
@@ -131326,7 +133612,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 30.8,
+        "fat": 3,
+        "protein": 8.3,
+        "fiber": 3
+      }
     },
     {
       "id": "vegetable_quesadilla",
@@ -131429,7 +133721,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 9.8,
+        "fat": 6,
+        "protein": 8.1,
+        "fiber": 3
+      }
     },
     {
       "id": "chicken_wrap_greek",
@@ -131532,7 +133830,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 2.3,
+        "fat": 2.9,
+        "protein": 31.1,
+        "fiber": 0.5
+      }
     },
     {
       "id": "salmon_tacos_light",
@@ -131635,7 +133939,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 3.7,
+        "fat": 10.3,
+        "protein": 30.5,
+        "fiber": 0.6
+      }
     },
     {
       "id": "zucchini_noodles_feta",
@@ -131722,7 +134032,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 4.6,
+        "fat": 3.6,
+        "protein": 3.4,
+        "fiber": 1
+      }
     },
     {
       "id": "wholegrain_pasta_pea_pesto",
@@ -131825,7 +134141,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 58.1,
+        "fat": 3.4,
+        "protein": 13,
+        "fiber": 9.9
+      }
     },
     {
       "id": "soba_noodles_veg",
@@ -131926,7 +134248,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 53.9,
+        "fat": 1.6,
+        "protein": 11,
+        "fiber": 7.8
+      }
     },
     {
       "id": "omelette_mushrooms",
@@ -132013,7 +134341,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 3.1,
+        "fat": 1.4,
+        "protein": 3.6,
+        "fiber": 2.1
+      }
     },
     {
       "id": "chicken_veg_stew",
@@ -132116,7 +134450,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 55,
+        "fat": 4.5,
+        "protein": 57.5,
+        "fiber": 8
+      }
     },
     {
       "id": "chia_pudding_mango",
@@ -132199,7 +134539,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 19.9,
+        "fat": 16.2,
+        "protein": 4.8,
+        "fiber": 6.6
+      }
     },
     {
       "id": "egg_muffins_spinach",
@@ -132282,7 +134628,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 2.3,
+        "fat": 2.9,
+        "protein": 4.5,
+        "fiber": 2
+      }
     },
     {
       "id": "sweet_potato_toast_avocado",
@@ -132365,7 +134717,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 60.5,
+        "fat": 4,
+        "protein": 6.6,
+        "fiber": 10
+      }
     },
     {
       "id": "greek_yogurt_granola",
@@ -132448,7 +134806,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 22.8,
+        "fat": 21.8,
+        "protein": 21.2,
+        "fiber": 0.9
+      }
     },
     {
       "id": "spinach_feta_wrap",
@@ -132531,7 +134895,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 2.7,
+        "fat": 3.6,
+        "protein": 4.5,
+        "fiber": 2
+      }
     },
     {
       "id": "shrimp_zucchini_pasta",
@@ -132618,7 +134988,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 40,
+        "fat": 4.2,
+        "protein": 53.8,
+        "fiber": 6.4
+      }
     },
     {
       "id": "turkey_lettuce_wraps",
@@ -132705,7 +135081,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 4.1,
+        "fat": 7.5,
+        "protein": 46,
+        "fiber": 1
+      }
     },
     {
       "id": "cauliflower_steak_herb",
@@ -132792,7 +135174,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 49.1,
+        "fat": 7,
+        "protein": 36.1,
+        "fiber": 18.1
+      }
     },
     {
       "id": "mushroom_barley_risotto",
@@ -132877,7 +135265,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 83.5,
+        "fat": 4.6,
+        "protein": 21.9,
+        "fiber": 13.3
+      }
     },
     {
       "id": "baked_feta_tomato_pasta",
@@ -132964,7 +135358,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 42,
+        "fat": 21.2,
+        "protein": 20.8,
+        "fiber": 6.4
+      }
     },
     {
       "id": "chicken_broccoli_stirfry",
@@ -133051,7 +135451,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 16.3,
+        "fat": 4.5,
+        "protein": 53.1,
+        "fiber": 10
+      }
     },
     {
       "id": "lentil_bolo_pasta",
@@ -133136,7 +135542,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 76,
+        "fat": 2.8,
+        "protein": 24.8,
+        "fiber": 12.8
+      }
     },
     {
       "id": "salmon_cucumber_salad",
@@ -133223,7 +135635,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 7,
+        "fat": 10.1,
+        "protein": 31.3,
+        "fiber": 1.5
+      }
     },
     {
       "id": "stuffed_zucchini_quinoa",
@@ -133310,7 +135728,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 24.4,
+        "fat": 3.9,
+        "protein": 6.3,
+        "fiber": 2.4
+      }
     },
     {
       "id": "eggplant_tomato_bake",
@@ -133397,7 +135821,13 @@
       "timeActive": null,
       "containsPork": false,
       "containsAlcohol": false,
-      "halalStatus": "unverified"
+      "halalStatus": "unverified",
+      "nutrition": {
+        "netCarbs": 61.5,
+        "fat": 11,
+        "protein": 21,
+        "fiber": 19
+      }
     }
   ]
 }
