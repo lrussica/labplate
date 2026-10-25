@@ -1562,12 +1562,24 @@ async function generateValidatedRecipe(opts) {
     // konkreten Korrektur-Anweisungen (z.B. Mengen ausserhalb des Profils).
     // Nur aktiv, wenn noch Retries uebrig sind; im letzten Versuch wird
     // das Rezept als Fallback durchgelassen.
-    if (typeof o.postValidationHook === 'function' && attempt < MAX_VALIDATION_ATTEMPTS) {
+    if (typeof o.postValidationHook === 'function') {
       let hookResult = null;
       try {
         hookResult = o.postValidationHook(parsed, attempt, { payload: payload });
       } catch (eHook) {
         console.warn('[recipe-v92] postValidationHook error', eHook && eHook.message);
+      }
+      // FIX 2026-10-25 (Claudes Befund 3): Hook lief bisher nur in Versuch 1+2.
+      // Im letzten Versuch wurde das Rezept ungeprueft ausgeliefert (13 g Protein,
+      // 24 g Protein kamen so durch). Neu: Hook laeuft immer. Im letzten Versuch
+      // werden Blocker aber zu Warnungen, damit der User nicht "kein Ergebnis" bekommt.
+      if (attempt >= MAX_VALIDATION_ATTEMPTS && hookResult && Array.isArray(hookResult.blockers) && hookResult.blockers.length) {
+        console.warn('[hook-check] Letzter Versuch (' + attempt + ') - Blocker werden zu Warnungen: ' + hookResult.blockers.join(' | '));
+        if (!Array.isArray(hookResult.warnings)) hookResult.warnings = [];
+        for (let _wi = 0; _wi < hookResult.blockers.length; _wi++) {
+          hookResult.warnings.push(hookResult.blockers[_wi]);
+        }
+        hookResult.blockers = [];
       }
       if (hookResult && Array.isArray(hookResult.blockers) && hookResult.blockers.length) {
         lastErrors = hookResult.blockers.slice();
