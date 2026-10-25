@@ -1440,6 +1440,10 @@ module.exports = {
       o.postValidationHook = function (parsedRecipe, attempt, ctx) {
         console.log('[hook-check] FIRED attempt=' + attempt);
         try {
+          // FIX 2026-10-25 (Log-Beweis): Per-Portion-Berechnung.
+          // Rezepte kommen mit servings=4 und Naehrwerten fuers GANZE Rezept.
+          // Ohne Division wurden 4 von 6 Keto-Verstoessen falsch-positiv gemeldet.
+          const _hookServings = Math.max(1, Number(parsedRecipe && parsedRecipe.servings) || 1);
           const payload = (ctx && ctx.payload) || o.payload || {};
           const dishQuery = String(
             payload.ai_instruction || payload.aiInstruction ||
@@ -1506,24 +1510,27 @@ module.exports = {
               payload.user_text || payload.userText || ''
             );
             const _ketoInstrRaw = String(payload.ai_instruction || payload.aiInstruction || '');
-            const _ketoInstrNoFramework = _ketoInstrRaw.replace(/keto\s+nur\s*<\s*10/gi, '');
+            // FIX 2026-10-25 (Log-Beweis): Nur die ECHTE Suchanfrage pruefen,
+            // nicht den ganzen Prompt. Sonst macht "z.B. Keto" im Client-Prompt
+            // aus "High-Protein" einen Keto-Wunsch.
+            const _ketoQueryMatch = _ketoInstrRaw.match(/f(?:ue|ü)r\s+"([^"]+)"/);
+            const _ketoQuery = _ketoQueryMatch ? _ketoQueryMatch[1].toLowerCase() : '';
             const _wantsKeto = /\bketo\b|\bketogen/i.test(_ketoUserText)
-                             || /\bketo\b|\bketogen/i.test(_ketoInstrNoFramework);
+                             || /\bketo\b|\bketogen/i.test(_ketoQuery);
             if (_wantsKeto) {
               const _ketoN = parsedRecipe.nutrition || {};
-              const _kh = Number(
+              const _khTotal = Number(
                 _ketoN.netto_kh_g != null ? _ketoN.netto_kh_g :
                 (_ketoN.netCarbs != null ? _ketoN.netCarbs : 999)
               );
-              if (isFinite(_kh) && _kh >= 10) {
+              // FIX 2026-10-25 (Log-Beweis): Per-Portion-Vergleich statt Gesamtwert.
+              const _khPerPortion = _khTotal / _hookServings;
+              if (isFinite(_khPerPortion) && _khPerPortion >= 10) {
                 blockers.push(
-                  'KETO-VERSTOSS (hart): Das Rezept enthaelt ' + _kh + ' g Netto-Kohlenhydrate, ' +
+                  'KETO-VERSTOSS (hart): Das Rezept enthaelt ' + _khPerPortion.toFixed(1) + ' g Netto-Kohlenhydrate pro Portion, ' +
                   'aber der Nutzer hat Keto verlangt. Erlaubt sind hoechstens 10 g Netto-KH pro Portion. ' +
                   'Waehle ein voellig ANDERES Gericht ohne Pasta, Reis, Kartoffeln, Brot, Mehl, ' +
                   'Getreide, Zucker, Suessstoffe, Huehsenfruechte, Haferflocken, Quinoa, Couscous. ' +
-                  'Gute Keto-Hauptgerichte: Lachsfilet mit Brokkoli und Kraeuterbutter, ' +
-                  'Rindersteak mit Salat und Gouda, Haehnchenschenkel mit Blumenkohlreis, ' +
-                  'Omelette mit Spinat und Feta, Zucchini-Nudeln mit Pesto und Garnelen. ' +
                   'Verwende nur Zutaten mit <5 g Netto-KH pro 100 g.'
                 );
               }
@@ -1541,9 +1548,10 @@ module.exports = {
             var _nsKcal = Number(_nsN.kcal != null ? _nsN.kcal : _nsN.calories);
             var _nsIng = Array.isArray(parsedRecipe.ingredients) ? parsedRecipe.ingredients : [];
 
-            // 1) Modellangabe Protein
-            if (!isFinite(_nsProtein) || _nsProtein < 25) {
-              blockers.push('PROTEIN ZU NIEDRIG (' + (_nsProtein || 0) + ' g): Hauptgericht braucht mind. 25 g Protein pro Portion. Erhoehe Fleisch, Fisch, Ei, Kaese oder Huelsefruechte deutlich.');
+            // 1) Modellangabe Protein (FIX 2026-10-25: per Portion)
+            var _nsProteinPerPortion = _nsProtein / _hookServings;
+            if (!isFinite(_nsProteinPerPortion) || _nsProteinPerPortion < 25) {
+              blockers.push('PROTEIN ZU NIEDRIG (' + ((_nsProteinPerPortion || 0).toFixed(1)) + ' g pro Portion): Hauptgericht braucht mind. 25 g Protein pro Portion. Erhoehe Fleisch, Fisch, Ei, Kaese oder Huelsefruechte deutlich.');
             }
 
             // 2) Plausibilitaet: Protein aus Zutaten schaetzen
