@@ -1532,6 +1532,66 @@ module.exports = {
             console.warn('[nutri-recipe-core] keto compliance check failed', eKeto && eKeto.message);
           }
 
+          // NUTRITION-SANITY (2026-10-25): Claudes 2. Meinung umgesetzt.
+          // Prueft Modellangabe UND Plausibilitaet aus Zutaten, damit
+          // "30g behauptet, 100g Fleisch gelistet" auffliegt.
+          try {
+            var _nsN = parsedRecipe.nutrition || {};
+            var _nsProtein = Number(_nsN.protein_g != null ? _nsN.protein_g : _nsN.protein);
+            var _nsKcal = Number(_nsN.kcal != null ? _nsN.kcal : _nsN.calories);
+            var _nsIng = Array.isArray(parsedRecipe.ingredients) ? parsedRecipe.ingredients : [];
+
+            // 1) Modellangabe Protein
+            if (!isFinite(_nsProtein) || _nsProtein < 25) {
+              blockers.push('PROTEIN ZU NIEDRIG (' + (_nsProtein || 0) + ' g): Hauptgericht braucht mind. 25 g Protein pro Portion. Erhoehe Fleisch, Fisch, Ei, Kaese oder Huelsefruechte deutlich.');
+            }
+
+            // 2) Plausibilitaet: Protein aus Zutaten schaetzen
+            var _PROT100 = {rind:26, huhn:23, haehnchen:23, lachs:20, garnele:20, thunfisch:25, ei:13, feta:14, halloumi:22, tofu:12, schwein:21, puten:24, pute:24, quark:12, skyr:11};
+            var _est = 0;
+            for (var _pi = 0; _pi < _nsIng.length; _pi++) {
+              var _ing2 = _nsIng[_pi];
+              if (!_ing2 || !_ing2.name) continue;
+              var _nm = String(_ing2.name).toLowerCase();
+              var _key = Object.keys(_PROT100).find(function(k){ return _nm.indexOf(k) >= 0; });
+              if (_key && _ing2.unit === 'g') _est += Number(_ing2.amount) * _PROT100[_key] / 100;
+            }
+            if (_est > 0 && _est < 20) {
+              blockers.push('PROTEIN-PLAUSIBILITAET: Zutaten liefern nur ~' + Math.round(_est) + ' g Protein. Erhoehe die Hauptproteinmenge (z. B. 180 g Fleisch/Fisch oder 4 Eier + Kaese).');
+            }
+
+            // 3) Kalorien-Range
+            if (isFinite(_nsKcal) && (_nsKcal < 350 || _nsKcal > 900)) {
+              blockers.push('KALORIEN AUSSERHALB (' + _nsKcal + ' kcal): Hauptgericht muss 350-900 kcal pro Portion haben. Passe Mengen an, NICHT die Naehrwerte.');
+            }
+
+            // 4) Vague-Mengen in ingredients
+            var _VAGUE = /\b(nach belieben|nach geschmack|etwas|ein wenig|bei bedarf|je nach)\b/i;
+            for (var _vi = 0; _vi < _nsIng.length; _vi++) {
+              var _iv = _nsIng[_vi];
+              if (!_iv || !_iv.name) continue;
+              var _nm2 = String(_iv.name).trim();
+              if (/^(salz|pfeffer|gewuerz|paprika|zimt|curry|oregano|thymian|basilikum|rosmarin)/i.test(_nm2)) continue;
+              var _blob = String(_iv.amount) + ' ' + String(_iv.unit) + ' ' + _nm2;
+              if (_VAGUE.test(_blob)) {
+                blockers.push('VAGE MENGE bei "' + _nm2 + '": Konkrete Zahl in g/ml/Stk angeben, nicht "nach Belieben" oder "etwas".');
+              }
+              if (/wasser|bruehe|fond/i.test(_nm2) && !(Number(_iv.amount) > 0)) {
+                blockers.push('WASSER OHNE MENGE: "' + _nm2 + '" braucht konkrete ml-Angabe (z. B. 500 ml).');
+              }
+            }
+
+            // 5) Wasser in Steps, aber nicht in ingredients
+            var _stepsArr = Array.isArray(parsedRecipe.steps) ? parsedRecipe.steps : (Array.isArray(parsedRecipe.step_contents) ? parsedRecipe.step_contents : []);
+            var _stepsText = _stepsArr.map(function(st){ return String((st && (st.content || st.text)) || ''); }).join(' ');
+            var _hasWaterIng = _nsIng.some(function(zi){ return zi && /^wasser$/i.test(String(zi.name || '').trim()); });
+            if (/(kochend\w*\s+wasser|in\s+wasser|mit\s+wasser)/i.test(_stepsText) && !_hasWaterIng) {
+              blockers.push('WASSER IN SCHRITTEN, ABER NICHT IN ZUTATEN: Entweder Wasser mit ml-Menge in ingredients aufnehmen oder anders garen (Anbraten/Ofen/Dampf).');
+            }
+          } catch (eSanity) {
+            console.warn('[nutri-recipe-core] nutrition sanity check failed', eSanity && eSanity.message);
+          }
+
           return { blockers: blockers, warnings: warnings, resolved: g.resolved };
         } catch (e) {
           console.warn('[nutri-recipe-core] postValidationHook failed', e && e.message);
