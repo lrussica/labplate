@@ -1496,6 +1496,42 @@ module.exports = {
               warnings.push(v.code + ': ' + v.detail);
             }
           }
+          // Keto-Compliance-Check (Block E Erweiterung).
+          // Der Nutzer wuenscht Keto, wenn in userRequest.text oder im
+          // ai_instruction (ohne die CHEF-FRAMEWORK-"Keto nur <10"-Regel)
+          // "keto" oder "ketogen" vorkommt.
+          try {
+            const _ketoUserText = String(
+              (payload.userRequest && payload.userRequest.text) ||
+              payload.user_text || payload.userText || ''
+            );
+            const _ketoInstrRaw = String(payload.ai_instruction || payload.aiInstruction || '');
+            const _ketoInstrNoFramework = _ketoInstrRaw.replace(/keto\s+nur\s*<\s*10/gi, '');
+            const _wantsKeto = /\bketo\b|\bketogen/i.test(_ketoUserText)
+                             || /\bketo\b|\bketogen/i.test(_ketoInstrNoFramework);
+            if (_wantsKeto) {
+              const _ketoN = parsedRecipe.nutrition || {};
+              const _kh = Number(
+                _ketoN.netto_kh_g != null ? _ketoN.netto_kh_g :
+                (_ketoN.netCarbs != null ? _ketoN.netCarbs : 999)
+              );
+              if (isFinite(_kh) && _kh >= 10) {
+                blockers.push(
+                  'KETO-VERSTOSS (hart): Das Rezept enthaelt ' + _kh + ' g Netto-Kohlenhydrate, ' +
+                  'aber der Nutzer hat Keto verlangt. Erlaubt sind hoechstens 10 g Netto-KH pro Portion. ' +
+                  'Waehle ein voellig ANDERES Gericht ohne Pasta, Reis, Kartoffeln, Brot, Mehl, ' +
+                  'Getreide, Zucker, Suessstoffe, Huehsenfruechte, Haferflocken, Quinoa, Couscous. ' +
+                  'Gute Keto-Hauptgerichte: Lachsfilet mit Brokkoli und Kraeuterbutter, ' +
+                  'Rindersteak mit Salat und Gouda, Haehnchenschenkel mit Blumenkohlreis, ' +
+                  'Omelette mit Spinat und Feta, Zucchini-Nudeln mit Pesto und Garnelen. ' +
+                  'Verwende nur Zutaten mit <5 g Netto-KH pro 100 g.'
+                );
+              }
+            }
+          } catch (eKeto) {
+            console.warn('[nutri-recipe-core] keto compliance check failed', eKeto && eKeto.message);
+          }
+
           return { blockers: blockers, warnings: warnings, resolved: g.resolved };
         } catch (e) {
           console.warn('[nutri-recipe-core] postValidationHook failed', e && e.message);
