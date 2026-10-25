@@ -1489,8 +1489,11 @@ async function generateValidatedRecipe(opts) {
     const _isDegenerate = _degenRealIngs.length < 2 && !_degenHasNuts;
     if (_isDegenerate && attempt < MAX_VALIDATION_ATTEMPTS) {
       lastErrors = [
-        "Rezept zu duenn: mind. 3 echte Zutaten (kein Wasser/Salz/Pfeffer allein) und ein erkennbares Gericht. " +
-        "Waehle stattdessen ein passendes, konkretes Gericht aus der angefragten Kueche (Fisch, Fleisch, vegetarisch - je nach Wunsch). Kein Wasser als Gericht."
+        "ABBRUCH: Deine Ausgabe war Wasser/Bruehe/Getraenk - das ist KEIN Rezept. " +
+        "Ein echtes Rezept MUSS mindestens 3 echte Zutaten (Fleisch, Fisch, Gemuese, Eier, Kaese, Oel) und mindestens 350 kcal pro Portion haben. " +
+        "Verbote bei Keto: Pasta, Reis, Kartoffeln, Brot, Mehl, Getreide, Huelsenfruechte, Zucker. " +
+        "Erlaubte Keto-Beispiele: Rindersteak mit Brokkoli, Haehnchenschenkel mit Blumenkohlreis, Lachsfilet mit Spinat und Feta, Omelette mit Kaese und Champignons, Zucchini-Nudeln mit Pesto und Garnelen. " +
+        "Waehle EIN konkretes Gericht und fuelle es mit echten Zutaten."
       ];
       logValidationFailure({
         attempt: attempt,
@@ -1501,6 +1504,16 @@ async function generateValidatedRecipe(opts) {
         aiInstruction: aiInstructionForLog,
       });
       continue;
+    }
+    if (_isDegenerate && attempt >= MAX_VALIDATION_ATTEMPTS) {
+      // Letzter Versuch war auch degeneriert (Wasser/Bruehe).
+      // Kein Wasser ausliefern, sondern sauberen Fehler zurueckgeben.
+      return {
+        error: 'all_attempts_degenerate',
+        reason: 'KI hat nur Wasser/Bruehe als Rezept generiert (auch im letzten Versuch).',
+        attempts: attempt,
+        recipeSource: 'ai',
+      };
     }
 
     // Optionaler Post-Validation-Hook (Block E): laeuft nach der formalen
