@@ -1349,10 +1349,12 @@ async function generateValidatedRecipe(opts) {
       ];
       var _isDietForm = _DIET_QUERIES.some(function(rx){ return rx.test(_seedDish); });
       if (_isDietForm && !/HAUPT-PROTEINQUELLE/i.test(payload.ai_instruction)) {
-        var _PROT = ['Lachs', 'Haehnchenschenkel', 'Garnelen', 'Rinderhack', 'Eier', 'Thunfisch', 'Tofu', 'Halloumi', 'Putenbrust'];
+        var _PROT = ['Lachs', 'Haehnchenschenkel', 'Garnelen', 'Rinderhack', 'Schweinenacken', 'Thunfisch', 'Eier', 'Halloumi', 'Lamm', 'Dorade'];
+        var _METHODS = ['Ofenblech', 'Pfanne', 'Schmorpfanne', 'Salat', 'Auflauf', 'Curry'];
         var _sp = _PROT[Math.floor(Math.random() * _PROT.length)];
-        payload.ai_instruction += '\n\nHAUPT-PROTEINQUELLE (verbindliche Vorgabe): ' + _sp + '. Waehle ein konkretes, vollwertiges Gericht, in dem dieses Protein der Hauptbestandteil ist. Kein Wasser, keine Bruehe als Gericht. Nenne das Gericht im Titel.';
-        console.log('[recipe-v92] SEED-INJECT:', _sp, '| fuer', _seedDish);
+        var _sm = _METHODS[Math.floor(Math.random() * _METHODS.length)];
+        payload.ai_instruction += '\n\nVERBINDLICHE VORGABE: Erstelle ein ' + _seedDish + '-Hauptgericht mit ' + _sp + ' (mindestens 150 g essbare Masse dieses Proteins). Zubereitung: ' + _sm + '. Jede Zutat mit konkreter Menge in g oder ml. Nenne das Gericht im Titel.';
+        console.log('[recipe-v92] SEED-INJECT:', _sp, '|', _sm, '| fuer', _seedDish);
       }
     }
   } catch (eSeed) {
@@ -1512,7 +1514,14 @@ async function generateValidatedRecipe(opts) {
     const _degenFat = Number(_degenN.fat_g != null ? _degenN.fat_g : _degenN.fat) || 0;
     const _degenKh = Number(_degenN.netto_kh_g != null ? _degenN.netto_kh_g : _degenN.netCarbs) || 0;
     const _degenHasNuts = (_degenKcal + _degenProt + _degenFat + _degenKh) > 0;
-    const _isDegenerate = _degenRealIngs.length < 2 && !_degenHasNuts;
+    const _degenRealMass = _degenRealIngs.reduce(function (sum, ing) {
+      const amt = Number(ing && ing.amount) || 0;
+      const unit = String((ing && ing.unit) || '').toLowerCase();
+      if (unit === 'g' || unit === 'ml') return sum + amt;
+      if (unit === 'kg' || unit === 'l') return sum + amt * 1000;
+      return sum;
+    }, 0);
+    const _isDegenerate = (_degenRealIngs.length < 3 || _degenRealMass < 150) && !_degenHasNuts;
     if (_isDegenerate && attempt < MAX_VALIDATION_ATTEMPTS) {
       lastErrors = [
         "ABBRUCH: Deine Ausgabe war Wasser/Bruehe/Getraenk - das ist KEIN Rezept. " +
