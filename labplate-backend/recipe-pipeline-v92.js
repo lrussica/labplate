@@ -1490,7 +1490,7 @@ async function generateValidatedRecipe(opts) {
     if (_isDegenerate && attempt < MAX_VALIDATION_ATTEMPTS) {
       lastErrors = [
         "Rezept zu duenn: mind. 3 echte Zutaten (kein Wasser/Salz/Pfeffer allein) und ein erkennbares Gericht. " +
-        "Beispiel: Lachs mit Brokkoli und Kraeuterbutter. Kein Wasser als Gericht."
+        "Waehle stattdessen ein passendes, konkretes Gericht aus der angefragten Kueche (Fisch, Fleisch, vegetarisch - je nach Wunsch). Kein Wasser als Gericht."
       ];
       logValidationFailure({
         attempt: attempt,
