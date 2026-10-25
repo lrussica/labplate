@@ -2115,7 +2115,7 @@ function validateRecipeV2(recipe, opts) {
     result.addWarning('diet_labels bereinigt: ' + strippedLabels.join(', '));
   }
   const labels = (r.diet_labels || []).map(function (d) { return String(d || '').toLowerCase(); });
-  if (labels.indexOf('keto') >= 0 && (Number(r.nutrition.netto_kh_g) || 999) >= 10) {
+  if (labels.indexOf('keto') >= 0 && (r.nutrition.netto_kh_g == null ? 999 : Number(r.nutrition.netto_kh_g)) >= 10) {
     result.addError(
       'Keto-Label vergeben, aber Netto-KH=' + r.nutrition.netto_kh_g + 'g >= 10g'
     );
