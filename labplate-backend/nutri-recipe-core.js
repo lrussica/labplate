@@ -992,7 +992,7 @@ function langName(code) {
 // ---------------------------------------------------------------------------
 function buildGroqRequest(p, model) {
   const structured = p.structured;
-  let temperature = structured ? 0 : 0.2;
+  let temperature = structured ? 0 : 0.9;
   if (!structured) {
     try {
       const classic = require('./classic-culinary-standards');
