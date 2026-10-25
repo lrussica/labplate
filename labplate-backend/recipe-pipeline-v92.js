@@ -1350,11 +1350,18 @@ async function generateValidatedRecipe(opts) {
       var _isDietForm = _DIET_QUERIES.some(function(rx){ return rx.test(_seedDish); });
       if (_isDietForm && !/HAUPT-PROTEINQUELLE/i.test(payload.ai_instruction)) {
         var _PROT = ['Lachs', 'Haehnchenschenkel', 'Garnelen', 'Rinderhack', 'Schweinenacken', 'Thunfisch', 'Eier', 'Halloumi', 'Lamm', 'Dorade'];
-        var _METHODS = ['Ofenblech', 'Pfanne', 'Schmorpfanne', 'Salat', 'Auflauf', 'Curry'];
+        var _METHODS = ['Ofenblech', 'Pfanne', 'Schmorpfanne', 'Auflauf', 'Curry'];
         var _sp = _PROT[Math.floor(Math.random() * _PROT.length)];
         var _sm = _METHODS[Math.floor(Math.random() * _METHODS.length)];
-        payload.ai_instruction += '\n\nVERBINDLICHE VORGABE: Erstelle ein ' + _seedDish + '-Hauptgericht mit ' + _sp + ' (mindestens 150 g essbare Masse dieses Proteins). Zubereitung: ' + _sm + '. Jede Zutat mit konkreter Menge in g oder ml. Nenne das Gericht im Titel.';
-        console.log('[recipe-v92] SEED-INJECT:', _sp, '|', _sm, '| fuer', _seedDish);
+        // FIX 2026-10-25 (Log-Beweis): Der Constraint-Satz "Proteinreiches Keto-Hauptgericht
+        // unter 10 g Netto-Kohlenhydrate..." wird vom Modell als Gerichtsname gelesen und
+        // fuehrt zu "Wasser" als Antwort. Wir ersetzen ihn im Prompt durch einen Seed-Titel.
+        var _dietName = /keto/i.test(_seedDish) ? 'Keto' : /high.?protein/i.test(_seedDish) ? 'High-Protein' : 'Proteinreiches';
+        var _newTitle = _dietName + '-Hauptgericht mit ' + _sp + ' (' + _sm + ')';
+        payload.ai_instruction = payload.ai_instruction
+          .replace(/f(?:ue|ü)r\s+"[^"]+"/gi, 'für "' + _newTitle + '"')
+          .replace(/vorgegebene\s+Gericht\s+"[^"]+"/gi, 'vorgegebene Gericht "' + _newTitle + '"');
+        console.log('[recipe-v92] SEED-INJECT:', _sp, '|', _sm, '| neuer Titel:', _newTitle);
       }
     }
   } catch (eSeed) {

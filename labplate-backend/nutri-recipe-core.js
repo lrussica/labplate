@@ -1568,9 +1568,10 @@ module.exports = {
               blockers.push('PROTEIN-PLAUSIBILITAET: Zutaten liefern nur ~' + Math.round(_est) + ' g Protein. Erhoehe die Hauptproteinmenge (z. B. 180 g Fleisch/Fisch oder 4 Eier + Kaese).');
             }
 
-            // 3) Kalorien-Range
-            if (isFinite(_nsKcal) && (_nsKcal < 350 || _nsKcal > 900)) {
-              blockers.push('KALORIEN AUSSERHALB (' + _nsKcal + ' kcal): Hauptgericht muss 350-900 kcal pro Portion haben. Passe Mengen an, NICHT die Naehrwerte.');
+            // 3) Kalorien-Range (FIX 2026-10-25: pro Portion statt Gesamtwert)
+            var _nsKcalPerPortion = _nsKcal / _hookServings;
+            if (isFinite(_nsKcalPerPortion) && (_nsKcalPerPortion < 350 || _nsKcalPerPortion > 900)) {
+              blockers.push('KALORIEN AUSSERHALB (' + Math.round(_nsKcalPerPortion) + ' kcal pro Portion): Hauptgericht muss 350-900 kcal pro Portion haben. Passe Mengen an, NICHT die Naehrwerte.');
             }
 
             // 4) Vague-Mengen in ingredients
