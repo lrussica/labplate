@@ -1350,11 +1350,9 @@ async function generateValidatedRecipe(opts) {
       var _isDietForm = _DIET_QUERIES.some(function(rx){ return rx.test(_seedDish); });
       if (_isDietForm && !/HAUPT-PROTEINQUELLE/i.test(payload.ai_instruction)) {
         var _PROT = ['Lachs', 'Haehnchenschenkel', 'Garnelen', 'Rinderhack', 'Eier', 'Thunfisch', 'Tofu', 'Halloumi', 'Putenbrust'];
-        var _STY = ['Pfanne', 'Ofen', 'Salat', 'Bowl', 'Curry', 'mediterran', 'asiatisch'];
         var _sp = _PROT[Math.floor(Math.random() * _PROT.length)];
-        var _ss = _STY[Math.floor(Math.random() * _STY.length)];
-        payload.ai_instruction += '\n\nHAUPT-PROTEINQUELLE (verbindliche Vorgabe): ' + _sp + '. Stil: ' + _ss + '. Waehle ein konkretes Gericht mit GENAU diesem Protein. Nenne das Gericht im Titel.';
-        console.log('[recipe-v92] SEED-INJECT:', _sp, '|', _ss, '| fuer', _seedDish);
+        payload.ai_instruction += '\n\nHAUPT-PROTEINQUELLE (verbindliche Vorgabe): ' + _sp + '. Waehle ein konkretes, vollwertiges Gericht, in dem dieses Protein der Hauptbestandteil ist. Kein Wasser, keine Bruehe als Gericht. Nenne das Gericht im Titel.';
+        console.log('[recipe-v92] SEED-INJECT:', _sp, '| fuer', _seedDish);
       }
     }
   } catch (eSeed) {
@@ -1520,7 +1518,6 @@ async function generateValidatedRecipe(opts) {
         "ABBRUCH: Deine Ausgabe war Wasser/Bruehe/Getraenk - das ist KEIN Rezept. " +
         "Ein echtes Rezept MUSS mindestens 3 echte Zutaten (Fleisch, Fisch, Gemuese, Eier, Kaese, Oel) und mindestens 350 kcal pro Portion haben. " +
         "Verbote bei Keto: Pasta, Reis, Kartoffeln, Brot, Mehl, Getreide, Huelsenfruechte, Zucker. " +
-        "Erlaubte Keto-Beispiele: Rindersteak mit Brokkoli, Haehnchenschenkel mit Blumenkohlreis, Lachsfilet mit Spinat und Feta, Omelette mit Kaese und Champignons, Zucchini-Nudeln mit Pesto und Garnelen. " +
         "Waehle EIN konkretes Gericht und fuelle es mit echten Zutaten."
       ];
       logValidationFailure({
