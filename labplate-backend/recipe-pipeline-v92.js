@@ -1333,6 +1333,34 @@ async function generateValidatedRecipe(opts) {
     };
   }
 
+  // SEED-INJECTION (2026-10-25): Bei reiner Diaetform-Eingabe (Keto etc.)
+  // wuerfelt der Server eine Hauptproteinquelle + Stil und gibt sie der KI
+  // als verbindliche Vorgabe. Verhindert, dass das Modell immer dasselbe
+  // Gericht (z.B. Rindersteak) waehlt.
+  try {
+    if (payload && typeof payload.ai_instruction === 'string') {
+      var _seedMatch = payload.ai_instruction.match(/f(?:ue|ü)r\s+"([^"]+)"/);
+      var _seedDish = _seedMatch ? _seedMatch[1].trim().toLowerCase() : '';
+      var _DIET_QUERIES = [
+        /^keto$/, /^ketogen$/, /^low[-\s]?carb$/, /^high[-\s]?protein$/,
+        /^proteinreich$/, /^eiweissreich$/, /^vegan$/, /^vegetarisch$/,
+        /^proteinreiches keto-hauptgericht/, /^high-protein keto main dish/,
+        /^plato keto rico en prote/, /^piatto keto ricco di proteine/
+      ];
+      var _isDietForm = _DIET_QUERIES.some(function(rx){ return rx.test(_seedDish); });
+      if (_isDietForm && !/HAUPT-PROTEINQUELLE/i.test(payload.ai_instruction)) {
+        var _PROT = ['Lachs', 'Haehnchenschenkel', 'Garnelen', 'Rinderhack', 'Eier', 'Thunfisch', 'Tofu', 'Halloumi', 'Putenbrust'];
+        var _STY = ['Pfanne', 'Ofen', 'Salat', 'Bowl', 'Curry', 'mediterran', 'asiatisch'];
+        var _sp = _PROT[Math.floor(Math.random() * _PROT.length)];
+        var _ss = _STY[Math.floor(Math.random() * _STY.length)];
+        payload.ai_instruction += '\n\nHAUPT-PROTEINQUELLE (verbindliche Vorgabe): ' + _sp + '. Stil: ' + _ss + '. Waehle ein konkretes Gericht mit GENAU diesem Protein. Nenne das Gericht im Titel.';
+        console.log('[recipe-v92] SEED-INJECT:', _sp, '|', _ss, '| fuer', _seedDish);
+      }
+    }
+  } catch (eSeed) {
+    console.warn('[recipe-v92] seed injection failed', eSeed && eSeed.message);
+  }
+
   for (let attempt = 1; attempt <= MAX_VALIDATION_ATTEMPTS; attempt++) {
     const dishQuery = Array.isArray(payload && payload.pantry_ingredients)
       ? payload.pantry_ingredients.join(' ')
