@@ -992,7 +992,7 @@ function langName(code) {
 // ---------------------------------------------------------------------------
 function buildGroqRequest(p, model) {
   const structured = p.structured;
-  let temperature = structured ? 0 : 0.2;
+  let temperature = structured ? 0 : 0.9;
   if (!structured) {
     try {
       const classic = require('./classic-culinary-standards');
@@ -1043,6 +1043,7 @@ function normalizeIng(item, fallbackName, opts) {
     name: (typeof src.name === 'string' && src.name.trim()) ? src.name.trim().slice(0, 200) : (fallbackName || 'Zutat'),
     amount: normalizedAmount,
     unit: src.unit === 'ml' ? 'ml' : 'g',
+    absorbedRatio: Number.isFinite(Number(src.absorbedRatio)) ? Number(src.absorbedRatio) : 1,
     status: src.status === 'vorhanden' ? 'vorhanden' : 'benoetigt',
     macrosPer100g: zeroMacros
       ? { netCarbs: 0, fat: 0, protein: 0, fiber: 0 }
@@ -1439,6 +1440,10 @@ module.exports = {
       o.postValidationHook = function (parsedRecipe, attempt, ctx) {
         console.log('[hook-check] FIRED attempt=' + attempt);
         try {
+          // FIX 2026-10-25 (Log-Beweis): Per-Portion-Berechnung.
+          // Rezepte kommen mit servings=4 und Naehrwerten fuers GANZE Rezept.
+          // Ohne Division wurden 4 von 6 Keto-Verstoessen falsch-positiv gemeldet.
+          const _hookServings = Math.max(1, Number(parsedRecipe && parsedRecipe.servings) || 1);
           const payload = (ctx && ctx.payload) || o.payload || {};
           const dishQuery = String(
             payload.ai_instruction || payload.aiInstruction ||
@@ -1495,6 +1500,107 @@ module.exports = {
               warnings.push(v.code + ': ' + v.detail);
             }
           }
+          // Keto-Compliance-Check (Block E Erweiterung).
+          // Der Nutzer wuenscht Keto, wenn in userRequest.text oder im
+          // ai_instruction (ohne die CHEF-FRAMEWORK-"Keto nur <10"-Regel)
+          // "keto" oder "ketogen" vorkommt.
+          try {
+            const _ketoUserText = String(
+              (payload.userRequest && payload.userRequest.text) ||
+              payload.user_text || payload.userText || ''
+            );
+            const _ketoInstrRaw = String(payload.ai_instruction || payload.aiInstruction || '');
+            // FIX 2026-10-25 (Log-Beweis): Nur die ECHTE Suchanfrage pruefen,
+            // nicht den ganzen Prompt. Sonst macht "z.B. Keto" im Client-Prompt
+            // aus "High-Protein" einen Keto-Wunsch.
+            const _ketoQueryMatch = _ketoInstrRaw.match(/f(?:ue|ü)r\s+"([^"]+)"/);
+            const _ketoQuery = _ketoQueryMatch ? _ketoQueryMatch[1].toLowerCase() : '';
+            const _wantsKeto = /\bketo\b|\bketogen/i.test(_ketoUserText)
+                             || /\bketo\b|\bketogen/i.test(_ketoQuery);
+            if (_wantsKeto) {
+              const _ketoN = parsedRecipe.nutrition || {};
+              const _khTotal = Number(
+                _ketoN.netto_kh_g != null ? _ketoN.netto_kh_g :
+                (_ketoN.netCarbs != null ? _ketoN.netCarbs : 999)
+              );
+              // FIX 2026-10-25 (Log-Beweis): Per-Portion-Vergleich statt Gesamtwert.
+              const _khPerPortion = _khTotal / _hookServings;
+              if (isFinite(_khPerPortion) && _khPerPortion >= 10) {
+                blockers.push(
+                  'KETO-VERSTOSS (hart): Das Rezept enthaelt ' + _khPerPortion.toFixed(1) + ' g Netto-Kohlenhydrate pro Portion, ' +
+                  'aber der Nutzer hat Keto verlangt. Erlaubt sind hoechstens 10 g Netto-KH pro Portion. ' +
+                  'Waehle ein voellig ANDERES Gericht ohne Pasta, Reis, Kartoffeln, Brot, Mehl, ' +
+                  'Getreide, Zucker, Suessstoffe, Huehsenfruechte, Haferflocken, Quinoa, Couscous. ' +
+                  'Verwende nur Zutaten mit <5 g Netto-KH pro 100 g.'
+                );
+              }
+            }
+          } catch (eKeto) {
+            console.warn('[nutri-recipe-core] keto compliance check failed', eKeto && eKeto.message);
+          }
+
+          // NUTRITION-SANITY (2026-10-25): Claudes 2. Meinung umgesetzt.
+          // Prueft Modellangabe UND Plausibilitaet aus Zutaten, damit
+          // "30g behauptet, 100g Fleisch gelistet" auffliegt.
+          try {
+            var _nsN = parsedRecipe.nutrition || {};
+            var _nsProtein = Number(_nsN.protein_g != null ? _nsN.protein_g : _nsN.protein);
+            var _nsKcal = Number(_nsN.kcal != null ? _nsN.kcal : _nsN.calories);
+            var _nsIng = Array.isArray(parsedRecipe.ingredients) ? parsedRecipe.ingredients : [];
+
+            // 1) Modellangabe Protein (FIX 2026-10-25: per Portion)
+            var _nsProteinPerPortion = _nsProtein / _hookServings;
+            if (!isFinite(_nsProteinPerPortion) || _nsProteinPerPortion < 25) {
+              blockers.push('PROTEIN ZU NIEDRIG (' + ((_nsProteinPerPortion || 0).toFixed(1)) + ' g pro Portion): Hauptgericht braucht mind. 25 g Protein pro Portion. Erhoehe Fleisch, Fisch, Ei, Kaese oder Huelsefruechte deutlich.');
+            }
+
+            // 2) Plausibilitaet: Protein aus Zutaten schaetzen
+            var _PROT100 = {rind:26, huhn:23, haehnchen:23, lachs:20, garnele:20, thunfisch:25, ei:13, feta:14, halloumi:22, tofu:12, schwein:21, puten:24, pute:24, quark:12, skyr:11};
+            var _est = 0;
+            for (var _pi = 0; _pi < _nsIng.length; _pi++) {
+              var _ing2 = _nsIng[_pi];
+              if (!_ing2 || !_ing2.name) continue;
+              var _nm = String(_ing2.name).toLowerCase();
+              var _key = Object.keys(_PROT100).find(function(k){ return _nm.indexOf(k) >= 0; });
+              if (_key && _ing2.unit === 'g') _est += Number(_ing2.amount) * _PROT100[_key] / 100;
+            }
+            if (_est > 0 && _est < 20) {
+              blockers.push('PROTEIN-PLAUSIBILITAET: Zutaten liefern nur ~' + Math.round(_est) + ' g Protein. Erhoehe die Hauptproteinmenge (z. B. 180 g Fleisch/Fisch oder 4 Eier + Kaese).');
+            }
+
+            // 3) Kalorien-Range (FIX 2026-10-25: pro Portion statt Gesamtwert)
+            var _nsKcalPerPortion = _nsKcal / _hookServings;
+            if (isFinite(_nsKcalPerPortion) && (_nsKcalPerPortion < 350 || _nsKcalPerPortion > 900)) {
+              blockers.push('KALORIEN AUSSERHALB (' + Math.round(_nsKcalPerPortion) + ' kcal pro Portion): Hauptgericht muss 350-900 kcal pro Portion haben. Passe Mengen an, NICHT die Naehrwerte.');
+            }
+
+            // 4) Vague-Mengen in ingredients
+            var _VAGUE = /\b(nach belieben|nach geschmack|etwas|ein wenig|bei bedarf|je nach)\b/i;
+            for (var _vi = 0; _vi < _nsIng.length; _vi++) {
+              var _iv = _nsIng[_vi];
+              if (!_iv || !_iv.name) continue;
+              var _nm2 = String(_iv.name).trim();
+              if (/^(salz|pfeffer|gewuerz|paprika|zimt|curry|oregano|thymian|basilikum|rosmarin)/i.test(_nm2)) continue;
+              var _blob = String(_iv.amount) + ' ' + String(_iv.unit) + ' ' + _nm2;
+              if (_VAGUE.test(_blob)) {
+                blockers.push('VAGE MENGE bei "' + _nm2 + '": Konkrete Zahl in g/ml/Stk angeben, nicht "nach Belieben" oder "etwas".');
+              }
+              if (/wasser|bruehe|fond/i.test(_nm2) && !(Number(_iv.amount) > 0)) {
+                blockers.push('WASSER OHNE MENGE: "' + _nm2 + '" braucht konkrete ml-Angabe (z. B. 500 ml).');
+              }
+            }
+
+            // 5) Wasser in Steps, aber nicht in ingredients
+            var _stepsArr = Array.isArray(parsedRecipe.steps) ? parsedRecipe.steps : (Array.isArray(parsedRecipe.step_contents) ? parsedRecipe.step_contents : []);
+            var _stepsText = _stepsArr.map(function(st){ return String((st && (st.content || st.text)) || ''); }).join(' ');
+            var _hasWaterIng = _nsIng.some(function(zi){ return zi && /^wasser$/i.test(String(zi.name || '').trim()); });
+            if (/(kochend\w*\s+wasser|in\s+wasser|mit\s+wasser)/i.test(_stepsText) && !_hasWaterIng) {
+              blockers.push('WASSER IN SCHRITTEN, ABER NICHT IN ZUTATEN: Entweder Wasser mit ml-Menge in ingredients aufnehmen oder anders garen (Anbraten/Ofen/Dampf).');
+            }
+          } catch (eSanity) {
+            console.warn('[nutri-recipe-core] nutrition sanity check failed', eSanity && eSanity.message);
+          }
+
           return { blockers: blockers, warnings: warnings, resolved: g.resolved };
         } catch (e) {
           console.warn('[nutri-recipe-core] postValidationHook failed', e && e.message);

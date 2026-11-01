@@ -850,7 +850,8 @@ const pipelineTrace = require('./pipeline-trace');
   (Array.isArray(ingredients) ? ingredients : []).forEach(function (ing) {
     if (!ing) return;
     unitModel.annotateIngredientUnits(ing);
-    const grams = unitModel.ingredientAmountGrams(ing);
+    const _ar = Number.isFinite(Number(ing.absorbedRatio)) ? Number(ing.absorbedRatio) : 1;
+    const grams = unitModel.ingredientAmountGrams(ing) * _ar;
     const factor = grams / 100;
     protein += factor * Math.max(0, Number(ing.protein) || 0);
     fat += factor * Math.max(0, Number(ing.fat) || 0);
@@ -2114,7 +2115,7 @@ function validateRecipeV2(recipe, opts) {
     result.addWarning('diet_labels bereinigt: ' + strippedLabels.join(', '));
   }
   const labels = (r.diet_labels || []).map(function (d) { return String(d || '').toLowerCase(); });
-  if (labels.indexOf('keto') >= 0 && (Number(r.nutrition.netto_kh_g) || 999) >= 10) {
+  if (labels.indexOf('keto') >= 0 && (r.nutrition.netto_kh_g == null ? 999 : Number(r.nutrition.netto_kh_g)) >= 10) {
     result.addError(
       'Keto-Label vergeben, aber Netto-KH=' + r.nutrition.netto_kh_g + 'g >= 10g'
     );

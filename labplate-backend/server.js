@@ -408,9 +408,18 @@ app.get('/api/debug/master-info', (req, res) => {
   try {
     const store = require('./classic-master-store');
     const ids = store.listMasterIds();
+    const _mj = require("./data/master_recipes.json");
+    let _arCount = 0;
+    for (const _r of (_mj.recipes || [])) {
+      for (const _ing of (_r.ingredients || [])) {
+        if (_ing && _ing.absorbedRatio != null) _arCount++;
+      }
+    }
     res.json({
       pid: process.pid,
       count: ids.length,
+      version: _mj.version || null,
+      absorbedRatioCount: _arCount,
       hasClam: ids.includes('clam_chowder'),
       hasTomYum: ids.includes('tom_yum'),
       hasSpanakopita: ids.includes('spanakopita'),
@@ -1153,7 +1162,21 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   }
 
   // Generativ (nicht structured/coach): v9.2 Validierung + Retry (max 3)
-  const useV92Pipeline = !payload.structured && flow !== 'coach' && flow !== 'nutri-coach' && flow !== 'core';
+  // Pantry-Klassiker (1 kurze Zutat, keine Ziffern) muessen immer den Master-Store treffen,
+  // auch wenn der Client flow=coach/nutri-coach sendet (was v92 sonst ueberspringt).
+  const isPantryClassicCandidate = (function () {
+    if (!payload || payload.mode !== "pantry") return false;
+    if (payload.original_mode) return true;
+    const ings = Array.isArray(payload.pantry_ingredients) ? payload.pantry_ingredients : [];
+    if (ings.length !== 1) return false;
+    const q = String(ings[0] || "").trim();
+    if (!q || q.length > 40) return false;
+    if (/\d/.test(q)) return false;
+    return true;
+  })();
+  const useV92Pipeline = flow === "core" ? false
+    : isPantryClassicCandidate ? true
+    : (!payload.structured && flow !== "coach" && flow !== "nutri-coach");
   console.log('[BRANCH_DIAG] V92_CHECK mode=' + req.body.mode + ' useV92=' + useV92Pipeline + ' flow=' + flow + ' structured=' + payload.structured);
   if (useV92Pipeline) {
     const pipelineResult = await core.generateValidatedRecipe({
@@ -1467,6 +1490,38 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
 });
 
 // 1:1-Proxy fuer die KI-Lebensmittelsuche (Client baut den Chat-Completion-Request selbst).
+app.get('/api/master-recipes', limiter, (req, res) => {
+  try {
+    const store = require('./classic-master-store');
+    const master = store.loadMaster();
+    let recipes = (master.recipes || []).filter(r => !r.archived);
+
+    const { course, collection } = req.query;
+
+    if (course) {
+      recipes = recipes.filter(r => r.course === course);
+    }
+    if (collection) {
+      recipes = recipes.filter(r => r.collections && r.collections.includes(collection));
+    }
+
+    res.json({
+      count: recipes.length,
+      recipes: recipes.map(r => ({
+        id: r.id,
+        title: (r.titles && r.titles.de) || (r.titles && r.titles.en) || r.id,
+        prepTimeMin: r.prepTimeMin || r.prep_time_min || 30,
+        course: r.course,
+        collections: r.collections || [],
+        dietLabels: r.diet_labels || []
+      }))
+    });
+  } catch (err) {
+    console.error('[api/master-recipes] error', err);
+    res.status(500).json({ error: 'internal_error' });
+  }
+});
+
 app.post('/api/food-lookup', limiter, async (req, res) => {
   const startedAt = Date.now();
   if (!GROQ_API_KEY) return res.status(500).json({ error: 'server_not_configured' });

@@ -1230,6 +1230,24 @@ console.log('=== PLAUSIBILITAET: P17 Aromaten-Reihenfolge ===');
   ok('P72 nur Zwiebel -> keine Warnung', !hasOrder(p72), 'got: ' + JSON.stringify(p72.warnings));
 })();
 
+console.log('=== ABSORBED-RATIO (v1) ===');
+const _v = require('./recipe-validator');
+const _cs = require('./classic-master-store');
+function _mk(ar) { const i = { id: '1', name: 'Oel', displayName: 'Oel', amount: 100, unit: 'g', protein: 0, fat: 100, netCarbs: 0, fiber: 0 }; if (ar != null) i.absorbedRatio = ar; return [i]; }
+const _n1 = _v.computeNutritionFromIngredients(_mk(1));
+const _n01 = _v.computeNutritionFromIngredients(_mk(0.1));
+const _nN = _v.computeNutritionFromIngredients(_mk(null));
+eq('AR01 ratio=1 kcal', _n1.kcal, 900);
+eq('AR02 ratio=0.1 kcal', _n01.kcal, 90);
+eq('AR03 fehlend = Default 1', _nN.kcal, 900);
+ok('AR04 absorbedRatio senkt kcal', _n01.kcal < _n1.kcal, _n01.kcal + ' vs ' + _n1.kcal);
+const _f = _cs.buildFromMaster({ pantry_ingredients: ['Falafel'], lang: 'de', allergens: [] });
+ok('AR05 classic falafel ok', _f && _f.ok, JSON.stringify(_f && _f.error));
+const _oil = (_f && _f.recipe && _f.recipe.ingredients || []).find(function (i) { return /frittier|frying|friture|friggere|kizartma/i.test(i.name || ''); });
+ok('AR06 Frittieroel absorbedRatio=0.1', _oil && _oil.absorbedRatio === 0.1, JSON.stringify(_oil));
+const _nut = _f && _f.recipe && _f.recipe.nutrition;
+ok('AR07 falafel kcal > 0', _nut && _nut.kcal > 0);
+ok('AR08 falafel kcal < 5000', _nut && _nut.kcal < 5000, 'kcal=' + (_nut && _nut.kcal));
 console.log('=== ZUSAMMENFASSUNG ===');
 console.log('  OK:   ' + pass);
 console.log('  FAIL: ' + fail);

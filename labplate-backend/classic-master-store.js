@@ -169,6 +169,8 @@ function buildFromMaster(payload, opts) {
       name: name,
       displayName: name,
       amount: Number(ing.amount) || 0,
+      // absorbedRatio: 0..1 (Anteil der tatsaechlich aufgenommenen Menge; z. B. Frittieroel 0.1, Marinade 0.05, Kochwasser 0). Default 1 = volle Aufnahme (= amount).
+      absorbedRatio: Number.isFinite(Number(ing.absorbedRatio)) ? Number(ing.absorbedRatio) : 1,
       unit: ing.unit || 'g',
       protein_source: !!ing.protein_source,
       culinaryRole: ing.culinaryRole || null,

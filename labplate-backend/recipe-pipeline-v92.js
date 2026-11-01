@@ -246,6 +246,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
       name: name,
       displayName: name,
       amount: amount,
+      absorbedRatio: ing.absorbedRatio,
       unit: unit,
       protein_source: !!ing.protein_source,
       culinaryRole: ing.culinaryRole || ing.role || null,
@@ -348,6 +349,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
         amount: amount,
         unit: 'g',
         status: 'benoetigt',
+        absorbedRatio: ing.absorbedRatio,
         macrosPer100g: { netCarbs: netCarbs, fat: fat, protein: protein, fiber: fiber },
         _v92_id: ing.id,
         _protein_source: !!ing.protein_source,
@@ -370,6 +372,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
         amount: pieces * 60,
         unit: 'g',
         status: 'benoetigt',
+        absorbedRatio: ing.absorbedRatio,
         macrosPer100g: { netCarbs: netCarbs, fat: fat, protein: protein, fiber: fiber },
         _v92_id: ing.id,
         _protein_source: !!ing.protein_source,
@@ -384,6 +387,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
         amount: 0,
         unit: unit,
         status: 'benoetigt',
+        absorbedRatio: ing.absorbedRatio,
         macrosPer100g: { netCarbs: 0, fat: 0, protein: 0, fiber: 0 },
         _v92_id: ing.id,
         _protein_source: !!ing.protein_source,
@@ -397,6 +401,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
         amount: pieces,
         unit: 'stk',
         status: 'benoetigt',
+        absorbedRatio: ing.absorbedRatio,
         macrosPer100g: { netCarbs: netCarbs, fat: fat, protein: protein, fiber: fiber },
         _v92_id: ing.id,
         _protein_source: !!ing.protein_source,
@@ -410,6 +415,7 @@ function renderRecipeForDisplay(recipe, renderOpts) {
       amount: amount > 0 ? Math.round(amount * 10) / 10 : 0,
       unit: unit === 'ml' ? 'ml' : 'g',
       status: 'benoetigt',
+      absorbedRatio: ing.absorbedRatio,
       macrosPer100g: { netCarbs: netCarbs, fat: fat, protein: protein, fiber: fiber },
       _v92_id: ing.id,
       _protein_source: !!ing.protein_source,
@@ -454,7 +460,8 @@ function renderRecipeForDisplay(recipe, renderOpts) {
   let nettoKh = 0;
   let fiber = 0;
   ingredients.forEach(function (ing) {
-    const grams = Number(ing.amount) || 0;
+    const _ar = Number.isFinite(Number(ing.absorbedRatio)) ? Number(ing.absorbedRatio) : 1;
+    const grams = (Number(ing.amount) || 0) * _ar;
     const m = ing.macrosPer100g || {};
     const f = grams / 100;
     protein += (Number(m.protein) || 0) * f;
@@ -1326,6 +1333,41 @@ async function generateValidatedRecipe(opts) {
     };
   }
 
+  // SEED-INJECTION (2026-10-25): Bei reiner Diaetform-Eingabe (Keto etc.)
+  // wuerfelt der Server eine Hauptproteinquelle + Stil und gibt sie der KI
+  // als verbindliche Vorgabe. Verhindert, dass das Modell immer dasselbe
+  // Gericht (z.B. Rindersteak) waehlt.
+  try {
+    if (payload && typeof payload.ai_instruction === 'string') {
+      var _seedMatch = payload.ai_instruction.match(/f(?:ue|ü)r\s+"([^"]+)"/);
+      var _seedDish = _seedMatch ? _seedMatch[1].trim().toLowerCase() : '';
+      var _DIET_QUERIES = [
+        /^keto$/, /^ketogen$/, /^low[-\s]?carb$/, /^high[-\s]?protein$/,
+        /^proteinreich$/, /^eiweissreich$/, /^vegan$/, /^vegetarisch$/,
+        /^proteinreiches keto-hauptgericht/, /^high-protein keto main dish/,
+        /^plato keto rico en prote/, /^piatto keto ricco di proteine/
+      ];
+      var _isDietForm = _DIET_QUERIES.some(function(rx){ return rx.test(_seedDish); });
+      if (_isDietForm && !/HAUPT-PROTEINQUELLE/i.test(payload.ai_instruction)) {
+        var _PROT = ['Lachs', 'Haehnchenschenkel', 'Garnelen', 'Rinderhack', 'Schweinenacken', 'Thunfisch', 'Eier', 'Halloumi', 'Lamm', 'Dorade'];
+        var _METHODS = ['Ofenblech', 'Pfanne', 'Schmorpfanne', 'Auflauf', 'Curry'];
+        var _sp = _PROT[Math.floor(Math.random() * _PROT.length)];
+        var _sm = _METHODS[Math.floor(Math.random() * _METHODS.length)];
+        // FIX 2026-10-25 (Log-Beweis): Der Constraint-Satz "Proteinreiches Keto-Hauptgericht
+        // unter 10 g Netto-Kohlenhydrate..." wird vom Modell als Gerichtsname gelesen und
+        // fuehrt zu "Wasser" als Antwort. Wir ersetzen ihn im Prompt durch einen Seed-Titel.
+        var _dietName = /keto/i.test(_seedDish) ? 'Keto' : /high.?protein/i.test(_seedDish) ? 'High-Protein' : 'Proteinreiches';
+        var _newTitle = _dietName + '-Hauptgericht mit ' + _sp + ' (' + _sm + ')';
+        payload.ai_instruction = payload.ai_instruction
+          .replace(/f(?:ue|ü)r\s+"[^"]+"/gi, 'für "' + _newTitle + '"')
+          .replace(/vorgegebene\s+Gericht\s+"[^"]+"/gi, 'vorgegebene Gericht "' + _newTitle + '"');
+        console.log('[recipe-v92] SEED-INJECT:', _sp, '|', _sm, '| neuer Titel:', _newTitle);
+      }
+    }
+  } catch (eSeed) {
+    console.warn('[recipe-v92] seed injection failed', eSeed && eSeed.message);
+  }
+
   for (let attempt = 1; attempt <= MAX_VALIDATION_ATTEMPTS; attempt++) {
     const dishQuery = Array.isArray(payload && payload.pantry_ingredients)
       ? payload.pantry_ingredients.join(' ')
@@ -1479,11 +1521,20 @@ async function generateValidatedRecipe(opts) {
     const _degenFat = Number(_degenN.fat_g != null ? _degenN.fat_g : _degenN.fat) || 0;
     const _degenKh = Number(_degenN.netto_kh_g != null ? _degenN.netto_kh_g : _degenN.netCarbs) || 0;
     const _degenHasNuts = (_degenKcal + _degenProt + _degenFat + _degenKh) > 0;
-    const _isDegenerate = _degenRealIngs.length < 2 && !_degenHasNuts;
+    const _degenRealMass = _degenRealIngs.reduce(function (sum, ing) {
+      const amt = Number(ing && ing.amount) || 0;
+      const unit = String((ing && ing.unit) || '').toLowerCase();
+      if (unit === 'g' || unit === 'ml') return sum + amt;
+      if (unit === 'kg' || unit === 'l') return sum + amt * 1000;
+      return sum;
+    }, 0);
+    const _isDegenerate = (_degenRealIngs.length < 3 || _degenRealMass < 150) && !_degenHasNuts;
     if (_isDegenerate && attempt < MAX_VALIDATION_ATTEMPTS) {
       lastErrors = [
-        "Rezept zu duenn: mind. 3 echte Zutaten (kein Wasser/Salz/Pfeffer allein) und ein erkennbares Gericht. " +
-        "Beispiel: Lachs mit Brokkoli und Kraeuterbutter. Kein Wasser als Gericht."
+        "ABBRUCH: Deine Ausgabe war Wasser/Bruehe/Getraenk - das ist KEIN Rezept. " +
+        "Ein echtes Rezept MUSS mindestens 3 echte Zutaten (Fleisch, Fisch, Gemuese, Eier, Kaese, Oel) und mindestens 350 kcal pro Portion haben. " +
+        "Verbote bei Keto: Pasta, Reis, Kartoffeln, Brot, Mehl, Getreide, Huelsenfruechte, Zucker. " +
+        "Waehle EIN konkretes Gericht und fuelle es mit echten Zutaten."
       ];
       logValidationFailure({
         attempt: attempt,
@@ -1495,18 +1546,40 @@ async function generateValidatedRecipe(opts) {
       });
       continue;
     }
+    if (_isDegenerate && attempt >= MAX_VALIDATION_ATTEMPTS) {
+      // Letzter Versuch war auch degeneriert (Wasser/Bruehe).
+      // Kein Wasser ausliefern, sondern sauberen Fehler zurueckgeben.
+      return {
+        error: 'all_attempts_degenerate',
+        reason: 'KI hat nur Wasser/Bruehe als Rezept generiert (auch im letzten Versuch).',
+        attempts: attempt,
+        recipeSource: 'ai',
+      };
+    }
 
     // Optionaler Post-Validation-Hook (Block E): laeuft nach der formalen
     // Validierung. Liefert er Blocker, wird ein Retry ausgeloest mit
     // konkreten Korrektur-Anweisungen (z.B. Mengen ausserhalb des Profils).
     // Nur aktiv, wenn noch Retries uebrig sind; im letzten Versuch wird
     // das Rezept als Fallback durchgelassen.
-    if (typeof o.postValidationHook === 'function' && attempt < MAX_VALIDATION_ATTEMPTS) {
+    if (typeof o.postValidationHook === 'function') {
       let hookResult = null;
       try {
         hookResult = o.postValidationHook(parsed, attempt, { payload: payload });
       } catch (eHook) {
         console.warn('[recipe-v92] postValidationHook error', eHook && eHook.message);
+      }
+      // FIX 2026-10-25 (Claudes Befund 3): Hook lief bisher nur in Versuch 1+2.
+      // Im letzten Versuch wurde das Rezept ungeprueft ausgeliefert (13 g Protein,
+      // 24 g Protein kamen so durch). Neu: Hook laeuft immer. Im letzten Versuch
+      // werden Blocker aber zu Warnungen, damit der User nicht "kein Ergebnis" bekommt.
+      if (attempt >= MAX_VALIDATION_ATTEMPTS && hookResult && Array.isArray(hookResult.blockers) && hookResult.blockers.length) {
+        console.warn('[hook-check] Letzter Versuch (' + attempt + ') - Blocker werden zu Warnungen: ' + hookResult.blockers.join(' | '));
+        if (!Array.isArray(hookResult.warnings)) hookResult.warnings = [];
+        for (let _wi = 0; _wi < hookResult.blockers.length; _wi++) {
+          hookResult.warnings.push(hookResult.blockers[_wi]);
+        }
+        hookResult.blockers = [];
       }
       if (hookResult && Array.isArray(hookResult.blockers) && hookResult.blockers.length) {
         lastErrors = hookResult.blockers.slice();

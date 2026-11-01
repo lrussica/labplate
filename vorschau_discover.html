@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vorschau: Rezepte entdecken</title>
+<style>
+  body {
+    background-color: #000000; color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex; justify-content: center; align-items: flex-end;
+    height: 100vh; margin: 0;
+  }
+  .overlay {
+    background-color: #0a0a0a;
+    width: 100%; max-width: 450px;
+    border-radius: 24px 24px 0 0;
+    padding: 24px; box-sizing: border-box;
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.8);
+    display: flex; flex-direction: column; height: 90vh;
+  }
+  .header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
+  }
+  .header h2 { margin: 0; font-size: 24px; font-weight: 600; }
+  .close-btn { color: #888; font-size: 24px; cursor: pointer; }
+  
+  /* Sauberes Kategorie-Scrollen */
+  .tabs {
+    display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 16px;
+    scrollbar-width: none; /* Firefox */
+  }
+  .tabs::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+  .tab {
+    background-color: #1c1c1e; color: #aaa;
+    padding: 10px 16px; border-radius: 20px; font-size: 14px; font-weight: 500;
+    white-space: nowrap; cursor: pointer; border: 1px solid transparent;
+  }
+  .tab.active {
+    background-color: #8b5cf6; color: #fff;
+  }
+
+  /* Die Rezept-Liste */
+  .list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+  .card {
+    background-color: #1c1c1e; padding: 16px; border-radius: 16px;
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .card:hover { background-color: #2c2c2e; }
+  .card-info h3 { margin: 0 0 4px 0; font-size: 16px; font-weight: 600; }
+  .card-info p { margin: 0; font-size: 14px; color: #888; }
+  .card-arrow { color: #8b5cf6; font-size: 20px; }
+</style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="header">
+      <h2>Rezepte entdecken</h2>
+      <div class="close-btn">✕</div>
+    </div>
+    
+    <div class="tabs">
+      <div class="tab">Frühstück</div>
+      <div class="tab active">Leichtes Abendessen</div>
+      <div class="tab">Hauptgang</div>
+      <div class="tab">Nachspeise</div>
+      <div class="tab">Vorspeise</div>
+    </div>
+
+    <div class="list">
+      <div class="card">
+        <div class="card-info">
+          <h3>Lachs-Poké-Bowl</h3>
+          <p>25 Min · High-Protein</p>
+        </div>
+        <div class="card-arrow">›</div>
+      </div>
+      <div class="card">
+        <div class="card-info">
+          <h3>Falafel-Mediterran-Bowl</h3>
+          <p>20 Min · Vegan</p>
+        </div>
+        <div class="card-arrow">›</div>
+      </div>
+      <div class="card">
+        <div class="card-info">
+          <h3>Teriyaki-Hähnchen-Bowl</h3>
+          <p>30 Min · High-Protein</p>
+        </div>
+        <div class="card-arrow">›</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

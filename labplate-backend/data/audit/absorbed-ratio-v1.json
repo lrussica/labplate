@@ -1,0 +1,221 @@
+{
+  "createdAt": "2026-10-16T17:07:58.176Z",
+  "masterVersionBefore": 24,
+  "masterVersionAfter": 25,
+  "ratioFry": 0.1,
+  "criteria": {
+    "L1_explicit": [
+      "zum frittieren",
+      "frittieröl",
+      "frittieroel",
+      "for deep-frying",
+      "for deep frying",
+      "deep-fry",
+      "deep fry"
+    ],
+    "L1_generic": {
+      "patterns": [
+        "frying oil"
+      ],
+      "minAmount": 100
+    },
+    "L2": "dropped — no clean signal"
+  },
+  "matches": [
+    {
+      "recipeId": "cannoli",
+      "ingId": "0008",
+      "nameDe": "Pflanzenöl (zum Frittieren)",
+      "nameEn": "Vegetable oil (for frying)",
+      "amount": 100,
+      "unit": "g",
+      "role": "fat",
+      "layer": "L1-explicit",
+      "ratio": 0.1,
+      "kcalBefore": 900,
+      "kcalAfter": 90
+    },
+    {
+      "recipeId": "churros",
+      "ingId": "0007",
+      "nameDe": "Pflanzenöl (zum Frittieren)",
+      "nameEn": "Vegetable oil (for frying)",
+      "amount": 40,
+      "unit": "g",
+      "role": "fat",
+      "layer": "L1-explicit",
+      "ratio": 0.1,
+      "kcalBefore": 360,
+      "kcalAfter": 36
+    },
+    {
+      "recipeId": "falafel",
+      "ingId": "0008",
+      "nameDe": "Frittieröl",
+      "nameEn": "Frying oil",
+      "amount": 500,
+      "unit": "ml",
+      "role": null,
+      "layer": "L1-explicit",
+      "ratio": 0.1,
+      "kcalBefore": 4500,
+      "kcalAfter": 450
+    },
+    {
+      "recipeId": "fish_and_chips",
+      "ingId": "0006",
+      "nameDe": "Pflanzenöl (zum Frittieren)",
+      "nameEn": "Vegetable oil (for frying)",
+      "amount": 100,
+      "unit": "g",
+      "role": "fat",
+      "layer": "L1-explicit",
+      "ratio": 0.1,
+      "kcalBefore": 900,
+      "kcalAfter": 90
+    },
+    {
+      "recipeId": "fish_tacos",
+      "ingId": "0014",
+      "nameDe": "Pflanzenöl (zum Frittieren)",
+      "nameEn": "Vegetable oil (for frying)",
+      "amount": 100,
+      "unit": "g",
+      "role": "fat",
+      "layer": "L1-explicit",
+      "ratio": 0.1,
+      "kcalBefore": 900,
+      "kcalAfter": 90
+    },
+    {
+      "recipeId": "karaage",
+      "ingId": "0007",
+      "nameDe": "Pflanzenöl (zum Frittieren)",
+      "nameEn": "Vegetable oil (for frying)",
+      "amount": 80,
+      "unit": "g",
+      "role": "fat",
+      "layer": "L1-explicit",
+      "ratio": 0.1,
+      "kcalBefore": 720,
+      "kcalAfter": 72
+    },
+    {
+      "recipeId": "katsu_don",
+      "ingId": "0011",
+      "nameDe": "Pflanzenöl (zum Frittieren)",
+      "nameEn": "Vegetable oil (for frying)",
+      "amount": 80,
+      "unit": "g",
+      "role": "fat",
+      "layer": "L1-explicit",
+      "ratio": 0.1,
+      "kcalBefore": 720,
+      "kcalAfter": 72
+    },
+    {
+      "recipeId": "korean_fried_chicken",
+      "ingId": "0012",
+      "nameDe": "Pflanzenöl (zum Frittieren)",
+      "nameEn": "Vegetable oil (for frying)",
+      "amount": 80,
+      "unit": "g",
+      "role": "fat",
+      "layer": "L1-explicit",
+      "ratio": 0.1,
+      "kcalBefore": 720,
+      "kcalAfter": 72
+    },
+    {
+      "recipeId": "samosa",
+      "ingId": "0012",
+      "nameDe": "Pflanzenöl (zum Frittieren)",
+      "nameEn": "Vegetable oil (for frying)",
+      "amount": 100,
+      "unit": "g",
+      "role": "fat",
+      "layer": "L1-explicit",
+      "ratio": 0.1,
+      "kcalBefore": 900,
+      "kcalAfter": 90
+    },
+    {
+      "recipeId": "scotch_egg",
+      "ingId": "0009",
+      "nameDe": "Pflanzenöl (zum Frittieren)",
+      "nameEn": "Vegetable oil (for frying)",
+      "amount": 100,
+      "unit": "g",
+      "role": "fat",
+      "layer": "L1-explicit",
+      "ratio": 0.1,
+      "kcalBefore": 900,
+      "kcalAfter": 90
+    },
+    {
+      "recipeId": "sopaipillas",
+      "ingId": "0006",
+      "nameDe": "Pflanzenoel (zum Frittieren)",
+      "nameEn": "Vegetable oil (for frying)",
+      "amount": 100,
+      "unit": "g",
+      "role": "fat",
+      "layer": "L1-explicit",
+      "ratio": 0.1,
+      "kcalBefore": 900,
+      "kcalAfter": 90
+    },
+    {
+      "recipeId": "tempura",
+      "ingId": "0005",
+      "nameDe": "Pflanzenöl (zum Frittieren)",
+      "nameEn": "Vegetable oil (for frying)",
+      "amount": 120,
+      "unit": "g",
+      "role": "fat",
+      "layer": "L1-explicit",
+      "ratio": 0.1,
+      "kcalBefore": 1080,
+      "kcalAfter": 108
+    },
+    {
+      "recipeId": "tortilla_de_camaron",
+      "ingId": "0006",
+      "nameDe": "Olivenöl (zum Frittieren)",
+      "nameEn": "Olive oil (for frying)",
+      "amount": 80,
+      "unit": "g",
+      "role": "fat",
+      "layer": "L1-explicit",
+      "ratio": 0.1,
+      "kcalBefore": 720,
+      "kcalAfter": 72
+    },
+    {
+      "recipeId": "vada",
+      "ingId": "0006",
+      "nameDe": "Pflanzenöl (zum Frittieren)",
+      "nameEn": "Vegetable oil (for frying)",
+      "amount": 100,
+      "unit": "g",
+      "role": "fat",
+      "layer": "L1-explicit",
+      "ratio": 0.1,
+      "kcalBefore": 900,
+      "kcalAfter": 90
+    },
+    {
+      "recipeId": "zeppole",
+      "ingId": "0008",
+      "nameDe": "Pflanzenoel (zum Frittieren)",
+      "nameEn": "Vegetable oil (for frying)",
+      "amount": 300,
+      "unit": "g",
+      "role": "fat",
+      "layer": "L1-explicit",
+      "ratio": 0.1,
+      "kcalBefore": 2700,
+      "kcalAfter": 270
+    }
+  ]
+}

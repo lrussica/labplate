@@ -23583,7 +23583,7 @@ initBarcodeEvents();
     // Verlauf oben. Die beiden Buttons im Overlay-Inhalt bekommen bewusst KEINEN
     // Klick-Handler - nur das visuelle Geruest, wie angefordert. Bestehende Kacheln,
     // Overlays, Berechnungen und Daten bleiben komplett unangetastet.
-    var LBL_RECIPES_TITLE = { de:'KI-Rezept-Coach', en:'AI Recipe Coach', es:'Coach de recetas IA', it:'Coach ricette IA' };
+    var LBL_RECIPES_TITLE = { de:'Rezept-Coach', en:'Recipe Coach', es:'Coach de recetas', it:'Coach ricette' };
     // NEU (3. Korrektur-Prompt Punkt 1 - "Hauptmenü"): eigenes Label NUR fuer den Hauptmenue-
     // Button ("Nährstoff-Rezepte mit KI") - der Overlay-Titel selbst (LBL_RECIPES_TITLE, oben)
     // bleibt bewusst unveraendert ("Nährstoff-Rezepte"), da nur der Menuepunkt umbenannt werden
@@ -23592,7 +23592,7 @@ initBarcodeEvents();
     // ---- i18n: alle sichtbaren Texte dieses Features (Ladezustand, Fehler, Rezeptansicht,
     // Zutaten, Einkaufsliste, Zubereitung, Naehrstoffhinweise, Buttons) - gleiches LBL_*/pick()
     // Muster wie oben (LBL_CATS_TITLE etc.), KEIN fest eingebauter deutscher Text mehr. ----
-    var LBL_RECIPE_LOADING = { de:'Deine heutigen Zielwerte werden berücksichtigt … Rezept wird zusammengestellt.', en:'Your daily targets are being taken into account … recipe is being put together.', es:'Se tienen en cuenta tus valores objetivo de hoy … se está preparando la receta.', it:'I tuoi valori obiettivo di oggi vengono presi in considerazione … la ricetta è in preparazione.' };
+    var LBL_RECIPE_LOADING = { de:'Deine heutigen Zielwerte werden berücksichtigt … Rezept und Nährwerte werden geladen.', en:'Your daily targets are being taken into account … recipe and nutrition are loading.', es:'Se tienen en cuenta tus valores objetivo de hoy … se está preparando la receta.', it:'I tuoi valori obiettivo di oggi vengono presi in considerazione … la ricetta è in preparazione.' };
     var LBL_RECIPE_ERROR = { de:'Das Rezept konnte gerade nicht geladen werden. Bitte versuche es erneut.', en:'The recipe could not be loaded right now. Please try again.', es:'No se pudo cargar la receta en este momento. Inténtalo de nuevo.', it:'Non è stato possibile caricare la ricetta in questo momento. Riprova.' };
     var LBL_RECIPE_RETRY = { de:'Erneut versuchen', en:'Try again', es:'Intentar de nuevo', it:'Riprova' };
     var LBL_RECIPE_BACK_TO_INPUT = { de:'Zurück zur Eingabe', en:'Back to input', es:'Volver a la entrada', it:'Torna all\'inserimento' };
@@ -23827,7 +23827,7 @@ initBarcodeEvents();
       tr:'Alerjiniz varsa malzeme listesini, ürün bilgilerini ve olası izleri her zaman ayrıca kontrol edin.'
     };
     var LBL_RECIPE_CHAT_HINT = { de:'Bitte gib Zutaten mit Mengen ein – optional Portionen und eine kurze Zubereitung.', en:'Please enter ingredients with amounts – optional servings and a short prep.', es:'Introduce ingredientes con cantidades – opcionalmente raciones y una preparación breve.', it:'Inserisci ingredienti con quantità – opzionale porzioni e una breve preparazione.' };
-    var LBL_RECIPE_CHAT_WELCOME_1 = { de:'Hi, ich bin dein KI-Rezept-Coach.', en:'Hi, I\'m your AI recipe coach.', es:'Hola, soy tu coach de recetas con IA.', it:'Ciao, sono il tuo coach ricette IA.' };
+    var LBL_RECIPE_CHAT_WELCOME_1 = { de:'Hi, ich bin dein Rezept-Coach.', en:'Hi, I\'m your recipe coach.', es:'Hola, soy tu coach de recetas.', it:'Ciao, sono il tuo coach ricette.' };
     var LBL_RECIPE_CHAT_WELCOME_2 = { de:'Sag mir, worauf du Lust hast – oder starte mit einer Idee.', en:'Tell me what you\'re craving – or start with an idea.', es:'Dime qué te apetece – o empieza con una idea.', it:'Dimmi cosa ti va – oppure inizia con un\'idea.' };
     var LBL_RECIPE_CHAT_CARD_LEFTOVERS = { de:'Reste im Kühlschrank verwerten', en:'Use up fridge leftovers', es:'Aprovechar sobras del frigorífico', it:'Usare gli avanzi in frigo' };
     var LBL_RECIPE_CHAT_CARD_PROTEIN = { de:'Schnelles High-Protein Gericht', en:'Quick high-protein dish', es:'Plato rápido alto en proteína', it:'Piatto veloce high-protein' };
@@ -25160,7 +25160,12 @@ initBarcodeEvents();
       );
     }
 
-    function renderNutriRecipeBody() {
+    function _fmtAbsorbedBadge(ing) {
+      if (!ing || ing.absorbedRatio == null || ing.absorbedRatio >= 1) return "";
+      var _pct = Math.round(ing.absorbedRatio * 100);
+      return " <span style=\"display:inline-block;margin-left:6px;padding:1px 6px;font-size:11px;font-weight:600;color:#fff;background:#c6893a;border-radius:9px;letter-spacing:.02em\" title=\"Nur " + _pct + " % dieser Menge werden tatsaechlich aufgenommen\">" + _pct + " % Aufnahme</span>";
+    }
+        function renderNutriRecipeBody() {
       var body = ovRecipes._body;
       // NEU (KI-Rezept-Chat): das flexible Chat-Layout (siehe "#lp-ov-recipes.lp-chat-open"
       // im CSS) gilt ausschliesslich fuer den Chat-Bildschirm selbst - Lade-/Fehler-/
@@ -25268,7 +25273,7 @@ initBarcodeEvents();
                     return '<li>' + escNutri(i.name) + '</li>';
                   }
                   var q = formatIngredientQty(i.amount, i.unit);
-                  return '<li>' + escNutri(i.name) + ' <span class="nutri-recipe-ing-amount">' + escNutri(q.amount) + ' ' + escNutri(q.unit) + '</span></li>';
+                  return '<li>' + escNutri(i.name) + ' <span class="nutri-recipe-ing-amount">' + escNutri(q.amount) + ' ' + escNutri(q.unit) + '</span>' + _fmtAbsorbedBadge(i) + '</li>';
                 }).join('') +
               '</ul>' +
             '</div>' +
@@ -26650,7 +26655,7 @@ initBarcodeEvents();
             '<div class="nutri-recipe-ing-group"><h4 class="nutri-recipe-ing-group-title">' + escNutri(pick(LBL_LOCALRECIPE_INGREDIENTS_TITLE)) + '</h4><ul class="nutri-recipe-ing-list">' +
               sr.ingredients.map(function (ing) {
                 var q = formatIngredientQty(ing.amount, ing.unit);
-                return '<li>' + escNutri(pick(ing.name)) + ' <span class="nutri-recipe-ing-amount">' + q.amount + ' ' + escNutri(q.unit) + '</span></li>';
+                return '<li>' + escNutri(pick(ing.name)) + ' <span class="nutri-recipe-ing-amount">' + q.amount + ' ' + escNutri(q.unit) + '</span>' + _fmtAbsorbedBadge(ing) + '</li>';
               }).join('') +
             '</ul></div>' +
             '<div class="nutri-recipe-ing-group"><h4 class="nutri-recipe-ing-group-title">' + escNutri(pick(LBL_RECIPE_PREP_TITLE)) + '</h4><ol class="nutri-recipe-steps">' +
@@ -34010,6 +34015,117 @@ initBarcodeEvents();
   });
 })();
 </script>
+
+<style>
+  
+  .discover-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5); z-index: 9999;
+    display: none; align-items: flex-end; justify-content: center;
+  }
+  .discover-overlay.show { display: flex; }
+  .discover-card {
+    background: var(--bg, #fff); width: 100%; max-width: 600px;
+    border-radius: 20px 20px 0 0; padding: 20px;
+    max-height: 85vh; display: flex; flex-direction: column;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  }
+  .discover-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  .discover-header h2 { margin: 0; font-size: 20px; color: var(--ink, #000); }
+  .discover-close { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--ink-soft, #666); }
+  .discover-pills { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 12px; border-bottom: 1px solid rgba(0,0,0,0.1); }
+  .discover-pill {
+    padding: 8px 16px; border-radius: 20px; border: none; background: rgba(0,0,0,0.05); color: var(--ink-soft, #666);
+    font-weight: 500; white-space: nowrap; cursor: pointer; transition: 0.2s; font-family: var(--font-ui, inherit);
+  }
+  .discover-pill.active { background: var(--purple, #8b5cf6); color: #fff; }
+  .discover-list { flex: 1; overflow-y: auto; margin-top: 12px; }
+  .discover-item {
+    display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05); cursor: pointer;
+  }
+  .discover-item:hover { background: rgba(0,0,0,0.02); }
+  .discover-item-title { font-weight: 600; color: var(--ink, #000); font-size: 16px; }
+  .discover-item-time { font-size: 13px; color: var(--ink-soft, #666); }
+</style>
+
+
+
+<div id="discover-overlay" class="discover-overlay">
+  <div class="discover-card">
+    <div class="discover-header">
+      <h2>Rezepte entdecken</h2>
+      <button class="discover-close" onclick="document.getElementById('discover-overlay').classList.remove('show')">✕</button>
+    </div>
+    <div class="discover-pills">
+      <button class="discover-pill active" data-filter="breakfast">Frühstück</button>
+      <button class="discover-pill" data-filter="main">Hauptgang</button>
+      <button class="discover-pill" data-filter="collection:light_dinner">Leichtes Abendessen</button>
+      <button class="discover-pill" data-filter="dessert">Nachspeise</button>
+      <button class="discover-pill" data-filter="starter_soup">Vorspeise</button>
+    </div>
+    <div id="discover-list" class="discover-list">
+      <div style="text-align:center; padding:20px; color:#888;">Lade...</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const overlay = document.getElementById('discover-overlay');
+  const list = document.getElementById('discover-list');
+  
+
+  
+
+  document.querySelectorAll('.discover-pill').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      document.querySelectorAll('.discover-pill').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      loadDiscover(e.target.dataset.filter);
+    });
+  });
+
+  async function loadDiscover(filter) {
+    list.innerHTML = '<div style="text-align:center; padding:20px; color:#888;">Lade...</div>';
+    let url = 'https://labplate.onrender.com/api/master-recipes?';
+    if (filter.startsWith('collection:')) {
+       url += 'collection=' + filter.split(':')[1];
+    } else {
+       url += 'course=' + filter;
+    }
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      if (!data.recipes || data.recipes.length === 0) {
+        list.innerHTML = '<div style="text-align:center; padding:20px; color:#888;">Keine Rezepte gefunden.</div>';
+        return;
+      }
+      list.innerHTML = data.recipes.map(function(r) {
+        return '<div class="discover-item" onclick="window.__discoverSelect(\'' + r.title.replace(/'/g, "\\'") + '\')">' +
+          '<div>' +
+            '<div class="discover-item-title">' + r.title + '</div>' +
+            '<div class="discover-item-time">' + r.prepTimeMin + ' Min</div>' +
+          '</div>' +
+          '<div style="color:var(--purple); font-size: 20px;">→</div>' +
+        '</div>';
+      }).join('');
+    } catch (err) {
+      list.innerHTML = '<div style="text-align:center; padding:20px; color:#888;">Fehler beim Laden.</div>';
+    }
+  }
+
+  window.__discoverSelect = function(title) {
+    overlay.classList.remove('show');
+    const input = document.getElementById('food-search');
+    if (input) {
+      input.value = title;
+      input.dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter', keyCode: 13, which: 13, bubbles: true, cancelable: true}));
+    }
+  };
+})();
+</script>
+
 </body>
 </html>
 

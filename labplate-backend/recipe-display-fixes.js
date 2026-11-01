@@ -195,7 +195,8 @@ function computeNutritionFromIngredients(ings) {
   let nettoKh = 0;
   let fiber = 0;
   (ings || []).forEach(function (ing) {
-    const grams = Number(ing.amount) || 0;
+    const _ar = Number.isFinite(Number(ing.absorbedRatio)) ? Number(ing.absorbedRatio) : 1;
+    const grams = (Number(ing.amount) || 0) * _ar;
     const m = macrosOf(ing);
     const f = grams / 100;
     protein += m.protein * f;
