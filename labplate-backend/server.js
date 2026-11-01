@@ -100,6 +100,8 @@ const DEBUG_V92_ALLOWED_MODELS = new Set([
 // Vision-Modell für /api/photo/verify (multimodal); per Env überschreibbar.
 const GROQ_VISION_MODEL = (process.env.GROQ_VISION_MODEL || 'qwen/qwen3.6-27b').trim();
 const PHOTO_VERIFY_TIMEOUT_MS = Math.min(REQUEST_TIMEOUT_MS, 25000);
+const GEMINI_API_KEY = (process.env.GEMINI_API_KEY || '').trim();
+const GEMINI_MODEL = (process.env.GEMINI_MODEL || 'gemini-3.1-flash-lite').trim();
 
 function maskedPreview(s) {
   if (!s) return '(leer)';
@@ -888,6 +890,57 @@ app.post('/api/team-colleague', limiter, async (req, res) => {
  */
 app.get('/api/photo/verify', photoVerify.handlePhotoVerifyGet);
 app.post('/api/photo/verify', limiter, photoVerify.handlePhotoVerify);
+
+// Gemini "Außer Haus" Foto-Modus (RAW JPEG Upload)
+app.post('/api/plate-scan', limiter, express.raw({ type: 'image/jpeg', limit: '5mb' }), async (req, res) => {
+  const startedAt = Date.now();
+  if (!GEMINI_API_KEY) {
+    logEvent('request_rejected', { reason: 'gemini_not_configured', flow: 'plate-scan' });
+    return res.status(500).json({ error: 'server_not_configured', message: 'Gemini API Key fehlt.' });
+  }
+  if (!req.body || !Buffer.isBuffer(req.body) || req.body.length === 0) {
+    return res.status(400).json({ error: 'invalid_payload', message: 'Kein JPEG-Bild empfangen.' });
+  }
+  const base64Image = req.body.toString('base64');
+  const prompt = "Analyze the food in this image. Estimate the actual visible portion sizes for each ingredient/component. Return a strict JSON array with objects containing 'name' (in English, e.g. 'schnitzel', 'french fries', 'salad'), 'grams_min' (number), and 'grams_max' (number). Do not wrap in markdown, return ONLY the raw JSON array.";
+  const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+  const payload = {
+    contents: [{ parts: [{ text: prompt }, { inlineData: { mimeType: 'image/jpeg', data: base64Image } }] }],
+    generationConfig: { responseMimeType: "application/json", temperature: 0.2 }
+  };
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 9000);
+  try {
+    const response = await fetch(geminiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: controller.signal });
+    const text = await response.text();
+    if (!response.ok) {
+      logEvent('gemini_http_error', { status: response.status, body: text, ms: Date.now() - startedAt, flow: 'plate-scan' });
+      return res.status(502).json({ error: 'provider_error', status: response.status });
+    }
+    const data = JSON.parse(text);
+    const jsonStr = data.candidates?.[0]?.content?.parts?.[0]?.text;
+    if (!jsonStr) return res.status(502).json({ error: 'invalid_response', message: 'Gemini lieferte kein Ergebnis.' });
+    let parsed;
+    try {
+      const cleanJson = jsonStr.replace(/```json/g, '').replace(/```/g, '').trim();
+      parsed = JSON.parse(cleanJson);
+    } catch (e) {
+      logEvent('gemini_parse_error', { raw: jsonStr, ms: Date.now() - startedAt });
+      return res.status(502).json({ error: 'parse_error', raw: jsonStr });
+    }
+    console.log(`[plate-scan] OK items=${parsed.length} model=${GEMINI_MODEL} ms=${Date.now() - startedAt}`);
+    return res.status(200).json({ items: parsed, model: GEMINI_MODEL });
+  } catch (err) {
+    if (err.name === 'AbortError') {
+      logEvent('gemini_timeout', { ms: Date.now() - startedAt, flow: 'plate-scan' });
+      return res.status(504).json({ error: 'timeout', message: 'Zeitüberschreitung bei der Bildanalyse.' });
+    }
+    logEvent('gemini_failed', { reason: err.message, ms: Date.now() - startedAt });
+    return res.status(502).json({ error: 'provider_error', message: err.message });
+  } finally {
+    clearTimeout(timer);
+  }
+});
 
 app.post('/api/nutri-recipe', limiter, async (req, res) => {
   const startedAt = Date.now();
