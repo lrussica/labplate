@@ -918,9 +918,11 @@ app.post('/api/plate-scan', limiter, express.raw({ type: 'image/jpeg', limit: '5
     generationConfig: { responseMimeType: "application/json", temperature: 0.2 }
   };
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 9000);
-  try {
-    const response = await fetch(geminiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: controller.signal });
+  const timer = setTimeout(() => controller.abort(), 20000);
+  let lastError = null;
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    try {
+      const response = await fetch(geminiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: controller.signal });
     const text = await response.text();
     if (!response.ok) {
       logEvent('gemini_http_error', { status: response.status, body: text, ms: Date.now() - startedAt, flow: 'plate-scan' });
@@ -939,15 +941,23 @@ app.post('/api/plate-scan', limiter, express.raw({ type: 'image/jpeg', limit: '5
     }
     console.log(`[plate-scan] OK items=${parsed.length} model=${GEMINI_MODEL} ms=${Date.now() - startedAt}`);
     return res.status(200).json({ items: parsed, model: GEMINI_MODEL });
-  } catch (err) {
-    if (err.name === 'AbortError') {
-      logEvent('gemini_timeout', { ms: Date.now() - startedAt, flow: 'plate-scan' });
+    } catch (err) {
+      lastError = err;
+      if (err.name === 'AbortError' && attempt === 1) {
+        logEvent('gemini_timeout_retry', { attempt: attempt, ms: Date.now() - startedAt, flow: 'plate-scan' });
+        continue; // Retry
+      }
+      break;
+    }
+  }
+  clearTimeout(timer);
+  if (lastError) {
+    if (lastError.name === 'AbortError') {
+      logEvent('gemini_timeout_final', { ms: Date.now() - startedAt, flow: 'plate-scan' });
       return res.status(504).json({ error: 'timeout', message: 'Zeitüberschreitung bei der Bildanalyse.' });
     }
-    logEvent('gemini_failed', { reason: err.message, ms: Date.now() - startedAt });
-    return res.status(502).json({ error: 'provider_error', message: err.message });
-  } finally {
-    clearTimeout(timer);
+    logEvent('gemini_failed', { reason: lastError.message, ms: Date.now() - startedAt });
+    return res.status(502).json({ error: 'provider_error', message: lastError.message });
   }
 });
 
