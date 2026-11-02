@@ -308,7 +308,8 @@ function computeHealthScore(perServing, warnings) {
   return Math.max(0, Math.min(100, round0(score)));
 }
 
-function buildWarnings(perServing, ingredients, lang) {
+function buildWarnings(perServing, ingredients, lang, dietLabels) {
+  const isKeto = Array.isArray(dietLabels) && dietLabels.some(d => String(d).toLowerCase().includes('keto'));
   const warnings = [];
   const cal = num(perServing.calories, 0);
   const protein = num(perServing.protein, 0);
@@ -318,7 +319,7 @@ function buildWarnings(perServing, ingredients, lang) {
   const macroSum = protein + fat + netCarbs || 1;
   const L = lang || 'de';
 
-  if (fat / macroSum > 0.4 || fat > 35) {
+  if (!isKeto && (fat / macroSum > 0.4 || fat > 35)) {
     warnings.push({ code: 'high_fat', message: apiI18n.t('warn_high_fat', L) });
   }
   if (protein < 15) {
@@ -327,7 +328,7 @@ function buildWarnings(perServing, ingredients, lang) {
   if (netCarbs > 70) {
     warnings.push({ code: 'high_carbs', message: apiI18n.t('warn_high_carbs', L) });
   }
-  if (fiber < 3) {
+  if (!isKeto && fiber < 3) {
     warnings.push({ code: 'low_fiber', message: apiI18n.t('warn_low_fiber', L) });
   }
   if (cal > 800) {
@@ -485,7 +486,7 @@ async function analyzeRecipe(recipe, opts) {
 
   const fromFinal = perServingFromFinalNutrition(finalNutrition);
   if (fromFinal) {
-    const warnings = buildWarnings(fromFinal, finalIngredients || [], lang);
+    const warnings = buildWarnings(fromFinal, finalIngredients || [], lang, raw.diet_labels);
     var singleOk = raw.singlePortionNormalized === true || Number(finalServings) === 1;
     if (
       !singleOk &&
@@ -563,7 +564,7 @@ async function analyzeRecipe(recipe, opts) {
     fiber: round1(totals.fiber / servings),
   };
 
-  const warnings = buildWarnings(perServing, analysis.data.ingredients, lang);
+  const warnings = buildWarnings(perServing, analysis.data.ingredients, lang, raw.diet_labels);
   const healthScore = computeHealthScore(perServing, warnings);
   const covered = analysis.data.ingredients.filter((i) => i.caloriesPer100g > 0 || (i.macrosPer100g && (i.macrosPer100g.protein + i.macrosPer100g.fat + i.macrosPer100g.netCarbs + i.macrosPer100g.fiber) > 0)).length;
 
