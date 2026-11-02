@@ -12911,7 +12911,9 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
       var chain = Promise.resolve();
       missing.forEach(function(it) {
         chain = chain.then(function() {
-          return postAiFoodLookupRequest(it.label).then(function(aiData) {
+          return new Promise(function(r){ setTimeout(r, 500); }).then(function() {
+          return postAiFoodLookupRequest(it.label);
+          }).then(function(aiData) {
             if (!aiData) return;
             var foodId = window.plateScanAiToFoodId(it.label, aiData);
             if (!foodId) return;
@@ -30655,9 +30657,10 @@ async function postAiFoodLookupRequest(query, _attempt) {
       // kontrollierten Fehlerzustand im UI zu veraendern.
       let detail = '';
       try { detail = await res.text(); } catch (e) {}
-      if ((res.status === 502 || res.status === 503) && attempt < 2) {
+      if ((res.status === 429 || res.status === 502 || res.status === 503) && attempt < 3) {
+        var _waitMs = res.status === 429 ? 4000 : 2000;
         clearTimeout(timer);
-        await new Promise(function(r) { setTimeout(r, 2000); });
+        await new Promise(function(r) { setTimeout(r, _waitMs); });
         return postAiFoodLookupRequest(query, attempt + 1);
       }
       console.warn('AI-Lebensmittelsuche: HTTP-Fehler', res.status, detail);
