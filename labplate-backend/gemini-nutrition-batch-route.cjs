@@ -27,6 +27,9 @@ const FIELD_MAX = {
 };
 const FIELD_NAMES = Object.keys(FIELD_MAX);
 
+const CORE_FIELDS = ['kcal', 'netto_kh', 'protein', 'fett', 'ballaststoffe'];
+const OPTIONAL_FIELDS = FIELD_NAMES.filter(function(f) { return CORE_FIELDS.indexOf(f) === -1; });
+
 function makeItemSchema() {
   const nutrientProperties = Object.fromEntries(
     FIELD_NAMES.map((field) => [field, { type: ['number', 'null'] }]),
@@ -41,7 +44,7 @@ function makeItemSchema() {
         type: 'object',
         additionalProperties: false,
         properties: nutrientProperties,
-        required: FIELD_NAMES,
+        required: CORE_FIELDS,
       },
     },
     required: ['status', 'nutrients_per_100g'],
@@ -122,13 +125,21 @@ function normalizeModelItem(modelItem) {
   }
 
   const nutrients = {};
-  for (const field of FIELD_NAMES) {
+  for (const field of CORE_FIELDS) {
     const value = modelItem.nutrients_per_100g[field];
     if (typeof value !== 'number' || !Number.isFinite(value)
         || value < 0 || value > FIELD_MAX[field]) {
       return { status: 'unknown', nutrients_per_100g: null };
     }
     nutrients[field] = value;
+  }
+  for (const field of OPTIONAL_FIELDS) {
+    const value = modelItem.nutrients_per_100g[field];
+    if (typeof value === 'number' && Number.isFinite(value) && value >= 0 && value <= FIELD_MAX[field]) {
+      nutrients[field] = value;
+    } else {
+      nutrients[field] = null;
+    }
   }
 
   return { status: 'estimated', nutrients_per_100g: nutrients };
