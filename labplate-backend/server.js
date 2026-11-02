@@ -1571,7 +1571,7 @@ app.post('/api/food-lookup', limiter, async (req, res) => {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), Math.min(REQUEST_TIMEOUT_MS, 20000));
   try {
-    const upstream = await fetch(core.GROQ_API_URL, {
+    const upstream = await fetch('https://generativelanguage.googleapis.com/v1beta/openai/chat/completions', {
       method: 'POST',
       headers: { Authorization: 'Bearer ' + GEMINI_API_KEY, 'Content-Type': 'application/json' },
       body: JSON.stringify(forward),
