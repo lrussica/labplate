@@ -37599,7 +37599,20 @@ initBarcodeEvents();
                 try {
                     console.log('[FOTO-DEBUG] title=', r && r.title, '| name=', r && r.name, '| recipeSource=', r && r.recipeSource, '| canonical=', canonicalTitle, '| imgSrc=', getRecipeImgSrc(r && r.title), getRecipeImgSrc(r && r.name), getRecipeImgSrc(canonicalTitle));
                 } catch (eFotoDebug) {}
-                if (r && r.recipeSource === 'ai') return '';
+                if (r && r.recipeSource === 'ai') {
+                    // FIX 2026-11-02: KI-Rezepte nur dann bildlos, wenn KEIN exakter lokaler Treffer existiert.
+                    // Fuzzy-Match (Keto-Thunfisch → Keto-Zucchini-Lasagne) bleibt blockiert.
+                    var _normC = normalizeName(canonicalTitle);
+                    var _exactMatch = null;
+                    for (var _ek in RECIPE_IMG_MAP) {
+                        if (normalizeName(_ek) === _normC) { _exactMatch = RECIPE_IMG_MAP[_ek]; break; }
+                    }
+                    if (!_exactMatch) return '';
+                    var _exactSrc = RECIPE_IMG_BASE + encodeURIComponent(_exactMatch);
+                    return '<div class="recipe-detail-img-container" onclick="openLightbox(\'' + _exactSrc + '\')">' +
+                           '<img class="recipe-detail-img" src="' + _exactSrc + '" alt="' + escNutri(canonicalTitle) + '">' +
+                           '</div>';
+                }
                 var imgSrc = getRecipeImgSrc(r.title) || getRecipeImgSrc(r.name) || getRecipeImgSrc(canonicalTitle);
                 if (imgSrc) {
                     return '<div class="recipe-detail-img-container" onclick="openLightbox(\'' + imgSrc + '\')">' +
