@@ -913,45 +913,60 @@ app.post('/api/plate-scan', limiter, express.raw({ type: 'image/jpeg', limit: '5
   }
   const base64Image = req.body.toString('base64');
   const prompt = "Analyze the food in this image. Estimate the actual visible portion sizes for each ingredient/component. Return a strict JSON array with objects containing 'name' (in English, e.g. 'schnitzel', 'french fries', 'salad'), 'grams_min' (number), and 'grams_max' (number). Do not wrap in markdown, return ONLY the raw JSON array.";
-  const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+  // (geminiUrl entfernt: pro Retry-Versuch wird die URL mit dem jeweiligen Modell neu gebaut)
   const payload = {
     contents: [{ parts: [{ text: prompt }, { inlineData: { mimeType: 'image/jpeg', data: base64Image } }] }],
     generationConfig: { responseMimeType: "application/json", temperature: 0.2 }
   };
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 20000);
   let lastError = null;
-  for (let attempt = 1; attempt <= 2; attempt++) {
+  const MODELS_TO_TRY = [GEMINI_MODEL, 'gemini-2.5-flash'];
+  const PER_ATTEMPT_TIMEOUT_MS = 30000;
+  const MAX_ATTEMPTS = 3;
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    const modelForThisAttempt = MODELS_TO_TRY[Math.min(attempt - 1, MODELS_TO_TRY.length - 1)];
+    const urlForThisAttempt = `https://generativelanguage.googleapis.com/v1beta/models/${modelForThisAttempt}:generateContent?key=${GEMINI_API_KEY}`;
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), PER_ATTEMPT_TIMEOUT_MS);
     try {
-      const response = await fetch(geminiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: controller.signal });
-    const text = await response.text();
-    if (!response.ok) {
-      logEvent('gemini_http_error', { status: response.status, body: text, ms: Date.now() - startedAt, flow: 'plate-scan' });
-      return res.status(502).json({ error: 'provider_error', status: response.status });
-    }
-    const data = JSON.parse(text);
-    const jsonStr = data.candidates?.[0]?.content?.parts?.[0]?.text;
-    if (!jsonStr) return res.status(502).json({ error: 'invalid_response', message: 'Gemini lieferte kein Ergebnis.' });
-    let parsed;
-    try {
-      const cleanJson = jsonStr.replace(/```json/g, '').replace(/```/g, '').trim();
-      parsed = JSON.parse(cleanJson);
-    } catch (e) {
-      logEvent('gemini_parse_error', { raw: jsonStr, ms: Date.now() - startedAt });
-      return res.status(502).json({ error: 'parse_error', raw: jsonStr });
-    }
-    console.log(`[plate-scan] OK items=${parsed.length} model=${GEMINI_MODEL} ms=${Date.now() - startedAt}`);
-    return res.status(200).json({ items: parsed, model: GEMINI_MODEL });
+      const response = await fetch(urlForThisAttempt, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: controller.signal });
+      const text = await response.text();
+      clearTimeout(timer);
+      if (!response.ok) {
+        logEvent('gemini_http_error', { status: response.status, body: text.slice(0, 400), attempt: attempt, model: modelForThisAttempt, ms: Date.now() - startedAt, flow: 'plate-scan' });
+        const httpErr = new Error('gemini_http_' + response.status);
+        httpErr.name = 'HttpError';
+        httpErr.status = response.status;
+        throw httpErr;
+      }
+      const data = JSON.parse(text);
+      const jsonStr = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (!jsonStr) {
+        const emptyErr = new Error('gemini_empty_response');
+        emptyErr.name = 'EmptyResponse';
+        throw emptyErr;
+      }
+      let parsed;
+      try {
+        const cleanJson = jsonStr.replace(/```json/g, '').replace(/```/g, '').trim();
+        parsed = JSON.parse(cleanJson);
+      } catch (e) {
+        logEvent('gemini_parse_error', { raw: jsonStr.slice(0, 400), ms: Date.now() - startedAt });
+        return res.status(502).json({ error: 'parse_error', raw: jsonStr.slice(0, 400) });
+      }
+      console.log(`[plate-scan] OK items=${parsed.length} model=${modelForThisAttempt} attempt=${attempt} ms=${Date.now() - startedAt}`);
+      return res.status(200).json({ items: parsed, model: modelForThisAttempt });
     } catch (err) {
+      clearTimeout(timer);
       lastError = err;
-      if (err.name === 'AbortError' && attempt === 1) {
-        logEvent('gemini_timeout_retry', { attempt: attempt, ms: Date.now() - startedAt, flow: 'plate-scan' });
-        continue; // Retry
+      const retriable = err.name === 'AbortError' || err.name === 'HttpError' || err.name === 'EmptyResponse';
+      if (retriable && attempt < MAX_ATTEMPTS) {
+        logEvent('gemini_retry', { attempt: attempt, reason: err.name, ms: Date.now() - startedAt, flow: 'plate-scan' });
+        await new Promise(r => setTimeout(r, attempt * 1000));
+        continue;
       }
       break;
     }
   }
-  clearTimeout(timer);
   if (lastError) {
     if (lastError.name === 'AbortError') {
       logEvent('gemini_timeout_final', { ms: Date.now() - startedAt, flow: 'plate-scan' });
