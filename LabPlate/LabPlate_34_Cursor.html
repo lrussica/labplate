@@ -12818,7 +12818,9 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
           sumFaMin += gMin * mm.fa / 100; sumFaMax += gMax * mm.fa / 100;
         }
         var bb = (i < items.length - 1) ? '1px solid #2a2a2a' : 'none';
-        var _dbHint = hasKcal ? '' : ' <span style="font-weight:400; color:#a1a1aa; font-size:calc(13px * ' + scaleVar + ');">(nicht in DB)</span>';
+        var _dbHint = hasKcal
+          ? (mm && mm.isAiEstimated ? ' <span style="font-weight:400; color:#a1a1aa; font-size:calc(13px * ' + scaleVar + ');">(KI-Sch\u00E4tzung)</span>' : '')
+          : ' <span style="font-weight:400; color:#a1a1aa; font-size:calc(13px * ' + scaleVar + ');">(nicht in DB)</span>';
         parts.push(
           '<div style="display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:' + bb + ';">' +
             '<span style="flex:1 1 auto; min-width:0; word-break:break-word; font-size:calc(16px * ' + scaleVar + '); font-weight:500; color:#fff;">' + esc(it.label) + _dbHint + '</span>' +
@@ -12896,6 +12898,37 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
         });
     }
 
+    function _plateScanFillMissingWithAI(rendered) {
+      var missing = [];
+      for (var i = 0; i < rendered.length; i++) {
+        if (!rendered[i]._match) missing.push(rendered[i]);
+      }
+      if (!missing.length) return Promise.resolve();
+      if (typeof postAiFoodLookupRequest !== 'function' || typeof window.plateScanAiToFoodId !== 'function') {
+        return Promise.resolve();
+      }
+      setStatus('Sch\u00E4tze N\u00E4hrwerte f\u00FCr ' + missing.length + ' Bestandteil(e)\u2026', false);
+      var chain = Promise.resolve();
+      missing.forEach(function(it) {
+        chain = chain.then(function() {
+          return postAiFoodLookupRequest(it.label).then(function(aiData) {
+            if (!aiData) return;
+            var foodId = window.plateScanAiToFoodId(it.label, aiData);
+            if (!foodId) return;
+            var nc = Number(aiData.netto_kh) || 0;
+            var fb = Number(aiData.ballaststoffe) || 0;
+            it._match = {
+              id: foodId, label: it.label, kh: nc + fb,
+              pr: Number(aiData.protein) || 0,
+              fa: Number(aiData.fett) || 0,
+              isTable: false, isAiEstimated: true
+            };
+          }).catch(function() {});
+        });
+      });
+      return chain;
+    }
+
     function handleFile(file) {
       if (!file) return;
       plateScanLastItems = null;
@@ -12921,8 +12954,10 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
               });
             }
             if (!rendered.length) { setStatus('Keine Lebensmittel erkannt.', true); return; }
-            setStatus('', false);
-            renderResult(rendered);
+            _plateScanFillMissingWithAI(rendered).then(function() {
+              setStatus('', false);
+              renderResult(rendered);
+            });
           })
           .catch(function(e) {
             setStatus('Fehler: ' + (e && e.message ? e.message : 'Unbekannt'), true);
@@ -19212,6 +19247,26 @@ function findFood(id) {
 // 100g/ml. macrosPer100g.netCarbs ist bereits NETTO (siehe calcRecipeMacrosPerServing) - kh100
 // wird deshalb bewusst als netCarbs+fiber rekonstruiert, damit calcFor()s eigene
 // nettoKh-Berechnung (kh100 - ballast100) wieder exakt auf netCarbs zurueckfuehrt.
+// FIX 2026-11-02: KI-Fallback fuer Plate-Scan-Items, die nicht in der DB sind.
+window.plateScanAiToFoodId = function(name, aiData) {
+  if (!name || !aiData) return null;
+  try {
+    var nc = Number(aiData.netto_kh) || 0;
+    var fb = Number(aiData.ballaststoffe) || 0;
+    var id = 970000 + recipeFoodCounter++;
+    RECIPE_INGREDIENT_FOODS.push({
+      id: id, cat: '__RECIPE__', catEmoji: '🍽️', emoji: '🍽️',
+      name: String(name).slice(0, 120),
+      kh100: nc + fb, ballast100: fb, gi: null,
+      protein100: Number(aiData.protein) || 0,
+      fat100: Number(aiData.fett) || 0,
+      salt100: Number(aiData.salz_g) || 0,
+      defaultPortion: 100, portionLabel: '100 g', rating: null, fatQ: ['none']
+    });
+    return id;
+  } catch (e) { return null; }
+};
+
 function recipeIngredientToFoodId(ing) {
   const m = (ing && ing.macrosPer100g) || { netCarbs: 0, fat: 0, protein: 0, fiber: 0 };
   const netCarbs100 = Number(m.netCarbs) || 0;
