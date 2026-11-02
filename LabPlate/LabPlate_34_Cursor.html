@@ -30627,7 +30627,8 @@ function normalizeAiFoodData(data) {
 // bewusst bereits der vollstaendige Groq-Chat-Completion-Request (model/response_format/
 // messages) - der serverseitige Proxy ergaenzt nur den Authorization-Header und leitet
 // unveraendert an Groq weiter (siehe Kommentar bei AI_FOOD_API_ENDPOINT oben). ----
-async function postAiFoodLookupRequest(query) {
+async function postAiFoodLookupRequest(query, _attempt) {
+  const attempt = _attempt || 1;
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), AI_FOOD_TIMEOUT_MS);
   try {
@@ -30654,6 +30655,11 @@ async function postAiFoodLookupRequest(query) {
       // kontrollierten Fehlerzustand im UI zu veraendern.
       let detail = '';
       try { detail = await res.text(); } catch (e) {}
+      if ((res.status === 502 || res.status === 503) && attempt < 2) {
+        clearTimeout(timer);
+        await new Promise(function(r) { setTimeout(r, 2000); });
+        return postAiFoodLookupRequest(query, attempt + 1);
+      }
       console.warn('AI-Lebensmittelsuche: HTTP-Fehler', res.status, detail);
       return null;
     }
