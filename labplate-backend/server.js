@@ -86,6 +86,7 @@ const REQUEST_TIMEOUT_MS = parseInt(process.env.REQUEST_TIMEOUT_MS, 10) || 55000
 const FOOD_LOOKUP_ALLOWED_MODELS = new Set([
   'openai/gpt-oss-20b',
   'openai/gpt-oss-120b',
+  'gemini-3.5-flash-lite',
   'llama-3.1-8b-instant',
   'llama-3.3-70b-versatile',
   'meta-llama/llama-4-scout-17b-16e-instruct',
@@ -1534,7 +1535,7 @@ app.get('/api/master-recipes', limiter, (req, res) => {
 
 app.post('/api/food-lookup', limiter, async (req, res) => {
   const startedAt = Date.now();
-  if (!GROQ_API_KEY) return res.status(500).json({ error: 'server_not_configured' });
+  if (!GEMINI_API_KEY) return res.status(500).json({ error: 'server_not_configured' });
 
   const body = req.body;
   if (!body || typeof body !== 'object' || !Array.isArray(body.messages) || !body.messages.length) {
@@ -1557,7 +1558,7 @@ app.post('/api/food-lookup', limiter, async (req, res) => {
   try {
     const upstream = await fetch(core.GROQ_API_URL, {
       method: 'POST',
-      headers: { Authorization: 'Bearer ' + GROQ_API_KEY, 'Content-Type': 'application/json' },
+      headers: { Authorization: 'Bearer ' + GEMINI_API_KEY, 'Content-Type': 'application/json' },
       body: JSON.stringify(forward),
       signal: controller.signal,
     });
