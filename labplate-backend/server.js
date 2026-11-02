@@ -71,7 +71,7 @@ const GROQ_API_KEY_LOOKS_VALID = /^gsk_[A-Za-z0-9]+$/.test(GROQ_API_KEY) || GROQ
 const GROQ_API_KEY_DEBUG_LOOKS_VALID = !GROQ_API_KEY_DEBUG
   ? false
   : (/^gsk_[A-Za-z0-9]+$/.test(GROQ_API_KEY_DEBUG) || GROQ_API_KEY_DEBUG.length > 20);
-const GROQ_MODEL = (process.env.GROQ_MODEL || core.DEFAULT_MODEL).trim();
+const GROQ_MODEL = (process.env.GEMINI_MODEL || core.DEFAULT_MODEL).trim();
 const SPOONACULAR_CONFIGURED = spoonacular.isConfigured();
 const THEMEALDB_CONFIGURED = themealdb.isConfigured();
 const USDA_CONFIGURED = usda.isConfigured();
@@ -128,11 +128,11 @@ function resolveGroqAuth(reqBody) {
   const debug = isDebugRecipeRequest(reqBody);
   if (!debug) {
     return {
-      apiKey: GROQ_API_KEY,
+      apiKey: GEMINI_API_KEY,
       keyType: 'prod',
-      keyConfigured: !!GROQ_API_KEY,
-      keyLooksValid: GROQ_API_KEY_LOOKS_VALID,
-      keyFingerprint: GROQ_API_KEY ? maskedPreview(GROQ_API_KEY) : null,
+      keyConfigured: !!GEMINI_API_KEY,
+      keyLooksValid: GEMINI_API_KEY.length > 20,
+      keyFingerprint: GEMINI_API_KEY ? maskedPreview(GEMINI_API_KEY) : null,
     };
   }
 
@@ -835,7 +835,7 @@ app.post('/api/team-colleague', limiter, async (req, res) => {
     console.log(`[team-colleague] runSupplementCoach brief_chars=${payload.handoffBrief.length}`);
     try {
       const advice = await teamRouter.runSupplementCoach(payload.handoffBrief, payload, core.callGroq, {
-        apiKey: GROQ_API_KEY,
+        apiKey: GEMINI_API_KEY,
         timeoutMs: Math.min(REQUEST_TIMEOUT_MS, 25000),
         model: GROQ_MODEL,
       });
@@ -872,7 +872,7 @@ app.post('/api/team-colleague', limiter, async (req, res) => {
   });
   console.log(`[team-colleague] agent=${payload.agent} lang=${payload.lang} brief_chars=${payload.handoffBrief.length}`);
 
-  const result = await core.callGroq(requestBody, { apiKey: GROQ_API_KEY, timeoutMs: Math.min(REQUEST_TIMEOUT_MS, 25000) });
+  const result = await core.callGroq(requestBody, { apiKey: GEMINI_API_KEY, timeoutMs: Math.min(REQUEST_TIMEOUT_MS, 25000) });
   if (result.error === 'provider_error') {
     const upstreamStatus = Number(result.status) || 0;
     logEvent('groq_http_error', { status: upstreamStatus, model: GROQ_MODEL, body: result.body, ms: Date.now() - startedAt, flow: 'team-colleague' });

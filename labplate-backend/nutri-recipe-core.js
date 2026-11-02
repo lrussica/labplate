@@ -36,8 +36,8 @@ const recipeValidator = require('./recipe-validator');
 const recipePortions = require('./recipe-portions');
 const apiI18n = require('./api-i18n');
 
-const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
-const DEFAULT_MODEL = 'openai/gpt-oss-120b';
+const GROQ_API_URL = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions';
+const DEFAULT_MODEL = 'gemini-3.5-flash-lite';
 const MAX_INGREDIENTS = 100;
 const MAX_STEPS = 50;
 const MAX_INSTRUCTION_LEN = 8000;
@@ -1008,7 +1008,7 @@ function buildGroqRequest(p, model) {
     // Eigenrezept: deterministisch (0). Klassiker: 0. Generativ sonst: 0.2 gegen Mengen-Drift.
     temperature: temperature,
     reasoning_effort: 'low',
-    max_tokens: 3000,
+    max_tokens: 8000,
     response_format: {
       type: 'json_schema',
       json_schema: structured ? buildEnrichmentSchema(p.pantry_ingredients) : buildGenerativeSchema(),
