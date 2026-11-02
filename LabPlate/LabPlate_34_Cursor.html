@@ -12888,8 +12888,9 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
           if (!r.ok) {
             var st = r.status;
             if ((st === 502 || st === 503) && left > 0) {
-              setStatus('Dienst ueberlastet (' + st + ') - neuer Versuch...', false);
-              return new Promise(function(res){ setTimeout(res, 2000); })
+              var _w = _aiBackoffMs(2 - left);
+              setStatus('Dienst ueberlastet (' + st + ') - neuer Versuch in ' + Math.round(_w/1000) + 's...', false);
+              return new Promise(function(res){ setTimeout(res, _w); })
                 .then(function(){ return _plateScanFetch(blob, left - 1); });
             }
             throw new Error('HTTP ' + st);
@@ -30629,6 +30630,12 @@ function normalizeAiFoodData(data) {
 // bewusst bereits der vollstaendige Groq-Chat-Completion-Request (model/response_format/
 // messages) - der serverseitige Proxy ergaenzt nur den Authorization-Header und leitet
 // unveraendert an Groq weiter (siehe Kommentar bei AI_FOOD_API_ENDPOINT oben). ----
+function _aiBackoffMs(attempt) {
+  var base = 1000 * Math.pow(2, Math.max(0, attempt - 1));
+  var jitter = Math.floor(Math.random() * 500);
+  return Math.min(base + jitter, 8000);
+}
+
 async function postAiFoodLookupRequest(query, _attempt) {
   const attempt = _attempt || 1;
   const ctrl = new AbortController();
@@ -30658,7 +30665,7 @@ async function postAiFoodLookupRequest(query, _attempt) {
       let detail = '';
       try { detail = await res.text(); } catch (e) {}
       if ((res.status === 429 || res.status === 502 || res.status === 503) && attempt < 3) {
-        var _waitMs = res.status === 429 ? 4000 : 2000;
+        var _waitMs = _aiBackoffMs(attempt);
         clearTimeout(timer);
         await new Promise(function(r) { setTimeout(r, _waitMs); });
         return postAiFoodLookupRequest(query, attempt + 1);
