@@ -481,11 +481,21 @@ function renderRecipeForDisplay(recipe, renderOpts) {
   // Diaet-Labels deterministisch aus finalen Werten + Zutaten berechnen.
   // Ersetzt die KI-Schaetzung. Siehe diet-labels.js.
   try {
-    recipe.diet_labels = dietLabels.computeDietLabels(
+    const computedLabels = dietLabels.computeDietLabels(
       finalNutrition || nutritionFromAmounts,
       ingredients
     );
-    console.log('[recipe-v92] diet_labels_computed ' + JSON.stringify(recipe.diet_labels));
+    const aiLabels = Array.isArray(recipe.diet_labels) ? recipe.diet_labels.slice() : [];
+    const mergedLabels = Array.from(new Set(computedLabels.concat(aiLabels)));
+    // Plausibilitaets-Check: keto nur behalten, wenn tatsaechliche Netto-KH < 10 g
+    if (mergedLabels.indexOf('keto') !== -1) {
+      const actualNetCarbs = Number((finalNutrition || nutritionFromAmounts || {}).netto_kh_g);
+      if (Number.isFinite(actualNetCarbs) && actualNetCarbs >= 10) {
+        mergedLabels.splice(mergedLabels.indexOf('keto'), 1);
+      }
+    }
+    recipe.diet_labels = mergedLabels;
+    console.log('[recipe-v92] diet_labels_computed ' + JSON.stringify(recipe.diet_labels) + ' aiLabels=' + JSON.stringify(aiLabels));
   } catch (e) {
     console.log('[recipe-v92] diet_labels_compute_failed ' + (e && e.message ? e.message : String(e)));
   }
