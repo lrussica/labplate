@@ -1573,6 +1573,10 @@ app.post('/api/food-lookup', limiter, async (req, res) => {
   }
 });
 
+const createGeminiNutritionBatchHandler = require('./gemini-nutrition-batch-route.cjs');
+
+app.post('/api/nutrition-estimates/batch', limiter, createGeminiNutritionBatchHandler());
+
 app.use((req, res) => {
   applyCorsHeaders(req, res);
   res.status(404).json({ error: 'not_found' });

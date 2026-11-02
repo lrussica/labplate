@@ -30651,6 +30651,35 @@ function _aiBackoffMs(attempt) {
 }
 
 async function postAiFoodLookupBatch(labels) {
+  const items = labels.map((name, index) => ({ id: 'scan-' + index, name: name }));
+  try {
+    const res = await fetch('https://labplate.onrender.com/api/nutrition-estimates/batch', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: items })
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    const byId = new Map();
+    if (data.results) {
+      data.results.forEach(r => { if (r.id) byId.set(r.id, r); });
+    }
+    var byLabel = {};
+    items.forEach((reqItem, index) => {
+      var result = byId.get(reqItem.id);
+      if (result && result.status === 'estimated' && result.nutrients_per_100g) {
+        var key = String(reqItem.name).toLowerCase().trim().replace(/[^a-z0-9äöüß]/g, '');
+        byLabel[key] = result.nutrients_per_100g;
+      }
+    });
+    return { byLabel: byLabel, items: [] };
+  } catch (e) {
+    console.warn('AI-Lebensmittelsuche (Batch): Netzwerk-/Timeout-Fehler', e);
+    return null;
+  }
+}
+
+async function _old_postAiFoodLookupBatch(labels) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), AI_FOOD_TIMEOUT_MS);
   try {
