@@ -12910,14 +12910,19 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
       }
       setStatus('Sch\u00E4tze N\u00E4hrwerte f\u00FCr ' + missing.length + ' Bestandteil(e)\u2026', false);
       var labels = missing.map(function(it) { return it.label; });
-      return postAiFoodLookupBatch(labels).then(function(resultsByLabel) {
-        if (!resultsByLabel) {
+      return postAiFoodLookupBatch(labels).then(function(batchResult) {
+        if (!batchResult) {
           console.warn('[PLATE_SCAN_AI] Batch-Schaetzung komplett fehlgeschlagen.');
           return;
         }
-        missing.forEach(function(it) {
+        var byLabel = batchResult.byLabel;
+        var items = batchResult.items;
+        missing.forEach(function(it, idx) {
           var key = String(it.label).toLowerCase().trim().replace(/[^a-z0-9äöüß]/g, '');
-          var aiData = resultsByLabel[key];
+          var aiData = byLabel[key];
+          if (!aiData && items && items[idx]) {
+            aiData = items[idx]; // Fallback: Index, falls Label nicht exakt matcht
+          }
           if (!aiData) { console.warn('[PLATE_SCAN_AI] Keine Batch-Schaetzung fuer:', it.label); return; }
           var foodId = window.plateScanAiToFoodId(it.label, aiData);
           if (!foodId) { console.warn('[PLATE_SCAN_AI] Konnte Food-ID nicht anlegen fuer:', it.label); return; }
@@ -30558,7 +30563,7 @@ const AI_FOOD_BATCH_SYSTEM_PROMPT =
   'Du bist eine Nährwert-Datenbank. Antworte AUSSCHLIESSLICH mit einem JSON-Objekt mit dem Schlüssel "items". ' +
   'Der Wert von "items" muss ein Array sein. Jedes Element im Array repräsentiert ein Lebensmittel ' +
   'und MUSS EXAKT diese Feldnamen haben: label, kcal, netto_kh, protein, fett, ballaststoffe. ' +
-  'Der Wert von label muss EXAKT der angefragte Name sein. ' +
+  'Der Wert von label muss EXAKT der angefragte Name sein. WICHTIG: Das Array MUSS für JEDES angefragte Lebensmittel ein Objekt enthalten. Wenn 3 Lebensmittel angefragt werden, MUSS das Array 3 Elemente haben. ' +
   'Beispiel: {"items":[{"label":"Zwiebel","kcal":40,"netto_kh":9.3,"protein":1.1,"fett":0.1,"ballaststoffe":1.7},{"label":"Mais","kcal":86,"netto_kh":19,"protein":3.3,"fett":1.4,"ballaststoffe":2.7}]}. ' +
   'Kein Begleittext. Wenn ein Lebensmittel unbekannt ist, setze alle Nährwerte auf 0.';
 
@@ -30678,7 +30683,7 @@ async function postAiFoodLookupBatch(labels) {
         byLabel[key] = item;
       }
     }
-    return byLabel;
+    return { byLabel: byLabel, items: parsed.items };
   } catch (e) {
     console.warn('AI-Lebensmittelsuche (Batch): Netzwerk-/Timeout-Fehler', e);
     return null;
