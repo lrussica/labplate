@@ -12912,12 +12912,12 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
       var chain = Promise.resolve();
       missing.forEach(function(it) {
         chain = chain.then(function() {
-          return new Promise(function(r){ setTimeout(r, 500); }).then(function() {
+          return new Promise(function(r){ setTimeout(r, 2000); }).then(function() {
           return postAiFoodLookupRequest(it.label);
           }).then(function(aiData) {
-            if (!aiData) return;
+            if (!aiData) { console.warn('[PLATE_SCAN_AI] Schaetzung fehlgeschlagen fuer:', it.label); return; }
             var foodId = window.plateScanAiToFoodId(it.label, aiData);
-            if (!foodId) return;
+            if (!foodId) { console.warn('[PLATE_SCAN_AI] Konnte Food-ID nicht anlegen fuer:', it.label); return; }
             var nc = Number(aiData.netto_kh) || 0;
             var fb = Number(aiData.ballaststoffe) || 0;
             it._match = {
@@ -12926,7 +12926,7 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
               fa: Number(aiData.fett) || 0,
               isTable: false, isAiEstimated: true
             };
-          }).catch(function() {});
+          }).catch(function(e) { console.warn('[PLATE_SCAN_AI] Exception bei Schaetzung fuer:', it.label, e); });
         });
       });
       return chain;
