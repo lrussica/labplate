@@ -12905,31 +12905,32 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
         if (!rendered[i]._match) missing.push(rendered[i]);
       }
       if (!missing.length) return Promise.resolve();
-      if (typeof postAiFoodLookupRequest !== 'function' || typeof window.plateScanAiToFoodId !== 'function') {
+      if (typeof postAiFoodLookupBatch !== 'function' || typeof window.plateScanAiToFoodId !== 'function') {
         return Promise.resolve();
       }
       setStatus('Sch\u00E4tze N\u00E4hrwerte f\u00FCr ' + missing.length + ' Bestandteil(e)\u2026', false);
-      var chain = Promise.resolve();
-      missing.forEach(function(it) {
-        chain = chain.then(function() {
-          return new Promise(function(r){ setTimeout(r, 2000); }).then(function() {
-          return postAiFoodLookupRequest(it.label);
-          }).then(function(aiData) {
-            if (!aiData) { console.warn('[PLATE_SCAN_AI] Schaetzung fehlgeschlagen fuer:', it.label); return; }
-            var foodId = window.plateScanAiToFoodId(it.label, aiData);
-            if (!foodId) { console.warn('[PLATE_SCAN_AI] Konnte Food-ID nicht anlegen fuer:', it.label); return; }
-            var nc = Number(aiData.netto_kh) || 0;
-            var fb = Number(aiData.ballaststoffe) || 0;
-            it._match = {
-              id: foodId, label: it.label, kh: nc + fb,
-              pr: Number(aiData.protein) || 0,
-              fa: Number(aiData.fett) || 0,
-              isTable: false, isAiEstimated: true
-            };
-          }).catch(function(e) { console.warn('[PLATE_SCAN_AI] Exception bei Schaetzung fuer:', it.label, e); });
+      var labels = missing.map(function(it) { return it.label; });
+      return postAiFoodLookupBatch(labels).then(function(resultsByLabel) {
+        if (!resultsByLabel) {
+          console.warn('[PLATE_SCAN_AI] Batch-Schaetzung komplett fehlgeschlagen.');
+          return;
+        }
+        missing.forEach(function(it) {
+          var key = String(it.label).toLowerCase().trim().replace(/[^a-z0-9äöüß]/g, '');
+          var aiData = resultsByLabel[key];
+          if (!aiData) { console.warn('[PLATE_SCAN_AI] Keine Batch-Schaetzung fuer:', it.label); return; }
+          var foodId = window.plateScanAiToFoodId(it.label, aiData);
+          if (!foodId) { console.warn('[PLATE_SCAN_AI] Konnte Food-ID nicht anlegen fuer:', it.label); return; }
+          var nc = Number(aiData.netto_kh) || 0;
+          var fb = Number(aiData.ballaststoffe) || 0;
+          it._match = {
+            id: foodId, label: it.label, kh: nc + fb,
+            pr: Number(aiData.protein) || 0,
+            fa: Number(aiData.fett) || 0,
+            isTable: false, isAiEstimated: true
+          };
         });
       });
-      return chain;
     }
 
     function handleFile(file) {
@@ -30553,6 +30554,14 @@ const AI_FOOD_SYSTEM_PROMPT =
   "'Soßen & Gewürze', 'Getränke', 'Süßungsmittel', 'Süßigkeiten & Snacks', 'Fertiggerichte'. " +
   'Beispiel: {"name":"Rump Steak","kategorie":"Fleisch & Eier","kcal":240,"netto_kh":0,"protein":20,"fett":15,"ballaststoffe":0,"gesaettigte_fett":6,"omega3_mg":0,"salz_g":0.1,"kalium_mg":330,"magnesium_mg":25}. ' +
   'Wenn das Lebensmittel unbekannt ist, antworte mit {"name":"","kategorie":"","kcal":-1,"netto_kh":-1,"protein":-1,"fett":-1,"ballaststoffe":-1,"gesaettigte_fett":-1,"omega3_mg":-1,"salz_g":-1,"kalium_mg":-1,"magnesium_mg":-1}.';
+const AI_FOOD_BATCH_SYSTEM_PROMPT =
+  'Du bist eine Nährwert-Datenbank. Antworte AUSSCHLIESSLICH mit einem JSON-Objekt mit dem Schlüssel "items". ' +
+  'Der Wert von "items" muss ein Array sein. Jedes Element im Array repräsentiert ein Lebensmittel ' +
+  'und MUSS EXAKT diese Feldnamen haben: label, kcal, netto_kh, protein, fett, ballaststoffe. ' +
+  'Der Wert von label muss EXAKT der angefragte Name sein. ' +
+  'Beispiel: {"items":[{"label":"Zwiebel","kcal":40,"netto_kh":9.3,"protein":1.1,"fett":0.1,"ballaststoffe":1.7},{"label":"Mais","kcal":86,"netto_kh":19,"protein":3.3,"fett":1.4,"ballaststoffe":2.7}]}. ' +
+  'Kein Begleittext. Wenn ein Lebensmittel unbekannt ist, setze alle Nährwerte auf 0.';
+
 function buildAiFoodUserPrompt(query) {
   return `Lebensmittel: "${query}". Gib die Nährwerte pro 100 g/ml als JSON zurück.`;
 }
@@ -30634,6 +30643,48 @@ function _aiBackoffMs(attempt) {
   var base = 1000 * Math.pow(2, Math.max(0, attempt - 1));
   var jitter = Math.floor(Math.random() * 500);
   return Math.min(base + jitter, 8000);
+}
+
+async function postAiFoodLookupBatch(labels) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), AI_FOOD_TIMEOUT_MS);
+  try {
+    const res = await fetch(AI_FOOD_API_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: GROQ_MODEL,
+        response_format: { type: 'json_object' },
+        messages: [
+          { role: 'system', content: AI_FOOD_BATCH_SYSTEM_PROMPT },
+          { role: 'user', content: 'Lebensmittel: ' + JSON.stringify(labels) },
+        ],
+        temperature: 0.1,
+      }),
+      signal: ctrl.signal,
+    });
+    if (!res.ok) {
+      console.warn('AI-Lebensmittelsuche (Batch): HTTP-Fehler', res.status);
+      return null;
+    }
+    const payload = await res.json();
+    const parsed = parseAiFoodCompletion(payload);
+    if (!parsed || !Array.isArray(parsed.items)) return null;
+    var byLabel = {};
+    for (var i = 0; i < parsed.items.length; i++) {
+      var item = parsed.items[i];
+      if (item && item.label) {
+        var key = String(item.label).toLowerCase().trim().replace(/[^a-z0-9äöüß]/g, '');
+        byLabel[key] = item;
+      }
+    }
+    return byLabel;
+  } catch (e) {
+    console.warn('AI-Lebensmittelsuche (Batch): Netzwerk-/Timeout-Fehler', e);
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 async function postAiFoodLookupRequest(query, _attempt) {
