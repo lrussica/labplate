@@ -1008,7 +1008,7 @@ function buildGroqRequest(p, model) {
     // Eigenrezept: deterministisch (0). Klassiker: 0. Generativ sonst: 0.2 gegen Mengen-Drift.
     temperature: temperature,
     reasoning_effort: 'low',
-    max_tokens: 8192,
+    max_tokens: 3000,
     response_format: {
       type: 'json_schema',
       json_schema: structured ? buildEnrichmentSchema(p.pantry_ingredients) : buildGenerativeSchema(),
