@@ -821,7 +821,7 @@ app.post('/api/team-coach-route', limiter, (req, res) => {
 // Phase 3: Supplement- / Einkaufs-Coach (Shared Context + Handoff-Brief vom Mental-Coach).
 app.post('/api/team-colleague', limiter, async (req, res) => {
   const startedAt = Date.now();
-  if (!GROQ_API_KEY) {
+  if (!GEMINI_API_KEY) {
     logEvent('request_rejected', { reason: 'server_not_configured' });
     return res.status(500).json({ error: 'server_not_configured' });
   }
@@ -1020,7 +1020,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
     return res.status(200).json(payload);
   }
   const auth = resolveGroqAuth(req.body);
-  if (auth.keyType === 'prod' && !GROQ_API_KEY) {
+  if (auth.keyType === 'prod' && !GEMINI_API_KEY) {
     logEvent('request_rejected', { reason: 'server_not_configured', keyType: 'prod' });
     return res.status(500).json({ error: 'server_not_configured' });
   }
