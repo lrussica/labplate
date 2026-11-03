@@ -133,13 +133,16 @@ const CHEF_FRAMEWORK_RULES = [
   'referenziert werden — VERBOTEN: "in etwas Oel anbraten" ohne Oel-Eintrag.',
   '8) HERD-STUFEN: stove_level 1-9 nur bei Hitze; kalt = 0. Mise en Place zuerst; Zeit + Sensorik.',
   '9) GEWUERZE: unit prise|messerspitze, amount 0 – nie unit g fuer Salz/Pfeffer (ABSOLUTES GRAMM-VERBOT).',
-  '9-PFLICHT-TITELGEWUERZ: Namensgebende Gewuerze/Aromaten aus dem Gerichtstitel MUESSEN in ingredients[] stehen, '
-  + 'auch wenn amount=0 (prise). Curry → Currypulver | Chili/scharf/pikant → Chiliflocken oder Cayennepfeffer | '
-  + 'Paprika → Paprikapulver (nicht Gemuese) | italienisch/mediterran → Oregano/Thymian/Basilikum | '
-  + 'indisch/Curry → Kreuzkuemmel/Kurkuma/Koriander | asiatisch/thai/chinesisch → Ingwer/Sojasauce/Sesam | '
-  + 'Zimt/Vanille/Zitrone → das jeweilige Gewuerz/Aroma. VERBOTEN: Titel "Cremiges Curry" ohne Curry-Zutat, '
-  + 'Titel "Chili con Carne" ohne Chili, Titel "Zimtsterne" ohne Zimt. Ein Titel darf KEINE Zutat versprechen, '
-  + 'die in ingredients fehlt.',
+  '9-PFLICHT-TITELGEWUERZ: Namensgebende Gewuerze/Aromaten aus dem Gerichtstitel MUESSEN in ingredients[] stehen '
+  + 'MIT KONKRETER MENGE: amount: 1, unit: "prise" (oder messerspitze). NICHT amount: 0 – das rendert im UI als '
+  + '"nach Belieben" und wirkt optional; ein Titelgewuerz ist NICHT optional. '
+  + 'Curry → Currypulver (amount: 1) | Chili/scharf/pikant → Chiliflocken oder Cayennepfeffer (amount: 1) | '
+  + 'Paprika → Paprikapulver (nicht Gemuese, amount: 1) | italienisch/mediterran → Oregano/Thymian/Basilikum (amount: 1) | '
+  + 'indisch/Curry → Kreuzkuemmel/Kurkuma/Koriander (amount: 1) | asiatisch/thai/chinesisch → Ingwer/Sojasauce/Sesam (amount: 1) | '
+  + 'Zimt/Vanille/Zitrone → das jeweilige Gewuerz/Aroma (amount: 1). '
+  + 'VERBOTEN: Titel "Cremiges Curry" ohne Curry-Zutat, Titel "Chili con Carne" ohne Chili, Titel "Zimtsterne" ohne Zimt. '
+  + 'Ein Titel darf KEINE Zutat versprechen, die in ingredients fehlt. '
+  + 'AUSNAHME: Salz und Pfeffer duerfen amount: 0 haben (die sind wirklich nach Belieben).',
   '9-AROMATEN: Knoblauch, Zwiebel, Ingwer, Schalotte, Fruehlingszwiebel sind Aromaten – keine Gewuerze. '
   + 'Sie brauchen eine KONKRETE Gramm-Menge in ingredients (Beispiel: 1 Zehe Knoblauch = 5 g, 1 mittlere Zwiebel = 80 g), '
   + 'NICHT "1 Zehe" als Menge. Sie zaehlen zur Naehrwert-Summe.',
