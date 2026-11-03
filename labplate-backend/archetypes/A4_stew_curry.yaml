@@ -18,24 +18,27 @@ core:
     cardinality: one_or_more
     allowed:
       beef:
-        amount_g: [150, 300]
+        amount_g: [100, 250]
         notes: "Rohgewicht. Gulasch, Rindereintopf, Chili con Carne."
       beef_mince:
-        amount_g: [150, 300]
+        amount_g: [100, 250]
         notes: "Hackfleisch fuer Chili, Bolognese-Eintoepfe."
       rindfleisch:
-        amount_g: [150, 300]
+        amount_g: [100, 250]
         notes: "Alias fuer Rindfleisch-Wuerfel (Gulasch)."
       pork_meat:
-        amount_g: [150, 300]
+        amount_g: [100, 250]
       lamb_meat:
-        amount_g: [150, 300]
+        amount_g: [100, 250]
       lamb:
-        amount_g: [150, 300]
+        amount_g: [100, 250]
       pork:
-        amount_g: [150, 300]
+        amount_g: [100, 250]
       chicken:
-        amount_g: [150, 300]
+        amount_g: [80, 250]
+      chicken_breast:
+        amount_g: [80, 250]
+        notes: "Haehnchenbrustfilet (Alias)."
       lentils:
         amount_g: [80, 200]
         notes: "Trockengewicht. Linsen-Curry, Linseneintopf."
@@ -63,19 +66,22 @@ core:
     cardinality: one_or_more
     allowed:
       broth_meat:
-        amount_g: [200, 800]
+        amount_g: [80, 400]
         notes: "Fond, Bruehe. Basis fuer Gulasch, Rindereintopf. Alias -> vegetable_broth."
       broth_vegetable:
-        amount_g: [200, 800]
+        amount_g: [80, 400]
       vegetable_broth:
-        amount_g: [200, 800]
+        amount_g: [80, 400]
         notes: "Concrete Catalog-ID. Alle Bruehen-Varianten mappen hierhin." 
       tomato_canned:
-        amount_g: [200, 600]
+        amount_g: [80, 300]
         notes: "Passata, gehackte Tomaten. Chili, Shakshuka-Variante."
       coconut_milk:
-        amount_g: [200, 500]
+        amount_g: [40, 150]
         notes: "Curry-Basis. Nicht mit Sahne verwechseln."
+      coconut_milk_full:
+        amount_g: [40, 150]
+        notes: "Alias-Ziel von coconut_milk."
       water:
         amount_g: [0, 600]
         notes: "0 nur, wenn andere Liquids ausreichen. Nie als einziges Liquid."
@@ -101,6 +107,12 @@ tolerated:
     allowed: [carrot, celery, bell_pepper, zucchini, eggplant, potato, sweet_potato, tomato_fresh, spinach, kale, cabbage, peas, green_beans, mushroom, cauliflower, broccoli]
     amount_g: [0, 300]
     notes: "Nicht der Hauptdarsteller. Bei Gemuese-Eintopf: im main-Slot."
+
+  carb:
+    roles: [side]
+    allowed: [rice, rice_dry, basmati_rice, basmati_rice_dry, brown_rice, jasmine_rice, quinoa, bulgur, couscous, pasta, noodles, bread]
+    amount_g: [0, 150]
+    notes: "Optionale Beilage (side_policy: allowed)."
 
   wine:
     roles: [liquid, acid]
