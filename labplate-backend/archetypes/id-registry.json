@@ -1905,6 +1905,46 @@
       "kind": "alias",
       "target": "pasta_dry",
       "target_exists": true
+    },
+    "basmatireis": {
+      "kind": "alias",
+      "target": "basmati_rice",
+      "target_exists": true
+    },
+    "basmatireis trocken": {
+      "kind": "alias",
+      "target": "basmati_rice",
+      "target_exists": true
+    },
+    "basmatireis gekocht": {
+      "kind": "alias",
+      "target": "basmati_rice",
+      "target_exists": true
+    },
+    "basmati reis": {
+      "kind": "alias",
+      "target": "basmati_rice",
+      "target_exists": true
+    },
+    "jasminreis": {
+      "kind": "alias",
+      "target": "jasmine_rice",
+      "target_exists": true
+    },
+    "reis": {
+      "kind": "alias",
+      "target": "rice",
+      "target_exists": true
+    },
+    "kokosmilch": {
+      "kind": "alias",
+      "target": "coconut_milk",
+      "target_exists": true
+    },
+    "kokosnussmilch": {
+      "kind": "alias",
+      "target": "coconut_milk",
+      "target_exists": true
     }
   }
 }
