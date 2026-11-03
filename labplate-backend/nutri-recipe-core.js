@@ -87,9 +87,12 @@ const CHEF_FRAMEWORK_RULES = [
   '"Wasser {0007} ml", "{0005} Salz", "100g Speck" als Freitext. Das Backend setzt amount+unit+name ein. ' +
   'chef_analysis: nur {id} als Zutatname, keine Mengen.',
   '0b-BEISPIEL (haeufigster Fehler): Fuer Kochwasser/Reis-/Nudelwasser MUSST du eine eigene Zutat in '
-  + 'ingredients[] anlegen (z. B. {id:"0013", name:"Wasser (zum Kochen)", amount:700, unit:"ml"}) '
-  + 'und im Step nur {0013} schreiben. VERBOTEN: "mit 700 ml Wasser zum Kochen bringen" – '
-  + 'RICHTIG: "mit {0013} zum Kochen bringen". Die konkrete Zahl (700) steht NUR in ingredients.amount.',
+  + 'ingredients[] anlegen. NAME: "Wasser (Menge nach Packungsangabe)", amount:0, unit:"ml". '
+  + 'und im Step nur {0013} schreiben. VERBOTEN: geratene Wassermengen wie "700 ml" oder "500 ml" – die '
+  + 'korrekte Wassermenge steht auf der Packung des jeweiligen Lebensmittels (Reis/Nudeln/Quinoa) und ist '
+  + 'von Topf und Sorte abhaengig. NUR wenn der Nutzer eine konkrete Wassermenge im Request nennt, uebernimm '
+  + 'sie als amount>0. Sonst: name="Wasser (Menge nach Packungsangabe)", amount:0, unit:"ml". '
+  + 'RICHTIG: "mit {0013} nach Packungsangabe zum Kochen bringen".',
   '1) Naehrwert-Verbindlichkeit / chef_analysis: {ingredient_id}-Platzhalter DUERFEN Zutaten referenzieren ' +
   '(z. B. "{0003} bildet die cremige Basis", "Die Kombination aus {0001} und {0002}…"). ' +
   'VERBOTEN als Naehrwert-/Mengensatz: "{0003} kcal", "{0003} g Protein", "{0003} g", "{0003} ml", "{0003}%". ' +
@@ -130,6 +133,16 @@ const CHEF_FRAMEWORK_RULES = [
   'referenziert werden — VERBOTEN: "in etwas Oel anbraten" ohne Oel-Eintrag.',
   '8) HERD-STUFEN: stove_level 1-9 nur bei Hitze; kalt = 0. Mise en Place zuerst; Zeit + Sensorik.',
   '9) GEWUERZE: unit prise|messerspitze, amount 0 – nie unit g fuer Salz/Pfeffer (ABSOLUTES GRAMM-VERBOT).',
+  '9-PFLICHT-TITELGEWUERZ: Namensgebende Gewuerze/Aromaten aus dem Gerichtstitel MUESSEN in ingredients[] stehen, '
+  + 'auch wenn amount=0 (prise). Curry → Currypulver | Chili/scharf/pikant → Chiliflocken oder Cayennepfeffer | '
+  + 'Paprika → Paprikapulver (nicht Gemuese) | italienisch/mediterran → Oregano/Thymian/Basilikum | '
+  + 'indisch/Curry → Kreuzkuemmel/Kurkuma/Koriander | asiatisch/thai/chinesisch → Ingwer/Sojasauce/Sesam | '
+  + 'Zimt/Vanille/Zitrone → das jeweilige Gewuerz/Aroma. VERBOTEN: Titel "Cremiges Curry" ohne Curry-Zutat, '
+  + 'Titel "Chili con Carne" ohne Chili, Titel "Zimtsterne" ohne Zimt. Ein Titel darf KEINE Zutat versprechen, '
+  + 'die in ingredients fehlt.',
+  '9-AROMATEN: Knoblauch, Zwiebel, Ingwer, Schalotte, Fruehlingszwiebel sind Aromaten – keine Gewuerze. '
+  + 'Sie brauchen eine KONKRETE Gramm-Menge in ingredients (Beispiel: 1 Zehe Knoblauch = 5 g, 1 mittlere Zwiebel = 80 g), '
+  + 'NICHT "1 Zehe" als Menge. Sie zaehlen zur Naehrwert-Summe.',
   '9a) STEPS MIT GEWUERZEN: Salz, Pfeffer und andere Gewuerze mit amount=0/unit=prise|messerspitze MUESSEN im Step-Text mit "nach Geschmack" (oder "nach Belieben") referenziert werden. FALSCH: "Mit Salz und Pfeffer abschmecken." RICHTIG: "Mit Salz und Pfeffer nach Geschmack abschmecken."',
   '10) Kalorien-Plausibilitaet: kcal = Summe aus Zutaten (Protein×4 + Netto-KH×4 + Fett×9 + Ballaststoffe×2).',
   '11) Zeit-Realismus: prep_time_min ≈ Summe steps[].time_min.',
@@ -1586,14 +1599,17 @@ module.exports = {
                 blockers.push('VAGE MENGE bei "' + _nm2 + '": Konkrete Zahl in g/ml/Stk angeben, nicht "nach Belieben" oder "etwas".');
               }
               if (/wasser|bruehe|fond/i.test(_nm2) && !(Number(_iv.amount) > 0)) {
-                blockers.push('WASSER OHNE MENGE: "' + _nm2 + '" braucht konkrete ml-Angabe (z. B. 500 ml).');
+                var _isPackungsWasser = /packungsangabe|nach bedarf|nach geschmack/i.test(_nm2);
+                if (!_isPackungsWasser) {
+                  blockers.push('WASSER OHNE MENGE: "' + _nm2 + '" braucht konkrete ml-Angabe ODER Namenszusatz "Menge nach Packungsangabe".');
+                }
               }
             }
 
             // 5) Wasser in Steps, aber nicht in ingredients
             var _stepsArr = Array.isArray(parsedRecipe.steps) ? parsedRecipe.steps : (Array.isArray(parsedRecipe.step_contents) ? parsedRecipe.step_contents : []);
             var _stepsText = _stepsArr.map(function(st){ return String((st && (st.content || st.text)) || ''); }).join(' ');
-            var _hasWaterIng = _nsIng.some(function(zi){ return zi && /^wasser$/i.test(String(zi.name || '').trim()); });
+            var _hasWaterIng = _nsIng.some(function(zi){ return zi && /^wasser(\s|$|\()/i.test(String(zi.name || '').trim()); });
             if (/(kochend\w*\s+wasser|in\s+wasser|mit\s+wasser)/i.test(_stepsText) && !_hasWaterIng) {
               blockers.push('WASSER IN SCHRITTEN, ABER NICHT IN ZUTATEN: Entweder Wasser mit ml-Menge in ingredients aufnehmen oder anders garen (Anbraten/Ofen/Dampf).');
             }
