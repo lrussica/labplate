@@ -2035,6 +2035,8 @@ function validateRecipeV2(recipe, opts) {
     const amount = Number(ing.amount);
     if (unit !== 'g' && unit !== 'ml') return;
     if (!Number.isFinite(amount) || amount <= 0) {
+      var _isPackungsWasser = /^wasser/i.test(name) && /packungsangabe|nach bedarf/i.test(name);
+      if (_isPackungsWasser) return;
       result.addError(
         "Zutat ohne gueltige Menge: '" + name + "' hat unit=" + unit +
         " aber amount=" + ing.amount + " (muss > 0 sein)"
