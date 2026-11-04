@@ -13054,12 +13054,23 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
             }
             if (!rendered.length) { setStatus(_PS_T.noFood, true); return; }
             _plateScanFillMissingWithAI(rendered).then(function() {
+              console.log('[PLATE_SCAN_AI] Vor renderResult. rendered=', rendered.length,
+                'matched=', rendered.filter(function(r){ return r._match && r._match.id != null && !r._match.isTable; }).length);
               setStatus('', false);
-              renderResult(rendered);
+              try {
+                renderResult(rendered);
+              } catch (eR) {
+                console.error('[PLATE_SCAN_AI] FEHLER in renderResult:', eR && eR.message, eR && eR.stack);
+                setStatus(_PS_T.error(eR && eR.message ? eR.message : 'renderResult'), true);
+              }
+            }).catch(function(eFill) {
+              console.error('[PLATE_SCAN_AI] FEHLER in FillMissing:', eFill && eFill.message, eFill && eFill.stack);
+              setStatus(_PS_T.error(eFill && eFill.message ? eFill.message : 'FillMissing'), true);
             });
           })
           .catch(function(e) {
-            setStatus('Fehler: ' + (e && e.message ? e.message : 'Unbekannt'), true);
+            console.error('[PLATE_SCAN_AI] FEHLER in _plateScanFetch:', e && e.message, e && e.stack);
+            setStatus(_PS_T.error(e && e.message ? e.message : 'Unbekannt'), true);
           });
       });
     }
