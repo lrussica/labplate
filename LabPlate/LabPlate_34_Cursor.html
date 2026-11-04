@@ -12354,10 +12354,10 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
       </div>
       <div id="plate-scan-readable" class="lp-ov-scroll-content" style="--plate-scan-font-scale:1;">
         <h2 id="plate-scan-title" class="lp-ov-title">Außer Haus</h2>
-        <p class="lab-intro" style="font-size:calc(16px * var(--plate-scan-font-scale, 1)); color:#f4f4f5; margin:0 0 24px 0;">Mach ein Foto von deinem Teller - die KI erkennt die Bestandteile und schätzt die Nährwerte.</p>
+        <p id="plate-scan-intro" class="lab-intro" style="font-size:calc(16px * var(--plate-scan-font-scale, 1)); color:#f4f4f5; margin:0 0 24px 0;">Mach ein Foto von deinem Teller - die KI erkennt die Bestandteile und schätzt die Nährwerte.</p>
         <div id="plate-scan-photo-btn" style="background-color:#121212; border:2px dashed #8b5cf6; border-radius:16px; padding:24px 16px; max-width:260px; margin:0 auto 16px auto; display:flex; flex-direction:column; align-items:center; cursor:pointer; box-sizing:border-box;">
           <svg style="width:28px; height:28px; stroke:#8b5cf6; stroke-width:2; fill:none; margin-bottom:12px;" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-          <span style="font-size:calc(17px * var(--plate-scan-font-scale, 1)); font-weight:600; color:#fff;">Foto aufnehmen</span>
+          <span id="plate-scan-photo-btn-label" style="font-size:calc(17px * var(--plate-scan-font-scale, 1)); font-weight:600; color:#fff;">Foto aufnehmen</span>
         </div>
         <button type="button" id="plate-scan-album-btn" style="background:transparent; border:1.5px solid #363636; color:#ffffff; padding:14px; border-radius:16px; font-size:calc(16px * var(--plate-scan-font-scale, 1)); font-weight:500; cursor:pointer; margin:0 auto 24px auto; display:block; width:100%; max-width:260px;">Aus Album wählen</button>
         <input type="file" id="plate-scan-photo-input" accept="image/*" capture="environment" style="display:none">
@@ -12371,10 +12371,39 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
   <!-- SCHRITT 2b: Oeffnen/Schliessen + A-/A+/Vorlesen. Kamera/fetch kommt in Schritt 3. -->
   <script>
   (function(){
+    var PLATE_SCAN_I18N = {
+      de: { title:'Außer Haus', intro:'Mach ein Foto von deinem Teller - die KI erkennt die Bestandteile und schätzt die Nährwerte.', photo:'Foto aufnehmen', album:'Aus Album wählen', close:'Schliessen' },
+      en: { title:'Eating out', intro:'Take a photo of your plate - the AI recognizes the components and estimates the nutritional values.', photo:'Take photo', album:'Choose from album', close:'Close' },
+      es: { title:'Fuera de casa', intro:'Haz una foto de tu plato - la IA reconoce los componentes y estima los valores nutricionales.', photo:'Tomar foto', album:'Elegir del álbum', close:'Cerrar' },
+      it: { title:'Fuori casa', intro:'Fai una foto del tuo piatto - l\'IA riconosce i componenti e stima i valori nutrizionali.', photo:'Scatta foto', album:'Scegli dall\'album', close:'Chiudi' },
+      pt: { title:'Fora de casa', intro:'Tira uma foto do teu prato - a IA reconhece os componentes e estima os valores nutricionais.', photo:'Tirar foto', album:'Escolher do álbum', close:'Fechar' },
+      fr: { title:'En dehors', intro:'Prends une photo de ton assiette - l\'IA reconnaît les composants et estime les valeurs nutritionnelles.', photo:'Prendre photo', album:'Choisir dans l\'album', close:'Fermer' },
+      tr: { title:'Dışarıda', intro:'Tabağının fotoğrafını çek - yapay zeka bileşenleri tanır ve besin değerlerini tahmin eder.', photo:'Fotoğraf çek', album:'Albümden seç', close:'Kapat' }
+    };
+    function applyPlateScanI18n() {
+      var lang = 'de';
+      try {
+        if (typeof currentLangCode === 'function') lang = currentLangCode() || 'de';
+        else if (typeof currentLang === 'string') lang = currentLang;
+        else if (typeof window !== 'undefined' && window.currentLang) lang = window.currentLang;
+      } catch (_e) {}
+      lang = String(lang || 'de').toLowerCase().slice(0,2) || 'de';
+      var T = PLATE_SCAN_I18N[lang] || PLATE_SCAN_I18N.de;
+      var tEl = document.getElementById('plate-scan-title'); if (tEl) tEl.textContent = T.title;
+      var iEl = document.getElementById('plate-scan-intro'); if (iEl) iEl.textContent = T.intro;
+      var pEl = document.getElementById('plate-scan-photo-btn-label'); if (pEl) pEl.textContent = T.photo;
+      var aEl = document.getElementById('plate-scan-album-btn'); if (aEl) aEl.textContent = T.album;
+      var cEl = ov.querySelector('[data-close="plate-scan"]');
+      if (cEl) {
+        var cLbl = cEl.querySelector('.overlay-close-label'); if (cLbl) cLbl.textContent = T.close;
+        cEl.setAttribute('aria-label', T.close);
+      }
+    }
     var btn = document.getElementById('plate-scan-btn');
     var ov = document.getElementById('plate-scan-overlay');
     if (!btn || !ov) return;
     btn.addEventListener('click', function(){
+      applyPlateScanI18n();
       ov.classList.add('show');
       ov.setAttribute('aria-hidden', 'false');
     });
