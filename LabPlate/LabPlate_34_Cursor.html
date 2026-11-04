@@ -12885,9 +12885,12 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
     function _plateScanFetch(blob, left) {
       var _psLang = 'de';
       try {
-        if (typeof lang === 'function') _psLang = String(lang() || 'de').toLowerCase().slice(0,2) || 'de';
-        else if (typeof window.appLang === 'string') _psLang = String(window.appLang).toLowerCase().slice(0,2) || 'de';
+        if (typeof currentLangCode === 'function') _psLang = currentLangCode() || 'de';
+        else if (typeof currentLang === 'string') _psLang = currentLang;
+        else if (typeof window.currentLang === 'string') _psLang = window.currentLang;
+        else if (typeof lang === 'function') _psLang = lang() || 'de';
       } catch (_e) {}
+      _psLang = String(_psLang || 'de').toLowerCase().slice(0,2) || 'de';
       var _psUrl = API + '?lang=' + encodeURIComponent(_psLang);
       return fetch(_psUrl, { method: 'POST', headers: { 'Content-Type': 'image/jpeg' }, body: blob })
         .then(function(r) {

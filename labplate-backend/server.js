@@ -912,7 +912,7 @@ app.post('/api/plate-scan', limiter, express.raw({ type: 'image/jpeg', limit: '5
     return res.status(400).json({ error: 'invalid_payload', message: 'Kein JPEG-Bild empfangen.' });
   }
   const base64Image = req.body.toString('base64');
-  const _psReqLang = String((req.query && req.query.lang) || 'de').toLowerCase().slice(0, 2);
+  const _psReqLang = String((req.query && req.query.lang) || 'en').toLowerCase().slice(0, 2);
   const _PS_LANG_NAMES = { de: 'German', en: 'English', es: 'Spanish', it: 'Italian', pt: 'Portuguese', fr: 'French', tr: 'Turkish' };
   const _PS_LANG_EXAMPLES = {
     de: "'Schnitzel', 'Pommes', 'Salat'",
