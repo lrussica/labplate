@@ -12864,6 +12864,14 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
         tr: { aiEstimate:'Yapay zeka tahmini', notInDb:"DB'de yok", estimated:'tahmini', protein:'Protein', carbs:'KH', fat:'Yağ', ofComponents:function(m,t){return '(' + t + ' bileşenden ' + m + ')';}, noneDetected:'Bileşen algılanmadı \u2013 başka bir fotoğraf deneyin.' }
       };
       var _T = _PS_R[_psLangR] || _PS_R.de;
+      function _psCap(x) {
+        if (x == null) return x;
+        var t = String(x).trim();
+        if (!t) return t;
+        var f = t.charAt(0);
+        if (f.toUpperCase() === f.toLowerCase()) return t;
+        return f.toUpperCase() + t.slice(1);
+      }
       var scaleVar = 'var(--plate-scan-font-scale, 1)';
       var parts = [];
       var missing = false;
@@ -12895,7 +12903,7 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
           : ' <span style="font-weight:400; color:#a1a1aa; font-size:calc(13px * ' + scaleVar + ');">(' + _T.notInDb + ')</span>';
         parts.push(
           '<div style="display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:' + bb + ';">' +
-            '<span style="flex:1 1 auto; min-width:0; word-break:break-word; font-size:calc(16px * ' + scaleVar + '); font-weight:500; color:#fff;">' + esc(it.label) + _dbHint + '</span>' +
+            '<span style="flex:1 1 auto; min-width:0; word-break:break-word; font-size:calc(16px * ' + scaleVar + '); font-weight:500; color:#fff;">' + esc(_psCap(it.label)) + _dbHint + '</span>' +
             '<span style="flex:0 0 auto; white-space:nowrap; text-align:right; font-size:calc(16px * ' + scaleVar + '); font-weight:500; color:#d4d4d8;">' + Math.round(gMin) + '\u2013' + Math.round(gMax) + ' g</span>' +
           '</div>'
         );
