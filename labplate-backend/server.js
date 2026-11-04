@@ -932,7 +932,7 @@ app.post('/api/plate-scan', limiter, express.raw({ type: 'image/jpeg', limit: '5
     generationConfig: { responseMimeType: "application/json", temperature: 0.2 }
   };
   let lastError = null;
-  const MODELS_TO_TRY = [GEMINI_MODEL, 'gemini-2.5-flash'];
+  const MODELS_TO_TRY = [GEMINI_MODEL, 'gemini-3.5-flash-lite', 'gemini-3.8-flash'];
   const PER_ATTEMPT_TIMEOUT_MS = 30000;
   const MAX_ATTEMPTS = 3;
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
