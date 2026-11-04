@@ -12821,6 +12821,22 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
     }
 
     function renderResult(items) {
+      var _psLangR = 'de';
+      try {
+        if (typeof currentLangCode === 'function') _psLangR = currentLangCode() || 'de';
+        else if (typeof currentLang === 'string') _psLangR = currentLang;
+      } catch (_e) {}
+      _psLangR = String(_psLangR || 'de').toLowerCase().slice(0,2) || 'de';
+      var _PS_R = {
+        de: { aiEstimate:'KI-Schätzung', notInDb:'nicht in DB', estimated:'geschätzt', protein:'Protein', carbs:'KH', fat:'Fett', ofComponents:function(m,t){return '(' + m + ' von ' + t + ' Bestandteilen)';}, noneDetected:'Keine Bestandteile erkannt \u2013 bitte anderes Foto versuchen.' },
+        en: { aiEstimate:'AI estimate', notInDb:'not in DB', estimated:'estimated', protein:'Protein', carbs:'Carbs', fat:'Fat', ofComponents:function(m,t){return '(' + m + ' of ' + t + ' components)';}, noneDetected:'No components detected \u2013 please try another photo.' },
+        es: { aiEstimate:'Estimación IA', notInDb:'no en BD', estimated:'estimado', protein:'Proteína', carbs:'HC', fat:'Grasa', ofComponents:function(m,t){return '(' + m + ' de ' + t + ' componentes)';}, noneDetected:'No se detectaron componentes \u2013 intenta otra foto.' },
+        it: { aiEstimate:'Stima IA', notInDb:'non in DB', estimated:'stimato', protein:'Proteine', carbs:'Carboidrati', fat:'Grassi', ofComponents:function(m,t){return '(' + m + ' di ' + t + ' componenti)';}, noneDetected:"Nessun componente rilevato \u2013 prova un'altra foto." },
+        pt: { aiEstimate:'Estimativa IA', notInDb:'não em BD', estimated:'estimado', protein:'Proteína', carbs:'HC', fat:'Gordura', ofComponents:function(m,t){return '(' + m + ' de ' + t + ' componentes)';}, noneDetected:'Nenhum componente detectado \u2013 tenta outra foto.' },
+        fr: { aiEstimate:'Estimation IA', notInDb:'pas dans BD', estimated:'estimé', protein:'Protéines', carbs:'Glucides', fat:'Lipides', ofComponents:function(m,t){return '(' + m + ' de ' + t + ' composants)';}, noneDetected:'Aucun composant détecté \u2013 essaie une autre photo.' },
+        tr: { aiEstimate:'Yapay zeka tahmini', notInDb:"DB'de yok", estimated:'tahmini', protein:'Protein', carbs:'KH', fat:'Yağ', ofComponents:function(m,t){return '(' + t + ' bileşenden ' + m + ')';}, noneDetected:'Bileşen algılanmadı \u2013 başka bir fotoğraf deneyin.' }
+      };
+      var _T = _PS_R[_psLangR] || _PS_R.de;
       var scaleVar = 'var(--plate-scan-font-scale, 1)';
       var parts = [];
       var missing = false;
@@ -12848,8 +12864,8 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
         }
         var bb = (i < items.length - 1) ? '1px solid #2a2a2a' : 'none';
         var _dbHint = hasKcal
-          ? (mm && mm.isAiEstimated ? ' <span style="font-weight:400; color:#a1a1aa; font-size:calc(13px * ' + scaleVar + ');">(KI-Sch\u00E4tzung)</span>' : '')
-          : ' <span style="font-weight:400; color:#a1a1aa; font-size:calc(13px * ' + scaleVar + ');">(nicht in DB)</span>';
+          ? (mm && mm.isAiEstimated ? ' <span style="font-weight:400; color:#a1a1aa; font-size:calc(13px * ' + scaleVar + ');">(' + _T.aiEstimate + ')</span>' : '')
+          : ' <span style="font-weight:400; color:#a1a1aa; font-size:calc(13px * ' + scaleVar + ');">(' + _T.notInDb + ')</span>';
         parts.push(
           '<div style="display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:' + bb + ';">' +
             '<span style="flex:1 1 auto; min-width:0; word-break:break-word; font-size:calc(16px * ' + scaleVar + '); font-weight:500; color:#fff;">' + esc(it.label) + _dbHint + '</span>' +
@@ -12858,10 +12874,10 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
         );
       }
 
-      var kcalLine = '\u2248 ' + sumKMin + '\u2013' + sumKMax + ' kcal \u00B7 gesch\u00E4tzt';
-      var macroLine = 'Protein ' + Math.round(sumPrMin) + '\u2013' + Math.round(sumPrMax) + ' g \u00B7 ' +
-                      'KH ' + Math.round(sumKhMin) + '\u2013' + Math.round(sumKhMax) + ' g \u00B7 ' +
-                      'Fett ' + Math.round(sumFaMin) + '\u2013' + Math.round(sumFaMax) + ' g';
+      var kcalLine = '\u2248 ' + sumKMin + '\u2013' + sumKMax + ' kcal \u00B7 ' + _T.estimated;
+      var macroLine = _T.protein + ' ' + Math.round(sumPrMin) + '\u2013' + Math.round(sumPrMax) + ' g \u00B7 ' +
+                      _T.carbs + ' ' + Math.round(sumKhMin) + '\u2013' + Math.round(sumKhMax) + ' g \u00B7 ' +
+                      _T.fat + ' ' + Math.round(sumFaMin) + '\u2013' + Math.round(sumFaMax) + ' g';
 
       var _totalCountFooter = items.length;
       var _matchedCountFooter = 0;
@@ -12869,14 +12885,14 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
         var _mmf = items[_mcf]._match;
         if (_mmf && _mmf.id != null && !_mmf.isTable) _matchedCountFooter++;
       }
-      var _kcalSuffix = (missing && _matchedCountFooter > 0) ? ' (' + _matchedCountFooter + ' von ' + _totalCountFooter + ' Bestandteilen)' : '';
+      var _kcalSuffix = (missing && _matchedCountFooter > 0) ? ' ' + _T.ofComponents(_matchedCountFooter, _totalCountFooter) : '';
       var _kcalLineFull = kcalLine + _kcalSuffix;
       var footer;
       if (_matchedCountFooter === 0) {
         footer =
           '<div style="background:rgba(161,161,170,0.10); border:1px solid rgba(161,161,170,0.28); border-radius:12px; padding:14px; margin-top:16px; text-align:center;">' +
             '<span style="display:block; font-size:calc(13.5px * ' + scaleVar + '); font-weight:500; color:#a1a1aa; line-height:1.5;">' +
-              'Keine Bestandteile erkannt \u2013 bitte anderes Foto versuchen.' +
+              _T.noneDetected +
             '</span>' +
           '</div>';
       } else {
