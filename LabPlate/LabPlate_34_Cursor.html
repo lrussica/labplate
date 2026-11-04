@@ -12448,7 +12448,7 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
     var API = 'https://labplate.onrender.com/api/plate-scan';
     var plateScanLastItems = null;
     var plateScanAddedToDay = false;
-    var _PS_T = (function(){
+    function _getPsT() {
       var lang = 'de';
       try {
         if (typeof currentLangCode === 'function') lang = currentLangCode() || 'de';
@@ -12456,16 +12456,25 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
       } catch (_e) {}
       lang = String(lang || 'de').toLowerCase().slice(0,2) || 'de';
       var P = {
-        de: { analyzing:'Analysiere\u2026', estimating:function(n){return 'Sch\u00E4tze N\u00E4hrwerte f\u00FCr ' + n + ' Bestandteil(e)\u2026';}, noFood:'Keine Lebensmittel erkannt.', error:function(m){return 'Fehler: ' + m;}, overloaded:function(st,sec){return 'Dienst ueberlastet (' + st + ') - neuer Versuch in ' + sec + 's...';} },
-        en: { analyzing:'Analyzing\u2026', estimating:function(n){return 'Estimating nutrition for ' + n + ' component(s)\u2026';}, noFood:'No food detected.', error:function(m){return 'Error: ' + m;}, overloaded:function(st,sec){return 'Service busy (' + st + ') - retry in ' + sec + 's...';} },
-        es: { analyzing:'Analizando\u2026', estimating:function(n){return 'Estimando nutrici\u00F3n para ' + n + ' componente(s)\u2026';}, noFood:'No se detectaron alimentos.', error:function(m){return 'Error: ' + m;}, overloaded:function(st,sec){return 'Servicio sobrecargado (' + st + ') - reintento en ' + sec + 's...';} },
-        it: { analyzing:'Analizzando\u2026', estimating:function(n){return 'Stima nutrizionale per ' + n + ' componente/i\u2026';}, noFood:'Nessun alimento rilevato.', error:function(m){return 'Errore: ' + m;}, overloaded:function(st,sec){return 'Servizio sovraccarico (' + st + ') - nuovo tentativo in ' + sec + 's...';} },
-        pt: { analyzing:'Analisando\u2026', estimating:function(n){return 'Estimando nutri\u00E7\u00E3o para ' + n + ' componente(s)\u2026';}, noFood:'Nenhum alimento detectado.', error:function(m){return 'Erro: ' + m;}, overloaded:function(st,sec){return 'Servi\u00E7o sobrecarregado (' + st + ') - nova tentativa em ' + sec + 's...';} },
-        fr: { analyzing:'Analyse en cours\u2026', estimating:function(n){return 'Estimation des valeurs nutritionnelles pour ' + n + ' composant(s)\u2026';}, noFood:'Aucun aliment d\u00E9tect\u00E9.', error:function(m){return 'Erreur: ' + m;}, overloaded:function(st,sec){return 'Service surcharg\u00E9 (' + st + ') - nouvel essai dans ' + sec + 's...';} },
-        tr: { analyzing:'Analiz ediliyor\u2026', estimating:function(n){return n + ' bile\u015Fen i\u00E7in besin de\u011Feri tahmin ediliyor\u2026';}, noFood:'Yiyecek alg\u0131lanamad\u0131.', error:function(m){return 'Hata: ' + m;}, overloaded:function(st,sec){return 'Hizmet a\u015F\u0131r\u0131 y\u00FCkl\u00FC (' + st + ') - ' + sec + 's i\u00E7inde yeniden denenecek...';} }
+        de: { analyzing:'Analisiere\u2026', estimating:function(n){return 'Sch\u00E4tze N\u00E4hrwerte f\u00FCr ' + n + ' Bestandteil(e)\u2026';}, noFood:'Keine Lebensmittel erkannt.', error:function(m){return 'Fehler: ' + m;}, overloaded:function(st,sec){return 'Dienst ueberlastet (' + st + ') - neuer Versuch in ' + sec + 's...';}, addBtnFull:'Zum Teller hinzuf\u00FCgen', addBtnPartial:function(m,t){return 'Hinzuf\u00FCgen (' + m + ' von ' + t + ')';} },
+        en: { analyzing:'Analyzing\u2026', estimating:function(n){return 'Estimating nutrition for ' + n + ' component(s)\u2026';}, noFood:'No food detected.', error:function(m){return 'Error: ' + m;}, overloaded:function(st,sec){return 'Service busy (' + st + ') - retry in ' + sec + 's...';}, addBtnFull:'Add to plate', addBtnPartial:function(m,t){return 'Add (' + m + ' of ' + t + ')';} },
+        es: { analyzing:'Analizando\u2026', estimating:function(n){return 'Estimando nutrici\u00F3n para ' + n + ' componente(s)\u2026';}, noFood:'No se detectaron alimentos.', error:function(m){return 'Error: ' + m;}, overloaded:function(st,sec){return 'Servicio sobrecargado (' + st + ') - reintento en ' + sec + 's...';}, addBtnFull:'A\u00F1adir al plato', addBtnPartial:function(m,t){return 'A\u00F1adir (' + m + ' de ' + t + ')';} },
+        it: { analyzing:'Analizzando\u2026', estimating:function(n){return 'Stima nutrizionale per ' + n + ' componente/i\u2026';}, noFood:'Nessun alimento rilevato.', error:function(m){return 'Errore: ' + m;}, overloaded:function(st,sec){return 'Servizio sovraccarico (' + st + ') - nuovo tentativo in ' + sec + 's...';}, addBtnFull:'Aggiungi al piatto', addBtnPartial:function(m,t){return 'Aggiungi (' + m + ' di ' + t + ')';} },
+        pt: { analyzing:'Analisando\u2026', estimating:function(n){return 'Estimando nutri\u00E7\u00E3o para ' + n + ' componente(s)\u2026';}, noFood:'Nenhum alimento detectado.', error:function(m){return 'Erro: ' + m;}, overloaded:function(st,sec){return 'Servi\u00E7o sobrecarregado (' + st + ') - nova tentativa em ' + sec + 's...';}, addBtnFull:'Adicionar ao prato', addBtnPartial:function(m,t){return 'Adicionar (' + m + ' de ' + t + ')';} },
+        fr: { analyzing:'Analyse en cours\u2026', estimating:function(n){return 'Estimation des valeurs nutritionnelles pour ' + n + ' composant(s)\u2026';}, noFood:'Aucun aliment d\u00E9tect\u00E9.', error:function(m){return 'Erreur: ' + m;}, overloaded:function(st,sec){return 'Service surcharg\u00E9 (' + st + ') - nouvel essai dans ' + sec + 's...';}, addBtnFull:"Ajouter \u00E0 l'assiette", addBtnPartial:function(m,t){return 'Ajouter (' + m + ' sur ' + t + ')';} },
+        tr: { analyzing:'Analiz ediliyor\u2026', estimating:function(n){return n + ' bile\u015Fen i\u00E7in besin de\u011Feri tahmin ediliyor\u2026';}, noFood:'Yiyecek alg\u0131lanamad\u0131.', error:function(m){return 'Hata: ' + m;}, overloaded:function(st,sec){return 'Hizmet a\u015F\u0131r\u0131 y\u00FCkl\u00FC (' + st + ') - ' + sec + 's i\u00E7inde yeniden denenecek...';}, addBtnFull:'Taba\u011Fa ekle', addBtnPartial:function(m,t){return 'Ekle (' + m + '/' + t + ')';} }
       };
       return P[lang] || P.de;
-    })();
+    }
+    var _PS_T = {
+      get analyzing() { return _getPsT().analyzing; },
+      get noFood() { return _getPsT().noFood; },
+      estimating: function(n) { return _getPsT().estimating(n); },
+      error: function(m) { return _getPsT().error(m); },
+      overloaded: function(st, sec) { return _getPsT().overloaded(st, sec); },
+      addBtnFull: function() { return _getPsT().addBtnFull; },
+      addBtnPartial: function(m, t) { return _getPsT().addBtnPartial(m, t); }
+    };
 
     function showToast(msg) {
       try {
@@ -12930,11 +12939,11 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
 
       var _addBtnHtml;
       if (_matchedCount === 0) {
-        _addBtnHtml = '<button type="button" id="plate-scan-add-btn" disabled style="display:block; width:100%; margin-top:16px; padding:16px; background:var(--purple-soft); color:rgba(255,255,255,0.65); border:none; border-radius:16px; font-family:inherit; font-size:calc(16px * ' + scaleVar + '); font-weight:600; cursor:not-allowed;">Hinzuf\u00FCgen (0 von ' + _totalCount + ')</button>';
+        _addBtnHtml = '<button type="button" id="plate-scan-add-btn" disabled style="display:block; width:100%; margin-top:16px; padding:16px; background:var(--purple-soft); color:rgba(255,255,255,0.65); border:none; border-radius:16px; font-family:inherit; font-size:calc(16px * ' + scaleVar + '); font-weight:600; cursor:not-allowed;">' + _PS_T.addBtnPartial(0, _totalCount) + '</button>';
       } else if (_matchedCount < _totalCount) {
-        _addBtnHtml = '<button type="button" id="plate-scan-add-btn" style="display:block; width:100%; margin-top:16px; padding:16px; background:var(--purple); color:#fff; border:none; border-radius:16px; font-family:inherit; font-size:calc(16px * ' + scaleVar + '); font-weight:600; cursor:pointer;">Hinzuf\u00FCgen (' + _matchedCount + ' von ' + _totalCount + ')</button>';
+        _addBtnHtml = '<button type="button" id="plate-scan-add-btn" style="display:block; width:100%; margin-top:16px; padding:16px; background:var(--purple); color:#fff; border:none; border-radius:16px; font-family:inherit; font-size:calc(16px * ' + scaleVar + '); font-weight:600; cursor:pointer;">' + _PS_T.addBtnPartial(_matchedCount, _totalCount) + '</button>';
       } else {
-        _addBtnHtml = '<button type="button" id="plate-scan-add-btn" style="display:block; width:100%; margin-top:16px; padding:16px; background:var(--purple); color:#fff; border:none; border-radius:16px; font-family:inherit; font-size:calc(16px * ' + scaleVar + '); font-weight:600; cursor:pointer;">Zum Teller hinzuf\u00FCgen</button>';
+        _addBtnHtml = '<button type="button" id="plate-scan-add-btn" style="display:block; width:100%; margin-top:16px; padding:16px; background:var(--purple); color:#fff; border:none; border-radius:16px; font-family:inherit; font-size:calc(16px * ' + scaleVar + '); font-weight:600; cursor:pointer;">' + _PS_T.addBtnFull() + '</button>';
       }
 
       result.innerHTML =
