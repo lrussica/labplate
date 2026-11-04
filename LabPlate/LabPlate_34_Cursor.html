@@ -12448,6 +12448,24 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
     var API = 'https://labplate.onrender.com/api/plate-scan';
     var plateScanLastItems = null;
     var plateScanAddedToDay = false;
+    var _PS_T = (function(){
+      var lang = 'de';
+      try {
+        if (typeof currentLangCode === 'function') lang = currentLangCode() || 'de';
+        else if (typeof currentLang === 'string') lang = currentLang;
+      } catch (_e) {}
+      lang = String(lang || 'de').toLowerCase().slice(0,2) || 'de';
+      var P = {
+        de: { analyzing:'Analysiere\u2026', estimating:function(n){return 'Sch\u00E4tze N\u00E4hrwerte f\u00FCr ' + n + ' Bestandteil(e)\u2026';}, noFood:'Keine Lebensmittel erkannt.', error:function(m){return 'Fehler: ' + m;}, overloaded:function(st,sec){return 'Dienst ueberlastet (' + st + ') - neuer Versuch in ' + sec + 's...';} },
+        en: { analyzing:'Analyzing\u2026', estimating:function(n){return 'Estimating nutrition for ' + n + ' component(s)\u2026';}, noFood:'No food detected.', error:function(m){return 'Error: ' + m;}, overloaded:function(st,sec){return 'Service busy (' + st + ') - retry in ' + sec + 's...';} },
+        es: { analyzing:'Analizando\u2026', estimating:function(n){return 'Estimando nutrici\u00F3n para ' + n + ' componente(s)\u2026';}, noFood:'No se detectaron alimentos.', error:function(m){return 'Error: ' + m;}, overloaded:function(st,sec){return 'Servicio sobrecargado (' + st + ') - reintento en ' + sec + 's...';} },
+        it: { analyzing:'Analizzando\u2026', estimating:function(n){return 'Stima nutrizionale per ' + n + ' componente/i\u2026';}, noFood:'Nessun alimento rilevato.', error:function(m){return 'Errore: ' + m;}, overloaded:function(st,sec){return 'Servizio sovraccarico (' + st + ') - nuovo tentativo in ' + sec + 's...';} },
+        pt: { analyzing:'Analisando\u2026', estimating:function(n){return 'Estimando nutri\u00E7\u00E3o para ' + n + ' componente(s)\u2026';}, noFood:'Nenhum alimento detectado.', error:function(m){return 'Erro: ' + m;}, overloaded:function(st,sec){return 'Servi\u00E7o sobrecarregado (' + st + ') - nova tentativa em ' + sec + 's...';} },
+        fr: { analyzing:'Analyse en cours\u2026', estimating:function(n){return 'Estimation des valeurs nutritionnelles pour ' + n + ' composant(s)\u2026';}, noFood:'Aucun aliment d\u00E9tect\u00E9.', error:function(m){return 'Erreur: ' + m;}, overloaded:function(st,sec){return 'Service surcharg\u00E9 (' + st + ') - nouvel essai dans ' + sec + 's...';} },
+        tr: { analyzing:'Analiz ediliyor\u2026', estimating:function(n){return n + ' bile\u015Fen i\u00E7in besin de\u011Feri tahmin ediliyor\u2026';}, noFood:'Yiyecek alg\u0131lanamad\u0131.', error:function(m){return 'Hata: ' + m;}, overloaded:function(st,sec){return 'Hizmet a\u015F\u0131r\u0131 y\u00FCkl\u00FC (' + st + ') - ' + sec + 's i\u00E7inde yeniden denenecek...';} }
+      };
+      return P[lang] || P.de;
+    })();
 
     function showToast(msg) {
       try {
@@ -12943,7 +12961,7 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
             var st = r.status;
             if ((st === 502 || st === 503) && left > 0) {
               var _w = _aiBackoffMs(2 - left);
-              setStatus('Dienst ueberlastet (' + st + ') - neuer Versuch in ' + Math.round(_w/1000) + 's...', false);
+              setStatus(_PS_T.overloaded(st, Math.round(_w/1000)), false);
               return new Promise(function(res){ setTimeout(res, _w); })
                 .then(function(){ return _plateScanFetch(blob, left - 1); });
             }
@@ -12962,7 +12980,7 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
       if (typeof postAiFoodLookupBatch !== 'function' || typeof window.plateScanAiToFoodId !== 'function') {
         return Promise.resolve();
       }
-      setStatus('Sch\u00E4tze N\u00E4hrwerte f\u00FCr ' + missing.length + ' Bestandteil(e)\u2026', false);
+      setStatus(_PS_T.estimating(missing.length), false);
       var labels = missing.map(function(it) { return it.label; });
       function _processAiData(it, aiData, source) {
         if (!aiData) { console.warn('[PLATE_SCAN_AI] Keine N\u00E4hrwerte (' + source + ') f\u00FCr:', it.label); return false; }
@@ -13006,13 +13024,13 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
       plateScanLastItems = null;
       plateScanAddedToDay = false;
       result.innerHTML = '';
-      setStatus('Analysiere\u2026', false);
+      setStatus(_PS_T.analyzing, false);
       compressImage(file, function(err, blob) {
-        if (err) { setStatus('Fehler: ' + err.message, true); return; }
+        if (err) { setStatus(_PS_T.error(err.message), true); return; }
         _plateScanFetch(blob, 1)
           .then(function(data) {
             var items = (data && data.items) || [];
-            if (!items.length) { setStatus('Keine Lebensmittel erkannt.', true); return; }
+            if (!items.length) { setStatus(_PS_T.noFood, true); return; }
             var rendered = [];
             for (var i = 0; i < items.length; i++) {
               var it = items[i];
@@ -13025,7 +13043,7 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
                 _match: mm
               });
             }
-            if (!rendered.length) { setStatus('Keine Lebensmittel erkannt.', true); return; }
+            if (!rendered.length) { setStatus(_PS_T.noFood, true); return; }
             _plateScanFillMissingWithAI(rendered).then(function() {
               setStatus('', false);
               renderResult(rendered);
