@@ -12883,7 +12883,13 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
     }
 
     function _plateScanFetch(blob, left) {
-      return fetch(API, { method: 'POST', headers: { 'Content-Type': 'image/jpeg' }, body: blob })
+      var _psLang = 'de';
+      try {
+        if (typeof lang === 'function') _psLang = String(lang() || 'de').toLowerCase().slice(0,2) || 'de';
+        else if (typeof window.appLang === 'string') _psLang = String(window.appLang).toLowerCase().slice(0,2) || 'de';
+      } catch (_e) {}
+      var _psUrl = API + '?lang=' + encodeURIComponent(_psLang);
+      return fetch(_psUrl, { method: 'POST', headers: { 'Content-Type': 'image/jpeg' }, body: blob })
         .then(function(r) {
           if (!r.ok) {
             var st = r.status;
@@ -12902,7 +12908,7 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
     function _plateScanFillMissingWithAI(rendered) {
       var missing = [];
       for (var i = 0; i < rendered.length; i++) {
-        if (!rendered[i]._match) missing.push(rendered[i]);
+        if (!rendered[i]._match || rendered[i]._match.isTable) missing.push(rendered[i]);
       }
       if (!missing.length) return Promise.resolve();
       if (typeof postAiFoodLookupBatch !== 'function' || typeof window.plateScanAiToFoodId !== 'function') {
@@ -12910,31 +12916,40 @@ html[data-theme="dark"] #labplate-toast, html:not([data-theme="light"]) #labplat
       }
       setStatus('Sch\u00E4tze N\u00E4hrwerte f\u00FCr ' + missing.length + ' Bestandteil(e)\u2026', false);
       var labels = missing.map(function(it) { return it.label; });
+      function _processAiData(it, aiData, source) {
+        if (!aiData) { console.warn('[PLATE_SCAN_AI] Keine N\u00E4hrwerte (' + source + ') f\u00FCr:', it.label); return false; }
+        var foodId = window.plateScanAiToFoodId(it.label, aiData);
+        if (!foodId) { console.warn('[PLATE_SCAN_AI] Konnte Food-ID nicht anlegen f\u00FCr:', it.label); return false; }
+        var nc = Number(aiData.netto_kh) || 0;
+        var fb = Number(aiData.ballaststoffe) || 0;
+        it._match = { id: foodId, label: it.label, kh: nc + fb, pr: Number(aiData.protein) || 0, fa: Number(aiData.fett) || 0, isTable: false, isAiEstimated: true };
+        return true;
+      }
       return postAiFoodLookupBatch(labels).then(function(batchResult) {
-        if (!batchResult) {
-          console.warn('[PLATE_SCAN_AI] Batch-Schaetzung komplett fehlgeschlagen.');
-          return;
-        }
-        var byLabel = batchResult.byLabel;
-        var items = batchResult.items;
+        var byLabel = (batchResult && batchResult.byLabel) || {};
+        var items = (batchResult && batchResult.items) || [];
+        console.log('[PLATE_SCAN_AI] Batch-Antwort: byLabel-Keys=', Object.keys(byLabel), '| items-Laenge=', items.length);
+        var chain = Promise.resolve();
         missing.forEach(function(it, idx) {
-          var key = String(it.label).toLowerCase().trim().replace(/[^a-z0-9äöüß]/g, '');
-          var aiData = byLabel[key];
-          if (!aiData && items && items[idx]) {
-            aiData = items[idx]; // Fallback: Index, falls Label nicht exakt matcht
-          }
-          if (!aiData) { console.warn('[PLATE_SCAN_AI] Keine Batch-Schaetzung fuer:', it.label); return; }
-          var foodId = window.plateScanAiToFoodId(it.label, aiData);
-          if (!foodId) { console.warn('[PLATE_SCAN_AI] Konnte Food-ID nicht anlegen fuer:', it.label); return; }
-          var nc = Number(aiData.netto_kh) || 0;
-          var fb = Number(aiData.ballaststoffe) || 0;
-          it._match = {
-            id: foodId, label: it.label, kh: nc + fb,
-            pr: Number(aiData.protein) || 0,
-            fa: Number(aiData.fett) || 0,
-            isTable: false, isAiEstimated: true
-          };
+          chain = chain.then(function() {
+            var key = String(it.label).toLowerCase().trim().replace(/[^a-z0-9\u00E4\u00F6\u00FC\u00DF]/g, '');
+            var aiData = byLabel[key];
+            if (!aiData && items && items[idx]) { aiData = items[idx]; }
+            if (aiData) { _processAiData(it, aiData, 'batch'); return null; }
+            console.log('[PLATE_SCAN_AI] Einzel-Fallback f\u00FCr:', it.label);
+            if (typeof postAiFoodLookupRequest !== 'function') {
+              console.warn('[PLATE_SCAN_AI] postAiFoodLookupRequest nicht verf\u00FCgbar f\u00FCr:', it.label); return null;
+            }
+            return postAiFoodLookupRequest(it.label).then(function(singleResult) {
+              if (!singleResult) { console.warn('[PLATE_SCAN_AI] Einzel-Fallback lieferte nichts f\u00FCr:', it.label); return null; }
+              _processAiData(it, singleResult, 'single');
+              return new Promise(function(r) { setTimeout(r, 200); });
+            }).catch(function(e) {
+              console.warn('[PLATE_SCAN_AI] Einzel-Fallback Fehler f\u00FCr:', it.label, e && e.message);
+            });
+          });
         });
+        return chain;
       });
     }
 
@@ -14134,6 +14149,7 @@ TRANSLATIONS.de = {
   backupImportConfirm: (n) => `Willst du ${n} Datenbereiche aus dieser Datei wiederherstellen? Deine aktuellen Daten werden vorher automatisch gesichert.`,
   backupImportDone: (n) => `${n} Datenbereiche wurden importiert. Die App wird neu geladen.`,
   ingredientAmountUnknown: 'nach Belieben',
+  ingredientAmountByNeed: 'nach Bedarf',
   aiRecipeBadge: 'KI',
   aiRecipeNotice: 'Die Nährwerte dieses Rezepts wurden von der KI geschätzt – nicht aus der Datenbank geprüft.',
 
@@ -15007,6 +15023,7 @@ TRANSLATIONS.en = {
   backupImportConfirm: (n) => `Restore ${n} data areas from this file? Your current data will be saved automatically first.`,
   backupImportDone: (n) => `${n} data areas imported. The app will reload.`,
   ingredientAmountUnknown: 'to taste',
+  ingredientAmountByNeed: 'as needed',
   aiRecipeBadge: 'AI',
   aiRecipeNotice: 'The nutrition values of this recipe were estimated by AI — not verified against the database.',
 
@@ -15850,6 +15867,7 @@ TRANSLATIONS.es = {
   backupImportConfirm: (n) => `¿Restaurar ${n} áreas de datos desde este archivo? Tus datos actuales se guardarán automáticamente primero.`,
   backupImportDone: (n) => `${n} áreas de datos importadas. La app se reiniciará.`,
   ingredientAmountUnknown: 'al gusto',
+  ingredientAmountByNeed: 'según necesidad',
   aiRecipeBadge: 'IA',
   aiRecipeNotice: 'Los valores nutricionales de esta receta fueron estimados por IA — no verificados con la base de datos.',
 
@@ -16670,6 +16688,7 @@ TRANSLATIONS.it = {
   backupImportConfirm: (n) => `Ripristinare ${n} aree di dati da questo file? I tuoi dati attuali verranno salvati automaticamente prima.`,
   backupImportDone: (n) => `${n} aree di dati importate. L\'app verrà ricaricata.`,
   ingredientAmountUnknown: 'a piacere',
+  ingredientAmountByNeed: 'quanto basta',
   aiRecipeBadge: 'IA',
   aiRecipeNotice: 'I valori nutrizionali di questa ricetta sono stati stimati dall\'IA — non verificati con il database.',
 
@@ -17494,6 +17513,7 @@ TRANSLATIONS.pt = Object.assign({}, TRANSLATIONS.en, {
   backupImportConfirm: (n) => `Restaurar ${n} áreas de dados deste ficheiro? Os teus dados atuais serão guardados automaticamente primeiro.`,
   backupImportDone: (n) => `${n} áreas de dados importadas. A app será recarregada.`,
   ingredientAmountUnknown: 'a gosto',
+  ingredientAmountByNeed: 'conforme necessário',
   aiRecipeBadge: 'IA',
   aiRecipeNotice: 'Os valores nutricionais desta receita foram estimados pela IA — não verificados com a base de dados.',
 
@@ -18050,6 +18070,7 @@ TRANSLATIONS.fr = Object.assign({}, TRANSLATIONS.en, {
   backupImportConfirm: (n) => `Restaurer ${n} zones de données depuis ce fichier ? Tes données actuelles seront sauvegardées automatiquement avant.`,
   backupImportDone: (n) => `${n} zones de données importées. L\'app va se recharger.`,
   ingredientAmountUnknown: 'selon goût',
+  ingredientAmountByNeed: 'selon besoin',
   aiRecipeBadge: 'IA',
   aiRecipeNotice: 'Les valeurs nutritionnelles de cette recette ont été estimées par IA — non vérifiées avec la base de données.',
 
@@ -18606,6 +18627,7 @@ TRANSLATIONS.tr = Object.assign({}, TRANSLATIONS.en, {
   backupImportConfirm: (n) => `Bu dosyadan ${n} veri alanı geri yüklensin mi? Mevcut verilerin önce otomatik olarak yedeklenecek.`,
   backupImportDone: (n) => `${n} veri alanı içe aktarıldı. Uygulama yeniden yüklenecek.`,
   ingredientAmountUnknown: 'damak zevkine göre',
+  ingredientAmountByNeed: 'ihtiyaç kadar',
   aiRecipeBadge: 'YZ',
   aiRecipeNotice: 'Bu tarifin besin değerleri yapay zeka tarafından tahmin edilmiştir — veritabanıyla doğrulanmamıştır.',
 
@@ -30672,7 +30694,12 @@ async function postAiFoodLookupBatch(labels) {
         byLabel[key] = result.nutrients_per_100g;
       }
     });
-    return { byLabel: byLabel, items: [] };
+    var itemsArr = [];
+    for (var _bi = 0; _bi < items.length; _bi++) {
+      var _br = byId.get(items[_bi].id);
+      itemsArr.push(_br && _br.status === 'estimated' && _br.nutrients_per_100g ? _br.nutrients_per_100g : null);
+    }
+    return { byLabel: byLabel, items: itemsArr };
   } catch (e) {
     console.warn('AI-Lebensmittelsuche (Batch): Netzwerk-/Timeout-Fehler', e);
     return null;
@@ -37815,7 +37842,10 @@ initBarcodeEvents();
                   }
                   var q = formatIngredientQty(i.amount, i.unit);
                   if (q.amount === 'nicht angegeben') {
-                    return '<li>' + escNutri(i.displayName) + ' <span class="nutri-ing-hint">' + escNutri(L.ingredientAmountUnknown || '(Menge unklar)') + '</span>' + _fmtAbsorbedBadge(i) + '</li>';
+                    var _nmLow = String(i.displayName||'').toLowerCase().trim();
+                    var _isWater = /^wasser(\s|$|\()/.test(_nmLow) || /^water(\s|$|\()/.test(_nmLow) || /^eau(\s|$|\()/.test(_nmLow) || /^agua(\s|$|\()/.test(_nmLow) || /^acqua(\s|$|\()/.test(_nmLow) || /^su(\s|$|\()/.test(_nmLow);
+                    var _hint = _isWater ? (L.ingredientAmountByNeed || L.ingredientAmountUnknown || '(Menge unklar)') : (L.ingredientAmountUnknown || '(Menge unklar)');
+                    return '<li>' + escNutri(i.displayName) + ' <span class="nutri-ing-hint">' + escNutri(_hint) + '</span>' + _fmtAbsorbedBadge(i) + '</li>';
                   }
                   if (!q.unit) {
                     return '<li>' + escNutri(i.displayName) + ' ' + escNutri(String(q.amount)) + _fmtAbsorbedBadge(i) + '</li>';

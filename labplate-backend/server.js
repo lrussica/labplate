@@ -912,7 +912,20 @@ app.post('/api/plate-scan', limiter, express.raw({ type: 'image/jpeg', limit: '5
     return res.status(400).json({ error: 'invalid_payload', message: 'Kein JPEG-Bild empfangen.' });
   }
   const base64Image = req.body.toString('base64');
-  const prompt = "Analyze the food in this image. Estimate the actual visible portion sizes for each ingredient/component. Return a strict JSON array with objects containing 'name' (in English, e.g. 'schnitzel', 'french fries', 'salad'), 'grams_min' (number), and 'grams_max' (number). Do not wrap in markdown, return ONLY the raw JSON array.";
+  const _psReqLang = String((req.query && req.query.lang) || 'de').toLowerCase().slice(0, 2);
+  const _PS_LANG_NAMES = { de: 'German', en: 'English', es: 'Spanish', it: 'Italian', pt: 'Portuguese', fr: 'French', tr: 'Turkish' };
+  const _PS_LANG_EXAMPLES = {
+    de: "'Schnitzel', 'Pommes', 'Salat'",
+    en: "'schnitzel', 'french fries', 'salad'",
+    es: "'milanesa', 'patatas fritas', 'ensalada'",
+    it: "'cotoletta', 'patatine fritte', 'insalata'",
+    pt: "'bife a milanesa', 'batata frita', 'salada'",
+    fr: "'escalope', 'frites', 'salade'",
+    tr: "'snitzel', 'patates kizartmasi', 'salata'"
+  };
+  const _psLangName = _PS_LANG_NAMES[_psReqLang] || 'English';
+  const _psLangExamples = _PS_LANG_EXAMPLES[_psReqLang] || _PS_LANG_EXAMPLES.en;
+  const prompt = "Analyze the food in this image. Estimate the actual visible portion sizes for each ingredient/component. Return a strict JSON array with objects containing 'name' (in " + _psLangName + ", e.g. " + _psLangExamples + "), 'grams_min' (number), and 'grams_max' (number). Do not wrap in markdown, return ONLY the raw JSON array.";
   // (geminiUrl entfernt: pro Retry-Versuch wird die URL mit dem jeweiligen Modell neu gebaut)
   const payload = {
     contents: [{ parts: [{ text: prompt }, { inlineData: { mimeType: 'image/jpeg', data: base64Image } }] }],
