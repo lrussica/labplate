@@ -1435,14 +1435,22 @@ async function callGroqWithFallback(requestBody, opts) {
   }
 
   console.log('[groq] gemini_failed_falling_back_to_groq');
-  const groqBody = Object.assign({}, requestBody, { model: 'llama-3.3-70b-versatile' });
-  if (groqBody.response_format && groqBody.response_format.type === 'json_schema') {
-    groqBody.response_format = { type: 'json_object' };
+  const groqModels = ['llama-3.1-8b-instant', 'gemma2-9b-it', 'openai/gpt-oss-120b'];
+  let g = { error: 'provider_error', status: 404, body: 'No model tried yet' };
+
+  for (const gm of groqModels) {
+    const groqBody = Object.assign({}, requestBody, { model: gm });
+    if (groqBody.response_format && groqBody.response_format.type === 'json_schema') {
+      groqBody.response_format = { type: 'json_object' };
+    }
+    console.log('[groq] trying_fallback_model=' + gm);
+    g = await callGroq(groqBody, {
+      apiKey: groqKey, url: GROQ_FALLBACK_URL, timeoutMs: fbTimeout,
+    });
+    if (!g.error) break;
+    console.log('[groq] model_failed_retry_next model=' + gm + ' error=' + g.error + ' status=' + (g.status || 'unknown'));
   }
 
-  const g = await callGroq(groqBody, {
-    apiKey: groqKey, url: GROQ_FALLBACK_URL, timeoutMs: fbTimeout,
-  });
   console.log('[groq] groq_fallback_done success=' + (!g.error) + ' error=' + (g.error || 'none') + ' status=' + (g.status || 'n/a'));
 
   return g.error ? result : g;
