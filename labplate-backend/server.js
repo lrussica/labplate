@@ -1436,7 +1436,18 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
   }
 
   const requestBody = buildRecipeRequest(flow, payload, recipeModel);
-  const result = await core.callGroq(requestBody, { apiKey: auth.apiKey, timeoutMs: REQUEST_TIMEOUT_MS });
+  let result = await core.callGroq(requestBody, { apiKey: auth.apiKey, timeoutMs: REQUEST_TIMEOUT_MS });
+  // Fallback-Kette bei 503/504: anderes Modell probieren statt Frontend zu belasten.
+  if (result.error === 'provider_error' && (Number(result.status) === 503 || Number(result.status) === 504)) {
+    const _FB_MODELS = ['gemini-3.1-flash-lite', 'gemini-3.8-flash'];
+    for (const _fbM of _FB_MODELS) {
+      if (_fbM === recipeModel) continue;
+      console.log('[nutri-recipe] model_fallback from=' + recipeModel + ' to=' + _fbM + ' after=' + (result.status || result.error));
+      const _fbBody = Object.assign({}, requestBody, { model: _fbM });
+      result = await core.callGroq(_fbBody, { apiKey: auth.apiKey, timeoutMs: Math.min(REQUEST_TIMEOUT_MS, 25000) });
+      if (!(result.error === 'provider_error' && (Number(result.status) === 503 || Number(result.status) === 504))) break;
+    }
+  }
 
   if (result.error === 'provider_error') {
     const upstreamStatus = Number(result.status) || 0;

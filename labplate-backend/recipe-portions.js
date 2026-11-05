@@ -800,7 +800,7 @@ function ingredientListMentionsToken(ingredients, token, textContext) {
     .map(function (i) { return String((i && (i.displayName || i.name)) || '').toLowerCase(); })
     .join(' ');
   if (token === 'pasta') return /pasta|nudel|spaghetti|penne|fusilli/.test(blob);
-  if (token === 'reis') return /\breis\b|rice/.test(blob);
+  if (token === 'reis') return /\breis\b|rice|reis\b/.test(blob);
   if (token === 'sahne') {
     try {
       const lactoseHonesty = require('./lactose-honesty');
