@@ -1301,7 +1301,7 @@ async function callGroqOnce(requestBody, opts) {
   const controller = new AbortController();
   const timer = setTimeout(function () { controller.abort(); }, o.timeoutMs || 55000);
   try {
-    const res = await fetchImpl(GROQ_API_URL, {
+    const res = await fetchImpl(o.url || GROQ_API_URL, {
       method: 'POST',
       headers: { Authorization: 'Bearer ' + o.apiKey, 'Content-Type': 'application/json' },
       body: JSON.stringify(requestBody),

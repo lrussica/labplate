@@ -1451,6 +1451,27 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
 
   if (result.error === 'provider_error') {
     const upstreamStatus = Number(result.status) || 0;
+    
+    // --- GROQ FALLBACK: Wenn alle Gemini-Modelle 503/504 werfen ---
+    if ((upstreamStatus === 503 || upstreamStatus === 504) && process.env.GROQ_API_KEY_FALLBACK) {
+      console.log('[nutri-recipe] gemini_failed_falling_back_to_groq');
+      const groqBody = Object.assign({}, requestBody);
+      groqBody.model = 'llama-3.3-70b-versatile';
+      if (groqBody.response_format && groqBody.response_format.type === 'json_schema') {
+        groqBody.response_format = { type: 'json_object' };
+      }
+      result = await core.callGroq(groqBody, {
+        apiKey: process.env.GROQ_API_KEY_FALLBACK,
+        url: 'https://api.groq.com/openai/v1/chat/completions',
+        timeoutMs: Math.min(REQUEST_TIMEOUT_MS, 25000)
+      });
+      if (!result.error) {
+        console.log('[nutri-recipe] groq_fallback_ok');
+      } else {
+        console.log('[nutri-recipe] groq_fallback_failed error=' + result.error + ' status=' + (result.status || 'unknown'));
+      }
+    }
+    // -----------------------------------------------------------------
     // Schema-/Validierungsfehler (HTTP 400): an Client als 400 durchreichen – kein 502,
     // damit Chat-Retries denselben kaputten Request nicht 3× wiederholen.
     const clientStatus = upstreamStatus === 400 ? 400 : 502;
