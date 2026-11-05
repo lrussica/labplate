@@ -1401,6 +1401,53 @@ async function callGroq(requestBody, opts) {
   return second;
 }
 
+// --- BERATER-FIX: GLOBALER FALLBACK (v92-Pipeline-sicher) ---
+const GROQ_FALLBACK_URL = 'https://api.groq.com/openai/v1/chat/completions';
+const FALLBACK_MODELS = (process.env.GEMINI_FALLBACK_MODELS || '')
+  .split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+
+function isTransientProviderError(r) {
+  if (!r || r.error !== 'provider_error') return false;
+  const s = Number(r.status);
+  return s === 503 || s === 504 || s === 500;
+}
+
+async function callGroqWithFallback(requestBody, opts) {
+  const o = opts || {};
+  const origModel = (requestBody && requestBody.model) || '(default)';
+  let result = await callGroq(requestBody, o);
+
+  if (!isTransientProviderError(result)) return result;
+
+  const fbTimeout = Math.min(Number(o.timeoutMs) || 55000, 20000);
+  for (let i = 0; i < FALLBACK_MODELS.length; i++) {
+    const m = FALLBACK_MODELS[i];
+    if (m === origModel) continue;
+    console.log('[groq] model_fallback from=' + origModel + ' to=' + m + ' after=' + (result.status || result.error));
+    result = await callGroq(Object.assign({}, requestBody, { model: m }), Object.assign({}, o, { timeoutMs: fbTimeout }));
+    if (!isTransientProviderError(result)) return result;
+  }
+
+  const groqKey = (process.env.GROQ_API_KEY_FALLBACK || '').trim();
+  if (!groqKey) {
+    console.log('[groq] groq_fallback_skipped no_key');
+    return result;
+  }
+
+  console.log('[groq] gemini_failed_falling_back_to_groq');
+  const groqBody = Object.assign({}, requestBody, { model: 'llama-3.3-70b-versatile' });
+  if (groqBody.response_format && groqBody.response_format.type === 'json_schema') {
+    groqBody.response_format = { type: 'json_object' };
+  }
+
+  const g = await callGroq(groqBody, {
+    apiKey: groqKey, url: GROQ_FALLBACK_URL, timeoutMs: fbTimeout,
+  });
+  console.log('[groq] groq_fallback_done success=' + (!g.error) + ' error=' + (g.error || 'none') + ' status=' + (g.status || 'n/a'));
+
+  return g.error ? result : g;
+}
+
 module.exports = {
   GROQ_API_URL,
   DEFAULT_MODEL,
@@ -1693,6 +1740,9 @@ module.exports = {
   ingKey,
   STRUCTURED_PROMPT_VERSION: strictPrompt.STRUCTURED_PROMPT_VERSION,
 };
+
+// KRITISCH: callGroq durch die Fallback-Version ersetzen (Berater-Fix)
+module.exports.callGroq = callGroqWithFallback;
 
 // Startup-Check: Core nutzt denselben Strict-Prompt.
 (function registerCoreStrictPrompt() {
