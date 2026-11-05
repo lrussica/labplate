@@ -1451,6 +1451,7 @@ app.post('/api/nutri-recipe', limiter, async (req, res) => {
 
   if (result.error === 'provider_error') {
     const upstreamStatus = Number(result.status) || 0;
+    console.log('[nutri-recipe] provider_error_check: error=' + result.error + ' status=' + result.status + ' upstreamStatus=' + upstreamStatus + ' hasGroqKey=' + !!process.env.GROQ_API_KEY_FALLBACK);
     
     // --- GROQ FALLBACK: Wenn alle Gemini-Modelle 503/504 werfen ---
     if ((upstreamStatus === 503 || upstreamStatus === 504) && process.env.GROQ_API_KEY_FALLBACK) {
