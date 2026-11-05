@@ -1435,7 +1435,8 @@ async function callGroqWithFallback(requestBody, opts) {
   }
 
   console.log('[groq] gemini_failed_falling_back_to_groq');
-  const groqModels = ['llama-3.1-8b-instant', 'gemma2-9b-it', 'openai/gpt-oss-120b'];
+  // 2026-11-05: Groq Free-Tier Limit Fix (8000 TPM). Prompt kürzen und valide Modelle nutzen.
+  const groqModels = ['openai/gpt-oss-120b', 'llama-3.1-8b-instant', 'llama-3.3-70b-versatile'];
   let g = { error: 'provider_error', status: 404, body: 'No model tried yet' };
 
   for (const gm of groqModels) {
@@ -1443,6 +1444,18 @@ async function callGroqWithFallback(requestBody, opts) {
     if (groqBody.response_format && groqBody.response_format.type === 'json_schema') {
       groqBody.response_format = { type: 'json_object' };
     }
+
+    // Kürze den Request, um das 8000-Token-Limit von Groq nicht zu sprengen
+    if (groqBody.messages && Array.isArray(groqBody.messages)) {
+      groqBody.messages = groqBody.messages.map(m => {
+        if (m.role === 'system' && typeof m.content === 'string' && m.content.length > 1500) {
+          return { role: 'system', content: m.content.slice(0, 1500) + '\n[TRUNCATED FOR GROQ]' };
+        }
+        return m;
+      });
+    }
+    if (groqBody.max_tokens > 1500) groqBody.max_tokens = 1500;
+
     console.log('[groq] trying_fallback_model=' + gm);
     g = await callGroq(groqBody, {
       apiKey: groqKey, url: GROQ_FALLBACK_URL, timeoutMs: fbTimeout,
