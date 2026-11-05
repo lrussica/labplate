@@ -1945,6 +1945,1590 @@
       "kind": "alias",
       "target": "coconut_milk",
       "target_exists": true
+    },
+    "tofu_firm": {
+      "kind": "nutrient",
+      "catalog_key": "tofu_firm"
+    },
+    "lentils_dry": {
+      "kind": "nutrient",
+      "catalog_key": "lentils_dry"
+    },
+    "chickpeas_cooked": {
+      "kind": "nutrient",
+      "catalog_key": "chickpeas_cooked"
+    },
+    "greek_yogurt": {
+      "kind": "nutrient",
+      "catalog_key": "greek_yogurt"
+    },
+    "rice_dry": {
+      "kind": "nutrient",
+      "catalog_key": "rice_dry"
+    },
+    "quinoa_dry": {
+      "kind": "nutrient",
+      "catalog_key": "quinoa_dry"
+    },
+    "chia_seeds": {
+      "kind": "nutrient",
+      "catalog_key": "chia_seeds"
+    },
+    "flax_seeds": {
+      "kind": "nutrient",
+      "catalog_key": "flax_seeds"
+    },
+    "almonds": {
+      "kind": "nutrient",
+      "catalog_key": "almonds"
+    },
+    "walnuts": {
+      "kind": "nutrient",
+      "catalog_key": "walnuts"
+    },
+    "bell_pepper_red": {
+      "kind": "nutrient",
+      "catalog_key": "bell_pepper_red"
+    },
+    "coconut_milk_light": {
+      "kind": "nutrient",
+      "catalog_key": "coconut_milk_light"
+    },
+    "coconut_milk_full": {
+      "kind": "nutrient",
+      "catalog_key": "coconut_milk_full"
+    },
+    "onion_yellow": {
+      "kind": "nutrient",
+      "catalog_key": "onion_yellow"
+    },
+    "ginger_fresh": {
+      "kind": "nutrient",
+      "catalog_key": "ginger_fresh"
+    },
+    "gouda": {
+      "kind": "nutrient",
+      "catalog_key": "gouda"
+    },
+    "almond_flour": {
+      "kind": "nutrient",
+      "catalog_key": "almond_flour"
+    },
+    "peanuts": {
+      "kind": "nutrient",
+      "catalog_key": "peanuts"
+    },
+    "sesame_seeds": {
+      "kind": "nutrient",
+      "catalog_key": "sesame_seeds"
+    },
+    "spring_onion": {
+      "kind": "nutrient",
+      "catalog_key": "spring_onion"
+    },
+    "mushroom_button": {
+      "kind": "nutrient",
+      "catalog_key": "mushroom_button"
+    },
+    "canola_oil": {
+      "kind": "nutrient",
+      "catalog_key": "canola_oil"
+    },
+    "coriander_fresh": {
+      "kind": "nutrient",
+      "catalog_key": "coriander_fresh"
+    },
+    "parsley_fresh": {
+      "kind": "nutrient",
+      "catalog_key": "parsley_fresh"
+    },
+    "basil_fresh": {
+      "kind": "nutrient",
+      "catalog_key": "basil_fresh"
+    },
+    "dill_fresh": {
+      "kind": "nutrient",
+      "catalog_key": "dill_fresh"
+    },
+    "mint_fresh": {
+      "kind": "nutrient",
+      "catalog_key": "mint_fresh"
+    },
+    "oregano_dried": {
+      "kind": "nutrient",
+      "catalog_key": "oregano_dried"
+    },
+    "thyme_fresh": {
+      "kind": "nutrient",
+      "catalog_key": "thyme_fresh"
+    },
+    "rosemary_fresh": {
+      "kind": "nutrient",
+      "catalog_key": "rosemary_fresh"
+    },
+    "vinegar_apple": {
+      "kind": "nutrient",
+      "catalog_key": "vinegar_apple"
+    },
+    "vinegar_balsamic": {
+      "kind": "nutrient",
+      "catalog_key": "vinegar_balsamic"
+    },
+    "cinnamon": {
+      "kind": "nutrient",
+      "catalog_key": "cinnamon"
+    },
+    "cumin": {
+      "kind": "nutrient",
+      "catalog_key": "cumin"
+    },
+    "paprika_powder": {
+      "kind": "nutrient",
+      "catalog_key": "paprika_powder"
+    },
+    "curry_paste_red": {
+      "kind": "nutrient",
+      "catalog_key": "curry_paste_red"
+    },
+    "cottage_cheese": {
+      "kind": "nutrient",
+      "catalog_key": "cottage_cheese"
+    },
+    "cream_cheese": {
+      "kind": "nutrient",
+      "catalog_key": "cream_cheese"
+    },
+    "cabbage_white": {
+      "kind": "nutrient",
+      "catalog_key": "cabbage_white"
+    },
+    "sushi_rice": {
+      "kind": "nutrient",
+      "catalog_key": "sushi_rice"
+    },
+    "nori": {
+      "kind": "nutrient",
+      "catalog_key": "nori"
+    },
+    "pak_choi": {
+      "kind": "nutrient",
+      "catalog_key": "pak_choi"
+    },
+    "shiitake": {
+      "kind": "nutrient",
+      "catalog_key": "shiitake"
+    },
+    "gochujang": {
+      "kind": "nutrient",
+      "catalog_key": "gochujang"
+    },
+    "wasabi": {
+      "kind": "nutrient",
+      "catalog_key": "wasabi"
+    },
+    "jalapeno": {
+      "kind": "nutrient",
+      "catalog_key": "jalapeno"
+    },
+    "rotkohl": {
+      "kind": "nutrient",
+      "catalog_key": "rotkohl"
+    },
+    "blattsalat": {
+      "kind": "nutrient",
+      "catalog_key": "blattsalat"
+    },
+    "artischocke_herz": {
+      "kind": "nutrient",
+      "catalog_key": "artischocke_herz"
+    },
+    "braune_linsen": {
+      "kind": "nutrient",
+      "catalog_key": "braune_linsen"
+    },
+    "himbeeren": {
+      "kind": "nutrient",
+      "catalog_key": "himbeeren"
+    },
+    "blaubeeren": {
+      "kind": "nutrient",
+      "catalog_key": "blaubeeren"
+    },
+    "kiwi": {
+      "kind": "nutrient",
+      "catalog_key": "kiwi"
+    },
+    "acai_puree": {
+      "kind": "nutrient",
+      "catalog_key": "acai_puree"
+    },
+    "hanfsamen": {
+      "kind": "nutrient",
+      "catalog_key": "hanfsamen"
+    },
+    "erdnussmus": {
+      "kind": "nutrient",
+      "catalog_key": "erdnussmus"
+    },
+    "kokoschips": {
+      "kind": "nutrient",
+      "catalog_key": "kokoschips"
+    },
+    "haferdrink": {
+      "kind": "nutrient",
+      "catalog_key": "haferdrink"
+    },
+    "granola": {
+      "kind": "nutrient",
+      "catalog_key": "granola"
+    },
+    "falafel": {
+      "kind": "nutrient",
+      "catalog_key": "falafel"
+    },
+    "tzatziki": {
+      "kind": "nutrient",
+      "catalog_key": "tzatziki"
+    },
+    "haehnchen_gyros": {
+      "kind": "nutrient",
+      "catalog_key": "haehnchen_gyros"
+    },
+    "neutrales_bratoel": {
+      "kind": "nutrient",
+      "catalog_key": "neutrales_bratoel"
+    },
+    "tahini": {
+      "kind": "nutrient",
+      "catalog_key": "tahini"
+    },
+    "banana": {
+      "kind": "nutrient",
+      "catalog_key": "banana"
+    },
+    "sugar": {
+      "kind": "nutrient",
+      "catalog_key": "sugar"
+    },
+    "rice_noodles": {
+      "kind": "nutrient",
+      "catalog_key": "rice_noodles"
+    },
+    "creme_fraiche": {
+      "kind": "nutrient",
+      "catalog_key": "creme_fraiche"
+    },
+    "milk_whole": {
+      "kind": "nutrient",
+      "catalog_key": "milk_whole"
+    },
+    "cashews": {
+      "kind": "nutrient",
+      "catalog_key": "cashews"
+    },
+    "hazelnuts": {
+      "kind": "nutrient",
+      "catalog_key": "hazelnuts"
+    },
+    "pumpkin_seeds": {
+      "kind": "nutrient",
+      "catalog_key": "pumpkin_seeds"
+    },
+    "coconut_flakes": {
+      "kind": "nutrient",
+      "catalog_key": "coconut_flakes"
+    },
+    "noodle_cooked": {
+      "kind": "nutrient",
+      "catalog_key": "noodle_cooked"
+    },
+    "pasta_dry": {
+      "kind": "nutrient",
+      "catalog_key": "pasta_dry"
+    },
+    "beans_cooked": {
+      "kind": "nutrient",
+      "catalog_key": "beans_cooked"
+    },
+    "pork_mince": {
+      "kind": "nutrient",
+      "catalog_key": "pork_mince"
+    },
+    "doubanjiang": {
+      "kind": "nutrient",
+      "catalog_key": "doubanjiang"
+    },
+    "douchi": {
+      "kind": "nutrient",
+      "catalog_key": "douchi"
+    },
+    "sichuan_pepper": {
+      "kind": "nutrient",
+      "catalog_key": "sichuan_pepper"
+    },
+    "shaoxing_wine": {
+      "kind": "nutrient",
+      "catalog_key": "shaoxing_wine"
+    },
+    "dark_soy": {
+      "kind": "nutrient",
+      "catalog_key": "dark_soy"
+    },
+    "chili_oil": {
+      "kind": "nutrient",
+      "catalog_key": "chili_oil"
+    },
+    "miso_paste": {
+      "kind": "nutrient",
+      "catalog_key": "miso_paste"
+    },
+    "ramen_noodles": {
+      "kind": "nutrient",
+      "catalog_key": "ramen_noodles"
+    },
+    "wakame": {
+      "kind": "nutrient",
+      "catalog_key": "wakame"
+    },
+    "kombu": {
+      "kind": "nutrient",
+      "catalog_key": "kombu"
+    },
+    "katsuobushi": {
+      "kind": "nutrient",
+      "catalog_key": "katsuobushi"
+    },
+    "bamboo_shoots": {
+      "kind": "nutrient",
+      "catalog_key": "bamboo_shoots"
+    },
+    "corn_canned": {
+      "kind": "nutrient",
+      "catalog_key": "corn_canned"
+    },
+    "bean_sprouts": {
+      "kind": "nutrient",
+      "catalog_key": "bean_sprouts"
+    },
+    "pork_belly": {
+      "kind": "nutrient",
+      "catalog_key": "pork_belly"
+    },
+    "kidney_beans": {
+      "kind": "nutrient",
+      "catalog_key": "kidney_beans"
+    },
+    "gruyere": {
+      "kind": "nutrient",
+      "catalog_key": "gruyere"
+    },
+    "emmentaler": {
+      "kind": "nutrient",
+      "catalog_key": "emmentaler"
+    },
+    "kirsch": {
+      "kind": "nutrient",
+      "catalog_key": "kirsch"
+    },
+    "raisins": {
+      "kind": "nutrient",
+      "catalog_key": "raisins"
+    },
+    "star_anise": {
+      "kind": "nutrient",
+      "catalog_key": "star_anise"
+    },
+    "thai_basil": {
+      "kind": "nutrient",
+      "catalog_key": "thai_basil"
+    },
+    "paella_rice": {
+      "kind": "nutrient",
+      "catalog_key": "paella_rice"
+    },
+    "chicken_drumstick": {
+      "kind": "nutrient",
+      "catalog_key": "chicken_drumstick"
+    },
+    "mussels": {
+      "kind": "nutrient",
+      "catalog_key": "mussels"
+    },
+    "saffron": {
+      "kind": "nutrient",
+      "catalog_key": "saffron"
+    },
+    "lemon": {
+      "kind": "nutrient",
+      "catalog_key": "lemon"
+    },
+    "bell_pepper_green": {
+      "kind": "nutrient",
+      "catalog_key": "bell_pepper_green"
+    },
+    "beef_brisket": {
+      "kind": "nutrient",
+      "catalog_key": "beef_brisket"
+    },
+    "beef_shank": {
+      "kind": "nutrient",
+      "catalog_key": "beef_shank"
+    },
+    "caraway": {
+      "kind": "nutrient",
+      "catalog_key": "caraway"
+    },
+    "marjoram": {
+      "kind": "nutrient",
+      "catalog_key": "marjoram"
+    },
+    "herbes_de_provence": {
+      "kind": "nutrient",
+      "catalog_key": "herbes_de_provence"
+    },
+    "galangal": {
+      "kind": "nutrient",
+      "catalog_key": "galangal"
+    },
+    "kaffir_lime": {
+      "kind": "nutrient",
+      "catalog_key": "kaffir_lime"
+    },
+    "brown_lentils": {
+      "kind": "nutrient",
+      "catalog_key": "brown_lentils"
+    },
+    "fish_fillet": {
+      "kind": "nutrient",
+      "catalog_key": "fish_fillet"
+    },
+    "orange_zest": {
+      "kind": "nutrient",
+      "catalog_key": "orange_zest"
+    },
+    "massaman_paste": {
+      "kind": "nutrient",
+      "catalog_key": "massaman_paste"
+    },
+    "tamarind": {
+      "kind": "nutrient",
+      "catalog_key": "tamarind"
+    },
+    "palm_sugar": {
+      "kind": "nutrient",
+      "catalog_key": "palm_sugar"
+    },
+    "veal_shank": {
+      "kind": "nutrient",
+      "catalog_key": "veal_shank"
+    },
+    "arborio_rice": {
+      "kind": "nutrient",
+      "catalog_key": "arborio_rice"
+    },
+    "porcini": {
+      "kind": "nutrient",
+      "catalog_key": "porcini"
+    },
+    "jasmine_rice": {
+      "kind": "nutrient",
+      "catalog_key": "jasmine_rice"
+    },
+    "ketjap_manis": {
+      "kind": "nutrient",
+      "catalog_key": "ketjap_manis"
+    },
+    "sambal_oelek": {
+      "kind": "nutrient",
+      "catalog_key": "sambal_oelek"
+    },
+    "shrimp_paste": {
+      "kind": "nutrient",
+      "catalog_key": "shrimp_paste"
+    },
+    "prawn_cracker": {
+      "kind": "nutrient",
+      "catalog_key": "prawn_cracker"
+    },
+    "black_beans": {
+      "kind": "nutrient",
+      "catalog_key": "black_beans"
+    },
+    "pork_shoulder": {
+      "kind": "nutrient",
+      "catalog_key": "pork_shoulder"
+    },
+    "linguica": {
+      "kind": "nutrient",
+      "catalog_key": "linguica"
+    },
+    "farofa": {
+      "kind": "nutrient",
+      "catalog_key": "farofa"
+    },
+    "collard_greens": {
+      "kind": "nutrient",
+      "catalog_key": "collard_greens"
+    },
+    "long_grain_rice": {
+      "kind": "nutrient",
+      "catalog_key": "long_grain_rice"
+    },
+    "andouille": {
+      "kind": "nutrient",
+      "catalog_key": "andouille"
+    },
+    "cajun_seasoning": {
+      "kind": "nutrient",
+      "catalog_key": "cajun_seasoning"
+    },
+    "button_mushroom": {
+      "kind": "nutrient",
+      "catalog_key": "button_mushroom"
+    },
+    "pearl_onion": {
+      "kind": "nutrient",
+      "catalog_key": "pearl_onion"
+    },
+    "brandy": {
+      "kind": "nutrient",
+      "catalog_key": "brandy"
+    },
+    "vegetable_oil": {
+      "kind": "nutrient",
+      "catalog_key": "vegetable_oil"
+    },
+    "beef_tenderloin": {
+      "kind": "nutrient",
+      "catalog_key": "beef_tenderloin"
+    },
+    "puff_pastry": {
+      "kind": "nutrient",
+      "catalog_key": "puff_pastry"
+    },
+    "prosciutto": {
+      "kind": "nutrient",
+      "catalog_key": "prosciutto"
+    },
+    "madeira": {
+      "kind": "nutrient",
+      "catalog_key": "madeira"
+    },
+    "white_beans": {
+      "kind": "nutrient",
+      "catalog_key": "white_beans"
+    },
+    "duck_confit": {
+      "kind": "nutrient",
+      "catalog_key": "duck_confit"
+    },
+    "toulouse_sausage": {
+      "kind": "nutrient",
+      "catalog_key": "toulouse_sausage"
+    },
+    "lamb_shoulder": {
+      "kind": "nutrient",
+      "catalog_key": "lamb_shoulder"
+    },
+    "bread_crumbs": {
+      "kind": "nutrient",
+      "catalog_key": "bread_crumbs"
+    },
+    "goose_fat": {
+      "kind": "nutrient",
+      "catalog_key": "goose_fat"
+    },
+    "lime": {
+      "kind": "nutrient",
+      "catalog_key": "lime"
+    },
+    "red_onion": {
+      "kind": "nutrient",
+      "catalog_key": "red_onion"
+    },
+    "aji_chili": {
+      "kind": "nutrient",
+      "catalog_key": "aji_chili"
+    },
+    "veal_scallopine": {
+      "kind": "nutrient",
+      "catalog_key": "veal_scallopine"
+    },
+    "sage_fresh": {
+      "kind": "nutrient",
+      "catalog_key": "sage_fresh"
+    },
+    "okra": {
+      "kind": "nutrient",
+      "catalog_key": "okra"
+    },
+    "file_powder": {
+      "kind": "nutrient",
+      "catalog_key": "file_powder"
+    },
+    "cheese_curds": {
+      "kind": "nutrient",
+      "catalog_key": "cheese_curds"
+    },
+    "laksa_paste": {
+      "kind": "nutrient",
+      "catalog_key": "laksa_paste"
+    },
+    "rendang_paste": {
+      "kind": "nutrient",
+      "catalog_key": "rendang_paste"
+    },
+    "allspice": {
+      "kind": "nutrient",
+      "catalog_key": "allspice"
+    },
+    "milk": {
+      "kind": "nutrient",
+      "catalog_key": "milk"
+    },
+    "kefalotyri": {
+      "kind": "nutrient",
+      "catalog_key": "kefalotyri"
+    },
+    "achiote": {
+      "kind": "nutrient",
+      "catalog_key": "achiote"
+    },
+    "guajillo": {
+      "kind": "nutrient",
+      "catalog_key": "guajillo"
+    },
+    "ancho": {
+      "kind": "nutrient",
+      "catalog_key": "ancho"
+    },
+    "pineapple": {
+      "kind": "nutrient",
+      "catalog_key": "pineapple"
+    },
+    "corn_tortilla": {
+      "kind": "nutrient",
+      "catalog_key": "corn_tortilla"
+    },
+    "quark": {
+      "kind": "nutrient",
+      "catalog_key": "quark"
+    },
+    "yeast": {
+      "kind": "nutrient",
+      "catalog_key": "yeast"
+    },
+    "chutney": {
+      "kind": "nutrient",
+      "catalog_key": "chutney"
+    },
+    "beef_chuck": {
+      "kind": "nutrient",
+      "catalog_key": "beef_chuck"
+    },
+    "juniper_berries": {
+      "kind": "nutrient",
+      "catalog_key": "juniper_berries"
+    },
+    "tomatillo": {
+      "kind": "nutrient",
+      "catalog_key": "tomatillo"
+    },
+    "green_chili": {
+      "kind": "nutrient",
+      "catalog_key": "green_chili"
+    },
+    "cloves": {
+      "kind": "nutrient",
+      "catalog_key": "cloves"
+    },
+    "gingerbread": {
+      "kind": "nutrient",
+      "catalog_key": "gingerbread"
+    },
+    "pork_knuckle": {
+      "kind": "nutrient",
+      "catalog_key": "pork_knuckle"
+    },
+    "dark_beer": {
+      "kind": "nutrient",
+      "catalog_key": "dark_beer"
+    },
+    "beef_rouladen": {
+      "kind": "nutrient",
+      "catalog_key": "beef_rouladen"
+    },
+    "pickle": {
+      "kind": "nutrient",
+      "catalog_key": "pickle"
+    },
+    "chicken_mince": {
+      "kind": "nutrient",
+      "catalog_key": "chicken_mince"
+    },
+    "dried_chili": {
+      "kind": "nutrient",
+      "catalog_key": "dried_chili"
+    },
+    "daikon": {
+      "kind": "nutrient",
+      "catalog_key": "daikon"
+    },
+    "toasted_rice_powder": {
+      "kind": "nutrient",
+      "catalog_key": "toasted_rice_powder"
+    },
+    "pomegranate_molasses": {
+      "kind": "nutrient",
+      "catalog_key": "pomegranate_molasses"
+    },
+    "apricots": {
+      "kind": "nutrient",
+      "catalog_key": "apricots"
+    },
+    "prunes": {
+      "kind": "nutrient",
+      "catalog_key": "prunes"
+    },
+    "mulato_chili": {
+      "kind": "nutrient",
+      "catalog_key": "mulato_chili"
+    },
+    "pasilla": {
+      "kind": "nutrient",
+      "catalog_key": "pasilla"
+    },
+    "chocolate_dark": {
+      "kind": "nutrient",
+      "catalog_key": "chocolate_dark"
+    },
+    "cassava": {
+      "kind": "nutrient",
+      "catalog_key": "cassava"
+    },
+    "plantain": {
+      "kind": "nutrient",
+      "catalog_key": "plantain"
+    },
+    "vermicelli": {
+      "kind": "nutrient",
+      "catalog_key": "vermicelli"
+    },
+    "filo_dough": {
+      "kind": "nutrient",
+      "catalog_key": "filo_dough"
+    },
+    "powdered_sugar": {
+      "kind": "nutrient",
+      "catalog_key": "powdered_sugar"
+    },
+    "pork_loin": {
+      "kind": "nutrient",
+      "catalog_key": "pork_loin"
+    },
+    "ham": {
+      "kind": "nutrient",
+      "catalog_key": "ham"
+    },
+    "cheese_emmental": {
+      "kind": "nutrient",
+      "catalog_key": "cheese_emmental"
+    },
+    "breadcrumbs": {
+      "kind": "nutrient",
+      "catalog_key": "breadcrumbs"
+    },
+    "sauerkraut": {
+      "kind": "nutrient",
+      "catalog_key": "sauerkraut"
+    },
+    "hominy": {
+      "kind": "nutrient",
+      "catalog_key": "hominy"
+    },
+    "salt_cod": {
+      "kind": "nutrient",
+      "catalog_key": "salt_cod"
+    },
+    "black_olives": {
+      "kind": "nutrient",
+      "catalog_key": "black_olives"
+    },
+    "kashmiri_chili": {
+      "kind": "nutrient",
+      "catalog_key": "kashmiri_chili"
+    },
+    "beef_ribeye": {
+      "kind": "nutrient",
+      "catalog_key": "beef_ribeye"
+    },
+    "pork_bones": {
+      "kind": "nutrient",
+      "catalog_key": "pork_bones"
+    },
+    "miso": {
+      "kind": "nutrient",
+      "catalog_key": "miso"
+    },
+    "mirin": {
+      "kind": "nutrient",
+      "catalog_key": "mirin"
+    },
+    "corn_flour_masarepa": {
+      "kind": "nutrient",
+      "catalog_key": "corn_flour_masarepa"
+    },
+    "cheese_white": {
+      "kind": "nutrient",
+      "catalog_key": "cheese_white"
+    },
+    "pistachios": {
+      "kind": "nutrient",
+      "catalog_key": "pistachios"
+    },
+    "rice_cakes": {
+      "kind": "nutrient",
+      "catalog_key": "rice_cakes"
+    },
+    "gochugaru": {
+      "kind": "nutrient",
+      "catalog_key": "gochugaru"
+    },
+    "fish_cake": {
+      "kind": "nutrient",
+      "catalog_key": "fish_cake"
+    },
+    "kimchi": {
+      "kind": "nutrient",
+      "catalog_key": "kimchi"
+    },
+    "gyoza_wrapper": {
+      "kind": "nutrient",
+      "catalog_key": "gyoza_wrapper"
+    },
+    "dashi": {
+      "kind": "nutrient",
+      "catalog_key": "dashi"
+    },
+    "okonomiyaki_sauce": {
+      "kind": "nutrient",
+      "catalog_key": "okonomiyaki_sauce"
+    },
+    "bonito_flakes": {
+      "kind": "nutrient",
+      "catalog_key": "bonito_flakes"
+    },
+    "aonori": {
+      "kind": "nutrient",
+      "catalog_key": "aonori"
+    },
+    "ginger_pickled": {
+      "kind": "nutrient",
+      "catalog_key": "ginger_pickled"
+    },
+    "baguette": {
+      "kind": "nutrient",
+      "catalog_key": "baguette"
+    },
+    "sake": {
+      "kind": "nutrient",
+      "catalog_key": "sake"
+    },
+    "shichimi": {
+      "kind": "nutrient",
+      "catalog_key": "shichimi"
+    },
+    "peanut_butter": {
+      "kind": "nutrient",
+      "catalog_key": "peanut_butter"
+    },
+    "poblano": {
+      "kind": "nutrient",
+      "catalog_key": "poblano"
+    },
+    "beef_heart": {
+      "kind": "nutrient",
+      "catalog_key": "beef_heart"
+    },
+    "aji_panca": {
+      "kind": "nutrient",
+      "catalog_key": "aji_panca"
+    },
+    "aji_amarillo": {
+      "kind": "nutrient",
+      "catalog_key": "aji_amarillo"
+    },
+    "coriander": {
+      "kind": "nutrient",
+      "catalog_key": "coriander"
+    },
+    "corn_cob": {
+      "kind": "nutrient",
+      "catalog_key": "corn_cob"
+    },
+    "arepa": {
+      "kind": "nutrient",
+      "catalog_key": "arepa"
+    },
+    "white_fish": {
+      "kind": "nutrient",
+      "catalog_key": "white_fish"
+    },
+    "palm_oil": {
+      "kind": "nutrient",
+      "catalog_key": "palm_oil"
+    },
+    "kecap_manis": {
+      "kind": "nutrient",
+      "catalog_key": "kecap_manis"
+    },
+    "paprika": {
+      "kind": "nutrient",
+      "catalog_key": "paprika"
+    },
+    "tapioca_starch": {
+      "kind": "nutrient",
+      "catalog_key": "tapioca_starch"
+    },
+    "rice_flour": {
+      "kind": "nutrient",
+      "catalog_key": "rice_flour"
+    },
+    "vinegar_rice": {
+      "kind": "nutrient",
+      "catalog_key": "vinegar_rice"
+    },
+    "cream": {
+      "kind": "nutrient",
+      "catalog_key": "cream"
+    },
+    "emmental": {
+      "kind": "nutrient",
+      "catalog_key": "emmental"
+    },
+    "red_lentils": {
+      "kind": "nutrient",
+      "catalog_key": "red_lentils"
+    },
+    "clams": {
+      "kind": "nutrient",
+      "catalog_key": "clams"
+    },
+    "chili_paste": {
+      "kind": "nutrient",
+      "catalog_key": "chili_paste"
+    },
+    "pita": {
+      "kind": "nutrient",
+      "catalog_key": "pita"
+    },
+    "phyllo": {
+      "kind": "nutrient",
+      "catalog_key": "phyllo"
+    },
+    "paneer": {
+      "kind": "nutrient",
+      "catalog_key": "paneer"
+    },
+    "beef_sirloin": {
+      "kind": "nutrient",
+      "catalog_key": "beef_sirloin"
+    },
+    "bird_eye_chili": {
+      "kind": "nutrient",
+      "catalog_key": "bird_eye_chili"
+    },
+    "green_peas": {
+      "kind": "nutrient",
+      "catalog_key": "green_peas"
+    },
+    "oyster_sauce": {
+      "kind": "nutrient",
+      "catalog_key": "oyster_sauce"
+    },
+    "brown_sugar": {
+      "kind": "nutrient",
+      "catalog_key": "brown_sugar"
+    },
+    "basmati_rice": {
+      "kind": "nutrient",
+      "catalog_key": "basmati_rice"
+    },
+    "sweet_potato_noodles": {
+      "kind": "nutrient",
+      "catalog_key": "sweet_potato_noodles"
+    },
+    "wheat_flour": {
+      "kind": "nutrient",
+      "catalog_key": "wheat_flour"
+    },
+    "biryani_masala": {
+      "kind": "nutrient",
+      "catalog_key": "biryani_masala"
+    },
+    "urad_dal": {
+      "kind": "nutrient",
+      "catalog_key": "urad_dal"
+    },
+    "chana_dal": {
+      "kind": "nutrient",
+      "catalog_key": "chana_dal"
+    },
+    "toor_dal": {
+      "kind": "nutrient",
+      "catalog_key": "toor_dal"
+    },
+    "fenugreek": {
+      "kind": "nutrient",
+      "catalog_key": "fenugreek"
+    },
+    "mustard_seeds": {
+      "kind": "nutrient",
+      "catalog_key": "mustard_seeds"
+    },
+    "curry_leaves": {
+      "kind": "nutrient",
+      "catalog_key": "curry_leaves"
+    },
+    "baking_soda": {
+      "kind": "nutrient",
+      "catalog_key": "baking_soda"
+    },
+    "wonton_wrapper": {
+      "kind": "nutrient",
+      "catalog_key": "wonton_wrapper"
+    },
+    "napa_cabbage": {
+      "kind": "nutrient",
+      "catalog_key": "napa_cabbage"
+    },
+    "cod_fillet": {
+      "kind": "nutrient",
+      "catalog_key": "cod_fillet"
+    },
+    "haddock_fillet": {
+      "kind": "nutrient",
+      "catalog_key": "haddock_fillet"
+    },
+    "lamb_mince": {
+      "kind": "nutrient",
+      "catalog_key": "lamb_mince"
+    },
+    "green_pepper": {
+      "kind": "nutrient",
+      "catalog_key": "green_pepper"
+    },
+    "egg_yolk": {
+      "kind": "nutrient",
+      "catalog_key": "egg_yolk"
+    },
+    "vanilla": {
+      "kind": "nutrient",
+      "catalog_key": "vanilla"
+    },
+    "semolina": {
+      "kind": "nutrient",
+      "catalog_key": "semolina"
+    },
+    "gelatin": {
+      "kind": "nutrient",
+      "catalog_key": "gelatin"
+    },
+    "octopus": {
+      "kind": "nutrient",
+      "catalog_key": "octopus"
+    },
+    "pine_nuts": {
+      "kind": "nutrient",
+      "catalog_key": "pine_nuts"
+    },
+    "veal_shoulder": {
+      "kind": "nutrient",
+      "catalog_key": "veal_shoulder"
+    },
+    "dark_chocolate": {
+      "kind": "nutrient",
+      "catalog_key": "dark_chocolate"
+    },
+    "apricot_jam": {
+      "kind": "nutrient",
+      "catalog_key": "apricot_jam"
+    },
+    "burger_bun": {
+      "kind": "nutrient",
+      "catalog_key": "burger_bun"
+    },
+    "lettuce": {
+      "kind": "nutrient",
+      "catalog_key": "lettuce"
+    },
+    "ketchup": {
+      "kind": "nutrient",
+      "catalog_key": "ketchup"
+    },
+    "chicken_wings": {
+      "kind": "nutrient",
+      "catalog_key": "chicken_wings"
+    },
+    "hot_sauce": {
+      "kind": "nutrient",
+      "catalog_key": "hot_sauce"
+    },
+    "macaroni": {
+      "kind": "nutrient",
+      "catalog_key": "macaroni"
+    },
+    "dates": {
+      "kind": "nutrient",
+      "catalog_key": "dates"
+    },
+    "sea_salt": {
+      "kind": "nutrient",
+      "catalog_key": "sea_salt"
+    },
+    "banana_leaf": {
+      "kind": "nutrient",
+      "catalog_key": "banana_leaf"
+    },
+    "liquid_smoke": {
+      "kind": "nutrient",
+      "catalog_key": "liquid_smoke"
+    },
+    "cayenne": {
+      "kind": "nutrient",
+      "catalog_key": "cayenne"
+    },
+    "apple_cider_vinegar": {
+      "kind": "nutrient",
+      "catalog_key": "apple_cider_vinegar"
+    },
+    "graham_cracker": {
+      "kind": "nutrient",
+      "catalog_key": "graham_cracker"
+    },
+    "condensed_milk": {
+      "kind": "nutrient",
+      "catalog_key": "condensed_milk"
+    },
+    "digestive_biscuit": {
+      "kind": "nutrient",
+      "catalog_key": "digestive_biscuit"
+    },
+    "pork_sausage": {
+      "kind": "nutrient",
+      "catalog_key": "pork_sausage"
+    },
+    "kefalograviera": {
+      "kind": "nutrient",
+      "catalog_key": "kefalograviera"
+    },
+    "ouzo": {
+      "kind": "nutrient",
+      "catalog_key": "ouzo"
+    },
+    "hoisin_sauce": {
+      "kind": "nutrient",
+      "catalog_key": "hoisin_sauce"
+    },
+    "rice_wine": {
+      "kind": "nutrient",
+      "catalog_key": "rice_wine"
+    },
+    "five_spice": {
+      "kind": "nutrient",
+      "catalog_key": "five_spice"
+    },
+    "red_fermented_bean_curd": {
+      "kind": "nutrient",
+      "catalog_key": "red_fermented_bean_curd"
+    },
+    "ribeye_steak": {
+      "kind": "nutrient",
+      "catalog_key": "ribeye_steak"
+    },
+    "hoagie_roll": {
+      "kind": "nutrient",
+      "catalog_key": "hoagie_roll"
+    },
+    "pickled_ginger": {
+      "kind": "nutrient",
+      "catalog_key": "pickled_ginger"
+    },
+    "kewpie_mayo": {
+      "kind": "nutrient",
+      "catalog_key": "kewpie_mayo"
+    },
+    "takoyaki_sauce": {
+      "kind": "nutrient",
+      "catalog_key": "takoyaki_sauce"
+    },
+    "tarama": {
+      "kind": "nutrient",
+      "catalog_key": "tarama"
+    },
+    "baked_beans": {
+      "kind": "nutrient",
+      "catalog_key": "baked_beans"
+    },
+    "black_pudding": {
+      "kind": "nutrient",
+      "catalog_key": "black_pudding"
+    },
+    "glutinous_rice_flour": {
+      "kind": "nutrient",
+      "catalog_key": "glutinous_rice_flour"
+    },
+    "matcha": {
+      "kind": "nutrient",
+      "catalog_key": "matcha"
+    },
+    "red_bean_paste": {
+      "kind": "nutrient",
+      "catalog_key": "red_bean_paste"
+    },
+    "duck": {
+      "kind": "nutrient",
+      "catalog_key": "duck"
+    },
+    "maltose": {
+      "kind": "nutrient",
+      "catalog_key": "maltose"
+    },
+    "candlenut": {
+      "kind": "nutrient",
+      "catalog_key": "candlenut"
+    },
+    "strawberry": {
+      "kind": "nutrient",
+      "catalog_key": "strawberry"
+    },
+    "meringue": {
+      "kind": "nutrient",
+      "catalog_key": "meringue"
+    },
+    "swede": {
+      "kind": "nutrient",
+      "catalog_key": "swede"
+    },
+    "canned_tuna": {
+      "kind": "nutrient",
+      "catalog_key": "canned_tuna"
+    },
+    "sponge_cake": {
+      "kind": "nutrient",
+      "catalog_key": "sponge_cake"
+    },
+    "raspberry": {
+      "kind": "nutrient",
+      "catalog_key": "raspberry"
+    },
+    "custard": {
+      "kind": "nutrient",
+      "catalog_key": "custard"
+    },
+    "sherry": {
+      "kind": "nutrient",
+      "catalog_key": "sherry"
+    },
+    "yakisoba_noodles": {
+      "kind": "nutrient",
+      "catalog_key": "yakisoba_noodles"
+    },
+    "yakisoba_sauce": {
+      "kind": "nutrient",
+      "catalog_key": "yakisoba_sauce"
+    },
+    "ao_nori": {
+      "kind": "nutrient",
+      "catalog_key": "ao_nori"
+    },
+    "beni_shoga": {
+      "kind": "nutrient",
+      "catalog_key": "beni_shoga"
+    },
+    "smoked_paprika": {
+      "kind": "nutrient",
+      "catalog_key": "smoked_paprika"
+    },
+    "jamon_serrano": {
+      "kind": "nutrient",
+      "catalog_key": "jamon_serrano"
+    },
+    "manchego": {
+      "kind": "nutrient",
+      "catalog_key": "manchego"
+    },
+    "japanese_mayo": {
+      "kind": "nutrient",
+      "catalog_key": "japanese_mayo"
+    },
+    "umeboshi": {
+      "kind": "nutrient",
+      "catalog_key": "umeboshi"
+    },
+    "japanese_curry_roux": {
+      "kind": "nutrient",
+      "catalog_key": "japanese_curry_roux"
+    },
+    "egg_noodles": {
+      "kind": "nutrient",
+      "catalog_key": "egg_noodles"
+    },
+    "red_curry_paste": {
+      "kind": "nutrient",
+      "catalog_key": "red_curry_paste"
+    },
+    "pickled_mustard_green": {
+      "kind": "nutrient",
+      "catalog_key": "pickled_mustard_green"
+    },
+    "lime_wedge": {
+      "kind": "nutrient",
+      "catalog_key": "lime_wedge"
+    },
+    "crispy_noodles": {
+      "kind": "nutrient",
+      "catalog_key": "crispy_noodles"
+    },
+    "green_papaya": {
+      "kind": "nutrient",
+      "catalog_key": "green_papaya"
+    },
+    "long_bean": {
+      "kind": "nutrient",
+      "catalog_key": "long_bean"
+    },
+    "cherry_tomato": {
+      "kind": "nutrient",
+      "catalog_key": "cherry_tomato"
+    },
+    "dried_shrimp": {
+      "kind": "nutrient",
+      "catalog_key": "dried_shrimp"
+    },
+    "thai_chili": {
+      "kind": "nutrient",
+      "catalog_key": "thai_chili"
+    },
+    "green_bean": {
+      "kind": "nutrient",
+      "catalog_key": "green_bean"
+    },
+    "bok_choy": {
+      "kind": "nutrient",
+      "catalog_key": "bok_choy"
+    },
+    "green_curry_paste": {
+      "kind": "nutrient",
+      "catalog_key": "green_curry_paste"
+    },
+    "chipotle": {
+      "kind": "nutrient",
+      "catalog_key": "chipotle"
+    },
+    "coca_cola": {
+      "kind": "nutrient",
+      "catalog_key": "coca_cola"
+    },
+    "baking_powder": {
+      "kind": "nutrient",
+      "catalog_key": "baking_powder"
+    },
+    "maple_syrup": {
+      "kind": "nutrient",
+      "catalog_key": "maple_syrup"
+    },
+    "cocoa_powder": {
+      "kind": "nutrient",
+      "catalog_key": "cocoa_powder"
+    },
+    "red_food_coloring": {
+      "kind": "nutrient",
+      "catalog_key": "red_food_coloring"
+    },
+    "buttermilk": {
+      "kind": "nutrient",
+      "catalog_key": "buttermilk"
+    },
+    "panko": {
+      "kind": "nutrient",
+      "catalog_key": "panko"
+    },
+    "panang_curry_paste": {
+      "kind": "nutrient",
+      "catalog_key": "panang_curry_paste"
+    },
+    "red_chili": {
+      "kind": "nutrient",
+      "catalog_key": "red_chili"
+    },
+    "crema_mexicana": {
+      "kind": "nutrient",
+      "catalog_key": "crema_mexicana"
+    },
+    "queso_fresco": {
+      "kind": "nutrient",
+      "catalog_key": "queso_fresco"
+    },
+    "egg_white": {
+      "kind": "nutrient",
+      "catalog_key": "egg_white"
+    },
+    "food_coloring": {
+      "kind": "nutrient",
+      "catalog_key": "food_coloring"
+    },
+    "marsala": {
+      "kind": "nutrient",
+      "catalog_key": "marsala"
+    },
+    "candied_fruit": {
+      "kind": "nutrient",
+      "catalog_key": "candied_fruit"
+    },
+    "passion_fruit": {
+      "kind": "nutrient",
+      "catalog_key": "passion_fruit"
+    },
+    "mitsuba": {
+      "kind": "nutrient",
+      "catalog_key": "mitsuba"
+    },
+    "english_muffin": {
+      "kind": "nutrient",
+      "catalog_key": "english_muffin"
+    },
+    "hollandaise_sauce": {
+      "kind": "nutrient",
+      "catalog_key": "hollandaise_sauce"
+    },
+    "chives": {
+      "kind": "nutrient",
+      "catalog_key": "chives"
+    },
+    "salsa_roja": {
+      "kind": "nutrient",
+      "catalog_key": "salsa_roja"
+    },
+    "evaporated_milk": {
+      "kind": "nutrient",
+      "catalog_key": "evaporated_milk"
+    },
+    "enoki": {
+      "kind": "nutrient",
+      "catalog_key": "enoki"
+    },
+    "shirataki": {
+      "kind": "nutrient",
+      "catalog_key": "shirataki"
+    },
+    "udon": {
+      "kind": "nutrient",
+      "catalog_key": "udon"
+    },
+    "pecan": {
+      "kind": "nutrient",
+      "catalog_key": "pecan"
+    },
+    "corn_syrup": {
+      "kind": "nutrient",
+      "catalog_key": "corn_syrup"
+    },
+    "chocolate_sprinkles": {
+      "kind": "nutrient",
+      "catalog_key": "chocolate_sprinkles"
+    },
+    "white_chocolate": {
+      "kind": "nutrient",
+      "catalog_key": "white_chocolate"
+    },
+    "sesame_sauce": {
+      "kind": "nutrient",
+      "catalog_key": "sesame_sauce"
+    },
+    "ponzu": {
+      "kind": "nutrient",
+      "catalog_key": "ponzu"
+    },
+    "shredded_coconut": {
+      "kind": "nutrient",
+      "catalog_key": "shredded_coconut"
+    },
+    "pumpkin": {
+      "kind": "nutrient",
+      "catalog_key": "pumpkin"
+    },
+    "chili_flakes": {
+      "kind": "nutrient",
+      "catalog_key": "chili_flakes"
+    },
+    "fish_stock": {
+      "kind": "nutrient",
+      "catalog_key": "fish_stock"
+    },
+    "espresso": {
+      "kind": "nutrient",
+      "catalog_key": "espresso"
+    },
+    "marzipan": {
+      "kind": "nutrient",
+      "catalog_key": "marzipan"
+    },
+    "maria_biscuit": {
+      "kind": "nutrient",
+      "catalog_key": "maria_biscuit"
+    },
+    "liver": {
+      "kind": "nutrient",
+      "catalog_key": "liver"
+    },
+    "kidney_beef": {
+      "kind": "nutrient",
+      "catalog_key": "kidney_beef"
+    },
+    "suet": {
+      "kind": "nutrient",
+      "catalog_key": "suet"
+    },
+    "stout": {
+      "kind": "nutrient",
+      "catalog_key": "stout"
+    },
+    "port_wine": {
+      "kind": "nutrient",
+      "catalog_key": "port_wine"
+    },
+    "olives": {
+      "kind": "nutrient",
+      "catalog_key": "olives"
+    },
+    "veal": {
+      "kind": "nutrient",
+      "catalog_key": "veal"
+    },
+    "rye_bread": {
+      "kind": "nutrient",
+      "catalog_key": "rye_bread"
+    },
+    "masa_harina": {
+      "kind": "nutrient",
+      "catalog_key": "masa_harina"
+    },
+    "coconut": {
+      "kind": "nutrient",
+      "catalog_key": "coconut"
+    },
+    "scotch_bonnet": {
+      "kind": "nutrient",
+      "catalog_key": "scotch_bonnet"
+    },
+    "cocoa": {
+      "kind": "nutrient",
+      "catalog_key": "cocoa"
+    },
+    "orange_blossom": {
+      "kind": "nutrient",
+      "catalog_key": "orange_blossom"
     }
   }
 }
