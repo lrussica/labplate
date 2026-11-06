@@ -13901,7 +13901,9 @@ function normalizeName(str) {
     return str.toLowerCase()
         .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
         .normalize('NFD').replace(/[\u0300-\u036f]/g, '')  // Akzente entfernen (ù→u, é→e, à→a, etc.)
-        .replace(/[^a-z0-9]/g, ' '); // Alles außer Buchstaben und Zahlen zu Leerzeichen
+        .replace(/[^a-z0-9]/g, ' ') // Alles außer Buchstaben und Zahlen zu Leerzeichen
+        .replace(/\s+/g, ' ')      // Mehrfache Leerzeichen zu einem zusammenfassen (FIX: Choriatiki etc.)
+        .trim();                    // Leerzeichen am Anfang und Ende entfernen
 }
 
 var CUSTOM_ALIASES = {
