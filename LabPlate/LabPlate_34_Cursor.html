@@ -13900,6 +13900,7 @@ function normalizeName(str) {
     if (!str) return '';
     return str.toLowerCase()
         .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')  // Akzente entfernen (ù→u, é→e, à→a, etc.)
         .replace(/[^a-z0-9]/g, ' '); // Alles außer Buchstaben und Zahlen zu Leerzeichen
 }
 
